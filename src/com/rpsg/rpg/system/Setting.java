@@ -12,6 +12,7 @@ public class Setting {
 	public static final String GAME_RES_CORE="data/images/core/";
 	public static final String GAME_RES_IMAGE_BG="data/images/background/";
 	public static final String GAME_RES_PARTICLE="data/images/particle/";
+	public static final String GAME_RES_WALK="data/images/walk/";
 	//ºËÐÄ
 	public static boolean DISPLAY_ANTI_ALIASING=true;
 }
