@@ -6,6 +6,9 @@ import com.rpsg.rpg.view.GameView;
 
 public class MoveControler {
 	
+	public static int MAP_MAX_OUT_X=300;
+	public static int MAP_MAX_OUT_Y=200;
+	
 	public static void draw(SpriteBatch batch,GameView gv){
 		
 	}
@@ -13,7 +16,7 @@ public class MoveControler {
 	public static void logic(GameView gv){
 		if(gv.isPressWalk_r)
 			gv.hero.turn(Hero.FACE_R).walk(1);
-		gv.hero.setWalkSpeed(gv.isPressCtrl?8:6);
+		gv.hero.setWalkSpeed(gv.isPressCtrl?96:6);
 		if(gv.isPressWalk_l)
 			gv.hero.turn(Hero.FACE_L).walk(1);
 		if(gv.isPressWalk_u)
@@ -22,10 +25,27 @@ public class MoveControler {
 			gv.hero.turn(Hero.FACE_D).walk(1);
 		float herox=gv.hero.getX()+(gv.hero.getWidth()/2);
 		float heroy=gv.hero.getY()+(gv.hero.getHeight()/2);
-		if(herox>300)
+		if(herox>MAP_MAX_OUT_X && herox<(gv.map.width*gv.map.tileWidth)-MAP_MAX_OUT_X)
 			gv.camera.position.x=herox;
-		if(heroy>200)
-		gv.camera.position.y=heroy;
+		else
+			if(!(herox>MAP_MAX_OUT_X))
+				gv.camera.position.x=MAP_MAX_OUT_X;
+			else
+				gv.camera.position.x=(gv.map.width*gv.map.tileWidth)-MAP_MAX_OUT_X;
+		if(heroy>MAP_MAX_OUT_Y && heroy<(gv.map.height*gv.map.tileHeight)-MAP_MAX_OUT_Y)
+			gv.camera.position.y=heroy;
+		else
+			if(!(heroy>MAP_MAX_OUT_Y))
+				gv.camera.position.y=MAP_MAX_OUT_Y;
+			else
+		gv.camera.position.y=(gv.map.height*gv.map.tileHeight)-MAP_MAX_OUT_Y;
+	}
+	
+	
+	public static boolean testCameraPos(GameView gv){
+		float herox=gv.hero.getX()+(gv.hero.getWidth()/2);
+		float heroy=gv.hero.getY()+(gv.hero.getHeight()/2);
+		return !(herox>MAP_MAX_OUT_X && herox<(gv.map.width*gv.map.tileWidth)-MAP_MAX_OUT_X) && (heroy>MAP_MAX_OUT_Y && heroy<(gv.map.height*gv.map.tileHeight)-MAP_MAX_OUT_Y);
 		
 	}
 	
