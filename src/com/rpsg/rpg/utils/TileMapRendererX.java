@@ -38,7 +38,7 @@ public class TileMapRendererX{
 		int startx=(int)x/48;
 		if(startx<0) startx=0;
 		int xmod=(int)x%48;
-		batch.setColor(1, 1, MathUtils.random(), 1);
+		batch.setColor(1, 1, 1, 1);
 		int l=layers;
 		for (int i = 0; i < map.layers.get(l).tiles.length; i++) 
 			for (int j = startx; j < startx+GameUtil.screen_width/48+2; j++) 

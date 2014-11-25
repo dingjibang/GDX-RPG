@@ -4,32 +4,38 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.tiled.TileAtlas;
+import com.badlogic.gdx.graphics.g2d.tiled.TileMapRenderer;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledLoader;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.rpsg.rpg.object.Hero;
-import com.rpsg.rpg.system.Image;
+import com.rpsg.rpg.object.heros.HeaderHero;
+import com.rpsg.rpg.object.heros.Hero;
 import com.rpsg.rpg.system.Setting;
 import com.rpsg.rpg.utils.GameUtil;
-import com.rpsg.rpg.utils.TileMapRendererX;
+import com.rpsg.rpg.utils.MoveControler;
+//import com.rpsg.rpg.utils.TileMapRendererX;
 public class GameView extends IView{
 	
-	public TileMapRendererX render;
+//	public TileMapRendererX render;
+	public TileMapRenderer render;
 	public Stage stage;
 	public TiledMap map;
 	public TileAtlas atlas;
 	public static boolean inited=false;
 	public OrthographicCamera camera;
-	public Hero hero;
-	
+	public HeaderHero hero;
 	@Override
 	public void init() {
 		stage = new Stage(GameUtil.screen_width, GameUtil.screen_height, true);
 		camera=(OrthographicCamera) stage.getCamera();
 		map=TiledLoader.createMap(Gdx.files.internal(Setting.GAME_RES_MAP + "test/map.tmx"));
 		atlas = new TileAtlas(map, Gdx.files.internal(Setting.GAME_RES_MAP 	+ "test"));
-		render = new TileMapRendererX(map,atlas,camera);
-		hero=new Hero("heros/walk_marisa.png");
+//		render = new TileMapRendererX(map,atlas,camera);
+		render = new TileMapRenderer(map,atlas,10,10);
+		hero=new HeaderHero("/walk_marisa.png");
+		hero.position=new Vector2(100,100);
+		stage.addActor(hero);
 		inited=true;
 	}
 	
@@ -40,33 +46,32 @@ public class GameView extends IView{
 
 	@Override
 	public void draw(SpriteBatch batch) {
-		render.render(camera,0,batch);
-		render.render(camera,1,batch);
-		hero.images[3].draw(batch);
+//		render.render(camera,0,batch);
+//		render.render(camera,1,batch);
+		render.render(camera,new int[]{0,1});
+		stage.draw();
 	}
 
 	@Override
 	public void logic() {
-//		System.out.println(camera.position.x+" "+camera.position.y);
+		stage.act();
+		MoveControler.logic(this);
 	}
 
 	@Override
 	public void onkeyTyped(char character) {
 		
 	}
-
+	
+	public int walkInput=0;
+	public boolean isPressWalk_l=false,isPressWalk_r=false,isPressWalk_u=false,isPressWalk_d=false;
+	public boolean isPressCtrl=false;
+	
 	public void keyDown(int keycode) {
-		if(keycode==21)
-			camera.position.x-=30;
-		if(keycode==22)
-			camera.position.x+=30;
-		if(keycode==19)
-			camera.position.y+=30;
-		if(keycode==20)
-			camera.position.y-=30;
+		MoveControler.keyDown(keycode, this);
 	}
 
 	public void keyUp(int keycode) {
-		
+		MoveControler.keyUp(keycode,this);
 	}
 }
