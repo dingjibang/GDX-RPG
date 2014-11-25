@@ -12,7 +12,7 @@ public class FontUtil {
 	static int x,y,w;
 	static String str="¸úÍß¸ñ°¡ÎÒ¸ÁÍÛ¸Â¸Â";
 	public static void init(){
-		generator=GameUtil.generator;
+//		generator=GameUtil.generator;
 	}
 	
 	public static void drawString(String str,int x,int y,int width,SpriteBatch batch){
