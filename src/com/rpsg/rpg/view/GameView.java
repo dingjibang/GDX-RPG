@@ -34,7 +34,7 @@ public class GameView extends IView{
 //		render = new TileMapRendererX(map,atlas,camera);
 		render = new TileMapRenderer(map,atlas,10,10);
 		hero=new HeaderHero("/walk_marisa.png");
-		hero.position=new Vector2(100,100);
+		hero.position=new Vector2(4700,100);
 		stage.addActor(hero);
 		inited=true;
 	}
