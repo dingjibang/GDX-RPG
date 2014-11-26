@@ -1,6 +1,9 @@
 package com.rpsg.rpg.utils;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.tiled.TiledLayer;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.rpsg.rpg.object.IRPGObject;
 import com.rpsg.rpg.object.heros.Hero;
 import com.rpsg.rpg.view.GameView;
 
@@ -14,17 +17,25 @@ public class MoveControler {
 	}
 	
 	public static void logic(GameView gv){
+		for(Actor a:gv.stage.getActors()){
+			if(a instanceof IRPGObject && ((IRPGObject)a).enableCollide){
+				IRPGObject o=(IRPGObject)a;
+				int[][] tiles = gv.map.layers.get(o.layer).tiles;
+				o.collide.testCollide(o.mapx, o.mapy, tiles);
+//				System.out.println(o.collide);
+			}
+		}
 		if(gv.isPressWalk_r)
-			gv.hero.turn(Hero.FACE_R).walk(1);
-		gv.hero.setWalkSpeed(gv.isPressCtrl?96:6);
+			MapControler.hero.turn(Hero.FACE_R).walk(1);
+		MapControler.hero.setWalkSpeed(gv.isPressCtrl?48:6);
 		if(gv.isPressWalk_l)
-			gv.hero.turn(Hero.FACE_L).walk(1);
+			MapControler.hero.turn(Hero.FACE_L).walk(1);
 		if(gv.isPressWalk_u)
-			gv.hero.turn(Hero.FACE_U).walk(1);
+			MapControler.hero.turn(Hero.FACE_U).walk(1);
 		if(gv.isPressWalk_d)
-			gv.hero.turn(Hero.FACE_D).walk(1);
-		float herox=gv.hero.getX()+(gv.hero.getWidth()/2);
-		float heroy=gv.hero.getY()+(gv.hero.getHeight()/2);
+			MapControler.hero.turn(Hero.FACE_D).walk(1);
+		float herox=MapControler.hero.getX()+(MapControler.hero.getWidth()/2);
+		float heroy=MapControler.hero.getY()+(MapControler.hero.getHeight()/2);
 		if(herox>MAP_MAX_OUT_X && herox<(gv.map.width*gv.map.tileWidth)-MAP_MAX_OUT_X)
 			gv.camera.position.x=herox;
 		else
@@ -38,13 +49,14 @@ public class MoveControler {
 			if(!(heroy>MAP_MAX_OUT_Y))
 				gv.camera.position.y=MAP_MAX_OUT_Y;
 			else
-		gv.camera.position.y=(gv.map.height*gv.map.tileHeight)-MAP_MAX_OUT_Y;
+				gv.camera.position.y=(gv.map.height*gv.map.tileHeight)-MAP_MAX_OUT_Y;
+		gv.camera.update();
 	}
 	
 	
 	public static boolean testCameraPos(GameView gv){
-		float herox=gv.hero.getX()+(gv.hero.getWidth()/2);
-		float heroy=gv.hero.getY()+(gv.hero.getHeight()/2);
+		float herox=MapControler.hero.getX()+(MapControler.hero.getWidth()/2);
+		float heroy=MapControler.hero.getY()+(MapControler.hero.getHeight()/2);
 		return !(herox>MAP_MAX_OUT_X && herox<(gv.map.width*gv.map.tileWidth)-MAP_MAX_OUT_X) && (heroy>MAP_MAX_OUT_Y && heroy<(gv.map.height*gv.map.tileHeight)-MAP_MAX_OUT_Y);
 		
 	}

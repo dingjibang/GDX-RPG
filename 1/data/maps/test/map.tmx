@@ -1,15 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><map height="100" orientation="orthogonal" renderorder="right-down" tileheight="48" tilewidth="48" version="1.0" width="100"><properties><property name="blended tiles" value="3,4,5,6,9,10,11,12,15,19,20,21,22,25,26,27,28,35,36,37,38,41,42,43,44,47,48,51,52,53,54,57,58,59,60,63,67,68,69,70,73,74,75,76,83,84,85,86,89,90,91,92,95,96,99,100,101,102,105,106,107,108,111,115,116,117,118,121,122,123,124,131,132,133,134,137,138,139,140,143,144,147,148,149,150,153,154,155,156,163,164,165,166,169,170,171,172,179,180,181,182,185,186,187,188"/></properties>
- <tileset firstgid="1" name="TileA2" tileheight="48" tilewidth="48">
-  <image height="576" source="TileA2.png" width="768"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><map height="20" orientation="orthogonal" renderorder="right-down" tileheight="48" tilewidth="48" version="1.0" width="30"><properties><property name="blended tiles" value="3,4,5,6,7,9,11,12,13,14,18,19,20,21,22,23,25,26,31,32,33,40,97,98,102,103,104,105,106,107,108,109,110,111,113,114,115,116,117,118,119,121,123,124,125,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,169,170,171,172,173,174,177,178,179,180,182,183,184,185,186,187,191,193,194,195,199,200,201,202,203,207,209,210,211,215,217,218,219,221,223,224,225,226,227,229,233,234,235,239,240,241,242,243,247,248,249,250,251,252,253,254,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,279,280,281,288,313,316,321,322,323,324,329,332,337,338,339,340,345,346,347,348,353,354,355,356,361,362,363,364,368,369,370,371,372,373,374,375,376,377,378,379,380,384,385,386,387,388,392,393,394,395,396,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,433,434,435,436,437,441,442,443,444,445,452,453,454,455,456,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480"/></properties>
+ <tileset firstgid="1" name="Environment-3" tileheight="48" tilewidth="48">
+  <image height="2880" source="Environment-3.png" width="384"/>
  </tileset>
- <layer height="100" name="块层 1" width="100">
+ <layer height="20" name="块层 1" width="30">
   <data compression="gzip" encoding="base64">
-   H4sIAAAAAAAAC+3TQRGAQAADsbMADsC/SHDRfeTRiYHudc65/11M+Px7mXH9B+qj7PoP1EfZ9R+oj7LrP1AfZdd/oD7Krv9AfZRd/4H6KLv+A/VRdv0H6qPs+g/UR9n1H6iPsus/UB9l13+gPsqu/0B9lF3/gfoou/4D9VF2/Qfqo+z6D9RH2fUfqI+y6z9QH2XXf6A+yq7/QH2UXf+B+ii7/gP1UXb9B+qj7PoP1EfZ9R+oj7LrP1AfZdd/oD7Krv9AfZRd/4H6KLv+A/VRdv0H6qPs+g/UR9n1H6iPsus/UB9l13+gPsqu/0B9lF3/gfoou/4D9VF2/Qfqo+z6D9RH2fUfqI+y6z9QH2XXf6A+yq7/QH2UXf+B+ii7/gP1UXb9B+qj7Aft7ydxQJwAAA==
+   H4sIAAAAAAAACzNhYGAwGcWjeBSP4lE8isnEgXjkImhobyQQRwFxNBDHAHEsEMcBcTwQJwyCcBnFIxsDAJzWNmxgCQAA
   </data>
  </layer>
- <layer height="100" name="块层 2" width="100">
+ <layer height="20" name="块层 2" width="30">
   <data compression="gzip" encoding="base64">
-   H4sIAAAAAAAAC+3bQU7DQBBE0Sx8gXADuP8hiYSQIoRwbGbmV7f/Inq7EJgqejx27rfb7e3xumuE74/Xh8ZI50HtR7J0Hn5zC/kcqf3YBq5/Z0f8neg8qPMjWToP6vxIls6DOj+Snbne2w8T8pcunQdl5sc28f079W/WOm+T3nekiftGOg/q/EiWzoPaj2TpPMxy5n5u5s/dW68K+6Q9E/dRV+tHSt6dHxme/b9C52+kHa7T6Rxp3350kM5DJ6/+fMnzvKCuN+xHb+k86Np+dLi+tx/786KrdB6S3NsfrTgHo/Og5/txJh9Xnx9Hf386D+r8SJbOg16zH1XmGJ2HFVa6bqHzoPP6USmHqZ//zDpWel6jmnQedP38oPpUscd0HnR9P9R+pHj0vj6dB53Tj6rPk6dJ50GdH8nSeVD7cXTurDzXovOg9iNZOg9qP5Kl8zDSiue59iNbOg9qP5Kl85AsMY/oPPxlwvMelfrRYT+TJp2H7np/sLZ0ftR+JEvngTbt/judB7UfyY5a1yrfP3pF8rqKzoM6P5Kl86B9+9HhPI3Ow0g7nAfTedC+/eggnQe1H2fm0KpzLjoPz3bYH9mPXtJ5UPuRLJ0HtR/J0nlQ+5EsnQe1H8nSeVD7kSydB/3y+/kcOg9qP5Kl86D2Y7b/uY/zCay5pFhAnAAA
+   H4sIAAAAAAAAC+3UNw7CMBhA4WTlIEj03msgoTdRbwZMwBRyTN7A5MEgm5DFT/qmyP5tRYllmUzRdbWjPsF/8rnnE4Fw37gg7BJIIoU0Msgih7xk3ZlzX2z191VAESWUUUEVNdQl627Mu+OhOLeBJlpoo4MueuirbflVDgYYwoWHEcaYaO4dkzybYoY5FlhihTU2mnM/tcUOexxwxCnkmabf5L+/L/H/ZNLrBVK5uPtgCQAA
+  </data>
+ </layer>
+ <layer height="20" name="块层 3" width="30">
+  <data compression="gzip" encoding="base64">
+   H4sIAAAAAAAAC+3NuQ2AMBBE0XULnOI2NxUDEVAqP0CCAoyj/dJLJhkRTfPfakQ27ObdAoSIECNB6vj34O/E9fxmyFGgRIUaDazj728tOvQYMGLCjOXHX03TNM1PN0tdCLFgCQAA
   </data>
  </layer>
 </map>
