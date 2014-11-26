@@ -91,7 +91,7 @@ public abstract class IRPGObject extends Actor{
 		else
 			return FACE_R;
 	}
-	private int NEXT_FOOT=50;
+	private int NEXT_FOOT=0;
 	@Override
 	public void act(float f){
 		if(!walked){
@@ -142,18 +142,17 @@ public abstract class IRPGObject extends Actor{
 			}
 			}
 			if((NEXT_FOOT-=walkSpeed)<=0){
-				if(++foot==2)
+				if(++foot==3)
 					foot=-1;
 				NEXT_FOOT=50;
 			}
 		}else{
 			foot=0;
 		}
-		
+		System.out.println(foot);
 	}
 	
 	public void testWalk(){
-		System.out.println("go");
 		if(lastStep!=0){
 			if(enableCollide && ((getCurrentFace()==FACE_L && !collide.left) || (getCurrentFace()==FACE_R && !collide.right) 
 			|| (getCurrentFace()==FACE_U && !collide.top) || (getCurrentFace()==FACE_D && !collide.bottom))){
