@@ -2,6 +2,7 @@ package com.rpsg.rpg.object;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.system.Image;
@@ -15,6 +16,11 @@ public abstract class IRPGObject extends Actor{
 	
 	public Image[] images;
 	
+	public int layer;
+	
+	public int mapx;
+	public int mapy;
+	
 	public Vector2 position;
 	
 	public boolean walked=true;
@@ -24,6 +30,10 @@ public abstract class IRPGObject extends Actor{
 	public int currentImageNo=1;
 	
 	public int foot=0;
+	
+	public boolean enableCollide=false;
+	
+	public Collide collide=new Collide();
 	
 	public Image getCurrentImage(){
 		images[getCurrentFoot()].setPosition(position.x, position.y);
@@ -55,7 +65,6 @@ public abstract class IRPGObject extends Actor{
 	public IRPGObject turn(int face){
 		if(walked)
 			this.currentImageNo=face;
-		System.out.println(getCurrentFoot());
 		return this;
 	}
 	
@@ -66,9 +75,9 @@ public abstract class IRPGObject extends Actor{
 	public IRPGObject walk(int step){
 		if(walked){
 			lastPosition=new Vector2(position.x, position.y);
-			lastStep=step-1;
+			lastStep=step;
+			testWalk();
 		}
-		walked=false;
 		return this;
 	}
 	
@@ -88,19 +97,21 @@ public abstract class IRPGObject extends Actor{
 		if(!walked){
 			switch(getCurrentFace()){
 			case FACE_D:{
-				if (Math.abs(lastPosition.y-position.y)==48)
+				if (Math.abs(lastPosition.y-position.y)==48){
 					testWalk();
-				else
+					mapy++;
+				}else
 					if(Math.abs(lastPosition.y-position.y)+walkSpeed<=48)
 						position.y-=walkSpeed;
-					else
+						else
 						position.y-=(48-Math.abs(lastPosition.y-position.y));
 				break;
 			}
 			case FACE_U:{
-				if (Math.abs(lastPosition.y-position.y)==48)
+				if (Math.abs(lastPosition.y-position.y)==48){
 					testWalk();
-				else
+					mapy--;
+				}else
 					if(Math.abs(lastPosition.y-position.y)+walkSpeed<=48)
 						position.y+=walkSpeed;
 					else
@@ -108,9 +119,10 @@ public abstract class IRPGObject extends Actor{
 				break;
 			}
 			case FACE_L:{
-				if (Math.abs(lastPosition.x-position.x)==48)
+				if (Math.abs(lastPosition.x-position.x)==48){
 					testWalk();
-				else
+					mapx--;
+				}else
 					if(Math.abs(lastPosition.x-position.x)+walkSpeed<=48)
 						position.x-=walkSpeed;
 					else
@@ -118,9 +130,10 @@ public abstract class IRPGObject extends Actor{
 				break;
 			}
 			case FACE_R:{
-				if (Math.abs(lastPosition.x-position.x)==48)
+				if (Math.abs(lastPosition.x-position.x)==48){
 					testWalk();
-				else
+					mapx++;
+				}else
 					if(Math.abs(lastPosition.x-position.x)+walkSpeed<=48)
 						position.x+=walkSpeed;
 					else
@@ -136,15 +149,24 @@ public abstract class IRPGObject extends Actor{
 		}else{
 			foot=0;
 		}
+		
 	}
 	
 	public void testWalk(){
+		System.out.println("go");
 		if(lastStep!=0){
-			lastStep--;
-			lastPosition=new Vector2(position.x, position.y);
-		}
-		else
+			if(enableCollide && ((getCurrentFace()==FACE_L && !collide.left) || (getCurrentFace()==FACE_R && !collide.right) 
+			|| (getCurrentFace()==FACE_U && !collide.top) || (getCurrentFace()==FACE_D && !collide.bottom))){
+				lastStep=0;
+				walked=true;
+			}else{
+				lastStep--;
+				walked=false;
+				lastPosition=new Vector2(position.x, position.y);
+			}
+		}else{
 			walked=true;
+		}
 	}
 	
 	public void setWalkSpeed(float s){
@@ -177,5 +199,13 @@ public abstract class IRPGObject extends Actor{
 	@Override
 	public float getHeight(){
 		return this.getCurrentImage().getHeight();
+	}
+	
+	public IRPGObject generalPosition(int mapx,int mapy,int layer, TiledMap map){
+		this.mapx=mapx;
+		this.mapy=mapy;
+		this.layer=layer;
+		this.position=new Vector2(mapx*map.tileWidth,(map.height-mapy)*map.tileHeight);
+		return this;
 	}
 }

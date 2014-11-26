@@ -15,8 +15,5 @@ public class HeaderHero extends Hero{
 	public HeaderHero(String path) {
 		super(path);
 	}
-	
-
-	
 
 }
