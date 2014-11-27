@@ -9,10 +9,10 @@ public class Collide {
 	
 	
 	public void testCollide(int x,int y,int[][] t){
-			left=!(x==0 || t[y-1][x-1]!=0);
-			right=!(x==t[0].length-1 || t[y-1][x+1]!=0);
-			top=!(y==1 || t[y-2][x]!=0);
-			bottom=!(y==t.length || t[y][x]!=0);
+			left=!(x==0 || t[y][x-1]!=0);
+			right=!(x==t[0].length-1 || t[y][x+1]!=0);
+			top=!(y==0 || t[y-1][x]!=0);
+			bottom=!(y==t.length-1 || t[y+1][x]!=0);
 	}
 
 

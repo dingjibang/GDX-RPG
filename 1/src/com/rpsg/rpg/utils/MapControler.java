@@ -35,7 +35,7 @@ public class MapControler {
 			}
 			sb.end();
 		}
-//		System.out.println(hero.getX()+" "+hero.getY()+" "+gv.camera.position.x+" "+gv.camera.position.y+" "+hero.mapx+" "+hero.mapy);
+		System.out.println(hero.getX()+" "+hero.getY()+" "+gv.camera.position.x+" "+gv.camera.position.y+" "+hero.mapx+" "+hero.mapy);
 	}
 	
 	public static void logic(GameView gv){
