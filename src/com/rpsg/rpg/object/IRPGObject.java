@@ -99,7 +99,6 @@ public abstract class IRPGObject extends Actor{
 			case FACE_D:{
 				if (Math.abs(lastPosition.y-position.y)==48){
 					testWalk();
-					mapy++;
 				}else
 					if(Math.abs(lastPosition.y-position.y)+walkSpeed<=48)
 						position.y-=walkSpeed;
@@ -110,7 +109,6 @@ public abstract class IRPGObject extends Actor{
 			case FACE_U:{
 				if (Math.abs(lastPosition.y-position.y)==48){
 					testWalk();
-					mapy--;
 				}else
 					if(Math.abs(lastPosition.y-position.y)+walkSpeed<=48)
 						position.y+=walkSpeed;
@@ -121,7 +119,6 @@ public abstract class IRPGObject extends Actor{
 			case FACE_L:{
 				if (Math.abs(lastPosition.x-position.x)==48){
 					testWalk();
-					mapx--;
 				}else
 					if(Math.abs(lastPosition.x-position.x)+walkSpeed<=48)
 						position.x-=walkSpeed;
@@ -132,7 +129,6 @@ public abstract class IRPGObject extends Actor{
 			case FACE_R:{
 				if (Math.abs(lastPosition.x-position.x)==48){
 					testWalk();
-					mapx++;
 				}else
 					if(Math.abs(lastPosition.x-position.x)+walkSpeed<=48)
 						position.x+=walkSpeed;
@@ -149,7 +145,6 @@ public abstract class IRPGObject extends Actor{
 		}else{
 			foot=0;
 		}
-		System.out.println(foot);
 	}
 	
 	public void testWalk(){
@@ -159,6 +154,12 @@ public abstract class IRPGObject extends Actor{
 				lastStep=0;
 				walked=true;
 			}else{
+				switch(getCurrentFace()){
+				case FACE_D:{mapy++;break;}
+				case FACE_U:{mapy--;break;}
+				case FACE_L:{mapx--;break;}
+				case FACE_R:{mapx++;break;}
+				}
 				lastStep--;
 				walked=false;
 				lastPosition=new Vector2(position.x, position.y);
@@ -204,7 +205,7 @@ public abstract class IRPGObject extends Actor{
 		this.mapx=mapx;
 		this.mapy=mapy;
 		this.layer=layer;
-		this.position=new Vector2(mapx*map.tileWidth,(map.height-mapy)*map.tileHeight);
+		this.position=new Vector2(mapx*map.tileWidth,(map.height-mapy-1)*map.tileHeight);
 		return this;
 	}
 }
