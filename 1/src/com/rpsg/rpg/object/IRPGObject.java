@@ -1,5 +1,8 @@
 package com.rpsg.rpg.object;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
@@ -34,6 +37,8 @@ public abstract class IRPGObject extends Actor{
 	public boolean enableCollide=false;
 	
 	public Collide collide=new Collide();
+	
+	public List<Walker> walkStack=new ArrayList<Walker>(); 
 	
 	public Image getCurrentImage(){
 		images[getCurrentFoot()].setPosition(position.x, position.y);
@@ -71,13 +76,8 @@ public abstract class IRPGObject extends Actor{
 	private float walkSpeed=3f;
 	
 	private Vector2 lastPosition;
-	private int lastStep;
 	public IRPGObject walk(int step){
-		if(walked){
-			lastPosition=new Vector2(position.x, position.y);
-			lastStep=step;
-			testWalk();
-		}
+		walkStack.add(new Walker(this.getCurrentFace(),step));
 		return this;
 	}
 	
@@ -91,10 +91,29 @@ public abstract class IRPGObject extends Actor{
 		else
 			return FACE_R;
 	}
+	
 	private int NEXT_FOOT=0;
+	private int lastx,lasty,lastlength;
 	@Override
 	public void act(float f){
+		if(walkStack.size()!=0 && walked)
+			testWalk();
+		if(isStop() && lastlength++>5)
+			foot=0;
+		toWalk();
+	}
+	
+	public boolean isStop(){
+		boolean flag=false;
+		flag=((lastx==(int)position.x) || (lasty==(int)position.y));
+		lastx=(int) position.x;
+		lasty=(int) position.y;
+		return flag;
+	}
+	
+	public boolean toWalk(){
 		if(!walked){
+			lastlength=0;
 			switch(getCurrentFace()){
 			case FACE_D:{
 				if (Math.abs(lastPosition.y-position.y)==48){
@@ -102,8 +121,10 @@ public abstract class IRPGObject extends Actor{
 				}else
 					if(Math.abs(lastPosition.y-position.y)+walkSpeed<=48)
 						position.y-=walkSpeed;
-						else
+					else{
 						position.y-=(48-Math.abs(lastPosition.y-position.y));
+						return true;
+					}
 				break;
 			}
 			case FACE_U:{
@@ -112,8 +133,10 @@ public abstract class IRPGObject extends Actor{
 				}else
 					if(Math.abs(lastPosition.y-position.y)+walkSpeed<=48)
 						position.y+=walkSpeed;
-					else
+					else{
 						position.y+=(48-Math.abs(lastPosition.y-position.y));
+						return true;
+					}
 				break;
 			}
 			case FACE_L:{
@@ -122,18 +145,22 @@ public abstract class IRPGObject extends Actor{
 				}else
 					if(Math.abs(lastPosition.x-position.x)+walkSpeed<=48)
 						position.x-=walkSpeed;
-					else
+					else{
 						position.x-=(48-Math.abs(lastPosition.x-position.x));
+						return true;
+					}
 				break;
 			}
 			case FACE_R:{
 				if (Math.abs(lastPosition.x-position.x)==48){
-					testWalk();
+						testWalk();
 				}else
 					if(Math.abs(lastPosition.x-position.x)+walkSpeed<=48)
 						position.x+=walkSpeed;
-					else
+					else{
 						position.x+=(48-Math.abs(lastPosition.x-position.x));
+						return true;
+					}
 				break;
 			}
 			}
@@ -142,31 +169,39 @@ public abstract class IRPGObject extends Actor{
 					foot=-1;
 				NEXT_FOOT=50;
 			}
-		}else{
-			foot=0;
 		}
+		return false;
 	}
 	
-	public void testWalk(){
-		if(lastStep!=0){
+	public boolean testWalk(){
+		if(walkStack.size()!=0){
 			if(enableCollide && ((getCurrentFace()==FACE_L && !collide.left) || (getCurrentFace()==FACE_R && !collide.right) 
 			|| (getCurrentFace()==FACE_U && !collide.top) || (getCurrentFace()==FACE_D && !collide.bottom))){
-				lastStep=0;
-				walked=true;
+				testWalkerSize();
 			}else{
-				switch(getCurrentFace()){
-				case FACE_D:{mapy++;break;}
-				case FACE_U:{mapy--;break;}
-				case FACE_L:{mapx--;break;}
-				case FACE_R:{mapx++;break;}
-				}
-				lastStep--;
-				walked=false;
-				lastPosition=new Vector2(position.x, position.y);
+				if(walkStack.get(0).step!=0){
+					switch(getCurrentFace()){
+					case FACE_D:{mapy++;break;}
+					case FACE_U:{mapy--;break;}
+					case FACE_L:{mapx--;break;}
+					case FACE_R:{mapx++;break;}
+					}
+					walkStack.get(0).step--;
+					lastPosition=new Vector2(position.x, position.y);
+					walked=false;
+					return true;
+				}else
+					testWalkerSize();
 			}
 		}else{
 			walked=true;
 		}
+		toWalk();
+		return false;
+	}
+	
+	private void testWalkerSize(){
+		walkStack.remove(walkStack.get(0));
 	}
 	
 	public void setWalkSpeed(float s){
@@ -206,6 +241,7 @@ public abstract class IRPGObject extends Actor{
 		this.mapy=mapy;
 		this.layer=layer;
 		this.position=new Vector2(mapx*map.tileWidth,(map.height-mapy-1)*map.tileHeight);
+		lastPosition=new Vector2(mapx*map.tileWidth,(map.height-mapy-1)*map.tileHeight);
 		return this;
 	}
 }
