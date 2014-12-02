@@ -32,6 +32,8 @@ public abstract class IRPGObject extends Actor{
 	
 	public int currentImageNo=1;
 	
+	public boolean waitWhenCollide=true; 
+	
 	public int foot=0;
 	
 	public boolean enableCollide=false;
@@ -73,7 +75,7 @@ public abstract class IRPGObject extends Actor{
 		return this;
 	}
 	
-	private float walkSpeed=3f;
+	public float walkSpeed=3f;
 	
 	private Vector2 lastPosition;
 	public IRPGObject walk(int step){
@@ -117,7 +119,8 @@ public abstract class IRPGObject extends Actor{
 			switch(getCurrentFace()){
 			case FACE_D:{
 				if (Math.abs(lastPosition.y-position.y)==48){
-					testWalk();
+					if(testWalk()==null)
+						return false;
 				}else
 					if(Math.abs(lastPosition.y-position.y)+walkSpeed<=48)
 						position.y-=walkSpeed;
@@ -129,7 +132,8 @@ public abstract class IRPGObject extends Actor{
 			}
 			case FACE_U:{
 				if (Math.abs(lastPosition.y-position.y)==48){
-					testWalk();
+					if(testWalk()==null)
+						return false;
 				}else
 					if(Math.abs(lastPosition.y-position.y)+walkSpeed<=48)
 						position.y+=walkSpeed;
@@ -141,7 +145,8 @@ public abstract class IRPGObject extends Actor{
 			}
 			case FACE_L:{
 				if (Math.abs(lastPosition.x-position.x)==48){
-					testWalk();
+					if(testWalk()==null)
+						return false;
 				}else
 					if(Math.abs(lastPosition.x-position.x)+walkSpeed<=48)
 						position.x-=walkSpeed;
@@ -153,7 +158,8 @@ public abstract class IRPGObject extends Actor{
 			}
 			case FACE_R:{
 				if (Math.abs(lastPosition.x-position.x)==48){
-						testWalk();
+					if(testWalk()==null)
+						return false;
 				}else
 					if(Math.abs(lastPosition.x-position.x)+walkSpeed<=48)
 						position.x+=walkSpeed;
@@ -173,11 +179,14 @@ public abstract class IRPGObject extends Actor{
 		return false;
 	}
 	
-	public boolean testWalk(){
+	public Boolean testWalk(){
 		if(walkStack.size()!=0){
 			if(enableCollide && ((getCurrentFace()==FACE_L && !collide.left) || (getCurrentFace()==FACE_R && !collide.right) 
 			|| (getCurrentFace()==FACE_U && !collide.top) || (getCurrentFace()==FACE_D && !collide.bottom))){
-				testWalkerSize();
+				if(!waitWhenCollide)
+					testWalkerSize();
+				else
+					return null;
 			}else{
 				if(walkStack.get(0).step!=0){
 					switch(getCurrentFace()){

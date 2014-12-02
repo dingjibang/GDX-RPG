@@ -18,6 +18,7 @@ public class MapControler {
 		npc=new HeaderHero("/walk_marisa.png");
 		hero.generalPosition(10, 10, 1,gv.map).enableCollide=true;
 		npc.generalPosition(20, 10, 1, gv.map).enableCollide=true;
+		npc.waitWhenCollide=true;
 		gv.stage.addActor(npc);
 		gv.stage.addActor(hero);
 	}
@@ -42,7 +43,6 @@ public class MapControler {
 	}
 	
 	public static void logic(GameView gv){
-		
 	}
 	
 
