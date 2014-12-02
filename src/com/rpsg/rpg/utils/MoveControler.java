@@ -20,7 +20,7 @@ public class MoveControler {
 			if(a instanceof IRPGObject && ((IRPGObject)a).enableCollide){
 				IRPGObject o=(IRPGObject)a;
 				int[][] tiles = gv.map.layers.get(o.layer).tiles;
-				o.collide.testCollide(o.mapx, o.mapy, tiles);
+				o.collide.testCollide(o.mapx, o.mapy, tiles,gv.stage.getActors(),o);
 //				System.out.println(o.collide);
 			}
 		}

@@ -4,24 +4,24 @@ import com.rpsg.rpg.object.IRPGObject;
 import com.rpsg.rpg.system.Image;
 import com.rpsg.rpg.system.Setting;
 
-public class Hero extends IRPGObject{
+public class NPC extends IRPGObject{
 
-	public static final int HERO_WIDTH=48;
-	public static final int HERO_HEIGHT=64;
+	public static final int NPC_WIDTH=48;
+	public static final int NPC_HEIGHT=64;
 	public static final String RES_PATH=Setting.GAME_RES_WALK+"heros/";
 	
-	public Hero() {
+	public NPC() {
 		super();
 		this.waitWhenCollide=false;
 	}
 
-	public Hero(Image txt) {
-		super(txt, HERO_WIDTH, HERO_HEIGHT);
+	public NPC(Image txt) {
+		super(txt, NPC_WIDTH, NPC_HEIGHT);
 		this.waitWhenCollide=false;
 	}
 
-	public Hero(String path) {
-		super(RES_PATH+path, HERO_WIDTH, HERO_HEIGHT);
+	public NPC(String path) {
+		super(RES_PATH+path, NPC_WIDTH, NPC_HEIGHT);
 		this.waitWhenCollide=false;
 	}
 	
