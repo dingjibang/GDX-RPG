@@ -11,11 +11,14 @@ public class MapControler {
 	public static int MAP_MAX_OUT_X=300;
 	public static int MAP_MAX_OUT_Y=200;
 	public static HeaderHero hero;
-	
+	public static HeaderHero npc;
 	
 	public static void init(GameView gv){
 		hero=new HeaderHero("/walk_marisa.png");
+		npc=new HeaderHero("/walk_marisa.png");
 		hero.generalPosition(10, 10, 1,gv.map).enableCollide=true;
+		npc.generalPosition(20, 10, 1, gv.map).enableCollide=true;
+		gv.stage.addActor(npc);
 		gv.stage.addActor(hero);
 	}
 	
@@ -35,7 +38,7 @@ public class MapControler {
 			}
 			sb.end();
 		}
-		System.out.println(hero.getX()+" "+hero.getY()+" "+gv.camera.position.x+" "+gv.camera.position.y+" "+hero.mapx+" "+hero.mapy);
+//		System.out.println(hero.getX()+" "+hero.getY()+" "+gv.camera.position.x+" "+gv.camera.position.y+" "+hero.mapx+" "+hero.mapy);
 	}
 	
 	public static void logic(GameView gv){

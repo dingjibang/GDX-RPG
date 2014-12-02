@@ -51,9 +51,9 @@ public class GameView extends IView{
 
 	@Override
 	public void logic() {
+		MapControler.logic(this);
 		stage.act();
 		MoveControler.logic(this);
-		MapControler.logic(this);
 	}
 
 	@Override
@@ -61,7 +61,6 @@ public class GameView extends IView{
 		
 	}
 	
-	public int walkInput=0;
 	public boolean isPressWalk_l=false,isPressWalk_r=false,isPressWalk_u=false,isPressWalk_d=false;
 	public boolean isPressCtrl=false;
 	

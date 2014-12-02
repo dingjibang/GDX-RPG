@@ -1,7 +1,6 @@
 package com.rpsg.rpg.utils;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.tiled.TiledLayer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.object.IRPGObject;
 import com.rpsg.rpg.object.heros.Hero;
@@ -25,14 +24,14 @@ public class MoveControler {
 //				System.out.println(o.collide);
 			}
 		}
-		if(gv.isPressWalk_r)
+		if(gv.isPressWalk_r && MapControler.hero.walked)
 			MapControler.hero.turn(Hero.FACE_R).walk(1);
 		MapControler.hero.setWalkSpeed(gv.isPressCtrl?48:6);
-		if(gv.isPressWalk_l)
+		if(gv.isPressWalk_l && MapControler.hero.walked)
 			MapControler.hero.turn(Hero.FACE_L).walk(1);
-		if(gv.isPressWalk_u)
+		if(gv.isPressWalk_u && MapControler.hero.walked)
 			MapControler.hero.turn(Hero.FACE_U).walk(1);
-		if(gv.isPressWalk_d)
+		if(gv.isPressWalk_d && MapControler.hero.walked)
 			MapControler.hero.turn(Hero.FACE_D).walk(1);
 		float herox=MapControler.hero.getX()+(MapControler.hero.getWidth()/2);
 		float heroy=MapControler.hero.getY()+(MapControler.hero.getHeight()/2);
@@ -58,7 +57,6 @@ public class MoveControler {
 		float herox=MapControler.hero.getX()+(MapControler.hero.getWidth()/2);
 		float heroy=MapControler.hero.getY()+(MapControler.hero.getHeight()/2);
 		return !(herox>MAP_MAX_OUT_X && herox<(gv.map.width*gv.map.tileWidth)-MAP_MAX_OUT_X) && (heroy>MAP_MAX_OUT_Y && heroy<(gv.map.height*gv.map.tileHeight)-MAP_MAX_OUT_Y);
-		
 	}
 	
 	public static void keyUp(int keycode,GameView gv){
@@ -85,6 +83,7 @@ public class MoveControler {
 			gv.isPressWalk_d=true;
 		if(keycode==129)
 			gv.isPressCtrl=true;
-		
+		if(keycode==45)
+			MapControler.npc.walk(3);
 	}
 }
