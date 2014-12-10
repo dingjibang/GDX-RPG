@@ -2,7 +2,9 @@ package com.rpsg.rpg.utils;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.rpsg.rpg.object.Collide;
 import com.rpsg.rpg.object.IRPGObject;
+import com.rpsg.rpg.object.ScriptCollide;
 import com.rpsg.rpg.object.heros.Hero;
 import com.rpsg.rpg.view.GameView;
 
@@ -21,18 +23,20 @@ public class MoveControler {
 				IRPGObject o=(IRPGObject)a;
 				int[][] tiles = gv.map.layers.get(o.layer).tiles;
 				o.collide.testCollide(o.mapx, o.mapy, tiles,gv.stage.getActors(),o);
-//				System.out.println(o.collide);
 			}
 		}
-		if(gv.isPressWalk_r && MapControler.hero.walked)
-			MapControler.hero.turn(Hero.FACE_R).walk(1);
+		for(ScriptCollide sc:Collide.testNPCCollide(gv, MapControler.hero, gv.stage.getActors())){
+			System.out.println(sc);
+		}
 		MapControler.hero.setWalkSpeed(gv.isPressCtrl?48:6);
+		if(gv.isPressWalk_r && MapControler.hero.walked)
+			MapControler.hero.turn(Hero.FACE_R).walk(1).testWalk();
 		if(gv.isPressWalk_l && MapControler.hero.walked)
-			MapControler.hero.turn(Hero.FACE_L).walk(1);
+			MapControler.hero.turn(Hero.FACE_L).walk(1).testWalk();
 		if(gv.isPressWalk_u && MapControler.hero.walked)
-			MapControler.hero.turn(Hero.FACE_U).walk(1);
+			MapControler.hero.turn(Hero.FACE_U).walk(1).testWalk();
 		if(gv.isPressWalk_d && MapControler.hero.walked)
-			MapControler.hero.turn(Hero.FACE_D).walk(1);
+			MapControler.hero.turn(Hero.FACE_D).walk(1).testWalk();
 		float herox=MapControler.hero.getX()+(MapControler.hero.getWidth()/2);
 		float heroy=MapControler.hero.getY()+(MapControler.hero.getHeight()/2);
 		if(herox>MAP_MAX_OUT_X && herox<(gv.map.width*gv.map.tileWidth)-MAP_MAX_OUT_X)
@@ -70,6 +74,8 @@ public class MoveControler {
 			gv.isPressWalk_d=false;
 		if(keycode==129)
 			gv.isPressCtrl=false;
+		if(keycode==54)
+			gv.isPressZ=false;
 	}
 	
 	public static void keyDown(int keycode,GameView gv){
@@ -83,6 +89,8 @@ public class MoveControler {
 			gv.isPressWalk_d=true;
 		if(keycode==129)
 			gv.isPressCtrl=true;
+		if(keycode==54)
+			gv.isPressZ=true;
 		if(keycode==45)
 			MapControler.npc.walk(3);
 	}

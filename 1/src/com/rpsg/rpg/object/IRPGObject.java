@@ -10,7 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.system.Image;
 
-public abstract class IRPGObject extends Actor{
+public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>{
 	
 	public static final int FACE_L=7;
 	public static final int FACE_R=10;
@@ -45,6 +45,23 @@ public abstract class IRPGObject extends Actor{
 	public Image getCurrentImage(){
 		images[getCurrentFoot()].setPosition(position.x, position.y);
 		return images[getCurrentFoot()];
+	}
+	
+	@Override
+	public int compareTo(IRPGObject i) {
+		if(i.mapy>this.mapy)
+			return -1;
+		else if(i.mapy==this.mapy)
+			if(i.mapx>this.mapx)
+				return -1;
+			else if(i.mapx==this.mapx)
+				return 0;
+			else
+				return 1;
+		else
+			return 1;
+				
+			
 	}
 	
 	@Override
@@ -205,7 +222,7 @@ public abstract class IRPGObject extends Actor{
 		}else{
 			walked=true;
 		}
-		toWalk();
+		toWalk();toWalk();
 		return false;
 	}
 	
@@ -253,4 +270,20 @@ public abstract class IRPGObject extends Actor{
 		lastPosition=new Vector2(mapx*map.tileWidth,(map.height-mapy-1)*map.tileHeight);
 		return this;
 	}
+	
+	public static int getReverseFace(int face){
+		if(face==FACE_L)
+			return FACE_R;
+		if(face==FACE_D)
+			return FACE_U;
+		if(face==FACE_R)
+			return FACE_L;
+		else
+			return FACE_D;
+	}
+	
+	public int getReverseFace(){
+		return getReverseFace(getCurrentFace());
+	}
+	
 }
