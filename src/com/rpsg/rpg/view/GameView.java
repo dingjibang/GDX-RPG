@@ -62,7 +62,7 @@ public class GameView extends IView{
 	}
 	
 	public boolean isPressWalk_l=false,isPressWalk_r=false,isPressWalk_u=false,isPressWalk_d=false;
-	public boolean isPressCtrl=false;
+	public boolean isPressCtrl=false,isPressZ=false;
 	
 	public void keyDown(int keycode) {
 		MoveControler.keyDown(keycode, this);
