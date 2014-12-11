@@ -124,7 +124,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	
 	public boolean isStop(){
 		boolean flag=false;
-		flag=((lastx==(int)position.x) || (lasty==(int)position.y));
+		flag=((lastx==(int)position.x) && (lasty==(int)position.y));
 		lastx=(int) position.x;
 		lasty=(int) position.y;
 		return flag;
@@ -215,6 +215,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 					walkStack.get(0).step--;
 					lastPosition=new Vector2(position.x, position.y);
 					walked=false;
+					toWalk();
 					return true;
 				}else
 					testWalkerSize();
@@ -222,7 +223,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		}else{
 			walked=true;
 		}
-		toWalk();toWalk();
+		toWalk();
 		return false;
 	}
 	
