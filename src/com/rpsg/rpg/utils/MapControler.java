@@ -1,13 +1,19 @@
 package com.rpsg.rpg.utils;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
+import com.badlogic.gdx.graphics.g2d.tiled.TiledObject;
+import com.badlogic.gdx.graphics.g2d.tiled.TiledObjectGroup;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.rpsg.rpg.game.object.FOONPC;
 import com.rpsg.rpg.object.IRPGObject;
 import com.rpsg.rpg.object.heros.HeaderHero;
+import com.rpsg.rpg.object.heros.NPC;
 import com.rpsg.rpg.view.GameView;
 
 public class MapControler {
@@ -15,17 +21,28 @@ public class MapControler {
 	public static int MAP_MAX_OUT_X=300;
 	public static int MAP_MAX_OUT_Y=200;
 	public static HeaderHero hero;
-	public static HeaderHero npc;
 	public static List<IRPGObject> drawlist=new ArrayList<IRPGObject>();
-	
+	public static NPC npc;
 	public static void init(GameView gv){
 		hero=new HeaderHero("/walk_marisa.png");
-		npc=new HeaderHero("/walk_marisa.png");
 		hero.generalPosition(10, 10, 1,gv.map).enableCollide=true;
-		npc.generalPosition(20, 10, 1, gv.map).enableCollide=true;
-		npc.waitWhenCollide=true;
-		gv.stage.addActor(npc);
 		gv.stage.addActor(hero);
+		for(TiledObjectGroup objGroup:gv.map.objectGroups){
+			int layer=Integer.parseInt(objGroup.properties.get("layer"));
+			for(TiledObject obj:objGroup.objects){
+				if(obj.type.equals("NPC")){
+					try {
+						npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.name).getConstructor(String.class,Integer.class,Integer.class).newInstance("/walk_marisa.png",obj.width,obj.height);
+						npc.generalPosition(20, 10, 1, gv.map).enableCollide=true;
+						npc.waitWhenCollide=true;
+						npc.generalPosition(obj.x/48, obj.y/48, layer, gv.map);
+						gv.stage.addActor(npc);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
 	}
 	
 	public synchronized static void draw(SpriteBatch batch,GameView gv){
