@@ -1,16 +1,13 @@
 package com.rpsg.rpg.utils;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledObject;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledObjectGroup;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.rpsg.rpg.game.object.FOONPC;
 import com.rpsg.rpg.object.IRPGObject;
 import com.rpsg.rpg.object.heros.HeaderHero;
 import com.rpsg.rpg.object.heros.NPC;
