@@ -6,6 +6,7 @@ import com.rpsg.rpg.object.Collide;
 import com.rpsg.rpg.object.IRPGObject;
 import com.rpsg.rpg.object.ScriptCollide;
 import com.rpsg.rpg.object.heros.Hero;
+import com.rpsg.rpg.object.heros.NPC;
 import com.rpsg.rpg.view.GameView;
 
 public class MoveControler {
@@ -26,9 +27,9 @@ public class MoveControler {
 			}
 		}
 		for(ScriptCollide sc:Collide.testNPCCollide(gv, MapControler.hero, gv.stage.getActors())){
-			System.out.println(sc);
+			sc.toCollide();
 		}
-		MapControler.hero.setWalkSpeed(gv.isPressCtrl?48:6);
+		MapControler.hero.setWalkSpeed(gv.isPressCtrl?8:4);
 		if(gv.isPressWalk_r && MapControler.hero.walked)
 			MapControler.hero.turn(Hero.FACE_R).walk(1).testWalk();
 		if(gv.isPressWalk_l && MapControler.hero.walked)
@@ -91,7 +92,13 @@ public class MoveControler {
 			gv.isPressCtrl=true;
 		if(keycode==54)
 			gv.isPressZ=true;
-		if(keycode==45)
-			MapControler.npc.walk(3);
+		if(keycode==51)
+			MapControler.npc.turn(NPC.FACE_U).walk(1);
+		if(keycode==47)
+			MapControler.npc.turn(NPC.FACE_D).walk(1);
+		if(keycode==29)
+			MapControler.npc.turn(NPC.FACE_L).walk(1);
+		if(keycode==32)
+			MapControler.npc.turn(NPC.FACE_R).walk(1);
 	}
 }

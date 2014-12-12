@@ -1,6 +1,7 @@
 package com.rpsg.rpg.object.heros;
 
 import com.rpsg.rpg.object.IRPGObject;
+import com.rpsg.rpg.object.ScriptCollide;
 import com.rpsg.rpg.system.Image;
 import com.rpsg.rpg.system.Setting;
 
@@ -24,5 +25,4 @@ public class Hero extends IRPGObject{
 		super(RES_PATH+path, HERO_WIDTH, HERO_HEIGHT);
 		this.waitWhenCollide=false;
 	}
-	
 }

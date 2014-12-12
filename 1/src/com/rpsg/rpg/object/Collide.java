@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
+import com.rpsg.rpg.object.heros.NPC;
 import com.rpsg.rpg.view.GameView;
 
 
@@ -41,13 +42,13 @@ public class Collide {
 		l.clear();
 		for(int i=0;i<list.size;i++){
 			Actor a=list.get(i);
-			if(a instanceof IRPGObject){
-				IRPGObject o=((IRPGObject)a);
+			if(a instanceof NPC){
+				NPC o=((NPC)a);
 				if(mine.layer-1==o.layer && mine.mapx==o.mapx && mine.mapy==o.mapy){
 					l.add(new ScriptCollide(o, ScriptCollide.COLLIDE_TYPE_FOOT));
 				}else if(o.layer==mine.layer){
 					if(mine.getCurrentFace()==o.getReverseFace() && (testFaceCollide(mine, o)))
-						l.add(new ScriptCollide(o,gv.isPressZ?ScriptCollide.COLLIDE_TYPE_Z:ScriptCollide.COLLIDE_TYPE_FACE));
+						l.add(new ScriptCollide(o,gv.isPressZ?ScriptCollide.COLLIDE_TYPE_FACE_Z:ScriptCollide.COLLIDE_TYPE_FACE));
 					else if((mine.mapx-1==o.mapx && mine.mapy==o.mapy) || (mine.mapx+1==o.mapx && mine.mapy==o.mapy) 
 					|| (mine.mapx==o.mapx && mine.mapy+1==o.mapy) || (mine.mapx==o.mapx && mine.mapy-1==o.mapy))
 						if((gv.isPressZ) && (testFaceCollide(mine, o)))

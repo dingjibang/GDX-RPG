@@ -27,7 +27,7 @@ public class GameView extends IView{
 		stage = new Stage(GameUtil.screen_width, GameUtil.screen_height, true);
 		camera=(OrthographicCamera) stage.getCamera();
 		map=TiledLoader.createMap(Gdx.files.internal(Setting.GAME_RES_MAP + "test/map.tmx"));
-		atlas = new TileAtlas(map, Gdx.files.internal(Setting.GAME_RES_MAP 	+ "test"));
+		atlas = new TileAtlas(map, Gdx.files.internal(Setting.GAME_RES_MAP 	+ "res"));
 		render = new TileMapRenderer(map,atlas,10,10);
 		MapControler.init(this);
 		inited=true;
