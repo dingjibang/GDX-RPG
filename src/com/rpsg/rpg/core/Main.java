@@ -16,7 +16,7 @@ public class Main {
 //		cfg.vSyncEnabled=false;
 		cfg.samples=0;
 		cfg.resizable=true;
-		cfg.initialBackgroundColor=Color.WHITE;
+		cfg.initialBackgroundColor=Color.WHITE; 
 		new LwjglApplication(new GameViews(), cfg);
 	}
 }
