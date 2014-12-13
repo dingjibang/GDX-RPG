@@ -86,6 +86,8 @@ public class GameViews implements ApplicationListener {
 			gameview.draw(batch);
 		}
 		}
+		batch.end();
+		batch.begin();
 		GameUtil.debugDrawString(batch, "FPS:"+Gdx.graphics.getFramesPerSecond(), 11, GameUtil.screen_height-11);
 		GameUtil.debugDrawString(batch, "FPS:"+Gdx.graphics.getFramesPerSecond(), 10, GameUtil.screen_height-10,Color.WHITE);
 		batch.end();
