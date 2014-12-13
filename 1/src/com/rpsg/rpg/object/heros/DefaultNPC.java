@@ -32,22 +32,32 @@ public abstract class DefaultNPC extends NPC{
 			return;
 		switch(sc.collideType){
 		case ScriptCollide.COLLIDE_TYPE_FACE_Z:{
+			if(scripts.get(DefaultNPC.COLLIDE_NAME_FACE_Z)==null)
+				break;
 			this.pushThreadAndRun(new Thread(scripts.get(DefaultNPC.COLLIDE_NAME_FACE_Z)));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_FACE:{
+			if(scripts.get(DefaultNPC.COLLIDE_NAME_FACE)==null)
+				break;
 			this.pushThreadAndRun(new Thread(scripts.get(DefaultNPC.COLLIDE_NAME_FACE)));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_FOOT:{
+			if(scripts.get(DefaultNPC.COLLIDE_NAME_FOOT)==null)
+				break;
 			this.pushThreadAndRun(new Thread(scripts.get(DefaultNPC.COLLIDE_NAME_FOOT)));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_NEAR:{
+			if(scripts.get(DefaultNPC.COLLIDE_NAME_NEAR)==null)
+				break;
 			this.pushThreadAndRun(new Thread(scripts.get(DefaultNPC.COLLIDE_NAME_NEAR)));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_Z:{
+			if(scripts.get(DefaultNPC.COLLIDE_NAME_Z)==null)
+				break;
 			this.pushThreadAndRun(new Thread(scripts.get(DefaultNPC.COLLIDE_NAME_Z)));
 			break;
 		}
