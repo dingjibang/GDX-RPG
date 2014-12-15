@@ -70,14 +70,14 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	}
 	
 	public IRPGObject(String path,int width,int height){
-		images=IRPGObject.generalImages(new Image(path), width, height);
+		images=IRPGObject.generateImages(new Image(path), width, height);
 	}
 	
 	public IRPGObject(Image txt,int width,int height){
-		images=IRPGObject.generalImages(txt, width, height);
+		images=IRPGObject.generateImages(txt, width, height);
 	}
 	
-	public static Image[] generalImages(Image txt,int width,int height){
+	public static Image[] generateImages(Image txt,int width,int height){
 		Image[] images=new Image[12];
 		for(int i=0;i<4;i++)
 			for(int j=0;j<3;j++){
@@ -224,6 +224,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 			walked=true;
 		}
 		toWalk();
+		toWalk();
 		return false;
 	}
 	
@@ -263,7 +264,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		return this.getCurrentImage().getHeight();
 	}
 	
-	public IRPGObject generalPosition(int mapx,int mapy,int layer, TiledMap map){
+	public IRPGObject generatePosition(int mapx,int mapy,int layer, TiledMap map){
 		this.mapx=mapx;
 		this.mapy=mapy;
 		this.layer=layer;
