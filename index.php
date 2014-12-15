@@ -4,7 +4,7 @@
 <br/>
 <b>svn用户名：</b><i>dingjibang@qq.com</i>
 <br/>
-<b>svn密码：</b><i>123456</i>
+<b>svn密码：</b><i style="background-color:black">就是不告诉你hhhh</i>
 
 <h2 style="color:red;">
 请勿对外公布此页面/账号/密码
