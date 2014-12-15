@@ -1,4 +1,4 @@
-<i><b><h1>欢迎访问RPSG制作组 RPG引擎SVN空间</h1></b></i>
+<b><h1>欢迎访问RPSG制作组 RPG引擎SVN空间</h1></b>
 <br/>
 <b>默认的svn地址：</b><a href="https://svn.sinaapp.com/rpsgrpg/1">https://svn.sinaapp.com/rpsgrpg/1</a>
 <br/>
