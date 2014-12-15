@@ -197,6 +197,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	}
 	
 	public Boolean testWalk(){
+		
 		if(walkStack.size()!=0){
 			if(enableCollide && ((getCurrentFace()==FACE_L && !collide.left) || (getCurrentFace()==FACE_R && !collide.right) 
 			|| (getCurrentFace()==FACE_U && !collide.top) || (getCurrentFace()==FACE_D && !collide.bottom))){
