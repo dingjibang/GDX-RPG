@@ -2,7 +2,6 @@ package com.rpsg.rpg.view;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.input.GameInput;
@@ -86,10 +85,7 @@ public class GameViews implements ApplicationListener {
 			gameview.draw(batch);
 		}
 		}
-		batch.end();
-		batch.begin();
-		GameUtil.debugDrawString(batch, "FPS:"+Gdx.graphics.getFramesPerSecond(), 11, GameUtil.screen_height-11);
-		GameUtil.debugDrawString(batch, "FPS:"+Gdx.graphics.getFramesPerSecond(), 10, GameUtil.screen_height-10,Color.WHITE);
+		GameUtil.drawFPS(batch);
 		batch.end();
 	}
 

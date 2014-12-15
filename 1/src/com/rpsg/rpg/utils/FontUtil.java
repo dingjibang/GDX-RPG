@@ -1,41 +1,23 @@
 package com.rpsg.rpg.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.BitmapFontCache;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.rpsg.rpg.system.Font;
+import com.rpsg.rpg.system.Setting;
 
 public class FontUtil {
-	public static  FreeTypeFontGenerator generator;
-	public static BitmapFont bf;
-	public static BitmapFontCache bfc;
+	public static FreeTypeFontGenerator generator=new FreeTypeFontGenerator(Gdx.files.internal("data/font/msyh.ttf"));
+	
 	static int x,y,w;
-	static String str="¸úÍß¸ñ°¡ÎÒ¸ÁÍÛ¸Â¸Â";
+	
 	public static void init(){
-//		generator=GameUtil.generator;
 	}
-	
-	public static void drawString(String str,int x,int y,int width,SpriteBatch batch){
-		FontUtil.x=x;FontUtil.y=y;w=width;
-		if(FontUtil.str.equals(str)){
-			bf.setColor(0,0,0,1);
-			bf.drawMultiLine(batch, resize(str), x+1, y+1);
-			bf.setColor(1,1,1,1);
-			bf.drawMultiLine(batch, resize(str), x, y);
-		}else{
-			FontUtil.str=str;
-			if(bf!=null){
-				bf.setOwnsTexture(true);
-				bf.dispose();
-			}
-			bf=generator.generateFont(20, GameUtil.RemoveReString(str),false);
-			bf.setColor(0,0,0,1);
-			bf.drawMultiLine(batch, resize(str), x+1, y+1);
-			bf.setColor(1,1,1,1);
-			bf.drawMultiLine(batch, resize(str), x, y);
-		}
-	}
-	
 	
 	public static String resize(String s){
 		char[] ca=s.toCharArray();
@@ -48,5 +30,47 @@ public class FontUtil {
 			}
 		}
 		return s;
+	}
+	
+	private static BitmapFont getFont(int fontsize,char str){
+		for(Font f: fontlist)
+			if(f.include(str, fontsize))
+				return f.font;
+		return null;
+	}
+	
+	public static List<Font> fontlist=new ArrayList<Font>();
+	
+	public static void draw(SpriteBatch sb,String str,int fontsize,Color color,int x,int y,int width,int paddinglr,int paddingtb){
+		sb.end();
+		sb.begin();
+		char[] dstr=StringUtil.dereplication(str).toCharArray();
+		String addStr="";
+		for(char c:dstr){
+			boolean include=false;
+			for(Font f:fontlist)
+				if(f.include(c,fontsize))
+					include=true;
+			if(!include)
+				addStr+=c;
+		}
+		if(addStr.length()>0)
+			fontlist.add(Font.generateFont(addStr, fontsize));
+		
+		int currentX=x;
+		int currentY=y;
+		for(char c:str.toCharArray()){
+			if(currentX-x>width){
+				currentX=x;
+				currentY-=fontsize+paddingtb;
+			}
+			currentX+=fontsize+paddinglr;
+			BitmapFont f=getFont(fontsize, c);
+			f.setColor(color);
+			f.draw(sb, String.valueOf(c), currentX, currentY);
+		}
+	}
+	public static void draw(SpriteBatch sb,String str,int fontsize,Color color,int x,int y,int width){
+		draw(sb,str,fontsize,color,x,y,width,Setting.STRING_PADDING_LR*2,Setting.DRAW_MULTI_STRING_PADDING_TB*2);
 	}
 }
