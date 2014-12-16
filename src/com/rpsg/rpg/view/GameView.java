@@ -51,7 +51,7 @@ public class GameView extends IView{
 //		render.render(camera,new int[]{0});
 //		render.render(camera,new int[]{0});
 //		render.render(camera,new int[]{1});
-		FontUtil.draw(batch, "再不显示你妈飞了，wpcap，其实也没占多少内存？我想太多？内存表示有点虚啊hhh，人类为何要互相伤害呢，内存就是不泄露，还可以画多行文字，简直无情", 25, Color.RED, 100, 500, 400);
+		FontUtil.draw(batch, "再不显示你妈飞了，wpcap，其实也没占多少内存？我想太多？这句话会很奇葩，有的文字有锯齿，内存就是不泄露，还可以画多行文字，简直无情", 25, Color.WHITE, 100, 500, 400);
 	}
 
 	@Override
