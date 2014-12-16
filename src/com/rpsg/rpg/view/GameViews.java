@@ -8,7 +8,7 @@ import com.rpsg.rpg.input.GameInput;
 import com.rpsg.rpg.utils.GameUtil;
 
 public class GameViews implements ApplicationListener {
-	private static SpriteBatch batch;
+	public static SpriteBatch batch;
 	public static final int STATE_LOGO=0;
 	public static final int STATE_LOAD=1;
 	public static final int STATE_TITLE=2;

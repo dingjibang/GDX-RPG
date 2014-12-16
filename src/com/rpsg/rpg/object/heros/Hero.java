@@ -2,7 +2,7 @@ package com.rpsg.rpg.object.heros;
 
 import com.rpsg.rpg.object.IRPGObject;
 import com.rpsg.rpg.system.Image;
-import com.rpsg.rpg.system.Setting;
+import com.rpsg.rpg.system.text.Setting;
 
 public class Hero extends IRPGObject{
 

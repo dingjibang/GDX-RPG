@@ -2,21 +2,19 @@ package com.rpsg.rpg.view;
 
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.tiled.TileMapRenderer;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledLoader;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.rpsg.rpg.system.Setting;
+import com.rpsg.rpg.system.ThreadPool;
 import com.rpsg.rpg.system.TileAtlas;
-import com.rpsg.rpg.utils.FontUtil;
+import com.rpsg.rpg.system.text.Setting;
 import com.rpsg.rpg.utils.GameUtil;
+import com.rpsg.rpg.utils.Initialization;
 import com.rpsg.rpg.utils.MapControler;
 import com.rpsg.rpg.utils.MoveControler;
-import com.rpsg.rpg.utils.MsgUtil;
-import com.rpsg.rpg.utils.StringUtil;
 public class GameView extends IView{
 	
 	public TileMapRenderer render;
@@ -33,7 +31,7 @@ public class GameView extends IView{
 		map=TiledLoader.createMap(Gdx.files.internal(Setting.GAME_RES_MAP + "test/map.tmx"));
 		atlas = new TileAtlas(map, Gdx.files.internal(Setting.GAME_RES_MAP 	+ "res"));
 		render = new TileMapRenderer(map,atlas,10,10);
-		MapControler.init(this);
+		Initialization.init(this);
 		inited=true;
 	}
 	
@@ -47,11 +45,12 @@ public class GameView extends IView{
 //		render.render(camera,0,batch);
 //		render.render(camera,1,batch);
 		MapControler.draw(batch,this);
+		batch.draw(region, x, y, originX, originY, width, height, scaleX, scaleY, rotation)
+		ThreadPool.logic();
 //		stage.draw();
 //		render.render(camera,new int[]{0});
 //		render.render(camera,new int[]{0});
 //		render.render(camera,new int[]{1});
-		FontUtil.draw(batch, "再不显示你妈飞了，wpcap，其实也没占多少内存？我想太多？这句话会很奇葩，有的文字有锯齿，内存就是不泄露，还可以画多行文字，简直无情", 25, Color.WHITE, 100, 500, 400);
 	}
 
 	@Override

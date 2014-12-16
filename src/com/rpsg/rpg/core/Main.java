@@ -4,7 +4,6 @@ package com.rpsg.rpg.core;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.graphics.Color;
-import com.rpsg.rpg.utils.StringUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public class Main {
