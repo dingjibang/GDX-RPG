@@ -8,8 +8,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.rpsg.rpg.system.Font;
-import com.rpsg.rpg.system.Setting;
+import com.rpsg.rpg.system.text.Font;
+import com.rpsg.rpg.system.text.Setting;
 
 public class FontUtil {
 	public static FreeTypeFontGenerator generator=new FreeTypeFontGenerator(Gdx.files.internal("data/font/msyh.ttf"));
@@ -35,15 +35,14 @@ public class FontUtil {
 	private static BitmapFont getFont(int fontsize,char str){
 		for(Font f: fontlist)
 			if(f.include(str, fontsize))
-				return f.font;
+				return (BitmapFont) f.font;
 		return null;
 	}
 	
 	public static List<Font> fontlist=new ArrayList<Font>();
-	
+	static char enter="\n".toCharArray()[0];
 	public static void draw(SpriteBatch sb,String str,int fontsize,Color color,int x,int y,int width,int paddinglr,int paddingtb){
-		sb.end();
-		sb.begin();
+		GameUtil.resetBacth(sb);
 		char[] dstr=StringUtil.dereplication(str).toCharArray();
 		String addStr="";
 		for(char c:dstr){
@@ -60,10 +59,12 @@ public class FontUtil {
 		int currentX=x;
 		int currentY=y;
 		for(char c:str.toCharArray()){
-			if(currentX-x>width){
+			if(currentX-x>width || c==enter){
 				currentX=x;
 				currentY-=fontsize+paddingtb;
 			}
+			if(c==enter)
+				continue;
 			currentX+=fontsize+paddinglr;
 			BitmapFont f=getFont(fontsize, c);
 			f.setColor(color);

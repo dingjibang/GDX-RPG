@@ -9,7 +9,7 @@ import com.rpsg.rpg.object.IRPGObject;
 import com.rpsg.rpg.object.Script;
 import com.rpsg.rpg.object.ScriptCollide;
 import com.rpsg.rpg.system.Image;
-import com.rpsg.rpg.system.Setting;
+import com.rpsg.rpg.system.text.Setting;
 
 public abstract class NPC extends IRPGObject{
 
@@ -18,22 +18,18 @@ public abstract class NPC extends IRPGObject{
 	public abstract void toCollide(ScriptCollide sc);
 	public Map<String, Script> scripts=new HashMap<String, Script>();
 	
-	public List<Thread> threadPool=new LinkedList<Thread>();
+	public List<Script> threadPool=new LinkedList<Script>();
 	
-	public void pushThreadAndRun(Thread t){
+	public void pushThreadAndRun(Script t){
+		t.isAlive=true;
 		threadPool.add(t); 
-		t.start();
 	}
 	
-	List<Thread> removeList=new LinkedList<Thread>();
+	List<Script> removeList=new LinkedList<Script>();
 	public boolean isScriptRunning(){
-		removeList.clear();
-		for(Thread t:threadPool)
+		for(Script t:threadPool)
 			if(t.isAlive())
 				return true;
-			else
-				removeList.add(t);
-		threadPool.removeAll(removeList);
 		return false;
 	}
 	

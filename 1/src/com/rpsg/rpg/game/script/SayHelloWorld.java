@@ -1,17 +1,13 @@
 package com.rpsg.rpg.game.script;
 
 import com.rpsg.rpg.object.Script;
+import com.rpsg.rpg.utils.MsgUtil;
+import com.rpsg.rpg.view.GameViews;
 
 public class SayHelloWorld extends Script{
-	int a;
-	@Override
+	
 	public void run() {
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("hello world"+a++);
+		MsgUtil.MSG(GameViews.batch, "Hello World\nfuck my ass hole now","ÃÏÕ‚÷Æ“Ù", 22);
+		this.dispose();
 	}
-
 }

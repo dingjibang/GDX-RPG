@@ -12,4 +12,10 @@ public class GameUtil {
 		FontUtil.draw(batch, "FPS:"+Gdx.graphics.getFramesPerSecond(),14,Color.BLACK,13,GameUtil.screen_height-13,1000,0,10);
 		FontUtil.draw(batch, "FPS:"+Gdx.graphics.getFramesPerSecond(),14,Color.WHITE,12,GameUtil.screen_height-12,1000,0,10);
 	}
+	
+	public static SpriteBatch resetBacth(SpriteBatch batch){
+		batch.end();
+		batch.begin();
+		return batch;
+	}
 }

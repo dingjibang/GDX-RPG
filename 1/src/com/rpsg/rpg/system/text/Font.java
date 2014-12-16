@@ -1,4 +1,4 @@
-package com.rpsg.rpg.system;
+package com.rpsg.rpg.system.text;
 
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;

@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.object.IRPGObject;
 import com.rpsg.rpg.object.heros.HeaderHero;
 import com.rpsg.rpg.object.heros.NPC;
+import com.rpsg.rpg.system.ThreadPool;
 import com.rpsg.rpg.view.GameView;
 
 public class MapControler {
@@ -34,6 +35,7 @@ public class MapControler {
 						npc.waitWhenCollide=true;
 						npc.generatePosition(obj.x/48, obj.y/48, layer, gv.map);
 						gv.stage.addActor(npc);
+						ThreadPool.pool.add(npc.threadPool);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -48,7 +50,7 @@ public class MapControler {
 			drawlist.clear();
 			gv.render.render(gv.camera,new int[]{i});
 			SpriteBatch sb=gv.stage.getSpriteBatch();
-			sb.begin();								
+			sb.begin();
 			sb.setProjectionMatrix(gv.camera.combined);
 			for(Actor a:gv.stage.getActors()){
 				if(a instanceof IRPGObject){
