@@ -45,7 +45,6 @@ public class GameView extends IView{
 //		render.render(camera,0,batch);
 //		render.render(camera,1,batch);
 		MapControler.draw(batch,this);
-		batch.draw(region, x, y, originX, originY, width, height, scaleX, scaleY, rotation)
 		ThreadPool.logic();
 //		stage.draw();
 //		render.render(camera,new int[]{0});
