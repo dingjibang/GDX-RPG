@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.system.Setting;
 import com.rpsg.rpg.system.ThreadPool;
 import com.rpsg.rpg.system.TileAtlas;
+import com.rpsg.rpg.system.text.TextFilter;
 import com.rpsg.rpg.utils.GameUtil;
 import com.rpsg.rpg.utils.Initialization;
 import com.rpsg.rpg.utils.MapControler;
@@ -23,6 +24,7 @@ public class GameView extends IView{
 	public TileAtlas atlas;
 	public static boolean inited=false;
 	public OrthographicCamera camera;
+	public static TextFilter filter;
 	
 	@Override
 	public void init() {
@@ -31,6 +33,7 @@ public class GameView extends IView{
 		map=TiledLoader.createMap(Gdx.files.internal(Setting.GAME_RES_MAP + "test/map.tmx"));
 		atlas = new TileAtlas(map, Gdx.files.internal(Setting.GAME_RES_MAP 	+ "res"));
 		render = new TileMapRenderer(map,atlas,10,10);
+		filter=new TextFilter();
 		Initialization.init(this);
 		inited=true;
 	}
