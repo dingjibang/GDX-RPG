@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.rpsg.rpg.game.script.SayHelloWorld;
 import com.rpsg.rpg.system.Setting;
 import com.rpsg.rpg.system.text.Font;
 
@@ -33,6 +34,10 @@ public class FontUtil {
 	}
 	
 	private static BitmapFont getFont(int fontsize,char str){
+//		System.out.print(fontlist.size()+"[");
+//		for(Font f: fontlist)
+//			System.out.print(f.toString()+",");
+//		System.out.println("]");
 		for(Font f: fontlist)
 			if(f.include(str, fontsize))
 				return (BitmapFont) f.font;
@@ -40,7 +45,7 @@ public class FontUtil {
 	}
 	
 	public static List<Font> fontlist=new ArrayList<Font>();
-	static char enter="\n".toCharArray()[0];
+	static final char enter="\n".toCharArray()[0];
 	public static void draw(SpriteBatch sb,String str,int fontsize,Color color,int x,int y,int width,int paddinglr,int paddingtb){
 		GameUtil.resetBacth(sb);
 		char[] dstr=StringUtil.dereplication(str).toCharArray();
@@ -58,7 +63,9 @@ public class FontUtil {
 		
 		int currentX=x;
 		int currentY=y;
+		int offset=0;
 		for(char c:str.toCharArray()){
+			offset+=350;
 			if(currentX-x>width || c==enter){
 				currentX=x;
 				currentY-=fontsize+paddingtb;
@@ -68,10 +75,16 @@ public class FontUtil {
 			currentX+=fontsize+paddinglr;
 			BitmapFont f=getFont(fontsize, c);
 			f.setColor(color);
-			f.draw(sb, String.valueOf(c), currentX, currentY);
+			if(str.equals(SayHelloWorld.text))
+				sb.draw(f.getRegion(),200+offset,300,f.getRegion().getRegionWidth(),f.getRegion().getRegionHeight());
+			f.draw(sb, new String(new char[]{c}), currentX, currentY);
 		}
 	}
 	public static void draw(SpriteBatch sb,String str,int fontsize,Color color,int x,int y,int width){
 		draw(sb,str,fontsize,color,x,y,width,Setting.STRING_PADDING_LR*2,Setting.DRAW_MULTI_STRING_PADDING_TB*2);
+	}
+	
+	public static int getTextWidth(String txt,int size,int paddinglr){
+		return (size+(paddinglr*2))*txt.length();
 	}
 }

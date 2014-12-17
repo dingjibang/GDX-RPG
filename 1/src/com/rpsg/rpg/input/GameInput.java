@@ -7,7 +7,7 @@ public class GameInput implements InputProcessor{
 
 	@Override
 	public boolean keyDown(int keycode) {
-		System.out.println(keycode);
+//		System.out.println(keycode);
 		switch(GameViews.state){
 		case GameViews.STATE_TITLE:{
 			GameViews.titleview.keyDown(keycode);break;
