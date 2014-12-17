@@ -6,7 +6,7 @@ import java.util.Map;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.rpsg.rpg.system.text.Setting;
+import com.rpsg.rpg.system.Setting;
 
 public class CMusic {
 	public static Music MUSIC;

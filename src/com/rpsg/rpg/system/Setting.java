@@ -1,4 +1,4 @@
-package com.rpsg.rpg.system.text;
+package com.rpsg.rpg.system;
 
 public class Setting {
 	//×ÊÔ´Â·¾¶

@@ -8,7 +8,7 @@ import com.rpsg.rpg.view.GameViews;
 
 public class Main {
 	public static void main(String[] args) {
-		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
+		final LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "RPG";
 		cfg.useGL20 = true;
 		cfg.width = 1024;
