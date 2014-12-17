@@ -3,11 +3,12 @@ package com.rpsg.rpg.system.text;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.MathUtils;
+import com.rpsg.rpg.system.Setting;
 
 public class TextFilter extends ShaderProgram{
 
 	public TextFilter() {
-		super(Gdx.files.internal("data/shaders/distancefield.vert"), Gdx.files.internal("data/shaders/distancefield.frag"));
+		super(Gdx.files.internal(Setting.GAME_RES_SHADER+"distancefield.vert"),Gdx.files.internal(Setting.GAME_RES_SHADER+"distancefield.frag"));
 		if (!isCompiled()) 
 			throw new RuntimeException("Shader compilation failed:\n" + getLog());
 	}
