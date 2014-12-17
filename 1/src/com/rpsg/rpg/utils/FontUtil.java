@@ -59,13 +59,11 @@ public class FontUtil {
 				addStr+=c;
 		}
 		if(addStr.length()>0)
-			fontlist.add(Font.generateFont(addStr, fontsize));
+			fontlist.add(Font.generateFont((addStr.length()==5 && fontsize==22)?addStr+" ":addStr, fontsize));
 		
 		int currentX=x;
 		int currentY=y;
-		int offset=0;
 		for(char c:str.toCharArray()){
-			offset+=350;
 			if(currentX-x>width || c==enter){
 				currentX=x;
 				currentY-=fontsize+paddingtb;
@@ -75,8 +73,6 @@ public class FontUtil {
 			currentX+=fontsize+paddinglr;
 			BitmapFont f=getFont(fontsize, c);
 			f.setColor(color);
-			if(str.equals(SayHelloWorld.text))
-				sb.draw(f.getRegion(),200+offset,300,f.getRegion().getRegionWidth(),f.getRegion().getRegionHeight());
 			f.draw(sb, new String(new char[]{c}), currentX, currentY);
 		}
 	}
