@@ -3,7 +3,7 @@ package com.rpsg.rpg.utils;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.system.Image;
-import com.rpsg.rpg.system.text.Setting;
+import com.rpsg.rpg.system.Setting;
 
 
 public class MsgUtil {
@@ -11,6 +11,10 @@ public class MsgUtil {
 	
 	public static void init(){
 		msgbox=new Image(Setting.GAME_RES_MESSAGE+"msgbox.png");
+		float ss=msgbox.getWidth();
+		msgbox.setWidth(GameUtil.screen_width-40);
+		ss=ss/msgbox.getWidth();
+		msgbox.setHeight((float)msgbox.getHeight()/ss);
 		msgbox.setX(GameUtil.screen_width/2-msgbox.getWidth()/2);
 		msgbox.setY(25);
 	}

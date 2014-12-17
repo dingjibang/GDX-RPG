@@ -9,7 +9,7 @@ import com.rpsg.rpg.object.IRPGObject;
 import com.rpsg.rpg.object.Script;
 import com.rpsg.rpg.object.ScriptCollide;
 import com.rpsg.rpg.system.Image;
-import com.rpsg.rpg.system.text.Setting;
+import com.rpsg.rpg.system.Setting;
 
 public abstract class NPC extends IRPGObject{
 
