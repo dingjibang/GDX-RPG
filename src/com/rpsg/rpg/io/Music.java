@@ -4,13 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.rpsg.rpg.core.Setting;
 
-public class CMusic {
-	public static Music MUSIC;
-	public static Map<String,Music> bgm=new HashMap<String,Music>();
+public class Music {
+	public static com.badlogic.gdx.audio.Music MUSIC;
+	public static Map<String,com.badlogic.gdx.audio.Music> bgm=new HashMap<String,com.badlogic.gdx.audio.Music>();
 	public static Sound hint,err;
 	
 	public static void playMusic(String music){
