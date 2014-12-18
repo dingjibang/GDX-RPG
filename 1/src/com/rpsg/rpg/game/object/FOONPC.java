@@ -21,6 +21,7 @@ public class FOONPC extends DefaultNPC{
 
 	@Override
 	public void init() {
+		this.waitWhenCollide=false;
 		scripts.put(DefaultNPC.COLLIDE_NAME_FACE_Z, SayHelloWorld.class);
 	}
 	

@@ -9,10 +9,11 @@ import com.badlogic.gdx.graphics.g2d.tiled.TiledLoader;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.script.ThreadPool;
 import com.rpsg.rpg.system.base.IView;
 import com.rpsg.rpg.system.base.Initialization;
-import com.rpsg.rpg.system.base.ThreadPool;
 import com.rpsg.rpg.system.base.TileAtlas;
+import com.rpsg.rpg.system.control.InputControler;
 import com.rpsg.rpg.system.control.MapControler;
 import com.rpsg.rpg.system.control.MoveControler;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -57,22 +58,19 @@ public class GameView extends IView{
 	public void logic() {
 		MapControler.logic(this);
 		stage.act();
+		System.out.println(InputControler.currentIOMode);
 		MoveControler.logic(this);
 	}
 
-	@Override
 	public void onkeyTyped(char character) {
 		
 	}
 	
-	public boolean isPressWalk_l=false,isPressWalk_r=false,isPressWalk_u=false,isPressWalk_d=false;
-	public boolean isPressCtrl=false,isPressZ=false;
-	
 	public void keyDown(int keycode) {
-		MoveControler.keyDown(keycode, this);
+		InputControler.keyDown(keycode,this);
 	}
 
 	public void keyUp(int keycode) {
-		MoveControler.keyUp(keycode,this);
+		InputControler.keyDown(keycode,this);
 	}
 }

@@ -4,7 +4,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.rpsg.rpg.io.GameInput;
+import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class GameViews implements ApplicationListener {
@@ -28,7 +28,7 @@ public class GameViews implements ApplicationListener {
 		GameUtil.screen_height = Gdx.graphics.getHeight();
 		//start init
 		//input
-		Gdx.input.setInputProcessor(new GameInput());
+		Gdx.input.setInputProcessor(new Input());
 		//view
 		logoview = new LogoView();
 		logoview.init();

@@ -3,7 +3,7 @@ package com.rpsg.rpg.object.script;
 
 public abstract class ScriptExecutor {
 	public abstract void init();
-	public abstract void step();
+	public void step() { }
 	
 	public Script script;
 	

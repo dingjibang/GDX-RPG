@@ -1,9 +1,10 @@
 package com.rpsg.rpg.io;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.rpsg.rpg.view.GameViews;
 
-public class GameInput implements InputProcessor{
+public class Input implements InputProcessor{
 
 	@Override
 	public boolean keyDown(int keycode) {
@@ -66,6 +67,10 @@ public class GameInput implements InputProcessor{
 	@Override
 	public boolean scrolled(int amount) {
 		return false;
+	}
+	
+	public static boolean isPress(int keyCode){
+		return Gdx.input.isKeyPressed(keyCode);
 	}
 	
 }

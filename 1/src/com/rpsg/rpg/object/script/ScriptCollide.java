@@ -19,8 +19,7 @@ public class ScriptCollide {
 
 	@Override
 	public String toString() {
-		return "ScriptCollide [rpgobject=" + rpgobject + ", collideType="
-				+ collideType + "]";
+		return "ScriptCollide [rpgobject=" + rpgobject + ", collideType=" + collideType + "]";
 	}
 	
 	public void toCollide(){

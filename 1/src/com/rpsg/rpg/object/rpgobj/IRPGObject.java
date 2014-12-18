@@ -96,6 +96,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	
 	private Vector2 lastPosition;
 	public IRPGObject walk(int step){
+		System.out.println("put");
 		walkStack.add(new Walker(this.getCurrentFace(),step));
 		return this;
 	}
