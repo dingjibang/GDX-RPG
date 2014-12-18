@@ -27,23 +27,25 @@ public class MsgUtil {
 		msgbox.setY(25);
 	}
 	
-	static String currentText;
+	static String currentText="";
 	static int currentTextPoint=0;
 	static Script currentScript;
 	static SpriteBatch currentBatch;
 	static int TEXT_DISPLAY_SPEED=30;
 	private static int DISPLAY_OFFSET=0;
-	public static ScriptExecutor MSG(final Script script,final String str,final String title,final int size,final boolean locked){
+	public static ScriptExecutor MSG(final Script script,final String str,final String title,final int size){
 		return script.add(new ScriptExecutor(script) {
 			SpriteBatch batch=GameViews.batch;
 			public void step() {
+				if(Input.isPress(Keys.CONTROL_LEFT))
+					TEXT_DISPLAY_SPEED=100;
+				else
+					TEXT_DISPLAY_SPEED=30;
 				DISPLAY_OFFSET-=TEXT_DISPLAY_SPEED;
 				if(DISPLAY_OFFSET<=0){
 					DISPLAY_OFFSET=100;
 					if(currentTextPoint>=currentText.length()){
-						if(Input.isPress(Keys.Z)){
-							if(!locked)
-								InputControler.currentIOMode=IOMode.MAP_INPUT_NORMAL;
+						if(Input.isPress(Keys.Z) || Input.isPress(Keys.CONTROL_LEFT)){
 							dispose();
 						}
 					}else
@@ -62,10 +64,6 @@ public class MsgUtil {
 				currentBatch=batch;
 			}
 		});
-	}
-	
-	public static ScriptExecutor MSG(final Script script,final String str,final String title,final int size){
-		return MSG(script,str,title, size,true);
 	}
 	
 	public static ScriptExecutor setLocker(Script script,final boolean flag){

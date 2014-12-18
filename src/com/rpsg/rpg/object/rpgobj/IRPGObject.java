@@ -17,6 +17,14 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public static final int FACE_U=4;
 	public static final int FACE_D=1;
 	
+	public static enum facing{
+		left(7),right(10),up(4),down(1);
+		private facing(int c){
+			this.value=c;
+		}
+		private int value;
+	}
+	
 	public Image[] images;
 	
 	public int layer;
@@ -96,7 +104,6 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	
 	private Vector2 lastPosition;
 	public IRPGObject walk(int step){
-		System.out.println("put");
 		walkStack.add(new Walker(this.getCurrentFace(),step));
 		return this;
 	}
