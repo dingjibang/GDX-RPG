@@ -58,7 +58,6 @@ public class GameView extends IView{
 	public void logic() {
 		MapControler.logic(this);
 		stage.act();
-		System.out.println(InputControler.currentIOMode);
 		MoveControler.logic(this);
 	}
 

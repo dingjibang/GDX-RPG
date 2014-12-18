@@ -1,6 +1,6 @@
 package com.rpsg.rpg.object.script;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import com.rpsg.rpg.object.rpgobj.NPC;
@@ -33,12 +33,14 @@ public abstract class Script{
 		this.isAlive=false;
 	}
 	
-	public List<ScriptExecutor> scripts=new ArrayList<ScriptExecutor>();
+	public List<ScriptExecutor> scripts=new LinkedList<ScriptExecutor>();
 	
 	public int point=-1;
 	public boolean currentExeced=true;
 	
+	
 	public void run(){
+		System.out.println(point);
 		if(waitTime>0){
 			waitTime--;
 			return;
@@ -54,8 +56,21 @@ public abstract class Script{
 		scripts.get(point).step();
 	}
 	
-	public ScriptExecutor add(ScriptExecutor exe){
-		scripts.add(exe);
+	public ScriptExecutor add(ScriptExecutor exe,boolean insert){
+		if(insert)
+			scripts.add(point+1, exe);
+		else
+			scripts.add(exe);
 		return exe;
+	}
+	
+	public ScriptExecutor insert(ScriptExecutor exe){
+		scripts.remove(scripts.size()-1);
+		scripts.add(point+1, exe);
+		return exe;
+	}
+	
+	public ScriptExecutor add (ScriptExecutor exe){
+		return add(exe,false);
 	}
 }

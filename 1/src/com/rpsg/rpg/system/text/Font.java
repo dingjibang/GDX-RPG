@@ -14,7 +14,6 @@ public class Font {
 	}
 
 	public static Font generateFont(String chars, int size) {
-		System.out.println(chars);
 		Font f=new Font();
 		f.size = size;
 		f.font = FontUtil.generator.generateFont(size,chars,false);
