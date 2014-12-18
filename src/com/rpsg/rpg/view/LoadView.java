@@ -7,8 +7,9 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.rpsg.rpg.system.Setting;
-import com.rpsg.rpg.utils.GameUtil;
+import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.system.base.IView;
+import com.rpsg.rpg.utils.game.GameUtil;
 
 public class LoadView extends IView {
 	private Sprite f_load;

@@ -2,8 +2,8 @@ package com.rpsg.rpg.system.text;
 
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.rpsg.rpg.system.Setting;
-import com.rpsg.rpg.utils.FontUtil;
+import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.utils.display.FontUtil;
 
 public class Font {
 	public int size;

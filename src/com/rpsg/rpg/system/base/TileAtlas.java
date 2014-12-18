@@ -1,4 +1,4 @@
-package com.rpsg.rpg.system;
+package com.rpsg.rpg.system.base;
 
 import java.util.HashSet;
 import java.util.StringTokenizer;
@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.IntMap;
+import com.rpsg.rpg.core.Setting;
 /**
  *	TileAtlas 地图与图素对应类，修改于libgdx源码，增加图片抗锯齿功能。 
  *	@author 无吔学生<br>

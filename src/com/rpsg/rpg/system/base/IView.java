@@ -1,4 +1,4 @@
-package com.rpsg.rpg.view;
+package com.rpsg.rpg.system.base;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;

@@ -1,4 +1,4 @@
-package com.rpsg.rpg.utils;
+package com.rpsg.rpg.utils.display;
 
 import java.nio.ByteBuffer;
 

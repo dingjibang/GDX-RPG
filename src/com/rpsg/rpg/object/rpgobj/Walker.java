@@ -1,4 +1,4 @@
-package com.rpsg.rpg.object;
+package com.rpsg.rpg.object.rpgobj;
 
 public class Walker {
 	public int face;

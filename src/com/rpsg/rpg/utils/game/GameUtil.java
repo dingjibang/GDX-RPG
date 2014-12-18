@@ -1,8 +1,9 @@
-package com.rpsg.rpg.utils;
+package com.rpsg.rpg.utils.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.rpsg.rpg.utils.display.FontUtil;
 
 public class GameUtil {
 	public static int screen_width;

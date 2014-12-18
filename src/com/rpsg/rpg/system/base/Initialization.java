@@ -1,5 +1,7 @@
-package com.rpsg.rpg.utils;
+package com.rpsg.rpg.system.base;
 
+import com.rpsg.rpg.system.control.MapControler;
+import com.rpsg.rpg.utils.display.MsgUtil;
 import com.rpsg.rpg.view.GameView;
 
 public class Initialization {

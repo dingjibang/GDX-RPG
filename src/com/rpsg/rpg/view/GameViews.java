@@ -4,8 +4,8 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.rpsg.rpg.input.GameInput;
-import com.rpsg.rpg.utils.GameUtil;
+import com.rpsg.rpg.io.GameInput;
+import com.rpsg.rpg.utils.game.GameUtil;
 
 public class GameViews implements ApplicationListener {
 	public static SpriteBatch batch;
@@ -21,6 +21,7 @@ public class GameViews implements ApplicationListener {
 	public static LoadView loadview;
 	public static TitleView titleview;
 	public static GameView gameview;
+	
 	@Override
 	public void create() {		
 		GameUtil.screen_width = Gdx.graphics.getWidth();

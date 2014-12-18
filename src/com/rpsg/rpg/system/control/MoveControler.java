@@ -1,12 +1,12 @@
-package com.rpsg.rpg.utils;
+package com.rpsg.rpg.system.control;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.rpsg.rpg.object.Collide;
-import com.rpsg.rpg.object.IRPGObject;
-import com.rpsg.rpg.object.ScriptCollide;
-import com.rpsg.rpg.object.heros.Hero;
-import com.rpsg.rpg.object.heros.NPC;
+import com.rpsg.rpg.object.rpgobj.Collide;
+import com.rpsg.rpg.object.rpgobj.Hero;
+import com.rpsg.rpg.object.rpgobj.IRPGObject;
+import com.rpsg.rpg.object.rpgobj.NPC;
+import com.rpsg.rpg.object.script.ScriptCollide;
 import com.rpsg.rpg.view.GameView;
 
 public class MoveControler {

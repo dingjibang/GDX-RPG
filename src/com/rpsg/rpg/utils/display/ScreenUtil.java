@@ -1,4 +1,4 @@
-package com.rpsg.rpg.utils;
+package com.rpsg.rpg.utils.display;
 
 import java.nio.ByteBuffer;
 
@@ -10,7 +10,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.rpsg.rpg.system.Setting;
+import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.utils.game.GameUtil;
 /**
  * 屏幕工具类 可以获取截图
  * @author 煞笔学生

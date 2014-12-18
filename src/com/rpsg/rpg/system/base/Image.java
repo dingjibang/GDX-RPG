@@ -1,4 +1,4 @@
-package com.rpsg.rpg.system;
+package com.rpsg.rpg.system.base;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.rpsg.rpg.core.Setting;
 
 public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	

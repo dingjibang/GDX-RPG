@@ -1,6 +1,6 @@
-package com.rpsg.rpg.object.heros;
+package com.rpsg.rpg.object.rpgobj;
 
-import com.rpsg.rpg.system.Image;
+import com.rpsg.rpg.system.base.Image;
 
 public class HeaderHero extends Hero{
 

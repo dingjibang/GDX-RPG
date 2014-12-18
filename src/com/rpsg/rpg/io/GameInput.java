@@ -1,4 +1,4 @@
-package com.rpsg.rpg.input;
+package com.rpsg.rpg.io;
 
 import com.badlogic.gdx.InputProcessor;
 import com.rpsg.rpg.view.GameViews;

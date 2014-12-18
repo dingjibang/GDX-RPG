@@ -1,22 +1,21 @@
-package com.rpsg.rpg.object.heros;
+package com.rpsg.rpg.object.rpgobj;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import com.rpsg.rpg.object.IRPGObject;
-import com.rpsg.rpg.object.Script;
-import com.rpsg.rpg.object.ScriptCollide;
-import com.rpsg.rpg.system.Image;
-import com.rpsg.rpg.system.Setting;
+import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.script.Script;
+import com.rpsg.rpg.object.script.ScriptCollide;
+import com.rpsg.rpg.system.base.Image;
 
 public abstract class NPC extends IRPGObject{
 
 	public static final String RES_PATH=Setting.GAME_RES_WALK+"npcs/";
 	
 	public abstract void toCollide(ScriptCollide sc);
-	public Map<String, Script> scripts=new HashMap<String, Script>();
+	public Map<String, Class<? extends Script>> scripts=new HashMap<String, Class<? extends Script>>();
 	
 	public List<Script> threadPool=new LinkedList<Script>();
 	
@@ -53,4 +52,14 @@ public abstract class NPC extends IRPGObject{
 	
 	public abstract void init();
 	
+	public Script getScript(Class<? extends Script> c){
+		try {
+			return c.newInstance();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

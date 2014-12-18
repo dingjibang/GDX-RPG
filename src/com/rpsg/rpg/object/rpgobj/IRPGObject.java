@@ -1,4 +1,4 @@
-package com.rpsg.rpg.object;
+package com.rpsg.rpg.object.rpgobj;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.rpsg.rpg.system.Image;
+import com.rpsg.rpg.system.base.Image;
 
 public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>{
 	
