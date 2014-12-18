@@ -1,4 +1,4 @@
-package com.rpsg.rpg.input;
+package com.rpsg.rpg.io;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.rpsg.rpg.system.Setting;
+import com.rpsg.rpg.core.Setting;
 
 public class CMusic {
 	public static Music MUSIC;

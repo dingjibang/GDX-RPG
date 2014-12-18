@@ -1,4 +1,4 @@
-package com.rpsg.rpg.utils;
+package com.rpsg.rpg.utils.display;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +8,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.rpsg.rpg.game.script.SayHelloWorld;
-import com.rpsg.rpg.system.Setting;
+import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.text.Font;
+import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.utils.game.StringUtil;
 
 public class FontUtil {
 	public static FreeTypeFontGenerator generator=new FreeTypeFontGenerator(Gdx.files.internal("data/font/msyh.ttf"));

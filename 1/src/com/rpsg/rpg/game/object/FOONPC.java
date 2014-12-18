@@ -1,8 +1,8 @@
 package com.rpsg.rpg.game.object;
 
 import com.rpsg.rpg.game.script.SayHelloWorld;
-import com.rpsg.rpg.object.heros.DefaultNPC;
-import com.rpsg.rpg.system.Image;
+import com.rpsg.rpg.object.rpgobj.DefaultNPC;
+import com.rpsg.rpg.system.base.Image;
 
 public class FOONPC extends DefaultNPC{
 
@@ -21,7 +21,7 @@ public class FOONPC extends DefaultNPC{
 
 	@Override
 	public void init() {
-		scripts.put(DefaultNPC.COLLIDE_NAME_FACE_Z, new SayHelloWorld());
+		scripts.put(DefaultNPC.COLLIDE_NAME_FACE_Z, SayHelloWorld.class);
 	}
 	
 }

@@ -3,9 +3,10 @@ package com.rpsg.rpg.view;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.rpsg.rpg.system.Image;
-import com.rpsg.rpg.system.Setting;
-import com.rpsg.rpg.utils.GameUtil;
+import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.system.base.IView;
+import com.rpsg.rpg.system.base.Image;
+import com.rpsg.rpg.utils.game.GameUtil;
 
 public class LogoView extends IView{
 	private Image bg,logo,flash1,flash2,logos;

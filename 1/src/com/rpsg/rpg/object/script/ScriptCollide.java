@@ -1,6 +1,6 @@
-package com.rpsg.rpg.object;
+package com.rpsg.rpg.object.script;
 
-import com.rpsg.rpg.object.heros.NPC;
+import com.rpsg.rpg.object.rpgobj.NPC;
 
 
 public class ScriptCollide {

@@ -1,4 +1,4 @@
-package com.rpsg.rpg.object;
+package com.rpsg.rpg.object.rpgobj;
 
 
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
-import com.rpsg.rpg.object.heros.NPC;
+import com.rpsg.rpg.object.script.ScriptCollide;
 import com.rpsg.rpg.view.GameView;
 
 

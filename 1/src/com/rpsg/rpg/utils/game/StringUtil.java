@@ -1,4 +1,4 @@
-package com.rpsg.rpg.utils;
+package com.rpsg.rpg.utils.game;
 
 import java.util.ArrayList;
 import java.util.List;

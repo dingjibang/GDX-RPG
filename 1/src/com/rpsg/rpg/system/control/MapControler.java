@@ -1,4 +1,4 @@
-package com.rpsg.rpg.utils;
+package com.rpsg.rpg.system.control;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,10 +8,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledObject;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledObjectGroup;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.rpsg.rpg.object.IRPGObject;
-import com.rpsg.rpg.object.heros.HeaderHero;
-import com.rpsg.rpg.object.heros.NPC;
-import com.rpsg.rpg.system.ThreadPool;
+import com.rpsg.rpg.object.rpgobj.HeaderHero;
+import com.rpsg.rpg.object.rpgobj.IRPGObject;
+import com.rpsg.rpg.object.rpgobj.NPC;
+import com.rpsg.rpg.system.base.ThreadPool;
 import com.rpsg.rpg.view.GameView;
 
 public class MapControler {

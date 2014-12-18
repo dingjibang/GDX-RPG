@@ -1,8 +1,8 @@
-package com.rpsg.rpg.object.heros;
+package com.rpsg.rpg.object.rpgobj;
 
 
-import com.rpsg.rpg.object.ScriptCollide;
-import com.rpsg.rpg.system.Image;
+import com.rpsg.rpg.object.script.ScriptCollide;
+import com.rpsg.rpg.system.base.Image;
 
 public abstract class DefaultNPC extends NPC{
 	
@@ -34,31 +34,31 @@ public abstract class DefaultNPC extends NPC{
 		case ScriptCollide.COLLIDE_TYPE_FACE_Z:{
 			if(scripts.get(DefaultNPC.COLLIDE_NAME_FACE_Z)==null)
 				break;
-			this.pushThreadAndRun(scripts.get(DefaultNPC.COLLIDE_NAME_FACE_Z));
+			this.pushThreadAndRun(getScript(scripts.get(DefaultNPC.COLLIDE_NAME_FACE_Z)));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_FACE:{
 			if(scripts.get(DefaultNPC.COLLIDE_NAME_FACE)==null)
 				break;
-			this.pushThreadAndRun(scripts.get(DefaultNPC.COLLIDE_NAME_FACE));
+			this.pushThreadAndRun(getScript(scripts.get(DefaultNPC.COLLIDE_NAME_FACE)));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_FOOT:{
 			if(scripts.get(DefaultNPC.COLLIDE_NAME_FOOT)==null)
 				break;
-			this.pushThreadAndRun(scripts.get(DefaultNPC.COLLIDE_NAME_FOOT));
+			this.pushThreadAndRun(getScript(scripts.get(DefaultNPC.COLLIDE_NAME_FOOT)));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_NEAR:{
 			if(scripts.get(DefaultNPC.COLLIDE_NAME_NEAR)==null)
 				break;
-			this.pushThreadAndRun(scripts.get(DefaultNPC.COLLIDE_NAME_NEAR));
+			this.pushThreadAndRun(getScript(scripts.get(DefaultNPC.COLLIDE_NAME_NEAR)));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_Z:{
 			if(scripts.get(DefaultNPC.COLLIDE_NAME_Z)==null)
 				break;
-			this.pushThreadAndRun(scripts.get(DefaultNPC.COLLIDE_NAME_Z));
+			this.pushThreadAndRun(getScript(scripts.get(DefaultNPC.COLLIDE_NAME_Z)));
 			break;
 		}
 		}
