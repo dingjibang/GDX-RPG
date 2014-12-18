@@ -28,37 +28,36 @@ public abstract class DefaultNPC extends NPC{
 	
 	@Override
 	public void toCollide(ScriptCollide sc) {
-		if(isScriptRunning())
-			return;
+		if(!isScriptRunning())
 		switch(sc.collideType){
 		case ScriptCollide.COLLIDE_TYPE_FACE_Z:{
 			if(scripts.get(DefaultNPC.COLLIDE_NAME_FACE_Z)==null)
 				break;
-			this.pushThreadAndRun(getScript(scripts.get(DefaultNPC.COLLIDE_NAME_FACE_Z)));
+			this.pushThreadAndRun(getScript(DefaultNPC.COLLIDE_NAME_FACE_Z,this));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_FACE:{
 			if(scripts.get(DefaultNPC.COLLIDE_NAME_FACE)==null)
 				break;
-			this.pushThreadAndRun(getScript(scripts.get(DefaultNPC.COLLIDE_NAME_FACE)));
+			this.pushThreadAndRun(getScript(DefaultNPC.COLLIDE_NAME_FACE,this));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_FOOT:{
 			if(scripts.get(DefaultNPC.COLLIDE_NAME_FOOT)==null)
 				break;
-			this.pushThreadAndRun(getScript(scripts.get(DefaultNPC.COLLIDE_NAME_FOOT)));
+			this.pushThreadAndRun(getScript(DefaultNPC.COLLIDE_NAME_FOOT,this));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_NEAR:{
 			if(scripts.get(DefaultNPC.COLLIDE_NAME_NEAR)==null)
 				break;
-			this.pushThreadAndRun(getScript(scripts.get(DefaultNPC.COLLIDE_NAME_NEAR)));
+			this.pushThreadAndRun(getScript(DefaultNPC.COLLIDE_NAME_NEAR,this));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_Z:{
 			if(scripts.get(DefaultNPC.COLLIDE_NAME_Z)==null)
 				break;
-			this.pushThreadAndRun(getScript(scripts.get(DefaultNPC.COLLIDE_NAME_Z)));
+			this.pushThreadAndRun(getScript(DefaultNPC.COLLIDE_NAME_Z,this));
 			break;
 		}
 		}

@@ -1,12 +1,15 @@
 package com.rpsg.rpg.system.control;
 
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.rpgobj.Collide;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.object.rpgobj.IRPGObject;
 import com.rpsg.rpg.object.rpgobj.NPC;
 import com.rpsg.rpg.object.script.ScriptCollide;
+import com.rpsg.rpg.system.base.IOMode;
 import com.rpsg.rpg.view.GameView;
 
 public class MoveControler {
@@ -29,15 +32,17 @@ public class MoveControler {
 		for(ScriptCollide sc:Collide.testNPCCollide(gv, MapControler.hero, gv.stage.getActors())){
 			sc.toCollide();
 		}
-		MapControler.hero.setWalkSpeed(gv.isPressCtrl?8:4);
-		if(gv.isPressWalk_r && MapControler.hero.walked)
-			MapControler.hero.turn(Hero.FACE_R).walk(1).testWalk();
-		if(gv.isPressWalk_l && MapControler.hero.walked)
-			MapControler.hero.turn(Hero.FACE_L).walk(1).testWalk();
-		if(gv.isPressWalk_u && MapControler.hero.walked)
-			MapControler.hero.turn(Hero.FACE_U).walk(1).testWalk();
-		if(gv.isPressWalk_d && MapControler.hero.walked)
-			MapControler.hero.turn(Hero.FACE_D).walk(1).testWalk();
+		MapControler.hero.setWalkSpeed(Input.isPress(Keys.CONTROL_LEFT)?8:4);
+		if(InputControler.currentIOMode==IOMode.MAP_INPUT_NORMAL){
+			if(Input.isPress(Keys.RIGHT) && MapControler.hero.walked)
+				MapControler.hero.turn(Hero.FACE_R).walk(1).testWalk();
+			if(Input.isPress(Keys.LEFT) && MapControler.hero.walked)
+				MapControler.hero.turn(Hero.FACE_L).walk(1).testWalk();
+			if(Input.isPress(Keys.UP) && MapControler.hero.walked)
+				MapControler.hero.turn(Hero.FACE_U).walk(1).testWalk();
+			if(Input.isPress(Keys.DOWN) && MapControler.hero.walked)
+				MapControler.hero.turn(Hero.FACE_D).walk(1).testWalk();
+		}
 		float herox=MapControler.hero.getX()+(MapControler.hero.getWidth()/2);
 		float heroy=MapControler.hero.getY()+(MapControler.hero.getHeight()/2);
 		if(herox>MAP_MAX_OUT_X && herox<(gv.map.width*gv.map.tileWidth)-MAP_MAX_OUT_X)
@@ -65,40 +70,16 @@ public class MoveControler {
 	}
 	
 	public static void keyUp(int keycode,GameView gv){
-		if(keycode==21)
-			gv.isPressWalk_l=false;
-		if(keycode==22)
-			gv.isPressWalk_r=false;
-		if(keycode==19)
-			gv.isPressWalk_u=false;
-		if(keycode==20)
-			gv.isPressWalk_d=false;
-		if(keycode==129)
-			gv.isPressCtrl=false;
-		if(keycode==54)
-			gv.isPressZ=false;
 	}
 	
 	public static void keyDown(int keycode,GameView gv){
-		if(keycode==21)
-			gv.isPressWalk_l=true;
-		if(keycode==22)
-			gv.isPressWalk_r=true;
-		if(keycode==19)
-			gv.isPressWalk_u=true;
-		if(keycode==20)
-			gv.isPressWalk_d=true;
-		if(keycode==129)
-			gv.isPressCtrl=true;
-		if(keycode==54)
-			gv.isPressZ=true;
-		if(keycode==51)
+		if(keycode==Keys.W)
 			MapControler.npc.turn(NPC.FACE_U).walk(1);
-		if(keycode==47)
+		if(keycode==Keys.S)
 			MapControler.npc.turn(NPC.FACE_D).walk(1);
-		if(keycode==29)
+		if(keycode==Keys.A)
 			MapControler.npc.turn(NPC.FACE_L).walk(1);
-		if(keycode==32)
+		if(keycode==Keys.D)
 			MapControler.npc.turn(NPC.FACE_R).walk(1);
 	}
 }

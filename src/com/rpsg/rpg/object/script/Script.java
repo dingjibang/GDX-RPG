@@ -3,6 +3,8 @@ package com.rpsg.rpg.object.script;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.rpsg.rpg.object.rpgobj.NPC;
+
 
 public abstract class Script{
 	public int waitTime=0;
@@ -11,8 +13,12 @@ public abstract class Script{
 		waitTime+=frame;
 	}
 	
-	public Script() {
-		this.init();
+	public NPC npc;
+	public String callType;
+	public void generate(NPC npc,String type){
+		this.npc=npc;
+		this.callType=type;
+		init();
 	}
 	
 	public abstract void init();
@@ -33,15 +39,19 @@ public abstract class Script{
 	public boolean currentExeced=true;
 	
 	public void run(){
+		if(waitTime>0){
+			waitTime--;
+			return;
+		}
 		if(currentExeced)
-			if(++point==scripts.size())
+			if(++point==scripts.size()){
 				this.dispose();
-			else{
+				return;
+			}else{
 				currentExeced=false;
 				scripts.get(point).toInit();
 			}
-		else
-			scripts.get(point).step();
+		scripts.get(point).step();
 	}
 	
 	public ScriptExecutor add(ScriptExecutor exe){

@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.object.rpgobj.HeaderHero;
 import com.rpsg.rpg.object.rpgobj.IRPGObject;
 import com.rpsg.rpg.object.rpgobj.NPC;
-import com.rpsg.rpg.system.base.ThreadPool;
+import com.rpsg.rpg.object.script.ThreadPool;
 import com.rpsg.rpg.view.GameView;
 
 public class MapControler {

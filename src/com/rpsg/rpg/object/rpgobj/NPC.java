@@ -19,6 +19,12 @@ public abstract class NPC extends IRPGObject{
 	
 	public List<Script> threadPool=new LinkedList<Script>();
 	
+	public boolean collideZAble=true;
+	public boolean collideNearAble=true;
+	public boolean collideFootAble=true;
+	public boolean collideFaceAble=true;
+	public boolean collideFaceZAble=true;
+	
 	public void pushThreadAndRun(Script t){
 		t.isAlive=true;
 		threadPool.add(t); 
@@ -52,9 +58,11 @@ public abstract class NPC extends IRPGObject{
 	
 	public abstract void init();
 	
-	public Script getScript(Class<? extends Script> c){
+	public Script getScript(String type,NPC npc){
 		try {
-			return c.newInstance();
+			Script n=npc.scripts.get(type).newInstance();
+			n.generate(npc,type);
+			return n;
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
