@@ -11,6 +11,7 @@ import com.rpsg.rpg.system.base.IOMode;
 import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.control.InputControler;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.view.GameViews;
 
 
 public class MsgUtil {
@@ -32,8 +33,9 @@ public class MsgUtil {
 	static SpriteBatch currentBatch;
 	static int TEXT_DISPLAY_SPEED=30;
 	private static int DISPLAY_OFFSET=0;
-	public static ScriptExecutor MSG(final SpriteBatch batch,final String str,final String title,final int size,final Script script,final boolean locked){
+	public static ScriptExecutor MSG(final Script script,final String str,final String title,final int size,final boolean locked){
 		return script.add(new ScriptExecutor(script) {
+			SpriteBatch batch=GameViews.batch;
 			public void step() {
 				DISPLAY_OFFSET-=TEXT_DISPLAY_SPEED;
 				if(DISPLAY_OFFSET<=0){
@@ -62,8 +64,8 @@ public class MsgUtil {
 		});
 	}
 	
-	public static ScriptExecutor MSG(final SpriteBatch batch,final String str,final String title,final int size,final Script script){
-		return MSG(batch, str, title, size, script,true);
+	public static ScriptExecutor MSG(final Script script,final String str,final String title,final int size){
+		return MSG(script,str,title, size,true);
 	}
 	
 	public static ScriptExecutor setLocker(Script script,final boolean flag){
