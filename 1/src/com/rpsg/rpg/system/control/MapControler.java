@@ -32,7 +32,6 @@ public class MapControler {
 					try {
 						npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.name).getConstructor(String.class,Integer.class,Integer.class).newInstance(obj.properties.get("IMAGE")+".png",obj.width,obj.height);
 						npc.generatePosition(20, 10, 1, gv.map).enableCollide=true;
-						npc.waitWhenCollide=true;
 						npc.generatePosition(obj.x/48, obj.y/48, layer, gv.map);
 						gv.stage.addActor(npc);
 						ThreadPool.pool.add(npc.threadPool);
