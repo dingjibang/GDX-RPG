@@ -1,0 +1,6 @@
+package com.rpsg.rpg.object.script;
+
+@FunctionalInterface
+public interface BaseScriptExecutor {
+	public void init();
+}
