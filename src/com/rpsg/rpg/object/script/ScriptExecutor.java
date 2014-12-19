@@ -1,7 +1,7 @@
 package com.rpsg.rpg.object.script;
 
 
-public abstract class ScriptExecutor {
+public abstract class ScriptExecutor implements BaseScriptExecutor{
 	public abstract void init();
 	public void step() { }
 	
