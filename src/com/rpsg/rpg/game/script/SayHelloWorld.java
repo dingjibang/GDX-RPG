@@ -17,8 +17,11 @@ public class SayHelloWorld extends Script{
 		FG.show(this, Setting.GAME_RES_IMAGE_FG+"alice/01.png", FG.LEFT);
 		FG.show(this, Setting.GAME_RES_IMAGE_FG+"alice/01.png", FG.RIGHT);
 		say("ƒ„¬Ë∑…¡À");
+		FG.show(this, Setting.GAME_RES_IMAGE_FG+"alice/02.png", FG.LEFT);
+		say("ƒ„¬Ë≤≈∑…¡À");
+		FG.hideAll(this);
 //		a=980;
-//		add(()->insert(say("a="+a,"≤‚ ‘", 50)));
+//		add(()->insert(say("a="+a,"≤‚ ‘", 50)))
 //		changeSelf(SayFuckMe.class);
 	}
 }

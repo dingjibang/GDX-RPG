@@ -21,19 +21,6 @@ public class FontUtil {
 	public static void init(){
 	}
 	
-	public static String resize(String s){
-		char[] ca=s.toCharArray();
-		int len=0;
-		for(int i=0;i<ca.length;i++){
-			if (ca[i]=='\n')len=0; else len++;
-			if(len>w/20) {
-				s=s.substring(0,i)+"\n"+s.substring(i,s.length());
-				len=0;
-			}
-		}
-		return s;
-	}
-	
 	private static BitmapFont getFont(int fontsize,char str){
 //		System.out.print(fontlist.size()+"[");
 //		for(Font f: fontlist)
