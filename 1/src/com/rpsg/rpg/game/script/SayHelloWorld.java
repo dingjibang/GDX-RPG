@@ -1,19 +1,24 @@
 package com.rpsg.rpg.game.script;
 
-import com.rpsg.rpg.object.rpgobj.IRPGObject;
+import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.utils.display.Msg;
-import com.rpsg.rpg.utils.game.Base;
-import com.rpsg.rpg.utils.game.Move;
+import com.rpsg.rpg.utils.display.FG;
 
 public class SayHelloWorld extends Script{
 	
-	int a;
-	@Override
+	int a=0;
 	public void init() {
-		add(()->a=999);
-		a=980;
-		add(()->insert(Msg.say(this,"a="+a,"≤‚ ‘", 50)));
-		Base.changeSelf(this,SayFuckMe.class);
+//		faceToHero();
+//		if(a==0){
+//			say("µ⁄“ª¥Œ£ø");
+//			add(()->a=999);
+//		}else{
+//		}
+		FG.show(this, Setting.GAME_RES_IMAGE_FG+"alice/01.png", FG.LEFT);
+		FG.show(this, Setting.GAME_RES_IMAGE_FG+"alice/01.png", FG.RIGHT);
+		say("ƒ„¬Ë∑…¡À");
+//		a=980;
+//		add(()->insert(say("a="+a,"≤‚ ‘", 50)));
+//		changeSelf(SayFuckMe.class);
 	}
 }
