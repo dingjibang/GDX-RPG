@@ -4,10 +4,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.rpsg.rpg.object.rpgobj.NPC;
+import com.rpsg.rpg.utils.display.Msg;
+import com.rpsg.rpg.utils.game.Base;
+import com.rpsg.rpg.utils.game.Move;
+import com.rpsg.rpg.utils.game.Timer;
 
 
 public abstract class Script{
-	public int waitTime=0;
+	private int waitTime=0;
 	
 	public void sleep(int frame){
 		waitTime+=frame;
@@ -71,5 +75,42 @@ public abstract class Script{
 		scripts.add(exe);
 		return exe;
 	}
+	
+	protected BaseScriptExecutor say(String str,String title,int size){
+		return Msg.say(this, str, title, size);
+	}
+	
+	protected BaseScriptExecutor say(String str){
+		return Msg.say(this, str, "", 22);
+	}
+	
+	protected BaseScriptExecutor setKeyLocker(boolean b){
+		return Msg.setKeyLocker(this, b);
+	}
+	
+	protected BaseScriptExecutor faceToHero(){
+		return Move.faceToHero(this);
+	}
+	
+	protected BaseScriptExecutor faceTo(int face){
+		return Move.turn(this, face);
+	}
+	
+	protected BaseScriptExecutor move(int step){
+		return Move.move(this, step);
+	}
+	
+	protected BaseScriptExecutor wait(int frame){
+		return Timer.wait(this, frame);
+	}
+	
+	protected BaseScriptExecutor removeSelf(){
+		return Base.removeSelf(this);
+	}
+	
+	protected BaseScriptExecutor changeSelf(Class<? extends Script> script){
+		return Base.changeSelf(this,script);
+	}
+	
 	
 }

@@ -34,6 +34,10 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		super();
 	}
 
+	public Image(Image image) {
+		super(image.getDrawable());
+	}
+
 	public void draw(SpriteBatch sb){
 		this.draw(sb, 1);
 	}
@@ -45,5 +49,10 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public Texture getTexture(){
 		return ((TextureRegionDrawable)this.getDrawable()).getRegion().getTexture();
+	}
+	
+	public Image dispose(){
+		getTexture().dispose();
+		return this;
 	}
 }

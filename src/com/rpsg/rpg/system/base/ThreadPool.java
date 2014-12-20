@@ -1,8 +1,10 @@
-package com.rpsg.rpg.object.script;
+package com.rpsg.rpg.system.base;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import com.rpsg.rpg.object.script.Script;
 
 
 public class ThreadPool {
