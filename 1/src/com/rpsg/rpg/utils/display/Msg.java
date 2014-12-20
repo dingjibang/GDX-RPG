@@ -67,13 +67,22 @@ public class Msg {
 	}
 	
 	public static BaseScriptExecutor setKeyLocker(Script script,final boolean flag){
-		return script.add((BaseScriptExecutor)()->{
+		return script.add(()->{
 			InputControler.currentIOMode=flag?IOMode.MAP_INPUT_MESSAGING:IOMode.MAP_INPUT_NORMAL;
 		});
 	}
+	
 	private static int getOrPosX(String txt,int size){
 		int o=(200/2-FontUtil.getTextWidth(txt, size, Setting.STRING_PADDING_LR)/2);
 		return 20+o;
 	}
+	
+	public static BaseScriptExecutor show(Script script,final int msgType){
+		return script.add(()->{
+//			InputControler.currentIOMode=flag?IOMode.MAP_INPUT_MESSAGING:IOMode.MAP_INPUT_NORMAL;
+			//TODO MSGÎÄ±¾
+		});
+	}
+	
 	
 }

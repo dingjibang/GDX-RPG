@@ -15,12 +15,28 @@ public class FG {
 	public static final int LEFT=0;
 	public static final int RIGHT=1;
 	
+	static boolean leftFade=true;
+	static boolean rightFade=true;
+	
 	public static BaseScriptExecutor show(final Script script,final String imgPath,final int position){
 		return script.add((BaseScriptExecutor)()->{
-			if(position==LEFT)
+			if(position==LEFT){
+				boolean nul=currentImageL==null;
 				currentImageL=ResourcePool.get(imgPath);
-			else
+				currentImageL.setScale(0.7f);
+				if(nul)
+					currentImageL.setColor(1,1,1,0f);
+				leftFade=true;
+			}else{
+				boolean nul=currentImageR==null;
 				currentImageR=ResourcePool.get(imgPath);
+				currentImageR.setScale(0.7f);
+				currentImageR.setScaleX(-0.7f);
+				currentImageR.setX(GameUtil.screen_width);
+				if(nul)
+					currentImageR.setColor(1,1,1,0f);
+				rightFade=true;
+			}
 		});
 	}
 	
@@ -35,8 +51,17 @@ public class FG {
 	
 	public static BaseScriptExecutor hideAll(final Script script){
 		return script.add((BaseScriptExecutor)()->{
-			currentImageL=null;
-			currentImageR=null;
+			leftFade=false;
+			rightFade=false;
+		});
+	}
+	
+	public static BaseScriptExecutor hide(final Script script,final int position){
+		return script.add((BaseScriptExecutor)()->{
+			if(position==LEFT)
+				leftFade=false;
+			else
+				rightFade=false;
 		});
 	}
 	
@@ -44,15 +69,26 @@ public class FG {
 		sb.end();
 		sb.begin();
 		if(currentImageL!=null){
-			currentImageL.setScale(0.7f);
-			currentImageL.draw(sb);
+			if(leftFade && currentImageL.getColor().a<1)
+				currentImageL.setColor(1,1,1,currentImageL.getColor().a+0.1f);
+			if(!leftFade && currentImageL.getColor().a>0)
+				currentImageL.setColor(1,1,1,currentImageL.getColor().a-0.2f);
+			if(!leftFade && currentImageL.getColor().a<=0)
+				currentImageL=null;
+			if(currentImageL!=null)
+				currentImageL.draw(sb);
 		}
 		if(currentImageR!=null){
-			currentImageR.setScale(0.7f);
-			currentImageR.setScaleX(-0.7f);
-			currentImageR.setX(GameUtil.screen_width);
-			currentImageR.draw(sb);
+			if(rightFade && currentImageR.getColor().a<1)
+				currentImageR.setColor(1,1,1,currentImageR.getColor().a+0.1f);
+			if(!rightFade && currentImageR.getColor().a>0)
+				currentImageR.setColor(1,1,1,currentImageR.getColor().a-0.2f);
+			if(!rightFade && currentImageR.getColor().a<=0)
+				currentImageR=null;
+			if(currentImageR!=null)
+				currentImageR.draw(sb);
 		}
 	}
+	
 }
 
