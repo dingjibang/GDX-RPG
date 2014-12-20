@@ -1,7 +1,7 @@
 <b><h1>欢迎访问RPSG制作组 RPG引擎SVN空间</h1></b>
 <br/>
 <h2 style="color:red;">
-最新消息：本项目正在进行java8升级！如果需要读取本项目，请至少使用Eclipse Luna版或MyEclipse 2015版以及jdk 8以上开发环境！
+最新消息：本项目已进行java8升级！如果需要读取本项目，请至少使用Eclipse Luna版或MyEclipse 2015版以及jdk 8以上开发环境！
 </h2>
 <b>svn地址：</b><a href="https://svn.sinaapp.com/rpsgrpg/1">https://svn.sinaapp.com/rpsgrpg/1</a>
 <br/>
