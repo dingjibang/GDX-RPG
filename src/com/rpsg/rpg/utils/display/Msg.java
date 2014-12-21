@@ -28,12 +28,12 @@ public class Msg {
 		msgbox.setHeight((float)msgbox.getHeight()/ss);
 		msgbox.setX(GameUtil.screen_width/2-msgbox.getWidth()/2);
 		msgbox.setY(25);
+		msgbox.setColor(1,1,1,0);
 	}
 	
 	static String currentText="";
 	static int currentTextPoint=0;
 	static Script currentScript;
-	static SpriteBatch currentBatch;
 	static int TEXT_DISPLAY_SPEED=30;
 	private static int DISPLAY_OFFSET=0;
 	static boolean show=false;
@@ -61,7 +61,6 @@ public class Msg {
 			public void init() {
 				currentText=str;
 				currentTextPoint=0;
-				currentBatch=batch;
 			}
 		});
 	}
@@ -91,7 +90,13 @@ public class Msg {
 	}
 	
 	public static void draw(SpriteBatch batch){
-		if(show){
+		if(show)
+			if(msgbox.getColor().a<1)
+				msgbox.setColor(1,1,1,msgbox.getColor().a+=0.1f);
+		if(!show)
+			if(msgbox.getColor().a>0)
+				msgbox.setColor(1,1,1,msgbox.getColor().a-=0.2f);
+		if(msgbox.getColor().a>0){
 			GameUtil.resetBacth(batch);
 			msgbox.draw(batch);
 		}

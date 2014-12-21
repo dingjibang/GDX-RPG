@@ -48,6 +48,7 @@ public class GameView extends IView{
 //		render.render(camera,1,batch);
 		MapControler.draw(batch,this);
 		ThreadPool.logic();
+		System.out.println(MapControler.npc.enableCollide);
 //		stage.draw();
 //		render.render(camera,new int[]{0});
 //		render.render(camera,new int[]{0});

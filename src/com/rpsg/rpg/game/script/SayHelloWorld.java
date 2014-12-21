@@ -20,7 +20,7 @@ public class SayHelloWorld extends Script{
 		say("ÄãÂè·ÉÁË");
 		FG.show(this, Setting.GAME_RES_IMAGE_FG+"alice/02.png", FG.LEFT);
 		say("ÄãÂè²Å·ÉÁË");
-		FG.hideAll(this);
+		hideFG();
 		hideMSG();
 //		a=980;
 //		add(()->insert(say("a="+a,"²âÊÔ", 50)))
