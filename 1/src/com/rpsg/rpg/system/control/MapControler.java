@@ -13,6 +13,7 @@ import com.rpsg.rpg.object.rpgobj.IRPGObject;
 import com.rpsg.rpg.object.rpgobj.NPC;
 import com.rpsg.rpg.system.base.ThreadPool;
 import com.rpsg.rpg.utils.display.FG;
+import com.rpsg.rpg.utils.display.Msg;
 import com.rpsg.rpg.view.GameView;
 
 public class MapControler {
@@ -64,6 +65,7 @@ public class MapControler {
 			sb.end();
 		}
 		FG.draw(batch);
+		Msg.draw(batch);
 //		System.out.println(hero.getX()+" "+hero.getY()+" "+gv.camera.position.x+" "+gv.camera.position.y+" "+hero.mapx+" "+hero.mapy);
 	}
 	
