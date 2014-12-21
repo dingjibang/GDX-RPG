@@ -25,7 +25,7 @@ public class MapControler {
 	public static NPC npc;
 	public static void init(GameView gv){
 		hero=new HeaderHero("/walk_marisa.png");
-		hero.generatePosition(10, 10, 1,gv.map).enableCollide=true;
+		hero.generatePosition(10, 10, 1,gv.map);
 		gv.stage.addActor(hero);
 		for(TiledObjectGroup objGroup:gv.map.objectGroups){
 			int layer=Integer.parseInt(objGroup.properties.get("layer"));
@@ -33,7 +33,6 @@ public class MapControler {
 				if(obj.type.equals("NPC")){
 					try {
 						npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.name).getConstructor(String.class,Integer.class,Integer.class).newInstance(obj.properties.get("IMAGE")+".png",obj.width,obj.height);
-						npc.generatePosition(20, 10, 1, gv.map).enableCollide=true;
 						npc.generatePosition(obj.x/48, obj.y/48, layer, gv.map);
 						gv.stage.addActor(npc);
 						ThreadPool.pool.add(npc.threadPool);

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.rpsg.rpg.object.base.Msgs;
 import com.rpsg.rpg.object.rpgobj.NPC;
+import com.rpsg.rpg.utils.display.FG;
 import com.rpsg.rpg.utils.display.Msg;
 import com.rpsg.rpg.utils.game.Base;
 import com.rpsg.rpg.utils.game.Move;
@@ -119,5 +120,13 @@ public abstract class Script implements Msgs{
 	
 	protected BaseScriptExecutor hideMSG(){
 		return Msg.hide(this);
+	}
+	
+	protected BaseScriptExecutor hideFG(int position){
+		return FG.hide(this, position);
+	}
+	
+	protected BaseScriptExecutor hideFG(){
+		return FG.hideAll(this);
 	}
 }
