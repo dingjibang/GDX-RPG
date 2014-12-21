@@ -3,6 +3,7 @@ package com.rpsg.rpg.object.script;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.rpsg.rpg.object.base.Msgs;
 import com.rpsg.rpg.object.rpgobj.NPC;
 import com.rpsg.rpg.utils.display.Msg;
 import com.rpsg.rpg.utils.game.Base;
@@ -10,7 +11,7 @@ import com.rpsg.rpg.utils.game.Move;
 import com.rpsg.rpg.utils.game.Timer;
 
 
-public abstract class Script{
+public abstract class Script implements Msgs{
 	private int waitTime=0;
 	
 	public void sleep(int frame){
@@ -112,5 +113,11 @@ public abstract class Script{
 		return Base.changeSelf(this,script);
 	}
 	
+	protected BaseScriptExecutor showMSG(String msgType){
+		return Msg.show(this, msgType);
+	}
 	
+	protected BaseScriptExecutor hideMSG(){
+		return Msg.hide(this);
+	}
 }

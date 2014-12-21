@@ -14,14 +14,17 @@ public class SayHelloWorld extends Script{
 //			add(()->a=999);
 //		}else{
 //		}
+		showMSG(alice);
 		FG.show(this, Setting.GAME_RES_IMAGE_FG+"alice/01.png", FG.LEFT);
 		FG.show(this, Setting.GAME_RES_IMAGE_FG+"alice/01.png", FG.RIGHT);
 		say("ƒ„¬Ë∑…¡À");
 		FG.show(this, Setting.GAME_RES_IMAGE_FG+"alice/02.png", FG.LEFT);
 		say("ƒ„¬Ë≤≈∑…¡À");
 		FG.hideAll(this);
+		hideMSG();
 //		a=980;
 //		add(()->insert(say("a="+a,"≤‚ ‘", 50)))
 //		changeSelf(SayFuckMe.class);
+		//TODO fuckme
 	}
 }
