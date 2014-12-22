@@ -8,6 +8,7 @@ import com.rpsg.rpg.object.script.Script;
 
 
 public class ThreadPool {
+
 	public static List<List<Script>> pool =new LinkedList<List<Script>>();
 	
 	private static List<Script> removeList=new ArrayList<Script>();
@@ -21,5 +22,9 @@ public class ThreadPool {
 					removeList.add(s);
 			list.removeAll(removeList);
 		}
+	}
+	
+	public static void init(){
+		pool.clear();
 	}
 }

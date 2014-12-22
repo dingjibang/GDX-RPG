@@ -18,7 +18,6 @@ import com.rpsg.rpg.system.base.TileAtlas;
 import com.rpsg.rpg.system.control.InputControler;
 import com.rpsg.rpg.system.control.MapControler;
 import com.rpsg.rpg.system.control.MoveControler;
-import com.rpsg.rpg.utils.display.FG;
 import com.rpsg.rpg.utils.display.Msg;
 import com.rpsg.rpg.utils.game.GameUtil;
 public class GameView extends IView{
@@ -28,12 +27,11 @@ public class GameView extends IView{
 	public TiledMap map;
 	public TileAtlas atlas;
 	public static boolean inited=false;
-	public Global global;
+	public Global global=GameViews.global;
 	public OrthographicCamera camera;
 	
 	@Override
 	public void init() {
-		global=new Global();
 		stage = new Stage(GameUtil.screen_width, GameUtil.screen_height, true);
 		camera=(OrthographicCamera) stage.getCamera();
 		map=TiledLoader.createMap(Gdx.files.internal(Setting.GAME_RES_MAP + global.map));
@@ -56,6 +54,7 @@ public class GameView extends IView{
 
 	@Override
 	public void draw(SpriteBatch batch) {
+//		System.out.println(ThreadPool.pool);
 //		render.render(camera,0,batch);
 //		render.render(camera,1,batch);
 		MapControler.draw(batch,this);

@@ -8,6 +8,7 @@ import com.rpsg.rpg.core.Setting;
 
 public class Hero extends IRPGObject {
 	
+	private static final long serialVersionUID = 1L;
 	public static final int HERO_WIDTH=48;
 	public static final int HERO_HEIGHT=64;
 	public static final String RES_PATH=Setting.GAME_RES_WALK+"heros/";

@@ -1,5 +1,6 @@
 package com.rpsg.rpg.object.rpgobj;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.system.base.Image;
 
-public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>{
+public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>,Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	public static final int FACE_L=7;
 	public static final int FACE_R=10;
 	public static final int FACE_U=4;
@@ -22,7 +24,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public int lastLayer;
 	public int lastFace;
 	
-	public Image[] images;
+	public transient Image[] images;
 	
 	public int layer;
 	
@@ -46,7 +48,8 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public Collide collide=new Collide();
 	
 	public String imgPath;
-	
+	public int bodyWidth;
+	public int bodyHeight;
 	public List<Walker> walkStack=new ArrayList<Walker>(); 
 	
 	public Image getCurrentImage(){
@@ -78,15 +81,17 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	
 	public IRPGObject(String path,int width,int height){
 		imgPath=path;
-		images=IRPGObject.generateImages(new Image(path), width, height);
+		bodyWidth=width;
+		bodyHeight=height;
+		images=IRPGObject.generateImages(path, width, height);
 	}
 	
 	
-	public static Image[] generateImages(Image txt,int width,int height){
+	public static Image[] generateImages(String txt,int width,int height){
 		Image[] images=new Image[12];
 		for(int i=0;i<4;i++)
 			for(int j=0;j<3;j++){
-				images[(i*3)+j]=new Image(new TextureRegion(txt.getTexture(),j*width,i*height,width,height));
+				images[(i*3)+j]=new Image(new TextureRegion(new Image(txt).getTexture(),j*width,i*height,width,height));
 			}
 		return images;
 	};

@@ -2,6 +2,8 @@ package com.rpsg.rpg.system.control;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.object.rpgobj.IRPGObject;
 import com.rpsg.rpg.object.rpgobj.NPC;
+import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.ThreadPool;
 import com.rpsg.rpg.utils.display.FG;
 import com.rpsg.rpg.utils.display.Msg;
@@ -27,20 +30,37 @@ public class MapControler {
 	public static void init(GameView gv){
 		hero=new Hero(gv.global.headHeroImage);
 		hero.generatePosition(gv.global.heroMapx, gv.global.heroMapy, gv.global.heroMapz,gv.map);
+		hero.currentImageNo=gv.global.heroFace;
 		gv.stage.addActor(hero);
-		for(TiledObjectGroup objGroup:gv.map.objectGroups){
-			int layer=Integer.parseInt(objGroup.properties.get("layer"));
-			for(TiledObject obj:objGroup.objects){
-				if(obj.type.equals("NPC")){
-					try {
-						npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.name).getConstructor(String.class,Integer.class,Integer.class).newInstance(obj.properties.get("IMAGE")+".png",obj.width,obj.height);
-						npc.generatePosition(obj.x/48, obj.y/48, layer, gv.map);
-						gv.stage.addActor(npc);
-						ThreadPool.pool.add(npc.threadPool);
-					} catch (Exception e) {
-						e.printStackTrace();
+		if(gv.global.npcs.isEmpty())
+			for(TiledObjectGroup objGroup:gv.map.objectGroups){
+				int layer=Integer.parseInt(objGroup.properties.get("layer"));
+				for(TiledObject obj:objGroup.objects){
+					if(obj.type.equals("NPC")){
+						try {
+							npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.name).getConstructor(String.class,Integer.class,Integer.class).newInstance(obj.properties.get("IMAGE")+".png",obj.width,obj.height);
+							npc.init();
+							npc.generatePosition(obj.x/48, obj.y/48, layer, gv.map);
+							gv.stage.addActor(npc);
+							ThreadPool.pool.add(npc.threadPool);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
 				}
+			}
+		else{
+			System.out.println("loading:3");
+			for(NPC n:gv.global.npcs){
+				System.out.println("before");
+				n.scripts=new HashMap<String, Class<? extends Script>>();
+				n.threadPool=new LinkedList<Script>();
+				n.init();
+				
+				gv.stage.addActor(n);
+				ThreadPool.pool.add(n.threadPool);
+				n.images=NPC.generateImages(n.imgPath, n.bodyWidth, n.bodyHeight);
+				npc=n;
 			}
 		}
 	}
@@ -80,5 +100,11 @@ public class MapControler {
 		GameViews.gameview.stage.getActors().clear();
 	}
 	
-
+	public static List<NPC> getNPCs(){
+		List<NPC> list=new ArrayList<NPC>();
+		for(Actor a:GameViews.gameview.stage.getActors())
+			if(a instanceof NPC)
+				list.add((NPC)a);
+		return list;
+	}
 }

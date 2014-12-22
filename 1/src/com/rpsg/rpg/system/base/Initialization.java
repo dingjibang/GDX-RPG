@@ -7,7 +7,7 @@ import com.rpsg.rpg.view.GameView;
 
 public class Initialization {
 	public static void init(GameView gv){
-		ThreadPool.pool.clear();
+		ThreadPool.init();
 		MapControler.init(gv);
 		Msg.init();
 		FG.init();

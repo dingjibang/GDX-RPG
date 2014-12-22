@@ -12,12 +12,14 @@ import com.rpsg.rpg.object.script.ScriptCollide;
 public abstract class NPC extends IRPGObject{
 
 
+	private static final long serialVersionUID = -3609365853239176493L;
+
 	public static final String RES_PATH=Setting.GAME_RES_WALK+"npcs/";
 	
 	public abstract void toCollide(ScriptCollide sc);
-	public Map<String, Class<? extends Script>> scripts=new HashMap<String, Class<? extends Script>>();
+	public transient Map<String, Class<? extends Script>> scripts=new HashMap<String, Class<? extends Script>>();
 	
-	public List<Script> threadPool=new LinkedList<Script>();
+	public transient List<Script> threadPool=new LinkedList<Script>();
 	
 	public boolean collideZAble=true;
 	public boolean collideNearAble=true;

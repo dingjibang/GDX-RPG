@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.io.Input;
+import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class GameViews implements ApplicationListener {
@@ -21,9 +22,10 @@ public class GameViews implements ApplicationListener {
 	public static LoadView loadview;
 	public static TitleView titleview;
 	public static GameView gameview;
+	public static Global global;
 	
 	@Override
-	public void create() {		
+	public void create() {
 		GameUtil.screen_width = Gdx.graphics.getWidth();
 		GameUtil.screen_height = Gdx.graphics.getHeight();
 		//start init
@@ -34,6 +36,7 @@ public class GameViews implements ApplicationListener {
 		logoview.init();
 		//other
 		batch = new SpriteBatch();
+		global=new Global();
 	}
 
 	@Override
