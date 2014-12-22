@@ -8,9 +8,9 @@ import java.util.Map;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptCollide;
-import com.rpsg.rpg.system.base.Image;
 
 public abstract class NPC extends IRPGObject{
+
 
 	public static final String RES_PATH=Setting.GAME_RES_WALK+"npcs/";
 	
@@ -40,12 +40,6 @@ public abstract class NPC extends IRPGObject{
 	
 	public NPC() {
 		super();
-		this.waitWhenCollide=false;
-		init();
-	}
-
-	public NPC(Image txt,Integer width,Integer height) {
-		super(txt, width, height);
 		this.waitWhenCollide=false;
 		init();
 	}

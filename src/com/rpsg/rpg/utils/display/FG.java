@@ -18,6 +18,13 @@ public class FG {
 	static boolean leftFade=true;
 	static boolean rightFade=true;
 	
+	public static void init(){
+		if(currentImageL!=null)
+			currentImageL.dispose();
+		if(currentImageR!=null)
+			currentImageR.dispose();
+	}
+	
 	public static BaseScriptExecutor show(final Script script,final String imgPath,final int position){
 		return script.add((BaseScriptExecutor)()->{
 			if(position==LEFT){
@@ -89,6 +96,6 @@ public class FG {
 				currentImageR.draw(sb);
 		}
 	}
-	
+
 }
 

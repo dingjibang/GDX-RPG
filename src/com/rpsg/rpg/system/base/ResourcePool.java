@@ -9,7 +9,6 @@ public class ResourcePool {
 	private static Map<String,Image> pool=new HashMap<String, Image>();
 	
 	public static Image get(String resPath){
-		System.out.println(pool.size());
 		if(pool.size()>CACHE_MAX_SIZE){
 			Iterator<String> it=pool.keySet().iterator();
 			int poi=0;
@@ -26,4 +25,9 @@ public class ResourcePool {
 	
 	public static int CACHE_MAX_SIZE=30;
 	
+	public static void dispose(){
+		for(String s:pool.keySet())
+			pool.get(s).dispose();
+		pool.clear();
+	}
 }

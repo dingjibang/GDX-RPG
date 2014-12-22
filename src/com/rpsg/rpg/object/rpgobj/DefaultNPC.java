@@ -1,10 +1,10 @@
 package com.rpsg.rpg.object.rpgobj;
 
 
-import com.rpsg.rpg.object.script.ScriptCollide;
-import com.rpsg.rpg.system.base.Image;
 
-public abstract class DefaultNPC extends NPC{
+import com.rpsg.rpg.object.script.ScriptCollide;
+
+public abstract class DefaultNPC extends NPC {
 	
 	public static final String COLLIDE_NAME_FACE="face";
 	public static final String COLLIDE_NAME_NEAR="near";
@@ -14,10 +14,6 @@ public abstract class DefaultNPC extends NPC{
 	
 	public DefaultNPC() {
 		super();
-	}
-
-	public DefaultNPC(Image txt, Integer width, Integer height) {
-		super(txt, width, height);
 	}
 
 	public DefaultNPC(String path, Integer width, Integer height) {

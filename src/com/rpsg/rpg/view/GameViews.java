@@ -55,12 +55,10 @@ public class GameViews implements ApplicationListener {
 				loadview=new LoadView();
 				loadview.init();
 				state=STATE_LOAD;
-				Gdx.app.postRunnable(new Runnable(){
-					@Override
-					public void run() {
+				Gdx.app.postRunnable(()->{
 						titleview=new TitleView();
 						titleview.init();
-					}});
+				});
 			}
 			logoview.draw(batch);
 			break;
