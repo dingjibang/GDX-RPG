@@ -6,6 +6,7 @@ import com.rpsg.rpg.object.script.ScriptCollide;
 
 public abstract class DefaultNPC extends NPC {
 	
+	private static final long serialVersionUID = -8871098396830487464L;
 	public static final String COLLIDE_NAME_FACE="face";
 	public static final String COLLIDE_NAME_NEAR="near";
 	public static final String COLLIDE_NAME_FACE_Z="faceZ";

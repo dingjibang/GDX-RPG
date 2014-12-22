@@ -1,6 +1,7 @@
 package com.rpsg.rpg.object.rpgobj;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,8 @@ import com.rpsg.rpg.object.script.ScriptCollide;
 import com.rpsg.rpg.view.GameView;
 
 
-public class Collide {
+public class Collide implements Serializable {
+	private static final long serialVersionUID = 1L;
 	public boolean left;
 	public boolean right;
 	public boolean top;
