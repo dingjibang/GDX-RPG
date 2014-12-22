@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Input;
-import com.rpsg.rpg.object.base.Msgs;
+import com.rpsg.rpg.object.base.MsgType;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
@@ -20,8 +20,12 @@ import com.rpsg.rpg.view.GameViews;
 public class Msg {
 	public static Image msgbox;
 	
+	public static void dispose(){
+		msgbox.dispose();
+	}
+	
 	public static void init(){
-		msgbox=new Image(Setting.GAME_RES_MESSAGE+Msgs.normal);
+		msgbox=new Image(Setting.GAME_RES_MESSAGE+MsgType.Õý³£);
 		float ss=msgbox.getWidth();
 		msgbox.setWidth(GameUtil.screen_width-40);
 		ss=ss/msgbox.getWidth();
@@ -29,11 +33,15 @@ public class Msg {
 		msgbox.setX(GameUtil.screen_width/2-msgbox.getWidth()/2);
 		msgbox.setY(25);
 		msgbox.setColor(1,1,1,0);
+		currentText="";
+		currentTextPoint=0;
+		TEXT_DISPLAY_SPEED=30;
+		DISPLAY_OFFSET=0;
+		show=false;
 	}
 	
 	static String currentText="";
 	static int currentTextPoint=0;
-	static Script currentScript;
 	static int TEXT_DISPLAY_SPEED=30;
 	private static int DISPLAY_OFFSET=0;
 	static boolean show=false;

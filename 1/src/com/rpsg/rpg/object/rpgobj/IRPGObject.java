@@ -17,13 +17,10 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public static final int FACE_U=4;
 	public static final int FACE_D=1;
 	
-	public static enum facing{
-		left(7),right(10),up(4),down(1);
-		private facing(int c){
-			this.value=c;
-		}
-		private int value;
-	}
+	public int lastMapX;
+	public int lastMapY;
+	public int lastLayer;
+	public int lastFace;
 	
 	public Image[] images;
 	
@@ -44,9 +41,11 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	
 	public int foot=0;
 	
-	public boolean enableCollide=false;
+	public boolean enableCollide=true;
 	
 	public Collide collide=new Collide();
+	
+	public String imgPath;
 	
 	public List<Walker> walkStack=new ArrayList<Walker>(); 
 	
@@ -78,12 +77,10 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	}
 	
 	public IRPGObject(String path,int width,int height){
+		imgPath=path;
 		images=IRPGObject.generateImages(new Image(path), width, height);
 	}
 	
-	public IRPGObject(Image txt,int width,int height){
-		images=IRPGObject.generateImages(txt, width, height);
-	}
 	
 	public static Image[] generateImages(Image txt,int width,int height){
 		Image[] images=new Image[12];
@@ -295,6 +292,11 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	
 	public int getReverseFace(){
 		return getReverseFace(getCurrentFace());
+	}
+	
+	public void dispose(){
+		for(Image i:images)
+			i.dispose();
 	}
 	
 }

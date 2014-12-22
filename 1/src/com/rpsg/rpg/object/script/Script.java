@@ -3,7 +3,9 @@ package com.rpsg.rpg.object.script;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.rpsg.rpg.object.base.Msgs;
+import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.FGType;
+import com.rpsg.rpg.object.base.MsgType;
 import com.rpsg.rpg.object.rpgobj.NPC;
 import com.rpsg.rpg.utils.display.FG;
 import com.rpsg.rpg.utils.display.Msg;
@@ -12,7 +14,7 @@ import com.rpsg.rpg.utils.game.Move;
 import com.rpsg.rpg.utils.game.Timer;
 
 
-public abstract class Script implements Msgs{
+public abstract class Script implements MsgType,FGType{
 	private int waitTime=0;
 	
 	public void sleep(int frame){
@@ -128,5 +130,13 @@ public abstract class Script implements Msgs{
 	
 	protected BaseScriptExecutor hideFG(){
 		return FG.hideAll(this);
+	}
+	
+	protected BaseScriptExecutor showFGLeft(String people,String look){
+		return FG.show(this, Setting.GAME_RES_IMAGE_FG+people+look+".png", FG.LEFT);
+	}
+	
+	protected BaseScriptExecutor showFGRight(String people,String look){
+		return FG.show(this, Setting.GAME_RES_IMAGE_FG+people+look+".png", FG.RIGHT);
 	}
 }
