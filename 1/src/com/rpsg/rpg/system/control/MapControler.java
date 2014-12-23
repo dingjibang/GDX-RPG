@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledObject;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledObjectGroup;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.rpsg.rpg.object.rpgobj.Hero;
+import com.rpsg.rpg.object.rpgobj.HeroObj;
 import com.rpsg.rpg.object.rpgobj.IRPGObject;
 import com.rpsg.rpg.object.rpgobj.NPC;
 import com.rpsg.rpg.object.script.Script;
@@ -24,11 +24,11 @@ public class MapControler {
 	
 	public static int MAP_MAX_OUT_X=300;
 	public static int MAP_MAX_OUT_Y=200;
-	public static Hero hero;
+	public static HeroObj hero;
 	public static List<IRPGObject> drawlist=new ArrayList<IRPGObject>();
 	public static NPC npc;
 	public static void init(GameView gv){
-		hero=new Hero(gv.global.headHeroImage);
+		hero=new HeroObj(gv.global.headHeroImage);
 		hero.generatePosition(gv.global.heroMapx, gv.global.heroMapy, gv.global.heroMapz,gv.map);
 		hero.currentImageNo=gv.global.heroFace;
 		gv.stage.addActor(hero);
