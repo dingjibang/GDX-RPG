@@ -10,7 +10,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledObject;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledObjectGroup;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.rpsg.rpg.object.rpgobj.HeroObj;
+import com.rpsg.rpg.game.hero.Flandre;
+import com.rpsg.rpg.game.hero.Marisa;
+import com.rpsg.rpg.game.hero.Reimu;
+import com.rpsg.rpg.game.hero.Yuuka;
 import com.rpsg.rpg.object.rpgobj.IRPGObject;
 import com.rpsg.rpg.object.rpgobj.NPC;
 import com.rpsg.rpg.object.script.Script;
@@ -24,14 +27,23 @@ public class MapControler {
 	
 	public static int MAP_MAX_OUT_X=300;
 	public static int MAP_MAX_OUT_Y=200;
-	public static HeroObj hero;
 	public static List<IRPGObject> drawlist=new ArrayList<IRPGObject>();
 	public static NPC npc;
 	public static void init(GameView gv){
-		hero=new HeroObj(gv.global.headHeroImage);
-		hero.generatePosition(gv.global.heroMapx, gv.global.heroMapy, gv.global.heroMapz,gv.map);
-		hero.currentImageNo=gv.global.heroFace;
-		gv.stage.addActor(hero);
+		HeroControler.initControler();
+		if(gv.global.heros.isEmpty()){
+			HeroControler.newHero(Marisa.class);
+			HeroControler.addHero(Marisa.class);
+			HeroControler.newHero(Reimu.class);
+			HeroControler.addHero(Reimu.class);
+			HeroControler.newHero(Flandre.class);
+			HeroControler.addHero(Flandre.class);
+			HeroControler.newHero(Yuuka.class);
+			HeroControler.addHero(Yuuka.class);
+			HeroControler.generatePosition(10, 10, 1,gv.map);
+		}
+		HeroControler.initHeros(gv.stage);
+		
 		if(gv.global.npcs.isEmpty())
 			for(TiledObjectGroup objGroup:gv.map.objectGroups){
 				int layer=Integer.parseInt(objGroup.properties.get("layer"));
@@ -50,13 +62,10 @@ public class MapControler {
 				}
 			}
 		else{
-			System.out.println("loading:3");
 			for(NPC n:gv.global.npcs){
-				System.out.println("before");
 				n.scripts=new HashMap<String, Class<? extends Script>>();
 				n.threadPool=new LinkedList<Script>();
 				n.init();
-				
 				gv.stage.addActor(n);
 				ThreadPool.pool.add(n.threadPool);
 				n.images=NPC.generateImages(n.imgPath, n.bodyWidth, n.bodyHeight);
@@ -93,7 +102,7 @@ public class MapControler {
 	}
 	
 	public static void dispose(){
-		hero.dispose();
+		HeroControler.dispose();
 		for(Actor a:GameViews.gameview.stage.getActors())
 			if(a instanceof IRPGObject)
 				((IRPGObject)a).dispose();

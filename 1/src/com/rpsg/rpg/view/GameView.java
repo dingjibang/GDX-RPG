@@ -7,14 +7,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.tiled.TileMapRenderer;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledLoader;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Global;
+import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.system.base.IView;
 import com.rpsg.rpg.system.base.Initialization;
 import com.rpsg.rpg.system.base.ResourcePool;
 import com.rpsg.rpg.system.base.ThreadPool;
 import com.rpsg.rpg.system.base.TileAtlas;
+import com.rpsg.rpg.system.control.HeroControler;
 import com.rpsg.rpg.system.control.InputControler;
 import com.rpsg.rpg.system.control.MapControler;
 import com.rpsg.rpg.system.control.MoveControler;
@@ -68,7 +71,11 @@ public class GameView extends IView{
 	@Override
 	public void logic() {
 		MapControler.logic(this);
-		stage.act();
+//		stage.act();
+		for(Actor i:stage.getActors())
+			if(!(i instanceof Hero))
+				i.act(0);
+		HeroControler.act();
 		MoveControler.logic(this);
 	}
 

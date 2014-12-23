@@ -19,18 +19,11 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public static final int FACE_U=4;
 	public static final int FACE_D=1;
 	
-	public int lastMapX;
-	public int lastMapY;
-	public int lastLayer;
-	public int lastFace;
-	
 	public transient Image[] images;
 	
+	public int lastWalkSize,lastZ,lastFace;
 	public int layer;
-	
-	public int mapx;
-	public int mapy;
-	
+	public int mapx,mapy;
 	public Vector2 position;
 	
 	public boolean walked=true;
@@ -39,17 +32,16 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	
 	public int currentImageNo=1;
 	
-	public boolean waitWhenCollide=true; 
-	
 	public int foot=0;
 	
+	public boolean waitWhenCollide=true; 
 	public boolean enableCollide=true;
+	public boolean walkAble=true;
 	
 	public Collide collide=new Collide();
 	
 	public String imgPath;
-	public int bodyWidth;
-	public int bodyHeight;
+	public int bodyWidth,bodyHeight;
 	public List<Walker> walkStack=new ArrayList<Walker>(); 
 	
 	public Image getCurrentImage(){
@@ -97,7 +89,6 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	};
 	
 	public IRPGObject turn(int face){
-		if(walked)
 			this.currentImageNo=face;
 		return this;
 	}
@@ -125,8 +116,6 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	private int lastx,lasty,lastlength;
 	@Override
 	public void act(float f){
-		if(walkStack.size()!=0 && walked)
-			testWalk();
 		if(isStop() && lastlength++>5)
 			foot=0;
 		toWalk();
@@ -210,13 +199,16 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		if(walkStack.size()!=0){
 			if(enableCollide && ((getCurrentFace()==FACE_L && !collide.left) || (getCurrentFace()==FACE_R && !collide.right) 
 			|| (getCurrentFace()==FACE_U && !collide.top) || (getCurrentFace()==FACE_D && !collide.bottom))){
+				lastWalkSize=0;
 				if(!waitWhenCollide){
-					
 					testWalkerSize();
 				}else
 					return null;
 			}else{
 				if(walkStack.get(0).step!=0){
+					lastZ=this.layer;
+					lastFace=this.getCurrentFace();
+					lastWalkSize=walkStack.get(0).step;
 					switch(getCurrentFace()){
 					case FACE_D:{mapy++;break;}
 					case FACE_U:{mapy--;break;}
@@ -228,14 +220,18 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 					walked=false;
 					toWalk();
 					return true;
-				}else
+				}else{
 					testWalkerSize();
+				}
 			}
 		}else{
 			walked=true;
 		}
-		toWalk();
-		toWalk();
+		return false;
+	}
+	
+	public boolean walkAble(){
+//		collide.
 		return false;
 	}
 	

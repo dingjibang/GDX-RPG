@@ -3,7 +3,7 @@ package com.rpsg.rpg.utils.game;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
-import com.rpsg.rpg.system.control.MapControler;
+import com.rpsg.rpg.system.control.HeroControler;
 
 public class Move {
 	public static BaseScriptExecutor move(Script script,final int step){
@@ -26,7 +26,7 @@ public class Move {
 	
 	public static BaseScriptExecutor faceToHero(Script script){
 		return script.add((BaseScriptExecutor)()->{
-				script.npc.turn(MapControler.hero.getReverseFace());
+				script.npc.turn(HeroControler.getHeadHero().getReverseFace());
 		});
 	}
 }
