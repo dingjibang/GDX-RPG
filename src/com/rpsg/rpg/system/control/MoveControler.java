@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.rpgobj.Collide;
-import com.rpsg.rpg.object.rpgobj.Hero;
+import com.rpsg.rpg.object.rpgobj.HeroObj;
 import com.rpsg.rpg.object.rpgobj.IRPGObject;
 import com.rpsg.rpg.object.rpgobj.NPC;
 import com.rpsg.rpg.object.script.ScriptCollide;
@@ -35,13 +35,13 @@ public class MoveControler {
 		MapControler.hero.setWalkSpeed(Input.isPress(Keys.CONTROL_LEFT)?8:4);
 		if(InputControler.currentIOMode==IOMode.MAP_INPUT_NORMAL){
 			if(Input.isPress(Keys.RIGHT) && MapControler.hero.walked)
-				MapControler.hero.turn(Hero.FACE_R).walk(1).testWalk();
+				MapControler.hero.turn(HeroObj.FACE_R).walk(1).testWalk();
 			if(Input.isPress(Keys.LEFT) && MapControler.hero.walked)
-				MapControler.hero.turn(Hero.FACE_L).walk(1).testWalk();
+				MapControler.hero.turn(HeroObj.FACE_L).walk(1).testWalk();
 			if(Input.isPress(Keys.UP) && MapControler.hero.walked)
-				MapControler.hero.turn(Hero.FACE_U).walk(1).testWalk();
+				MapControler.hero.turn(HeroObj.FACE_U).walk(1).testWalk();
 			if(Input.isPress(Keys.DOWN) && MapControler.hero.walked)
-				MapControler.hero.turn(Hero.FACE_D).walk(1).testWalk();
+				MapControler.hero.turn(HeroObj.FACE_D).walk(1).testWalk();
 		}
 		float herox=MapControler.hero.getX()+(MapControler.hero.getWidth()/2);
 		float heroy=MapControler.hero.getY()+(MapControler.hero.getHeight()/2);
