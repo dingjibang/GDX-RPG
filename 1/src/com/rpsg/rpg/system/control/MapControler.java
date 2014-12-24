@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledObject;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledObjectGroup;
@@ -40,19 +41,19 @@ public class MapControler {
 			HeroControler.addHero(Flandre.class);
 			HeroControler.newHero(Yuuka.class);
 			HeroControler.addHero(Yuuka.class);
-			HeroControler.generatePosition(10, 10, 1,gv.map);
+			HeroControler.generatePosition(10, 10, 1,GameView.map);
 		}
 		HeroControler.initHeros(gv.stage);
 		
 		if(gv.global.npcs.isEmpty())
-			for(TiledObjectGroup objGroup:gv.map.objectGroups){
+			for(TiledObjectGroup objGroup:GameView.map.objectGroups){
 				int layer=Integer.parseInt(objGroup.properties.get("layer"));
 				for(TiledObject obj:objGroup.objects){
 					if(obj.type.equals("NPC")){
 						try {
 							npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.name).getConstructor(String.class,Integer.class,Integer.class).newInstance(obj.properties.get("IMAGE")+".png",obj.width,obj.height);
 							npc.init();
-							npc.generatePosition(obj.x/48, obj.y/48, layer, gv.map);
+							npc.generatePosition(obj.x/48, obj.y/48, layer, GameView.map);
 							gv.stage.addActor(npc);
 							ThreadPool.pool.add(npc.threadPool);
 						} catch (Exception e) {
@@ -75,9 +76,10 @@ public class MapControler {
 	}
 	
 	public synchronized static void draw(SpriteBatch batch,GameView gv){
-		int size=gv.map.layers.size();
+		int size=GameView.map.layers.size();
 		for(int i=0;i<size;i++){
 			drawlist.clear();
+			gv.render.cache.setColor(Color.RED);
 			gv.render.render(gv.camera,new int[]{i});
 			SpriteBatch sb=gv.stage.getSpriteBatch();
 			sb.begin();
@@ -89,8 +91,10 @@ public class MapControler {
 						drawlist.add(c);
 				}
 			Collections.sort(drawlist);
-			for(IRPGObject ir:drawlist)
+			for(IRPGObject ir:drawlist){
+				ir.setColor(Color.RED);
 				ir.draw(sb, 1f);
+			}
 			sb.end();
 		}
 		FG.draw(batch);

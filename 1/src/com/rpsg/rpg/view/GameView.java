@@ -4,7 +4,6 @@ package com.rpsg.rpg.view;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.tiled.TileMapRenderer;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledLoader;
 import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -17,6 +16,7 @@ import com.rpsg.rpg.system.base.Initialization;
 import com.rpsg.rpg.system.base.ResourcePool;
 import com.rpsg.rpg.system.base.ThreadPool;
 import com.rpsg.rpg.system.base.TileAtlas;
+import com.rpsg.rpg.system.base.TileMapRenderer;
 import com.rpsg.rpg.system.control.HeroControler;
 import com.rpsg.rpg.system.control.InputControler;
 import com.rpsg.rpg.system.control.MapControler;
@@ -27,7 +27,7 @@ public class GameView extends IView{
 	
 	public TileMapRenderer render;
 	public Stage stage;
-	public TiledMap map;
+	public static TiledMap map;
 	public TileAtlas atlas;
 	public static boolean inited=false;
 	public Global global=GameViews.global;

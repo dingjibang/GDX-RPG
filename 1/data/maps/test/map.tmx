@@ -24,6 +24,11 @@
     <property name="IMAGE" value="walk_marisa"/>
    </properties>
   </object>
+  <object gid="1" height="64" name="FOONPC2" type="NPC" width="48" x="336" y="240">
+   <properties>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer height="20" name="块层 3" width="30">
   <data compression="gzip" encoding="base64">
