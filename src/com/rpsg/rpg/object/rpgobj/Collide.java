@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.rpsg.rpg.io.Input;
@@ -21,11 +22,19 @@ public class Collide implements Serializable {
 	public boolean bottom;
 	
 	
-	public void testCollide(int x,int y,int[][] t,Array<Actor> list,IRPGObject mine){
-			left=!(x==0 || t[y][x-1]!=0);
-			right=!(x==t[0].length-1 || t[y][x+1]!=0);
-			top=!(y==0 || t[y-1][x]!=0);
-			bottom=!(y==t.length-1 || t[y+1][x]!=0);
+	public static int getID(TiledMapTileLayer layer,int x,int y){
+		try{
+			return layer.getCell(x, y).getTile().getId();
+		}catch(Exception e){
+			return 0;
+		}
+	}
+	
+	public void testCollide(int x,int y,TiledMapTileLayer layer,Array<Actor> list,IRPGObject mine){
+			left=!(x==0 || getID(layer, x-1, y)!=0);
+			right=!(x==layer.getTileHeight()-1 ||getID(layer, x+1, y)!=0);
+			top=!(y==0 || getID(layer, x, y-1)!=0);
+			bottom=!(y==layer.getTileWidth()-1 || getID(layer, x, y+1)!=0);
 			for(int i=0;i<list.size;i++){
 				Actor a=list.get(i);
 				if(a instanceof IRPGObject && ((IRPGObject)a).enableCollide && ((IRPGObject)a).layer==mine.layer){

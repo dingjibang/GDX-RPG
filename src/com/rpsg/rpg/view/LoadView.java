@@ -3,7 +3,7 @@ package com.rpsg.rpg.view;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -46,7 +46,7 @@ public class LoadView extends IView {
 	@Override
 	public void draw(SpriteBatch batch) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		f_load.draw(batch);
 		for(int i=0;i<hbx.length;i++){
 			hb[i].draw(batch);

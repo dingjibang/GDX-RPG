@@ -2,7 +2,7 @@ package com.rpsg.rpg.view;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
@@ -49,7 +49,7 @@ public class GameViews implements ApplicationListener {
 	public void render() {
 		if(!flag) dispose();
 		Gdx.gl.glClearColor(1, 1, 1, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		switch(state){
 		case STATE_LOGO:{
