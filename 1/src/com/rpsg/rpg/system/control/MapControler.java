@@ -8,8 +8,10 @@ import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.tiled.TiledObject;
-import com.badlogic.gdx.graphics.g2d.tiled.TiledObjectGroup;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapLayers;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.game.hero.Flandre;
 import com.rpsg.rpg.game.hero.Marisa;
@@ -41,47 +43,51 @@ public class MapControler {
 			HeroControler.addHero(Flandre.class);
 			HeroControler.newHero(Yuuka.class);
 			HeroControler.addHero(Yuuka.class);
-			HeroControler.generatePosition(10, 10, 1,GameView.map);
+			HeroControler.generatePosition(10, 10, 1);
 		}
 		HeroControler.initHeros(gv.stage);
 		
-		if(gv.global.npcs.isEmpty())
-			for(TiledObjectGroup objGroup:GameView.map.objectGroups){
-				int layer=Integer.parseInt(objGroup.properties.get("layer"));
-				for(TiledObject obj:objGroup.objects){
-					if(obj.type.equals("NPC")){
+		if(gv.global.npcs.isEmpty()){
+			List<MapLayer> removeList=new ArrayList<MapLayer>();
+			for(int i=0;i<gv.map.getLayers().getCount();i++){
+				MapLayer m=gv.map.getLayers().get(i);
+				for(MapObject obj:m.getObjects()){
+					if(obj.getProperties().get("type").equals("NPC")){
 						try {
-							npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.name).getConstructor(String.class,Integer.class,Integer.class).newInstance(obj.properties.get("IMAGE")+".png",obj.width,obj.height);
+							npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.getName()).getConstructor(String.class,Integer.class,Integer.class).newInstance(obj.getProperties().get("IMAGE")+".png",48,64);
 							npc.init();
-							npc.generatePosition(obj.x/48, obj.y/48, layer, GameView.map);
+							npc.generatePosition((int) (((Float)obj.getProperties().get("x"))/48), (int) (((Float)obj.getProperties().get("x"))/48), i-1);
 							gv.stage.addActor(npc);
 							ThreadPool.pool.add(npc.threadPool);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
+					}else{
+						for(NPC n:gv.global.npcs){
+							n.scripts=new HashMap<String, Class<? extends Script>>();
+							n.threadPool=new LinkedList<Script>();
+							n.init();
+							gv.stage.addActor(n);
+							ThreadPool.pool.add(n.threadPool);
+							n.images=NPC.generateImages(n.imgPath, n.bodyWidth, n.bodyHeight);
+							npc=n;
+						}
 					}
 				}
+				if(m.getObjects().getCount()!=0)
+					removeList.add(m);
 			}
-		else{
-			for(NPC n:gv.global.npcs){
-				n.scripts=new HashMap<String, Class<? extends Script>>();
-				n.threadPool=new LinkedList<Script>();
-				n.init();
-				gv.stage.addActor(n);
-				ThreadPool.pool.add(n.threadPool);
-				n.images=NPC.generateImages(n.imgPath, n.bodyWidth, n.bodyHeight);
-				npc=n;
-			}
+		for(MapLayer l:removeList)
+			gv.map.getLayers().remove(l);
 		}
 	}
 	
 	public synchronized static void draw(SpriteBatch batch,GameView gv){
-		int size=GameView.map.layers.size();
+		int size=gv.map.getLayers().getCount();
 		for(int i=0;i<size;i++){
 			drawlist.clear();
-			gv.render.cache.setColor(Color.RED);
-			gv.render.render(gv.camera,new int[]{i});
-			SpriteBatch sb=gv.stage.getSpriteBatch();
+			gv.render.render(new int[]{i});;
+			SpriteBatch sb=(SpriteBatch) gv.stage.getBatch();
 			sb.begin();
 			sb.setProjectionMatrix(gv.camera.combined);
 			for(Actor a:gv.stage.getActors())

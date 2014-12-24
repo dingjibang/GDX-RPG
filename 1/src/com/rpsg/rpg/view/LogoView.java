@@ -25,7 +25,7 @@ public class LogoView extends IView{
 		logos.setPosition(GameUtil.screen_width/2-logos.getWidth()/2, GameUtil.screen_height/2-logos.getHeight()/2);
 		flash1= new Image(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_LOGO+"hero.png")));
 		flash1.setColor(1,1,1,0.5f);
-		flash1.scale(0.4f);
+		flash1.setScale(0.4f);
 		flash2= new Image(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_LOGO+"bcir.png")));
 		flash2.setColor(1,1,1,0.5f);
 //		CMusic.playMusic("1.mp3");

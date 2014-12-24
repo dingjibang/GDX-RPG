@@ -10,7 +10,6 @@ public class Main {
 	public static void main(String[] args) {
 		final LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "RPG";
-		cfg.useGL20 = true;
 		cfg.width = 1024;
 		cfg.height = 576;
 		cfg.samples=0;

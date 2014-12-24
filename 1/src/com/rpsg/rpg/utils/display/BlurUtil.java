@@ -3,7 +3,7 @@ package com.rpsg.rpg.utils.display;
 import java.nio.ByteBuffer;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Blending;
 import com.badlogic.gdx.graphics.Pixmap.Format;
@@ -397,7 +397,7 @@ public class BlurUtil {
 					0, 0, width, height, radius, iterations, false);
  
 			// upload pixels
-			Gdx.gl.glTexImage2D(GL10.GL_TEXTURE_2D, level,
+			Gdx.gl.glTexImage2D(GL20.GL_TEXTURE_2D, level,
 					pixmap.getGLInternalFormat(), pixmap.getWidth(),
 					pixmap.getHeight(), 0, pixmap.getGLFormat(),
 					pixmap.getGLType(), pixmap.getPixels());

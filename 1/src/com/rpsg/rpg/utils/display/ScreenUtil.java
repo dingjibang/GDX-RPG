@@ -3,7 +3,7 @@ package com.rpsg.rpg.utils.display;
 import java.nio.ByteBuffer;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
@@ -39,13 +39,13 @@ public class ScreenUtil {
     }
 	
 	public static Pixmap getFrameBufferPixmap (int x, int y, int w, int h) {
-		Gdx.gl.glPixelStorei(GL10.GL_PACK_ALIGNMENT, 1);
+		Gdx.gl.glPixelStorei(GL20.GL_PACK_ALIGNMENT, 1);
 		final int potW = MathUtils.nextPowerOfTwo(w);
 		final int potH = MathUtils.nextPowerOfTwo(h);
 
 		final Pixmap pixmap = new Pixmap(potW, potH, Format.RGBA8888);
 		ByteBuffer pixels = pixmap.getPixels();
-		Gdx.gl.glReadPixels(x, y, potW, potH, GL10.GL_RGBA, GL10.GL_UNSIGNED_BYTE, pixels);
+		Gdx.gl.glReadPixels(x, y, potW, potH, GL20.GL_RGBA, GL20.GL_UNSIGNED_BYTE, pixels);
 
 		return pixmap;
 	}

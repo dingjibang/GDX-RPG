@@ -2,6 +2,7 @@ package com.rpsg.rpg.system.control;
 
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.rpgobj.Collide;
@@ -25,8 +26,7 @@ public class MoveControler {
 		for(Actor a:gv.stage.getActors()){
 			if(a instanceof IRPGObject && ((IRPGObject)a).enableCollide){
 				IRPGObject o=(IRPGObject)a;
-				int[][] tiles = GameView.map.layers.get(o.layer).tiles;
-				o.collide.testCollide(o.mapx, o.mapy, tiles,gv.stage.getActors(),o);
+				o.collide.testCollide(o.mapx, o.mapy,  ((TiledMapTileLayer)gv.map.getLayers().get(o.layer)),gv.stage.getActors(),o);
 			}
 		}
 		for(ScriptCollide sc:Collide.testNPCCollide(gv, HeroControler.getHeadHero(), gv.stage.getActors())){
@@ -57,20 +57,20 @@ public class MoveControler {
 		}
 		float herox=HeroControler.getHeadHero().position.x+(HeroControler.getHeadHero().getWidth()/2);
 		float heroy=HeroControler.getHeadHero().position.y+(HeroControler.getHeadHero().getHeight()/2);
-		if(herox>MAP_MAX_OUT_X && herox<(GameView.map.width*GameView.map.tileWidth)-MAP_MAX_OUT_X)
+		if(herox>MAP_MAX_OUT_X && herox<(48*48)-MAP_MAX_OUT_X)
 			gv.camera.position.x=herox;
 		else
 			if(!(herox>MAP_MAX_OUT_X))
 				gv.camera.position.x=MAP_MAX_OUT_X;
 			else
-				gv.camera.position.x=(GameView.map.width*GameView.map.tileWidth)-MAP_MAX_OUT_X;
-		if(heroy>MAP_MAX_OUT_Y && heroy<(GameView.map.height*GameView.map.tileHeight)-MAP_MAX_OUT_Y)
+				gv.camera.position.x=(48*48)-MAP_MAX_OUT_X;
+		if(heroy>MAP_MAX_OUT_Y && heroy<(48*48)-MAP_MAX_OUT_Y)
 			gv.camera.position.y=heroy;
 		else
 			if(!(heroy>MAP_MAX_OUT_Y))
 				gv.camera.position.y=MAP_MAX_OUT_Y;
 			else
-				gv.camera.position.y=(GameView.map.height*GameView.map.tileHeight)-MAP_MAX_OUT_Y;
+				gv.camera.position.y=(48*48)-MAP_MAX_OUT_Y;
 		gv.camera.update();
 	}
 	
@@ -78,7 +78,7 @@ public class MoveControler {
 	public static boolean testCameraPos(GameView gv){
 		float herox=HeroControler.getHeadHero().position.x+(HeroControler.getHeadHero().getWidth()/2);
 		float heroy=HeroControler.getHeadHero().position.y+(HeroControler.getHeadHero().getHeight()/2);
-		return !(herox>MAP_MAX_OUT_X && herox<(GameView.map.width*GameView.map.tileWidth)-MAP_MAX_OUT_X) && (heroy>MAP_MAX_OUT_Y && heroy<(GameView.map.height*GameView.map.tileHeight)-MAP_MAX_OUT_Y);
+		return !(herox>MAP_MAX_OUT_X && herox<(48*48)-MAP_MAX_OUT_X) && (heroy>MAP_MAX_OUT_Y && heroy<(48*48)-MAP_MAX_OUT_Y);
 	}
 	
 	public static void keyUp(int keycode,GameView gv){
