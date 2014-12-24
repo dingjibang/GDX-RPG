@@ -1,10 +1,12 @@
 package com.rpsg.rpg.system.control;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.tiled.TiledMap;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.object.rpgobj.Hero;
+import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
 public class HeroControler {
@@ -21,6 +23,8 @@ public class HeroControler {
 	}
 	
 	public static Hero newHero(Class<? extends Hero> c){
+		if(getHero(c)!=null)
+			return null;
 		Hero h=null;
 		try {
 			h=(Hero)c.newInstance();
@@ -36,12 +40,36 @@ public class HeroControler {
 		heros.add(getHero(c));
 	}
 	
+	public static void addHero(Class<? extends Hero> c,int position){
+		heros.add(position,getHero(c));
+	}
+	
 	public static void removeHero(Class<? extends Hero> c){
 		heros.remove(getHero(c));
 	}
 	
 	public static void deleteHero(Class<? extends Hero> c){
 		allHeros.remove(getHero(c));
+	}
+	
+	public static void swapHero(int position){
+		Collections.swap(heros, position, 0);
+		reinit();
+	}
+	
+	public static void swapHero(Class<? extends Hero> c){
+		Collections.swap(heros, heros.indexOf(getHero(c)), 0);
+		reinit();
+	}
+	
+	public static void swapHero(int position,int swapposition){
+		Collections.swap(heros, position, swapposition);
+		reinit();
+	}
+	
+	public static void swapHero(Class<? extends Hero> c,Class<? extends Hero> swapc){
+		Collections.swap(heros, heros.indexOf(getHero(c)), heros.indexOf(getHero(swapc)));
+		reinit();
 	}
 	
 	public static Hero getHero(Class<? extends Hero> c){
@@ -57,7 +85,6 @@ public class HeroControler {
 	}
 	
 	public static void initHeros(Stage s){
-		
 		for(Hero hero:heros){
 			hero.init();
 			hero.enableCollide=false;
@@ -69,6 +96,23 @@ public class HeroControler {
 			getHeadHero().waitWhenCollide=false;
 		}
 	}
+	
+	private static void reinit(){
+		for(int i=0;i<heros.size();i++){
+			if(i!=0){
+				heros.get(i).currentImageNo=heros.get(0).currentImageNo;
+				heros.get(i).lastZ=heros.get(0).lastZ;
+				heros.get(i).lastWalkSize=0;
+			}
+			heros.get(i).enableCollide=false;
+			heros.get(i).waitWhenCollide=false;
+		}
+		generatePosition(getHeadHero().mapx, getHeadHero().mapy, getHeadHero().layer, GameView.map);
+		if(heros!=null && !heros.isEmpty()){
+			getHeadHero().enableCollide=true;
+			getHeadHero().waitWhenCollide=false;
+		}
+	} 
 	
 	public static void generatePosition(int x,int y,int z,TiledMap map){
 		for(int i=0;i<heros.size();i++){

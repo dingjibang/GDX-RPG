@@ -55,6 +55,7 @@ public class GameViews implements ApplicationListener {
 		case STATE_LOGO:{
 			logoview.logic();
 			if(logoview.played){
+				logoview.dispose();
 				loadview=new LoadView();
 				loadview.init();
 				state=STATE_LOAD;

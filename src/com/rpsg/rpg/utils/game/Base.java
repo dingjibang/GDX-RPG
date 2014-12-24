@@ -11,7 +11,7 @@ public class Base {
 	}
 	
 	public static BaseScriptExecutor changeSelf(final Script script,final Class<? extends Script> newScript){
-		return script.add((BaseScriptExecutor)()->{
+		return script.add(()->{
 			String callType=script.callType;
 			script.npc.scripts.remove(callType);
 			script.npc.scripts.put(callType, newScript);

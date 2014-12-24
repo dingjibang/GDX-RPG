@@ -28,7 +28,4 @@ public abstract class Hero extends IRPGObject {
 		this.waitWhenCollide=false;
 	}
 	
-	public void draw(SpriteBatch batch,float alpha){
-		this.getCurrentImage().draw(batch);
-	}
 }

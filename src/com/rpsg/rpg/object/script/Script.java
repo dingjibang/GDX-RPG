@@ -143,4 +143,6 @@ public abstract class Script implements MsgType,FGType{
 	protected BaseScriptExecutor showFGRight(String people,String look){
 		return FG.show(this, Setting.GAME_RES_IMAGE_FG+people+look+".png", FG.RIGHT);
 	}
+	
+	
 }

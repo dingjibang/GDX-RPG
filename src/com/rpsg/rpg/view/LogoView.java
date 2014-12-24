@@ -63,7 +63,11 @@ public class LogoView extends IView{
 
 	@Override
 	public void dispose() {
-		
+		bg.dispose();
+		logo.dispose();
+		flash1.dispose();
+		flash2.dispose();
+		logos.dispose();
 	}
 
 	
