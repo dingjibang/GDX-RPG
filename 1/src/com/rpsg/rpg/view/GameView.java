@@ -1,8 +1,8 @@
 package com.rpsg.rpg.view;
 
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.loaders.resolvers.ExternalFileHandleResolver;
+import box2dLight.RayHandler;
+
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -22,7 +22,6 @@ import com.rpsg.rpg.system.control.InputControler;
 import com.rpsg.rpg.system.control.MapControler;
 import com.rpsg.rpg.system.control.MoveControler;
 import com.rpsg.rpg.utils.display.Msg;
-import com.rpsg.rpg.utils.game.GameUtil;
 public class GameView extends IView{
 	
 	public OrthogonalTiledMapRenderer render;
@@ -31,13 +30,16 @@ public class GameView extends IView{
 	public static boolean inited=false;
 	public Global global=GameViews.global;
 	public OrthographicCamera camera;
+	public RayHandler ray;
 	
 	@Override
 	public void init() {
+//		ray=new RayHandler(new ());
 		stage = new Stage();
 		camera=(OrthographicCamera) stage.getCamera();
 		map=new TmxMapLoader().load(Setting.GAME_RES_MAP + global.map);
 		render = new OrthogonalTiledMapRenderer(map);
+		render.setView(camera);
 		Initialization.init(this);
 		inited=true;
 	}
@@ -49,6 +51,7 @@ public class GameView extends IView{
 		render.dispose();
 		Msg.dispose();
 		ResourcePool.dispose();
+		map.dispose();
 		System.gc();
 	}
 
