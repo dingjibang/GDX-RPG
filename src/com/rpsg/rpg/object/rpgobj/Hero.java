@@ -3,7 +3,6 @@ package com.rpsg.rpg.object.rpgobj;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.core.Setting;
 
 public abstract class Hero extends IRPGObject {

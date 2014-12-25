@@ -13,12 +13,14 @@ public class Font {
 		return fs==size && font.containsCharacter(c);
 	}
 
+	@SuppressWarnings("deprecation")
 	public static Font generateFont(String chars, int size) {
 		Font f=new Font();
 		f.size = size;
-		f.font = FontUtil.generator.generateFont(size,chars,false);
+		f.font = FontUtil.generator.generateFont(size*2,chars,false);
 		if(Setting.DISPLAY_ANTI_ALIASING)
 			f.font.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		f.font.setScale(0.5f);;
 		return f;
 	}
 	
