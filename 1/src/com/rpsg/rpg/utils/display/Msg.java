@@ -105,7 +105,7 @@ public class Msg {
 			if(msgbox.getColor().a>0)
 				msgbox.setColor(1,1,1,msgbox.getColor().a-=0.2f);
 		if(msgbox.getColor().a>0){
-			GameUtil.resetBacth(batch);
+//			GameUtil.resetBacth(batch);
 			msgbox.draw(batch);
 		}
 	}

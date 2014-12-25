@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.text.Font;
+import com.rpsg.rpg.utils.display.shader.DistanceFieldShader;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.StringUtil;
 
@@ -17,7 +18,7 @@ public class FontUtil {
 	public static final FreeTypeFontGenerator generator=new FreeTypeFontGenerator(Gdx.files.internal("data/font/msyh.ttf"));
 	
 	static int x,y,w;
-	
+	static DistanceFieldShader distanceFieldShader = new DistanceFieldShader();
 	public static void init(){
 	}
 	
@@ -61,7 +62,10 @@ public class FontUtil {
 			currentX+=fontsize+paddinglr;
 			BitmapFont f=getFont(fontsize, c);
 			f.setColor(color);
+			distanceFieldShader.setSmoothing(0.4f);
+//			sb.setShader(distanceFieldShader);
 			f.draw(sb, new String(new char[]{c}), currentX, currentY);
+//			sb.setShader(null);
 		}
 	}
 	public static void draw(SpriteBatch sb,String str,int fontsize,Color color,int x,int y,int width){

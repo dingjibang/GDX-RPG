@@ -7,14 +7,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.game.hero.Flandre;
 import com.rpsg.rpg.game.hero.Marisa;
 import com.rpsg.rpg.game.hero.Reimu;
@@ -24,8 +24,6 @@ import com.rpsg.rpg.object.rpgobj.NPC;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.ThreadPool;
 import com.rpsg.rpg.utils.display.ColorUtil;
-import com.rpsg.rpg.utils.display.FG;
-import com.rpsg.rpg.utils.display.Msg;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
@@ -50,6 +48,10 @@ public class MapControler {
 		}
 		HeroControler.initHeros(gv.stage);
 		ColorUtil.currentColor=new Color(gv.global.mapColor);
+		
+		if(Setting.DISPLAY_ANTI_ALIASING)
+			gv.map.getTileSets().forEach((s)->s.forEach((tile)->tile.getTextureRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear)));
+		
 		if(gv.global.npcs.isEmpty()){
 			List<MapLayer> removeList=new ArrayList<MapLayer>();
 			for(int i=0;i<gv.map.getLayers().getCount();i++){
@@ -58,14 +60,14 @@ public class MapControler {
 					if(obj.getProperties().get("type").equals("NPC")){
 						try {
 							npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.getName()).getConstructor(String.class,Integer.class,Integer.class)
-									.newInstance(
-											obj.getProperties().get("IMAGE")+".png",
-											(int)(((RectangleMapObject)obj).getRectangle().getWidth()),
-											(int)(((RectangleMapObject)obj).getRectangle().getHeight())
-									);
+								.newInstance(
+									obj.getProperties().get("IMAGE")+".png",
+									(int)(((RectangleMapObject)obj).getRectangle().getWidth()),
+									(int)(((RectangleMapObject)obj).getRectangle().getHeight())
+								);
 							npc.init();
 							npc.generatePosition((int)((int)(((RectangleMapObject)obj).getRectangle().getX())/48),
-									(int)((int)(((RectangleMapObject)obj).getRectangle().getY())/48), i-1);
+												 (int)((int)(((RectangleMapObject)obj).getRectangle().getY())/48), i-1);
 							System.out.println(npc.position+","+npc.mapx+":"+npc.mapy);
 							gv.stage.addActor(npc);
 							ThreadPool.pool.add(npc.threadPool);
@@ -99,17 +101,17 @@ public class MapControler {
 				npc=n;
 			}
 		}
+		
+		
 	}
 	
-	public synchronized static void draw(SpriteBatch batch,GameView gv){
+	public synchronized static void draw(GameView gv){
 		int size=gv.map.getLayers().getCount();
 		for(int i=0;i<size;i++){
 			drawlist.clear();
-			batch.end();
 			gv.render.setView(gv.camera);
 			gv.render.getBatch().setColor(ColorUtil.currentColor);
 			gv.render.render(new int[]{i});
-			batch.begin();
 			SpriteBatch sb=(SpriteBatch) gv.stage.getBatch();
 			sb.begin();
 			sb.setProjectionMatrix(gv.camera.combined);
@@ -126,8 +128,6 @@ public class MapControler {
 			}
 			sb.end();
 		}
-		FG.draw(batch);
-		Msg.draw(batch);
 //		System.out.println(hero.getX()+" "+hero.getY()+" "+gv.camera.position.x+" "+gv.camera.position.y+" "+hero.mapx+" "+hero.mapy);
 	}
 	
