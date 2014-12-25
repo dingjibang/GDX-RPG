@@ -17,10 +17,11 @@ public class Font {
 	public static Font generateFont(String chars, int size) {
 		Font f=new Font();
 		f.size = size;
-		f.font = FontUtil.generator.generateFont(size*2,chars,false);
-		if(Setting.DISPLAY_ANTI_ALIASING)
+		f.font = FontUtil.generator.generateFont(size*(Setting.DISPLAY_ANTI_ALIASING?2:1),chars,false);
+		if(Setting.DISPLAY_ANTI_ALIASING){
 			f.font.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
-		f.font.setScale(0.5f);;
+			f.font.setScale(0.5f);
+		}
 		return f;
 	}
 	
