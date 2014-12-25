@@ -31,24 +31,25 @@ public class Collide implements Serializable {
 	}
 	
 	public void testCollide(int x,int y,TiledMapTileLayer layer,Array<Actor> list,IRPGObject mine){
-			left=!(x==0 || getID(layer, x-1, y)!=0);
-			right=!(x==layer.getTileHeight()-1 ||getID(layer, x+1, y)!=0);
-			top=!(y==0 || getID(layer, x, y-1)!=0);
-			bottom=!(y==layer.getTileWidth()-1 || getID(layer, x, y+1)!=0);
-			for(int i=0;i<list.size;i++){
-				Actor a=list.get(i);
-				if(a instanceof IRPGObject && ((IRPGObject)a).enableCollide && ((IRPGObject)a).layer==mine.layer){
-					IRPGObject o=((IRPGObject)a);
-					if(mine.mapx+1==o.mapx && mine.mapy==o.mapy)
-						right=false;
-					if(mine.mapx-1==o.mapx && mine.mapy==o.mapy)
-						left=false;
-					if(mine.mapy-1==o.mapy && mine.mapx==o.mapx)
-						top=false;
-					if(mine.mapy+1==o.mapy && mine.mapx==o.mapx)
-						bottom=false;
-				}
+		int maph=layer.getHeight();
+		left=!(x<=0 || getID(layer, x-1, maph-y-1)!=0);
+		right=!(x>=layer.getWidth()-1 || getID(layer, x+1, maph-y-1)!=0);
+		top=!(y<=0 || getID(layer, x, maph-(y))!=0);
+		bottom=!(y>=layer.getHeight()-1 || getID(layer, x,maph-(y+2))!=0);
+		for(int i=0;i<list.size;i++){
+			Actor a=list.get(i);
+			if(a instanceof IRPGObject && ((IRPGObject)a).enableCollide && ((IRPGObject)a).layer==mine.layer){
+				IRPGObject o=((IRPGObject)a);
+				if(mine.mapx+1==o.mapx && mine.mapy==o.mapy)
+					right=false;
+				if(mine.mapx-1==o.mapx && mine.mapy==o.mapy)
+					left=false;
+				if(mine.mapy-1==o.mapy && mine.mapx==o.mapx)
+					top=false;
+				if(mine.mapy+1==o.mapy && mine.mapx==o.mapx)
+					bottom=false;
 			}
+		}
 	}
 	private static List<ScriptCollide> l=new ArrayList<ScriptCollide>();
 	public static List<ScriptCollide> testNPCCollide(GameView gv,IRPGObject mine,Array<Actor> list){

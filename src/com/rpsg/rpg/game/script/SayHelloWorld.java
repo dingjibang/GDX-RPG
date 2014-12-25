@@ -2,7 +2,8 @@ package com.rpsg.rpg.game.script;
 
 import com.rpsg.rpg.game.hero.Flandre;
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.utils.game.Heros;
+import com.rpsg.rpg.utils.display.ColorUtil;
+import com.rpsg.rpg.view.GameViews;
 
 public class SayHelloWorld extends Script{
 	
@@ -11,8 +12,15 @@ public class SayHelloWorld extends Script{
 //		showMSG();
 //		say(GameViews.global.test+"");
 //		hideMSG();
-		Heros.swapHeroQueue(this, Flandre.class);
-		Heros.swapHeroQueue(this, 1, 3);
+//		swapHeroQueue(Flandre.class);
+		if(++GameViews.global.day>2)
+			GameViews.global.day=0;
+		if(GameViews.global.day==0)
+			ColorUtil.set(this, ColorUtil.day);
+		else if(GameViews.global.day==1)
+			ColorUtil.set(this, ColorUtil.dusk);
+		else
+			ColorUtil.set(this, ColorUtil.night);
 //		add(()->a=999);
 //		a=998;
 //		showMSG(¾õ);

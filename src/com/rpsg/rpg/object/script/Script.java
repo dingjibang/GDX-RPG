@@ -6,10 +6,12 @@ import java.util.List;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.FGType;
 import com.rpsg.rpg.object.base.MsgType;
+import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.object.rpgobj.NPC;
 import com.rpsg.rpg.utils.display.FG;
 import com.rpsg.rpg.utils.display.Msg;
 import com.rpsg.rpg.utils.game.Base;
+import com.rpsg.rpg.utils.game.Heros;
 import com.rpsg.rpg.utils.game.Move;
 import com.rpsg.rpg.utils.game.Timer;
 
@@ -144,5 +146,19 @@ public abstract class Script implements MsgType,FGType{
 		return FG.show(this, Setting.GAME_RES_IMAGE_FG+people+look+".png", FG.RIGHT);
 	}
 	
+	protected BaseScriptExecutor swapHeroQueue(int position){
+		return Heros.swapHeroQueue(this, position);
+	}
 	
+	protected BaseScriptExecutor swapHeroQueue(Class<? extends Hero> c){
+		return Heros.swapHeroQueue(this, c);
+	}
+	
+	protected BaseScriptExecutor swapHeroQueue(int position,int position2){
+		return Heros.swapHeroQueue(this, position, position2);
+	}
+	
+	protected BaseScriptExecutor swapHeroQueue(Class<? extends Hero> c1,Class<? extends Hero> c2){
+		return Heros.swapHeroQueue(this, c1 , c2);
+	}
 }

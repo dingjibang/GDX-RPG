@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.object.rpgobj.Hero;
-import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
 public class HeroControler {
