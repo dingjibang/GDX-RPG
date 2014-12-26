@@ -31,6 +31,7 @@ import com.rpsg.rpg.system.control.MapControler;
 import com.rpsg.rpg.system.control.MoveControler;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.Msg;
+import com.rpsg.rpg.utils.display.RadarUtil;
 public class GameView extends IView{
 	
 	public OrthogonalTiledMapRenderer render;
@@ -66,6 +67,7 @@ public class GameView extends IView{
 		PolygonShape shape=new PolygonShape();
 		shape.setAsBox(12, 1);
 		body.createFixture(shape, 0);
+		
 		Initialization.init(this);
 		
 	}
@@ -92,6 +94,7 @@ public class GameView extends IView{
 		ThreadPool.logic();
 		ColorUtil.drawhover(batch);
 		debug.render(world, stage.getCamera().combined);
+		RadarUtil.draw();
 	}
 
 	@Override
@@ -103,6 +106,8 @@ public class GameView extends IView{
 				i.act(0);
 		HeroControler.act();
 		MoveControler.logic(this);
+		
+		RadarUtil.reinit();
 	}
 
 	public void onkeyTyped(char character) {
