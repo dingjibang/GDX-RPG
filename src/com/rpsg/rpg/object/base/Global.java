@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.badlogic.gdx.graphics.Color;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.object.rpgobj.NPC;
+import com.rpsg.rpg.utils.display.ColorUtil;
 
 public class Global implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -15,7 +15,7 @@ public class Global implements Serializable{
 	public List<Hero> currentHeros=new ArrayList<Hero>();
 	public List<Hero> heros=new ArrayList<Hero>();
 	public int day=0;
-	public int mapColor=Color.WHITE.toIntBits();
+	public int mapColor = ColorUtil.DAY;
 	
 }
 

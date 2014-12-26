@@ -6,13 +6,14 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.badlogic.gdx.graphics.Color;
+import box2dLight.PointLight;
+
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.game.hero.Flandre;
@@ -34,6 +35,7 @@ public class MapControler {
 	public static List<IRPGObject> drawlist=new ArrayList<IRPGObject>();
 	public static NPC npc;
 	public static void init(GameView gv){
+		//初始化角色
 		HeroControler.initControler();
 		if(gv.global.heros.isEmpty()){
 			HeroControler.newHero(Marisa.class);
@@ -44,18 +46,36 @@ public class MapControler {
 			HeroControler.addHero(Flandre.class);
 			HeroControler.newHero(Yuuka.class);
 			HeroControler.addHero(Yuuka.class);
-			HeroControler.generatePosition(10,10,1);
+			HeroControler.generatePosition(1,12,2);
 		}
 		HeroControler.initHeros(gv.stage);
-		ColorUtil.currentColor=new Color(gv.global.mapColor);
+		ColorUtil.currentColor=gv.global.mapColor;
 		
+		//设置抗锯齿
 		if(Setting.DISPLAY_ANTI_ALIASING)
 			gv.map.getTileSets().forEach((s)->s.forEach((tile)->tile.getTextureRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear)));
 		
+		//获取灯光
+		for(int i=0;i<gv.map.getLayers().getCount();i++){
+			MapLayer m = gv.map.getLayers().get(i);
+			for(MapObject obj:m.getObjects()){
+				if (obj.getProperties().get("type").equals("LIGHT")){
+					PointLight pl= new PointLight(gv.ray,20);
+					pl.setDistance(Float.parseFloat((String)obj.getProperties().get("STRENGTH")));
+					pl.setPosition((int)(((RectangleMapObject)obj).getRectangle().getX()+24),
+								(int)(((RectangleMapObject)obj).getRectangle().getY()+((RectangleMapObject)obj).getRectangle().getHeight())+24);
+				}
+			}
+		}
+		
+		//生成NPC
 		if(gv.global.npcs.isEmpty()){
 			List<MapLayer> removeList=new ArrayList<MapLayer>();
 			for(int i=0;i<gv.map.getLayers().getCount();i++){
-				MapLayer m=gv.map.getLayers().get(i);
+				TiledMapTileLayer bot=(TiledMapTileLayer) gv.map.getLayers().get(0);
+				 MapLayer m = gv.map.getLayers().get(i);
+				if(m.getObjects().getCount()!=0)
+					removeList.add(m);
 				for(MapObject obj:m.getObjects()){
 					if(obj.getProperties().get("type").equals("NPC")){
 						try {
@@ -66,9 +86,10 @@ public class MapControler {
 									(int)(((RectangleMapObject)obj).getRectangle().getHeight())
 								);
 							npc.init();
-							npc.generatePosition((int)((int)(((RectangleMapObject)obj).getRectangle().getX())/48),
-												 (int)((int)(((RectangleMapObject)obj).getRectangle().getY())/48), i-1);
-							System.out.println(npc.position+","+npc.mapx+":"+npc.mapy);
+							npc.generatePosition(((int)(((RectangleMapObject)obj).getRectangle().getX())/48),
+									 (int)(bot.getHeight()-2-((RectangleMapObject)obj).getRectangle().getY()/48),
+									 i-removeList.size());
+							System.out.println(npc.position+","+npc.mapx+":"+npc.mapy);/**debug**/
 							gv.stage.addActor(npc);
 							ThreadPool.pool.add(npc.threadPool);
 						} catch (Exception e) {
@@ -76,8 +97,6 @@ public class MapControler {
 						}
 					}
 				}
-				if(m.getObjects().getCount()!=0)
-					removeList.add(m);
 			}
 			for(MapLayer l:removeList){
 				gv.map.getLayers().remove(l);
@@ -102,7 +121,6 @@ public class MapControler {
 			}
 		}
 		
-		
 	}
 	
 	public synchronized static void draw(GameView gv){
@@ -110,7 +128,6 @@ public class MapControler {
 		for(int i=0;i<size;i++){
 			drawlist.clear();
 			gv.render.setView(gv.camera);
-			gv.render.getBatch().setColor(ColorUtil.currentColor);
 			gv.render.render(new int[]{i});
 			SpriteBatch sb=(SpriteBatch) gv.stage.getBatch();
 			sb.begin();
@@ -123,7 +140,6 @@ public class MapControler {
 				}
 			Collections.sort(drawlist);
 			for(IRPGObject ir:drawlist){
-				ir.setColor(ColorUtil.currentColor);
 				ir.draw(sb, 1f);
 			}
 			sb.end();

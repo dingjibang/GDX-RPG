@@ -46,7 +46,7 @@ public class Msg {
 	private static int DISPLAY_OFFSET=0;
 	static boolean show=false;
 	public static BaseScriptExecutor say(final Script script,final String str,final String title,final int size){
-		return script.add(new ScriptExecutor(script) {
+		return script.$(new ScriptExecutor(script) {
 			SpriteBatch batch=GameViews.batch;
 			public void step() {
 				if(Input.isPress(Keys.CONTROL_LEFT))
@@ -74,7 +74,7 @@ public class Msg {
 	}
 	
 	public static BaseScriptExecutor setKeyLocker(Script script,final boolean flag){
-		return script.add(()->{
+		return script.$(()->{
 			InputControler.currentIOMode=flag?IOMode.MAP_INPUT_MESSAGING:IOMode.MAP_INPUT_NORMAL;
 		});
 	}
@@ -85,14 +85,14 @@ public class Msg {
 	}
 	
 	public static BaseScriptExecutor show(Script script,final String msgType){
-		return script.add(()->{
+		return script.$(()->{
 			show=true;
 			msgbox.setDrawable(ResourcePool.get(Setting.GAME_RES_MESSAGE+msgType).getDrawable());
 		});
 	}
 	
 	public static BaseScriptExecutor hide(Script script){
-		return script.add(()->{
+		return script.$(()->{
 			show=false;
 		});
 	}

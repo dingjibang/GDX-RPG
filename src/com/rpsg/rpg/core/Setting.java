@@ -18,7 +18,7 @@ public class Setting {
 	public static final String GAME_RES_WALK=GAME_RES_PATH+GAME_RES_IMAGE+"/walk/";
 	public static final String GAME_RES_SHADER=GAME_RES_PATH+"/shader/";
 	//ºËÐÄ
-	public static boolean DISPLAY_ANTI_ALIASING=false;
+	public static boolean DISPLAY_ANTI_ALIASING=true;
 	public static final int DRAW_MULTI_STRING_PADDING_TB=3;
 	public static final int STRING_PADDING_LR=1;
 }
