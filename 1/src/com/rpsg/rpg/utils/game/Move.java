@@ -7,7 +7,7 @@ import com.rpsg.rpg.system.control.HeroControler;
 
 public class Move {
 	public static BaseScriptExecutor move(Script script,final int step){
-		return script.add(new ScriptExecutor(script) {
+		return script.$(new ScriptExecutor(script) {
 			public void step() {
 				if(script.npc.walkStack.size()==0)
 					this.dispose();
@@ -19,13 +19,13 @@ public class Move {
 	}
 	
 	public static BaseScriptExecutor turn(Script script,final int faceTo){
-		return script.add((BaseScriptExecutor)()->{
+		return script.$((BaseScriptExecutor)()->{
 			script.npc.turn(faceTo);
 		});
 	}
 	
 	public static BaseScriptExecutor faceToHero(Script script){
-		return script.add((BaseScriptExecutor)()->{
+		return script.$((BaseScriptExecutor)()->{
 				script.npc.turn(HeroControler.getHeadHero().getReverseFace());
 		});
 	}

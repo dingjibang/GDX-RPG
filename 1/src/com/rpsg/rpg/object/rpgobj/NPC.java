@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.script.EasyScript;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptCollide;
 
@@ -56,12 +57,16 @@ public abstract class NPC extends IRPGObject{
 	
 	public Script getScript(String type,NPC npc){
 		try {
-			Script n=npc.scripts.get(type).newInstance();
-			n.generate(npc,type);
+			Script n;
+			if(scripts.get(type).equals(EasyScript.class)){
+				n=npc.scripts.get(type).newInstance();
+				n.generate(npc,type);
+			}else{
+				n=npc.scripts.get(type).newInstance();
+				n.generate(npc,type);
+			}
 			return n;
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;

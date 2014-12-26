@@ -8,6 +8,7 @@ import com.rpsg.rpg.object.base.FGType;
 import com.rpsg.rpg.object.base.MsgType;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.object.rpgobj.NPC;
+import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FG;
 import com.rpsg.rpg.utils.display.Msg;
 import com.rpsg.rpg.utils.game.Base;
@@ -71,13 +72,13 @@ public abstract class Script implements MsgType,FGType{
 	}
 	
 	
-	public BaseScriptExecutor insert(BaseScriptExecutor exe){
+	public BaseScriptExecutor _$(BaseScriptExecutor exe){
 		scripts.remove(scripts.size()-1);
 		scripts.add(point+1, exe);
 		return exe;
 	}
 	
-	public BaseScriptExecutor add (BaseScriptExecutor exe){
+	public BaseScriptExecutor $ (BaseScriptExecutor exe){
 		scripts.add(exe);
 		return exe;
 	}
@@ -160,5 +161,9 @@ public abstract class Script implements MsgType,FGType{
 	
 	protected BaseScriptExecutor swapHeroQueue(Class<? extends Hero> c1,Class<? extends Hero> c2){
 		return Heros.swapHeroQueue(this, c1 , c2);
+	}
+	
+	protected BaseScriptExecutor setGameTime(int color){
+		return ColorUtil.set(this, color);
 	}
 }

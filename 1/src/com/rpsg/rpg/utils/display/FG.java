@@ -26,7 +26,7 @@ public class FG {
 	}
 	
 	public static BaseScriptExecutor show(final Script script,final String imgPath,final int position){
-		return script.add((BaseScriptExecutor)()->{
+		return script.$((BaseScriptExecutor)()->{
 			if(position==LEFT){
 				boolean nul=currentImageL==null;
 				currentImageL=ResourcePool.get(imgPath);
@@ -48,7 +48,7 @@ public class FG {
 	}
 	
 	public static BaseScriptExecutor hide(final Script script,final String imgPath,final int position){
-		return script.add((BaseScriptExecutor)()->{
+		return script.$((BaseScriptExecutor)()->{
 			if(position==LEFT)
 				currentImageL=null;
 			else
@@ -57,14 +57,14 @@ public class FG {
 	}
 	
 	public static BaseScriptExecutor hideAll(final Script script){
-		return script.add((BaseScriptExecutor)()->{
+		return script.$((BaseScriptExecutor)()->{
 			leftFade=false;
 			rightFade=false;
 		});
 	}
 	
 	public static BaseScriptExecutor hide(final Script script,final int position){
-		return script.add((BaseScriptExecutor)()->{
+		return script.$((BaseScriptExecutor)()->{
 			if(position==LEFT)
 				leftFade=false;
 			else

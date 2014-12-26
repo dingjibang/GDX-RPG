@@ -1,7 +1,7 @@
 package com.rpsg.rpg.view;
 
 
-import box2dLight.PointLight;
+
 import box2dLight.RayHandler;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -10,6 +10,10 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -25,6 +29,7 @@ import com.rpsg.rpg.system.control.HeroControler;
 import com.rpsg.rpg.system.control.InputControler;
 import com.rpsg.rpg.system.control.MapControler;
 import com.rpsg.rpg.system.control.MoveControler;
+import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.Msg;
 public class GameView extends IView{
 	
@@ -35,8 +40,10 @@ public class GameView extends IView{
 	public Global global=GameViews.global;
 	public OrthographicCamera camera;
 	public RayHandler ray;
-	public PointLight pl;
 	public World world;
+	public Box2DDebugRenderer debug;
+	public Body body;
+	public BodyDef def;
 	@Override
 	public void init() {
 		RayHandler.setGammaCorrection(true);
@@ -48,9 +55,17 @@ public class GameView extends IView{
 		render.setView(camera);
 		world=new World(new Vector2(0,0),true);
 		ray=new RayHandler(world);
-		pl=new PointLight(ray,30);
 		inited=true;
 		
+		debug=new Box2DDebugRenderer();
+		BodyDef def=new BodyDef();
+		def.type=com.badlogic.gdx.physics.box2d.BodyDef.BodyType.DynamicBody;
+		def.bullet=true;
+		body=world.createBody(def);
+		
+		PolygonShape shape=new PolygonShape();
+		shape.setAsBox(12, 1);
+		body.createFixture(shape, 0);
 		Initialization.init(this);
 		
 	}
@@ -69,26 +84,14 @@ public class GameView extends IView{
 
 	@Override
 	public void draw(SpriteBatch batch) {
-		//		System.out.println(ThreadPool.pool);
-//		render.render(camera,0,batch);
-//		render.render(camera,1,batch);
+		body.setTransform(HeroControler.getHeadHero().position.x+20,HeroControler.getHeadHero().position.y, 0);
 		MapControler.draw(this);
-		pl.setDistance(800);
-//		ray.setBlur(true);
-		pl.setPosition(145,310);
 //		ray.setShadows(true);
-		ray.setAmbientLight(0.3f,0.3f,0.6f,0.3f);
-		ray.setCombinedMatrix(camera.combined);
-		ray.updateAndRender();
+		ColorUtil.draw(batch);
 		DrawControl.draw(batch);
 		ThreadPool.logic();
-		ray.setAmbientLight(0.8f,0.8f,0.8f,1);
-		ray.render();
-//		ren.render(world, camera.combined);
-//		stage.draw();
-//		render.render(camera,new int[]{0});
-//		render.render(camera,new int[]{0});
-//		render.render(camera,new int[]{1});
+		ColorUtil.drawhover(batch);
+		debug.render(world, stage.getCamera().combined);
 	}
 
 	@Override

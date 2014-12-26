@@ -12,14 +12,16 @@ public class SayHelloWorld extends Script{
 //		say(GameViews.global.test+"");
 //		hideMSG();
 //		swapHeroQueue(Flandre.class);
-		if(++GameViews.global.day>2)
-			GameViews.global.day=0;
-		if(GameViews.global.day==0)
-			ColorUtil.set(this, ColorUtil.day);
-		else if(GameViews.global.day==1)
-			ColorUtil.set(this, ColorUtil.dusk);
-		else
-			ColorUtil.set(this, ColorUtil.night);
+		$(()->{
+			if(++GameViews.global.day>2)
+				GameViews.global.day=0;
+			if(GameViews.global.day==0)
+				_$(setGameTime(ColorUtil.DAY));
+			else if(GameViews.global.day==1)
+				_$(setGameTime(ColorUtil.DUSK));
+			else
+				_$(setGameTime(ColorUtil.NIGHT));
+		});
 //		add(()->a=999);
 //		a=998;
 //		showMSG(¾õ);
