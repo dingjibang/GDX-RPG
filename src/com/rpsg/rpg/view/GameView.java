@@ -93,7 +93,7 @@ public class GameView extends IView{
 		DrawControl.draw(batch);
 		ThreadPool.logic();
 		ColorUtil.drawhover(batch);
-		debug.render(world, stage.getCamera().combined);
+//		debug.render(world, stage.getCamera().combined);
 		RadarUtil.draw();
 	}
 
@@ -107,7 +107,7 @@ public class GameView extends IView{
 		HeroControler.act();
 		MoveControler.logic(this);
 		
-		RadarUtil.reinit();
+		RadarUtil.draw();
 	}
 
 	public void onkeyTyped(char character) {

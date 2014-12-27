@@ -37,7 +37,6 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	
 	public boolean waitWhenCollide=true; 
 	public boolean enableCollide=true;
-	public boolean walkAble=true;
 	
 	public Collide collide=new Collide();
 	
