@@ -1,4 +1,4 @@
-package com.rpsg.rpg.system.base;
+package com.rpsg.rpg.object.base;
 
 public class IOMode {
 	public static final int MAP_INPUT_NORMAL=0x00;

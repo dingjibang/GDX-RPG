@@ -46,7 +46,7 @@ public class MapControler {
 			HeroControler.addHero(Flandre.class);
 			HeroControler.newHero(Yuuka.class);
 			HeroControler.addHero(Yuuka.class);
-			HeroControler.generatePosition(1,12,1);
+			HeroControler.generatePosition(1,12,2);
 		}
 		HeroControler.initHeros(gv.stage);
 		ColorUtil.currentColor=gv.global.mapColor;
