@@ -113,6 +113,7 @@ public class Collide implements Serializable {
 	}
 	
 	private static boolean testNear(IRPGObject mine,NPC o){
+//		System.out.println(o.layer);
 		return testLayer(mine, o) && ((
 					(mine.mapx-1==o.mapx && mine.mapy==o.mapy) 
 					|| (mine.mapx+1==o.mapx && mine.mapy==o.mapy)

@@ -44,6 +44,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public int bodyWidth,bodyHeight;
 	public List<Walker> walkStack=new ArrayList<Walker>(); 
 	
+	
 	public Image getCurrentImage(){
 		images[getCurrentFoot()].setPosition(position.x, position.y);
 		return images[getCurrentFoot()];
@@ -209,6 +210,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 					lastZ=this.layer;
 					lastFace=this.getCurrentFace();
 					lastWalkSize=walkStack.get(0).step;
+					
 					switch(getCurrentFace()){
 					case FACE_D:{mapy++;break;}
 					case FACE_U:{mapy--;break;}
@@ -276,7 +278,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		this.mapx=mapx;
 		this.mapy= mapy;
 		this.layer=layer;
-		this.position=new Vector2(mapx*48,(l.getHeight()-mapy-1)*48);
+		this.position=new Vector2(mapx*48,(l.getHeight()-this.mapy-1)*48);
 		lastPosition=new Vector2(this.position);
 		return this;
 	}

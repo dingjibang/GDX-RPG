@@ -13,7 +13,6 @@ public class SaveLoad {
 		global.npcs=MapControler.getNPCs();
 		global.heros=HeroControler.allHeros;
 		global.currentHeros=HeroControler.heros;
-		global.mapColor=ColorUtil.currentColor;
 		FileIO.save(global);
 	}
 	

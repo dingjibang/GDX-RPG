@@ -12,19 +12,27 @@ public class ThreadPool {
 	public static List<List<Script>> pool =new LinkedList<List<Script>>();
 	
 	private static List<Script> removeList=new ArrayList<Script>();
-	public static void logic(){
-		for(List<Script> list:pool){
-			removeList.clear();
-			for(Script s:list)
-				if(s.isAlive)
-					s.run();
-				else
-					removeList.add(s);
-			list.removeAll(removeList);
+	public static synchronized void logic(){
+		removeList.clear();
+		try{
+			for(int i=0;i<pool.size();i++){
+				List<Script> list=pool.get(i);
+				for(Script s:list)
+					if(s.isAlive)
+						s.run();
+					else
+						removeList.add(s);
+				list.removeAll(removeList);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 	
-	public static void init(){
+	public static synchronized void init(){
+		for(int i=0;i<pool.size();i++){
+			pool.get(i).clear();
+		}
 		pool.clear();
 	}
 }

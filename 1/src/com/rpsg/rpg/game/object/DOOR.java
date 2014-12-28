@@ -1,5 +1,7 @@
 package com.rpsg.rpg.game.object;
 
+import com.rpsg.rpg.game.script.Door;
+import com.rpsg.rpg.game.script.Teleporter;
 import com.rpsg.rpg.object.rpgobj.DefaultNPC;
 
 public class DOOR extends DefaultNPC{
@@ -12,7 +14,9 @@ public class DOOR extends DefaultNPC{
 
 	@Override
 	public void init() {
-		this.waitWhenCollide=true;
+		this.enableCollide=false;
+		scripts.put(COLLIDE_NAME_NEAR, Door.class);
+		scripts.put(COLLIDE_NAME_FOOT,Teleporter.class);
 	}
 	
 }

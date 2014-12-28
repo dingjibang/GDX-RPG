@@ -10,10 +10,6 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -42,9 +38,6 @@ public class GameView extends IView{
 	public OrthographicCamera camera;
 	public RayHandler ray;
 	public World world;
-	public Box2DDebugRenderer debug;
-	public Body body;
-	public BodyDef def;
 	@Override
 	public void init() {
 		RayHandler.setGammaCorrection(true);
@@ -57,16 +50,6 @@ public class GameView extends IView{
 		world=new World(new Vector2(0,0),true);
 		ray=new RayHandler(world);
 		inited=true;
-		
-		debug=new Box2DDebugRenderer();
-		BodyDef def=new BodyDef();
-		def.type=com.badlogic.gdx.physics.box2d.BodyDef.BodyType.DynamicBody;
-		def.bullet=true;
-		body=world.createBody(def);
-		
-		PolygonShape shape=new PolygonShape();
-		shape.setAsBox(12, 1);
-		body.createFixture(shape, 0);
 		
 		Initialization.init(this);
 		
@@ -81,20 +64,18 @@ public class GameView extends IView{
 		ResourcePool.dispose();
 		map.dispose();
 		ray.dispose();
+		world.dispose();
 		System.gc();
 	}
 
 	@Override
 	public void draw(SpriteBatch batch) {
-		body.setTransform(HeroControler.getHeadHero().position.x+20,HeroControler.getHeadHero().position.y, 0);
 		MapControler.draw(this);
-//		ray.setShadows(true);
 		ColorUtil.draw(batch);
 		DrawControl.draw(batch);
 		ThreadPool.logic();
 		ColorUtil.drawhover(batch);
-//		debug.render(world, stage.getCamera().combined);
-		RadarUtil.draw();
+//		RadarUtil.draw();
 	}
 
 	@Override
@@ -108,6 +89,7 @@ public class GameView extends IView{
 		MoveControler.logic(this);
 		
 		RadarUtil.draw();
+//		System.out.println(HeroControler.getHeadHero().layer);
 	}
 
 	public void onkeyTyped(char character) {
