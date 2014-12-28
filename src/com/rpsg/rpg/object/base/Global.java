@@ -17,5 +17,9 @@ public class Global implements Serializable{
 	public int day=0;
 	public int mapColor = ColorUtil.DAY;
 	
+	public int x=0;
+	public int y=17;
+	public int z=2;
+	
 }
 

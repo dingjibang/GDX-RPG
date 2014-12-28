@@ -1,7 +1,5 @@
 package com.rpsg.rpg.object.rpgobj;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import com.rpsg.rpg.core.Setting;
 
@@ -11,8 +9,6 @@ public abstract class Hero extends IRPGObject {
 	public static final int HERO_WIDTH=48;
 	public static final int HERO_HEIGHT=64;
 	public static final String RES_PATH=Setting.GAME_RES_WALK+"heros/";
-	
-	public List<IRPGObject> ants=new ArrayList<IRPGObject>();
 	
 	public Hero() {
 		super();

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="13" tilewidth="48" tileheight="48">
+ <tileset firstgid="1" name="glo" tilewidth="48" tileheight="48">
+  <image source="glo.png" width="96" height="96"/>
+ </tileset>
+ <tileset firstgid="5" name="Environment-3" tilewidth="48" tileheight="48">
+  <image source="Environment-3.png" width="384" height="2880"/>
+ </tileset>
+ <tileset firstgid="485" name="inner" tilewidth="48" tileheight="48">
+  <image source="inner.png" width="384" height="10512"/>
+ </tileset>
+ <tileset firstgid="2237" name="inner2" tilewidth="48" tileheight="48">
+  <image source="inner2.png" width="384" height="9792"/>
+ </tileset>
+ <layer name="块层 1" width="15" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGHrgK+MoHsXYMaF0gw8AAII3s60MAwAA
+  </data>
+ </layer>
+ <layer name="块层 4" width="15" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGBxgJhMDwywgnsqEEAOxpwHxdCZUtXOB/HlAPB8qvhBIL2JCFUdmL2BCqJnOQz8/DSawl5eBYR8Q7+clT/8KAvrOAcP1/BAPWwAwWfehDAMAAA==
+  </data>
+ </layer>
+ <layer name="块层 6" width="15" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGBxgLRcDwzogXs+FXf42DnEQ2AqU2wbE26FqlgPpF0D8Eohf4dE3CkYBMgAA516apAwDAAA=
+  </data>
+ </layer>
+ <layer name="块层 2" width="15" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGBgwlYmBYRoQTwfi2UC8louBYR0Qr+dCiD8Ash8C8SMgngHkzwTiWUDcz0OaXY+B+o8D8Qku0t35mgw9tABLeRkYtgLxNiDezkueGQsI6DsGDNfjJIYtOjhCoX5KwV08mJA8AJoAtr0MAwAA
+  </data>
+ </layer>
+ <objectgroup name="oblay">
+  <object name="DOOR" type="NPC" gid="1" x="336" y="624" width="48" height="81">
+   <properties>
+    <property name="IMAGE" value="empty"/>
+    <property name="TELEPORT" value="map"/>
+    <property name="TELEPORTX" value="8"/>
+    <property name="TELEPORTY" value="13"/>
+    <property name="TELEPORTZ" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="块层 3" width="15" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgIB/0MjEw9AFxPxBPAOKJQDyJCVUcl5qRCObyMjCsBeJ1QLyelzwz+LkZGOy4ccvv42Fg2M9DntkwsIdC/UMVAACjn6woDAMAAA==
+  </data>
+ </layer>
+ <layer name="块层 5" width="15" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoA6YzMTAsJQLwXfihtDLuLCrb+ch3Y79QLMO4DBvFIwCSgEAt7E5TQwDAAA=
+  </data>
+ </layer>
+</map>

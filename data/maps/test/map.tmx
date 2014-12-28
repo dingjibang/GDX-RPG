@@ -13,12 +13,12 @@
  </layer>
  <layer name="块层 4" width="30" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYPiAVDJpSkEumfRwB5vR8GAAWTQ0+wwaphfIIUJNKB65GChNq7CJA+J4IE4A4kQgTgLiZBrZNdgBMXFFLKBlWh5IQM0wGkgAACNEaHFgCQAA
+   H4sIAAAAAAAAC2NgGAWjYPiAVDJpSkEumfRwB5vRMK3BRSLUZNHA3ptQ+gwapiVgZkTgHCLUh+KRi4HStAgbEIgD4nggTgDiRCBOAuJkGtk12AExcUUsoFV8DTSgZhgNJAAAblvW7WAJAAA=
   </data>
  </layer>
  <layer name="块层 2" width="30" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3SyQnCQBiGYYMF2IUr7goKLuC+77jWYRs2IujBu9bgRRE8iHgQq/A9CEIIOJkoEsgHDwlDJt8/ITabFTNkqfx7AnNkpchZG/y+W0XOTqPXDyfrLrjhgRc+xCTn26hoJY4AHUGEEEYEUaQke28qWkkjgywSdCWR4z6Pgo6uC/a44qyilSJKKKOCKmqoo6Gj944THoLPN9FCGx100UMfA4H9i9c/Y1feRDPECGNMMMXsU5/464XjMLhnzpkPXI9fmseKlV/kCe/Sgt5gCQAA
+   H4sIAAAAAAAAC+3SOQrCUBSF4WQF7sIRZwUFB3CO84TjOtyGGxG0sNddaGMhYiGuwr9IFZ6YvCgSyIGPG0Ie5/KIorhxQjbqvzdwRraqnJ3N+z2oco6C3jC8vPfBjwCCCCElud/eQJQ0InREEUMcCSSRk+y9G4iSRwFFZOjKosRzGRULXVd93nAxEKWKGupoQEMTLbQt9D70+TT5fQdd9NDHAEOMMDZxfm3jX51gihnmWGD5qU++7m08Ns+suIMT8/ylfdy4+UVeos08QmAJAAA=
   </data>
  </layer>
  <objectgroup name="对象层 1">
@@ -52,15 +52,19 @@
     <property name="IMAGE" value="walk_marisa"/>
    </properties>
   </object>
-  <object name="DOOR" type="NPC" gid="1" x="384" y="576" width="48" height="64">
+  <object name="DOOR" type="NPC" gid="1" x="384" y="576" width="48" height="81">
    <properties>
-    <property name="IMAGE" value="walk_marisa"/>
+    <property name="IMAGE" value="door"/>
+    <property name="TELEPORT" value="map2"/>
+    <property name="TELEPORTX" value="7"/>
+    <property name="TELEPORTY" value="10"/>
+    <property name="TELEPORTZ" value="3"/>
    </properties>
   </object>
  </objectgroup>
  <layer name="块层 3" width="30" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3TyQ7BUBiG4doZNlgYY56H27K0xAor3EOxwQVgY1qYFqaEu7B0DV6JRSMi2rSiSb/kSU/Tc/6vaVJB0F9EkyC00TH9trdHXx+DH/f+U1xwwwMvfPBr3BlAECGEEUEUMcRlzBlihPGX+xNIIoU0Msgih/yXMyaYYoY5FjLe913MsDzX1g/7llhhjQ22CroKkrUdDtjg/HBmhz0OOOKkoLf4ct9987+VUEYFNcnzq4I+Oak++lBHU9J707i38ehDS8WZogozinyDM9eLjDM9FXqNGNFD7ibS+adgCQAA
+   H4sIAAAAAAAAC+3TOQrCQBiG4aRzadTCFfd9uZalpVqplXqHqE30AGrjVrgVbqBX8hUsRCSYEIOBfPCQCcz8XwiMIJgvkigIPfRFY3tl+oYYGdz7T/HCBz8CCCL0484wIogihjgSSCKlYs4YE0y/3J9GBlnkkEcBRZS+nDHDHAsssVLxvZ9ig/25dijsW2ODLXbYa+gqv6xdcMMJj8KZA4444YyLht7K2/vgw32rooY6mgbex8ajDy10DOxtP/rQ1XGmpMOMCv/gyvOm4oysQ68VK2bIHbeUW0ZgCQAA
   </data>
  </layer>
  <layer name="块层 5" width="30" height="20">

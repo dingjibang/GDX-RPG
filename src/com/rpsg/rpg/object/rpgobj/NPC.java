@@ -28,6 +28,8 @@ public abstract class NPC extends IRPGObject{
 	public boolean collideFaceAble=true;
 	public boolean collideFaceZAble=true;
 	
+	public Map<String,Object> params;
+	
 	public void pushThreadAndRun(Script t){
 		t.isAlive=true;
 		threadPool.add(t); 

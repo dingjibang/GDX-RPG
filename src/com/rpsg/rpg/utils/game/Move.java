@@ -3,7 +3,10 @@ package com.rpsg.rpg.utils.game;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
-import com.rpsg.rpg.system.control.HeroControler;
+import com.rpsg.rpg.system.base.Initialization;
+import com.rpsg.rpg.system.base.ThreadPool;
+import com.rpsg.rpg.system.control.HeroControler;import com.rpsg.rpg.view.GameViews;
+
 
 public class Move {
 	public static BaseScriptExecutor move(Script script,final int step){
@@ -19,14 +22,27 @@ public class Move {
 	}
 	
 	public static BaseScriptExecutor turn(Script script,final int faceTo){
-		return script.$((BaseScriptExecutor)()->{
+		return script.$(()->{
 			script.npc.turn(faceTo);
 		});
 	}
 	
 	public static BaseScriptExecutor faceToHero(Script script){
-		return script.$((BaseScriptExecutor)()->{
+		return script.$(()->{
 				script.npc.turn(HeroControler.getHeadHero().getReverseFace());
+		});
+	}
+	
+	public static BaseScriptExecutor teleportAnotherMap(Script script,String map,int x,int y,int z){
+		return script.$(()->{
+			GameViews.global.map="test/"+map;
+			GameViews.global.x=x;
+			GameViews.global.y=y;
+			GameViews.global.z=z;
+			GameViews.global.npcs.clear();
+			ThreadPool.pool.clear();
+			Initialization.restartGame();
+			HeroControler.reinitByTeleport();
 		});
 	}
 }

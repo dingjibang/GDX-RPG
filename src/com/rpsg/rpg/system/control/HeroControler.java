@@ -95,7 +95,7 @@ public class HeroControler {
 		}
 	}
 	
-	private static void reinit(){
+	public static void reinit(){
 		for(int i=0;i<heros.size();i++){
 			if(i!=0){
 				heros.get(i).currentImageNo=heros.get(0).currentImageNo;
@@ -112,11 +112,30 @@ public class HeroControler {
 		}
 	} 
 	
+	public static void reinitByTeleport(){
+		for(int i=0;i<heros.size();i++){
+			if(i!=0){
+				heros.get(i).currentImageNo=heros.get(0).currentImageNo;
+				heros.get(i).lastZ=heros.get(0).lastZ;
+				heros.get(i).lastWalkSize=0;
+			}
+			heros.get(i).enableCollide=false;
+			heros.get(i).waitWhenCollide=false;
+			heros.get(i).walkStack.clear();
+			heros.get(i).walked=true;
+		}
+		generatePosition(getHeadHero().mapx, getHeadHero().mapy, getHeadHero().layer);
+		if(heros!=null && !heros.isEmpty()){
+			getHeadHero().enableCollide=true;
+			getHeadHero().waitWhenCollide=false;
+		}
+	} 
+	
 	public static void generatePosition(int x,int y,int z){
 		for(int i=0;i<heros.size();i++){
-			if(i==0)
+			if(i==0){
 				heros.get(i).generatePosition(x, y, z);
-			else
+			}else
 				if(heros.get(i-1).getCurrentFace()==Hero.FACE_D)
 					heros.get(i).generatePosition(x, y-1, z);
 				else if(heros.get(i-1).getCurrentFace()==Hero.FACE_U)

@@ -25,6 +25,7 @@ import com.rpsg.rpg.object.rpgobj.NPC;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.ThreadPool;
 import com.rpsg.rpg.utils.display.ColorUtil;
+import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
@@ -46,10 +47,8 @@ public class MapControler {
 			HeroControler.addHero(Flandre.class);
 			HeroControler.newHero(Yuuka.class);
 			HeroControler.addHero(Yuuka.class);
-			HeroControler.generatePosition(1,12,2);
 		}
 		HeroControler.initHeros(gv.stage);
-		ColorUtil.currentColor=gv.global.mapColor;
 		
 		//…Ë÷√øπæ‚≥›
 		if(Setting.DISPLAY_ANTI_ALIASING)
@@ -89,6 +88,7 @@ public class MapControler {
 							npc.generatePosition(((int)(((RectangleMapObject)obj).getRectangle().getX())/48),
 									 (int)(bot.getHeight()-2-((RectangleMapObject)obj).getRectangle().getY()/48),
 									 i-removeList.size());
+							npc.params=GameUtil.parseMapProperties(obj.getProperties());
 							System.out.println(npc.position+","+npc.mapx+":"+npc.mapy);/**debug**/
 							gv.stage.addActor(npc);
 							ThreadPool.pool.add(npc.threadPool);
@@ -97,10 +97,10 @@ public class MapControler {
 						}
 					}
 				}
+				HeroControler.generatePosition(gv.global.x,gv.global.y,gv.global.z);
 			}
-			for(MapLayer l:removeList){
+			for(MapLayer l:removeList)
 				gv.map.getLayers().remove(l);
-			}
 		}else{
 			List<MapLayer> removeList=new ArrayList<MapLayer>();
 			for(int i=0;i<gv.map.getLayers().getCount();i++){
@@ -144,7 +144,7 @@ public class MapControler {
 			}
 			sb.end();
 		}
-//		System.out.println(hero.getX()+" "+hero.getY()+" "+gv.camera.position.x+" "+gv.camera.position.y+" "+hero.mapx+" "+hero.mapy);
+//		System.out.println(HeroControler.getHeadHero().getX()+" "+HeroControler.getHeadHero().getY()+" "+gv.camera.position.x+" "+gv.camera.position.y+" "+HeroControler.getHeadHero().mapx+" "+HeroControler.getHeadHero().mapy);
 	}
 	
 	public static void logic(GameView gv){
