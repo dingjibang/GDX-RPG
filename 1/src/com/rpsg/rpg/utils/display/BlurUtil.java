@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.GdxRuntimeException;
+import com.rpsg.rpg.utils.game.GameUtil;
  
 /**
  * A simple set of software blur utilities for mobile applications.
@@ -430,12 +431,19 @@ public class BlurUtil {
 		if(time==0){
 			if(px!=null)
 				px.dispose();
-//			px=BlurUtil.blur(ScreenUtil.getScreenshot(x,y, width, height, false), 5, 5, true);
-			px=ScreenUtil.getScreenshot(x,y, width, height, false);
+			px=BlurUtil.blur(ScreenUtil.getScreenshot(x,y, width, height, false), 5, 5, true);
 			txt=new Texture(px);
 			txtr=new TextureRegion(txt,0,height,width,-height);
 		}
 		if(txtr!=null)
 		batch.draw(txtr,x,y);
+	}
+	
+	public static Texture getBluredScreenshot(){
+		if(px!=null)
+			px.dispose();
+		px=BlurUtil.blur(ScreenUtil.getScreenshot(0,0, GameUtil.screen_width, GameUtil.screen_height, false), 5, 5, true);
+		txt=new Texture(px);
+		return txt;
 	}
 }
