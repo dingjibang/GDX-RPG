@@ -25,9 +25,11 @@ import com.rpsg.rpg.system.control.HeroControler;
 import com.rpsg.rpg.system.control.InputControler;
 import com.rpsg.rpg.system.control.MapControler;
 import com.rpsg.rpg.system.control.MoveControler;
+import com.rpsg.rpg.utils.display.BlurUtil;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.Msg;
 import com.rpsg.rpg.utils.display.RadarUtil;
+import com.rpsg.rpg.utils.game.GameUtil;
 public class GameView extends IView{
 	
 	public OrthogonalTiledMapRenderer render;
@@ -67,7 +69,7 @@ public class GameView extends IView{
 		world.dispose();
 		System.gc();
 	}
-
+	
 	@Override
 	public void draw(SpriteBatch batch) {
 		MapControler.draw(this);
@@ -101,6 +103,6 @@ public class GameView extends IView{
 	}
 
 	public void keyUp(int keycode) {
-		InputControler.keyDown(keycode,this);
+		InputControler.keyUp(keycode,this);
 	}
 }

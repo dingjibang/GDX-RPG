@@ -5,6 +5,8 @@ import com.rpsg.rpg.io.SaveLoad;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.system.base.Initialization;
+import com.rpsg.rpg.utils.display.BlurUtil;
+import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
@@ -39,6 +41,10 @@ public class InputControler{
 	}
 
 	public static boolean keyUp(int keycode,GameView gv) {
+		if(keycode==Keys.ESCAPE){
+			System.out.println("escape");
+//			GameView.tmp=false;
+		}
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_NORMAL:{
 			MoveControler.keyUp(keycode, gv);
