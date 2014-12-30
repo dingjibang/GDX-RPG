@@ -21,10 +21,12 @@ public class Msg {
 	public static Image msgbox;
 	
 	public static void dispose(){
-		msgbox.dispose();
+		if(msgbox!=null)
+			msgbox.dispose();
 	}
 	
 	public static void init(){
+		dispose();
 		msgbox=new Image(Setting.GAME_RES_MESSAGE+MsgType.Õý³£);
 		float ss=msgbox.getWidth();
 		msgbox.setWidth(GameUtil.screen_width-40);

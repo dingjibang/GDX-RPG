@@ -11,10 +11,10 @@ public class Input implements InputProcessor{
 //		System.out.println(keycode);
 		switch(GameViews.state){
 		case GameViews.STATE_TITLE:{
-			GameViews.titleview.keyDown(keycode);break;
+			GameViews.titleview.onkeyDown(keycode);break;
 		}
 		case GameViews.STATE_GAME:{
-			GameViews.gameview.keyDown(keycode);break;
+			GameViews.gameview.onkeyDown(keycode);break;
 		}
 		}
 		return false;
@@ -24,7 +24,7 @@ public class Input implements InputProcessor{
 	public boolean keyUp(int keycode) {
 		switch(GameViews.state){
 		case GameViews.STATE_GAME:{
-			GameViews.gameview.keyUp(keycode);break;
+			GameViews.gameview.onkeyUp(keycode);break;
 		}
 		}
 		return false;
@@ -46,16 +46,31 @@ public class Input implements InputProcessor{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		switch(GameViews.state){
+		case GameViews.STATE_GAME:{
+			GameViews.gameview.touchDown(screenX, screenY, pointer, button);
+		}
+		}
 		return false;
 	}
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		switch(GameViews.state){
+		case GameViews.STATE_GAME:{
+			GameViews.gameview.touchUp(screenX, screenY, pointer, button);
+		}
+		}
 		return false;
 	}
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		switch(GameViews.state){
+		case GameViews.STATE_GAME:{
+			GameViews.gameview.touchDragged(screenX, screenY, pointer);
+		}
+		}
 		return false;
 	}
 

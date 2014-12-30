@@ -5,8 +5,6 @@ import com.rpsg.rpg.io.SaveLoad;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.system.base.Initialization;
-import com.rpsg.rpg.utils.display.BlurUtil;
-import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
@@ -30,27 +28,41 @@ public class InputControler{
 		}
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_NORMAL:{
-			MoveControler.keyDown(keycode, gv);
+			if(keycode==Keys.ESCAPE){
+				MenuControl.createMenu();
+				currentIOMode=IOMode.MAP_INPUT_MENU;
+			}else{
+				MoveControler.keyDown(keycode, gv);
+			}
 			break;
 		}
-		case IOMode.MAP_INPUT_MESSAGING:{
+		case IOMode.MAP_INPUT_MENU:{
+			MenuControl.keyDown(keycode);
 			break;
 		}
+		
 		}
 		return false;
 	}
 
 	public static boolean keyUp(int keycode,GameView gv) {
-		if(keycode==Keys.ESCAPE){
-			System.out.println("escape");
-//			GameView.tmp=false;
-		}
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_NORMAL:{
 			MoveControler.keyUp(keycode, gv);
 			break;
 		}
-		case IOMode.MAP_INPUT_MESSAGING:{
+		case IOMode.MAP_INPUT_MENU:{
+			MenuControl.keyUp(keycode);
+			break;
+		}
+		}
+		return false;
+	}
+	
+	public static boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		switch(currentIOMode){
+		case IOMode.MAP_INPUT_MENU:{
+			MenuControl.touchDown(screenX, screenY, pointer, button);
 			break;
 		}
 		}
@@ -58,6 +70,26 @@ public class InputControler{
 	}
 
 	public static boolean keyTyped(char character) {
+		return false;
+	}
+
+	public static boolean touchDragged(int screenX, int screenY, int pointer) {
+		switch(currentIOMode){
+		case IOMode.MAP_INPUT_MENU:{
+			MenuControl.touchDragged(screenX, screenY, pointer);
+			break;
+		}
+		}
+		return false;
+	}
+
+	public static boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		switch(currentIOMode){
+		case IOMode.MAP_INPUT_MENU:{
+			MenuControl.touchUp(screenX, screenY, pointer, button);
+			break;
+		}
+		}
 		return false;
 	}
 

@@ -13,6 +13,10 @@ public class Setting {
 	public static final String GAME_RES_MAP=GAME_RES_PATH+"/maps/";
 	public static final String GAME_RES_CORE=GAME_RES_PATH+GAME_RES_IMAGE+"/core/";
 	public static final String GAME_RES_IMAGE_BG=GAME_RES_PATH+GAME_RES_IMAGE+"/background/";
+	public static final String GAME_RES_IMAGE_MENU=GAME_RES_PATH+GAME_RES_IMAGE+"/menu/";
+	public static final String GAME_RES_IMAGE_MENU_GLOBAL=GAME_RES_IMAGE_MENU+"global/";
+	public static final String GAME_RES_IMAGE_MENU_MAP=GAME_RES_IMAGE_MENU+"map/";
+	public static final String GAME_RES_IMAGE_MENU_FG=GAME_RES_IMAGE_MENU+"fgs/";
 	public static final String GAME_RES_PARTICLE=GAME_RES_PATH+GAME_RES_IMAGE+"/particle/";
 	public static final String GAME_RES_MESSAGE=GAME_RES_PATH+GAME_RES_IMAGE+"/message/";
 	public static final String GAME_RES_WALK=GAME_RES_PATH+GAME_RES_IMAGE+"/walk/";

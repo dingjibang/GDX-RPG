@@ -17,9 +17,18 @@ public class Global implements Serializable{
 	public int day=0;
 	public int mapColor = ColorUtil.DAY;
 	
+	public int level=55;
+	public int exp=10253;
+	public int next=25102;
+	
+	public int gold=120;
+	
 	public int x=0;
 	public int y=17;
 	public int z=2;
 	
+	public int tyear=2015;
+	public int tmonth=3;
+	public int tday=10;
 }
 

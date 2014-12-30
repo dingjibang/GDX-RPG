@@ -24,7 +24,6 @@ import com.rpsg.rpg.object.rpgobj.IRPGObject;
 import com.rpsg.rpg.object.rpgobj.NPC;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.ThreadPool;
-import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;

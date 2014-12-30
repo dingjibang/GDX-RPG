@@ -8,5 +8,12 @@ public abstract class IView implements Disposable{
 	public abstract void draw(SpriteBatch batch);
 	public abstract void logic();
 	public abstract void onkeyTyped(char character);
+	public abstract void onkeyDown(int keyCode);
+	public abstract void onkeyUp(int keyCode);
+	public abstract boolean touchDown(int screenX, int screenY, int pointer, int button);
+	public abstract boolean touchUp(int screenX, int screenY, int pointer, int button);
+	public abstract boolean touchDragged(int screenX, int screenY, int pointer);
 	public abstract void dispose();
+	
+	public boolean disposed=false;
 }
