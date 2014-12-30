@@ -52,7 +52,7 @@ public class GameView extends IView{
 		stage.dispose();
 		render.dispose();
 		Msg.dispose();
-		ResourcePool.dispose();
+		Res.dispose();
 		map.dispose();
 		ray.dispose();
 		world.dispose();

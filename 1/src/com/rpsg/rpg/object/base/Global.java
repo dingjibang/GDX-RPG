@@ -23,8 +23,8 @@ public class Global implements Serializable{
 	
 	public int gold=120;
 	
-	public int x=0;
-	public int y=17;
+	public int x=17;
+	public int y=12;
 	public int z=2;
 	
 	public int tyear=2015;

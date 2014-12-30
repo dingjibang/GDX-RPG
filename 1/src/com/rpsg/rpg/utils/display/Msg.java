@@ -11,7 +11,7 @@ import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
 import com.rpsg.rpg.system.base.Image;
-import com.rpsg.rpg.system.base.ResourcePool;
+import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.InputControler;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameViews;
@@ -89,7 +89,7 @@ public class Msg {
 	public static BaseScriptExecutor show(Script script,final String msgType){
 		return script.$(()->{
 			show=true;
-			msgbox.setDrawable(ResourcePool.get(Setting.GAME_RES_MESSAGE+msgType).getDrawable());
+			msgbox.setDrawable(Res.get(Setting.GAME_RES_MESSAGE+msgType).getDrawable());
 		});
 	}
 	

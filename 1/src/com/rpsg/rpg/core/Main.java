@@ -17,6 +17,7 @@ public class Main {
 		cfg.samples=0;
 		cfg.resizable=true;
 		cfg.initialBackgroundColor=Color.WHITE; 
+		cfg.samples=8;
 		RayHandler.setGammaCorrection(true);
 		RayHandler.useDiffuseLight(true);
 		new LwjglApplication(new GameViews(), cfg);

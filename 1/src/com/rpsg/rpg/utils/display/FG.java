@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.Image;
-import com.rpsg.rpg.system.base.ResourcePool;
+import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 
@@ -29,14 +29,14 @@ public class FG {
 		return script.$((BaseScriptExecutor)()->{
 			if(position==LEFT){
 				boolean nul=currentImageL==null;
-				currentImageL=ResourcePool.get(imgPath);
+				currentImageL=Res.get(imgPath);
 				currentImageL.setScale(0.7f);
 				if(nul)
 					currentImageL.setColor(1,1,1,0f);
 				leftFade=true;
 			}else{
 				boolean nul=currentImageR==null;
-				currentImageR=ResourcePool.get(imgPath);
+				currentImageR=Res.get(imgPath);
 				currentImageR.setScale(0.7f);
 				currentImageR.setScaleX(-0.7f);
 				currentImageR.setX(GameUtil.screen_width);

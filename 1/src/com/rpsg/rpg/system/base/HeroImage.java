@@ -25,7 +25,7 @@ public class HeroImage {
 		i.setDrawable(IRPGObjectImageArray[11].getDrawable());
 		hi.images[2]=new Image(i);
 		hi.images[2].setPosition(x, y);
-		hi.shadow=new Image(ResourcePool.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"walk_shadow.png"));
+		hi.shadow=new Image(Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"walk_shadow.png"));
 		hi.shadow.setPosition(x+5, y-5);
 		return hi;
 	}

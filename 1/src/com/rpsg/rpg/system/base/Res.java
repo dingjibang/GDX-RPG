@@ -4,8 +4,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
-public class ResourcePool {
+
+public class Res {
 	private static Map<String,Image> pool=new HashMap<String, Image>();
 	
 	public static Image get(String resPath){
@@ -23,10 +25,8 @@ public class ResourcePool {
 		return new Image(pool.get(resPath));
 	}
 	
-	public static Image getsed(String resPath){
-		Image i=get(resPath);
-		i.setScale(0.8f);
-		return i;
+	public static Drawable getDrawable(String resPath){
+		return get(resPath).getDrawable();
 	}
 	
 	public static int CACHE_MAX_SIZE=30;
