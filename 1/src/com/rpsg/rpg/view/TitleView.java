@@ -30,7 +30,29 @@ public class TitleView extends IView{
 		
 	}
 
-	public void keyDown(int keycode) {
-//		System.out.println(keycode);
+	@Override
+	public void onkeyDown(int keyCode) {
+		
+	}
+
+	@Override
+	public void onkeyUp(int keyCode) {
+		
+	}
+
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		return false;
+	}
+
+	@Override
+	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		return false;
+	}
+	
+	
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		return false;
 	}
 }

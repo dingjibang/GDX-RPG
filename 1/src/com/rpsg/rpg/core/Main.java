@@ -1,6 +1,8 @@
 package com.rpsg.rpg.core;
 
 
+import box2dLight.RayHandler;
+
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.graphics.Color;
@@ -15,6 +17,8 @@ public class Main {
 		cfg.samples=0;
 		cfg.resizable=true;
 		cfg.initialBackgroundColor=Color.WHITE; 
+		RayHandler.setGammaCorrection(true);
+		RayHandler.useDiffuseLight(true);
 		new LwjglApplication(new GameViews(), cfg);
 	}
 }

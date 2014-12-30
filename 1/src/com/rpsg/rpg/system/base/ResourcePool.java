@@ -23,6 +23,12 @@ public class ResourcePool {
 		return new Image(pool.get(resPath));
 	}
 	
+	public static Image getsed(String resPath){
+		Image i=get(resPath);
+		i.setScale(0.8f);
+		return i;
+	}
+	
 	public static int CACHE_MAX_SIZE=30;
 	
 	public static void dispose(){
