@@ -6,6 +6,7 @@ import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.utils.game.Logger;
 
 
 public class FG {
@@ -23,6 +24,7 @@ public class FG {
 			currentImageL.dispose();
 		if(currentImageR!=null)
 			currentImageR.dispose();
+		Logger.info("立绘控制器初始化完成。");
 	}
 	
 	public static BaseScriptExecutor show(final Script script,final String imgPath,final int position){

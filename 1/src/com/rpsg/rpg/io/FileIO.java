@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import com.rpsg.rpg.utils.game.Logger;
+
 public class FileIO {
 
 	static File f=new File(getABSPath()+"/save/1.dat");
@@ -15,9 +17,9 @@ public class FileIO {
 			ObjectOutputStream oos=new ObjectOutputStream(fos);
 			oos.writeObject(o);
 			oos.close();
-			System.out.println(getABSPath());
+			Logger.info("´æµµ["+f.getAbsolutePath()+"]³É¹¦");
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.error("´æµµ["+f.getAbsolutePath()+"]Ê§°Ü",e);
 		}
 	}
 	
@@ -28,9 +30,10 @@ public class FileIO {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			o = ois.readObject();
 			ois.close();
+			Logger.info("¶Áµµ["+f.getAbsolutePath()+"]³É¹¦");
 			return o;
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.error("¶Áµµ["+f.getAbsolutePath()+"]Ê§°Ü",e);
 		}
 		return null;
 	}

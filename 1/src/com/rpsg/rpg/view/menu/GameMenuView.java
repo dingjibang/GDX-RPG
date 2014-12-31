@@ -12,6 +12,7 @@ import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.base.StackView;
 import com.rpsg.rpg.system.control.InputControler;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.utils.game.MouseUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public class GameMenuView extends StackView{
@@ -25,6 +26,7 @@ public class GameMenuView extends StackView{
  		bluredBG.setColor(1,1,1,0);
  		bluredBG.addAction(Actions.fadeIn(0.1f));
  		stage.addActor(bluredBG);
+ 		MouseUtil.setHWCursorVisible(true);
  	}
  	
  	public void draw(SpriteBatch batch){
@@ -66,6 +68,7 @@ public class GameMenuView extends StackView{
  		bluredBG.dispose();
 		for(IView view:viewStack)
 			view.dispose();
+		MouseUtil.setHWCursorVisible(false);
 	}
 
 	@Override

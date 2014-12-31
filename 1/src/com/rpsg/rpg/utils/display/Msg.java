@@ -14,6 +14,7 @@ import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.InputControler;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameViews;
 
 
@@ -40,6 +41,7 @@ public class Msg {
 		TEXT_DISPLAY_SPEED=30;
 		DISPLAY_OFFSET=0;
 		show=false;
+		Logger.info("文本模块初始化完成。");
 	}
 	
 	static String currentText="";

@@ -25,6 +25,7 @@ import com.rpsg.rpg.object.rpgobj.NPC;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.ThreadPool;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
@@ -88,7 +89,7 @@ public class MapControler {
 									 (int)(bot.getHeight()-2-((RectangleMapObject)obj).getRectangle().getY()/48),
 									 i-removeList.size());
 							npc.params=GameUtil.parseMapProperties(obj.getProperties());
-							System.out.println(npc.position+","+npc.mapx+":"+npc.mapy);/**debug**/
+							Logger.info("NPC生成成功["+npc.position+","+npc.mapx+":"+npc.mapy+"]");
 							gv.stage.addActor(npc);
 							ThreadPool.pool.add(npc.threadPool);
 						} catch (Exception e) {
@@ -119,7 +120,7 @@ public class MapControler {
 				npc=n;
 			}
 		}
-		
+		Logger.info("地图模块已全部加载完成。");
 	}
 	
 	public synchronized static void draw(GameView gv){

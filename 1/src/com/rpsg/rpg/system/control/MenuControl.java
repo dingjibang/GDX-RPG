@@ -1,6 +1,7 @@
 package com.rpsg.rpg.system.control;
 
 import com.rpsg.rpg.utils.display.BlurUtil;
+import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameViews;
 import com.rpsg.rpg.view.menu.GameMenuView;
 
@@ -9,6 +10,7 @@ public class MenuControl {
 		GameViews.gameview.stackView=new GameMenuView();
 		GameViews.gameview.stackView.params.put("bg", BlurUtil.getBluredScreenshot());
 		GameViews.gameview.stackView.init();
+		Logger.info("菜单创建完成。");
 	}
 	
 	public static void keyDown(int keyCode){

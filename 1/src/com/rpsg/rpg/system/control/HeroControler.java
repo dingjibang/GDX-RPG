@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.object.rpgobj.Hero;
+import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameViews;
 
 public class HeroControler {
@@ -80,6 +81,7 @@ public class HeroControler {
 	public static void initControler(){
 		heros=GameViews.global.currentHeros;
 		allHeros=GameViews.global.heros;
+		Logger.info("角色控制器初始化完成。");
 	}
 	
 	public static void initHeros(Stage s){

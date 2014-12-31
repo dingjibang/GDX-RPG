@@ -2,6 +2,8 @@ package com.rpsg.rpg.io;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.Input.Keys;
+import com.rpsg.rpg.utils.game.MouseUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public class Input implements InputProcessor{
@@ -14,6 +16,9 @@ public class Input implements InputProcessor{
 			GameViews.titleview.onkeyDown(keycode);break;
 		}
 		case GameViews.STATE_GAME:{
+			if(keycode==Keys.P){
+				MouseUtil.MoveTo(300, 20);
+			}
 			GameViews.gameview.onkeyDown(keycode);break;
 		}
 		}

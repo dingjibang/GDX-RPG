@@ -10,16 +10,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.text.Font;
-import com.rpsg.rpg.utils.display.shader.Smoother;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.utils.game.StringUtil;
 
 public class FontUtil {
 	public static final FreeTypeFontGenerator generator=new FreeTypeFontGenerator(Gdx.files.internal("data/font/msyh.ttf"));
 	
 	static int x,y,w;
-	public static void init(){
-	}
 	
 	private static BitmapFont getFont(int fontsize,char str){
 //		System.out.print(fontlist.size()+"[");
@@ -46,8 +44,10 @@ public class FontUtil {
 			if(!include)
 				addStr+=c;
 		}
-		if(addStr.length()>0)
+		if(addStr.length()>0){
+			Logger.info("文字贴图[\""+addStr+"\"]生成成功");
 			fontlist.add(Font.generateFont((addStr.length()==5 && fontsize==22)?addStr+" ":addStr, fontsize));
+		}
 		
 		int currentX=x;
 		int currentY=y;
