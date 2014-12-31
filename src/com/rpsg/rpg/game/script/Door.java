@@ -8,7 +8,6 @@ public class Door extends Script{
 
 	@Override
 	public void init() {
-		System.out.println("fuckme");
 		$(()->{
 			if(npc.currentImageNo==NPC.FACE_D){
 				npc.layer--;

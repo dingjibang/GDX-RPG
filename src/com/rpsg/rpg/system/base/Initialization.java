@@ -3,6 +3,7 @@ package com.rpsg.rpg.system.base;
 import com.rpsg.rpg.system.control.MapControler;
 import com.rpsg.rpg.utils.display.FG;
 import com.rpsg.rpg.utils.display.Msg;
+import com.rpsg.rpg.utils.game.MouseUtil;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 

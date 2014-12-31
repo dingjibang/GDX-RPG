@@ -3,6 +3,7 @@ package com.rpsg.rpg.object.rpgobj;
 
 
 import com.rpsg.rpg.object.script.ScriptCollide;
+import com.rpsg.rpg.utils.game.Logger;
 
 public abstract class DefaultNPC extends NPC {
 	
@@ -25,7 +26,7 @@ public abstract class DefaultNPC extends NPC {
 	
 	@Override
 	public void toCollide(ScriptCollide sc) {
-		System.out.println(sc);
+		Logger.info("Åö×²Ä£¿é´¥·¢["+sc+"]");
 		if(!isScriptRunning())
 		switch(sc.collideType){
 		case ScriptCollide.COLLIDE_TYPE_FACE_Z:{

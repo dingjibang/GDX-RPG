@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.utils.game.Logger;
+import com.rpsg.rpg.utils.game.MouseUtil;
 
 public class GameViews implements ApplicationListener {
 	public static SpriteBatch batch;
@@ -26,6 +28,7 @@ public class GameViews implements ApplicationListener {
 	
 	@Override
 	public void create() {
+		
 		GameUtil.screen_width = Gdx.graphics.getWidth();
 		GameUtil.screen_height = Gdx.graphics.getHeight();
 		//start init
@@ -37,6 +40,8 @@ public class GameViews implements ApplicationListener {
 		//other
 		batch = new SpriteBatch();
 		global=new Global();
+		MouseUtil.init();
+		Logger.info("Gdx-RPG引擎初始化成功。");
 	}
 
 	@Override
@@ -90,6 +95,7 @@ public class GameViews implements ApplicationListener {
 		}
 		GameUtil.drawFPS(batch);
 		batch.end();
+		
 	}
 
 	@Override
