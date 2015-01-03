@@ -1,18 +1,31 @@
 package com.rpsg.rpg.view.menu;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.system.base.IView;
 import com.rpsg.rpg.system.base.Image;
+import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.base.StackView;
 import com.rpsg.rpg.system.control.InputControler;
+import com.rpsg.rpg.utils.display.MouseUtil;
+import com.rpsg.rpg.utils.display.TipUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
-import com.rpsg.rpg.utils.game.MouseUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public class GameMenuView extends StackView{
@@ -26,23 +39,89 @@ public class GameMenuView extends StackView{
  		bluredBG.setColor(1,1,1,0);
  		bluredBG.addAction(Actions.fadeIn(0.1f));
  		stage.addActor(bluredBG);
+ 		
+ 		Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"bg.png");
+		bg.setPosition(50, 0);
+		bg.setColor(1,1,1,0);
+		bg.addAction(Actions.fadeIn(0.2f));
+		stage.addActor(bg);
+		Image magic=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"bg_magic.png");
+		magic.setPosition(600, 150);
+		magic.setColor(1,1,1,0.15f);
+		magic.setOrigin(0);
+		magic.addAction(Actions.repeat(RepeatAction.FOREVER, Actions.rotateBy(0.1f)));
+		stage.addActor(magic);
+		
+		Table table=new Table();
+		table.setBackground(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"leftbar_bg.png"));
+		final ImageButton button=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_equip.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_equip_p.png"));
+		button.addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+				tryToAdd(EquipView.class);
+				return false;
+			}
+		});
+		table.add(button);
+		table.row();
+		final ImageButton button2 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_sc.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_sc_p.png"));
+		table.add(button2);
+		table.row();
+		final ImageButton button3 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_item.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_item_p.png"));
+		table.add(button3);
+		table.row();
+		final ImageButton button4 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_status.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_status_p.png"));
+		table.add(button4);
+		table.row();
+		final ImageButton button5 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_tactic.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_tactic_p.png"));
+		table.add(button5);
+		table.row();
+		final ImageButton button6 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_system.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_system_p.png"));
+		table.add(button6);
+		table.getCells().forEach((c)->{
+			c.padTop(8);
+			c.padBottom(8);
+		});
+		ScrollPane pane=new ScrollPane(table);
+		pane.setPosition(0, 0);
+		pane.setSize(128,GameUtil.screen_height);
+//		table.setDebug(true);
+		pane.setScrollingDisabled(false, true);
+		pane.setSmoothScrolling(true);
+		pane.addListener(new InputListener() {
+			public void touchDragged (InputEvent event, float x, float y, int pointer) {
+//				return false;
+			}
+			public void touchUp (InputEvent event, float x, float y, int pointer,int botton) {
+//				return false;
+			}
+			
+			public boolean touchDown (InputEvent event, float x, float y, int pointer,int botton) {
+				return true;
+			}
+		});
+		stage.addActor(pane);
+		
  		MouseUtil.setHWCursorVisible(true);
  	}
  	
  	public void draw(SpriteBatch batch){
  		stage.draw();
- 		for(IView view:viewStack)
- 			view.draw(batch);
+ 		viewStack.get(viewStack.size()-1).draw(batch);
+ 		TipUtil.draw();
  	}
  	
+ 	List<IView> removeList=new ArrayList<IView>();
  	public void logic(){
  		stage.act();
+ 		removeList.clear();
+ 		viewStack.get(viewStack.size()-1).logic();
  		for(IView view:viewStack){
-			if(view.disposed)
+			if(view.disposed){
 				view.dispose();
-			else
-				view.logic();
+				removeList.add(view);
+			}
 		}
+		viewStack.removeAll(removeList);
  	}
  	
  	public void onkeyTyped(char character) {
@@ -73,19 +152,48 @@ public class GameMenuView extends StackView{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		stage.touchDown(screenX, screenY, pointer, button);
 		viewStack.get(viewStack.size()-1).touchDown(screenX, screenY, pointer, button);
 		return false;
 	}
 	
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		stage.touchUp(screenX, screenY, pointer, button);
 		viewStack.get(viewStack.size()-1).touchUp(screenX, screenY, pointer, button);
 		return false;
 	}
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		stage.touchDragged(screenX, screenY, pointer);
 		viewStack.get(viewStack.size()-1).touchDragged(screenX, screenY, pointer);
+		return false;
+	}
+	
+	public void tryToAdd(Class<? extends IView> iv){
+		boolean inc=false;
+		for(int i=0;i<viewStack.size();i++){
+			Class<? extends IView> view=viewStack.get(i).getClass();
+			if(view.equals(iv)){
+				Collections.swap(viewStack, i, viewStack.size()-1);
+				inc=true;
+				break;
+			}
+		}
+		if(!inc)
+			try {
+				viewStack.add(iv.newInstance());
+				viewStack.get(viewStack.size()-1).init();
+			} catch (InstantiationException | IllegalAccessException e) {
+				e.printStackTrace();
+			}
+	}
+
+	@Override
+	public boolean scrolled(int amount) {
+		stage.scrolled(amount);
+		viewStack.get(viewStack.size()-1).scrolled(amount);
 		return false;
 	}
 

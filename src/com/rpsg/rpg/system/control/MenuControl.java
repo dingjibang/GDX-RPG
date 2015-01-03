@@ -50,4 +50,10 @@ public class MenuControl {
 		}
 		return false;
 	}
+
+	public static void scrolled(int amount) {
+		if(GameViews.gameview.stackView!=null){
+			GameViews.gameview.stackView.scrolled(amount);
+		}
+	}
 }

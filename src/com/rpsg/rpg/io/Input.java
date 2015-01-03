@@ -3,7 +3,7 @@ package com.rpsg.rpg.io;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
-import com.rpsg.rpg.utils.game.MouseUtil;
+import com.rpsg.rpg.utils.display.MouseUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public class Input implements InputProcessor{
@@ -86,6 +86,11 @@ public class Input implements InputProcessor{
 
 	@Override
 	public boolean scrolled(int amount) {
+		switch(GameViews.state){
+		case GameViews.STATE_GAME:{
+			GameViews.gameview.scrolled(amount);
+		}
+		}
 		return false;
 	}
 	

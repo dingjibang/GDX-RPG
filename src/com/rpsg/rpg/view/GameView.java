@@ -121,4 +121,10 @@ public class GameView extends IView{
 		return false;
 	}
 
+	@Override
+	public boolean scrolled(int amount) {
+		InputControler.scrolled(amount);
+		return false;
+	}
+
 }

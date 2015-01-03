@@ -59,20 +59,20 @@ public class MoveControler {
 		int theight=(int) (((TiledMapTileLayer)gv.map.getLayers().get(0)).getHeight() * ((TiledMapTileLayer)gv.map.getLayers().get(0)).getTileHeight());
 		float herox=HeroControler.getHeadHero().position.x+(HeroControler.getHeadHero().getWidth()/2);
 		float heroy=HeroControler.getHeadHero().position.y+(HeroControler.getHeadHero().getHeight()/2);
-		if(herox>MAP_MAX_OUT_X && herox<(twidth*48)-MAP_MAX_OUT_X)
+		if(herox>MAP_MAX_OUT_X && herox<(twidth)-MAP_MAX_OUT_X)
 			gv.camera.position.x=herox;
 		else
 			if(!(herox>MAP_MAX_OUT_X))
 				gv.camera.position.x=MAP_MAX_OUT_X;
 			else
-				gv.camera.position.x=(twidth*48)-MAP_MAX_OUT_X;
-		if(heroy>MAP_MAX_OUT_Y && heroy<(theight*48)-MAP_MAX_OUT_Y)
+				gv.camera.position.x=(twidth)-MAP_MAX_OUT_X;
+		if(heroy>MAP_MAX_OUT_Y && heroy<(theight)-MAP_MAX_OUT_Y)
 			gv.camera.position.y=heroy;
 		else
 			if(!(heroy>MAP_MAX_OUT_Y))
 				gv.camera.position.y=MAP_MAX_OUT_Y;
 			else
-				gv.camera.position.y=(theight*48)-MAP_MAX_OUT_Y;
+				gv.camera.position.y=(theight)-MAP_MAX_OUT_Y;
 		gv.camera.update();
 	}
 	

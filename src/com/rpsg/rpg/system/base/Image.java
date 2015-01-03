@@ -11,6 +11,8 @@ import com.rpsg.rpg.core.Setting;
 
 public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
+	public boolean visible=true;
+	
 	public Image(String filename){
 		super(new Texture(Gdx.files.internal(filename)));
 		setAnti();
@@ -33,13 +35,14 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	public Image() {
 		super();
 	}
-
+	
 	public Image(Image image) {
 		super(image.getDrawable());
 	}
 
 	public void draw(SpriteBatch sb){
-		this.draw(sb, 1);
+		if(visible)
+			this.draw(sb, 1);
 	}
 	
 	private void setAnti(){

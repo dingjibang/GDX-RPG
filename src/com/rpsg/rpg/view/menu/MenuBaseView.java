@@ -3,6 +3,7 @@ package com.rpsg.rpg.view.menu;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -28,7 +29,6 @@ import com.rpsg.rpg.system.control.HeroControler;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
-import com.rpsg.rpg.utils.game.MouseUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public class MenuBaseView extends IView{
@@ -38,17 +38,6 @@ public class MenuBaseView extends IView{
 	ShapeRenderer render;
 	public void init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
-		Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"bg.png");
-		bg.setPosition(50, 0);
-		bg.setColor(1,1,1,0);
-		bg.addAction(Actions.fadeIn(0.2f));
-		stage.addActor(bg);
-		Image magic=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"bg_magic.png");
-		magic.setPosition(600, 150);
-		magic.setColor(1,1,1,0.15f);
-		magic.setOrigin(0);
-		magic.addAction(Actions.repeat(RepeatAction.FOREVER, Actions.rotateBy(0.1f)));
-		stage.addActor(magic);
 		
 		Image infobg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"info_bg.png");
 		infobg.setPosition(GameUtil.screen_width, 360);
@@ -99,52 +88,9 @@ public class MenuBaseView extends IView{
 		map.setColor(1,1,1,0);
 		map.addAction(Actions.fadeIn(0.3f));
 		stage.addActor(map);
-		Table table=new Table();
-		table.setBackground(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"leftbar_bg.png"));
-		ImageButton button;
-		button=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_equip.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_equip_p.png"));
-		table.add(button);
-		table.row();
-		button =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_sc.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_sc_p.png"));
-		table.add(button);
-		table.row();
-		button =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_item.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_item_p.png"));
-		table.add(button);
-		table.row();
-		button =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_status.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_status_p.png"));
-		table.add(button);
-		table.row();
-		button =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_tactic.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_tactic_p.png"));
-		table.add(button);
-		table.row();
-		button =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_system.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_system_p.png"));
-		table.add(button);
-		table.getCells().forEach((c)->{
-			c.padTop(8);
-			c.padBottom(8);
-		});
-		ScrollPane pane=new ScrollPane(table);
-		pane.setPosition(0, 0);
-		pane.setSize(128,GameUtil.screen_height);
-//		table.setDebug(true);
-		pane.setScrollingDisabled(false, true);
-		pane.setSmoothScrolling(true);
-		pane.addListener(new InputListener() {
-			public void touchDragged (InputEvent event, float x, float y, int pointer) {
-//				return false;
-			}
-			public void touchUp (InputEvent event, float x, float y, int pointer,int botton) {
-//				return false;
-			}
-			
-			public boolean touchDown (InputEvent event, float x, float y, int pointer,int botton) {
-				return true;
-			}
-		});
-		stage.addActor(pane);
+		
 		render=new ShapeRenderer();
 		render.setAutoShapeType(true);
-		MouseUtil.MoveTo(100, 50);
 	}
 	
 	Color blue=new Color(80f/255f,111f/255f,187f/255f,1);
@@ -194,6 +140,7 @@ public class MenuBaseView extends IView{
 		time.draw(batch);
 		for(HeroImage h:heros)
 			h.draw(batch, step==3?1:step);
+		batch.flush();
 	}
 
 	public void logic() {
@@ -235,6 +182,11 @@ public class MenuBaseView extends IView{
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		return stage.touchUp(screenX, screenY, pointer, button);
+	}
+
+	@Override
+	public boolean scrolled(int amount) {
+		return false;
 	}
 
 
