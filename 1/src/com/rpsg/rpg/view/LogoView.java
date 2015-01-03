@@ -72,5 +72,11 @@ public class LogoView extends IView{
 		return false;
 	}
 
+	@Override
+	public boolean scrolled(int amount) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 }

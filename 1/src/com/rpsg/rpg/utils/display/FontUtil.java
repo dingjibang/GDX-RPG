@@ -19,11 +19,7 @@ public class FontUtil {
 	
 	static int x,y,w;
 	
-	private static BitmapFont getFont(int fontsize,char str){
-//		System.out.print(fontlist.size()+"[");
-//		for(Font f: fontlist)
-//			System.out.print(f.toString()+",");
-//		System.out.println("]");
+	private static BitmapFont getBitFont(int fontsize,char str){
 		for(Font f: fontlist)
 			if(f.include(str, fontsize))
 				return (BitmapFont) f.font;
@@ -59,7 +55,7 @@ public class FontUtil {
 			if(c==enter)
 				continue;
 			currentX+=fontsize+paddinglr;
-			BitmapFont f=getFont(fontsize, c);
+			BitmapFont f=getBitFont(fontsize, c);
 			f.setColor(color);
 			f.draw(sb, new String(new char[]{c}), currentX, currentY);
 			f.setColor(Color.WHITE);
@@ -71,5 +67,15 @@ public class FontUtil {
 	
 	public static int getTextWidth(String txt,int size,int paddinglr){
 		return (size+(paddinglr*2))*txt.length();
+	}
+	
+	public static BitmapFont generateFont(char str,int size){
+		BitmapFont f;
+		if((f=getBitFont(size, str))==null){
+			Font font= Font.generateFont(String.valueOf(str), size);
+			fontlist.add(font);
+			return font.font;
+		}else
+			return f;
 	}
 }

@@ -10,6 +10,20 @@ public abstract class Hero extends IRPGObject {
 	public static final int HERO_HEIGHT=64;
 	public static final String RES_PATH=Setting.GAME_RES_WALK+"heros/";
 	
+	public String name;
+	
+	public int level;
+	public int hp;
+	public int maxhp;
+	public int mp;
+	public int maxmp;
+	public int attack;
+	public int magicAttack;
+	public int defense;
+	public int magicDefense;
+	public int speed;
+	public int hit;
+	
 	public Hero() {
 		super();
 		this.waitWhenCollide=false;

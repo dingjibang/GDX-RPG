@@ -9,6 +9,7 @@ public class Flandre extends Hero{
 
 	public void first(){
 		imgPath="/walk_flandre.png";
+		name="Ü½À¼¶äÂ¶";
 	}
 	
 	public void init(){

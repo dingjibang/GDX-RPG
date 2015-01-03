@@ -9,6 +9,7 @@ public class Reimu extends Hero{
 
 	public void first(){
 		imgPath="/walk_reimu.png";
+		name="²©ÀöÁéÃÎ";
 	}
 	
 	public void init(){

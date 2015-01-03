@@ -9,6 +9,7 @@ public class Marisa extends Hero{
 
 	public void first(){
 		imgPath="/walk_marisa.png";
+		name="ÎíÓêÄ§ÀíÉ³";
 	}
 	
 	public void init(){

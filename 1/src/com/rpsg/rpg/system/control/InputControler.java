@@ -93,4 +93,13 @@ public class InputControler{
 		return false;
 	}
 
+	public static void scrolled(int amount) {
+		switch(currentIOMode){
+		case IOMode.MAP_INPUT_MENU:{
+			MenuControl.scrolled(amount);
+			break;
+		}
+		}
+	}
+
 }
