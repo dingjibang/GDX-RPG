@@ -130,10 +130,10 @@ public class MenuBaseView extends IView{
 		render.end();
 		FontUtil.draw(batch, "Yuuki Arisu", 13, Color.WHITE, 663, 470, 1000,-5,0);
 		FontUtil.draw(batch, "结城有栖", 28, Color.WHITE, 610, 450, 1000);
-		FontUtil.draw(batch, GameViews.global.level+"", 40, blue, 443+85/2-FontUtil.getTextWidth(GameViews.global.level+"", 40, -10)/2, 450, 1000,-10,0);
-		FontUtil.draw(batch, GameViews.global.gold+" G", 18, blue, 478, 379, 1000,-8,0);
+		FontUtil.draw(batch, GameViews.global.level+"", 40, blue, 453+85/2-FontUtil.getTextWidth(GameViews.global.level+"", 40, -10)/2, 450, 1000,-10,0);
+		FontUtil.draw(batch, GameViews.global.gold+" G", 18, blue, 482+91/2-FontUtil.getTextWidth(GameViews.global.gold+" G", 18, -8), 379, 1000,-8,0);
 		FontUtil.draw(batch, "状态正常", 17, Color.WHITE, 144+285/2-FontUtil.getTextWidth("状态正常", 17, 2)/2, 385, 1000,2,0);
-		FontUtil.draw(batch, currTime, 16, blue, 510+144/2-FontUtil.getTextWidth(currTime, 16, -7)/2, 378, 1000,-7,0);
+		FontUtil.draw(batch, currTime, 16, blue, 550+144/2-FontUtil.getTextWidth(currTime, 16, -7)/2, 378, 1000,-7,0);
 		FontUtil.draw(batch, currDay, 16, Color.GRAY, 692, 378, 1000,-7,0);
 		FontUtil.draw(batch, "LV", 14, blue, 507, 413, 1000,-7,0);
 		FontUtil.draw(batch, (String)GameViews.gameview.map.getProperties().get("name")+" ["+HeroControler.getHeadHero().mapx+","+HeroControler.getHeadHero().mapy+"]", 16, Color.WHITE, 180, 320, 1000,0,0);

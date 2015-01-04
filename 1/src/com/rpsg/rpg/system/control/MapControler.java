@@ -16,6 +16,7 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.game.equip.Sunshade;
 import com.rpsg.rpg.game.equip.TestEquip;
 import com.rpsg.rpg.game.hero.Flandre;
 import com.rpsg.rpg.game.hero.Marisa;
@@ -49,6 +50,7 @@ public class MapControler {
 			HeroControler.newHero(Yuuka.class);
 			HeroControler.addHero(Yuuka.class);
 			gv.global.equips.add(new TestEquip());
+			gv.global.equips.add(new Sunshade());
 		}
 		HeroControler.initHeros(gv.stage);
 		

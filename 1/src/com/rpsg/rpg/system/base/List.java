@@ -17,6 +17,8 @@
 package com.rpsg.rpg.system.base;
 
 
+
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -25,6 +27,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.ui.List.ListStyle;
@@ -34,6 +37,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.Cullable;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectSet;
+import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.Equip;
 import com.rpsg.rpg.utils.display.FontUtil;
 
 /** A list (aka list box) displays textual items and highlights the currently selected item.
@@ -59,19 +64,41 @@ public class List<T> extends Widget implements Cullable {
 	public List (Skin skin, String styleName) {
 		this(skin.get(styleName, ListStyle.class));
 	}
-
 	public List (ListStyle style) {
 		selection.setActor(this);
 		selection.setRequired(true);
-
+		List<T> that=this;
 		setStyle(style);
 		setSize(getPrefWidth(), getPrefHeight());
-
 		addListener(new InputListener() {
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				if (pointer == 0 && button != 0) return false;
 				if (selection.isDisabled()) return false;
 				List.this.touchDown(y);
+				getStage().setKeyboardFocus(that);
+				return true;
+			}
+			public boolean keyDown (InputEvent event, int keycode) {
+				if(keycode==Keys.DOWN && getSelectedIndex()<getItems().size-1){
+					setSelectedIndex(getSelectedIndex()+1);
+					if(getParent() instanceof ScrollPane){
+						ScrollPane pane=(ScrollPane)getParent();
+						pane.setScrollY(pane.getScrollY()+getItemHeight());
+					}
+				}
+				if(keycode==Keys.UP && getSelectedIndex()>0){
+					setSelectedIndex(getSelectedIndex()-1);
+					if(getParent() instanceof ScrollPane){
+						ScrollPane pane=(ScrollPane)getParent();
+						pane.setScrollY(pane.getScrollY()-getItemHeight());
+					}					
+				}
+				if(dbclick!=null && (keycode==Keys.ENTER || keycode==Keys.Z)){
+					dbclick.run();
+				}
+				return true;
+			}
+			public boolean keyUp (InputEvent event, int keycode) {
 				return true;
 			}
 		});
@@ -85,6 +112,7 @@ public class List<T> extends Widget implements Cullable {
 	
 	int lastIndex=-1;
 	int delaydbClickTime=0;
+	
 	void touchDown (float y) {
 		if (items.size == 0) return;
 		float height = getHeight();
@@ -177,6 +205,16 @@ public class List<T> extends Widget implements Cullable {
 					font.setColor(fontColorSelected.r, fontColorSelected.g, fontColorSelected.b, fontColorSelected.a * parentAlpha);
 				}
 				FontUtil.draw(((SpriteBatch)batch), item.toString(), 20,selected?blue:Color.WHITE, (int)(x + textOffsetX + 10), (int)(y + itemY - textOffsetY)+1-padTop, 500);
+				if(item instanceof Equip){
+					int offset=0;
+					if(!((Equip)item).throwable){
+						Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"throwable.png").draw(batch, x+width-61, y+itemY - itemHeight+6+padTop, 61, 17);
+						offset=-70;
+					}
+					if(((Equip)item).onlyFor!=null){
+						Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"only.png").draw(batch, x+width-61+offset, y+itemY - itemHeight+6+padTop, 61, 17);
+					}
+				}
 				if (selected) {
 					font.setColor(fontColorUnselected.r, fontColorUnselected.g, fontColorUnselected.b, fontColorUnselected.a
 						* parentAlpha);

@@ -3,22 +3,21 @@ package com.rpsg.rpg.object.base;
 
 public class EmptyEquip extends Equip{
 
+	private static final long serialVersionUID = 1L;
+
 	public EmptyEquip() {
-		name="卸下当前装备";
+		name=gloname;
 		statusName="卸下当前装备";
-		attack=0;
-		defense=0;
-		magicAttack=0;
-		magicDefense=0;
-		speed=0;
-		hit=0;
 		illustration="把当前穿戴的装备卸下。";
 		onlyFor=null;
+		disable=true;
 	}
 
 	@Override
 	public void use() {
 		
 	}
+	
+	public static String gloname= "卸下当前装备";
 
 }
