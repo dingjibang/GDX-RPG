@@ -2,6 +2,7 @@ package com.rpsg.rpg.object.base;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import com.rpsg.rpg.object.rpgobj.Hero;
@@ -14,6 +15,9 @@ public class Global implements Serializable{
 	public List<NPC> npcs=new ArrayList<NPC>();
 	public List<Hero> currentHeros=new ArrayList<Hero>();
 	public List<Hero> heros=new ArrayList<Hero>();
+	
+	public List<Equip> equips=new LinkedList<Equip>();
+	
 	public int day=0;
 	public int mapColor = ColorUtil.DAY;
 	

@@ -102,18 +102,27 @@ public class List<T> extends Widget implements Cullable {
 		}else
 			delaydbClickTime=0;
 		lastIndex=index;
+		if(click!=null)
+			click.run();
 	}
-	Runnable dbclick;
-	public void onDBClick(Runnable run){
+	Runnable dbclick,click;
+	public List<T> onDBClick(Runnable run){
 		dbclick=run;
+		return this;
+	}
+	
+	public List<T> onClick(Runnable run){
+		click=run;
+		return this;
 	}
 	
 	public void layout () {
 		final BitmapFont font = style.font;
 		final Drawable selectedDrawable = style.selection;
-
-		itemHeight = font.getCapHeight() - font.getDescent() * 2;
-		itemHeight += selectedDrawable.getTopHeight() + selectedDrawable.getBottomHeight();
+		if(itemHeight==0){
+			itemHeight = font.getCapHeight() - font.getDescent() * 2;
+			itemHeight += selectedDrawable.getTopHeight() + selectedDrawable.getBottomHeight();
+		}
 
 		textOffsetX = selectedDrawable.getLeftWidth();
 		textOffsetY = selectedDrawable.getTopHeight() - font.getDescent();
@@ -167,7 +176,7 @@ public class List<T> extends Widget implements Cullable {
 					selectedDrawable.draw(batch, x+20, y + itemY - itemHeight, width-10, itemHeight);
 					font.setColor(fontColorSelected.r, fontColorSelected.g, fontColorSelected.b, fontColorSelected.a * parentAlpha);
 				}
-				FontUtil.draw(((SpriteBatch)batch), item.toString(), 20,selected?blue:Color.WHITE, (int)(x + textOffsetX + 10), (int)(y + itemY - textOffsetY)+1, 500);
+				FontUtil.draw(((SpriteBatch)batch), item.toString(), 20,selected?blue:Color.WHITE, (int)(x + textOffsetX + 10), (int)(y + itemY - textOffsetY)+1-padTop, 500);
 				if (selected) {
 					font.setColor(fontColorUnselected.r, fontColorUnselected.g, fontColorUnselected.b, fontColorUnselected.a
 						* parentAlpha);
@@ -256,6 +265,11 @@ public class List<T> extends Widget implements Cullable {
 	public float getItemHeight () {
 		return itemHeight;
 	}
+	
+	public void setItemHeight (float itemHeight) {
+		this.itemHeight=itemHeight;
+	}
+	public int padTop=0;
 
 	public float getPrefWidth () {
 		validate();
