@@ -3,18 +3,19 @@ package com.rpsg.rpg.view.menu;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.List.ListStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -24,6 +25,7 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.EmptyEquip;
 import com.rpsg.rpg.object.base.Equip;
+import com.rpsg.rpg.object.base.ListItem;
 import com.rpsg.rpg.object.base.TipEquip;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.system.base.HeroImage;
@@ -33,6 +35,7 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.HeroControler;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.utils.game.ItemUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public class EquipView extends IView{
@@ -45,6 +48,9 @@ public class EquipView extends IView{
 	
 	com.rpsg.rpg.system.base.List<Equip> elist;
 	com.rpsg.rpg.system.base.List<EQuipSelect> sellist;
+	com.rpsg.rpg.system.base.List<ListItem> olist;
+	
+	Runnable cancel;
 	
 	Equip equip=new TipEquip();
 	Texture up,down;
@@ -99,6 +105,8 @@ public class EquipView extends IView{
 		stage.addActor(right);
 		
 		Image bot=Res.get(Setting.GAME_RES_IMAGE_MENU_EQUIP+"botbar.png");
+		bot.setColor(1,1,1,0);
+		bot.addAction(Actions.fadeIn(0.2f));
 		bot.setPosition(130, 13);
 		stage.addActor(bot);
 		
@@ -107,14 +115,13 @@ public class EquipView extends IView{
 		style.selection=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipsel.png");
 		style.fontColorSelected=blue;
 		elist=new com.rpsg.rpg.system.base.List<Equip>(style);
-		elist.onDBClick(()->{
-			System.out.println("doubleClick");
-		}).onClick(()->{
+		elist.onClick(()->{
 			equip=elist.getSelected();
 		});
 		ScrollPane pane=new ScrollPane(elist);
 		pane.getStyle().vScroll=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"scrollbar.png");
 		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"scrollbarin.png");
+		pane.setForceScroll(false, true);
 		pane.layout();
 		Table table=new Table();
 		table.setBackground(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipbox.png"));
@@ -123,6 +130,10 @@ public class EquipView extends IView{
 		table.setPosition(600, 120);
 		table.setSize(386, 215);
 		table.getCell(pane).width(table.getWidth()).height(table.getHeight()-20);
+		
+		table.setColor(1,1,1,0);
+		table.addAction(Actions.fadeIn(0.2f));
+		
 		stage.addActor(table);
 		
 		sellist=new com.rpsg.rpg.system.base.List<EQuipSelect>(style);
@@ -133,6 +144,8 @@ public class EquipView extends IView{
 		sellist.layout();
 		sellist.onClick(()->{
 			gengrateEList();
+		}).onDBClick(()->{
+			gengrateEList();
 		});
 		
 		
@@ -140,6 +153,62 @@ public class EquipView extends IView{
 		
 		generateHero(currentSelectHero);
 		gengrateEList();
+		
+		Actor mask=new Actor();
+		mask.setWidth(GameUtil.screen_width);
+		mask.setHeight(GameUtil.screen_height);
+		mask.addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				return false;
+			}
+		});
+		stage.addActor(mask);
+		
+		Image msg=Res.get(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipmsgbox.png");
+		msg.setPosition(380, 140);
+		stage.addActor(msg);
+		olist=new com.rpsg.rpg.system.base.List<ListItem>(style);
+		olist.getItems().add(new ListItem("装备").setRunnable(()->{
+			ItemUtil.useEquip(HeroControler.heros.get(currentSelectHero), equip);
+			gengrateEList();
+		}));
+		olist.getItems().add(new ListItem("丢弃").setRunnable(()->{
+			if(equip.throwable){
+				ItemUtil.throwEquip(equip);
+				gengrateEList();
+			}
+		}));
+		cancel=()->{
+			olist.setVisible(false);
+			msg.setVisible(false);
+			mask.setVisible(false);
+			stage.setKeyboardFocus(null);
+		};
+		cancel.run();
+		olist.getItems().add(new ListItem("取消"));
+		olist.onDBClick(()->{
+			olist.getSelected().run();
+			cancel.run();
+		});
+		olist.setPosition(380, 100);
+		olist.setSize(211, 200);
+		stage.addActor(olist);
+		
+		elist.onDBClick(()->{
+			if(!elist.getSelected().name.equals(EmptyEquip.gloname)){
+				olist.setVisible(true);
+				olist.setSelectedIndex(0);
+				msg.setVisible(true);
+				mask.setVisible(true);
+				stage.setKeyboardFocus(olist);
+			}else{
+				if(sellist.getSelected()!=null){
+					ItemUtil.takeOffEquip(HeroControler.heros.get(currentSelectHero), sellist.getSelected().type);
+					gengrateEList();
+				}
+			}
+		});
+		
 	}
 	
 	Color blue=new Color(80f/255f,111f/255f,187f/255f,1);
@@ -152,56 +221,29 @@ public class EquipView extends IView{
 		sb.begin();
 		heroImage.draw(sb, step==3?1:step);
 		FontUtil.draw(sb, hero.name, 22, Color.WHITE, 220, 486, 1000);
-		FontUtil.draw(sb,hero.fullHP()+"", 20, blue, 465, 437, 1000);
-		FontUtil.draw(sb,hero.fullMP()+"", 20, blue, 465, 397, 1000);
-		FontUtil.draw(sb,hero.fullAttack()+"", 20, blue, 605, 437, 1000);
-		FontUtil.draw(sb,hero.fullMagicAttack()+"", 20, blue, 605, 397, 1000);
-		FontUtil.draw(sb,hero.fullDefense()+"", 20, blue, 744, 437, 1000);
-		FontUtil.draw(sb,hero.fullMagicDefense()+"", 20, blue, 744, 397, 1000);
-		FontUtil.draw(sb,hero.fullSpeed()+"", 20, blue, 884, 437, 1000);
-		FontUtil.draw(sb,hero.fullHit()+"", 20, blue, 884, 397, 1000);
-		FontUtil.draw(sb,hero.level+"", 30, blue, 150, 497, 1000);
-		FontUtil.draw(sb,equip.statusName, 20, Color.WHITE, 400, 96, 1000);
-		FontUtil.draw(sb,equip.illustration, 17, blue, 390, 65, 540);
-		if(equip.hp!=0){
-			int tmp=equip.hp-hero.fullHP()-hero.hp;
-			FontUtil.draw(sb, tmp>0?"+"+tmp:tmp+"", 14, tmp>0?green:red, 505, 434, 100,-5,0);
-			sb.draw(tmp>0?up:down, 535, 423);
-		}
-		if(equip.mp!=0){
-			int tmp=equip.mp-hero.fullMP()-hero.mp;
-			FontUtil.draw(sb, tmp>0?"+"+tmp:tmp+"", 14, tmp>0?green:red, 505, 393, 100,-5,0);
-			sb.draw(tmp>0?up:down, 535, 381);
-		}
-		if(equip.hp!=0){
-			int tmp=equip.hp-hero.fullHP()-hero.hp;
-			FontUtil.draw(sb, tmp>0?"+"+tmp:tmp+"", 14, tmp>0?green:red, 505, 434, 100,-5,0);
-			sb.draw(tmp>0?up:down, 535, 423);
-		}
-		if(equip.hp!=0){
-			int tmp=equip.hp-hero.fullHP()-hero.hp;
-			FontUtil.draw(sb, tmp>0?"+"+tmp:tmp+"", 14, tmp>0?green:red, 505, 434, 100,-5,0);
-			sb.draw(tmp>0?up:down, 535, 423);
-		}
-		if(equip.hp!=0){
-			int tmp=equip.hp-hero.fullHP()-hero.hp;
-			FontUtil.draw(sb, tmp>0?"+"+tmp:tmp+"", 14, tmp>0?green:red, 505, 434, 100,-5,0);
-			sb.draw(tmp>0?up:down, 535, 423);
-		}
-		if(equip.hp!=0){
-			int tmp=equip.hp-hero.fullHP()-hero.hp;
-			FontUtil.draw(sb, tmp>0?"+"+tmp:tmp+"", 14, tmp>0?green:red, 505, 434, 100,-5,0);
-			sb.draw(tmp>0?up:down, 535, 423);
-		}
-		if(equip.hp!=0){
-			int tmp=equip.hp-hero.fullHP()-hero.hp;
-			FontUtil.draw(sb, tmp>0?"+"+tmp:tmp+"", 14, tmp>0?green:red, 505, 434, 100,-5,0);
-			sb.draw(tmp>0?up:down, 535, 423);
-		}
-		if(equip.hp!=0){
-			int tmp=equip.hp-hero.fullHP()-hero.hp;
-			FontUtil.draw(sb, tmp>0?"+"+tmp:tmp+"", 14, tmp>0?green:red, 505, 434, 100,-5,0);
-			sb.draw(tmp>0?up:down, 535, 423);
+		FontUtil.draw(sb,hero.prop.get("maxhp")+"", 20, blue, 465, 437, 1000);
+		FontUtil.draw(sb,hero.prop.get("maxmp")+"", 20, blue, 465, 397, 1000);
+		FontUtil.draw(sb,hero.prop.get("attack")+"", 20, blue, 605, 437, 1000);
+		FontUtil.draw(sb,hero.prop.get("magicAttack")+"", 20, blue, 605, 397, 1000);
+		FontUtil.draw(sb,hero.prop.get("defense")+"", 20, blue, 744, 437, 1000);
+		FontUtil.draw(sb,hero.prop.get("magicDefense")+"", 20, blue, 744, 397, 1000);
+		FontUtil.draw(sb,hero.prop.get("speed")+"", 20, blue, 884, 437, 1000);
+		FontUtil.draw(sb,hero.prop.get("hit")+"", 20, blue, 884, 397, 1000);
+		FontUtil.draw(sb,hero.prop.get("level")+"", 30, blue, 154+60/2-FontUtil.getTextWidth(hero.prop.get("level")+"", 30), 497, 1000);
+		if(equip!=null){
+			FontUtil.draw(sb,equip.statusName, 20, Color.WHITE, 400, 96, 1000);
+			FontUtil.draw(sb,equip.illustration, 17, blue, 390, 65, 540);
+			
+			if(!equip.disable){
+				drawChange(sb,"maxhp",515,434);
+				drawChange(sb,"maxmp",515,394);
+				drawChange(sb,"attack",653,434);
+				drawChange(sb,"magicAttack",653,394);
+				drawChange(sb,"defense",792,434);
+				drawChange(sb,"magicDefense",792,394);
+				drawChange(sb,"speed",932,434);
+				drawChange(sb,"hit",932,394);
+			}
 		}
 		sb.end();
 	}
@@ -216,18 +258,38 @@ public class EquipView extends IView{
 				step=0;
 		}
 	}
-
+	
+	private int getDef(String prop){
+		Hero hero=HeroControler.heros.get(currentSelectHero);
+		if(hero.getEquipValue(equip.type, prop)!=0)
+			return hero.prop.get(prop)-hero.getEquipValue(equip.type, prop)+equip.prop.get(prop);
+		else
+			return equip.prop.get(prop);
+	}
+	
+	private void drawChange(SpriteBatch sb,String prop,int x,int y){
+		Integer def=getDef(prop);
+		if(def!=0){
+			FontUtil.draw(sb, def>0?"+"+def:def+"",12,def>0?green:red, x-FontUtil.getTextWidth(def>0?"+"+def:def+"", 12, -3)+13, y-1, 100, -6, 0);
+			sb.draw(def>0?up:down, x+20, y-12);
+		}
+	}
+	
 	public void onkeyTyped(char character) {
-		
+		stage.keyTyped(character);
 	}
 
 	public void onkeyDown(int keyCode) {
 		if(Keys.ESCAPE==keyCode)
-			this.disposed=true;
+			if(!olist.isVisible())
+				this.disposed=true;
+			else
+				cancel.run();
+		stage.keyDown(keyCode);
 	}
 
 	public void onkeyUp(int keyCode) {
-		
+		stage.keyUp(keyCode);
 	}
 
 	public void dispose() {
@@ -282,29 +344,30 @@ public class EquipView extends IView{
 		sellist.clearItems();
 		Array<EQuipSelect> item = sellist.getItems();
 		Hero hero=HeroControler.heros.get(currentSelectHero);
-		item.add(new EQuipSelect(Equip.EQUIP_WEAPON,hero.getWeaponName(),"武器"));
-		item.add(new EQuipSelect(Equip.EQUIP_CLOTHES,hero.getClothesName(),"衣服"));
-		item.add(new EQuipSelect(Equip.EQUIP_SHOES,hero.getShoesName(),"鞋子"));
-		item.add(new EQuipSelect(Equip.EQUIP_ORNAMENT1,hero.getOrnament1Name(),"装饰"));
-		item.add(new EQuipSelect(Equip.EQUIP_ORNAMENT2,hero.getOrnament2Name(),"装饰"));
+		item.add(new EQuipSelect(Equip.EQUIP_WEAPON,hero.getEquipName("weapon"),"武器"));
+		item.add(new EQuipSelect(Equip.EQUIP_CLOTHES,hero.getEquipName("clothes"),"衣服"));
+		item.add(new EQuipSelect(Equip.EQUIP_SHOES,hero.getEquipName("shoes"),"鞋子"));
+		item.add(new EQuipSelect(Equip.EQUIP_ORNAMENT1,hero.getEquipName("ornament1"),"装饰"));
+		item.add(new EQuipSelect(Equip.EQUIP_ORNAMENT2,hero.getEquipName("ornament2"),"装饰"));
 		sellist.setSelectedIndex(currentSelectEquip);
 		elist.clearItems();
 		Array<Equip> eitem=elist.getItems();
 		eitem.add(new EmptyEquip());
 		if(currentSelectEquip!=-1){
 			GameViews.global.equips.forEach((e)->{
-				if((e.type==item.get(currentSelectEquip).type) && (e.onlyFor==null || e.onlyFor==hero.getClass()))
+				if((e.type.equals(item.get(currentSelectEquip).type)) && (e.onlyFor==null || e.onlyFor==hero.getClass()))
 					eitem.add(e);
 			});
 			equip=new TipEquip("提示", sellist.getSelected().tip);
 		}
+			
 	}
 	
 	class EQuipSelect{
-		int type;
+		String type;
 		String name;
 		String tip;
-		public EQuipSelect(int type, String name, String tip) {
+		public EQuipSelect(String type, String name, String tip) {
 			this.type = type;
 			this.name = name;
 			this.tip = tip;

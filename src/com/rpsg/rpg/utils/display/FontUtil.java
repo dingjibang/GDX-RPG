@@ -62,11 +62,15 @@ public class FontUtil {
 		}
 	}
 	public static void draw(SpriteBatch sb,String str,int fontsize,Color color,int x,int y,int width){
-		draw(sb,str,fontsize,color,x,y,width,Setting.STRING_PADDING_LR*2,Setting.DRAW_MULTI_STRING_PADDING_TB*2);
+		draw(sb,str,fontsize,color,x,y,width,Setting.STRING_PADDING_LR*2,Setting.STRING_PADDING_TB*2);
 	}
 	
 	public static int getTextWidth(String txt,int size,int paddinglr){
-		return (size+(paddinglr*2))*txt.length();
+		return (size+(paddinglr))*txt.length();
+	}
+	
+	public static int getTextWidth(String txt,int size){
+		return getTextWidth(txt,size,Setting.STRING_PADDING_LR);
 	}
 	
 	public static BitmapFont generateFont(char str,int size){
