@@ -1,11 +1,14 @@
 package com.rpsg.rpg.object.rpgobj;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Equip;
+import com.rpsg.rpg.object.base.SpellCard;
 
 public abstract class Hero extends IRPGObject {
 	
@@ -29,7 +32,9 @@ public abstract class Hero extends IRPGObject {
 		prop.put("magicDefense", 0);
 		prop.put("speed", 0);
 		prop.put("hit", 0);
+		prop.put("maxsc", 10);
 	}
+	public List<SpellCard> sc=new ArrayList<SpellCard>();
 	
 	public Map<String,Equip> equips=new HashMap<String, Equip>();
 	{
@@ -59,6 +64,10 @@ public abstract class Hero extends IRPGObject {
 	public Hero(String path) {
 		super(RES_PATH+path, HERO_WIDTH, HERO_HEIGHT);
 		this.waitWhenCollide=false;
+	}
+	
+	public String toString(){
+		return name;
 	}
 	
 }

@@ -1,5 +1,6 @@
 package com.rpsg.rpg.game.hero;
 
+import com.rpsg.rpg.game.sc.MagicGun;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.object.rpgobj.IRPGObject;
 
@@ -10,6 +11,7 @@ public class Marisa extends Hero{
 	public void first(){
 		imgPath="/walk_marisa.png";
 		name="ŒÌ”Íƒß¿Ì…≥";
+		sc.add(new MagicGun());
 	}
 	
 	public void init(){

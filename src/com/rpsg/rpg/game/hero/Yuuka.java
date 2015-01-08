@@ -1,5 +1,6 @@
 package com.rpsg.rpg.game.hero;
 
+import com.rpsg.rpg.game.sc.MagicGun;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.object.rpgobj.IRPGObject;
 
