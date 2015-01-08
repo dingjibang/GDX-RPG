@@ -54,6 +54,10 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		return ((TextureRegionDrawable)this.getDrawable()).getRegion().getTexture();
 	}
 	
+	public TextureRegion getRegion(){
+		return ((TextureRegionDrawable)this.getDrawable()).getRegion();
+	}
+	
 	public Image dispose(){
 		getTexture().dispose();
 		return this;
