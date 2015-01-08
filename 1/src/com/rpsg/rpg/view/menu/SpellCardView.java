@@ -186,8 +186,8 @@ public class SpellCardView extends IView{
 		
 		
 		herolist=new com.rpsg.rpg.system.base.List<ListItem>(style);
-		HeroControler.heros.forEach((h)->herolist.getItems().add(new ListItem(h.name).setUserObject(h)));
 		herolist.getItems().add(new ListItem("取消"));
+		HeroControler.heros.forEach((h)->herolist.getItems().add(new ListItem(h.name).setUserObject(h)));
 		herolist.onDBClick(()->{
 			if(herolist.getSelected().name.equals("取消")){
 				can2.run();
@@ -218,6 +218,8 @@ public class SpellCardView extends IView{
 	com.rpsg.rpg.system.base.List<ListItem> sellist,herolist;
 	Runnable can,can2;
 	Color blue=new Color(80f/255f,111f/255f,187f/255f,1);
+	Color green=new Color(219f/255f,255f/255f,219f/255f,1);
+	Color cblue=new Color(219f/255f,238f/255f,255f/255f,1);
 	public void draw(SpriteBatch batch) {
 		stage.draw();
 		SpriteBatch sb=(SpriteBatch) stage.getBatch();
@@ -236,16 +238,29 @@ public class SpellCardView extends IView{
 		scfor.draw(sb);
 		if(herolist.isVisible()){
 			herolist.draw(sb, 1);
+			sb.flush();
 			if(herolist.getSelectedIndex()!=-1 && (Hero)herolist.getSelected().userObject!=null){
-				render.begin(ShapeType.Filled);
-				render.rect(400, 300, 100, 20);
-				render.end();
 				Hero h=((Hero)herolist.getSelected().userObject);
-				FontUtil.draw(sb, h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20, blue, 565, 278, 400);
-				FontUtil.draw(sb, h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20, blue, 565, 244, 400);
-				FontUtil.draw(sb, "正常", 18, blue, 565, 208, 400);
+				render.begin(ShapeType.Filled);
+				render.setColor(green);
+				render.rect(578, 258, (float)((float)h.prop.get("hp")/(float)h.prop.get("maxhp"))*189,22);
+				render.setColor(cblue);
+				render.rect(578, 224, (float)((float)h.prop.get("mp")/(float)h.prop.get("maxmp"))*189,22);
+				render.end();
+				FontUtil.draw(sb, h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20, blue, 565+190/2-FontUtil.getTextWidth(h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20,-7)/2, 278, 400,-7,0);
+				FontUtil.draw(sb, h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20, blue, 565+190/2-FontUtil.getTextWidth(h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20,-7)/2, 244, 400,-7,0);
+				FontUtil.draw(sb, "正常", 18, blue, 548+190/2-FontUtil.getTextWidth("正常", 20,-7)/2, 208, 400);
+				FontUtil.draw(sb, "目标："+h, 18, Color.WHITE, 495, 310, 200);
+				sb.draw(h.images[1].getRegion(),820,258);
 			}
-			FontUtil.draw(sb, hero.prop.get("mp")+"/"+  hero.prop.get("maxmp"), 20, blue, 565, 136, 400);
+			sb.flush();
+			render.begin(ShapeType.Filled);
+			render.setColor(cblue);
+			render.rect(578, 116, (float)((float)hero.prop.get("mp")/(float)hero.prop.get("maxmp"))*189,22);
+			render.end();
+			FontUtil.draw(sb, "技能使用者："+hero, 18, Color.WHITE, 495, 170, 200);
+			FontUtil.draw(sb, hero.prop.get("mp")+"/"+  hero.prop.get("maxmp"), 20, blue, 565+190/2-FontUtil.getTextWidth(hero.prop.get("mp")+"/"+  hero.prop.get("maxmp"), 20,-7)/2, 136, 400,-7,0);
+			sb.draw(hero.images[1].getRegion(),820,102);
 		}
 		
 		sb.end();
