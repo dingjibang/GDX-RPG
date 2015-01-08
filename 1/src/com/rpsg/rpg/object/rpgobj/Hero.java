@@ -75,4 +75,21 @@ public abstract class Hero extends IRPGObject {
 		return name;
 	}
 	
+	public boolean subProp(String name,int c){
+		if(c-prop.get(name)<0)
+			return false;
+		else
+			prop.replace(name, prop.get(name)-c);
+		return true;
+	}
+	
+	public void addProp(String name,int c){
+		if(name.equals("hp") || name.equals("mp"))
+			if(prop.get(name)+c>prop.get("max"+name))
+				prop.replace(name, prop.get("max"+name));
+		else;else
+			prop.replace(name, prop.get(name)+c);
+				
+	}
+	
 }
