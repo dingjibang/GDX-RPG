@@ -198,7 +198,7 @@ public class SpellCardView extends IView{
 			}
 		});
 		herolist.setPosition(500, 343);
-		herolist.setSize(260, 140);
+		herolist.setSize(257, 140);
 		herolist.layout();
 		stage.addActor(herolist);
 		
@@ -209,8 +209,8 @@ public class SpellCardView extends IView{
 			layer=1;
 		};
 		
-		can.run();
 		can2.run();
+		can.run();
 		
 		
 	}
@@ -283,14 +283,14 @@ public class SpellCardView extends IView{
 	}
 
 	public void onkeyDown(int keyCode) {
-		if(Keys.ESCAPE==keyCode)
+		if(Keys.ESCAPE==keyCode){
 			if(layer==0)
 				this.disposed=true;
 			else if(layer==1)
 				can.run();
 			else if(layer==2)
 				can2.run();
-		else
+		}else
 			stage.keyDown(keyCode);
 	}
 
