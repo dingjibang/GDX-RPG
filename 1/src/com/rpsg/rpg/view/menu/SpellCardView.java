@@ -7,6 +7,8 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -44,8 +46,12 @@ public class SpellCardView extends IView{
 	
 	int layer=0;
 	
+	ShapeRenderer render;
+	
 	SpellCard spell=new TipSpellCard();
 	public void init() {
+		render=new ShapeRenderer();
+		render.setAutoShapeType(true);
 		
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		
@@ -231,6 +237,9 @@ public class SpellCardView extends IView{
 		if(herolist.isVisible()){
 			herolist.draw(sb, 1);
 			if(herolist.getSelectedIndex()!=-1 && (Hero)herolist.getSelected().userObject!=null){
+				render.begin(ShapeType.Filled);
+				render.rect(400, 300, 100, 20);
+				render.end();
 				Hero h=((Hero)herolist.getSelected().userObject);
 				FontUtil.draw(sb, h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20, blue, 565, 278, 400);
 				FontUtil.draw(sb, h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20, blue, 565, 244, 400);
@@ -276,6 +285,7 @@ public class SpellCardView extends IView{
 
 	public void dispose() {
 		stage.dispose();
+		render.dispose();
 	}
 
 	@Override
