@@ -17,7 +17,9 @@ public class patientBack extends SpellCard{
 	}
 	
 	public boolean use(Hero user,Hero to){
-		System.out.println("okay");
+		if(!to.full("hp"))
+			if(user.subProp("mp",magicConsume))
+				to.addProp("hp", addParam.get("hp"));
 		return false;
 	}
 }

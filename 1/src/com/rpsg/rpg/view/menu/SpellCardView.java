@@ -186,8 +186,9 @@ public class SpellCardView extends IView{
 			if(herolist.getSelected().name.equals("È¡Ïû")){
 				can2.run();
 			}else{
-				if(spell.use(HeroControler.heros.get(currentSelectHero),((Hero)herolist.getUserObject())))
-					can2.run();
+				if(herolist.getSelected().userObject!=null)
+					if(spell.use(HeroControler.heros.get(currentSelectHero),((Hero)herolist.getSelected().userObject)))
+						can2.run();
 			}
 		});
 		herolist.setPosition(500, 343);
@@ -323,19 +324,4 @@ public class SpellCardView extends IView{
 		return stage.scrolled(amount);
 	}
 	
-	
-	class EQuipSelect{
-		String type;
-		String name;
-		String tip;
-		public EQuipSelect(String type, String name, String tip) {
-			this.type = type;
-			this.name = name;
-			this.tip = tip;
-		}
-
-		public String toString(){
-			return name;
-		}
-	}
 }
