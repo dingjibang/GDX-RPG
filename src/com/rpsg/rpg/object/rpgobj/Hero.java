@@ -15,6 +15,10 @@ public abstract class Hero extends IRPGObject {
 	private static final long serialVersionUID = 1L;
 	public static final int HERO_WIDTH=48;
 	public static final int HERO_HEIGHT=64;
+	
+	public static final int TRUE=1;
+	public static final int FALSE=0;
+	
 	public static final String RES_PATH=Setting.GAME_RES_WALK+"heros/";
 	
 	public String name;
@@ -33,6 +37,7 @@ public abstract class Hero extends IRPGObject {
 		prop.put("speed", 0);
 		prop.put("hit", 0);
 		prop.put("maxsc", 10);
+		prop.put("dead", FALSE);
 	}
 	public List<SpellCard> sc=new ArrayList<SpellCard>();
 	

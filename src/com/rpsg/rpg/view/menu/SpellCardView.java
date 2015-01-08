@@ -176,7 +176,7 @@ public class SpellCardView extends IView{
 		
 		stage.addActor(mask2);			
 		scfor=Res.get(Setting.GAME_RES_IMAGE_MENU_SC+"sc_for.png");
-		scfor.setPosition(500, 270);
+		scfor.setPosition(500, 87);
 		
 		
 		herolist=new com.rpsg.rpg.system.base.List<ListItem>(style);
@@ -186,10 +186,11 @@ public class SpellCardView extends IView{
 			if(herolist.getSelected().name.equals("取消")){
 				can2.run();
 			}else{
-				System.out.println("currentSelectedHero:"+herolist.getSelected()+",currentSelectSC:"+spell);
+				if(spell.use(HeroControler.heros.get(currentSelectHero),((Hero)herolist.getUserObject())))
+					can2.run();
 			}
 		});
-		herolist.setPosition(500, 285);
+		herolist.setPosition(500, 343);
 		herolist.setSize(260, 140);
 		herolist.layout();
 		stage.addActor(herolist);
@@ -226,7 +227,17 @@ public class SpellCardView extends IView{
 		scuse.draw(sb);
 		if(sellist.isVisible()) sellist.draw(sb, 1);
 		scfor.draw(sb);
-		if(herolist.isVisible()) herolist.draw(sb, 1);
+		if(herolist.isVisible()){
+			herolist.draw(sb, 1);
+			if(herolist.getSelectedIndex()!=-1 && (Hero)herolist.getSelected().userObject!=null){
+				Hero h=((Hero)herolist.getSelected().userObject);
+				FontUtil.draw(sb, h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20, blue, 565, 278, 400);
+				FontUtil.draw(sb, h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20, blue, 565, 244, 400);
+				FontUtil.draw(sb, "正常", 18, blue, 565, 208, 400);
+			}
+			FontUtil.draw(sb, hero.prop.get("mp")+"/"+  hero.prop.get("maxmp"), 20, blue, 565, 136, 400);
+		}
+		
 		sb.end();
 	}
 

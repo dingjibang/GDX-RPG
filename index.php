@@ -5,7 +5,7 @@
 </h2>
 <b>svn地址：</b><a href="https://svn.sinaapp.com/rpsgrpg/1">https://svn.sinaapp.com/rpsgrpg/1</a>
 <br/>
-<b>svn用户名：</b><i>dingjibang@qq.com</i>
+<b>svn用户名：</b><i><span style="background-color:black">就是不告诉你hhhh</span></i>
 <br/>
 <b>svn密码：</b><span style="background-color:black">就是不告诉你hhhh</span>
 
