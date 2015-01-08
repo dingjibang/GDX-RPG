@@ -5,9 +5,15 @@ public class ListItem {
 	public boolean enable=true;
 	public String name;
 	public Runnable run;
+	public Object userObject;
 	
 	public ListItem(String name) {
 		this.name=name;
+	}
+	
+	public ListItem setUserObject(Object u){
+		userObject =u;
+		return this;
 	}
 	
 	public void run(){
