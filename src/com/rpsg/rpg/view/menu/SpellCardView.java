@@ -247,9 +247,9 @@ public class SpellCardView extends IView{
 				render.setColor(cblue);
 				render.rect(578, 224, (float)((float)h.prop.get("mp")/(float)h.prop.get("maxmp"))*189,22);
 				render.end();
-				FontUtil.draw(sb, h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20, blue, 565+190/2-FontUtil.getTextWidth(h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20,-7)/2, 278, 400,-7,0);
-				FontUtil.draw(sb, h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20, blue, 565+190/2-FontUtil.getTextWidth(h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20,-7)/2, 244, 400,-7,0);
-				FontUtil.draw(sb, "正常", 18, blue, 548+190/2-FontUtil.getTextWidth("正常", 20,-7)/2, 208, 400);
+				FontUtil.draw(sb, h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20, blue, 560+190/2-FontUtil.getTextWidth(h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20,-7)/2, 278, 400,-7,0);
+				FontUtil.draw(sb, h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20, blue, 560+190/2-FontUtil.getTextWidth(h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20,-7)/2, 244, 400,-7,0);
+				FontUtil.draw(sb, "正常", 18, blue, 560+190/2-FontUtil.getTextWidth("正常", 20)/2, 208, 400);
 				FontUtil.draw(sb, "目标："+h, 18, Color.WHITE, 495, 310, 200);
 				sb.draw(h.images[1].getRegion(),820,258);
 			}
@@ -259,7 +259,7 @@ public class SpellCardView extends IView{
 			render.rect(578, 116, (float)((float)hero.prop.get("mp")/(float)hero.prop.get("maxmp"))*189,22);
 			render.end();
 			FontUtil.draw(sb, "技能使用者："+hero, 18, Color.WHITE, 495, 170, 200);
-			FontUtil.draw(sb, hero.prop.get("mp")+"/"+  hero.prop.get("maxmp"), 20, blue, 565+190/2-FontUtil.getTextWidth(hero.prop.get("mp")+"/"+  hero.prop.get("maxmp"), 20,-7)/2, 136, 400,-7,0);
+			FontUtil.draw(sb, hero.prop.get("mp")+"/"+  hero.prop.get("maxmp"), 20, blue, 560+190/2-FontUtil.getTextWidth(hero.prop.get("mp")+"/"+  hero.prop.get("maxmp"), 20,-7)/2, 136, 400,-7,0);
 			sb.draw(hero.images[1].getRegion(),820,102);
 		}
 		
