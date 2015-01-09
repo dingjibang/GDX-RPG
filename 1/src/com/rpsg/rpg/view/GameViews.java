@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
+import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.MouseUtil;
 import com.rpsg.rpg.utils.display.TipUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -43,6 +44,7 @@ public class GameViews implements ApplicationListener {
 		global=new Global();
 		MouseUtil.init();
 		TipUtil.init();
+		AlertUtil.init();
 		Logger.info("Gdx-RPG引擎初始化成功。");
 	}
 
@@ -96,6 +98,7 @@ public class GameViews implements ApplicationListener {
 		}
 		}
 		GameUtil.drawFPS(batch);
+		AlertUtil.draw(batch);
 		batch.end();
 		
 	}

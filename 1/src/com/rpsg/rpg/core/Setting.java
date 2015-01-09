@@ -11,7 +11,6 @@ public class Setting {
 	public static final String GAME_RES_MUSIC_BGM=GAME_RES_PATH+"/sound/bgm/";
 	public static final String GAME_RES_MUSIC_SE=GAME_RES_PATH+"/sound/se/";
 	public static final String GAME_RES_MAP=GAME_RES_PATH+"/maps/";
-	public static final String GAME_RES_CORE=GAME_RES_PATH+GAME_RES_IMAGE+"/core/";
 	public static final String GAME_RES_IMAGE_BG=GAME_RES_PATH+GAME_RES_IMAGE+"/background/";
 	public static final String GAME_RES_IMAGE_MENU=GAME_RES_PATH+GAME_RES_IMAGE+"/menu/";
 	public static final String GAME_RES_IMAGE_MENU_GLOBAL=GAME_RES_IMAGE_MENU+"global/";
@@ -23,6 +22,7 @@ public class Setting {
 	public static final String GAME_RES_MESSAGE=GAME_RES_PATH+GAME_RES_IMAGE+"/message/";
 	public static final String GAME_RES_WALK=GAME_RES_PATH+GAME_RES_IMAGE+"/walk/";
 	public static final String GAME_RES_SHADER=GAME_RES_PATH+"/shader/";
+	public static final String GAME_RES_GLOBAL=GAME_RES_PATH+GAME_RES_IMAGE+"/global/";
 	//ºËÐÄ
 	public static boolean DISPLAY_ANTI_ALIASING=true;
 	public static final int STRING_PADDING_TB=3;

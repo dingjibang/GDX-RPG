@@ -3,6 +3,7 @@ package com.rpsg.rpg.system.base;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -16,6 +17,10 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	public Image(String filename){
 		super(new Texture(Gdx.files.internal(filename)));
 		setAnti();
+	}
+	
+	public Image(NinePatch ninePatch){
+		super(ninePatch);
 	}
 	
 	public Image(Texture txt){

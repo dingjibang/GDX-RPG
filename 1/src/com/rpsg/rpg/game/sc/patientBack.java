@@ -2,6 +2,7 @@ package com.rpsg.rpg.game.sc;
 
 import com.rpsg.rpg.object.base.SpellCard;
 import com.rpsg.rpg.object.rpgobj.Hero;
+import com.rpsg.rpg.utils.display.AlertUtil;
 
 public class patientBack extends SpellCard{
 	private static final long serialVersionUID = 1L;
@@ -20,6 +21,8 @@ public class patientBack extends SpellCard{
 		if(!to.full("hp"))
 			if(user.subProp("mp",magicConsume))
 				to.addProp("hp", addParam.get("hp"));
+			else
+				AlertUtil.add(user.toString()+"的妖力不足以使用这个技能。", AlertUtil.Red);
 		return false;
 	}
 }

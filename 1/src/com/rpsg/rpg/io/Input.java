@@ -3,6 +3,7 @@ package com.rpsg.rpg.io;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
+import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.MouseUtil;
 import com.rpsg.rpg.view.GameViews;
 
@@ -10,7 +11,9 @@ public class Input implements InputProcessor{
 
 	@Override
 	public boolean keyDown(int keycode) {
-//		System.out.println(keycode);
+		if(keycode==34)
+			AlertUtil.add("右下角的绿色模式提示", AlertUtil.Green);
+		/**ddddeeeebbbbuuuggg**/
 		switch(GameViews.state){
 		case GameViews.STATE_TITLE:{
 			GameViews.titleview.onkeyDown(keycode);break;
