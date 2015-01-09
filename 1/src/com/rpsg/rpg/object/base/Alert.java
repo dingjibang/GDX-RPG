@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
@@ -37,7 +38,7 @@ public class Alert {
 	}
 	
 	private void init(){
-		box=new Image(AlertUtil.box);
+		box=new Image(new NinePatchDrawable(AlertUtil.box));
 		box.setWidth(FontUtil.getTextWidth(str, size)+100);
 		box.setHeight(50);
 		xoffset=(int) (box.getWidth()+100);

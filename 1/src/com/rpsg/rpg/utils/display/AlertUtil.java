@@ -45,13 +45,15 @@ public class AlertUtil {
 		for(int i=0;i<list.size();i++){
 			list.get(i).draw(sb, i*60);
 		}
+		sb.setColor(1,1,1,1);
+		box.draw(sb, 100, 100, 300, 400);
 	}
 	
 	private static NinePatch processNinePatchFile(String fname) {
 	    final Texture t = new Texture(Gdx.files.internal(fname));
 	    final int width = t.getWidth() - 2;
 	    final int height = t.getHeight() - 2;
-	    return new NinePatch(new TextureRegion(t, 1, 1, width, height), 1, 5, 1, 5);
+	    return new NinePatch(new TextureRegion(t, 1, 1, width, height), 3, 3, 3, 3);
 	}
 	
 }
