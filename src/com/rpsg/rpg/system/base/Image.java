@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.rpg.core.Setting;
 
@@ -43,6 +44,10 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public Image(Image image) {
 		super(image.getDrawable());
+	}
+
+	public Image(NinePatchDrawable ninePatchDrawable) {
+		super(ninePatchDrawable);
 	}
 
 	public void draw(SpriteBatch sb){
