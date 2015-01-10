@@ -8,6 +8,8 @@ import java.util.List;
 
 
 
+
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
@@ -60,8 +62,8 @@ public class EquipView extends IView{
 	Equip equip=new TipEquip();
 	Texture up,down;
 	
-	
 	public void init() {
+		
 		
 		up=new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_EQUIP+"add.png"));
 		down=new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_EQUIP+"sub.png"));
