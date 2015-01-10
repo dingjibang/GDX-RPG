@@ -53,7 +53,7 @@ public class Alert {
 	Action last;
 	public void draw(SpriteBatch sb,int oy){
 		if(hide)
-			if((xoffset-=10)<0)
+			if((xoffset-=40)<0)
 				this.dispose=true;
 		
 		if(showTime--==0)
@@ -67,9 +67,9 @@ public class Alert {
 		box.act(1f/60f);
 		box.draw(sb);
 		
-		FontUtil.draw(sb, str, size,Color.WHITE,(int)box.getX()-size+55,(int)box.getY()+25+size/2+2,(int)box.getWidth());
+		FontUtil.draw(sb, str, size,Color.WHITE,(int)box.getX()-size+55,(int)box.getY()+25+size/2,(int)box.getWidth());
 		type.setX(box.getX()+10);
-		type.setY(box.getY()+12);
+		type.setY(box.getY()+9);
 		type.draw(sb);
 	}
 }

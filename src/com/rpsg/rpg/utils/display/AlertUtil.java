@@ -33,6 +33,7 @@ public class AlertUtil {
 	}
 	
 	public static void add(String alert,Image type){
+		System.out.println("added");
 		list.add(new Alert(new Image(type), alert));
 	}
 	
@@ -46,14 +47,13 @@ public class AlertUtil {
 			list.get(i).draw(sb, i*60);
 		}
 		sb.setColor(1,1,1,1);
-		box.draw(sb, 100, 100, 300, 400);
 	}
 	
 	private static NinePatch processNinePatchFile(String fname) {
 	    final Texture t = new Texture(Gdx.files.internal(fname));
 	    final int width = t.getWidth() - 2;
 	    final int height = t.getHeight() - 2;
-	    return new NinePatch(new TextureRegion(t, 1, 1, width, height), 3, 3, 3, 3);
+	    return new NinePatch(new TextureRegion(t, 1, 1, width, height), 12, 12, 12, 12);
 	}
 	
 }
