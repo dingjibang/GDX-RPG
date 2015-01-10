@@ -19,10 +19,13 @@ public class patientBack extends SpellCard{
 	
 	public boolean use(Hero user,Hero to){
 		if(!to.full("hp"))
-			if(user.subProp("mp",magicConsume))
+			if(user.subProp("mp",magicConsume)){
+				AlertUtil.add(to.toString()+"成功恢复了"+addParam.get("hp")+"点生命值。", AlertUtil.Green);
 				to.addProp("hp", addParam.get("hp"));
-			else
+			}else
 				AlertUtil.add(user.toString()+"的妖力不足以使用这个技能。", AlertUtil.Red);
+		else
+			AlertUtil.add(to.toString()+"的生命值已满。", AlertUtil.Yellow);
 		return false;
 	}
 }

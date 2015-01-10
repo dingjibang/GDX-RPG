@@ -31,6 +31,7 @@ import com.rpsg.rpg.system.base.IView;
 import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.HeroControler;
+import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 

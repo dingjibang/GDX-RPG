@@ -7,6 +7,7 @@ import java.util.List;
 
 
 
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
@@ -36,6 +37,7 @@ import com.rpsg.rpg.system.base.IView;
 import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.HeroControler;
+import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.ItemUtil;
@@ -57,6 +59,8 @@ public class EquipView extends IView{
 	
 	Equip equip=new TipEquip();
 	Texture up,down;
+	
+	
 	public void init() {
 		
 		up=new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_EQUIP+"add.png"));
@@ -177,6 +181,7 @@ public class EquipView extends IView{
 		olist.getItems().add(new ListItem("¶ªÆú").setRunnable(()->{
 			if(equip.throwable){
 				ItemUtil.throwEquip(equip);
+				AlertUtil.add("¶ªÆú³É¹¦¡£", AlertUtil.Yellow);
 				gengrateEList();
 			}
 		}));
