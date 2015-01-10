@@ -3,9 +3,12 @@ package com.rpsg.rpg.view.menu;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
@@ -31,7 +34,6 @@ import com.rpsg.rpg.system.base.IView;
 import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.HeroControler;
-import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 
@@ -49,8 +51,15 @@ public class SpellCardView extends IView{
 	
 	ShapeRenderer render;
 	
+	ParticleEffect add;
+	
 	SpellCard spell=new TipSpellCard();
 	public void init() {
+		add=new ParticleEffect();
+		add.load(Gdx.files.internal(Setting.GAME_RES_PARTICLE+"addp.p"),Gdx.files.internal(Setting.GAME_RES_PARTICLE));
+		add.setPosition(845, 261);
+		
+		
 		render=new ShapeRenderer();
 		render.setAutoShapeType(true);
 		
@@ -196,6 +205,7 @@ public class SpellCardView extends IView{
 				if(herolist.getSelected().userObject!=null)
 					if(spell.use(HeroControler.heros.get(currentSelectHero),((Hero)herolist.getSelected().userObject)))
 						can2.run();
+				drawp=true;
 			}
 		});
 		herolist.setPosition(500, 343);
@@ -221,6 +231,8 @@ public class SpellCardView extends IView{
 	Color blue=new Color(80f/255f,111f/255f,187f/255f,1);
 	Color green=new Color(219f/255f,255f/255f,219f/255f,1);
 	Color cblue=new Color(219f/255f,238f/255f,255f/255f,1);
+	boolean drawp=false;
+	
 	public void draw(SpriteBatch batch) {
 		stage.draw();
 		SpriteBatch sb=(SpriteBatch) stage.getBatch();
@@ -252,6 +264,11 @@ public class SpellCardView extends IView{
 				FontUtil.draw(sb, h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20, blue, 560+190/2-FontUtil.getTextWidth(h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20,-7)/2, 244, 400,-7,0);
 				FontUtil.draw(sb, "正常", 18, blue, 560+190/2-FontUtil.getTextWidth("正常", 20)/2, 208, 400);
 				FontUtil.draw(sb, "目标："+h, 18, Color.WHITE, 495, 310, 200);
+				if(drawp){
+					add.draw(sb,Gdx.graphics.getDeltaTime());
+					drawp=!add.isComplete();
+				}else
+					add.reset();
 				sb.draw(h.images[1].getRegion(),820,258);
 			}
 			sb.flush();
@@ -302,6 +319,7 @@ public class SpellCardView extends IView{
 	public void dispose() {
 		stage.dispose();
 		render.dispose();
+		add.dispose();
 	}
 
 	@Override

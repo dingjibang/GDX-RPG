@@ -6,7 +6,7 @@ lowMin: 1000.0
 lowMax: 1000.0
 - Count - 
 min: 0
-max: 30
+max: 10
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
@@ -20,8 +20,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 500.0
-highMax: 1000.0
+highMin: 400.0
+highMax: 500.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -35,8 +35,8 @@ timeline2: 1.0
 active: true
 lowMin: 0.0
 lowMax: 0.0
-highMin: 0.0
-highMax: 0.0
+highMin: 50.0
+highMax: 50.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -80,7 +80,7 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 0.0
+lowMin: 100.0
 lowMax: 0.0
 highMin: 40.0
 highMax: 150.0
@@ -138,7 +138,7 @@ attached: false
 continuous: false
 aligned: false
 additive: true
-behind: false
+behind: true
 premultipliedAlpha: false
 - Image Path -
 particle.png
