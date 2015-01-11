@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Alert;
 import com.rpsg.rpg.system.base.Image;
