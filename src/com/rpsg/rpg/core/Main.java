@@ -19,7 +19,7 @@ public class Main {
 			cfg.height = 576;
 			cfg.samples=0;
 			cfg.resizable=true;
-			cfg.initialBackgroundColor=Color.WHITE; 
+			cfg.initialBackgroundColor=Color.WHITE;
 			cfg.samples=8;
 			RayHandler.setGammaCorrection(true);
 			RayHandler.useDiffuseLight(true);
