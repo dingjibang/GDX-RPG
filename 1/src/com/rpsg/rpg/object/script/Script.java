@@ -15,6 +15,7 @@ import com.rpsg.rpg.utils.game.Base;
 import com.rpsg.rpg.utils.game.Heros;
 import com.rpsg.rpg.utils.game.Move;
 import com.rpsg.rpg.utils.game.Timer;
+import com.rpsg.rpg.view.GameViews;
 
 
 public abstract class Script implements MsgType,FGType{
@@ -165,5 +166,9 @@ public abstract class Script implements MsgType,FGType{
 	
 	protected BaseScriptExecutor setGameTime(int color){
 		return ColorUtil.set(this, color);
+	}
+	
+	protected BaseScriptExecutor select(String ... args){
+		return GameViews.selectUtil.select(this, args);
 	}
 }

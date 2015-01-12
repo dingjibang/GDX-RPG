@@ -42,7 +42,6 @@ public class GameView extends IView{
 		world=new World(new Vector2(0,0),true);
 		ray=new RayHandler(world);
 		Initialization.init(this);
-		
 		inited=true;
 	}
 	
