@@ -16,11 +16,6 @@ public class Alert {
 	public int size;
 	public Image box;
 	
-	public int x;
-	public int y;
-	public int width;
-	public int height;
-	
 	public boolean dispose=false,hide=false;
 	
 	public Alert(Image type, String str, int size) {

@@ -31,25 +31,25 @@ public class MouseUtil {
 	}
 	static org.lwjgl.input.Cursor emptyCursor;
 	public static void setHWCursorVisible(boolean visible) {
-		if (Gdx.app.getType() != ApplicationType.Desktop && Gdx.app instanceof LwjglApplication)
-			return;
-		if (emptyCursor == null) {
-			if (Mouse.isCreated()) {
-				int min = org.lwjgl.input.Cursor.getMinCursorSize();
-				IntBuffer tmp = BufferUtils.createIntBuffer(min * min);
-				try {
-					emptyCursor = new org.lwjgl.input.Cursor(min, min, min / 2, min / 2, 1, tmp, null);
-				} catch (LWJGLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		if (Mouse.isInsideWindow())
-			try {
-				Mouse.setNativeCursor(visible ? null : emptyCursor);
-			} catch (LWJGLException e) {
-				e.printStackTrace();
-			}
+//		if (Gdx.app.getType() != ApplicationType.Desktop && Gdx.app instanceof LwjglApplication)
+//			return;
+//		if (emptyCursor == null) {
+//			if (Mouse.isCreated()) {
+//				int min = org.lwjgl.input.Cursor.getMinCursorSize();
+//				IntBuffer tmp = BufferUtils.createIntBuffer(min * min);
+//				try {
+//					emptyCursor = new org.lwjgl.input.Cursor(min, min, min / 2, min / 2, 1, tmp, null);
+//				} catch (LWJGLException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+//		if (Mouse.isInsideWindow())
+//			try {
+//				Mouse.setNativeCursor(visible ? null : emptyCursor);
+//			} catch (LWJGLException e) {
+//				e.printStackTrace();
+//			}
 	}
 	
 	public static void MoveTo(int x, int y) {

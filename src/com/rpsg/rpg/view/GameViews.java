@@ -8,6 +8,7 @@ import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.MouseUtil;
+import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.display.TipUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
@@ -28,6 +29,8 @@ public class GameViews implements ApplicationListener {
 	public static GameView gameview;
 	public static Global global;
 	
+	public static SelectUtil selectUtil;
+	public static Input input;
 	@Override
 	public void create() {
 		
@@ -35,7 +38,8 @@ public class GameViews implements ApplicationListener {
 		GameUtil.screen_height = Gdx.graphics.getHeight();
 		//start init
 		//input
-		Gdx.input.setInputProcessor(new Input());
+		input =new Input();
+		Gdx.input.setInputProcessor(input);
 		//view
 		logoview = new LogoView();
 		logoview.init();
@@ -45,6 +49,7 @@ public class GameViews implements ApplicationListener {
 		MouseUtil.init();
 		TipUtil.init();
 		AlertUtil.init();
+		selectUtil=new SelectUtil();
 		Logger.info("Gdx-RPG引擎初始化成功。");
 	}
 
