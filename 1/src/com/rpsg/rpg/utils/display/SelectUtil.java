@@ -45,6 +45,7 @@ public class SelectUtil implements InputProcessor {
 	
 	public static String currentSelect="";
 	boolean select=false;
+	boolean isLocked;
 	public BaseScriptExecutor select(Script script,String ...str){
 		SelectUtil that=this;
 		return script.$(new ScriptExecutor(script) {
@@ -62,7 +63,8 @@ public class SelectUtil implements InputProcessor {
 					stage.getBatch().end();
 				}else{
 					Gdx.input.setInputProcessor(GameViews.input);
-					InputControler.currentIOMode=IOMode.MAP_INPUT_NORMAL;
+					if(!isLocked)
+						InputControler.currentIOMode=IOMode.MAP_INPUT_NORMAL;
 					stage.clear();
 					dispose();
 				}
@@ -70,6 +72,7 @@ public class SelectUtil implements InputProcessor {
 			public void init() {
 				select=false;
 				Gdx.input.setInputProcessor(that);
+				isLocked=(InputControler.currentIOMode==IOMode.MAP_INPUT_MESSAGING);
 				InputControler.currentIOMode=IOMode.MAP_INPUT_MESSAGING;
 				int yoff=0;
 				mask.setColor(1,1,1,0);
@@ -90,7 +93,9 @@ public class SelectUtil implements InputProcessor {
 										mask.addAction(Actions.fadeOut(0.2f));
 										return true;
 									}
-								},Actions.alpha(0.6f,0.05f),Actions.alpha(1,0.05f),Actions.alpha(0.6f,0.05f),Actions.alpha(1,0.05f),Actions.after(new Action() {
+								},Actions.alpha(0.6f,0.08f),Actions.alpha(1,0.08f),Actions.alpha(0.6f,0.08f),Actions.alpha(1,0.08f),
+								Actions.parallel(Actions.fadeOut(0.15f),Actions.moveBy(0, -30,0.15f))
+								,Actions.after(new Action() {
 									public boolean act(float delta) {
 										select=true;
 										currentSelect=s;
