@@ -53,9 +53,13 @@ public class Msg {
 		return script.$(new ScriptExecutor(script) {
 			SpriteBatch batch=GameViews.batch;
 			public void step() {
-				if(Input.isPress(Keys.CONTROL_LEFT))
+				if(Input.isPress(Keys.CONTROL_LEFT)){
 					TEXT_DISPLAY_SPEED=100;
-				else
+					if(currentTextPoint<=currentText.length()-5)
+						currentTextPoint+=5;
+					else
+						currentTextPoint=currentText.length();
+				}else
 					TEXT_DISPLAY_SPEED=30;
 				DISPLAY_OFFSET-=TEXT_DISPLAY_SPEED;
 				if(DISPLAY_OFFSET<=0){
