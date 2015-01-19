@@ -34,22 +34,22 @@ public class MoveControler {
 		}
 		HeroControler.setWalkSpeed(Input.isPress(Keys.CONTROL_LEFT)?8:4);
 		if(InputControler.currentIOMode==IOMode.MAP_INPUT_NORMAL){
-			if(Input.isPress(Keys.RIGHT) && HeroControler.walked()){
+			if((Input.isPress(Keys.RIGHT) || Input.isPress(Keys.D)) && HeroControler.walked()){
 				HeroControler.turn(Hero.FACE_R);
 				HeroControler.walk(1);
 				HeroControler.testWalk();
 			}
-			if(Input.isPress(Keys.LEFT) && HeroControler.walked()){
+			if((Input.isPress(Keys.LEFT) || Input.isPress(Keys.A)) && HeroControler.walked()){
 				HeroControler.turn(Hero.FACE_L);
 				HeroControler.walk(1);
 				HeroControler.testWalk();
 			}
-			if(Input.isPress(Keys.UP) && HeroControler.walked()){
+			if((Input.isPress(Keys.UP) || Input.isPress(Keys.W)) && HeroControler.walked()){
 				HeroControler.turn(Hero.FACE_U);
 				HeroControler.walk(1);
 				HeroControler.testWalk();
 			}
-			if(Input.isPress(Keys.DOWN) && HeroControler.walked()){
+			if((Input.isPress(Keys.DOWN) || Input.isPress(Keys.S)) && HeroControler.walked()){
 				HeroControler.turn(Hero.FACE_D);
 				HeroControler.walk(1);
 				HeroControler.testWalk();
@@ -87,13 +87,5 @@ public class MoveControler {
 	}
 	
 	public static void keyDown(int keycode,GameView gv){
-		if(keycode==Keys.W)
-			MapControler.npc.turn(NPC.FACE_U).walk(1);
-		if(keycode==Keys.S)
-			MapControler.npc.turn(NPC.FACE_D).walk(1);
-		if(keycode==Keys.A)
-			MapControler.npc.turn(NPC.FACE_L).walk(1);
-		if(keycode==Keys.D)
-			MapControler.npc.turn(NPC.FACE_R).walk(1);
 	}
 }
