@@ -20,8 +20,8 @@ public class TipEquip extends Equip{
 	}
 
 	@Override
-	public void use() {
-		
+	public boolean use() {
+		return false;
 	}
 
 }

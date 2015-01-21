@@ -20,8 +20,8 @@ public class Sunshade extends Equip{
 	}
 
 	@Override
-	public void use() {
-		
+	public boolean use() {
+		return false;
 	}
 
 }
