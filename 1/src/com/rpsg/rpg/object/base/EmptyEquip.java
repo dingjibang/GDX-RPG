@@ -13,11 +13,11 @@ public class EmptyEquip extends Equip{
 		disable=true;
 	}
 
-	@Override
-	public void use() {
-		
-	}
-	
 	public static String gloname= "卸下当前装备";
+
+	@Override
+	public boolean use() {
+		return false;
+	}
 
 }

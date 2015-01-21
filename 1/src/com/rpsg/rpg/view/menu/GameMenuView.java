@@ -73,6 +73,12 @@ public class GameMenuView extends StackView{
 		table.add(button2);
 		table.row();
 		final ImageButton button3 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_item.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_item_p.png"));
+		button3.addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+				tryToAdd(ItemView.class);
+				return false;
+			}
+		});
 		table.add(button3);
 		table.row();
 		final ImageButton button4 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_status.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_status_p.png"));

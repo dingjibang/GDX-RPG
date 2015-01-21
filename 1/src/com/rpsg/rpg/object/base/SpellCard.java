@@ -1,21 +1,17 @@
 package com.rpsg.rpg.object.base;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.rpsg.rpg.object.rpgobj.Hero;
 
-public class SpellCard implements Serializable{
+public class SpellCard extends Item implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 
-	public String name;
-	
-	public Map<String, Integer> addParam=new HashMap<String, Integer>();
-	
 	public int magicConsume=0;
 	
-	public String illustration;
+	public int maxCount=0;
+	
 	public String story;
 	
 	public int type;
@@ -35,5 +31,4 @@ public class SpellCard implements Serializable{
 	public boolean use(Hero user,Hero to){
 		return true;
 	}
-//	public void use(Empty empty,Hero hero)
 }

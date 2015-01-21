@@ -18,6 +18,7 @@ public class Setting {
 	public static final String GAME_RES_IMAGE_MENU_FG=GAME_RES_IMAGE_MENU+"fgs/";
 	public static final String GAME_RES_IMAGE_MENU_EQUIP=GAME_RES_IMAGE_MENU+"equip/";
 	public static final String GAME_RES_IMAGE_MENU_SC=GAME_RES_IMAGE_MENU+"sc/";
+	public static final String GAME_RES_IMAGE_MENU_ITEM=GAME_RES_IMAGE_MENU+"item/";
 	public static final String GAME_RES_MESSAGE=GAME_RES_PATH+GAME_RES_IMAGE+"/message/";
 	public static final String GAME_RES_WALK=GAME_RES_PATH+GAME_RES_IMAGE+"/walk/";
 	public static final String GAME_RES_SHADER=GAME_RES_PATH+"/shader/";
