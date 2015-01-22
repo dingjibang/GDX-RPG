@@ -10,6 +10,8 @@ import java.util.List;
 
 
 
+
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
@@ -29,10 +31,10 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.base.EmptyEquip;
-import com.rpsg.rpg.object.base.Equip;
 import com.rpsg.rpg.object.base.ListItem;
-import com.rpsg.rpg.object.base.TipEquip;
+import com.rpsg.rpg.object.base.items.Equip;
+import com.rpsg.rpg.object.base.items.tip.EmptyEquip;
+import com.rpsg.rpg.object.base.items.tip.TipEquip;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.system.base.HeroImage;
 import com.rpsg.rpg.system.base.IView;

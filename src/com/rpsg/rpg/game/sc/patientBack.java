@@ -1,6 +1,6 @@
 package com.rpsg.rpg.game.sc;
 
-import com.rpsg.rpg.object.base.SpellCard;
+import com.rpsg.rpg.object.base.items.SpellCard;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.utils.display.AlertUtil;
 

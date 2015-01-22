@@ -1,4 +1,6 @@
-package com.rpsg.rpg.object.base;
+package com.rpsg.rpg.object.base.items.tip;
+
+import com.rpsg.rpg.object.base.items.Equip;
 
 
 public class EmptyEquip extends Equip{

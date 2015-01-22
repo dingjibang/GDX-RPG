@@ -1,6 +1,6 @@
 package com.rpsg.rpg.game.equip;
 
-import com.rpsg.rpg.object.base.Equip;
+import com.rpsg.rpg.object.base.items.Equip;
 
 public class TestEquip extends Equip{
 

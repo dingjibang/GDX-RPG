@@ -38,7 +38,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectSet;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.base.Equip;
+import com.rpsg.rpg.object.base.items.Equip;
 import com.rpsg.rpg.utils.display.FontUtil;
 
 /** A list (aka list box) displays textual items and highlights the currently selected item.
