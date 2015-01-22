@@ -1,6 +1,6 @@
 package com.rpsg.rpg.game.sc;
 
-import com.rpsg.rpg.object.base.SpellCard;
+import com.rpsg.rpg.object.base.items.SpellCard;
 
 public class MagicGun extends SpellCard{
 	private static final long serialVersionUID = 1L;

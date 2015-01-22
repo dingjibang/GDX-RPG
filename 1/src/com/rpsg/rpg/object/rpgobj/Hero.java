@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.base.Equip;
-import com.rpsg.rpg.object.base.SpellCard;
+import com.rpsg.rpg.object.base.items.Equip;
+import com.rpsg.rpg.object.base.items.SpellCard;
 
 public abstract class Hero extends IRPGObject {
 	

@@ -1,7 +1,7 @@
 package com.rpsg.rpg.game.equip;
 
 import com.rpsg.rpg.game.hero.Yuuka;
-import com.rpsg.rpg.object.base.Equip;
+import com.rpsg.rpg.object.base.items.Equip;
 
 public class Sunshade extends Equip{
 

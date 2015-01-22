@@ -1,6 +1,6 @@
 package com.rpsg.rpg.utils.game;
 
-import com.rpsg.rpg.object.base.Equip;
+import com.rpsg.rpg.object.base.items.Equip;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.view.GameViews;
 
