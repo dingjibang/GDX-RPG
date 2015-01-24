@@ -1,5 +1,7 @@
 package com.rpsg.rpg.system.control;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -156,6 +158,7 @@ public class HeroControler {
 	}
 	static boolean walk;
 	public static void walk(int step){
+		//TODO FUCKME2
 		walk=getHeadHero().walk(step).testWalk();
 		if(walk)
 		for(int i=1;i<heros.size();i++){

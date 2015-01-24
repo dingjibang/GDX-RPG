@@ -9,23 +9,23 @@ public class ItemUtil {
 	public static void useEquip(Hero hero,Equip equip){
 		if(hero.equips.get(equip.type)!=null){
 			Equip tmp=hero.equips.get(equip.type);
-			GameViews.global.equips.add(tmp);
+			GameViews.global.getItems("equips").add(tmp);
 			replace(hero, equip, false);
 		}
 		hero.equips.replace(equip.type, equip);
 		replace(hero, equip, true);
-		GameViews.global.equips.remove(equip);
+		GameViews.global.getItems("equips").remove(equip);
 	}
 	
 	public static void throwEquip(Equip equip){
-		GameViews.global.equips.remove(equip);
+		GameViews.global.getItems("equips").remove(equip);
 	}
 	
 	public static void takeOffEquip(Hero hero,String equipType){
 		if(hero!=null && equipType!=null && hero.equips.get(equipType)!=null){
 			Equip tmp=hero.equips.get(equipType);
 			replace(hero, tmp, false);
-			GameViews.global.equips.add(tmp);
+			GameViews.global.getItems("equips").add(tmp);
 			hero.equips.replace(equipType, null);
 		}
 	}

@@ -54,5 +54,15 @@ public class Global implements Serializable{
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Item> getItems(String name){
+		return (List<Item>) items.get(name);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <T> List<T> getItems(Class<T> c){
+		return (List<T>) items.get(c.getSimpleName().toLowerCase());
+	}
+	
 }
 
