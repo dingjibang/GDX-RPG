@@ -3,15 +3,6 @@ package com.rpsg.rpg.view.menu;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
-
-
-
-
-
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
@@ -365,7 +356,7 @@ public class EquipView extends IView{
 		Array<Equip> eitem=elist.getItems();
 		eitem.add(new EmptyEquip());
 		if(currentSelectEquip!=-1){
-			GameViews.global.equips.forEach((e)->{
+			GameViews.global.getItems(Equip.class).forEach((e)->{
 				if((e.type.equals(item.get(currentSelectEquip).type)) && (e.onlyFor==null || e.onlyFor==hero.getClass()))
 					eitem.add(e);
 			});
