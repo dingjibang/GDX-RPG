@@ -25,10 +25,10 @@ public class SelectUtil implements InputProcessor {
 	Stage stage;
 	ImageButtonStyle style;
 	public SelectUtil(){
-		but=new Image(Setting.GAME_RES_GLOBAL+"option.png");
-		hover=new Image(Setting.GAME_RES_GLOBAL+"optionhover.png");
-		click=new Image(Setting.GAME_RES_GLOBAL+"optionclick.png");
-		mask=new Image(Setting.GAME_RES_GLOBAL+"selmask.png");
+		but=new Image(Setting.GAME_RES_IMAGE_GLOBAL+"option.png");
+		hover=new Image(Setting.GAME_RES_IMAGE_GLOBAL+"optionhover.png");
+		click=new Image(Setting.GAME_RES_IMAGE_GLOBAL+"optionclick.png");
+		mask=new Image(Setting.GAME_RES_IMAGE_GLOBAL+"selmask.png");
 		style=new ImageButtonStyle();
 		style.over=hover.getDrawable();
 		style.down=click.getDrawable();

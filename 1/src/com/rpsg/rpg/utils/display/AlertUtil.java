@@ -24,10 +24,10 @@ public class AlertUtil {
 	static int oyc;
 	
 	public static void init(){
-		Yellow=new Image(Setting.GAME_RES_GLOBAL+"t.png");
-		Green=new Image(Setting.GAME_RES_GLOBAL+"o.png");
-		Red=new Image(Setting.GAME_RES_GLOBAL+"x.png");
-		box=processNinePatchFile(Setting.GAME_RES_GLOBAL+"box.9.png");
+		Yellow=new Image(Setting.GAME_RES_IMAGE_GLOBAL+"t.png");
+		Green=new Image(Setting.GAME_RES_IMAGE_GLOBAL+"o.png");
+		Red=new Image(Setting.GAME_RES_IMAGE_GLOBAL+"x.png");
+		box=processNinePatchFile(Setting.GAME_RES_IMAGE_GLOBAL+"box.9.png");
 		Logger.info("提示模块载入完成。");
 	}
 	
