@@ -45,7 +45,7 @@ public class Global implements Serializable{
 	public Map<String, List<? extends Item>> items=new HashMap<String, List<? extends Item>>();
 	{
 		if(items.isEmpty()){
-			items.put("equips", new LinkedList<Equip>());
+			items.put("equipment", new LinkedList<Equipment>());
 			items.put("important", new LinkedList<Important>());
 			items.put("material", new LinkedList<Material>());
 			items.put("medicine", new LinkedList<Medicine>());

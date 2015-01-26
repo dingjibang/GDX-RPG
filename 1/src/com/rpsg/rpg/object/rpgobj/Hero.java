@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.base.items.Equip;
+import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.SpellCard;
 
 public abstract class Hero extends IRPGObject {
@@ -41,13 +41,13 @@ public abstract class Hero extends IRPGObject {
 	}
 	public List<SpellCard> sc=new ArrayList<SpellCard>();
 	
-	public Map<String,Equip> equips=new HashMap<String, Equip>();
+	public Map<String,Equipment> equips=new HashMap<String, Equipment>();
 	{
-		equips.put(Equip.EQUIP_SHOES, null);
-		equips.put(Equip.EQUIP_CLOTHES, null);
-		equips.put(Equip.EQUIP_WEAPON, null);
-		equips.put(Equip.EQUIP_ORNAMENT1, null);
-		equips.put(Equip.EQUIP_ORNAMENT2, null);
+		equips.put(Equipment.EQUIP_SHOES, null);
+		equips.put(Equipment.EQUIP_CLOTHES, null);
+		equips.put(Equipment.EQUIP_WEAPON, null);
+		equips.put(Equipment.EQUIP_ORNAMENT1, null);
+		equips.put(Equipment.EQUIP_ORNAMENT2, null);
 	}
 	
 	public String getEquipName(String name){

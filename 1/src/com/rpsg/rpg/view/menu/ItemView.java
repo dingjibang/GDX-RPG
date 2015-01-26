@@ -1,12 +1,11 @@
 package com.rpsg.rpg.view.menu;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -26,22 +25,20 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.ListItem;
 import com.rpsg.rpg.object.base.items.Item;
-import com.rpsg.rpg.object.base.items.SpellCard;
 import com.rpsg.rpg.object.base.items.tip.TipItem;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.system.base.DefaultIView;
-import com.rpsg.rpg.system.base.HeroImage;
-import com.rpsg.rpg.system.base.IView;
 import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.HeroControler;
+import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.utils.game.ItemUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public class ItemView extends DefaultIView{
-	List<HeroImage> heros=new ArrayList<HeroImage>();
-	Image map;
+	Image map,topbarSel;
 	
 	int currentSelectHero=0;
 	int currentSelectSpell=0;
@@ -54,12 +51,12 @@ public class ItemView extends DefaultIView{
 	
 	ParticleEffect add;
 	
+	Table topbar;
 	Item item=new TipItem();
 	public void init() {
 		add=new ParticleEffect();
 		add.load(Gdx.files.internal(Setting.GAME_RES_PARTICLE+"addp.p"),Gdx.files.internal(Setting.GAME_RES_PARTICLE));
 		add.setPosition(845, 261);
-		
 		
 		render=new ShapeRenderer();
 		render.setAutoShapeType(true);
@@ -93,25 +90,38 @@ public class ItemView extends DefaultIView{
 		elist.onClick(()->{
 			item=elist.getSelected();
 		});
-		generateLists();
 		elist.layout();
 		ScrollPane pane=new ScrollPane(elist);
 		pane.getStyle().vScroll=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_ITEM+"scrollbar.png");
 		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_ITEM+"scrollbarin.png");
 		pane.setForceScroll(false, true);
 		pane.layout();
+		
 		Table table=new Table();
 		table.add(pane);
 		table.padRight(20);
 		table.setPosition(170, 40);
 		table.setSize(270, 390);
 		table.getCell(pane).width(table.getWidth()).height(table.getHeight()-20);
-		
 		table.setColor(1,1,1,0);
 		table.addAction(Actions.fadeIn(0.2f));
 		stage.addActor(table);
+		topbarSel=new Image(Res.get(Setting.GAME_RES_IMAGE_MENU_ITEM+"topsel.png"));
+		topbar=new Table();
+		topbar.setBackground(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_ITEM+"topbar.png"));
+		topbar.setSize(818, 42);
+		topbar.setPosition(168, 455);
+		int tmpI=0,offsetX=135;
+		topbar.add(new TopBar("medicine", tmpI++*offsetX));
+		topbar.add(new TopBar("material", tmpI++*offsetX));
+		topbar.add(new TopBar("cooking", tmpI++*offsetX));
+		topbar.add(new TopBar("equipment", tmpI++*offsetX));
+		topbar.add(new TopBar("spellcard", tmpI++*offsetX));
+		topbar.add(new TopBar("important", tmpI++*offsetX));
+		topbar.getCells().forEach((cell)->cell.padLeft(42).padRight(42));
+		stage.addActor(topbar);
 		
-		generateHero(currentSelectHero);
+		generateLists("medicine");
 		
 		Actor mask=new Actor();
 		mask.setWidth(GameUtil.screen_width);
@@ -139,16 +149,6 @@ public class ItemView extends DefaultIView{
 		
 		stage.addActor(sellist);
 		
-		elist.onDBClick(()->{
-			if(item.type==SpellCard.TYPE_USEINMAP){
-				scuse.visible=true;
-				sellist.setVisible(true);
-				sellist.setSelectedIndex(0);
-				mask.setVisible(true);
-				layer=1;
-			}
-		});
-		
 		Actor mask2=new Actor();
 		mask2.setWidth(GameUtil.screen_width);
 		mask2.setHeight(GameUtil.screen_height);
@@ -158,16 +158,34 @@ public class ItemView extends DefaultIView{
 			}
 		});
 		
-		sellist.getItems().add(new ListItem("使用").setRunnable(()->{
-			scfor.visible=true;
-			herolist.setVisible(true);
-			mask2.setVisible(true);
-			layer=2;
-		}));
-		sellist.getItems().add(new ListItem("取消").setRunnable(()->can.run()));
+		elist.onDBClick(()->{
+			scuse.visible=true;
+			sellist.getItems().clear();
+			if(item.type==Item.TYPE_USEINMAP)
+				sellist.getItems().add(new ListItem("使用").setRunnable(()->{
+					scfor.visible=true;
+					herolist.setVisible(true);
+					mask2.setVisible(true);
+					layer=2;
+				}));
+			if(item.throwable)
+				sellist.getItems().add(new ListItem("丢弃").setRunnable(()->{
+					ItemUtil.throwItem(currentBar.name,item);
+					AlertUtil.add("丢弃成功。", AlertUtil.Yellow);
+					generateLists(currentBar.name);
+					can.run();
+				}));
+			sellist.getItems().add(new ListItem("取消").setRunnable(()->can.run()));
+			sellist.onDBClick(()->sellist.getSelected().run.run());
+			sellist.setVisible(true);
+			sellist.setSelectedIndex(0);
+			mask.setVisible(true);
+			layer=1;
+		});
+		
 		
 		stage.addActor(mask2);			
-		scfor=Res.get(Setting.GAME_RES_IMAGE_MENU_SC+"sc_for.png");
+		scfor=Res.get(Setting.GAME_RES_IMAGE_MENU_ITEM+"selbg.png");
 		scfor.setPosition(500, 87);
 		
 		
@@ -198,7 +216,6 @@ public class ItemView extends DefaultIView{
 		
 		can2.run();
 		can.run();
-		
 		
 	}
 	Image scuse,scfor;
@@ -278,22 +295,65 @@ public class ItemView extends DefaultIView{
 	}
 
 	public void dispose() {
+		topbar.getCells().forEach((cell)->((TopBar)cell.getActor()).dispose());
 		stage.dispose();
 		render.dispose();
 		add.dispose();
 	}
 
-	public void generateHero(int index){
-		generateLists();
-	}
-	
-	public void generateLists(){
+	TopBar currentBar=null;
+	public void generateLists(String type){
 		Array<Item> sc = elist.getItems();
 		sc.clear();
-		
-		//TODO FUCKME
+		GameViews.global.items.get(type).forEach((e)->{
+			sc.add(e);
+		});
+		elist.layout();
+		topbar.getCells().forEach((cell)->
+			((TopBar)cell.getActor()).select(((TopBar)cell.getActor()).name.equals(type))
+		);
 	}
 	
+	
+	class TopBar extends Actor{
+		String name;
+		boolean selected=false;
+		Image bigImg,miniImg;
+		public TopBar(String name,int offsetX){
+			bigImg=new Image(Setting.GAME_RES_IMAGE_MENU_ITEM+name+".png");
+			bigImg.setPosition(700, 300);
+			miniImg=new Image(Setting.GAME_RES_IMAGE_MENU_ITEM+name+"_m.png");
+			miniImg.setPosition(230+offsetX, 465);
+			this.name=name;
+			this.setTouchable(miniImg.getTouchable());
+			addListener(new InputListener(){
+				public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+					generateLists(name);
+					return false;
+				}
+			});
+			this.setSize(50, 30);
+			this.setPosition(230+offsetX,465);
+		}
+		public void select(boolean select){
+			miniImg.setColor((this.selected=select)?blue:Color.WHITE);
+			if(this.selected){
+				topbarSel.setPosition(miniImg.getX()-30, miniImg.getY()-17);
+				currentBar=this;
+			}
+		}
+		public void draw (Batch batch, float parentAlpha) {
+			if(this.selected){
+				bigImg.draw(batch);
+				topbarSel.draw(batch);
+			}
+			miniImg.draw(batch);
+		}
+		public void dispose(){
+			bigImg.dispose();
+			miniImg.dispose();
+		}
+	}
 	
 	
 }
