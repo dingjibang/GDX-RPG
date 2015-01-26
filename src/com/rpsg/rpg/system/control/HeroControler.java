@@ -157,7 +157,7 @@ public class HeroControler {
 			hero.dispose();
 	}
 	static boolean walk;
-	public static void walk(int step){
+	public static void walk(int step){	
 		//TODO FUCKME2
 		walk=getHeadHero().walk(step).testWalk();
 		if(walk)

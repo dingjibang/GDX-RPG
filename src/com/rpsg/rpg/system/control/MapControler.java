@@ -16,13 +16,12 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.game.equip.Sunshade;
-import com.rpsg.rpg.game.equip.TestEquip;
 import com.rpsg.rpg.game.hero.Flandre;
 import com.rpsg.rpg.game.hero.Marisa;
 import com.rpsg.rpg.game.hero.Reimu;
 import com.rpsg.rpg.game.hero.Yuuka;
-import com.rpsg.rpg.object.base.items.Equip;
+import com.rpsg.rpg.game.items.equipment.Sunshade;
+import com.rpsg.rpg.game.items.equipment.TestEquip;
 import com.rpsg.rpg.object.rpgobj.IRPGObject;
 import com.rpsg.rpg.object.rpgobj.NPC;
 import com.rpsg.rpg.object.script.Script;
@@ -50,8 +49,8 @@ public class MapControler {
 			HeroControler.addHero(Flandre.class);
 			HeroControler.newHero(Yuuka.class);
 			HeroControler.addHero(Yuuka.class);
-			gv.global.getItems("equips").add(new TestEquip());
-			gv.global.getItems("equips").add(new Sunshade());
+			gv.global.getItems("equipment").add(new TestEquip());
+			gv.global.getItems("equipment").add(new Sunshade());
 		}
 		HeroControler.initHeros(gv.stage);
 		

@@ -3,6 +3,7 @@ package com.rpsg.rpg.system.base;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -50,7 +51,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		super(ninePatchDrawable);
 	}
 
-	public void draw(SpriteBatch sb){
+	public void draw(Batch sb){
 		if(visible)
 			this.draw(sb, 1);
 	}

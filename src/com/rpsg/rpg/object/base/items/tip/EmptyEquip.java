@@ -1,9 +1,9 @@
 package com.rpsg.rpg.object.base.items.tip;
 
-import com.rpsg.rpg.object.base.items.Equip;
+import com.rpsg.rpg.object.base.items.Equipment;
 
 
-public class EmptyEquip extends Equip{
+public class EmptyEquip extends Equipment{
 
 	private static final long serialVersionUID = 1L;
 

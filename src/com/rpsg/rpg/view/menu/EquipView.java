@@ -23,7 +23,7 @@ import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.ListItem;
-import com.rpsg.rpg.object.base.items.Equip;
+import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.tip.EmptyEquip;
 import com.rpsg.rpg.object.base.items.tip.TipEquip;
 import com.rpsg.rpg.object.rpgobj.Hero;
@@ -46,13 +46,13 @@ public class EquipView extends IView{
 	int currentSelectHero=0;
 	int currentSelectEquip=0;
 	
-	com.rpsg.rpg.system.base.List<Equip> elist;
+	com.rpsg.rpg.system.base.List<Equipment> elist;
 	com.rpsg.rpg.system.base.List<EQuipSelect> sellist;
 	com.rpsg.rpg.system.base.List<ListItem> olist;
 	
 	Runnable cancel;
 	
-	Equip equip=new TipEquip();
+	Equipment equip=new TipEquip();
 	Texture up,down;
 	
 	public void init() {
@@ -116,7 +116,7 @@ public class EquipView extends IView{
 		style.font=FontUtil.generateFont(" ".toCharArray()[0], 22);
 		style.selection=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipsel.png");
 		style.fontColorSelected=blue;
-		elist=new com.rpsg.rpg.system.base.List<Equip>(style);
+		elist=new com.rpsg.rpg.system.base.List<Equipment>(style);
 		elist.onClick(()->{
 			equip=elist.getSelected();
 		});
@@ -175,7 +175,7 @@ public class EquipView extends IView{
 		}));
 		olist.getItems().add(new ListItem("丢弃").setRunnable(()->{
 			if(equip.throwable){
-				ItemUtil.throwEquip(equip);
+				ItemUtil.throwItem("equipment",equip);
 				AlertUtil.add("丢弃成功。", AlertUtil.Yellow);
 				gengrateEList();
 			}
@@ -263,8 +263,8 @@ public class EquipView extends IView{
 	
 	private int getDef(String prop){
 		Hero hero=HeroControler.heros.get(currentSelectHero);
-		if(hero.getEquipValue(equip.type, prop)!=0)
-			return hero.prop.get(prop)-hero.getEquipValue(equip.type, prop)+equip.prop.get(prop);
+		if(hero.getEquipValue(equip.equipType, prop)!=0)
+			return hero.prop.get(prop)-hero.getEquipValue(equip.equipType, prop)+equip.prop.get(prop);
 		else
 			return equip.prop.get(prop);
 	}
@@ -346,18 +346,18 @@ public class EquipView extends IView{
 		sellist.clearItems();
 		Array<EQuipSelect> item = sellist.getItems();
 		Hero hero=HeroControler.heros.get(currentSelectHero);
-		item.add(new EQuipSelect(Equip.EQUIP_WEAPON,hero.getEquipName("weapon"),"武器"));
-		item.add(new EQuipSelect(Equip.EQUIP_CLOTHES,hero.getEquipName("clothes"),"衣服"));
-		item.add(new EQuipSelect(Equip.EQUIP_SHOES,hero.getEquipName("shoes"),"鞋子"));
-		item.add(new EQuipSelect(Equip.EQUIP_ORNAMENT1,hero.getEquipName("ornament1"),"装饰"));
-		item.add(new EQuipSelect(Equip.EQUIP_ORNAMENT2,hero.getEquipName("ornament2"),"装饰"));
+		item.add(new EQuipSelect(Equipment.EQUIP_WEAPON,hero.getEquipName("weapon"),"武器"));
+		item.add(new EQuipSelect(Equipment.EQUIP_CLOTHES,hero.getEquipName("clothes"),"衣服"));
+		item.add(new EQuipSelect(Equipment.EQUIP_SHOES,hero.getEquipName("shoes"),"鞋子"));
+		item.add(new EQuipSelect(Equipment.EQUIP_ORNAMENT1,hero.getEquipName("ornament1"),"装饰"));
+		item.add(new EQuipSelect(Equipment.EQUIP_ORNAMENT2,hero.getEquipName("ornament2"),"装饰"));
 		sellist.setSelectedIndex(currentSelectEquip);
 		elist.clearItems();
-		Array<Equip> eitem=elist.getItems();
+		Array<Equipment> eitem=elist.getItems();
 		eitem.add(new EmptyEquip());
 		if(currentSelectEquip!=-1){
-			GameViews.global.getItems(Equip.class).forEach((e)->{
-				if((e.type.equals(item.get(currentSelectEquip).type)) && (e.onlyFor==null || e.onlyFor==hero.getClass()))
+			GameViews.global.getItems(Equipment.class).forEach((e)->{
+				if((e.equipType.equals(item.get(currentSelectEquip).type)) && (e.onlyFor==null || e.onlyFor==hero.getClass()))
 					eitem.add(e);
 			});
 			equip=new TipEquip("提示", sellist.getSelected().tip);

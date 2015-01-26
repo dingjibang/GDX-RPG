@@ -1,8 +1,8 @@
-package com.rpsg.rpg.game.equip;
+package com.rpsg.rpg.game.items.equipment;
 
-import com.rpsg.rpg.object.base.items.Equip;
+import com.rpsg.rpg.object.base.items.Equipment;
 
-public class TestEquip extends Equip{
+public class TestEquip extends Equipment{
 
 	private static final long serialVersionUID = 1L;
 
@@ -12,7 +12,7 @@ public class TestEquip extends Equip{
 		prop.replace("defense", 5);
 		prop.replace("magicDefense", 1);
 		illustration="很普通的草鞋，仅仅是贫穷的象征，穿上去感觉怪怪的。";
-		type=Equip.EQUIP_SHOES;
+		equipType=Equipment.EQUIP_SHOES;
 		onlyFor=null;
 	}
 

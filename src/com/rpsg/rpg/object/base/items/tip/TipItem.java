@@ -8,7 +8,7 @@ public class TipItem extends Item{
 
 	public TipItem(){
 		name="提示";
-		illustration="您可以在上方选择道具分类，左侧为当前分类的道具列表，单机道具查看道具信息，双击道具进行功能操作。";
+		illustration="您可以在上方选择道具分类，左侧为当前分类的道具列表，单击道具查看道具信息，双击道具进行功能操作。";
 	}
 
 	@Override
