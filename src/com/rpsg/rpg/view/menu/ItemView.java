@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -30,6 +31,8 @@ import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.system.base.DefaultIView;
 import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.base.Res;
+import com.rpsg.rpg.system.base.TextButton;
+import com.rpsg.rpg.system.base.TextButton.TextButtonStyle;
 import com.rpsg.rpg.system.control.HeroControler;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
@@ -48,9 +51,12 @@ public class ItemView extends DefaultIView{
 	ShapeRenderer render;
 	
 	ParticleEffect add;
-	
+	ScrollPane pane;
 	Table topbar;
 	Item item=new TipItem();
+	Group group;
+	int currentCount=0;
+
 	public void init() {
 		add=new ParticleEffect();
 		add.load(Gdx.files.internal(Setting.GAME_RES_PARTICLE+"addp.p"),Gdx.files.internal(Setting.GAME_RES_PARTICLE));
@@ -89,7 +95,7 @@ public class ItemView extends DefaultIView{
 			item=elist.getSelected();
 		});
 		elist.layout();
-		ScrollPane pane=new ScrollPane(elist);
+		pane=new ScrollPane(elist);
 		pane.getStyle().vScroll=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_ITEM+"scrollbar.png");
 		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_ITEM+"scrollbarin.png");
 		pane.setForceScroll(false, true);
@@ -168,10 +174,10 @@ public class ItemView extends DefaultIView{
 				}));
 			if(item.throwable)
 				sellist.getItems().add(new ListItem("丢弃").setRunnable(()->{
-					ItemUtil.throwItem(currentBar.name,item);
-					AlertUtil.add("丢弃成功。", AlertUtil.Yellow);
-					generateLists(currentBar.name);
-					can.run();
+					group.setVisible(true);
+					mask2.setVisible(true);
+					currentCount=1;
+					layer=3;
 				}));
 			sellist.getItems().add(new ListItem("取消").setRunnable(()->can.run()));
 			sellist.onDBClick(()->sellist.getSelected().run.run());
@@ -195,8 +201,11 @@ public class ItemView extends DefaultIView{
 				can2.run();
 			}else{
 				if(herolist.getSelected().userObject!=null)
-					if(item.use((Hero)herolist.getSelected().userObject))
+					if(item.use((Hero)herolist.getSelected().userObject)){
 						can2.run();
+						can.run();
+						generateLists(currentBar.name);
+					}
 				drawp=true;
 			}
 		});
@@ -211,14 +220,61 @@ public class ItemView extends DefaultIView{
 			mask2.setVisible(false);
 			layer=1;
 		};
-		
+		TextButtonStyle butstyle=new TextButtonStyle();
+		butstyle.over=butstyle.checkedOver=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button_hover.png");
+		butstyle.down=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button_active.png");
+		butstyle.up=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button.png");
+		group=new Group();
+		Image tbg=new Image(Setting.GAME_RES_IMAGE_MENU_SC+"throw.png");
+		tbg.setPosition(350, 200);
+		group.addActor(tbg);
+		TextButton button=new TextButton("确定", butstyle).onClick(()->{
+			ItemUtil.throwItem(currentBar.name,item);
+			AlertUtil.add("丢弃成功。", AlertUtil.Yellow);
+			generateLists(currentBar.name);
+			can3.run();
+		});
+		button.setPosition(630, 290);
+		button.setSize(100, 50);
+		group.addActor(button);
+		TextButton button2=new TextButton("取消", butstyle).onClick(()->{
+			can3.run();
+		});
+		button2.setPosition(630, 225);
+		button2.setSize(100, 50);
+		group.addActor(button2);
+		Table buttable=new Table();
+		buttable.add(new TextButton("最大", butstyle,16).onClick(()->{
+			currentCount=item.count;
+		})).size(80,33).row();
+		buttable.add(new TextButton("+1", butstyle,16).onClick(()->{
+			if(currentCount<item.count)
+				currentCount++;
+		})).size(80,35).row();
+		buttable.add(new TextButton("-1", butstyle,16).onClick(()->{
+			if(currentCount>1)
+				currentCount--;
+		})).size(80,35).row();
+		buttable.add(new TextButton("最小", butstyle,16).onClick(()->{
+			currentCount=1;
+		})).size(80,33).row();
+		buttable.getCells().forEach((c)->c.padTop(2).padBottom(2));
+		buttable.setPosition(575, 300);
+		group.addActor(buttable);
+		stage.addActor(group);
+		can3=()->{
+			group.setVisible(false);
+			mask2.setVisible(false);
+			can.run();
+		};
+		can3.run();
 		can2.run();
 		can.run();
 		
 	}
 	Image scuse,scfor;
 	com.rpsg.rpg.system.base.List<ListItem> sellist,herolist;
-	Runnable can,can2;
+	Runnable can,can2,can3;
 	Color blue=new Color(80f/255f,111f/255f,187f/255f,1);
 	Color green=new Color(219f/255f,255f/255f,219f/255f,1);
 	Color cblue=new Color(219f/255f,238f/255f,255f/255f,1);
@@ -257,7 +313,10 @@ public class ItemView extends DefaultIView{
 			}
 			sb.flush();
 		}
-		
+		if(group.isVisible()){
+			group.draw(batch, 1);
+			FontUtil.draw(sb, currentCount>10?(currentCount>100?currentCount+"":"0"+currentCount):"00"+currentCount, 80, blue, 345, 337, 200,-40,0);
+		}
 		sb.end();
 	}
 
@@ -280,6 +339,8 @@ public class ItemView extends DefaultIView{
 				can.run();
 			else if(layer==2)
 				can2.run();
+			else if(layer==3)
+				can3.run();
 		}else
 			stage.keyDown(keyCode);
 	}
@@ -293,6 +354,7 @@ public class ItemView extends DefaultIView{
 
 	TopBar currentBar=null;
 	public void generateLists(String type){
+		float y=pane.getScrollX();
 		Array<Item> sc = elist.getItems();
 		sc.clear();
 		GameViews.global.items.get(type).forEach((e)->{
@@ -302,6 +364,7 @@ public class ItemView extends DefaultIView{
 		topbar.getCells().forEach((cell)->
 			((TopBar)cell.getActor()).select(((TopBar)cell.getActor()).name.equals(type))
 		);
+		pane.setScrollX(y);
 	}
 	
 	

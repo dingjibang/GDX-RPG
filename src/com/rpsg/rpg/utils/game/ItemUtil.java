@@ -20,18 +20,27 @@ public class ItemUtil {
 		GameViews.global.getItems("equipment").remove(equip);
 	}
 	
-	public static void throwItem(String type,Item item){
+	public static boolean throwItem(String type,Item item){
 		if(item.count==0){
-			if(!GameViews.global.getItems(type).remove(item))
+			if(!GameViews.global.getItems(type).remove(item)){
 				AlertUtil.add("非法操作。", AlertUtil.Red);
+				return false;
+			}
 		}else{
-			if(item.count>1)
+			if(item.count>=1){
 				item.count--;
+				if(item.count==0){
+					GameViews.global.getItems(type).remove(item);
+					return false;
+				}
+			}
 			else
-				if(!GameViews.global.getItems(type).remove(item))
+				if(!GameViews.global.getItems(type).remove(item)){
 					AlertUtil.add("非法操作。", AlertUtil.Red);
+					return false;
+				}
 		}
-		
+		return true;
 	}
 	
 	public static void takeOffEquip(Hero hero,String equipType){
