@@ -40,8 +40,6 @@ import com.rpsg.rpg.view.GameViews;
 public class ItemView extends DefaultIView{
 	Image map,topbarSel;
 	
-	int currentSelectHero=0;
-	int currentSelectSpell=0;
 	
 	com.rpsg.rpg.system.base.List<Item> elist;
 	
@@ -56,7 +54,7 @@ public class ItemView extends DefaultIView{
 	public void init() {
 		add=new ParticleEffect();
 		add.load(Gdx.files.internal(Setting.GAME_RES_PARTICLE+"addp.p"),Gdx.files.internal(Setting.GAME_RES_PARTICLE));
-		add.setPosition(845, 261);
+		add.setPosition(835, 111);
 		
 		render=new ShapeRenderer();
 		render.setAutoShapeType(true);
@@ -197,12 +195,12 @@ public class ItemView extends DefaultIView{
 				can2.run();
 			}else{
 				if(herolist.getSelected().userObject!=null)
-					if(item.use(HeroControler.heros.get(currentSelectHero),((Hero)herolist.getSelected().userObject)))
+					if(item.use((Hero)herolist.getSelected().userObject))
 						can2.run();
 				drawp=true;
 			}
 		});
-		herolist.setPosition(500, 343);
+		herolist.setPosition(492, 273);
 		herolist.setSize(257, 140);
 		herolist.layout();
 		stage.addActor(herolist);
@@ -229,7 +227,6 @@ public class ItemView extends DefaultIView{
 	public void draw(SpriteBatch batch) {
 		stage.draw();
 		SpriteBatch sb=(SpriteBatch) stage.getBatch();
-		Hero hero=HeroControler.heros.get(currentSelectHero);
 		sb.begin();
 		FontUtil.draw(sb, item.name, 22, Color.WHITE, 445, 134, 1000);
 		FontUtil.draw(sb, item.illustration, 18, blue, 449, 100, 490);
@@ -243,29 +240,22 @@ public class ItemView extends DefaultIView{
 				Hero h=((Hero)herolist.getSelected().userObject);
 				render.begin(ShapeType.Filled);
 				render.setColor(green);
-				render.rect(578, 258, (float)((float)h.prop.get("hp")/(float)h.prop.get("maxhp"))*189,22);
+				render.rect(575, 142, (float)((float)h.prop.get("hp")/(float)h.prop.get("maxhp"))*176,20);
 				render.setColor(cblue);
-				render.rect(578, 224, (float)((float)h.prop.get("mp")/(float)h.prop.get("maxmp"))*189,22);
+				render.rect(575, 105, (float)((float)h.prop.get("mp")/(float)h.prop.get("maxmp"))*176,20);
 				render.end();
-				FontUtil.draw(sb, h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20, blue, 560+190/2-FontUtil.getTextWidth(h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20,-7)/2, 278, 400,-7,0);
-				FontUtil.draw(sb, h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20, blue, 560+190/2-FontUtil.getTextWidth(h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20,-7)/2, 244, 400,-7,0);
-				FontUtil.draw(sb, "正常", 18, blue, 560+190/2-FontUtil.getTextWidth("正常", 20)/2, 208, 400);
-				FontUtil.draw(sb, "目标："+h, 18, Color.WHITE, 495, 310, 200);
+				FontUtil.draw(sb, h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20, blue, 560+176/2-FontUtil.getTextWidth(h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20,-7)/2, 161, 400,-7,0);
+				FontUtil.draw(sb, h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20, blue, 560+176/2-FontUtil.getTextWidth(h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20,-7)/2, 124, 400,-7,0);
+				FontUtil.draw(sb, "正常", 18, blue, 552+176/2-FontUtil.getTextWidth("正常", 18)/2, 196, 400);
+				FontUtil.draw(sb, h.toString(), 18, Color.WHITE, 515, 227, 200);
 				if(drawp){
 					add.draw(sb,Gdx.graphics.getDeltaTime());
 					drawp=!add.isComplete();
 				}else
 					add.reset();
-				sb.draw(h.images[1].getRegion(),820,258);
+				sb.draw(h.images[1].getRegion(),810,97);
 			}
 			sb.flush();
-			render.begin(ShapeType.Filled);
-			render.setColor(cblue);
-			render.rect(578, 116, (float)((float)hero.prop.get("mp")/(float)hero.prop.get("maxmp"))*189,22);
-			render.end();
-			FontUtil.draw(sb, "技能使用者："+hero, 18, Color.WHITE, 495, 170, 200);
-			FontUtil.draw(sb, hero.prop.get("mp")+"/"+  hero.prop.get("maxmp"), 20, blue, 560+190/2-FontUtil.getTextWidth(hero.prop.get("mp")+"/"+  hero.prop.get("maxmp"), 20,-7)/2, 136, 400,-7,0);
-			sb.draw(hero.images[1].getRegion(),820,102);
 		}
 		
 		sb.end();
