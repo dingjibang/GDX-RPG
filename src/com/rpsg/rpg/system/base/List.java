@@ -39,6 +39,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectSet;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.Equipment;
+import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.utils.display.FontUtil;
 
 /** A list (aka list box) displays textual items and highlights the currently selected item.
@@ -205,16 +206,19 @@ public class List<T> extends Widget implements Cullable {
 					font.setColor(fontColorSelected.r, fontColorSelected.g, fontColorSelected.b, fontColorSelected.a * parentAlpha);
 				}
 				FontUtil.draw(((SpriteBatch)batch), item.toString(), 20,selected?blue:Color.WHITE, (int)(x + textOffsetX + 10), (int)(y + itemY - textOffsetY)+1-padTop, 500);
+				int offset=0;
 				if(item instanceof Equipment){
-					int offset=0;
 					if(!((Equipment)item).throwable){
-						Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"throwable.png").draw(batch, x+width-61, y+itemY - itemHeight+6+padTop, 61, 17);
+						Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"throwable.png").draw(batch, x+width-61+offset, y+itemY - itemHeight+6+padTop, 61, 17);
 						offset=-70;
 					}
 					if(((Equipment)item).onlyFor!=null){
 						Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"only.png").draw(batch, x+width-61+offset, y+itemY - itemHeight+6+padTop, 61, 17);
+						offset=-70;
 					}
 				}
+				if(item instanceof Item && ((Item)item).count!=0)
+					FontUtil.draw((SpriteBatch)batch, ""+((Item)item).count, 20, (selected?blue:Color.WHITE), (int)(x+width-61+offset),(int)(y + itemY - textOffsetY)+1-padTop, 100,-3,0);
 				if (selected) {
 					font.setColor(fontColorUnselected.r, fontColorUnselected.g, fontColorUnselected.b, fontColorUnselected.a
 						* parentAlpha);

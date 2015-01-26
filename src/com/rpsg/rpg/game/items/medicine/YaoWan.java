@@ -1,6 +1,8 @@
 package com.rpsg.rpg.game.items.medicine;
 
 import com.rpsg.rpg.object.base.items.Medicine;
+import com.rpsg.rpg.object.rpgobj.Hero;
+import com.rpsg.rpg.utils.display.AlertUtil;
 
 public class YaoWan extends Medicine{
 
@@ -8,12 +10,12 @@ public class YaoWan extends Medicine{
 	
 	public YaoWan() {
 		illustration="要完要完，使用后HP恢复10。";
-		maxCount=0;
+		count=20;
 		name="药丸";
 	}
 
-	@Override
-	public boolean use() {
+	public boolean use(Hero hero) {
+		throwSelf("使用成功。",AlertUtil.Green);
 		return false;
 	}
 

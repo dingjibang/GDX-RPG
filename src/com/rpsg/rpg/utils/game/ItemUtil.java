@@ -21,8 +21,17 @@ public class ItemUtil {
 	}
 	
 	public static void throwItem(String type,Item item){
-		if(!GameViews.global.getItems(type).remove(item))
-			AlertUtil.add("非法操作。", AlertUtil.Red);
+		if(item.count==0){
+			if(!GameViews.global.getItems(type).remove(item))
+				AlertUtil.add("非法操作。", AlertUtil.Red);
+		}else{
+			if(item.count>1)
+				item.count--;
+			else
+				if(!GameViews.global.getItems(type).remove(item))
+					AlertUtil.add("非法操作。", AlertUtil.Red);
+		}
+		
 	}
 	
 	public static void takeOffEquip(Hero hero,String equipType){

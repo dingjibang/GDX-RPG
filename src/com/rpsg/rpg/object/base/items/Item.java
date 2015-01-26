@@ -12,11 +12,13 @@ public abstract class Item implements Serializable {
 	public Map<String, Integer> addParam = new HashMap<String, Integer>();
 	public boolean throwable = true;
 	public String name;
-	public int maxCount;
+	public int count;
 	public String illustration;
 	public boolean disable = false;
 
-	public abstract boolean use();
+	public boolean use(){
+		return false;
+	};
 
 	public int type=TYPE_NORMAL;
 
@@ -27,6 +29,10 @@ public abstract class Item implements Serializable {
 		return name;
 	}
 
+	public boolean use(Hero user) {
+		return true;
+	}
+	
 	public boolean use(Hero user, Hero to) {
 		return true;
 	}
