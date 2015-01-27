@@ -229,7 +229,7 @@ public class ItemView extends DefaultIView{
 		tbg.setPosition(350, 200);
 		group.addActor(tbg);
 		TextButton button=new TextButton("确定", butstyle).onClick(()->{
-			ItemUtil.throwItem(currentBar.name,item);
+			ItemUtil.throwItem(currentBar.name,item,currentCount);
 			AlertUtil.add("丢弃成功。", AlertUtil.Yellow);
 			generateLists(currentBar.name);
 			can3.run();
@@ -315,7 +315,7 @@ public class ItemView extends DefaultIView{
 		}
 		if(group.isVisible()){
 			group.draw(batch, 1);
-			FontUtil.draw(sb, currentCount>10?(currentCount>100?currentCount+"":"0"+currentCount):"00"+currentCount, 80, blue, 345, 337, 200,-40,0);
+			FontUtil.draw(sb, currentCount>10?(currentCount>100?currentCount+"":"0"+currentCount):"00"+currentCount, 80, blue, 347, 337, 200,-40,0);
 		}
 		sb.end();
 	}

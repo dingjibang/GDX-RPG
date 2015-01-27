@@ -19,26 +19,26 @@ public class ItemUtil {
 		replace(hero, equip, true);
 		GameViews.global.getItems("equipment").remove(equip);
 	}
-	
 	public static boolean throwItem(String type,Item item){
+		return throwItem(type, item, 1);
+	}
+	public static boolean throwItem(String type,Item item,int count){
 		if(item.count==0){
 			if(!GameViews.global.getItems(type).remove(item)){
 				AlertUtil.add("非法操作。", AlertUtil.Red);
 				return false;
 			}
 		}else{
-			if(item.count>=1){
-				item.count--;
-				if(item.count==0){
+			if(item.count>=count){
+				item.count-=count;
+				if(item.count<=0){
 					GameViews.global.getItems(type).remove(item);
 					return false;
 				}
+			}else{
+				GameViews.global.getItems(type).remove(item);
+				return false;
 			}
-			else
-				if(!GameViews.global.getItems(type).remove(item)){
-					AlertUtil.add("非法操作。", AlertUtil.Red);
-					return false;
-				}
 		}
 		return true;
 	}
