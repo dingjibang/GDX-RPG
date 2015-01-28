@@ -54,7 +54,6 @@ public class MapControler {
 			gv.global.getItems("equipment").add(new TestEquip());
 			gv.global.getItems("equipment").add(new Sunshade());
 			gv.global.getItems("medicine").add(new YaoWan());
-			gv.global.getItems("medicine").add(new CopyOfYaoWan());
 		}
 		HeroControler.initHeros(gv.stage);
 		

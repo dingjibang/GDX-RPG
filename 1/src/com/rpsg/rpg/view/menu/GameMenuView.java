@@ -87,11 +87,14 @@ public class GameMenuView extends StackView{
 		final ImageButton button5 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_tactic.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_tactic_p.png"));
 		table.add(button5);
 		table.row();
-		final ImageButton button6 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_system.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_system_p.png"));
+		final ImageButton button6 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_note.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_note_p.png"));
 		table.add(button6);
+		table.row();
+		final ImageButton button7 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_system.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_system_p.png"));
+		table.add(button7);
 		table.getCells().forEach((c)->{
-			c.padTop(8);
-			c.padBottom(8);
+			c.padTop(3);
+			c.padBottom(3);
 		});
 		ScrollPane pane=new ScrollPane(table);
 		pane.setPosition(0, 0);

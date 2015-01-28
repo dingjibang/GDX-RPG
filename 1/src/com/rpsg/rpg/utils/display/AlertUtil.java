@@ -32,7 +32,6 @@ public class AlertUtil {
 	}
 	
 	public static void add(String alert,Image type){
-		System.out.println("added");
 		list.add(new Alert(new Image(type), alert));
 	}
 	

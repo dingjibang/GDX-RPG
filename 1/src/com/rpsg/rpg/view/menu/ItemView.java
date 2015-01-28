@@ -24,6 +24,8 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.game.items.equipment.Sunshade;
+import com.rpsg.rpg.game.items.medicine.CopyOfYaoWan;
 import com.rpsg.rpg.object.base.ListItem;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.tip.TipItem;
@@ -205,6 +207,7 @@ public class ItemView extends DefaultIView{
 						can2.run();
 						can.run();
 						generateLists(currentBar.name);
+						item= new TipItem();
 					}
 				drawp=true;
 			}
@@ -232,6 +235,7 @@ public class ItemView extends DefaultIView{
 			ItemUtil.throwItem(currentBar.name,item,currentCount);
 			AlertUtil.add("¶ªÆú³É¹¦¡£", AlertUtil.Yellow);
 			generateLists(currentBar.name);
+			item= new TipItem();
 			can3.run();
 		});
 		button.setPosition(630, 290);
@@ -332,6 +336,13 @@ public class ItemView extends DefaultIView{
 	}
 	
 	public void onkeyDown(int keyCode) {
+		if(Keys.M==keyCode){
+			ItemUtil.addItem(new Sunshade());
+		}
+		if(Keys.V==keyCode){
+			ItemUtil.addItem(new CopyOfYaoWan());
+			
+		}
 		if(Keys.ESCAPE==keyCode){
 			if(layer==0)
 				this.disposed=true;
