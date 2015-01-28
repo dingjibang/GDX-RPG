@@ -3,6 +3,7 @@ package com.rpsg.rpg.utils.game;
 
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
+import com.rpsg.rpg.object.base.items.SpellCard;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.view.GameViews;
@@ -65,5 +66,22 @@ public class ItemUtil {
 	
 	private static void r(String key,Hero hero,Equipment equip,boolean add){
 		hero.prop.replace(key, add?hero.prop.get(key)+equip.prop.get(key):hero.prop.get(key)-equip.prop.get(key));
+	}
+	
+	private static boolean include=false;
+	public static void addItem(Item item){
+		String type=item.getClass().getSuperclass().getSimpleName().toLowerCase();
+		if(!(item instanceof Equipment || item instanceof SpellCard)){
+			include=false;
+			GameViews.global.getItems(type).forEach((i)->{
+				if(i.getClass().equals(item.getClass())){
+					include=true;
+					i.count++;
+				}
+			});
+			if(!include)
+				GameViews.global.getItems(type).add(item);
+		}else
+			GameViews.global.getItems(type).add(item);
 	}
 }
