@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 
@@ -27,6 +29,14 @@ public class Res {
 	
 	public static Drawable getDrawable(String resPath){
 		return get(resPath).getDrawable();
+	}
+	
+	public static TextureRegion getRegion(String resPath){
+		return get(resPath).getRegion();
+	}
+	
+	public static Texture getTexture(String resPath){
+		return get(resPath).getTexture();
 	}
 	
 	public static int CACHE_MAX_SIZE=30;

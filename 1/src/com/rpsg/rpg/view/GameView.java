@@ -4,6 +4,8 @@ package com.rpsg.rpg.view;
 
 import box2dLight.RayHandler;
 
+import com.badlogic.gdx.assets.AssetLoaderParameters;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.*;
@@ -16,33 +18,46 @@ import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.system.base.*;
+import com.rpsg.rpg.system.base.TmxMapLoader;
+import com.rpsg.rpg.system.base.TmxMapLoader.Parameters;
 import com.rpsg.rpg.system.control.*;
 import com.rpsg.rpg.utils.display.*;
+import com.rpsg.rpg.utils.game.Logger;
 
 public class GameView extends IView{
 	
-	public OrthogonalTiledMapRenderer render;
-	public Stage stage;
+	public OrthogonalTiledMapRenderer render =  new OrthogonalTiledMapRenderer(null);
+	public Stage stage = new Stage();
 	public TiledMap map;
-	public static boolean inited=false;
+	public boolean inited=false;
 	public Global global=GameViews.global;
-	public OrthographicCamera camera;
-	public RayHandler ray;
-	public World world;
-	
+	public OrthographicCamera camera = (OrthographicCamera) stage.getCamera();
+	public RayHandler ray = new RayHandler(null);
+	public World world = new World(new Vector2(0,0),true);
+	private TmxMapLoader mapLoader=new TmxMapLoader(); 
 	public StackView stackView;
+	AssetManager ma;
 	
 	@Override
 	public void init() {
-		stage = new Stage();
-		camera=(OrthographicCamera) stage.getCamera();
-		map=new TmxMapLoader().load(Setting.GAME_RES_MAP + global.map);
-		render = new OrthogonalTiledMapRenderer(map);
-		render.setView(camera);
-		world=new World(new Vector2(0,0),true);
-		ray=new RayHandler(world);
-		Initialization.init(this);
-		inited=true;
+		Logger.info("开始加载图形。");
+		stage.clear();
+		ma=new AssetManager();
+		Parameters parameter = new Parameters();
+		parameter.loadedCallback=(assetManager,fileName,type)->{
+			System.out.println("back");
+			map=ma.get(Setting.GAME_RES_MAP+global.map);
+			Logger.info("图形加载完成。");
+			LoadUtil.load=false;
+			render.setMap(map);
+			render.setView(camera);
+			ray.setWorld(world);
+			Initialization.init(this);
+			inited=true;
+		};
+//		mapLoader.loadAsync(ma,, mapLoader.resolve(Setting.GAME_RES_MAP + global.map), parameter);
+		ma.setLoader(TiledMap.class, mapLoader);
+		ma.load(Setting.GAME_RES_MAP+global.map, TiledMap.class ,parameter);
 	}
 	
 	@Override
@@ -65,6 +80,8 @@ public class GameView extends IView{
 	
 	@Override
 	public void draw(SpriteBatch batch) {
+		if(!ma.update())
+			return;
 		MapControler.draw(this);
 		ColorUtil.draw(batch);
 		DrawControl.draw(batch);
@@ -77,8 +94,10 @@ public class GameView extends IView{
 
 	@Override
 	public void logic() {
+		if(!ma.update())
+			return;
 		MapControler.logic(this);
-//		stage.act();
+		//		stage.act();
 		for(Actor i:stage.getActors())
 			if(!(i instanceof Hero))
 				i.act(0);

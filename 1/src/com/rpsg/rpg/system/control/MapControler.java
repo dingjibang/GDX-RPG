@@ -22,7 +22,6 @@ import com.rpsg.rpg.game.hero.Reimu;
 import com.rpsg.rpg.game.hero.Yuuka;
 import com.rpsg.rpg.game.items.equipment.Sunshade;
 import com.rpsg.rpg.game.items.equipment.TestEquip;
-import com.rpsg.rpg.game.items.medicine.CopyOfYaoWan;
 import com.rpsg.rpg.game.items.medicine.YaoWan;
 import com.rpsg.rpg.object.rpgobj.IRPGObject;
 import com.rpsg.rpg.object.rpgobj.NPC;
