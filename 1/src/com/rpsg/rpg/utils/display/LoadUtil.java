@@ -12,7 +12,7 @@ public class LoadUtil {
 	static Texture loader;
 
 	public static void init() {
-		loader = new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_LOAD + "load.png"));
+//		loader = new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_LOAD + "load.png"));
 	}
 
 	public static void draw(SpriteBatch batch) {

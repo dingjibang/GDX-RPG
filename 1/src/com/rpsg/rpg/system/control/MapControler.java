@@ -105,8 +105,8 @@ public class MapControler {
 				}
 				HeroControler.generatePosition(gv.global.x,gv.global.y,gv.global.z);
 			}
-			for(MapLayer l:removeList)
-				gv.map.getLayers().remove(l);
+//			for(MapLayer l:removeList)
+//				gv.map.getLayers().remove(l);
 		}else{
 			List<MapLayer> removeList=new ArrayList<MapLayer>();
 			for(int i=0;i<gv.map.getLayers().getCount();i++){

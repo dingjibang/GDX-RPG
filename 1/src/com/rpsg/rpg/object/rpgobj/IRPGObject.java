@@ -274,12 +274,15 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	}
 	
 	public IRPGObject generatePosition(int mapx,int mapy,int layer){
-		TiledMapTileLayer l=(TiledMapTileLayer)GameViews.gameview.map.getLayers().get(layer);
-		this.mapx=mapx;
-		this.mapy= mapy;
-		this.layer=layer;
-		this.position=new Vector2(mapx*48,(l.getHeight()-this.mapy-1)*48);
-		lastPosition=new Vector2(this.position);
+		try {
+			TiledMapTileLayer l=(TiledMapTileLayer)GameViews.gameview.map.getLayers().get(layer);
+			this.mapx=mapx;
+			this.mapy= mapy;
+			this.layer=layer;
+			this.position=new Vector2(mapx*48,(l.getHeight()-this.mapy-1)*48);
+			lastPosition=new Vector2(this.position);
+		} catch (Exception e) {
+		}
 		return this;
 	}
 	

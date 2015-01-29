@@ -4,14 +4,15 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 
 public class Res {
 	private static Map<String,Image> pool=new HashMap<String, Image>();
-	
 	public static Image get(String resPath){
 		if(pool.size()>CACHE_MAX_SIZE){
 			Iterator<String> it=pool.keySet().iterator();
