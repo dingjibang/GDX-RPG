@@ -83,7 +83,6 @@ public class HeroControler {
 	public static void initControler(){
 		heros=GameViews.global.currentHeros;
 		allHeros=GameViews.global.heros;
-		Logger.info("角色控制器初始化完成。");
 	}
 	
 	public static void initHeros(Stage s){

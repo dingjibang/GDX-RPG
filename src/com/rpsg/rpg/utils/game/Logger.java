@@ -17,6 +17,14 @@ public class Logger {
 		faildlog.setLevel(Application.LOG_ERROR);
 	}
 	
+	private static long time=0;
+	private static String getTime(){
+		long cur=System.currentTimeMillis();
+		long m=cur-time;
+		time=cur;
+		return "["+m+" ms]";
+	}
+	
 	public static void error(String s){
 		errorlog.error(s);
 	}
@@ -26,7 +34,7 @@ public class Logger {
 	}
 	
 	public static void info(String s){
-		infolog.info(s);
+		infolog.info(getTime()+s);
 	}
 	
 	public static void faild(String s){

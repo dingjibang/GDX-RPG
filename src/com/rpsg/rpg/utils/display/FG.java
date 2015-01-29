@@ -20,10 +20,7 @@ public class FG {
 	static boolean rightFade=true;
 	
 	public static void init(){
-		if(currentImageL!=null)
-			currentImageL.dispose();
-		if(currentImageR!=null)
-			currentImageR.dispose();
+		currentImageL=currentImageR=null;
 		Logger.info("立绘控制器初始化完成。");
 	}
 	
