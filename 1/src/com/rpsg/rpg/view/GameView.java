@@ -44,7 +44,6 @@ public class GameView extends IView{
 		stage.clear();
 		Parameters parameter = new Parameters();
 		parameter.loadedCallback=(assetManager,fileName,type)->{
-			System.out.println("back");
 			map=ma.get(Setting.GAME_RES_MAP+global.map);
 			render.setMap(map);
 			render.setView(camera);
