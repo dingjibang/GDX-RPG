@@ -4,16 +4,15 @@ package com.rpsg.rpg.view;
 
 import box2dLight.RayHandler;
 
-import com.badlogic.gdx.assets.AssetLoaderParameters;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.game.script.Teleporter;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpgobj.Hero;
@@ -23,53 +22,48 @@ import com.rpsg.rpg.system.base.TmxMapLoader.Parameters;
 import com.rpsg.rpg.system.control.*;
 import com.rpsg.rpg.utils.display.*;
 import com.rpsg.rpg.utils.game.Logger;
+import com.rpsg.rpg.utils.game.Move;
 
 public class GameView extends IView{
 	
 	public OrthogonalTiledMapRenderer render =  new OrthogonalTiledMapRenderer(null);
-	public Stage stage = new Stage();
+	public Stage stage = GameViewRes.stage;
 	public TiledMap map;
 	public boolean inited=false;
 	public Global global=GameViews.global;
-	public OrthographicCamera camera = (OrthographicCamera) stage.getCamera();
-	public RayHandler ray = new RayHandler(null);
-	public World world = new World(new Vector2(0,0),true);
-	private TmxMapLoader mapLoader=new TmxMapLoader(); 
+	public OrthographicCamera camera = GameViewRes.camera;
+	public RayHandler ray = GameViewRes.ray;
+	public World world = GameViewRes.world;
 	public StackView stackView;
-	AssetManager ma;
-	
+	AssetManager ma=GameViewRes.ma;
+	String filename;
 	@Override
 	public void init() {
+		inited=false;
 		Logger.info("开始加载图形。");
 		stage.clear();
-		ma=new AssetManager();
 		Parameters parameter = new Parameters();
 		parameter.loadedCallback=(assetManager,fileName,type)->{
 			System.out.println("back");
 			map=ma.get(Setting.GAME_RES_MAP+global.map);
-			Logger.info("图形加载完成。");
-			LoadUtil.load=false;
 			render.setMap(map);
 			render.setView(camera);
 			ray.setWorld(world);
 			Initialization.init(this);
 			inited=true;
+			Logger.info("图形加载完成。");
 		};
-//		mapLoader.loadAsync(ma,, mapLoader.resolve(Setting.GAME_RES_MAP + global.map), parameter);
-		ma.setLoader(TiledMap.class, mapLoader);
-		ma.load(Setting.GAME_RES_MAP+global.map, TiledMap.class ,parameter);
+		filename=Setting.GAME_RES_MAP+global.map;
+		ma.load(filename, TiledMap.class ,parameter);
 	}
 	
 	@Override
 	public void dispose() {
 		MapControler.dispose();
-		stage.dispose();
-		render.dispose();
 		Msg.dispose();
 		Res.dispose();
-		map.dispose();
-		ray.dispose();
-		world.dispose();
+//		map.dispose();
+//		ma.unload(filename);
 		if(null!=stackView){
 			stackView.dispose();
 			stackView=null;
@@ -80,7 +74,7 @@ public class GameView extends IView{
 	
 	@Override
 	public void draw(SpriteBatch batch) {
-		if(!ma.update())
+		if(!ma.update() || !inited)
 			return;
 		MapControler.draw(this);
 		ColorUtil.draw(batch);
@@ -94,7 +88,7 @@ public class GameView extends IView{
 
 	@Override
 	public void logic() {
-		if(!ma.update())
+		if(!ma.update() || !inited)
 			return;
 		MapControler.logic(this);
 		//		stage.act();
@@ -115,10 +109,14 @@ public class GameView extends IView{
 	}
 	
 	public void onkeyDown(int keycode) {
+		if(!ma.update() || !inited)
+			return;
 		InputControler.keyDown(keycode,this);
 	}
 
 	public void onkeyUp(int keycode) {
+		if(!ma.update() || !inited)
+			return;
 		InputControler.keyUp(keycode,this);
 	}
 

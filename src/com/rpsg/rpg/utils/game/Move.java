@@ -5,7 +5,8 @@ import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
 import com.rpsg.rpg.system.base.Initialization;
 import com.rpsg.rpg.system.base.ThreadPool;
-import com.rpsg.rpg.system.control.HeroControler;import com.rpsg.rpg.view.GameViews;
+import com.rpsg.rpg.system.control.HeroControler;import com.rpsg.rpg.view.GameView;
+import com.rpsg.rpg.view.GameViews;
 
 
 public class Move {
@@ -39,7 +40,6 @@ public class Move {
 			GameViews.global.x=x;
 			GameViews.global.y=y;
 			GameViews.global.z=z;
-			GameViews.global.npcs.clear();
 			ThreadPool.pool.clear();
 			Initialization.restartGame();
 			HeroControler.reinitByTeleport();
