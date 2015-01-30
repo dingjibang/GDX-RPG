@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.List;
 
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -16,6 +16,8 @@ import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.system.base.IView;
@@ -30,14 +32,16 @@ import com.rpsg.rpg.view.GameViews;
 
 public class GameMenuView extends StackView{
 	Image bluredBG;
+	Image normalBG;
 	Stage stage;
  	public void init(){
  		this.viewStack.add(new MenuBaseView());
  		this.viewStack.get(0).init();
- 		stage=new Stage();
- 		bluredBG=new Image(new TextureRegion((Texture)params.get("bg"),0,GameUtil.screen_height,GameUtil.screen_width,-GameUtil.screen_height));
+ 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
+ 		bluredBG=(Image)(params.get("blurbg"));
+ 		normalBG=(Image)(params.get("bg"));
  		bluredBG.setColor(1,1,1,0);
- 		bluredBG.addAction(Actions.fadeIn(0.1f));
+ 		bluredBG.addAction(Actions.parallel(Actions.fadeIn(0.4f),Actions.color(new Color(0.6f,0.6f,0.6f,1),0.4f)));
  		stage.addActor(bluredBG);
  		
  		Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"bg.png");
@@ -91,6 +95,12 @@ public class GameMenuView extends StackView{
 		table.add(button6);
 		table.row();
 		final ImageButton button7 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_system.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_system_p.png"));
+		button7.addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+				tryToAdd(SystemView.class);
+				return false;
+			}
+		});
 		table.add(button7);
 		table.getCells().forEach((c)->{
 			c.padTop(3);
@@ -160,6 +170,7 @@ public class GameMenuView extends StackView{
 	public void dispose() {
 		stage.dispose();
  		bluredBG.dispose();
+ 		normalBG.dispose();
 		for(IView view:viewStack)
 			view.dispose();
 		MouseUtil.setHWCursorVisible(false);

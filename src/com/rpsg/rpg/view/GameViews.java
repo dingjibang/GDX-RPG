@@ -13,6 +13,7 @@ import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.display.TipUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
+import com.rpsg.rpg.utils.game.TimeUtil;
 
 public class GameViews implements ApplicationListener {
 	public static SpriteBatch batch;
@@ -51,6 +52,7 @@ public class GameViews implements ApplicationListener {
 		TipUtil.init();
 		AlertUtil.init();
 		LoadUtil.init();
+		TimeUtil.init();
 		selectUtil=new SelectUtil();
 		Logger.info("Gdx-RPG引擎初始化成功。");
 	}
@@ -112,8 +114,8 @@ public class GameViews implements ApplicationListener {
 		LoadUtil.draw(batch);
 		AlertUtil.draw(batch);
 		GameUtil.drawFPS(batch);
+		TimeUtil.logic();
 		batch.end();
-		
 	}
 
 	@Override

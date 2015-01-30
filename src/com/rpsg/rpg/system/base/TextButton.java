@@ -25,11 +25,17 @@ public class TextButton extends Button {
 		super();
 		init(text, style, 22);
 	}
-	Runnable run;
+	Runnable run,drun;
 	public TextButton onClick(Runnable run){
 		this.run=run;
 		return this;
 	}
+	
+	public TextButton onMouseDown(Runnable run){
+		this.drun=run;
+		return this;
+	}
+	
 	private void init(String text,TextButtonStyle style,int fontsize){
 		setStyle(style);
 		this.style = style;
@@ -38,6 +44,8 @@ public class TextButton extends Button {
 		setSize(getPrefWidth(), getPrefHeight());
 		addListener(new InputListener(){
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				if(drun!=null)
+					drun.run();
 				return true;
 			}
 			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
@@ -76,10 +84,16 @@ public class TextButton extends Button {
 		if(null==fontColor)
 			fontColor=Color.WHITE;
 		super.draw(batch, parentAlpha);
-		FontUtil.draw((SpriteBatch)batch, text,fontsize , fontColor,(int)(getX()+getWidth()/3.7-FontUtil.getTextWidth(text, fontsize)/2), (int)(getY()+getHeight()/2+fontsize/2), 1000);
+		FontUtil.draw((SpriteBatch)batch, text,fontsize , fontColor,offset+(int)(getX()+getWidth()/3.7-FontUtil.getTextWidth(text, fontsize)/2), (int)(getY()+getHeight()/2+fontsize/2), 1000);
 	}
-
-
+	
+	public int offset;
+	
+	
+	public TextButton setOffset(int o){
+		offset=o;
+		return this;
+	}
 	public void setText (String text) {
 		this.text=text;
 	}
