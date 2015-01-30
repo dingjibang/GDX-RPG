@@ -25,6 +25,7 @@ import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.base.StackView;
 import com.rpsg.rpg.system.control.InputControler;
+import com.rpsg.rpg.system.control.MenuControl;
 import com.rpsg.rpg.utils.display.MouseUtil;
 import com.rpsg.rpg.utils.display.TipUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -38,95 +39,93 @@ public class GameMenuView extends StackView{
  		this.viewStack.add(new MenuBaseView());
  		this.viewStack.get(0).init();
  		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
- 		bluredBG=(Image)(params.get("blurbg"));
- 		normalBG=(Image)(params.get("bg"));
- 		bluredBG.setColor(1,1,1,0);
- 		bluredBG.addAction(Actions.parallel(Actions.fadeIn(0.4f),Actions.color(new Color(0.6f,0.6f,0.6f,1),0.4f)));
- 		stage.addActor(bluredBG);
- 		
- 		Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"bg.png");
-		bg.setPosition(50, 0);
-		bg.setColor(1,1,1,0);
-		bg.addAction(Actions.fadeIn(0.2f));
-		stage.addActor(bg);
-		Image magic=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"bg_magic.png");
-		magic.setPosition(600, 150);
-		magic.setColor(1,1,1,0.15f);
-		magic.setOrigin(0);
-		magic.addAction(Actions.repeat(RepeatAction.FOREVER, Actions.rotateBy(0.1f)));
-		stage.addActor(magic);
-		
-		Table table=new Table();
-		table.setBackground(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"leftbar_bg.png"));
-		final ImageButton button=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_equip.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_equip_p.png"));
-		button.addListener(new InputListener(){
-			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
-				tryToAdd(EquipView.class);
-				return false;
-			}
-		});
-		table.add(button);
-		table.row();
-		final ImageButton button2 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_sc.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_sc_p.png"));
-		button2.addListener(new InputListener(){
-			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
-				tryToAdd(SpellCardView.class);
-				return false;
-			}
-		});
-		table.add(button2);
-		table.row();
-		final ImageButton button3 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_item.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_item_p.png"));
-		button3.addListener(new InputListener(){
-			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
-				tryToAdd(ItemView.class);
-				return false;
-			}
-		});
-		table.add(button3);
-		table.row();
-		final ImageButton button4 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_status.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_status_p.png"));
-		table.add(button4);
-		table.row();
-		final ImageButton button5 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_tactic.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_tactic_p.png"));
-		table.add(button5);
-		table.row();
-		final ImageButton button6 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_note.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_note_p.png"));
-		table.add(button6);
-		table.row();
-		final ImageButton button7 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_system.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_system_p.png"));
-		button7.addListener(new InputListener(){
-			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
-				tryToAdd(SystemView.class);
-				return false;
-			}
-		});
-		table.add(button7);
-		table.getCells().forEach((c)->{
-			c.padTop(3);
-			c.padBottom(3);
-		});
-		ScrollPane pane=new ScrollPane(table);
-		pane.setPosition(0, 0);
-		pane.setSize(128,GameUtil.screen_height);
-//		table.setDebug(true);
-		pane.setScrollingDisabled(false, true);
-		pane.setSmoothScrolling(true);
-		pane.addListener(new InputListener() {
-			public void touchDragged (InputEvent event, float x, float y, int pointer) {
+// 		bluredBG=(Image)(params.get("blurbg"));
+// 		normalBG=(Image)(params.get("bg"));
+// 		bluredBG.setColor(1,1,1,0);
+// 		bluredBG.addAction(Actions.parallel(Actions.fadeIn(0.4f),Actions.color(new Color(0.6f,0.6f,0.6f,1),0.4f)));
+// 		stage.addActor(bluredBG);
+// 		
+// 		Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"bg.png");
+//		bg.setPosition(50, 0);
+//		bg.setColor(1,1,1,0);
+//		bg.addAction(Actions.fadeIn(0.2f));
+//		stage.addActor(bg);
+//		Image magic=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"bg_magic.png");
+//		magic.setPosition(600, 150);
+//		magic.setColor(1,1,1,0.15f);
+//		magic.setOrigin(0);
+//		magic.addAction(Actions.repeat(RepeatAction.FOREVER, Actions.rotateBy(0.1f)));
+//		stage.addActor(magic);
+//		
+//		Table table=new Table();
+//		table.setBackground(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"leftbar_bg.png"));
+//		final ImageButton button=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_equip.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_equip_p.png"));
+//		button.addListener(new InputListener(){
+//			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+//				tryToAdd(EquipView.class);
 //				return false;
-			}
-			public void touchUp (InputEvent event, float x, float y, int pointer,int botton) {
+//			}
+//		});
+//		table.add(button);
+//		table.row();
+//		final ImageButton button2 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_sc.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_sc_p.png"));
+//		button2.addListener(new InputListener(){
+//			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+//				tryToAdd(SpellCardView.class);
 //				return false;
-			}
-			
-			public boolean touchDown (InputEvent event, float x, float y, int pointer,int botton) {
-				return true;
-			}
-		});
-		stage.addActor(pane);
-		
- 		MouseUtil.setHWCursorVisible(true);
+//			}
+//		});
+//		table.add(button2);
+//		table.row();
+//		final ImageButton button3 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_item.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_item_p.png"));
+//		button3.addListener(new InputListener(){
+//			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+//				tryToAdd(ItemView.class);
+//				return false;
+//			}
+//		});
+//		table.add(button3);
+//		table.row();
+//		final ImageButton button4 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_status.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_status_p.png"));
+//		table.add(button4);
+//		table.row();
+//		final ImageButton button5 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_tactic.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_tactic_p.png"));
+//		table.add(button5);
+//		table.row();
+//		final ImageButton button6 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_note.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_note_p.png"));
+//		table.add(button6);
+//		table.row();
+//		final ImageButton button7 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_system.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_system_p.png"));
+//		button7.addListener(new InputListener(){
+//			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+//				tryToAdd(SystemView.class);
+//				return false;
+//			}
+//		});
+//		table.add(button7);
+//		table.getCells().forEach((c)->{
+//			c.padTop(3);
+//			c.padBottom(3);
+//		});
+//		ScrollPane pane=new ScrollPane(table);
+//		pane.setPosition(0, 0);
+//		pane.setSize(128,GameUtil.screen_height);
+////		table.setDebug(true);
+//		pane.setScrollingDisabled(false, true);
+//		pane.setSmoothScrolling(true);
+//		pane.addListener(new InputListener() {
+//			public void touchDragged (InputEvent event, float x, float y, int pointer) {
+////				return false;
+//			}
+//			public void touchUp (InputEvent event, float x, float y, int pointer,int botton) {
+////				return false;
+//			}
+//			
+//			public boolean touchDown (InputEvent event, float x, float y, int pointer,int botton) {
+//				return true;
+//			}
+//		});
+//		stage.addActor(pane);
  	}
  	
  	public void draw(SpriteBatch batch){
@@ -169,11 +168,14 @@ public class GameMenuView extends StackView{
 
 	public void dispose() {
 		stage.dispose();
- 		bluredBG.dispose();
- 		normalBG.dispose();
+// 		bluredBG.dispose();
+// 		normalBG.dispose();
+ 		MenuControl.bg.dispose();
+//		MenuControl.pbg.dispose();
+ 		MenuControl.blurbg.dispose();
+ 		MenuControl.bbg.dispose();
 		for(IView view:viewStack)
 			view.dispose();
-		MouseUtil.setHWCursorVisible(false);
 	}
 
 	@Override

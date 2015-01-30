@@ -57,15 +57,14 @@ public class GameView extends IView{
 	public void dispose() {
 		MapControler.dispose();
 		Msg.dispose();
-		Res.dispose();
-//		map.dispose();
-//		ma.unload(filename);
+		map.dispose();
+		ma.unload(filename);
 		if(null!=stackView){
 			stackView.dispose();
 			stackView=null;
 			InputControler.currentIOMode=IOMode.MAP_INPUT_NORMAL;
 		}
-		System.gc();
+		Res.dispose();
 	}
 	
 	@Override

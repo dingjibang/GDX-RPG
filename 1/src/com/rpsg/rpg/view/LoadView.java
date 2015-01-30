@@ -45,8 +45,8 @@ public class LoadView extends IView {
 	
 	@Override
 	public void draw(SpriteBatch batch) {
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+//		Gdx.gl.glClearColor(0, 0, 0, 1);
+//		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		f_load.draw(batch);
 		for(int i=0;i<hbx.length;i++){
 			hb[i].draw(batch);

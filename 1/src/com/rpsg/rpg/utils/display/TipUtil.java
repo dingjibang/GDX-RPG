@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.base.Image;
+import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.utils.game.Logger;
 
 public class TipUtil {
@@ -12,9 +13,9 @@ public class TipUtil {
 	public static Image t_escape,t_select,t_z; 
 	public static void init(){
 		stage=new Stage();
-		t_escape=new Image(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"tip_escape.png");
-		t_select=new Image(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"tip_select.png");
-		t_z=new Image(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"tip_z.png");
+		t_escape=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"tip_escape.png");
+		t_select=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"tip_select.png");
+		t_z=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"tip_z.png");
 		
 		stage.addActor(t_escape);
 		stage.addActor(t_select);

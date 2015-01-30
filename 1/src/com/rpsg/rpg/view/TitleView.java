@@ -6,8 +6,6 @@ public class TitleView extends IView{
 	public boolean inited=false;
 	@Override
 	public void init() {
-		GameViews.gameview=new GameView();
-		GameViews.gameview.init();
 		inited=true;
 	}
 	
@@ -23,6 +21,10 @@ public class TitleView extends IView{
 	@Override
 	public void logic() {
 		GameViews.state=GameViews.STATE_GAME;
+		if(GameViews.gameview!=null)
+			GameViews.gameview.dispose();
+		GameViews.gameview=new GameView();
+		GameViews.gameview.init();
 	}
 
 	@Override
