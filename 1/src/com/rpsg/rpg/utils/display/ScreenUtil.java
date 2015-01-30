@@ -6,7 +6,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.MathUtils;
+import com.rpsg.rpg.system.base.Image;
+import com.rpsg.rpg.utils.game.GameUtil;
 /**
  * 屏幕工具类 可以获取截图
  * @author 煞笔学生
@@ -31,6 +35,11 @@ public class ScreenUtil {
         }
 
         return pixmap;
+    }
+	
+	public static Image getScreenshot(){
+        final Pixmap pixmap = getFrameBufferPixmap(0, 0, GameUtil.screen_width, GameUtil.screen_height);
+        return new Image(new TextureRegion(new Texture(pixmap),0,GameUtil.screen_height,GameUtil.screen_width,-GameUtil.screen_height));
     }
 	
 	public static Pixmap getFrameBufferPixmap (int x, int y, int w, int h) {

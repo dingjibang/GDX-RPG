@@ -12,17 +12,14 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.game.script.Teleporter;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.system.base.*;
-import com.rpsg.rpg.system.base.TmxMapLoader;
 import com.rpsg.rpg.system.base.TmxMapLoader.Parameters;
 import com.rpsg.rpg.system.control.*;
 import com.rpsg.rpg.utils.display.*;
 import com.rpsg.rpg.utils.game.Logger;
-import com.rpsg.rpg.utils.game.Move;
 
 public class GameView extends IView{
 	
