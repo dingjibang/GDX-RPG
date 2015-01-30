@@ -18,19 +18,19 @@ public class SayHelloWorld extends Script{
 //			else
 //				_$(setGameTime(ColorUtil.NIGHT));
 //		});
-		setKeyLocker(true);
+//		setKeyLocker(true);
 		showMSG();
 		showFGLeft(°®ÀöË¿Á¢»æ, Ë¼¿¼);
 		say("ÄãºÃ!");
 		select("ÄãºÃ","ºÃÄãÂè±Æ");
-		$(()->{
-			if(SelectUtil.currentSelect.equals("ÄãºÃ"))
-				_$(say("ºÃÄãÂè±Æ"));
-			else
-				_$(say("¹ö´Ö"));
-		});
+//		$(()->{
+//			if(SelectUtil.currentSelect.equals("ÄãºÃ"))
+//				_$(say("ºÃÄãÂè±Æ"));
+//			else
+//				_$(say("¹ö´Ö"));
+//		});
 		hideFG();
 		hideMSG();
-		setKeyLocker(false);
+//		setKeyLocker(false);
 	}
 }

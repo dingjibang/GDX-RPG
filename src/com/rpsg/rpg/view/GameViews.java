@@ -6,7 +6,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
+import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.utils.display.AlertUtil;
+import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.display.LoadUtil;
 import com.rpsg.rpg.utils.display.MouseUtil;
 import com.rpsg.rpg.utils.display.SelectUtil;
@@ -103,9 +105,8 @@ public class GameViews implements ApplicationListener {
 		}
 		case STATE_GAME:{
 			gameview.logic();
-			if(gameview.inited){
-				gameview.draw(batch);
-			}else{
+			gameview.draw(batch);
+			if(!GameViewRes.ma.update(Gdx.graphics.getFramesPerSecond())){
 				loadview.logic();
 				loadview.draw(batch);
 			}

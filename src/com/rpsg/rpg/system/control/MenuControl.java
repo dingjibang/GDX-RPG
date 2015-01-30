@@ -12,11 +12,16 @@ import com.rpsg.rpg.view.GameViews;
 import com.rpsg.rpg.view.menu.GameMenuView;
 
 public class MenuControl {
+	public static Image bg,blurbg;
+	public static Pixmap pbg,bbg;
 	public static void createMenu(){
 		GameViews.gameview.stackView=new GameMenuView();
-		Pixmap bg=ScreenUtil.getScreenshot(0, 0, GameUtil.screen_width, GameUtil.screen_height, false);
-		GameViews.gameview.stackView.params.put("bg",new Image(new TextureRegion(new Texture(bg),0,GameUtil.screen_height,GameUtil.screen_width,-GameUtil.screen_height)));
-		GameViews.gameview.stackView.params.put("blurbg", new Image(new TextureRegion(new Texture(BlurUtil.blur(bg, 5, 5, true)),0,GameUtil.screen_height,GameUtil.screen_width,-GameUtil.screen_height)));
+		pbg=ScreenUtil.getScreenshot(0, 0, GameUtil.screen_width, GameUtil.screen_height, false);
+		MenuControl.bg=new Image(new TextureRegion(new Texture(pbg),0,GameUtil.screen_height,GameUtil.screen_width,-GameUtil.screen_height));
+		bbg=BlurUtil.blur(pbg, 5, 5, true);
+		blurbg= new Image(new TextureRegion(new Texture(bbg),0,GameUtil.screen_height,GameUtil.screen_width,-GameUtil.screen_height));
+		GameViews.gameview.stackView.params.put("bg",MenuControl.bg);
+		GameViews.gameview.stackView.params.put("blurbg",blurbg);
 		GameViews.gameview.stackView.init();
 		Logger.info("菜单创建完成。");
 	}

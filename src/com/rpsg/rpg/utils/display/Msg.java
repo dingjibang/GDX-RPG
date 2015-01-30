@@ -22,8 +22,10 @@ public class Msg {
 	public static Image msgbox;
 	
 	public static void dispose(){
-		if(msgbox!=null)
+		if(msgbox!=null){
 			msgbox.dispose();
+			msgbox=null;
+		}
 	}
 	
 	public static void init(){
