@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
-import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.display.LoadUtil;
@@ -113,9 +112,9 @@ public class GameViews implements ApplicationListener {
 		}
 		}
 		LoadUtil.draw(batch);
-		AlertUtil.draw(batch);
 		GameUtil.drawFPS(batch);
 		TimeUtil.logic();
+		AlertUtil.draw(batch);
 		batch.end();
 	}
 

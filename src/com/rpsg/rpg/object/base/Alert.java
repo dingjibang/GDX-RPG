@@ -1,5 +1,6 @@
 package com.rpsg.rpg.object.base;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -59,10 +60,9 @@ public class Alert {
 			box.removeAction(last);
 		last=Actions.moveTo(box.getX(),30+oy,0.03f);
 		box.addAction(last);
-		box.act(1f/60f);
+		box.act(Gdx.graphics.getDeltaTime());
 		box.draw(sb);
-		
-		FontUtil.draw(sb, str, size,Color.WHITE,(int)box.getX()-size+55,(int)box.getY()+25+size/2,(int)box.getWidth());
+		FontUtil.draw(sb, str, size,Color.WHITE,(int)box.getX()-size+62,(int)box.getY()+25+size/2,(int)box.getWidth());
 		type.setX(box.getX()+10);
 		type.setY(box.getY()+9);
 		type.draw(sb);

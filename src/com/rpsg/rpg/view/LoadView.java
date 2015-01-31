@@ -3,12 +3,16 @@ package com.rpsg.rpg.view;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.base.IView;
+import com.rpsg.rpg.system.base.Image;
+import com.rpsg.rpg.utils.display.ScreenUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class LoadView extends IView {
@@ -19,8 +23,10 @@ public class LoadView extends IView {
 	private boolean[] hbab;
 	private int floada=100;
 	private boolean floadb=true;
+	private Image bluredbg;
 	@Override
 	public void init() {
+		System.out.println("init");
 		f_load= new Sprite(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_LOAD+"f_load.png")));
 		hbx=new int[10];hby=new int[10];hbs=new int[10];hba=new int[10];hbr=new float[10];hbab=new boolean[10];hb=new Sprite[10];
 		for (int i = 0; i <hbx.length; i++) {
@@ -36,6 +42,7 @@ public class LoadView extends IView {
 		}
 		f_load.setSize(200, 25);
 		f_load.setPosition(GameUtil.screen_width-f_load.getWidth()-70, 30);
+		reinit();
 	}
 	
 	@Override
@@ -47,6 +54,10 @@ public class LoadView extends IView {
 	public void draw(SpriteBatch batch) {
 //		Gdx.gl.glClearColor(0, 0, 0, 1);
 //		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		if(bluredbg!=null){
+			bluredbg.act(Gdx.graphics.getDeltaTime());
+			bluredbg.draw(batch);
+		}
 		f_load.draw(batch);
 		for(int i=0;i<hbx.length;i++){
 			hb[i].draw(batch);
@@ -111,6 +122,16 @@ public class LoadView extends IView {
 	@Override
 	public boolean scrolled(int amount) {
 		return false;
+	}
+	public void reinit() {
+		if(bluredbg!=null){
+			bluredbg.dispose();
+			bluredbg=null;
+		}
+		Pixmap pbg=ScreenUtil.getScreenshot(0, 0, GameUtil.screen_width, GameUtil.screen_height, false);
+		bluredbg= new Image(new TextureRegion(new Texture(pbg),0,GameUtil.screen_height,GameUtil.screen_width,-GameUtil.screen_height));
+		bluredbg.setColor(new Color(0.7f,0.7f,0.7f,1));
+		pbg.dispose();
 	}
 
 }

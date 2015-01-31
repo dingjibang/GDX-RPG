@@ -288,8 +288,8 @@ public class ItemView extends DefaultIView{
 		stage.draw();
 		SpriteBatch sb=(SpriteBatch) stage.getBatch();
 		sb.begin();
-		FontUtil.draw(sb, item.name, 22, Color.WHITE, 445, 134, 1000);
-		FontUtil.draw(sb, item.illustration, 18, blue, 449, 100, 490);
+		FontUtil.draw(sb, item.name, 22, Color.WHITE, 455, 134, 1000);
+		FontUtil.draw(sb, item.illustration, 18, blue, 459, 100, 490);
 		scuse.draw(sb);
 		if(sellist.isVisible()) sellist.draw(sb, 1);
 		scfor.draw(sb);
@@ -304,9 +304,9 @@ public class ItemView extends DefaultIView{
 				render.setColor(cblue);
 				render.rect(575, 105, (float)((float)h.prop.get("mp")/(float)h.prop.get("maxmp"))*176,20);
 				render.end();
-				FontUtil.draw(sb, h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20, blue, 560+176/2-FontUtil.getTextWidth(h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20,-7)/2, 161, 400,-7,0);
-				FontUtil.draw(sb, h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20, blue, 560+176/2-FontUtil.getTextWidth(h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20,-7)/2, 124, 400,-7,0);
-				FontUtil.draw(sb, "正常", 18, blue, 552+176/2-FontUtil.getTextWidth("正常", 18)/2, 196, 400);
+				FontUtil.draw(sb, h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20, blue, 565+176/2-FontUtil.getTextWidth(h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20,-7)/2, 161, 400,-7,0);
+				FontUtil.draw(sb, h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20, blue, 565+176/2-FontUtil.getTextWidth(h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20,-7)/2, 124, 400,-7,0);
+				FontUtil.draw(sb, "正常", 18, blue, 563+176/2-FontUtil.getTextWidth("正常", 18)/2, 196, 400);
 				FontUtil.draw(sb, h.toString(), 18, Color.WHITE, 515, 227, 200);
 				if(drawp){
 					add.draw(sb,Gdx.graphics.getDeltaTime());
@@ -343,7 +343,7 @@ public class ItemView extends DefaultIView{
 			ItemUtil.addItem(new CopyOfYaoWan());
 			
 		}
-		if(Keys.ESCAPE==keyCode){
+		if(Keys.ESCAPE==keyCode || keyCode==Keys.X){
 			if(layer==0)
 				this.disposed=true;
 			else if(layer==1)

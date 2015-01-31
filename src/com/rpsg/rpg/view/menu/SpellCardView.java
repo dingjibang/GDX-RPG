@@ -237,12 +237,12 @@ public class SpellCardView extends IView{
 		SpriteBatch sb=(SpriteBatch) stage.getBatch();
 		Hero hero=HeroControler.heros.get(currentSelectHero);
 		sb.begin();
-		FontUtil.draw(sb,hero.prop.get("level")+"", 30, blue, 154+60/2-FontUtil.getTextWidth(hero.prop.get("level")+"", 30), 487, 1000);
-		FontUtil.draw(sb, hero.prop.get("maxsc")+"", 18, blue, 317, 325, 200,-7,0);
+		FontUtil.draw(sb,hero.prop.get("level")+"", 30, blue, 160+60/2-FontUtil.getTextWidth(hero.prop.get("level")+"", 30), 487, 1000);
+		FontUtil.draw(sb, hero.prop.get("maxsc")+"", 18, blue, 321, 325, 200,-7,0);
 		FontUtil.draw(sb, hero.name, 22, Color.WHITE, 215, 480, 1000);
 		FontUtil.draw(sb, spell.name, 40, Color.WHITE, 475, 435, 1000);
-		FontUtil.draw(sb, spell.illustration, 18, Color.WHITE, 485, 375, 400);
-		FontUtil.draw(sb, spell.story, 18, Color.WHITE, 485, 225, 400);
+		FontUtil.draw(sb, spell.illustration, 18, Color.WHITE, 495, 375, 400);
+		FontUtil.draw(sb, spell.story, 18, Color.WHITE, 495, 225, 400);
 		FontUtil.draw(sb, spell.magicConsume+"", 16,blue, 850+64/2-FontUtil.getTextWidth(spell.magicConsume+"", 16,-5)/2, 404, 400,-5,0);
 		heroImage.draw(sb, step==3?1:step);
 		scuse.draw(sb);
@@ -300,7 +300,7 @@ public class SpellCardView extends IView{
 	}
 
 	public void onkeyDown(int keyCode) {
-		if(Keys.ESCAPE==keyCode){
+		if(Keys.ESCAPE==keyCode || keyCode==Keys.X){
 			if(layer==0)
 				this.disposed=true;
 			else if(layer==1)

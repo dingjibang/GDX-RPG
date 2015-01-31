@@ -84,7 +84,7 @@ public class TextButton extends Button {
 		if(null==fontColor)
 			fontColor=Color.WHITE;
 		super.draw(batch, parentAlpha);
-		FontUtil.draw((SpriteBatch)batch, text,fontsize , fontColor,offset+(int)(getX()+getWidth()/3.7-FontUtil.getTextWidth(text, fontsize)/2), (int)(getY()+getHeight()/2+fontsize/2), 1000);
+		FontUtil.draw((SpriteBatch)batch, text,fontsize , fontColor,offset+(int)(getX()+getWidth()/2.6-FontUtil.getTextWidth(text, fontsize)/2), (int)(getY()+getHeight()/2+fontsize/2), 1000);
 	}
 	
 	public int offset;
