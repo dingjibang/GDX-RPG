@@ -57,7 +57,9 @@ public class FontUtil {
 			currentX+=fontsize+paddinglr;
 			BitmapFont f=getBitFont(fontsize, c);
 			f.setColor(color);
-			f.draw(sb, new String(new char[]{c}), currentX, currentY);
+			String tstr=new String(new char[]{c});
+			int bound=(int) f.getBounds(tstr).width;
+			f.draw(sb, tstr, currentX-bound/2, currentY);
 			f.setColor(Color.WHITE);
 		}
 	}

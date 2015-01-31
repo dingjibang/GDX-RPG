@@ -28,7 +28,7 @@ public class InputControler{
 		}
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_NORMAL:{
-			if(keycode==Keys.ESCAPE){
+			if(keycode==Keys.ESCAPE || keycode==Keys.X){
 				MenuControl.createMenu();
 				currentIOMode=IOMode.MAP_INPUT_MENU;
 			}else{

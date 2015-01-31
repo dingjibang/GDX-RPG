@@ -33,8 +33,9 @@ public class TipUtil {
 		SpriteBatch sb=(SpriteBatch) stage.getBatch();
 		sb.begin();
 		stage.getActors().forEach((a)->{
-			if(((Image)a).visible)
+			if(((Image)a).visible){
 				((Image)a).draw(sb);
+			}
 		});
 		sb.end();
 	}

@@ -34,12 +34,13 @@ public class GameView extends IView{
 	public StackView stackView;
 	AssetManager ma=GameViewRes.ma;
 	String filename;
+	Parameters parameter;
 	@Override
 	public void init() {
 		inited=false;
 		Logger.info("开始加载图形。");
 		stage.clear();
-		Parameters parameter = new Parameters();
+		parameter = new Parameters();
 		parameter.loadedCallback=(assetManager,fileName,type)->{
 			map=ma.get(Setting.GAME_RES_MAP+global.map);
 			render.setMap(map);
@@ -55,6 +56,7 @@ public class GameView extends IView{
 	
 	@Override
 	public void dispose() {
+		GameViews.loadview.reinit();
 		MapControler.dispose();
 		Msg.dispose();
 		map.dispose();
@@ -64,7 +66,10 @@ public class GameView extends IView{
 			stackView=null;
 			InputControler.currentIOMode=IOMode.MAP_INPUT_NORMAL;
 		}
+		parameter.loadedCallback=null;
+		parameter=null;
 		Res.dispose();
+		System.gc();
 	}
 	
 	@Override

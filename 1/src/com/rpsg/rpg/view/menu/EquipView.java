@@ -231,10 +231,10 @@ public class EquipView extends IView{
 		FontUtil.draw(sb,hero.prop.get("magicDefense")+"", 20, blue, 744, 397, 1000);
 		FontUtil.draw(sb,hero.prop.get("speed")+"", 20, blue, 884, 437, 1000);
 		FontUtil.draw(sb,hero.prop.get("hit")+"", 20, blue, 884, 397, 1000);
-		FontUtil.draw(sb,hero.prop.get("level")+"", 30, blue, 154+60/2-FontUtil.getTextWidth(hero.prop.get("level")+"", 30), 497, 1000);
+		FontUtil.draw(sb,hero.prop.get("level")+"", 30, blue, 159+60/2-FontUtil.getTextWidth(hero.prop.get("level")+"", 30), 497, 1000);
 		if(equip!=null){
-			FontUtil.draw(sb,equip.statusName, 20, Color.WHITE, 400, 96, 1000);
-			FontUtil.draw(sb,equip.illustration, 17, blue, 390, 65, 540);
+			FontUtil.draw(sb,equip.statusName, 20, Color.WHITE, 410, 96, 1000);
+			FontUtil.draw(sb,equip.illustration, 17, blue, 400, 65, 540);
 			
 			if(!equip.disable){
 				drawChange(sb,"maxhp",515,434);
@@ -282,7 +282,7 @@ public class EquipView extends IView{
 	}
 
 	public void onkeyDown(int keyCode) {
-		if(Keys.ESCAPE==keyCode)
+		if(Keys.ESCAPE==keyCode || Keys.X==keyCode)
 			if(!olist.isVisible())
 				this.disposed=true;
 			else

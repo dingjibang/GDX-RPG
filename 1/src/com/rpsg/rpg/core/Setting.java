@@ -1,6 +1,8 @@
 package com.rpsg.rpg.core;
 
 public class Setting {
+	public static final String GAME_VERSION="Build 133 20150131";
+	public static final String GDXRPG_VERSION="Alpha 23";
 	//×ÊÔ´Â·¾¶
 	public static final String GAME_RES_PATH="data";
 	public static final String GAME_RES_IMAGE="/images";
