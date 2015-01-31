@@ -1,8 +1,6 @@
 package com.rpsg.rpg.utils.game;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class TimeUtil {
@@ -21,9 +19,12 @@ public class TimeUtil {
 	}
 	
 	private static String formatDuring(long mss) {  
-	    long hours = (mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);  
-	    long minutes = (mss % (1000 * 60 * 60)) / (1000 * 60);  
-	    long seconds = (mss % (1000 * 60)) / 1000;  
+		String hours = String.valueOf((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		hours=hours.length()<=1?"0"+hours:hours;
+	    String minutes = String.valueOf((mss % (1000 * 60 * 60)) / (1000 * 60));
+	    minutes=minutes.length()<=1?"0"+minutes:minutes;
+	    String seconds = String.valueOf((mss % (1000 * 60)) / 1000);
+	    seconds=seconds.length()<=1?"0"+seconds:seconds;
 	    return hours + ":" + minutes + ":"   + seconds;  
 	}  
 }
