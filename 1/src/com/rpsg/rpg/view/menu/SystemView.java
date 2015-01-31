@@ -16,6 +16,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.system.base.CheckBox;
+import com.rpsg.rpg.system.base.CheckBox.CheckBoxStyle;
 import com.rpsg.rpg.system.base.DefaultIView;
 import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.base.Label;
@@ -38,6 +40,10 @@ public class SystemView extends DefaultIView{
 		butstyle.over=butstyle.checkedOver=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button_hover.png");
 		butstyle.down=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button_active.png");
 		butstyle.up=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button.png");
+		
+		CheckBoxStyle cs=new CheckBoxStyle();
+		cs.checkboxOff=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"optb_s.png");
+		cs.checkboxOn=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"optb.png");
 		
 		WidgetGroup group=new WidgetGroup();
 		group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebar.png"));
@@ -84,9 +90,32 @@ public class SystemView extends DefaultIView{
 		table.add(group).prefSize(1024,329);
 		table.row();
 		
-		
-		table.add(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"graphics.png"));
+		WidgetGroup group2=new WidgetGroup();
+		group2.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"graphics.png"));
+		CheckBox box=new CheckBox("", cs,22);
+		box.setPosition(190,484);
+		group2.addActor(box.onClick(()->{
+			System.out.println(box.isChecked());
+		}));
+		CheckBox box2=new CheckBox("", cs,22);
+		box2.setPosition(190,357);
+		group2.addActor(box2.onClick(()->{
+		}));
+		CheckBox box3=new CheckBox("", cs,22);
+		box3.setPosition(190,252);
+		group2.addActor(box3.onClick(()->{
+		}));
+		CheckBox box4=new CheckBox("", cs,22);
+		box4.setPosition(190,169);
+		group2.addActor(box4.onClick(()->{
+		}));
+		CheckBox box5=new CheckBox("", cs,22);
+		box5.setPosition(190,59);
+		group2.addActor(box5.onClick(()->{
+		}));
+		table.add(group2).prefSize(1024, 600);
 		table.row();
+		
 		table.add(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"performance.png"));
 		table.row();
 		table.add(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"sound.png"));
