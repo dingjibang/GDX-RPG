@@ -3,7 +3,7 @@ package com.rpsg.rpg.system.control;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.rpsg.rpg.system.base.Image;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.BlurUtil;
 import com.rpsg.rpg.utils.display.ScreenUtil;
 import com.rpsg.rpg.utils.game.GameUtil;

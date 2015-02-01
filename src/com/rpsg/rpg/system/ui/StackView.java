@@ -1,4 +1,4 @@
-package com.rpsg.rpg.system.base;
+package com.rpsg.rpg.system.ui;
 
 import java.util.ArrayList;
 import java.util.HashMap;

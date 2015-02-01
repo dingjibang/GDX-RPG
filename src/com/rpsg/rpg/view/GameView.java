@@ -18,6 +18,8 @@ import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.system.base.*;
 import com.rpsg.rpg.system.base.TmxMapLoader.Parameters;
 import com.rpsg.rpg.system.control.*;
+import com.rpsg.rpg.system.ui.IView;
+import com.rpsg.rpg.system.ui.StackView;
 import com.rpsg.rpg.utils.display.*;
 import com.rpsg.rpg.utils.game.Logger;
 

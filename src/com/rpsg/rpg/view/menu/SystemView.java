@@ -1,6 +1,9 @@
 package com.rpsg.rpg.view.menu;
 
 
+import java.lang.management.ManagementFactory;
+import java.lang.management.OperatingSystemMXBean;
+
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -16,21 +19,24 @@ import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.system.base.CheckBox;
-import com.rpsg.rpg.system.base.CheckBox.CheckBoxStyle;
-import com.rpsg.rpg.system.base.DefaultIView;
-import com.rpsg.rpg.system.base.Image;
-import com.rpsg.rpg.system.base.Label;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.base.TextButton;
-import com.rpsg.rpg.system.base.TextButton.TextButtonStyle;
 import com.rpsg.rpg.system.control.HeroControler;
+import com.rpsg.rpg.system.ui.CheckBox;
+import com.rpsg.rpg.system.ui.DefaultIView;
+import com.rpsg.rpg.system.ui.Image;
+import com.rpsg.rpg.system.ui.Label;
+import com.rpsg.rpg.system.ui.Slider;
+import com.rpsg.rpg.system.ui.Slider.SliderStyle;
+import com.rpsg.rpg.system.ui.TextButton;
+import com.rpsg.rpg.system.ui.CheckBox.CheckBoxStyle;
+import com.rpsg.rpg.system.ui.TextButton.TextButtonStyle;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.TimeUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public class SystemView extends DefaultIView{
 	Label lvl5;
+	boolean isstop;
 	public void init() {
 		
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
@@ -44,6 +50,10 @@ public class SystemView extends DefaultIView{
 		CheckBoxStyle cs=new CheckBoxStyle();
 		cs.checkboxOff=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"optb_s.png");
 		cs.checkboxOn=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"optb.png");
+		
+		SliderStyle slsty=new SliderStyle();
+		slsty.background=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"sliderbar.png");
+		slsty.knob=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"slider.png");
 		
 		WidgetGroup group=new WidgetGroup();
 		group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebar.png"));
@@ -87,6 +97,7 @@ public class SystemView extends DefaultIView{
 		screens.setSize(172,97);
 		screens.setPosition(182, 91);
 		group.addActor(screens);
+		
 		table.add(group).prefSize(1024,329);
 		table.row();
 		
@@ -116,11 +127,23 @@ public class SystemView extends DefaultIView{
 		table.add(group2).prefSize(1024, 600);
 		table.row();
 		
-		table.add(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"performance.png"));
+		WidgetGroup group3=new WidgetGroup();
+		group3.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"performance.png"));
+		Slider sd1=new Slider(256, 1024, 5, false, slsty);
+		sd1.setStrEnd(" MB").setLabelful(true).setPosition(200, 135);
+		sd1.setWidth(620);
+		group3.addActor(sd1);
+		table.add(group3).prefSize(1024,318);
 		table.row();
-		table.add(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"sound.png"));
+		
+		WidgetGroup group4=new WidgetGroup();
+		group4.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"sound.png"));
+		table.add(group4).prefSize(1024,338);
 		table.row();
-		table.add(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"game.png"));
+		
+		WidgetGroup group5=new WidgetGroup();
+		group5.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"game.png"));
+		table.add(group5).prefSize(1024,657);
 		table.row();
 		
 		WidgetGroup group6=new WidgetGroup();
@@ -142,17 +165,66 @@ public class SystemView extends DefaultIView{
 //		table.setDebug(true);
 //		group.setSize(table.getWidth(), table.getHeight());
 		
+		isstop=false;
 		
 		ScrollPane pane=new ScrollPane(table);
 		pane.setSize(1024,576);
 		pane.validate();
 		pane.layout();
+		pane.addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				if(isstop){
+					pane.cancel();
+					return false;
+				}
+				return true;
+			}
+
+			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+			}
+
+			public void touchDragged (InputEvent event, float x, float y, int pointer) {
+				if(isstop){
+					pane.cancel();
+				}
+			}
+		});
 		stage.addActor(pane);
 //		Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_ITEM+"item_bg.png");
 //		bg.setColor(1,1,1,0);
 //		bg.setPosition(160,28);
 //		bg.addAction(Actions.fadeIn(0.2f));
 //		stage.addActor(bg);
+		
+		table.getCells().forEach((cell)->((WidgetGroup)cell.getActor()).getChildren().forEach((obj)->{
+			if(!(obj instanceof Image))
+				obj.addListener(new InputListener(){
+					public boolean touchDown (InputEvent event, float xx, float y, int pointer, int button) {
+						if(obj instanceof Slider){
+							float x=(((Slider)obj).getValue()/((Slider)obj).getMaxValue());
+							obj.setColor(x<0.5?new Color(1,2*x,0,1):new Color(2-2*x,1,0,1));
+						}
+						isstop=true;
+						return true;
+					}
+
+					public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+						isstop=false;
+					}
+
+					public void touchDragged (InputEvent event, float xx, float y, int pointer) {
+						if(obj instanceof Slider){
+							float x=(((Slider)obj).getValue()/((Slider)obj).getMaxValue());
+							obj.setColor(x<0.5?new Color(1,2*x,0,1):new Color(2-2*x,1,0,1));
+						}
+						isstop=true;
+					}
+				});
+			if(obj instanceof Slider){
+				float x=(((Slider)obj).getValue()/((Slider)obj).getMaxValue());
+				obj.setColor(x<0.5?new Color(1,2*x,0,1):new Color(2-2*x,1,0,1));
+			}
+		}));
 		
 		ImageButton exit=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png"));
 		exit.setPosition(960, 550);

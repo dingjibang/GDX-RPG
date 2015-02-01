@@ -1,5 +1,5 @@
 
-package com.rpsg.rpg.system.base;
+package com.rpsg.rpg.system.ui;
 
 import com.badlogic.gdx.graphics.g2d.PolygonRegionLoader;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

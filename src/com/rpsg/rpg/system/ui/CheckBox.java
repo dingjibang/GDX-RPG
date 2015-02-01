@@ -1,5 +1,5 @@
 
-package com.rpsg.rpg.system.base;
+package com.rpsg.rpg.system.ui;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -8,8 +8,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.rpsg.rpg.utils.display.FontUtil;
 
-/** A checkbox is a button that contains an image indicating the checked or unchecked state and a label.
- * @author Nathan Sweet */
+/**
+ * GDXRPG引擎 checkbox组件
+ * 使用fontUtil文字缓存技术，无需预设定文字。 
+ */
 public class CheckBox extends TextButton {
 	private Image image;
 	private CheckBoxStyle style;

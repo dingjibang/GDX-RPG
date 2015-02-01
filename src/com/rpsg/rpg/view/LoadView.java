@@ -10,8 +10,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.system.base.IView;
-import com.rpsg.rpg.system.base.Image;
+import com.rpsg.rpg.system.ui.IView;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.ScreenUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 

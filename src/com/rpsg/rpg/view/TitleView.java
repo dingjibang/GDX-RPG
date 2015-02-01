@@ -1,7 +1,7 @@
 package com.rpsg.rpg.view;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.rpsg.rpg.system.base.IView;
+import com.rpsg.rpg.system.ui.IView;
 public class TitleView extends IView{
 	public boolean inited=false;
 	@Override
