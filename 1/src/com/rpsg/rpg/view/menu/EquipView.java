@@ -27,11 +27,11 @@ import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.tip.EmptyEquip;
 import com.rpsg.rpg.object.base.items.tip.TipEquip;
 import com.rpsg.rpg.object.rpgobj.Hero;
-import com.rpsg.rpg.system.base.HeroImage;
-import com.rpsg.rpg.system.base.IView;
-import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.HeroControler;
+import com.rpsg.rpg.system.ui.HeroImage;
+import com.rpsg.rpg.system.ui.IView;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -46,9 +46,9 @@ public class EquipView extends IView{
 	int currentSelectHero=0;
 	int currentSelectEquip=0;
 	
-	com.rpsg.rpg.system.base.List<Equipment> elist;
-	com.rpsg.rpg.system.base.List<EQuipSelect> sellist;
-	com.rpsg.rpg.system.base.List<ListItem> olist;
+	com.rpsg.rpg.system.ui.List<Equipment> elist;
+	com.rpsg.rpg.system.ui.List<EQuipSelect> sellist;
+	com.rpsg.rpg.system.ui.List<ListItem> olist;
 	
 	Runnable cancel;
 	
@@ -116,7 +116,7 @@ public class EquipView extends IView{
 		style.font=FontUtil.generateFont(" ".toCharArray()[0], 22);
 		style.selection=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipsel.png");
 		style.fontColorSelected=blue;
-		elist=new com.rpsg.rpg.system.base.List<Equipment>(style);
+		elist=new com.rpsg.rpg.system.ui.List<Equipment>(style);
 		elist.onClick(()->{
 			equip=elist.getSelected();
 		});
@@ -137,7 +137,7 @@ public class EquipView extends IView{
 		table.addAction(Actions.fadeIn(0.2f));
 		stage.addActor(table);
 		
-		sellist=new com.rpsg.rpg.system.base.List<EQuipSelect>(style);
+		sellist=new com.rpsg.rpg.system.ui.List<EQuipSelect>(style);
 		sellist.setSize(173,200);
 		sellist.setPosition(184, 16);
 		sellist.setItemHeight(40);
@@ -168,7 +168,7 @@ public class EquipView extends IView{
 		Image msg=Res.get(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipmsgbox.png");
 		msg.setPosition(380, 140);
 		stage.addActor(msg);
-		olist=new com.rpsg.rpg.system.base.List<ListItem>(style);
+		olist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		olist.getItems().add(new ListItem("×°±¸").setRunnable(()->{
 			ItemUtil.useEquip(HeroControler.heros.get(currentSelectHero), equip);
 			gengrateEList();

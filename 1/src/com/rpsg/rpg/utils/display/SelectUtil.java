@@ -15,8 +15,8 @@ import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
-import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.control.InputControler;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameViews;
 

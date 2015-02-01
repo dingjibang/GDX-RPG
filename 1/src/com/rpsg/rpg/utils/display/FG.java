@@ -3,8 +3,8 @@ package com.rpsg.rpg.utils.display;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.base.Res;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
 

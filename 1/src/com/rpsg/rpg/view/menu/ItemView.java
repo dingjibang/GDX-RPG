@@ -30,12 +30,12 @@ import com.rpsg.rpg.object.base.ListItem;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.tip.TipItem;
 import com.rpsg.rpg.object.rpgobj.Hero;
-import com.rpsg.rpg.system.base.DefaultIView;
-import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.base.TextButton;
-import com.rpsg.rpg.system.base.TextButton.TextButtonStyle;
 import com.rpsg.rpg.system.control.HeroControler;
+import com.rpsg.rpg.system.ui.DefaultIView;
+import com.rpsg.rpg.system.ui.Image;
+import com.rpsg.rpg.system.ui.TextButton;
+import com.rpsg.rpg.system.ui.TextButton.TextButtonStyle;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -46,7 +46,7 @@ public class ItemView extends DefaultIView{
 	Image map,topbarSel;
 	
 	
-	com.rpsg.rpg.system.base.List<Item> elist;
+	com.rpsg.rpg.system.ui.List<Item> elist;
 	
 	int layer=0;
 	
@@ -92,7 +92,7 @@ public class ItemView extends DefaultIView{
 		style.font=FontUtil.generateFont(" ".toCharArray()[0], 22);
 		style.selection=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipsel.png");
 		style.fontColorSelected=blue;
-		elist=new com.rpsg.rpg.system.base.List<Item>(style);
+		elist=new com.rpsg.rpg.system.ui.List<Item>(style);
 		elist.onClick(()->{
 			item=elist.getSelected();
 		});
@@ -141,7 +141,7 @@ public class ItemView extends DefaultIView{
 		
 		scuse=Res.get(Setting.GAME_RES_IMAGE_MENU_SC+"sc_use.png");
 		scuse.setPosition((int)(GameUtil.screen_width/2-scuse.getWidth()/2), (int)(GameUtil.screen_height/2-scuse.getHeight()/2));
-		sellist=new com.rpsg.rpg.system.base.List<ListItem>(style);
+		sellist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		sellist.onDBClick(()->sellist.getSelected().run.run());
 		can =()->{
 			scuse.visible=false;
@@ -195,7 +195,7 @@ public class ItemView extends DefaultIView{
 		scfor.setPosition(500, 87);
 		
 		
-		herolist=new com.rpsg.rpg.system.base.List<ListItem>(style);
+		herolist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		herolist.getItems().add(new ListItem("È¡Ïû"));
 		HeroControler.heros.forEach((h)->herolist.getItems().add(new ListItem(h.name).setUserObject(h)));
 		herolist.onDBClick(()->{
@@ -277,7 +277,7 @@ public class ItemView extends DefaultIView{
 		
 	}
 	Image scuse,scfor;
-	com.rpsg.rpg.system.base.List<ListItem> sellist,herolist;
+	com.rpsg.rpg.system.ui.List<ListItem> sellist,herolist;
 	Runnable can,can2,can3;
 	Color blue=new Color(80f/255f,111f/255f,187f/255f,1);
 	Color green=new Color(219f/255f,255f/255f,219f/255f,1);

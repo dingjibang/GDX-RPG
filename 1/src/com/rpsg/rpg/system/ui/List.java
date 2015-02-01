@@ -14,7 +14,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.rpsg.rpg.system.base;
+package com.rpsg.rpg.system.ui;
 
 
 
@@ -32,7 +32,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.ui.List.ListStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ArraySelection;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.Cullable;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Array;
@@ -40,15 +39,13 @@ import com.badlogic.gdx.utils.ObjectSet;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
+import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.utils.display.FontUtil;
 
-/** A list (aka list box) displays textual items and highlights the currently selected item.
- * <p>
- * {@link ChangeEvent} is fired when the list selection changes.
- * <p>
- * The preferred size of the list is determined by the text bounds of the items and the size of the {@link ListStyle#selection}.
- * @author mzechner
- * @author Nathan Sweet */
+/**
+ * GDX-RPG List组件
+ * 使用FontUtil技术，无需缓存字体，可以在List插入图片。
+ */
 public class List<T> extends Widget implements Cullable {
 	private ListStyle style;
 	private final Array<T> items = new Array<T>();

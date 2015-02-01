@@ -1,6 +1,6 @@
 package com.rpsg.rpg.object.base.items;
 
-import com.rpsg.rpg.system.base.Image;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.ItemUtil;
 

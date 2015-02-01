@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.rpsg.rpg.system.base.Image;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.view.GameViews;
 
 public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>,Serializable{

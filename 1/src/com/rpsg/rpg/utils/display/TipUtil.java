@@ -4,8 +4,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.base.Res;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.Logger;
 
 public class TipUtil {

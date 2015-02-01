@@ -28,11 +28,11 @@ import com.rpsg.rpg.object.base.ListItem;
 import com.rpsg.rpg.object.base.items.SpellCard;
 import com.rpsg.rpg.object.base.items.tip.TipSpellCard;
 import com.rpsg.rpg.object.rpgobj.Hero;
-import com.rpsg.rpg.system.base.HeroImage;
-import com.rpsg.rpg.system.base.IView;
-import com.rpsg.rpg.system.base.Image;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.HeroControler;
+import com.rpsg.rpg.system.ui.HeroImage;
+import com.rpsg.rpg.system.ui.IView;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 
@@ -44,7 +44,7 @@ public class SpellCardView extends IView{
 	int currentSelectHero=0;
 	int currentSelectSpell=0;
 	
-	com.rpsg.rpg.system.base.List<SpellCard> elist;
+	com.rpsg.rpg.system.ui.List<SpellCard> elist;
 	
 	int layer=0;
 	
@@ -112,7 +112,7 @@ public class SpellCardView extends IView{
 		style.font=FontUtil.generateFont(" ".toCharArray()[0], 22);
 		style.selection=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipsel.png");
 		style.fontColorSelected=blue;
-		elist=new com.rpsg.rpg.system.base.List<SpellCard>(style);
+		elist=new com.rpsg.rpg.system.ui.List<SpellCard>(style);
 		elist.onClick(()->{
 			spell=elist.getSelected();
 		});
@@ -148,7 +148,7 @@ public class SpellCardView extends IView{
 		
 		scuse=Res.get(Setting.GAME_RES_IMAGE_MENU_SC+"sc_use.png");
 		scuse.setPosition(GameUtil.screen_width/2-scuse.getWidth()/2, GameUtil.screen_height/2-scuse.getHeight()/2);
-		sellist=new com.rpsg.rpg.system.base.List<ListItem>(style);
+		sellist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		sellist.onDBClick(()->sellist.getSelected().run.run());
 		can =()->{
 			scuse.visible=false;
@@ -194,7 +194,7 @@ public class SpellCardView extends IView{
 		scfor.setPosition(500, 87);
 		
 		
-		herolist=new com.rpsg.rpg.system.base.List<ListItem>(style);
+		herolist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		herolist.getItems().add(new ListItem("È¡Ïû"));
 		HeroControler.heros.forEach((h)->herolist.getItems().add(new ListItem(h.name).setUserObject(h)));
 		herolist.onDBClick(()->{
@@ -225,7 +225,7 @@ public class SpellCardView extends IView{
 		
 	}
 	Image scuse,scfor;
-	com.rpsg.rpg.system.base.List<ListItem> sellist,herolist;
+	com.rpsg.rpg.system.ui.List<ListItem> sellist,herolist;
 	Runnable can,can2;
 	Color blue=new Color(80f/255f,111f/255f,187f/255f,1);
 	Color green=new Color(219f/255f,255f/255f,219f/255f,1);

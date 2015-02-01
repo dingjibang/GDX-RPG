@@ -1,4 +1,4 @@
-package com.rpsg.rpg.system.base;
+package com.rpsg.rpg.system.ui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,7 +11,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.rpg.core.Setting;
-
+/**
+ * GDX-RPG Image组件
+ * 允许开启抗锯齿、销毁的图形组件。
+ *
+ */
 public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public boolean visible=true;

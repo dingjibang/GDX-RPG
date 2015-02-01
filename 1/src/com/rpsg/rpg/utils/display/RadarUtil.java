@@ -4,7 +4,7 @@ package com.rpsg.rpg.utils.display;
 import com.badlogic.gdx.graphics.g2d.PolygonSprite;
 import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.rpsg.rpg.system.base.PolygonRegion;
+import com.rpsg.rpg.system.ui.PolygonRegion;
 
 public class RadarUtil {
 	private static PolygonRegion region;

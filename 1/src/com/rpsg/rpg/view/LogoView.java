@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.system.base.IView;
-import com.rpsg.rpg.system.base.Image;
+import com.rpsg.rpg.system.ui.IView;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class LogoView extends IView{

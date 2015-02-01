@@ -8,6 +8,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.GameViewRes;
 
 
