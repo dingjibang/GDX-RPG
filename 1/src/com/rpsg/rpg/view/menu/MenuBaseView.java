@@ -23,6 +23,7 @@ import com.rpsg.rpg.system.control.HeroControler;
 import com.rpsg.rpg.system.ui.HeroImage;
 import com.rpsg.rpg.system.ui.IView;
 import com.rpsg.rpg.system.ui.Image;
+import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -51,13 +52,13 @@ public class MenuBaseView extends IView{
 		Image fgshadow=Res.get(Setting.GAME_RES_IMAGE_MENU_FG+"arisu_shadow.png");
 		fgshadow.setPosition(GameUtil.screen_width, 0);
 		fgshadow.setColor(1,1,1,0);
-		fgshadow.addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(710, 0,0.2f)));
+		fgshadow.addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(710, 0,0.1f)));
 		stage.addActor(fgshadow);
 		
 		Image fg=Res.get(Setting.GAME_RES_IMAGE_MENU_FG+"arisu.png");
 		fg.setPosition(GameUtil.screen_width, 0);
 		fg.setColor(1,1,1,0);
-		fg.addAction(Actions.parallel(Actions.fadeIn(0.1f),Actions.moveTo(730, 0,0.2f)));
+		fg.addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(730, 0,0.2f)));
 		stage.addActor(fg);
 		
 		Image walk_bg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"walk_bg.png");
@@ -67,7 +68,7 @@ public class MenuBaseView extends IView{
 		stage.addActor(walk_bg);
 		
 		Image map_bg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"map_bg.png");
-		map_bg.setPosition(155,30);
+		map_bg.setPosition(150,30);
 		map_bg.setColor(1,1,1,0);
 		map_bg.addAction(Actions.fadeIn(0.3f));
 		stage.addActor(map_bg);
@@ -80,12 +81,16 @@ public class MenuBaseView extends IView{
 //		}
 		time.setPosition(740, 363);
 		
+		try{
 		map=Res.get(Setting.GAME_RES_IMAGE_MENU_MAP+GameViews.gameview.map.getProperties().get("minimap")+".png");
-		map.setPosition(230, 47);
+		map.setPosition(222, 46);
 		map.setColor(1,1,1,0);
+		map.setSize(400, 235);
 		map.addAction(Actions.fadeIn(0.3f));
 		stage.addActor(map);
-		
+		}catch(Exception e){
+			AlertUtil.add("无法读取当前地图的缩略图。", AlertUtil.Red);
+		}
 		ImageButton exit=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png"));
 		exit.setPosition(960, 550);
 		exit.addAction(Actions.moveTo(960, 510,0.1f));
@@ -146,7 +151,7 @@ public class MenuBaseView extends IView{
 		FontUtil.draw(batch, currTime, 17, blue, 558+144/2-FontUtil.getTextWidth(currTime, 17, -8)/2, 380, 1000,-8,0);
 		FontUtil.draw(batch, currDay, 16, Color.GRAY, 714, 379, 1000,-7,0);
 		FontUtil.draw(batch, "LV", 14, blue, 511, 413, 1000,-7,0);
-		FontUtil.draw(batch, (String)GameViews.gameview.map.getProperties().get("name")+" ["+HeroControler.getHeadHero().mapx+","+HeroControler.getHeadHero().mapy+"]", 16, Color.WHITE, 200, 320, 1000,0,0);
+		FontUtil.draw(batch, (String)GameViews.gameview.map.getProperties().get("name")+" ["+HeroControler.getHeadHero().mapx+","+HeroControler.getHeadHero().mapy+"]", 20, Color.WHITE, 210, 317, 1000,0,0);
 		time.draw(batch);
 		for(HeroImage h:heros)
 			h.draw(batch, step==3?1:step);

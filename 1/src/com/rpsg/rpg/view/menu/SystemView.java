@@ -157,7 +157,7 @@ public class SystemView extends DefaultIView{
 		WidgetGroup group5=new WidgetGroup();
 		group5.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"game.png"));
 		ttest=new Label(ttstr, 26);
-		ttest.setWidth(1000).setPosition(200, 540);
+		ttest.setWidth(1000).setPosition(200, 663);
 		group5.addActor(ttest);
 		Slider sd5=new Slider(1, 15, 1, false, slsty);
 		sd5.addListener(new InputListener(){
@@ -168,22 +168,26 @@ public class SystemView extends DefaultIView{
 				stepmax=(int) sd5.getValue();
 			}
 		});
-		sd5.setStrEnd(" Ö¡/×Ö").setLabelful(true).setPosition(200, 383);
+		sd5.setStrEnd(" Ö¡/×Ö").setLabelful(true).setPosition(200, 506);
 		sd5.setWidth(620);
 		group5.addActor(sd5);
 		CheckBox box7=new CheckBox("", cs,22);
-		box7.setPosition(190,317);
+		box7.setPosition(190,440);
 		group5.addActor(box7.onClick(()->{
 		}));
 		CheckBox box8=new CheckBox("", cs,22);
-		box8.setPosition(190,217);
+		box8.setPosition(190,340);
 		group5.addActor(box8.onClick(()->{
 		}));
 		CheckBox box9=new CheckBox("", cs,22);
-		box9.setPosition(190,105);
+		box9.setPosition(190,228);
 		group5.addActor(box9.onClick(()->{
 		}));
-		table.add(group5).prefSize(1024,657);
+		CheckBox box10=new CheckBox("", cs,22);
+		box10.setPosition(190,63);
+		group5.addActor(box10.onClick(()->{
+		}));
+		table.add(group5).prefSize(1024,830);
 		table.row();
 		
 		WidgetGroup group6=new WidgetGroup();
