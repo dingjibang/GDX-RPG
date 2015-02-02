@@ -20,7 +20,7 @@ public class Global implements Serializable{
 	public List<NPC> npcs=new ArrayList<NPC>();
 	public List<Hero> currentHeros=new ArrayList<Hero>();
 	public List<Hero> heros=new ArrayList<Hero>();
-	public int x=4;
+	public int x=12;
 	public int y=12;
 	public int z=2;
 	

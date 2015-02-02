@@ -1,9 +1,5 @@
 package com.rpsg.rpg.view.menu;
 
-
-import java.lang.management.ManagementFactory;
-import java.lang.management.OperatingSystemMXBean;
-
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -35,7 +31,7 @@ import com.rpsg.rpg.utils.game.TimeUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public class SystemView extends DefaultIView{
-	Label lvl5;
+	Label lvl5,ttest;
 	boolean isstop;
 	public void init() {
 		
@@ -133,16 +129,59 @@ public class SystemView extends DefaultIView{
 		sd1.setStrEnd(" MB").setLabelful(true).setPosition(200, 135);
 		sd1.setWidth(620);
 		group3.addActor(sd1);
+		CheckBox box6=new CheckBox("", cs,22);
+		box6.setPosition(190,82);
+		group3.addActor(box6.onClick(()->{
+		}));
 		table.add(group3).prefSize(1024,318);
 		table.row();
 		
 		WidgetGroup group4=new WidgetGroup();
 		group4.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"sound.png"));
+		Slider sd2=new Slider(0, 100, 1, false, slsty);
+		sd2.setStrEnd(" %").setLabelful(true).setPosition(200, 165);
+		sd2.setWidth(620);
+		group4.addActor(sd2);
+		Slider sd3=new Slider(0, 100, 1, false, slsty);
+		sd3.setStrEnd(" %").setLabelful(true).setPosition(200, 50);
+		sd3.setWidth(620);
+		group4.addActor(sd3);
+		Slider sd4=new Slider(0, 100, 1, false, slsty);
+		sd4.setStrEnd(" %").setLabelful(true).setPosition(200, -60);
+		sd4.setWidth(620);
+		group4.addActor(sd4);
 		table.add(group4).prefSize(1024,338);
 		table.row();
 		
 		WidgetGroup group5=new WidgetGroup();
 		group5.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"game.png"));
+		ttest=new Label(ttstr, 26);
+		ttest.setWidth(1000).setPosition(200, 540);
+		group5.addActor(ttest);
+		Slider sd5=new Slider(1, 15, 1, false, slsty);
+		sd5.addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+			public void touchDragged (InputEvent event, float x, float y, int pointer) {
+				stepmax=(int) sd5.getValue();
+			}
+		});
+		sd5.setStrEnd(" Ö¡/×Ö").setLabelful(true).setPosition(200, 383);
+		sd5.setWidth(620);
+		group5.addActor(sd5);
+		CheckBox box7=new CheckBox("", cs,22);
+		box7.setPosition(190,317);
+		group5.addActor(box7.onClick(()->{
+		}));
+		CheckBox box8=new CheckBox("", cs,22);
+		box8.setPosition(190,217);
+		group5.addActor(box8.onClick(()->{
+		}));
+		CheckBox box9=new CheckBox("", cs,22);
+		box9.setPosition(190,105);
+		group5.addActor(box9.onClick(()->{
+		}));
 		table.add(group5).prefSize(1024,657);
 		table.row();
 		
@@ -179,10 +218,8 @@ public class SystemView extends DefaultIView{
 				}
 				return true;
 			}
-
 			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
 			}
-
 			public void touchDragged (InputEvent event, float x, float y, int pointer) {
 				if(isstop){
 					pane.cancel();
@@ -249,10 +286,18 @@ public class SystemView extends DefaultIView{
 		sb.begin();
 		sb.end();
 	}
-
+	int step=0;
+	int stepmax=1;
+	String ttstr=Setting.GAME_MENU_SYSTEM_TEST_MESSAGE;
 	public void logic() {
 		stage.act();
 		lvl5.setText(TimeUtil.getGameRunningTime());
+		if(--step<=0){
+			step=stepmax;
+			if(ttest.getText().length()>=ttstr.length())
+				ttest.setText("");
+			ttest.setText(ttstr.substring(0, ttest.getText().length()+1));
+		}
 	}
 	
 	public void onkeyDown(int keyCode) {

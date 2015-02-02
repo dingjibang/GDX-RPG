@@ -31,4 +31,6 @@ public class Setting {
 	public static boolean DISPLAY_ANTI_ALIASING=true;
 	public static final int STRING_PADDING_TB=3;
 	public static final int STRING_PADDING_LR=1;
+	//辅助
+	public static final String GAME_MENU_SYSTEM_TEST_MESSAGE="人类为何要互相伤害呢？";
 }
