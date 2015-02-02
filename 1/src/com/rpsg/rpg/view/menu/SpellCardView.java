@@ -42,7 +42,6 @@ public class SpellCardView extends IView{
 	Image map;
 	
 	int currentSelectHero=0;
-	int currentSelectSpell=0;
 	
 	com.rpsg.rpg.system.ui.List<SpellCard> elist;
 	

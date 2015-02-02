@@ -249,7 +249,7 @@ public class ItemView extends DefaultIView{
 		group.addActor(button2);
 		Table buttable=new Table();
 		buttable.add(new TextButton("×î´ó", butstyle,16).onClick(()->{
-			currentCount=item.count;
+			currentCount=item.count==0?1:item.count;
 		})).size(80,33).row();
 		buttable.add(new TextButton("+1", butstyle,16).onClick(()->{
 			if(currentCount<item.count)
@@ -319,7 +319,7 @@ public class ItemView extends DefaultIView{
 		}
 		if(group.isVisible()){
 			group.draw(batch, 1);
-			FontUtil.draw(sb, currentCount>10?(currentCount>100?currentCount+"":"0"+currentCount):"00"+currentCount, 80, blue, 347, 337, 200,-40,0);
+			FontUtil.draw(sb, currentCount>10?(currentCount>100?currentCount+"":"0"+currentCount):"00"+currentCount, 80, blue, 367, 337, 200,-40,0);
 		}
 		sb.end();
 	}

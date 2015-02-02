@@ -26,6 +26,7 @@ import com.rpsg.rpg.system.ui.Slider.SliderStyle;
 import com.rpsg.rpg.system.ui.TextButton;
 import com.rpsg.rpg.system.ui.CheckBox.CheckBoxStyle;
 import com.rpsg.rpg.system.ui.TextButton.TextButtonStyle;
+import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.TimeUtil;
 import com.rpsg.rpg.view.GameViews;
@@ -188,18 +189,28 @@ public class SystemView extends DefaultIView{
 		WidgetGroup group6=new WidgetGroup();
 		group6.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"about.png"));
 		Label gamever=new Label(Setting.GAME_VERSION,23).setWidth(1000).setPad(-7);
-		gamever.setPosition(405,284);
+		gamever.setPosition(405,811);
 		group6.addActor(gamever);
 		Label ever=new Label(Setting.GDXRPG_VERSION,23).setWidth(1000).setPad(-7);
-		ever.setPosition(415,222);
+		ever.setPosition(415,749);
 		group6.addActor(ever);
 		Label sys=new Label(System.getProperty("os.name"),23).setWidth(1000).setPad(-7);
-		sys.setPosition(295,254);
+		sys.setPosition(295,780);
 		group6.addActor(sys);
 		Label jv=new Label(System.getProperty("java.version"),23).setWidth(1000).setPad(-7);
-		jv.setPosition(305,191);
+		jv.setPosition(305,719);
 		group6.addActor(jv);
-		table.add(group6).prefSize(1024,473);
+		TextButton sbutton5=new TextButton("访问官网", butstyle).onClick(()->{
+			try {
+				Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler http://www.rpsg-team.com");
+			} catch (Exception e) {
+				AlertUtil.add("无法正确打开网页。", AlertUtil.Red);
+			}
+		});
+		sbutton5.setOffset(17).setSize(250,60);
+		sbutton5.setPosition(414, 64);
+		group6.addActor(sbutton5);
+		table.add(group6).prefSize(1024,999);
 		table.getCells().forEach((c)->c.padTop(40).padBottom(50));
 //		table.setDebug(true);
 //		group.setSize(table.getWidth(), table.getHeight());
