@@ -22,6 +22,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.ListItem;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.tip.EmptyEquip;
@@ -77,6 +78,7 @@ public class EquipView extends IView{
 				disposed=true;
 			}
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+				Music.playSE("snd210");
 				return true;
 			}
 		});
@@ -118,6 +120,7 @@ public class EquipView extends IView{
 		style.fontColorSelected=blue;
 		elist=new com.rpsg.rpg.system.ui.List<Equipment>(style);
 		elist.onClick(()->{
+			Music.playSE("snd210");
 			equip=elist.getSelected();
 		});
 		ScrollPane pane=new ScrollPane(elist);
@@ -144,6 +147,7 @@ public class EquipView extends IView{
 		sellist.padTop=7;
 		sellist.layout();
 		sellist.onClick(()->{
+			Music.playSE("snd210");
 			gengrateEList();
 		}).onDBClick(()->{
 			gengrateEList();
@@ -180,6 +184,7 @@ public class EquipView extends IView{
 				gengrateEList();
 			}
 		}));
+		olist.onClick(()->Music.playSE("snd210"));
 		cancel=()->{
 			olist.setVisible(false);
 			msg.setVisible(false);
@@ -325,7 +330,9 @@ public class EquipView extends IView{
 			currentSelectHero++;
 			generateHero(currentSelectHero);
 			gengrateEList();
-		}
+			Music.playSE("snd210");
+		}else
+			Music.playSE("snd211");
 	}
 	
 	public void prevHero(){
@@ -333,7 +340,9 @@ public class EquipView extends IView{
 			currentSelectHero--;
 			generateHero(currentSelectHero);
 			gengrateEList();
-		}
+			Music.playSE("snd210");
+		}else
+			Music.playSE("snd211");
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.rpsg.rpg.game.sc;
 
+import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.items.SpellCard;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.utils.display.AlertUtil;
@@ -22,10 +23,15 @@ public class patientBack extends SpellCard{
 			if(user.subProp("mp",magicConsume)){
 				AlertUtil.add(to.toString()+"成功恢复了"+addParam.get("hp")+"点生命值。", AlertUtil.Green);
 				to.addProp("hp", addParam.get("hp"));
-			}else
+				Music.playSE("bc");
+			}else{
 				AlertUtil.add(user.toString()+"的妖力不足以使用这个技能。", AlertUtil.Red);
-		else
+				Music.playSE("err");
+			}
+		else{
 			AlertUtil.add(to.toString()+"的生命值已满。", AlertUtil.Yellow);
+			Music.playSE("err");
+		}
 		return false;
 	}
 }

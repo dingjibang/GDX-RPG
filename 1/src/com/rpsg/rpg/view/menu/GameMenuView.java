@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -19,6 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.InputControler;
@@ -26,7 +28,6 @@ import com.rpsg.rpg.system.control.MenuControl;
 import com.rpsg.rpg.system.ui.IView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.StackView;
-import com.rpsg.rpg.utils.display.MouseUtil;
 import com.rpsg.rpg.utils.display.TipUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameViews;
@@ -106,6 +107,12 @@ public class GameMenuView extends StackView{
 		table.getCells().forEach((c)->{
 			c.padTop(3);
 			c.padBottom(3);
+			c.getActor().addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+				Music.playSE("snd210");
+				return true;
+			}
+		});
 		});
 		ScrollPane pane=new ScrollPane(table);
 		pane.setPosition(0, 0);

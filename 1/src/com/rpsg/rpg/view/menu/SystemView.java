@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.HeroControler;
 import com.rpsg.rpg.system.ui.CheckBox;
@@ -256,6 +257,8 @@ public class SystemView extends DefaultIView{
 							float x=(((Slider)obj).getValue()/((Slider)obj).getMaxValue());
 							obj.setColor(x<0.5?new Color(1,2*x,0,1):new Color(2-2*x,1,0,1));
 						}
+						if(!(obj instanceof Image))
+							Music.playSE("snd210");
 						isstop=true;
 						return true;
 					}

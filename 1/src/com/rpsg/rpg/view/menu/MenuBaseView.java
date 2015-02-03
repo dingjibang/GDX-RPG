@@ -17,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.rpgobj.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.HeroControler;
@@ -82,14 +83,14 @@ public class MenuBaseView extends IView{
 		time.setPosition(740, 363);
 		
 		try{
-		map=Res.get(Setting.GAME_RES_IMAGE_MENU_MAP+GameViews.gameview.map.getProperties().get("minimap")+".png");
-		map.setPosition(222, 46);
-		map.setColor(1,1,1,0);
-		map.setSize(400, 235);
-		map.addAction(Actions.fadeIn(0.3f));
-		stage.addActor(map);
+			map=Res.get(Setting.GAME_RES_IMAGE_MENU_MAP+GameViews.gameview.map.getProperties().get("minimap")+".png");
+			map.setPosition(222, 46);
+			map.setColor(1,1,1,0);
+			map.setSize(400, 235);
+			map.addAction(Actions.fadeIn(0.3f));
+			stage.addActor(map);
 		}catch(Exception e){
-			AlertUtil.add("无法读取当前地图的缩略图。", AlertUtil.Red);
+			AlertUtil.add("无法读取当前地图的缩略图！", AlertUtil.Red);
 		}
 		ImageButton exit=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png"));
 		exit.setPosition(960, 550);
@@ -99,6 +100,7 @@ public class MenuBaseView extends IView{
 				GameViews.gameview.stackView.onkeyDown(Keys.ESCAPE);
 			}
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+				Music.playSE("snd210");
 				return true;
 			}
 		});
