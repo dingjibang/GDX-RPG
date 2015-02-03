@@ -16,7 +16,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.List.ListStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -26,6 +25,7 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.game.items.equipment.Sunshade;
 import com.rpsg.rpg.game.items.medicine.CopyOfYaoWan;
+import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.ListItem;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.tip.TipItem;
@@ -34,10 +34,12 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.HeroControler;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.Image;
+import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.TextButton;
 import com.rpsg.rpg.system.ui.TextButton.TextButtonStyle;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
+import com.rpsg.rpg.utils.display.NumberUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.ItemUtil;
 import com.rpsg.rpg.view.GameViews;
@@ -58,7 +60,8 @@ public class ItemView extends DefaultIView{
 	Item item=new TipItem();
 	Group group;
 	int currentCount=0;
-
+	
+	Image[] throwimg=new Image[10];
 	public void init() {
 		add=new ParticleEffect();
 		add.load(Gdx.files.internal(Setting.GAME_RES_PARTICLE+"addp.p"),Gdx.files.internal(Setting.GAME_RES_PARTICLE));
@@ -95,6 +98,7 @@ public class ItemView extends DefaultIView{
 		elist=new com.rpsg.rpg.system.ui.List<Item>(style);
 		elist.onClick(()->{
 			item=elist.getSelected();
+			Music.playSE("snd210");
 		});
 		elist.layout();
 		pane=new ScrollPane(elist);
@@ -125,6 +129,12 @@ public class ItemView extends DefaultIView{
 		topbar.add(new TopBar("spellcard", tmpI++*offsetX));
 		topbar.add(new TopBar("important", tmpI++*offsetX));
 		topbar.getCells().forEach((cell)->cell.padLeft(42).padRight(42));
+		topbar.getCells().forEach((cell)->cell.getActor().addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				Music.playSE("snd210");
+				return true;
+			}
+		}));
 		stage.addActor(topbar);
 		
 		generateLists("medicine");
@@ -153,7 +163,7 @@ public class ItemView extends DefaultIView{
 		sellist.setSize(254, 100);
 		sellist.layout();
 		
-		stage.addActor(sellist);
+		stage.addActor(sellist.onClick(()->Music.playSE("snd210")));
 		
 		Actor mask2=new Actor();
 		mask2.setWidth(GameUtil.screen_width);
@@ -178,6 +188,7 @@ public class ItemView extends DefaultIView{
 				sellist.getItems().add(new ListItem("丢弃").setRunnable(()->{
 					group.setVisible(true);
 					mask2.setVisible(true);
+					can.run();
 					currentCount=1;
 					layer=3;
 				}));
@@ -193,7 +204,6 @@ public class ItemView extends DefaultIView{
 		stage.addActor(mask2);			
 		scfor=Res.get(Setting.GAME_RES_IMAGE_MENU_ITEM+"selbg.png");
 		scfor.setPosition(500, 87);
-		
 		
 		herolist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		herolist.getItems().add(new ListItem("取消"));
@@ -211,7 +221,7 @@ public class ItemView extends DefaultIView{
 					}
 				drawp=true;
 			}
-		});
+		}).onClick(()->Music.playSE("snd210"));
 		herolist.setPosition(492, 273);
 		herolist.setSize(257, 140);
 		herolist.layout();
@@ -244,9 +254,47 @@ public class ItemView extends DefaultIView{
 		TextButton button2=new TextButton("取消", butstyle).onClick(()->{
 			can3.run();
 		});
+		
 		button2.setPosition(630, 225);
 		button2.setSize(100, 50);
 		group.addActor(button2);
+		ImageButton upbutton1=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"up.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"ups.png"));
+		upbutton1.onClick(()->{
+			if(currentCount+100<=item.count)
+				currentCount+=100;
+		}).setPosition(395, 340);
+		group.addActor(upbutton1);
+		ImageButton upbutton2=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"up.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"ups.png"));
+		upbutton2.onClick(()->{
+			if(currentCount+10<=item.count)
+				currentCount+=10;
+		}).setPosition(435, 340);
+		group.addActor(upbutton2);
+		ImageButton upbutton3=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"up.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"ups.png"));
+		upbutton3.onClick(()->{
+			if(currentCount+1<=item.count)
+				currentCount+=1;
+		}).setPosition(475, 340);
+		group.addActor(upbutton3);
+		ImageButton dbutton1=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"down.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"downs.png"));
+		dbutton1.onClick(()->{
+			if(currentCount-100>=1)
+				currentCount-=100;
+		}).setPosition(395, 240);
+		group.addActor(dbutton1);
+		ImageButton dbutton2=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"down.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"downs.png"));
+		dbutton2.onClick(()->{
+			if(currentCount-10>=1)
+				currentCount-=10;
+		}).setPosition(435, 240);
+		group.addActor(dbutton2);
+		ImageButton dbutton3=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"down.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"downs.png"));
+		dbutton3.onClick(()->{
+			if(currentCount-1>=1)
+				currentCount-=1;
+		}).setPosition(475, 240);
+		group.addActor(dbutton3);
+		
 		Table buttable=new Table();
 		buttable.add(new TextButton("最大", butstyle,16).onClick(()->{
 			currentCount=item.count==0?1:item.count;
@@ -266,6 +314,13 @@ public class ItemView extends DefaultIView{
 		buttable.setPosition(575, 300);
 		group.addActor(buttable);
 		stage.addActor(group);
+		group.getChildren().forEach((a)->a.addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				if(!(a instanceof Image))
+				Music.playSE("snd210");
+				return true;
+			}
+		}));
 		can3=()->{
 			group.setVisible(false);
 			mask2.setVisible(false);
@@ -274,6 +329,7 @@ public class ItemView extends DefaultIView{
 		can3.run();
 		can2.run();
 		can.run();
+		
 		
 	}
 	Image scuse,scfor;
@@ -319,7 +375,17 @@ public class ItemView extends DefaultIView{
 		}
 		if(group.isVisible()){
 			group.draw(batch, 1);
-			FontUtil.draw(sb, currentCount>10?(currentCount>100?currentCount+"":"0"+currentCount):"00"+currentCount, 80, blue, 367, 337, 200,-40,0);
+			String tmp=String.valueOf(currentCount);
+			tmp=tmp.length()==1?"00"+tmp:tmp.length()==2?"0"+tmp:tmp;
+			Image i1=NumberUtil.get(tmp.substring(0, 1));
+			i1.setPosition(390, 275);
+			i1.draw(sb);
+			Image i2=NumberUtil.get(tmp.substring(1, 2));
+			i2.setPosition(430, 275);
+			i2.draw(sb);
+			Image i3=NumberUtil.get(tmp.substring(2, 3));
+			i3.setPosition(470, 275);
+			i3.draw(sb);
 		}
 		sb.end();
 	}

@@ -24,6 +24,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.ListItem;
 import com.rpsg.rpg.object.base.items.SpellCard;
 import com.rpsg.rpg.object.base.items.tip.TipSpellCard;
@@ -71,6 +72,7 @@ public class SpellCardView extends IView{
 				disposed=true;
 			}
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+				Music.playSE("snd210");
 				return true;
 			}
 		});
@@ -114,6 +116,7 @@ public class SpellCardView extends IView{
 		elist=new com.rpsg.rpg.system.ui.List<SpellCard>(style);
 		elist.onClick(()->{
 			spell=elist.getSelected();
+			Music.playSE("snd210");
 		});
 		generateLists();
 		elist.layout();
@@ -187,7 +190,7 @@ public class SpellCardView extends IView{
 			layer=2;
 		}));
 		sellist.getItems().add(new ListItem("È¡Ïû").setRunnable(()->can.run()));
-		
+		sellist.onClick(()->Music.playSE("snd210"));
 		stage.addActor(mask2);			
 		scfor=Res.get(Setting.GAME_RES_IMAGE_MENU_SC+"sc_for.png");
 		scfor.setPosition(500, 87);
@@ -205,7 +208,7 @@ public class SpellCardView extends IView{
 						can2.run();
 				drawp=true;
 			}
-		});
+		}).onClick(()->Music.playSE("snd210"));
 		herolist.setPosition(500, 343);
 		herolist.setSize(257, 140);
 		herolist.layout();
@@ -351,14 +354,18 @@ public class SpellCardView extends IView{
 		if(currentSelectHero!=HeroControler.heros.size()-1){
 			currentSelectHero++;
 			generateHero(currentSelectHero);
-		}
+			Music.playSE("snd210");
+		}else
+			Music.playSE("snd211");
 	}
 	
 	public void prevHero(){
 		if(currentSelectHero!=0){
 			currentSelectHero--;
 			generateHero(currentSelectHero);
-		}
+			Music.playSE("snd210");
+		}else
+			Music.playSE("snd211");
 	}
 
 	@Override
