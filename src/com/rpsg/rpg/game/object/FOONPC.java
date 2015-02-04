@@ -1,7 +1,7 @@
 package com.rpsg.rpg.game.object;
 
 import com.rpsg.rpg.game.script.SayHelloWorld;
-import com.rpsg.rpg.object.rpgobj.DefaultNPC;
+import com.rpsg.rpg.object.rpgObject.DefaultNPC;
 
 public class FOONPC extends DefaultNPC{
 

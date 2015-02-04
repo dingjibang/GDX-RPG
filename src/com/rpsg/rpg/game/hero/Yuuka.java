@@ -1,8 +1,8 @@
 package com.rpsg.rpg.game.hero;
 
 import com.rpsg.rpg.game.sc.MagicGun;
-import com.rpsg.rpg.object.rpgobj.Hero;
-import com.rpsg.rpg.object.rpgobj.IRPGObject;
+import com.rpsg.rpg.object.rpgObject.Hero;
+import com.rpsg.rpg.object.rpgObject.IRPGObject;
 
 public class Yuuka extends Hero{
 	

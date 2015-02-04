@@ -1,6 +1,6 @@
 package com.rpsg.rpg.utils.game;
 
-import com.rpsg.rpg.object.rpgobj.Hero;
+import com.rpsg.rpg.object.rpgObject.Hero;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.control.HeroControler;

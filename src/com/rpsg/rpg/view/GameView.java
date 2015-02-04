@@ -14,16 +14,16 @@ import com.badlogic.gdx.scenes.scene2d.*;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
-import com.rpsg.rpg.object.rpgobj.Hero;
+import com.rpsg.rpg.object.rpgObject.Hero;
 import com.rpsg.rpg.system.base.*;
 import com.rpsg.rpg.system.base.TmxMapLoader.Parameters;
 import com.rpsg.rpg.system.control.*;
-import com.rpsg.rpg.system.ui.IView;
+import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.StackView;
 import com.rpsg.rpg.utils.display.*;
 import com.rpsg.rpg.utils.game.Logger;
 
-public class GameView extends IView{
+public class GameView extends View{
 	
 	public OrthogonalTiledMapRenderer render =  new OrthogonalTiledMapRenderer(null);
 	public Stage stage = GameViewRes.stage;

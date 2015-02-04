@@ -3,7 +3,7 @@ package com.rpsg.rpg.system.ui;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 
-public abstract class IView implements Disposable{
+public abstract class View implements Disposable{
 	public abstract void init();
 	public abstract void draw(SpriteBatch batch);
 	public abstract void logic();

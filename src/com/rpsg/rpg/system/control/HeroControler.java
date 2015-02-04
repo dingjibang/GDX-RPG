@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.rpsg.rpg.object.rpgobj.Hero;
+import com.rpsg.rpg.object.rpgObject.Hero;
 import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameViews;
 

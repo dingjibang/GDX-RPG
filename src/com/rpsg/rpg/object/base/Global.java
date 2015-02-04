@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.rpsg.rpg.object.base.items.*;
-import com.rpsg.rpg.object.rpgobj.Hero;
-import com.rpsg.rpg.object.rpgobj.NPC;
+import com.rpsg.rpg.object.rpgObject.Hero;
+import com.rpsg.rpg.object.rpgObject.NPC;
 import com.rpsg.rpg.utils.display.ColorUtil;
 
 public class Global implements Serializable{

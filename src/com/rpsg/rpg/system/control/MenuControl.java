@@ -16,10 +16,10 @@ public class MenuControl {
 	public static Pixmap pbg,bbg;
 	public static void createMenu(){
 		GameViews.gameview.stackView=new GameMenuView();
-		pbg=ScreenUtil.getScreenshot(0, 0, GameUtil.screen_width, GameUtil.screen_height, false);
-		MenuControl.bg=new Image(new TextureRegion(new Texture(pbg),0,GameUtil.screen_height,GameUtil.screen_width,-GameUtil.screen_height));
+		pbg=ScreenUtil.getScreenshot(0, 0, GameUtil.getScreenWidth(), GameUtil.getScreenHeight(), false);
+		MenuControl.bg=new Image(new TextureRegion(new Texture(pbg),0,GameUtil.getScreenHeight(),GameUtil.getScreenWidth(),-GameUtil.getScreenHeight()));
 		bbg=BlurUtil.blur(pbg, 5, 5, true);
-		blurbg= new Image(new TextureRegion(new Texture(bbg),0,GameUtil.screen_height,GameUtil.screen_width,-GameUtil.screen_height));
+		blurbg= new Image(new TextureRegion(new Texture(bbg),0,GameUtil.getScreenHeight(),GameUtil.getScreenWidth(),-GameUtil.getScreenHeight()));
 		GameViews.gameview.stackView.params.put("bg",MenuControl.bg);
 		GameViews.gameview.stackView.params.put("blurbg",blurbg);
 		GameViews.gameview.stackView.init();

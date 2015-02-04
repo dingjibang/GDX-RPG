@@ -4,11 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.system.ui.IView;
+import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 
-public class LogoView extends IView{
+public class LogoView extends View{
 	private Image bg,logo,flash1,flash2,logos;
 	private int ani_num=-30;
 	public boolean played=false;
