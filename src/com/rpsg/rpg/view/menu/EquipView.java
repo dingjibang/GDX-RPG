@@ -27,7 +27,7 @@ import com.rpsg.rpg.object.base.ListItem;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.tip.EmptyEquip;
 import com.rpsg.rpg.object.base.items.tip.TipEquip;
-import com.rpsg.rpg.object.rpgObject.Hero;
+import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.HeroControler;
 import com.rpsg.rpg.system.ui.HeroImage;

@@ -2,7 +2,7 @@ package com.rpsg.rpg.game.sc;
 
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.items.SpellCard;
-import com.rpsg.rpg.object.rpgObject.Hero;
+import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.utils.display.AlertUtil;
 
 public class patientBack extends SpellCard{

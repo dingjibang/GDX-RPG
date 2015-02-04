@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.*;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
-import com.rpsg.rpg.object.rpgObject.Hero;
+import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.*;
 import com.rpsg.rpg.system.base.TmxMapLoader.Parameters;
 import com.rpsg.rpg.system.control.*;
