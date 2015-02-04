@@ -1,7 +1,7 @@
 package com.rpsg.rpg.game.hero;
 
-import com.rpsg.rpg.object.rpgObject.Hero;
-import com.rpsg.rpg.object.rpgObject.IRPGObject;
+import com.rpsg.rpg.object.rpg.Hero;
+import com.rpsg.rpg.object.rpg.IRPGObject;
 
 public class Flandre extends Hero{
 	

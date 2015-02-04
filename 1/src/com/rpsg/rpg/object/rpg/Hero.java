@@ -1,4 +1,4 @@
-package com.rpsg.rpg.object.rpgObject;
+package com.rpsg.rpg.object.rpg;
 
 
 import java.util.ArrayList;
