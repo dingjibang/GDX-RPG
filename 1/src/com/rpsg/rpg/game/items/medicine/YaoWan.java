@@ -2,7 +2,7 @@ package com.rpsg.rpg.game.items.medicine;
 
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.items.Medicine;
-import com.rpsg.rpg.object.rpgobj.Hero;
+import com.rpsg.rpg.object.rpgObject.Hero;
 import com.rpsg.rpg.utils.display.AlertUtil;
 
 public class YaoWan extends Medicine{

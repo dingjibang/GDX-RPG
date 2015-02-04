@@ -8,7 +8,6 @@ import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
-import com.rpsg.rpg.utils.display.LoadUtil;
 import com.rpsg.rpg.utils.display.MouseUtil;
 import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.display.TipUtil;
@@ -52,7 +51,6 @@ public class GameViews implements ApplicationListener {
 		MouseUtil.init();
 		TipUtil.init();
 		AlertUtil.init();
-		LoadUtil.init();
 		TimeUtil.init();
 		selectUtil=new SelectUtil();
 		Logger.info("Gdx-RPG引擎初始化成功。");
@@ -111,7 +109,6 @@ public class GameViews implements ApplicationListener {
 			}
 		}
 		}
-		LoadUtil.draw(batch);
 		GameUtil.drawFPS(batch);
 		TimeUtil.logic();
 		AlertUtil.draw(batch);

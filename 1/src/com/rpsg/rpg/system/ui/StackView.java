@@ -7,7 +7,7 @@ import java.util.Map;
 
 import com.badlogic.gdx.utils.Disposable;
 
-public abstract class StackView extends IView implements Disposable{
-	public List<IView> viewStack=new ArrayList<IView>();
+public abstract class StackView extends View implements Disposable{
+	public List<View> viewStack=new ArrayList<View>();
 	public Map<String,Object> params=new HashMap<String, Object>(); 
 }

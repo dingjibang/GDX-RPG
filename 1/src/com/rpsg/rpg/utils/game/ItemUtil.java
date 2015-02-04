@@ -4,7 +4,7 @@ package com.rpsg.rpg.utils.game;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.SpellCard;
-import com.rpsg.rpg.object.rpgobj.Hero;
+import com.rpsg.rpg.object.rpgObject.Hero;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.view.GameViews;
 

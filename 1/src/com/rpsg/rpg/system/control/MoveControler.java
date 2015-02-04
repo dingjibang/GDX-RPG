@@ -6,10 +6,10 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.IOMode;
-import com.rpsg.rpg.object.rpgobj.Collide;
-import com.rpsg.rpg.object.rpgobj.Hero;
-import com.rpsg.rpg.object.rpgobj.IRPGObject;
-import com.rpsg.rpg.object.rpgobj.NPC;
+import com.rpsg.rpg.object.rpgObject.Collide;
+import com.rpsg.rpg.object.rpgObject.Hero;
+import com.rpsg.rpg.object.rpgObject.IRPGObject;
+import com.rpsg.rpg.object.rpgObject.NPC;
 import com.rpsg.rpg.object.script.ScriptCollide;
 import com.rpsg.rpg.view.GameView;
 

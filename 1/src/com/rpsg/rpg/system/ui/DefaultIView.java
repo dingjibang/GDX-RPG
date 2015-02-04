@@ -2,7 +2,7 @@ package com.rpsg.rpg.system.ui;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public abstract class DefaultIView extends IView{
+public abstract class DefaultIView extends View{
 	public Stage stage;
 	public void onkeyTyped(char character) {
 		stage.keyTyped(character);

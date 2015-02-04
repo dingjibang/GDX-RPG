@@ -1,6 +1,6 @@
 package com.rpsg.rpg.game.script;
 
-import com.rpsg.rpg.object.rpgobj.NPC;
+import com.rpsg.rpg.object.rpgObject.NPC;
 import com.rpsg.rpg.object.script.Script;
 
 

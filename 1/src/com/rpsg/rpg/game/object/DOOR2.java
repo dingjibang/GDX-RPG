@@ -1,6 +1,6 @@
 package com.rpsg.rpg.game.object;
 
-import com.rpsg.rpg.object.rpgobj.DefaultNPC;
+import com.rpsg.rpg.object.rpgObject.DefaultNPC;
 
 public class DOOR2 extends DefaultNPC{
 

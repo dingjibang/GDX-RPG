@@ -5,9 +5,16 @@ import java.util.Collections;
 import java.util.List;
 
 
+
+
+
+
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.assets.loaders.ParticleEffectLoader;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -25,9 +32,10 @@ import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.InputControler;
 import com.rpsg.rpg.system.control.MenuControl;
-import com.rpsg.rpg.system.ui.IView;
+import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.StackView;
+import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.display.TipUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameViews;
@@ -43,8 +51,8 @@ public class GameMenuView extends StackView{
  		bluredBG=(Image)(params.get("blurbg"));
  		normalBG=(Image)(params.get("bg"));
  		bluredBG.setColor(1,1,1,0);
- 		bluredBG.addAction(Actions.parallel(Actions.fadeIn(0.4f),Actions.color(new Color(0.6f,0.6f,0.6f,1),0.4f)));
- 		stage.addActor(bluredBG);
+ 		bluredBG.addAction(Actions.parallel(Actions.color(new Color(0.65f,0.65f,0.65f,1),.5f)));
+ 		bluredBG.setSize(GameUtil.screen_width, GameUtil.screen_height);
  		
  		Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"bg.png");
 		bg.setPosition(50, 0);
@@ -117,7 +125,6 @@ public class GameMenuView extends StackView{
 		ScrollPane pane=new ScrollPane(table);
 		pane.setPosition(0, 0);
 		pane.setSize(128,GameUtil.screen_height);
-//		table.setDebug(true);
 		pane.setScrollingDisabled(false, true);
 		pane.setSmoothScrolling(true);
 		pane.addListener(new InputListener() {
@@ -136,17 +143,21 @@ public class GameMenuView extends StackView{
  	}
  	
  	public void draw(SpriteBatch batch){
+ 		bluredBG.act(Gdx.graphics.getDeltaTime());
+ 		stage.getBatch().begin();
+ 		bluredBG.draw(stage.getBatch(),bluredBG.getColor().a);
+ 		stage.getBatch().end();
  		stage.draw();
  		viewStack.get(viewStack.size()-1).draw(batch);
  		TipUtil.draw();
  	}
  	
- 	List<IView> removeList=new ArrayList<IView>();
+ 	List<View> removeList=new ArrayList<View>();
  	public void logic(){
  		stage.act();
  		removeList.clear();
  		viewStack.get(viewStack.size()-1).logic();
- 		for(IView view:viewStack){
+ 		for(View view:viewStack){
 			if(view.disposed){
 				view.dispose();
 				removeList.add(view);
@@ -181,7 +192,7 @@ public class GameMenuView extends StackView{
 //		MenuControl.pbg.dispose();
  		MenuControl.blurbg.dispose();
  		MenuControl.bbg.dispose();
-		for(IView view:viewStack)
+		for(View view:viewStack)
 			view.dispose();
 	}
 
@@ -206,10 +217,10 @@ public class GameMenuView extends StackView{
 		return false;
 	}
 	
-	public void tryToAdd(Class<? extends IView> iv){
+	public void tryToAdd(Class<? extends View> iv){
 		boolean inc=false;
 		for(int i=0;i<viewStack.size();i++){
-			Class<? extends IView> view=viewStack.get(i).getClass();
+			Class<? extends View> view=viewStack.get(i).getClass();
 			if(view.equals(iv)){
 				Collections.swap(viewStack, i, viewStack.size()-1);
 				inc=true;

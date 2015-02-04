@@ -10,12 +10,12 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.system.ui.IView;
+import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.ScreenUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 
-public class LoadView extends IView {
+public class LoadView extends View {
 	private Sprite f_load;
 	private int[] hbx,hby,hbs,hba;
 	private Sprite[] hb;

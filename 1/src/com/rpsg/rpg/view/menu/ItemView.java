@@ -29,7 +29,7 @@ import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.ListItem;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.tip.TipItem;
-import com.rpsg.rpg.object.rpgobj.Hero;
+import com.rpsg.rpg.object.rpgObject.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.HeroControler;
 import com.rpsg.rpg.system.ui.DefaultIView;

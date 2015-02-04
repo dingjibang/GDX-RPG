@@ -28,16 +28,16 @@ import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.ListItem;
 import com.rpsg.rpg.object.base.items.SpellCard;
 import com.rpsg.rpg.object.base.items.tip.TipSpellCard;
-import com.rpsg.rpg.object.rpgobj.Hero;
+import com.rpsg.rpg.object.rpgObject.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.HeroControler;
 import com.rpsg.rpg.system.ui.HeroImage;
-import com.rpsg.rpg.system.ui.IView;
+import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 
-public class SpellCardView extends IView{
+public class SpellCardView extends View{
 	Stage stage;
 	List<HeroImage> heros=new ArrayList<HeroImage>();
 	Image map;
@@ -344,6 +344,7 @@ public class SpellCardView extends IView{
 		generateLists();
 	}
 	
+	
 	public void generateLists(){
 		Array<SpellCard> sc = elist.getItems();
 		sc.clear();
@@ -354,7 +355,7 @@ public class SpellCardView extends IView{
 		if(currentSelectHero!=HeroControler.heros.size()-1){
 			currentSelectHero++;
 			generateHero(currentSelectHero);
-			Music.playSE("snd210");
+			Music.playSE("snd210"  );
 		}else
 			Music.playSE("snd211");
 	}

@@ -1,4 +1,4 @@
-package com.rpsg.rpg.object.rpgobj;
+package com.rpsg.rpg.object.rpgObject;
 
 
 
