@@ -33,6 +33,10 @@ public class Res {
 		return new Image((Texture)ma.get(resPath));
 	}
 	
+	public static Image getNewImage(String resPath){
+		return new Image(get(resPath));
+	}
+	
 	public static Drawable getDrawable(String resPath){
 		return get(resPath).getDrawable();
 	}
