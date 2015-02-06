@@ -57,7 +57,7 @@ public class MenuBaseView extends View{
 		fgshadow.addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(670, 0,0.1f)));
 		stage.addActor(fgshadow);
 		
-		Image fg=Res.get(Setting.GAME_RES_IMAGE_FG+HeroControler.getHeadHero().fgname+"/normal.png");
+		Image fg=Res.get(Setting.GAME_RES_IMAGE_FG+HeroControler.getHeadHero().fgname+"/Normal.png");
 		fg.setPosition(GameUtil.screen_width, 0);
 		fg.setColor(1,1,1,0);
 		fg.setScale(0.32f);

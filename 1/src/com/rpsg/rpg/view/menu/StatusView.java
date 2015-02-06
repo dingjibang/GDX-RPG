@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
+import com.rpsg.rpg.object.base.EmptyAssociation;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.Resistance;
 import com.rpsg.rpg.object.base.items.Equipment;
@@ -148,6 +149,11 @@ public class StatusView extends DefaultIView{
 			tree.addActor(new Label(hero.prop.get("respect")+"",18).setPad(-5).setWidth(1000).align(354,y(2308)));
 		}else{
 			RadarUtil.display=false;
+			if(!hero.association.getClass().equals(EmptyAssociation.class)){
+				tree.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_STATUS+"associationCard.png").position(126, y(2125)));
+				tree.addActor(new Label(hero.association.name,55).setWidth(1000).color(1,0.2f,0.1f,1).align(290,y(2023)));
+				tree.addActor(new Label(hero.association.level+"",55).setWidth(1000).align(483,y(2023)));
+			}
 		}
 		
 		group.addActor(tree);
