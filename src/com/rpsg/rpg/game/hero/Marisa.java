@@ -1,5 +1,6 @@
 package com.rpsg.rpg.game.hero;
 
+import com.rpsg.rpg.game.association.Devil;
 import com.rpsg.rpg.game.sc.MagicGun;
 import com.rpsg.rpg.game.sc.patientBack;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -21,6 +22,7 @@ public class Marisa extends Hero{
 		prop.replace("maxhp", 150);
 		prop.replace("mp", 100);
 		prop.replace("maxmp", 100);
+		association=new Devil();
 	}
 	
 	public void init(){

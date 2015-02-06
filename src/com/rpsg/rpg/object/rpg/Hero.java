@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.Association;
+import com.rpsg.rpg.object.base.EmptyAssociation;
 import com.rpsg.rpg.object.base.Resistance;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.SpellCard;
@@ -26,6 +28,7 @@ public abstract class Hero extends IRPGObject {
 	public String jname;
 	public String fgname;
 	public String tag="";
+	public Association association=new EmptyAssociation();
 	public Map<String,Integer> prop=new HashMap<String, Integer>();
 	{
 		prop.put("level", 1);
