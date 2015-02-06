@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
@@ -137,6 +138,11 @@ public class StatusView extends DefaultIView{
 		tree.addActor(new Label(hero.prop.get("shoot")==Hero.TRUE?"可":"不可",34).setWidth(1000).align(150,y(1890)));
 		tree.addActor(new Label(hero.prop.get("prick")==Hero.TRUE?"可":"不可",34).setWidth(1000).align(260,y(1890)));
 		
+		Image min=Res.get(Setting.GAME_RES_IMAGE_MENU_STATUS+"min.png").position(554, y(1830));
+		min.setColor(1,1,1,0);
+		min.addAction(Actions.repeat(RepeatAction.FOREVER, Actions.sequence(Actions.fadeIn(0.5f),Actions.fadeOut(0.5f))));
+		tree.addActor(min);
+		
 		if(hero.lead){
 			RadarUtil.max=100;
 			RadarUtil.setRotate(-18);
@@ -212,7 +218,7 @@ public class StatusView extends DefaultIView{
 		stage.draw();
 		if(hero.lead){
 			RadarUtil.draw();
-			RadarUtil.setY(pane.getScrollY()-1183);
+			RadarUtil.setY(pane.getVisualScrollY()-1183);
 			RadarUtil.setX(525);
 		}
 	}
