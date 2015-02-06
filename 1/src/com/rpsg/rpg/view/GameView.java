@@ -100,7 +100,6 @@ public class GameView extends View{
 		HeroControler.act();
 		MoveControler.logic(this);
 		
-		RadarUtil.draw();
 		if(null!=stackView)
 			stackView.logic();
 //		System.out.println(HeroControler.getHeadHero().layer);

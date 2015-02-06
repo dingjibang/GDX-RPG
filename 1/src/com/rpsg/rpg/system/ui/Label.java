@@ -73,7 +73,10 @@ public class Label extends Widget {
 //		cache.tint(color);
 //		cache.setPosition(getX(), getY());
 //		cache.draw(batch);
-		FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color, (int)getX(), (int)getY(),(int)getWidth(),pad,0);
+		if(alignX==0)
+			FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color, (int)getX(), (int)getY(),(int)getWidth(),pad,0);
+		else
+			FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color, alignX-FontUtil.getTextWidth(getText(), fontSize,pad)/2, (int)getY(),(int)getWidth(),pad,0);
 	}
 	
 	public float getWidth() {
@@ -88,8 +91,37 @@ public class Label extends Widget {
 		this.pad = pad;
 		return this;
 	}
+	
+	int alignX;
+	public int getAlignX() {
+		return alignX;
+	}
 
+
+
+	public void setAlignX(int alignX) {
+		this.alignX = alignX;
+	}
+
+
+
+	public Label align(int x){
+		setAlignX(x);
+		return this;
+	}
+	
+	public Label align(int x,int y){
+		setAlignX(x);
+		setY(y);
+		return this;
+	}
+	
 	public int getPad() {
 		return pad;
+	}
+	
+	public Label setPos(int x,int y){
+		setPosition(x, y);
+		return this;
 	}
 }

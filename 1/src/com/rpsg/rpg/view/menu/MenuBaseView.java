@@ -50,16 +50,19 @@ public class MenuBaseView extends View{
 		infolevel.addAction((Actions.delay(0.05f, Actions.parallel(Actions.fadeIn(0.15f),Actions.moveTo(480.5f,388.5f,0.15f)))));
 		stage.addActor(infolevel);
 		
-		Image fgshadow=Res.get(Setting.GAME_RES_IMAGE_MENU_FG+"arisu_shadow.png");
+		Image fgshadow=Res.get(Setting.GAME_RES_IMAGE_FG+HeroControler.getHeadHero().fgname+"/shadow.png");
 		fgshadow.setPosition(GameUtil.screen_width, 0);
 		fgshadow.setColor(1,1,1,0);
-		fgshadow.addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(710, 0,0.1f)));
+		fgshadow.setScale(0.32f);
+		fgshadow.addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(670, 0,0.1f)));
 		stage.addActor(fgshadow);
 		
-		Image fg=Res.get(Setting.GAME_RES_IMAGE_MENU_FG+"arisu.png");
+		Image fg=Res.get(Setting.GAME_RES_IMAGE_FG+HeroControler.getHeadHero().fgname+"/normal.png");
 		fg.setPosition(GameUtil.screen_width, 0);
 		fg.setColor(1,1,1,0);
-		fg.addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(730, 0,0.2f)));
+		fg.setScale(0.32f);
+		fg.setScaleX(-0.32f);
+		fg.addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(1080, 0,0.2f)));
 		stage.addActor(fg);
 		
 		Image walk_bg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"walk_bg.png");
@@ -118,7 +121,7 @@ public class MenuBaseView extends View{
 	String currTime=GameViews.global.tyear+" 年 "+GameViews.global.tmonth+" 月 "+GameViews.global.tday+" 日";
 	String currDay=GameViews.global.day==ColorUtil.DAY?"昼":(GameViews.global.day==ColorUtil.NIGHT?"夜":"暝");
 	Image time;
-	int deg=(int) (365f*((float)GameViews.global.exp/(float)GameViews.global.next));
+	int deg=(int) (365f*((float)HeroControler.getHeadHero().prop.get("exp")/(float)(float)HeroControler.getHeadHero().prop.get("maxexp")));
 	int stepdeg=0;
 	
 	int hp=80;
@@ -145,9 +148,9 @@ public class MenuBaseView extends View{
 		render.setColor(yellow);
 		render.rect(570,394,((float)mp/100f)*190*((float)stepmp/(float)mp),6);
 		render.end();
-		FontUtil.draw(batch, "Yuuki Arisu", 13, Color.WHITE, 663, 470, 1000,-5,0);
-		FontUtil.draw(batch, "结城有栖", 28, Color.WHITE, 622, 450, 1000);
-		FontUtil.draw(batch, GameViews.global.level+"", 40, blue, 464+85/2-FontUtil.getTextWidth(GameViews.global.level+"", 40, -10)/2, 450, 1000,-10,0);
+		FontUtil.draw(batch, HeroControler.getHeadHero().jname, 13, Color.WHITE, 663, 470, 1000,-5,0);
+		FontUtil.draw(batch, HeroControler.getHeadHero().name, 28, Color.WHITE, 622, 450, 1000);
+		FontUtil.draw(batch, HeroControler.getHeadHero().prop.get("level")+"", 40, blue, 506-FontUtil.getTextWidth(HeroControler.getHeadHero().prop.get("level")+"", 40, -10)/2, 454, 1000,-10,0);
 		FontUtil.draw(batch, GameViews.global.gold+" G", 18, blue, 488+91/2-FontUtil.getTextWidth(GameViews.global.gold+" G", 18, -8), 379, 1000,-8,0);
 		FontUtil.draw(batch, "状态正常", 17, Color.WHITE, 149+285/2-FontUtil.getTextWidth("状态正常", 17, 2)/2, 385, 1000,2,0);
 		FontUtil.draw(batch, currTime, 17, blue, 558+144/2-FontUtil.getTextWidth(currTime, 17, -8)/2, 380, 1000,-8,0);

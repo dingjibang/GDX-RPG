@@ -11,10 +11,8 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.assets.loaders.ParticleEffectLoader;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -35,7 +33,6 @@ import com.rpsg.rpg.system.control.MenuControl;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.StackView;
-import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.display.TipUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameViews;
@@ -96,6 +93,12 @@ public class GameMenuView extends StackView{
 		table.add(button3);
 		table.row();
 		final ImageButton button4 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_status.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_status_p.png"));
+		button4.addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+				tryToAdd(StatusView.class);
+				return false;
+			}
+		});
 		table.add(button4);
 		table.row();
 		final ImageButton button5 =new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_tactic.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"lbut_tactic_p.png"));

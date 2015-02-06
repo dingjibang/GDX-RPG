@@ -18,7 +18,6 @@ public class Setting {
 	public static final String GAME_RES_IMAGE_MENU=GAME_RES_PATH+GAME_RES_IMAGE+"/menu/";
 	public static final String GAME_RES_IMAGE_MENU_GLOBAL=GAME_RES_IMAGE_MENU+"global/";
 	public static final String GAME_RES_IMAGE_MENU_MAP=GAME_RES_IMAGE_MENU+"map/";
-	public static final String GAME_RES_IMAGE_MENU_FG=GAME_RES_IMAGE_MENU+"fgs/";
 	public static final String GAME_RES_IMAGE_MENU_EQUIP=GAME_RES_IMAGE_MENU+"equip/";
 	public static final String GAME_RES_IMAGE_MENU_SC=GAME_RES_IMAGE_MENU+"sc/";
 	public static final String GAME_RES_IMAGE_MENU_ITEM=GAME_RES_IMAGE_MENU+"item/";
@@ -29,10 +28,12 @@ public class Setting {
 	public static final String GAME_RES_SHADER=GAME_RES_PATH+"/shader/";
 	public static final String GAME_RES_IMAGE_GLOBAL=GAME_RES_PATH+GAME_RES_IMAGE+"/global/";
 	public static final String GAME_RES_PARTICLE=GAME_RES_PATH+"/particle/";
-	//核心
+	
+	//抗锯齿
 	public static boolean DISPLAY_ANTI_ALIASING=true;
+	//文本间距
 	public static final int STRING_PADDING_TB=3;
 	public static final int STRING_PADDING_LR=1;
-	//辅助
+	//系统菜单文字显示速度默认显示文字
 	public static final String GAME_MENU_SYSTEM_TEST_MESSAGE="人类为何要互相伤害呢？";
 }

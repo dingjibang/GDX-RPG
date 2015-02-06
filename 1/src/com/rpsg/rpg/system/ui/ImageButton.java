@@ -40,6 +40,11 @@ public class ImageButton extends Button {
 	public ImageButton (Skin skin, String styleName) {
 		this(skin.get(styleName, ImageButtonStyle.class));
 	}
+	
+	public ImageButton pos(int x,int y){
+		setPosition(x, y);
+		return this;
+	}
 
 	public ImageButton (ImageButtonStyle style) {
 		super(style);
