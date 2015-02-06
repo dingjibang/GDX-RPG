@@ -55,7 +55,7 @@ public class SystemView extends DefaultIView{
 		
 		WidgetGroup group=new WidgetGroup();
 		group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebar.png"));
-		Label lvl=new Label("LV "+GameViews.global.level,40).setWidth(1000).setPad(-15);
+		Label lvl=new Label("LV "+HeroControler.getHeadHero().prop.get("level"),40).setWidth(1000).setPad(-15);
 		lvl.setPosition(360, 190);
 		group.addActor(lvl);
 		Label lvl2=new Label("¡¾"+(String)GameViews.gameview.map.getProperties().get("name")+"¡¿",40).setWidth(1000).setPad(0);

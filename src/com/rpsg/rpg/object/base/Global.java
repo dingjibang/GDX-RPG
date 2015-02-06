@@ -31,10 +31,6 @@ public class Global implements Serializable{
 	public int tmonth=3;
 	public int tday=10;
 	
-	//debug 主角等级
-	public int level=55;
-	public int exp=10253;
-	public int next=25102;
 	
 	//金钱
 	public int gold=120;

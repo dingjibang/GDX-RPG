@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.Resistance;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.SpellCard;
 
@@ -22,10 +23,14 @@ public abstract class Hero extends IRPGObject {
 	public static final String RES_PATH=Setting.GAME_RES_WALK+"heros/";
 	
 	public String name;
-	
+	public String jname;
+	public String fgname;
+	public String tag="";
 	public Map<String,Integer> prop=new HashMap<String, Integer>();
 	{
 		prop.put("level", 1);
+		prop.put("exp", 0);
+		prop.put("maxexp", 10);
 		prop.put("hp", 0);
 		prop.put("maxhp", 1);
 		prop.put("mp", 0);
@@ -38,7 +43,26 @@ public abstract class Hero extends IRPGObject {
 		prop.put("hit", 0);
 		prop.put("maxsc", 10);
 		prop.put("dead", FALSE);
+		prop.put("chop", FALSE);
+		prop.put("shoot", FALSE);
+		prop.put("prick", FALSE);
 	}
+	
+	public boolean lead=false;
+	
+	public Map<String,Integer> resistance=new HashMap<String, Integer>();
+	{
+		resistance.put("earth", Resistance.normal);
+		resistance.put("fire", Resistance.normal);
+		resistance.put("metal", Resistance.normal);
+		resistance.put("moon", Resistance.normal);
+		resistance.put("physical", Resistance.normal);
+		resistance.put("star", Resistance.normal);
+		resistance.put("sun", Resistance.normal);
+		resistance.put("water", Resistance.normal);
+		resistance.put("wood", Resistance.normal);
+	}
+	
 	public List<SpellCard> sc=new ArrayList<SpellCard>();
 	
 	public Map<String,Equipment> equips=new HashMap<String, Equipment>();
@@ -99,4 +123,8 @@ public abstract class Hero extends IRPGObject {
 		return false;
 	}
 	
+	@Override
+	public String getName(){
+		return name;
+	}
 }

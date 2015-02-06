@@ -10,6 +10,9 @@ public class Reimu extends Hero{
 	public void first(){
 		imgPath="/walk_reimu.png";
 		name="²©ÀöÁéÃÎ";
+		jname="Hakurei Reimu";
+		fgname="reimu";
+		tag="Î×Å®";
 	}
 	
 	public void init(){

@@ -10,6 +10,9 @@ public class Flandre extends Hero{
 	public void first(){
 		imgPath="/walk_flandre.png";
 		name="Ü½À¼¶äÂ¶";
+		tag="¶ñÄ§";
+		jname="Flandre Scarlet";
+		fgname="flandre";
 	}
 	
 	public void init(){

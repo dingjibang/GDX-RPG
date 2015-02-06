@@ -1,7 +1,6 @@
 package com.rpsg.rpg.system.base;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import com.badlogic.gdx.assets.AssetManager;
@@ -13,7 +12,7 @@ import com.rpsg.rpg.utils.display.GameViewRes;
 
 
 public class Res {
-	private static Map<String,Image> pool=new HashMap<String, Image>();
+//	private static Map<String,Image> pool=new HashMap<String, Image>();
 	public static AssetManager ma=GameViewRes.ma;
 	public static Image get(String resPath){
 //		if(pool.size()>CACHE_MAX_SIZE){

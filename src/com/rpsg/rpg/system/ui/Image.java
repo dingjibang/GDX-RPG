@@ -1,6 +1,7 @@
 package com.rpsg.rpg.system.ui;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -79,6 +80,56 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public Image dispose(){
 		getTexture().dispose();
+		return this;
+	}
+	
+	public Image size(int width,int height){
+		super.setSize(width, height);
+		return this;
+	}
+	
+	public Image scale(float s){
+		super.setScale(s);
+		return this;
+	}
+	
+	public Image scaleX(float s){
+		super.setScaleX(s);
+		return this;
+	}
+	
+	public Image color(float r,float g,float b,float a){
+		super.setColor(r, g, b, a);
+		return this;
+	}
+	
+	public Image color(Color c){
+		super.setColor(c);
+		return this;
+	}
+	
+	public Image scaleY(float s){
+		super.setScaleY(s);
+		return this;
+	}
+	
+	public Image position(int x,int y){
+		super.setPosition(x, y);
+		return this;
+	}
+	
+	public Image X(int x){
+		super.setX(x);
+		return this;
+	}
+	
+	public Image Y(int y){
+		super.setY(y);
+		return this;
+	}
+	
+	public Image disableTouch(){
+		super.setTouchable(null);
 		return this;
 	}
 }

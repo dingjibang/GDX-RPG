@@ -16,7 +16,7 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.game.hero.Flandre;
+import com.rpsg.rpg.game.hero.Arisu;
 import com.rpsg.rpg.game.hero.Marisa;
 import com.rpsg.rpg.game.hero.Reimu;
 import com.rpsg.rpg.game.hero.Yuuka;
@@ -42,12 +42,12 @@ public class MapControler {
 		//³õÊ¼»¯½ÇÉ«
 		HeroControler.initControler();
 		if(gv.global.heros.isEmpty()){
+			HeroControler.newHero(Arisu.class);
+			HeroControler.addHero(Arisu.class);
 			HeroControler.newHero(Marisa.class);
 			HeroControler.addHero(Marisa.class);
 			HeroControler.newHero(Reimu.class);
 			HeroControler.addHero(Reimu.class);
-			HeroControler.newHero(Flandre.class);
-			HeroControler.addHero(Flandre.class);
 			HeroControler.newHero(Yuuka.class);
 			HeroControler.addHero(Yuuka.class);
 			gv.global.getItems("equipment").add(new TestEquip());
