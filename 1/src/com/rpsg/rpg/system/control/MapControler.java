@@ -57,7 +57,7 @@ public class MapControler {
 		HeroControler.initHeros(gv.stage);
 		
 		//设置抗锯齿
-		if(Setting.DISPLAY_ANTI_ALIASING)
+		if(Setting.persistence.antiAliasing)
 			gv.map.getTileSets().forEach((s)->s.forEach((tile)->tile.getTextureRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear)));
 		
 		//获取灯光
