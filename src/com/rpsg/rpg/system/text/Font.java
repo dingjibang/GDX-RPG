@@ -18,7 +18,7 @@ public class Font {
 		Font f=new Font();
 		f.size = size;
 		f.font = FontUtil.generator.generateFont(size,chars,false);
-		if(Setting.DISPLAY_ANTI_ALIASING){
+		if(Setting.persistence.antiAliasing){
 			f.font.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		}
 		return f;

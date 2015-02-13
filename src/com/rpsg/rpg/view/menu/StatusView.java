@@ -173,7 +173,7 @@ public class StatusView extends DefaultIView{
 	}
 	
 	private String getP(String r){
-		int i=hero.resistance.get(r);
+		Resistance i=hero.resistance.get(r);
 		if(i==Resistance.absorb)
 			return "Œ¸ ’";
 		else if(i==Resistance.normal)
@@ -190,22 +190,21 @@ public class StatusView extends DefaultIView{
 	
 	private Image getR(String r){
 		Image bg=Res.getNewImage(Setting.GAME_RES_IMAGE_MENU_STATUS+"propbg.png");
-		switch(hero.resistance.get(r)){
-		case Resistance.weak:{
-			bg.color(237f/255f,22f/255f,250f/255f,1);break;
+		Resistance re=hero.resistance.get(r);
+		if(re==Resistance.weak){
+			bg.color(237f/255f,22f/255f,250f/255f,1);
 		}
-		case Resistance.reflect:{
-			bg.color(239f/255f,234f/255f,58f/255f,1);break;
+		if(re==Resistance.reflect){
+			bg.color(239f/255f,234f/255f,58f/255f,1);
 		}
-		case Resistance.invalid:{
-			bg.color(255f/255f,51f/255f,51f/255f,1);break;
+		if(re==Resistance.invalid){
+			bg.color(255f/255f,51f/255f,51f/255f,1);
 		}
-		case Resistance.tolerance:{
-			bg.color(98f/255f,255f/255f,50f/255f,1);break;
+		if(re==Resistance.tolerance){
+			bg.color(98f/255f,255f/255f,50f/255f,1);
 		}
-		case Resistance.absorb:{
-			bg.color(102f/255f,153f/255f,255f/255f,1);break;
-		}
+		if(re==Resistance.absorb){
+			bg.color(102f/255f,153f/255f,255f/255f,1);
 		}
 		return bg;
 	}

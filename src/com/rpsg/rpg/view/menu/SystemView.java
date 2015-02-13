@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
+import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.control.HeroControler;
 import com.rpsg.rpg.system.ui.CheckBox;
@@ -104,37 +105,43 @@ public class SystemView extends DefaultIView{
 		CheckBox box=new CheckBox("", cs,22);
 		box.setPosition(190,484);
 		group2.addActor(box.onClick(()->{
-			System.out.println(box.isChecked());
-		}));
+			Setting.persistence.antiAliasing=box.isChecked();
+		}).check(Setting.persistence.antiAliasing));
 		CheckBox box2=new CheckBox("", cs,22);
 		box2.setPosition(190,357);
 		group2.addActor(box2.onClick(()->{
-		}));
+			Setting.persistence.scaleAliasing=box2.isChecked();
+		}).check(Setting.persistence.scaleAliasing));
 		CheckBox box3=new CheckBox("", cs,22);
 		box3.setPosition(190,252);
 		group2.addActor(box3.onClick(()->{
-		}));
+			Setting.persistence.betterLight=box3.isChecked();
+		}).check(Setting.persistence.betterLight));
 		CheckBox box4=new CheckBox("", cs,22);
 		box4.setPosition(190,169);
 		group2.addActor(box4.onClick(()->{
-		}));
+			Setting.persistence.useGL3=box4.isChecked();
+		}).check(Setting.persistence.useGL3));
 		CheckBox box5=new CheckBox("", cs,22);
 		box5.setPosition(190,59);
 		group2.addActor(box5.onClick(()->{
-		}));
+			Setting.persistence.useClearFont=box5.isChecked();
+		}).check(Setting.persistence.useClearFont));
 		table.add(group2).prefSize(1024, 600);
 		table.row();
 		
 		WidgetGroup group3=new WidgetGroup();
 		group3.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"performance.png"));
-		Slider sd1=new Slider(256, 1024, 5, false, slsty);
+		Slider sd1=new Slider(256, 1024, 1, false, slsty);
 		sd1.setStrEnd(" MB").setLabelful(true).setPosition(200, 135);
 		sd1.setWidth(620);
+		sd1.onScroll(()->Setting.persistence.MemorySize=(int)sd1.getValue()).setValue(Setting.persistence.MemorySize);
 		group3.addActor(sd1);
 		CheckBox box6=new CheckBox("", cs,22);
 		box6.setPosition(190,82);
 		group3.addActor(box6.onClick(()->{
-		}));
+			Setting.persistence.cacheResource=box6.isChecked();
+		}).check(Setting.persistence.cacheResource));
 		table.add(group3).prefSize(1024,318);
 		table.row();
 		
@@ -143,14 +150,17 @@ public class SystemView extends DefaultIView{
 		Slider sd2=new Slider(0, 100, 1, false, slsty);
 		sd2.setStrEnd(" %").setLabelful(true).setPosition(200, 165);
 		sd2.setWidth(620);
+		sd2.onScroll(()->Setting.persistence.volume=(int)sd2.getValue()).setValue(Setting.persistence.volume);
 		group4.addActor(sd2);
 		Slider sd3=new Slider(0, 100, 1, false, slsty);
 		sd3.setStrEnd(" %").setLabelful(true).setPosition(200, 50);
 		sd3.setWidth(620);
+		sd3.onScroll(()->Setting.persistence.musicVolume=(int)sd3.getValue()).setValue(Setting.persistence.musicVolume);
 		group4.addActor(sd3);
 		Slider sd4=new Slider(0, 100, 1, false, slsty);
 		sd4.setStrEnd(" %").setLabelful(true).setPosition(200, -60);
 		sd4.setWidth(620);
+		sd4.onScroll(()->Setting.persistence.seVolume=(int)sd4.getValue()).setValue(Setting.persistence.seVolume);
 		group4.addActor(sd4);
 		table.add(group4).prefSize(1024,338);
 		table.row();
@@ -171,23 +181,28 @@ public class SystemView extends DefaultIView{
 		});
 		sd5.setStrEnd(" Ö¡/×Ö").setLabelful(true).setPosition(200, 506);
 		sd5.setWidth(620);
+		sd5.onScroll(()->Setting.persistence.textSpeed=(int)sd5.getValue()).setValue(Setting.persistence.textSpeed);
 		group5.addActor(sd5);
 		CheckBox box7=new CheckBox("", cs,22);
 		box7.setPosition(190,440);
 		group5.addActor(box7.onClick(()->{
-		}));
+			Setting.persistence.showFPS=box7.isChecked();
+		}).check(Setting.persistence.showFPS));
 		CheckBox box8=new CheckBox("", cs,22);
 		box8.setPosition(190,340);
 		group5.addActor(box8.onClick(()->{
-		}));
+			Setting.persistence.debugMod=box8.isChecked();
+		}).check(Setting.persistence.debugMod));
 		CheckBox box9=new CheckBox("", cs,22);
 		box9.setPosition(190,228);
 		group5.addActor(box9.onClick(()->{
-		}));
+			Setting.persistence.onErrorSendMsg=box6.isChecked();
+		}).check(Setting.persistence.onErrorSendMsg));
 		CheckBox box10=new CheckBox("", cs,22);
 		box10.setPosition(190,63);
 		group5.addActor(box10.onClick(()->{
-		}));
+			Setting.persistence.touchMod=box6.isChecked();
+		}).check(Setting.persistence.touchMod));
 		table.add(group5).prefSize(1024,830);
 		table.row();
 		
@@ -326,6 +341,7 @@ public class SystemView extends DefaultIView{
 	}
 
 	public void dispose() {
+		Persistence.save();
 		stage.dispose();
 	}
 

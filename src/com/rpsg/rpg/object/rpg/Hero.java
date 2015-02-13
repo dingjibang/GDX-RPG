@@ -53,7 +53,7 @@ public abstract class Hero extends IRPGObject {
 	
 	public boolean lead=false;
 	
-	public Map<String,Integer> resistance=new HashMap<String, Integer>();
+	public Map<String,Resistance> resistance=new HashMap<String, Resistance>();
 	{
 		resistance.put("earth", Resistance.normal);
 		resistance.put("fire", Resistance.normal);

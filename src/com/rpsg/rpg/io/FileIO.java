@@ -41,4 +41,29 @@ public class FileIO {
 	public static String getABSPath(){
 		return System.getProperty("user.dir");
 	}
+	
+	public static Object load(String fileName){
+		try {
+			Object o;
+			FileInputStream fis = new FileInputStream(new File(getABSPath()+fileName));
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			o = ois.readObject();
+			ois.close();
+			return o;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static void save(Object o,String fileName){
+		try {
+			FileOutputStream fos=new FileOutputStream(new File(getABSPath()+fileName));
+			ObjectOutputStream oos=new ObjectOutputStream(fos);
+			oos.writeObject(o);
+			oos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -18,6 +18,11 @@ public class Slider extends ProgressBar {
 	public Slider (float min, float max, float stepSize, boolean vertical, Skin skin, String styleName) {
 		this(min, max, stepSize, vertical, skin.get(styleName, SliderStyle.class));
 	}
+	Runnable run;
+	public Slider onScroll(Runnable r){
+		run=r;
+		return this;
+	}
 
 	public Slider (float min, float max, float stepSize, boolean vertical, SliderStyle style) {
 		super(min, max, stepSize, vertical, style);
@@ -90,6 +95,9 @@ public class Slider extends ProgressBar {
 		float oldValue = value;
 		boolean valueSet = setValue(value);
 		if (value == oldValue) position = oldPosition;
+		
+		if(run!=null)
+			run.run();
 		return valueSet;
 	}
 

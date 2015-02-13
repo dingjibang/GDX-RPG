@@ -66,7 +66,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	}
 	
 	private void setAnti(){
-		if(Setting.DISPLAY_ANTI_ALIASING)
+		if(Setting.persistence.antiAliasing)
 			getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
 	}
 	
