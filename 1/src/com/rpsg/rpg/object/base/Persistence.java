@@ -23,7 +23,7 @@ public class Persistence implements Serializable{
 	public boolean betterLight = true;
 	public boolean cacheResource = true;
 	
-	private static String PersistenceFileName = Setting.GAME_PERSISTENCE+"persistence.es";
+	public static String PersistenceFileName = Setting.GAME_PERSISTENCE+"persistence.es";
 	
 	public static Persistence read(){
 		Object o=FileIO.load(PersistenceFileName);

@@ -171,17 +171,13 @@ public class SystemView extends DefaultIView{
 		ttest.setWidth(1000).setPosition(200, 663);
 		group5.addActor(ttest);
 		Slider sd5=new Slider(1, 15, 1, false, slsty);
-		sd5.addListener(new InputListener(){
-			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-			public void touchDragged (InputEvent event, float x, float y, int pointer) {
-				stepmax=(int) sd5.getValue();
-			}
-		});
 		sd5.setStrEnd(" Ö¡/×Ö").setLabelful(true).setPosition(200, 506);
 		sd5.setWidth(620);
-		sd5.onScroll(()->Setting.persistence.textSpeed=(int)sd5.getValue()).setValue(Setting.persistence.textSpeed);
+		sd5.onScroll(()->{
+			Setting.persistence.textSpeed=(int)sd5.getValue();
+			stepmax=(int) sd5.getValue();
+		}).setValue(Setting.persistence.textSpeed);
+		sd5.onScroll();
 		group5.addActor(sd5);
 		CheckBox box7=new CheckBox("", cs,22);
 		box7.setPosition(190,440);

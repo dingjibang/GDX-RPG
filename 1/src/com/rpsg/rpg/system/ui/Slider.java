@@ -23,6 +23,12 @@ public class Slider extends ProgressBar {
 		run=r;
 		return this;
 	}
+	
+	public Slider onScroll(){
+		if(run!=null)
+			run.run();
+		return this;
+	}
 
 	public Slider (float min, float max, float stepSize, boolean vertical, SliderStyle style) {
 		super(min, max, stepSize, vertical, style);
