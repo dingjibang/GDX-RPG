@@ -7,8 +7,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.FileIO;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
+import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.display.MouseUtil;
@@ -50,7 +52,15 @@ public class GameViews implements ApplicationListener {
 		logoview = new LogoView();
 		logoview.init();
 		//other
-		batch = new SpriteBatch();
+		try{
+			batch = new SpriteBatch();
+		}catch(Exception e){
+			Logger.faild("OpenGL画笔初始化失败。",e);
+			Setting.persistence.useGL3=false;
+			FileIO.save(Setting.persistence,Persistence.PersistenceFileName);
+			Logger.info("在程序崩溃前成功强制设置为兼容模式，如果程序仍然出现问题，请将错误信息提交给作者。");
+			System.exit(0);
+		}
 		global=new Global();
 		MouseUtil.init();
 		TipUtil.init();

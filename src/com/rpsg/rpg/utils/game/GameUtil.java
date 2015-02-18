@@ -8,6 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapProperties;
+import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.utils.display.FontUtil;
 
 public class GameUtil {
@@ -23,8 +24,10 @@ public class GameUtil {
 	}
 	
 	public static void drawFPS(SpriteBatch batch){
-		FontUtil.draw(batch, "FPS:"+Gdx.graphics.getFramesPerSecond(),15,Color.BLACK,13,GameUtil.screen_height-13,1000,0,10);
-		FontUtil.draw(batch, "FPS:"+Gdx.graphics.getFramesPerSecond(),15,Color.WHITE,12,GameUtil.screen_height-12,1000,0,10);
+		if(Setting.persistence.showFPS){
+			FontUtil.draw(batch, "FPS:"+Gdx.graphics.getFramesPerSecond(),15,Color.BLACK,13,GameUtil.screen_height-13,1000,0,10);
+			FontUtil.draw(batch, "FPS:"+Gdx.graphics.getFramesPerSecond(),15,Color.WHITE,12,GameUtil.screen_height-12,1000,0,10);
+		}
 	}
 	
 	public static SpriteBatch resetBacth(SpriteBatch batch){
