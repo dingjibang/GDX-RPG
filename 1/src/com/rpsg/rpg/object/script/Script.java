@@ -11,6 +11,7 @@ import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FG;
 import com.rpsg.rpg.utils.display.Msg;
+import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.game.Base;
 import com.rpsg.rpg.utils.game.Heros;
 import com.rpsg.rpg.utils.game.Move;
@@ -170,5 +171,13 @@ public abstract class Script implements MsgType,FGType{
 	
 	protected BaseScriptExecutor select(String ... args){
 		return GameViews.selectUtil.select(this, args);
+	}
+	
+	protected String currentSelect(){
+		return SelectUtil.currentSelect;
+	}
+	
+	protected boolean currentSelect(String equ){
+		return SelectUtil.currentSelect.equals(equ);
 	}
 }

@@ -3,18 +3,23 @@ package com.rpsg.rpg.view;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.ScreenUtils;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.FileIO;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.Persistence;
+import com.rpsg.rpg.system.control.MenuControl;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.display.MouseUtil;
 import com.rpsg.rpg.utils.display.RadarUtil;
+import com.rpsg.rpg.utils.display.ScreenUtil;
 import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.display.TipUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -57,6 +62,7 @@ public class GameViews implements ApplicationListener {
 		}catch(Exception e){
 			Logger.faild("OpenGL画笔初始化失败。",e);
 			Setting.persistence.useGL3=false;
+			Setting.persistence.errorMessage="无法启用OpenGL3.0接口，程序已恢复为兼容模式。";
 			FileIO.save(Setting.persistence,Persistence.PersistenceFileName);
 			Logger.info("在程序崩溃前成功强制设置为兼容模式，如果程序仍然出现问题，请将错误信息提交给作者。");
 			System.exit(0);
@@ -65,6 +71,10 @@ public class GameViews implements ApplicationListener {
 		MouseUtil.init();
 		TipUtil.init();
 		AlertUtil.init();
+		if(Setting.persistence.errorMessage!=null && Setting.persistence.errorMessage.length()!=0){
+			AlertUtil.add(Setting.persistence.errorMessage, AlertUtil.Red);
+			Setting.persistence.errorMessage="";
+		}
 		RadarUtil.init(1, new TextureRegion(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_STATUS+"propbg.png"))), 1);
 		TimeUtil.init();
 		selectUtil=new SelectUtil();
@@ -128,6 +138,16 @@ public class GameViews implements ApplicationListener {
 		TimeUtil.logic();
 		AlertUtil.draw(batch);
 		batch.end();
+		
+//		batch.begin();
+//		Pixmap pbg=ScreenUtil.getScreenshot(0, 0, GameUtil.getScreenWidth(), GameUtil.getScreenHeight(), false);
+//		Image i=new Image(new TextureRegion(new Texture(pbg),0,GameUtil.getScreenHeight(),GameUtil.getScreenWidth(),-GameUtil.getScreenHeight()));
+//		i.setSize(320, 180);
+//		i.draw(batch);
+//		batch.end();
+//		i.getTexture().dispose();
+//		pbg.dispose();
+
 	}
 
 	@Override

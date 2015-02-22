@@ -20,10 +20,9 @@ public class Main {
 			cfg.title = "RPG";
 			cfg.width = 1024;
 			cfg.height = 576;
-			cfg.samples=0;
 			cfg.resizable=true;
 			cfg.initialBackgroundColor=Color.WHITE;
-			cfg.samples=8;
+			cfg.samples=Setting.persistence.antiAliasing?8:0;
 			cfg.useGL30=Setting.persistence.useGL3;
 			RayHandler.setGammaCorrection(true);
 			RayHandler.useDiffuseLight(true);

@@ -23,6 +23,11 @@ public class Music {
 		MUSIC=bgm.get(music);
 	}
 	
+	public static void stopCurrentMusic(){
+		if(MUSIC!=null && MUSIC.isPlaying())
+			MUSIC.stop();
+	}
+	
 	public static void playSE(String name){
 		if(null==se.get(name)){
 			se.put(name, Gdx.audio.newSound(Gdx.files.internal(Setting.GAME_RES_MUSIC_SE+name+".wav")));
