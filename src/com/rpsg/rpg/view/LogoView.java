@@ -1,69 +1,85 @@
 package com.rpsg.rpg.view;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class LogoView extends View{
-	private Image bg,logo,flash1,flash2,logos;
-	private int ani_num=-30;
 	public boolean played=false;
+	Stage stage;
+	Action final1,final2;
+	int flag=0;
 	@Override
 	public void init() {
-		bg= new Image(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_LOGO+"bg.png")));
-		bg.setSize(GameUtil.screen_width, GameUtil.screen_height);
-		bg.setPosition(0,0);
-		logo= new Image(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_LOGO+"logo.png")));
-		logo.setColor(1,1,1,0);
-		logo.setPosition(GameUtil.screen_width/2-logo.getWidth()/2, GameUtil.screen_height/2-logo.getHeight()/2);
-		logos= new Image(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_LOGO+"logoshadow.png")));
-		logos.setColor(1,1,1,0);
-		logos.setPosition(GameUtil.screen_width/2-logos.getWidth()/2, GameUtil.screen_height/2-logos.getHeight()/2);
-		flash1= new Image(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_LOGO+"hero.png")));
-		flash1.setColor(1,1,1,0.5f);
-		flash1.setScale(0.4f);
-		flash2= new Image(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_LOGO+"bcir.png")));
-		flash2.setColor(1,1,1,0.5f);
-//		CMusic.playMusic("1.mp3");
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
+		stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"wbg.png"));
+		stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"bg.png").color(1,1,1,0).action(Actions.sequence(Actions.delay(0.2f),Actions.fadeIn(0.2f))));
+		stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"logo.png").color(1,1,1,0).position(351, 295).action(Actions.sequence(Actions.delay(1f),Actions.parallel(Actions.fadeIn(0.2f),Actions.moveBy(0, 45,0.3f)))));
+		stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"hr.png").color(1,1,1,0).size(3, 36).position(124, 300).action(Actions.sequence(Actions.delay(0.4f),Actions.parallel(Actions.fadeIn(0.4f),Actions.sizeTo(774, 36,0.4f)))));
+		stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"info.png").color(1,1,1,0).position(290, 280).action(Actions.sequence(Actions.delay(2.6f),Actions.fadeIn(0.4f))));
+		final2=new Action(){
+			public boolean act(float delta) {
+				stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"wbg.png").color(0,0,0,0).action(Actions.sequence(Actions.color(new Color(0,0,0,1),0.2f),Actions.addAction(new Action(){
+					public boolean act(float delta) {
+						flag=1;
+						played=true;
+						return false;
+					}
+				}))));
+				return true;
+			}
+		};
+		final1=new Action(){
+			public boolean act(float delta) {
+				Music.stopCurrentMusic();
+				stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"wbg.png").color(0,0,0,0).action(Actions.sequence(Actions.color(new Color(0,0,0,1),0.2f),Actions.addAction(new Action(){
+					public boolean act(float delta) {
+						stage.clear();
+						stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"bg2.png").color(1,1,1,0).action(Actions.sequence(Actions.delay(0.1f),Actions.fadeIn(0.4f))));
+						stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"hv.png").color(1,1,1,0).action(Actions.sequence(Actions.delay(0.5f),Actions.fadeIn(0.5f))));
+						stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"wbg.png").color(0,0,0,0).action(Actions.sequence(Actions.delay(4f),Actions.color(new Color(0,0,0,1),0.2f),Actions.addAction(final2))));
+						return true;
+					}
+				}))));
+				flag=1;
+				return true;
+			}
+		};
+		stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"wbg.png").color(0,0,0,0).action(Actions.sequence(Actions.delay(5.5f),Actions.color(new Color(0,0,0,1),0.4f),Actions.addAction(final1))));
+		Music.playMusic("logo.mp3");
 	}
 	
 	@Override
 	public void draw(SpriteBatch batch) {
-		bg.draw(batch);
-		logos.draw(batch);
-		logo.draw(batch);
-		flash1.draw(batch);
-		flash2.draw(batch);
+		stage.draw();
 	}
 
 	@Override
 	public void logic() {
-		if(ani_num++>300)
-			played=true;
-		if(ani_num<100 && ani_num >0)
-			logo.setColor(1, 1, 1, (float)(1f/100f)*ani_num);
-		if(ani_num<200)
-			flash1.setX(ani_num*30);
-			flash1.setY(ani_num*-0.7f);
-			flash2.setX(GameUtil.screen_width-ani_num*20);
-		if(ani_num>50 && ani_num<178)
-			bg.setColor(1, 1, 1, (ani_num-50)*2);
-		if(ani_num>100 && ani_num<200)
-			logos.setColor(1, 1, 1, (float)(1f/100f)*(ani_num-100));
+		stage.act();
 	}
 
 	@Override
 	public void onkeyTyped(char character) {
-		played=true;
+		if(flag==0)
+			final1.act(0);
+		else
+			final2.act(0);
 	}
 
 	@Override
 	public void dispose() {
-		
+//		stage.dispose();
 	}
 
 	@Override

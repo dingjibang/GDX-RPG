@@ -1,6 +1,7 @@
 package com.rpsg.rpg.utils.game;
 
 import com.badlogic.gdx.Application;
+import com.rpsg.rpg.core.Setting;
 
 public class Logger {
 	
@@ -26,22 +27,27 @@ public class Logger {
 	}
 	
 	public static void error(String s){
+		if(Setting.persistence.debugMod)
 		errorlog.error(s);
 	}
 	
 	public static void error(String s,Exception e){
+		if(Setting.persistence.debugMod)
 		errorlog.error(s,e);
 	}
 	
 	public static void info(String s){
+		if(Setting.persistence.debugMod)
 		infolog.info(getTime()+s);
 	}
 	
 	public static void faild(String s){
+		if(Setting.persistence.debugMod)
 		faildlog.info(s);
 	}
 	
 	public static void faild(String s,Exception e){
+		if(Setting.persistence.debugMod)
 		faildlog.info(s,e);
 	}
 }

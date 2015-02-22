@@ -9,15 +9,21 @@ import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.ScreenUtils;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.view.GameViews;
 /**
  * 屏幕工具类 可以获取截图
  * @author 煞笔学生
  *
  */
 public class ScreenUtil {
+	static Stage tmpStage=new Stage();
 	public static Pixmap getScreenshot(int x, int y, int w, int h, boolean yDown){
+//        tmpStage.getBatch().begin();
+//        tmpStage.getBatch().end();
         final Pixmap pixmap = getFrameBufferPixmap(x, y, w, h);
 
         if (yDown) {
@@ -38,18 +44,20 @@ public class ScreenUtil {
     }
 	
 	public static Image getScreenshot(){
+		tmpStage.draw();
         final Pixmap pixmap = getFrameBufferPixmap(0, 0, GameUtil.screen_width, GameUtil.screen_height);
-        return new Image(new TextureRegion(new Texture(pixmap),0,GameUtil.screen_height,GameUtil.screen_width,-GameUtil.screen_height));
+        Image i= new Image(new TextureRegion(new Texture(pixmap),0,GameUtil.screen_height,GameUtil.screen_width,-GameUtil.screen_height));
+        pixmap.dispose();
+        return i;
     }
 	
-	public static Pixmap getFrameBufferPixmap (int x, int y, int w, int h) {
-		Gdx.gl.glPixelStorei(GL20.GL_PACK_ALIGNMENT, 1);
-		final int potW = MathUtils.nextPowerOfTwo(w);
-		final int potH = MathUtils.nextPowerOfTwo(h);
+	public static Pixmap getFrameBufferPixmap(int x, int y, int w, int h) {
 
-		final Pixmap pixmap = new Pixmap(potW, potH, Format.RGBA8888);
+//		Gdx.gl.glPixelStorei(GL20.GL_PACK_ALIGNMENT, 1);
+
+		final Pixmap pixmap = new Pixmap(w, h, Format.RGBA8888);
 		ByteBuffer pixels = pixmap.getPixels();
-		Gdx.gl.glReadPixels(x, y, potW, potH, GL20.GL_RGBA, GL20.GL_UNSIGNED_BYTE, pixels);
+		Gdx.gl.glReadPixels(x, y, w, h, GL20.GL_RGBA, GL20.GL_UNSIGNED_BYTE, pixels);
 
 		return pixmap;
 	}

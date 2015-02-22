@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -66,7 +67,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	}
 	
 	private void setAnti(){
-		if(Setting.persistence.antiAliasing)
+		if(Setting.persistence.scaleAliasing)
 			getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
 	}
 	
@@ -130,6 +131,11 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public Image disableTouch(){
 		super.setTouchable(null);
+		return this;
+	}
+	
+	public Image action(Action act){
+		super.addAction(act);
 		return this;
 	}
 }

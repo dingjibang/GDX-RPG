@@ -6,7 +6,10 @@ import box2dLight.RayHandler;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
@@ -18,9 +21,11 @@ import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.*;
 import com.rpsg.rpg.system.base.TmxMapLoader.Parameters;
 import com.rpsg.rpg.system.control.*;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.StackView;
 import com.rpsg.rpg.utils.display.*;
+import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
 
 public class GameView extends View{
@@ -61,13 +66,16 @@ public class GameView extends View{
 		GameViews.loadview.reinit();
 		MapControler.dispose();
 		Msg.dispose();
-		map.dispose();
-		ma.unload(filename);
+		if(!Setting.persistence.cacheResource){
+			map.dispose();
+			ma.unload(filename);
+		}
 		if(null!=stackView){
 			stackView.dispose();
 			stackView=null;
 			InputControler.currentIOMode=IOMode.MAP_INPUT_NORMAL;
 		}
+		GameViewRes.ray.removeAll();
 		parameter.loadedCallback=null;
 		parameter=null;
 		Res.dispose();
@@ -79,12 +87,16 @@ public class GameView extends View{
 		if(!ma.update() || !inited)
 			return;
 		MapControler.draw(this);
+		
 		ColorUtil.draw(batch);
 		DrawControl.draw(batch);
 		ThreadPool.logic();
 		ColorUtil.drawhover(batch);
+		
 		if(null!=stackView)
 			stackView.draw(batch);
+		
+
 //		RadarUtil.draw();
 	}
 
