@@ -56,18 +56,18 @@ public class GameViews implements ApplicationListener {
 		Gdx.input.setInputProcessor(input);
 		//view
 		logoview = new LogoView();
-		logoview.init();
-		//other
 		try{
-			batch = new SpriteBatch();
+			logoview.init();
 		}catch(Exception e){
 			Logger.faild("OpenGL画笔初始化失败。",e);
 			Setting.persistence.useGL3=false;
-			Setting.persistence.errorMessage="无法启用OpenGL3.0接口，程序已恢复为兼容模式。";
+			Setting.persistence.errorMessage="无法启用OpenGL3.2接口，程序已恢复为兼容模式。";
 			Persistence.save();
 			Logger.info("在程序崩溃前成功强制设置为兼容模式，如果程序仍然出现问题，请将错误信息提交给作者。");
 			System.exit(0);
 		}
+		//other
+		batch = new SpriteBatch();
 		global=new Global();
 		MouseUtil.init();
 		TipUtil.init();
