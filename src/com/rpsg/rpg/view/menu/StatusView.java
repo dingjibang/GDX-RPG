@@ -22,7 +22,7 @@ import com.rpsg.rpg.object.base.Resistance;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.control.HeroControler;
+import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
@@ -33,7 +33,7 @@ import com.rpsg.rpg.utils.game.TimeUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public class StatusView extends DefaultIView{
-	Hero hero=HeroControler.getHeadHero();
+	Hero hero=HeroController.getHeadHero();
 	int heroIndex=0;
 	Group group;
 	ScrollPane pane;
@@ -64,7 +64,7 @@ public class StatusView extends DefaultIView{
 	Image fg,fgs;
 	Group tree;
 	public void generate(){
-		hero=HeroControler.heros.get(heroIndex);
+		hero=HeroController.heros.get(heroIndex);
 		
 		group.clear();
 		
@@ -262,7 +262,7 @@ public class StatusView extends DefaultIView{
 	}
 	
 	public void nextHero(){
-		if(heroIndex!=HeroControler.heros.size()-1){
+		if(heroIndex!=HeroController.heros.size()-1){
 			heroIndex++;
 			generate();
 			Music.playSE("snd210" );

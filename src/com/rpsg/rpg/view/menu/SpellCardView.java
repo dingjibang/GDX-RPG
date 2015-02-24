@@ -30,7 +30,7 @@ import com.rpsg.rpg.object.base.items.SpellCard;
 import com.rpsg.rpg.object.base.items.tip.TipSpellCard;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.control.HeroControler;
+import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.ui.HeroImage;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
@@ -198,13 +198,13 @@ public class SpellCardView extends View{
 		
 		herolist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		herolist.getItems().add(new ListItem("取消"));
-		HeroControler.heros.forEach((h)->herolist.getItems().add(new ListItem(h.name).setUserObject(h)));
+		HeroController.heros.forEach((h)->herolist.getItems().add(new ListItem(h.name).setUserObject(h)));
 		herolist.onDBClick(()->{
 			if(herolist.getSelected().name.equals("取消")){
 				can2.run();
 			}else{
 				if(herolist.getSelected().userObject!=null)
-					if(spell.use(HeroControler.heros.get(currentSelectHero),((Hero)herolist.getSelected().userObject)))
+					if(spell.use(HeroController.heros.get(currentSelectHero),((Hero)herolist.getSelected().userObject)))
 						can2.run();
 				drawp=true;
 			}
@@ -237,7 +237,7 @@ public class SpellCardView extends View{
 	public void draw(SpriteBatch batch) {
 		stage.draw();
 		SpriteBatch sb=(SpriteBatch) stage.getBatch();
-		Hero hero=HeroControler.heros.get(currentSelectHero);
+		Hero hero=HeroController.heros.get(currentSelectHero);
 		sb.begin();
 		FontUtil.draw(sb,hero.prop.get("level")+"", 30, blue, 160+60/2-FontUtil.getTextWidth(hero.prop.get("level")+"", 30), 487, 1000);
 		FontUtil.draw(sb, hero.prop.get("maxsc")+"", 18, blue, 321, 325, 200,-7,0);
@@ -340,7 +340,7 @@ public class SpellCardView extends View{
 
 	HeroImage heroImage;
 	public void generateHero(int index){
-		heroImage=HeroImage.generateImage(HeroControler.heros.get(index).images, 316, 370);
+		heroImage=HeroImage.generateImage(HeroController.heros.get(index).images, 316, 370);
 		generateLists();
 	}
 	
@@ -348,11 +348,11 @@ public class SpellCardView extends View{
 	public void generateLists(){
 		Array<SpellCard> sc = elist.getItems();
 		sc.clear();
-		HeroControler.heros.get(currentSelectHero).sc.forEach((s)->sc.add(s));
+		HeroController.heros.get(currentSelectHero).sc.forEach((s)->sc.add(s));
 	}
 	
 	public void nextHero(){
-		if(currentSelectHero!=HeroControler.heros.size()-1){
+		if(currentSelectHero!=HeroController.heros.size()-1){
 			currentSelectHero++;
 			generateHero(currentSelectHero);
 			Music.playSE("snd210"  );

@@ -3,60 +3,60 @@ package com.rpsg.rpg.utils.game;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.system.control.HeroControler;
+import com.rpsg.rpg.system.controller.HeroController;
 
 public class Heros {
 	public static BaseScriptExecutor addNewHero(Script script,Class<? extends Hero> c){
 		return script.$(()->{
-			HeroControler.newHero(c);
+			HeroController.newHero(c);
 		});
 	}
 	
 	public static BaseScriptExecutor putHeroQueue(Script script,Class<? extends Hero> c){
 		return script.$(()->{
-			HeroControler.addHero(c);
+			HeroController.addHero(c);
 		});
 	}
 	
 	public static BaseScriptExecutor putHeroQueue(Script script,Class<? extends Hero> c,int position){
 		return script.$(()->{
-			HeroControler.addHero(c,position);
+			HeroController.addHero(c,position);
 		});
 	}
 	
 	public static BaseScriptExecutor removeHeroQueue(Script script,Class<? extends Hero> c){
 		return script.$(()->{
-			HeroControler.removeHero(c);
+			HeroController.removeHero(c);
 		});
 	}
 	
 	public static BaseScriptExecutor deleteHeroQueue(Script script,Class<? extends Hero> c){
 		return script.$(()->{
-			HeroControler.deleteHero(c);
+			HeroController.deleteHero(c);
 		});
 	}
 	
 	public static BaseScriptExecutor swapHeroQueue(Script script,int position){
 		return script.$(()->{
-			HeroControler.swapHero(position);
+			HeroController.swapHero(position);
 		});
 	}
 	
 	public static BaseScriptExecutor swapHeroQueue(Script script,int position,int swappos){
 		return script.$(()->{
-			HeroControler.swapHero(position,swappos);
+			HeroController.swapHero(position,swappos);
 		});
 	}
 	
 	public static BaseScriptExecutor swapHeroQueue(Script script,Class<? extends Hero> c){
 		return script.$(()->{
-			HeroControler.swapHero(c);
+			HeroController.swapHero(c);
 		});
 	}
 	
 	public static BaseScriptExecutor swapHeroQueue(Script script,Class<? extends Hero> c,Class<? extends Hero> sc){
 		return script.$(()->{
-			HeroControler.swapHero(c,sc);
+			HeroController.swapHero(c,sc);
 		});
 	}
 }

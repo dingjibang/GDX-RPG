@@ -1,4 +1,4 @@
-package com.rpsg.rpg.system.control;
+package com.rpsg.rpg.system.controller;
 
 import com.badlogic.gdx.Input.Keys;
 import com.rpsg.rpg.io.SaveLoad;
@@ -10,10 +10,20 @@ import com.rpsg.rpg.view.GameViews;
 
 
 
-public class InputControler{
+public class InputController{
 	
 	public static int currentIOMode=IOMode.MAP_INPUT_NORMAL; 
+	static int tmpIO=-1;
 	
+	public static void setTempIOMode(int IOMode){
+		tmpIO=currentIOMode;
+	}
+	
+	public static void resotryIOMode(){
+		if(tmpIO!=-1)
+			currentIOMode=tmpIO;
+		tmpIO=-1;
+	}
 	public static boolean keyDown(int keycode,GameView gv) {
 		if(keycode==Keys.R){
 			GameViews.global=SaveLoad.load(0);
@@ -26,18 +36,19 @@ public class InputControler{
 			GameViews.global=new Global();
 			Initialization.restartGame();
 		}
+		HeroController.reinit();
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_NORMAL:{
 			if(keycode==Keys.ESCAPE || keycode==Keys.X){
-				MenuControl.createMenu();
+				MenuController.createMenu();
 				currentIOMode=IOMode.MAP_INPUT_MENU;
 			}else{
-				MoveControler.keyDown(keycode, gv);
+				MoveController.keyDown(keycode, gv);
 			}
 			break;
 		}
 		case IOMode.MAP_INPUT_MENU:{
-			MenuControl.keyDown(keycode);
+			MenuController.keyDown(keycode);
 			break;
 		}
 		
@@ -48,11 +59,11 @@ public class InputControler{
 	public static boolean keyUp(int keycode,GameView gv) {
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_NORMAL:{
-			MoveControler.keyUp(keycode, gv);
+			MoveController.keyUp(keycode, gv);
 			break;
 		}
 		case IOMode.MAP_INPUT_MENU:{
-			MenuControl.keyUp(keycode);
+			MenuController.keyUp(keycode);
 			break;
 		}
 		}
@@ -62,7 +73,7 @@ public class InputControler{
 	public static boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_MENU:{
-			MenuControl.touchDown(screenX, screenY, pointer, button);
+			MenuController.touchDown(screenX, screenY, pointer, button);
 			break;
 		}
 		}
@@ -76,7 +87,7 @@ public class InputControler{
 	public static boolean touchDragged(int screenX, int screenY, int pointer) {
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_MENU:{
-			MenuControl.touchDragged(screenX, screenY, pointer);
+			MenuController.touchDragged(screenX, screenY, pointer);
 			break;
 		}
 		}
@@ -86,7 +97,7 @@ public class InputControler{
 	public static boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_MENU:{
-			MenuControl.touchUp(screenX, screenY, pointer, button);
+			MenuController.touchUp(screenX, screenY, pointer, button);
 			break;
 		}
 		}
@@ -96,7 +107,7 @@ public class InputControler{
 	public static void scrolled(int amount) {
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_MENU:{
-			MenuControl.scrolled(amount);
+			MenuController.scrolled(amount);
 			break;
 		}
 		}

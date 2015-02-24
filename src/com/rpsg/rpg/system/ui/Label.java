@@ -92,6 +92,11 @@ public class Label extends Widget {
 		return this;
 	}
 	
+	public Label userObj(Object obj){
+		setUserObject(obj);
+		return this;
+	}
+	
 	int alignX;
 	public int getAlignX() {
 		return alignX;

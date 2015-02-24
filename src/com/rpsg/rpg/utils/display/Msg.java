@@ -11,7 +11,7 @@ import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.control.InputControler;
+import com.rpsg.rpg.system.controller.InputController;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
@@ -85,7 +85,7 @@ public class Msg {
 	
 	public static BaseScriptExecutor setKeyLocker(Script script,final boolean flag){
 		return script.$(()->{
-			InputControler.currentIOMode=flag?IOMode.MAP_INPUT_MESSAGING:IOMode.MAP_INPUT_NORMAL;
+			InputController.currentIOMode=flag?IOMode.MAP_INPUT_MESSAGING:IOMode.MAP_INPUT_NORMAL;
 		});
 	}
 	

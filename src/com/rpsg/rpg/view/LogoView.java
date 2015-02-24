@@ -31,7 +31,7 @@ public class LogoView extends View{
 			public boolean act(float delta) {
 				stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"wbg.png").color(0,0,0,0).action(Actions.sequence(Actions.color(new Color(0,0,0,1),0.2f),Actions.addAction(new Action(){
 					public boolean act(float delta) {
-						flag=1;
+						flag=2;
 						played=true;
 						return false;
 					}
@@ -55,8 +55,8 @@ public class LogoView extends View{
 				return true;
 			}
 		};
-		stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"wbg.png").color(0,0,0,0).action(Actions.sequence(Actions.delay(5.5f),Actions.color(new Color(0,0,0,1),0.4f),Actions.addAction(final1))));
-		Music.playMusic("logo.mp3");
+		stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"wbg.png").color(0,0,0,0).action(Actions.sequence(Actions.delay(6),Actions.color(new Color(0,0,0,1),0.4f),Actions.addAction(final1))));
+//		Music.playMusic("logo.mp3");
 	}
 	
 	@Override
