@@ -1,16 +1,13 @@
-package com.rpsg.rpg.system.control;
+package com.rpsg.rpg.system.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.object.rpg.Hero;
-import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameViews;
 
-public class HeroControler {
+public class HeroController {
 	public static List<Hero> heros;
 	public static List<Hero> allHeros;
 	

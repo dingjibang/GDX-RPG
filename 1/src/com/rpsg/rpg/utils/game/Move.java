@@ -5,7 +5,8 @@ import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
 import com.rpsg.rpg.system.base.Initialization;
 import com.rpsg.rpg.system.base.ThreadPool;
-import com.rpsg.rpg.system.control.HeroControler;import com.rpsg.rpg.view.GameView;
+import com.rpsg.rpg.system.controller.HeroController;
+import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
 
@@ -30,7 +31,7 @@ public class Move {
 	
 	public static BaseScriptExecutor faceToHero(Script script){
 		return script.$(()->{
-				script.npc.turn(HeroControler.getHeadHero().getReverseFace());
+				script.npc.turn(HeroController.getHeadHero().getReverseFace());
 		});
 	}
 	
@@ -42,7 +43,7 @@ public class Move {
 			GameViews.global.z=z;
 			ThreadPool.pool.clear();
 			Initialization.restartGame();
-			HeroControler.reinitByTeleport();
+			HeroController.reinitByTeleport();
 		});
 	}
 }

@@ -20,7 +20,7 @@ import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.*;
 import com.rpsg.rpg.system.base.TmxMapLoader.Parameters;
-import com.rpsg.rpg.system.control.*;
+import com.rpsg.rpg.system.controller.*;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.StackView;
@@ -64,7 +64,7 @@ public class GameView extends View{
 	@Override
 	public void dispose() {
 		GameViews.loadview.reinit();
-		MapControler.dispose();
+		MapController.dispose();
 		Msg.dispose();
 		if(!Setting.persistence.cacheResource){
 			map.dispose();
@@ -73,7 +73,7 @@ public class GameView extends View{
 		if(null!=stackView){
 			stackView.dispose();
 			stackView=null;
-			InputControler.currentIOMode=IOMode.MAP_INPUT_NORMAL;
+			InputController.currentIOMode=IOMode.MAP_INPUT_NORMAL;
 		}
 		GameViewRes.ray.removeAll();
 		parameter.loadedCallback=null;
@@ -86,10 +86,10 @@ public class GameView extends View{
 	public void draw(SpriteBatch batch) {
 		if(!ma.update() || !inited)
 			return;
-		MapControler.draw(this);
+		MapController.draw(this);
 		
 		ColorUtil.draw(batch);
-		DrawControl.draw(batch);
+		DrawController.draw(batch);
 		ThreadPool.logic();
 		ColorUtil.drawhover(batch);
 		
@@ -104,13 +104,13 @@ public class GameView extends View{
 	public void logic() {
 		if(!ma.update() || !inited)
 			return;
-		MapControler.logic(this);
+		MapController.logic(this);
 		//		stage.act();
 		for(Actor i:stage.getActors())
 			if(!(i instanceof Hero))
 				i.act(0);
-		HeroControler.act();
-		MoveControler.logic(this);
+		HeroController.act();
+		MoveController.logic(this);
 		
 		if(null!=stackView)
 			stackView.logic();
@@ -124,35 +124,35 @@ public class GameView extends View{
 	public void onkeyDown(int keycode) {
 		if(!ma.update() || !inited)
 			return;
-		InputControler.keyDown(keycode,this);
+		InputController.keyDown(keycode,this);
 	}
 
 	public void onkeyUp(int keycode) {
 		if(!ma.update() || !inited)
 			return;
-		InputControler.keyUp(keycode,this);
+		InputController.keyUp(keycode,this);
 	}
 
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		InputControler.touchDown(screenX, screenY, pointer, button);
+		InputController.touchDown(screenX, screenY, pointer, button);
 		return false;
 	}
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		InputControler.touchDragged(screenX, screenY, pointer);
+		InputController.touchDragged(screenX, screenY, pointer);
 		return false;
 	}
 	
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		InputControler.touchUp(screenX, screenY, pointer, button);
+		InputController.touchUp(screenX, screenY, pointer, button);
 		return false;
 	}
 
 	@Override
 	public boolean scrolled(int amount) {
-		InputControler.scrolled(amount);
+		InputController.scrolled(amount);
 		return false;
 	}
 

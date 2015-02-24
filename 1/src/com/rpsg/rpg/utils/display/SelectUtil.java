@@ -15,7 +15,7 @@ import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
-import com.rpsg.rpg.system.control.InputControler;
+import com.rpsg.rpg.system.controller.InputController;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameViews;
@@ -59,7 +59,7 @@ public class SelectUtil implements InputProcessor {
 				}else{
 					Gdx.input.setInputProcessor(GameViews.input);
 					if(!isLocked)
-						InputControler.currentIOMode=IOMode.MAP_INPUT_NORMAL;
+						InputController.currentIOMode=IOMode.MAP_INPUT_NORMAL;
 					stage.clear();
 					dispose();
 				}
@@ -67,8 +67,8 @@ public class SelectUtil implements InputProcessor {
 			public void init() {
 				select=false;
 				Gdx.input.setInputProcessor(that);
-				isLocked=(InputControler.currentIOMode==IOMode.MAP_INPUT_MESSAGING);
-				InputControler.currentIOMode=IOMode.MAP_INPUT_MESSAGING;
+				isLocked=(InputController.currentIOMode==IOMode.MAP_INPUT_MESSAGING);
+				InputController.currentIOMode=IOMode.MAP_INPUT_MESSAGING;
 				int yoff=0;
 				mask.setColor(1,1,1,0);
 				mask.addAction(Actions.fadeIn(0.1f));

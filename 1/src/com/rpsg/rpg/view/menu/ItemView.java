@@ -31,7 +31,7 @@ import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.tip.TipItem;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.control.HeroControler;
+import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
@@ -207,7 +207,7 @@ public class ItemView extends DefaultIView{
 		
 		herolist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		herolist.getItems().add(new ListItem("取消"));
-		HeroControler.heros.forEach((h)->herolist.getItems().add(new ListItem(h.name).setUserObject(h)));
+		HeroController.heros.forEach((h)->herolist.getItems().add(new ListItem(h.name).setUserObject(h)));
 		herolist.onDBClick(()->{
 			if(herolist.getSelected().name.equals("取消")){
 				can2.run();

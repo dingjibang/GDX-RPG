@@ -9,6 +9,7 @@ import java.util.List;
 
 
 
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
@@ -28,8 +29,8 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.control.InputControler;
-import com.rpsg.rpg.system.control.MenuControl;
+import com.rpsg.rpg.system.controller.InputController;
+import com.rpsg.rpg.system.controller.MenuController;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.StackView;
@@ -176,7 +177,7 @@ public class GameMenuView extends StackView{
 	public void onkeyDown(int keyCode) {
 		if(viewStack.size()==1 && (Keys.ESCAPE==keyCode || keyCode==Keys.X)){
 			this.dispose();
-			InputControler.currentIOMode=IOMode.MAP_INPUT_NORMAL;
+			InputController.currentIOMode=IOMode.MAP_INPUT_NORMAL;
 			GameViews.gameview.stackView=null;
 		}else{
 			viewStack.get(viewStack.size()-1).onkeyDown(keyCode);
@@ -191,10 +192,10 @@ public class GameMenuView extends StackView{
 		stage.dispose();
 // 		bluredBG.dispose();
 // 		normalBG.dispose();
- 		MenuControl.bg.dispose();
+ 		MenuController.bg.dispose();
 //		MenuControl.pbg.dispose();
- 		MenuControl.blurbg.dispose();
- 		MenuControl.bbg.dispose();
+ 		MenuController.blurbg.dispose();
+ 		MenuController.bbg.dispose();
 		for(View view:viewStack)
 			view.dispose();
 	}

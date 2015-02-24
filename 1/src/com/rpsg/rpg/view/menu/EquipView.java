@@ -29,7 +29,7 @@ import com.rpsg.rpg.object.base.items.tip.EmptyEquip;
 import com.rpsg.rpg.object.base.items.tip.TipEquip;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.control.HeroControler;
+import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.ui.HeroImage;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
@@ -174,7 +174,7 @@ public class EquipView extends View{
 		stage.addActor(msg);
 		olist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		olist.getItems().add(new ListItem("装备").setRunnable(()->{
-			ItemUtil.useEquip(HeroControler.heros.get(currentSelectHero), equip);
+			ItemUtil.useEquip(HeroController.heros.get(currentSelectHero), equip);
 			gengrateEList();
 		}));
 		olist.getItems().add(new ListItem("丢弃").setRunnable(()->{
@@ -210,7 +210,7 @@ public class EquipView extends View{
 				stage.setKeyboardFocus(olist);
 			}else{
 				if(sellist.getSelected()!=null){
-					ItemUtil.takeOffEquip(HeroControler.heros.get(currentSelectHero), sellist.getSelected().type);
+					ItemUtil.takeOffEquip(HeroController.heros.get(currentSelectHero), sellist.getSelected().type);
 					gengrateEList();
 				}
 			}
@@ -224,7 +224,7 @@ public class EquipView extends View{
 	public void draw(SpriteBatch batch) {
 		stage.draw();
 		SpriteBatch sb=(SpriteBatch) stage.getBatch();
-		Hero hero=HeroControler.heros.get(currentSelectHero);
+		Hero hero=HeroController.heros.get(currentSelectHero);
 		sb.begin();
 		heroImage.draw(sb, step==3?1:step);
 		FontUtil.draw(sb, hero.name, 22, Color.WHITE, 220, 486, 1000);
@@ -267,7 +267,7 @@ public class EquipView extends View{
 	}
 	
 	private int getDef(String prop){
-		Hero hero=HeroControler.heros.get(currentSelectHero);
+		Hero hero=HeroController.heros.get(currentSelectHero);
 		if(hero.getEquipValue(equip.equipType, prop)!=0)
 			return hero.prop.get(prop)-hero.getEquipValue(equip.equipType, prop)+equip.prop.get(prop);
 		else
@@ -322,11 +322,11 @@ public class EquipView extends View{
 
 	HeroImage heroImage;
 	public void generateHero(int index){
-		heroImage=HeroImage.generateImage(HeroControler.heros.get(index).images, 300, 375);
+		heroImage=HeroImage.generateImage(HeroController.heros.get(index).images, 300, 375);
 	}
 	
 	public void nextHero(){
-		if(currentSelectHero!=HeroControler.heros.size()-1){
+		if(currentSelectHero!=HeroController.heros.size()-1){
 			currentSelectHero++;
 			generateHero(currentSelectHero);
 			gengrateEList();
@@ -354,7 +354,7 @@ public class EquipView extends View{
 		currentSelectEquip=sellist.getSelectedIndex();
 		sellist.clearItems();
 		Array<EQuipSelect> item = sellist.getItems();
-		Hero hero=HeroControler.heros.get(currentSelectHero);
+		Hero hero=HeroController.heros.get(currentSelectHero);
 		item.add(new EQuipSelect(Equipment.EQUIP_WEAPON,hero.getEquipName("weapon"),"武器"));
 		item.add(new EQuipSelect(Equipment.EQUIP_CLOTHES,hero.getEquipName("clothes"),"衣服"));
 		item.add(new EQuipSelect(Equipment.EQUIP_SHOES,hero.getEquipName("shoes"),"鞋子"));

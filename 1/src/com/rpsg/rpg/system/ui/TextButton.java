@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.utils.display.FontUtil;
 
 /** A button with a child {@link Label} to display text.
@@ -89,11 +90,20 @@ public class TextButton extends Button {
 		if(null==fontColor)
 			fontColor=Color.WHITE;
 		super.draw(batch, parentAlpha);
-		FontUtil.draw((SpriteBatch)batch, text,fontsize , fontColor,offset+(int)(getX()+getWidth()/2.6-FontUtil.getTextWidth(text, fontsize)/2), (int)(getY()+getHeight()/2+fontsize/2), 1000);
+		FontUtil.draw((SpriteBatch)batch, text,fontsize , fontColor,offset+(int)(getX()+getWidth()/2.6-FontUtil.getTextWidth(text, fontsize)/2), (int)(getY()+getHeight()/2+fontsize/2)+hof, 1000,pad==0?Setting.STRING_PADDING_LR*2:pad,Setting.STRING_PADDING_TB*2);
 	}
 	
-	public int offset;
+	public int offset,pad,hof;
 	
+	public TextButton setPad(int p){
+		pad=p;
+		return this;
+	}
+	
+	public TextButton setHof(int h){
+		hof=h;
+		return this;
+	}
 	
 	public TextButton setOffset(int o){
 		offset=o;

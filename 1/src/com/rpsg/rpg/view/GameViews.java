@@ -13,7 +13,8 @@ import com.rpsg.rpg.io.FileIO;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.Persistence;
-import com.rpsg.rpg.system.control.MenuControl;
+import com.rpsg.rpg.system.controller.HoverController;
+import com.rpsg.rpg.system.controller.MenuController;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
@@ -63,7 +64,7 @@ public class GameViews implements ApplicationListener {
 			Logger.faild("OpenGL画笔初始化失败。",e);
 			Setting.persistence.useGL3=false;
 			Setting.persistence.errorMessage="无法启用OpenGL3.0接口，程序已恢复为兼容模式。";
-			FileIO.save(Setting.persistence,Persistence.PersistenceFileName);
+			Persistence.save();
 			Logger.info("在程序崩溃前成功强制设置为兼容模式，如果程序仍然出现问题，请将错误信息提交给作者。");
 			System.exit(0);
 		}
@@ -134,9 +135,11 @@ public class GameViews implements ApplicationListener {
 			}
 		}
 		}
+		HoverController.draw(batch);
 		GameUtil.drawFPS(batch);
 		TimeUtil.logic();
 		AlertUtil.draw(batch);
+		
 		batch.end();
 		
 //		batch.begin();

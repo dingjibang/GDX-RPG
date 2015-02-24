@@ -1,4 +1,4 @@
-package com.rpsg.rpg.system.control;
+package com.rpsg.rpg.system.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +32,7 @@ import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
-public class MapControler {
+public class MapController {
 	
 	public static int MAP_MAX_OUT_X=300;
 	public static int MAP_MAX_OUT_Y=200;
@@ -40,21 +40,21 @@ public class MapControler {
 	public static NPC npc;
 	public static void init(GameView gv){
 		//初始化角色
-		HeroControler.initControler();
+		HeroController.initControler();
 		if(gv.global.heros.isEmpty()){
-			HeroControler.newHero(Arisu.class);
-			HeroControler.addHero(Arisu.class);
-			HeroControler.newHero(Marisa.class);
-			HeroControler.addHero(Marisa.class);
-			HeroControler.newHero(Reimu.class);
-			HeroControler.addHero(Reimu.class);
-			HeroControler.newHero(Yuuka.class);
-			HeroControler.addHero(Yuuka.class);
+			HeroController.newHero(Arisu.class);
+			HeroController.addHero(Arisu.class);
+			HeroController.newHero(Marisa.class);
+			HeroController.addHero(Marisa.class);
+			HeroController.newHero(Reimu.class);
+			HeroController.addHero(Reimu.class);
+			HeroController.newHero(Yuuka.class);
+			HeroController.addHero(Yuuka.class);
 			gv.global.getItems("equipment").add(new TestEquip());
 			gv.global.getItems("equipment").add(new Sunshade());
 			gv.global.getItems("medicine").add(new YaoWan());
 		}
-		HeroControler.initHeros(gv.stage);
+		HeroController.initHeros(gv.stage);
 		
 		//设置抗锯齿
 		if(Setting.persistence.antiAliasing)
@@ -103,7 +103,7 @@ public class MapControler {
 						}
 					}
 				}
-				HeroControler.generatePosition(gv.global.x,gv.global.y,gv.global.z);
+				HeroController.generatePosition(gv.global.x,gv.global.y,gv.global.z);
 			}
 //			for(MapLayer l:removeList)
 //				gv.map.getLayers().remove(l);
@@ -157,7 +157,7 @@ public class MapControler {
 	}
 	
 	public static void dispose(){
-		HeroControler.dispose();
+		HeroController.dispose();
 		for(Actor a:GameViews.gameview.stage.getActors())
 			if(a instanceof IRPGObject)
 				((IRPGObject)a).dispose();

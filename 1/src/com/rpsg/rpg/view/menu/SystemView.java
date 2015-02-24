@@ -18,7 +18,8 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.control.HeroControler;
+import com.rpsg.rpg.system.controller.HeroController;
+import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.system.ui.CheckBox;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.Image;
@@ -32,6 +33,7 @@ import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.TimeUtil;
 import com.rpsg.rpg.view.GameViews;
+import com.rpsg.rpg.view.hover.SaveView;
 
 public class SystemView extends DefaultIView{
 	Label lvl5,ttest;
@@ -56,7 +58,7 @@ public class SystemView extends DefaultIView{
 		
 		WidgetGroup group=new WidgetGroup();
 		group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebar.png"));
-		Label lvl=new Label("LV "+HeroControler.getHeadHero().prop.get("level"),40).setWidth(1000).setPad(-15);
+		Label lvl=new Label("LV "+HeroController.getHeadHero().prop.get("level"),40).setWidth(1000).setPad(-15);
 		lvl.setPosition(360, 190);
 		group.addActor(lvl);
 		Label lvl2=new Label("【"+(String)GameViews.gameview.map.getProperties().get("name")+"】",40).setWidth(1000).setPad(0);
@@ -65,7 +67,7 @@ public class SystemView extends DefaultIView{
 		Label lvl3=new Label("档案所在位置：",18).setWidth(1000).setPad(0);
 		lvl3.setPosition(370, 140);
 		group.addActor(lvl3);
-		Label lvl4=new Label(" ["+HeroControler.getHeadHero().mapx+","+HeroControler.getHeadHero().mapy+"]",18).setWidth(1000).setPad(0);
+		Label lvl4=new Label(" ["+HeroController.getHeadHero().mapx+","+HeroController.getHeadHero().mapy+"]",18).setWidth(1000).setPad(0);
 		lvl4.setPosition(480, 140);
 		group.addActor(lvl4);
 		Label lvl5h=new Label("档案进行时间：",18).setWidth(1000).setPad(0);
@@ -75,6 +77,7 @@ public class SystemView extends DefaultIView{
 		lvl5.setPosition(500, 110);
 		group.addActor(lvl5);
 		TextButton sbutton=new TextButton("保存游戏", butstyle).onClick(()->{
+			HoverController.add(SaveView.class);
 		});
 		sbutton.setOffset(17).setSize(250,60);
 		sbutton.setPosition(180, 14);
