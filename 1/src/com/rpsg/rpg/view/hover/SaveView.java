@@ -141,6 +141,12 @@ public class SaveView extends HoverView{
 			stage.addActor(img);
 			stage.addActor(new Label("Auto",22).setWidth(1000).setPos(887, 448).setPad(-5).userObj(new Mark()));
 		}
+		for(int i=0;i<4;i++){
+			Image im=Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebl.png").position(i>1?44+(i-2)*483:44+i*483, i>1?270:114);
+			im.setUserObject(new Mark());
+			System.out.println(im.getX());
+			stage.addActor(im);
+		}
 	}
 	
 	public void logic() {

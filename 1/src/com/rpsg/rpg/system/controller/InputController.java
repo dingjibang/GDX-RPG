@@ -36,7 +36,6 @@ public class InputController{
 			GameViews.global=new Global();
 			Initialization.restartGame();
 		}
-		HeroController.reinit();
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_NORMAL:{
 			if(keycode==Keys.ESCAPE || keycode==Keys.X){
