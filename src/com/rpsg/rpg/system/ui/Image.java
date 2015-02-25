@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -21,11 +23,18 @@ import com.rpsg.rpg.core.Setting;
 public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public boolean visible=true;
+	Runnable run;
 	
 	public Image(String filename){
 		super(new Texture(Gdx.files.internal(filename)));
 		setAnti();
 	}
+	
+	public Image onClick(Runnable r){
+		run=r;
+		return this;
+	}
+	
 	
 	public Image(NinePatch ninePatch){
 		super(ninePatch);
@@ -69,6 +78,16 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	private void setAnti(){
 		if(Setting.persistence.scaleAliasing)
 			getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		addListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+				if(x>0 && x<getWidth() && y>0 && y<getHeight())
+					if(run!=null)
+						run.run();
+			}
+		});
 	}
 	
 	public Texture getTexture(){
@@ -118,6 +137,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		super.setPosition(x, y);
 		return this;
 	}
+	
 	
 	public Image X(int x){
 		super.setX(x);

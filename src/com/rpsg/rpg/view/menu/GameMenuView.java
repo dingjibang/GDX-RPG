@@ -29,7 +29,6 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.controller.InputController;
 import com.rpsg.rpg.system.controller.MenuController;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
@@ -177,7 +176,7 @@ public class GameMenuView extends StackView{
 	public void onkeyDown(int keyCode) {
 		if(viewStack.size()==1 && (Keys.ESCAPE==keyCode || keyCode==Keys.X)){
 			this.dispose();
-			InputController.currentIOMode=IOMode.MAP_INPUT_NORMAL;
+			com.rpsg.rpg.system.controller.InputController.currentIOMode=IOMode.MAP_INPUT_NORMAL;
 			GameViews.gameview.stackView=null;
 		}else{
 			viewStack.get(viewStack.size()-1).onkeyDown(keyCode);
