@@ -9,7 +9,6 @@ public class Persistence implements Serializable{
 	private static final long serialVersionUID = 1L;
 	public boolean antiAliasing = true;
 	public boolean scaleAliasing = true;
-	public boolean useGL3 = false;
 	public boolean useClearFont = false;
 	public int MemorySize = 512;
 	public int volume = 100;
