@@ -3,24 +3,17 @@ package com.rpsg.rpg.view;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.io.FileIO;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
-import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.system.controller.HoverController;
-import com.rpsg.rpg.system.controller.MenuController;
-import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.display.MouseUtil;
 import com.rpsg.rpg.utils.display.RadarUtil;
-import com.rpsg.rpg.utils.display.ScreenUtil;
 import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.display.TipUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -56,16 +49,7 @@ public class GameViews implements ApplicationListener {
 		Gdx.input.setInputProcessor(input);
 		//view
 		logoview = new LogoView();
-		try{
-			logoview.init();
-		}catch(Exception e){
-			Logger.faild("OpenGL画笔初始化失败。",e);
-			Setting.persistence.useGL3=false;
-			Setting.persistence.errorMessage="无法启用OpenGL3.2接口，程序已恢复为兼容模式。";
-			Persistence.save();
-			Logger.info("在程序崩溃前成功强制设置为兼容模式，如果程序仍然出现问题，请将错误信息提交给作者。");
-			System.exit(0);
-		}
+		logoview.init();
 		//other
 		batch = new SpriteBatch();
 		global=new Global();
@@ -92,7 +76,7 @@ public class GameViews implements ApplicationListener {
 	public void render() {
 		if(!flag) dispose();
 		Gdx.gl.glClearColor(0,0,0,1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT | (Gdx.graphics.getBufferFormat().coverageSampling?GL20.GL_COVERAGE_BUFFER_BIT_NV:0));
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		switch(state){
 		case STATE_LOGO:{

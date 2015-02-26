@@ -26,7 +26,6 @@ public class LoadView extends View {
 	private Image bluredbg;
 	@Override
 	public void init() {
-		System.out.println("init");
 		f_load= new Sprite(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_LOAD+"f_load.png")));
 		hbx=new int[10];hby=new int[10];hbs=new int[10];hba=new int[10];hbr=new float[10];hbab=new boolean[10];hb=new Sprite[10];
 		for (int i = 0; i <hbx.length; i++) {
