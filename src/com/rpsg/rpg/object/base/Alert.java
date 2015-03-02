@@ -48,6 +48,8 @@ public class Alert {
 	public int showTime=100;
 	Action last;
 	public void draw(SpriteBatch sb,int oy){
+		sb.end();
+		sb.begin();
 		if(hide)
 			if((xoffset-=40)<0)
 				this.dispose=true;
