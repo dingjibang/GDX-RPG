@@ -128,15 +128,15 @@ public class GameViews implements ApplicationListener {
 		AlertUtil.draw(batch);
 		
 		batch.end();
-		
-		batch.begin();
-		Pixmap pbg=ScreenUtil.getScreenshot(0, 0, GameUtil.getScreenWidth(), GameUtil.getScreenHeight(), false);
-		Image i=new Image(new TextureRegion(new Texture(pbg),0,GameUtil.getScreenHeight(),GameUtil.getScreenWidth(),-GameUtil.getScreenHeight()));
-		i.setSize(320, 180);
-		i.draw(batch);
-		batch.end();
-		i.getTexture().dispose();
-		pbg.dispose();
+//		
+//		batch.begin();
+//		Pixmap pbg=ScreenUtil.getScreenshot(0, 0, GameUtil.getScreenWidth(), GameUtil.getScreenHeight(), false);
+//		Image i=new Image(new TextureRegion(new Texture(pbg),0,GameUtil.getScreenHeight(),GameUtil.getScreenWidth(),-GameUtil.getScreenHeight()));
+//		i.setSize(320, 180);
+//		i.draw(batch);
+//		batch.end();
+//		i.getTexture().dispose();
+//		pbg.dispose();
 
 	}
 

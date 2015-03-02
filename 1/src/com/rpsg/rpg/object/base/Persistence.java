@@ -3,7 +3,7 @@ package com.rpsg.rpg.object.base;
 import java.io.Serializable;
 
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.io.FileIO;
+import com.rpsg.rpg.io.Files;
 
 public class Persistence implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -27,16 +27,16 @@ public class Persistence implements Serializable{
 	public static String PersistenceFileName = Setting.GAME_PERSISTENCE+"persistence.es";
 	
 	public static Persistence read(){
-		Object o=FileIO.load(PersistenceFileName);
+		Object o=Files.load(PersistenceFileName);
 		if(null!=o)
 			return (Persistence)o;
 		Persistence p=new Persistence();
 		//TODO TOUCHMOD
-		FileIO.save(p,PersistenceFileName);
+		Files.save(p,PersistenceFileName);
 		return p;
 	}
 	
 	public static void save(){
-		FileIO.save(Setting.persistence,PersistenceFileName);
+		Files.save(Setting.persistence,PersistenceFileName);
 	}
 }
