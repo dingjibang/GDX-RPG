@@ -1,6 +1,5 @@
 package com.rpsg.rpg.utils.display;
 
-import box2dLight.RayHandler;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -9,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.system.base.TmxMapLoader;
+import com.rpsg.rpg.system.box2dLight.RayHandler;
 
 public class GameViewRes {
 	public static Stage stage = new Stage();
