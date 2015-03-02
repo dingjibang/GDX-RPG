@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.Array;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.SLData;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.system.ui.HoverView;
@@ -100,7 +101,7 @@ public class SaveView extends HoverView{
 //				if(currentPageStart+i>=Setting.GAME_SAVE_FILE_MAX_PAGE)
 //					continue;
 				TextButton tmp=new TextButton(""+(currentPageStart+i), butstyle);
-				tmp.setUserObject(new Mark());
+				tmp.setUserObject(new Object());
 				tmp.setOffset(1).setPad(tmp.getText().length()==2?-2:-4).setHof(-1).onClick(()->{
 					currentPage=Integer.parseInt(tmp.getText().toString());
 					generateList();
@@ -116,9 +117,9 @@ public class SaveView extends HoverView{
 					Image img=new Image(butstyle.down);
 					img.setSize(62, 33);
 					img.setPosition(tmp.getX(), tmp.getY());
-					img.setUserObject(new Mark());
+					img.setUserObject(new Object());
 					stage.addActor(img);
-					stage.addActor(new Label(currentPage+"",22).setWidth(1000).setPos((int) tmp.getX()+(tmp.getText().length()==2?1:13), (int)tmp.getY()+26).setPad(tmp.getText().length()==2?-2:-4).userObj(new Mark()));
+					stage.addActor(new Label(currentPage+"",22).setWidth(1000).setPos((int) tmp.getX()+(tmp.getText().length()==2?1:13), (int)tmp.getY()+26).setPad(tmp.getText().length()==2?-2:-4).userObj(new Object()));
 					tmp.remove();
 				}
 			}
@@ -131,21 +132,18 @@ public class SaveView extends HoverView{
 			});
 			autobut.setOffset(17).setPad(-5).setHof(-1).setSize(110,33);
 			autobut.setPosition(874,422);
-			autobut.setUserObject(new Mark());
+			autobut.setUserObject(new Object());
 			stage.addActor(autobut);
 		}else{
 			Image img=new Image(butstyle.down);
 			img.setSize(110, 33);
 			img.setPosition(874,422);
-			img.setUserObject(new Mark());
+			img.setUserObject(new Object());
 			stage.addActor(img);
-			stage.addActor(new Label("Auto",22).setWidth(1000).setPos(887, 448).setPad(-5).userObj(new Mark()));
+			stage.addActor(new Label("Auto",22).setWidth(1000).setPos(887, 448).setPad(-5).userObj(new Object()));
 		}
 		for(int i=0;i<4;i++){
-			Image im=Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebl.png").position(i>1?44+(i-2)*483:44+i*483, i>1?270:114);
-			im.setUserObject(new Mark());
-			System.out.println(im.getX());
-			stage.addActor(im);
+			SLData.generate(currentPage*4+i,i,stage);
 		}
 	}
 	
@@ -167,7 +165,4 @@ public class SaveView extends HoverView{
 		return stage.keyDown(keycode);
 	}
 	
-	class Mark{
-		
-	}
 }

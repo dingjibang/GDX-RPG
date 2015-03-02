@@ -6,9 +6,10 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import com.badlogic.gdx.Gdx;
 import com.rpsg.rpg.utils.game.Logger;
 
-public class FileIO {
+public class Files {
 
 	static File f=new File(getABSPath()+"/save/1.dat");
 	public static void save(Object o){
@@ -21,6 +22,10 @@ public class FileIO {
 		} catch (Exception e) {
 			Logger.error("´æµµ["+f.getAbsolutePath()+"]Ê§°Ü",e);
 		}
+	}
+	
+	public static boolean empty(String filePath){
+		return !Gdx.files.internal(filePath).exists();
 	}
 	
 	public static Object load(){

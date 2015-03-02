@@ -12,10 +12,10 @@ public class SaveLoad {
 		global.npcs=MapController.getNPCs();
 		global.heros=HeroController.allHeros;
 		global.currentHeros=HeroController.heros;
-		FileIO.save(global);
+		Files.save(global);
 	}
 	
 	public static Global load(int fileID){
-		return (Global) FileIO.load();
+		return (Global) Files.load();
 	}
 }
