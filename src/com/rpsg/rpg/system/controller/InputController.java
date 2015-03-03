@@ -1,7 +1,7 @@
 package com.rpsg.rpg.system.controller;
 
 import com.badlogic.gdx.Input.Keys;
-import com.rpsg.rpg.io.SaveLoad;
+import com.rpsg.rpg.io.SL;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.system.base.Initialization;
@@ -26,11 +26,11 @@ public class InputController{
 	}
 	public static boolean keyDown(int keycode,GameView gv) {
 		if(keycode==Keys.R){
-			GameViews.global=SaveLoad.load(0);
+			GameViews.global=SL.load(0);
 			Initialization.restartGame();
 		}
 		if(keycode==Keys.L){
-			SaveLoad.save(0);
+			SL.save(0);
 		}
 		if(keycode==Keys.N){
 			GameViews.global=new Global();
