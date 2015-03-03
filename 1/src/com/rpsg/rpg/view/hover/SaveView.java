@@ -9,17 +9,19 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.Array;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.SLData;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.TextButton;
 import com.rpsg.rpg.system.ui.TextButton.TextButtonStyle;
+import com.rpsg.rpg.utils.display.AlertUtil;
 
 public class SaveView extends HoverView{
 	TextButtonStyle butstyle;
+	public int currentSelect;
 	public void init() {
 		stage.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebg.png").color(1,1,1,0).action(Actions.fadeIn(0.2f)));
 		ImageButton exit=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"file_exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"file_exit_active.png"));
@@ -83,12 +85,42 @@ public class SaveView extends HoverView{
 		rrbutton.setPosition(795,422);
 		stage.addActor(rrbutton);
 		
-		generateList();
+		TextButton savebutton=new TextButton("保存游戏", butstyle).onClick(()->{
+			if(currentSelect!=0){
+				
+			}else{
+				AlertUtil.add("请选择要保存的位置。", AlertUtil.Yellow);
+				Music.playSE("err");
+			}
+		});
+		savebutton.setOffset(10).setPad(1).setHof(-2).setSize(192,58);
+		savebutton.setPosition(562,28);
+		stage.addActor(savebutton);
 		
+		TextButton cancelbutton=new TextButton("取消", butstyle).onClick(()->{
+			disposed=true;
+		});
+		cancelbutton.setOffset(10).setPad(1).setHof(-2).setSize(192,58);
+		cancelbutton.setPosition(792,28);
+		stage.addActor(cancelbutton);
+		
+		generateList();
+		stage.getActors().forEach((act)->{
+			if(act instanceof TextButton && act.getUserObject()==null)
+				act.addListener(new InputListener(){
+					public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
+						Music.playSE("snd210");
+					}
+					public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+						return true;
+					}
+				});
+		});
 	}
 	
 	int currentPageStart=1,currentPage=1;
 	public void generateList(){
+		currentSelect=0;
 		com.badlogic.gdx.utils.Array<Actor> removeList=new Array<Actor>();
 		stage.getActors().forEach((Actor actor)->{
 			if(actor.getUserObject()!=null)
@@ -143,8 +175,20 @@ public class SaveView extends HoverView{
 			stage.addActor(new Label("Auto",22).setWidth(1000).setPos(887, 448).setPad(-5).userObj(new Object()));
 		}
 		for(int i=0;i<4;i++){
-			SLData.generate(currentPage*4+i,i,stage);
+			SLData.generate(currentPage*4+i,i,stage,this);
 		}
+		
+		stage.getActors().forEach((act)->{
+			if(act instanceof TextButton && act.getUserObject()!=null)
+				act.addListener(new InputListener(){
+					public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
+						Music.playSE("snd210");
+					}
+					public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+						return true;
+					}
+				});
+		});
 	}
 	
 	public void logic() {
