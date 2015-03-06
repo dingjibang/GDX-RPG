@@ -192,7 +192,7 @@ public class GameMenuView extends StackView{
 // 		bluredBG.dispose();
 // 		normalBG.dispose();
  		MenuController.bg.dispose();
-//		MenuControl.pbg.dispose();
+ 		MenuController.pbg.dispose();
  		MenuController.blurbg.dispose();
  		MenuController.bbg.dispose();
 		for(View view:viewStack)

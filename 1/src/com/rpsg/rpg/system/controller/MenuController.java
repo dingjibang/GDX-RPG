@@ -18,7 +18,7 @@ public class MenuController {
 		GameViews.gameview.stackView=new GameMenuView();
 		pbg=ScreenUtil.getScreenshot(0, 0, GameUtil.getScreenWidth(), GameUtil.getScreenHeight(), false);
 		MenuController.bg=new Image(new TextureRegion(new Texture(pbg),0,GameUtil.getScreenHeight(),GameUtil.getScreenWidth(),-GameUtil.getScreenHeight()));
-		bbg=BlurUtil.blur(pbg, 5, 5, true);
+		bbg=BlurUtil.blur(pbg, 5, 5, false);
 		blurbg= new Image(new TextureRegion(new Texture(bbg),0,GameUtil.getScreenHeight(),GameUtil.getScreenWidth(),-GameUtil.getScreenHeight()));
 		GameViews.gameview.stackView.params.put("bg",MenuController.bg);
 		GameViews.gameview.stackView.params.put("blurbg",blurbg);

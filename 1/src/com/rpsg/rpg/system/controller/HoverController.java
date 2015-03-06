@@ -21,6 +21,10 @@ public class HoverController{
 		}
 	}
 	
+	public static void add(HoverView hv){
+		stack.add(hv);
+	}
+	
 	public static void draw(SpriteBatch batch){
 		logic();
 		stack.forEach((view)->view.draw(batch));

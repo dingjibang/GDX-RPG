@@ -1,15 +1,11 @@
 package com.rpsg.rpg.system.base;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.GameViewRes;
-
 
 public class Res {
 //	private static Map<String,Image> pool=new HashMap<String, Image>();

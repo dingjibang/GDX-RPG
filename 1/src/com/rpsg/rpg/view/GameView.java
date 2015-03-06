@@ -1,15 +1,10 @@
 package com.rpsg.rpg.view;
 
-
-
 import shaders.DiffuseShader;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -24,11 +19,9 @@ import com.rpsg.rpg.system.base.TmxMapLoader.Parameters;
 import com.rpsg.rpg.system.box2dLight.LightMap;
 import com.rpsg.rpg.system.box2dLight.RayHandler;
 import com.rpsg.rpg.system.controller.*;
-import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.StackView;
 import com.rpsg.rpg.utils.display.*;
-import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
 
 public class GameView extends View{
