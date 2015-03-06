@@ -15,9 +15,13 @@ public abstract class HoverView{
 		init();
 	}
 	
+	public void setDispose(){
+		this.disposed=true;
+	}
+	
 	public void dispose(){
-		stage.dispose();
 		close();
+		stage.dispose();
 	}
 	
 	public abstract void init();

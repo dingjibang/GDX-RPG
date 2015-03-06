@@ -104,8 +104,9 @@ public class Label extends Widget {
 
 
 
-	public void setAlignX(int alignX) {
+	public Label setAlignX(int alignX) {
 		this.alignX = alignX;
+		return this;
 	}
 
 	public Label color(float r,float g,float b,float a){
