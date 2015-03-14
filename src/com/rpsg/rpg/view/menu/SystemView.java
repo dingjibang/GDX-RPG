@@ -22,6 +22,7 @@ import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.system.ui.CheckBox;
 import com.rpsg.rpg.system.ui.DefaultIView;
+import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.Slider;
@@ -33,6 +34,7 @@ import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.TimeUtil;
 import com.rpsg.rpg.view.GameViews;
+import com.rpsg.rpg.view.hover.ConfirmView;
 import com.rpsg.rpg.view.hover.SaveView;
 
 public class SystemView extends DefaultIView{
@@ -83,14 +85,18 @@ public class SystemView extends DefaultIView{
 		sbutton.setPosition(180, 14);
 		group.addActor(sbutton);
 		TextButton sbutton2=new TextButton("读取游戏", butstyle).onClick(()->{
+			HoverController.add(com.rpsg.rpg.view.hover.LoadView.class);
 		});
 		sbutton2.setOffset(17).setSize(250,60);
 		sbutton2.setPosition(444, 14);
 		group.addActor(sbutton2);
 		TextButton sbutton3=new TextButton("回到菜单", butstyle).onClick(()->{
-			GameViews.state=GameViews.STATE_LOGO;
-			GameViews.gameview.dispose();
-			GameViews.gameview=null;
+			HoverController.add(ConfirmView.getDefault("确定要回到主菜单么？如未存档当前档案将会消失", (view)->{
+				GameViews.state=GameViews.STATE_LOGO;
+				GameViews.gameview.dispose();
+				GameViews.gameview=null;
+				((HoverView)view).disposed=true;
+			}));
 		});
 		sbutton3.setOffset(17).setSize(250,60);
 		sbutton3.setPosition(710, 14);

@@ -45,7 +45,7 @@ public class SL {
 	}
 	
 	public static Global load(int fileID){
-		return (Global) Files.load();
+		return (Global) Files.load(Setting.GAME_PERSISTENCE+fileID+".dat");
 	}
 	
 	public static boolean delete(int fileID){

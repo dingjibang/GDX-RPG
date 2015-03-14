@@ -7,22 +7,34 @@ import com.rpsg.rpg.object.base.ObjectRunnable;
 import com.rpsg.rpg.system.base.Confirm;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.HoverView;
+import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.TextButton;
 import com.rpsg.rpg.system.ui.TextButton.*;
+import com.rpsg.rpg.utils.game.GameUtil;
 
 public class ConfirmView extends HoverView{
 	
+	String msg;
+	Confirm[] confirms;
 	public ConfirmView(String msg,Confirm ...confirms){
-		TextButtonStyle style=new TextButtonStyle();
-		style.up=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebut.png");
-		style.down=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebuth.png");
-		for(Confirm con:confirms){
-			stage.addActor(new TextButton(con.name, style));
-		}
+		this.msg=msg;
+		this.confirms=confirms;
 	}
 	
+	static TextButtonStyle style=new TextButtonStyle();
+	static{	
+		style.up=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebut.png");
+		style.down=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebuth.png");
+	}
 	public void init() {
-		
+		int offset=0;
+		stage.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebl.png").size(GameUtil.screen_width, GameUtil.screen_height).color(0,0,0,0.9f));
+		for(Confirm con:confirms){
+			TextButton but= new TextButton(con.name, style).onClick(()->con.callBack.run(this)).setHof(-2).setWH(200, 50).setOffset(12);
+			but.setPosition(offset+=277, 200);
+			stage.addActor(but);
+		}
+		stage.addActor(new Label(msg,22).setPos(0, 370).setAlignX(503).setWidth(1000));
 	}
 	
 	
@@ -44,8 +56,9 @@ public class ConfirmView extends HoverView{
 		return stage.keyDown(keycode);
 	}
 	
-	public static ConfirmView generateOKCancelConfirmView(String msg,ObjectRunnable okCallBack){
+	public static ConfirmView getDefault(String msg,ObjectRunnable okCallBack){
 		ConfirmView view = new ConfirmView(msg,Confirm.OK(okCallBack),Confirm.CANCEL((view2)->((HoverView)view2).disposed=true));
+		view.superInit();
 		return view;
 	}
 }
