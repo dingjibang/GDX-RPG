@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 
 
+
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -13,8 +15,10 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Files;
 import com.rpsg.rpg.system.base.Res;
+import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.Label;
+import com.rpsg.rpg.view.hover.LoadView;
 import com.rpsg.rpg.view.hover.SaveView;
 
 public class SLData implements Serializable{
@@ -28,7 +32,7 @@ public class SLData implements Serializable{
 	public String saveDate;
 	public String gameDate;
 	public String heroName;
-	public static void generate(int id,int i,Stage stage,SaveView sv) {
+	public static void generate(int id,int i,Stage stage,HoverView sv) {
 		Image im=Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebl.png").position(i>1?44+(i-2)*483:44+i*483, i>1?270:114);
 		im.setUserObject(new exMask());
 		stage.addActor(im);
@@ -39,15 +43,20 @@ public class SLData implements Serializable{
 					((Image)actor).setColor(1,1,1,1);
 			});
 			im.color(0,0,0,0.5f);
-			sv.currentSelect=id;
+			if(sv instanceof SaveView)
+				((SaveView)sv).currentSelect=id;
+			else
+				((LoadView)sv).currentSelect=id;
 		});
 		String fileName = Setting.GAME_PERSISTENCE+(id+"_sld.dat");
 		if(Files.empty(Files.getABSPath()+fileName)){
 			slData = new SLData();
-			slData.thumbnail=Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"ea.png");
+			String path=Setting.GAME_RES_IMAGE_MENU_SYSTEM+"ea.png";
+			slData.thumbnail=Res.get(path);
 			stage.addActor(new Label("¿ÕÎ»ÖÃ",26).userObj(new Object()).setWidth(1000).setPos(i>1?324+(i-2)*483:324+i*483, i>1?347:191));
 		}else{
 			slData = (SLData) Files.load(fileName);
+			Res.dispose("save/"+id+".png");
 			Texture txt=Res.getTexture("save/"+id+".png");
 			slData.thumbnail=new Image(new TextureRegion(txt,0,txt.getHeight(),txt.getWidth(),-txt.getHeight()));
 			stage.addActor(new Label("LV "+slData.level,30).userObj(new Object()).setPad(-5).setWidth(1000).setPos(i>1?270+(i-2)*483:270+i*483, i>1?382:226));
@@ -62,7 +71,5 @@ public class SLData implements Serializable{
 		stage.addActor(new Label(id+"",14).userObj(new Object()).setWidth(1000).setPad(-5).setPos(0, i>1?295:139).setAlignX(i>1?83+(i-2)*483:83+i*483));
 	}
 	
-	static class exMask{
-		
-	}
+	static class exMask{}
 }

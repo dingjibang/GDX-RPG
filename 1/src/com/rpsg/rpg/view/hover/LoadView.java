@@ -12,6 +12,7 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.io.SL;
 import com.rpsg.rpg.object.base.SLData;
+import com.rpsg.rpg.system.base.Initialization;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.system.ui.HoverView;
@@ -20,8 +21,10 @@ import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.TextButton;
 import com.rpsg.rpg.system.ui.TextButton.TextButtonStyle;
 import com.rpsg.rpg.utils.display.AlertUtil;
+import com.rpsg.rpg.view.GameViews;
+import com.rpsg.rpg.object.base.Global;;
 
-public class SaveView extends HoverView{
+public class LoadView extends HoverView{
 	TextButtonStyle butstyle;
 	public int currentSelect=-1;
 	public void init() {
@@ -87,16 +90,20 @@ public class SaveView extends HoverView{
 		rrbutton.setPosition(795,422);
 		stage.addActor(rrbutton);
 		
-		TextButton savebutton=new TextButton("保存游戏", butstyle).onClick(()->{
-			HoverController.add(ConfirmView.getDefault("确定要保存到这个位置么？", (view)->{
+		TextButton savebutton=new TextButton("读取游戏", butstyle).onClick(()->{
+			HoverController.add(ConfirmView.getDefault("确定要读取这个存档么？", (view)->{
 				if(currentSelect!=-1){
-					if(SL.save(currentSelect))
-						AlertUtil.add("存档完成。", AlertUtil.Green);
-					else
-						AlertUtil.add("存档失败。", AlertUtil.Red);
+					Object o=SL.load(currentSelect);
+					if(o!=null){
+						AlertUtil.add("读取档案成功。", AlertUtil.Green);
+						GameViews.global=(Global)o;
+						Initialization.restartGame();
+						this.disposed=true;
+					}else
+						AlertUtil.add("读取档案失败。", AlertUtil.Red);
 					generateList();
 				}else{
-					AlertUtil.add("请选择要保存的位置。", AlertUtil.Yellow);
+					AlertUtil.add("请选择要读取的档案位置。", AlertUtil.Yellow);
 					Music.playSE("err");
 				}
 				((HoverView)view).disposed=true;

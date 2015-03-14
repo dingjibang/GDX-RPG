@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.GameViewRes;
+import com.rpsg.rpg.utils.game.Logger;
 
 public class Res {
 //	private static Map<String,Image> pool=new HashMap<String, Image>();
@@ -51,5 +52,14 @@ public class Res {
 //			pool.get(s).dispose();
 //		}
 //		pool.clear();
+	}
+	
+	public static void dispose(String resPath){
+		try{
+			ma.unload(resPath);
+			while(!ma.update());
+		}catch(Exception e){
+			Logger.error("Œﬁ∑®–∂‘ÿŒ∆¿Ì - "+resPath);
+		}
 	}
 }
