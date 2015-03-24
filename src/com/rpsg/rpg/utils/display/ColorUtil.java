@@ -1,12 +1,13 @@
 package com.rpsg.rpg.utils.display;
 
 
+import box2dLight.RayHandler;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.system.box2dLight.RayHandler;
 import com.rpsg.rpg.view.GameViews;
 
 
@@ -38,7 +39,7 @@ public class ColorUtil {
 		if(Setting.persistence.betterLight){
 			RayHandler ray=GameViews.gameview.ray;
 			if(GameViews.global.mapColor==NIGHT){
-				ray.setAmbientLight(0.8f,0.8f,0.8f,1);
+				ray.setAmbientLight(0.8f,0.8f,0.8f,0.1f);
 				ray.render();
 			}
 		}
