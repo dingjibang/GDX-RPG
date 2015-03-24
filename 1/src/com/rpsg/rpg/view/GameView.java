@@ -1,6 +1,7 @@
 package com.rpsg.rpg.view;
 
 import shaders.DiffuseShader;
+import box2dLight.RayHandler;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -16,8 +17,6 @@ import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.*;
 import com.rpsg.rpg.system.base.TmxMapLoader.Parameters;
-import com.rpsg.rpg.system.box2dLight.LightMap;
-import com.rpsg.rpg.system.box2dLight.RayHandler;
 import com.rpsg.rpg.system.controller.*;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.StackView;

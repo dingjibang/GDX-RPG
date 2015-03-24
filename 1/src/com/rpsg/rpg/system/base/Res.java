@@ -22,6 +22,8 @@ public class Res {
 //			}
 //		}
 //		if(pool.get(resPath)==null){
+			if(!ma.isLoaded(resPath))
+				Logger.info("≥¢ ‘∂¡»°Œ∆¿Ì£∫"+resPath);
 			ma.load(resPath,Texture.class);
 			while(!ma.update());
 //			pool.put(resPath, new Image((Texture)ma.get(resPath)));

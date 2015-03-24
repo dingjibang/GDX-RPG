@@ -23,7 +23,7 @@ public class Main {
 			cfg.initialBackgroundColor=Color.WHITE;
 			cfg.samples=Setting.persistence.antiAliasing?8:0;
 			RayHandler.setGammaCorrection(true);
-			RayHandler.useDiffuseLight(false);
+			RayHandler.useDiffuseLight(true);
 			new LwjglApplication(new GameViews(), cfg);
 			Logger.info("底层引擎初始化成功。");
 		} catch (Exception e) {
