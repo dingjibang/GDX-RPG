@@ -9,7 +9,7 @@ import com.rpsg.rpg.object.base.MsgType;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.utils.display.ColorUtil;
-import com.rpsg.rpg.utils.display.FG;
+import com.rpsg.rpg.utils.display.FG; 
 import com.rpsg.rpg.utils.display.Msg;
 import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.game.Base;
