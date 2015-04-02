@@ -11,7 +11,7 @@ import com.rpsg.rpg.utils.game.Logger;
 public class ThreadPool {
 
 	public static List<List<Script>> pool =new LinkedList<List<Script>>();
-	
+	 
 	private static List<Script> removeList=new ArrayList<Script>();
 	public static synchronized void logic(){
 		removeList.clear();
