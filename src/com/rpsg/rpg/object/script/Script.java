@@ -80,6 +80,13 @@ public abstract class Script implements MsgType,FGType{
 		return exe;
 	}
 	
+	public BaseScriptExecutor __$(BaseScriptExecutor exe){
+		scripts.remove(scripts.size()-1);
+		scripts.add(point, exe);
+		point--;
+		return exe;
+	}
+	
 	public BaseScriptExecutor $ (BaseScriptExecutor exe){
 		scripts.add(exe);
 		return exe;

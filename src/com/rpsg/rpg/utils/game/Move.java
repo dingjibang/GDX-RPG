@@ -19,6 +19,7 @@ public class Move {
 			}
 			public void init() {
 				script.npc.walk(step);
+				script.npc.testWalk();
 			}
 		});
 	}
