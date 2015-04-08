@@ -19,14 +19,14 @@ public class SayHelloWorld extends Script{
 		});
 //		setKeyLocker(true);
 //		showMSG();
-//		showFGLeft(°®ÀöË¿Á¢»æ, Ë¼¿¼);
-//		say("ÄãºÃ!");
-//		select("ÄãºÃ","ºÃÄãÂè±Æ");
+//		showFGLeft(çˆ±ä¸½ä¸ç«‹ç»˜, æ€è€ƒ);
+//		say("ä½ å¥½!");
+//		select("ä½ å¥½","å¥½ä½ å¦ˆé€¼");
 //		$(()->{
-//			if(currentSelect("ÄãºÃ"))
-//				_$(say("ºÃÄãÂè±Æ"));
+//			if(currentSelect("ä½ å¥½"))
+//				_$(say("å¥½ä½ å¦ˆé€¼"));
 //			else
-//				_$(say("¹ö´Ö"));
+//				_$(say("æ»šç²—"));
 //		});
 //		hideFG();
 //		hideMSG();

@@ -18,9 +18,9 @@ public class Files {
 			ObjectOutputStream oos=new ObjectOutputStream(fos);
 			oos.writeObject(o);
 			oos.close();
-			Logger.info("¥Êµµ["+f.getAbsolutePath()+"]≥…π¶");
+			Logger.info("Â≠òÊ°£["+f.getAbsolutePath()+"]ÊàêÂäü");
 		} catch (Exception e) {
-			Logger.error("¥Êµµ["+f.getAbsolutePath()+"] ß∞‹",e);
+			Logger.error("Â≠òÊ°£["+f.getAbsolutePath()+"]Â§±Ë¥•",e);
 		}
 	}
 	
@@ -35,10 +35,10 @@ public class Files {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			o = ois.readObject();
 			ois.close();
-			Logger.info("∂¡µµ["+f.getAbsolutePath()+"]≥…π¶");
+			Logger.info("ËØªÊ°£["+f.getAbsolutePath()+"]ÊàêÂäü");
 			return o;
 		} catch (Exception e) {
-			Logger.error("∂¡µµ["+f.getAbsolutePath()+"] ß∞‹",e);
+			Logger.error("ËØªÊ°£["+f.getAbsolutePath()+"]Â§±Ë¥•",e);
 		}
 		return null;
 	}

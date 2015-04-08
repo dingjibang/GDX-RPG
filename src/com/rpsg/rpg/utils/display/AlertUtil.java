@@ -28,7 +28,7 @@ public class AlertUtil {
 		Green=new Image(Setting.GAME_RES_IMAGE_GLOBAL+"o.png");
 		Red=new Image(Setting.GAME_RES_IMAGE_GLOBAL+"x.png");
 		box=processNinePatchFile(Setting.GAME_RES_IMAGE_GLOBAL+"box.9.png");
-		Logger.info("ÌáÊ¾Ä£¿éÔØÈëÍê³É¡£");
+		Logger.info("æç¤ºæ¨¡å—è½½å…¥å®Œæˆã€‚");
 	}
 	
 	public static void add(String alert,Image type){

@@ -173,14 +173,14 @@ public class EquipView extends View{
 		msg.setPosition(380, 140);
 		stage.addActor(msg);
 		olist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
-		olist.getItems().add(new ListItem("×°±¸").setRunnable(()->{
+		olist.getItems().add(new ListItem("è£…å¤‡").setRunnable(()->{
 			ItemUtil.useEquip(HeroController.heros.get(currentSelectHero), equip);
 			gengrateEList();
 		}));
-		olist.getItems().add(new ListItem("¶ªÆú").setRunnable(()->{
+		olist.getItems().add(new ListItem("ä¸¢å¼ƒ").setRunnable(()->{
 			if(equip.throwable){
 				ItemUtil.throwItem("equipment",equip);
-				AlertUtil.add("¶ªÆú³É¹¦¡£", AlertUtil.Yellow);
+				AlertUtil.add("ä¸¢å¼ƒæˆåŠŸã€‚", AlertUtil.Yellow);
 				gengrateEList();
 			}
 		}));
@@ -192,7 +192,7 @@ public class EquipView extends View{
 			stage.setKeyboardFocus(null);
 		};
 		cancel.run();
-		olist.getItems().add(new ListItem("È¡Ïû"));
+		olist.getItems().add(new ListItem("å–æ¶ˆ"));
 		olist.onDBClick(()->{
 			olist.getSelected().run();
 			cancel.run();
@@ -355,11 +355,11 @@ public class EquipView extends View{
 		sellist.clearItems();
 		Array<EQuipSelect> item = sellist.getItems();
 		Hero hero=HeroController.heros.get(currentSelectHero);
-		item.add(new EQuipSelect(Equipment.EQUIP_WEAPON,hero.getEquipName("weapon"),"ÎäÆ÷"));
-		item.add(new EQuipSelect(Equipment.EQUIP_CLOTHES,hero.getEquipName("clothes"),"ÒÂ·ş"));
-		item.add(new EQuipSelect(Equipment.EQUIP_SHOES,hero.getEquipName("shoes"),"Ğ¬×Ó"));
-		item.add(new EQuipSelect(Equipment.EQUIP_ORNAMENT1,hero.getEquipName("ornament1"),"×°ÊÎ"));
-		item.add(new EQuipSelect(Equipment.EQUIP_ORNAMENT2,hero.getEquipName("ornament2"),"×°ÊÎ"));
+		item.add(new EQuipSelect(Equipment.EQUIP_WEAPON,hero.getEquipName("weapon"),"æ­¦å™¨"));
+		item.add(new EQuipSelect(Equipment.EQUIP_CLOTHES,hero.getEquipName("clothes"),"è¡£æœ"));
+		item.add(new EQuipSelect(Equipment.EQUIP_SHOES,hero.getEquipName("shoes"),"é‹å­"));
+		item.add(new EQuipSelect(Equipment.EQUIP_ORNAMENT1,hero.getEquipName("ornament1"),"è£…é¥°"));
+		item.add(new EQuipSelect(Equipment.EQUIP_ORNAMENT2,hero.getEquipName("ornament2"),"è£…é¥°"));
 		sellist.setSelectedIndex(currentSelectEquip);
 		elist.clearItems();
 		Array<Equipment> eitem=elist.getItems();
@@ -369,7 +369,7 @@ public class EquipView extends View{
 				if((e.equipType.equals(item.get(currentSelectEquip).type)) && (e.onlyFor==null || e.onlyFor==hero.getClass()))
 					eitem.add(e);
 			});
-			equip=new TipEquip("ÌáÊ¾", sellist.getSelected().tip);
+			equip=new TipEquip("æç¤º", sellist.getSelected().tip);
 		}
 			
 	}

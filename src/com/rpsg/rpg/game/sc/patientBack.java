@@ -9,9 +9,9 @@ public class patientBack extends SpellCard{
 	private static final long serialVersionUID = 1L;
 
 	public patientBack(){
-		name="»Ø´ºÊõ";
-		illustration="Ê¹ÓÃºó£¬½«¶Ô·ÇÂúÉí´¯ğê×´Ì¬µÄ¶ÓÓÑ»Ö¸´50µã+10%Ä§¹¥µÄÉúÃüÖµ£¬¿ÉÒÔÔÚ·ÇÕ½¶·×´Ì¬ÏÂÊ¹ÓÃ¡£";
-		story="return of spring£¨¹ö";
+		name="å›æ˜¥æœ¯";
+		illustration="ä½¿ç”¨åï¼Œå°†å¯¹éæ»¡èº«ç–®ç—çŠ¶æ€çš„é˜Ÿå‹æ¢å¤50ç‚¹+10%é­”æ”»çš„ç”Ÿå‘½å€¼ï¼Œå¯ä»¥åœ¨éæˆ˜æ–—çŠ¶æ€ä¸‹ä½¿ç”¨ã€‚";
+		story="return of springï¼ˆæ»š";
 		magicConsume=30;
 		addParam.put("hp", 50);
 		added=10;
@@ -21,15 +21,15 @@ public class patientBack extends SpellCard{
 	public boolean use(Hero user,Hero to){
 		if(!to.full("hp"))
 			if(user.subProp("mp",magicConsume)){
-				AlertUtil.add(to.toString()+"³É¹¦»Ö¸´ÁË"+addParam.get("hp")+"µãÉúÃüÖµ¡£", AlertUtil.Green);
+				AlertUtil.add(to.toString()+"æˆåŠŸæ¢å¤äº†"+addParam.get("hp")+"ç‚¹ç”Ÿå‘½å€¼ã€‚", AlertUtil.Green);
 				to.addProp("hp", addParam.get("hp"));
 				Music.playSE("bc");
 			}else{
-				AlertUtil.add(user.toString()+"µÄÑıÁ¦²»×ãÒÔÊ¹ÓÃÕâ¸ö¼¼ÄÜ¡£", AlertUtil.Red);
+				AlertUtil.add(user.toString()+"çš„å¦–åŠ›ä¸è¶³ä»¥ä½¿ç”¨è¿™ä¸ªæŠ€èƒ½ã€‚", AlertUtil.Red);
 				Music.playSE("err");
 			}
 		else{
-			AlertUtil.add(to.toString()+"µÄÉúÃüÖµÒÑÂú¡£", AlertUtil.Yellow);
+			AlertUtil.add(to.toString()+"çš„ç”Ÿå‘½å€¼å·²æ»¡ã€‚", AlertUtil.Yellow);
 			Music.playSE("err");
 		}
 		return false;

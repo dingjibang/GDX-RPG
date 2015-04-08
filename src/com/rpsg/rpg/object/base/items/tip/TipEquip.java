@@ -8,9 +8,9 @@ public class TipEquip extends Equipment{
 	private static final long serialVersionUID = 1L;
 
 	public TipEquip() {
-		name="ÌáÊ¾";
-		statusName="ÌáÊ¾";
-		illustration="ÔÚ×ó²àÑ¡ÔñÒ»Ïî×°±¸£¬ÔÚÉÏ·½Ñ¡ÔñĞ¶ÏÂµ±Ç°×°±¸»ò¶ªÆú¡¢¸ü»»ÎªÆäËû×°±¸¡£Ê¹ÓÃÊó±ê»ò´¥ÆÁÍÏ¶¯ÉÏ·½×°±¸À¸¿ÉÒÔ½«ÁĞ±íÉÏÏÂ¹ö¶¯¡£";
+		name="æç¤º";
+		statusName="æç¤º";
+		illustration="åœ¨å·¦ä¾§é€‰æ‹©ä¸€é¡¹è£…å¤‡ï¼Œåœ¨ä¸Šæ–¹é€‰æ‹©å¸ä¸‹å½“å‰è£…å¤‡æˆ–ä¸¢å¼ƒã€æ›´æ¢ä¸ºå…¶ä»–è£…å¤‡ã€‚ä½¿ç”¨é¼ æ ‡æˆ–è§¦å±æ‹–åŠ¨ä¸Šæ–¹è£…å¤‡æ å¯ä»¥å°†åˆ—è¡¨ä¸Šä¸‹æ»šåŠ¨ã€‚";
 		onlyFor=null;
 		disable=true;
 	}

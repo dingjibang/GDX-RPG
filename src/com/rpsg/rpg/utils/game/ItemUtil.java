@@ -26,7 +26,7 @@ public class ItemUtil {
 	public static boolean throwItem(String type,Item item,int count){
 		if(item.count==0){
 			if(!GameViews.global.getItems(type).remove(item)){
-				AlertUtil.add("·Ç·¨²Ù×÷¡£", AlertUtil.Red);
+				AlertUtil.add("éæ³•æ“ä½œã€‚", AlertUtil.Red);
 				return false;
 			}
 		}else{

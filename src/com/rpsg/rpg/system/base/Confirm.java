@@ -12,10 +12,10 @@ public class Confirm {
 	}
 	
 	public static Confirm OK(ObjectRunnable run){
-		return new Confirm("确认", run);
+		return new Confirm("纭", run);
 	}
 	
 	public static Confirm CANCEL(ObjectRunnable run){
-		return new Confirm("取消", run);
+		return new Confirm("鍙栨秷", run);
 	}
 }

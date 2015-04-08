@@ -1,24 +1,24 @@
 package com.rpsg.rpg.object.base;
 
 public interface MsgType {
-	public static String °®ÀöË¿="alice.png";
-	public static String Õı³£="default.png";
-	public static String Ü½À¼="flandre.png";
-	public static String ²¼¶¼="futo.png";
-	public static String ÓĞÆÜ="hero.png";
-	public static String »ÔÒ¹="kaguya.png";
-	public static String Áµ="koishi.png";
-	public static String ¾õ="kokoro.png";
-	public static String Ä§ÀíÉ³="marisa.png";
-	public static String ÃÃºì="mekou.png";
-	public static String Éñ×Ó="miko.png";
+	public static String çˆ±ä¸½ä¸="alice.png";
+	public static String æ­£å¸¸="default.png";
+	public static String èŠ™å…°="flandre.png";
+	public static String å¸ƒéƒ½="futo.png";
+	public static String æœ‰æ –="hero.png";
+	public static String è¾‰å¤œ="kaguya.png";
+	public static String æ‹="koishi.png";
+	public static String è§‰="kokoro.png";
+	public static String é­”ç†æ²™="marisa.png";
+	public static String å¦¹çº¢="mekou.png";
+	public static String ç¥å­="miko.png";
 	public static String npc="npc.png";
-	public static String ÆäËû="other.png";
-	public static String ÁéÃÎ="reimu.png";
-	public static String ÀÙÃ×="remilia.png";
-	public static String Á«×Ó="renko.png";
-	public static String †DÒ¹="sakura.png";
-	public static String ÔçÃç="sanae.png";
-	public static String ÑıÃÎ="youmu.png";
-	public static String ×Ï="yukari.png";
+	public static String å…¶ä»–="other.png";
+	public static String çµæ¢¦="reimu.png";
+	public static String è•¾ç±³="remilia.png";
+	public static String è²å­="renko.png";
+	public static String å’²å¤œ="sakura.png";
+	public static String æ—©è‹—="sanae.png";
+	public static String å¦–æ¢¦="youmu.png";
+	public static String ç´«="yukari.png";
 }

@@ -12,10 +12,10 @@ public class Marisa extends Hero{
 
 	public void first(){
 		imgPath="/walk_marisa.png";
-		name="ÎíÓêÄ§ÀíÉ³";
+		name="é›¾é›¨é­”ç†æ²™";
 		jname="Kirisame Marisa";
 		fgname="marisa";
-		tag="Ä§·¨Ê¹";
+		tag="é­”æ³•ä½¿";
 		sc.add(new MagicGun());
 		sc.add(new patientBack());
 		prop.replace("hp", 50);

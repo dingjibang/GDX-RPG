@@ -9,10 +9,10 @@ public class Yuuka extends Hero{
 
 	public void first(){
 		imgPath="/walk_yuuka.png";
-		name="·ç¼ûÓÄÏã";
+		name="é£è§å¹½é¦™";
 		jname="Kazami Yuuka";
 		fgname="yuuka";
-		tag="Ñı¹Ö";
+		tag="å¦–æ€ª";
 	}
 	
 	public void init(){

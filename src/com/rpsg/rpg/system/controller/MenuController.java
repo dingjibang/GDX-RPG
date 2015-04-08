@@ -23,7 +23,7 @@ public class MenuController {
 		GameViews.gameview.stackView.params.put("bg",MenuController.bg);
 		GameViews.gameview.stackView.params.put("blurbg",blurbg);
 		GameViews.gameview.stackView.init();
-		Logger.info("²Ëµ¥´´½¨Íê³É¡£");
+		Logger.info("èœå•åˆ›å»ºå®Œæˆã€‚");
 	}
 	
 	public static void keyDown(int keyCode){

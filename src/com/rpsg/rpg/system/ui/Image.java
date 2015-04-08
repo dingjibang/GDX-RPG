@@ -16,8 +16,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.rpg.core.Setting;
 /**
- * GDX-RPG Image×é¼ş
- * ÔÊĞí¿ªÆô¿¹¾â³İ¡¢Ïú»ÙµÄÍ¼ĞÎ×é¼ş¡£
+ * GDX-RPG Imageç»„ä»¶
+ * å…è®¸å¼€å¯æŠ—é”¯é½¿ã€é”€æ¯çš„å›¾å½¢ç»„ä»¶ã€‚
  *
  */
 public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{

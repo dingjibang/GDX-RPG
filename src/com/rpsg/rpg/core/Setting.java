@@ -5,7 +5,7 @@ import com.rpsg.rpg.object.base.Persistence;
 public class Setting {
 	public static final String GAME_VERSION="Build 155 20150222";
 	public static final String GDXRPG_VERSION="Alpha 28";
-	//×ÊÔ´Â·¾¶
+	//èµ„æºè·¯å¾„
 	public static final String GAME_RES_PATH="data";
 	public static final String GAME_RES_IMAGE="/images";
 	public static final String GAME_RES_IMAGE_NUMBER=GAME_RES_PATH+GAME_RES_IMAGE+"/number/";
@@ -31,18 +31,18 @@ public class Setting {
 	public static final String GAME_RES_IMAGE_GLOBAL=GAME_RES_PATH+GAME_RES_IMAGE+"/global/";
 	public static final String GAME_RES_PARTICLE=GAME_RES_PATH+"/particle/";
 	
-	//´æµµ×î´óÒ³Êı
+	//å­˜æ¡£æœ€å¤§é¡µæ•°
 	public static final int GAME_SAVE_FILE_MAX_PAGE=20;
 	
-	//¸ß¼¶¸öĞÔ»¯ÏµÍ³ÉèÖÃ´æ´¢
+	//é«˜çº§ä¸ªæ€§åŒ–ç³»ç»Ÿè®¾ç½®å­˜å‚¨
 	public static final String GAME_PERSISTENCE="/save/";
 	public static Persistence persistence;
 	
-	//ÎÄ±¾¼ä¾à
+	//æ–‡æœ¬é—´è·
 	public static final int STRING_PADDING_TB=3;
 	public static final int STRING_PADDING_LR=1;
 	
-	//ÏµÍ³²Ëµ¥ÎÄ×ÖÏÔÊ¾ËÙ¶ÈÄ¬ÈÏÏÔÊ¾ÎÄ×Ö
-	public static final String GAME_MENU_SYSTEM_TEST_MESSAGE="ÈËÀàÎªºÎÒª»¥ÏàÉËº¦ÄØ£¿";
+	//ç³»ç»Ÿèœå•æ–‡å­—æ˜¾ç¤ºé€Ÿåº¦é»˜è®¤æ˜¾ç¤ºæ–‡å­—
+	public static final String GAME_MENU_SYSTEM_TEST_MESSAGE="äººç±»ä¸ºä½•è¦äº’ç›¸ä¼¤å®³å‘¢ï¼Ÿ";
 	
 }

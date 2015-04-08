@@ -42,7 +42,7 @@ public class MapController {
 	public static List<IRPGObject> drawlist=new ArrayList<IRPGObject>();
 	public static NPC npc;
 	public static void init(GameView gv){
-		//³õÊ¼»¯½ÇÉ«
+		//åˆå§‹åŒ–è§’è‰²
 		HeroController.initControler();
 		if(gv.global.heros.isEmpty()){
 			HeroController.newHero(Arisu.class);
@@ -59,11 +59,11 @@ public class MapController {
 		}
 		HeroController.initHeros(gv.stage);
 		
-		//ÉèÖÃ¿¹¾â³İ
+		//è®¾ç½®æŠ—é”¯é½¿
 		if(Setting.persistence.antiAliasing)
 			gv.map.getTileSets().forEach((s)->s.forEach((tile)->tile.getTextureRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear)));
 		
-		//»ñÈ¡µÆ¹â
+		//è·å–ç¯å…‰
 		for(int i=0;i<gv.map.getLayers().getCount();i++){
 			MapLayer m = gv.map.getLayers().get(i);
 			for(MapObject obj:m.getObjects()){
@@ -76,7 +76,7 @@ public class MapController {
 			}
 		}
 		
-		//Éú³ÉNPC
+		//ç”ŸæˆNPC
 		if(gv.global.npcs.isEmpty()){
 			List<MapLayer> removeList=new ArrayList<MapLayer>();
 			for(int i=0;i<gv.map.getLayers().getCount();i++){
@@ -98,7 +98,7 @@ public class MapController {
 									 (int)(bot.getHeight()-2-((RectangleMapObject)obj).getRectangle().getY()/48),
 									 i-removeList.size());
 							npc.params=GameUtil.parseMapProperties(obj.getProperties());
-							Logger.info("NPCÉú³É³É¹¦["+npc.position+","+npc.mapx+":"+npc.mapy+"]");
+							Logger.info("NPCç”ŸæˆæˆåŠŸ["+npc.position+","+npc.mapx+":"+npc.mapy+"]");
 							gv.stage.addActor(npc);
 							ThreadPool.pool.add(npc.threadPool);
 						} catch (Exception e) {
@@ -129,7 +129,7 @@ public class MapController {
 				npc=n;
 			}
 		}
-		Logger.info("µØÍ¼Ä£¿éÒÑÈ«²¿¼ÓÔØÍê³É¡£");
+		Logger.info("åœ°å›¾æ¨¡å—å·²å…¨éƒ¨åŠ è½½å®Œæˆã€‚");
 	}
 	
 	public synchronized static void draw(GameView gv){

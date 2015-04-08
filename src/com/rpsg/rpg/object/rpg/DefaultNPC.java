@@ -26,7 +26,7 @@ public abstract class DefaultNPC extends NPC {
 	
 	@Override
 	public void toCollide(ScriptCollide sc) {
-		Logger.info("Åö×²Ä£¿é´¥·¢["+sc+"]");
+		Logger.info("ç¢°æ’æ¨¡å—è§¦å‘["+sc+"]");
 		if(!isScriptRunning())
 		switch(sc.collideType){
 		case ScriptCollide.COLLIDE_TYPE_FACE_Z:{

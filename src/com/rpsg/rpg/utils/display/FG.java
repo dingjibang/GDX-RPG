@@ -21,7 +21,7 @@ public class FG {
 	
 	public static void init(){
 		currentImageL=currentImageR=null;
-		Logger.info("Á¢»æ¿ØÖÆÆ÷³õÊ¼»¯Íê³É¡£");
+		Logger.info("ç«‹ç»˜æ§åˆ¶å™¨åˆå§‹åŒ–å®Œæˆã€‚");
 	}
 	
 	public static BaseScriptExecutor show(final Script script,final String imgPath,final int position){

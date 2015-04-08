@@ -6,8 +6,8 @@ public class TipSpellCard extends SpellCard{
 	private static final long serialVersionUID = 1L;
 
 	public TipSpellCard(){
-		name="ÌáÊ¾";
-		illustration="Äú¿ÉÒÔÔÚ×ó²àÑ¡ÔñÓ¢ÐÛ£¬ÏÂ·½¼´Îªµ±Ç°Ó¢ÐÛËù³ÖÓÐµÄ·û¿¨£¬µ¥»÷·û¿¨²é¿´·û¿¨ÐÅÏ¢£¬Ë«»÷·û¿¨½øÐÐ¹¦ÄÜ²Ù×÷¡£";
+		name="æç¤º";
+		illustration="æ‚¨å¯ä»¥åœ¨å·¦ä¾§é€‰æ‹©è‹±é›„ï¼Œä¸‹æ–¹å³ä¸ºå½“å‰è‹±é›„æ‰€æŒæœ‰çš„ç¬¦å¡ï¼Œå•å‡»ç¬¦å¡æŸ¥çœ‹ç¬¦å¡ä¿¡æ¯ï¼ŒåŒå‡»ç¬¦å¡è¿›è¡ŒåŠŸèƒ½æ“ä½œã€‚";
 		story="";
 		magicConsume=0;
 	}

@@ -19,8 +19,8 @@ import com.badlogic.gdx.utils.Pools;
 import com.rpsg.rpg.utils.display.FontUtil;
 
 /**
- * GDX-RPG ProgressBar×é¼ş
- * ÔÊĞíÉè¶¨±³¾°Í¼Æ¬ÑÕÉ«¡£
+ * GDX-RPG ProgressBarç»„ä»¶
+ * å…è®¸è®¾å®šèƒŒæ™¯å›¾ç‰‡é¢œè‰²ã€‚
  */
 public class ProgressBar extends Widget implements Disableable {
 	private ProgressBarStyle style;

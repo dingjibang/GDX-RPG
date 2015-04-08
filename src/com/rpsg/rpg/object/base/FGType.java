@@ -1,20 +1,20 @@
 package com.rpsg.rpg.object.base;
 
 public interface FGType {
-	public static String ÉúÆø="Angry";
-	public static String ×ÔĞÅ="Confident";
-	public static String ¿Ş="Cry";
-	public static String ´óĞ¦="Happy";
-	public static String ´ô="Horseface";
-	public static String ÆÕÍ¨="Normal";
-	public static String ±¯ÉË="Sad";
-	public static String ¾ª="Serious";
-	public static String Ğß="Shy";
-	public static String Ì¾="Sigh";
-	public static String Ğ¦="Smile";
-	public static String Ë¼¿¼="Thinking";
-	public static String °Á½¿="Tsundere";
+	public static String ç”Ÿæ°”="Angry";
+	public static String è‡ªä¿¡="Confident";
+	public static String å“­="Cry";
+	public static String å¤§ç¬‘="Happy";
+	public static String å‘†="Horseface";
+	public static String æ™®é€š="Normal";
+	public static String æ‚²ä¼¤="Sad";
+	public static String æƒŠ="Serious";
+	public static String ç¾="Shy";
+	public static String å¹="Sigh";
+	public static String ç¬‘="Smile";
+	public static String æ€è€ƒ="Thinking";
+	public static String å‚²å¨‡="Tsundere";
 	
-	public static String °®ÀöË¿Á¢»æ="alice/";
+	public static String çˆ±ä¸½ä¸ç«‹ç»˜="alice/";
 	
 }

@@ -8,12 +8,12 @@ public class Sunshade extends Equipment{
 	private static final long serialVersionUID = 1L;
 
 	public Sunshade() {
-		name="ÑôÉ¡";
-		statusName="²İĞ¬[¹¥»÷+5 Ä§¹¥+1 ÃüÖĞ-1]";
+		name="é˜³ä¼";
+		statusName="è‰é‹[æ”»å‡»+5 é­”æ”»+1 å‘½ä¸­-1]";
 		prop.replace("attack", 5);
 		prop.replace("magicAttack", 1);
 		prop.replace("hit", -1);
-		illustration="¿´ËÆºÜÆÕÍ¨µÄÒ»°ÑÑôÉ¡£¬ÓÄÏãĞ¡½ãËÆºõÎŞÊ±ÎŞ¿Ì¶¼´øÔÚÉí±ß¡£²»¹ı¾İËµÓĞÈË¿´¼ûÓÄÏãĞ¡½ãÓÃÆäÉä³öÁË¾Ş´óµÄÄ§ÅÚ¡£";
+		illustration="çœ‹ä¼¼å¾ˆæ™®é€šçš„ä¸€æŠŠé˜³ä¼ï¼Œå¹½é¦™å°å§ä¼¼ä¹æ— æ—¶æ— åˆ»éƒ½å¸¦åœ¨èº«è¾¹ã€‚ä¸è¿‡æ®è¯´æœ‰äººçœ‹è§å¹½é¦™å°å§ç”¨å…¶å°„å‡ºäº†å·¨å¤§çš„é­”ç‚®ã€‚";
 		equipType=Equipment.EQUIP_WEAPON;
 		onlyFor=Yuuka.class;
 		throwable=false;

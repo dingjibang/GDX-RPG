@@ -26,7 +26,7 @@ public class TipUtil {
 			Image i=(Image)a;
 			i.setPosition(40+(offset+=120), 520);
 		}
-		Logger.info("Í¼ĞÎÌáÊ¾¿ØÖÆÆ÷³õÊ¼»¯Íê³É¡£");
+		Logger.info("å›¾å½¢æç¤ºæ§åˆ¶å™¨åˆå§‹åŒ–å®Œæˆã€‚");
 	}
 	
 	public static void draw(){

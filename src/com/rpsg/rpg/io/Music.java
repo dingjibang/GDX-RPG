@@ -17,7 +17,7 @@ public class Music {
 	public static void playMusic(String music){
 		if(null==bgm.get(music)){
 			bgm.put(music, Gdx.audio.newMusic(Gdx.files.internal(Setting.GAME_RES_MUSIC_BGM+music)));
-			Logger.info("³É¹¦´´½¨ÒôÀÖ£º"+music);
+			Logger.info("æˆåŠŸåˆ›å»ºéŸ³ä¹ï¼š"+music);
 		}
 		bgm.get(music).play();
 		MUSIC=bgm.get(music);
@@ -31,7 +31,7 @@ public class Music {
 	public static void playSE(String name){
 		if(null==se.get(name)){
 			se.put(name, Gdx.audio.newSound(Gdx.files.internal(Setting.GAME_RES_MUSIC_SE+name+".wav")));
-			Logger.info("³É¹¦´´½¨ÒôĞ§£º"+name);
+			Logger.info("æˆåŠŸåˆ›å»ºéŸ³æ•ˆï¼š"+name);
 		}
 		se.get(name).play();
 	}

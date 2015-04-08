@@ -53,7 +53,7 @@ public class SLData implements Serializable{
 			slData = new SLData();
 			String path=Setting.GAME_RES_IMAGE_MENU_SYSTEM+"ea.png";
 			slData.thumbnail=Res.get(path);
-			stage.addActor(new Label("¿ÕÎ»ÖÃ",26).userObj(new Object()).setWidth(1000).setPos(i>1?324+(i-2)*483:324+i*483, i>1?347:191));
+			stage.addActor(new Label("ç©ºä½ç½®",26).userObj(new Object()).setWidth(1000).setPos(i>1?324+(i-2)*483:324+i*483, i>1?347:191));
 		}else{
 			slData = (SLData) Files.load(fileName);
 			Res.dispose("save/"+id+".png");

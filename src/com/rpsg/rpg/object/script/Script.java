@@ -126,7 +126,7 @@ public abstract class Script implements MsgType,FGType{
 	}
 	
 	protected BaseScriptExecutor showMSG(){
-		return Msg.show(this, Õý³£);
+		return Msg.show(this, æ­£å¸¸);
 	}
 	
 	protected BaseScriptExecutor hideMSG(){

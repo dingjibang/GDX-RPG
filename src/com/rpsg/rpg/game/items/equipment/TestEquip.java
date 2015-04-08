@@ -7,11 +7,11 @@ public class TestEquip extends Equipment{
 	private static final long serialVersionUID = 1L;
 
 	public TestEquip() {
-		name="²İĞ¬";
-		statusName="²İĞ¬[·ÀÓù+5 Ä§·À+1]";
+		name="è‰é‹";
+		statusName="è‰é‹[é˜²å¾¡+5 é­”é˜²+1]";
 		prop.replace("defense", 5);
 		prop.replace("magicDefense", 1);
-		illustration="ºÜÆÕÍ¨µÄ²İĞ¬£¬½ö½öÊÇÆ¶ÇîµÄÏóÕ÷£¬´©ÉÏÈ¥¸Ğ¾õ¹Ö¹ÖµÄ¡£";
+		illustration="å¾ˆæ™®é€šçš„è‰é‹ï¼Œä»…ä»…æ˜¯è´«ç©·çš„è±¡å¾ï¼Œç©¿ä¸Šå»æ„Ÿè§‰æ€ªæ€ªçš„ã€‚";
 		equipType=Equipment.EQUIP_SHOES;
 		onlyFor=null;
 	}

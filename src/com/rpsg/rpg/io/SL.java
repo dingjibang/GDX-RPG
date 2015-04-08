@@ -28,7 +28,7 @@ public class SL {
 			Files.save(global,Setting.GAME_PERSISTENCE+fileID+".dat");
 			
 			SLData slData=new SLData();
-			slData.gameDate=global.tyear+"Äê"+global.tmonth+"ÔÂ"+global.tday+"ÈÕ";
+			slData.gameDate=global.tyear+"å¹´"+global.tmonth+"æœˆ"+global.tday+"æ—¥";
 			slData.id=fileID;
 			slData.level=global.currentHeros.get(0).prop.get("level");
 			slData.mapName=(String)GameViews.gameview.map.getProperties().get("name");
@@ -39,7 +39,7 @@ public class SL {
 			PixmapIO.writePNG(new FileHandle(Gdx.files.getLocalStoragePath()+Setting.GAME_PERSISTENCE+fileID+".png"),MenuController.pbg);
 			return true;
 		}catch(Exception e){
-			Logger.error("ÎŞ·¨±£´æÎÄ¼ş¡£", e);
+			Logger.error("æ— æ³•ä¿å­˜æ–‡ä»¶ã€‚", e);
 			return false;
 		}
 	}

@@ -183,13 +183,13 @@ public class SpellCardView extends View{
 			}
 		});
 		
-		sellist.getItems().add(new ListItem(" π”√").setRunnable(()->{
+		sellist.getItems().add(new ListItem("‰ΩøÁî®").setRunnable(()->{
 			scfor.visible=true;
 			herolist.setVisible(true);
 			mask2.setVisible(true);
 			layer=2;
 		}));
-		sellist.getItems().add(new ListItem("»°œ˚").setRunnable(()->can.run()));
+		sellist.getItems().add(new ListItem("ÂèñÊ∂à").setRunnable(()->can.run()));
 		sellist.onClick(()->Music.playSE("snd210"));
 		stage.addActor(mask2);			
 		scfor=Res.get(Setting.GAME_RES_IMAGE_MENU_SC+"sc_for.png");
@@ -197,10 +197,10 @@ public class SpellCardView extends View{
 		
 		
 		herolist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
-		herolist.getItems().add(new ListItem("»°œ˚"));
+		herolist.getItems().add(new ListItem("ÂèñÊ∂à"));
 		HeroController.heros.forEach((h)->herolist.getItems().add(new ListItem(h.name).setUserObject(h)));
 		herolist.onDBClick(()->{
-			if(herolist.getSelected().name.equals("»°œ˚")){
+			if(herolist.getSelected().name.equals("ÂèñÊ∂à")){
 				can2.run();
 			}else{
 				if(herolist.getSelected().userObject!=null)
@@ -263,8 +263,8 @@ public class SpellCardView extends View{
 				render.end();
 				FontUtil.draw(sb, h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20, blue, 560+190/2-FontUtil.getTextWidth(h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20,-7)/2, 278, 400,-7,0);
 				FontUtil.draw(sb, h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20, blue, 560+190/2-FontUtil.getTextWidth(h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20,-7)/2, 244, 400,-7,0);
-				FontUtil.draw(sb, "’˝≥£", 18, blue, 560+190/2-FontUtil.getTextWidth("’˝≥£", 20)/2, 208, 400);
-				FontUtil.draw(sb, "ƒø±Í£∫"+h, 18, Color.WHITE, 495, 310, 200);
+				FontUtil.draw(sb, "Ê≠£Â∏∏", 18, blue, 560+190/2-FontUtil.getTextWidth("Ê≠£Â∏∏", 20)/2, 208, 400);
+				FontUtil.draw(sb, "ÁõÆÊ†áÔºö"+h, 18, Color.WHITE, 495, 310, 200);
 				if(drawp){
 					add.draw(sb,Gdx.graphics.getDeltaTime());
 					drawp=!add.isComplete();
@@ -277,7 +277,7 @@ public class SpellCardView extends View{
 			render.setColor(cblue);
 			render.rect(578, 116, (float)((float)hero.prop.get("mp")/(float)hero.prop.get("maxmp"))*189,22);
 			render.end();
-			FontUtil.draw(sb, "ººƒ‹ π”√’ﬂ£∫"+hero, 18, Color.WHITE, 495, 170, 200);
+			FontUtil.draw(sb, "ÊäÄËÉΩ‰ΩøÁî®ËÄÖÔºö"+hero, 18, Color.WHITE, 495, 170, 200);
 			FontUtil.draw(sb, hero.prop.get("mp")+"/"+  hero.prop.get("maxmp"), 20, blue, 560+190/2-FontUtil.getTextWidth(hero.prop.get("mp")+"/"+  hero.prop.get("maxmp"), 20,-7)/2, 136, 400,-7,0);
 			sb.draw(hero.images[1].getRegion(),820,102);
 		}

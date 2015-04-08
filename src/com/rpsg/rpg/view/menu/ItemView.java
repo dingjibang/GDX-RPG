@@ -178,21 +178,21 @@ public class ItemView extends DefaultIView{
 			scuse.visible=true;
 			sellist.getItems().clear();
 			if(item.type==Item.TYPE_USEINMAP)
-				sellist.getItems().add(new ListItem("Ê¹ÓÃ").setRunnable(()->{
+				sellist.getItems().add(new ListItem("ä½¿ç”¨").setRunnable(()->{
 					scfor.visible=true;
 					herolist.setVisible(true);
 					mask2.setVisible(true);
 					layer=2;
 				}));
 			if(item.throwable)
-				sellist.getItems().add(new ListItem("¶ªÆú").setRunnable(()->{
+				sellist.getItems().add(new ListItem("ä¸¢å¼ƒ").setRunnable(()->{
 					group.setVisible(true);
 					mask2.setVisible(true);
 					can.run();
 					currentCount=1;
 					layer=3;
 				}));
-			sellist.getItems().add(new ListItem("È¡Ïû").setRunnable(()->can.run()));
+			sellist.getItems().add(new ListItem("å–æ¶ˆ").setRunnable(()->can.run()));
 			sellist.onDBClick(()->sellist.getSelected().run.run());
 			sellist.setVisible(true);
 			sellist.setSelectedIndex(0);
@@ -206,10 +206,10 @@ public class ItemView extends DefaultIView{
 		scfor.setPosition(500, 87);
 		
 		herolist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
-		herolist.getItems().add(new ListItem("È¡Ïû"));
+		herolist.getItems().add(new ListItem("å–æ¶ˆ"));
 		HeroController.heros.forEach((h)->herolist.getItems().add(new ListItem(h.name).setUserObject(h)));
 		herolist.onDBClick(()->{
-			if(herolist.getSelected().name.equals("È¡Ïû")){
+			if(herolist.getSelected().name.equals("å–æ¶ˆ")){
 				can2.run();
 			}else{
 				if(herolist.getSelected().userObject!=null)
@@ -241,9 +241,9 @@ public class ItemView extends DefaultIView{
 		Image tbg=new Image(Setting.GAME_RES_IMAGE_MENU_SC+"throw.png");
 		tbg.setPosition(350, 200);
 		group.addActor(tbg);
-		TextButton button=new TextButton("È·¶¨", butstyle).onClick(()->{
+		TextButton button=new TextButton("ç¡®å®š", butstyle).onClick(()->{
 			ItemUtil.throwItem(currentBar.name,item,currentCount);
-			AlertUtil.add("¶ªÆú³É¹¦¡£", AlertUtil.Yellow);
+			AlertUtil.add("ä¸¢å¼ƒæˆåŠŸã€‚", AlertUtil.Yellow);
 			generateLists(currentBar.name);
 			item= new TipItem();
 			can3.run();
@@ -251,7 +251,7 @@ public class ItemView extends DefaultIView{
 		button.setPosition(630, 290);
 		button.setSize(100, 50);
 		group.addActor(button);
-		TextButton button2=new TextButton("È¡Ïû", butstyle).onClick(()->{
+		TextButton button2=new TextButton("å–æ¶ˆ", butstyle).onClick(()->{
 			can3.run();
 		});
 		
@@ -296,7 +296,7 @@ public class ItemView extends DefaultIView{
 		group.addActor(dbutton3);
 		
 		Table buttable=new Table();
-		buttable.add(new TextButton("×î´ó", butstyle,16).onClick(()->{
+		buttable.add(new TextButton("æœ€å¤§", butstyle,16).onClick(()->{
 			currentCount=item.count==0?1:item.count;
 		})).size(80,33).row();
 		buttable.add(new TextButton("+1", butstyle,16).onClick(()->{
@@ -307,7 +307,7 @@ public class ItemView extends DefaultIView{
 			if(currentCount>1)
 				currentCount--;
 		})).size(80,35).row();
-		buttable.add(new TextButton("×îÐ¡", butstyle,16).onClick(()->{
+		buttable.add(new TextButton("æœ€å°", butstyle,16).onClick(()->{
 			currentCount=1;
 		})).size(80,33).row();
 		buttable.getCells().forEach((c)->c.padTop(2).padBottom(2));
@@ -362,7 +362,7 @@ public class ItemView extends DefaultIView{
 				render.end();
 				FontUtil.draw(sb, h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20, blue, 565+176/2-FontUtil.getTextWidth(h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20,-7)/2, 161, 400,-7,0);
 				FontUtil.draw(sb, h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20, blue, 565+176/2-FontUtil.getTextWidth(h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20,-7)/2, 124, 400,-7,0);
-				FontUtil.draw(sb, "Õý³£", 18, blue, 563+176/2-FontUtil.getTextWidth("Õý³£", 18)/2, 196, 400);
+				FontUtil.draw(sb, "æ­£å¸¸", 18, blue, 563+176/2-FontUtil.getTextWidth("æ­£å¸¸", 18)/2, 196, 400);
 				FontUtil.draw(sb, h.toString(), 18, Color.WHITE, 515, 227, 200);
 				if(drawp){
 					add.draw(sb,Gdx.graphics.getDeltaTime());

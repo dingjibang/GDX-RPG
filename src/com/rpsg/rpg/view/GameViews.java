@@ -69,7 +69,7 @@ public class GameViews implements ApplicationListener {
 		RadarUtil.init(1, new TextureRegion(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_STATUS+"propbg.png"))), 1);
 		TimeUtil.init();
 		selectUtil=new SelectUtil();
-		Logger.info("Gdx-RPGÒıÇæ³õÊ¼»¯³É¹¦¡£");
+		Logger.info("Gdx-RPGå¼•æ“åˆå§‹åŒ–æˆåŠŸã€‚");
 	}
 
 	@Override

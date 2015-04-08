@@ -87,16 +87,16 @@ public class SaveView extends HoverView{
 		rrbutton.setPosition(795,422);
 		stage.addActor(rrbutton);
 		
-		TextButton savebutton=new TextButton("±£´æÓÎÏ·", butstyle).onClick(()->{
-			HoverController.add(ConfirmView.getDefault("È·¶¨Òª±£´æµ½Õâ¸öÎ»ÖÃÃ´£¿", (view)->{
+		TextButton savebutton=new TextButton("ä¿å­˜æ¸¸æˆ", butstyle).onClick(()->{
+			HoverController.add(ConfirmView.getDefault("ç¡®å®šè¦ä¿å­˜åˆ°è¿™ä¸ªä½ç½®ä¹ˆï¼Ÿ", (view)->{
 				if(currentSelect!=-1){
 					if(SL.save(currentSelect))
-						AlertUtil.add("´æµµÍê³É¡£", AlertUtil.Green);
+						AlertUtil.add("å­˜æ¡£å®Œæˆã€‚", AlertUtil.Green);
 					else
-						AlertUtil.add("´æµµÊ§°Ü¡£", AlertUtil.Red);
+						AlertUtil.add("å­˜æ¡£å¤±è´¥ã€‚", AlertUtil.Red);
 					generateList();
 				}else{
-					AlertUtil.add("ÇëÑ¡ÔñÒª±£´æµÄÎ»ÖÃ¡£", AlertUtil.Yellow);
+					AlertUtil.add("è¯·é€‰æ‹©è¦ä¿å­˜çš„ä½ç½®ã€‚", AlertUtil.Yellow);
 					Music.playSE("err");
 				}
 				((HoverView)view).disposed=true;
@@ -106,23 +106,23 @@ public class SaveView extends HoverView{
 		savebutton.setPosition(562,28);
 		stage.addActor(savebutton);
 		
-		TextButton cancelbutton=new TextButton("È¡Ïû", butstyle).onClick(()->{
+		TextButton cancelbutton=new TextButton("å–æ¶ˆ", butstyle).onClick(()->{
 			disposed=true;
 		});
 		cancelbutton.setOffset(10).setPad(1).setHof(-2).setSize(192,58);
 		cancelbutton.setPosition(792,28);
 		stage.addActor(cancelbutton);
 		
-		TextButton deletebutton=new TextButton("É¾³ıµµ°¸", butstyle).onClick(()->{
-			HoverController.add(ConfirmView.getDefault("È·¶¨ÒªÉ¾³ıÕâ¸öµµ°¸Ã´£¿", (view)->{
+		TextButton deletebutton=new TextButton("åˆ é™¤æ¡£æ¡ˆ", butstyle).onClick(()->{
+			HoverController.add(ConfirmView.getDefault("ç¡®å®šè¦åˆ é™¤è¿™ä¸ªæ¡£æ¡ˆä¹ˆï¼Ÿ", (view)->{
 				if(currentSelect!=-1){
 					if(SL.delete(currentSelect)){
-						AlertUtil.add("É¾³ıµµ°¸³É¹¦¡£", AlertUtil.Green);
+						AlertUtil.add("åˆ é™¤æ¡£æ¡ˆæˆåŠŸã€‚", AlertUtil.Green);
 						generateList();
 					}else
-						AlertUtil.add("É¾³ıµµ°¸Ê§°Ü¡£", AlertUtil.Red);
+						AlertUtil.add("åˆ é™¤æ¡£æ¡ˆå¤±è´¥ã€‚", AlertUtil.Red);
 				}else
-					AlertUtil.add("ÇëÑ¡ÔñÒªÉ¾³ıµÄµµ°¸¡£", AlertUtil.Yellow);
+					AlertUtil.add("è¯·é€‰æ‹©è¦åˆ é™¤çš„æ¡£æ¡ˆã€‚", AlertUtil.Yellow);
 				((HoverView)view).disposed=true;
 			}));
 		});

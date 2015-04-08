@@ -25,11 +25,11 @@ public class Main {
 			RayHandler.setGammaCorrection(true);
 			RayHandler.useDiffuseLight(true);
 			new LwjglApplication(new GameViews(), cfg);
-			Logger.info("µ×²ãÒıÇæ³õÊ¼»¯³É¹¦¡£");
+			Logger.info("åº•å±‚å¼•æ“åˆå§‹åŒ–æˆåŠŸã€‚");
 		} catch (Exception e) {
-			Logger.faild("µ×²ãÒıÇæ³õÊ¼»¯Ê§°Ü¡£",e);
+			Logger.faild("åº•å±‚å¼•æ“åˆå§‹åŒ–å¤±è´¥ã€‚",e);
 //			FileIO.save(Setting.persistence,Persistence.PersistenceFileName);
-//			Logger.info("ÔÚ³ÌĞò±ÀÀ£Ç°³É¹¦Ç¿ÖÆÉèÖÃÎª¼æÈİÄ£Ê½¡£");
+//			Logger.info("åœ¨ç¨‹åºå´©æºƒå‰æˆåŠŸå¼ºåˆ¶è®¾ç½®ä¸ºå…¼å®¹æ¨¡å¼ã€‚");
 		}
 	}
 }

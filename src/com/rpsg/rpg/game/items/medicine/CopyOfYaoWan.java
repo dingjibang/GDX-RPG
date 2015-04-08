@@ -9,17 +9,17 @@ public class CopyOfYaoWan extends Medicine{
 	private static final long serialVersionUID = 1L;
 	
 	public CopyOfYaoWan() {
-		illustration="Ææ¹ÖµÄ¾ÉÒ©ºĞ£¬±³ÃæÎÄ×ÖÒÑÄ£ºı²»Çå£¬µ«ÈÔ¿ÉÒÔÒşÔ¼¿´µ½¡°¥ä¥´¥³¥íÏÈÉúµÄ×øÒ©¡±£¬Ã»ÓĞÈËÖªµÀ³ÔÁËÕâ¸ö»á·¢ÉúÊ²Ã´¡£";
+		illustration="å¥‡æ€ªçš„æ—§è¯ç›’ï¼ŒèƒŒé¢æ–‡å­—å·²æ¨¡ç³Šä¸æ¸…ï¼Œä½†ä»å¯ä»¥éšçº¦çœ‹åˆ°â€œãƒ¤ã‚´ã‚³ãƒ­å…ˆç”Ÿçš„åè¯â€ï¼Œæ²¡æœ‰äººçŸ¥é“åƒäº†è¿™ä¸ªä¼šå‘ç”Ÿä»€ä¹ˆã€‚";
 		count=1;
-		name="¥ä¥´¥³¥í";
+		name="ãƒ¤ã‚´ã‚³ãƒ­";
 	}
 
 	public boolean use(Hero hero) {
 		if(!hero.full("hp")){
 			hero.addProp("hp", 50);
-			return throwSelf("Ê¹ÓÃ³É¹¦¡£",AlertUtil.Green);
+			return throwSelf("ä½¿ç”¨æˆåŠŸã€‚",AlertUtil.Green);
 		}else{
-			AlertUtil.add(hero.name+"µÄÉúÃüÖµÒÑÂú¡£",AlertUtil.Yellow);
+			AlertUtil.add(hero.name+"çš„ç”Ÿå‘½å€¼å·²æ»¡ã€‚",AlertUtil.Yellow);
 			return false;
 		}
 	}

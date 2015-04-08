@@ -40,7 +40,7 @@ public class GameView extends View{
 	@Override
 	public void init() {
 		inited=false;
-		Logger.info("¿ªÊ¼¼ÓÔØÍ¼ĞÎ¡£");
+		Logger.info("å¼€å§‹åŠ è½½å›¾å½¢ã€‚");
 		stage.clear();
 		parameter = new Parameters();
 		parameter.loadedCallback=(assetManager,fileName,type)->{
@@ -50,7 +50,7 @@ public class GameView extends View{
 			ray.setWorld(world);
 			Initialization.init(this);
 			inited=true;
-			Logger.info("Í¼ĞÎ¼ÓÔØÍê³É¡£");
+			Logger.info("å›¾å½¢åŠ è½½å®Œæˆã€‚");
 		};
 		filename=Setting.GAME_RES_MAP+global.map;
 		ma.load(filename, TiledMap.class ,parameter);

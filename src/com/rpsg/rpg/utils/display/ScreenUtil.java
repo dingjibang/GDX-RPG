@@ -15,8 +15,8 @@ import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameViews;
 /**
- * ÆÁÄ»¹¤¾ßÀà ¿ÉÒÔ»ñÈ¡½ØÍ¼
- * @author É·±ÊÑ§Éú
+ * å±å¹•å·¥å…·ç±» å¯ä»¥è·å–æˆªå›¾
+ * @author ç…ç¬”å­¦ç”Ÿ
  *
  */
 public class ScreenUtil {

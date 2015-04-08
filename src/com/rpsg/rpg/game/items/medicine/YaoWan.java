@@ -10,19 +10,19 @@ public class YaoWan extends Medicine{
 	private static final long serialVersionUID = 1L;
 	
 	public YaoWan() {
-		illustration="ÒªÍêÒªÍê£¬Ê¹ÓÃºóHP»Ö¸´10¡£";
+		illustration="è¦å®Œè¦å®Œï¼Œä½¿ç”¨åHPæ¢å¤10ã€‚";
 		count=5;
-		name="Ò©Íè";
+		name="è¯ä¸¸";
 	}
 
 	public boolean use(Hero hero) {
 		if(!hero.full("hp")){
 			hero.addProp("hp", 10);
 			Music.playSE("bc");
-			return throwSelf("Ê¹ÓÃ³É¹¦¡£",AlertUtil.Green);
+			return throwSelf("ä½¿ç”¨æˆåŠŸã€‚",AlertUtil.Green);
 		}else{
 			Music.playSE("err");
-			AlertUtil.add(hero.name+"µÄÉúÃüÖµÒÑÂú¡£",AlertUtil.Yellow);
+			AlertUtil.add(hero.name+"çš„ç”Ÿå‘½å€¼å·²æ»¡ã€‚",AlertUtil.Yellow);
 			return false;
 		}
 	}

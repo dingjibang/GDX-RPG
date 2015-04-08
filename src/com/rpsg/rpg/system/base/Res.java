@@ -23,7 +23,7 @@ public class Res {
 //		}
 //		if(pool.get(resPath)==null){
 			if(!ma.isLoaded(resPath))
-				Logger.info("³¢ÊÔ¶ÁÈ¡ÎÆÀí£º"+resPath);
+				Logger.info("å°è¯•è¯»å–çº¹ç†ï¼š"+resPath);
 			ma.load(resPath,Texture.class);
 			while(!ma.update());
 //			pool.put(resPath, new Image((Texture)ma.get(resPath)));
@@ -61,7 +61,7 @@ public class Res {
 			ma.unload(resPath);
 			while(!ma.update());
 		}catch(Exception e){
-			Logger.error("ÎŞ·¨Ğ¶ÔØÎÆÀí - "+resPath);
+			Logger.error("æ— æ³•å¸è½½çº¹ç† - "+resPath);
 		}
 	}
 }

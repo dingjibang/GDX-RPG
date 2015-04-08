@@ -9,8 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.rpsg.rpg.utils.display.FontUtil;
 
 /**
- * GDXRPGÒýÇæ checkbox×é¼þ
- * Ê¹ÓÃfontUtilÎÄ×Ö»º´æ¼¼Êõ£¬ÎÞÐèÔ¤Éè¶¨ÎÄ×Ö¡£ 
+ * GDXRPGå¼•æ“Ž checkboxç»„ä»¶
+ * ä½¿ç”¨fontUtilæ–‡å­—ç¼“å­˜æŠ€æœ¯ï¼Œæ— éœ€é¢„è®¾å®šæ–‡å­—ã€‚ 
  */
 public class CheckBox extends TextButton {
 	private Image image;

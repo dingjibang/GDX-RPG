@@ -10,9 +10,9 @@ public class Logger {
 	static com.badlogic.gdx.utils.Logger faildlog;
 	
 	public static void init(){
-		infolog=new com.badlogic.gdx.utils.Logger("–≈œ¢");
-		errorlog=new com.badlogic.gdx.utils.Logger("“Ï≥£");
-		faildlog=new com.badlogic.gdx.utils.Logger("±¿¿£");
+		infolog=new com.badlogic.gdx.utils.Logger("‰ø°ÊÅØ");
+		errorlog=new com.badlogic.gdx.utils.Logger("ÂºÇÂ∏∏");
+		faildlog=new com.badlogic.gdx.utils.Logger("Â¥©Ê∫É");
 		infolog.setLevel(Application.LOG_INFO);
 		errorlog.setLevel(Application.LOG_ERROR);
 		faildlog.setLevel(Application.LOG_ERROR);

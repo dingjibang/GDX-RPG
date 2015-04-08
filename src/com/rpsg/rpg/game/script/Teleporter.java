@@ -8,7 +8,7 @@ public class Teleporter extends Script {
 
 	@Override
 	public void init() {
-		Logger.info("µØÍ¼´«ËÍÄ£¿éÕý±»Ö´ÐÐ¡£");
+		Logger.info("åœ°å›¾ä¼ é€æ¨¡å—æ­£è¢«æ‰§è¡Œã€‚");
 		$(() -> {
 			Move.teleportAnotherMap(this, npc.params.get("TELEPORT") + ".tmx",
 					Integer.parseInt((String) npc.params.get("TELEPORTX")),

@@ -3,7 +3,7 @@ package com.rpsg.rpg.object.base;
 public class EmptyAssociation extends Association{
 	public EmptyAssociation(){
 		level = 0;
-		name = "ÎÞ";
+		name = "æ— ";
 		favor = 0;
 	}
 }

@@ -93,7 +93,7 @@ public class MenuBaseView extends View{
 			map.addAction(Actions.fadeIn(0.3f));
 			stage.addActor(map);
 		}catch(Exception e){
-			AlertUtil.add("ÎŞ·¨¶ÁÈ¡µ±Ç°µØÍ¼µÄËõÂÔÍ¼£¡", AlertUtil.Red);
+			AlertUtil.add("æ— æ³•è¯»å–å½“å‰åœ°å›¾çš„ç¼©ç•¥å›¾ï¼", AlertUtil.Red);
 		}
 		ImageButton exit=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png"));
 		exit.setPosition(960, 550);
@@ -118,8 +118,8 @@ public class MenuBaseView extends View{
 	Color yellow=new Color(232f/255f,202f/255f,12f/255f,1);
 	int frame=0;
 	int step=1;
-	String currTime=GameViews.global.tyear+" Äê "+GameViews.global.tmonth+" ÔÂ "+GameViews.global.tday+" ÈÕ";
-	String currDay=GameViews.global.day==ColorUtil.DAY?"Öç":(GameViews.global.day==ColorUtil.NIGHT?"Ò¹":"êÔ");
+	String currTime=GameViews.global.tyear+" å¹´ "+GameViews.global.tmonth+" æœˆ "+GameViews.global.tday+" æ—¥";
+	String currDay=GameViews.global.day==ColorUtil.DAY?"æ˜¼":(GameViews.global.day==ColorUtil.NIGHT?"å¤œ":"æš");
 	Image time;
 	int deg=(int) (365f*((float)HeroController.getHeadHero().prop.get("exp")/(float)(float)HeroController.getHeadHero().prop.get("maxexp")));
 	int stepdeg=0;
@@ -152,7 +152,7 @@ public class MenuBaseView extends View{
 		FontUtil.draw(batch, HeroController.getHeadHero().name, 28, Color.WHITE, 622, 450, 1000);
 		FontUtil.draw(batch, HeroController.getHeadHero().prop.get("level")+"", 40, blue, 506-FontUtil.getTextWidth(HeroController.getHeadHero().prop.get("level")+"", 40, -10)/2, 454, 1000,-10,0);
 		FontUtil.draw(batch, GameViews.global.gold+" G", 18, blue, 488+91/2-FontUtil.getTextWidth(GameViews.global.gold+" G", 18, -8), 379, 1000,-8,0);
-		FontUtil.draw(batch, "×´Ì¬Õı³£", 17, Color.WHITE, 149+285/2-FontUtil.getTextWidth("×´Ì¬Õı³£", 17, 2)/2, 385, 1000,2,0);
+		FontUtil.draw(batch, "çŠ¶æ€æ­£å¸¸", 17, Color.WHITE, 149+285/2-FontUtil.getTextWidth("çŠ¶æ€æ­£å¸¸", 17, 2)/2, 385, 1000,2,0);
 		FontUtil.draw(batch, currTime, 17, blue, 558+144/2-FontUtil.getTextWidth(currTime, 17, -8)/2, 380, 1000,-8,0);
 		FontUtil.draw(batch, currDay, 16, Color.GRAY, 714, 379, 1000,-7,0);
 		FontUtil.draw(batch, "LV", 14, blue, 511, 413, 1000,-7,0);

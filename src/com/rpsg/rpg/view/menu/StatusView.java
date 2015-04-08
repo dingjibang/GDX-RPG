@@ -100,8 +100,8 @@ public class StatusView extends DefaultIView{
 		tree.addActor(Res.getNewImage(Setting.GAME_RES_IMAGE_MENU_STATUS+"/tree.png"));
 		
 		tree.addActor(new Label(hero.tag,24).setWidth(1000).setPos(405,y(774)));
-		tree.addActor(new Label("»¹ĞèÒª"+(hero.prop.get("maxexp")-hero.prop.get("exp"))+"µã¾­ÑéÉı¼¶ÖÁµÈ¼¶"+(hero.prop.get("level")+1),24).setWidth(1000).setPos(405,y(828)));
-		tree.addActor(new Label("×´Ì¬Õı³£",24).setWidth(1000).setPos(405,y(928)));
+		tree.addActor(new Label("è¿˜éœ€è¦"+(hero.prop.get("maxexp")-hero.prop.get("exp"))+"ç‚¹ç»éªŒå‡çº§è‡³ç­‰çº§"+(hero.prop.get("level")+1),24).setWidth(1000).setPos(405,y(828)));
+		tree.addActor(new Label("çŠ¶æ€æ­£å¸¸",24).setWidth(1000).setPos(405,y(928)));
 		tree.addActor(new Label(global.gold+"G",22).setWidth(1000).setPad(-5).align(215,y(999)));
 		
 		tree.addActor(new Label(hero.prop.get("hp")+"/"+hero.prop.get("maxhp"),22).setWidth(1000).setPad(-5).align(595,y(1069)));
@@ -134,9 +134,9 @@ public class StatusView extends DefaultIView{
 		addT("water",670,1940);
 		addT("wood",550,1940);
 		
-		tree.addActor(new Label(hero.prop.get("chop")==Hero.TRUE?"¿É":"²»¿É",34).setWidth(1000).align(40,y(1890)));
-		tree.addActor(new Label(hero.prop.get("shoot")==Hero.TRUE?"¿É":"²»¿É",34).setWidth(1000).align(150,y(1890)));
-		tree.addActor(new Label(hero.prop.get("prick")==Hero.TRUE?"¿É":"²»¿É",34).setWidth(1000).align(260,y(1890)));
+		tree.addActor(new Label(hero.prop.get("chop")==Hero.TRUE?"å¯":"ä¸å¯",34).setWidth(1000).align(40,y(1890)));
+		tree.addActor(new Label(hero.prop.get("shoot")==Hero.TRUE?"å¯":"ä¸å¯",34).setWidth(1000).align(150,y(1890)));
+		tree.addActor(new Label(hero.prop.get("prick")==Hero.TRUE?"å¯":"ä¸å¯",34).setWidth(1000).align(260,y(1890)));
 		
 		Image min=Res.get(Setting.GAME_RES_IMAGE_MENU_STATUS+"min.png").position(554, y(1830));
 		min.setColor(1,1,1,0);
@@ -175,17 +175,17 @@ public class StatusView extends DefaultIView{
 	private String getP(String r){
 		Resistance i=hero.resistance.get(r);
 		if(i==Resistance.absorb)
-			return "ÎüÊÕ";
+			return "å¸æ”¶";
 		else if(i==Resistance.normal)
-			return "¡ª";
+			return "â€”";
 		else if(i==Resistance.invalid)
-			return "ÎŞĞ§";
+			return "æ— æ•ˆ";
 		else if(i==Resistance.reflect)
-			return "·´Éä";
+			return "åå°„";
 		else if(i==Resistance.tolerance)
-			return "ÄÍĞÔ";
+			return "è€æ€§";
 		else
-			return "ĞéÈõ";
+			return "è™šå¼±";
 	}
 	
 	private Image getR(String r){

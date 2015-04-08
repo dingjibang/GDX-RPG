@@ -63,35 +63,35 @@ public class SystemView extends DefaultIView{
 		Label lvl=new Label("LV "+HeroController.getHeadHero().prop.get("level"),40).setWidth(1000).setPad(-15);
 		lvl.setPosition(360, 190);
 		group.addActor(lvl);
-		Label lvl2=new Label("¡¾"+(String)GameViews.gameview.map.getProperties().get("name")+"¡¿",40).setWidth(1000).setPad(0);
+		Label lvl2=new Label("ã€"+(String)GameViews.gameview.map.getProperties().get("name")+"ã€‘",40).setWidth(1000).setPad(0);
 		lvl2.setPosition(480, 190);
 		group.addActor(lvl2);
-		Label lvl3=new Label("µµ°¸ËùÔÚÎ»ÖÃ£º",18).setWidth(1000).setPad(0);
+		Label lvl3=new Label("æ¡£æ¡ˆæ‰€åœ¨ä½ç½®ï¼š",18).setWidth(1000).setPad(0);
 		lvl3.setPosition(370, 140);
 		group.addActor(lvl3);
 		Label lvl4=new Label(" ["+HeroController.getHeadHero().mapx+","+HeroController.getHeadHero().mapy+"]",18).setWidth(1000).setPad(0);
 		lvl4.setPosition(480, 140);
 		group.addActor(lvl4);
-		Label lvl5h=new Label("µµ°¸½øÐÐÊ±¼ä£º",18).setWidth(1000).setPad(0);
+		Label lvl5h=new Label("æ¡£æ¡ˆè¿›è¡Œæ—¶é—´ï¼š",18).setWidth(1000).setPad(0);
 		lvl5h.setPosition(370, 110);
 		group.addActor(lvl5h);
 		lvl5=new Label(TimeUtil.getGameRunningTime(),18).setWidth(1000).setPad(-3);
 		lvl5.setPosition(500, 110);
 		group.addActor(lvl5);
-		TextButton sbutton=new TextButton("±£´æÓÎÏ·", butstyle).onClick(()->{
+		TextButton sbutton=new TextButton("ä¿å­˜æ¸¸æˆ", butstyle).onClick(()->{
 			HoverController.add(SaveView.class);
 		});
 		sbutton.setOffset(17).setSize(250,60);
 		sbutton.setPosition(180, 14);
 		group.addActor(sbutton);
-		TextButton sbutton2=new TextButton("¶ÁÈ¡ÓÎÏ·", butstyle).onClick(()->{
+		TextButton sbutton2=new TextButton("è¯»å–æ¸¸æˆ", butstyle).onClick(()->{
 			HoverController.add(com.rpsg.rpg.view.hover.LoadView.class);
 		});
 		sbutton2.setOffset(17).setSize(250,60);
 		sbutton2.setPosition(444, 14);
 		group.addActor(sbutton2);
-		TextButton sbutton3=new TextButton("»Øµ½²Ëµ¥", butstyle).onClick(()->{
-			HoverController.add(ConfirmView.getDefault("È·¶¨Òª»Øµ½Ö÷²Ëµ¥Ã´£¿ÈçÎ´´æµµµ±Ç°µµ°¸½«»áÏûÊ§", (view)->{
+		TextButton sbutton3=new TextButton("å›žåˆ°èœå•", butstyle).onClick(()->{
+			HoverController.add(ConfirmView.getDefault("ç¡®å®šè¦å›žåˆ°ä¸»èœå•ä¹ˆï¼Ÿå¦‚æœªå­˜æ¡£å½“å‰æ¡£æ¡ˆå°†ä¼šæ¶ˆå¤±", (view)->{
 				GameViews.state=GameViews.STATE_LOGO;
 				GameViews.gameview.dispose();
 				GameViews.gameview=null;
@@ -175,7 +175,7 @@ public class SystemView extends DefaultIView{
 		ttest.setWidth(1000).setPosition(200, 663);
 		group5.addActor(ttest);
 		Slider sd5=new Slider(1, 15, 1, false, slsty);
-		sd5.setStrEnd(" Ö¡/×Ö").setLabelful(true).setPosition(200, 506);
+		sd5.setStrEnd(" å¸§/å­—").setLabelful(true).setPosition(200, 506);
 		sd5.setWidth(620);
 		sd5.onScroll(()->{
 			Setting.persistence.textSpeed=(int)sd5.getValue();
@@ -220,11 +220,11 @@ public class SystemView extends DefaultIView{
 		Label jv=new Label(System.getProperty("java.version"),23).setWidth(1000).setPad(-7);
 		jv.setPosition(305,719);
 		group6.addActor(jv);
-		TextButton sbutton5=new TextButton("·ÃÎÊ¹ÙÍø", butstyle).onClick(()->{
+		TextButton sbutton5=new TextButton("è®¿é—®å®˜ç½‘", butstyle).onClick(()->{
 			try {
 				Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler http://www.rpsg-team.com");
 			} catch (Exception e) {
-				AlertUtil.add("ÎÞ·¨ÕýÈ·´ò¿ªÍøÒ³¡£", AlertUtil.Red);
+				AlertUtil.add("æ— æ³•æ­£ç¡®æ‰“å¼€ç½‘é¡µã€‚", AlertUtil.Red);
 			}
 		});
 		sbutton5.setOffset(17).setSize(250,60);

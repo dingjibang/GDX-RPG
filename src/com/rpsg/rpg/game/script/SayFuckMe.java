@@ -6,9 +6,9 @@ public class SayFuckMe extends Script{
 	
 	public void init() {
 		setKeyLocker(true);
-		showMSG(°®ÀöË¿);
-		showFGLeft(°®ÀöË¿Á¢»æ, ¿Ş);
-		say("ËæÒâµÄ²âÊÔÒ»¾ä»°_(:3¡¹¡Ï)_asdhqweuqweqwkeqwopeqwpoeiqweoqºÜ³¤ºÜ¶àµÄ×Öhhhhhhhh");
+		showMSG(çˆ±ä¸½ä¸);
+		showFGLeft(çˆ±ä¸½ä¸ç«‹ç»˜, å“­);
+		say("éšæ„çš„æµ‹è¯•ä¸€å¥è¯_(:3ã€âˆ )_asdhqweuqweqwkeqwopeqwpoeiqweoqå¾ˆé•¿å¾ˆå¤šçš„å­—hhhhhhhh");
 		hideMSG();
 		hideFG();
 		setKeyLocker(false);

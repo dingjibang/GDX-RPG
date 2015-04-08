@@ -45,7 +45,7 @@ public class FontUtil {
 				addStr+=c;
 		}
 		if(addStr.length()>0){
-			Logger.info("文字贴图[\""+addStr+"\"]生成成功");
+			Logger.info("鏂囧瓧璐村浘[\""+addStr+"\"]鐢熸垚鎴愬姛");
 			fontlist.add(Font.generateFont((addStr.length()==5 && fontsize==22)?addStr+" ":addStr, fontsize));
 		}
 		

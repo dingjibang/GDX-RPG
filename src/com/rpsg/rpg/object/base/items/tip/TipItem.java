@@ -7,8 +7,8 @@ public class TipItem extends Item{
 	private static final long serialVersionUID = 1L;
 
 	public TipItem(){
-		name="ÌáÊ¾";
-		illustration="Äú¿ÉÒÔÔÚÉÏ·½Ñ¡ÔñµÀ¾ß·ÖÀà£¬×ó²àÎªµ±Ç°·ÖÀàµÄµÀ¾ßÁĞ±í£¬µ¥»÷µÀ¾ß²é¿´µÀ¾ßĞÅÏ¢£¬Ë«»÷µÀ¾ß½øĞĞ¹¦ÄÜ²Ù×÷¡£";
+		name="æç¤º";
+		illustration="æ‚¨å¯ä»¥åœ¨ä¸Šæ–¹é€‰æ‹©é“å…·åˆ†ç±»ï¼Œå·¦ä¾§ä¸ºå½“å‰åˆ†ç±»çš„é“å…·åˆ—è¡¨ï¼Œå•å‡»é“å…·æŸ¥çœ‹é“å…·ä¿¡æ¯ï¼ŒåŒå‡»é“å…·è¿›è¡ŒåŠŸèƒ½æ“ä½œã€‚";
 	}
 
 	@Override

@@ -29,7 +29,7 @@ public class Msg {
 	
 	public static void init(){
 		dispose();
-		msgbox=new Image(Setting.GAME_RES_MESSAGE+MsgType.Õı³£);
+		msgbox=new Image(Setting.GAME_RES_MESSAGE+MsgType.æ­£å¸¸);
 		float ss=msgbox.getWidth();
 		msgbox.setWidth(GameUtil.screen_width-40);
 		ss=ss/msgbox.getWidth();
@@ -42,7 +42,7 @@ public class Msg {
 		TEXT_DISPLAY_SPEED=30;
 		DISPLAY_OFFSET=0;
 		show=false;
-		Logger.info("ÎÄ±¾Ä£¿é³õÊ¼»¯Íê³É¡£");
+		Logger.info("æ–‡æœ¬æ¨¡å—åˆå§‹åŒ–å®Œæˆã€‚");
 	}
 	
 	static String currentText="";

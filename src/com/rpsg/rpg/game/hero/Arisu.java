@@ -12,10 +12,10 @@ public class Arisu extends Hero{
 
 	public void first(){
 		imgPath="/walk_flandre.png";
-		name="½á³ÉÓĞÆÜ";
+		name="ç»“æˆæœ‰æ –";
 		jname="Yuki Arisu";
 		fgname="arisu";
-		tag="ÈËÀà£¬Ö÷½Ç";
+		tag="äººç±»ï¼Œä¸»è§’";
 		sc.add(new MagicGun());
 		sc.add(new patientBack());
 		prop.replace("hp", 50);
@@ -29,11 +29,11 @@ public class Arisu extends Hero{
 		prop.replace("prick", Hero.TRUE);
 		
 		lead=true;
-		prop.put("courage", 15);			//ÓÂÆø
-		prop.put("perseverance", 44);		//ÒãÁ¦
-		prop.put("express", 12);			//±í´ï
-		prop.put("knowledge", 74);			//ÖªÊ¶
-		prop.put("respect", 66);			//°üÈİ
+		prop.put("courage", 15);			//å‹‡æ°”
+		prop.put("perseverance", 44);		//æ¯…åŠ›
+		prop.put("express", 12);			//è¡¨è¾¾
+		prop.put("knowledge", 74);			//çŸ¥è¯†
+		prop.put("respect", 66);			//åŒ…å®¹
 		
 	}
 	

@@ -8,8 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.StringBuilder;
 import com.rpsg.rpg.utils.display.FontUtil;
 /**
- * GDX-RPG Label×é¼þ¡£
- * Ê¹ÓÃFontUtil¼¼Êõ£¬ÎÞÐè»º´æ×ÖÌå¡£
+ * GDX-RPG Labelç»„ä»¶ã€‚
+ * ä½¿ç”¨FontUtilæŠ€æœ¯ï¼Œæ— éœ€ç¼“å­˜å­—ä½“ã€‚
  *
  */
 public class Label extends Widget {

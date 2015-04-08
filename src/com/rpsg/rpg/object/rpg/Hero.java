@@ -78,7 +78,7 @@ public abstract class Hero extends IRPGObject {
 	}
 	
 	public String getEquipName(String name){
-		return equips.get(name)==null?"ÎÞ":equips.get(name).name;
+		return equips.get(name)==null?"æ— ":equips.get(name).name;
 	}
 	
 	public int getEquipValue(String name,String value){

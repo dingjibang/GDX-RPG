@@ -90,20 +90,20 @@ public class LoadView extends HoverView{
 		rrbutton.setPosition(795,422);
 		stage.addActor(rrbutton);
 		
-		TextButton savebutton=new TextButton("¶ÁÈ¡ÓÎÏ·", butstyle).onClick(()->{
-			HoverController.add(ConfirmView.getDefault("È·¶¨Òª¶ÁÈ¡Õâ¸ö´æµµÃ´£¿", (view)->{
+		TextButton savebutton=new TextButton("è¯»å–æ¸¸æˆ", butstyle).onClick(()->{
+			HoverController.add(ConfirmView.getDefault("ç¡®å®šè¦è¯»å–è¿™ä¸ªå­˜æ¡£ä¹ˆï¼Ÿ", (view)->{
 				if(currentSelect!=-1){
 					Object o=SL.load(currentSelect);
 					if(o!=null){
-						AlertUtil.add("¶ÁÈ¡µµ°¸³É¹¦¡£", AlertUtil.Green);
+						AlertUtil.add("è¯»å–æ¡£æ¡ˆæˆåŠŸã€‚", AlertUtil.Green);
 						GameViews.global=(Global)o;
 						Initialization.restartGame();
 						this.disposed=true;
 					}else
-						AlertUtil.add("¶ÁÈ¡µµ°¸Ê§°Ü¡£", AlertUtil.Red);
+						AlertUtil.add("è¯»å–æ¡£æ¡ˆå¤±è´¥ã€‚", AlertUtil.Red);
 					generateList();
 				}else{
-					AlertUtil.add("ÇëÑ¡ÔñÒª¶ÁÈ¡µÄµµ°¸Î»ÖÃ¡£", AlertUtil.Yellow);
+					AlertUtil.add("è¯·é€‰æ‹©è¦è¯»å–çš„æ¡£æ¡ˆä½ç½®ã€‚", AlertUtil.Yellow);
 					Music.playSE("err");
 				}
 				((HoverView)view).disposed=true;
@@ -113,23 +113,23 @@ public class LoadView extends HoverView{
 		savebutton.setPosition(562,28);
 		stage.addActor(savebutton);
 		
-		TextButton cancelbutton=new TextButton("È¡Ïû", butstyle).onClick(()->{
+		TextButton cancelbutton=new TextButton("å–æ¶ˆ", butstyle).onClick(()->{
 			disposed=true;
 		});
 		cancelbutton.setOffset(10).setPad(1).setHof(-2).setSize(192,58);
 		cancelbutton.setPosition(792,28);
 		stage.addActor(cancelbutton);
 		
-		TextButton deletebutton=new TextButton("É¾³ıµµ°¸", butstyle).onClick(()->{
-			HoverController.add(ConfirmView.getDefault("È·¶¨ÒªÉ¾³ıÕâ¸öµµ°¸Ã´£¿", (view)->{
+		TextButton deletebutton=new TextButton("åˆ é™¤æ¡£æ¡ˆ", butstyle).onClick(()->{
+			HoverController.add(ConfirmView.getDefault("ç¡®å®šè¦åˆ é™¤è¿™ä¸ªæ¡£æ¡ˆä¹ˆï¼Ÿ", (view)->{
 				if(currentSelect!=-1){
 					if(SL.delete(currentSelect)){
-						AlertUtil.add("É¾³ıµµ°¸³É¹¦¡£", AlertUtil.Green);
+						AlertUtil.add("åˆ é™¤æ¡£æ¡ˆæˆåŠŸã€‚", AlertUtil.Green);
 						generateList();
 					}else
-						AlertUtil.add("É¾³ıµµ°¸Ê§°Ü¡£", AlertUtil.Red);
+						AlertUtil.add("åˆ é™¤æ¡£æ¡ˆå¤±è´¥ã€‚", AlertUtil.Red);
 				}else
-					AlertUtil.add("ÇëÑ¡ÔñÒªÉ¾³ıµÄµµ°¸¡£", AlertUtil.Yellow);
+					AlertUtil.add("è¯·é€‰æ‹©è¦åˆ é™¤çš„æ¡£æ¡ˆã€‚", AlertUtil.Yellow);
 				((HoverView)view).disposed=true;
 			}));
 		});

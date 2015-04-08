@@ -43,8 +43,8 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.utils.display.FontUtil;
 
 /**
- * GDX-RPG List×é¼ş
- * Ê¹ÓÃFontUtil¼¼Êõ£¬ÎŞĞè»º´æ×ÖÌå£¬¿ÉÒÔÔÚList²åÈëÍ¼Æ¬¡£
+ * GDX-RPG Listç»„ä»¶
+ * ä½¿ç”¨FontUtilæŠ€æœ¯ï¼Œæ— éœ€ç¼“å­˜å­—ä½“ï¼Œå¯ä»¥åœ¨Listæ’å…¥å›¾ç‰‡ã€‚
  */
 public class List<T> extends Widget implements Cullable {
 	private ListStyle style;

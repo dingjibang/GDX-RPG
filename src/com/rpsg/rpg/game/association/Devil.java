@@ -10,7 +10,7 @@ public class Devil extends Association {
 
 	public Devil() {
 		level = 1;
-		name = "¶ñÄ§";
+		name = "æ¶é­”";
 		favor = 20;
 	}
 }

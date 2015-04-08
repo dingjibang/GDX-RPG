@@ -17,7 +17,7 @@ public class HoverController{
 			view.superInit();
 			stack.add(view);
 		} catch (InstantiationException | IllegalAccessException e) {
-			com.rpsg.rpg.utils.game.Logger.error("无法创建HoverView:"+c.toString(),e);
+			com.rpsg.rpg.utils.game.Logger.error("鏃犳硶鍒涘缓HoverView:"+c.toString(),e);
 		}
 	}
 	

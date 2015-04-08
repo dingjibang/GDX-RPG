@@ -14,9 +14,9 @@ import com.rpsg.rpg.utils.display.ColorUtil;
 
 public class Global implements Serializable{
 	private static final long serialVersionUID = 1L;
-	//初始地图
+	//鍒濆鍦板浘
 	public String map="test/map.tmx";
-	//地图相关
+	//鍦板浘鐩稿叧
 	public List<NPC> npcs=new ArrayList<NPC>();
 	public List<Hero> currentHeros=new ArrayList<Hero>();
 	public List<Hero> heros=new ArrayList<Hero>();
@@ -24,7 +24,7 @@ public class Global implements Serializable{
 	public int y=12;
 	public int z=2;
 	
-	//时间模块
+	//鏃堕棿妯″潡
 	public int day=0;
 	public int mapColor = ColorUtil.DAY;
 	public int tyear=2015;
@@ -32,11 +32,11 @@ public class Global implements Serializable{
 	public int tday=10;
 	
 	
-	//金钱
+	//閲戦挶
 	public int gold=120;
 	
 	
-	//物品、装备等道具
+	//鐗╁搧銆佽澶囩瓑閬撳叿
 	
 	public Map<String, List<? extends Item>> items=new HashMap<String, List<? extends Item>>();
 	{

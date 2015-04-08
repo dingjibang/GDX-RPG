@@ -9,13 +9,13 @@ public class EmptyEquip extends Equipment{
 
 	public EmptyEquip() {
 		name=gloname;
-		statusName="Ğ¶ÏÂµ±Ç°×°±¸";
-		illustration="°Ñµ±Ç°´©´÷µÄ×°±¸Ğ¶ÏÂ¡£";
+		statusName="å¸ä¸‹å½“å‰è£…å¤‡";
+		illustration="æŠŠå½“å‰ç©¿æˆ´çš„è£…å¤‡å¸ä¸‹ã€‚";
 		onlyFor=null;
 		disable=true;
 	}
 
-	public static String gloname= "Ğ¶ÏÂµ±Ç°×°±¸";
+	public static String gloname= "å¸ä¸‹å½“å‰è£…å¤‡";
 
 	@Override
 	public boolean use() {

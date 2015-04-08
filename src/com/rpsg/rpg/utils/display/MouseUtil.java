@@ -23,10 +23,10 @@ public class MouseUtil {
 			robot=new Robot();
 			Gdx.input.setCursorCatched(false);
 			setHWCursorVisible(false);
-			Logger.info("Êó±ê¿ØÖÆÄ£¿é³õÊ¼»¯³É¹¦¡£");
+			Logger.info("é¼ æ ‡æ§åˆ¶æ¨¡å—åˆå§‹åŒ–æˆåŠŸã€‚");
 		} catch (AWTException e) {
 			e.printStackTrace();
-			Logger.error("Êó±ê¿ØÖÆÄ£¿é³õÊ¼»¯Ê§°Ü¡£", e);
+			Logger.error("é¼ æ ‡æ§åˆ¶æ¨¡å—åˆå§‹åŒ–å¤±è´¥ã€‚", e);
 		}
 	}
 	static org.lwjgl.input.Cursor emptyCursor;
