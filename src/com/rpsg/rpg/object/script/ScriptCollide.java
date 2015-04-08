@@ -10,6 +10,7 @@ public class ScriptCollide {
 	public static final int COLLIDE_TYPE_FACE=2;
 	public static final int COLLIDE_TYPE_FOOT=3;
 	public static final int COLLIDE_TYPE_FACE_Z=4;
+	public static final int AUTO_SCRIPT=5;
 	public int collideType;
 	
 	public ScriptCollide(NPC o,int type){

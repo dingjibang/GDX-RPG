@@ -35,6 +35,18 @@ public abstract class NPC extends IRPGObject{
 		threadPool.add(t); 
 	}
 	
+	/**
+	 * return if has same class 
+	 */
+	public void pushThreadAndTryRun(String type){
+		Class<? extends Script> t=scripts.get(type);
+		for(Script s:threadPool)
+			if (t.equals(s.getClass())){
+				return;
+			}
+		pushThreadAndRun(getScript(type, this));
+	}
+	
 	List<Script> removeList=new LinkedList<Script>();
 	public boolean isScriptRunning(){
 		for(Script t:threadPool)

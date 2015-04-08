@@ -1,5 +1,6 @@
 package com.rpsg.rpg.game.object;
 
+
 import com.rpsg.rpg.game.script.SayHelloWorld;
 import com.rpsg.rpg.object.rpg.DefaultNPC;
 
@@ -13,6 +14,12 @@ public class FOONPC extends DefaultNPC{
 
 	public void init() {
 		this.waitWhenCollide=true;
-		scripts.put(DefaultNPC.COLLIDE_NAME_Z, SayHelloWorld.class);
+		scripts.put(DefaultNPC.AUTO_SCRIPT, SayHelloWorld.class);
 	}
+	
+	public void act(float f){
+		super.act(f);
+		System.out.println(this.threadPool+"\n\n");
+	}
+	
 }

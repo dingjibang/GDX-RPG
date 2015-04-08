@@ -13,6 +13,7 @@ public abstract class DefaultNPC extends NPC {
 	public static final String COLLIDE_NAME_FACE_Z="faceZ";
 	public static final String COLLIDE_NAME_Z="z";
 	public static final String COLLIDE_NAME_FOOT="foot";
+	public static final String AUTO_SCRIPT="auto";
 	
 	public DefaultNPC() {
 		super();
@@ -23,6 +24,7 @@ public abstract class DefaultNPC extends NPC {
 	}
 
 	public abstract void init();
+	
 	
 	@Override
 	public void toCollide(ScriptCollide sc) {
@@ -59,6 +61,13 @@ public abstract class DefaultNPC extends NPC {
 			this.pushThreadAndRun(getScript(DefaultNPC.COLLIDE_NAME_Z,this));
 			break;
 		}
+		case ScriptCollide.AUTO_SCRIPT:{
+			if(scripts.get(DefaultNPC.AUTO_SCRIPT)==null)
+				break;
+			this.pushThreadAndTryRun(DefaultNPC.AUTO_SCRIPT);
 		}
+		}
+		
+		
 	}
 }

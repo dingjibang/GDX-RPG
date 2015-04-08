@@ -95,6 +95,9 @@ public class Collide implements Serializable {
 					l.add(new ScriptCollide(o,ScriptCollide.COLLIDE_TYPE_NEAR));
 					o.collideNearAble=false;
 				}
+				if(o.scripts.get(DefaultNPC.AUTO_SCRIPT)!=null){
+					l.add(new ScriptCollide(o, ScriptCollide.AUTO_SCRIPT));
+				}
 			}
 		}
 		return l;
