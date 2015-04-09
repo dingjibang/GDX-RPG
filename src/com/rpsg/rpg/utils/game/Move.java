@@ -6,7 +6,6 @@ import com.rpsg.rpg.object.script.ScriptExecutor;
 import com.rpsg.rpg.system.base.Initialization;
 import com.rpsg.rpg.system.base.ThreadPool;
 import com.rpsg.rpg.system.controller.HeroController;
-import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
 
