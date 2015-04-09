@@ -14,7 +14,7 @@ public class FOONPC extends DefaultNPC{
 
 	public void init() {
 		this.waitWhenCollide=false;
-		this.walkSpeed=1f;
+		this.walkSpeed=10f;
 		this.
 		scripts.put(DefaultNPC.AUTO_SCRIPT, Walker.class);
 	}

@@ -3,6 +3,7 @@ package com.rpsg.rpg.object.script;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.badlogic.gdx.math.Vector2;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.FGType;
 import com.rpsg.rpg.object.base.MsgType;
@@ -184,6 +185,10 @@ public abstract class Script implements MsgType,FGType{
 	
 	protected String currentSelect(){
 		return SelectUtil.currentSelect;
+	}
+	
+	protected BaseScriptExecutor randomWalk(Vector2 bounds){
+		return Move.random(this,bounds);
 	}
 	
 	protected boolean currentSelect(String equ){

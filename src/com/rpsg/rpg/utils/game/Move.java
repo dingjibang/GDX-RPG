@@ -1,5 +1,9 @@
 package com.rpsg.rpg.utils.game;
 
+import java.util.Random;
+
+import com.badlogic.gdx.math.Vector2;
+import com.rpsg.rpg.object.rpg.IRPGObject;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
@@ -17,6 +21,8 @@ public class Move {
 					this.dispose();
 			}
 			public void init() {
+				if(step==0)
+					dispose();
 				script.npc.walk(step);
 				script.npc.testWalk();
 			}
@@ -26,6 +32,69 @@ public class Move {
 	public static BaseScriptExecutor turn(Script script,final int faceTo){
 		return script.$(()->{
 			script.npc.turn(faceTo);
+		});
+	}
+	
+	public static BaseScriptExecutor random(Script script,Vector2 bounds){
+		return script.$(new ScriptExecutor(script) {
+			Random r;
+			int sleepMaxTime=10,sleepTime=0,count=-1,maxCount=-1;
+			int maxWalkLength=3;
+			Vector2 bo2;
+			public void init() {
+				r=new Random();
+				if(bounds!=null)
+					bo2=new Vector2(0,0);
+			}
+			
+			public void step(){
+				if(sleepTime++>sleepMaxTime){
+					sleepTime=0;
+					if(count != -1 && count++ > maxCount)
+						dispose();
+					int face = r.nextInt(4);
+					int step = r.nextInt(maxWalkLength);
+					if(face == 3) face=IRPGObject.FACE_D;
+					else if(face == 2) face=IRPGObject.FACE_U;
+					else if(face == 1) face=IRPGObject.FACE_L;
+					else if(face == 0) face=IRPGObject.FACE_R;
+					if(bo2!=null){
+						if(face==IRPGObject.FACE_D){
+							if(bo2.y+step<bounds.y){
+								bo2.y+=step;
+							}else{
+								if(bo2.y<bounds.y) step=(int)bounds.y-step; else step=0;
+								bo2.y=bounds.y;
+							}
+						}else if(face==IRPGObject.FACE_U){
+							if(bo2.y-step>-bounds.y){
+								bo2.y-=step;
+							}else{
+								if(bo2.y>-bounds.y) step=Math.abs((int) Math.abs(bounds.y)-step); else step=0;
+								bo2.y=-bounds.y;
+							}
+						}else if(face==IRPGObject.FACE_R){
+							if(bo2.x+step<bounds.x){
+								bo2.x+=step;
+							}else{
+								if(bo2.x<bounds.x) step=(int)bounds.x-step; else step=0;
+								bo2.x=bounds.x;
+							}
+						}else if(face==IRPGObject.FACE_L){
+							if(bo2.x-step>-bounds.x){
+								bo2.x-=step;
+							}else{
+								if(bo2.x>-bounds.x) step=Math.abs((int) Math.abs(bounds.x)-step); else step=0;
+								bo2.x=-bounds.x;
+							}
+						}
+						System.out.println(face+","+step);
+					}
+					System.out.println(bounds+","+bo2);
+					script.__$(Move.move(script, step>0?step:0));
+					script.__$(Move.turn(script, step>0?face:IRPGObject.getReverseFace(face)));
+				}
+			}
 		});
 	}
 	
