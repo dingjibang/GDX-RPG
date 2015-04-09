@@ -23,4 +23,5 @@ public class Base {
 			script.npc.scripts.put(type, newScript);
 		});
 	}
+	
 }

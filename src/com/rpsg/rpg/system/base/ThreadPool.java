@@ -26,7 +26,7 @@ public class ThreadPool {
 				list.removeAll(removeList);
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			Logger.error("正常异常，脚本指针错误");
 		}
 	}
 	

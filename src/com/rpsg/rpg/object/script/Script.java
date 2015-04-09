@@ -95,103 +95,107 @@ public abstract class Script implements MsgType,FGType{
 		return exe;
 	}
 	
-	protected BaseScriptExecutor say(String str,String title,int size){
+	public BaseScriptExecutor say(String str,String title,int size){
 		return Msg.say(this, str, title, size);
 	}
 	
-	protected BaseScriptExecutor say(String str){
+	public BaseScriptExecutor say(String str){
 		return Msg.say(this, str, "", 22);
 	}
 	
-	protected BaseScriptExecutor setKeyLocker(boolean b){
+	public BaseScriptExecutor setKeyLocker(boolean b){
 		return Msg.setKeyLocker(this, b);
 	}
 	
-	protected BaseScriptExecutor faceToHero(){
+	public BaseScriptExecutor lock(boolean b){
+		return Move.lock(this, b);
+	}
+	
+	public BaseScriptExecutor faceToHero(){
 		return Move.faceToHero(this);
 	}
 	
-	protected BaseScriptExecutor faceTo(int face){
+	public BaseScriptExecutor faceTo(int face){
 		return Move.turn(this, face);
 	}
 	
-	protected BaseScriptExecutor move(int step){
+	public BaseScriptExecutor move(int step){
 		return Move.move(this, step);
 	}
 	
-	protected BaseScriptExecutor wait(int frame){
+	public BaseScriptExecutor wait(int frame){
 		return Timer.wait(this, frame);
 	}
 	
-	protected BaseScriptExecutor removeSelf(){
+	public BaseScriptExecutor removeSelf(){
 		return Base.removeSelf(this);
 	}
 	
-	protected BaseScriptExecutor changeSelf(Class<? extends Script> script){
+	public BaseScriptExecutor changeSelf(Class<? extends Script> script){
 		return Base.changeSelf(this,script);
 	}
 	
-	protected BaseScriptExecutor showMSG(String msgType){
+	public BaseScriptExecutor showMSG(String msgType){
 		return Msg.show(this, msgType);
 	}
 	
-	protected BaseScriptExecutor showMSG(){
+	public BaseScriptExecutor showMSG(){
 		return Msg.show(this, 正常);
 	}
 	
-	protected BaseScriptExecutor hideMSG(){
+	public BaseScriptExecutor hideMSG(){
 		return Msg.hide(this);
 	}
 	
-	protected BaseScriptExecutor hideFG(int position){
+	public BaseScriptExecutor hideFG(int position){
 		return FG.hide(this, position);
 	}
 	
-	protected BaseScriptExecutor hideFG(){
+	public BaseScriptExecutor hideFG(){
 		return FG.hideAll(this);
 	}
 	
-	protected BaseScriptExecutor showFGLeft(String people,String look){
+	public BaseScriptExecutor showFGLeft(String people,String look){
 		return FG.show(this, Setting.GAME_RES_IMAGE_FG+people+look+".png", FG.LEFT);
 	}
 	
-	protected BaseScriptExecutor showFGRight(String people,String look){
+	public BaseScriptExecutor showFGRight(String people,String look){
 		return FG.show(this, Setting.GAME_RES_IMAGE_FG+people+look+".png", FG.RIGHT);
 	}
 	
-	protected BaseScriptExecutor swapHeroQueue(int position){
+	public BaseScriptExecutor swapHeroQueue(int position){
 		return Heros.swapHeroQueue(this, position);
 	}
 	
-	protected BaseScriptExecutor swapHeroQueue(Class<? extends Hero> c){
+	public BaseScriptExecutor swapHeroQueue(Class<? extends Hero> c){
 		return Heros.swapHeroQueue(this, c);
 	}
 	
-	protected BaseScriptExecutor swapHeroQueue(int position,int position2){
+	public BaseScriptExecutor swapHeroQueue(int position,int position2){
 		return Heros.swapHeroQueue(this, position, position2);
 	}
 	
-	protected BaseScriptExecutor swapHeroQueue(Class<? extends Hero> c1,Class<? extends Hero> c2){
+	public BaseScriptExecutor swapHeroQueue(Class<? extends Hero> c1,Class<? extends Hero> c2){
 		return Heros.swapHeroQueue(this, c1 , c2);
 	}
 	
-	protected BaseScriptExecutor setGameTime(int color){
+	public BaseScriptExecutor setGameTime(int color){
 		return ColorUtil.set(this, color);
 	}
 	
-	protected BaseScriptExecutor select(String ... args){
+	public BaseScriptExecutor select(String ... args){
 		return GameViews.selectUtil.select(this, args);
 	}
 	
-	protected String currentSelect(){
+	public String currentSelect(){
 		return SelectUtil.currentSelect;
 	}
 	
-	protected BaseScriptExecutor randomWalk(Vector2 bounds){
+	public BaseScriptExecutor randomWalk(Vector2 bounds){
 		return Move.random(this,bounds);
 	}
 	
-	protected boolean currentSelect(String equ){
+	public boolean currentSelect(String equ){
 		return SelectUtil.currentSelect.equals(equ);
 	}
 }

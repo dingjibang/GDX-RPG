@@ -50,7 +50,7 @@ public abstract class NPC extends IRPGObject{
 	List<Script> removeList=new LinkedList<Script>();
 	public boolean isScriptRunning(){
 		for(Script t:threadPool)
-			if(t.isAlive())
+			if(t.isAlive() && !t.callType.equals(DefaultNPC.AUTO_SCRIPT))
 				return true;
 		return false;
 	}

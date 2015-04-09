@@ -2,7 +2,10 @@ package com.rpsg.rpg.utils.game;
 
 import java.util.Random;
 
+
 import com.badlogic.gdx.math.Vector2;
+import com.rpsg.rpg.game.script.Walker;
+import com.rpsg.rpg.object.rpg.DefaultNPC;
 import com.rpsg.rpg.object.rpg.IRPGObject;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
@@ -38,7 +41,7 @@ public class Move {
 	public static BaseScriptExecutor random(Script script,Vector2 bounds){
 		return script.$(new ScriptExecutor(script) {
 			Random r;
-			int sleepMaxTime=10,sleepTime=0,count=-1,maxCount=-1;
+			int sleepMaxTime=60,sleepTime=0,count=-1,maxCount=-1;
 			int maxWalkLength=3;
 			Vector2 bo2;
 			public void init() {
@@ -88,9 +91,7 @@ public class Move {
 								bo2.x=-bounds.x;
 							}
 						}
-						System.out.println(face+","+step);
 					}
-					System.out.println(bounds+","+bo2);
 					script.__$(Move.move(script, step>0?step:0));
 					script.__$(Move.turn(script, step>0?face:IRPGObject.getReverseFace(face)));
 				}
@@ -113,6 +114,37 @@ public class Move {
 			ThreadPool.pool.clear();
 			Initialization.restartGame();
 			HeroController.reinitByTeleport();
+		});
+	}
+	
+	public static BaseScriptExecutor lock(Script script,boolean flag){
+		return script.$(new ScriptExecutor(script) {
+			public void init(){
+				if(flag){
+					script.npc.threadPool.forEach((sc)->{
+						if(sc.callType.equals(DefaultNPC.AUTO_SCRIPT))
+							sc.dispose();
+					});
+//				script.npc.threadPool.removeIf((Script sc)->sc.callType.equals(DefaultNPC.AUTO_SCRIPT));
+				}else if(script.npc.scripts.get(DefaultNPC.AUTO_SCRIPT)!=null)
+					script.npc.pushThreadAndTryRun(DefaultNPC.AUTO_SCRIPT);
+				script._$(script.setKeyLocker(flag));
+			}
+			
+			public void step(){
+				try {
+					com.rpsg.rpg.object.rpg.Walker wk= script.npc.walkStack.get(0);
+					wk.step=0;
+					script.npc.walkStack.clear();
+					script.npc.walkStack.add(wk);
+					if(!script.npc.walked)
+						script.npc.toWalk();
+					else
+						dispose();
+				} catch (Exception e) {
+					dispose();
+				}
+			}
 		});
 	}
 }

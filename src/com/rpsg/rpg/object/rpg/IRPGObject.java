@@ -96,7 +96,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	
 	public float walkSpeed=3f;
 	
-	private Vector2 lastPosition;
+	public Vector2 lastPosition;
 	public IRPGObject walk(int step){
 		walkStack.add(new Walker(this.getCurrentFace(),step));
 		return this;
