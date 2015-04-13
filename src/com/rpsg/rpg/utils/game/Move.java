@@ -4,7 +4,6 @@ import java.util.Random;
 
 
 import com.badlogic.gdx.math.Vector2;
-import com.rpsg.rpg.game.script.Walker;
 import com.rpsg.rpg.object.rpg.DefaultNPC;
 import com.rpsg.rpg.object.rpg.IRPGObject;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
@@ -38,11 +37,12 @@ public class Move {
 		});
 	}
 	
-	public static BaseScriptExecutor random(Script script,Vector2 bounds){
+	//around the current hero if point.x and y = -1 
+	public static BaseScriptExecutor random(Script script,int speed,int maxLength,Vector2 bounds,Vector2 point){
 		return script.$(new ScriptExecutor(script) {
 			Random r;
-			int sleepMaxTime=60,sleepTime=0,count=-1,maxCount=-1;
-			int maxWalkLength=3;
+			int sleepMaxTime=speed,sleepTime=0,count=-1,maxCount=-1;
+			int maxWalkLength=maxLength;
 			Vector2 bo2;
 			public void init() {
 				r=new Random();
@@ -55,12 +55,19 @@ public class Move {
 					sleepTime=0;
 					if(count != -1 && count++ > maxCount)
 						dispose();
-					int face = r.nextInt(4);
 					int step = r.nextInt(maxWalkLength);
-					if(face == 3) face=IRPGObject.FACE_D;
-					else if(face == 2) face=IRPGObject.FACE_U;
-					else if(face == 1) face=IRPGObject.FACE_L;
-					else if(face == 0) face=IRPGObject.FACE_R;
+					int face;
+					if(point==null){
+						face = r.nextInt(4);
+						if(face == 3) face=IRPGObject.FACE_D;
+						else if(face == 2) face=IRPGObject.FACE_U;
+						else if(face == 1) face=IRPGObject.FACE_L;
+						else if(face == 0) face=IRPGObject.FACE_R;
+					}else if(point.x!= -1 && point.y!= -1){
+						face = script.npc.getFaceByPoint((int)point.x, (int)point.y);
+					}else{
+						face = script.npc.getFaceByPoint(HeroController.getHeadHero().mapx,HeroController.getHeadHero().mapy);
+					}
 					if(bo2!=null){
 						if(face==IRPGObject.FACE_D){
 							if(bo2.y+step<bounds.y){
@@ -105,6 +112,12 @@ public class Move {
 		});
 	}
 	
+	public static BaseScriptExecutor faceToPoint(Script script,int x,int y){
+		return script.$(()->{
+				script.npc.turn(script.npc.getFaceByPoint(x, y));
+		});
+	}
+	
 	public static BaseScriptExecutor teleportAnotherMap(Script script,String map,int x,int y,int z){
 		return script.$(()->{
 			GameViews.global.map="test/"+map;
@@ -129,6 +142,7 @@ public class Move {
 				}else if(script.npc.scripts.get(DefaultNPC.AUTO_SCRIPT)!=null)
 					script.npc.pushThreadAndTryRun(DefaultNPC.AUTO_SCRIPT);
 				script._$(script.setKeyLocker(flag));
+				System.out.println("die");
 			}
 			
 			public void step(){

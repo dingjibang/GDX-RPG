@@ -191,9 +191,24 @@ public abstract class Script implements MsgType,FGType{
 		return SelectUtil.currentSelect;
 	}
 	
-	public BaseScriptExecutor randomWalk(Vector2 bounds){
-		return Move.random(this,bounds);
+	
+	public BaseScriptExecutor randomWalk(int speed,int length){
+		return Move.random(this, speed,length,null, null);
 	}
+	
+	public BaseScriptExecutor randomWalk(int speed,int length,Vector2 bounds,Vector2 poi){
+		return Move.random(this, speed,length,bounds, poi);
+	}
+	
+	public BaseScriptExecutor randomWalkByHero(int speed,int length){
+		return Move.random(this,speed,length,null,new Vector2(-1,-1));
+	}
+	
+	public BaseScriptExecutor randomWalkBySelf(int speed,int length){
+		return Move.random(this,speed,length,new Vector2(3,3),new Vector2(this.npc.mapx,this.npc.mapy));
+	}
+	
+	
 	
 	public boolean currentSelect(String equ){
 		return SelectUtil.currentSelect.equals(equ);

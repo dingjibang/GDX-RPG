@@ -7,6 +7,7 @@ import java.util.List;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.system.ui.Image;
@@ -304,6 +305,14 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public void dispose(){
 		for(Image i:images)
 			i.dispose();
+	}
+	
+	public int getFaceByPoint(int x,int y){
+		boolean xable=MathUtils.random(100)>50;
+		if(xable)
+			return mapx>x?FACE_L:FACE_R;
+		else
+			return mapy>y?FACE_U:FACE_D;
 	}
 	
 }
