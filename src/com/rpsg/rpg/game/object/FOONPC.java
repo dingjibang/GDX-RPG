@@ -15,8 +15,7 @@ public class FOONPC extends DefaultNPC{
 
 	public void init() {
 		this.waitWhenCollide=false;
-		this.walkSpeed=10f;
-		this.
+		this.walkSpeed=1f;
 		scripts.put(DefaultNPC.AUTO_SCRIPT, Walker.class);
 		scripts.put(DefaultNPC.COLLIDE_NAME_Z, SayHelloWorld.class);
 	}
