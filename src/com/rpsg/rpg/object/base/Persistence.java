@@ -2,6 +2,7 @@ package com.rpsg.rpg.object.base;
 
 import java.io.Serializable;
 
+import com.badlogic.gdx.Gdx;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Files;
 
@@ -30,8 +31,9 @@ public class Persistence implements Serializable{
 		Object o=Files.load(PersistenceFileName);
 		if(null!=o)
 			return (Persistence)o;
+		//create new settings if the "save" floder not exise
+		Gdx.files.internal(Setting.GAME_PERSISTENCE).mkdirs();
 		Persistence p=new Persistence();
-		//TODO TOUCHMOD
 		Files.save(p,PersistenceFileName);
 		return p;
 	}

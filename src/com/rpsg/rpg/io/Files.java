@@ -57,8 +57,8 @@ public class Files {
 			return o;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 	
 	public static void save(Object o,String fileName){

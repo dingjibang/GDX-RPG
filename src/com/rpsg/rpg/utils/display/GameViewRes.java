@@ -15,9 +15,10 @@ public class GameViewRes {
 	public static Stage stage = new Stage();
 	public static OrthographicCamera camera = (OrthographicCamera) stage.getCamera();
 	public static RayHandler ray = new RayHandler(null);
-	public static World world = new World(new Vector2(0,0),true);
+	public static World world ;
 	public static TmxMapLoader mapLoader=new TmxMapLoader(); 
 	public static AssetManager ma=new AssetManager();
+	
 	static{
 		ma.setLoader(TiledMap.class, GameViewRes.mapLoader);
 	}
