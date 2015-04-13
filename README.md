@@ -5,4 +5,4 @@ learning libgdx...
 
 need java8 
 
-don't use inner images please :(
+The project inner images is protected by copyright, don't use in other places please :) 
