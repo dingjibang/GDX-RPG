@@ -26,7 +26,7 @@ public class Global implements Serializable{
 	
 	//时间模块
 	public int day=0;
-	public int mapColor = ColorUtil.DUSK;
+	public int mapColor = ColorUtil.DAY;
 	public int tyear=2015;
 	public int tmonth=3;
 	public int tday=10;
