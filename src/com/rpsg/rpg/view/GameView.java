@@ -9,6 +9,8 @@ import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.*;
+import com.bitfire.postprocessing.PostProcessor;
+import com.bitfire.postprocessing.effects.Bloom;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
@@ -35,6 +37,8 @@ public class GameView extends View{
 	AssetManager ma=GameViewRes.ma;
 	String filename;
 	Parameters parameter;
+	public PostProcessor post;
+	public Bloom bloom;
 	@Override
 	public void init() {
 		inited=false;
@@ -48,6 +52,10 @@ public class GameView extends View{
 			ray.setWorld(world);
 			Initialization.init(this);
 			inited=true;
+			
+			post=GameViews.post;
+			bloom=GameViews.bloom;
+			
 			Logger.info("图形加载完成。");
 		};
 		filename=Setting.GAME_RES_MAP+global.map;
@@ -77,17 +85,25 @@ public class GameView extends View{
 	
 	@Override
 	public void draw(SpriteBatch batch) {
+		
 		if(!ma.update() || !inited)
 			return;
+		
+		post.capture();
+		
 		MapController.draw(this);
 		
-		ColorUtil.draw(batch);
 		DrawController.draw(batch);
 		ThreadPool.logic();
+		
+		post.render();
+		
+		ColorUtil.draw(batch);
 		ColorUtil.drawhover(batch);
 		
 		if(null!=stackView)
 			stackView.draw(batch);
+		
 		
 		
 //		batch.end();

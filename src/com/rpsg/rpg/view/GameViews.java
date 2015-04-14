@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.bitfire.postprocessing.PostProcessor;
+import com.bitfire.postprocessing.effects.Bloom;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
@@ -44,6 +46,10 @@ public class GameViews implements ApplicationListener {
 	
 	public static SelectUtil selectUtil;
 	public static Input input;
+	
+	public static PostProcessor post;
+	public static Bloom bloom;
+	
 	@Override
 	public void create() {
 		
@@ -70,6 +76,12 @@ public class GameViews implements ApplicationListener {
 		TimeUtil.init();
 		selectUtil=new SelectUtil();
 		Logger.info("Gdx-RPG引擎初始化成功。");
+		
+		
+		post=new PostProcessor( false, true, true);
+		bloom=new Bloom((int)(Gdx.graphics.getWidth() * 0.25f), (int)(Gdx.graphics.getHeight() * 0.25f));
+		post.addEffect(bloom);
+		Logger.info("debug the POST ext end ");
 	}
 
 	@Override
@@ -80,6 +92,7 @@ public class GameViews implements ApplicationListener {
 
 	@Override
 	public void render() {
+		
 		if(!flag) dispose();
 		Gdx.gl.glClearColor(0,0,0,1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -125,12 +138,15 @@ public class GameViews implements ApplicationListener {
 			}
 		}
 		}
+	
 		HoverController.draw(batch);
 		GameUtil.drawFPS(batch);
 		TimeUtil.logic();
 		AlertUtil.draw(batch);
 		
+		
 		batch.end();
+		
 		
 	}
 
