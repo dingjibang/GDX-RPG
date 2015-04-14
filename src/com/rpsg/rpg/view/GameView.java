@@ -2,17 +2,21 @@ package com.rpsg.rpg.view;
 
 import box2dLight.RayHandler;
 
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.bitfire.postprocessing.PostProcessor;
 import com.bitfire.postprocessing.effects.Bloom;
+import com.bitfire.postprocessing.effects.CameraMotion;
 import com.bitfire.postprocessing.filters.Blur.BlurType;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -38,8 +42,11 @@ public class GameView extends View{
 	AssetManager ma=GameViewRes.ma;
 	String filename;
 	Parameters parameter;
+	
 	public PostProcessor post;
 	public Bloom bloom;
+	public CameraMotion motion;
+	
 	@Override
 	public void init() {
 		inited=false;
@@ -56,6 +63,7 @@ public class GameView extends View{
 			
 			post=GameViews.post;
 			bloom=GameViews.bloom;
+			motion=GameViews.motion;
 			
 			Logger.info("图形加载完成。");
 		};
@@ -84,17 +92,26 @@ public class GameView extends View{
 		System.gc();
 	}
 	
+	Matrix4 lastView;
 	@Override
 	public void draw(SpriteBatch batch) {
-		
 		if(!ma.update() || !inited)
 			return;
+		
+		if(lastView==null)
+			lastView=camera.view.cpy();
+		
+		motion.setBlurPasses(10);
+		motion.setMatrices(camera.invProjectionView, lastView.cpy(), camera.view);
+		motion.setDepthScale(0);
+		lastView=camera.view.cpy();
+		
+		motion.setBlurScale(Input.isPress(Keys.CONTROL_LEFT)?0.0035f:0);
 		
 		if(null==stackView || stackView.viewStack.size()==0)
 			post.capture();
 		
 		MapController.draw(this);
-		
 		
 		if(null==stackView || stackView.viewStack.size()==0)
 			post.render();
@@ -104,17 +121,10 @@ public class GameView extends View{
 		DrawController.draw(batch);
 		ThreadPool.logic();
 		
-		
 		ColorUtil.drawhover(batch);
 		
 		if(null!=stackView)
 			stackView.draw(batch);
-		
-		bloom.setBaseIntesity(1.2f);
-		bloom.setBaseSaturation(1f);
-		bloom.setBloomIntesity(0.7f);
-		bloom.setBloomSaturation(1.2f);
-		bloom.setThreshold(0.3f);
 		
 //		batch.end();
 //		ShaderProgram shader = DiffuseShader.createShadowShader();

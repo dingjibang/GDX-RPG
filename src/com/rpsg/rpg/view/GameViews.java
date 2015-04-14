@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.bitfire.postprocessing.PostProcessor;
 import com.bitfire.postprocessing.effects.Bloom;
+import com.bitfire.postprocessing.effects.CameraMotion;
 import com.bitfire.postprocessing.effects.Vignette;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Input;
@@ -51,6 +52,7 @@ public class GameViews implements ApplicationListener {
 	
 	public static PostProcessor post;
 	public static Bloom bloom;
+	public static CameraMotion motion;
 	
 	@Override
 	public void create() {
@@ -79,14 +81,21 @@ public class GameViews implements ApplicationListener {
 		selectUtil=new SelectUtil();
 		Logger.info("Gdx-RPG引擎初始化成功。");
 		
-		
 		post=new PostProcessor(false, true, true);
 		bloom=new Bloom((int)(Gdx.graphics.getWidth() * 0.25f), (int)(Gdx.graphics.getHeight() * 0.25f));
+		bloom.setBaseIntesity(1.2f);
+		bloom.setBaseSaturation(1f);
+		bloom.setBloomIntesity(0.7f);
+		bloom.setBloomSaturation(1.2f);
+		bloom.setThreshold(0.3f);
 		post.addEffect(bloom);
+		
 		Vignette v=new Vignette(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
 		v.setIntensity(0.5f);
 		post.addEffect(v);
-		Logger.info("debug the POST ext end ");
+		
+		motion =new CameraMotion(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		post.addEffect(motion);
 	}
 
 	@Override

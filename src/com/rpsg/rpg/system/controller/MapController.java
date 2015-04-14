@@ -9,8 +9,12 @@ import java.util.List;
 
 
 
+
+
 import box2dLight.PointLight;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapLayer;
@@ -137,9 +141,12 @@ public class MapController {
 		for(int i=0;i<size;i++){
 			drawlist.clear();
 			gv.render.setView(gv.camera);
+			
+			Gdx.gl20.glBlendFunc(GL20.GL_ONE, GL20.GL_ZERO);
 			gv.render.render(new int[]{i});
+			
 			SpriteBatch sb=(SpriteBatch) gv.stage.getBatch();
-			sb.begin();
+			
 			sb.setProjectionMatrix(gv.camera.combined);
 			for(Actor a:gv.stage.getActors())
 				if(a instanceof IRPGObject){
@@ -149,9 +156,12 @@ public class MapController {
 				}
 			Collections.sort(drawlist);
 			for(IRPGObject ir:drawlist){
+				sb.begin();
 				ir.draw(sb, 1f);
+				sb.end();
 			}
-			sb.end();
+			
+			
 		}
 //		System.out.println(HeroControler.getHeadHero().getX()+" "+HeroControler.getHeadHero().getY()+" "+gv.camera.position.x+" "+gv.camera.position.y+" "+HeroControler.getHeadHero().mapx+" "+HeroControler.getHeadHero().mapy);
 	}

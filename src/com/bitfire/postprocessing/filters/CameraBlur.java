@@ -112,6 +112,7 @@ public final class CameraBlur extends Filter<CameraBlur> {
 	protected void onBeforeRender () {
 		rebind();
 		inputTexture.bind(u_texture0);
-		normaldepth.bind(u_texture1);
+		if(normaldepth!=null)
+			normaldepth.bind(u_texture1);
 	}
 }

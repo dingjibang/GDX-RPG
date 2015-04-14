@@ -25,6 +25,7 @@ import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
+import com.bitfire.postprocessing.effects.CameraMotion;
 import com.bitfire.postprocessing.utils.PingPongBuffer;
 import com.bitfire.utils.ItemsManager;
 
@@ -59,7 +60,7 @@ public final class PostProcessor implements Disposable {
 	private PostProcessorListener listener = null;
 
 	// maintains a per-frame updated list of enabled effects
-	private Array<PostProcessorEffect> enabledEffects = new Array<PostProcessorEffect>(5);
+	public Array<PostProcessorEffect> enabledEffects = new Array<PostProcessorEffect>(5);
 
 	/** Construct a new PostProcessor with FBO dimensions set to the size of the screen */
 	public PostProcessor (boolean useDepth, boolean useAlphaChannel, boolean use32Bits) {
@@ -304,7 +305,7 @@ public final class PostProcessor implements Disposable {
 
 		return false;
 	}
-
+	
 	/** Stops capturing the scene and returns the result, or null if nothing was captured. */
 	public FrameBuffer captureEnd () {
 		if (enabled && capturing) {
