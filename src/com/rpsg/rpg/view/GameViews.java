@@ -12,9 +12,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.bitfire.postprocessing.PostProcessor;
 import com.bitfire.postprocessing.effects.Bloom;
+import com.bitfire.postprocessing.effects.Vignette;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
+import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
@@ -78,9 +80,12 @@ public class GameViews implements ApplicationListener {
 		Logger.info("Gdx-RPG引擎初始化成功。");
 		
 		
-		post=new PostProcessor( false, true, true);
+		post=new PostProcessor(false, true, true);
 		bloom=new Bloom((int)(Gdx.graphics.getWidth() * 0.25f), (int)(Gdx.graphics.getHeight() * 0.25f));
 		post.addEffect(bloom);
+		Vignette v=new Vignette(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
+		v.setIntensity(0.5f);
+		post.addEffect(v);
 		Logger.info("debug the POST ext end ");
 	}
 

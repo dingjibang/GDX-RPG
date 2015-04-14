@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.bitfire.postprocessing.PostProcessor;
 import com.bitfire.postprocessing.effects.Bloom;
+import com.bitfire.postprocessing.filters.Blur.BlurType;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
@@ -89,22 +90,31 @@ public class GameView extends View{
 		if(!ma.update() || !inited)
 			return;
 		
-		post.capture();
+		if(null==stackView || stackView.viewStack.size()==0)
+			post.capture();
 		
 		MapController.draw(this);
+		
+		
+		if(null==stackView || stackView.viewStack.size()==0)
+			post.render();
+		
+		ColorUtil.draw(batch);
 		
 		DrawController.draw(batch);
 		ThreadPool.logic();
 		
-		post.render();
 		
-		ColorUtil.draw(batch);
 		ColorUtil.drawhover(batch);
 		
 		if(null!=stackView)
 			stackView.draw(batch);
 		
-		
+		bloom.setBaseIntesity(1.2f);
+		bloom.setBaseSaturation(1f);
+		bloom.setBloomIntesity(0.7f);
+		bloom.setBloomSaturation(1.2f);
+		bloom.setThreshold(0.3f);
 		
 //		batch.end();
 //		ShaderProgram shader = DiffuseShader.createShadowShader();

@@ -19,6 +19,7 @@ package com.bitfire.utils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.utils.game.Logger;
 
 public final class ShaderLoader {
 	public static String BasePath = Setting.GAME_RES_SHADER;
@@ -34,7 +35,7 @@ public final class ShaderLoader {
 			log += " w/ (" + defines.replace( "\n", ", " ) + ")";
 		}
 		log += "...";
-		Gdx.app.log( "ShaderLoader", "Compiling " + log );
+		Logger.info("载入shader - ["+log+"]");
 
 		String vpSrc = Gdx.files.internal( BasePath + vertexFileName + ".vertex" ).readString();
 		String fpSrc = Gdx.files.internal( BasePath + fragmentFileName + ".fragment" ).readString();

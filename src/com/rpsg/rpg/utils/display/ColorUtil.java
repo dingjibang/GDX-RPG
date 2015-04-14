@@ -26,7 +26,7 @@ public class ColorUtil {
 		RayHandler ray=GameViews.gameview.ray;
 		ray.setCombinedMatrix(GameViews.gameview.camera.combined);
 		if(GameViews.global.mapColor==NIGHT){
-			ray.setAmbientLight(0.3f,0.3f,0.6f,0.3f);
+			ray.setAmbientLight(0.4f,0.4f,0.6f,0.3f);
 			ray.updateAndRender();
 		}
 		if(GameViews.global.mapColor==DUSK){
