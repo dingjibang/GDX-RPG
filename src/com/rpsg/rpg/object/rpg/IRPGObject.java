@@ -194,7 +194,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 			if((NEXT_FOOT-=walkSpeed)<=0){
 				if(++foot==3)
 					foot=-1;
-				NEXT_FOOT=(int) (walkSpeed*16);
+				NEXT_FOOT=(int) (walkSpeed*12);
 			}
 		}
 		return false;
