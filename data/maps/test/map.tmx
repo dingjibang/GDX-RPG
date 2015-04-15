@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="48" tileheight="48">
  <properties>
+  <property name="distant" value="bgnd2.jpg"/>
   <property name="minimap" value="test"/>
   <property name="name" value="测试地图"/>
  </properties>

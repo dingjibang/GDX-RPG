@@ -9,6 +9,7 @@ public class Setting {
 	public static final String GAME_RES_PATH="data";
 	public static final String GAME_RES_IMAGE="/images";
 	public static final String GAME_RES_IMAGE_NUMBER=GAME_RES_PATH+GAME_RES_IMAGE+"/number/";
+	public static final String GAME_RES_IMAGE_BACKGROUND=GAME_RES_PATH+GAME_RES_IMAGE+"/background/";
 	public static final String GAME_RES_IMAGE_LOGO=GAME_RES_PATH+GAME_RES_IMAGE+"/logo/";
 	public static final String GAME_RES_IMAGE_LOAD=GAME_RES_PATH+GAME_RES_IMAGE+"/load/";
 	public static final String GAME_RES_IMAGE_TITLE=GAME_RES_PATH+GAME_RES_IMAGE+"/title/";

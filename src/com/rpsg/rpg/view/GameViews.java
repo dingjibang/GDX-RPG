@@ -95,6 +95,8 @@ public class GameViews implements ApplicationListener {
 		post.addEffect(v);
 		
 		motion =new CameraMotion(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		motion.setBlurPasses(10);
+		motion.setDepthScale(0);
 		post.addEffect(motion);
 	}
 

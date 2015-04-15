@@ -133,6 +133,10 @@ public class MapController {
 				npc=n;
 			}
 		}
+		
+		//生成远景图
+		DistantController.init(gv.map.getProperties().get("distant"),gv);
+		
 		Logger.info("地图模块已全部加载完成。");
 	}
 	

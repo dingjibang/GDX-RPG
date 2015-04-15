@@ -101,15 +101,15 @@ public class GameView extends View{
 		if(lastView==null)
 			lastView=camera.view.cpy();
 		
-		motion.setBlurPasses(10);
 		motion.setMatrices(camera.invProjectionView, lastView.cpy(), camera.view);
-		motion.setDepthScale(0);
 		lastView=camera.view.cpy();
 		
 		motion.setBlurScale(Input.isPress(Keys.CONTROL_LEFT)?0.0035f:0);
 		
 		if(null==stackView || stackView.viewStack.size()==0)
 			post.capture();
+		
+		DistantController.draw((SpriteBatch)stage.getBatch(),this);
 		
 		MapController.draw(this);
 		
