@@ -1,15 +1,12 @@
 package com.rpsg.rpg.view;
 
-import shaders.DiffuseShader;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.bitfire.postprocessing.PostProcessor;
 import com.bitfire.postprocessing.effects.Bloom;
 import com.bitfire.postprocessing.effects.CameraMotion;
@@ -17,14 +14,11 @@ import com.bitfire.postprocessing.effects.Vignette;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
-import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HoverController;
-import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.display.MouseUtil;
 import com.rpsg.rpg.utils.display.RadarUtil;
-import com.rpsg.rpg.utils.display.ScreenUtil;
 import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.display.TipUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -79,8 +73,8 @@ public class GameViews implements ApplicationListener {
 		RadarUtil.init(1, new TextureRegion(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_STATUS+"propbg.png"))), 1);
 		TimeUtil.init();
 		selectUtil=new SelectUtil();
-		Logger.info("Gdx-RPG引擎初始化成功。");
 		
+		Logger.info("创建视觉效果中。");
 		post=new PostProcessor(false, true, true);
 		bloom=new Bloom((int)(Gdx.graphics.getWidth() * 0.25f), (int)(Gdx.graphics.getHeight() * 0.25f));
 		bloom.setBaseIntesity(1.2f);
@@ -98,6 +92,8 @@ public class GameViews implements ApplicationListener {
 		motion.setBlurPasses(10);
 		motion.setDepthScale(0);
 		post.addEffect(motion);
+		
+		Logger.info("Gdx-RPG引擎初始化成功。");
 	}
 
 	@Override

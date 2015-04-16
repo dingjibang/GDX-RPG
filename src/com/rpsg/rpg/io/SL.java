@@ -6,9 +6,7 @@ import java.util.Date;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.PixmapIO;
-import com.badlogic.gdx.graphics.PixmapIO.PNG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.SLData;

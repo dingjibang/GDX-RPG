@@ -2,16 +2,10 @@ package com.rpsg.rpg.utils.display;
 
 import java.awt.AWTException;
 import java.awt.Robot;
-import java.nio.IntBuffer;
 
-import org.lwjgl.BufferUtils;
-import org.lwjgl.LWJGLException;
-import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 
-import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.rpsg.rpg.utils.game.Logger;
 
 public class MouseUtil {

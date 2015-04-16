@@ -14,7 +14,6 @@ import com.badlogic.gdx.scenes.scene2d.*;
 import com.bitfire.postprocessing.PostProcessor;
 import com.bitfire.postprocessing.effects.Bloom;
 import com.bitfire.postprocessing.effects.CameraMotion;
-import com.bitfire.postprocessing.filters.Blur.BlurType;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
@@ -106,14 +105,15 @@ public class GameView extends View{
 		
 		motion.setBlurScale(Input.isPress(Keys.CONTROL_LEFT)?0.0035f:0);
 		
-		if(null==stackView || stackView.viewStack.size()==0)
+		boolean postEnable=Setting.persistence.betterLight &&(null==stackView || stackView.viewStack.size()==0);
+		if(postEnable)
 			post.capture();
 		
 		DistantController.draw((SpriteBatch)stage.getBatch(),this);
 		
 		MapController.draw(this);
 		
-		if(null==stackView || stackView.viewStack.size()==0)
+		if(postEnable)
 			post.render();
 		
 		ColorUtil.draw(batch);
@@ -121,7 +121,8 @@ public class GameView extends View{
 		DrawController.draw(batch);
 		ThreadPool.logic();
 		
-		ColorUtil.drawhover(batch);
+		if(postEnable)
+			ColorUtil.drawhover(batch);
 		
 		if(null!=stackView)
 			stackView.draw(batch);

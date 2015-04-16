@@ -3,7 +3,6 @@ package com.rpsg.rpg.utils.display;
 
 import box2dLight.RayHandler;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;

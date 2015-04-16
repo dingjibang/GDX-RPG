@@ -25,7 +25,6 @@ import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
-import com.bitfire.postprocessing.effects.CameraMotion;
 import com.bitfire.postprocessing.utils.PingPongBuffer;
 import com.bitfire.utils.ItemsManager;
 
@@ -41,7 +40,7 @@ public final class PostProcessor implements Disposable {
 
 	private static PipelineState pipelineState = null;
 	private static Format fbFormat;
-	private final PingPongBuffer composite;
+	public final PingPongBuffer composite;
 	private TextureWrap compositeWrapU;
 	private TextureWrap compositeWrapV;
 	private final ItemsManager<PostProcessorEffect> effectsManager = new ItemsManager<PostProcessorEffect>();
@@ -391,7 +390,8 @@ public final class PostProcessor implements Disposable {
 			Gdx.app.log("PostProcessor", "No post-processor effects enabled, aborting render");
 		}
 	}
-
+	
+	
 	/** Convenience method to render to screen. */
 	public void render () {
 		render(null);

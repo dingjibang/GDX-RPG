@@ -118,6 +118,7 @@ public class TmxMapLoader extends BaseTmxMapLoader<TmxMapLoader.Parameters> {
 	 * @param fileName
 	 * @param parameter not used for now
 	 * @return dependencies for the given .tmx file */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Array<AssetDescriptor> getDependencies (String fileName, FileHandle tmxFile, Parameters parameter) {
 		Array<AssetDescriptor> dependencies = new Array<AssetDescriptor>();

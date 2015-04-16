@@ -1,7 +1,5 @@
 package com.rpsg.rpg.system.controller;
 
-import org.lwjgl.opengl.Display;
-
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;

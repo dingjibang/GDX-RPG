@@ -3,8 +3,7 @@ package com.rpsg.rpg.utils.game;
 import com.badlogic.gdx.Application;
 import com.rpsg.rpg.core.Setting;
 
-public class Logger {
-	
+	public class Logger{
 	static com.badlogic.gdx.utils.Logger infolog;
 	static com.badlogic.gdx.utils.Logger errorlog;
 	static com.badlogic.gdx.utils.Logger faildlog;
