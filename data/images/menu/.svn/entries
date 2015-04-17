@@ -1,0 +1,52 @@
+10
+
+dir
+166
+https://svn.sinaapp.com/rpsgrpg/1/data/images/menu
+https://svn.sinaapp.com/rpsgrpg
+
+
+
+2015-03-06T05:34:15.342727Z
+164
+dingjibang@qq.com
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f2f55752-2c37-47e2-95c2-4c980355a58c
+
+equip
+dir
+
+fgs
+dir
+
+global
+dir
+
+item
+dir
+
+map
+dir
+
+sc
+dir
+
+status
+dir
+
+system
+dir
+

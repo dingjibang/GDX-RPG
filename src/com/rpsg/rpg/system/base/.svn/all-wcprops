@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/rpsgrpg/!svn/ver/166/1/src/com/rpsg/rpg/system/base
+END
+Initialization.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/rpsgrpg/!svn/ver/155/1/src/com/rpsg/rpg/system/base/Initialization.java
+END
+Res.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/rpsgrpg/!svn/ver/167/1/src/com/rpsg/rpg/system/base/Res.java
+END
+TmxMapLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/rpsgrpg/!svn/ver/129/1/src/com/rpsg/rpg/system/base/TmxMapLoader.java
+END
+Confirm.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/rpsgrpg/!svn/ver/164/1/src/com/rpsg/rpg/system/base/Confirm.java
+END
+ThreadPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/rpsgrpg/!svn/ver/129/1/src/com/rpsg/rpg/system/base/ThreadPool.java
+END

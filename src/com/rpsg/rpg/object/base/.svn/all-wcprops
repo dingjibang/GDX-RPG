@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/rpsgrpg/!svn/ver/166/1/src/com/rpsg/rpg/object/base
+END
+Persistence.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/rpsgrpg/!svn/ver/161/1/src/com/rpsg/rpg/object/base/Persistence.java
+END
+Alert.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/rpsgrpg/!svn/ver/162/1/src/com/rpsg/rpg/object/base/Alert.java
+END
+ObjectRunnable.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/rpsgrpg/!svn/ver/164/1/src/com/rpsg/rpg/object/base/ObjectRunnable.java
+END
+Resistance.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/rpsgrpg/!svn/ver/152/1/src/com/rpsg/rpg/object/base/Resistance.java
+END
+IOMode.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/rpsgrpg/!svn/ver/155/1/src/com/rpsg/rpg/object/base/IOMode.java
+END
+EmptyAssociation.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/rpsgrpg/!svn/ver/149/1/src/com/rpsg/rpg/object/base/EmptyAssociation.java
+END
+Global.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/rpsgrpg/!svn/ver/148/1/src/com/rpsg/rpg/object/base/Global.java
+END
+SLData.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/rpsgrpg/!svn/ver/166/1/src/com/rpsg/rpg/object/base/SLData.java
+END
+Association.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/rpsgrpg/!svn/ver/151/1/src/com/rpsg/rpg/object/base/Association.java
+END
