@@ -56,7 +56,6 @@ public class Files {
 			ois.close();
 			return o;
 		} catch (Exception e) {
-			e.printStackTrace();
 			return null;
 		}
 	}

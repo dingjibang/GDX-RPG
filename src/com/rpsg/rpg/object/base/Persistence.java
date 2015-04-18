@@ -1,5 +1,6 @@
 package com.rpsg.rpg.object.base;
 
+import java.io.File;
 import java.io.Serializable;
 
 import com.badlogic.gdx.Gdx;
@@ -32,7 +33,7 @@ public class Persistence implements Serializable{
 		if(null!=o)
 			return (Persistence)o;
 		//create new settings if the "save" floder not exise
-		Gdx.files.internal(Setting.GAME_PERSISTENCE).mkdirs();
+		new File("./"+Setting.GAME_PERSISTENCE).mkdirs();
 		Persistence p=new Persistence();
 		Files.save(p,PersistenceFileName);
 		return p;
