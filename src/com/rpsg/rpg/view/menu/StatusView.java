@@ -59,6 +59,8 @@ public class StatusView extends DefaultIView{
 			}
 		});
 		stage.addActor(exit);
+//		exit.setSize(100, 100);
+		exit.getCells().get(0).prefSize(100,100);
 		
 	}
 	Image fg,fgs;

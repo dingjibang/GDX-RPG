@@ -346,7 +346,7 @@ public final class PostProcessor implements Disposable {
 
 	/** Stops capturing the scene and apply the effect chain, if there is one. If the specified output framebuffer is NULL, then the
 	 * rendering will be performed to screen. */
-	public void render (FrameBuffer dest) {
+	public void render (FrameBuffer dest,boolean draw) {
 		captureEnd();
 
 		if (!hasCaptured) {
@@ -358,7 +358,7 @@ public final class PostProcessor implements Disposable {
 
 		int count = items.size;
 		if (count > 0) {
-
+//
 			Gdx.gl.glDisable(GL20.GL_CULL_FACE);
 			Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
 
@@ -382,7 +382,52 @@ public final class PostProcessor implements Disposable {
 			}
 
 			// render with null dest (to screen)
-			items.get(count - 1).render(composite.getResultBuffer(), dest);
+			if(draw)
+				items.get(count - 1).render(composite.getResultBuffer(), dest);
+
+			// ensure default texture unit #0 is active
+			Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
+		} else {
+			Gdx.app.log("PostProcessor", "No post-processor effects enabled, aborting render");
+		}
+	}
+	
+	public void render (FrameBuffer dest,Class<? extends PostProcessorEffect> c) {
+		captureEnd();
+		if (!hasCaptured) {
+			return;
+		}
+
+		// Array<PostProcessorEffect> items = manager.items;
+		Array<PostProcessorEffect> items = enabledEffects;
+
+		int count = items.size;
+		if (count > 0) {
+//
+			Gdx.gl.glDisable(GL20.GL_CULL_FACE);
+			Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
+
+			// render effects chain, [0,n-1]
+			items.forEach((e)->{
+				if(e.getClass().equals(c)){
+					composite.capture();
+					{
+						e.render(composite.getSourceBuffer(), composite.getResultBuffer());
+					}
+					composite.end();
+				}
+			});
+
+			if (listener != null && dest == null) {
+				listener.beforeRenderToScreen();
+			}
+
+			// render with null dest (to screen)
+			items.forEach((e)->{
+				if(e.getClass().equals(c)){
+					e.render(composite.getResultBuffer(), dest);
+				}
+			});
 
 			// ensure default texture unit #0 is active
 			Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
@@ -393,8 +438,8 @@ public final class PostProcessor implements Disposable {
 	
 	
 	/** Convenience method to render to screen. */
-	public void render () {
-		render(null);
+	public void render (boolean draw) {
+		render(null,draw);
 	}
 
 	private int buildEnabledEffectsList () {

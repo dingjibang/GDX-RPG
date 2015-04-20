@@ -18,6 +18,7 @@ import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.display.MouseUtil;
+import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.display.RadarUtil;
 import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.display.TipUtil;
@@ -74,14 +75,8 @@ public class GameViews implements ApplicationListener {
 		TimeUtil.init();
 		selectUtil=new SelectUtil();
 		
-		Logger.info("创建视觉效果中。");
 		post=new PostProcessor(false, true, true);
 		bloom=new Bloom((int)(Gdx.graphics.getWidth() * 0.25f), (int)(Gdx.graphics.getHeight() * 0.25f));
-		bloom.setBaseIntesity(1.2f);
-		bloom.setBaseSaturation(1f);
-		bloom.setBloomIntesity(0.7f);
-		bloom.setBloomSaturation(1.2f);
-		bloom.setThreshold(0.3f);
 		post.addEffect(bloom);
 		
 		Vignette v=new Vignette(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
@@ -92,6 +87,8 @@ public class GameViews implements ApplicationListener {
 		motion.setBlurPasses(10);
 		motion.setDepthScale(0);
 		post.addEffect(motion);
+		
+		PostUtil.init();
 		
 		Logger.info("Gdx-RPG引擎初始化成功。");
 	}

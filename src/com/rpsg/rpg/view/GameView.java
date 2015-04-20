@@ -106,6 +106,7 @@ public class GameView extends View{
 		motion.setBlurScale(Input.isPress(Keys.CONTROL_LEFT)?0.0035f:0);
 		
 		boolean postEnable=Setting.persistence.betterLight &&(null==stackView || stackView.viewStack.size()==0);
+		
 		if(postEnable)
 			post.capture();
 		
@@ -114,7 +115,9 @@ public class GameView extends View{
 		MapController.draw(this);
 		
 		if(postEnable)
-			post.render();
+			post.render(true);
+		
+		PostUtil.draw(true,post,157);
 		
 		ColorUtil.draw(batch);
 		
@@ -126,7 +129,6 @@ public class GameView extends View{
 		
 		if(null!=stackView)
 			stackView.draw(batch);
-		
 //		batch.end();
 //		ShaderProgram shader = DiffuseShader.createShadowShader();
 //		shader.begin();
