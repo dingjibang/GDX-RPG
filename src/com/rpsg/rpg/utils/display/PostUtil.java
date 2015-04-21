@@ -3,6 +3,7 @@ package com.rpsg.rpg.utils.display;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
@@ -16,19 +17,21 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.bitfire.postprocessing.PostProcessor;
 import com.bitfire.postprocessing.effects.Bloom;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.SL;
 import com.rpsg.rpg.object.base.SLData;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.system.controller.InputController;
+import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameViews;
+import com.rpsg.rpg.view.hover.ConfirmView;
 import com.rpsg.rpg.view.hover.LoadView;
-import com.rpsg.rpg.view.hover.SaveView;
 
 public class PostUtil {
 	
@@ -38,6 +41,7 @@ public class PostUtil {
 	static boolean display=false;
 	static int showSpeed=8;
 	static WidgetGroup group;
+	
 	public static void init(){
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		group=new WidgetGroup();
@@ -97,16 +101,13 @@ public class PostUtil {
 			InputController.keyDown(Keys.ESCAPE, GameViews.gameview);
 		}));
 		group.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"fast_save.png")).pos(730, 27).onClick(()->{
-			SaveView save=new SaveView();
-			save.superInit();
-			HoverController.add(save);
-			save.autobut.click();
-			for(Actor a:save.stage.getActors())
-				if(a.getUserObject()!=null && a.getUserObject().getClass().equals(SLData.exMask.class)){
-					((Image)a).click();
-					break;
-				}
-			save.savebutton.click();
+			Pixmap px=ScreenUtil.getScreenshot(0, 0, GameUtil.getScreenWidth(), GameUtil.getScreenHeight(), false);
+			HoverController.add(ConfirmView.getDefault("确定要快速存档么？", (view)->{
+				SL.save(Setting.GAME_SAVE_FILE_MAX_PAGE*4,px,null);
+				((HoverView)view).dispose();
+			}).setExitCallBack(()->{
+				px.dispose();
+			}));
 		}));
 		group.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"fast_read.png")).pos(830, 27).onClick(()->{
 			LoadView save=new LoadView();
@@ -129,7 +130,7 @@ public class PostUtil {
 	}
 	
 	static int a=0;
-	public static void draw(PostProcessor post){
+	public static void draw(PostProcessor post, boolean menuEnable){
 		name.setText(HeroController.getHeadHero().name);
 		jname.setText(HeroController.getHeadHero().jname);
 		level.setText("LV "+HeroController.getHeadHero().prop.get("level"));
@@ -156,7 +157,7 @@ public class PostUtil {
 		group.setY(height-maxHeight);
 		
 		FrameBuffer buffer = null;
-		if(height>0)
+		if(height>0 && menuEnable)
 			buffer=new FrameBuffer(Format.RGB565, 1024, 576, true);
 		Bloom bloom=GameViews.bloom;
 		bloom.setBaseIntesity(0);
@@ -164,16 +165,17 @@ public class PostUtil {
 		bloom.setBloomSaturation(0.8f);
 		bloom.setThreshold(0.1f);
 		
-		if(height>0)
+		if(height>0 && menuEnable)
 			post.render(buffer,Bloom.class);
-		
 		bloom.setBaseIntesity(1.2f);
 		bloom.setBaseSaturation(1f);
 		bloom.setBloomIntesity(0.7f);
 		bloom.setBloomSaturation(1.2f);
 		bloom.setThreshold(0.3f);
-		if(height>0){
+		if(height>0  && menuEnable){
 			stage.getBatch().begin();
+			if(!Setting.persistence.betterLight)
+				stage.getBatch().setColor(1f,1f,1f,0.7f);
 			stage.getBatch().draw(new TextureRegion(buffer.getColorBufferTexture(),73,height,878,-height),73,0);
 			stage.getBatch().end();
 		}
@@ -181,7 +183,7 @@ public class PostUtil {
 		stage.act();
 		stage.draw();
 		
-		if(height>0)
+		if(height>0  && menuEnable)
 			buffer.dispose();
 		
 	}

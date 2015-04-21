@@ -105,7 +105,8 @@ public class GameView extends View{
 		
 		motion.setBlurScale(Input.isPress(Keys.CONTROL_LEFT)?0.0035f:0);
 		
-		boolean postEnable=Setting.persistence.betterLight &&(null==stackView || stackView.viewStack.size()==0);
+		boolean menuEnable=(null==stackView || stackView.viewStack.size()==0);
+		boolean postEnable=Setting.persistence.betterLight && menuEnable;
 		
 		if(postEnable)
 			post.capture();
@@ -117,7 +118,7 @@ public class GameView extends View{
 		if(postEnable)
 			post.render(true);
 		
-		PostUtil.draw(post);
+		PostUtil.draw(post,menuEnable);
 		
 		ColorUtil.draw(batch);
 		

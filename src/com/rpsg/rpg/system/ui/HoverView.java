@@ -15,6 +15,12 @@ public abstract class HoverView{
 		init();
 	}
 	
+	public Runnable run;
+	public HoverView setExitCallBack(Runnable run){
+		this.run=run;
+		return this;
+	}
+	
 	public void setDispose(){
 		this.disposed=true;
 	}
@@ -22,6 +28,8 @@ public abstract class HoverView{
 	public void dispose(){
 		close();
 		stage.dispose();
+		if(run!=null)
+			run.run();
 	}
 	
 	public abstract void init();

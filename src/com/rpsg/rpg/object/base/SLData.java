@@ -2,12 +2,6 @@ package com.rpsg.rpg.object.base;
 
 import java.io.Serializable;
 
-
-
-
-
-
-
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;

@@ -21,6 +21,10 @@ public class HoverController{
 		}
 	}
 	
+	public static boolean isEmpty(){
+		return stack.isEmpty();
+	}
+	
 	public static void add(HoverView hv){
 		stack.add(hv);
 	}

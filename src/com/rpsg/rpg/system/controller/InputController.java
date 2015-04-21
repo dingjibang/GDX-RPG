@@ -43,7 +43,7 @@ public class InputController{
 				MenuController.createMenu();
 				currentIOMode=IOMode.MAP_INPUT_MENU;
 			}else{
-				MoveController.keyDown(keycode, gv);
+					MoveController.keyDown(keycode, gv);
 			}
 			break;
 		}
@@ -77,6 +77,7 @@ public class InputController{
 			break;
 		}
 		case IOMode.MAP_INPUT_NORMAL:{
+			
 			PostUtil.touchDown(screenX, screenY, pointer, button);
 			break;
 		}
@@ -87,6 +88,7 @@ public class InputController{
 	public static boolean keyTyped(char character) {
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_NORMAL:{
+			
 			PostUtil.keyTyped(character);
 			break;
 		}
@@ -101,6 +103,7 @@ public class InputController{
 			break;
 		}
 		case IOMode.MAP_INPUT_NORMAL:{
+			
 			PostUtil.touchDragged( screenX,  screenY,  pointer);
 			break;
 		}
@@ -115,6 +118,7 @@ public class InputController{
 			break;
 		}
 		case IOMode.MAP_INPUT_NORMAL:{
+			
 			PostUtil.touchUp(screenX, screenY, pointer, button);
 			break;
 		}
@@ -134,6 +138,7 @@ public class InputController{
 	public static void mouseMoved(int x, int y) {
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_NORMAL:{
+			
 			PostUtil.mouseMoved(x, y);
 			break;
 		}

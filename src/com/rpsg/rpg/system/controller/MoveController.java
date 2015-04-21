@@ -32,7 +32,7 @@ public class MoveController {
 			sc.toCollide();
 		}
 		HeroController.setWalkSpeed(Input.isPress(Keys.CONTROL_LEFT)?8:4);
-		if(InputController.currentIOMode==IOMode.MAP_INPUT_NORMAL){
+		if(InputController.currentIOMode==IOMode.MAP_INPUT_NORMAL && HoverController.isEmpty()){
 			if((Input.isPress(Keys.RIGHT) || Input.isPress(Keys.D)) && HeroController.walked()){
 				HeroController.turn(Hero.FACE_R);
 				HeroController.walk(1);
