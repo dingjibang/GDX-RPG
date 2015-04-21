@@ -27,6 +27,7 @@ import com.rpsg.rpg.object.base.Global;;
 public class LoadView extends HoverView{
 	TextButtonStyle butstyle;
 	public int currentSelect=-1;
+	public TextButton autobut,savebutton;
 	public void init() {
 		stage.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebg.png").color(1,1,1,0).action(Actions.fadeIn(0.2f)));
 		ImageButton exit=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"file_exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"file_exit_active.png"));
@@ -90,7 +91,7 @@ public class LoadView extends HoverView{
 		rrbutton.setPosition(795,422);
 		stage.addActor(rrbutton);
 		
-		TextButton savebutton=new TextButton("读取游戏", butstyle).onClick(()->{
+		savebutton=new TextButton("读取游戏", butstyle).onClick(()->{
 			HoverController.add(ConfirmView.getDefault("确定要读取这个存档么？", (view)->{
 				if(currentSelect!=-1){
 					Object o=SL.load(currentSelect);
@@ -190,7 +191,7 @@ public class LoadView extends HoverView{
 			}
 		});
 		if(currentPage!=Setting.GAME_SAVE_FILE_MAX_PAGE-1){
-			TextButton autobut=new TextButton("Auto", butstyle).onClick(()->{
+			autobut=new TextButton("Auto", butstyle).onClick(()->{
 				currentPageStart=Setting.GAME_SAVE_FILE_MAX_PAGE-5;
 				currentPage=Setting.GAME_SAVE_FILE_MAX_PAGE-1;
 				generateList();

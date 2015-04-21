@@ -117,7 +117,7 @@ public class GameView extends View{
 		if(postEnable)
 			post.render(true);
 		
-		PostUtil.draw(true,post,157);
+		PostUtil.draw(post);
 		
 		ColorUtil.draw(batch);
 		
@@ -165,7 +165,9 @@ public class GameView extends View{
 	}
 
 	public void onkeyTyped(char character) {
-		
+		if(!ma.update() || !inited)
+			return;
+		InputController.keyTyped(character);
 	}
 	
 	public void onkeyDown(int keycode) {
@@ -202,5 +204,10 @@ public class GameView extends View{
 		InputController.scrolled(amount);
 		return false;
 	}
+	
+	public void mouseMoved(int x,int y){
+		InputController.mouseMoved(x,y);
+	};
+
 
 }

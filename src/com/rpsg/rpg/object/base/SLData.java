@@ -71,5 +71,5 @@ public class SLData implements Serializable{
 		stage.addActor(new Label(id+"",14).userObj(new Object()).setWidth(1000).setPad(-5).setPos(0, i>1?295:139).setAlignX(i>1?83+(i-2)*483:83+i*483));
 	}
 	
-	static class exMask{}
+	public static class exMask{}
 }

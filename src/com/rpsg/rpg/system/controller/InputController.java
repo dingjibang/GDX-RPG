@@ -5,6 +5,7 @@ import com.rpsg.rpg.io.SL;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.system.base.Initialization;
+import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
@@ -75,11 +76,21 @@ public class InputController{
 			MenuController.touchDown(screenX, screenY, pointer, button);
 			break;
 		}
+		case IOMode.MAP_INPUT_NORMAL:{
+			PostUtil.touchDown(screenX, screenY, pointer, button);
+			break;
+		}
 		}
 		return false;
 	}
 
 	public static boolean keyTyped(char character) {
+		switch(currentIOMode){
+		case IOMode.MAP_INPUT_NORMAL:{
+			PostUtil.keyTyped(character);
+			break;
+		}
+		}
 		return false;
 	}
 
@@ -87,6 +98,10 @@ public class InputController{
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_MENU:{
 			MenuController.touchDragged(screenX, screenY, pointer);
+			break;
+		}
+		case IOMode.MAP_INPUT_NORMAL:{
+			PostUtil.touchDragged( screenX,  screenY,  pointer);
 			break;
 		}
 		}
@@ -99,6 +114,10 @@ public class InputController{
 			MenuController.touchUp(screenX, screenY, pointer, button);
 			break;
 		}
+		case IOMode.MAP_INPUT_NORMAL:{
+			PostUtil.touchUp(screenX, screenY, pointer, button);
+			break;
+		}
 		}
 		return false;
 	}
@@ -107,6 +126,15 @@ public class InputController{
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_MENU:{
 			MenuController.scrolled(amount);
+			break;
+		}
+		}
+	}
+
+	public static void mouseMoved(int x, int y) {
+		switch(currentIOMode){
+		case IOMode.MAP_INPUT_NORMAL:{
+			PostUtil.mouseMoved(x, y);
 			break;
 		}
 		}

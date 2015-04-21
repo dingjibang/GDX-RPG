@@ -35,6 +35,11 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		return this;
 	}
 	
+	public Image click(){
+		run.run();
+		return this;
+	}
+	
 	
 	public Image(NinePatch ninePatch){
 		super(ninePatch);

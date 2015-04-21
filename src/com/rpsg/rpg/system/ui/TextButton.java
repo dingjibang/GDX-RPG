@@ -32,6 +32,11 @@ public class TextButton extends Button {
 		return this;
 	}
 	
+	public TextButton click(){
+		run.run();
+		return this;
+	}
+	
 	public TextButton check(boolean b){
 		this.setChecked(b);
 		return this;

@@ -50,6 +50,7 @@ public class Input implements InputProcessor{
 			break;
 		}
 		case GameViews.STATE_GAME:{
+			GameViews.gameview.onkeyTyped(character);
 			break;
 		}
 		}
@@ -96,6 +97,12 @@ public class Input implements InputProcessor{
 	public boolean mouseMoved(int screenX, int screenY) {
 		if(state==IOMode.GAME_INPUT_HOVER)
 			return HoverController.mouseMoved(screenX, screenY);
+		switch(GameViews.state){
+		case GameViews.STATE_GAME:{
+			GameViews.gameview.mouseMoved(screenX, screenY);
+			break;
+		}
+		}
 		return false;
 	}
 
