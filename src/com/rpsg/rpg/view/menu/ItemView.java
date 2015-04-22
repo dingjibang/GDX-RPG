@@ -94,7 +94,7 @@ public class ItemView extends DefaultIView{
 		ListStyle style=new ListStyle();
 		style.font=FontUtil.generateFont(" ".toCharArray()[0], 22);
 		style.selection=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipsel.png");
-		style.fontColorSelected=blue;
+		style.fontColorSelected=Color.BLACK;
 		elist=new com.rpsg.rpg.system.ui.List<Item>(style);
 		elist.onClick(()->{
 			item=elist.getSelected();
@@ -345,7 +345,7 @@ public class ItemView extends DefaultIView{
 		SpriteBatch sb=(SpriteBatch) stage.getBatch();
 		sb.begin();
 		FontUtil.draw(sb, item.name, 22, Color.WHITE, 455, 134, 1000);
-		FontUtil.draw(sb, item.illustration, 18, blue, 459, 100, 490);
+		FontUtil.draw(sb, item.illustration, 18, Color.BLACK, 459, 100, 490);
 		scuse.draw(sb);
 		if(sellist.isVisible()) sellist.draw(sb, 1);
 		scfor.draw(sb);

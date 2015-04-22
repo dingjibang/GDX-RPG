@@ -126,11 +126,6 @@ public class SystemView extends DefaultIView{
 		group2.addActor(box3.onClick(()->{
 			Setting.persistence.betterLight=box3.isChecked();
 		}).check(Setting.persistence.betterLight));
-		CheckBox box5=new CheckBox("", cs,22);
-		box5.setPosition(190,53);
-		group2.addActor(box5.onClick(()->{
-			Setting.persistence.useClearFont=box5.isChecked();
-		}).check(Setting.persistence.useClearFont));
 		table.add(group2).prefSize(1024, 481);
 		table.row();
 		

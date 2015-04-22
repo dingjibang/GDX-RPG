@@ -202,7 +202,7 @@ public class List<T> extends Widget implements Cullable {
 					selectedDrawable.draw(batch, x+20, y + itemY - itemHeight, width-10, itemHeight);
 					font.setColor(fontColorSelected.r, fontColorSelected.g, fontColorSelected.b, fontColorSelected.a * parentAlpha);
 				}
-				FontUtil.draw(((SpriteBatch)batch), item.toString(), 20,selected?blue:Color.WHITE, (int)(x + textOffsetX + 20), (int)(y + itemY - textOffsetY)+1-padTop, 500);
+				FontUtil.draw(((SpriteBatch)batch), item.toString(), 20,selected?style.fontColorSelected:Color.WHITE, (int)(x + textOffsetX + 20), (int)(y + itemY - textOffsetY)+1-padTop, 500);
 				int offset=0;
 				if(item instanceof Equipment){
 					if(!((Equipment)item).throwable){

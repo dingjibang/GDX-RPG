@@ -103,8 +103,8 @@ public class PostUtil {
 		group.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"fast_save.png")).pos(730, 27).onClick(()->{
 			Pixmap px=ScreenUtil.getScreenshot(0, 0, GameUtil.getScreenWidth(), GameUtil.getScreenHeight(), false);
 			HoverController.add(ConfirmView.getDefault("确定要快速存档么？", (view)->{
-				SL.save(Setting.GAME_SAVE_FILE_MAX_PAGE*4,px,null);
-				((HoverView)view).dispose();
+				SL.save((Setting.GAME_SAVE_FILE_MAX_PAGE-2)*4,px,null);
+				((HoverView)view).disposed=true;
 			}).setExitCallBack(()->{
 				px.dispose();
 			}));
@@ -126,7 +126,7 @@ public class PostUtil {
 			keyTyped(' ');
 		}));
 		
-		Logger.info("特效创建成功。");
+		Logger.info("Post特效创建成功。");
 	}
 	
 	static int a=0;
