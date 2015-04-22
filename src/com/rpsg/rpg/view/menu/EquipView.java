@@ -218,7 +218,7 @@ public class EquipView extends View{
 		
 	}
 	
-	Color blue=new Color(80f/255f,111f/255f,187f/255f,1);
+	Color blue=Color.DARK_GRAY;
 	Color green=new Color(106f/255f,186f/255f,49f/255f,1);
 	Color red=new Color(206f/255f,88f/255f,88f/255f,1);
 	public void draw(SpriteBatch batch) {

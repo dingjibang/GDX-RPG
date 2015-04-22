@@ -120,7 +120,7 @@ public class ItemView extends DefaultIView{
 		topbar=new Table();
 		topbar.setBackground(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_ITEM+"topbar.png"));
 		topbar.setSize(818, 42);
-		topbar.setPosition(168, 455);
+		topbar.setPosition(160, 455);
 		int tmpI=0,offsetX=135;
 		topbar.add(new TopBar("medicine", tmpI++*offsetX));
 		topbar.add(new TopBar("material", tmpI++*offsetX));
@@ -335,7 +335,7 @@ public class ItemView extends DefaultIView{
 	Image scuse,scfor;
 	com.rpsg.rpg.system.ui.List<ListItem> sellist,herolist;
 	Runnable can,can2,can3;
-	Color blue=new Color(80f/255f,111f/255f,187f/255f,1);
+	Color blue=Color.DARK_GRAY;
 	Color green=new Color(219f/255f,255f/255f,219f/255f,1);
 	Color cblue=new Color(219f/255f,238f/255f,255f/255f,1);
 	boolean drawp=false;
@@ -345,7 +345,7 @@ public class ItemView extends DefaultIView{
 		SpriteBatch sb=(SpriteBatch) stage.getBatch();
 		sb.begin();
 		FontUtil.draw(sb, item.name, 22, Color.WHITE, 455, 134, 1000);
-		FontUtil.draw(sb, item.illustration, 18, Color.BLACK, 459, 100, 490);
+		FontUtil.draw(sb, item.illustration, 18, Color.DARK_GRAY, 459, 100, 490);
 		scuse.draw(sb);
 		if(sellist.isVisible()) sellist.draw(sb, 1);
 		scfor.draw(sb);
@@ -360,8 +360,8 @@ public class ItemView extends DefaultIView{
 				render.setColor(cblue);
 				render.rect(575, 105, (float)((float)h.prop.get("mp")/(float)h.prop.get("maxmp"))*176,20);
 				render.end();
-				FontUtil.draw(sb, h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20, blue, 565+176/2-FontUtil.getTextWidth(h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20,-7)/2, 161, 400,-7,0);
-				FontUtil.draw(sb, h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20, blue, 565+176/2-FontUtil.getTextWidth(h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20,-7)/2, 124, 400,-7,0);
+				FontUtil.draw(sb, h.prop.get("hp")+"/"+h.prop.get("maxhp"), 16, blue, 572+176/2-FontUtil.getTextWidth(h.prop.get("hp")+"/"+h.prop.get("maxhp"), 20,-7)/2, 158, 400,-5,0);
+				FontUtil.draw(sb, h.prop.get("mp")+"/"+h.prop.get("maxmp"), 16, blue, 572+176/2-FontUtil.getTextWidth(h.prop.get("mp")+"/"+h.prop.get("maxmp"), 20,-7)/2, 121, 400,-5,0);
 				FontUtil.draw(sb, "正常", 18, blue, 563+176/2-FontUtil.getTextWidth("正常", 18)/2, 196, 400);
 				FontUtil.draw(sb, h.toString(), 18, Color.WHITE, 515, 227, 200);
 				if(drawp){

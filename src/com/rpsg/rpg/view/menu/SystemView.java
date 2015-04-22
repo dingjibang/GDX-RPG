@@ -112,21 +112,21 @@ public class SystemView extends DefaultIView{
 		WidgetGroup group2=new WidgetGroup();
 		group2.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"graphics.png"));
 		CheckBox box=new CheckBox("", cs,22);
-		box.setPosition(190,364);
+		box.setPosition(190,276);
 		group2.addActor(box.onClick(()->{
 			Setting.persistence.antiAliasing=box.isChecked();
 		}).check(Setting.persistence.antiAliasing));
 		CheckBox box2=new CheckBox("", cs,22);
-		box2.setPosition(190,237);
+		box2.setPosition(190,149);
 		group2.addActor(box2.onClick(()->{
 			Setting.persistence.scaleAliasing=box2.isChecked();
 		}).check(Setting.persistence.scaleAliasing));
 		CheckBox box3=new CheckBox("", cs,22);
-		box3.setPosition(190,134);
+		box3.setPosition(190,44);
 		group2.addActor(box3.onClick(()->{
 			Setting.persistence.betterLight=box3.isChecked();
 		}).check(Setting.persistence.betterLight));
-		table.add(group2).prefSize(1024, 481);
+		table.add(group2).prefSize(1024, 391);
 		table.row();
 		
 		WidgetGroup group3=new WidgetGroup();

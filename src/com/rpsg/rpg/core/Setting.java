@@ -3,8 +3,8 @@ package com.rpsg.rpg.core;
 import com.rpsg.rpg.object.base.Persistence;
 
 public class Setting {
-	public static final String GAME_VERSION="Build 155 20150222";
-	public static final String GDXRPG_VERSION="Alpha 28";
+	public static final String GAME_VERSION="Build 155 20150422";
+	public static final String GDXRPG_VERSION="Alpha 31";
 	//资源路径
 	public static final String GAME_RES_PATH="data";
 	public static final String GAME_RES_IMAGE="/images";

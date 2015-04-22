@@ -49,13 +49,18 @@ public class MenuBaseView extends View{
 		infolevel.setColor(1,1,1,0);
 		infolevel.addAction((Actions.delay(0.05f, Actions.parallel(Actions.fadeIn(0.15f),Actions.moveTo(480.5f,388.5f,0.15f)))));
 		stage.addActor(infolevel);
-		
-		Image fgshadow=Res.get(Setting.GAME_RES_IMAGE_FG+HeroController.getHeadHero().fgname+"/shadow.png");
-		fgshadow.setPosition(GameUtil.screen_width, 0);
-		fgshadow.setColor(1,1,1,0);
-		fgshadow.setScale(0.32f);
-		fgshadow.addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(670, 0,0.1f)));
+		Image fgshadow=Res.get(Setting.GAME_RES_IMAGE_FG+HeroController.getHeadHero().fgname+"/Normal.png");
+		fgshadow.setPosition(900, 0);
+		fgshadow.setColor(0,0,0,0f);
+		fgshadow.scaleX(-0.32f).scaleY(0.32f);
+		fgshadow.addAction(Actions.parallel(Actions.moveTo(1050, 0,0.15f),Actions.color(new Color(0,0,0,.5f),0.5f)));
 		stage.addActor(fgshadow);
+		
+		Image map_bg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"map_bg.png");
+		map_bg.setPosition(150,30);
+		map_bg.setColor(1,1,1,0);
+		map_bg.addAction(Actions.fadeIn(0.3f));
+		stage.addActor(map_bg);
 		
 		Image fg=Res.get(Setting.GAME_RES_IMAGE_FG+HeroController.getHeadHero().fgname+"/Normal.png");
 		fg.setPosition(GameUtil.screen_width, 0);
@@ -71,11 +76,7 @@ public class MenuBaseView extends View{
 		walk_bg.addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(155,360,0.2f)));
 		stage.addActor(walk_bg);
 		
-		Image map_bg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"map_bg.png");
-		map_bg.setPosition(150,30);
-		map_bg.setColor(1,1,1,0);
-		map_bg.addAction(Actions.fadeIn(0.3f));
-		stage.addActor(map_bg);
+	
 		int offset=0;
 		for(Hero h:HeroController.heros){
 			heros.add(HeroImage.generateImage(h.images, (int)(170+284/2-(h.getWidth())*HeroController.heros.size()+(offset+=60)), 410));
@@ -87,7 +88,7 @@ public class MenuBaseView extends View{
 		
 		try{
 			map=Res.get(Setting.GAME_RES_IMAGE_MENU_MAP+GameViews.gameview.map.getProperties().get("minimap")+".png");
-			map.setPosition(222, 46);
+			map.setPosition(218, 46);
 			map.setColor(1,1,1,0);
 			map.setSize(400, 235);
 			map.addAction(Actions.fadeIn(0.3f));
@@ -153,10 +154,10 @@ public class MenuBaseView extends View{
 		FontUtil.draw(batch, HeroController.getHeadHero().prop.get("level")+"", 40, blue, 506-FontUtil.getTextWidth(HeroController.getHeadHero().prop.get("level")+"", 40, -10)/2, 454, 1000,-10,0);
 		FontUtil.draw(batch, GameViews.global.gold+" G", 18, blue, 488+91/2-FontUtil.getTextWidth(GameViews.global.gold+" G", 18, -8), 379, 1000,-8,0);
 		FontUtil.draw(batch, "状态正常", 17, Color.WHITE, 149+285/2-FontUtil.getTextWidth("状态正常", 17, 2)/2, 385, 1000,2,0);
-		FontUtil.draw(batch, currTime, 17, blue, 558+144/2-FontUtil.getTextWidth(currTime, 17, -8)/2, 380, 1000,-8,0);
-		FontUtil.draw(batch, currDay, 16, Color.GRAY, 714, 379, 1000,-7,0);
+		FontUtil.draw(batch, currTime, 17, blue, 558+144/2-FontUtil.getTextWidth(currTime, 17, -8)/2, 378, 1000,-8,0);
+		FontUtil.draw(batch, currDay, 16, Color.GRAY, 714, 378, 1000,-7,0);
 		FontUtil.draw(batch, "LV", 14, blue, 511, 413, 1000,-7,0);
-		FontUtil.draw(batch, (String)GameViews.gameview.map.getProperties().get("name")+" ["+HeroController.getHeadHero().mapx+","+HeroController.getHeadHero().mapy+"]", 20, Color.WHITE, 210, 317, 1000,0,0);
+		FontUtil.draw(batch, (String)GameViews.gameview.map.getProperties().get("name")+" ["+HeroController.getHeadHero().mapx+","+HeroController.getHeadHero().mapy+"]", 20, Color.WHITE, 175, 317, 1000,0,0);
 		time.draw(batch);
 		for(HeroImage h:heros)
 			h.draw(batch, step==3?1:step);
