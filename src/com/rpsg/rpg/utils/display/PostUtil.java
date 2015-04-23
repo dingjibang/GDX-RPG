@@ -11,6 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Touchpad;
+import com.badlogic.gdx.scenes.scene2d.ui.Touchpad.TouchpadStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
@@ -23,12 +26,14 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.system.controller.InputController;
+import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
+import com.rpsg.rpg.utils.game.Move;
 import com.rpsg.rpg.view.GameViews;
 import com.rpsg.rpg.view.hover.ConfirmView;
 import com.rpsg.rpg.view.hover.LoadView;
@@ -41,7 +46,8 @@ public class PostUtil {
 	static boolean display=false;
 	static int showSpeed=8;
 	static WidgetGroup group;
-	
+	static Touchpad pad;
+	static double p4=Math.PI/4;
 	public static void init(){
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		group=new WidgetGroup();
@@ -121,6 +127,13 @@ public class PostUtil {
 				}
 			save.savebutton.click();
 		}));
+		TouchpadStyle tstyle=new TouchpadStyle();
+		tstyle.background=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png");
+		tstyle.knob=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_knob.png");
+		
+		pad=new Touchpad(40, tstyle);
+		pad.setPosition(35, 25);
+		stage.addActor(pad);
 		
 		stage.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu_active.png")).pos(GameUtil.screen_width-65, 15).onClick(()->{
 			keyTyped(' ');
@@ -185,6 +198,22 @@ public class PostUtil {
 		
 		if(height>0  && menuEnable)
 			buffer.dispose();
+		
+		pad.setVisible(Setting.persistence.touchMod);
+		if(Setting.persistence.touchMod){
+			float x=pad.getKnobPercentX();
+			float y=pad.getKnobPercentY();
+			double tan=Math.atan2(y,x);
+			
+			if(tan<p4*3 && tan > p4)
+				MoveController.up();
+			else if(tan>p4*3 || (tan < -p4*3 && tan < 0))
+				MoveController.left();
+			else if(tan>-p4*3 && tan <-p4)
+				MoveController.down();
+			else if((tan>-p4 && tan <0) || (tan>0 && tan < p4))
+				MoveController.right();
+		}
 		
 	}
 	

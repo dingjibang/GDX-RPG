@@ -191,12 +191,12 @@ public class SystemView extends DefaultIView{
 		CheckBox box9=new CheckBox("", cs,22);
 		box9.setPosition(190,228);
 		group5.addActor(box9.onClick(()->{
-			Setting.persistence.onErrorSendMsg=box6.isChecked();
+			Setting.persistence.onErrorSendMsg=box9.isChecked();
 		}).check(Setting.persistence.onErrorSendMsg));
 		CheckBox box10=new CheckBox("", cs,22);
 		box10.setPosition(190,63);
 		group5.addActor(box10.onClick(()->{
-			Setting.persistence.touchMod=box6.isChecked();
+			Setting.persistence.touchMod=box10.isChecked();
 		}).check(Setting.persistence.touchMod));
 		table.add(group5).prefSize(1024,830);
 		table.row();
@@ -249,7 +249,7 @@ public class SystemView extends DefaultIView{
 				}
 			}
 		});
-//		pane.setOverscroll(false, false);
+		pane.setOverscroll(false, false);
 		
 		stage.addActor(pane);
 //		Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_ITEM+"item_bg.png");

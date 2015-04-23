@@ -128,7 +128,7 @@ public class ItemView extends DefaultIView{
 		topbar.add(new TopBar("equipment", tmpI++*offsetX));
 		topbar.add(new TopBar("spellcard", tmpI++*offsetX));
 		topbar.add(new TopBar("important", tmpI++*offsetX));
-		topbar.getCells().forEach((cell)->cell.padLeft(42).padRight(42));
+		topbar.getCells().forEach((cell)->cell.padLeft(50).padRight(34).height(40));
 		topbar.getCells().forEach((cell)->cell.getActor().addListener(new InputListener(){
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				Music.playSE("snd210");
@@ -148,7 +148,6 @@ public class ItemView extends DefaultIView{
 			}
 		});
 		stage.addActor(mask);
-		
 		scuse=Res.get(Setting.GAME_RES_IMAGE_MENU_SC+"sc_use.png");
 		scuse.setPosition((int)(GameUtil.screen_width/2-scuse.getWidth()/2), (int)(GameUtil.screen_height/2-scuse.getHeight()/2));
 		sellist=new com.rpsg.rpg.system.ui.List<ListItem>(style);

@@ -20,6 +20,7 @@ public class Arisu extends Hero{
 		sc.add(new patientBack());
 		prop.replace("hp", 50);
 		prop.replace("maxhp", 150);
+		prop.replace("exp", 3);
 		prop.replace("mp", 100);
 		prop.replace("maxmp", 100);
 		resistance.replace("earth", Resistance.reflect);

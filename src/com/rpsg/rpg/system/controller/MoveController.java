@@ -1,7 +1,6 @@
 package com.rpsg.rpg.system.controller;
 
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.io.Input;
@@ -16,10 +15,25 @@ public class MoveController {
 	
 	public static int MAP_MAX_OUT_X=300;
 	public static int MAP_MAX_OUT_Y=200;
+	static boolean wu=false,wd=false,wl=false,wr=false;
 	
-	public static void draw(SpriteBatch batch,GameView gv){
-		
+	public static void up(){
+		wu=true;
+		wd=wl=wr=false;
 	}
+	public static void down(){
+		wd=true;
+		wu=wl=wr=false;
+	}
+	public static void left(){
+		wl=true;
+		wd=wu=wr=false;
+	}
+	public static void right(){
+		wr=true;
+		wd=wu=wl=false;
+	}
+	
 	
 	public static void logic(GameView gv){
 		for(Actor a:gv.stage.getActors()){
@@ -33,22 +47,26 @@ public class MoveController {
 		}
 		HeroController.setWalkSpeed(Input.isPress(Keys.CONTROL_LEFT)?8:4);
 		if(InputController.currentIOMode==IOMode.MAP_INPUT_NORMAL && HoverController.isEmpty()){
-			if((Input.isPress(Keys.RIGHT) || Input.isPress(Keys.D)) && HeroController.walked()){
+			if((Input.isPress(Keys.RIGHT) || Input.isPress(Keys.D) || wr) && HeroController.walked()){
+				wr=false;
 				HeroController.turn(Hero.FACE_R);
 				HeroController.walk(1);
 				HeroController.testWalk();
 			}
-			if((Input.isPress(Keys.LEFT) || Input.isPress(Keys.A)) && HeroController.walked()){
+			if((Input.isPress(Keys.LEFT) || Input.isPress(Keys.A) || wl) && HeroController.walked()){
+				wl=false;
 				HeroController.turn(Hero.FACE_L);
 				HeroController.walk(1);
 				HeroController.testWalk();
 			}
-			if((Input.isPress(Keys.UP) || Input.isPress(Keys.W)) && HeroController.walked()){
+			if((Input.isPress(Keys.UP) || Input.isPress(Keys.W) || wu) && HeroController.walked()){
+				wu=false;
 				HeroController.turn(Hero.FACE_U);
 				HeroController.walk(1);
 				HeroController.testWalk();
 			}
-			if((Input.isPress(Keys.DOWN) || Input.isPress(Keys.S)) && HeroController.walked()){
+			if((Input.isPress(Keys.DOWN) || Input.isPress(Keys.S) || wd) && HeroController.walked()){
+				wd=false;
 				HeroController.turn(Hero.FACE_D);
 				HeroController.walk(1);
 				HeroController.testWalk();
