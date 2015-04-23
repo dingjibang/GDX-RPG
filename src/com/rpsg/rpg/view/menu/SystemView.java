@@ -229,13 +229,10 @@ public class SystemView extends DefaultIView{
 		table.getCells().forEach((c)->c.padTop(40).padBottom(50));
 //		table.setDebug(true);
 //		group.setSize(table.getWidth(), table.getHeight());
-		
 		isstop=false;
 		
 		ScrollPane pane=new ScrollPane(table);
 		pane.setSize(1024,576);
-		pane.validate();
-		pane.layout();
 		pane.addListener(new InputListener(){
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				if(isstop){
@@ -252,6 +249,8 @@ public class SystemView extends DefaultIView{
 				}
 			}
 		});
+//		pane.setOverscroll(false, false);
+		
 		stage.addActor(pane);
 //		Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_ITEM+"item_bg.png");
 //		bg.setColor(1,1,1,0);

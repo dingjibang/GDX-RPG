@@ -191,6 +191,8 @@ public class SpellCardView extends View{
 		}));
 		sellist.getItems().add(new ListItem("取消").setRunnable(()->can.run()));
 		sellist.onClick(()->Music.playSE("snd210"));
+		sellist.setItemHeight(27);
+		sellist.padTop=2;
 		stage.addActor(mask2);			
 		scfor=Res.get(Setting.GAME_RES_IMAGE_MENU_SC+"sc_for.png");
 		scfor.setPosition(500, 87);

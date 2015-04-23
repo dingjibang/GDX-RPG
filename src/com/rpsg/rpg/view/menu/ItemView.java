@@ -196,6 +196,8 @@ public class ItemView extends DefaultIView{
 			sellist.onDBClick(()->sellist.getSelected().run.run());
 			sellist.setVisible(true);
 			sellist.setSelectedIndex(0);
+			sellist.setItemHeight(27);
+			sellist.padTop=2;
 			mask.setVisible(true);
 			layer=1;
 		});
