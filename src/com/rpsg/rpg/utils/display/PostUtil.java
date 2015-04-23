@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Touchpad;
 import com.badlogic.gdx.scenes.scene2d.ui.Touchpad.TouchpadStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
@@ -33,7 +32,6 @@ import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
-import com.rpsg.rpg.utils.game.Move;
 import com.rpsg.rpg.view.GameViews;
 import com.rpsg.rpg.view.hover.ConfirmView;
 import com.rpsg.rpg.view.hover.LoadView;
@@ -131,7 +129,7 @@ public class PostUtil {
 		tstyle.background=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png");
 		tstyle.knob=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_knob.png");
 		
-		pad=new Touchpad(40, tstyle);
+		pad=new Touchpad(0, tstyle);
 		pad.setPosition(35, 25);
 		stage.addActor(pad);
 		
@@ -198,13 +196,11 @@ public class PostUtil {
 		
 		if(height>0  && menuEnable)
 			buffer.dispose();
-		
 		pad.setVisible(Setting.persistence.touchMod);
 		if(Setting.persistence.touchMod){
 			float x=pad.getKnobPercentX();
 			float y=pad.getKnobPercentY();
 			double tan=Math.atan2(y,x);
-			
 			if(tan<p4*3 && tan > p4)
 				MoveController.up();
 			else if(tan>p4*3 || (tan < -p4*3 && tan < 0))
