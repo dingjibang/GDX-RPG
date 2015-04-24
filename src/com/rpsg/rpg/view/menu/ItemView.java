@@ -94,7 +94,7 @@ public class ItemView extends DefaultIView{
 		ListStyle style=new ListStyle();
 		style.font=FontUtil.generateFont(" ".toCharArray()[0], 22);
 		style.selection=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipsel.png");
-		style.fontColorSelected=Color.BLACK;
+		style.fontColorSelected=Color.DARK_GRAY;
 		elist=new com.rpsg.rpg.system.ui.List<Item>(style);
 		elist.onClick(()->{
 			item=elist.getSelected();

@@ -18,7 +18,7 @@ public class DistantController {
 		if(disName==null)
 			distant=null;
 		else{
-			TiledMapTileLayer layer=(TiledMapTileLayer)gv.map.getLayers().get(0);
+			TiledMapTileLayer layer=(TiledMapTileLayer)MapController.layer.get(0);
 			float width=(layer.getWidth()*layer.getTileWidth());
 			float height=(layer.getHeight()*layer.getTileHeight());
 			distant=Res.get(Setting.GAME_RES_IMAGE_BACKGROUND+disName);

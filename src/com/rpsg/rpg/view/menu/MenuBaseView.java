@@ -120,7 +120,7 @@ public class MenuBaseView extends View{
 	int frame=0;
 	int step=1;
 	String currTime=GameViews.global.tyear+" 年 "+GameViews.global.tmonth+" 月 "+GameViews.global.tday+" 日";
-	String currDay=GameViews.global.day==ColorUtil.DAY?"昼":(GameViews.global.day==ColorUtil.NIGHT?"夜":"暝");
+	String currDay=GameViews.global.mapColor==ColorUtil.DAY?"昼":(GameViews.global.mapColor==ColorUtil.NIGHT?"夜":"暝");
 	Image time;
 	int deg=(int) (365f*((float)HeroController.getHeadHero().prop.get("exp")/(float)(float)HeroController.getHeadHero().prop.get("maxexp")));
 	int stepdeg=0;

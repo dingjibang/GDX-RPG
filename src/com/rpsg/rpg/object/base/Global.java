@@ -17,15 +17,14 @@ public class Global implements Serializable{
 	//初始地图
 	public String map="test/map.tmx";
 	//地图相关
-	public List<NPC> npcs=new ArrayList<NPC>();
-	public List<Hero> currentHeros=new ArrayList<Hero>();
-	public List<Hero> heros=new ArrayList<Hero>();
+	public ArrayList<NPC> npcs=new ArrayList<NPC>();
+	public ArrayList<Hero> currentHeros=new ArrayList<Hero>();
+	public ArrayList<Hero> heros=new ArrayList<Hero>();
 	public int x=12;
 	public int y=12;
 	public int z=2;
 	
 	//时间模块
-	public int day=0;
 	public int mapColor = ColorUtil.DAY;
 	public int tyear=2015;
 	public int tmonth=3;

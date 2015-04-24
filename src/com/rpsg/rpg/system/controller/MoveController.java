@@ -39,7 +39,7 @@ public class MoveController {
 		for(Actor a:gv.stage.getActors()){
 			if(a instanceof IRPGObject && ((IRPGObject)a).enableCollide){
 				IRPGObject o=(IRPGObject)a;
-				o.collide.testCollide(o.mapx, o.mapy,  ((TiledMapTileLayer)gv.map.getLayers().get(o.layer)),gv.stage.getActors(),o);
+					o.collide.testCollide(o.mapx, o.mapy,  ((TiledMapTileLayer)MapController.layer.get(o.layer)),gv.stage.getActors(),o);
 			}
 		}
 		for(ScriptCollide sc:Collide.testNPCCollide(gv, HeroController.getHeadHero(), gv.stage.getActors())){
@@ -72,8 +72,8 @@ public class MoveController {
 				HeroController.testWalk();
 			}
 		}
-		int twidth=(int) (((TiledMapTileLayer)gv.map.getLayers().get(0)).getWidth() * ((TiledMapTileLayer)gv.map.getLayers().get(0)).getTileWidth());
-		int theight=(int) (((TiledMapTileLayer)gv.map.getLayers().get(0)).getHeight() * ((TiledMapTileLayer)gv.map.getLayers().get(0)).getTileHeight());
+		int twidth=(int) (((TiledMapTileLayer)MapController.layer.get(0)).getWidth() * ((TiledMapTileLayer)MapController.layer.get(0)).getTileWidth());
+		int theight=(int) (((TiledMapTileLayer)MapController.layer.get(0)).getHeight() * ((TiledMapTileLayer)MapController.layer.get(0)).getTileHeight());
 		float herox=HeroController.getHeadHero().position.x+(HeroController.getHeadHero().getWidth()/2);
 		float heroy=HeroController.getHeadHero().position.y+(HeroController.getHeadHero().getHeight()/2);
 		if(herox>MAP_MAX_OUT_X && herox<(twidth)-MAP_MAX_OUT_X)

@@ -8,14 +8,8 @@ public class SayHelloWorld extends Script{
 	
 	public void init() {
 		$(()->{
-			if(++GameViews.global.day>2)
-				GameViews.global.day=0;
-			if(GameViews.global.day==0)
-				_$(setGameTime(ColorUtil.DAY));
-			else if(GameViews.global.day==1)
-				_$(setGameTime(ColorUtil.DUSK));
-			else
-				_$(setGameTime(ColorUtil.NIGHT));
+			if(++GameViews.global.mapColor>2)
+				GameViews.global.mapColor=0;
 		});
 //		lock(true);
 //		faceToHero();

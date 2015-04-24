@@ -12,11 +12,15 @@ import java.util.List;
 
 
 
+
+
+
 import box2dLight.PointLight;
 
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -43,7 +47,7 @@ public class MapController {
 	public static int MAP_MAX_OUT_X=300;
 	public static int MAP_MAX_OUT_Y=200;
 	public static List<IRPGObject> drawlist=new ArrayList<IRPGObject>();
-	public static NPC npc;
+	public static MapLayers layer ;
 	public static void init(GameView gv){
 		//初始化角色
 		HeroController.initControler();
@@ -80,6 +84,7 @@ public class MapController {
 		}
 		
 		//生成NPC
+		layer=new MapLayers();
 		if(gv.global.npcs.isEmpty()){
 			List<MapLayer> removeList=new ArrayList<MapLayer>();
 			for(int i=0;i<gv.map.getLayers().getCount();i++){
@@ -90,7 +95,7 @@ public class MapController {
 				for(MapObject obj:m.getObjects()){
 					if(obj.getProperties().get("type").equals("NPC")){
 						try {
-							npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.getName()).getConstructor(String.class,Integer.class,Integer.class)
+							NPC npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.getName()).getConstructor(String.class,Integer.class,Integer.class)
 								.newInstance(
 									obj.getProperties().get("IMAGE")+".png",
 									(int)(((RectangleMapObject)obj).getRectangle().getWidth()),
@@ -111,8 +116,15 @@ public class MapController {
 				}
 				HeroController.generatePosition(gv.global.x,gv.global.y,gv.global.z);
 			}
-//			for(MapLayer l:removeList)
-//				gv.map.getLayers().remove(l);
+			for(MapLayer lay:gv.map.getLayers()){
+				boolean inc=false;
+				for(MapLayer re:removeList)
+					if(re==lay)
+						inc=true;
+				if(!inc)
+					layer.add(lay);
+			}
+				
 		}else{
 			List<MapLayer> removeList=new ArrayList<MapLayer>();
 			for(int i=0;i<gv.map.getLayers().getCount();i++){
@@ -120,18 +132,29 @@ public class MapController {
 				if(m.getObjects().getCount()!=0)
 					removeList.add(m);
 			}
-			for(MapLayer l:removeList)
-				gv.map.getLayers().remove(l);
-			for(NPC n:gv.global.npcs){
+			
+			for(MapLayer lay:gv.map.getLayers()){
+				boolean inc=false;
+				for(MapLayer re:removeList)
+					if(re==lay)
+						inc=true;
+				if(!inc)
+					layer.add(lay);
+			}
+			
+			@SuppressWarnings("unchecked")
+			ArrayList<NPC> npcs=(ArrayList<NPC>)gv.global.npcs.clone();
+			for(NPC n:npcs){
 				n.scripts=new HashMap<String, Class<? extends Script>>();
 				n.threadPool=new LinkedList<Script>();
 				n.init();
 				gv.stage.addActor(n);
 				ThreadPool.pool.add(n.threadPool);
 				n.images=NPC.generateImages(n.imgPath, n.bodyWidth, n.bodyHeight);
-				npc=n;
 			}
 		}
+		gv.global.npcs.clear();
+		
 		
 		//生成远景图
 		DistantController.init(gv.map.getProperties().get("distant"),gv);
@@ -178,8 +201,8 @@ public class MapController {
 		GameViews.gameview.stage.getActors().clear();
 	}
 	
-	public static List<NPC> getNPCs(){
-		List<NPC> list=new ArrayList<NPC>();
+	public static ArrayList<NPC> getNPCs(){
+		ArrayList<NPC> list=new ArrayList<NPC>();
 		for(Actor a:GameViews.gameview.stage.getActors())
 			if(a instanceof NPC)
 				list.add((NPC)a);

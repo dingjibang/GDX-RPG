@@ -48,6 +48,15 @@ public class PostUtil {
 	static double p4=Math.PI/4;
 	public static void init(){
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
+		
+		TouchpadStyle tstyle=new TouchpadStyle();
+		tstyle.background=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png");
+		tstyle.knob=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_knob.png");
+		pad=new Touchpad(0, tstyle);
+		pad.setPosition(35, 25);
+		stage.addActor(pad);
+		pad.setVisible(Setting.persistence.touchMod);
+		
 		group=new WidgetGroup();
 		group.addActor(name=new Label("", 42).setWidth(1000));
 		group.addActor(y=new Label("", 42).setWidth(1000));
@@ -125,13 +134,6 @@ public class PostUtil {
 				}
 			save.savebutton.click();
 		}));
-		TouchpadStyle tstyle=new TouchpadStyle();
-		tstyle.background=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png");
-		tstyle.knob=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_knob.png");
-		
-		pad=new Touchpad(0, tstyle);
-		pad.setPosition(35, 25);
-		stage.addActor(pad);
 		
 		stage.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu_active.png")).pos(GameUtil.screen_width-65, 15).onClick(()->{
 			keyTyped(' ');
@@ -147,7 +149,7 @@ public class PostUtil {
 		level.setText("LV "+HeroController.getHeadHero().prop.get("level"));
 		next.setText("NEXT "+(HeroController.getHeadHero().prop.get("maxexp")-HeroController.getHeadHero().prop.get("exp"))+" Exp");
 		y.setText(GameViews.global.tyear+"");
-		day.setText(GameViews.global.day==ColorUtil.DAY?"白天":(GameViews.global.day==ColorUtil.NIGHT?"夜晚":"黄昏"));
+		day.setText(GameViews.global.mapColor==ColorUtil.DAY?"白天":(GameViews.global.mapColor==ColorUtil.NIGHT?"夜晚":"黄昏"));
 		m.setText(GameViews.global.tmonth+"");
 		d.setText(GameViews.global.tday+"");
 		map.setText(GameViews.gameview.map.getProperties().get("name")+"");
@@ -196,7 +198,7 @@ public class PostUtil {
 		
 		if(height>0  && menuEnable)
 			buffer.dispose();
-		pad.setVisible(Setting.persistence.touchMod);
+		pad.setVisible(Setting.persistence.touchMod  && height<=0);
 		if(Setting.persistence.touchMod){
 			float x=pad.getKnobPercentX();
 			float y=pad.getKnobPercentY();

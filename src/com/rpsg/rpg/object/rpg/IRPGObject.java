@@ -26,7 +26,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public int lastWalkSize,lastZ,lastFace;
 	public int layer;
 	public int mapx,mapy;
-	public Vector2 position;
+	public Vector2 position =new Vector2();
 	
 	public boolean walked=true;
 	

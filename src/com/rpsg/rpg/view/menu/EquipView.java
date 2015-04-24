@@ -142,8 +142,8 @@ public class EquipView extends View{
 		
 		sellist=new com.rpsg.rpg.system.ui.List<EQuipSelect>(style);
 		sellist.setSize(173,200);
-		sellist.setPosition(184, 16);
-		sellist.setItemHeight(40);
+		sellist.setPosition(184, 15);
+		sellist.setItemHeight(39);
 		sellist.padTop=7;
 		sellist.layout();
 		sellist.onClick(()->{
