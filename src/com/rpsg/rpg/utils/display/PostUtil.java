@@ -163,6 +163,7 @@ public class PostUtil {
 			}
 		});
 		
+		//FIXME DO NOT USE FRAMEBUFFER WHEN HQ SETTING IS FALSE 
 		if(display && height <maxHeight)
 			height=(height+showSpeed+(++a)>= maxHeight)?maxHeight:height+showSpeed+a;
 		else if(!display && height > 0)
