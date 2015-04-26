@@ -12,7 +12,6 @@ import com.badlogic.gdx.graphics.PixmapIO;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.SLData;
-import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.controller.MapController;

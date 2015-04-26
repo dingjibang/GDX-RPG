@@ -1,7 +1,6 @@
 package com.rpsg.rpg.game.script;
 
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.view.*;
 
 public class SayHelloWorld extends Script{

@@ -3,7 +3,6 @@ package com.rpsg.rpg.object.base;
 import java.io.File;
 import java.io.Serializable;
 
-import com.badlogic.gdx.Gdx;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Files;
 
