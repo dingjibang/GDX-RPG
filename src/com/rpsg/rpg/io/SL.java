@@ -26,8 +26,8 @@ public class SL {
 		try{
 			Global global = GameViews.global;
 			global.npcs = (ArrayList<NPC>)MapController.getNPCs().clone();
-			global.heros = (ArrayList<Hero>) HeroController.allHeros.clone();
-			global.currentHeros = (ArrayList<Hero>) HeroController.heros.clone();
+			global.heros =  HeroController.allHeros;
+			global.currentHeros =HeroController.heros;
 			Files.save(global,Setting.GAME_PERSISTENCE+fileID+".dat");
 			global.npcs.clear();
 			SLData slData=new SLData();

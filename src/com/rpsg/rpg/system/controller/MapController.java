@@ -51,7 +51,8 @@ public class MapController {
 	public static void init(GameView gv){
 		//初始化角色
 		HeroController.initControler();
-		if(gv.global.heros.isEmpty()){
+		if(gv.global.first){
+			gv.global.first=false;
 			HeroController.newHero(Arisu.class);
 			HeroController.addHero(Arisu.class);
 			HeroController.newHero(Marisa.class);

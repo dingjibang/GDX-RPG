@@ -18,11 +18,13 @@ public class Global implements Serializable{
 	public String map="test/map.tmx";
 	//地图相关
 	public ArrayList<NPC> npcs=new ArrayList<NPC>();
-	public ArrayList<Hero> currentHeros=new ArrayList<Hero>();
-	public ArrayList<Hero> heros=new ArrayList<Hero>();
+	public List<Hero> currentHeros=new ArrayList<Hero>();
+	public List<Hero> heros=new ArrayList<Hero>();
 	public int x=12;
 	public int y=12;
 	public int z=2;
+	
+	public boolean first = true;
 	
 	//时间模块
 	public int mapColor = ColorUtil.DAY;

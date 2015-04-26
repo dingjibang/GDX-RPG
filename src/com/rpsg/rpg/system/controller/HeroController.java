@@ -1,15 +1,15 @@
 package com.rpsg.rpg.system.controller;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.view.GameViews;
 
 public class HeroController {
-	public static ArrayList<Hero> heros;
-	public static ArrayList<Hero> allHeros;
+	public static List<Hero> heros;
+	public static List<Hero> allHeros;
 	
 	public static void act(){
 		for(Hero hero:heros)
@@ -77,10 +77,9 @@ public class HeroController {
 		return null;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public static void initControler(){
-		heros=(ArrayList<Hero>) GameViews.global.currentHeros.clone();
-		allHeros=(ArrayList<Hero>) GameViews.global.heros.clone();
+		heros=GameViews.global.currentHeros;
+		allHeros= GameViews.global.heros;
 	}
 	
 	public static void initHeros(Stage s){
