@@ -26,6 +26,7 @@ public class Setting {
 	public static final String GAME_RES_IMAGE_MENU_ITEM=GAME_RES_IMAGE_MENU+"item/";
 	public static final String GAME_RES_IMAGE_MENU_STATUS=GAME_RES_IMAGE_MENU+"status/";
 	public static final String GAME_RES_IMAGE_MENU_SYSTEM=GAME_RES_IMAGE_MENU+"system/";
+	public static final String GAME_RES_IMAGE_MENU_TACTIC=GAME_RES_IMAGE_MENU+"tactic/";
 	public static final String GAME_RES_MESSAGE=GAME_RES_PATH+GAME_RES_IMAGE+"/message/";
 	public static final String GAME_RES_WALK=GAME_RES_PATH+GAME_RES_IMAGE+"/walk/";
 	public static final String GAME_RES_SHADER=GAME_RES_PATH+"/shader/";
