@@ -163,7 +163,6 @@ public class PostUtil {
 			}
 		});
 		
-		//FIXME DO NOT USE FRAMEBUFFER WHEN HQ SETTING IS FALSE 
 		if(display && height <maxHeight)
 			height=(height+showSpeed+(++a)>= maxHeight)?maxHeight:height+showSpeed+a;
 		else if(!display && height > 0)
@@ -171,33 +170,38 @@ public class PostUtil {
 		group.setY(height-maxHeight);
 		
 		FrameBuffer buffer = null;
-		if(height>0 && menuEnable)
+		if(height>0 && menuEnable && Setting.persistence.betterLight)
 			buffer=new FrameBuffer(Format.RGB565, 1024, 576, true);
+			
 		Bloom bloom=GameViews.bloom;
 		bloom.setBaseIntesity(0);
 		bloom.setBloomIntesity(0.75f);
 		bloom.setBloomSaturation(0.8f);
 		bloom.setThreshold(0.1f);
 		
-		if(height>0 && menuEnable)
+		if(height>0 && menuEnable && Setting.persistence.betterLight)
 			post.render(buffer,Bloom.class);
+		
 		bloom.setBaseIntesity(1.2f);
 		bloom.setBaseSaturation(1f);
 		bloom.setBloomIntesity(0.7f);
 		bloom.setBloomSaturation(1.2f);
 		bloom.setThreshold(0.3f);
-		if(height>0  && menuEnable){
+		if(height>0 && menuEnable){
 			stage.getBatch().begin();
 			if(!Setting.persistence.betterLight)
-				stage.getBatch().setColor(1f,1f,1f,0.7f);
-			stage.getBatch().draw(new TextureRegion(buffer.getColorBufferTexture(),73,height,878,-height),73,0);
+				stage.getBatch().setColor(0f,0f,0f,0.7f);
+			if(Setting.persistence.betterLight)
+				stage.getBatch().draw(new TextureRegion(buffer.getColorBufferTexture(),73,height,878,-height),73,0);
+			else
+				stage.getBatch().draw(Res.getTexture(Setting.GAME_RES_IMAGE_GLOBAL+"optb.png"),73,0,878,height);
 			stage.getBatch().end();
 		}
 		
 		stage.act();
 		stage.draw();
 		
-		if(height>0  && menuEnable)
+		if(height>0  && menuEnable && Setting.persistence.betterLight)
 			buffer.dispose();
 		pad.setVisible(Setting.persistence.touchMod  && height<=0);
 		if(Setting.persistence.touchMod){
