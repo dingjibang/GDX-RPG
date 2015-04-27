@@ -143,6 +143,11 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		return this;
 	}
 	
+	public Image position(float x,float y){
+		super.setPosition(x, y);
+		return this;
+	}
+	
 	
 	public Image X(int x){
 		super.setX(x);

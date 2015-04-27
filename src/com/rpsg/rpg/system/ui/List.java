@@ -37,6 +37,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectSet;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.ListItem;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.system.base.Res;
@@ -54,6 +55,7 @@ public class List<T> extends Widget implements Cullable {
 	private float prefWidth, prefHeight;
 	private float itemHeight;
 	private float textOffsetX, textOffsetY;
+	public int offsetX2;
 
 	public List (Skin skin) {
 		this(skin.get(ListStyle.class));
@@ -202,7 +204,7 @@ public class List<T> extends Widget implements Cullable {
 					selectedDrawable.draw(batch, x+20, y + itemY - itemHeight, width-10, itemHeight);
 					font.setColor(fontColorSelected.r, fontColorSelected.g, fontColorSelected.b, fontColorSelected.a * parentAlpha);
 				}
-				FontUtil.draw(((SpriteBatch)batch), item.toString(), 20,selected?style.fontColorSelected:Color.WHITE, (int)(x + textOffsetX + 20), (int)(y + itemY - textOffsetY)-padTop, 500);
+				FontUtil.draw(((SpriteBatch)batch), item.toString(), 20,selected?style.fontColorSelected:Color.WHITE, (int)(x + textOffsetX + 20 + offsetX2), (int)(y + itemY - textOffsetY)-padTop, 500);
 				int offset=0;
 				if(item instanceof Equipment){
 					if(!((Equipment)item).throwable){
@@ -212,6 +214,22 @@ public class List<T> extends Widget implements Cullable {
 					if(((Equipment)item).onlyFor!=null){
 						Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"only.png").draw(batch, x+width-61+offset, y+itemY - itemHeight+4+padTop, 61, 17);
 						offset=-70;
+					}
+					Equipment e=(Equipment)item;
+					if(e.equipType!=null && offsetX2!=0){
+						if(e.equipType.equals(Equipment.EQUIP_CLOTHES))
+							batch.draw(Res.getTexture(Setting.GAME_RES_IMAGE_ICONS+"armor.png"),x+28, y+itemY - itemHeight+5+padTop);
+						if(e.equipType.equals(Equipment.EQUIP_SHOES))
+							batch.draw(Res.getTexture(Setting.GAME_RES_IMAGE_ICONS+"shoes.png"),x+28, y+itemY - itemHeight+5+padTop);
+						if(e.equipType.equals(Equipment.EQUIP_WEAPON))
+							batch.draw(Res.getTexture(Setting.GAME_RES_IMAGE_ICONS+"sword.png"),x+28, y+itemY - itemHeight+5+padTop);
+						if(e.equipType.equals(Equipment.EQUIP_ORNAMENT1) || e.equipType.equals(Equipment.EQUIP_ORNAMENT2))
+							batch.draw(Res.getTexture(Setting.GAME_RES_IMAGE_ICONS+"accessory.png"),x+28, y+itemY - itemHeight+5+padTop);
+					}
+				}
+				if(item instanceof ListItem){
+					if(((ListItem)item).userObject!=null && ((ListItem)item).userObject instanceof Image){
+						((Image)((ListItem)item).userObject).position(x+28, y+itemY - itemHeight+5+padTop).draw(batch);
 					}
 				}
 				if(item instanceof Item && ((Item)item).count!=0)

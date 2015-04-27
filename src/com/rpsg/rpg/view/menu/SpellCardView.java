@@ -112,7 +112,7 @@ public class SpellCardView extends View{
 		ListStyle style=new ListStyle();
 		style.font=FontUtil.generateFont(" ".toCharArray()[0], 22);
 		style.selection=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipsel.png");
-		style.fontColorSelected=Color.DARK_GRAY;
+		style.fontColorSelected=Color.valueOf("f5e70c");
 		elist=new com.rpsg.rpg.system.ui.List<SpellCard>(style);
 		elist.onClick(()->{
 			spell=elist.getSelected();
@@ -182,14 +182,14 @@ public class SpellCardView extends View{
 				return false;
 			}
 		});
-		
-		sellist.getItems().add(new ListItem("使用").setRunnable(()->{
+		sellist.offsetX2=20;
+		sellist.getItems().add(new ListItem("使用").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"yes.png")).setRunnable(()->{
 			scfor.visible=true;
 			herolist.setVisible(true);
 			mask2.setVisible(true);
 			layer=2;
 		}));
-		sellist.getItems().add(new ListItem("取消").setRunnable(()->can.run()));
+		sellist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"no.png")).setRunnable(()->can.run()));
 		sellist.onClick(()->Music.playSE("snd210"));
 		sellist.setItemHeight(27);
 		sellist.padTop=2;
@@ -199,13 +199,14 @@ public class SpellCardView extends View{
 		
 		
 		herolist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
-		herolist.getItems().add(new ListItem("取消"));
+		herolist.offsetX2=20;
+		herolist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"no.png")));
 		HeroController.heros.forEach((h)->herolist.getItems().add(new ListItem(h.name).setUserObject(h)));
 		herolist.onDBClick(()->{
 			if(herolist.getSelected().name.equals("取消")){
 				can2.run();
 			}else{
-				if(herolist.getSelected().userObject!=null)
+				if(herolist.getSelected().userObject!=null && !(herolist.getSelected().userObject instanceof Image))
 					if(spell.use(HeroController.heros.get(currentSelectHero),((Hero)herolist.getSelected().userObject)))
 						can2.run();
 				drawp=true;
@@ -255,7 +256,7 @@ public class SpellCardView extends View{
 		if(herolist.isVisible()){
 			herolist.draw(sb, 1);
 			sb.flush();
-			if(herolist.getSelectedIndex()!=-1 && (Hero)herolist.getSelected().userObject!=null){
+			if(herolist.getSelectedIndex()!=-1 && herolist.getSelected().userObject!=null && !(herolist.getSelected().userObject instanceof Image)){
 				Hero h=((Hero)herolist.getSelected().userObject);
 				render.begin(ShapeType.Filled);
 				render.setColor(green);

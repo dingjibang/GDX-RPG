@@ -117,7 +117,7 @@ public class EquipView extends View{
 		ListStyle style=new ListStyle();
 		style.font=FontUtil.generateFont(" ".toCharArray()[0], 22);
 		style.selection=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipsel.png");
-		style.fontColorSelected=blue;
+		style.fontColorSelected=Color.valueOf("f5e70c");
 		elist=new com.rpsg.rpg.system.ui.List<Equipment>(style);
 		elist.onClick(()->{
 			Music.playSE("snd210");
@@ -173,11 +173,12 @@ public class EquipView extends View{
 		msg.setPosition(380, 140);
 		stage.addActor(msg);
 		olist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
-		olist.getItems().add(new ListItem("装备").setRunnable(()->{
+		olist.offsetX2=20;
+		olist.getItems().add(new ListItem("装备").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"add.png")).setRunnable(()->{
 			ItemUtil.useEquip(HeroController.heros.get(currentSelectHero), equip);
 			gengrateEList();
 		}));
-		olist.getItems().add(new ListItem("丢弃").setRunnable(()->{
+		olist.getItems().add(new ListItem("丢弃").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"bin.png")).setRunnable(()->{
 			if(equip.throwable){
 				ItemUtil.throwItem("equipment",equip);
 				AlertUtil.add("丢弃成功。", AlertUtil.Yellow);
@@ -192,7 +193,7 @@ public class EquipView extends View{
 			stage.setKeyboardFocus(null);
 		};
 		cancel.run();
-		olist.getItems().add(new ListItem("取消"));
+		olist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"no.png")));
 		olist.onDBClick(()->{
 			olist.getSelected().run();
 			cancel.run();

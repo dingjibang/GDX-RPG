@@ -94,7 +94,7 @@ public class ItemView extends DefaultIView{
 		ListStyle style=new ListStyle();
 		style.font=FontUtil.generateFont(" ".toCharArray()[0], 22);
 		style.selection=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipsel.png");
-		style.fontColorSelected=Color.DARK_GRAY;
+		style.fontColorSelected=Color.valueOf("f5e70c");
 		elist=new com.rpsg.rpg.system.ui.List<Item>(style);
 		elist.onClick(()->{
 			item=elist.getSelected();
@@ -175,23 +175,24 @@ public class ItemView extends DefaultIView{
 		
 		elist.onDBClick(()->{
 			scuse.visible=true;
+			sellist.offsetX2=20;
 			sellist.getItems().clear();
 			if(item.type==Item.TYPE_USEINMAP)
-				sellist.getItems().add(new ListItem("使用").setRunnable(()->{
+				sellist.getItems().add(new ListItem("使用").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"yes.png")).setRunnable(()->{
 					scfor.visible=true;
 					herolist.setVisible(true);
 					mask2.setVisible(true);
 					layer=2;
 				}));
 			if(item.throwable)
-				sellist.getItems().add(new ListItem("丢弃").setRunnable(()->{
+				sellist.getItems().add(new ListItem("丢弃").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"bin.png")).setRunnable(()->{
 					group.setVisible(true);
 					mask2.setVisible(true);
 					can.run();
 					currentCount=1;
 					layer=3;
 				}));
-			sellist.getItems().add(new ListItem("取消").setRunnable(()->can.run()));
+			sellist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"no.png")).setRunnable(()->can.run()));
 			sellist.onDBClick(()->sellist.getSelected().run.run());
 			sellist.setVisible(true);
 			sellist.setSelectedIndex(0);
@@ -207,13 +208,14 @@ public class ItemView extends DefaultIView{
 		scfor.setPosition(500, 87);
 		
 		herolist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
-		herolist.getItems().add(new ListItem("取消"));
+		herolist.offsetX2=20;
+		herolist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"no.png")));
 		HeroController.heros.forEach((h)->herolist.getItems().add(new ListItem(h.name).setUserObject(h)));
 		herolist.onDBClick(()->{
 			if(herolist.getSelected().name.equals("取消")){
 				can2.run();
 			}else{
-				if(herolist.getSelected().userObject!=null)
+				if(herolist.getSelected().userObject!=null && !(herolist.getSelected().userObject instanceof Image))
 					if(item.use((Hero)herolist.getSelected().userObject)){
 						can2.run();
 						can.run();
@@ -353,7 +355,7 @@ public class ItemView extends DefaultIView{
 		if(herolist.isVisible()){
 			herolist.draw(sb, 1);
 			sb.flush();
-			if(herolist.getSelectedIndex()!=-1 && (Hero)herolist.getSelected().userObject!=null){
+			if(herolist.getSelectedIndex()!=-1 && herolist.getSelected().userObject!=null && !(herolist.getSelected().userObject instanceof Image)){
 				Hero h=((Hero)herolist.getSelected().userObject);
 				render.begin(ShapeType.Filled);
 				render.setColor(green);
@@ -432,6 +434,7 @@ public class ItemView extends DefaultIView{
 
 	TopBar currentBar=null;
 	public void generateLists(String type){
+		elist.offsetX2=type.equals("equipment")?20:0;
 		float y=pane.getScrollX();
 		Array<Item> sc = elist.getItems();
 		sc.clear();
