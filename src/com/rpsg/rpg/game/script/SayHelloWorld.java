@@ -1,15 +1,21 @@
 package com.rpsg.rpg.game.script;
 
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.view.*;
+import com.rpsg.rpg.utils.display.WeatherUtil;
 
 public class SayHelloWorld extends Script{
 	
 	public void init() {
 		$(()->{
-			if(++GameViews.global.mapColor>2)
-				GameViews.global.mapColor=0;
+//			if(++GameViews.global.mapColor>2)
+//				GameViews.global.mapColor=0;
+			if(WeatherUtil.type==WeatherUtil.WEATHER_NO){
+				_$(setWeather(WeatherUtil.WEATHER_RAIN));
+			}else{
+				_$(setWeather(WeatherUtil.WEATHER_NO));
+			}
 		});
+		
 //		lock(true);
 //		faceToHero();
 //		showMSG();

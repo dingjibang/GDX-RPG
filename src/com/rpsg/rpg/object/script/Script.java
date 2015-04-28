@@ -13,6 +13,7 @@ import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FG; 
 import com.rpsg.rpg.utils.display.Msg;
 import com.rpsg.rpg.utils.display.SelectUtil;
+import com.rpsg.rpg.utils.display.WeatherUtil;
 import com.rpsg.rpg.utils.game.Base;
 import com.rpsg.rpg.utils.game.Heros;
 import com.rpsg.rpg.utils.game.Move;
@@ -208,7 +209,9 @@ public abstract class Script implements MsgType,FGType{
 		return Move.random(this,speed,length,new Vector2(3,3),new Vector2(this.npc.mapx,this.npc.mapy));
 	}
 	
-	
+	public BaseScriptExecutor setWeather(int type){
+		return WeatherUtil.setWeather(this, type);
+	}
 	
 	public boolean currentSelect(String equ){
 		return SelectUtil.currentSelect.equals(equ);

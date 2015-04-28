@@ -16,6 +16,7 @@ import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.controller.MapController;
 import com.rpsg.rpg.system.controller.MenuController;
+import com.rpsg.rpg.utils.display.WeatherUtil;
 import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameViews;
 
@@ -27,6 +28,7 @@ public class SL {
 			global.npcs = (ArrayList<NPC>)MapController.getNPCs().clone();
 			global.heros =  HeroController.allHeros;
 			global.currentHeros =HeroController.heros;
+			global.weather=WeatherUtil.type;
 			Files.save(global,Setting.GAME_PERSISTENCE+fileID+".dat");
 			global.npcs.clear();
 			SLData slData=new SLData();

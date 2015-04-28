@@ -11,6 +11,7 @@ import com.rpsg.rpg.object.base.items.*;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.utils.display.ColorUtil;
+import com.rpsg.rpg.utils.display.WeatherUtil;
 
 public class Global implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -31,6 +32,8 @@ public class Global implements Serializable{
 	public int tyear=2015;
 	public int tmonth=3;
 	public int tday=10;
+	
+	public int weather=WeatherUtil.WEATHER_NO;
 	
 	
 	//金钱
