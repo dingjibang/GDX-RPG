@@ -38,7 +38,7 @@ import com.rpsg.rpg.view.hover.LoadView;
 
 public class PostUtil {
 	
-	static Stage stage;
+	public static Stage stage;
 	static Label name,y,m,d,yy,mm,day,map,money,jname,level,next;
 	static int height=0,maxHeight=160;
 	static boolean display=false;
@@ -183,10 +183,10 @@ public class PostUtil {
 			post.render(buffer,Bloom.class);
 		
 		bloom.setBaseIntesity(1.2f);
-		bloom.setBaseSaturation(1f);
-		bloom.setBloomIntesity(0.7f);
-		bloom.setBloomSaturation(1.2f);
-		bloom.setThreshold(0.3f);
+		bloom.setBaseSaturation(WeatherUtil.baseSaturation);
+		bloom.setBloomIntesity(WeatherUtil.bloomIntesity);
+		bloom.setBloomSaturation(WeatherUtil.baseSaturation);
+		bloom.setThreshold(WeatherUtil.threshold);
 		if(height>0 && menuEnable){
 			stage.getBatch().begin();
 			if(!Setting.persistence.betterLight)

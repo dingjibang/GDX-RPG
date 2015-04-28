@@ -6,7 +6,6 @@ import box2dLight.RayHandler;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Matrix4;
 import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameViews;

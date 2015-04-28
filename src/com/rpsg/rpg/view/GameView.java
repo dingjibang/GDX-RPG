@@ -63,7 +63,7 @@ public class GameView extends View{
 			post=GameViews.post;
 			bloom=GameViews.bloom;
 			motion=GameViews.motion;
-			
+			WeatherUtil.init(WeatherUtil.WEATHER_RAIN);
 			Logger.info("图形加载完成。");
 		};
 		filename=Setting.GAME_RES_MAP+global.map;
@@ -115,8 +115,12 @@ public class GameView extends View{
 		
 		MapController.draw(this);
 		
+		if(Setting.persistence.betterLight && map.getProperties().get("weather")==null)
+			WeatherUtil.draw((SpriteBatch) PostUtil.stage.getBatch());
+		
 		if(postEnable)
 			post.render(true);
+		
 		
 		PostUtil.draw(post,menuEnable);
 		
@@ -130,6 +134,7 @@ public class GameView extends View{
 		
 		if(null!=stackView)
 			stackView.draw(batch);
+		
 //		batch.end();
 //		ShaderProgram shader = DiffuseShader.createShadowShader();
 //		shader.begin();
