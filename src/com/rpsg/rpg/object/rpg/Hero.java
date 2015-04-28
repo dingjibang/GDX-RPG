@@ -29,6 +29,7 @@ public abstract class Hero extends IRPGObject {
 	public String fgname;
 	public String tag="";
 	public Association association=new EmptyAssociation();
+	public Hero linkTo;
 	public Map<String,Integer> prop=new HashMap<String, Integer>();
 	{
 		prop.put("level", 1);
