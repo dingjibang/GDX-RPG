@@ -58,9 +58,9 @@ public class TacticView extends DefaultIView {
 		group.setSize(GameUtil.screen_width*page,  GameUtil.screen_height);
 		stage.addActor(group);
 		
-		stage.addActor(linkerc.color(1,1,1,0));
-		stage.addActor(linkerl.color(1,1,1,0));
-		stage.addActor(linkerr.color(1,1,1,0));
+		group.addActor(linkerc.color(1,1,1,0));
+		group.addActor(linkerl.color(1,1,1,0));
+		group.addActor(linkerr.color(1,1,1,0));
 		stage.addActor(linkbox1.color(1,1,1,0));
 		stage.addActor(linkbox2.color(1,1,1,0));
 		
@@ -93,8 +93,8 @@ public class TacticView extends DefaultIView {
 				linkerc.action(Actions.fadeOut(0.2f));
 				linkerl.action(Actions.fadeOut(0.2f));
 				linkerr.action(Actions.fadeOut(0.2f));
-				linkbox1.action(Actions.fadeOut(0.2f));
-				linkbox2.action(Actions.fadeOut(0.2f));
+				linkbox1.action(Actions.fadeOut(0.5f));
+				linkbox2.action(Actions.fadeOut(0.5f));
 				speeda=8;
 			}else{
 				if(eff.isComplete())
@@ -145,6 +145,7 @@ public class TacticView extends DefaultIView {
 			this.idx=idx;
 			Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_herobg.png");
 			group.addActor(bg.position(212*idx+174, 170).onClick(()->{
+				if(hero!=null)
 				if((currentLinking==null) || (currentLinking!=null && currentLinking.hero!=that.hero && that.hero.linkTo==null)){
 					Iterator<Actor> it=group.getChildren().iterator();
 					while(it.hasNext()){
@@ -203,9 +204,10 @@ public class TacticView extends DefaultIView {
 							but.offset=8;
 							but.onClick(fin);
 							for(HeroImg img:imglist){
+								if(img.hero!=null)
 								if(img!=that && img.hero.linkTo==null){
 									group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"linking_heroselbox.png").position(212*img.idx+118, 124).disableTouch().object(new HeroImgMask3()).color(Color.valueOf("0660f600")).action(Actions.fadeIn(0.3f)));
-								}else if(img.hero.linkTo!=null){
+								}else if(hero==null || img.hero.linkTo!=null){
 									group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_disable.png").position(212*img.idx+174, 170).disableTouch().object(new HeroImgMask()).color(1,1,1,0).action(Actions.fadeIn(0.3f)));
 								}
 							}
