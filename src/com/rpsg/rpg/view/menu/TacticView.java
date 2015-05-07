@@ -3,9 +3,11 @@ package com.rpsg.rpg.view.menu;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -32,7 +34,20 @@ public class TacticView extends DefaultIView {
 	int page=2;
 	WidgetGroup group;
 	TextButtonStyle butstyle;
+	ParticleEffect eff;
+	Image linkerc,linkerl,linkerr;
+	Image linkbox1,linkbox2;
 	public void init() {
+		eff=new ParticleEffect();
+		eff.load(Gdx.files.internal(Setting.GAME_RES_PARTICLE+"link.p"),Gdx.files.internal(Setting.GAME_RES_PARTICLE));
+		
+		linkerc=Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_effect.png").disableTouch();
+		linkerl=Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_effect_left.png").disableTouch();
+		linkerr=Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_effect_right.png").disableTouch();
+		
+		linkbox1=Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"linking_heroselbox2.png").disableTouch();
+		linkbox2=Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"linking_heroselbox2.png").disableTouch();
+		
 		stage = new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		
 		butstyle=new TextButtonStyle();
@@ -42,6 +57,12 @@ public class TacticView extends DefaultIView {
 		group=new WidgetGroup();
 		group.setSize(GameUtil.screen_width*page,  GameUtil.screen_height);
 		stage.addActor(group);
+		
+		stage.addActor(linkerc.color(1,1,1,0));
+		stage.addActor(linkerl.color(1,1,1,0));
+		stage.addActor(linkerr.color(1,1,1,0));
+		stage.addActor(linkbox1.color(1,1,1,0));
+		stage.addActor(linkbox2.color(1,1,1,0));
 		
 		generateHeroImage();
 		
@@ -59,11 +80,31 @@ public class TacticView extends DefaultIView {
 		});
 		stage.addActor(exit);
 	}
-
+	int speeda=8;
 	public void draw(SpriteBatch batch) {
 		stage.draw();
 		SpriteBatch sb = (SpriteBatch) stage.getBatch();
 		sb.begin();
+		if(linkeff){
+			int speed=speeda++;
+			if((left+=speed) > right){
+				linkeff=false;
+				eff.allowCompletion();
+				linkerc.action(Actions.fadeOut(0.2f));
+				linkerl.action(Actions.fadeOut(0.2f));
+				linkerr.action(Actions.fadeOut(0.2f));
+				linkbox1.action(Actions.fadeOut(0.2f));
+				linkbox2.action(Actions.fadeOut(0.2f));
+				speeda=8;
+			}else{
+				if(eff.isComplete())
+					eff.reset();
+				linkerc.setWidth(linkerc.getWidth()+speed);
+				linkerr.setPosition(left+linkerl.getWidth(), 265);
+				eff.setPosition(left, 270);
+			}
+		}
+		eff.draw(batch, Gdx.graphics.getDeltaTime());
 		sb.end();
 	}
 
@@ -80,6 +121,7 @@ public class TacticView extends DefaultIView {
 
 	public void dispose() {
 		stage.dispose();
+		eff.dispose();
 	}
 	
 	ArrayList<HeroImg> imglist;
@@ -170,6 +212,7 @@ public class TacticView extends DefaultIView {
 						}:()->{
 							currentLinking.hero.linkTo=that.hero;
 							that.hero.linkTo=currentLinking.hero;
+							linkEffect(idx,getIDX(that.hero.linkTo));
 							fin.run();
 						});
 						group.addActor(but);
@@ -195,6 +238,28 @@ public class TacticView extends DefaultIView {
 			if(img.hero.equals(hero))
 				return img.idx;
 		return -1;
+	}
+	
+	boolean linkeff=false;
+	int left,right;
+	void linkEffect(int idx2, int idx3) {
+		if(!linkeff){
+			linkeff=true;
+			left=212*(idx2<idx3?idx2:idx3)+200;
+			right=212*(idx2<idx3?idx3:idx2)+240;
+			eff.reset();
+			eff.setPosition(left, 270);
+			linkerl.setPosition(left, 265);
+			linkerr.setPosition(left+linkerl.getWidth(), 265);
+			linkerc.setPosition(left+linkerl.getWidth(), 265);
+			linkerc.setWidth(0);
+			linkerl.action(Actions.fadeIn(0.4f)).color(1,1,1,0);
+			linkerr.action(Actions.fadeIn(0.4f)).color(1,1,1,0);
+			linkerc.action(Actions.fadeIn(0.4f)).color(1,1,1,0);
+			linkbox1.position(left-81, 124).color(Color.valueOf("7eff4500")).action(Actions.fadeIn(0.2f));
+			linkbox2.position(right-121, 124).color(Color.valueOf("ff458200")).action(Actions.fadeIn(0.2f));
+		}
+		
 	}
 	
 	class HeroImgMask{}
