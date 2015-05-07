@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -17,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
@@ -37,6 +39,7 @@ public class TacticView extends DefaultIView {
 	ParticleEffect eff;
 	Image linkerc,linkerl,linkerr;
 	Image linkbox1,linkbox2;
+	Label tipLib,tipLib2;
 	public void init() {
 		eff=new ParticleEffect();
 		eff.load(Gdx.files.internal(Setting.GAME_RES_PARTICLE+"link.p"),Gdx.files.internal(Setting.GAME_RES_PARTICLE));
@@ -79,7 +82,11 @@ public class TacticView extends DefaultIView {
 			}
 		});
 		stage.addActor(exit);
+		stage.addActor(tipLib=new Label("", 26).setWidth(1000).setPos(870, 483).right(true));
+		stage.addActor(tipLib2=new Label("", 15).setWidth(1000).setPos(874, 453).right(true));
+		pageTo(1);
 	}
+	
 	int speeda=8;
 	public void draw(SpriteBatch batch) {
 		stage.draw();
@@ -147,6 +154,17 @@ public class TacticView extends DefaultIView {
 			group.addActor(bg.position(212*idx+174, 170).onClick(()->{
 				if(hero!=null)
 				if((currentLinking==null) || (currentLinking!=null && currentLinking.hero!=that.hero && that.hero.linkTo==null)){
+					if(hero.linkTo==null && currentLinking==null)
+						tipLib.setText(hero.name+"仍未连携");
+					else if(currentLinking!=null)
+						tipLib.setText("选择角色用以与"+currentLinking.hero.name+"连携");
+					else
+						tipLib.setText(hero.name+"与"+hero.linkTo+"连携中");
+					if(hero.linkTo!=null){
+						tipLib2.setText("当前连携关系可以获得3个连携技能");
+					}else{
+						tipLib2.setText("请点击连携按钮进行连携操作");
+					}
 					Iterator<Actor> it=group.getChildren().iterator();
 					while(it.hasNext()){
 						Actor a=it.next();
@@ -201,6 +219,7 @@ public class TacticView extends DefaultIView {
 							setLinkBorder();
 							but.setUserObject(new HeroImgMask());
 							currentLinking=that;
+							tipLib.setText("选择角色用以与"+currentLinking.hero.name+"连携");
 							but.offset=8;
 							but.onClick(fin);
 							for(HeroImg img:imglist){
@@ -258,13 +277,38 @@ public class TacticView extends DefaultIView {
 			linkerl.action(Actions.fadeIn(0.4f)).color(1,1,1,0);
 			linkerr.action(Actions.fadeIn(0.4f)).color(1,1,1,0);
 			linkerc.action(Actions.fadeIn(0.4f)).color(1,1,1,0);
-			linkbox1.position(left-81, 124).color(Color.valueOf("7eff4500")).action(Actions.fadeIn(0.2f));
-			linkbox2.position(right-121, 124).color(Color.valueOf("ff458200")).action(Actions.fadeIn(0.2f));
+			linkbox1.position(left-81, 124).color(Color.valueOf("7eff4500")).action(Actions.fadeIn(0.1f));
+			linkbox2.position(right-121, 124).color(Color.valueOf("ff458200")).action(Actions.fadeIn(0.1f));
 		}
 		
+	}
+	
+	public void pageTo(int page){
+		group.addAction(Actions.moveTo(-GameUtil.screen_width*(page-1), 0,0.6f,Interpolation.circle));
+		Iterator<Actor> i=stage.getActors().iterator();
+		while(i.hasNext()){
+			Object obj=i.next().getUserObject();
+			if(obj!=null && obj instanceof PageMask)
+				i.remove();
+		}
+		if(page==1){
+			stage.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link.png").position(280, 430).object(new PageMask()));
+		}else if(page==2){
+//			stage.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link.png").position(280, 430).object(new PageMask()));
+		}
+		stage.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"left.png").position(180, 433).object(new PageMask()).onClick(()->{
+			if(this.page>1)
+				pageTo(page-1);
+		}).color(page==1?Color.GRAY:Color.WHITE));
+		
+		stage.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"right.png").position(920, 433).object(new PageMask()).onClick(()->{
+			if(page<this.page)
+				pageTo(page+1);
+		}).color(page==this.page?Color.GRAY:Color.WHITE));
 	}
 	
 	class HeroImgMask{}
 	class HeroImgMask2{}
 	class HeroImgMask3 extends HeroImgMask{}
+	class PageMask{}
 }

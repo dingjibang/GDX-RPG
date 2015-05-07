@@ -74,7 +74,7 @@ public class Label extends Widget {
 //		cache.setPosition(getX(), getY());
 //		cache.draw(batch);
 		if(alignX==0)
-			FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color, (int)getX(), (int)getY(),(int)getWidth(),pad,0);
+			FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color, !rightAble?(int)getX():(int)getX()-FontUtil.getTextWidth(getText(), fontSize,pad), (int)getY(),(int)getWidth(),pad,0);
 		else
 			FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color, alignX-FontUtil.getTextWidth(getText(), fontSize,pad)/2, (int)getY(),(int)getWidth(),pad,0);
 	}
@@ -131,6 +131,12 @@ public class Label extends Widget {
 	
 	public Label setPos(int x,int y){
 		setPosition(x, y);
+		return this;
+	}
+	
+	boolean rightAble=false;
+	public Label right(boolean r){
+		rightAble=r;
 		return this;
 	}
 }
