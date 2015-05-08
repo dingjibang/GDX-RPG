@@ -1,5 +1,7 @@
 package com.rpsg.rpg.game.hero;
 
+
+import com.rpsg.rpg.game.association.association.Sun;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.IRPGObject;
 
@@ -13,6 +15,7 @@ public class Yuuka extends Hero{
 		jname="Kazami Yuuka";
 		fgname="yuuka";
 		tag="妖怪";
+		association=new Sun();
 	}
 	
 	public void init(){

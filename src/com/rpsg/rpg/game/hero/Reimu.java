@@ -1,5 +1,6 @@
 package com.rpsg.rpg.game.hero;
 
+import com.rpsg.rpg.game.association.association.Justice;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.IRPGObject;
 
@@ -13,6 +14,7 @@ public class Reimu extends Hero{
 		jname="Hakurei Reimu";
 		fgname="reimu";
 		tag="巫女";
+		association=new Justice();
 	}
 	
 	public void init(){
