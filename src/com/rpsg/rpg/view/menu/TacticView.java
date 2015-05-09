@@ -67,6 +67,8 @@ public class TacticView extends DefaultIView {
 		stage.addActor(linkbox1.color(1,1,1,0));
 		stage.addActor(linkbox2.color(1,1,1,0));
 		
+		group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link.png").position(280, 430).object(new PageMask()));
+		
 		generateHeroImage();
 		
 		ImageButton exit = new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL + "exit.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL + "exitc.png"));
@@ -82,8 +84,8 @@ public class TacticView extends DefaultIView {
 			}
 		});
 		stage.addActor(exit);
-		stage.addActor(tipLib=new Label("", 26).setWidth(1000).setPos(870, 483).right(true));
-		stage.addActor(tipLib2=new Label("", 15).setWidth(1000).setPos(874, 453).right(true));
+		group.addActor(tipLib=new Label("", 26).setWidth(1000).setPos(870, 483).right(true));
+		group.addActor(tipLib2=new Label("", 15).setWidth(1000).setPos(874, 453).right(true));
 		pageTo(1);
 	}
 	
@@ -318,13 +320,8 @@ public class TacticView extends DefaultIView {
 			if(obj!=null && obj instanceof PageMask)
 				i.remove();
 		}
-		if(page==1){
-			stage.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link.png").position(280, 430).object(new PageMask()));
-		}else if(page==2){
-//			stage.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link.png").position(280, 430).object(new PageMask()));
-		}
 		stage.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"left.png").position(180, 433).object(new PageMask()).onClick(()->{
-			if(this.page>1)
+			if(page>1)
 				pageTo(page-1);
 		}).color(page==1?Color.GRAY:Color.WHITE));
 		
