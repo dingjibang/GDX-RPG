@@ -25,7 +25,11 @@ public class Files {
 	}
 	
 	public static boolean empty(String filePath){
-		return !Gdx.files.internal(filePath).exists();
+		try{
+			return !Gdx.files.internal(filePath).exists();
+		}catch(Exception e){
+			return true;
+		}
 	}
 	
 	public static Object load(){
