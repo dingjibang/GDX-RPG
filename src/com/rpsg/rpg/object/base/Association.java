@@ -20,7 +20,8 @@ public abstract class Association implements Serializable {
 	public Map<Integer, AssociationSkill> skills = new HashMap<Integer, AssociationSkill>();
 	public ArrayList<SpecialLink> specialLink = new ArrayList<SpecialLink>();
 
-	public static class SpecialLink {
+	public static class SpecialLink implements Serializable {
+		private static final long serialVersionUID = 1L;
 		public Class<? extends Hero> hero;
 		public Class<? extends AssociationSkill> associationSkill;
 
