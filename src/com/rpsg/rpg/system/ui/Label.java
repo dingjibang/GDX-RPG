@@ -4,6 +4,7 @@ package com.rpsg.rpg.system.ui;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.StringBuilder;
 import com.rpsg.rpg.utils.display.FontUtil;
@@ -65,7 +66,13 @@ public class Label extends Widget {
 	public void layout () {
 
 	}
-
+	
+	int yoff=0;
+	public Label setYOffset(int yoff){
+		this.yoff=yoff;
+		return this;
+	}
+	
 	public void draw (Batch batch, float parentAlpha) {
 		validate();
 		Color color = tempColor.set(getColor());
@@ -74,9 +81,9 @@ public class Label extends Widget {
 //		cache.setPosition(getX(), getY());
 //		cache.draw(batch);
 		if(alignX==0)
-			FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color, !rightAble?(int)getX():(int)getX()-FontUtil.getTextWidth(getText(), fontSize,pad), (int)getY(),(int)getWidth(),pad,0);
+			FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color, !rightAble?(int)getX():(int)getX()-FontUtil.getTextWidth(getText(), fontSize,pad), (int)getY(),(int)getWidth(),pad,yoff);
 		else
-			FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color, alignX-FontUtil.getTextWidth(getText(), fontSize,pad)/2, (int)getY(),(int)getWidth(),pad,0);
+			FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color, alignX-FontUtil.getTextWidth(getText(), fontSize,pad)/2, (int)getY(),(int)getWidth(),pad,yoff);
 	}
 	
 	public float getWidth() {
@@ -84,6 +91,11 @@ public class Label extends Widget {
 	}
 	public Label setWidth(int width) {
 		this.width = width;
+		return this;
+	}
+	
+	public Label addAct(Action act) {
+		super.addAction(act);
 		return this;
 	}
 	

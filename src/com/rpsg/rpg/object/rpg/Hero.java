@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Association;
+import com.rpsg.rpg.object.base.Association.SpecialLink;
 import com.rpsg.rpg.object.base.AssociationSkill;
 import com.rpsg.rpg.object.base.EmptyAssociation;
 import com.rpsg.rpg.object.base.Resistance;
@@ -31,7 +32,7 @@ public abstract class Hero extends IRPGObject {
 	public String tag="";
 	public Association association=new EmptyAssociation();
 	public Hero linkTo;
-	public ArrayList<AssociationSkill> linkSkills;
+	public ArrayList<AssociationSkill> linkSkills = new ArrayList<AssociationSkill>();
 	public Map<String,Integer> prop=new HashMap<String, Integer>();
 	{
 		prop.put("level", 1);
@@ -133,4 +134,50 @@ public abstract class Hero extends IRPGObject {
 	public String getName(){
 		return name;
 	}
+	
+	public void link(Hero hero,boolean link){
+		if(link){
+			this.linkTo=hero;
+			hero.linkTo=this;
+			this.linkSkills=hero.linkSkills=generateLinkList(hero);
+//			System.out.println(hero.name+"与"+this.name+"连携将得到技能："+skills.toString());
+		}else{
+			this.linkTo=null;
+			hero.linkTo=null;
+			this.linkSkills.forEach((s)->s.t_level=0);
+			this.linkSkills=hero.linkSkills=new ArrayList<AssociationSkill>();
+		}
+	}
+	
+	private ArrayList<AssociationSkill> generateLinkList(Hero hero){
+		ArrayList<AssociationSkill> skills=new ArrayList<AssociationSkill>();
+		tryAddLink(this.association.getCurrentLevelLinkSkills(),skills);
+		tryAddLink(hero.association.getCurrentLevelLinkSkills(),skills);
+		if(!hero.lead && !this.lead){
+			ArrayList<AssociationSkill> available=new ArrayList<AssociationSkill>();
+			available.add(skills.get(0));//add "PursueAndAttack" when ever.
+			setAvailableList(this,hero,available,skills);
+			setAvailableList(hero,this,available,skills);
+			skills=available;
+		}
+		return skills;
+	}
+	
+	public int getLinkSize(Hero hero){
+		return generateLinkList(hero).size();
+	}
+
+	private void setAvailableList(Hero hero, Hero hero2,ArrayList<AssociationSkill> available, ArrayList<AssociationSkill> skills) {
+		for(AssociationSkill skill:skills)
+			for(SpecialLink link:hero.association.specialLink)
+				if((link.hero.equals(hero.getClass()) || link.hero.equals(hero2.getClass())) && link.associationSkill.equals(skill.getClass()))
+					available.add(skill);
+	}
+
+	private void tryAddLink(ArrayList<AssociationSkill> currentLevelLinkSkills, ArrayList<AssociationSkill> skills) {
+		for(AssociationSkill s:currentLevelLinkSkills)
+			if(!skills.contains(s))
+				skills.add(s);
+	}
+
 }

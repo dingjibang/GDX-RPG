@@ -12,6 +12,7 @@ public abstract class Association implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	public static int MAX_ASSOCIATION_LEVEL = 10;
 	public int level = 1;
 	public String name = "";
 	public int favor = 0;
@@ -22,9 +23,21 @@ public abstract class Association implements Serializable {
 	public static class SpecialLink {
 		public Class<? extends Hero> hero;
 		public Class<? extends AssociationSkill> associationSkill;
+
 		public SpecialLink(Class<? extends Hero> hero, Class<? extends AssociationSkill> associationSkill) {
 			this.hero = hero;
 			this.associationSkill = associationSkill;
 		}
 	}
+
+	public ArrayList<AssociationSkill> getCurrentLevelLinkSkills() {
+		ArrayList<AssociationSkill> t_skills=new ArrayList<AssociationSkill>();
+		for(Integer i=0;i<=level;i++)
+			if(skills.get(i)!=null){
+				skills.get(i).t_level=i;
+				t_skills.add(skills.get(i));
+			}
+		return t_skills;
+	}
+
 }

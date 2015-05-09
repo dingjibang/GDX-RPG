@@ -118,6 +118,11 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		return this;
 	}
 	
+	public Image oranCenter(){
+		setOrigin(0);
+		return this;
+	}
+	
 	public Image scaleX(float s){
 		super.setScaleX(s);
 		return this;

@@ -18,10 +18,10 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.AssociationSkill;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HeroController;
@@ -87,7 +87,7 @@ public class TacticView extends DefaultIView {
 		pageTo(1);
 	}
 	
-	int speeda=8;
+	int speeda=9;
 	public void draw(SpriteBatch batch) {
 		stage.draw();
 		SpriteBatch sb = (SpriteBatch) stage.getBatch();
@@ -100,9 +100,9 @@ public class TacticView extends DefaultIView {
 				linkerc.action(Actions.fadeOut(0.2f));
 				linkerl.action(Actions.fadeOut(0.2f));
 				linkerr.action(Actions.fadeOut(0.2f));
-				linkbox1.action(Actions.fadeOut(0.5f));
-				linkbox2.action(Actions.fadeOut(0.5f));
-				speeda=8;
+				linkbox1.position(oleft-81, 124).color(Color.valueOf("7eff4500")).action(Actions.sequence(Actions.fadeIn(0.15f),Actions.fadeOut(0.85f,Interpolation.pow4)));
+				linkbox2.position(oright-121, 124).color(Color.valueOf("7eff4500")).action(Actions.sequence(Actions.fadeIn(0.15f),Actions.fadeOut(0.85f,Interpolation.pow4)));
+				speeda=9;
 			}else{
 				if(eff.isComplete())
 					eff.reset();
@@ -154,17 +154,19 @@ public class TacticView extends DefaultIView {
 			group.addActor(bg.position(212*idx+174, 170).onClick(()->{
 				if(hero!=null)
 				if((currentLinking==null) || (currentLinking!=null && currentLinking.hero!=that.hero && that.hero.linkTo==null)){
-					if(hero.linkTo==null && currentLinking==null)
+					tipLib2.color(1,1,1,0).addAction(Actions.fadeIn(0.2f));
+					tipLib.color(1,1,1,0).addAction(Actions.fadeIn(0.1f));
+					if(hero.linkTo==null && currentLinking==null){
 						tipLib.setText(hero.name+"仍未连携");
-					else if(currentLinking!=null)
+						tipLib2.setText("点击连携此角色按钮开始连携");
+					}else if(currentLinking!=null){
 						tipLib.setText("选择角色用以与"+currentLinking.hero.name+"连携");
-					else
-						tipLib.setText(hero.name+"与"+hero.linkTo+"连携中");
-					if(hero.linkTo!=null){
-						tipLib2.setText("当前连携关系可以获得3个连携技能");
+						tipLib2.setText("与"+that.hero.name+"连携预计获得"+that.hero.getLinkSize(currentLinking.hero)+"个技能");
 					}else{
-						tipLib2.setText("请点击连携按钮进行连携操作");
+						tipLib.setText(hero.name+"与"+hero.linkTo+"连携中");
+						tipLib2.setText("共获得了"+hero.linkSkills.size()+"个技能");
 					}
+					
 					Iterator<Actor> it=group.getChildren().iterator();
 					while(it.hasNext()){
 						Actor a=it.next();
@@ -172,7 +174,7 @@ public class TacticView extends DefaultIView {
 							if(a.getUserObject()!=null && a.getUserObject() instanceof HeroImgMask)
 								it.remove();
 						}else{
-							if(a.getUserObject()!=null && a.getUserObject() instanceof HeroImgMask2)
+							if((a.getUserObject()!=null && a.getUserObject() instanceof HeroImgMask2) || (a.getUserObject()!=null && a.getUserObject() instanceof HeroImgMask4))
 								it.remove();
 						}
 					}
@@ -193,12 +195,35 @@ public class TacticView extends DefaultIView {
 						but.offset=4;
 						but.hof=-2;
 						but.onClick(()->{
-							that.hero.linkTo.linkTo=null;
-							that.hero.linkTo=null;
+							that.hero.link(that.hero.linkTo,false);
 							bg.click();
 						});
 						group.addActor(but);
+						
+						Image tmp;
+						for(int i=hero.linkSkills.size()-1;i>=0;i--){
+							final int positionX=100*i+174;
+							AssociationSkill skill=hero.linkSkills.get(i);
+							group.addActor(tmp=Res.get(skill.imagePath).object(new HeroImgMask()).position(positionX, 60).onClick(()->{
+								Iterator<Actor> it2=group.getChildren().iterator();
+								while(it2.hasNext()){
+									Actor a=it2.next();
+									if(a.getUserObject()!=null && a.getUserObject() instanceof HeroImgMask4)
+										it2.remove();
+								}
+								group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_skill_border.png").object(new HeroImgMask4()).position(positionX-12, 49).action(Actions.repeat(RepeatAction.FOREVER, Actions.sequence(Actions.color(Color.WHITE,0.5f),Actions.color(new Color(1,1,1,0.5f),0.5f)))));
+								group.addActor(new Label(skill.name, 50).setWidth(1000).setPos(670,134).userObj(new HeroImgMask4()).color(1, 1, 1, 0).addAct(Actions.fadeIn(0.1f)));
+								group.addActor(new Label(skill.getClass().getSimpleName(), 30).setWidth(1000).setPad(-10).setPos(710,104).userObj(new HeroImgMask4()).color(1, 1, 1, 0).addAct(Actions.alpha(0.15f, 0.5f)));
+								group.addActor(new Label("获得条件：连携者等级超过"+skill.t_level+"级", 18).setWidth(1000).setPos(689,75).userObj(new HeroImgMask4()).color(1, 1, 1, 0).addAct(Actions.fadeIn(0.2f)));
+								group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_n_bg.png").object(new HeroImgMask4()).position(128, 0).color(1,1,1,0).action(Actions.fadeIn(0.3f)));
+								group.addActor(new Label(skill.illustration, 16).setWidth(1000).setPos(165,24).userObj(new HeroImgMask4()));
+							}).oranCenter().scale(1.13f).color(1,1,1,0).action(Actions.parallel(Actions.fadeIn(0.3f),Actions.scaleTo(1, 1,0.3f))));
+							tmp.click();
+						}
+						
 					}else{
+						group.addActor(new Label("连携成功后将获得连携技能", 35).setWidth(1000).setPos(155,148).userObj(new HeroImgMask4()));
+						group.addActor(new Label("获得的连携技能将根据连携者的不同而不同。两名非主角连携后，仅能获得最基本的“追击”技能。\n在少数情况下，两名非主角连携后将获得额外的特殊连携技能。\n而结城有栖（主角）不受此限制影响：\n结城有栖与任何角色连携后，都会获得基础的“追击”加与角色对应社群等级的连携技能。", 17).setWidth(1000).setPos(164,102).userObj(new HeroImgMask4()).setYOffset(5));
 						TextButton but=new TextButton(currentLinking==null?"连携此角色":"连携此角色", butstyle,18);
 						but.setUserObject(currentLinking==null?new HeroImgMask():new HeroImgMask2());
 						but.setPosition(212*idx+189, 264);
@@ -231,8 +256,7 @@ public class TacticView extends DefaultIView {
 								}
 							}
 						}:()->{
-							currentLinking.hero.linkTo=that.hero;
-							that.hero.linkTo=currentLinking.hero;
+							currentLinking.hero.link(that.hero,true);
 							linkEffect(idx,getIDX(that.hero.linkTo));
 							fin.run();
 						});
@@ -262,12 +286,12 @@ public class TacticView extends DefaultIView {
 	}
 	
 	boolean linkeff=false;
-	int left,right;
+	int left,right,oleft,oright;
 	void linkEffect(int idx2, int idx3) {
 		if(!linkeff){
 			linkeff=true;
-			left=212*(idx2<idx3?idx2:idx3)+200;
-			right=212*(idx2<idx3?idx3:idx2)+240;
+			oleft=left=212*(idx2<idx3?idx2:idx3)+200;
+			oright=right=212*(idx2<idx3?idx3:idx2)+240;
 			eff.reset();
 			eff.setPosition(left, 270);
 			linkerl.setPosition(left, 265);
@@ -277,14 +301,12 @@ public class TacticView extends DefaultIView {
 			linkerl.action(Actions.fadeIn(0.4f)).color(1,1,1,0);
 			linkerr.action(Actions.fadeIn(0.4f)).color(1,1,1,0);
 			linkerc.action(Actions.fadeIn(0.4f)).color(1,1,1,0);
-			linkbox1.position(left-81, 124).color(Color.valueOf("7eff4500")).action(Actions.fadeIn(0.1f));
-			linkbox2.position(right-121, 124).color(Color.valueOf("ff458200")).action(Actions.fadeIn(0.1f));
 		}
 		
 	}
 	
 	public void pageTo(int page){
-		group.addAction(Actions.moveTo(-GameUtil.screen_width*(page-1), 0,0.6f,Interpolation.circle));
+		group.addAction(Actions.moveTo(-GameUtil.screen_width*(page-1), 0,0.6f,Interpolation.pow4));
 		Iterator<Actor> i=stage.getActors().iterator();
 		while(i.hasNext()){
 			Object obj=i.next().getUserObject();
@@ -311,4 +333,5 @@ public class TacticView extends DefaultIView {
 	class HeroImgMask2{}
 	class HeroImgMask3 extends HeroImgMask{}
 	class PageMask{}
+	class HeroImgMask4 extends HeroImgMask{}
 }

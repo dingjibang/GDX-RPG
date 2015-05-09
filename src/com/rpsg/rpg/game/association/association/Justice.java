@@ -11,7 +11,7 @@ public class Justice extends Association {
 	private static final long serialVersionUID = 1L;
 
 	public Justice() {
-		level = 2;
+		level = 3;
 		name = "正义";
 		favor = 20;
 		
