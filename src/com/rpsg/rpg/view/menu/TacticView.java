@@ -141,7 +141,14 @@ public class TacticView extends DefaultIView {
 			}catch(Exception e){}
 			imglist.add(new HeroImg(hero,i));
 		}
+		addTip();
 	}
+	
+	void addTip(){
+		group.addActor(new Label("连携成功后将获得连携技能", 35).setWidth(1000).setPos(155,148).userObj(new HeroImgMask4()));
+		group.addActor(new Label("获得的连携技能将根据连携者的不同而不同。两名非主角连携后，仅能获得最基本的“追击”技能。\n在少数情况下，两名非主角连携后将获得额外的特殊连携技能。\n而结城有栖（主角）不受此限制影响：\n结城有栖与任何角色连携后，都会获得基础的“追击”加与角色对应社群等级的连携技能。", 17).setWidth(1000).setPos(164,102).userObj(new HeroImgMask4()).setYOffset(5));
+	}
+	
 	HeroImg currentLinking;
 	class HeroImg{
 		Hero hero;
@@ -155,7 +162,6 @@ public class TacticView extends DefaultIView {
 				if(hero!=null)
 				if((currentLinking==null) || (currentLinking!=null && currentLinking.hero!=that.hero && that.hero.linkTo==null)){
 					tipLib2.color(1,1,1,0).addAction(Actions.fadeIn(0.2f));
-					tipLib.color(1,1,1,0).addAction(Actions.fadeIn(0.1f));
 					if(hero.linkTo==null && currentLinking==null){
 						tipLib.setText(hero.name+"仍未连携");
 						tipLib2.setText("点击连携此角色按钮开始连携");
@@ -222,8 +228,7 @@ public class TacticView extends DefaultIView {
 						}
 						
 					}else{
-						group.addActor(new Label("连携成功后将获得连携技能", 35).setWidth(1000).setPos(155,148).userObj(new HeroImgMask4()));
-						group.addActor(new Label("获得的连携技能将根据连携者的不同而不同。两名非主角连携后，仅能获得最基本的“追击”技能。\n在少数情况下，两名非主角连携后将获得额外的特殊连携技能。\n而结城有栖（主角）不受此限制影响：\n结城有栖与任何角色连携后，都会获得基础的“追击”加与角色对应社群等级的连携技能。", 17).setWidth(1000).setPos(164,102).userObj(new HeroImgMask4()).setYOffset(5));
+						addTip();
 						TextButton but=new TextButton(currentLinking==null?"连携此角色":"连携此角色", butstyle,18);
 						but.setUserObject(currentLinking==null?new HeroImgMask():new HeroImgMask2());
 						but.setPosition(212*idx+189, 264);
