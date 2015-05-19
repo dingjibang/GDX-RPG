@@ -96,7 +96,8 @@ public class Msg {
 	public static BaseScriptExecutor show(Script script,final String msgType){
 		return script.$(()->{
 			show=true;
-			msgbox.setDrawable(Res.get(Setting.GAME_RES_MESSAGE+msgType).getDrawable());
+			Image i=Res.get(Setting.GAME_RES_MESSAGE+msgType);
+			i.loaded=()->msgbox.setDrawable(i.getDrawable());
 		});
 	}
 	

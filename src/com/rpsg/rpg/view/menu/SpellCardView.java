@@ -149,7 +149,7 @@ public class SpellCardView extends View{
 		stage.addActor(mask);
 		
 		scuse=Res.get(Setting.GAME_RES_IMAGE_MENU_SC+"sc_use.png");
-		scuse.setPosition(GameUtil.screen_width/2-scuse.getWidth()/2, GameUtil.screen_height/2-scuse.getHeight()/2);
+		scuse.loaded=()->scuse.setPosition(GameUtil.screen_width/2-scuse.getWidth()/2, GameUtil.screen_height/2-scuse.getHeight()/2);
 		sellist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		sellist.onDBClick(()->sellist.getSelected().run.run());
 		can =()->{

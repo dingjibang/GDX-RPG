@@ -30,7 +30,7 @@ public class Res {
 		en.setCallback((MethodInterceptor)(Object obj, Method method, Object[] args, MethodProxy proxy)->{
 			if(method.getName().equals("getTexture") || method.getName().equals("getDrawable"))
 				return proxy.invokeSuper(obj, args);
-			if(((Image)obj).lazy && ((Image)obj).getTexture()==NO_TEXTURE){
+			if(((Image)obj).lazy && method.getName().equals("draw")){
 				Image img=(Image)obj;
 				img.lazy=false;
 				if (!ma2.isLoaded(resPath)){
