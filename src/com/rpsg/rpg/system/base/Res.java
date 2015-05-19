@@ -1,6 +1,7 @@
 package com.rpsg.rpg.system.base;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
@@ -37,23 +38,16 @@ public class Res {
 					Logger.info("尝试读取纹理：" + resPath);
 					TextureParameter param=new TextureParameter();
 					param.loadedCallback=(AssetManager assetManager, String fileName, @SuppressWarnings("rawtypes") Class type)->{
-						if (!ma2.isLoaded(resPath)){
-							ma2.load(resPath, Texture.class,param);
-							return;
-						}
-							
-						img.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) assetManager.get(fileName))));
+						img.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) ma2.get(resPath))));
 						img.reGenerateSize();
-						System.out.println(img.getTexture()==NO_TEXTURE);
 					};
-					ma2.load(resPath, Texture.class,param);
+					ma2.load(resPath, Texture.class, param);
 				}else{
 					img.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) ma2.get(resPath))));
 					img.reGenerateSize();
 				}
 			}
-			Object result=proxy.invokeSuper(obj, args);
-			return result;
+			return proxy.invokeSuper(obj, args);
 		});
 		generateTempTexture();
 		return (Image) en.create(new Class[]{Texture.class},new Object[]{NO_TEXTURE});

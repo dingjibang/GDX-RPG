@@ -196,5 +196,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 			setHeight(getDrawable().getMinHeight());
 		if(originAlignment!=-1)
 			setOrigin(originAlignment);
+		setAnti();
 	}
+	
 }

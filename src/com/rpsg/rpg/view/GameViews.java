@@ -146,7 +146,6 @@ public class GameViews implements ApplicationListener {
 				loadview.logic();
 				loadview.draw(batch);
 			}
-			
 			if(!GameViewRes.ma2.update()){
 //				loadview.logic();
 //				GameViewRes.stage.getBatch().begin();
