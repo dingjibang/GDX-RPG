@@ -14,6 +14,7 @@ import com.bitfire.postprocessing.effects.Vignette;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
+import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
@@ -101,7 +102,7 @@ public class GameViews implements ApplicationListener {
 
 	@Override
 	public void render() {
-		
+		Res.logic();
 		if(!flag) dispose();
 		Gdx.gl.glClearColor(0,0,0,1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -144,6 +145,13 @@ public class GameViews implements ApplicationListener {
 			if(!GameViewRes.ma.update(Gdx.graphics.getFramesPerSecond())){
 				loadview.logic();
 				loadview.draw(batch);
+			}
+			
+			if(!GameViewRes.ma2.update()){
+//				loadview.logic();
+//				GameViewRes.stage.getBatch().begin();
+//				loadview.draw((SpriteBatch) GameViewRes.stage.getBatch());
+//				GameViewRes.stage.getBatch().end();
 			}
 		}
 		}

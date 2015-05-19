@@ -87,7 +87,6 @@ public class GameView extends View{
 		GameViewRes.ray.removeAll();
 		parameter.loadedCallback=null;
 		parameter=null;
-		Res.dispose();
 		System.gc();
 	}
 	

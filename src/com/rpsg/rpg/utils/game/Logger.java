@@ -36,7 +36,7 @@ import com.rpsg.rpg.core.Setting;
 	}
 	
 	public static void info(String s){
-		if(Setting.persistence.debugMod)
+//		if(Setting.persistence.debugMod)
 		infolog.info(getTime()+s);
 	}
 	

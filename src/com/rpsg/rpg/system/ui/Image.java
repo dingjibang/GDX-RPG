@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.system.base.Res;
 /**
  * GDX-RPG Image组件
  * 允许开启抗锯齿、销毁的图形组件。
@@ -23,6 +24,7 @@ import com.rpsg.rpg.core.Setting;
 public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public boolean visible=true;
+	public boolean lazy=true;
 	Runnable run;
 	
 	public Image(String filename){
@@ -49,6 +51,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		super(txt);
 		setAnti();
 	}
+	
 	public Image(TextureRegion txt){
 		super(txt);
 		setAnti();
@@ -61,6 +64,10 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public Image() {
 		super();
+	}
+	
+	public Image(Object o) {
+		super(o);
 	}
 	
 	public Image(Image image) {
@@ -96,7 +103,11 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	}
 	
 	public Texture getTexture(){
-		return ((TextureRegionDrawable)this.getDrawable()).getRegion().getTexture();
+		try{
+			return ((TextureRegionDrawable)this.getDrawable()).getRegion().getTexture();
+		}catch(Exception e){
+			return Res.NO_TEXTURE;
+		}
 	}
 	
 	public TextureRegion getRegion(){
@@ -158,7 +169,6 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		return this;
 	}
 	
-	
 	public Image X(int x){
 		super.setX(x);
 		return this;
@@ -177,5 +187,14 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	public Image action(Action act){
 		super.addAction(act);
 		return this;
+	}
+
+	public void reGenerateSize() {
+		if(getWidth()==0 || getWidth()==Res.NO_TEXTURE.getWidth())
+			setWidth(getDrawable().getMinWidth());
+		if(getHeight()==0 || getHeight()==Res.NO_TEXTURE.getHeight())
+			setHeight(getDrawable().getMinHeight());
+		if(originAlignment!=-1)
+			setOrigin(originAlignment);
 	}
 }

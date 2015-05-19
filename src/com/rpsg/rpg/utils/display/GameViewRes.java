@@ -17,7 +17,7 @@ public class GameViewRes {
 	public static World world ;
 	public static TmxMapLoader mapLoader=new TmxMapLoader(); 
 	public static AssetManager ma=new AssetManager();
-	
+	public static AssetManager ma2=new AssetManager();
 	static{
 		ma.setLoader(TiledMap.class, GameViewRes.mapLoader);
 	}
