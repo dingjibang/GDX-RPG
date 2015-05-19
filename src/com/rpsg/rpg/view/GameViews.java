@@ -137,20 +137,22 @@ public class GameViews implements ApplicationListener {
 		}
 		case STATE_GAME_LOAD:{
 			loadview.logic();
-			loadview.draw(batch);
+			loadview.draw();
 		}
 		case STATE_GAME:{
 			gameview.logic();
 			gameview.draw(batch);
+			loadview.logic();
+			loadview.draw();
 			if(!GameViewRes.ma.update(Gdx.graphics.getFramesPerSecond())){
-				loadview.logic();
-				loadview.draw(batch);
+				loadview.start();
+			}else{
+				loadview.stop();
 			}
 			if(!GameViewRes.ma2.update()){
-//				loadview.logic();
-//				GameViewRes.stage.getBatch().begin();
-//				loadview.draw((SpriteBatch) GameViewRes.stage.getBatch());
-//				GameViewRes.stage.getBatch().end();
+				loadview.start();
+			}else{
+				loadview.stop();
 			}
 		}
 		}

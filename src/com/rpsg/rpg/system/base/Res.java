@@ -1,7 +1,6 @@
 package com.rpsg.rpg.system.base;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
@@ -40,11 +39,13 @@ public class Res {
 					param.loadedCallback=(AssetManager assetManager, String fileName, @SuppressWarnings("rawtypes") Class type)->{
 						img.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) ma2.get(resPath))));
 						img.reGenerateSize();
+						img.loaded.run();
 					};
 					ma2.load(resPath, Texture.class, param);
 				}else{
 					img.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) ma2.get(resPath))));
 					img.reGenerateSize();
+					img.loaded.run();
 				}
 			}
 			return proxy.invokeSuper(obj, args);

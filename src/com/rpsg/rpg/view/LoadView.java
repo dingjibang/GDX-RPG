@@ -3,16 +3,19 @@ package com.rpsg.rpg.view;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
-import com.rpsg.rpg.utils.display.ScreenUtil;
+import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class LoadView extends View {
@@ -23,10 +26,17 @@ public class LoadView extends View {
 	private boolean[] hbab;
 	private int floada=100;
 	private boolean floadb=true;
-	private Image bluredbg;
+	private Image bg;
+	private Stage stage;
 	@Override
 	public void init() {
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		f_load= new Sprite(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_LOAD+"f_load.png")));
+		f_load.getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		bg= new Image(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_LOAD+"bg.png")));
+		bg.setSize(GameUtil.screen_width,bg.getHeight());
+		bg.setPosition(0, 0);
+		bg.setColor(1,1,1,0);
 		hbx=new int[10];hby=new int[10];hbs=new int[10];hba=new int[10];hbr=new float[10];hbab=new boolean[10];hb=new Sprite[10];
 		for (int i = 0; i <hbx.length; i++) {
 			switch(new Random().nextInt(6) + 1){
@@ -49,25 +59,31 @@ public class LoadView extends View {
 		
 	}
 	
-	@Override
-	public void draw(SpriteBatch batch) {
-//		Gdx.gl.glClearColor(0, 0, 0, 1);
-//		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		if(bluredbg!=null){
-			bluredbg.act(Gdx.graphics.getDeltaTime());
-			bluredbg.draw(batch);
+	public void draw() {
+		SpriteBatch batch=(SpriteBatch) stage.getBatch();
+		batch.begin();
+		if(bg.getActions().size==0){
+			bg.addAction(flag?Actions.fadeIn(0.2f):Actions.fadeOut(0.1f));
+		}else{
+			bg.clearActions();
+			bg.addAction(flag?Actions.fadeIn(0.2f):Actions.fadeOut(0.1f));
 		}
+		bg.act(Gdx.graphics.getDeltaTime());
+		bg.draw(batch);
 		f_load.draw(batch);
 		for(int i=0;i<hbx.length;i++){
 			hb[i].draw(batch);
 		}
+		batch.end();
 	}
 
 	@Override
 	public void logic() {
+		float globalAlpha=bg.getColor().a;
+		
 		if(floadb) floada-=2; else floada+=2;
 		if((floada==2 && floadb)||(floada==150 && !floadb)) floadb=!floadb;
-		f_load.setColor(1,1,1,floada);
+		f_load.setColor(1,1,1,globalAlpha);
 		for(int i=0;i<hbx.length;i++){
 			if(hbab[i]){
 				hbx[i]=GameUtil.screen_width-new Random().nextInt(120)-40;
@@ -84,7 +100,7 @@ public class LoadView extends View {
 				hba[i]-=hbs[i];
 			}else
 				hbab[i]=true;
-			hb[i].setX(hbx[i]);hb[i].setY(hby[i]);hb[i].setRotation(hbr[i]);hb[i].setColor(1,1,1,hba[i]);
+			hb[i].setX(hbx[i]);hb[i].setY(hby[i]);hb[i].setRotation(hbr[i]);hb[i].setColor(1,1,1,globalAlpha*.5f);
 		}
 	}
 
@@ -123,14 +139,22 @@ public class LoadView extends View {
 		return false;
 	}
 	public void reinit() {
-		if(bluredbg!=null){
-			bluredbg.dispose();
-			bluredbg=null;
-		}
-		Pixmap pbg=ScreenUtil.getScreenshot(0, 0, GameUtil.screen_width, GameUtil.screen_height, false);
-		bluredbg= new Image(new TextureRegion(new Texture(pbg),0,GameUtil.screen_height,GameUtil.screen_width,-GameUtil.screen_height));
-		bluredbg.setColor(new Color(0.7f,0.7f,0.7f,1));
-		pbg.dispose();
+	
+	}
+
+	public void draw(SpriteBatch batch) {
+		this.draw();
+	}
+	
+	boolean flag=false;
+	public void start() {
+		flag=true;
+		bg.clearActions();
+	}
+
+	public void stop() {
+		flag=false;
+		bg.clearActions();
 	}
 
 }

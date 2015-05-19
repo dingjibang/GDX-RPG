@@ -25,6 +25,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public boolean visible=true;
 	public boolean lazy=true;
+	public Runnable loaded=()->{};
 	Runnable run;
 	
 	public Image(String filename){

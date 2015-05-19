@@ -524,7 +524,7 @@ public class AssetManager implements Disposable {
 		if (listener != null) {
 			listener.error(assetDesc, t);
 		} else {
-			throw new GdxRuntimeException(t);
+			com.rpsg.rpg.utils.game.Logger.error("未找到纹理文件["+t+"]");
 		}
 	}
 

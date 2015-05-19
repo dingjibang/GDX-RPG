@@ -3,6 +3,7 @@ package com.rpsg.rpg.view.menu;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -86,14 +87,14 @@ public class MenuBaseView extends View{
 //		}
 		time.setPosition(740, 363);
 		
-		try{
+		if(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_MAP+GameViews.gameview.map.getProperties().get("minimap")+".png").exists()){
 			map=Res.get(Setting.GAME_RES_IMAGE_MENU_MAP+GameViews.gameview.map.getProperties().get("minimap")+".png");
 			map.setPosition(218, 46);
 			map.setColor(1,1,1,0);
 			map.setSize(400, 235);
 			map.addAction(Actions.fadeIn(0.3f));
 			stage.addActor(map);
-		}catch(Exception e){
+		}else{
 			AlertUtil.add("无法读取当前地图的缩略图！", AlertUtil.Red);
 		}
 		ImageButton exit=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png"));
@@ -157,7 +158,10 @@ public class MenuBaseView extends View{
 		FontUtil.draw(batch, currTime, 17, blue, 558+144/2-FontUtil.getTextWidth(currTime, 17, -8)/2, 378, 1000,-8,0);
 		FontUtil.draw(batch, currDay, 16, Color.GRAY, 714, 378, 1000,-7,0);
 		FontUtil.draw(batch, "LV", 14, blue, 511, 413, 1000,-7,0);
-		FontUtil.draw(batch, (String)GameViews.gameview.map.getProperties().get("name")+" ["+HeroController.getHeadHero().mapx+","+HeroController.getHeadHero().mapy+"]", 20, Color.WHITE, 175, 317, 1000,0,0);
+		String mapName=(String)GameViews.gameview.map.getProperties().get("name");
+		if(mapName==null)
+			mapName="未知地图";
+		FontUtil.draw(batch, mapName+" ["+HeroController.getHeadHero().mapx+","+HeroController.getHeadHero().mapy+"]", 20, Color.WHITE, 175, 317, 1000,0,0);
 		time.draw(batch);
 		for(HeroImage h:heros)
 			h.draw(batch, step==3?1:step);

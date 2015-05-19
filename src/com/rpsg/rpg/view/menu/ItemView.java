@@ -149,7 +149,7 @@ public class ItemView extends DefaultIView{
 		});
 		stage.addActor(mask);
 		scuse=Res.get(Setting.GAME_RES_IMAGE_MENU_SC+"sc_use.png");
-		scuse.setPosition((int)(GameUtil.screen_width/2-scuse.getWidth()/2), (int)(GameUtil.screen_height/2-scuse.getHeight()/2));
+		scuse.loaded=()->scuse.setPosition((int)(GameUtil.screen_width/2-scuse.getWidth()/2), (int)(GameUtil.screen_height/2-scuse.getHeight()/2));
 		sellist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		sellist.onDBClick(()->sellist.getSelected().run.run());
 		can =()->{
@@ -484,8 +484,7 @@ public class ItemView extends DefaultIView{
 			miniImg.draw(batch);
 		}
 		public void dispose(){
-			bigImg.dispose();
-			miniImg.dispose();
+			
 		}
 	}
 	
