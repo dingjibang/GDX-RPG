@@ -93,13 +93,13 @@ public class StatusView extends DefaultIView{
 		fgs=Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/Normal.png").
 				color(0,0,0,.5f).scaleX(-0.32f).scaleY(0.32f).position(1300, 0).disableTouch();
 		stage.addActor(fgs);
-		fg=Res.getNewImage(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/Normal.png").
+		fg=Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/Normal.png").
 				scaleX(-0.32f).scaleY(0.32f).position(1300, 0).disableTouch();
 		stage.addActor(fg);
 		Global global=GameViews.global;
 		tree.clear();
 		tree.setX(100);
-		tree.addActor(Res.getNewImage(Setting.GAME_RES_IMAGE_MENU_STATUS+"/tree.png"));
+		tree.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_STATUS+"/tree.png"));
 		
 		tree.addActor(new Label(hero.tag,24).setWidth(1000).setPos(405,y(774)));
 		tree.addActor(new Label("还需要"+(hero.prop.get("maxexp")-hero.prop.get("exp"))+"点经验升级至等级"+(hero.prop.get("level")+1),24).setWidth(1000).setPos(405,y(828)));
@@ -191,7 +191,7 @@ public class StatusView extends DefaultIView{
 	}
 	
 	private Image getR(String r){
-		Image bg=Res.getNewImage(Setting.GAME_RES_IMAGE_MENU_STATUS+"propbg.png");
+		Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_STATUS+"propbg.png");
 		Resistance re=hero.resistance.get(r);
 		if(re==Resistance.weak){
 			bg.color(237f/255f,22f/255f,250f/255f,1);

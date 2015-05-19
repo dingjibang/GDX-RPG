@@ -62,13 +62,8 @@ public class Res {
 			NO_TEXTURE=new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_GLOBAL+"noTexture.png"));
 	}
 
-
-	public static Image getNewImage(String resPath) {
-		return new Image(get(resPath));
-	}
-
 	public static Drawable getDrawable(String resPath) {
-		return get(resPath).getDrawable();
+		return new TextureRegionDrawable(new TextureRegion(getTexture(resPath)));
 	}
 
 	public static TextureRegion getRegion(String resPath) {
@@ -76,7 +71,9 @@ public class Res {
 	}
 
 	public static Texture getTexture(String resPath) {
-		return get(resPath).getTexture();
+		ma.load(resPath, Texture.class);
+		while(!ma.update());
+		return ma.get(resPath);
 	}
 
 	public static int CACHE_MAX_SIZE = 30;

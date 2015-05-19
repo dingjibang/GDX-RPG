@@ -116,7 +116,7 @@ public class ItemView extends DefaultIView{
 		table.setColor(1,1,1,0);
 		table.addAction(Actions.fadeIn(0.2f));
 		stage.addActor(table);
-		topbarSel=new Image(Res.get(Setting.GAME_RES_IMAGE_MENU_ITEM+"topsel.png"));
+		topbarSel=Res.get(Setting.GAME_RES_IMAGE_MENU_ITEM+"topsel.png");
 		topbar=new Table();
 		topbar.setBackground(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_ITEM+"topbar.png"));
 		topbar.setSize(818, 42);
@@ -454,9 +454,9 @@ public class ItemView extends DefaultIView{
 		boolean selected=false;
 		Image bigImg,miniImg;
 		public TopBar(String name,int offsetX){
-			bigImg=new Image(Setting.GAME_RES_IMAGE_MENU_ITEM+name+".png");
+			bigImg=Res.get(Setting.GAME_RES_IMAGE_MENU_ITEM+name+".png");
 			bigImg.setPosition(700, 300);
-			miniImg=new Image(Setting.GAME_RES_IMAGE_MENU_ITEM+name+"_m.png");
+			miniImg=Res.get(Setting.GAME_RES_IMAGE_MENU_ITEM+name+"_m.png");
 			miniImg.setPosition(230+offsetX, 465);
 			this.name=name;
 			this.setTouchable(miniImg.getTouchable());
