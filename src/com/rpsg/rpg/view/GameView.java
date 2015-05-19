@@ -63,7 +63,7 @@ public class GameView extends View{
 			post=GameViews.post;
 			bloom=GameViews.bloom;
 			motion=GameViews.motion;
-			WeatherUtil.init(GameViews.global.weather);
+			WeatherUtil.init(WeatherUtil.type);
 			Logger.info("图形加载完成。");
 		};
 		filename=Setting.GAME_RES_MAP+global.map;
