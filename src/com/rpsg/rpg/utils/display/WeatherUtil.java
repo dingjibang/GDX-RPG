@@ -7,6 +7,7 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.controller.HeroController;
+import com.rpsg.rpg.view.GameViews;
 
 public class WeatherUtil {
 	public static int WEATHER_NO=0;
@@ -18,6 +19,7 @@ public class WeatherUtil {
 	private static ParticleEffect eff;
 	public static void init(int type){
 		WeatherUtil.type=type;
+		GameViews.global.weather=type;
 		if(eff!=null)
 			eff.dispose();
 		if(type==WEATHER_RAIN){

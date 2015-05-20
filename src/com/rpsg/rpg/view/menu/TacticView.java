@@ -2,11 +2,20 @@ package com.rpsg.rpg.view.menu;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+
+
+
+
+
+
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
@@ -16,21 +25,28 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Cell;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.AssociationSkill;
+import com.rpsg.rpg.object.base.Support;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HeroController;
+import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.Image;
+import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.TextButton;
 import com.rpsg.rpg.system.ui.TextButton.TextButtonStyle;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.view.hover.SupportView;
 
 public class TacticView extends DefaultIView {
 	int page=2;
@@ -68,8 +84,10 @@ public class TacticView extends DefaultIView {
 		stage.addActor(linkbox2.color(1,1,1,0));
 		
 		group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link.png").position(280, 430).object(new PageMask()));
+		group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"support.png").position(280+1024, 420).object(new PageMask()));
 		
 		generateHeroImage();
+		generateSupport();
 		
 		ImageButton exit = new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL + "exit.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL + "exitc.png"));
 		exit.setPosition(960, 550);
@@ -336,4 +354,151 @@ public class TacticView extends DefaultIView {
 	class HeroImgMask3 extends HeroImgMask{}
 	class PageMask{}
 	class HeroImgMask4 extends HeroImgMask{}
+	
+	class SupGroup{
+		Image bg;
+		int x,y;
+		Table table;
+		SupGroup(int x,int y){
+			this.x=x;
+			this.y=y;
+			table=new Table();
+			ScrollPane pane=new ScrollPane(table);
+			pane.getStyle().vScroll=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"scrollbar.png");
+			pane.getStyle().vScrollKnob=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"scrollbarin.png");
+			pane.setSize(330, 315);
+			pane.setPosition(x, y-13);
+			group.addActor(new Image(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_box.png").position(x-33, y-50));
+			group.addActor(pane);
+			pane.setForceScroll(false, true);
+		}
+		
+		SupGroup generate(List<Hero> heroList){
+			for(Hero hero:heroList){
+				SupImage si=new SupImage(Res.getTexture(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_herobox.png"));
+				table.add(si.generate(hero,this).onClick(()->{
+					List<SupImage> all=new ArrayList<SupImage>();
+					all.addAll(s_l.getAll());
+					all.addAll(s_r.getAll());
+					all.forEach((SupImage s)->s.select=false);
+					si.select=true;
+					currentSelect=si;
+				})).prefSize(324, 58).row();
+			}
+			table.align(Align.top);
+			table.getCells().forEach((c)->c.padTop(3).padBottom(3));
+			return this;
+		}
+		
+		List<SupImage> getAll(){
+			List<SupImage> imgs=new ArrayList<TacticView.SupImage>();
+			table.getCells().forEach((c)->imgs.add((SupImage) c.getActor()));
+			return imgs;
+		}
+		
+	}
+	
+	SupGroup s_l,s_r;
+	SupImage currentSelect=null;
+	@SuppressWarnings("rawtypes")
+	private void generateSupport() {
+		s_l=new SupGroup(1200, 65).generate(Support.getPreSupportList());
+		s_r=new SupGroup(1670, 65).generate(Support.getSupportList());
+		Label nl,nr;
+		group.addActor(nl=new Label("",20).setWidth(1000).align(1360, 391));
+		group.addActor(nr=new Label("",20).setWidth(1000).align(1825, 391));
+		Runnable func_resetLabel=()->{
+			nl.setText("可用社群角色("+s_l.table.getCells().size+")");
+			nr.setText("已选择的支援("+s_r.table.getCells().size+")");
+		};
+		func_resetLabel.run();
+		ImageButton l;
+		group.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_right.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_right_p.png")).onClick(()->{
+			if(currentSelect!=null && s_l==currentSelect.parent){
+				Support.addToSupport(currentSelect.hero);
+				 Iterator<Cell> i = s_l.table.getCells().iterator();
+				 while(i.hasNext())
+					 if(i.next().getActor()==currentSelect)
+						 i.remove();
+				 s_l.table.layout();
+				 
+				 s_r.table.add(currentSelect).prefSize(324, 58).row();
+				 s_r.table.getCells().forEach((c)->c.padTop(3).padBottom(3));
+				 s_r.table.layout();
+				 currentSelect.select=false;
+				 currentSelect.parent=s_r;
+				 currentSelect=null;
+				 func_resetLabel.run();
+			}
+		}).pos(1555, 320));
+		group.addActor(l=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_left.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_left_p.png")).onClick(()->{
+			if(currentSelect!=null && s_r==currentSelect.parent){
+				Support.removeSupport(currentSelect.hero);
+				 Iterator<Cell> i = s_r.table.getCells().iterator();
+				 while(i.hasNext())
+					 if(i.next().getActor()==currentSelect)
+						 i.remove();
+				 s_r.table.layout();
+				 
+				 s_l.table.add(currentSelect).prefSize(324, 58).row();
+				 s_l.table.getCells().forEach((c)->c.padTop(3).padBottom(3));
+				 s_l.table.layout();
+				 currentSelect.select=false;
+				 currentSelect.parent=s_l;
+				 currentSelect=null;
+				 func_resetLabel.run();
+			}
+		}).pos(1555, 240));
+		group.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_ll.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_ll_p.png")).onClick(()->{
+			for(int i=0;i<s_r.table.getCells().size;i++){
+				((Image)s_r.table.getCells().first().getActor()).click();
+				l.click();
+			}
+		}).pos(1555, 160));
+		group.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_info.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_info_p.png")).onClick(()->{
+			if(currentSelect!=null){
+				HoverController.add(new SupportView(currentSelect.hero).superInit());
+			}
+		}).pos(1555, 80));
+	}
+	
+	class SupImage extends Image{
+		SupGroup parent;
+		Image face,sbox;
+		Label name,level,association;
+		boolean select;
+		Hero hero;
+		
+		public SupImage(Texture texture) {
+			super(texture);
+		}
+
+		public SupImage generate(Hero hero,SupGroup parent){
+			this.parent=parent;
+			this.hero=hero;
+			sbox=Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_herobox_sel.png").disableTouch();
+			face=Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/face.png");
+			name=new Label(hero.name,24).setWidth(1000);
+			level=new Label(hero.support!=null?hero.support.name:"无支援技能",16).setWidth(1000);
+			association=new Label(hero.association.name,32).color(1,1,1,.16f).setWidth(1000);
+			return this;
+		}
+		
+		public void draw(Batch sb,float parentAlpha){
+			super.draw(sb, parentAlpha);
+			face.setPosition(getX(), getY());
+			face.draw(sb);
+			name.setPosition(getX()+100, getY()+50);
+			name.draw(sb, parentAlpha);
+			level.setPosition(getX()+104, getY()+20);
+			level.draw(sb, parentAlpha);
+			association.setPosition(getX()+240, getY()+30);
+			association.draw(sb, parentAlpha);
+			sbox.setPosition(getX(), getY()-1);
+			if(select)
+				sbox.draw(sb);
+		}
+		
+		
+	}
 }

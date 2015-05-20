@@ -67,6 +67,12 @@ public class ImageButton extends Button {
 		return this;
 	}
 	
+	public ImageButton click(){
+		if(this.run!=null)
+			this.run.run();
+		return this;
+	}
+	
 	public ImageButton (Drawable imageUp) {
 		this(new ImageButtonStyle(null, null, null, imageUp, null, null));
 	}

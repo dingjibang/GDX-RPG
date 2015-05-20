@@ -19,8 +19,9 @@ public class Global implements Serializable{
 	public String map="test/map.tmx";
 	//地图相关
 	public ArrayList<NPC> npcs=new ArrayList<NPC>();
-	public List<Hero> currentHeros=new ArrayList<Hero>();
-	public List<Hero> heros=new ArrayList<Hero>();
+	public ArrayList<Hero> currentHeros=new ArrayList<Hero>();
+	public ArrayList<Hero> heros=new ArrayList<Hero>();
+	public ArrayList<Hero> support=new ArrayList<Hero>();
 	public int x=12;
 	public int y=12;
 	public int z=2;

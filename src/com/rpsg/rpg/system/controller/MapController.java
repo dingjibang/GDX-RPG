@@ -15,6 +15,7 @@ import java.util.List;
 
 
 
+
 import box2dLight.PointLight;
 
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
@@ -27,6 +28,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.game.hero.Arisu;
+import com.rpsg.rpg.game.hero.Flandre;
 import com.rpsg.rpg.game.hero.Marisa;
 import com.rpsg.rpg.game.hero.Reimu;
 import com.rpsg.rpg.game.hero.Yuuka;
@@ -61,6 +63,7 @@ public class MapController {
 			HeroController.addHero(Reimu.class);
 			HeroController.newHero(Yuuka.class);
 			HeroController.addHero(Yuuka.class);
+			HeroController.newHero(Flandre.class);
 			gv.global.getItems("equipment").add(new TestEquip());
 			gv.global.getItems("equipment").add(new Sunshade());
 			gv.global.getItems("medicine").add(new YaoWan());

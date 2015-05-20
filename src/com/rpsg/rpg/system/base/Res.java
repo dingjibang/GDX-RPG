@@ -10,6 +10,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.TextureLoader.TextureParameter;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -74,7 +75,10 @@ public class Res {
 	public static Texture getTexture(String resPath) {
 		ma.load(resPath, Texture.class);
 		while(!ma.update());
-		return ma.get(resPath);
+		Texture txt=ma.get(resPath);
+		if(Setting.persistence.scaleAliasing)
+			txt.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		return txt;
 	}
 
 	public static int CACHE_MAX_SIZE = 30;
