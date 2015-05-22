@@ -112,6 +112,7 @@ public class LoadView extends HoverView{
 		});
 		savebutton.setOffset(10).setPad(1).setHof(-2).setSize(192,58);
 		savebutton.setPosition(562,28);
+		savebutton.setName("mask");
 		stage.addActor(savebutton);
 		
 		TextButton cancelbutton=new TextButton("取消", butstyle).onClick(()->{

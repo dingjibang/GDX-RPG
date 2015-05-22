@@ -6,14 +6,13 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.EmptyAssociation;
@@ -47,20 +46,15 @@ public class StatusView extends DefaultIView{
 		pane=new ScrollPane(group);
 		pane.setSize(GameUtil.screen_width, GameUtil.screen_height);
 		stage.addActor(pane);
-		ImageButton exit=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png"));
-		exit.setPosition(960, 550);
-		exit.addAction(Actions.moveTo(960, 510,0.1f));
-		exit.addListener(new InputListener(){
-			public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
-				disposed=true;
-			}
-			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
-				return true;
-			}
-		});
-		stage.addActor(exit);
-//		exit.setSize(100, 100);
-		exit.getCells().get(0).prefSize(100,100);
+		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png"))).setPosition(960, 550).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(960, 510,0.1f))).onClick(()->{
+			Music.playSE("snd210");
+			GameViews.gameview.stackView.disposes();
+		}).appendTo(stage);
+		
+		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"min.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"minc.png"))).setPosition(910, 550).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(910, 510,0.1f))).onClick(()->{
+			GameViews.gameview.stackView.onkeyDown(Keys.ESCAPE);
+			Music.playSE("snd210");
+		}).appendTo(stage);
 		
 	}
 	Image fg,fgs;
@@ -96,6 +90,8 @@ public class StatusView extends DefaultIView{
 		fg=Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/Normal.png").
 				scaleX(-0.32f).scaleY(0.32f).position(1300, 0).disableTouch();
 		stage.addActor(fg);
+		fg.setZIndex(1);
+		fgs.setZIndex(0);
 		Global global=GameViews.global;
 		tree.clear();
 		tree.setX(100);

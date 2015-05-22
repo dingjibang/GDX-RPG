@@ -182,6 +182,8 @@ public class GameMenuView extends StackView{
 			viewStack.get(viewStack.size()-1).onkeyDown(keyCode);
 		}
 	}
+	
+	
 
 	public void onkeyUp(int keyCode) {
 		viewStack.get(viewStack.size()-1).onkeyUp(keyCode);
@@ -244,6 +246,15 @@ public class GameMenuView extends StackView{
 		stage.scrolled(amount);
 		viewStack.get(viewStack.size()-1).scrolled(amount);
 		return false;
+	}
+
+	@Override
+	public void disposes() {
+		for(int size=GameViews.gameview.stackView.viewStack.size();size>0;size--){
+			onkeyDown(Keys.ESCAPE);
+			if(viewStack.size()!=1)
+				viewStack.remove(viewStack.size()-1);
+		}
 	}
 
 }

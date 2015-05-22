@@ -2,6 +2,7 @@ package com.rpsg.rpg.object.base;
 
 import java.io.Serializable;
 
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -12,6 +13,7 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.Label;
+import com.rpsg.rpg.system.ui.TextButton;
 import com.rpsg.rpg.view.hover.LoadView;
 import com.rpsg.rpg.view.hover.SaveView;
 
@@ -41,6 +43,12 @@ public class SLData implements Serializable{
 				((SaveView)sv).currentSelect=id;
 			else
 				((LoadView)sv).currentSelect=id;
+		});
+		im.onDblClick(()->{
+			stage.getActors().forEach((e)->{
+				if(e.getName()!=null && e.getName().equals("mask"))
+					((TextButton)e).click();
+			});
 		});
 		String fileName = Setting.GAME_PERSISTENCE+(id+"_sld.dat");
 		if(Files.empty(Files.getABSPath()+fileName)){

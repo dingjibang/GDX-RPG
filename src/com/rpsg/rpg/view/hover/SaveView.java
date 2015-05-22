@@ -106,6 +106,7 @@ public class SaveView extends HoverView{
 		savebutton.setOffset(10).setPad(1).setHof(-2).setSize(192,58);
 		savebutton.setPosition(562,28);
 		stage.addActor(savebutton);
+		savebutton.setName("mask");
 		
 		TextButton cancelbutton=new TextButton("取消", butstyle).onClick(()->{
 			disposed=true;

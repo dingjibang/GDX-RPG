@@ -10,6 +10,7 @@ import java.util.List;
 
 
 
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
@@ -32,7 +33,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.AssociationSkill;
 import com.rpsg.rpg.object.base.Support;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -46,6 +49,7 @@ import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.TextButton;
 import com.rpsg.rpg.system.ui.TextButton.TextButtonStyle;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.view.GameViews;
 import com.rpsg.rpg.view.hover.SupportView;
 
 public class TacticView extends DefaultIView {
@@ -89,19 +93,16 @@ public class TacticView extends DefaultIView {
 		generateHeroImage();
 		generateSupport();
 		
-		ImageButton exit = new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL + "exit.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL + "exitc.png"));
-		exit.setPosition(960, 550);
-		exit.addAction(Actions.moveTo(960, 510, 0.1f));
-		exit.addListener(new InputListener() {
-			public void touchUp(InputEvent event, float x, float y, int pointer, int b) {
-				disposed = true;
-			}
-
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int b) {
-				return true;
-			}
-		});
-		stage.addActor(exit);
+		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png"))).setPosition(960, 550).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(960, 510,0.1f))).onClick(()->{
+			Music.playSE("snd210");
+			GameViews.gameview.stackView.disposes();
+		}).appendTo(stage);
+		
+		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"min.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"minc.png"))).setPosition(910, 550).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(910, 510,0.1f))).onClick(()->{
+			GameViews.gameview.stackView.onkeyDown(Keys.ESCAPE);
+			Music.playSE("snd210");
+		}).appendTo(stage);
+		
 		group.addActor(tipLib=new Label("", 26).setWidth(1000).setPos(870, 483).right(true));
 		group.addActor(tipLib2=new Label("", 15).setWidth(1000).setPos(874, 453).right(true));
 		pageTo(1);

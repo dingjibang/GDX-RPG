@@ -1,18 +1,20 @@
 package com.rpsg.rpg.object.base;
 
+import java.io.Serializable;
 import java.util.List;
 
-import com.badlogic.gdx.graphics.Color;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.view.GameViews;
 
-public abstract class Support {
+public abstract class Support implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public String name;
 	public String illustration;
-	public Color color;
-	
-	public static Color TYPE_UP=Color.valueOf("40c43a");
+	public float r=1,g=1,b=1,a=1;
 	
 	public void execute() {
 	}

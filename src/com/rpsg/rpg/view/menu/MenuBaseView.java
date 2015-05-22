@@ -61,6 +61,12 @@ public class MenuBaseView extends View{
 			AlertUtil.add("无法读取当前地图的缩略图！", AlertUtil.Red);
 		
 		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png"))).setPosition(960, 550).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(960, 510,0.1f))).onClick(()->{
+			Music.playSE("snd210");
+			for(int size=GameViews.gameview.stackView.viewStack.size();size>0;size--)
+				GameViews.gameview.stackView.onkeyDown(Keys.ESCAPE);
+		}).appendTo(stage);
+		
+		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"min.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"minc.png"))).setPosition(910, 550).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(910, 510,0.1f))).onClick(()->{
 			GameViews.gameview.stackView.onkeyDown(Keys.ESCAPE);
 			Music.playSE("snd210");
 		}).appendTo(stage);

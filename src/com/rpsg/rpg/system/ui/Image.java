@@ -26,7 +26,20 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	public boolean visible=true;
 	public boolean lazy=true;
 	public Runnable loaded=()->{};
-	Runnable run;
+	Runnable run,drun;
+	private int delaydbClickTime=30;
+	
+	{
+		addListener(new InputListener(){
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				if(delaydbClickTime<30)
+					if(drun!=null)
+						drun.run();
+				delaydbClickTime=0;
+				return true;
+			}
+		});
+	}
 	
 	public Image(String filename){
 		super(new Texture(Gdx.files.internal(filename)));
@@ -35,6 +48,11 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public Image onClick(Runnable r){
 		run=r;
+		return this;
+	}
+	
+	public Image onDblClick(Runnable r){
+		drun=r;
 		return this;
 	}
 	
@@ -67,10 +85,6 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		super();
 	}
 	
-	public Image(Object o) {
-		super(o);
-	}
-	
 	public Image(Image image) {
 		super(image.getDrawable());
 	}
@@ -83,9 +97,15 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		super(ninePatchDrawable);
 	}
 
-	public void draw(Batch sb){
+	public void draw(Batch sb){ 
+		delaydbClickTime++;
 		if(visible)
 			this.draw(sb, 1);
+	}
+	
+	public void draw(Batch batch, float parentAlpha) {
+		delaydbClickTime++;
+		super.draw(batch, parentAlpha);
 	}
 	
 	private void setAnti(){

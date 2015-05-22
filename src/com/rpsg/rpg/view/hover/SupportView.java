@@ -33,7 +33,7 @@ public class SupportView extends HoverView {
 			group.addActor(new Label(hero.jname,43).setPos(560, 490).setWidth(1000).color(1, 1, 1, .3f).setPad(-18));
 			group.addActor(new Label("角色等级"+hero.prop.get("level")+"，社群("+hero.association.name+")等级"+hero.association.level,36).setPos(420, 440).setWidth(1000).color(1, 1, 1, .7f).setPad(-1));
 			group.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"left.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"left_p.png")).pos(430, 465).onClick(()->keyDown(Keys.ESCAPE)));
-			group.addActor(new Label(hero.support.name,50).setPos(430, 280).setWidth(1000).color(hero.support.color.r, hero.support.color.g, hero.support.color.b, hero.support.color.a));
+			group.addActor(new Label(hero.support.name,50).setPos(430, 280).setWidth(1000).color(hero.support.r, hero.support.g, hero.support.b, hero.support.a));
 			group.addActor(new Label(hero.support.illustration,20).setPos(480, 210).setWidth(1000));
 			group.setPosition(GameUtil.screen_width-200, 0);
 			group.addAction(Actions.moveTo(0, 0,0.4f,Interpolation.pow3));
