@@ -17,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -39,45 +40,33 @@ public class MenuBaseView extends View{
 	public void init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		
-		Image infobg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"info_bg.png");
-		infobg.setPosition(GameUtil.screen_width, 360);
-		infobg.setColor(1,1,1,0);
-		infobg.addAction((Actions.delay(0.05f, Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(470,360,0.1f)))));
-		stage.addActor(infobg);
+		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"info_bg.png"))
+		.setPosition(GameUtil.screen_width, 360).fadeOut()
+		.addAction((Actions.delay(0.05f, Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(470,360,0.1f)))))
+		.appendTo(stage);
 		
-		Image infolevel=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"info_level.png");
-		infolevel.setPosition(521, 389);
-		infolevel.setColor(1,1,1,0);
-		infolevel.addAction((Actions.delay(0.05f, Actions.parallel(Actions.fadeIn(0.15f),Actions.moveTo(480.5f,388.5f,0.15f)))));
-		stage.addActor(infolevel);
-		Image fgshadow=Res.get(Setting.GAME_RES_IMAGE_FG+HeroController.getHeadHero().fgname+"/Normal.png");
-		fgshadow.setPosition(900, 0);
-		fgshadow.setColor(0,0,0,0f);
-		fgshadow.scaleX(-0.32f).scaleY(0.32f);
-		fgshadow.addAction(Actions.parallel(Actions.moveTo(1050, 0,0.15f),Actions.color(new Color(0,0,0,.5f),0.5f)));
-		stage.addActor(fgshadow);
+		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"info_level.png"))
+		.setPosition(521, 389).fadeOut()
+		.addAction((Actions.delay(0.05f, Actions.parallel(Actions.fadeIn(0.15f),Actions.moveTo(480.5f,388.5f,0.15f)))))
+		.appendTo(stage);
 		
-		Image map_bg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"map_bg.png");
-		map_bg.setPosition(150,30);
-		map_bg.setColor(1,1,1,0);
-		map_bg.addAction(Actions.fadeIn(0.3f));
-		stage.addActor(map_bg);
+		$.add(Res.get(Setting.GAME_RES_IMAGE_FG+HeroController.getHeadHero().fgname+"/Normal.png"))
+		.setPosition(900, 0).setColor(0,0,0,0f).setScaleX(-0.32f).setScaleY(0.32f)
+		.addAction(Actions.parallel(Actions.moveTo(1050, 0,0.15f),Actions.color(new Color(0,0,0,.5f),0.5f)))
+		.appendTo(stage);
 		
-		Image fg=Res.get(Setting.GAME_RES_IMAGE_FG+HeroController.getHeadHero().fgname+"/Normal.png");
-		fg.setPosition(GameUtil.screen_width, 0);
-		fg.setColor(1,1,1,0);
-		fg.setScale(0.32f);
-		fg.setScaleX(-0.32f);
-		fg.addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(1080, 0,0.2f)));
-		stage.addActor(fg);
+		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"map_bg.png")).setPosition(150,30).setColor(1,1,1,0).fadeIn(0.3f).appendTo(stage);
 		
-		Image walk_bg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"walk_bg.png");
-		walk_bg.setPosition(155, 400);
-		walk_bg.setColor(1,1,1,0);
-		walk_bg.addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(155,360,0.2f)));
-		stage.addActor(walk_bg);
+		$.add(Res.get(Setting.GAME_RES_IMAGE_FG+HeroController.getHeadHero().fgname+"/Normal.png"))
+		.setPosition(GameUtil.screen_width, 0).fadeOut().setScale(0.32f).setScaleX(-0.32f)
+		.addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(1080, 0,0.2f)))
+		.appendTo(stage);
 		
-	
+		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"walk_bg.png"))
+		.setPosition(155, 400).fadeOut()
+		.addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(155,360,0.2f)))
+		.appendTo(stage);
+		
 		int offset=0;
 		for(Hero h:HeroController.heros){
 			heros.add(HeroImage.generateImage(h.images, (int)(170+284/2-(h.getWidth())*HeroController.heros.size()+(offset+=60)), 410));
@@ -97,19 +86,14 @@ public class MenuBaseView extends View{
 		}else{
 			AlertUtil.add("无法读取当前地图的缩略图！", AlertUtil.Red);
 		}
-		ImageButton exit=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png"));
-		exit.setPosition(960, 550);
-		exit.addAction(Actions.moveTo(960, 510,0.1f));
-		exit.addListener(new InputListener(){
-			public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
-				GameViews.gameview.stackView.onkeyDown(Keys.ESCAPE);
-			}
-			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
-				Music.playSE("snd210");
-				return true;
-			}
-		});
-		stage.addActor(exit);
+		
+		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png")))
+		.setPosition(960, 550).fadeOut()
+		.addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(960, 510,0.1f)))
+		.onClick(()->{
+			GameViews.gameview.stackView.onkeyDown(Keys.ESCAPE);
+			Music.playSE("snd210");
+		}).appendTo(stage);
 		
 		render=new ShapeRenderer();
 		render.setAutoShapeType(true);
