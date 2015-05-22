@@ -31,7 +31,43 @@ public class GdxQuery {
 	public GdxQuery(Object... a) {
 			add(a);
 	}
-
+	
+	public GdxQuery parent(){
+		if(isEmpty())
+			return $.add();
+		return $.add(getItem().getParent());
+	}
+	
+	public Stage getStage(){
+		if(isEmpty())
+			return null;
+		return getItem().getStage();
+	}
+	
+	public Actor getItem(int index){
+		if(index>=getItems().size())
+			return null;
+		else
+			return getItems().get(index);
+	}
+	
+	public GdxQuery find(Class<? extends Actor>... cls){
+		GdxQuery query=$.add();
+		for(Class<? extends Actor> c:cls)
+			for(Actor actor:getItems())
+				if(actor.getClass().equals(c) || actor.getClass().getSuperclass().equals(c))
+					query.add(actor);
+		return query;
+	}
+	
+	public GdxQuery remove(Object... o){
+		for(Object obj:o){
+			$.add(obj).getItem().remove();
+			not(obj);
+		}
+		return this;
+	}
+	
 	public GdxQuery setSize(float width,float height){
 		for(Actor actor:getItems())
 			actor.setSize(width, height);
@@ -243,8 +279,9 @@ public class GdxQuery {
 		return add(a);
 	}
 	
-	public GdxQuery not(Actor... a){
-		getItems().remove(a);
+	public GdxQuery not(Object... a){
+		for(Object o:a)
+			getItems().remove($.add(o).getItem());
 		return this;
 	}
 	
@@ -272,6 +309,9 @@ public class GdxQuery {
 			if(o instanceof Group)
 				for(Actor a:getItems())
 					((Group)o).addActor(a);
+			if(o instanceof Table)
+				for(Actor a:getItems())
+					((Table)o).add(a).row();
 		}
 		return this;
 	}

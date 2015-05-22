@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.gdxQuery.*;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.system.base.Res;
@@ -60,12 +61,8 @@ public class SystemView extends DefaultIView{
 		
 		WidgetGroup group=new WidgetGroup();
 		group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebar.png"));
-		Label lvl=new Label("LV "+HeroController.getHeadHero().prop.get("level"),40).setWidth(1000).setPad(-15);
-		lvl.setPosition(360, 190);
-		group.addActor(lvl);
-		Label lvl2=new Label("【"+(String)GameViews.gameview.map.getProperties().get("name")+"】",40).setWidth(1000).setPad(0);
-		lvl2.setPosition(480, 190);
-		group.addActor(lvl2);
+		$.add(new Label("LV "+HeroController.getHeadHero().prop.get("level"),40).setWidth(1000).setPad(-15)).setPosition(360, 190).appendTo(stage);
+		$.add(new Label("【"+(String)GameViews.gameview.map.getProperties().get("name")+"】",40).setWidth(1000).setPad(-15)).setPosition(480, 190).appendTo(stage);
 		Label lvl3=new Label("档案所在位置：",18).setWidth(1000).setPad(0);
 		lvl3.setPosition(370, 140);
 		group.addActor(lvl3);

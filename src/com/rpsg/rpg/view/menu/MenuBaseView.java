@@ -10,8 +10,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -40,57 +38,29 @@ public class MenuBaseView extends View{
 	public void init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		
-		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"info_bg.png"))
-		.setPosition(GameUtil.screen_width, 360).fadeOut()
-		.addAction((Actions.delay(0.05f, Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(470,360,0.1f)))))
-		.appendTo(stage);
-		
-		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"info_level.png"))
-		.setPosition(521, 389).fadeOut()
-		.addAction((Actions.delay(0.05f, Actions.parallel(Actions.fadeIn(0.15f),Actions.moveTo(480.5f,388.5f,0.15f)))))
-		.appendTo(stage);
-		
-		$.add(Res.get(Setting.GAME_RES_IMAGE_FG+HeroController.getHeadHero().fgname+"/Normal.png"))
-		.setPosition(900, 0).setColor(0,0,0,0f).setScaleX(-0.32f).setScaleY(0.32f)
-		.addAction(Actions.parallel(Actions.moveTo(1050, 0,0.15f),Actions.color(new Color(0,0,0,.5f),0.5f)))
-		.appendTo(stage);
-		
+		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"info_bg.png")).setPosition(GameUtil.screen_width, 360).fadeOut().addAction((Actions.delay(0.05f, Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(470,360,0.1f))))).appendTo(stage);
+		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"info_level.png")).setPosition(521, 389).fadeOut().addAction((Actions.delay(0.05f, Actions.parallel(Actions.fadeIn(0.15f),Actions.moveTo(480.5f,388.5f,0.15f))))).appendTo(stage);
+		$.add(Res.get(Setting.GAME_RES_IMAGE_FG+HeroController.getHeadHero().fgname+"/Normal.png")).setPosition(900, 0).setColor(0,0,0,0f).setScaleX(-0.32f).setScaleY(0.32f).addAction(Actions.parallel(Actions.moveTo(1050, 0,0.15f),Actions.color(new Color(0,0,0,.5f),0.5f))).appendTo(stage);
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"map_bg.png")).setPosition(150,30).setColor(1,1,1,0).fadeIn(0.3f).appendTo(stage);
-		
-		$.add(Res.get(Setting.GAME_RES_IMAGE_FG+HeroController.getHeadHero().fgname+"/Normal.png"))
-		.setPosition(GameUtil.screen_width, 0).fadeOut().setScale(0.32f).setScaleX(-0.32f)
-		.addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(1080, 0,0.2f)))
-		.appendTo(stage);
-		
-		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"walk_bg.png"))
-		.setPosition(155, 400).fadeOut()
-		.addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(155,360,0.2f)))
-		.appendTo(stage);
+		$.add(Res.get(Setting.GAME_RES_IMAGE_FG+HeroController.getHeadHero().fgname+"/Normal.png")).setPosition(GameUtil.screen_width, 0).fadeOut().setScale(0.32f).setScaleX(-0.32f).addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(1080, 0,0.2f))).appendTo(stage);
+		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"walk_bg.png")).setPosition(155, 400).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(155,360,0.2f))).appendTo(stage);
 		
 		int offset=0;
-		for(Hero h:HeroController.heros){
+		for(Hero h:HeroController.heros)
 			heros.add(HeroImage.generateImage(h.images, (int)(170+284/2-(h.getWidth())*HeroController.heros.size()+(offset+=60)), 410));
-		}
+		
 //		if(GameViews.global.day==ColorUtil.DAY){
 			time=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"info_time_day.png");
 //		}
+			
 		time.setPosition(740, 363);
-		
-		if(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_MAP+GameViews.gameview.map.getProperties().get("minimap")+".png").exists()){
-			map=Res.get(Setting.GAME_RES_IMAGE_MENU_MAP+GameViews.gameview.map.getProperties().get("minimap")+".png");
-			map.setPosition(218, 46);
-			map.setColor(1,1,1,0);
-			map.setSize(400, 235);
-			map.addAction(Actions.fadeIn(0.3f));
-			stage.addActor(map);
-		}else{
+		String miniMapFilePath=Setting.GAME_RES_IMAGE_MENU_MAP+GameViews.gameview.map.getProperties().get("minimap")+".png";
+		if(Gdx.files.internal(miniMapFilePath).exists())
+			$.add(Res.get(miniMapFilePath)).setPosition(218, 46).setColor(1,1,1,0).setSize(400, 235).addAction(Actions.fadeIn(0.3f)).appendTo(stage);
+		else
 			AlertUtil.add("无法读取当前地图的缩略图！", AlertUtil.Red);
-		}
 		
-		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png")))
-		.setPosition(960, 550).fadeOut()
-		.addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(960, 510,0.1f)))
-		.onClick(()->{
+		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png"))).setPosition(960, 550).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(960, 510,0.1f))).onClick(()->{
 			GameViews.gameview.stackView.onkeyDown(Keys.ESCAPE);
 			Music.playSE("snd210");
 		}).appendTo(stage);
