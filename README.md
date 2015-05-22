@@ -13,9 +13,8 @@ or clone the project and compile to jar file.
 It's a (big) RPG game use "Touhou Project(東方Project)" store background by Libgdx Engine.
 
 # Schedule
-Tactics Model (50%)<br/>
 Attack Model (no)<br/>
-Note model (no)<br/>
+Note model (PROCESSING)<br/>
 Main Menu (no)<br/>
 others(walk,talk,script,core logic etc.) (yes)
 
