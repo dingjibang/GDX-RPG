@@ -16,12 +16,23 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 public class GdxQuery {
 
 	private List<Actor> values = new LinkedList<Actor>();
-	private Runnable click;
+	private Runnable click,dblClick;
+	private int dblDelay=0,dblDelayMax=30;
 	
 	InputListener clickListener=(new InputListener(){
 		public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
 			if(click!=null)
 				click.run();
+		}
+		public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+			return true;
+		}
+	});
+	
+	InputListener dblClickListener=(new InputListener(){
+		public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
+			if(dblClick!=null)
+				dblClick.run();
 		}
 		public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
 			return true;
