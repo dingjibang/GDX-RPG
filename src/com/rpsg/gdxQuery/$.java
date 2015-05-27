@@ -34,5 +34,7 @@ public class $ {
 		return new GdxQuery(new Image(texture));
 	}
 	
+	
+	
 
 }

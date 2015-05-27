@@ -133,23 +133,6 @@ public class GameView extends View{
 		
 		if(null!=stackView)
 			stackView.draw(batch);
-		
-//		batch.end();
-//		ShaderProgram shader = DiffuseShader.createShadowShader();
-//		shader.begin();
-//		shader.end();
-//		shader.dispose();
-//		batch.begin();
-//		Pixmap pbg=ScreenUtil.getScreenshot(0, 0, GameUtil.getScreenWidth(), GameUtil.getScreenHeight(), false);
-//		Image i=new Image(new TextureRegion(new Texture(pbg),0,GameUtil.getScreenHeight(),GameUtil.getScreenWidth(),-GameUtil.getScreenHeight()));
-//		i.setSize(320, 180);
-//		i.draw(batch);
-//		batch.end();
-//		i.getTexture().dispose();
-//		pbg.dispose();
-//		batch.begin();
-		
-//		RadarUtil.draw();
 	}
 
 	@Override
@@ -157,7 +140,6 @@ public class GameView extends View{
 		if(!ma.update() || !inited)
 			return;
 		MapController.logic(this);
-		//		stage.act();
 		for(Actor i:stage.getActors())
 			if(!(i instanceof Hero))
 				i.act(0);
@@ -166,7 +148,6 @@ public class GameView extends View{
 		
 		if(null!=stackView)
 			stackView.logic();
-//		System.out.println(HeroControler.getHeadHero().layer);
 	}
 
 	public void onkeyTyped(char character) {

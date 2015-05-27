@@ -138,7 +138,6 @@ public class InputController{
 	public static void mouseMoved(int x, int y) {
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_NORMAL:{
-			
 			PostUtil.mouseMoved(x, y);
 			break;
 		}
