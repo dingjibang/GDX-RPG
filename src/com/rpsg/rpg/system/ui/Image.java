@@ -28,6 +28,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	public Runnable loaded=()->{};
 	Runnable run,drun;
 	private int delaydbClickTime=30;
+	public String texturePath;
 	
 	{
 		addListener(new InputListener(){
