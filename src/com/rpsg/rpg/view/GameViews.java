@@ -144,7 +144,7 @@ public class GameViews implements ApplicationListener {
 			gameview.draw(batch);
 			loadview.logic();
 			loadview.draw();
-			if(!GameViewRes.ma.update(Gdx.graphics.getFramesPerSecond())){
+			if(!GameViewRes.ma.update()){
 				loadview.start();
 			}else{
 				loadview.stop();

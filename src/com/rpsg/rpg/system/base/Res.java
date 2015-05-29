@@ -38,7 +38,7 @@ public class Res {
 	}
 
 	public static TextureRegion getRegion(String resPath) {
-		return get(resPath).getRegion();
+		return new TextureRegion(getTexture(resPath));
 	}
 
 	public static Texture getTexture(String resPath) {
