@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="48" tileheight="48">
+ <properties>
+  <property name="distant" value="bgnd2.jpg"/>
+  <property name="name" value="测试地图"/>
+ </properties>
+ <tileset firstgid="1" name="Cliff_tileset_0" tilewidth="48" tileheight="48">
+  <image source="Cliff_tileset_0.png" trans="000000" width="755" height="777"/>
+ </tileset>
+ <tileset firstgid="241" name="ground_tiles" tilewidth="48" tileheight="48">
+  <image source="ground_tiles.png" trans="000000" width="1008" height="1052"/>
+ </tileset>
+ <tileset firstgid="682" name="objects" tilewidth="48" tileheight="48">
+  <image source="object- layer_1.png" trans="000000" width="716" height="329"/>
+ </tileset>
+ <tileset firstgid="766" name="treesv6_0_0" tilewidth="48" tileheight="48">
+  <image source="treesv6_0_0.png" trans="000000" width="1008" height="288"/>
+ </tileset>
+ <tileset firstgid="892" name="glo" tilewidth="48" tileheight="48">
+  <image source="glo.png" width="96" height="96"/>
+ </tileset>
+ <layer name="块层 1" width="30" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC61W203DQBC8CxIK0AAfORAl2HxBC7waAAkhWuBVDdADQnYJQDlJlF/2kltlPFm/wJFGydmXndvZ15XOuXJgFAb4fVnzbihuXU+8c8E3n6+vP2xzKr9ngrmv8uI+5mvTyPIlI5vjkXM7gt3R+jnvsXgszjYt0J8gfAeCw9GKL/ebuuB+S7eucVd/0F7u7XgUtD+AJrnvxodaZH6NJn8KtxmfOr7jFm35m/mtvJqAj/y+TVu1belWkgaoI+vD77tyW/51Oft/+gbnS5O+QwE1xhr5q359fUVuzU8+SxjAb8zfM8E54IJqFPMc/d4brTDvcZZo80RwKrgV3ADuKJ8tX+Oz2E+3BIueGlzK/iuD9zn53KSx8u4n3j65p3sfBI+Ae/DZqm3LX+5lWmPWc+5XWYr1S/IZ452RbeTFucV8Vi5ynwtJ82uAxptrefmd5pbOas05rgudL3om5cRewZpHPPnNWtYz4KxmP3Nf7at6PpxxHEOehZrbGB/0Oc5q/l/E1K85j1IuzAjzljWC6yv46v1I36tfqouFqNW4YY3g2RVA80XiDgbvdtIHsdSqYY3AWKuufOYc94BNrk2OL84H7I8Yb40jxlrt4x68SyheBW+Cd+K25lDdvZrrsaCaUW609SHr+Pms8Y9562qUZ3lJurCuX4JvwY+v2u7SY/l8VkyseyP2jrwH73/uAnwWvC+3/fcXYyPrrRAOAAA=
+  </data>
+ </layer>
+ <layer name="块层 4" width="30" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjgDrgMBPxao/gUItLnBSwkZGBYRMQb2bElMthZmDIZabcDmzgGNS+E1jspSW4DbTvDhDfpbO9xACnAbQziApmEZseybGT3LTeQIGd2EABMD8UAnERlnwRjkMPNcIWH0iD0nOBeB4QzwfiBBrbiQ1QozwiB4DK0oGyGxmkA9NEBhBnAnEWjcpNWoLBEIajYBSMAvIBKe1KctSTCqhRptDajeQCAN6cuTQQDgAA
+  </data>
+ </layer>
+ <layer name="块层 2" width="30" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC1NjYGAQZ0CA00wMDGeYIGxVBtoBUyBWQ7L7JtDOW1B7mYGYBYhZgZiNDnaDgBMQOyPxRYFYDE3fQSbq2e0PxAFAHAjEQWhqaBXuILvjgDgeiBOwyJvQyF5sIBwYyRHM9LcXGdDC3uOM5NuLL30tYiROHT7zBiqcnQkroTpQp0DvJTLzOSV2gkA0MD/EMKOKNeNQ20iCnfuQylZiwSQgDoOyI4C4H4onMEDKLEoBvjScCqXTqWDPcALBwLQRwkxY3SgYuYDcsmsUDD5AjfYmNkBsGtkNVLcfivcA8VckfbjMINbNW5HaM+hmPUWydxcd0/NnoF1foPjcCM1HAN5txgkQDgAA
+  </data>
+ </layer>
+ <objectgroup name="对象层 2">
+  <object name="FOONPC" type="NPC" gid="892" x="1008" y="480" width="48" height="64">
+   <properties>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="块层 3" width="30" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3VOQrCQBiG4SFxb9331n1N6763goKC3lDRe3gPr+FbWEyhVeTHgfngIYEUbwgJUer/5sF1lQog6Mp107QyyCIn2G3QaqKFtmB3QmuKGeaC3b3WOgh2TV6I5xRGBFHEhJ5bnk4BRZRQFup26HTRQx+eUHdBZ4kV1tj8sHtzlHo4n68dtc6J87Mh30Wc+0wgiZTgPVdoVVFDXbA7oDXECGPB7lZr7Qx5N+zs7Pzvwj/jivv7+PzyD7Gz87sXwKPQzxAOAAA=
+  </data>
+ </layer>
+</map>

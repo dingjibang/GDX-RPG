@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="48" tileheight="48">
+ <properties>
+  <property name="distant" value="bgnd2.jpg"/>
+  <property name="minimap" value="test"/>
+  <property name="name" value="测试地图"/>
+ </properties>
+ <tileset firstgid="1" name="glo" tilewidth="48" tileheight="48">
+  <image source="glo.png" width="96" height="96"/>
+ </tileset>
+ <tileset firstgid="5" name="Environment-3" tilewidth="48" tileheight="48">
+  <image source="Environment-3.png" width="384" height="2880"/>
+ </tileset>
+ <layer name="块层 1" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NlYGhgHcWjeBQ38DAwMIwke4ezX9nQ7CHHXpAZMEyuvbTGMlD7aGkvNrNlBijNottLr/Cm1L/k6ofpI0c/qXqQ1YPYMExLe5HtIQYT0kOPtIDPH+jiAHwIbTlgCQAA
+  </data>
+ </layer>
+ <layer name="块层 4" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYPiAVDJpSkEumfRwB5vRMK3BRSLUZNHA3ptQ+gwapiVgZkTgHCLUh+KRi4HStAgbEIgD4nggTgDiRCBOAuJkGtk12AExcUUsoFV8DTSgZhgNJAAAblvW7WAJAAA=
+  </data>
+ </layer>
+ <layer name="块层 2" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3SOQrCUBSF4WQF7sIRZwUFB3CO84TjOtyGGxG0sNddaGMhYiGuwr9IFZ6YvCgSyIGPG0Ie5/KIorhxQjbqvzdwRraqnJ3N+z2oco6C3jC8vPfBjwCCCCElud/eQJQ0InREEUMcCSSRk+y9G4iSRwFFZOjKosRzGRULXVd93nAxEKWKGupoQEMTLbQt9D70+TT5fQdd9NDHAEOMMDZxfm3jX51gihnmWGD5qU++7m08Ns+suIMT8/ylfdy4+UVeos08QmAJAAA=
+  </data>
+ </layer>
+ <objectgroup name="对象层 1">
+  <properties>
+   <property name="layer" value="2"/>
+  </properties>
+  <object name="FOONPC" type="NPC" gid="1" x="192" y="480" width="48" height="64">
+   <properties>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+  <object name="LIGHT" type="LIGHT" gid="1" x="253.333" y="574.667" width="48" height="64">
+   <properties>
+    <property name="IMAGE" value="empty"/>
+    <property name="STRENGTH" value="500"/>
+   </properties>
+  </object>
+  <object name="FOONPC2" type="NPC" gid="1" x="192" y="240" width="48" height="64">
+   <properties>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+  <object name="LIGHT" type="LIGHT" gid="1" x="1296" y="480" width="48" height="64">
+   <properties>
+    <property name="IMAGE" value="empty"/>
+    <property name="STRENGTH" value="500"/>
+   </properties>
+  </object>
+  <object name="DOOR2" type="NPC" gid="1" x="1104" y="672" width="48" height="64">
+   <properties>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+  <object name="DOOR" type="NPC" gid="1" x="384" y="576" width="48" height="81">
+   <properties>
+    <property name="IMAGE" value="door"/>
+    <property name="TELEPORT" value="map2"/>
+    <property name="TELEPORTX" value="7"/>
+    <property name="TELEPORTY" value="10"/>
+    <property name="TELEPORTZ" value="3"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="块层 3" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3TOQrCQBiG4aRzadTCFfd9uZalpVqplXqHqE30AGrjVrgVbqBX8hUsRCSYEIOBfPCQCcz8XwiMIJgvkigIPfRFY3tl+oYYGdz7T/HCBz8CCCL0484wIogihjgSSCKlYs4YE0y/3J9GBlnkkEcBRZS+nDHDHAsssVLxvZ9ig/25dijsW2ODLXbYa+gqv6xdcMMJj8KZA4444YyLht7K2/vgw32rooY6mgbex8ajDy10DOxtP/rQ1XGmpMOMCv/gyvOm4oysQ68VK2bIHbeUW0ZgCQAA
+  </data>
+ </layer>
+ <layer name="块层 5" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3Ntw3AMBAEwWcB8p4i5fuvUVuCkg8E3AKT3pkp9a0imJWoUKNBiw598Psd2B4xYcaCiBXJ8TezvWHHgRMXbjyOv0oppf7fC2BD0j1gCQAA
+  </data>
+ </layer>
+</map>
