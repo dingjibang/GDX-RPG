@@ -33,10 +33,6 @@ public class InputController{
 		if(keycode==Keys.L){
 			SL.save(0);
 		}
-		if(keycode==Keys.N){
-			GameViews.global=new Global();
-			Initialization.restartGame();
-		}
 		switch(currentIOMode){
 		case IOMode.MAP_INPUT_NORMAL:{
 			if(keycode==Keys.ESCAPE || keycode==Keys.X){

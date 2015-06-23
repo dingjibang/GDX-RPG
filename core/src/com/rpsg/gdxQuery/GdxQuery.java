@@ -130,12 +130,14 @@ public class GdxQuery {
 	}
 	
 	public GdxQuery setWidth(float width){
-		getItem().setWidth(width);
+		for(Actor actor:getItems())
+			actor.setWidth(width);
 		return this;
 	}
 	
 	public GdxQuery setHeight(float height){
-		getItem().setHeight(height);
+		for(Actor actor:getItems())
+			actor.setHeight(height);
 		return this;
 	}
 	
@@ -384,10 +386,9 @@ public class GdxQuery {
 	
 	public GdxQuery onClick(Runnable run){
 		this.click=run;
-		for(Actor actor:getItems()){
+		for(Actor actor:getItems())
 			if(!actor.getListeners().contains(clickListener, true))
 				actor.addListener(clickListener);
-		}
 		return this;
 	}
 	

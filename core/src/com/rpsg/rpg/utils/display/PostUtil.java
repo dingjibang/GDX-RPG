@@ -1,16 +1,19 @@
 package com.rpsg.rpg.utils.display;
 
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Color; 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Touchpad;
 import com.badlogic.gdx.scenes.scene2d.ui.Touchpad.TouchpadStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
@@ -18,6 +21,7 @@ import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.bitfire.postprocessing.PostProcessor;
 import com.bitfire.postprocessing.effects.Bloom;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.SL;
 import com.rpsg.rpg.object.base.ObjectRunnable;
@@ -33,6 +37,7 @@ import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
+import com.rpsg.rpg.utils.game.TimeUtil;
 import com.rpsg.rpg.view.GameViews;
 import com.rpsg.rpg.view.hover.ConfirmView;
 import com.rpsg.rpg.view.hover.LoadView;
@@ -40,15 +45,22 @@ import com.rpsg.rpg.view.hover.LoadView;
 public class PostUtil {
 	
 	public static Stage stage;
-	static Label name,y,m,d,yy,mm,day,map,money,jname,level,next;
 	static int height=0,maxHeight=160;
 	static boolean display=false;
 	static int showSpeed=8;
-	static WidgetGroup group;
 	static Touchpad pad;
+	static WidgetGroup group;
 	static double p4=Math.PI/4;
+	static Label day,gameTime,mapName,gold,task,tasklist;
 	public static void init(){
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
+		
+		stage.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu_active.png")).pos(GameUtil.screen_width-65, 15).onClick(new Runnable() {
+			@Override
+			public void run() {
+				keyTyped(' ');
+			}
+		}));
 		
 		TouchpadStyle tstyle=new TouchpadStyle();
 		tstyle.background=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png");
@@ -59,165 +71,56 @@ public class PostUtil {
 		pad.setVisible(Setting.persistence.touchMod);
 		
 		group=new WidgetGroup();
-		group.addActor(name=new Label("", 42).setWidth(1000));
-		group.addActor(y=new Label("", 42).setWidth(1000));
-		group.addActor(m=new Label("", 42).setWidth(1000));
-		group.addActor(d=new Label("", 42).setWidth(1000));
-		group.addActor(yy=new Label("年", 42).setWidth(1000));
-		group.addActor(mm=new Label("月", 24).setWidth(1000));
-		group.addActor(day=new Label("", 42).setWidth(1000));
-		group.addActor(map=new Label("", 32).setWidth(1000));
-		group.addActor(money=new Label("", 42).setWidth(1000));
-		group.addActor(jname=new Label("", 20).setWidth(1000));
-		group.addActor(level=new Label("", 42).setWidth(1000));
-		group.addActor(next = new Label("", 42).setWidth(1000));
+		$.add(Res.get(Setting.GAME_RES_IMAGE_GLOBAL+"menu_leftbar.png").position(522, 0)).appendTo(group);
+		$.add(day=new Label("",24).setWidth(1000)).setPosition(675, 558).appendTo(group);
+		$.add(gameTime=new Label("",18).setWidth(1000)).setPosition(680,525).appendTo(group);
+		$.add(mapName=new Label("",24).setWidth(1000)).setPosition(680, 377).appendTo(group);
+		$.add(gold=new Label("",24).setWidth(1000)).setPosition(680,322).appendTo(group);
+		$.add(task=new Label("",24).setWidth(1000)).setPosition(680, 275).appendTo(group);
+		$.add(tasklist=new Label("",18).setWidth(1000)).setPosition(686, 245).appendTo(group);
 		
 		stage.addActor(group);
 		
-		name.setPos(97, 132).setColor(1,1,1,0.85f);
-		jname.setPos(120, 100).setPad(-4).setColor(1,1,1,0.2f);
-		level.setPos(200,105).setPad(-15).setColor(1, 1, 1, 0.6f);
-		next.setPos(100,77).setPad(-15).setColor(1, 1, 1, 0.3f);
-		next.setZIndex(1);
-		y.setPos(350,115).setPad(-13).setColor(1,1,1,0.85f);
-		day.setPos(460, 135).setColor(1,1,1,0.3f);
-		yy.setPos(410, 80).setColor(1,1,1,0.25f);
-		m.setPos(465,90).setPad(-13).setColor(1,1,1,0.85f);
-		mm.setPos(495, 75).setColor(1,1,1,0.2f);
-		d.setPos(515,90).setPad(-13).setColor(1,1,1,0.85f);
-		map.setPos(435, 40).setColor(1, 1, 1, 0.7f);
-		money.setPos(140, 40).setPad(-13).setColor(1,1,1,0.85f);
-
-		for (Actor a : group.getChildren()) {
-			if(a.getClass().equals(Label.class)){
-				final Label l=(Label)a;
-				l.setWidth((float)(l.getText().length()*l.fontSize*0.85f));
-				l.setHeight(l.fontSize);
-				l.setUserObject(new Color(l.getColor()));
-				l.setScaleY(-1);
-				l.addListener(new InputListener(){
-					public void enter (InputEvent event, float x, float y, int pointer, Actor fromActor) {
-						for(Actor actor:group.getChildren())
-							if(actor!=l && actor.getUserObject()!=null)
-								actor.setColor(1,1,1,0.1f);
-						l.setColor(1,1,1,1);
-					}
-					public void exit (InputEvent event, float x, float y, int pointer, Actor toActor) {
-						for(Actor actor:group.getChildren())
-							if(actor.getUserObject()!=null)
-								actor.setColor((Color)actor.getUserObject());
-					}
-				});
-			}
-		}
-
-
-		group.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"fast_menu.png")).pos(630, 27).onClick(new Runnable() {
-			@Override
-			public void run() {
-				InputController.keyDown(Keys.ESCAPE, GameViews.gameview);
-			}
-		}));
-		group.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"fast_save.png")).pos(730, 27).onClick(new Runnable() {
-			@Override
-			public void run() {
-				final Pixmap px = ScreenUtil.getScreenshot(0, 0, GameUtil.getScreenWidth(), GameUtil.getScreenHeight(), false);
-				HoverController.add(ConfirmView.getDefault("确定要快速存档么？", new ObjectRunnable() {
-					@Override
-					public void run(Object view) {
-						SL.save((Setting.GAME_SAVE_FILE_MAX_PAGE - 2) * 4, px, null);
-						((HoverView) view).disposed = true;
-					}
-				}).setExitCallBack(new Runnable() {
-					@Override
-					public void run() {
-						px.dispose();
-					}
-				}));
-			}
-		}));
-		group.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"fast_read.png")).pos(830, 27).onClick(new Runnable() {
-			@Override
-			public void run() {
-				LoadView save = new LoadView();
-				save.superInit();
-				HoverController.add(save);
-				save.autobut.click();
-				for (Actor a : save.stage.getActors())
-					if (a.getUserObject() != null && a.getUserObject().getClass().equals(SLData.exMask.class)) {
-						((Image) a).click();
-						break;
-					}
-				save.savebutton.click();
-			}
-		}));
 		
-		stage.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu_active.png")).pos(GameUtil.screen_width-65, 15).onClick(new Runnable() {
-			@Override
-			public void run() {
-				keyTyped(' ');
-			}
-		}));
 		
 		Logger.info("Post特效创建成功。");
 	}
 	
-	static int a=0;
 	public static void draw( boolean menuEnable){
-		if(height>0) {
-			name.setText(HeroController.getHeadHero().name);
-			jname.setText(HeroController.getHeadHero().jname);
-			level.setText("LV " + HeroController.getHeadHero().prop.get("level"));
-			next.setText("NEXT " + (HeroController.getHeadHero().prop.get("maxexp") - HeroController.getHeadHero().prop.get("exp")) + " Exp");
-			y.setText(GameViews.global.tyear + "");
-			day.setText(GameViews.global.mapColor == ColorUtil.DAY ? "白天" : (GameViews.global.mapColor == ColorUtil.NIGHT ? "夜晚" : "黄昏"));
-			m.setText(GameViews.global.tmonth + "");
-			d.setText(GameViews.global.tday + "");
-			map.setText(GameViews.gameview.map.getProperties().get("name") + "");
-			money.setText("GOLD " + GameViews.global.gold);
-
-			for (Actor a : group.getChildren()) {
-				if (a.getClass().equals(Label.class)) {
-					Label l = (Label) a;
-					l.setWidth((float) (l.getText().length() * l.fontSize * 0.85f));
-					l.setHeight(l.fontSize);
-				}
-			}
-		}
-
-
-
-		if(display && height <maxHeight)
-			height=(height+showSpeed+(++a)>= maxHeight)?maxHeight:height+showSpeed+a;
-		else if(!display && height > 0)
-			height=(height-showSpeed-(--a)<= 0)?0:height-showSpeed-a;
-		group.setY(height-maxHeight);
-		
-		if(height>0 && menuEnable){
-			stage.getBatch().begin();
-			stage.getBatch().setColor(0f, 0f, 0f, 0.7f);
-			stage.getBatch().draw(Res.getTexture(Setting.GAME_RES_IMAGE_GLOBAL+"optb.png"),73,0,878,height);
-			stage.getBatch().end();
-		}
+		day.setText(GameViews.global.tyear+"年"+GameViews.global.tmonth+"月"+GameViews.global.tday+"日");
+		gameTime.setText("游戏已进行"+TimeUtil.getGameRunningTime());
+		mapName.setText((String)GameViews.gameview.map.getProperties().get("name")+"["+HeroController.getHeadHero().mapx+","+HeroController.getHeadHero().mapy+"]");
+		gold.setText("持有"+GameViews.global.gold+"金币");
+		task.setText("任务模块制作中");
+		tasklist.setText("任务模块制作中");
+//		pad.setVisible(Setting.persistence.touchMod  && height<=0);
+//		if(Setting.persistence.touchMod){
+//			float x=pad.getKnobPercentX();
+//			float y=pad.getKnobPercentY();
+//			double tan=Math.atan2(y,x);
+//			if(tan<p4*3 && tan > p4)
+//				MoveController.up();
+//			else if(tan>p4*3 || (tan < -p4*3 && tan < 0))
+//				MoveController.left();
+//			else if(tan>-p4*3 && tan <-p4)
+//				MoveController.down();
+//			else if((tan>-p4 && tan <0) || (tan>0 && tan < p4))
+//				MoveController.right();
+//		}
 		
 		stage.act();
 		stage.draw();
 		
-		pad.setVisible(Setting.persistence.touchMod  && height<=0);
-		if(Setting.persistence.touchMod){
-			float x=pad.getKnobPercentX();
-			float y=pad.getKnobPercentY();
-			double tan=Math.atan2(y,x);
-			if(tan<p4*3 && tan > p4)
-				MoveController.up();
-			else if(tan>p4*3 || (tan < -p4*3 && tan < 0))
-				MoveController.left();
-			else if(tan>-p4*3 && tan <-p4)
-				MoveController.down();
-			else if((tan>-p4 && tan <0) || (tan>0 && tan < p4))
-				MoveController.right();
-		}
 		
+		
+		if(display && group.getActions().size==0)
+			group.addAction(Actions.moveTo(0,0,0.2f,Interpolation.pow3));
+		else if(group.getActions().size==0)
+			group.addAction(Actions.moveTo(600,0,0.1f,Interpolation.pow3));
+	}
+	
+	public static float getGroupX(){
+		return group.getX()/600;
 	}
 	
 	public static boolean mouseMoved(int x,int y){

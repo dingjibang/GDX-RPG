@@ -33,6 +33,9 @@ public class WeatherUtil {
 	private static int lastHeroPositionX;
 	public static void draw(SpriteBatch batch){
 		batch.begin();
+		Bloom bloom=GameViews.bloom;
+		bloom.setBaseIntesity(1.2f*PostUtil.getGroupX());
+		bloom.setBloomSaturation((1.2f-0.2f)*PostUtil.getGroupX()+0.2f);
 		if(eff!=null){
 			if(lastHeroPositionX==0)
 				lastHeroPositionX=(int) HeroController.getHeadHero().position.x;
@@ -69,10 +72,8 @@ public class WeatherUtil {
 			threshold=0.3f;
 		}
 		Bloom bloom=GameViews.bloom;
-		bloom.setBaseIntesity(1.2f);
 		bloom.setBaseSaturation(WeatherUtil.baseSaturation);
 		bloom.setBloomIntesity(WeatherUtil.bloomIntesity);
-		bloom.setBloomSaturation(WeatherUtil.baseSaturation);
 		bloom.setThreshold(WeatherUtil.threshold);
 	}
 	
