@@ -16,10 +16,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 public class GdxQuery {
 
 	private List<Actor> values = new LinkedList<Actor>();
-	private Runnable click,dblClick;
-	private int dblDelay=0,dblDelayMax=30;
 	
-	InputListener clickListener=(new InputListener(){
+	private Runnable click;
+	
+	private InputListener clickListener=(new InputListener(){
 		public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
 			if(click!=null)
 				click.run();
@@ -28,19 +28,17 @@ public class GdxQuery {
 			return true;
 		}
 	});
-	
-	InputListener dblClickListener=(new InputListener(){
-		public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
-			if(dblClick!=null)
-				dblClick.run();
-		}
-		public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
-			return true;
-		}
-	});
 
 	public GdxQuery(Object... a) {
 			add(a);
+	}
+	
+	public GdxQuery first(){
+		return $.add(values.size()==0?new NullActor():values.get(0));
+	}
+	
+	public GdxQuery last(){
+		return $.add(values.size()==0?new NullActor():values.get(values.size()-1));
 	}
 
 	public GdxQuery setOrigin (int alignment){
@@ -68,7 +66,7 @@ public class GdxQuery {
 			return getItems().get(index);
 	}
 	
-	public GdxQuery find(Class<? extends Actor>... cls){
+	public GdxQuery find(@SuppressWarnings("unchecked") Class<? extends Actor>... cls){
 		GdxQuery query=$.add();
 		for(Class<? extends Actor> c:cls)
 			for(Actor actor:getItems())
@@ -396,8 +394,5 @@ public class GdxQuery {
 		click.run();
 		return this;
 	}
-
-	
-	//----------
 
 }
