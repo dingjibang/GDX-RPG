@@ -38,7 +38,7 @@ public class StatusView extends DefaultIView{
 	Group group;
 	ScrollPane pane;
 	public void init() {
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),GameMenuView.stage.getBatch());
 		group=new Group();
 		group.setHeight(2000);
 		tree=new Group();

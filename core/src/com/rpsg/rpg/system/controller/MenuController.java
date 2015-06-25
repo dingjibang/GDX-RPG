@@ -12,17 +12,13 @@ import com.rpsg.rpg.view.GameViews;
 import com.rpsg.rpg.view.menu.GameMenuView;
 
 public class MenuController {
-	public static Image bg,blurbg;
-	public static Pixmap pbg,bbg;
+	public static Image bg;
+	public static Pixmap pbg;
 	public static void createMenu(){
 		GameViews.gameview.stackView=new GameMenuView();
 		pbg=ScreenUtil.getScreenshot(0, 0, GameUtil.getScreenWidth(), GameUtil.getScreenHeight(), false);
 		MenuController.bg=new Image(new TextureRegion(new Texture(pbg),0,GameUtil.getScreenHeight(),GameUtil.getScreenWidth(),-GameUtil.getScreenHeight()));
-		if(GameUtil.isDesktop)
-			bbg=BlurUtil.blur(pbg, 5, 5, false);
-		blurbg= new Image(new TextureRegion(new Texture(GameUtil.isDesktop?bbg:pbg),0,GameUtil.getScreenHeight(),GameUtil.getScreenWidth(),-GameUtil.getScreenHeight()));
 		GameViews.gameview.stackView.params.put("bg",MenuController.bg);
-		GameViews.gameview.stackView.params.put("blurbg",blurbg);
 		GameViews.gameview.stackView.init();
 		Logger.info("菜单创建完成。");
 	}

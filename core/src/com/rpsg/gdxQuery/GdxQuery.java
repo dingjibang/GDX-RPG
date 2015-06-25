@@ -15,9 +15,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 
 public class GdxQuery {
 
-	private List<Actor> values = new LinkedList<Actor>();
+	private LinkedList<Actor> values = new LinkedList<Actor>();
 	
 	private Runnable click;
+	
+	private GdxQuery father;
 	
 	private InputListener clickListener=(new InputListener(){
 		public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
@@ -34,11 +36,35 @@ public class GdxQuery {
 	}
 	
 	public GdxQuery first(){
-		return $.add(values.size()==0?new NullActor():values.get(0));
+		return $.add(values.size()==0?new NullActor():values.get(0)).setFather(father==null?this:father);
 	}
 	
 	public GdxQuery last(){
-		return $.add(values.size()==0?new NullActor():values.get(values.size()-1));
+		return $.add(values.size()==0?new NullActor():values.get(values.size()-1)).setFather(father==null?this:father);
+	}
+	
+	public GdxQuery getFather(){
+		return father;
+	}
+	
+	public GdxQuery next(){
+		if(father==null)
+			return $.add();
+		try {
+			return $.add(father.getItems().get(father.getItems().indexOf(getItem())+1)).setFather(father);
+		} catch (Exception e) {
+			return $.add();
+		}
+	}
+	
+	public GdxQuery prev(){
+		if(father==null)
+			return $.add();
+		try {
+			return $.add(father.getItems().get(father.getItems().indexOf(getItem())-1)).setFather(father);
+		} catch (Exception e) {
+			return $.add();
+		}
 	}
 
 	public GdxQuery setOrigin (int alignment){
@@ -301,6 +327,14 @@ public class GdxQuery {
 				getItems().addAll((Collection<? extends Actor>) ((Stage)obj).getActors());
 			else if(obj instanceof GdxQuery)
 				getItems().addAll(((GdxQuery)obj).getItems());
+			else if(obj instanceof Collection)
+				for(Object col:(Collection)obj)
+					add(col);
+		return this;
+	}
+	
+	private GdxQuery setFather(GdxQuery query){
+		this.father=query;
 		return this;
 	}
 	

@@ -10,8 +10,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Matrix4;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.bitfire.postprocessing.PostProcessor;
@@ -31,22 +29,23 @@ import com.rpsg.rpg.utils.game.Logger;
 
 public class GameView extends View{
 	
-	public OrthogonalTiledMapRenderer render =  new OrthogonalTiledMapRenderer(null);
-	public Stage stage = GameViewRes.stage;
-	public TiledMap map;
-	public boolean inited=false;
-	public Global global=GameViews.global;
-	public OrthographicCamera camera = GameViewRes.camera;
-	public RayHandler ray = GameViewRes.ray;
-	public World world =GameViewRes.world;
-	public StackView stackView;
-	AssetManager ma=GameViewRes.ma;
-	String filename;
-	TmxMapLoader.Parameters parameter;
+	public OrthogonalTiledMapRenderer render =  new OrthogonalTiledMapRenderer(null);//地图绘制器
+	public Stage stage = GameViewRes.stage;//舞台
+	public TiledMap map;//地图文件
+	public boolean inited=false;//是否加载完成的状态标志
+	public Global global=GameViews.global;//游戏存档
+	public OrthographicCamera camera = GameViewRes.camera;//摄像机
+	public RayHandler ray = GameViewRes.ray;//灯光
+	public World world =GameViewRes.world;//box2d world（没用）
+	public StackView stackView;//菜单视图
+	AssetManager ma=GameViewRes.ma;//资源管理器
+	String filename;//地图文件名（卸载地图纹理时候用到）
+	TmxMapLoader.Parameters parameter;//地图加载完成的回调
+	Matrix4 lastView;//运动模糊用
 	
-	public PostProcessor post;
-	public Bloom bloom;
-	public CameraMotion motion;
+	public PostProcessor post;//高清画质用
+	public Bloom bloom;//模糊用
+	public CameraMotion motion;//运动模糊用
 
 
 	@Override
@@ -56,16 +55,13 @@ public class GameView extends View{
 		stage.clear();
 		parameter = new TmxMapLoader.Parameters();
 		parameter.loadedCallback= new AssetLoaderParameters.LoadedCallback() {
-			@Override
 			public void finishedLoading(AssetManager assetManager, String fileName, Class type) {
 				map = ma.get(Setting.GAME_RES_MAP + global.map);
 				render.setMap(map);
 				render.setView(camera);
-
 				ray.setWorld(world);
 				Initialization.init(GameView.this);
 				inited = true;
-
 				post = GameViews.post;
 				bloom = GameViews.bloom;
 				motion = GameViews.motion;
@@ -99,18 +95,21 @@ public class GameView extends View{
 		System.gc();
 	}
 	
-	Matrix4 lastView;
 	@Override
 	public void draw(SpriteBatch batch) {
 		if(!ma.update() || !inited)
 			return;
-
-		if(lastView==null)
+		
+		//当按下ctrl时，开启运动模糊。
+		if(Input.isPress(Keys.CONTROL_LEFT)){
+			if(lastView==null)
+				lastView=camera.view.cpy();
+			
+			motion.setMatrices(camera.invProjectionView, lastView.cpy(), camera.view);
 			lastView=camera.view.cpy();
+		}
 		
-		motion.setMatrices(camera.invProjectionView, lastView.cpy(), camera.view);
-		lastView=camera.view.cpy();
-		
+		//TODO 代码不规范
 		motion.setBlurScale(Input.isPress(Keys.CONTROL_LEFT)?0.0035f:0);
 		
 		boolean menuEnable=(null==stackView || stackView.viewStack.size()==0);

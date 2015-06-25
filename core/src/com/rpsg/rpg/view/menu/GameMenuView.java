@@ -33,18 +33,16 @@ import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public class GameMenuView extends StackView{
-	Image bluredBG;
 	Image normalBG;
-	Stage stage;
+	static Stage stage;
  	public void init(){
  		this.viewStack.add(new MenuBaseView());
  		this.viewStack.get(0).init();
  		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
- 		bluredBG=(Image)(params.get("blurbg"));
  		normalBG=(Image)(params.get("bg"));
- 		bluredBG.setColor(1, 1, 1, 0);
- 		bluredBG.addAction(Actions.parallel(Actions.color(new Color(0.65f, 0.65f, 0.65f, 1), .5f)));
- 		bluredBG.setSize(GameUtil.screen_width, GameUtil.screen_height);
+ 		normalBG.setColor(1, 1, 1, 0);
+ 		normalBG.addAction(Actions.parallel(Actions.color(new Color(0.65f, 0.65f, 0.65f, 1), .5f)));
+ 		normalBG.setSize(GameUtil.screen_width, GameUtil.screen_height);
 
 		int offset=0;
 
@@ -155,9 +153,9 @@ public class GameMenuView extends StackView{
  	}
  	
  	public void draw(SpriteBatch batch){
- 		bluredBG.act(Gdx.graphics.getDeltaTime());
+ 		normalBG.act(Gdx.graphics.getDeltaTime());
  		stage.getBatch().begin();
- 		bluredBG.draw(stage.getBatch(), bluredBG.getColor().a);
+ 		normalBG.draw(stage.getBatch(), normalBG.getColor().a);
  		stage.getBatch().end();
  		stage.draw();
  		viewStack.get(viewStack.size()-1).draw(batch);
@@ -203,9 +201,6 @@ public class GameMenuView extends StackView{
 // 		normalBG.dispose();
  		MenuController.bg.dispose();
  		MenuController.pbg.dispose();
- 		MenuController.blurbg.dispose();
-		if(GameUtil.isDesktop)
- 			MenuController.bbg.dispose();
 		for(View view:viewStack)
 			view.dispose();
 	}

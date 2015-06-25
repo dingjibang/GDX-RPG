@@ -63,7 +63,7 @@ public class EquipView extends View{
 		up=new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_EQUIP+"add.png"));
 		down=new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_EQUIP+"sub.png"));
 		
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),GameMenuView.stage.getBatch());
 		
 		Image walkerbox=Res.get(Setting.GAME_RES_IMAGE_MENU_EQUIP+"walkerbox.png");
 		walkerbox.setPosition(160, 350);
