@@ -33,16 +33,11 @@ import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public class GameMenuView extends StackView{
-	Image normalBG;
 	static Stage stage;
  	public void init(){
+ 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
  		this.viewStack.add(new MenuBaseView());
  		this.viewStack.get(0).init();
- 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
- 		normalBG=(Image)(params.get("bg"));
- 		normalBG.setColor(1, 1, 1, 0);
- 		normalBG.addAction(Actions.parallel(Actions.color(new Color(0.65f, 0.65f, 0.65f, 1), .5f)));
- 		normalBG.setSize(GameUtil.screen_width, GameUtil.screen_height);
 
 		int offset=0;
 
@@ -153,10 +148,6 @@ public class GameMenuView extends StackView{
  	}
  	
  	public void draw(SpriteBatch batch){
- 		normalBG.act(Gdx.graphics.getDeltaTime());
- 		stage.getBatch().begin();
- 		normalBG.draw(stage.getBatch(), normalBG.getColor().a);
- 		stage.getBatch().end();
  		stage.draw();
  		viewStack.get(viewStack.size()-1).draw(batch);
  	}

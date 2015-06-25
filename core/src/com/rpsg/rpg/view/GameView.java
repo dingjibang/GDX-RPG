@@ -65,12 +65,14 @@ public class GameView extends View{
 				post = GameViews.post;
 				bloom = GameViews.bloom;
 				motion = GameViews.motion;
+				motion.setMatrices(camera.invProjectionView, lastView.cpy(), camera.view);
 				WeatherUtil.init(GameViews.global.weather);
 				Logger.info("图形加载完成。");
 			}
 		};
 		filename=Setting.GAME_RES_MAP+global.map;
 		ma.load(filename, TiledMap.class ,parameter);
+		lastView=camera.view.cpy();
 	}
 	
 	@Override
@@ -102,9 +104,6 @@ public class GameView extends View{
 		
 		//当按下ctrl时，开启运动模糊。
 		if(Input.isPress(Keys.CONTROL_LEFT)){
-			if(lastView==null)
-				lastView=camera.view.cpy();
-			
 			motion.setMatrices(camera.invProjectionView, lastView.cpy(), camera.view);
 			lastView=camera.view.cpy();
 		}
@@ -112,7 +111,7 @@ public class GameView extends View{
 		//TODO 代码不规范
 		motion.setBlurScale(Input.isPress(Keys.CONTROL_LEFT)?0.0035f:0);
 		
-		boolean menuEnable=(null==stackView || stackView.viewStack.size()==0);
+		boolean menuEnable=true || (null==stackView || stackView.viewStack.size()==0);
 		boolean postEnable=Setting.persistence.betterLight && menuEnable;
 		
 		if(postEnable)
