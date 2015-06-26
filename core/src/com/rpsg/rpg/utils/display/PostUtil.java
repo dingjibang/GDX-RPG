@@ -22,6 +22,7 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.bitfire.postprocessing.PostProcessor;
 import com.bitfire.postprocessing.effects.Bloom;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.SL;
 import com.rpsg.rpg.object.base.ObjectRunnable;
@@ -52,10 +53,11 @@ public class PostUtil {
 	static WidgetGroup group;
 	static double p4=Math.PI/4;
 	static Label day,gameTime,mapName,gold,task,tasklist;
+	static GdxQuery others;
 	public static void init(){
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		
-		stage.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu_active.png")).pos(GameUtil.screen_width-65, 15).onClick(new Runnable() {
+		others=$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu_active.png")).pos(GameUtil.screen_width-65, 15).onClick(new Runnable() {
 			@Override
 			public void run() {
 				keyTyped(' ');
@@ -68,7 +70,8 @@ public class PostUtil {
 		pad=new Touchpad(0, tstyle);
 		pad.setPosition(35, 25);
 		stage.addActor(pad);
-		pad.setVisible(Setting.persistence.touchMod);
+		others.and(pad).setVisible(Setting.persistence.touchMod);
+		others.appendTo(stage);
 		
 		group=new WidgetGroup();
 		$.add(Res.get(Setting.GAME_RES_IMAGE_GLOBAL+"menu_leftbar.png").position(522, 0)).appendTo(group);
@@ -93,20 +96,21 @@ public class PostUtil {
 		gold.setText("持有"+GameViews.global.gold+"金币");
 		task.setText("任务模块制作中");
 		tasklist.setText("任务模块制作中");
-//		pad.setVisible(Setting.persistence.touchMod  && height<=0);
-//		if(Setting.persistence.touchMod){
-//			float x=pad.getKnobPercentX();
-//			float y=pad.getKnobPercentY();
-//			double tan=Math.atan2(y,x);
-//			if(tan<p4*3 && tan > p4)
-//				MoveController.up();
-//			else if(tan>p4*3 || (tan < -p4*3 && tan < 0))
-//				MoveController.left();
-//			else if(tan>-p4*3 && tan <-p4)
-//				MoveController.down();
-//			else if((tan>-p4 && tan <0) || (tan>0 && tan < p4))
-//				MoveController.right();
-//		}
+		pad.setVisible(Setting.persistence.touchMod  && height<=0);
+		if(Setting.persistence.touchMod && getGroupX()!=0){
+			float x=pad.getKnobPercentX();
+			float y=pad.getKnobPercentY();
+			double tan=Math.atan2(y,x);
+			if(tan<p4*3 && tan > p4)
+				MoveController.up();
+			else if(tan>p4*3 || (tan < -p4*3 && tan < 0))
+				MoveController.left();
+			else if(tan>-p4*3 && tan <-p4)
+				MoveController.down();
+			else if((tan>-p4 && tan <0) || (tan>0 && tan < p4))
+				MoveController.right();
+		}
+		others.setColor(1,1,1,1*getGroupX());
 		
 		stage.act();
 		stage.draw();

@@ -65,7 +65,6 @@ public class GameView extends View{
 				post = GameViews.post;
 				bloom = GameViews.bloom;
 				motion = GameViews.motion;
-				motion.setMatrices(camera.invProjectionView, lastView.cpy(), camera.view);
 				WeatherUtil.init(GameViews.global.weather);
 				Logger.info("图形加载完成。");
 			}
@@ -102,11 +101,8 @@ public class GameView extends View{
 		if(!ma.update() || !inited)
 			return;
 		
-		//当按下ctrl时，开启运动模糊。
-		if(Input.isPress(Keys.CONTROL_LEFT)){
-			motion.setMatrices(camera.invProjectionView, lastView.cpy(), camera.view);
-			lastView=camera.view.cpy();
-		}
+		motion.setMatrices(camera.invProjectionView, lastView.cpy(), camera.view);
+		lastView=camera.view.cpy();
 		
 		//TODO 代码不规范
 		motion.setBlurScale(Input.isPress(Keys.CONTROL_LEFT)?0.0035f:0);
