@@ -20,6 +20,7 @@ public class Setting {
 	public static final String GAME_RES_IMAGE_BG=GAME_RES_PATH+GAME_RES_IMAGE+"/background/";
 	public static final String GAME_RES_IMAGE_MENU=GAME_RES_PATH+GAME_RES_IMAGE+"/menu/";
 	public static final String GAME_RES_IMAGE_MENU_GLOBAL=GAME_RES_IMAGE_MENU+"global/";
+	public static final String GAME_RES_IMAGE_MENU_NEW_GLOBAL=GAME_RES_IMAGE_MENU+"nglobal/";
 	public static final String GAME_RES_IMAGE_MENU_MAP=GAME_RES_IMAGE_MENU+"map/";
 	public static final String GAME_RES_IMAGE_MENU_EQUIP=GAME_RES_IMAGE_MENU+"equip/";
 	public static final String GAME_RES_IMAGE_MENU_SC=GAME_RES_IMAGE_MENU+"sc/";

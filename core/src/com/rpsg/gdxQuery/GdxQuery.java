@@ -232,6 +232,7 @@ public class GdxQuery {
 	}
 	
 	public GdxQuery addAction(Action... action){
+//		FIXME this method is not work!
 		for(Actor actor:getItems())
 			for(Action act:action)
 				actor.addAction(act);
@@ -302,12 +303,12 @@ public class GdxQuery {
 		return null;
 	}
 	
-	public String text() {
+	public String getText() {
 		Actor actor = getItem();
 		return actor instanceof Label ? ((Label) actor).getText().toString() : (actor.getName()==null?actor.toString(): actor.getName());
 	}
 	
-	public GdxQuery text(String txt) {
+	public GdxQuery setText(String txt) {
 		for (Actor actor : getItems()) 
 			if (actor instanceof Label)
 				((Label) actor).setText(txt);

@@ -41,8 +41,6 @@ public class GameMenuView extends StackView{
 
 		int offset=0;
 
-
-
  		Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"bg.png");
 		bg.setPosition(50, 0);
 		bg.setColor(1,1,1,0);

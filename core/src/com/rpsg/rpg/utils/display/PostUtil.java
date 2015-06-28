@@ -22,7 +22,9 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.bitfire.postprocessing.PostProcessor;
 import com.bitfire.postprocessing.effects.Bloom;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.GdxFrame;
 import com.rpsg.gdxQuery.GdxQuery;
+import com.rpsg.gdxQuery.GdxQueryRunnable;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.SL;
 import com.rpsg.rpg.object.base.ObjectRunnable;
@@ -52,7 +54,7 @@ public class PostUtil {
 	static Touchpad pad;
 	static WidgetGroup group;
 	static double p4=Math.PI/4;
-	static Label day,gameTime,mapName,gold,task,tasklist;
+	static GdxFrame labelsFrame;
 	static GdxQuery others;
 	public static void init(){
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
@@ -74,30 +76,38 @@ public class PostUtil {
 		others.appendTo(stage);
 		
 		group=new WidgetGroup();
+		labelsFrame = $.frame();
+		
 		$.add(Res.get(Setting.GAME_RES_IMAGE_GLOBAL+"menu_leftbar.png").position(522, 0)).appendTo(group);
-		$.add(day=new Label("",24).setWidth(1000)).setPosition(675, 558).appendTo(group);
-		$.add(gameTime=new Label("",18).setWidth(1000)).setPosition(680,525).appendTo(group);
-		$.add(mapName=new Label("",24).setWidth(1000)).setPosition(680, 377).appendTo(group);
-		$.add(gold=new Label("",24).setWidth(1000)).setPosition(680,322).appendTo(group);
-		$.add(task=new Label("",24).setWidth(1000)).setPosition(680, 275).appendTo(group);
-		$.add(tasklist=new Label("",18).setWidth(1000)).setPosition(686, 245).appendTo(group);
+		labelsFrame.add($.add(new Label("",24).setWidth(1000)).setPosition(675, 558).appendTo(group),new GdxQueryRunnable() {public void run(GdxQuery self) {
+			((Label)self.getItem()).setText(GameViews.global.tyear+"年"+GameViews.global.tmonth+"月"+GameViews.global.tday+"日");
+		}});
+		labelsFrame.add($.add(new Label("",18).setWidth(1000)).setPosition(680,525).appendTo(group),new GdxQueryRunnable() {public void run(GdxQuery self) {
+			((Label)self.getItem()).setText("游戏已进行"+TimeUtil.getGameRunningTime());
+		}});
+		labelsFrame.add($.add(new Label("",24).setWidth(1000)).setPosition(680, 377).appendTo(group),new GdxQueryRunnable() {public void run(GdxQuery self) {
+			((Label)self.getItem()).setText((String)GameViews.gameview.map.getProperties().get("name")+"["+HeroController.getHeadHero().mapx+","+HeroController.getHeadHero().mapy+"]");
+		}});
+		labelsFrame.add($.add(new Label("",24).setWidth(1000)).setPosition(680,322).appendTo(group),new GdxQueryRunnable() {public void run(GdxQuery self) {
+			((Label)self.getItem()).setText("持有"+GameViews.global.gold+"金币");
+		}});
+		labelsFrame.add($.add(new Label("",24).setWidth(1000)).setPosition(680, 275).appendTo(group),new GdxQueryRunnable() {public void run(GdxQuery self) {
+			((Label)self.getItem()).setText("任务模块制作中");
+		}});
+		labelsFrame.add($.add(new Label("",18).setWidth(1000)).setPosition(686, 245).appendTo(group),new GdxQueryRunnable() {public void run(GdxQuery self) {
+			((Label)self.getItem()).setText("任务模块制作中");
+		}});
+		
 		
 		stage.addActor(group);
-		
-		
 		
 		Logger.info("Post特效创建成功。");
 	}
 	
 	public static void draw( boolean menuEnable){
-		day.setText(GameViews.global.tyear+"年"+GameViews.global.tmonth+"月"+GameViews.global.tday+"日");
-		gameTime.setText("游戏已进行"+TimeUtil.getGameRunningTime());
-		mapName.setText((String)GameViews.gameview.map.getProperties().get("name")+"["+HeroController.getHeadHero().mapx+","+HeroController.getHeadHero().mapy+"]");
-		gold.setText("持有"+GameViews.global.gold+"金币");
-		task.setText("任务模块制作中");
-		tasklist.setText("任务模块制作中");
+		labelsFrame.logic();
 		pad.setVisible(Setting.persistence.touchMod  && height<=0);
-		if(Setting.persistence.touchMod && getGroupX()!=0){
+		if(Setting.persistence.touchMod && GameViews.gameview.stackView==null){
 			float x=pad.getKnobPercentX();
 			float y=pad.getKnobPercentY();
 			double tan=Math.atan2(y,x);
@@ -110,8 +120,9 @@ public class PostUtil {
 			else if((tan>-p4 && tan <0) || (tan>0 && tan < p4))
 				MoveController.right();
 		}
-		others.setColor(1,1,1,1*getGroupX());
-		
+		others.cleanActions();
+		for(Actor actor:others.getItems())
+			actor.addAction(GameViews.gameview.stackView==null?Actions.fadeIn(0.1f):Actions.fadeOut(0.1f));
 		stage.act();
 		stage.draw();
 		

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -13,7 +12,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.system.ui.Image;
-import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>,Serializable{
@@ -67,8 +65,6 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 				return 1;
 		else
 			return 1;
-				
-			
 	}
 	
 	public void draw(SpriteBatch batch,float parentAlpha){

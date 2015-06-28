@@ -31,11 +31,16 @@ public class WeatherUtil {
 	}
 	
 	private static int lastHeroPositionX;
+	static float gameMenuListener=1;
 	public static void draw(SpriteBatch batch){
+		if(GameViews.gameview.stackView==null && gameMenuListener<1)
+			gameMenuListener+=.05;
+		if(GameViews.gameview.stackView != null && gameMenuListener>0)
+			gameMenuListener-=.05;
 		batch.begin();
 		Bloom bloom=GameViews.bloom;
-		bloom.setBaseIntesity(1.2f*PostUtil.getGroupX());
-		bloom.setBloomSaturation((1.2f-0.2f)*PostUtil.getGroupX()+0.2f);
+		bloom.setBaseIntesity(1.2f*gameMenuListener);
+		bloom.setBloomSaturation((1.2f-0.2f)*gameMenuListener+0.2f);
 		if(eff!=null){
 			if(lastHeroPositionX==0)
 				lastHeroPositionX=(int) HeroController.getHeadHero().position.x;
