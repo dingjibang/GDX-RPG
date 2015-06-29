@@ -58,6 +58,7 @@ public class GameViews implements ApplicationListener {
 		GameUtil.screen_width =1024;
 		GameUtil.screen_height = 576;
 		//start init
+		Setting.init();
 		//input
 		input =new Input();
 		Gdx.input.setInputProcessor(input);

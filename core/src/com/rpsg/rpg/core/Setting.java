@@ -1,6 +1,10 @@
 package com.rpsg.rpg.core;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.NinePatch;
+import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.rpsg.rpg.object.base.Persistence;
+import com.rpsg.rpg.utils.display.AlertUtil;
 
 public class Setting {
 	public static final String GAME_VERSION="Build 173 20150616";
@@ -48,5 +52,11 @@ public class Setting {
 	
 	//系统菜单文字显示速度默认显示文字
 	public static final String GAME_MENU_SYSTEM_TEST_MESSAGE="人类为何要互相伤害呢？";
+	
+	//UI
+	public static NinePatchDrawable UI_BUTTON;
+	public static void init(){
+		UI_BUTTON=new NinePatchDrawable(AlertUtil.processNinePatchFile(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button_p.png"));
+	}
 	
 }

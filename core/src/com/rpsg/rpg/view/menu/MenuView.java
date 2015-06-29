@@ -17,12 +17,15 @@ import com.rpsg.gdxQuery.GdxFrame;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.gdxQuery.GdxQueryRunnable;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HeroController;
+import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.StackView;
 import com.rpsg.rpg.system.ui.View;
+import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.TimeUtil;
 import com.rpsg.rpg.view.GameViews;
@@ -40,25 +43,38 @@ public class MenuView extends StackView{
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_pos.png")).setPosition(0, 350).appendTo(leftBar).addAction(Actions.moveTo(35, 350,0.4f));
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_gold.png")).setPosition(0, 295).appendTo(leftBar).addAction(Actions.moveTo(35, 295,0.4f));
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_flag.png")).setPosition(0, 232).appendTo(leftBar).addAction(Actions.moveTo(35, 232,0.4f));
-		frames=$.add($.add(new Label("",24).setWidth(1000).right(true).setPos(380, 558)).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.fadeIn(0.3f)),new GdxQueryRunnable() {public void run(GdxQuery self) {
-			((Label)self.getItem()).setText(GameViews.global.tyear+"年"+GameViews.global.tmonth+"月"+GameViews.global.tday+"日");
+		frames=$.add($.add(new Label("",24).setWidth(1000).right(true).setPos(0, 558)).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(380,558,0.4f))),new GdxQueryRunnable() {public void run(GdxQuery self) {
+			((Label)self.getItem()).setText(GameViews.global.tyear+"年"+GameViews.global.tmonth+"月"+GameViews.global.tday+"日 "+(GameViews.global.mapColor==ColorUtil.DAY?"白天":(GameViews.global.mapColor==ColorUtil.NIGHT?"夜晚":"黄昏")));
 		}});
-		frames.add($.add(new Label("",18).setWidth(1000).right(true).setPos(383, 525)).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.fadeIn(0.3f)),new GdxQueryRunnable() {public void run(GdxQuery self) {
+		frames.add($.add(new Label("",18).setWidth(1000).right(true).setPos(383, 525)).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.fadeIn(0.7f)),new GdxQueryRunnable() {public void run(GdxQuery self) {
 			((Label)self.getItem()).setText("游戏已进行"+TimeUtil.getGameRunningTime());
 		}});
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"hr.png")).setPosition(-200, 490).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.delay(0.2f, Actions.parallel(Actions.fadeIn(0.1f),Actions.moveTo(20, 490,0.1f))));
-		frames.add($.add(new Label("",24).setWidth(1000)).setPosition(75, 377).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.fadeIn(0.3f)),new GdxQueryRunnable() {public void run(GdxQuery self) {
+		frames.add($.add(new Label("",24).setWidth(1000)).setPosition(0, 377).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(75,377,0.5f))),new GdxQueryRunnable() {public void run(GdxQuery self) {
 			((Label)self.getItem()).setText((String)GameViews.gameview.map.getProperties().get("name")+"["+HeroController.getHeadHero().mapx+","+HeroController.getHeadHero().mapy+"]");
 		}});
-		frames.add($.add(new Label("",24).setWidth(1000)).setPosition(75,322).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.fadeIn(0.3f)),new GdxQueryRunnable() {public void run(GdxQuery self) {
+		frames.add($.add(new Label("",24).setWidth(1000)).setPosition(0,322).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(75,322,0.5f))),new GdxQueryRunnable() {public void run(GdxQuery self) {
 			((Label)self.getItem()).setText("持有"+GameViews.global.gold+"金币");
 		}});
-		frames.add($.add(new Label("",24).setWidth(1000)).setPosition(75, 265).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.fadeIn(0.3f)),new GdxQueryRunnable() {public void run(GdxQuery self) {
+		frames.add($.add(new Label("",24).setWidth(1000)).setPosition(0, 265).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(75,265,0.5f))),new GdxQueryRunnable() {public void run(GdxQuery self) {
 			((Label)self.getItem()).setText("任务模块制作中");
 		}});
-		frames.add($.add(new Label("",16).setWidth(1000)).setPosition(80, 235).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.fadeIn(0.3f)),new GdxQueryRunnable() {public void run(GdxQuery self) {
+		frames.add($.add(new Label("",16).setWidth(1000)).setPosition(0, 235).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(80,235,0.5f))),new GdxQueryRunnable() {public void run(GdxQuery self) {
 			((Label)self.getItem()).setText("任务模块制作中");
 		}});
+		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_exit_p.png"))).setPosition(-100, 510).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(20, 510,0.4f))).onClick(new Runnable() {
+			public void run() {
+				Music.playSE("snd210");
+				if(viewStack.size()!=0)
+					disposes();
+				else
+					onkeyDown(Keys.ESCAPE);
+			}
+		}).appendTo(leftBar);
+		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"btn_more.png"))).onClick(new Runnable() {public void run() {
+			
+		}}).appendTo(leftBar).setSize(370, 50).setPosition(23, 20).getCell().prefSize(370,50);
+		
 		
 //		frames.add($.add(new Label("",24).setWidth(1000)).setPosition(675, 558).appendTo(stage),new GdxQueryRunnable() {public void run(GdxQuery self) {
 //			((Label)self.getItem()).setText(GameViews.global.tyear+"年"+GameViews.global.tmonth+"月"+GameViews.global.tday+"日");

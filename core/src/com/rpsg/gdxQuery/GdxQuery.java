@@ -12,7 +12,16 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
-
+/**
+ * GDX-Query 
+ * more simplified way to enjoy LibGDX
+ * 
+ * Project website: https://github.com/dingjibang/GDX-Query/
+ * RPSG-TEAM: http://www.rpsg-team.com
+ * 
+ * @author dingjibang
+ *
+ */
 public class GdxQuery {
 
 	private LinkedList<Actor> values = new LinkedList<Actor>();
@@ -112,6 +121,13 @@ public class GdxQuery {
 	public GdxQuery setSize(float width,float height){
 		for(Actor actor:getItems())
 			actor.setSize(width, height);
+		return this;
+	}
+	
+	public GdxQuery invalidate(){
+		for(Actor actor:getItems())
+			if(actor instanceof Widget)
+				((Widget) actor).invalidate();
 		return this;
 	}
 	
@@ -428,6 +444,16 @@ public class GdxQuery {
 	public GdxQuery click(){
 		click.run();
 		return this;
+	}
+	
+	public Cell getCell(){
+		try {
+			if(getItem() instanceof Table)
+				return ((Table)getItem()).getCells().get(0);
+		} catch (Exception e) {
+			return null;
+		}
+		return null;
 	}
 
 }

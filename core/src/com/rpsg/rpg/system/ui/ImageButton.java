@@ -49,7 +49,7 @@ public class ImageButton extends Button {
 	public ImageButton (ImageButtonStyle style) {
 		super(style);
 		image = new Image();
-		image.setScaling(Scaling.fit);
+//		image.setScaling(Scaling.fit);
 		add(image);
 		setStyle(style);
 		setSize(getPrefWidth(), getPrefHeight());
@@ -84,6 +84,12 @@ public class ImageButton extends Button {
 	public ImageButton (Drawable imageUp, Drawable imageDown, Drawable imageChecked) {
 		this(new ImageButtonStyle(null, null, null, imageUp, imageDown, imageChecked));
 	}
+	
+	Image fg;
+	public ImageButton setFg(Image fg){
+		this.fg=fg;
+		return this;
+	}
 
 	public void setStyle (ButtonStyle style) {
 		if (!(style instanceof ImageButtonStyle)) throw new IllegalArgumentException("style must be an ImageButtonStyle.");
@@ -114,6 +120,11 @@ public class ImageButton extends Button {
 	public void draw (Batch batch, float parentAlpha) {
 		updateImage();
 		super.draw(batch, parentAlpha);
+		if(fg!=null){
+			fg.setX(getX()+(getPrefWidth()/2-fg.getWidth()/2));
+			fg.setY(getY()+(getHeight()/2-fg.getHeight()/2));
+			fg.draw(batch);
+		}
 	}
 
 	public Image getImage () {
