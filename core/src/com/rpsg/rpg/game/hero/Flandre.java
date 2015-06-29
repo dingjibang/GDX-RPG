@@ -17,6 +17,7 @@ public class Flandre extends Hero{
 		fgname="flandre";
 		association=new Devil();
 		support=new AnimaUp();
+		color="d55d41cc";
 	}
 	
 	public void init(){

@@ -23,6 +23,7 @@ public class Marisa extends Hero{
 		prop.put("mp", 100);
 		prop.put("maxmp", 100);
 		association=new Star();
+		color="ffcf70cc";
 	}
 	
 	public void init(){

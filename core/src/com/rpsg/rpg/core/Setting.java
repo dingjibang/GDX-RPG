@@ -1,9 +1,8 @@
 package com.rpsg.rpg.core;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.rpsg.rpg.object.base.Persistence;
+import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.utils.display.AlertUtil;
 
 public class Setting {
@@ -55,6 +54,7 @@ public class Setting {
 	
 	//UI
 	public static NinePatchDrawable UI_BUTTON;
+	public static String UI_BASE_IMG=Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"white.jpg";
 	public static void init(){
 		UI_BUTTON=new NinePatchDrawable(AlertUtil.processNinePatchFile(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button_p.png"));
 	}

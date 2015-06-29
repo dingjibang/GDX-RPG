@@ -2,35 +2,32 @@ package com.rpsg.rpg.system.ui;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 
 
-public class HeroImage {
-	private Image[] images=new Image[3]; 
+public class HeroImage extends BGActor{
 	private Image shadow;
-	
-	public void draw(SpriteBatch batch,int img){
-		shadow.draw(batch);
-		images[img].draw(batch);
+	private final static int goffset=9;
+	private int offset=0,step=30;
+	private Hero hero;
+	public HeroImage(Hero hero) {
+		this.hero=hero;
+		this.image=new Image();
+		this.image.setSize(hero.getWidth(), hero.getHeight());
+		this.image.disableTouch();
 	}
 	
-	public static HeroImage generateImage(Image[] IRPGObjectImageArray,int x,int y){
-		HeroImage hi=new HeroImage();
-		Image i=new Image();
-		i.setDrawable(IRPGObjectImageArray[9].getDrawable());
-		hi.images[0]=new Image(i);
-		hi.images[0].setPosition(x, y);
-		i.setDrawable(IRPGObjectImageArray[10].getDrawable());
-		hi.images[1]=new Image(i);
-		hi.images[1].setPosition(x, y);
-		i.setDrawable(IRPGObjectImageArray[11].getDrawable());
-		hi.images[2]=new Image(i);
-		hi.images[2].setPosition(x, y);
-		hi.shadow=new Image(Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"walk_shadow.png"));
-		hi.shadow.setPosition(x+5, y-5);
-		return hi;
+	@Override
+	public void drawBefore() {
+		if(step++>18){
+			if(offset++>=3)
+				offset=0;
+			step=0;
+		}
+		image.setDrawable(hero.images[goffset+(offset==3?1:offset)].getDrawable());
+		image.setDebug(true);
 	}
 	
-	public void dispose(){
-	}
+
 }

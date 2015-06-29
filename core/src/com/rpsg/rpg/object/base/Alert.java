@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
-import com.rpsg.rpg.utils.game.GameUtil;
 
 public class Alert {
 	public Image type;

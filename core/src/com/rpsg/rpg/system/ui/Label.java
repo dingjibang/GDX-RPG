@@ -25,6 +25,7 @@ public class Label extends Widget {
 		if (text != null) this.text.append(text);
 		this.fontSize=fontSize;
 		setSize(getWidth(), getHeight());
+		setWidth(1000);
 	}
 
 
@@ -73,6 +74,12 @@ public class Label extends Widget {
 		return this;
 	}
 	
+	boolean xoff=false;
+	public Label setXOffset(boolean b){
+		this.xoff=b;
+		return this;
+	}
+	
 	public void draw (Batch batch, float parentAlpha) {
 		validate();
 		Color color = tempColor.set(getColor());
@@ -83,7 +90,7 @@ public class Label extends Widget {
 		if(alignX==0)
 			FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color, !rightAble?(int)getX():(int)getX()-FontUtil.getTextWidth(getText(), fontSize,pad), (int)getY(),(int)getWidth(),pad,yoff);
 		else
-			FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color, alignX-FontUtil.getTextWidth(getText(), fontSize,pad)/2, (int)getY(),(int)getWidth(),pad,yoff);
+			FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color, alignX+(xoff?(int)getX():0)-FontUtil.getTextWidth(getText(), fontSize,pad)/2, (int)getY(),(int)getWidth(),pad,yoff);
 	}
 	
 	public float getWidth() {

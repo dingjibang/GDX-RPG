@@ -18,7 +18,7 @@ public class Arisu extends Hero{
 		tag="人类，主角";
 		sc.add(new MagicGun());
 		sc.add(new patientBack());
-		prop.put("hp", 50);
+		prop.put("hp", 150);
 		prop.put("maxhp", 150);
 		prop.put("exp", 3);
 		prop.put("mp", 100);
@@ -28,6 +28,7 @@ public class Arisu extends Hero{
 		resistance.put("sun", Resistance.weak);
 		prop.put("chop", Hero.TRUE);
 		prop.put("prick", Hero.TRUE);
+		color="59669ecc";
 		
 		lead=true;
 		prop.put("courage", 15);			//勇气

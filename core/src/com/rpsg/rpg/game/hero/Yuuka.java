@@ -16,6 +16,11 @@ public class Yuuka extends Hero{
 		fgname="yuuka";
 		tag="妖怪";
 		association=new Sun();
+		color="99cc33cc";
+		prop.put("hp", 100);
+		prop.put("maxhp", 100);
+		prop.put("mp", 100);
+		prop.put("maxmp", 100);
 	}
 	
 	public void init(){

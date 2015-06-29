@@ -18,6 +18,16 @@ public class WeatherUtil {
 	public static float baseSaturation,bloomIntesity,bloomSaturation,threshold;
 	
 	private static ParticleEffect eff;
+	
+	public static String getName(){
+		if(type==WEATHER_NO)
+			return "晴";
+		if(type==WEATHER_RAIN)
+			return "雨";
+		else
+			return "数据异常";
+	}
+	
 	public static void init(int type){
 		WeatherUtil.type=type;
 		GameViews.global.weather=type;

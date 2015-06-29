@@ -446,6 +446,12 @@ public class GdxQuery {
 		return this;
 	}
 	
+	public GdxQuery click(boolean sure){
+		if(sure)
+			click.run();
+		return this;
+	}
+	
 	public Cell getCell(){
 		try {
 			if(getItem() instanceof Table)

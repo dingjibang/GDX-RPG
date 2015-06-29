@@ -35,6 +35,7 @@ public abstract class Hero extends IRPGObject {
 	public Association association=new EmptyAssociation();
 	public Hero linkTo;
 	public ArrayList<AssociationSkill> linkSkills = new ArrayList<AssociationSkill>();
+	public String color="000000cc";
 	public Map<String,Integer> prop=new HashMap<String, Integer>();
 	{
 		prop.put("level", 1);
