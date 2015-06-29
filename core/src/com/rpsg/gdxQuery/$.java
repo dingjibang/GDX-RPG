@@ -38,5 +38,9 @@ public class $ {
 		return new GdxFrame();
 	}
 	
+	public static GdxFrame add(GdxQuery query,GdxQueryRunnable runnable){
+		return new GdxFrame().add(query, runnable);
+	}
+	
 
 }

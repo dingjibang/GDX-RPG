@@ -40,7 +40,7 @@ public class MenuView extends StackView{
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_pos.png")).setPosition(0, 350).appendTo(leftBar).addAction(Actions.moveTo(35, 350,0.4f));
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_gold.png")).setPosition(0, 295).appendTo(leftBar).addAction(Actions.moveTo(35, 295,0.4f));
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_flag.png")).setPosition(0, 232).appendTo(leftBar).addAction(Actions.moveTo(35, 232,0.4f));
-		frames=$.frame().add($.add(new Label("",24).setWidth(1000).right(true).setPos(380, 558)).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.fadeIn(0.3f)),new GdxQueryRunnable() {public void run(GdxQuery self) {
+		frames=$.add($.add(new Label("",24).setWidth(1000).right(true).setPos(380, 558)).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.fadeIn(0.3f)),new GdxQueryRunnable() {public void run(GdxQuery self) {
 			((Label)self.getItem()).setText(GameViews.global.tyear+"年"+GameViews.global.tmonth+"月"+GameViews.global.tday+"日");
 		}});
 		frames.add($.add(new Label("",18).setWidth(1000).right(true).setPos(383, 525)).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.fadeIn(0.3f)),new GdxQueryRunnable() {public void run(GdxQuery self) {
