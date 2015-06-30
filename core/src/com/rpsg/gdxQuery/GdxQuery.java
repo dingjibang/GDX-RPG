@@ -101,7 +101,7 @@ public class GdxQuery {
 			return getItems().get(index);
 	}
 	
-	public GdxQuery find(@SuppressWarnings("unchecked") Class<? extends Actor>... cls){
+	public GdxQuery find( Class... cls){
 		GdxQuery query=$.add();
 		for(Class<? extends Actor> c:cls)
 			for(Actor actor:getItems())
@@ -115,6 +115,12 @@ public class GdxQuery {
 			$.add(obj).getItem().remove();
 			not(obj);
 		}
+		return this;
+	}
+	
+	public GdxQuery removeAll(){
+		for(Actor actor:getItems())
+			actor.remove();
 		return this;
 	}
 	
@@ -410,7 +416,7 @@ public class GdxQuery {
 				query.add(((Table)actor).getChildren());
 			}
 		}
-		return query;
+		return query.setFather(this);
 	}
 
 	public Actor getItem() {

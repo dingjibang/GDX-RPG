@@ -22,7 +22,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width=1024;
 		config.height=576;
-//        config.backgroundFPS=config.foregroundFPS=40;
+//      config.backgroundFPS=config.foregroundFPS=40;
         Gdx.files=new LwjglFiles();
         Setting.persistence = Persistence.read();
         config.initialBackgroundColor= Color.WHITE;
