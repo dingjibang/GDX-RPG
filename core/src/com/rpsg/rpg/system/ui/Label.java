@@ -44,6 +44,11 @@ public class Label extends Widget {
 		}
 		invalidateHierarchy();
 	}
+	
+	public Label text(CharSequence txt){
+		setText(txt);
+		return this;
+	}
 
 	public boolean textEquals (CharSequence other) {
 		int length = text.length;
