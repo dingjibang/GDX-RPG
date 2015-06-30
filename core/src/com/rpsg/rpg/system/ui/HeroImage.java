@@ -1,9 +1,6 @@
 package com.rpsg.rpg.system.ui;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
-import com.rpsg.rpg.system.base.Res;
 
 
 public class HeroImage extends BGActor{

@@ -94,7 +94,7 @@ public class MenuView extends StackView{
 			fgGroup.addAction(Actions.moveTo(70,0,0.5f,Interpolation.pow4Out));
 			$.add(fgGroup).children().getItem(2).addAction(Actions.moveTo(630, 50,0.5f,Interpolation.pow4Out));
 			hr.addAction(Actions.parallel(Actions.sizeTo(145, hr.getHeight(),0.2f),Actions.moveTo(250, 490,0.3f)));
-			$.add(menuLabel.text("主菜单")).setPosition(290, 545).appendTo(leftBar);
+			$.add(menuLabel.text("主菜单")).setPosition(-200, 545).addAction(Actions.delay(0f,Actions.moveTo(290,545,0.3f))).appendTo(leftBar);
 		}}).appendTo(ld).setSize(370, 50).setPosition(-100, 20).addAction(Actions.moveTo(23, 20, .5f,Interpolation.pow2Out)).getCell().prefSize(370,50);
 		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"btn_save.png"))).onClick(new Runnable() {public void run() {
 			//TODO SAVE BUT CLICK
