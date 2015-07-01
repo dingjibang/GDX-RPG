@@ -123,6 +123,7 @@ public class ImageButton extends Button {
 		if(fg!=null){
 			fg.setX(getX()+(getPrefWidth()/2-fg.getWidth()/2));
 			fg.setY(getY()+(getHeight()/2-fg.getHeight()/2));
+			fg.setColor(getColor());
 			fg.draw(batch);
 		}
 	}

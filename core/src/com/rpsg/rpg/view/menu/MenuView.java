@@ -11,7 +11,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
@@ -104,19 +107,20 @@ public class MenuView extends StackView{
 		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"btn_load.png"))).onClick(new Runnable() {public void run() {
 			//TODO LOAD BUT CLICK
 		}}).appendTo(ld).setSize(172, 76).setPosition(0, 90).addAction(Actions.moveTo(221, 90, 0.5f,Interpolation.pow2Out)).getCell().prefSize(172,76);
-		List<MenuHeroBox> boxs=new ArrayList<MenuHeroBox>();//角色框
+		List<GdxQuery> boxs=new ArrayList<GdxQuery>();//角色框
 		
 		for(int i=0;i<HeroController.heros.size();i++)
-			boxs.add((MenuHeroBox) $.add(new MenuHeroBox(HeroController.heros.get(i))).appendTo(ld).setPosition(-i*100, 400).addAction(Actions.moveTo(i*100+25, 400,0.7f,Interpolation.pow2Out)).run(new GdxQueryRunnable() {public void run(GdxQuery self) {self.onClick(new Runnable() {public void run() {
-				for(MenuHeroBox _box:boxs)
-					_box.setSelect(false);
+			boxs.add($.add(new MenuHeroBox(HeroController.heros.get(i))).appendTo(ld).setPosition(-i*100, 400).addAction(Actions.moveTo(i*100+25, 400,0.7f,Interpolation.pow2Out)).run(new GdxQueryRunnable() {public void run(GdxQuery self) {self.onClick(new Runnable() {public void run() {
+				for(GdxQuery _box:boxs)
+					((MenuHeroBox) _box.getItem()).setSelect(false);
 				((MenuHeroBox) self.getItem()).setSelect(true);
 				$.add(fgGroup).children().removeAll();
 				Hero hero=((MenuHeroBox) self.getItem()).hero;
 				$.add(Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(fgGroup).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(1200, 0).setColor(0,0,0,0).addAction(Actions.parallel(Actions.color(new Color(0,0,0,0.3f),1f),Actions.moveTo(1030, 0,0.75f,Interpolation.pow2Out)));
 				$.add(Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(fgGroup).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(1200, 0).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(1000, 0,0.7f,Interpolation.pow2Out)));
 				$.add(Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/card.png")).appendTo(fgGroup).setOrigin(Align.bottomLeft).setPosition(1200, 80).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.6f),Actions.moveTo(520, 80,0.6f,Interpolation.pow2Out)));
-			}});}}).click(i==0).getItem());
+			}});}}));
+		boxs.get(MathUtils.random(boxs.size()-1)).click();
 		//设置点击音效
 		$.add(ld).children().find(ImageButton.class,MenuHeroBox.class).onClick(new Runnable() {public void run() {
 			Music.playSE("snd210");
