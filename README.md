@@ -14,11 +14,8 @@ or clone the project and compile to jar file.
 # What's this
 It's a (big) RPG game use "Touhou Project(東方Project)" store background by Libgdx Engine.
 
-# Schedule
-Attack Model (no)<br/>
-Note model (PROCESSING)<br/>
-Main Menu (no)<br/>
-others(walk,talk,script,core logic etc.) (yes)
+# What am I doing
+now, i'm reconstitute the MENU UI module
 
 #Others
 Sorry,the project inner images is protected by COPYRIGHT, don't use in other places please :) <br/>
