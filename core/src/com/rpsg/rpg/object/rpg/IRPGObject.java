@@ -11,6 +11,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.view.GameViews;
 
@@ -87,7 +88,8 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		Image[] images=new Image[12];
 		for(int i=0;i<4;i++)
 			for(int j=0;j<3;j++){
-				images[(i*3)+j]=new Image(new TextureRegion(new Image(txt).getTexture(),j*width,i*height,width,height));
+				//FIXME 可能有内存泄露！ 
+				images[(i*3)+j]=new Image(new TextureRegion(Res.getTexture(txt),j*width,i*height,width,height));
 			}
 		return images;
 	};

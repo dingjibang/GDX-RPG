@@ -20,8 +20,9 @@ public class DesktopLauncher {
         RayHandler.setGammaCorrection(true);
         RayHandler.useDiffuseLight (true);
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.width=512;
-		config.height=288;
+		boolean debug=true;
+		config.width=1024/(debug?2:1);
+		config.height=576/(debug?2:1);
 //      config.backgroundFPS=config.foregroundFPS=40;
         Gdx.files=new LwjglFiles();
         Setting.persistence = Persistence.read();
