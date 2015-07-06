@@ -97,7 +97,7 @@ public class MenuView extends StackView{
 			leftBar.addAction(Actions.moveTo(-230,0,0.5f,Interpolation.pow4));
 			exit.addAction(Actions.moveTo(242, 510,0.5f,Interpolation.pow4));
 			fgGroup.addAction(Actions.moveTo(70,0,0.5f,Interpolation.pow4Out));
-			$.add(fgGroup).children().getItem(2).addAction(Actions.moveTo(630, 50,0.5f,Interpolation.pow4Out));
+			$.add(fgGroup).children().getItem(2).addAction(Actions.parallel(Actions.moveTo(730, 80,0.5f,Interpolation.pow4Out),Actions.fadeOut(0.3f)));
 			hr.addAction(Actions.parallel(Actions.sizeTo(147, hr.getHeight(),0.2f),Actions.moveTo(250, 490,0.3f)));
 			$.add(menuLabel.text("主菜单")).setPosition(-200, 545).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(293,545,0.3f))).appendTo(leftBar);
 		}}).appendTo(ld).setSize(370, 50).setPosition(-100, 20).addAction(Actions.moveTo(23, 20, .5f,Interpolation.pow2Out)).getCell().prefSize(370,50);

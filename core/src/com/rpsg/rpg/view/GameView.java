@@ -116,13 +116,13 @@ public class GameView extends View{
 		DistantController.draw((SpriteBatch)stage.getBatch(),this);
 		
 		MapController.draw(this);
-		
-		if(Setting.persistence.betterLight && map.getProperties().get("weather")==null)
-			WeatherUtil.draw((SpriteBatch) PostUtil.stage.getBatch());
 
 
 		if(postEnable)
 			post.render(true);
+		
+		if(Setting.persistence.betterLight && map.getProperties().get("weather")==null)
+			WeatherUtil.draw((SpriteBatch) PostUtil.stage.getBatch());
 
 		ColorUtil.draw();
 		PostUtil.draw(menuEnable);

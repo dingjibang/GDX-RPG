@@ -9,24 +9,24 @@ import com.rpsg.rpg.view.GameViews;
 public class SayHelloWorld extends Script{
 	
 	public void init() {
-//		$(new BaseScriptExecutor() {
-//			@Override
-//			public void init() {
-//				if(WeatherUtil.type==WeatherUtil.WEATHER_NO){
-//					_$(setWeather(WeatherUtil.WEATHER_RAIN));
-//				}else{
-//					_$(setWeather(WeatherUtil.WEATHER_NO));
-//				}
-//			}
-//		});
 		$(new BaseScriptExecutor() {
-			  @Override
-			  public void init() {
-				  if(++GameViews.global.mapColor>2)
-					  GameViews.global.mapColor=0;
-			  }
-		  }
-		);
+			@Override
+			public void init() {
+				if(WeatherUtil.type==WeatherUtil.WEATHER_NO){
+					_$(setWeather(WeatherUtil.WEATHER_RAIN));
+				}else{
+					_$(setWeather(WeatherUtil.WEATHER_NO));
+				}
+			}
+		});
+//		$(new BaseScriptExecutor() {
+//			  @Override
+//			  public void init() {
+//				  if(++GameViews.global.mapColor>2)
+//					  GameViews.global.mapColor=0;
+//			  }
+//		  }
+//		);
 
 //		lock(true);
 //		faceToHero();

@@ -25,6 +25,11 @@ public class HeroImage extends BGActor{
 		image.setDrawable(hero.images[goffset+(offset==3?1:offset)].getDrawable());
 		image.setDebug(true);
 	}
+
+	public static HeroImage generateImage(Image[] images, int i, int j) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

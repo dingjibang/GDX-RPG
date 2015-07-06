@@ -1,6 +1,7 @@
 package com.rpsg.rpg.game.object;
 
 
+import com.rpsg.rpg.game.script.SayFuckMe;
 import com.rpsg.rpg.game.script.SayHelloWorld;
 import com.rpsg.rpg.game.script.Walker;
 import com.rpsg.rpg.object.rpg.DefaultNPC;
@@ -17,7 +18,7 @@ public class FOONPC extends DefaultNPC{
 		this.waitWhenCollide=false;
 		this.walkSpeed=1f;
 		scripts.put(DefaultNPC.AUTO_SCRIPT, Walker.class);
-		scripts.put(DefaultNPC.COLLIDE_NAME_Z, SayHelloWorld.class);
+		scripts.put(DefaultNPC.COLLIDE_NAME_Z, SayFuckMe.class);
 	}
 	
 }
