@@ -4,7 +4,7 @@ import com.rpsg.rpg.object.rpg.Hero;
 
 
 public class HeroImage extends BGActor{
-	private Image shadow;
+	private Image shadow;  
 	private final static int goffset=9;
 	private int offset=0,step=30;
 	private Hero hero;
