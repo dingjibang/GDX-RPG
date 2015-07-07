@@ -7,17 +7,14 @@ import java.util.List;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Widget;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
@@ -26,12 +23,15 @@ import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxFrame;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.gdxQuery.GdxQueryRunnable;
+import com.rpsg.gdxQuery.NullActor;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HeroController;
+import com.rpsg.rpg.system.ui.CheckBox;
+import com.rpsg.rpg.system.ui.CheckBox.CheckBoxStyle;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.MenuHeroBox;
@@ -95,11 +95,38 @@ public class MenuView extends StackView{
 		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"btn_more.png"))).onClick(new Runnable() {public void run() {
 			ld.addAction(Actions.parallel(Actions.moveTo(-500, 0,0.5f,Interpolation.exp5),Actions.fadeOut(0.2f)));
 			leftBar.addAction(Actions.moveTo(-230,0,0.5f,Interpolation.pow4));
-			exit.addAction(Actions.moveTo(242, 510,0.5f,Interpolation.pow4));
+			exit.addAction(Actions.moveTo(255, 510,0.5f,Interpolation.pow4));
 			fgGroup.addAction(Actions.moveTo(70,0,0.5f,Interpolation.pow4Out));
 			$.add(fgGroup).children().getItem(2).addAction(Actions.parallel(Actions.moveTo(730, 80,0.5f,Interpolation.pow4Out),Actions.fadeOut(0.3f)));
 			hr.addAction(Actions.parallel(Actions.sizeTo(147, hr.getHeight(),0.2f),Actions.moveTo(250, 490,0.3f)));
-			$.add(menuLabel.text("主菜单")).setPosition(-200, 545).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(293,545,0.3f))).appendTo(leftBar);
+			$.add(menuLabel.text("状态")).setPosition(-200, 545).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(310,545,0.3f))).appendTo(leftBar);
+			
+			GdxQuery table=$.add(new Table()).appendTo($.add(new ScrollPane(null)).appendTo(stage).setPosition(-250, 0).setSize(220, 475).addAction(Actions.moveTo(-10,0,0.5f,Interpolation.pow4)).getItem());
+			CheckBoxStyle cstyle=new CheckBoxStyle();
+			cstyle.checkboxOff=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button.png");
+			cstyle.checkboxOn=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"menu_button_select.png");
+			String[] menus=new String[]{"status","equip","item","spellcard","tactic","note","system"};
+			for(int i=0;i<menus.length;i++){
+				boolean firstFlag=i==0;
+				$.add(new CheckBox("", cstyle,1).setFgOff(85).setForeground(Res.getNP(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"m_"+menus[i]+".png"))).appendTo(table.getItem()).run(new GdxQueryRunnable() {public void run(GdxQuery self) {
+					self.onClick(new Runnable() {public void run() {
+						for(Actor box:table.children().getItems())
+							$.add(box).not(self.getItem()).setChecked(false).addAction(Actions.moveTo(21, box.getY(),0.1f,Interpolation.pow4)).setDisabled(false).run(new GdxQueryRunnable() {public void run(GdxQuery self2) {
+								if(self2.length()!=0) ((CheckBox)self2.getItem()).setOther(null);
+							}});
+						
+						((CheckBox)self.getItem()).setOther(Res.getNP(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"menu_button_box.png")).setOtherPosition(160, -12);
+						self.cleanActions().addAction(Actions.moveTo(40, self.getY(),0.2f,Interpolation.pow4Out)).setDisabled(true).setChecked(true);
+					}});
+					((Table)table.getItem()).getCell(self.getItem()).padTop(5).padBottom(5).prefSize(179,76);
+					self.addAction(Actions.delay(0.4f,Actions.run(new Runnable() {public void run() {
+						if(firstFlag) self.click();
+					}})));
+				}}).setSize(179, 76);
+			}
+//			$.add(new CheckBox("", cstyle,1)).appendTo(table.getItem()).run(new GdxQueryRunnable() {public void run(GdxQuery self) {self.onClick(new Runnable() {public void run() {
+//			}});}});
+//			leftBar.addActor(table.getItem());
 		}}).appendTo(ld).setSize(370, 50).setPosition(-100, 20).addAction(Actions.moveTo(23, 20, .5f,Interpolation.pow2Out)).getCell().prefSize(370,50);
 		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"btn_save.png"))).onClick(new Runnable() {public void run() {
 			//TODO SAVE BUT CLICK

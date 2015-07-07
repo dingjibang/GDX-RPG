@@ -24,6 +24,10 @@ public class Res {
 		return new ProxyImage(resPath);
 	}
 	
+	public static Image getNP(String resPath){
+		return new Image(getTexture(resPath));
+	}
+	
 	public static void logic(){
 	}
 	

@@ -493,7 +493,7 @@ public abstract class BGActor extends Actor{
 
 	@Override
 	public void drawDebug(ShapeRenderer shapes) {
-		
+		if(image!=null && shapes!=null)
 		image.drawDebug(shapes);
 	}
 

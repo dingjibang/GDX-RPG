@@ -253,11 +253,6 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		return false;
 	}
 	
-	public boolean walkAble(){
-//		collide.
-		return false;
-	}
-	
 	private void testWalkerSize(){
 		walkStack.remove(walkStack.get(0));
 	}

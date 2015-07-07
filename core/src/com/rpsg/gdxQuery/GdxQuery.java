@@ -12,6 +12,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 /**
  * GDX-Query 
  * more simplified way to enjoy LibGDX
@@ -312,6 +313,13 @@ public class GdxQuery {
 		return this;
 	}
 	
+	public GdxQuery pack(){
+		for(Actor actor:getItems())
+			if(actor instanceof Widget)
+				((Widget)actor).pack();
+		return this;
+	}
+	
 	public GdxQuery fire(Event event){
 		for(Actor actor:getItems())
 			actor.fire(event);
@@ -392,13 +400,23 @@ public class GdxQuery {
 			if(o instanceof Stage)
 				for(Actor a:getItems())
 					((Stage)o).addActor(a);
-			if(o instanceof Group)
+			else if(o instanceof ScrollPane)
+					((ScrollPane)o).setWidget(getItem());
+			else if(o instanceof Table)
+				for(Actor a:getItems())
+					((Table)o).add(a).fill().row().prefSize(a.getWidth(),a.getHeight());
+			else if(o instanceof Group)
 				for(Actor a:getItems())
 					((Group)o).addActor(a);
-			if(o instanceof Table)
-				for(Actor a:getItems())
-					((Table)o).add(a).row();
+			
 		}
+		return this;
+	}
+	
+	public GdxQuery setBackground(Drawable draw){
+		for(Actor a:getItems())
+			if(a instanceof Table)
+				((Table)a).setBackground(draw);
 		return this;
 	}
 	
@@ -466,6 +484,20 @@ public class GdxQuery {
 			return null;
 		}
 		return null;
+	}
+
+	public GdxQuery setChecked(boolean b) {
+		for(Actor actor:getItems())
+			if(actor instanceof Button)
+				((Button)actor).setChecked(b);
+		return this;
+	}
+
+	public GdxQuery setDisabled(boolean b) {
+		for(Actor actor:getItems())
+			if(actor instanceof Button)
+				((Button)actor).setDisabled(b);
+		return this;
 	}
 
 }

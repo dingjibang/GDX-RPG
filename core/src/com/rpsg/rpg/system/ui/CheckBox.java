@@ -41,11 +41,33 @@ public class CheckBox extends TextButton {
 		super.setStyle(style);
 		this.style = (CheckBoxStyle)style;
 	}
-
+	
+	Image fg,other;
+	public CheckBox setForeground(Image draw){
+		fg=draw;
+		return this;
+	}
+	
+	public CheckBox setOther(Image draw){
+		other=draw;
+		return this;
+	}
+	int fgoff=0;
+	
+	public CheckBox setFgOff(int off){
+		fgoff=off;
+		return this;
+	}
+	
 	public CheckBoxStyle getStyle () {
 		return style;
 	}
-
+	int otherX,otherY;
+	public CheckBox setOtherPosition(int x,int y){
+		otherX=x;otherY=y;
+		return this;
+	}
+	
 	public void draw (Batch batch, float parentAlpha) {
 		Drawable checkbox = null;
 		if (isDisabled()) {
@@ -67,6 +89,19 @@ public class CheckBox extends TextButton {
 		image.setPosition(getX(), getY());
 //		super.draw(batch, parentAlpha);
 		FontUtil.draw((SpriteBatch)batch, getText(), fontSize, style.fontColor==null?Color.WHITE:style.fontColor,(int)(getX()+image.getWidth()), (int)(image.getY()+fontSize), 1000);
+		if(fg!=null){
+			fg.setX(getX()+(getPrefWidth()/2-fg.getWidth()/2)+fgoff);
+			fg.setY(getY()+(getHeight()/2-fg.getHeight()/2));
+			fg.setColor(getColor());
+			fg.draw(batch);
+		}
+		if(other!=null){
+			System.out.println("aaa");
+			other.setX(getX()+otherX);
+			other.setY(getY()+otherY);
+			other.setColor(getColor());
+			other.draw(batch);
+		}
 	}
 //	Runnable run;
 //	public CheckBox onClick(Runnable r){
