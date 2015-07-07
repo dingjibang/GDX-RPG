@@ -47,9 +47,9 @@ public class MenuView extends StackView{
 	
 	public static Stage stage;
 	static GdxFrame frames;
-	WidgetGroup leftBar;//左边栏
 	@Override
 	public void init() {
+		WidgetGroup leftBar;//左边栏
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		//左边栏相关
 		$.add(leftBar=new WidgetGroup()).appendTo(stage).setPosition(-500, 0).addAction(Actions.moveTo(0, 0,0.3f,Interpolation.pow2Out));
