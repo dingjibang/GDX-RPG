@@ -30,6 +30,8 @@ import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HeroController;
+import com.rpsg.rpg.system.controller.MenuController;
+import com.rpsg.rpg.system.controller.MenuController.Menu;
 import com.rpsg.rpg.system.ui.CheckBox;
 import com.rpsg.rpg.system.ui.CheckBox.CheckBoxStyle;
 import com.rpsg.rpg.system.ui.ImageButton;
@@ -105,18 +107,20 @@ public class MenuView extends StackView{
 			CheckBoxStyle cstyle=new CheckBoxStyle();
 			cstyle.checkboxOff=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button.png");
 			cstyle.checkboxOn=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"menu_button_select.png");
-			String[] menus=new String[]{"status","equip","item","spellcard","tactic","note","system"};
-			for(int i=0;i<menus.length;i++){
+			for(int i=0;i<MenuController.generate().size();i++){
 				boolean firstFlag=i==0;
-				$.add(new CheckBox("", cstyle,1).setFgOff(85).setForeground(Res.getNP(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"m_"+menus[i]+".png"))).appendTo(table.getItem()).run(new GdxQueryRunnable() {public void run(GdxQuery self) {
+				Menu currentMenu=MenuController.generate().get(i);
+				$.add(new CheckBox("", cstyle,1).setFgOff(85).setForeground(Res.getNP(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"m_"+currentMenu.fileName+".png"))).appendTo(table.getItem()).run(new GdxQueryRunnable() {public void run(GdxQuery self) {
 					self.onClick(new Runnable() {public void run() {
 						for(Actor box:table.children().getItems())
 							$.add(box).not(self.getItem()).setChecked(false).addAction(Actions.moveTo(21, box.getY(),0.1f,Interpolation.pow4)).setDisabled(false).run(new GdxQueryRunnable() {public void run(GdxQuery self2) {
 								if(self2.length()!=0) ((CheckBox)self2.getItem()).setOther(null);
 							}});
-						
 						((CheckBox)self.getItem()).setOther(Res.getNP(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"menu_button_box.png")).setOtherPosition(160, -12);
 						self.cleanActions().addAction(Actions.moveTo(40, self.getY(),0.2f,Interpolation.pow4Out)).setDisabled(true).setChecked(true);
+						menuLabel.text(currentMenu.name);
+						if(currentMenu.view != null)
+							tryToAdd(currentMenu.view);
 					}});
 					((Table)table.getItem()).getCell(self.getItem()).padTop(5).padBottom(5).prefSize(179,76);
 					self.addAction(Actions.delay(0.4f,Actions.run(new Runnable() {public void run() {
@@ -165,7 +169,8 @@ public class MenuView extends StackView{
 
 	@Override
 	public void logic() {
-		
+		for(View view:viewStack)
+			view.logic();
 	}
 
 	public void onkeyTyped(char character) {
@@ -174,7 +179,7 @@ public class MenuView extends StackView{
 	}
 
 	public void onkeyDown(int keyCode) {
-		if(/** viewStack.size()==1 && **/(Keys.ESCAPE==keyCode || keyCode==Keys.X)){
+		if( viewStack.size()==0 && (Keys.ESCAPE==keyCode || keyCode==Keys.X)){
 			this.dispose();
 			com.rpsg.rpg.system.controller.InputController.currentIOMode=IOMode.MAP_INPUT_NORMAL;
 			frames=null;

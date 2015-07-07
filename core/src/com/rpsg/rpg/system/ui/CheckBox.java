@@ -96,7 +96,6 @@ public class CheckBox extends TextButton {
 			fg.draw(batch);
 		}
 		if(other!=null){
-			System.out.println("aaa");
 			other.setX(getX()+otherX);
 			other.setY(getY()+otherY);
 			other.setColor(getColor());

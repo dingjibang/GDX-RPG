@@ -37,7 +37,7 @@ public class MenuBaseView extends View{
 	Image map;
 	ShapeRenderer render;
 	public void init() {
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),GameMenuView.stage.getBatch());
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"info_bg.png")).setPosition(GameUtil.screen_width, 360).fadeOut().addAction((Actions.delay(0.05f, Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(470,360,0.1f))))).appendTo(stage);
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_GLOBAL + "info_level.png")).setPosition(521, 389).fadeOut().addAction((Actions.delay(0.05f, Actions.parallel(Actions.fadeIn(0.15f),Actions.moveTo(480.5f,388.5f,0.15f))))).appendTo(stage);
 		$.add(Res.get(Setting.GAME_RES_IMAGE_FG + HeroController.getHeadHero().fgname + "/Normal.png")).setPosition(900, 0).setScaleX(-0.32f).setScaleY(0.32f).setColor(0,0,0,0).addAction(Actions.parallel(Actions.moveTo(1050, 0, 0.15f), Actions.color(new Color(0, 0, 0, .5f), 0.5f))).setOrigin(Align.bottomLeft).appendTo(stage);

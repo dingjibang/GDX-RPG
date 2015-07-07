@@ -46,7 +46,7 @@ public class SystemView extends DefaultIView{
 	boolean isstop;
 	public void init() {
 		
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),GameMenuView.stage.getBatch());
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		Table table = new Table();
 		
 		TextButtonStyle butstyle=new TextButtonStyle();
