@@ -12,6 +12,7 @@ need java7+, and friendly for 'IDEA' IDE
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/2.png)
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/3.png)
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/4.png)
+![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/5.png)
 # How To Start
 clone this project into your IDE, and, run it now<br/>
 or clone the project and compile to jar file.
