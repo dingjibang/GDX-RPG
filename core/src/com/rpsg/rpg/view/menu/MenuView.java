@@ -48,17 +48,21 @@ import com.rpsg.rpg.view.GameViews;
 public class MenuView extends StackView{
 	
 	public static Stage stage;
-	static GdxFrame frames;
+	GdxFrame frames;
+	public Hero current;
+	List<GdxQuery> boxs;
+	boolean status=false;
 	@Override
 	public void init() {
-		WidgetGroup leftBar;//左边栏
+		final WidgetGroup leftBar;//左边栏
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		//左边栏相关
 		$.add(leftBar=new WidgetGroup()).appendTo(stage).setPosition(-500, 0).addAction(Actions.moveTo(0, 0,0.3f,Interpolation.pow2Out));
-		Actor hr,exit;//左边栏hr下方
-		WidgetGroup fgGroup=(WidgetGroup) $.add(new WidgetGroup()).appendTo(stage).getItem();//右侧
+		final Actor hr;//左边栏hr下方
+		final Actor exit;
+		final WidgetGroup fgGroup=(WidgetGroup) $.add(new WidgetGroup()).appendTo(stage).getItem();//右侧
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"bg.png")).setHeight(1024).setPosition(0, 0).appendTo(leftBar);
-		WidgetGroup ld=(WidgetGroup) $.add(new WidgetGroup()).appendTo(leftBar).getItem();
+		final WidgetGroup ld=(WidgetGroup) $.add(new WidgetGroup()).appendTo(leftBar).getItem();
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_pos.png")).setPosition(-100, 330).appendTo(ld).addAction(Actions.moveTo(35, 330,0.55f,Interpolation.pow2Out));
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_gold.png")).setPosition(-100, 275).appendTo(ld).addAction(Actions.moveTo(35, 275,0.55f,Interpolation.pow2Out));
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_flag.png")).setPosition(-100, 212).appendTo(ld).addAction(Actions.moveTo(35, 212,0.55f,Interpolation.pow2Out));
@@ -90,8 +94,9 @@ public class MenuView extends StackView{
 				disposes();
 			}
 		}).appendTo(leftBar);
-		Label menuLabel=new Label("", 32);
+		final Label menuLabel=new Label("", 32);
 		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"btn_more.png"))).onClick(new Runnable() {public void run() {
+			status=true;
 			ld.addAction(Actions.parallel(Actions.moveTo(-500, 0,0.5f,Interpolation.exp5),Actions.fadeOut(0.2f)));
 			leftBar.addAction(Actions.moveTo(-230,0,0.5f,Interpolation.pow4));
 			exit.addAction(Actions.moveTo(255, 510,0.5f,Interpolation.pow4));
@@ -100,14 +105,14 @@ public class MenuView extends StackView{
 			hr.addAction(Actions.parallel(Actions.sizeTo(147, hr.getHeight(),0.2f),Actions.moveTo(250, 490,0.3f)));
 			$.add(menuLabel.text("状态")).setPosition(-200, 545).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(310,545,0.3f))).appendTo(leftBar);
 			
-			GdxQuery table=$.add(new Table()).appendTo($.add(new ScrollPane(null)).appendTo(stage).setPosition(-250, 0).setSize(220, 475).addAction(Actions.moveTo(-10,0,0.5f,Interpolation.pow4)).getItem());
+			final GdxQuery table=$.add(new Table()).appendTo($.add(new ScrollPane(null)).appendTo(stage).setPosition(-250, 0).setSize(220, 475).addAction(Actions.moveTo(-10,0,0.5f,Interpolation.pow4)).getItem());
 			CheckBoxStyle cstyle=new CheckBoxStyle();
 			cstyle.checkboxOff=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button.png");
 			cstyle.checkboxOn=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"menu_button_select.png");
 			for(int i=0;i<MenuController.generate().size();i++){
-				boolean firstFlag=i==0;
-				Menu currentMenu=MenuController.generate().get(i);
-				$.add(new CheckBox("", cstyle,1).setFgOff(85).setForeground(Res.getNP(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"m_"+currentMenu.fileName+".png"))).appendTo(table.getItem()).run(new GdxQueryRunnable() {public void run(GdxQuery self) {
+				final boolean firstFlag=i==0;
+				final Menu currentMenu=MenuController.generate().get(i);
+				$.add(new CheckBox("", cstyle,1).setFgOff(85).setForeground(Res.getNP(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"m_"+currentMenu.fileName+".png"))).appendTo(table.getItem()).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {
 					self.onClick(new Runnable() {public void run() {
 						for(Actor box:table.children().getItems())
 							$.add(box).not(self.getItem()).setChecked(false).addAction(Actions.moveTo(21, box.getY(),0.1f,Interpolation.pow4)).setDisabled(false).run(new GdxQueryRunnable() {public void run(GdxQuery self2) {
@@ -140,24 +145,33 @@ public class MenuView extends StackView{
 		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"btn_load.png"))).onClick(new Runnable() {public void run() {
 			//TODO LOAD BUT CLICK
 		}}).appendTo(ld).setSize(172, 76).setPosition(0, 90).addAction(Actions.moveTo(221, 90, 0.5f,Interpolation.pow2Out)).getCell().prefSize(172,76);
-		List<GdxQuery> boxs=new ArrayList<GdxQuery>();//角色框
+		boxs=new ArrayList<GdxQuery>();//角色框
 		
 		for(int i=0;i<HeroController.heros.size();i++)
-			boxs.add($.add(new MenuHeroBox(HeroController.heros.get(i))).appendTo(ld).setPosition(-i*100, 400).addAction(Actions.moveTo(i*100+25, 400,0.7f,Interpolation.pow2Out)).run(new GdxQueryRunnable() {public void run(GdxQuery self) {self.onClick(new Runnable() {public void run() {
-				for(GdxQuery _box:boxs)
-					((MenuHeroBox) _box.getItem()).setSelect(false);
-				((MenuHeroBox) self.getItem()).setSelect(true);
-				$.add(fgGroup).children().removeAll();
-				Hero hero=((MenuHeroBox) self.getItem()).hero;
-				$.add(Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(fgGroup).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(1200, 0).setColor(0,0,0,0).addAction(Actions.parallel(Actions.color(new Color(0,0,0,0.3f),1f),Actions.moveTo(1030, 0,0.75f,Interpolation.pow2Out)));
-				$.add(Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(fgGroup).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(1200, 0).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(1000, 0,0.7f,Interpolation.pow2Out)));
-				$.add(Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/card.png")).appendTo(fgGroup).setOrigin(Align.bottomLeft).setPosition(1200, 80).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.6f),Actions.moveTo(520, 80,0.6f,Interpolation.pow2Out)));
+			boxs.add($.add(new MenuHeroBox(HeroController.heros.get(i))).appendTo(ld).setPosition(-i*100, 400).addAction(Actions.moveTo(i*100+25, 400,0.7f,Interpolation.pow2Out)).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
+				if(current==null || current!=((MenuHeroBox)self.getItem()).hero){
+					for(GdxQuery _box:boxs)
+						((MenuHeroBox) _box.getItem()).setSelect(false);
+					((MenuHeroBox) self.getItem()).setSelect(true);
+					$.add(fgGroup).children().removeAll();
+					Hero hero=((MenuHeroBox) self.getItem()).hero;
+					$.add(Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(fgGroup).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(1200, 0).setColor(0,0,0,0).addAction(Actions.parallel(Actions.color(new Color(0,0,0,0.3f),1f),Actions.moveTo(1030, 0,0.75f,Interpolation.pow2Out)));
+					$.add(Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(fgGroup).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(1200, 0).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(1000, 0,0.7f,Interpolation.pow2Out)));
+					if(!status) $.add(Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/card.png")).appendTo(fgGroup).setOrigin(Align.bottomLeft).setPosition(1200, 80).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.6f),Actions.moveTo(520, 80,0.6f,Interpolation.pow2Out)));
+					current=((MenuHeroBox)self.getItem()).hero;
+				}
 			}});}}));
 		boxs.get(MathUtils.random(boxs.size()-1)).click();
 		//设置点击音效
 		$.add(ld).children().find(ImageButton.class,MenuHeroBox.class).onClick(new Runnable() {public void run() {
 			Music.playSE("snd210");
 		}});
+	}
+	
+	public void click(Hero hero){
+		for(GdxQuery box:boxs)
+			if(((MenuHeroBox)box.getItem()).hero.equals(hero))
+				box.click();
 	}
 
 	@Override
@@ -201,6 +215,15 @@ public class MenuView extends StackView{
 		}
 	}
 	
+	List<Hero> heros;
+	public List<Hero> getHeros(){
+		if(heros==null){
+			heros=new ArrayList<Hero>();
+			for(GdxQuery query:boxs)
+				heros.add(((MenuHeroBox)query.getItem()).hero);
+		}
+		return heros;
+	}
 	
 
 	public void onkeyUp(int keyCode) {

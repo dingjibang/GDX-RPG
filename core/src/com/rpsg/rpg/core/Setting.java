@@ -34,6 +34,7 @@ public class Setting {
 	public static final String GAME_RES_IMAGE_MENU_SC			=GAME_RES_IMAGE_MENU +"sc/";
 	public static final String GAME_RES_IMAGE_MENU_ITEM			=GAME_RES_IMAGE_MENU +"item/";
 	public static final String GAME_RES_IMAGE_MENU_STATUS		=GAME_RES_IMAGE_MENU +"status/";
+	public static final String GAME_RES_IMAGE_MENU_NEW_STATUS	=GAME_RES_IMAGE_MENU +"nstatus/";
 	public static final String GAME_RES_IMAGE_MENU_SYSTEM		=GAME_RES_IMAGE_MENU +"system/";
 	public static final String GAME_RES_IMAGE_MENU_TACTIC		=GAME_RES_IMAGE_MENU +"tactic/";
 		
@@ -62,6 +63,7 @@ public class Setting {
 	//UI
 	public static NinePatchDrawable UI_BUTTON;
 	public static String UI_BASE_IMG=Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"white.jpg";
+	public static String UI_BASE_PRO=Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"prograssbar.png";
 	public static void init(){
 		UI_BUTTON=new NinePatchDrawable(AlertUtil.processNinePatchFile(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button_p.png"));
 	}

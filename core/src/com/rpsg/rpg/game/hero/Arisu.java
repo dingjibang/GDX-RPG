@@ -15,7 +15,7 @@ public class Arisu extends Hero{
 		name="结成有栖";
 		jname="Yuki Arisu";
 		fgname="arisu";
-		tag="人类，主角";
+		tag="主角";
 		sc.add(new MagicGun());
 		sc.add(new patientBack());
 		prop.put("hp", 150);
