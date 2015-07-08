@@ -1,8 +1,7 @@
 # GDX-RPG
 learning libgdx...
-
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-LAZY-FONT/master/foobar.jpg)
-
+![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share.png)
 官网/website:  [http://shadow.rpsg-team.com](http://shadow.rpsg-team.com)<br/>
 
 need java7+, and friendly for 'IDEA' IDE
