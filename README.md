@@ -1,11 +1,17 @@
 # GDX-RPG
 learning libgdx...
+
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-LAZY-FONT/master/foobar.jpg)
-![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share.png)
 官网/website:  [http://shadow.rpsg-team.com](http://shadow.rpsg-team.com)<br/>
 
 need java7+, and friendly for 'IDEA' IDE
 
+# Screenshot
+![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/share.png)
+![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/1.png)
+![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/2.png)
+![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/3.png)
+![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/4.png)
 # How To Start
 clone this project into your IDE, and, run it now<br/>
 or clone the project and compile to jar file.
