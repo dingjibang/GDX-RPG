@@ -234,7 +234,7 @@ public class EquipView extends View{
 		
 		elist.onDBClick(new Runnable() {
 			@Override
-			public void run() {
+			public void run() { 
 				if (!elist.getSelected().name.equals(EmptyEquip.gloname)) {
 					olist.setVisible(true);
 					olist.setSelectedIndex(0);
