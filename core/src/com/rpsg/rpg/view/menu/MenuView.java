@@ -87,10 +87,7 @@ public class MenuView extends StackView{
 		$.add(exit=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_exit_p.png"))).setPosition(-100, 510).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(20, 510,0.6f,Interpolation.pow2Out))).onClick(new Runnable() {
 			public void run() {
 				Music.playSE("snd210");
-				if(viewStack.size()!=0)
-					disposes();
-				else
-					onkeyDown(Keys.ESCAPE);
+				disposes();
 			}
 		}).appendTo(leftBar);
 		Label menuLabel=new Label("", 32);
@@ -98,7 +95,7 @@ public class MenuView extends StackView{
 			ld.addAction(Actions.parallel(Actions.moveTo(-500, 0,0.5f,Interpolation.exp5),Actions.fadeOut(0.2f)));
 			leftBar.addAction(Actions.moveTo(-230,0,0.5f,Interpolation.pow4));
 			exit.addAction(Actions.moveTo(255, 510,0.5f,Interpolation.pow4));
-			fgGroup.addAction(Actions.moveTo(70,0,0.5f,Interpolation.pow4Out));
+			fgGroup.addAction(Actions.moveTo(60,0,0.5f,Interpolation.pow4Out));
 			$.add(fgGroup).children().getItem(2).addAction(Actions.parallel(Actions.moveTo(730, 80,0.5f,Interpolation.pow4Out),Actions.fadeOut(0.3f)));
 			hr.addAction(Actions.parallel(Actions.sizeTo(147, hr.getHeight(),0.2f),Actions.moveTo(250, 490,0.3f)));
 			$.add(menuLabel.text("状态")).setPosition(-200, 545).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(310,545,0.3f))).appendTo(leftBar);
@@ -119,8 +116,13 @@ public class MenuView extends StackView{
 						((CheckBox)self.getItem()).setOther(Res.getNP(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"menu_button_box.png")).setOtherPosition(160, -12);
 						self.cleanActions().addAction(Actions.moveTo(40, self.getY(),0.2f,Interpolation.pow4Out)).setDisabled(true).setChecked(true);
 						menuLabel.text(currentMenu.name);
-						if(currentMenu.view != null)
+						if(currentMenu.view != null){
 							tryToAdd(currentMenu.view);
+							if(!currentMenu.view.equals(StatusView.class))
+								fgGroup.addAction(Actions.parallel(Actions.moveTo(500,0),Actions.fadeOut(0)));
+							else
+								fgGroup.addAction(Actions.parallel(Actions.moveTo(60,0,0.6f,Interpolation.pow4Out),Actions.fadeIn(0.5f)));
+						}
 					}});
 					((Table)table.getItem()).getCell(self.getItem()).padTop(5).padBottom(5).prefSize(179,76);
 					self.addAction(Actions.delay(0.4f,Actions.run(new Runnable() {public void run() {
@@ -163,14 +165,22 @@ public class MenuView extends StackView{
 		frames.logic();
 		stage.act();
 		stage.draw();
-		for(View view:viewStack)
-			view.draw(batch);
+		if(viewStack.size()!=0)
+			viewStack.get(viewStack.size()-1).draw(batch);
 	}
 
 	@Override
 	public void logic() {
-		for(View view:viewStack)
-			view.logic();
+		if(viewStack.size()!=0)
+			viewStack.get(viewStack.size()-1).logic();
+		List<View> removeList=new ArrayList<View>();
+		for(View view:viewStack){
+			if(view.disposed){
+				view.dispose();
+				removeList.add(view);
+			}
+		}
+		viewStack.removeAll(removeList);
 	}
 
 	public void onkeyTyped(char character) {
@@ -262,9 +272,9 @@ public class MenuView extends StackView{
 	public void disposes() {
 		for(int size=GameViews.gameview.stackView.viewStack.size();size>0;size--){
 			onkeyDown(Keys.ESCAPE);
-			if(viewStack.size()!=1)
-				viewStack.remove(viewStack.size()-1);
+			viewStack.remove(viewStack.size()-1);
 		}
+		onkeyDown(Keys.ESCAPE);
 	}
 
 }
