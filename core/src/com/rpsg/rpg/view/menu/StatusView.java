@@ -66,10 +66,8 @@ public class StatusView extends DefaultIView {
 		$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,27).setPosition(142, 75).appendTo(group).setColor(Color.valueOf("c33737")).addAction(Actions.delay(0.3f,Actions.sizeTo(((float)parent.current.prop.get("exp")/(float)parent.current.prop.get("maxexp"))*327, 27,0.4f,Interpolation.pow4Out)));
 		$.add(new Label(parent.current.prop.get("exp")+"/"+parent.current.prop.get("maxexp"),20).align(300, 97).setPad(-5)).appendTo(group).setColor(Color.valueOf("3bb740"));
 		$.add(new Label(parent.current.prop.get("level")+1+"",20).align(485, 88)).appendTo(group);
-		if(!parent.current.lead)
-			$.add(new Label(parent.current.association.name+"（等级"+parent.current.association.level+"）",24).align(310, 65)).appendTo(group);
-		else
-			$.add(new Label("无信息",24).align(310, 65)).appendTo(group);
+		$.add(new Label(parent.current.lead?"无信息":parent.current.association.name+"（等级"+parent.current.association.level+"）",20).align(320, 65)).appendTo(group);
+		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+"more_soc_info.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+"more_soc_info_p.png"))).appendTo(group).setX(142);
 	}
 
 	public int y(int y){
