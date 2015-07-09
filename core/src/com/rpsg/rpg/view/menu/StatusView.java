@@ -40,7 +40,7 @@ public class StatusView extends DefaultIView {
 	public void init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		group=(Group) $.add(new Group()).setHeight(1500).getItem();
-		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"menu_fg_shadow.png").disableTouch()).appendTo(group).setPosition(80, y(30)).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(.3f),Actions.moveTo(80, y(180),0.3f,Interpolation.pow4Out)));
+		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"menu_fg_shadow.png").disableTouch()).appendTo(group).setPosition(50, y(30)).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(.3f),Actions.moveTo(50, y(180),0.3f,Interpolation.pow4Out)));
 		inner=(Group) $.add(new Group()).setHeight(1500).appendTo(group).getItem();
 		$.add(new ScrollPane(group)).setSize(GameUtil.screen_width-190, GameUtil.screen_height).setX(190).appendTo(stage);
 //		stage.setDebugAll(true);
@@ -50,15 +50,15 @@ public class StatusView extends DefaultIView {
 	
 	private void generate() {
 		inner.clear();
-		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"m_right.png")).appendTo(inner).setPosition(600, y(150)).onClick(new Runnable() {public void run() {
+		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"m_right.png")).appendTo(inner).setPosition(570, y(150)).onClick(new Runnable() {public void run() {
 			next();
 		}}).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);
-		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"m_right.png")).setScaleX(-1).appendTo(inner).setPosition(66, y(150)).onClick(new Runnable() {public void run() {
+		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"m_right.png")).setScaleX(-1).appendTo(inner).setPosition(36, y(150)).onClick(new Runnable() {public void run() {
 			prev();
 		}}).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);
-		$.add(new Label(parent.current.name,parent.current.name.length()>7?50:60).align(336, y(90))).appendTo(inner).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);;
-		$.add(new Label(parent.current.jname,30).align(360, y(155)).setPad(-8)).setColor(1,1,1,0f).appendTo(inner).addAction(Actions.color(new Color(1,1,1,0.3f),0.2f));
-		Group group=(Group) $.add(new Group()).setX(100).addAction(Actions.parallel(Actions.moveTo(100,y(350),0.5f,Interpolation.pow4Out),Actions.fadeIn(0.4f))).setColor(1, 1, 1,0).appendTo(inner).getItem();
+		$.add(new Label(parent.current.name,parent.current.name.length()>7?50:60).align(306, y(90))).appendTo(inner).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);;
+		$.add(new Label(parent.current.jname,30).align(326, y(155)).setPad(-8)).setColor(1,1,1,0f).appendTo(inner).addAction(Actions.color(new Color(1,1,1,0.3f),0.2f));
+		Group group=(Group) $.add(new Group()).setX(100).addAction(Actions.parallel(Actions.moveTo(70,y(350),0.5f,Interpolation.pow4Out),Actions.fadeIn(0.4f))).setColor(1, 1, 1,0).appendTo(inner).getItem();
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+"info.png")).appendTo(group);
 		$.add(new Label(parent.current.prop.get("level")+"",60).align(40, 90)).appendTo(group);
 		$.add(new Label(parent.current.tag+"",20).align(60, 28)).appendTo(group).setColor(1,1,1,0.3f);

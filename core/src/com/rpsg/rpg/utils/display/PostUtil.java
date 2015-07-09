@@ -80,7 +80,7 @@ public class PostUtil {
 		
 		$.add(Res.get(Setting.GAME_RES_IMAGE_GLOBAL+"menu_leftbar.png").position(522, 0)).appendTo(group);
 		labelsFrame.add($.add(new Label("",24).setWidth(1000)).setPosition(675, 558).appendTo(group),new GdxQueryRunnable() {public void run(GdxQuery self) {
-			((Label)self.getItem()).setText(GameViews.global.tyear+"年"+GameViews.global.tmonth+"月"+GameViews.global.tday+"日");
+			((Label)self.getItem()).setText(/*GameViews.global.date.get+"年"+*/GameViews.global.date.getMonth()+"月"+GameViews.global.date.getDay()+"日");
 		}});
 		labelsFrame.add($.add(new Label("",18).setWidth(1000)).setPosition(680,525).appendTo(group),new GdxQueryRunnable() {public void run(GdxQuery self) {
 			((Label)self.getItem()).setText("游戏已进行"+TimeUtil.getGameRunningTime());

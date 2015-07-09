@@ -29,6 +29,7 @@ import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.utils.game.GameDate.Time;
 import com.rpsg.rpg.view.GameViews;
 
 public class MenuBaseView extends View{
@@ -87,8 +88,8 @@ public class MenuBaseView extends View{
 	Color yellow=new Color(232f/255f,202f/255f,12f/255f,1);
 	int frame=0;
 	int step=1;
-	String currTime=GameViews.global.tyear+" 年 "+GameViews.global.tmonth+" 月 "+GameViews.global.tday+" 日";
-	String currDay=GameViews.global.mapColor==ColorUtil.DAY?"昼":(GameViews.global.mapColor==ColorUtil.NIGHT?"夜":"暝");
+	String currTime=/**GameViews.global.get+" 年 "**/+GameViews.global.date.getMonth()+" 月 "+GameViews.global.date.getDay()+" 日";
+	String currDay=GameViews.global.date.getTime()==Time.DAY?"昼":(GameViews.global.date.getTime()==Time.NIGHT?"夜":"暝");
 	Image time;
 	int deg=(int) (365f*((float)HeroController.getHeadHero().prop.get("exp")/(float)(float)HeroController.getHeadHero().prop.get("maxexp")));
 	int stepdeg=0;

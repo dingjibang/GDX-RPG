@@ -32,7 +32,7 @@ public class SL {
 			Files.save(global,Setting.GAME_PERSISTENCE+fileID+".dat");
 			global.npcs.clear();
 			SLData slData=new SLData();
-			slData.gameDate=global.tyear+"年"+global.tmonth+"月"+global.tday+"日";
+			slData.gameDate=/*global.date+"年"+*/global.date.getMonth()+"月"+global.date.getDay()+"日";
 			slData.id=fileID;
 			slData.level=global.currentHeros.get(0).prop.get("level");
 			slData.mapName=(String)GameViews.gameview.map.getProperties().get("name");

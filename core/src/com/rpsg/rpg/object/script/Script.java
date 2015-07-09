@@ -15,6 +15,7 @@ import com.rpsg.rpg.utils.display.Msg;
 import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.display.WeatherUtil;
 import com.rpsg.rpg.utils.game.Base;
+import com.rpsg.rpg.utils.game.GameDate;
 import com.rpsg.rpg.utils.game.Heros;
 import com.rpsg.rpg.utils.game.Move;
 import com.rpsg.rpg.utils.game.Timer;
@@ -180,8 +181,8 @@ public abstract class Script implements MsgType,FGType{
 		return Heros.swapHeroQueue(this, c1 , c2);
 	}
 	
-	public BaseScriptExecutor setGameTime(int color){
-		return ColorUtil.set(this, color);
+	public BaseScriptExecutor setGameTime(GameDate.Time time){
+		return ColorUtil.set(this, time);
 	}
 	
 	public BaseScriptExecutor select(String ... args){

@@ -1,23 +1,21 @@
 package com.rpsg.rpg.utils.game;
 
 import java.io.Serializable;
-
 public class GameDate implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Time time;
-	private int month;
-	private int day;
+	private int month=1;
+	private int day=1;
 
 	public static enum Time {
-		DAY, NIGHT, DUSK;
+		DAY, NIGHT, DUSK
 	}
 
 	public void addDay(int count) {
 		int status = 1;
-		int[] daycount = { 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304,
-				334,365};
+		int[] daycount = { 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334,365};
 		int days = daycount[this.month-1] + this.day + count;
 		if (days > 365) {
 			days -= 365;

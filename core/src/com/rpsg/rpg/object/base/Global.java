@@ -12,6 +12,7 @@ import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.WeatherUtil;
+import com.rpsg.rpg.utils.game.GameDate;
 
 public class Global implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -29,11 +30,7 @@ public class Global implements Serializable{
 	public boolean first = true;
 	
 	//时间模块
-	public int mapColor = ColorUtil.DAY;
-	public int tyear=2015;
-	public int tmonth=3;
-	public int tday=10;
-	
+	public GameDate date=new GameDate(); 
 	public int weather=WeatherUtil.WEATHER_NO;
 	
 	

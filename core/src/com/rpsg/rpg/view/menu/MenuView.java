@@ -43,6 +43,7 @@ import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.WeatherUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.TimeUtil;
+import com.rpsg.rpg.utils.game.GameDate.Time;
 import com.rpsg.rpg.view.GameViews;
 //基本菜单视图
 public class MenuView extends StackView{
@@ -66,11 +67,11 @@ public class MenuView extends StackView{
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_pos.png")).setPosition(-100, 330).appendTo(ld).addAction(Actions.moveTo(35, 330,0.55f,Interpolation.pow2Out));
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_gold.png")).setPosition(-100, 275).appendTo(ld).addAction(Actions.moveTo(35, 275,0.55f,Interpolation.pow2Out));
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_flag.png")).setPosition(-100, 212).appendTo(ld).addAction(Actions.moveTo(35, 212,0.55f,Interpolation.pow2Out));
-		frames=$.add($.add(new Label("",24).setWidth(1000).setPos(0, 558).setPad(-6)).appendTo(ld).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(90,558,0.5f))),new GdxQueryRunnable() {public void run(GdxQuery self) {
-			((Label)self.getItem()).setText(GameViews.global.tyear+"/"+GameViews.global.tmonth+"/"+GameViews.global.tday);
+		frames=$.add($.add(new Label("",24).setWidth(1000).setPos(0, 558)).appendTo(ld).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(120,558,0.5f))),new GdxQueryRunnable() {public void run(GdxQuery self) {
+			((Label)self.getItem()).setText(/*GameViews.global.tyear+"/"+*/GameViews.global.date.getMonth()+"月"+GameViews.global.date.getDay()+"日");
 		}});
 		frames.add($.add(new Label("",24).setWidth(1000).right(true).setPos(0, 558)).appendTo(ld).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(380,558,0.5f,Interpolation.pow2Out))),new GdxQueryRunnable() {public void run(GdxQuery self) {
-			((Label)self.getItem()).setText(((GameViews.global.mapColor==ColorUtil.DAY?"上午":(GameViews.global.mapColor==ColorUtil.NIGHT?"夜晚":"黄昏"))+" "+WeatherUtil.getName()));
+			((Label)self.getItem()).setText(((GameViews.global.date.getTime()==Time.DAY?"上午":(GameViews.global.date.getTime()==Time.NIGHT?"夜晚":"黄昏"))+" "+WeatherUtil.getName()));
 		}}); 
 		frames.add($.add(new Label("",18).setWidth(1000).right(true).setPos(383, 525)).appendTo(ld).setColor(1,1,1,0).addAction(Actions.fadeIn(0.7f)),new GdxQueryRunnable() {public void run(GdxQuery self) {
 			((Label)self.getItem()).setText("游戏已进行"+TimeUtil.getGameRunningTime());
@@ -100,7 +101,7 @@ public class MenuView extends StackView{
 			ld.addAction(Actions.parallel(Actions.moveTo(-500, 0,0.5f,Interpolation.exp5),Actions.fadeOut(0.2f)));
 			leftBar.addAction(Actions.moveTo(-230,0,0.5f,Interpolation.pow4));
 			exit.addAction(Actions.moveTo(255, 510,0.5f,Interpolation.pow4));
-			fgGroup.addAction(Actions.moveTo(60,0,0.5f,Interpolation.pow4Out));
+			fgGroup.addAction(Actions.moveTo(115,0,0.5f,Interpolation.pow4Out));
 			$.add(fgGroup).children().getItem(2).addAction(Actions.parallel(Actions.moveTo(730, 80,0.5f,Interpolation.pow4Out),Actions.fadeOut(0.3f)));
 			hr.addAction(Actions.parallel(Actions.sizeTo(147, hr.getHeight(),0.2f),Actions.moveTo(250, 490,0.3f)));
 			$.add(menuLabel.text("状态")).setPosition(-200, 545).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(310,545,0.3f))).appendTo(leftBar);
@@ -126,7 +127,7 @@ public class MenuView extends StackView{
 							if(!currentMenu.view.equals(StatusView.class))
 								fgGroup.addAction(Actions.parallel(Actions.moveTo(500,0),Actions.fadeOut(0)));
 							else
-								fgGroup.addAction(Actions.parallel(Actions.moveTo(60,0,0.6f,Interpolation.pow4Out),Actions.fadeIn(0.5f)));
+								fgGroup.addAction(Actions.parallel(Actions.moveTo(115,0,0.6f,Interpolation.pow4Out),Actions.fadeIn(0.5f)));
 						}
 					}});
 					((Table)table.getItem()).getCell(self.getItem()).padTop(5).padBottom(5).prefSize(179,76);
