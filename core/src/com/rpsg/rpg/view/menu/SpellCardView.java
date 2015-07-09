@@ -33,13 +33,14 @@ import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.ui.HeroImage;
+import com.rpsg.rpg.system.ui.IMenuView;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameViews;
 
-public class SpellCardView extends View{
+public class SpellCardView extends IMenuView{
 	Stage stage;
 	List<HeroImage> heros=new ArrayList<HeroImage>();
 	Image map;
@@ -66,21 +67,6 @@ public class SpellCardView extends View{
 		
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		
-		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png"))).setPosition(960, 550).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(960, 510,0.1f))).onClick(new Runnable() {
-			@Override
-			public void run() {
-				Music.playSE("snd210");
-				GameViews.gameview.stackView.disposes();
-			}
-		}).appendTo(stage);
-		
-		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"min.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"minc.png"))).setPosition(910, 550).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(910, 510,0.1f))).onClick(new Runnable() {
-			@Override
-			public void run() {
-				GameViews.gameview.stackView.onkeyDown(Keys.ESCAPE);
-				Music.playSE("snd210");
-			}
-		}).appendTo(stage);
 		
 		Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_SC+"bg.png");
 		bg.setColor(1,1,1,0);
@@ -428,6 +414,11 @@ public class SpellCardView extends View{
 	@Override
 	public boolean scrolled(int amount) {
 		return stage.scrolled(amount);
+	}
+	
+	@Override
+	public boolean allowEsc() {
+		return false;
 	}
 	
 }

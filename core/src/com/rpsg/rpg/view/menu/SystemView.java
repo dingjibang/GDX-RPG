@@ -363,21 +363,6 @@ public class SystemView extends DefaultIView{
 
 
 		
-		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png"))).setPosition(960, 550).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(960, 510,0.1f))).onClick(new Runnable() {
-			@Override
-			public void run() {
-				Music.playSE("snd210");
-				GameViews.gameview.stackView.disposes();
-			}
-		}).appendTo(stage);
-		
-		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"min.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"minc.png"))).setPosition(910, 550).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(910, 510,0.1f))).onClick(new Runnable() {
-			@Override
-			public void run() {
-				GameViews.gameview.stackView.onkeyDown(Keys.ESCAPE);
-				Music.playSE("snd210");
-			}
-		}).appendTo(stage);
 	}
 	Color blue=new Color(80f/255f,111f/255f,187f/255f,1);
 	Color green=new Color(219f/255f,255f/255f,219f/255f,1);

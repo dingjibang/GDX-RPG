@@ -32,6 +32,7 @@ import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.ui.HeroImage;
+import com.rpsg.rpg.system.ui.IMenuView;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
@@ -40,7 +41,7 @@ import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.ItemUtil;
 import com.rpsg.rpg.view.GameViews;
 
-public class EquipView extends View{
+public class EquipView extends IMenuView{
 	Stage stage;
 	List<HeroImage> heros=new ArrayList<HeroImage>();
 	Image map;
@@ -70,23 +71,6 @@ public class EquipView extends View{
 		walkerbox.setColor(1,1,1,0);
 		walkerbox.addAction(Actions.fadeIn(0.2f));
 		stage.addActor(walkerbox);
-		
-		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"exitc.png"))).setPosition(960, 550).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(960, 510,0.1f))).onClick(new Runnable() {
-			@Override
-			public void run() {
-				Music.playSE("snd210");
-				GameViews.gameview.stackView.disposes();
-			}
-		}).appendTo(stage);
-		
-		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"min.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_GLOBAL+"minc.png"))).setPosition(910, 550).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.2f),Actions.moveTo(910, 510,0.1f))).onClick(new Runnable() {
-			@Override
-			public void run() {
-				GameViews.gameview.stackView.onkeyDown(Keys.ESCAPE);
-				Music.playSE("snd210");
-			}
-		}).appendTo(stage);
-		
 		
 		ImageButton left=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"left.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"lefts.png"));
 		left.setPosition(245, 390);

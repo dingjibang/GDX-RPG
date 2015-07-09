@@ -34,6 +34,7 @@ import com.rpsg.rpg.system.controller.MenuController;
 import com.rpsg.rpg.system.controller.MenuController.Menu;
 import com.rpsg.rpg.system.ui.CheckBox;
 import com.rpsg.rpg.system.ui.CheckBox.CheckBoxStyle;
+import com.rpsg.rpg.system.ui.IMenuView;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.MenuHeroBox;
@@ -92,7 +93,7 @@ public class MenuView extends StackView{
 		$.add(exit=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_exit_p.png"))).setPosition(-100, 510).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(20, 510,0.6f,Interpolation.pow2Out))).onClick(new Runnable() {
 			public void run() {
 				Music.playSE("snd210");
-				disposes();
+				onkeyDown(Keys.ESCAPE);
 			}
 		}).appendTo(leftBar);
 		final Label menuLabel=new Label("", 32);
@@ -174,6 +175,13 @@ public class MenuView extends StackView{
 			if(((MenuHeroBox)box.getItem()).hero.equals(hero))
 				box.click();
 	}
+	
+	public void click(){
+//		if(viewStack.size()>=1 && !(viewStack.get(0) instanceof StatusView))
+		for(GdxQuery box:boxs)
+			if(((MenuHeroBox)box.getItem()).hero.equals(current))
+				box.click();
+	}
 
 	@Override
 	public void draw(SpriteBatch batch) {
@@ -203,17 +211,24 @@ public class MenuView extends StackView{
 			viewStack.get(viewStack.size()-1).onkeyTyped(character);
 	}
 
-	public void onkeyDown(int keyCode) {
-		if( viewStack.size()==0 && (Keys.ESCAPE==keyCode || keyCode==Keys.X)){
+	public void onkeyDown(int keyCode,boolean disposes) {
+		if( (viewStack.size()==0 || (viewStack.size()>0 && viewStack.get(viewStack.size()-1).allowEsc() )) && (Keys.ESCAPE==keyCode || keyCode==Keys.X)){
+			for(View view:viewStack)
+				view.dispose();
 			this.dispose();
 			com.rpsg.rpg.system.controller.InputController.currentIOMode=IOMode.MAP_INPUT_NORMAL;
 			frames=null;
 			stage=null;
 			GameViews.gameview.stackView=null;
 		}else{
-			if(viewStack.size()!=0)
+			if(viewStack.size()!=0){
 				viewStack.get(viewStack.size()-1).onkeyDown(keyCode);
+			}
 		}
+	}
+	
+	public void onkeyDown(int keyCode){
+		onkeyDown(keyCode, false);
 	}
 	
 	List<Hero> heros;
@@ -263,7 +278,7 @@ public class MenuView extends StackView{
 		return false;
 	}
 	
-	public void tryToAdd(Class<? extends View> iv){
+	public void tryToAdd(Class<? extends IMenuView> iv){
 		boolean inc=false;
 		for(int i=0;i<viewStack.size();i++){
 			Class<? extends View> view=viewStack.get(i).getClass();
@@ -292,13 +307,4 @@ public class MenuView extends StackView{
 		return false;
 	}
 	
-	@Override
-	public void disposes() {
-		for(int size=GameViews.gameview.stackView.viewStack.size();size>0;size--){
-			onkeyDown(Keys.ESCAPE);
-			viewStack.remove(viewStack.size()-1);
-		}
-		onkeyDown(Keys.ESCAPE);
-	}
-
 }

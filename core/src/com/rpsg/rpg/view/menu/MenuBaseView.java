@@ -23,6 +23,7 @@ import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.ui.HeroImage;
+import com.rpsg.rpg.system.ui.IMenuView;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
@@ -32,7 +33,7 @@ import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.GameDate.Time;
 import com.rpsg.rpg.view.GameViews;
 
-public class MenuBaseView extends View{
+public class MenuBaseView extends IMenuView{
 	Stage stage;
 	List<HeroImage> heros=new ArrayList<HeroImage>();
 	Image map;

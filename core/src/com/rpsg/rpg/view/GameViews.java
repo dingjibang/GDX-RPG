@@ -85,8 +85,8 @@ public class GameViews implements ApplicationListener {
 		if(!GameUtil.isDesktop)
 			AlertUtil.add("检测到您的游戏环境为手机/平板，已进行相应优化。", AlertUtil.Green);//然而并没有优化hhh（有的）
 		
-		//雷达工具类，以前写的，可以画出类似雷达图的玩意，估计可能视UI而放弃掉。
-		RadarUtil.init(1, new TextureRegion(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_STATUS+"propbg.png"))), 1);
+		//雷达工具类，以前写的，可以画出类似雷达图的玩意，估计可能视UI而放弃掉。//TODO 废弃啦
+//		RadarUtil.init(1, new TextureRegion(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_STATUS+"propbg.png"))), 1);
 		
 		TimeUtil.init();//时间工具类，可以记录游戏运行时间等东西。
 		selectUtil=new SelectUtil();//TODO 试着把它移到gameview而不是gameviews。

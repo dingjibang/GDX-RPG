@@ -5,7 +5,7 @@ import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 import com.rpsg.rpg.view.menu.MenuView;
 
-public abstract class DefaultIView extends View{
+public abstract class DefaultIView extends IMenuView{
 	public Stage stage;
 	public MenuView parent=(MenuView) GameViews.gameview.stackView;
 	public void onkeyTyped(char character) {

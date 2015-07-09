@@ -8,7 +8,6 @@ import java.util.Map;
 import com.badlogic.gdx.utils.Disposable;
 
 public abstract class StackView extends View implements Disposable{
-	public List<View> viewStack=new ArrayList<View>();
+	public List<IMenuView> viewStack=new ArrayList<IMenuView>();
 	public Map<String,Object> params=new HashMap<String, Object>();
-	public abstract void disposes();
 }
