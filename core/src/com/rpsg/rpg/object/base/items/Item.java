@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
 
 public abstract class Item implements Serializable {
@@ -15,6 +16,8 @@ public abstract class Item implements Serializable {
 	public int count;
 	public String illustration;
 	public boolean disable = false;
+	
+	public String icon=Setting.UI_BASE_IMG;
 
 	public boolean use(){
 		return false;

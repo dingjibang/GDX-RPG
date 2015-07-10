@@ -1,8 +1,10 @@
 package com.rpsg.rpg.game.hero;
 
+import com.rpsg.rpg.game.items.equipment.TestEquip;
 import com.rpsg.rpg.game.sc.MagicGun;
 import com.rpsg.rpg.game.sc.patientBack;
 import com.rpsg.rpg.object.base.Resistance;
+import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.IRPGObject;
 
@@ -29,6 +31,7 @@ public class Arisu extends Hero{
 		prop.put("chop", Hero.TRUE);
 		prop.put("prick", Hero.TRUE);
 		color="59669ecc";
+		equips.put(Equipment.EQUIP_SHOES, new TestEquip());
 		
 		lead=true;
 		prop.put("courage", 15);			//勇气

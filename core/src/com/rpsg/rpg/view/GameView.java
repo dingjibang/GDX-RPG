@@ -113,7 +113,7 @@ public class GameView extends View{
 		if(postEnable)
 			post.capture();
 		
-		DistantController.draw((SpriteBatch)stage.getBatch(),this);
+//		DistantController.draw((SpriteBatch)stage.getBatch(),this); XXX 远景
 		
 		MapController.draw(this);
 
@@ -128,10 +128,11 @@ public class GameView extends View{
 		PostUtil.draw(menuEnable);
 
 		DrawController.draw();
-		ThreadPool.logic();
 		
 		if(null!=stackView)
 			stackView.draw(batch);
+		else
+			ThreadPool.logic();
 
 	}
 
@@ -139,15 +140,16 @@ public class GameView extends View{
 	public void logic() {
 		if(!ma.update() || !inited)
 			return;
-		MapController.logic(this);
-		for(Actor i:stage.getActors())
-			if(!(i instanceof Hero))
-				i.act(0);
-		HeroController.act();
-		MoveController.logic(this);
-		
-		if(null!=stackView)
+		if(null==stackView){
+			MapController.logic(this);
+			for(Actor i:stage.getActors())
+				if(!(i instanceof Hero))
+					i.act(0);
+			HeroController.act();
+			MoveController.logic(this);
+		}else{
 			stackView.logic();
+		}
 	}
 
 	public void onkeyTyped(char character) {
