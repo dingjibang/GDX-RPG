@@ -18,7 +18,7 @@ public class Persistence implements Serializable{
 	public int seVolume = 100;
 	public int textSpeed = 2;
 	public boolean showFPS = false;
-	public boolean debugMod = true;
+	public boolean debugMod = false;
 	public boolean onErrorSendMsg = true;
 	public boolean touchMod = false;
 	public boolean betterLight = true;

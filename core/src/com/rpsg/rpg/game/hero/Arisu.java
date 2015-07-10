@@ -25,16 +25,16 @@ public class Arisu extends Hero{
 		prop.put("exp", 3);
 		prop.put("mp", 100);
 		prop.put("maxmp", 100);
-		resistance.put("earth", Resistance.reflect);
-		resistance.put("metal", Resistance.invalid);
-		resistance.put("sun", Resistance.weak);
+		resistance.replace("earth", Resistance.reflect);
+		resistance.replace("metal", Resistance.invalid);
+		resistance.replace("sun", Resistance.weak);
 		prop.put("chop", Hero.TRUE);
 		prop.put("prick", Hero.TRUE);
 		color="59669ecc";
 		equips.put(Equipment.EQUIP_SHOES, new TestEquip());
 		
 		lead=true;
-		prop.put("courage", 15);			//勇气
+		prop.put("courage", 100);			//勇气
 		prop.put("perseverance", 44);		//毅力
 		prop.put("express", 12);			//表达
 		prop.put("knowledge", 74);			//知识

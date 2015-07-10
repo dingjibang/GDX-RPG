@@ -499,5 +499,11 @@ public class GdxQuery {
 				((Button)actor).setDisabled(b);
 		return this;
 	}
+	
+	public boolean isChecked(){
+		if(getItem() instanceof Button)
+			return ((Button)getItem()).isChecked();
+		return false;
+	}
 
 }

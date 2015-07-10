@@ -17,6 +17,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.GdxQuery;
+import com.rpsg.gdxQuery.GdxQueryRunnable;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.EmptyAssociation;
@@ -26,6 +28,8 @@ import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HeroController;
+import com.rpsg.rpg.system.ui.CheckBox;
+import com.rpsg.rpg.system.ui.CheckBox.CheckBoxStyle;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
@@ -39,9 +43,9 @@ public class StatusView extends DefaultIView {
 	Group group,inner;
 	public void init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
-		group=(Group) $.add(new Group()).setHeight(1500).getItem();
+		group=(Group) $.add(new Group()).setHeight(1750).getItem();
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"menu_fg_shadow.png").disableTouch()).appendTo(group).setPosition(50, y(30)).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(.3f),Actions.moveTo(50, y(180),0.3f,Interpolation.pow4Out)));
-		inner=(Group) $.add(new Group()).setHeight(1500).appendTo(group).getItem();
+		inner=(Group) $.add(new Group()).setHeight(1750).appendTo(group).getItem();
 		$.add(new ScrollPane(group)).setSize(GameUtil.screen_width-190, GameUtil.screen_height).setX(190).appendTo(stage);
 //		stage.setDebugAll(true);
 		generate();
@@ -94,13 +98,48 @@ public class StatusView extends DefaultIView {
 			Equipment equip=parent.current.equips.get(key);
 			yoff+=90;
 			if(equip!=null) {
-				$.add(Res.get(equip.icon)).appendTo(group4).setPosition(30, yoff);
+				$.add(Res.get(equip.icon)).appendTo(group4).setPosition(12, yoff-84).setColor(Color.RED).setSize(73,70);
 				$.add(new Label(equip.illustration,16).setPos(100, yoff-55).setWidth(385)).appendTo(group4);
 			}
-			$.add(new Label(equip==null?"无":equip.name,30).setPos(90, yoff-(equip==null?37:18))).appendTo(group4);
+			$.add(new Label(equip==null?"无装备":equip.name,30).setPos(equip!=null?90:240, yoff-(equip==null?37:18))).appendTo(group4);
 		}
 		
+		Group group5=(Group) $.add(new Group()).setX(70).addAction(Actions.parallel(Actions.moveTo(70,y(1442),1f,Interpolation.pow4Out),Actions.fadeIn(0.4f))).setColor(1, 1, 1,0).appendTo(inner).getItem();
+		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+"p.png")).appendTo(group5);
+		int count=-1;
+		for(String key:parent.current.resistance.keySet())
+			$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+parent.current.resistance.get(key).name()+".png")).appendTo(group5).setPosition(38+(174*(++count%3)), 247-(count>=3 && count <6?115:count>=6?228:0));
+		CheckBoxStyle cstyle=new CheckBoxStyle();
+		cstyle.checkboxOff=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+"help.png");
+		cstyle.checkboxOn=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+"help_p.png");// help button press
+		final Image phelp=(Image) $.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+"p_help.png")).appendTo(group5).setColor(1,1,1,0).getItem();//resistance help button
+		$.add(new CheckBox("", cstyle, 1)).appendTo(group5).setPosition(392,342).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
+			phelp.addAction(self.isChecked()?Actions.fadeIn(0.3f):Actions.fadeOut(0.3f));
+		}});}});
 		
+		if(parent.current.lead){
+			Group group6=(Group) $.add(new Group()).setX(70).addAction(Actions.parallel(Actions.moveTo(70,y(1702),1f,Interpolation.pow4Out),Actions.fadeIn(0.4f))).setColor(1, 1, 1,0).appendTo(inner).getItem();
+			$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+"person.png")).appendTo(group6);
+			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(350,24).setPosition(87, 159).appendTo(group6);
+			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 162).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("courage")/100f)*344, 18,0.6f,Interpolation.pow4Out)));
+			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(350,24).setPosition(87, 121).appendTo(group6);
+			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 124).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("express")/100f)*344, 18,0.6f,Interpolation.pow4Out)));
+			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(350,24).setPosition(87, 83).appendTo(group6);
+			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 87).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("respect")/100f)*344, 18,0.6f,Interpolation.pow4Out)));
+			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(350,24).setPosition(87, 45).appendTo(group6);
+			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 48).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("perseverance")/100f)*344, 18,0.6f,Interpolation.pow4Out)));
+			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(350,24).setPosition(87, 7).appendTo(group6);
+			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 10).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("knowledge")/100f)*344, 18,0.6f,Interpolation.pow4Out)));
+			$.add(new Label(parent.current.prop.get("courage")+"",22).align(479, 179).setPad(-8)).appendTo(group6);
+			$.add(new Label(parent.current.prop.get("express")+"",22).align(479, 141).setPad(-8)).appendTo(group6);
+			$.add(new Label(parent.current.prop.get("respect")+"",22).align(479, 103).setPad(-8)).appendTo(group6);
+			$.add(new Label(parent.current.prop.get("perseverance")+"",22).align(479, 65).setPad(-8)).appendTo(group6);
+			$.add(new Label(parent.current.prop.get("knowledge")+"",22).align(479, 27).setPad(-8)).appendTo(group6);
+			final Image pe_help=(Image) $.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+"person_help.png")).appendTo(group6).setColor(1,1,1,0).getItem();//resistance help button
+			$.add(new CheckBox("", cstyle, 1)).appendTo(group6).setPosition(392,190).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
+				pe_help.addAction(self.isChecked()?Actions.fadeIn(0.3f):Actions.fadeOut(0.3f));
+			}});}});
+		}
 	}
 	
 

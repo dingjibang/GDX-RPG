@@ -3,6 +3,7 @@ package com.rpsg.rpg.object.rpg;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -61,22 +62,22 @@ public abstract class Hero extends IRPGObject {
 
 	public boolean lead=false;
 	
-	public Map<String,Resistance> resistance=new HashMap<String, Resistance>();
+	public LinkedHashMap<String,Resistance> resistance=new LinkedHashMap<String, Resistance>();
 	{
+		resistance.put("sun", Resistance.normal);
+		resistance.put("moon", Resistance.normal);
+		resistance.put("star", Resistance.normal);
+		resistance.put("metal", Resistance.normal);
+		resistance.put("water", Resistance.normal);
 		resistance.put("earth", Resistance.normal);
 		resistance.put("fire", Resistance.normal);
-		resistance.put("metal", Resistance.normal);
-		resistance.put("moon", Resistance.normal);
-		resistance.put("physical", Resistance.normal);
-		resistance.put("star", Resistance.normal);
-		resistance.put("sun", Resistance.normal);
-		resistance.put("water", Resistance.normal);
 		resistance.put("wood", Resistance.normal);
+		resistance.put("physical", Resistance.normal);
 	}
 	
 	public List<SpellCard> sc=new ArrayList<SpellCard>();
 	
-	public Map<String,Equipment> equips=new HashMap<String, Equipment>();
+	public LinkedHashMap<String,Equipment> equips=new LinkedHashMap<String, Equipment>();
 	{
 		equips.put(Equipment.EQUIP_SHOES, null);
 		equips.put(Equipment.EQUIP_CLOTHES, null);
