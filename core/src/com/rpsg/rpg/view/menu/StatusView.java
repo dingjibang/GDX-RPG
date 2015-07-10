@@ -44,7 +44,6 @@ public class StatusView extends DefaultIView {
 		inner=(Group) $.add(new Group()).setHeight(1500).appendTo(group).getItem();
 		$.add(new ScrollPane(group)).setSize(GameUtil.screen_width-190, GameUtil.screen_height).setX(190).appendTo(stage);
 //		stage.setDebugAll(true);
-//		parent.click(HeroController.heros.get(0));
 		generate();
 	}
 	
@@ -58,7 +57,8 @@ public class StatusView extends DefaultIView {
 		}}).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);
 		$.add(new Label(parent.current.name,parent.current.name.length()>7?50:60).align(306, y(90))).appendTo(inner).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);;
 		$.add(new Label(parent.current.jname,30).align(326, y(155)).setPad(-8)).setColor(1,1,1,0f).appendTo(inner).addAction(Actions.color(new Color(1,1,1,0.3f),0.2f));
-		Group group=(Group) $.add(new Group()).setX(100).addAction(Actions.parallel(Actions.moveTo(70,y(350),0.5f,Interpolation.pow4Out),Actions.fadeIn(0.4f))).setColor(1, 1, 1,0).appendTo(inner).getItem();
+		
+		Group group=(Group) $.add(new Group()).setX(100).addAction(Actions.parallel(Actions.moveTo(70,y(320),0.5f,Interpolation.pow4Out),Actions.fadeIn(0.4f))).setColor(1, 1, 1,0).appendTo(inner).getItem();
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+"info.png")).appendTo(group);
 		$.add(new Label(parent.current.prop.get("level")+"",60).align(40, 90)).appendTo(group);
 		$.add(new Label(parent.current.tag+"",20).align(60, 28)).appendTo(group).setColor(1,1,1,0.3f);
@@ -68,6 +68,15 @@ public class StatusView extends DefaultIView {
 		$.add(new Label(parent.current.prop.get("level")+1+"",20).align(485, 88)).appendTo(group);
 		$.add(new Label(parent.current.lead?"无信息":parent.current.association.name+"（等级"+parent.current.association.level+"）",20).align(320, 65)).appendTo(group);
 		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+"more_soc_info.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+"more_soc_info_p.png"))).appendTo(group).setX(142);
+		
+		Group group2=(Group) $.add(new Group()).setX(100).addAction(Actions.parallel(Actions.moveTo(70,y(420),0.7f,Interpolation.pow4Out),Actions.fadeIn(0.4f))).setColor(1, 1, 1,0).appendTo(inner).getItem();
+		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+"info2.png")).appendTo(group2);
+		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(245,24).setPosition(120, 48).appendTo(group2);
+		$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(123, 51).appendTo(group2).setColor(Color.valueOf("c33737")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("hp")/(float)parent.current.prop.get("maxhp"))*239, 18,0.6f,Interpolation.pow4Out)));
+		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(245,24).setPosition(120, 8).appendTo(group2);
+		$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(123, 11).appendTo(group2).setColor(Color.valueOf("3762c3")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("mp")/(float)parent.current.prop.get("maxmp"))*239, 18,0.6f,Interpolation.pow4Out)));
+		$.add(new Label(parent.current.prop.get("hp")+"/"+parent.current.prop.get("maxhp"),22).align(438, 68).setPad(-8)).appendTo(group2);
+		$.add(new Label(parent.current.prop.get("mp")+"/"+parent.current.prop.get("maxmp"),22).align(438, 28).setPad(-8)).appendTo(group2);
 	}
 
 	public int y(int y){
