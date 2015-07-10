@@ -35,7 +35,7 @@ import com.rpsg.rpg.game.hero.Marisa;
 import com.rpsg.rpg.game.hero.Reimu;
 import com.rpsg.rpg.game.hero.Yuuka;
 import com.rpsg.rpg.game.items.equipment.Sunshade;
-import com.rpsg.rpg.game.items.equipment.TestEquip;
+import com.rpsg.rpg.game.items.equipment.Shoes;
 import com.rpsg.rpg.game.items.medicine.YaoWan;
 import com.rpsg.rpg.object.rpg.IRPGObject;
 import com.rpsg.rpg.object.rpg.NPC;
@@ -67,7 +67,7 @@ public class MapController {
 			HeroController.newHero(Yuuka.class);
 			HeroController.addHero(Yuuka.class);
 			HeroController.newHero(Flandre.class);
-			gv.global.getItems("equipment").add(new TestEquip());
+			gv.global.getItems("equipment").add(new Shoes());
 			gv.global.getItems("equipment").add(new Sunshade());
 			gv.global.getItems("medicine").add(new YaoWan());
 		}

@@ -17,7 +17,15 @@ public abstract class Item implements Serializable {
 	public String illustration;
 	public boolean disable = false;
 	
-	public String icon=Setting.UI_BASE_IMG;
+	protected int icon=0;
+	
+	public String getIcon(){
+		return Setting.GAME_RES_IMAGE_ICONS+"i"+icon+".png";
+	}
+	
+	public static String getNormalIcon(){
+		return Setting.GAME_RES_IMAGE_ICONS+"i0.png";
+	}
 
 	public boolean use(){
 		return false;
