@@ -11,7 +11,7 @@ import com.rpsg.rpg.utils.game.GameUtil;
 public abstract class HoverView{
 	public boolean disposed=false;
 	public Stage stage;
-	public HoverView superInit(){
+	public final HoverView superInit(){
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		init();
 		return this;

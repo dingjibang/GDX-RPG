@@ -60,7 +60,6 @@ public class EquipView extends IMenuView{
 	
 	public void init() {
 		
-		
 		up=new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_EQUIP+"add.png"));
 		down=new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_EQUIP+"sub.png"));
 		

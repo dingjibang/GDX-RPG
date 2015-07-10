@@ -2,7 +2,6 @@ package com.rpsg.rpg.io;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Input.Keys;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.view.GameViews;
