@@ -119,21 +119,16 @@ public class StatusView extends DefaultIView {
 		if(parent.current.lead){
 			Group group6=(Group) $.add(new Group()).setX(70).addAction(Actions.parallel(Actions.moveTo(70,y(1702),1f,Interpolation.pow4Out),Actions.fadeIn(0.4f))).setColor(1, 1, 1,0).appendTo(inner).getItem();
 			$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+"person.png")).appendTo(group6);
-			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(350,24).setPosition(87, 159).appendTo(group6);
-			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 162).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("courage")/100f)*344, 18,0.6f,Interpolation.pow4Out)));
-			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(350,24).setPosition(87, 121).appendTo(group6);
-			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 124).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("express")/100f)*344, 18,0.6f,Interpolation.pow4Out)));
-			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(350,24).setPosition(87, 83).appendTo(group6);
-			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 87).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("respect")/100f)*344, 18,0.6f,Interpolation.pow4Out)));
-			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(350,24).setPosition(87, 45).appendTo(group6);
-			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 48).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("perseverance")/100f)*344, 18,0.6f,Interpolation.pow4Out)));
-			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(350,24).setPosition(87, 7).appendTo(group6);
-			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 10).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("knowledge")/100f)*344, 18,0.6f,Interpolation.pow4Out)));
-			$.add(new Label(parent.current.prop.get("courage")+"",22).align(479, 179).setPad(-8)).appendTo(group6);
-			$.add(new Label(parent.current.prop.get("express")+"",22).align(479, 141).setPad(-8)).appendTo(group6);
-			$.add(new Label(parent.current.prop.get("respect")+"",22).align(479, 103).setPad(-8)).appendTo(group6);
-			$.add(new Label(parent.current.prop.get("perseverance")+"",22).align(479, 65).setPad(-8)).appendTo(group6);
-			$.add(new Label(parent.current.prop.get("knowledge")+"",22).align(479, 27).setPad(-8)).appendTo(group6);
+			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(420,24).setPosition(87, 159).appendTo(group6);
+			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 162).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("courage")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
+			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(420,24).setPosition(87, 121).appendTo(group6);
+			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 124).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("express")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
+			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(420,24).setPosition(87, 83).appendTo(group6);
+			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 87).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("respect")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
+			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(420,24).setPosition(87, 45).appendTo(group6);
+			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 48).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("perseverance")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
+			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(420,24).setPosition(87, 7).appendTo(group6);
+			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 10).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("knowledge")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
 			final Image pe_help=(Image) $.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_STATUS+"person_help.png")).appendTo(group6).setColor(1,1,1,0).getItem();//resistance help button
 			$.add(new CheckBox("", cstyle, 1)).appendTo(group6).setPosition(392,190).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
 				pe_help.addAction(self.isChecked()?Actions.fadeIn(0.3f):Actions.fadeOut(0.3f));
