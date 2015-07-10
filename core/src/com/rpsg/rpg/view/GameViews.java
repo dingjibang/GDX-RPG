@@ -19,7 +19,6 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
-import com.rpsg.rpg.utils.display.MouseUtil;
 import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.display.RadarUtil;
 import com.rpsg.rpg.utils.display.SelectUtil;
@@ -76,7 +75,6 @@ public class GameViews implements ApplicationListener {
 		//other
 		batch = new SpriteBatch();//构建画笔
 		global=new Global();//创建存档
-		MouseUtil.init();//mouseUtil已经废弃，请尝试从这个项目里彻底移除 TODO
 		AlertUtil.init();//提示工具类，可以在屏幕右下角显示一个个的小框
 		if(Setting.persistence.errorMessage!=null && Setting.persistence.errorMessage.length()!=0){//当游戏异常退出之前，会尝试把错误信息写到Setting.persistence.errorMessage这里然后保存，然后下一次启动游戏的时候，看看这个变量是不是空的，如果不是，就把上次的异常信息显示出来。
 			AlertUtil.add(Setting.persistence.errorMessage, AlertUtil.Red);
