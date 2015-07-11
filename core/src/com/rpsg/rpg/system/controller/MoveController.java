@@ -2,6 +2,8 @@ package com.rpsg.rpg.system.controller;
 
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.IOMode;
@@ -34,7 +36,7 @@ public class MoveController {
 		wd=wu=wl=false;
 	}
 	
-	
+	static int xoff,yoff,bufx,bufy;
 	public static void logic(GameView gv){
 		for(Actor a:gv.stage.getActors()){
 			if(a instanceof IRPGObject && ((IRPGObject)a).enableCollide){
@@ -72,27 +74,58 @@ public class MoveController {
 				HeroController.testWalk();
 			}
 		}
+		//core
+		//twidth theight 是地图的总宽度和告诉
 		int twidth=(int) (((TiledMapTileLayer)MapController.layer.get(0)).getWidth() * ((TiledMapTileLayer)MapController.layer.get(0)).getTileWidth());
 		int theight=(int) (((TiledMapTileLayer)MapController.layer.get(0)).getHeight() * ((TiledMapTileLayer)MapController.layer.get(0)).getTileHeight());
+		
+		//这两个坐标herox heroy 来确定了hero的位置
 		float herox=HeroController.getHeadHero().position.x+(HeroController.getHeadHero().getWidth()/2);
 		float heroy=HeroController.getHeadHero().position.y+(HeroController.getHeadHero().getHeight()/2);
-		if(herox>MAP_MAX_OUT_X && herox<(twidth)-MAP_MAX_OUT_X)
+		
+		if(herox>MAP_MAX_OUT_X && herox<(twidth)-MAP_MAX_OUT_X)//如果角色没有到达地图的x边界，那么相机的x中央点就设定为hero的x位置
 			gv.camera.position.x=herox;
 		else
-			if(!(herox>MAP_MAX_OUT_X))
+			if(!(herox>MAP_MAX_OUT_X))//
 				gv.camera.position.x=MAP_MAX_OUT_X;
 			else
 				gv.camera.position.x=(twidth)-MAP_MAX_OUT_X;
-		if(heroy>MAP_MAX_OUT_Y && heroy<(theight)-MAP_MAX_OUT_Y)
+		if(heroy>MAP_MAX_OUT_Y && heroy<(theight)-MAP_MAX_OUT_Y)//同理，设定到y
 			gv.camera.position.y=heroy;
 		else
 			if(!(heroy>MAP_MAX_OUT_Y))
 				gv.camera.position.y=MAP_MAX_OUT_Y;
 			else
 				gv.camera.position.y=(theight)-MAP_MAX_OUT_Y;
+		
+		Vector3 pos = gv.camera.position;
+		int speed=5;
+		if(bufx!=xoff)
+			if((xoff >0 && bufx+speed<xoff) || (xoff <0 && bufx-speed>xoff))
+				bufx+=speed*(xoff<bufx?-1:1);//camera move speed
+			else
+				bufx=xoff;
+		if(bufy!=yoff)
+			if((yoff >0 && bufy+speed<yoff) || (yoff <0 && bufy-speed>yoff))
+				bufy+=speed*(yoff<bufy?-1:1);//camera move speed
+			else
+				bufy=yoff;
+		System.out.println("x:"+xoff+",y:"+yoff+",bx:"+bufx+"by:"+bufy);
+		pos.x+=bufx;
+		pos.y+=bufy;
 		gv.camera.update();
 	}
 	
+	
+	public static void setCameraPosition(int x,int y){
+		xoff=x;
+		yoff=y;
+	}
+	
+	static boolean isMoving=false;
+	public static boolean isCameraMoving(){
+		return isMoving;
+	} 
 	
 	public static boolean testCameraPos(GameView gv){
 		float herox=HeroController.getHeadHero().position.x+(HeroController.getHeadHero().getWidth()/2);

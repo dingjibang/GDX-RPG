@@ -1,6 +1,7 @@
 package com.rpsg.rpg.system.controller;
 
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.math.MathUtils;
 import com.rpsg.rpg.io.SL;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
@@ -26,6 +27,9 @@ public class InputController{
 		tmpIO=-1;
 	}
 	public static boolean keyDown(int keycode,GameView gv) {
+		if(keycode==Keys.O){//DEBUG 如果按下键盘的“O”键，则随机的移动下镜头
+			MoveController.setCameraPosition(MathUtils.random(-150,150), MathUtils.random(-150,150));
+		}
 		if(keycode==Keys.R){
 			GameViews.global=SL.load(0);
 			Initialization.restartGame();
