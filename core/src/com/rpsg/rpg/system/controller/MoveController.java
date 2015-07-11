@@ -110,7 +110,7 @@ public class MoveController {
 				bufy+=speed*(yoff<bufy?-1:1);//camera move speed
 			else
 				bufy=yoff;
-		System.out.println("x:"+xoff+",y:"+yoff+",bx:"+bufx+"by:"+bufy);
+//		System.out.println("x:"+xoff+",y:"+yoff+",bx:"+bufx+"by:"+bufy);
 		pos.x+=bufx;
 		pos.y+=bufy;
 		gv.camera.update();
