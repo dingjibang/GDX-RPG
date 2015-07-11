@@ -546,6 +546,6 @@ public class TacticView extends DefaultIView {
 	
 	@Override
 	public boolean allowEsc() {
-		return false;
+		return true;
 	}
 }
