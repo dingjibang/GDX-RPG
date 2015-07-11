@@ -25,9 +25,9 @@ public class Arisu extends Hero{
 		prop.put("exp", 3);
 		prop.put("mp", 100);
 		prop.put("maxmp", 100);
-		resistance.replace("earth", Resistance.reflect);
-		resistance.replace("metal", Resistance.invalid);
-		resistance.replace("sun", Resistance.weak);
+		resistance.put("earth", Resistance.reflect);
+		resistance.put("metal", Resistance.invalid);
+		resistance.put("sun", Resistance.weak);
 		prop.put("chop", Hero.TRUE);
 		prop.put("prick", Hero.TRUE);
 		color="59669ecc";
