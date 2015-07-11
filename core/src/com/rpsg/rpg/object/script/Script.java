@@ -3,12 +3,16 @@ package com.rpsg.rpg.object.script;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.FGType;
 import com.rpsg.rpg.object.base.MsgType;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
+import com.rpsg.rpg.system.controller.HeroController;
+import com.rpsg.rpg.system.controller.MapController;
+import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FG; 
 import com.rpsg.rpg.utils.display.Msg;
@@ -213,6 +217,38 @@ public abstract class Script implements MsgType,FGType{
 	public BaseScriptExecutor setWeather(int type){
 		return WeatherUtil.setWeather(this, type);
 	}
+	
+	public BaseScriptExecutor setCameraPositionWithHero(final int x,final int y,final boolean wait){
+		return new ScriptExecutor(this) {
+			public void init() {
+				MoveController.setCameraPosition(x, y);
+			}
+			public void step(){
+				if(!wait || (wait && !MoveController.isCameraMoving()))
+					dispose();
+			}
+		};
+	}
+	
+	public BaseScriptExecutor waitCameraMove(){
+		return new ScriptExecutor(this) {
+			public void init() {}
+			public void step(){
+				if(MoveController.isCameraMoving())
+					dispose();
+			}
+		};
+	}
+	
+	/**
+	 * X/Y BASE ( LEFT/BOTTOM ) 
+	 */
+	public BaseScriptExecutor setCameraPositionWithAbsolute(final int x,final int y,final boolean wait){
+		int herox=(int) (HeroController.getHeadHero().position.x+(HeroController.getHeadHero().getWidth()/2));
+		int heroy=(int) (HeroController.getHeadHero().position.y+(HeroController.getHeadHero().getHeight()/2));
+		return setCameraPositionWithHero(herox-x, heroy-y, wait);
+	}
+	
 	
 	public boolean currentSelect(String equ){
 		return SelectUtil.currentSelect.equals(equ);
