@@ -16,6 +16,7 @@ import java.util.List;
 
 
 
+
 import box2dLight.PointLight;
 
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
@@ -49,8 +50,8 @@ import com.rpsg.rpg.view.GameViews;
 
 public class MapController {
 	
-	public static int MAP_MAX_OUT_X=300;
-	public static int MAP_MAX_OUT_Y=200;
+	public static int mapWidth,mapHeight;
+	
 	public static List<IRPGObject> drawlist=new ArrayList<IRPGObject>();
 	public static MapLayers layer ;
 	public static void init(GameView gv){
@@ -174,6 +175,10 @@ public class MapController {
 		headHeroPointLight=new PointLight(gv.ray,200);
 		headHeroPointLight.setDistance(400);
 		headHeroPointLight.setSoft(true);
+		
+		//设置通用常量
+		mapWidth= (int) (((TiledMapTileLayer) MapController.layer.get(0)).getWidth() * ((TiledMapTileLayer) MapController.layer.get(0)).getTileWidth());
+		mapHeight= (int) (((TiledMapTileLayer) MapController.layer.get(0)).getHeight() * ((TiledMapTileLayer) MapController.layer.get(0)).getTileHeight());
 
 		Logger.info("地图模块已全部加载完成。");
 	}

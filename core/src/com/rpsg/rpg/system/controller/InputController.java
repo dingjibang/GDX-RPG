@@ -27,8 +27,8 @@ public class InputController{
 		tmpIO=-1;
 	}
 	public static boolean keyDown(int keycode,GameView gv) {
-		if(keycode==Keys.O){//DEBUG 如果按下键盘的“O”键，则随机的移动下镜头
-			MoveController.setCameraPosition(MathUtils.random(-150,150), MathUtils.random(-150,150));
+		if(keycode==Keys.O){//DEBUG 如果按下键盘的“O”键，则随机的移动一下镜头
+			MoveController.setCameraPosition(MathUtils.random(-350,350), MathUtils.random(-350,350));
 		}
 		if(keycode==Keys.R){
 			GameViews.global=SL.load(0);

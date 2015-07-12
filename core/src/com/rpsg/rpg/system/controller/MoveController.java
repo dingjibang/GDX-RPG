@@ -10,7 +10,10 @@ import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Collide;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.IRPGObject;
+import com.rpsg.rpg.object.script.BaseScriptExecutor;
+import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptCollide;
+import com.rpsg.rpg.object.script.ScriptExecutor;
 import com.rpsg.rpg.view.GameView;
 
 public class MoveController {
@@ -42,9 +45,9 @@ public class MoveController {
 	static int xoff, yoff, bufx, bufy;
 
 	static final int ACCELERATION = 1;// 绝对值表示
-	static final int MAXSPEED = 5;// 绝对值表示
-	static int MAXSPEEDX = 5;
-	static int MAXSPEEDY = 5;
+	static final int MAXSPEED = 10;// 绝对值表示
+	static int MAXSPEEDX = 15;
+	static int MAXSPEEDY = 15;
 	static int speedx = 0;
 	static int speedy = 0;
 	static int tempmaxspeedx = MAXSPEED; // 绝对值表示
@@ -97,12 +100,8 @@ public class MoveController {
 		}
 		// core
 		// twidth theight 是地图的总宽度和告诉
-		int twidth = (int) (((TiledMapTileLayer) MapController.layer.get(0))
-				.getWidth() * ((TiledMapTileLayer) MapController.layer.get(0))
-				.getTileWidth());
-		int theight = (int) (((TiledMapTileLayer) MapController.layer.get(0))
-				.getHeight() * ((TiledMapTileLayer) MapController.layer.get(0))
-				.getTileHeight());
+		int twidth = MapController.mapWidth;
+		int theight = MapController.mapHeight;
 
 		// 这两个坐标herox heroy 来确定了hero的位置
 		float herox = HeroController.getHeadHero().position.x
@@ -216,13 +215,9 @@ public class MoveController {
 		// System.out.println(MAXSPEEDY);
 	}
 
-	static boolean isMoving = false;
 
 	public static boolean isCameraMoving() {
-		if (speedx != 0 && speedy != 0 && xoff == bufx && yoff == bufy) {
-			isMoving = true;
-		}
-		return isMoving;
+		return speedx != 0 && speedy != 0 && xoff == bufx && yoff == bufy;
 	}
 
 	public static boolean testCameraPos(GameView gv) {
@@ -239,4 +234,36 @@ public class MoveController {
 
 	public static void keyDown(int keycode, GameView gv) {
 	}
+	
+	public static BaseScriptExecutor setCameraPositionWithHero(Script script,final int x,final int y,final boolean wait){
+		return new ScriptExecutor(script) {
+			public void init() {
+				MoveController.setCameraPosition(x, y);
+			}
+			public void step(){
+				if(!wait || (wait && !MoveController.isCameraMoving()))
+					dispose();
+			}
+		};
+	}
+	
+	public static BaseScriptExecutor waitCameraMove(Script script){
+		return new ScriptExecutor(script) {
+			public void init() {}
+			public void step(){
+				if(MoveController.isCameraMoving())
+					dispose();
+			}
+		};
+	}
+	
+	/**
+	 * X/Y BASE ( LEFT/BOTTOM ) 
+	 */
+	public static BaseScriptExecutor setCameraPositionWithAbsolute(Script script,final int x,final int y,final boolean wait){
+		int herox=(int) (HeroController.getHeadHero().position.x+(HeroController.getHeadHero().getWidth()/2));
+		int heroy=(int) (HeroController.getHeadHero().position.y+(HeroController.getHeadHero().getHeight()/2));
+		return setCameraPositionWithHero(script,herox-x, heroy-y, wait);
+	}
+	
 }

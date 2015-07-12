@@ -219,34 +219,18 @@ public abstract class Script implements MsgType,FGType{
 	}
 	
 	public BaseScriptExecutor setCameraPositionWithHero(final int x,final int y,final boolean wait){
-		return new ScriptExecutor(this) {
-			public void init() {
-				MoveController.setCameraPosition(x, y);
-			}
-			public void step(){
-				if(!wait || (wait && !MoveController.isCameraMoving()))
-					dispose();
-			}
-		};
+		return MoveController.setCameraPositionWithHero(this,x,y,wait);
 	}
 	
 	public BaseScriptExecutor waitCameraMove(){
-		return new ScriptExecutor(this) {
-			public void init() {}
-			public void step(){
-				if(MoveController.isCameraMoving())
-					dispose();
-			}
-		};
+		return MoveController.waitCameraMove(this);
 	}
 	
 	/**
 	 * X/Y BASE ( LEFT/BOTTOM ) 
 	 */
 	public BaseScriptExecutor setCameraPositionWithAbsolute(final int x,final int y,final boolean wait){
-		int herox=(int) (HeroController.getHeadHero().position.x+(HeroController.getHeadHero().getWidth()/2));
-		int heroy=(int) (HeroController.getHeadHero().position.y+(HeroController.getHeadHero().getHeight()/2));
-		return setCameraPositionWithHero(herox-x, heroy-y, wait);
+		return MoveController.setCameraPositionWithAbsolute(this, x, y, wait);
 	}
 	
 	

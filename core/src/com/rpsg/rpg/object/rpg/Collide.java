@@ -51,6 +51,7 @@ public class Collide implements Serializable {
 			}
 		}
 	}
+	
 	private static List<ScriptCollide> l=new ArrayList<ScriptCollide>();
 	public static List<ScriptCollide> testNPCCollide(GameView gv,IRPGObject mine,Array<Actor> list){
 		l.clear();
