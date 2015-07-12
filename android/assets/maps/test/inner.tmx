@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="31" height="21" tilewidth="48" tileheight="48">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="21" tilewidth="48" tileheight="48">
  <tileset firstgid="1" name="rpg_maker_vx___princess_room_by_ayene_chan-d5ygs7b" tilewidth="48" tileheight="48">
   <image source="rpg_maker_vx___princess_room_by_ayene_chan-d5ygs7b.png" width="384" height="672"/>
  </tileset>
@@ -12,29 +12,32 @@
  <tileset firstgid="473" name="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6" tilewidth="48" tileheight="48">
   <image source="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6.png" width="768" height="768"/>
  </tileset>
- <layer name="块层 1" width="31" height="21">
+ <tileset firstgid="729" name="rpg_maker_vx_ace___kitchen_cabinets_by_ayene_chan-d7l0gdr" tilewidth="48" tileheight="48">
+  <image source="rpg_maker_vx_ace___kitchen_cabinets_by_ayene_chan-d7l0gdr.png" width="384" height="432"/>
+ </tileset>
+ <layer name="块层 1" width="25" height="21">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC1vLwMCwdhSP4lE8ikfxiMeUgFG7R+0etZu2dpPrXmoAAJ4BLnAsCgAA
+   H4sIAAAAAAAAC1vLwMCwdhSP4lE8iocRpgSM2jFqx1C1g5D91AAAs6FvOzQIAAA=
   </data>
  </layer>
- <layer name="fin" width="31" height="21">
+ <layer name="fin" width="25" height="21">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkbBcAeJQJwExMkDYHcmEGcBcfYA2D0KKAcADic8HCwKAAA=
+   H4sIAAAAAAAAC2NgGAWjYBSMglEwCqgHEoE4CYiTaWhHJhBnAXE2De0YBZgAABGSS040CAAA
   </data>
  </layer>
- <layer name="块层 5" width="31" height="21">
+ <layer name="块层 5" width="25" height="21">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkYBvcAuRgiexTgw9ksDsczAWD0KhigAAJw9j1MsCgAA
+   H4sIAAAAAAAAC2NgGHlgFyMC0woEMzEwhABxKBPt7Bgu4CQwjE4B8enRsBoFo4AuAFb+zaJhGQgC0kAsQ1srRgGdAQBHekjqNAgAAA==
   </data>
  </layer>
- <layer name="块层 2" width="31" height="21">
+ <layer name="块层 2" width="25" height="21">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC1vJyMCwcgDxzgHAMLt3DQCG2U0pCGZiYAhhIk0PtewmBwx1uzVJDGtq2m0JtDsLirNJcMdQD/NRu0eW3SD9nRSU6cQCdDu6oPpnUlCmEwMcGFDtEAbyRRgoCzdqhPmo3aQBctInuj5yATnpE10fuQAAqMoykywKAAA=
+   H4sIAAAAAAAAC1vJyMCwkg54Jw0xzI5dSHgyEwPDYzQxGHYGyrkAsSsTdnlsGGYHMlgM1P8ZTYwSgM0OagOYHTeBbn8DxPzMDAwCzNjVagLld4LCCIh3M5Fux0Ogni9ALA40XwKHHZYkmIvNDmSAyw4QyGJCYErsUMBjBzmAnnE+agd17QCp66SgzEIH6GZ1QdXNJLKMwlZmIQMHBlSzhIF8EQbKwpSUsBrpduBLD+jy5AJ86QFdnlwAAHVhE4I0CAAA
   </data>
  </layer>
- <layer name="块层 4" width="31" height="21">
+ <layer name="块层 4" width="25" height="21">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGJzgJiMDwy3GgbH7JdDeV0TY7czEwODCRHv3jAIIkBwN61EwCmgKVjKSjym1hx7Agj7WjAIaA3LTJz3T2nADAI87g1ksCgAA
+   H4sIAAAAAAAAC2NgoA+4ycjAcIuRtna8BJr/isZ2DBYgycTAsBKIVwHxaqaBds3gANLMA+2CUTBYwEpG8jGx5lETWFDXuFFAIiCUHmgR50MVAABf7agkNAgAAA==
   </data>
  </layer>
 </map>
