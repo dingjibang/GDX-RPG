@@ -16,14 +16,14 @@ import com.rpsg.rpg.utils.game.GameDate;
 public class Global implements Serializable{
 	private static final long serialVersionUID = 1L;
 	//初始地图
-	public String map="test/map.tmx";
+	public String map="test/inner.tmx";
 	//地图相关
 	public ArrayList<NPC> npcs=new ArrayList<NPC>();
 	public ArrayList<Hero> currentHeros=new ArrayList<Hero>();
 	public ArrayList<Hero> heros=new ArrayList<Hero>();
 	public ArrayList<Hero> support=new ArrayList<Hero>();
-	public int x=12;
-	public int y=12;
+	public int x=16;
+	public int y=23;
 	public int z=2;
 	
 	public boolean first = true;

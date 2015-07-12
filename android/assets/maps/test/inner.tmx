@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="48" tileheight="48">
+ <tileset firstgid="1" name="rpg_maker_vx___princess_room_by_ayene_chan-d5ygs7b" tilewidth="48" tileheight="48">
+  <image source="rpg_maker_vx___princess_room_by_ayene_chan-d5ygs7b.png" width="384" height="672"/>
+ </tileset>
+ <tileset firstgid="113" name="tile_elements_ii_by_ayene_chan-d4becnf" tilewidth="48" tileheight="48">
+  <image source="tile_elements_ii_by_ayene_chan-d4becnf.png" width="432" height="384"/>
+ </tileset>
+ <tileset firstgid="185" name="tilea4wallscyn_750" tilewidth="48" tileheight="48">
+  <image source="tilea4wallscyn_750.png" width="768" height="886"/>
+ </tileset>
+ <layer name="块层 1" width="40" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OOQ0AAAzEsOPPpRwLos/kSN5TSQoAAIAXk/z58+fv6u+qra8GpGsVF8ASAAA=
+  </data>
+ </layer>
+ <layer name="fin" width="40" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQ0PoAAAAADg1wAW4j6/wBIAAA==
+  </data>
+ </layer>
+ <layer name="块层 2" width="40" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2YsQ2AMAwEw/iwAWyQEcJ0CIk0LnOJ+eJP+jL+k1LZdSuliqeJpvvdoul+qtiPYT+G/Rj2Y9iPYT+G/Rj2Y9iPkeX3duxgR5pJ9Di+jhPsSDOJHhfsyPrfP95mdKj7rbpNxNmjrLpNxNmjPHVoZvbAEgAA
+  </data>
+ </layer>
+ <layer name="块层 4" width="40" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3TwQkAMAgEQdN/JXZpBz4iGAIzcP/7bAQAAABb8txv4wv8bNJX150+3issh+DgwBIAAA==
+  </data>
+ </layer>
+</map>
