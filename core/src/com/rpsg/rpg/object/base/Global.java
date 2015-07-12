@@ -24,7 +24,7 @@ public class Global implements Serializable{
 	public ArrayList<Hero> support=new ArrayList<Hero>();
 	public int x=16;
 	public int y=23;
-	public int z=2;
+	public int z=3;
 	
 	public boolean first = true;
 	

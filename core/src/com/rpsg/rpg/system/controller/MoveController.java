@@ -99,20 +99,21 @@ public class MoveController {
 		float herox = HeroController.getHeadHero().position.x + (HeroController.getHeadHero().getWidth() / 2);
 		float heroy = HeroController.getHeadHero().position.y + (HeroController.getHeadHero().getHeight() / 2);
 
-		if (herox > MAP_MAX_OUT_X && herox < (twidth) - MAP_MAX_OUT_X)// 如果角色没有到达地图的x边界，那么相机的x中央点就设定为hero的x位置
-			gv.camera.position.x = herox;
-		else if (!(herox > MAP_MAX_OUT_X))//
-			gv.camera.position.x = MAP_MAX_OUT_X;
-		else
-			gv.camera.position.x = (twidth) - MAP_MAX_OUT_X;
-		if (heroy > MAP_MAX_OUT_Y && heroy < (theight) - MAP_MAX_OUT_Y)// 同理，设定到y
-			gv.camera.position.y = heroy;
-		else if (!(heroy > MAP_MAX_OUT_Y))
-			gv.camera.position.y = MAP_MAX_OUT_Y;
-		else
-			gv.camera.position.y = (theight) - MAP_MAX_OUT_Y;
-
 		Vector3 pos = gv.camera.position;
+		
+		if (herox > MAP_MAX_OUT_X && herox < (twidth) - MAP_MAX_OUT_X)// 如果角色没有到达地图的x边界，那么相机的x中央点就设定为hero的x位置
+			pos.x = herox;
+		else if (!(herox > MAP_MAX_OUT_X))//
+			pos.x = MAP_MAX_OUT_X;
+		else
+			pos.x = (twidth) - MAP_MAX_OUT_X;
+		if (heroy > MAP_MAX_OUT_Y && heroy < (theight) - MAP_MAX_OUT_Y)// 同理，设定到y
+			pos.y = heroy;
+		else if (!(heroy > MAP_MAX_OUT_Y))
+			pos.y = MAP_MAX_OUT_Y;
+		else
+			pos.y = (theight) - MAP_MAX_OUT_Y;
+
 
 		int SX = (ACCELERATION + MAXSPEEDX) * MAXSPEEDX / ACCELERATION / 2 - MAXSPEEDX;
 		int SY = (ACCELERATION + MAXSPEEDY) * MAXSPEEDY / ACCELERATION / 2 - MAXSPEEDY;
