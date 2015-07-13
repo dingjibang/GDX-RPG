@@ -25,12 +25,12 @@
  </layer>
  <layer name="块层 2" width="7" height="7">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgIB94MWGKaSGJ/aPA7G9AcxYyMzAUAvEiZkz5tUCxTiBeB8QAekNc7sQAAAA=
+   H4sIAAAAAAAAC2NgIB94MWGKaUHFzgLxPzS5a1jUg8AfLGLfgGoXMjMwFALxImZM+bVAsU4gXgfEAF7olcDEAAAA
   </data>
  </layer>
  <layer name="块层 3" width="7" height="7">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgYGCwZMKOQcATSEtB+ZJMCD4I7AViLaicJhB7AfE3qNxZCAWW+wuk3zBgAkmo2j9Y5EgBAEPiGafEAAAA
+   H4sIAAAAAAAAC2NgYGCwZMKOQcATSEtB+ZJMCD4I7AViLaicJhB7AfE3qBwMgOT+Auk3DJhAkgmLIBSgm4MPAAAkajGfxAAAAA==
   </data>
  </layer>
  <objectgroup name="对象层 1">
