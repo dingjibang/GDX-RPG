@@ -1,10 +1,13 @@
 package com.rpsg.rpg.system.controller;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Collide;
@@ -21,6 +24,7 @@ public class MoveController {
 	public static int MAP_MAX_OUT_X = 512;
 	public static int MAP_MAX_OUT_Y = 288;
 	static boolean wu = false, wd = false, wl = false, wr = false;
+	static Actor bufActor=new Actor();
 
 	public static void up() {
 		wu = true;
@@ -41,17 +45,6 @@ public class MoveController {
 		wr = true;
 		wd = wu = wl = false;
 	}
-
-	static int xoff, yoff, bufx, bufy;
-
-	static final int ACCELERATION = 1;// 绝对值表示
-	static final int MAXSPEED = 10;// 绝对值表示
-	static int MAXSPEEDX = 15;
-	static int MAXSPEEDY = 15;
-	static int speedx = 0;
-	static int speedy = 0;
-	static int tempmaxspeedx = MAXSPEED; // 绝对值表示
-	static int tempmaxspeedy = MAXSPEED;
 
 	public static void logic(GameView gv) {
 		for (Actor a : gv.stage.getActors()) {
@@ -115,91 +108,19 @@ public class MoveController {
 			pos.y = (theight) - MAP_MAX_OUT_Y;
 
 
-		int SX = (ACCELERATION + MAXSPEEDX) * MAXSPEEDX / ACCELERATION / 2 - MAXSPEEDX;
-		int SY = (ACCELERATION + MAXSPEEDY) * MAXSPEEDY / ACCELERATION / 2 - MAXSPEEDY;
-		if (xoff != 0) {
-			if (tempmaxspeedx != MAXSPEED) {
-				if (speedx < tempmaxspeedx * (xoff > bufx ? 1 : -1)) {
-					speedx += ACCELERATION * (speedx < 0 ? -1 : 1);
-				} else if (Math.abs((ACCELERATION + speedx) * speedx / ACCELERATION / 2 - speedx) >= Math.abs(xoff - bufx)) {
-					speedx -= ACCELERATION * (speedx < 0 ? -1 : 1);
-				}
-			} else {
-				if ((Math.abs(speedx) < MAXSPEEDX && Math.abs(xoff - bufx) > SX) || (speedx * (xoff - bufx) < 0)) {
-					speedx += ACCELERATION * (bufx > xoff ? -1 : 1);
-				} else if (Math.abs(xoff - bufx) <= SX) {
-					speedx -= ACCELERATION * (speedx < 0 ? -1 : 1);// 减速部分有待优化
-				}
-			}
-		}
-		if (yoff != 0) {
-			if (tempmaxspeedy != MAXSPEED) {
-				if (speedy < tempmaxspeedy * (yoff > bufy ? 1 : -1)) {
-					speedy += ACCELERATION * (speedy < 0 ? -1 : 1);
-				} else if (Math.abs((ACCELERATION + speedy) * speedy / ACCELERATION / 2 - speedy) >= Math.abs(yoff - bufy)) {
-					speedy -= ACCELERATION * (speedy < 0 ? -1 : 1);
-				}
-			} else {
-				if ((Math.abs(speedy) < MAXSPEEDY && Math.abs(yoff - bufy) > SY) || (speedy * (yoff - bufy) < 0)) {
-					// System.out.print("Y           ");
-					speedy += ACCELERATION * (bufy > yoff ? -1 : 1);
-				} else if (Math.abs(yoff - bufy) <= SY) {
-					speedy -= ACCELERATION * (speedy < 0 ? -1 : 1);
-				}
-			}
-		}
-		if ((bufx > xoff) ^ ((bufx + speedx) > xoff)) {
-			bufx = xoff;
-		}
-		if ((bufy > yoff) ^ ((bufy + speedy) > yoff)) {
-			bufy = yoff;
-		}
-		if (bufx == xoff) {
-			speedx = 0;
-		}
-		if (bufy == yoff) {
-			speedy = 0;
-
-		}
-		bufx += speedx;
-		bufy += speedy;
-		// System.out.println("x:" + xoff + ",y:" + yoff + ",bx:" + bufx + "by:"
-		// + bufy + "spx" + speedx + "spy" + speedy);
-		pos.x += bufx;
-		pos.y += bufy;
+		bufActor.act(Gdx.graphics.getDeltaTime());
+		pos.x += bufActor.getX();
+		pos.y += bufActor.getY();
 		gv.camera.update();
 	}
 
 	public static void setCameraPosition(int x, int y) {
-		tempmaxspeedx = MAXSPEED;
-		tempmaxspeedy = MAXSPEED;
-		xoff = x;
-		yoff = y;
-		tempmaxspeedx = (int) Math.sqrt(Math.abs(x - bufx) * ACCELERATION + speedx * speedx / 2);
-		tempmaxspeedy = (int) Math.sqrt(Math.abs(y - bufy) * ACCELERATION + speedy * speedy / 2);
-		if (tempmaxspeedx >= MAXSPEED) {
-			tempmaxspeedx = MAXSPEED;
-		}
-
-		if (tempmaxspeedy >= MAXSPEED) {
-			tempmaxspeedy = MAXSPEED;
-		}
-
-		/*
-		 * if (Math.abs(x - bufx) < Math.abs(y - bufy)) { MAXSPEEDX = MAXSPEED;
-		 * MAXSPEEDY = MAXSPEED Math.abs(y - bufx) / (Math.max((MAXSPEED *
-		 * MAXSPEED / ACCELERATION), Math.abs(x - bufy))); } if (Math.abs(x -
-		 * bufx) > Math.abs(y - bufy)) { MAXSPEEDY = MAXSPEED; MAXSPEEDX =
-		 * MAXSPEED Math.abs(x - bufx) / (Math.max((MAXSPEED * MAXSPEED /
-		 * ACCELERATION), Math.abs(y - bufy))); }
-		 */
-		MAXSPEEDX = MAXSPEEDY = MAXSPEED;
-		// System.out.println(MAXSPEEDX);
-		// System.out.println(MAXSPEEDY);
+		bufActor.clearActions();
+		bufActor.addAction(Actions.moveTo(x, y,0.8f,Interpolation.pow4Out));
 	}
 
 	public static boolean isCameraMoving() {
-		return speedx != 0 && speedy != 0 && xoff == bufx && yoff == bufy;
+		return bufActor.getActions().size!=0;
 	}
 
 	public static boolean testCameraPos(GameView gv) {
