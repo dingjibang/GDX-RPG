@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="7" height="7" tilewidth="48" tileheight="48">
+ <tileset firstgid="1" name="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6" tilewidth="48" tileheight="48">
+  <image source="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6.png" width="768" height="768"/>
+ </tileset>
+ <tileset firstgid="257" name="tile_elements_ii_by_ayene_chan-d4becnf" tilewidth="48" tileheight="48">
+  <image source="tile_elements_ii_by_ayene_chan-d4becnf.png" width="432" height="384"/>
+ </tileset>
+ <tileset firstgid="329" name="tilea4wallscyn_750" tilewidth="48" tileheight="48">
+  <image source="tilea4wallscyn_750.png" width="768" height="886"/>
+ </tileset>
+ <tileset firstgid="617" name="rpg_maker_vx__modernrtp_tileb_by_painhurt-d3f7sii" tilewidth="48" tileheight="48">
+  <image source="rpg_maker_vx__modernrtp_tileb_by_painhurt-d3f7sii.png" width="768" height="768"/>
+ </tileset>
+ <tileset firstgid="873" name="rpg_maker_vx___carpets_autotiles_by_ayene_chan-d5og8bo" tilewidth="48" tileheight="48">
+  <image source="rpg_maker_vx___carpets_autotiles_by_ayene_chan-d5og8bo.png" width="576" height="288"/>
+ </tileset>
+ <tileset firstgid="945" name="glo" tilewidth="48" tileheight="48">
+  <image source="glo.png" width="96" height="96"/>
+ </tileset>
+ <layer name="块层 1" width="7" height="7">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACxNmZGAQHoRYk4l4tQCLSLU8xAAAAA==
+  </data>
+ </layer>
+ <layer name="块层 2" width="7" height="7">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgIB94MWGKaSGJ/aPA7G9AcxYyMzAUAvEiZkz5tUCxTiBeB8QAekNc7sQAAAA=
+  </data>
+ </layer>
+ <layer name="块层 3" width="7" height="7">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgYGCwZMKOQcATSEtB+ZJMCD4I7AViLaicJhB7AfE3qNxZCAWW+wuk3zBgAkmo2j9Y5EgBAEPiGafEAAAA
+  </data>
+ </layer>
+ <objectgroup name="对象层 1">
+  <object name="DOOR" type="NPC" gid="945" x="0" y="48" width="48" height="81">
+   <properties>
+    <property name="IMAGE" value="empty"/>
+    <property name="TELEPORT" value="inner"/>
+    <property name="TELEPORTX" value="18"/>
+    <property name="TELEPORTY" value="12"/>
+    <property name="TELEPORTZ" value="3"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="块层 4" width="7" height="7">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgIAzW4mCDwDso/RaI7xBhFi0AAMcynafEAAAA
+  </data>
+ </layer>
+</map>

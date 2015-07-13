@@ -17,6 +17,7 @@ import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptCollide;
 import com.rpsg.rpg.object.script.ScriptExecutor;
+import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameView;
 
 public class MoveController {
@@ -94,19 +95,26 @@ public class MoveController {
 
 		Vector3 pos = gv.camera.position;
 		
-		if (herox > MAP_MAX_OUT_X && herox < (twidth) - MAP_MAX_OUT_X)// 如果角色没有到达地图的x边界，那么相机的x中央点就设定为hero的x位置
-			pos.x = herox;
-		else if (!(herox > MAP_MAX_OUT_X))//
-			pos.x = MAP_MAX_OUT_X;
-		else
-			pos.x = (twidth) - MAP_MAX_OUT_X;
-		if (heroy > MAP_MAX_OUT_Y && heroy < (theight) - MAP_MAX_OUT_Y)// 同理，设定到y
-			pos.y = heroy;
-		else if (!(heroy > MAP_MAX_OUT_Y))
-			pos.y = MAP_MAX_OUT_Y;
-		else
-			pos.y = (theight) - MAP_MAX_OUT_Y;
-
+		if(GameUtil.screen_width<twidth){
+			if (herox > MAP_MAX_OUT_X && herox < (twidth) - MAP_MAX_OUT_X)// 如果角色没有到达地图的x边界，那么相机的x中央点就设定为hero的x位置
+				pos.x = herox;
+			else if (!(herox > MAP_MAX_OUT_X))//
+				pos.x = MAP_MAX_OUT_X;
+			else
+				pos.x = (twidth) - MAP_MAX_OUT_X;
+		}else{
+			pos.x=twidth/2;
+		}
+		if(GameUtil.screen_height<theight){
+			if (heroy > MAP_MAX_OUT_Y && heroy < (theight) - MAP_MAX_OUT_Y)// 同理，设定到y
+				pos.y = heroy;
+			else if (!(heroy > MAP_MAX_OUT_Y))
+				pos.y = MAP_MAX_OUT_Y;
+			else
+				pos.y = (theight) - MAP_MAX_OUT_Y;
+		}else{
+			pos.y=theight/2;
+		}
 
 		bufActor.act(Gdx.graphics.getDeltaTime());
 		pos.x += bufActor.getX();

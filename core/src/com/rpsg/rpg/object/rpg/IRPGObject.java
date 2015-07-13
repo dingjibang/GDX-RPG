@@ -318,8 +318,9 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	}
 	
 	public void dispose(){
-		for(Image i:images)
-			i.dispose();
+//		for(Image i:images)
+//			i.dispose();
+		//DO NOT DISPOSE THIS!
 	}
 	
 	public int getFaceByPoint(int x,int y){

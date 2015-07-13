@@ -22,7 +22,7 @@ public class Global implements Serializable{
 	public ArrayList<Hero> currentHeros=new ArrayList<Hero>();
 	public ArrayList<Hero> heros=new ArrayList<Hero>();
 	public ArrayList<Hero> support=new ArrayList<Hero>();
-	public int x=13;
+	public int x=5;
 	public int y=6;
 	public int z=3;
 	

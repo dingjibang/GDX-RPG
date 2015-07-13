@@ -119,7 +119,7 @@ public class MapController {
 									 (int)(bot.getHeight()-2-((RectangleMapObject)obj).getRectangle().getY()/48),
 									 i-removeList.size());
 							npc.params=GameUtil.parseMapProperties(obj.getProperties());
-							Logger.info("NPC生成成功["+npc.position+","+npc.mapx+":"+npc.mapy+"]");
+							Logger.info("NPC生成成功["+npc.position+","+npc.mapx+":"+npc.mapy+":"+npc.layer+"]");
 							gv.stage.addActor(npc);
 							ThreadPool.pool.add(npc.threadPool);
 						} catch (Exception e) {
@@ -127,7 +127,6 @@ public class MapController {
 						}
 					}
 				}
-				HeroController.generatePosition(gv.global.x,gv.global.y,gv.global.z);
 			}
 			for(MapLayer lay:gv.map.getLayers()){
 				boolean inc=false;
@@ -138,6 +137,7 @@ public class MapController {
 					layer.add(lay);
 			}
 				
+			HeroController.generatePosition(gv.global.x,gv.global.y,gv.global.z);
 		}else{
 			List<MapLayer> removeList=new ArrayList<MapLayer>();
 			for(int i=0;i<gv.map.getLayers().getCount();i++){
