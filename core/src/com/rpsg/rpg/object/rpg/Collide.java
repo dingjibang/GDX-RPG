@@ -118,7 +118,6 @@ public class Collide implements Serializable {
 	}
 	
 	private static boolean testNear(IRPGObject mine,NPC o){
-//		System.out.println(o.layer);
 		return testLayer(mine, o) && ((
 					(mine.mapx-1==o.mapx && mine.mapy==o.mapy) 
 					|| (mine.mapx+1==o.mapx && mine.mapy==o.mapy)
@@ -134,7 +133,7 @@ public class Collide implements Serializable {
 					|| (mine.mapx==o.mapx && mine.mapy+1==o.mapy)
 					|| (mine.mapx==o.mapx && mine.mapy-1==o.mapy) 
 			   ) && 
-			   ((Input.isPress(Keys.Z) || PostUtil.isVZPress) && (testFaceCollide(mine, o))));
+			   ((Input.isPress(Keys.Z) || PostUtil.isVZPress()) && (testFaceCollide(mine, o))));
 	}
 	
 	private static boolean testFaceZ(IRPGObject mine,NPC o){

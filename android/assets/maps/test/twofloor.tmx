@@ -61,6 +61,15 @@
     <property name="TELEPORTZ" value="3"/>
    </properties>
   </object>
+  <object name="DOOR" type="NPC" gid="409" x="0" y="384" width="48" height="48">
+   <properties>
+    <property name="IMAGE" value="empty"/>
+    <property name="TELEPORT" value="inner"/>
+    <property name="TELEPORTX" value="23"/>
+    <property name="TELEPORTY" value="5"/>
+    <property name="TELEPORTZ" value="3"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="块层 4" width="30" height="8">
   <data encoding="base64" compression="gzip">

@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Touchpad;
@@ -39,7 +40,10 @@ public class PostUtil {
 	static Touchpad pad;
 	static double p4=Math.PI/4;
 	static GdxQuery others;
-	public static Boolean isVZPress=false;
+	static boolean VZPress=false;
+	public static boolean isVZPress(){
+			return VZPress?(!(VZPress=false)):VZPress;
+	} 
 	public static void init(){
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		
@@ -53,15 +57,15 @@ public class PostUtil {
 		tstyle.background=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png");
 		tstyle.knob=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_knob.png");
 		others.add($.add(pad=new Touchpad(0, tstyle)).setPosition(35, 25).setVisible(!GameUtil.isDesktop));
-		others.add($.add(Res.get(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png")).setPosition(750, 25).setVisible(!GameUtil.isDesktop)).onTouchDown(new Runnable() {public void run() {
-			synchronized (isVZPress) {
-				isVZPress=true;
-			}
-		}}).onTouchUp(new Runnable(){public void run() {
-			synchronized (isVZPress) {
-				isVZPress=false;
-			}
-		}});			
+		others.add($.add(Res.get(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png")).setPosition(750, 25).setVisible(!GameUtil.isDesktop)).addListener(new InputListener(){
+		public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
+			VZPress=false;
+		}
+		public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+			VZPress=true;
+			return true;
+		}
+	});
 		others.appendTo(stage);
 		Logger.info("Post特效创建成功。");
 	}
