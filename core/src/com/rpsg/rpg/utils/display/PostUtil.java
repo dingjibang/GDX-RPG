@@ -1,13 +1,21 @@
 package com.rpsg.rpg.utils.display;
 
+import javafx.scene.input.KeyCode;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Touchpad;
 import com.badlogic.gdx.scenes.scene2d.ui.Touchpad.TouchpadStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
@@ -39,18 +47,32 @@ public class PostUtil {
 				GameViews.gameview.onkeyDown(Keys.ESCAPE);
 			}
 		}));
-		
+	
 		TouchpadStyle tstyle=new TouchpadStyle();
 		tstyle.background=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png");
 		tstyle.knob=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_knob.png");
 		pad=new Touchpad(0, tstyle);
 		pad.setPosition(35, 25);
-		stage.addActor(pad);
-		if(!GameUtil.isDesktop)
-			pad.setVisible(false);
+		stage.addActor(pad);	
+		if(!GameUtil.isDesktop){
+			pad.setVisible(false);			
+		}
+			
+		if (Setting.persistence.touchMod){
+			GdxQuery q=$.image(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png").setPosition(750, 25).appendTo(stage);
+			
+			q.onClick(new Runnable() {
+				public void run() {			
+					GameViews.input.keyDown(Keys.Z);
+				}
+			});
+			
+			if(!GameUtil.isDesktop){
+				q.setVisible(false);
+			}
+		}
 		others.appendTo(stage);
-		
-		Logger.info("Post特效创建成功。");
+		Logger.info("Post特效创建成功。");		
 	}
 	
 	public static void draw( boolean menuEnable){
