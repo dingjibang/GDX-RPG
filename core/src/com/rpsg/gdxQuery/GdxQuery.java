@@ -27,16 +27,17 @@ public class GdxQuery {
 
 	private LinkedList<Actor> values = new LinkedList<Actor>();
 	
-	private Runnable click;
+	private Runnable click,touchUp,touchDown;
 	
 	private GdxQuery father;
 	
 	private InputListener clickListener=(new InputListener(){
 		public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
-			if(click!=null)
-				click.run();
+			if(click!=null) click.run();
+			if(touchUp!=null) touchUp.run();
 		}
 		public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+			if(touchDown!=null) touchDown.run();
 			return true;
 		}
 	});
@@ -457,16 +458,40 @@ public class GdxQuery {
 		return copy;
 	}
 	
-	public GdxQuery onClick(Runnable run){
-		this.click=run;
+	private GdxQuery tryRegListener() {
 		for(Actor actor:getItems())
 			if(!actor.getListeners().contains(clickListener, true))
 				actor.addListener(clickListener);
 		return this;
 	}
 	
+	public GdxQuery onClick(Runnable run){
+		this.click=run;
+		return tryRegListener();
+	}
+	
 	public GdxQuery click(){
 		click.run();
+		return this;
+	}
+	
+	public GdxQuery onTouchUp(Runnable run){
+		this.touchUp=run;
+		return tryRegListener();
+	}
+	
+	public GdxQuery touchUp(){
+		touchUp.run();
+		return this;
+	}
+	
+	public GdxQuery onTouchDown(Runnable run){
+		this.touchDown=run;
+		return tryRegListener();
+	}
+	
+	public GdxQuery touchDown(){
+		touchDown.run();
 		return this;
 	}
 	

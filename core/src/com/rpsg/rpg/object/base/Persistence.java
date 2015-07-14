@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Files;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.view.GameViews;
 
 public class Persistence implements Serializable{
 	private static final long serialVersionUID = 1L;

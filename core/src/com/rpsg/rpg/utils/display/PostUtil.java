@@ -1,6 +1,7 @@
 package com.rpsg.rpg.utils.display;
 
-import javafx.scene.input.KeyCode;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -28,16 +29,17 @@ import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
+import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
 public class PostUtil {
 	
 	public static Stage stage;
-	static int height=0,maxHeight=160;
 	static int showSpeed=8;
 	static Touchpad pad;
 	static double p4=Math.PI/4;
 	static GdxQuery others;
+	public static Boolean isVZPress=false;
 	public static void init(){
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		
@@ -47,36 +49,24 @@ public class PostUtil {
 				GameViews.gameview.onkeyDown(Keys.ESCAPE);
 			}
 		}));
-	
 		TouchpadStyle tstyle=new TouchpadStyle();
 		tstyle.background=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png");
 		tstyle.knob=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_knob.png");
-		pad=new Touchpad(0, tstyle);
-		pad.setPosition(35, 25);
-		stage.addActor(pad);	
-		if(!GameUtil.isDesktop){
-			pad.setVisible(false);			
-		}
-			
-		if (Setting.persistence.touchMod){
-			GdxQuery q=$.image(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png").setPosition(750, 25).appendTo(stage);
-			
-			q.onClick(new Runnable() {
-				public void run() {			
-					GameViews.input.keyDown(Keys.Z);
-				}
-			});
-			
-			if(!GameUtil.isDesktop){
-				q.setVisible(false);
+		others.add($.add(pad=new Touchpad(0, tstyle)).setPosition(35, 25).setVisible(!GameUtil.isDesktop));
+		others.add($.add(Res.get(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png")).setPosition(750, 25).setVisible(!GameUtil.isDesktop)).onTouchDown(new Runnable() {public void run() {
+			synchronized (isVZPress) {
+				isVZPress=true;
 			}
-		}
+		}}).onTouchUp(new Runnable(){public void run() {
+			synchronized (isVZPress) {
+				isVZPress=false;
+			}
+		}});			
 		others.appendTo(stage);
-		Logger.info("Post特效创建成功。");		
+		Logger.info("Post特效创建成功。");
 	}
-	
 	public static void draw( boolean menuEnable){
-		pad.setVisible(Setting.persistence.touchMod  && height<=0);
+		others.setVisible(Setting.persistence.touchMod);
 		if(Setting.persistence.touchMod && GameViews.gameview.stackView==null){
 			float x=pad.getKnobPercentX();
 			float y=pad.getKnobPercentY();
