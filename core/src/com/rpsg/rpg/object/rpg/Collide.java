@@ -137,7 +137,7 @@ public class Collide implements Serializable {
 	}
 	
 	private static boolean testFaceZ(IRPGObject mine,NPC o){
-		return testLayer(mine, o)&& (Input.isPress(Keys.Z) && (mine.getCurrentFace()==o.getReverseFace() && (testFaceCollide(mine, o))));
+		return testLayer(mine, o)&& ((Input.isPress(Keys.Z) || PostUtil.isVZPress()) && (mine.getCurrentFace()==o.getReverseFace() && (testFaceCollide(mine, o))));
 	}
 	
 //	private static boolean fullTest(IRPGObject mine,NPC o){

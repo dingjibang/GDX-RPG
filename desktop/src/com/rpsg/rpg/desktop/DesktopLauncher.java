@@ -27,7 +27,7 @@ public class DesktopLauncher {
         RayHandler.useDiffuseLight (true);
         
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		boolean debug=false;//如果开启debug模式，窗口小一半，没太多意义233
+		boolean debug=true;//如果开启debug模式，窗口小一半，没太多意义233
 		config.width=1024/(debug?2:1);
 		config.height=576/(debug?2:1);
 //      config.backgroundFPS=config.foregroundFPS=40;
@@ -35,7 +35,6 @@ public class DesktopLauncher {
         Setting.persistence = Persistence.read();//读取配置文件
         config.initialBackgroundColor= Color.WHITE;
         config.samples=Setting.persistence.antiAliasing?8:0;//如果游戏配置“抗锯齿”打开，则设置抗锯齿8级否则不抗锯齿。
-
 		new LwjglApplication(new GameViews(), config);//gameviews就是咱们游戏的核心了。
 	}
 }

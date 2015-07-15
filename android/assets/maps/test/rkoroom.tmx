@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="14" height="13" tilewidth="48" tileheight="48">
+ <tileset firstgid="1" name="shadows" tilewidth="48" tileheight="48">
+  <image source="shadows.png" width="480" height="480"/>
+ </tileset>
+ <tileset firstgid="101" name="tile_elements_ii_by_ayene_chan-d4becnf" tilewidth="48" tileheight="48">
+  <image source="tile_elements_ii_by_ayene_chan-d4becnf.png" width="432" height="384"/>
+ </tileset>
+ <tileset firstgid="173" name="tilea4wallscyn_750" tilewidth="48" tileheight="48">
+  <image source="tilea4wallscyn_750.png" width="768" height="886"/>
+ </tileset>
+ <tileset firstgid="461" name="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6" tilewidth="48" tileheight="48">
+  <image source="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6.png" width="768" height="768"/>
+ </tileset>
+ <tileset firstgid="717" name="rpg_maker_vx___tile_c_by_ayene_chan-d7kwsoc" tilewidth="48" tileheight="48">
+  <image source="rpg_maker_vx___tile_c_by_ayene_chan-d7kwsoc.png" width="768" height="768"/>
+ </tileset>
+ <tileset firstgid="973" name="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6" tilewidth="48" tileheight="48">
+  <image source="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6.png" width="768" height="768"/>
+ </tileset>
+ <tileset firstgid="1229" name="request_march_by_nicnubill-d7a6dq7" tilewidth="48" tileheight="48">
+  <image source="request_march_by_nicnubill-d7a6dq7.png" width="768" height="768"/>
+ </tileset>
+ <layer name="块层 1" width="14" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACytnYGAoH8WjmMYYBpDZpABS9QEAzyVsmdgCAAA=
+  </data>
+ </layer>
+ <layer name="块层 2" width="14" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoD9YxwjByGx0DJNrY0Lo4wZiJiQahFnRzOaG0gpIYsxoNAwwIWFpJBoGQGYI4PFHMQt2cVYsdsFAAQ49hPQ1IOlrRjMD5GdpBtIBLrtoqZde+gAnktFe2AIAAA==
+  </data>
+ </layer>
+ <layer name="块层 5" width="14" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGJ5gGtNAu2AUDCQAAKGI2I3YAgAA
+  </data>
+ </layer>
+ <layer name="块层 3" width="14" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC5vLyMAwl0y8lkQM06fGysBwl5mBYR2QDQLfWBgYvgPxTSC+BcThLBA5UyDdxoTQZwbU94OZAQ7YgHx2IH4JVPcKiNNZIOKuUBqmDwQ4WBD6xIB6xFkZcAKYvrcsuNXg0/cXj74JQLnJQDyJBVMfLx43LQCqXwjEi7DoIxVQqg+ml5y0AgKkpJl1jIh0so6ReAwAhs2K+tgCAAA=
+  </data>
+ </layer>
+ <layer name="块层 4" width="14" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoAycZWZgOAfE5SwMDBUspOm9x0yh5aNgFOAAAKFgpn/YAgAA
+  </data>
+ </layer>
+</map>
