@@ -47,17 +47,14 @@ public class PostUtil {
 	public static void init(){
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		
-		others=$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu_active.png")).pos(GameUtil.screen_width-65, 15).onClick(new Runnable() {
-			@Override
-			public void run() {
-				GameViews.gameview.onkeyDown(Keys.ESCAPE);
-			}
-		}));
+		others=$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu_active.png")).pos(GameUtil.screen_width-65, 15).onClick(new Runnable() {public void run() {
+			GameViews.gameview.onkeyDown(Keys.ESCAPE);
+		}}));
 		TouchpadStyle tstyle=new TouchpadStyle();
 		tstyle.background=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png");
 		tstyle.knob=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_knob.png");
 		others.add($.add(pad=new Touchpad(0, tstyle)).setPosition(35, 25).setVisible(!GameUtil.isDesktop));
-		others.add($.add(Res.get(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png")).setPosition(750, 25).setVisible(!GameUtil.isDesktop)).addListener(new InputListener(){
+		others.add($.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button_a.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button_a_p.png"))).setPosition(830, 65).setVisible(!GameUtil.isDesktop)).addListener(new InputListener(){
 		public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
 			VZPress=false;
 		}

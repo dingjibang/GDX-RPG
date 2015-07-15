@@ -88,7 +88,6 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		Image[] images=new Image[12];
 		for(int i=0;i<4;i++)
 			for(int j=0;j<3;j++){
-				//FIXME 可能有内存泄露！ 
 				images[(i*3)+j]=new Image(new TextureRegion(Res.getTexture(txt),j*width,i*height,width,height));
 			}
 		return images;
