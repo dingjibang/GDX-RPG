@@ -5,6 +5,7 @@ import com.rpsg.rpg.game.script.SayFuckMe;
 import com.rpsg.rpg.game.script.SayHelloWorld;
 import com.rpsg.rpg.game.script.Walker;
 import com.rpsg.rpg.object.rpg.DefaultNPC;
+import com.rpsg.rpg.object.script.ScriptCollide.COLLIDE_TYPE;
 
 public class FOONPC extends DefaultNPC{
 
@@ -17,8 +18,8 @@ public class FOONPC extends DefaultNPC{
 	public void init() {
 		this.waitWhenCollide=false;
 		this.walkSpeed=1f;
-		scripts.put(DefaultNPC.AUTO_SCRIPT, Walker.class);
-		scripts.put(DefaultNPC.COLLIDE_NAME_Z, SayFuckMe.class);
+		scripts.put(COLLIDE_TYPE.AUTO.value(), Walker.class);
+		scripts.put(COLLIDE_TYPE.Z.value(), SayFuckMe.class);
 	}
 	
 }

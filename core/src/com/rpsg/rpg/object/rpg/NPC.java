@@ -9,6 +9,7 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.script.EasyScript;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptCollide;
+import com.rpsg.rpg.object.script.ScriptCollide.COLLIDE_TYPE;
 
 public abstract class NPC extends IRPGObject{
 
@@ -50,7 +51,7 @@ public abstract class NPC extends IRPGObject{
 	List<Script> removeList=new LinkedList<Script>();
 	public boolean isScriptRunning(){
 		for(Script t:threadPool)
-			if(t.isAlive() && !t.callType.equals(DefaultNPC.AUTO_SCRIPT))
+			if(t.isAlive() && !t.callType.equals(COLLIDE_TYPE.AUTO.value()))
 				return true;
 		return false;
 	}
