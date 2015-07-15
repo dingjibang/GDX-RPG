@@ -14,17 +14,17 @@ import com.rpsg.rpg.view.GameViews;
 
 public class InputController{
 	
-	public static int currentIOMode=IOMode.MAP_INPUT_NORMAL; 
-	static int tmpIO=-1;
+	public static IOMode.MAP_INPUT currentIOMode=IOMode.MAP_INPUT.NORMAL; 
+	static IOMode.MAP_INPUT tmpIO=null;
 	
 	public static void setTempIOMode(int IOMode){
 		tmpIO=currentIOMode;
 	}
 	
 	public static void resotryIOMode(){
-		if(tmpIO!=-1)
+		if(tmpIO!=null)
 			currentIOMode=tmpIO;
-		tmpIO=-1;
+		tmpIO=null;
 	}
 	public static boolean keyDown(int keycode,GameView gv) {
 		if(keycode==Keys.O){//DEBUG 如果按下键盘的“O”键，则随机的移动一下镜头
@@ -38,16 +38,16 @@ public class InputController{
 			SL.save(0);
 		}
 		switch(currentIOMode){
-		case IOMode.MAP_INPUT_NORMAL:{
+		case NORMAL:{
 			if(keycode==Keys.ESCAPE || keycode==Keys.X){
 				MenuController.createMenu();
-				currentIOMode=IOMode.MAP_INPUT_MENU;
+				currentIOMode=IOMode.MAP_INPUT.MENU;
 			}else{
 					MoveController.keyDown(keycode, gv);
 			}
 			break;
 		}
-		case IOMode.MAP_INPUT_MENU:{
+		case MENU:{
 			MenuController.keyDown(keycode);
 			break;
 		}
@@ -58,11 +58,11 @@ public class InputController{
 
 	public static boolean keyUp(int keycode,GameView gv) {
 		switch(currentIOMode){
-		case IOMode.MAP_INPUT_NORMAL:{
+		case NORMAL:{
 			MoveController.keyUp(keycode, gv);
 			break;
 		}
-		case IOMode.MAP_INPUT_MENU:{
+		case MENU:{
 			MenuController.keyUp(keycode);
 			break;
 		}
@@ -72,11 +72,11 @@ public class InputController{
 	
 	public static boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		switch(currentIOMode){
-		case IOMode.MAP_INPUT_MENU:{
+		case MENU:{
 			MenuController.touchDown(screenX, screenY, pointer, button);
 			break;
 		}
-		case IOMode.MAP_INPUT_NORMAL:{
+		case NORMAL:{
 			
 			PostUtil.touchDown(screenX, screenY, pointer, button);
 			break;
@@ -87,7 +87,7 @@ public class InputController{
 
 	public static boolean keyTyped(char character) {
 		switch(currentIOMode){
-		case IOMode.MAP_INPUT_NORMAL:{
+		case NORMAL:{
 			
 			PostUtil.keyTyped(character);
 			break;
@@ -98,11 +98,11 @@ public class InputController{
 
 	public static boolean touchDragged(int screenX, int screenY, int pointer) {
 		switch(currentIOMode){
-		case IOMode.MAP_INPUT_MENU:{
+		case MENU:{
 			MenuController.touchDragged(screenX, screenY, pointer);
 			break;
 		}
-		case IOMode.MAP_INPUT_NORMAL:{
+		case NORMAL:{
 			
 			PostUtil.touchDragged( screenX,  screenY,  pointer);
 			break;
@@ -113,11 +113,11 @@ public class InputController{
 
 	public static boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		switch(currentIOMode){
-		case IOMode.MAP_INPUT_MENU:{
+		case MENU:{
 			MenuController.touchUp(screenX, screenY, pointer, button);
 			break;
 		}
-		case IOMode.MAP_INPUT_NORMAL:{
+		case NORMAL:{
 			
 			PostUtil.touchUp(screenX, screenY, pointer, button);
 			break;
@@ -128,7 +128,7 @@ public class InputController{
 
 	public static void scrolled(int amount) {
 		switch(currentIOMode){
-		case IOMode.MAP_INPUT_MENU:{
+		case MENU:{
 			MenuController.scrolled(amount);
 			break;
 		}
@@ -137,7 +137,7 @@ public class InputController{
 
 	public static void mouseMoved(int x, int y) {
 		switch(currentIOMode){
-		case IOMode.MAP_INPUT_NORMAL:{
+		case NORMAL:{
 			PostUtil.mouseMoved(x, y);
 			break;
 		}

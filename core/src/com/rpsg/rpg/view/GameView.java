@@ -86,7 +86,7 @@ public class GameView extends View{
 		if(null!=stackView){
 			stackView.dispose();
 			stackView=null;
-			InputController.currentIOMode=IOMode.MAP_INPUT_NORMAL;
+			InputController.currentIOMode=IOMode.MAP_INPUT.NORMAL;
 		}
 		GameViewRes.ray.removeAll();
 		parameter.loadedCallback=null;
