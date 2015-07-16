@@ -82,23 +82,23 @@ public class Collide implements Serializable {
 						o.collideFootAble=true;
 				}
 				if(testFoot(mine, o) && o.collideFootAble){
-					l.add(new ScriptCollide(o, ScriptCollide.COLLIDE_TYPE_FOOT));
+					l.add(new ScriptCollide(o, CollideType.foot));
 					o.collideFootAble=false;
 				}else if(testFaceZ(mine, o) && o.collideFaceZAble){
-					l.add(new ScriptCollide(o,ScriptCollide.COLLIDE_TYPE_FACE_Z));
+					l.add(new ScriptCollide(o,CollideType.facez));
 					o.collideFaceZAble=false;
 				}else if(testFace(mine, o) && o.collideFaceAble){
-					l.add(new ScriptCollide(o,ScriptCollide.COLLIDE_TYPE_FACE));
+					l.add(new ScriptCollide(o,CollideType.face));
 					o.collideFaceAble=false;
 				}else if(testZ(mine, o) && o.collideZAble){
-					l.add(new ScriptCollide(o,ScriptCollide.COLLIDE_TYPE_Z));
+					l.add(new ScriptCollide(o,CollideType.z));
 					o.collideZAble=false;
 				}else if(testNear(mine, o) && o.collideNearAble){
-					l.add(new ScriptCollide(o,ScriptCollide.COLLIDE_TYPE_NEAR));
+					l.add(new ScriptCollide(o,CollideType.near));
 					o.collideNearAble=false;
 				}
 				if(o.scripts.get(CollideType.auto)!=null){
-					l.add(new ScriptCollide(o, ScriptCollide.AUTO_SCRIPT));
+					l.add(new ScriptCollide(o, CollideType.auto));
 				}
 			}
 		}

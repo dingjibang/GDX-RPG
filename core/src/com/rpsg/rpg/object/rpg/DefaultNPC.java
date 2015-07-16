@@ -23,47 +23,15 @@ public abstract class DefaultNPC extends NPC {
 	
 	@Override
 	public void toCollide(ScriptCollide sc) {
-		if(sc.collideType!=ScriptCollide.AUTO_SCRIPT)
+		if(sc.collideType!=CollideType.auto)
 			Logger.info("碰撞模块触发["+sc+"]");
 		if(!isScriptRunning())
-		switch(sc.collideType){
-		case ScriptCollide.COLLIDE_TYPE_FACE_Z:{
-			if(scripts.get(CollideType.facez)==null)
-				break;
-			this.pushThreadAndRun(getScript(CollideType.facez,this));
-			break;
+		if(sc.collideType!=CollideType.auto){
+			if(scripts.get(sc.collideType)!=null)
+				this.pushThreadAndRun(getScript(sc.collideType, this));
+		}else{
+			if(scripts.get(CollideType.auto)!=null)
+				this.pushThreadAndTryRun(CollideType.auto);
 		}
-		case ScriptCollide.COLLIDE_TYPE_FACE:{
-			if(scripts.get(CollideType.face)==null)
-				break;
-			this.pushThreadAndRun(getScript(CollideType.face,this));
-			break;
-		}
-		case ScriptCollide.COLLIDE_TYPE_FOOT:{
-			if(scripts.get(CollideType.foot)==null)
-				break;
-			this.pushThreadAndRun(getScript(CollideType.foot,this));
-			break;
-		}
-		case ScriptCollide.COLLIDE_TYPE_NEAR:{
-			if(scripts.get(CollideType.near)==null)
-				break;
-			this.pushThreadAndRun(getScript(CollideType.near,this));
-			break;
-		}
-		case ScriptCollide.COLLIDE_TYPE_Z:{
-			if(scripts.get(CollideType.z)==null)
-				break;
-			this.pushThreadAndRun(getScript(CollideType.z,this));
-			break;
-		}
-		case ScriptCollide.AUTO_SCRIPT:{
-			if(scripts.get(CollideType.auto)==null)
-				break;
-			this.pushThreadAndTryRun(CollideType.auto);
-		}
-		}
-		
-		
 	}
 }
