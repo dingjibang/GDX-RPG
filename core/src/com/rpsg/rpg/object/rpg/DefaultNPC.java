@@ -25,13 +25,11 @@ public abstract class DefaultNPC extends NPC {
 	public void toCollide(ScriptCollide sc) {
 		if(sc.collideType!=CollideType.auto)
 			Logger.info("碰撞模块触发["+sc+"]");
-		if(!isScriptRunning())
-		if(sc.collideType!=CollideType.auto){
-			if(scripts.get(sc.collideType)!=null)
+		if(!isScriptRunning() && scripts.get(sc.collideType)!=null)
+			if(sc.collideType!=CollideType.auto)
 				this.pushThreadAndRun(getScript(sc.collideType, this));
-		}else{
-			if(scripts.get(CollideType.auto)!=null)
+			else
 				this.pushThreadAndTryRun(CollideType.auto);
-		}
+			
 	}
 }
