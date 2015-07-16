@@ -18,7 +18,7 @@ public abstract class NPC extends IRPGObject{
 	public static final String RES_PATH=Setting.GAME_RES_WALK+"npcs/";
 	
 	public abstract void toCollide(ScriptCollide sc);
-	public transient Map<String, Class<? extends Script>> scripts=new HashMap<String, Class<? extends Script>>();
+	public transient Map<CollideType, Class<? extends Script>> scripts=new HashMap<CollideType, Class<? extends Script>>();
 	
 	public transient List<Script> threadPool=new LinkedList<Script>();
 	
@@ -38,7 +38,7 @@ public abstract class NPC extends IRPGObject{
 	/**
 	 * return if has same class 
 	 */
-	public void pushThreadAndTryRun(String type){
+	public void pushThreadAndTryRun(CollideType type){
 		Class<? extends Script> t=scripts.get(type);
 		for(Script s:threadPool)
 			if (t.equals(s.getClass())){
@@ -50,7 +50,7 @@ public abstract class NPC extends IRPGObject{
 	List<Script> removeList=new LinkedList<Script>();
 	public boolean isScriptRunning(){
 		for(Script t:threadPool)
-			if(t.isAlive() && !t.callType.equals(DefaultNPC.AUTO_SCRIPT))
+			if(t.isAlive() && !t.callType.equals(CollideType.auto))
 				return true;
 		return false;
 	}
@@ -69,7 +69,7 @@ public abstract class NPC extends IRPGObject{
 	
 	public abstract void init();
 	
-	public Script getScript(String type,NPC npc){
+	public Script getScript(CollideType type,NPC npc){
 		try {
 			Script n;
 			if(scripts.get(type).equals(EasyScript.class)){

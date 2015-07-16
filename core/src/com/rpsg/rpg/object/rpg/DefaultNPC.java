@@ -8,12 +8,7 @@ import com.rpsg.rpg.utils.game.Logger;
 public abstract class DefaultNPC extends NPC {
 	
 	private static final long serialVersionUID = -8871098396830487464L;
-	public static final String COLLIDE_NAME_FACE="face";
-	public static final String COLLIDE_NAME_NEAR="near";
-	public static final String COLLIDE_NAME_FACE_Z="faceZ";
-	public static final String COLLIDE_NAME_Z="z";
-	public static final String COLLIDE_NAME_FOOT="foot";
-	public static final String AUTO_SCRIPT="auto";
+	
 	
 	public DefaultNPC() {
 		super();
@@ -33,39 +28,39 @@ public abstract class DefaultNPC extends NPC {
 		if(!isScriptRunning())
 		switch(sc.collideType){
 		case ScriptCollide.COLLIDE_TYPE_FACE_Z:{
-			if(scripts.get(DefaultNPC.COLLIDE_NAME_FACE_Z)==null)
+			if(scripts.get(CollideType.facez)==null)
 				break;
-			this.pushThreadAndRun(getScript(DefaultNPC.COLLIDE_NAME_FACE_Z,this));
+			this.pushThreadAndRun(getScript(CollideType.facez,this));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_FACE:{
-			if(scripts.get(DefaultNPC.COLLIDE_NAME_FACE)==null)
+			if(scripts.get(CollideType.face)==null)
 				break;
-			this.pushThreadAndRun(getScript(DefaultNPC.COLLIDE_NAME_FACE,this));
+			this.pushThreadAndRun(getScript(CollideType.face,this));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_FOOT:{
-			if(scripts.get(DefaultNPC.COLLIDE_NAME_FOOT)==null)
+			if(scripts.get(CollideType.foot)==null)
 				break;
-			this.pushThreadAndRun(getScript(DefaultNPC.COLLIDE_NAME_FOOT,this));
+			this.pushThreadAndRun(getScript(CollideType.foot,this));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_NEAR:{
-			if(scripts.get(DefaultNPC.COLLIDE_NAME_NEAR)==null)
+			if(scripts.get(CollideType.near)==null)
 				break;
-			this.pushThreadAndRun(getScript(DefaultNPC.COLLIDE_NAME_NEAR,this));
+			this.pushThreadAndRun(getScript(CollideType.near,this));
 			break;
 		}
 		case ScriptCollide.COLLIDE_TYPE_Z:{
-			if(scripts.get(DefaultNPC.COLLIDE_NAME_Z)==null)
+			if(scripts.get(CollideType.z)==null)
 				break;
-			this.pushThreadAndRun(getScript(DefaultNPC.COLLIDE_NAME_Z,this));
+			this.pushThreadAndRun(getScript(CollideType.z,this));
 			break;
 		}
 		case ScriptCollide.AUTO_SCRIPT:{
-			if(scripts.get(DefaultNPC.AUTO_SCRIPT)==null)
+			if(scripts.get(CollideType.auto)==null)
 				break;
-			this.pushThreadAndTryRun(DefaultNPC.AUTO_SCRIPT);
+			this.pushThreadAndTryRun(CollideType.auto);
 		}
 		}
 		

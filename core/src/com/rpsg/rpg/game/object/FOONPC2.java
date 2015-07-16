@@ -1,6 +1,7 @@
 package com.rpsg.rpg.game.object;
 
 import com.rpsg.rpg.game.script.SayFuckMe;
+import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.DefaultNPC;
 
 public class FOONPC2 extends DefaultNPC{
@@ -14,7 +15,7 @@ public class FOONPC2 extends DefaultNPC{
 	@Override
 	public void init() {
 		this.waitWhenCollide=true;
-		scripts.put(DefaultNPC.COLLIDE_NAME_Z, SayFuckMe.class);
+		scripts.put(CollideType.z, SayFuckMe.class);
 	}
 	
 }

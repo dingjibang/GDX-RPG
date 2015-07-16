@@ -1,5 +1,6 @@
 package com.rpsg.rpg.utils.game;
 
+import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 
@@ -17,14 +18,14 @@ public class Base {
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				String callType = script.callType;
+				CollideType callType = script.callType;
 				script.npc.scripts.remove(callType);
 				script.npc.scripts.put(callType, newScript);
 			}
 		});
 	}
 	
-	public static BaseScriptExecutor addScript(final Script script,final Class<? extends Script> newScript,final String type){
+	public static BaseScriptExecutor addScript(final Script script,final Class<? extends Script> newScript,final CollideType type){
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {

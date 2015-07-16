@@ -17,6 +17,7 @@ import java.util.List;
 
 
 
+
 import box2dLight.PointLight;
 
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
@@ -38,6 +39,7 @@ import com.rpsg.rpg.game.hero.Yuuka;
 import com.rpsg.rpg.game.items.equipment.Sunshade;
 import com.rpsg.rpg.game.items.equipment.Shoes;
 import com.rpsg.rpg.game.items.medicine.YaoWan;
+import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.IRPGObject;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.script.Script;
@@ -158,7 +160,7 @@ public class MapController {
 			@SuppressWarnings("unchecked")
 			ArrayList<NPC> npcs=(ArrayList<NPC>)gv.global.npcs.clone();
 			for(NPC n:npcs){
-				n.scripts=new HashMap<String, Class<? extends Script>>();
+				n.scripts=new HashMap<CollideType, Class<? extends Script>>();
 				n.threadPool=new LinkedList<Script>();
 				n.init();
 				gv.stage.addActor(n);

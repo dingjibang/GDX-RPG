@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.FGType;
 import com.rpsg.rpg.object.base.MsgType;
+import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.system.controller.HeroController;
@@ -34,8 +35,8 @@ public abstract class Script implements MsgType,FGType{
 	}
 	
 	public NPC npc;
-	public String callType;
-	public void generate(NPC npc,String type){
+	public CollideType callType;
+	public void generate(NPC npc,CollideType type){
 		this.npc=npc;
 		this.callType=type;
 		init();

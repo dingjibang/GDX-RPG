@@ -3,7 +3,9 @@ package com.rpsg.rpg.utils.game;
 import java.util.Random;
 
 
+
 import com.badlogic.gdx.math.Vector2;
+import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.DefaultNPC;
 import com.rpsg.rpg.object.rpg.IRPGObject;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
@@ -147,13 +149,13 @@ public class Move {
 			public void init(){
 				if(flag){
 					for (Script sc : script.npc.threadPool) {
-						if(sc.callType.equals(DefaultNPC.AUTO_SCRIPT))
+						if(sc.callType.equals(CollideType.auto))
 							sc.dispose();
 					}
 
 //				script.npc.threadPool.removeIf((Script sc)->sc.callType.equals(DefaultNPC.AUTO_SCRIPT));
-				}else if(script.npc.scripts.get(DefaultNPC.AUTO_SCRIPT)!=null)
-					script.npc.pushThreadAndTryRun(DefaultNPC.AUTO_SCRIPT);
+				}else if(script.npc.scripts.get(CollideType.auto)!=null)
+					script.npc.pushThreadAndTryRun(CollideType.auto);
 				script._$(script.setKeyLocker(flag));
 				System.out.println("die");
 			}
