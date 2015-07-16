@@ -1,40 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="8" tilewidth="48" tileheight="48">
- <tileset firstgid="1" name="tilea4wallscyn_750" tilewidth="48" tileheight="48">
+ <tileset firstgid="1" name="shadows" tilewidth="48" tileheight="48">
+  <image source="shadows.png" width="480" height="480"/>
+ </tileset>
+ <tileset firstgid="101" name="tilea4wallscyn_750" tilewidth="48" tileheight="48">
   <image source="tilea4wallscyn_750.png" width="768" height="886"/>
  </tileset>
- <tileset firstgid="289" name="tile_elements_ii_by_ayene_chan-d4becnf" tilewidth="48" tileheight="48">
+ <tileset firstgid="389" name="tile_elements_ii_by_ayene_chan-d4becnf" tilewidth="48" tileheight="48">
   <image source="tile_elements_ii_by_ayene_chan-d4becnf.png" width="432" height="384"/>
  </tileset>
- <tileset firstgid="361" name="rpg_maker_vx___stairs_by_ayene_chan-d6vzlkv" tilewidth="48" tileheight="48">
+ <tileset firstgid="461" name="rpg_maker_vx___stairs_by_ayene_chan-d6vzlkv" tilewidth="48" tileheight="48">
   <image source="rpg_maker_vx___stairs_by_ayene_chan-d6vzlkv.png" width="414" height="312"/>
  </tileset>
- <tileset firstgid="409" name="glo" tilewidth="48" tileheight="48">
+ <tileset firstgid="509" name="glo" tilewidth="48" tileheight="48">
   <image source="glo.png" width="96" height="96"/>
  </tileset>
- <tileset firstgid="413" name="rpg_maker_vx___carpets_autotiles_by_ayene_chan-d5og8bo" tilewidth="48" tileheight="48">
+ <tileset firstgid="513" name="rpg_maker_vx___carpets_autotiles_by_ayene_chan-d5og8bo" tilewidth="48" tileheight="48">
   <image source="rpg_maker_vx___carpets_autotiles_by_ayene_chan-d5og8bo.png" width="576" height="288"/>
  </tileset>
- <tileset firstgid="485" name="rpg_maker_vx___princess_room_by_ayene_chan-d5ygs7b" tilewidth="48" tileheight="48">
+ <tileset firstgid="585" name="rpg_maker_vx___princess_room_by_ayene_chan-d5ygs7b" tilewidth="48" tileheight="48">
   <image source="rpg_maker_vx___princess_room_by_ayene_chan-d5ygs7b.png" width="384" height="672"/>
  </tileset>
  <layer name="块层 1" width="30" height="8">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACwtjZGAIBeIwOtPxQBw3ADS9/TnQ/gWBgfBv0QD5t2iA4rdwgPwLADaBpPXAAwAA
+   H4sIAAAAAAAAC9vFyMCwE4h30Zk+DMSHBoCmtz8H2r8gMBD+vTZA/r02QPF7dYD8CwDFecanwAMAAA==
   </data>
  </layer>
  <layer name="块层 2" width="30" height="8">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAUjASxhZGBYSge8jBHV3g1A/kY64E1QezOh9B4gvZcOeB+af+kNAM02AuzAAwAA
+   H4sIAAAAAAAAC2NgGFmACYoHAnAj2U8vDALMQMwB5HDSAXMhBS7IXhEgX5QOWAxq71lGCK0A5CvSASuh+ZfeAAAF9HOpwAMAAA==
   </data>
  </layer>
  <layer name="块层 3" width="30" height="8">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC/vIwMDwcYAwIyNhzECkOmL1gOxlYiSMGYhUR6yejwwDA0aavSMNAABav4qPwAMAAA==
+   H4sIAAAAAAAACwtlZGAIHSCcSgQGAWLUEasHZG8aERgEiFFHrJ5QqDy9wUizd6QBAKn4az7AAwAA
   </data>
  </layer>
  <objectgroup name="对象层 1">
-  <object name="DOOR" type="NPC" gid="409" x="0" y="336" width="48" height="48">
+  <object name="DOOR" type="NPC" gid="509" x="0" y="336" width="48" height="48">
    <properties>
     <property name="IMAGE" value="empty"/>
     <property name="TELEPORT" value="inner"/>
@@ -43,7 +46,7 @@
     <property name="TELEPORTZ" value="3"/>
    </properties>
   </object>
-  <object name="DOOR" type="NPC" gid="409" x="480" y="144" width="48" height="95">
+  <object name="DOOR" type="NPC" gid="509" x="480" y="144" width="48" height="95">
    <properties>
     <property name="IMAGE" value="door"/>
     <property name="TELEPORT" value="inner"/>
@@ -52,7 +55,7 @@
     <property name="TELEPORTZ" value="3"/>
    </properties>
   </object>
-  <object name="DOOR" type="NPC" gid="409" x="1104" y="144" width="48" height="95">
+  <object name="DOOR" type="NPC" gid="509" x="1104" y="144" width="48" height="95">
    <properties>
     <property name="IMAGE" value="door"/>
     <property name="TELEPORT" value="inner"/>
@@ -61,7 +64,7 @@
     <property name="TELEPORTZ" value="3"/>
    </properties>
   </object>
-  <object name="DOOR" type="NPC" gid="409" x="0" y="384" width="48" height="48">
+  <object name="DOOR" type="NPC" gid="509" x="0" y="384" width="48" height="48">
    <properties>
     <property name="IMAGE" value="empty"/>
     <property name="TELEPORT" value="inner"/>
@@ -73,7 +76,7 @@
  </objectgroup>
  <layer name="块层 4" width="30" height="8">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAXowIGJPnpGwfABHwfIXgAsP4GDwAMAAA==
+   H4sIAAAAAAAAC2NgGAXoYAkTffSMguEDQhkHxl4AZnRKnMADAAA=
   </data>
  </layer>
 </map>

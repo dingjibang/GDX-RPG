@@ -25,7 +25,7 @@ public class MoveController {
 	public static int MAP_MAX_OUT_X = 512;
 	public static int MAP_MAX_OUT_Y = 288;
 	static boolean wu = false, wd = false, wl = false, wr = false;
-	static Actor bufActor=new Actor();
+	static Actor bufActor=new Actor(),bufActor2=new Actor();
 
 	public static void up() {
 		wu = true;
@@ -92,8 +92,9 @@ public class MoveController {
 		// 这两个坐标herox heroy 来确定了hero的位置
 		float herox = HeroController.getHeadHero().position.x + (HeroController.getHeadHero().getWidth() / 2);
 		float heroy = HeroController.getHeadHero().position.y + (HeroController.getHeadHero().getHeight() / 2);
-
-		Vector3 pos = gv.camera.position;
+		
+		
+		Vector3 pos = new Vector3();//gv.camera.position;
 		
 		if(GameUtil.screen_width<twidth){
 			if (herox > MAP_MAX_OUT_X && herox < (twidth) - MAP_MAX_OUT_X)// 如果角色没有到达地图的x边界，那么相机的x中央点就设定为hero的x位置
@@ -117,8 +118,12 @@ public class MoveController {
 		}
 
 		bufActor.act(Gdx.graphics.getDeltaTime());
+		bufActor2.act(Gdx.graphics.getDeltaTime());
+		bufActor2.clearActions();
+		bufActor2.addAction(Actions.moveTo(pos.x, pos.y,0.5f,Interpolation.pow4Out));
 		pos.x += bufActor.getX();
 		pos.y += bufActor.getY();
+		gv.camera.position.set(bufActor2.getX(),bufActor2.getY(),0);
 		gv.camera.update();
 	}
 
