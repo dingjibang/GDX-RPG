@@ -3,6 +3,7 @@ package com.rpsg.rpg.system.controller;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.view.GameViews;
@@ -130,7 +131,7 @@ public class HeroController {
 			getHeadHero().waitWhenCollide=false;
 		}
 	} 
-	
+	public static boolean thisFrameGeneratedPosition=false;
 	public static void generatePosition(int x,int y,int z){
 		for(int i=0;i<heros.size();i++){
 			if(i==0){
@@ -145,6 +146,7 @@ public class HeroController {
 				else if(heros.get(i-1).getCurrentFace()==Hero.FACE_R)
 					heros.get(i).generatePosition(x-1, y, z);
 		}
+		thisFrameGeneratedPosition=true;
 	}
 
 	

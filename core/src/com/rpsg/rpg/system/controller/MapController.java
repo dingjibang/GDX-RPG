@@ -183,6 +183,7 @@ public class MapController {
 		mapHeight= (int) (((TiledMapTileLayer) MapController.layer.get(0)).getHeight() * ((TiledMapTileLayer) MapController.layer.get(0)).getTileHeight());
 
 		Logger.info("地图模块已全部加载完成。");
+		
 	}
 
 	static PointLight headHeroPointLight;

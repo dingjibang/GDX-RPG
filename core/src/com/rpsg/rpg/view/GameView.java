@@ -41,7 +41,7 @@ public class GameView extends View{
 	AssetManager ma=GameViewRes.ma;//资源管理器
 	String filename;//地图文件名（卸载地图纹理时候用到）
 	TmxMapLoader.Parameters parameter;//地图加载完成的回调
-	Matrix4 lastView;//运动模糊用
+	public Matrix4 lastView;//运动模糊用
 	
 	public PostProcessor post;//高清画质用
 	public Bloom bloom;//模糊用
@@ -100,7 +100,6 @@ public class GameView extends View{
 	public void draw(SpriteBatch batch) {
 		if(!ma.update() || !inited)
 			return;
-		
 		motion.setMatrices(camera.invProjectionView, lastView.cpy(), camera.view);
 		lastView=camera.view.cpy();
 		

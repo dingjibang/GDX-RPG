@@ -25,7 +25,7 @@ public class MoveController {
 	public static int MAP_MAX_OUT_X = 512;
 	public static int MAP_MAX_OUT_Y = 288;
 	static boolean wu = false, wd = false, wl = false, wr = false;
-	static Actor bufActor=new Actor(),bufActor2=new Actor();
+	static Actor offsetActor=new Actor(),bufferActor=new Actor();
 
 	public static void up() {
 		wu = true;
@@ -85,7 +85,7 @@ public class MoveController {
 			}
 		}
 		// core
-		// twidth theight 是地图的总宽度和告诉
+		// twidth theight 是地图的总宽度和高度
 		int twidth = MapController.mapWidth;
 		int theight = MapController.mapHeight;
 
@@ -117,23 +117,28 @@ public class MoveController {
 			pos.y=theight/2;
 		}
 
-		bufActor.act(Gdx.graphics.getDeltaTime());
-		bufActor2.act(Gdx.graphics.getDeltaTime());
-		bufActor2.clearActions();
-		bufActor2.addAction(Actions.moveTo(pos.x, pos.y,0.5f,Interpolation.pow4Out));
-		pos.x += bufActor.getX();
-		pos.y += bufActor.getY();
-		gv.camera.position.set(bufActor2.getX(),bufActor2.getY(),0);
+		offsetActor.act(Gdx.graphics.getDeltaTime());
+		bufferActor.act(Gdx.graphics.getDeltaTime());
+		bufferActor.clearActions();
+		pos.x += offsetActor.getX();
+		pos.y += offsetActor.getY();
+		if(!HeroController.thisFrameGeneratedPosition)
+			bufferActor.addAction(Actions.moveTo(pos.x, pos.y,0.5f,Interpolation.pow3Out));
+		else
+			bufferActor.addAction(Actions.moveTo(pos.x, pos.y));
+		gv.camera.position.set(bufferActor.getX(),bufferActor.getY(),0);
 		gv.camera.update();
+		if(!(HeroController.thisFrameGeneratedPosition?!(HeroController.thisFrameGeneratedPosition=false):false))
+			gv.lastView=gv.camera.view.cpy();
 	}
 
 	public static void setCameraPosition(int x, int y) {
-		bufActor.clearActions();
-		bufActor.addAction(Actions.moveTo(x, y,0.8f,Interpolation.pow4Out));
+		offsetActor.clearActions();
+		offsetActor.addAction(Actions.moveTo(x, y,0.8f,Interpolation.pow4Out));
 	}
 
 	public static boolean isCameraMoving() {
-		return bufActor.getActions().size!=0;
+		return offsetActor.getActions().size!=0;
 	}
 
 	public static boolean testCameraPos(GameView gv) {
