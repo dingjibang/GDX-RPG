@@ -53,6 +53,7 @@ public class GameView extends View{
 		inited=false;
 		Logger.info("开始加载图形。");
 		stage.clear();
+		PostUtil.init();
 		parameter = new TmxMapLoader.Parameters();
 		parameter.loadedCallback= new AssetLoaderParameters.LoadedCallback() {
 			public void finishedLoading(AssetManager assetManager, String fileName, Class type) {
@@ -100,11 +101,11 @@ public class GameView extends View{
 	public void draw(SpriteBatch batch) {
 		if(!ma.update() || !inited)
 			return;
+		camera.update();
 		motion.setMatrices(camera.invProjectionView, lastView.cpy(), camera.view);
 		lastView=camera.view.cpy();
-		
 		//TODO 代码不规范
-		motion.setBlurScale(Input.isPress(Keys.CONTROL_LEFT)?0.0035f:0);
+		motion.setBlurScale(0.0075f);
 		
 		boolean menuEnable=true || (null==stackView || stackView.viewStack.size()==0);
 		boolean postEnable=Setting.persistence.betterLight && menuEnable;

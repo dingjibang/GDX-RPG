@@ -1,5 +1,6 @@
 package com.rpsg.rpg.utils.display;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -50,23 +51,26 @@ public class Msg {
 	static int TEXT_DISPLAY_SPEED=30;
 	private static int DISPLAY_OFFSET=0;
 	static boolean show=false;
+	static boolean firstZPress=false;
 	public static BaseScriptExecutor say(final Script script,final String str,final String title,final int size){
+		firstZPress=false;
 		return script.$(new ScriptExecutor(script) {
 			SpriteBatch batch= (SpriteBatch) FG.stage.getBatch();
 			public void step() {
 				if(Input.isPress(Keys.CONTROL_LEFT)){
-					TEXT_DISPLAY_SPEED=100;
 					if(currentTextPoint<=currentText.length()-5)
 						currentTextPoint+=5;
 					else
 						currentTextPoint=currentText.length();
+				}else if(Gdx.input.isKeyJustPressed(Keys.Z) && currentTextPoint!=currentText.length()){
+					currentTextPoint=currentText.length();
 				}else
 					TEXT_DISPLAY_SPEED=30;
 				DISPLAY_OFFSET-=TEXT_DISPLAY_SPEED;
 				if(DISPLAY_OFFSET<=0){
 					DISPLAY_OFFSET=100;
 					if(currentTextPoint>=currentText.length()){
-						if(Input.isPress(Keys.Z) || Input.isPress(Keys.CONTROL_LEFT)){
+						if(!firstZPress && (Gdx.input.isKeyJustPressed(Keys.Z) || Input.isPress(Keys.CONTROL_LEFT))){
 							dispose();
 						}
 					}else

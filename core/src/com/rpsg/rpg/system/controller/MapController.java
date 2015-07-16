@@ -194,7 +194,9 @@ public class MapController {
 	public synchronized static void draw(GameView gv){
 		int size=gv.map.getLayers().getCount();
 		SpriteBatch sb=(SpriteBatch) gv.stage.getBatch();
+		
 		headHeroPointLight.setPosition(HeroController.getHeadHero().getX()+24,HeroController.getHeadHero().getY());
+		sb.setProjectionMatrix(gv.camera.combined);
 		for(int i=0;i<size;i++){
 			if(gv.map.getLayers().get(i).getObjects().getCount()!=0)
 				continue;
@@ -202,7 +204,6 @@ public class MapController {
 			gv.render.setView(gv.camera);
 			gv.render.render(new int[]{i});
 
-			sb.setProjectionMatrix(gv.camera.combined);
 			for(Actor a:gv.stage.getActors())
 				if(a instanceof IRPGObject){
 					IRPGObject c = (IRPGObject)a;
@@ -210,13 +211,12 @@ public class MapController {
 						drawlist.add(c);
 				}
 			Collections.sort(drawlist);
+			sb.begin();
 			for(IRPGObject ir:drawlist){
-				sb.begin();
 				ir.draw(sb, 1f);
-				sb.end();
 			}
+			sb.end();
 		}
-
 //		System.out.println(HeroControler.getHeadHero().getX()+" "+HeroControler.getHeadHero().getY()+" "+gv.camera.position.x+" "+gv.camera.position.y+" "+HeroControler.getHeadHero().mapx+" "+HeroControler.getHeadHero().mapy);
 	}
 	

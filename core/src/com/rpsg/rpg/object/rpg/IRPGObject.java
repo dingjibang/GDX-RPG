@@ -70,9 +70,6 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	
 	public void draw(SpriteBatch batch,float parentAlpha){
 		this.getCurrentImage().setColor(this.getColor());
-		batch.enableBlending();
-		batch.end();
-		batch.begin();
 		this.getCurrentImage().draw(batch,parentAlpha);
 	}
 	

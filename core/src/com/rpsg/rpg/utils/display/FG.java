@@ -12,6 +12,7 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
+import com.rpsg.rpg.view.GameViews;
 
 
 public class FG {
@@ -26,7 +27,7 @@ public class FG {
 	public static Stage stage;
 
 	public static void init(){
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),GameViews.gameview.stage.getBatch());
 		currentImageL=currentImageR=null;
 		Logger.info("立绘控制器初始化完成。");
 	}

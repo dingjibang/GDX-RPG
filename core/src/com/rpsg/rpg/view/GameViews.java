@@ -101,8 +101,6 @@ public class GameViews implements ApplicationListener {
 		post.addEffect(motion);
 		//高清画质一系列的东西，不用管
 		
-		PostUtil.init();//TODO 即将废弃的东西
-		
 		Logger.info("Gdx-RPG引擎初始化成功。");
 	}
 
