@@ -24,6 +24,7 @@ public class Persistence implements Serializable{
 	public boolean touchMod = false;
 	public boolean betterLight = true;
 	public boolean cacheResource = true;
+	public boolean softCamera=true;
 	
 	public String errorMessage="";
 	

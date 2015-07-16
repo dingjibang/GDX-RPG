@@ -52,7 +52,6 @@ public class GameViews implements ApplicationListener {
 	
 	public static PostProcessor post;//高清画质，不用管
 	public static Bloom bloom;//高斯模糊，不用管
-	public static CameraMotion motion;//运动模糊，不用管
 	
 	@Override
 	public void create() {
@@ -95,10 +94,6 @@ public class GameViews implements ApplicationListener {
 		v.setIntensity(0.5f);
 		post.addEffect(v);
 		
-		motion =new CameraMotion(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		motion.setBlurPasses(10);
-		motion.setDepthScale(0);
-		post.addEffect(motion);
 		//高清画质一系列的东西，不用管
 		
 		Logger.info("Gdx-RPG引擎初始化成功。");

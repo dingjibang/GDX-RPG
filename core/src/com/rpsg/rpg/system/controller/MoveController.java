@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Collide;
@@ -94,7 +95,7 @@ public class MoveController {
 		float heroy = HeroController.getHeadHero().position.y + (HeroController.getHeadHero().getHeight() / 2);
 		
 		
-		Vector3 pos = new Vector3();//gv.camera.position;
+		Vector3 pos = Setting.persistence.softCamera?new Vector3():gv.camera.position;
 		
 		if(GameUtil.screen_width<twidth){
 			if (herox > MAP_MAX_OUT_X && herox < (twidth) - MAP_MAX_OUT_X)// 如果角色没有到达地图的x边界，那么相机的x中央点就设定为hero的x位置
@@ -118,17 +119,18 @@ public class MoveController {
 		}
 
 		offsetActor.act(Gdx.graphics.getDeltaTime());
-		bufferActor.act(Gdx.graphics.getDeltaTime());
-		bufferActor.clearActions();
 		pos.x += offsetActor.getX();
 		pos.y += offsetActor.getY();
-		if(!HeroController.thisFrameGeneratedPosition)
-			bufferActor.addAction(Actions.moveTo(pos.x, pos.y,0.5f,Interpolation.pow3Out));
-		else
-			bufferActor.addAction(Actions.moveTo(pos.x, pos.y));
-		gv.camera.position.set((int)bufferActor.getX(),(int)bufferActor.getY(),0);
-		if(!(HeroController.thisFrameGeneratedPosition?!(HeroController.thisFrameGeneratedPosition=false):false))
-			gv.lastView=gv.camera.view.cpy();
+		if(Setting.persistence.softCamera){
+			bufferActor.clearActions();
+			if(!(HeroController.thisFrameGeneratedPosition?!(HeroController.thisFrameGeneratedPosition=false):false))
+				bufferActor.addAction(Actions.moveTo(pos.x, pos.y,0.5f,Interpolation.pow2Out));
+			else
+				bufferActor.addAction(Actions.moveTo(pos.x, pos.y));
+			bufferActor.act(Gdx.graphics.getDeltaTime());
+			gv.camera.position.set((int)bufferActor.getX(),(int)bufferActor.getY(),0);
+		}
+		gv.camera.update();
 	}
 
 	public static void setCameraPosition(int x, int y) {

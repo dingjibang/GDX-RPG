@@ -41,11 +41,9 @@ public class GameView extends View{
 	AssetManager ma=GameViewRes.ma;//资源管理器
 	String filename;//地图文件名（卸载地图纹理时候用到）
 	TmxMapLoader.Parameters parameter;//地图加载完成的回调
-	public Matrix4 lastView;//运动模糊用
 	
 	public PostProcessor post;//高清画质用
 	public Bloom bloom;//模糊用
-	public CameraMotion motion;//运动模糊用
 
 
 	@Override
@@ -65,14 +63,12 @@ public class GameView extends View{
 				inited = true;
 				post = GameViews.post;
 				bloom = GameViews.bloom;
-				motion = GameViews.motion;
 				WeatherUtil.init(GameViews.global.weather);
 				Logger.info("图形加载完成。");
 			}
 		};
 		filename=Setting.GAME_RES_MAP+global.map;
 		ma.load(filename, TiledMap.class ,parameter);
-		lastView=camera.view.cpy();
 	}
 	
 	@Override
@@ -101,12 +97,6 @@ public class GameView extends View{
 	public void draw(SpriteBatch batch) {
 		if(!ma.update() || !inited)
 			return;
-		camera.update();
-		motion.setMatrices(camera.invProjectionView, lastView.cpy(), camera.view);
-		lastView=camera.view.cpy();
-		//TODO 代码不规范
-		motion.setBlurScale(0.0075f);
-		
 		boolean menuEnable=true || (null==stackView || stackView.viewStack.size()==0);
 		boolean postEnable=Setting.persistence.betterLight && menuEnable;
 		
