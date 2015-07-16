@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.script.ScriptCollide;
-import com.rpsg.rpg.object.script.ScriptCollide.COLLIDE_TYPE;
 import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.view.GameView;
 
@@ -83,23 +82,23 @@ public class Collide implements Serializable {
 						o.collideFootAble=true;
 				}
 				if(testFoot(mine, o) && o.collideFootAble){
-					l.add(new ScriptCollide(o, ScriptCollide.COLLIDE_TYPE.FOOT));
+					l.add(new ScriptCollide(o, ScriptCollide.COLLIDE_TYPE_FOOT));
 					o.collideFootAble=false;
 				}else if(testFaceZ(mine, o) && o.collideFaceZAble){
-					l.add(new ScriptCollide(o,ScriptCollide.COLLIDE_TYPE.FACE_Z));
+					l.add(new ScriptCollide(o,ScriptCollide.COLLIDE_TYPE_FACE_Z));
 					o.collideFaceZAble=false;
 				}else if(testFace(mine, o) && o.collideFaceAble){
-					l.add(new ScriptCollide(o,ScriptCollide.COLLIDE_TYPE.FACE));
+					l.add(new ScriptCollide(o,ScriptCollide.COLLIDE_TYPE_FACE));
 					o.collideFaceAble=false;
 				}else if(testZ(mine, o) && o.collideZAble){
-					l.add(new ScriptCollide(o,ScriptCollide.COLLIDE_TYPE.Z));
+					l.add(new ScriptCollide(o,ScriptCollide.COLLIDE_TYPE_Z));
 					o.collideZAble=false;
 				}else if(testNear(mine, o) && o.collideNearAble){
-					l.add(new ScriptCollide(o,ScriptCollide.COLLIDE_TYPE.NEAR));
+					l.add(new ScriptCollide(o,ScriptCollide.COLLIDE_TYPE_NEAR));
 					o.collideNearAble=false;
 				}
-				if(o.scripts.get(COLLIDE_TYPE.AUTO.value())!=null){
-					l.add(new ScriptCollide(o, ScriptCollide.COLLIDE_TYPE.AUTO));
+				if(o.scripts.get(DefaultNPC.AUTO_SCRIPT)!=null){
+					l.add(new ScriptCollide(o, ScriptCollide.AUTO_SCRIPT));
 				}
 			}
 		}
@@ -138,7 +137,7 @@ public class Collide implements Serializable {
 	}
 	
 	private static boolean testFaceZ(IRPGObject mine,NPC o){
-		return testLayer(mine, o)&& (Input.isPress(Keys.Z) && (mine.getCurrentFace()==o.getReverseFace() && (testFaceCollide(mine, o))));
+		return testLayer(mine, o)&& ((Input.isPress(Keys.Z) || PostUtil.isVZPress()) && (mine.getCurrentFace()==o.getReverseFace() && (testFaceCollide(mine, o))));
 	}
 	
 //	private static boolean fullTest(IRPGObject mine,NPC o){
