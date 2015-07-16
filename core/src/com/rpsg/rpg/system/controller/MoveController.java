@@ -126,7 +126,7 @@ public class MoveController {
 			bufferActor.addAction(Actions.moveTo(pos.x, pos.y,0.5f,Interpolation.pow3Out));
 		else
 			bufferActor.addAction(Actions.moveTo(pos.x, pos.y));
-		gv.camera.position.set(bufferActor.getX(),bufferActor.getY(),0);
+		gv.camera.position.set((int)bufferActor.getX(),(int)bufferActor.getY(),0);
 		gv.camera.update();
 		if(!(HeroController.thisFrameGeneratedPosition?!(HeroController.thisFrameGeneratedPosition=false):false))
 			gv.lastView=gv.camera.view.cpy();
