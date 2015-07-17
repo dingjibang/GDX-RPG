@@ -129,6 +129,7 @@ public class MoveController {
 				bufferActor.addAction(Actions.moveTo(pos.x, pos.y));
 			bufferActor.act(Gdx.graphics.getDeltaTime());
 			gv.camera.position.set((int)bufferActor.getX(),(int)bufferActor.getY(),0);
+			
 		}
 		gv.camera.update();
 	}

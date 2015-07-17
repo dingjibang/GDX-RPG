@@ -49,8 +49,8 @@
   <object name="DOOR" type="NPC" gid="509" x="480" y="144" width="48" height="95">
    <properties>
     <property name="IMAGE" value="door"/>
-    <property name="TELEPORT" value="inner"/>
-    <property name="TELEPORTX" value="23"/>
+    <property name="TELEPORT" value="rkoroom"/>
+    <property name="TELEPORTX" value="5"/>
     <property name="TELEPORTY" value="5"/>
     <property name="TELEPORTZ" value="3"/>
    </properties>

@@ -21,6 +21,9 @@
  <tileset firstgid="1229" name="request_march_by_nicnubill-d7a6dq7" tilewidth="48" tileheight="48">
   <image source="request_march_by_nicnubill-d7a6dq7.png" width="768" height="768"/>
  </tileset>
+ <tileset firstgid="1485" name="glo" tilewidth="48" tileheight="48">
+  <image source="glo.png" width="96" height="96"/>
+ </tileset>
  <layer name="块层 1" width="14" height="13">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAACytnYGAoH8WjmMYYBpDZpABS9QEAzyVsmdgCAAA=
@@ -41,7 +44,17 @@
    H4sIAAAAAAAAC5vLyMAwl0y8lkQM06fGysBwl5mBYR0jBH9jYWD4DsQ3gfgWEIcD8SYmBgZTIN3GhNBnBtRnANSHDl4C1b0C4nQWCN8VSsP0gYADFn24AEzfWxbi9SDr+4tH3wSg3GQgnsSCqY+XFbe+BUD1C4F4ERZ9pAJK9cH0kpNWQICUNANLIyCwjpF4DAAbynLx2AIAAA==
   </data>
  </layer>
- <objectgroup name="对象层 1"/>
+ <objectgroup name="对象层 1">
+  <object name="DOOR" type="NPC" gid="1485" x="96" y="624" width="48" height="95">
+   <properties>
+    <property name="IMAGE" value="door"/>
+    <property name="TELEPORT" value="twofloor"/>
+    <property name="TELEPORTX" value="2"/>
+    <property name="TELEPORTY" value="6"/>
+    <property name="TELEPORTZ" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer name="块层 4" width="14" height="13">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoAycZWZgOAfE5SwMDBUspOm9x0yh5aNgFOAAAKFgpn/YAgAA
