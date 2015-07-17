@@ -7,10 +7,10 @@ import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.view.GameViews;
 
 public class Input implements InputProcessor{
-	public static IOMode.GAME_INPUT state=IOMode.GAME_INPUT.NORMAL;
+	public static IOMode.GameInput state=IOMode.GameInput.NORMAL;
 	@Override
 	public boolean keyDown(int keycode) {
-		if(state==IOMode.GAME_INPUT.HOVER)
+		if(state==IOMode.GameInput.HOVER)
 			return HoverController.keyDown(keycode);
 		switch(GameViews.state){
 		case GameViews.STATE_TITLE:{
@@ -25,7 +25,7 @@ public class Input implements InputProcessor{
 
 	@Override
 	public boolean keyUp(int keycode) {
-		if(state==IOMode.GAME_INPUT.HOVER)
+		if(state==IOMode.GameInput.HOVER)
 			return HoverController.keyUp(keycode);
 		switch(GameViews.state){
 		case GameViews.STATE_GAME:{
@@ -37,7 +37,7 @@ public class Input implements InputProcessor{
 
 	@Override
 	public boolean keyTyped(char character) {
-		if(state==IOMode.GAME_INPUT.HOVER)
+		if(state==IOMode.GameInput.HOVER)
 			return HoverController.keyTyped(character);
 		switch(GameViews.state){
 		case GameViews.STATE_LOGO:{
@@ -54,7 +54,7 @@ public class Input implements InputProcessor{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		if(state==IOMode.GAME_INPUT.HOVER)
+		if(state==IOMode.GameInput.HOVER)
 			return HoverController.touchDown(screenX, screenY, pointer, button);
 		switch(GameViews.state){
 		case GameViews.STATE_GAME:{
@@ -66,7 +66,7 @@ public class Input implements InputProcessor{
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		if(state==IOMode.GAME_INPUT.HOVER)
+		if(state==IOMode.GameInput.HOVER)
 			return HoverController.touchUp(screenX, screenY, pointer, button);
 		switch(GameViews.state){
 		case GameViews.STATE_GAME:{
@@ -78,7 +78,7 @@ public class Input implements InputProcessor{
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		if(state==IOMode.GAME_INPUT.HOVER)
+		if(state==IOMode.GameInput.HOVER)
 			return HoverController.touchDragged(screenX, screenY, pointer);
 		switch(GameViews.state){
 		case GameViews.STATE_GAME:{
@@ -90,7 +90,7 @@ public class Input implements InputProcessor{
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		if(state==IOMode.GAME_INPUT.HOVER)
+		if(state==IOMode.GameInput.HOVER)
 			return HoverController.mouseMoved(screenX, screenY);
 		switch(GameViews.state){
 		case GameViews.STATE_GAME:{
@@ -103,7 +103,7 @@ public class Input implements InputProcessor{
 
 	@Override
 	public boolean scrolled(int amount) {
-		if(state==IOMode.GAME_INPUT.HOVER)
+		if(state==IOMode.GameInput.HOVER)
 			return HoverController.scrolled(amount);
 		switch(GameViews.state){
 		case GameViews.STATE_GAME:{

@@ -512,7 +512,7 @@ public class ItemView extends DefaultIView{
 		}
 
 		stage.dispose();
-		render.dispose();
+//		render.dispose();
 		add.dispose();
 	}
 

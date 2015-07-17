@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.rpsg.rpg.io.SL;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
-import com.rpsg.rpg.object.base.IOMode.MAP_INPUT;
+import com.rpsg.rpg.object.base.IOMode.MapInput;
 import com.rpsg.rpg.system.base.Initialization;
 import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.view.GameView;
@@ -15,8 +15,8 @@ import com.rpsg.rpg.view.GameViews;
 
 public class InputController{
 	
-	public static MAP_INPUT currentIOMode=IOMode.MAP_INPUT.NORMAL; 
-	static IOMode.MAP_INPUT tmpIO=null;
+	public static MapInput currentIOMode=IOMode.MapInput.NORMAL; 
+	static IOMode.MapInput tmpIO=null;
 	
 	public static void setTempIOMode(int IOMode){
 		tmpIO=currentIOMode;
@@ -42,7 +42,7 @@ public class InputController{
 		case NORMAL:{
 			if(keycode==Keys.ESCAPE || keycode==Keys.X){
 				MenuController.createMenu();
-				currentIOMode=IOMode.MAP_INPUT.MENU;
+				currentIOMode=IOMode.MapInput.MENU;
 			}else{
 					MoveController.keyDown(keycode, gv);
 			}
