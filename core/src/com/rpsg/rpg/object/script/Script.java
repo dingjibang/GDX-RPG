@@ -36,10 +36,11 @@ public abstract class Script implements MsgType,FGType{
 	
 	public NPC npc;
 	public CollideType callType;
-	public void generate(NPC npc,CollideType type){
+	public Script generate(NPC npc,CollideType type){
 		this.npc=npc;
 		this.callType=type;
 		init();
+		return this;
 	}
 	
 	public abstract void init();
