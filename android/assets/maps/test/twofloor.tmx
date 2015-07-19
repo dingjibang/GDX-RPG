@@ -50,8 +50,8 @@
    <properties>
     <property name="IMAGE" value="door"/>
     <property name="TELEPORT" value="rkoroom"/>
-    <property name="TELEPORTX" value="5"/>
-    <property name="TELEPORTY" value="5"/>
+    <property name="TELEPORTX" value="2"/>
+    <property name="TELEPORTY" value="9"/>
     <property name="TELEPORTZ" value="3"/>
    </properties>
   </object>

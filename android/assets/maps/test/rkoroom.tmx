@@ -49,8 +49,8 @@
    <properties>
     <property name="IMAGE" value="door"/>
     <property name="TELEPORT" value="twofloor"/>
-    <property name="TELEPORTX" value="2"/>
-    <property name="TELEPORTY" value="6"/>
+    <property name="TELEPORTX" value="10"/>
+    <property name="TELEPORTY" value="3"/>
     <property name="TELEPORTZ" value="2"/>
    </properties>
   </object>
