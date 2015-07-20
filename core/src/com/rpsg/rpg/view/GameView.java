@@ -75,7 +75,6 @@ public class GameView extends View{
 	
 	@Override
 	public void dispose() {
-		GameViews.loadview.reinit();
 		MapController.dispose();
 		Msg.dispose();
 		if(!Setting.persistence.cacheResource){

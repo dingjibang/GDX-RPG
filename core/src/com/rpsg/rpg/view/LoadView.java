@@ -56,7 +56,6 @@ public class LoadView extends View {
 		f_load.setSize(200, 25);
 		f_load.setPosition(GameUtil.screen_width - f_load.getWidth() - 70, 30);
         stage.addActor(bg);
-		reinit();
 	}
 	
 	@Override
@@ -145,9 +144,6 @@ public class LoadView extends View {
 	@Override
 	public boolean scrolled(int amount) {
 		return false;
-	}
-	public void reinit() {
-	
 	}
 
 	public void draw(SpriteBatch batch) {
