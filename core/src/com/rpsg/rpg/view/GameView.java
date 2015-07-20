@@ -98,7 +98,6 @@ public class GameView extends View{
 	@Override
 	public void draw(SpriteBatch batch) {
 		if(!ma.update() || !inited){
-			System.out.println("`1");
 			PostUtil.draw(true);
 			return;
 		}
