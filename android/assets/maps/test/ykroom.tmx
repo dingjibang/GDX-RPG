@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="14" height="13" tilewidth="48" tileheight="48">
+ <tileset firstgid="1" name="shadows" tilewidth="48" tileheight="48">
+  <image source="shadows.png" width="480" height="480"/>
+ </tileset>
+ <tileset firstgid="101" name="tile_elements_ii_by_ayene_chan-d4becnf" tilewidth="48" tileheight="48">
+  <image source="tile_elements_ii_by_ayene_chan-d4becnf.png" width="432" height="384"/>
+ </tileset>
+ <tileset firstgid="173" name="tilea4wallscyn_750" tilewidth="48" tileheight="48">
+  <image source="tilea4wallscyn_750.png" width="768" height="886"/>
+ </tileset>
+ <tileset firstgid="461" name="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6" tilewidth="48" tileheight="48">
+  <image source="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6.png" width="768" height="768"/>
+ </tileset>
+ <tileset firstgid="717" name="rpg_maker_vx___tile_c_by_ayene_chan-d7kwsoc" tilewidth="48" tileheight="48">
+  <image source="rpg_maker_vx___tile_c_by_ayene_chan-d7kwsoc.png" width="768" height="768"/>
+ </tileset>
+ <tileset firstgid="973" name="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6" tilewidth="48" tileheight="48">
+  <image source="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6.png" width="768" height="768"/>
+ </tileset>
+ <tileset firstgid="1229" name="request_march_by_nicnubill-d7a6dq7" tilewidth="48" tileheight="48">
+  <image source="request_march_by_nicnubill-d7a6dq7.png" width="768" height="768"/>
+ </tileset>
+ <tileset firstgid="1485" name="glo" tilewidth="48" tileheight="48">
+  <image source="glo.png" width="96" height="96"/>
+ </tileset>
+ <layer name="块层 1" width="14" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACytnYGAoH8WjmMYYBpDZpABS9QEAzyVsmdgCAAA=
+  </data>
+ </layer>
+ <layer name="块层 2" width="14" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoD9YxwjByGx0jA1wAzETEmZFE4OpYYTSMMCMxRxpKBumVxqJhgEFJDa6HD7AisVOWupD9g8pgBy7KNVLL30ACG+1ZdgCAAA=
+  </data>
+ </layer>
+ <layer name="块层 5" width="14" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGLxgHeNAu2AUDFUAAF64OELYAgAA
+  </data>
+ </layer>
+ <layer name="块层 3" width="14" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC5vLyMAwl0y8lkQM0wcCd5kZGNYxQrAaK4KtDmTfZoGwRZkgNLI+GPgJ1G/GiuCbA9mvWSBsVSYIjU0fJwsDQYBNHzEApu8vEXZg08fLSlgtNn2kAkr1wfSSk1ZAgJQ0A0sXILCOkXgMAI9+L/DYAgAA
+  </data>
+ </layer>
+ <objectgroup name="对象层 1">
+  <object name="DOOR" type="NPC" gid="1485" x="96" y="624" width="48" height="95">
+   <properties>
+    <property name="IMAGE" value="door"/>
+    <property name="TELEPORT" value="twofloor"/>
+    <property name="TELEPORTX" value="23"/>
+    <property name="TELEPORTY" value="3"/>
+    <property name="TELEPORTZ" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="块层 4" width="14" height="13">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoAycZWZgOAfE5SwMDBUspOm9x0yh5TQGb0n0zygYPAAADVgKINgCAAA=
+  </data>
+ </layer>
+</map>

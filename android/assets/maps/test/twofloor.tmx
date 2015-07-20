@@ -55,21 +55,21 @@
     <property name="TELEPORTZ" value="3"/>
    </properties>
   </object>
-  <object name="DOOR" type="NPC" gid="509" x="1104" y="144" width="48" height="95">
-   <properties>
-    <property name="IMAGE" value="door"/>
-    <property name="TELEPORT" value="inner"/>
-    <property name="TELEPORTX" value="23"/>
-    <property name="TELEPORTY" value="5"/>
-    <property name="TELEPORTZ" value="3"/>
-   </properties>
-  </object>
   <object name="DOOR" type="NPC" gid="509" x="0" y="384" width="48" height="48">
    <properties>
     <property name="IMAGE" value="empty"/>
     <property name="TELEPORT" value="inner"/>
     <property name="TELEPORTX" value="23"/>
     <property name="TELEPORTY" value="5"/>
+    <property name="TELEPORTZ" value="3"/>
+   </properties>
+  </object>
+  <object name="DOOR" type="NPC" gid="509" x="1104" y="144" width="48" height="95">
+   <properties>
+    <property name="IMAGE" value="door"/>
+    <property name="TELEPORT" value="ykroom"/>
+    <property name="TELEPORTX" value="2"/>
+    <property name="TELEPORTY" value="9"/>
     <property name="TELEPORTZ" value="3"/>
    </properties>
   </object>
