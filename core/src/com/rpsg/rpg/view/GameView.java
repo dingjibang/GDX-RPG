@@ -8,6 +8,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.*;
+import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.physics.box2d.World;
@@ -29,7 +30,7 @@ import com.rpsg.rpg.utils.game.Logger;
 
 public class GameView extends View{
 	
-	public OrthogonalTiledMapRenderer render =  new OrthogonalTiledMapRenderer(null);//地图绘制器
+	public OrthoCachedTiledMapRenderer render ;//地图绘制器
 	public Stage stage = GameViewRes.stage;//舞台
 	public TiledMap map;//地图文件
 	public boolean inited=false;//是否加载完成的状态标志
@@ -56,7 +57,7 @@ public class GameView extends View{
 		parameter.loadedCallback= new AssetLoaderParameters.LoadedCallback() {
 			public void finishedLoading(AssetManager assetManager, String fileName, Class type) {
 				map = ma.get(Setting.GAME_RES_MAP + global.map);
-				render.setMap(map);
+				render=new OrthoCachedTiledMapRenderer(map);
 				render.setView(camera);
 				ray.setWorld(world);
 				Initialization.init(GameView.this);
