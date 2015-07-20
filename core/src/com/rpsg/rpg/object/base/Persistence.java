@@ -33,7 +33,6 @@ public class Persistence implements Serializable{
 
 	public static Persistence read(){
 		Object o=Files.load(PersistenceFileName);
-		File file=Gdx.files.local(PersistenceFileName).file();
 		if(null!=o)
 			return (Persistence)o;
 		//create new settings if the "save" floder not exise

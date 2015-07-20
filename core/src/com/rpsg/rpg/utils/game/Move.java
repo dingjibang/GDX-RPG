@@ -6,7 +6,6 @@ import java.util.Random;
 
 import com.badlogic.gdx.math.Vector2;
 import com.rpsg.rpg.object.rpg.CollideType;
-import com.rpsg.rpg.object.rpg.DefaultNPC;
 import com.rpsg.rpg.object.rpg.IRPGObject;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;

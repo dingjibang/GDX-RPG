@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -129,7 +128,6 @@ public class MoveController {
 				bufferActor.addAction(Actions.moveTo(pos.x, pos.y));
 			bufferActor.act(Gdx.graphics.getDeltaTime());
 			gv.camera.position.set((int)bufferActor.getX(),(int)bufferActor.getY(),0);
-			
 		}
 		gv.camera.update();
 	}
