@@ -58,6 +58,7 @@ public class GameView extends View{
 			public void finishedLoading(AssetManager assetManager, String fileName, Class type) {
 				map = ma.get(Setting.GAME_RES_MAP + global.map);
 				render=new OrthoCachedTiledMapRenderer(map);
+				render.setBlending(true);
 				render.setView(camera);
 				ray.setWorld(world);
 				Initialization.init(GameView.this);
