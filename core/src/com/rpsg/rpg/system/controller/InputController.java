@@ -119,7 +119,6 @@ public class InputController{
 			break;
 		}
 		case NORMAL:{
-			
 			PostUtil.touchUp(screenX, screenY, pointer, button);
 			break;
 		}

@@ -42,13 +42,12 @@ public class PostUtil {
 	static GdxQuery others;
 	static boolean VZPress=false;
 	public static boolean isVZPress(){
-			return VZPress?(!(VZPress=false)):VZPress;
-	} 
+			return VZPress?!(VZPress=false):VZPress;
+	}
+	public static boolean first=true; 
+	
 	public static void init(){
-		if(stage!=null){
-			stage.clear();
-			stage=null;
-		}
+		first=false;
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),GameViews.gameview.stage.getBatch());
 		
 		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu_active.png")).pos(GameUtil.screen_width-65, 15).onClick(new Runnable() {public void run() {
@@ -90,7 +89,6 @@ public class PostUtil {
 			actor.addAction(GameViews.gameview.stackView==null?Actions.fadeIn(0.1f):Actions.fadeOut(0.1f));
 		stage.act();
 		stage.draw();
-		
 	}
 	
 	public static boolean mouseMoved(int x,int y){

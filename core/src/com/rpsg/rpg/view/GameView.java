@@ -52,7 +52,8 @@ public class GameView extends View{
 		inited=false;
 		Logger.info("开始加载图形。");
 		stage.clear();
-		PostUtil.init();
+		if(PostUtil.first)
+			PostUtil.init();
 		parameter = new TmxMapLoader.Parameters();
 		parameter.loadedCallback= new AssetLoaderParameters.LoadedCallback() {
 			public void finishedLoading(AssetManager assetManager, String fileName, Class type) {
@@ -96,8 +97,11 @@ public class GameView extends View{
 	
 	@Override
 	public void draw(SpriteBatch batch) {
-		if(!ma.update() || !inited)
+		if(!ma.update() || !inited){
+			System.out.println("`1");
+			PostUtil.draw(true);
 			return;
+		}
 		boolean menuEnable=true || (null==stackView || stackView.viewStack.size()==0);
 		boolean postEnable=Setting.persistence.betterLight && menuEnable;
 		
