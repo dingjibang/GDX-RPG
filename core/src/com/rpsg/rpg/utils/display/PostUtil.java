@@ -75,6 +75,7 @@ public class PostUtil {
 	}
 	public static void draw( boolean menuEnable){
 		others.setVisible(Setting.persistence.touchMod);
+		others.setColor(1, 1, 1, menuEnable?1:0);
 		if(Setting.persistence.touchMod && GameViews.gameview.stackView==null){
 			float x=pad.getKnobPercentX();
 			float y=pad.getKnobPercentY();
@@ -92,7 +93,8 @@ public class PostUtil {
 		for(Actor actor:others.getItems())
 			actor.addAction(GameViews.gameview.stackView==null?Actions.fadeIn(0.1f):Actions.fadeOut(0.1f));
 		stage.act();
-		stage.draw();
+		if(menuEnable)
+			stage.draw();
 	}
 	
 	public static boolean mouseMoved(int x,int y){

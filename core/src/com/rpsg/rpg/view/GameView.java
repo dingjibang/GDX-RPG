@@ -93,11 +93,10 @@ public class GameView extends View{
 	@Override
 	public void draw(SpriteBatch batch) {
 		if(!ma.update() || !inited){
-			PostUtil.draw(true);
+			PostUtil.draw(false);
 			return;
 		}
-		boolean menuEnable=true || (null==stackView || stackView.viewStack.size()==0);
-		boolean postEnable=Setting.persistence.betterLight && menuEnable;
+		boolean postEnable=Setting.persistence.betterLight;
 		
 		if(postEnable)
 			post.capture();
@@ -114,7 +113,7 @@ public class GameView extends View{
 			WeatherUtil.draw((SpriteBatch) PostUtil.stage.getBatch());
 
 		ColorUtil.draw();
-		PostUtil.draw(menuEnable);
+		PostUtil.draw(true);
 
 		DrawController.draw();
 		
