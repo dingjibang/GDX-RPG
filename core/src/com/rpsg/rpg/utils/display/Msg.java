@@ -62,7 +62,7 @@ public class Msg {
 						currentTextPoint+=5;
 					else
 						currentTextPoint=currentText.length();
-				}else if(Gdx.input.isKeyJustPressed(Keys.Z) && currentTextPoint!=currentText.length()){
+				}else if((Gdx.input.isKeyJustPressed(Keys.Z) || Gdx.input.justTouched()) && currentTextPoint!=currentText.length()){
 					currentTextPoint=currentText.length()-2;
 				}else
 					TEXT_DISPLAY_SPEED=30;
@@ -70,7 +70,7 @@ public class Msg {
 				if(DISPLAY_OFFSET<=0){
 					DISPLAY_OFFSET=100;
 					if(currentTextPoint>=currentText.length()){
-						if(!firstZPress && (Gdx.input.isKeyPressed(Keys.Z) || Input.isPress(Keys.CONTROL_LEFT))){
+						if(!firstZPress && (Gdx.input.isKeyPressed(Keys.Z) || Input.isPress(Keys.CONTROL_LEFT) || Gdx.input.isTouched())){
 							dispose();
 						}
 					}else

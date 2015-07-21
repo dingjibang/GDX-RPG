@@ -42,7 +42,7 @@ public class PostUtil {
 	static GdxQuery others;
 	static boolean VZPress=false;
 	public static boolean isVZPress(){
-			return VZPress;
+		return VZPress;//?!(VZPress=false):false;
 	}
 	public static boolean setVZPress(boolean v){
 		return VZPress=v;
@@ -61,14 +61,15 @@ public class PostUtil {
 		System.out.println(tstyle.background.getMinWidth());
 		tstyle.knob=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_knob.png");
 		others=$.add($.add(pad=new Touchpad(0, tstyle)).setPosition(35, 25).setVisible(!GameUtil.isDesktop));
-		others.add($.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button_a.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button_a_p.png"))).setPosition(830, 65).setVisible(!GameUtil.isDesktop)).addListener(new InputListener(){
+		others.add($.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button_a.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button_a_p.png"))).setPosition(830, 65).setVisible(!GameUtil.isDesktop).addListener(new InputListener(){
 			public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
+				System.out.println("??");
 				VZPress=false;
 			}
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
-				return !(VZPress=true);
+				return VZPress=true;
 			}
-		});
+		}));
 		others.appendTo(stage);
 		Logger.info("Post特效创建成功。");
 	}
