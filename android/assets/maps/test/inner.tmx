@@ -83,6 +83,12 @@
     <property name="TELEPORTZ" value="2"/>
    </properties>
   </object>
+  <object name="Talker" type="NPC" gid="1066" x="912" y="144" width="48" height="48">
+   <properties>
+    <property name="IMAGE" value="empty"/>
+    <property name="SAYING" value="人类为何要互相伤害呢？"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="块层 4" width="25" height="21">
   <data encoding="base64" compression="gzip">
