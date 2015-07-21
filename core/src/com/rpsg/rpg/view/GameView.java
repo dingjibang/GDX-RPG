@@ -2,22 +2,17 @@ package com.rpsg.rpg.view;
 
 import box2dLight.RayHandler;
 
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.assets.AssetLoaderParameters;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.bitfire.postprocessing.PostProcessor;
 import com.bitfire.postprocessing.effects.Bloom;
-import com.bitfire.postprocessing.effects.CameraMotion;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -98,7 +93,6 @@ public class GameView extends View{
 	@Override
 	public void draw(SpriteBatch batch) {
 		if(!ma.update() || !inited){
-			System.out.println("`1");
 			PostUtil.draw(true);
 			return;
 		}

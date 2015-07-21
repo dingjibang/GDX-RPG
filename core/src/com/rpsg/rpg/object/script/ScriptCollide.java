@@ -2,6 +2,7 @@ package com.rpsg.rpg.object.script;
 
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.NPC;
+import com.rpsg.rpg.utils.display.PostUtil;
 
 
 public class ScriptCollide {
@@ -9,6 +10,8 @@ public class ScriptCollide {
 	public CollideType collideType;
 	
 	public ScriptCollide(NPC o,CollideType type){
+		if(type==CollideType.facez || type==CollideType.z)
+			PostUtil.setVZPress(false);
 		collideType=type;
 		rpgobject=o;
 	}

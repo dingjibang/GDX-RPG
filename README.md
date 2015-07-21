@@ -1,7 +1,7 @@
 # GDX-RPG
 learning libgdx...
 
-![Image](https://raw.githubusercontent.com/dingjibang/GDX-LAZY-FONT/master/foobar.jpg)
+![Image](https://raw.githubusercontent.com/dingjibang/GDX-LAZY-FONT/master/foobar.png)
 
 官网/website:  [http://shadow.rpsg-team.com](http://shadow.rpsg-team.com)<br/>
 
