@@ -19,6 +19,7 @@ public class AchievementManager implements Serializable {
 	public static List<Class<?>> Ach = new ArrayList<Class<?>>();
 	public static List<String> compare;
 	public static TreeMap<String, List<Class<?>>> judge = new TreeMap<String, List<Class<?>>>();
+	public static boolean flag = false;
 
 	public AchievementManager() { // 初始化时获取所有的成就对象
 		try {
@@ -34,30 +35,36 @@ public class AchievementManager implements Serializable {
 
 	}
 
-	public static void compareupdate() throws Exception {
+	public static void compareupdate() {
 		for (Class<?> c : Ach) {
-			Field field = c.getField("compare");
-			String compare = (String) field.get(c.getClass());
-			Field field1 = c.getField("status");
-			Integer status = (Integer) field1.get(c.getClass());
-
-			if (status == 0) {
-				if (judge.containsKey(compare)) {
-					judge.get(compare).add(c);
-				} else {
-					List<Class<?>> l = new ArrayList<Class<?>>();
-					l.add(c);
-					judge.put(compare, l);
+			try {
+				Field field = c.getField("compare");
+				String compare = (String) field.get(c);
+				Field field1 = c.getField("status");
+				Integer status = (Integer) field1.get(c);
+				if (status == 0) {
+					if (judge.containsKey(compare)) {
+						judge.get(compare).add(c);
+					} else {
+						List<Class<?>> l = new ArrayList<Class<?>>();
+						l.add(c);
+						judge.put(compare, l);
+					}
 				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
+		flag = false;
 	}
 
-	public static void determine(Global g, String comparefield) {
-		for (Class<?> c : judge.get(comparefield)) {
+	public static void determine(String comparefield) {
+		for (Class<?> c : AchievementManager.judge.get(comparefield)) {
 			try {
-				Method m = c.getMethod(comparefield, Global.class);
-				m.invoke(null, g);
+				Method m = c.getMethod("judge");
+				m.invoke(c.newInstance());
+			} catch (InstantiationException e) {
+				e.printStackTrace();
 			} catch (NoSuchMethodException e) {
 				e.printStackTrace();
 			} catch (SecurityException e) {
@@ -70,14 +77,19 @@ public class AchievementManager implements Serializable {
 				e.printStackTrace();
 			}
 		}
+		if (AchievementManager.flag == true) {
+			compareupdate();
+		}
 	}
 
-	/*
-	 * public static void main(String arg[]) { new AchievementManager();
-	 * Set<String> keySet = judge.keySet(); for (String keyName : keySet) {
-	 * System.out.println("键名：" + keyName);
-	 * System.out.println(judge.get(keyName));
-	 * 
-	 * } }
-	 */
+	public static void main(String arg[]) {
+		new AchievementManager();
+		Set<String> keySet = judge.keySet();
+		for (String keyName : keySet) {
+			System.out.println("键名：" + keyName);
+			System.out.println(judge.get(keyName));
+
+		}
+	}
+
 }
