@@ -14,7 +14,6 @@ import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.utils.display.WeatherUtil;
 import com.rpsg.rpg.utils.game.GameDate;
-import com.rpsg.rpg.view.GameViews;
 
 public class Global implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -53,15 +52,40 @@ public class Global implements Serializable {
 	}
 	public AchievementManager ach = new AchievementManager();
 
-	public void change(String field, String action) {
+	public void $(String s) {
+		//global.$("gold+10000") global.$("gold.set(10000)") global.$("items.add(YaoWan,3)")
+		try {
+			if (s.contains("+")) {
+				Field f = this.getClass().getField(
+						s.substring(0, s.indexOf("+")));
+				int i = (int) f.get(this);
+				f.setAccessible(true);
+				i += Integer.parseInt(s.substring(s.indexOf("+")+1));
+				f.set(this, i);
+			}else if (s.contains("-")) {
+				Field f = this.getClass().getField(
+						s.substring(0, s.indexOf("-")));
+				int i = (int) f.get(this);
+				f.setAccessible(true);
+				i -= Integer.parseInt(s.substring(s.indexOf("-+")+1));
+				f.set(this, i);
+			}else if (s.contains(".set(")){
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void update(String field, String action) { // global.update("gold","+100000")
 		try {
 			Field f = this.getClass().getField(field);
 			int i = (int) f.get(this);
 			f.setAccessible(true);
 			if (action.charAt(0) == '+') {
-				i += Integer.parseInt(action.substring(0));
+				i += Integer.parseInt(action.substring(1));
 			} else if (action.charAt(0) == '-') {
-				i -= Integer.parseInt(action.substring(0));
+				i -= Integer.parseInt(action.substring(1));
 			} else {
 				i = Integer.parseInt(action);
 			}
