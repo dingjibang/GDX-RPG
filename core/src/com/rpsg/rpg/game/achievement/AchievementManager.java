@@ -6,38 +6,41 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.TreeMap;
 
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.utils.game.AchUtil;
 
-public class AchievementManager implements Serializable{
+public class AchievementManager implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	public static List<Class<?>> Ach = new ArrayList<Class<?>>();
 	public static List<String> compare;
-	public static TreeMap<String, List<Class<?>>> judge;
+	public static TreeMap<String, List<Class<?>>> judge = new TreeMap<String, List<Class<?>>>();
 
 	public AchievementManager() { // 初始化时获取所有的成就对象
 		try {
 			for (Class<?> c : AchUtil
 					.getAllAssignedClass(BaseAchievement.class)) {
-				if (c.isInstance(new BaseAchievement())) {
-					Ach.add(c);
-				}
+				Ach.add(c);
+				System.out.println(c.getName());
 			}
+			compareupdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	public static void compareupdate() throws Exception {
 		for (Class<?> c : Ach) {
-			Field field = c.getClass().getField("compare");
+			Field field = c.getField("compare");
 			String compare = (String) field.get(c.getClass());
-			Field field1 = c.getClass().getField("status");
+			Field field1 = c.getField("status");
 			Integer status = (Integer) field1.get(c.getClass());
+
 			if (status == 0) {
 				if (judge.containsKey(compare)) {
 					judge.get(compare).add(c);
@@ -49,11 +52,11 @@ public class AchievementManager implements Serializable{
 			}
 		}
 	}
-	
-	public static void determine(Global g , String comparefield){
-		for(Class<?> c :judge.get(comparefield)){
+
+	public static void determine(Global g, String comparefield) {
+		for (Class<?> c : judge.get(comparefield)) {
 			try {
-				Method m  = c.getClass().getMethod(comparefield, Global.class);
+				Method m = c.getMethod(comparefield, Global.class);
 				m.invoke(null, g);
 			} catch (NoSuchMethodException e) {
 				e.printStackTrace();
@@ -66,7 +69,15 @@ public class AchievementManager implements Serializable{
 			} catch (InvocationTargetException e) {
 				e.printStackTrace();
 			}
-		}		
+		}
 	}
 
+	/*
+	 * public static void main(String arg[]) { new AchievementManager();
+	 * Set<String> keySet = judge.keySet(); for (String keyName : keySet) {
+	 * System.out.println("键名：" + keyName);
+	 * System.out.println(judge.get(keyName));
+	 * 
+	 * } }
+	 */
 }
