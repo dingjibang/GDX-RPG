@@ -293,6 +293,9 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 			this.layer=layer;
 			this.position=new Vector2(mapx*48,(l.getHeight()-this.mapy-1)*48);
 			lastPosition=new Vector2(this.position);
+			//TODO the actor bounds
+//			clipBegin(this.position.x,this.position.y,this.getWidth(),this.getHeight());
+//			clipEnd();
 		} catch (Exception e) {
 		}
 		return this;

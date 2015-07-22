@@ -112,6 +112,13 @@ public class GdxQuery {
 		return query;
 	}
 	
+	public GdxQuery find(Object userObject){
+		for(Actor actor:getItems())
+			if(actor.getUserObject()!=null && actor.getUserObject().equals(userObject))
+				return $.add(actor);
+		return $.add();
+	}
+	
 	public GdxQuery remove(Object... o){
 		for(Object obj:o){
 			$.add(obj).getItem().remove();
@@ -261,6 +268,16 @@ public class GdxQuery {
 			for(Action act:action)
 				actor.addAction(act);
 		return this;
+	}
+	
+	public GdxQuery setUserObject(Object object){
+		for(Actor actor:getItems())
+			actor.setUserObject(object);
+		return this;
+	}
+	
+	public Object getUserObject(){
+		return getItem().getUserObject();
 	}
 	
 	public GdxQuery cleanActions(){

@@ -54,9 +54,6 @@ public abstract class Hero extends IRPGObject {
 		prop.put("hit", 0);
 		prop.put("maxsc", 10);
 		prop.put("dead", FALSE);
-		prop.put("chop", FALSE);
-		prop.put("shoot", FALSE);
-		prop.put("prick", FALSE);
 	}
 
 

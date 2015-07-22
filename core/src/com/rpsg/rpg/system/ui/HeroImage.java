@@ -1,5 +1,6 @@
 package com.rpsg.rpg.system.ui;
 
+import com.badlogic.gdx.graphics.Color;
 import com.rpsg.rpg.object.rpg.Hero;
 
 
@@ -23,6 +24,7 @@ public class HeroImage extends BGActor{
 			step=0;
 		}
 		image.setDrawable(hero.images[goffset+(offset==3?1:offset)].getDrawable());
+		image.setColor(hero.prop.get("dead").equals(Hero.TRUE)?Color.valueOf("00000033"):new Color(1,1,1,1));
 		image.setDebug(true);
 	}
 

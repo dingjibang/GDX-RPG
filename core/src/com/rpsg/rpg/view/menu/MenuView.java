@@ -103,7 +103,7 @@ public class MenuView extends StackView{
 			leftBar.addAction(Actions.moveTo(-230,0,0.5f,Interpolation.pow4));
 			exit.addAction(Actions.moveTo(255, 510,0.5f,Interpolation.pow4));
 			fgGroup.addAction(Actions.moveTo(115,0,0.5f,Interpolation.pow4Out));
-			$.add(fgGroup).children().getItem(2).addAction(Actions.parallel(Actions.moveTo(730, 80,0.5f,Interpolation.pow4Out),Actions.fadeOut(0.3f)));
+			$.add(fgGroup).children().find("card").addAction(Actions.parallel(Actions.moveTo(730, 80,0.5f,Interpolation.pow4Out),Actions.fadeOut(0.3f)));
 			hr.addAction(Actions.parallel(Actions.sizeTo(147, hr.getHeight(),0.2f),Actions.moveTo(250, 490,0.3f)));
 			$.add(menuLabel.text("状态")).setPosition(-200, 545).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(310,545,0.3f))).appendTo(leftBar);
 			
@@ -156,7 +156,9 @@ public class MenuView extends StackView{
 					Hero hero=((MenuHeroBox) self.getItem()).hero;
 					$.add(Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(fgGroup).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(1200, 0).setColor(0,0,0,0).addAction(Actions.parallel(Actions.color(new Color(0,0,0,0.3f),1f),Actions.moveTo(1030, 0,0.75f,Interpolation.pow2Out)));
 					$.add(Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(fgGroup).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(1200, 0).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(1000, 0,0.7f,Interpolation.pow2Out)));
-					if(!status) $.add(Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/card.png")).appendTo(fgGroup).setOrigin(Align.bottomLeft).setPosition(1200, 80).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.6f),Actions.moveTo(520, 80,0.6f,Interpolation.pow2Out)));
+					if(hero.prop.get("dead").equals(Hero.TRUE)) $.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"dead.png")).appendTo(fgGroup).setOrigin(Align.bottomLeft).setPosition(1200, 5).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(650, 50,0.7f,Interpolation.pow2Out)));
+					if(!status) $.add(Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/card.png")).appendTo(fgGroup).setOrigin(Align.bottomLeft).setPosition(1200, 80).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.6f),Actions.moveTo(520, 80,0.6f,Interpolation.pow2Out))).setUserObject("card");
+					
 					current=((MenuHeroBox)self.getItem()).hero;
 				}
 			}});}}));
