@@ -55,7 +55,7 @@ public class PostUtil {
 		
 		others=$.add($.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"menu_active.png")).pos(GameUtil.screen_width-65, 15).onClick(new Runnable() {public void run() {
 			GameViews.gameview.onkeyDown(Keys.ESCAPE);
-		}})).appendTo(stage));
+		}})).appendTo(stage).setUserObject("menu"));
 		TouchpadStyle tstyle=new TouchpadStyle();
 		tstyle.background=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"pad_bg.png");
 		System.out.println(tstyle.background.getMinWidth());
@@ -73,7 +73,7 @@ public class PostUtil {
 		Logger.info("Post特效创建成功。");
 	}
 	public static void draw( boolean menuEnable){
-		others.setVisible(Setting.persistence.touchMod);
+		others.not("menu").setVisible(Setting.persistence.touchMod);
 		if(Setting.persistence.touchMod && GameViews.gameview.stackView==null){
 			float x=pad.getKnobPercentX();
 			float y=pad.getKnobPercentY();

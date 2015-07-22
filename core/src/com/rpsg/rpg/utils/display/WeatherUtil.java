@@ -49,8 +49,8 @@ public class WeatherUtil {
 			gameMenuListener-=.05;
 		batch.begin();
 		Bloom bloom=GameViews.bloom;
-		bloom.setBaseIntesity(1.2f*gameMenuListener);
-		bloom.setBloomSaturation((1.2f-0.2f)*gameMenuListener+0.2f);
+		bloom.setBaseIntesity(1.f*gameMenuListener);
+		bloom.setBloomSaturation((1f-0.2f)*gameMenuListener+0.2f);
 		if(eff!=null){
 			if(lastHeroPositionX==0)
 				lastHeroPositionX=(int) HeroController.getHeadHero().position.x;

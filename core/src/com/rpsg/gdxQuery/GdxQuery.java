@@ -391,10 +391,20 @@ public class GdxQuery {
 		return add(a);
 	}
 	
-	public GdxQuery not(Object... a){
-		for(Object o:a)
-			getItems().remove($.add(o).getItem());
-		return this;
+	public GdxQuery not( Class... cls){
+		GdxQuery query=$.add();
+		for(Class<? extends Actor> c:cls)
+			for(Actor actor:getItems())
+				if(!(actor.getClass().equals(c) || actor.getClass().getSuperclass().equals(c)))
+					query.add(actor);
+		return query;
+	}
+	
+	public GdxQuery not(Object userObject){
+		for(Actor actor:getItems())
+			if(!(actor.getUserObject()!=null && actor.getUserObject().equals(userObject)))
+				return $.add(actor);
+		return $.add();
 	}
 	
 	public boolean equals(Actor a){
