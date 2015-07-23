@@ -30,6 +30,7 @@ import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HeroController;
+import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.system.controller.MenuController;
 import com.rpsg.rpg.system.controller.MenuController.Menu;
 import com.rpsg.rpg.system.ui.CheckBox;
@@ -46,6 +47,8 @@ import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.TimeUtil;
 import com.rpsg.rpg.utils.game.GameDate.Time;
 import com.rpsg.rpg.view.GameViews;
+import com.rpsg.rpg.view.hover.LoadView;
+import com.rpsg.rpg.view.hover.SaveView;
 //基本菜单视图
 public class MenuView extends StackView{
 	
@@ -139,10 +142,10 @@ public class MenuView extends StackView{
 			}
 		}}).appendTo(ld).setSize(370, 50).setPosition(-100, 20).addAction(Actions.moveTo(23, 20, .5f,Interpolation.pow2Out)).getCell().prefSize(370,50);
 		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"btn_save.png"))).onClick(new Runnable() {public void run() {
-			//TODO SAVE BUT CLICK
+			HoverController.add(SaveView.class);
 		}}).appendTo(ld).setSize(172, 76).setPosition(-100, 90).addAction(Actions.moveTo(23, 90, 0.5f,Interpolation.pow2Out)).getCell().prefSize(172,76);
 		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"btn_load.png"))).onClick(new Runnable() {public void run() {
-			//TODO LOAD BUT CLICK
+			HoverController.add(LoadView.class);
 		}}).appendTo(ld).setSize(172, 76).setPosition(0, 90).addAction(Actions.moveTo(221, 90, 0.5f,Interpolation.pow2Out)).getCell().prefSize(172,76);
 		boxs=new ArrayList<GdxQuery>();//角色框
 		

@@ -5,8 +5,8 @@ import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.utils.display.AlertUtil;
 
 public class Setting {
-	public static final String GAME_VERSION="Build 400 20150710";
-	public static final String GDXRPG_VERSION="Alpha 41";
+	public static final String GAME_VERSION="Build 391 20150723";
+	public static final String GDXRPG_VERSION="Alpha 42";
 	//资源路径
 	public static final String GAME_RES_PATH="";
 	public static final String GAME_RES_IMAGE="images";
