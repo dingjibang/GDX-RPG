@@ -26,6 +26,8 @@ public class MenuController {
 	public static Image bg;
 	public static Pixmap pbg;
 	public static void createMenu(){
+		pbg=ScreenUtil.getScreenshot(0, 0, GameUtil.getScreenWidth(), GameUtil.getScreenHeight(), false);
+		bg=new Image(new TextureRegion(new Texture(pbg),0,GameUtil.getScreenHeight(),GameUtil.getScreenWidth(),-GameUtil.getScreenHeight()));
 		GameViews.gameview.stackView=new MenuView();
 		GameViews.gameview.stackView.init();
 		Logger.info("菜单创建完成。");

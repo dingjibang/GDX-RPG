@@ -219,6 +219,8 @@ public class MenuView extends StackView{
 			frames=null;
 			stage=null;
 			GameViews.gameview.stackView=null;
+			MenuController.bg.dispose();
+	 		MenuController.pbg.dispose();
 		}else{
 			if(viewStack.size()!=0){
 				viewStack.get(viewStack.size()-1).onkeyDown(keyCode);
@@ -247,10 +249,8 @@ public class MenuView extends StackView{
 	}
 
 	public void dispose() {
-//		System.gc();
+		System.gc();
 		stage.dispose();
-		for(View view:viewStack)
-			view.dispose();
 	}
 
 	@Override

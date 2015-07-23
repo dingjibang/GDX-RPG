@@ -24,6 +24,7 @@ import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.controller.HoverController;
+import com.rpsg.rpg.system.controller.MenuController;
 import com.rpsg.rpg.system.ui.CheckBox;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.HoverView;
@@ -117,7 +118,7 @@ public class SystemView extends DefaultIView{
 		sbutton3.setOffset(17).setSize(250,60);
 		sbutton3.setPosition(710, 14);
 		group.addActor(sbutton3);
-		Image screens = (Image)GameViews.gameview.stackView.params.get("bg");
+		Image screens = new Image(MenuController.bg);
 		screens.setSize(172,97);
 		screens.setPosition(182, 91);
 		group.addActor(screens);
@@ -302,6 +303,7 @@ public class SystemView extends DefaultIView{
 		
 		final ScrollPane pane=new ScrollPane(table);
 		pane.setSize(1024,576);
+		pane.setX(50);
 		pane.addListener(new InputListener(){
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				if(isstop){

@@ -25,7 +25,6 @@ public class HeroImage extends BGActor{
 		}
 		image.setDrawable(hero.images[goffset+(offset==3?1:offset)].getDrawable());
 		image.setColor(hero.prop.get("dead").equals(Hero.TRUE)?Color.valueOf("00000033"):new Color(1,1,1,1));
-		image.setDebug(true);
 	}
 
 	public static HeroImage generateImage(Image[] images, int i, int j) {

@@ -3,7 +3,6 @@ package com.rpsg.rpg.object.script;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.FGType;
@@ -11,8 +10,6 @@ import com.rpsg.rpg.object.base.MsgType;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
-import com.rpsg.rpg.system.controller.HeroController;
-import com.rpsg.rpg.system.controller.MapController;
 import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FG; 
