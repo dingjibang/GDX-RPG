@@ -53,25 +53,29 @@ public class Global implements Serializable {
 	public AchievementManager ach = new AchievementManager();
 
 	public void $(String s) {
-		//global.$("gold+10000") global.$("gold.set(10000)") global.$("items.add(YaoWan,3)")
+		// global.$("gold+10000") global.$("gold.set(10000)")
+		// global.$("items.add(YaoWan,3)")
 		try {
+			String field = "";
 			if (s.contains("+")) {
-				Field f = this.getClass().getField(
-						s.substring(0, s.indexOf("+")));
-				int i = (int) f.get(this);
+				field = s.substring(0, s.indexOf("+"));
+				Field f = this.getClass().getField(field);
 				f.setAccessible(true);
-				i += Integer.parseInt(s.substring(s.indexOf("+")+1));
-				f.set(this, i);
-			}else if (s.contains("-")) {
-				Field f = this.getClass().getField(
-						s.substring(0, s.indexOf("-")));
-				int i = (int) f.get(this);
+				f.set(this,
+						(int) f.get(this)
+								+ Integer.parseInt(s.substring(s.indexOf("+") + 1)));
+			} else if (s.contains("-")) {
+				field = s.substring(0, s.indexOf("-"));
+				Field f = this.getClass().getField(field);
 				f.setAccessible(true);
-				i -= Integer.parseInt(s.substring(s.indexOf("-+")+1));
-				f.set(this, i);
-			}else if (s.contains(".set(")){
-				
+				f.set(this,
+						(int) f.get(this)
+								- Integer.parseInt(s.substring(s.indexOf("-") + 1)));
+			} else if (s.contains(".set(")) {
+
 			}
+
+			AchievementManager.determine(field);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

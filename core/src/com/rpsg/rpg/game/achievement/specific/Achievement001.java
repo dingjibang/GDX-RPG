@@ -2,19 +2,15 @@ package com.rpsg.rpg.game.achievement.specific;
 
 import com.rpsg.rpg.game.achievement.AchievementManager;
 import com.rpsg.rpg.game.achievement.BaseAchievement;
-import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.view.GameViews;
 
-public class Achievement001 extends BaseAchievement {//暂时性使用，将会废弃
-	/**
-	 * 
-	 */
+public class Achievement001 extends BaseAchievement {
 	private static final long serialVersionUID = 1L;
-	public static final int number = 1;
-	public static final String title = "十万富翁";
-	public static final String content = "角色的金钱达到10W";
+	public static int number = 1;
+	public static String title = "十万富翁";
+	public static String content = "角色的金钱达到10W";
 
-	public static final int type = 1;
+	public static int type = 1;
 
 	public static int status = 0;
 	
@@ -41,7 +37,7 @@ public class Achievement001 extends BaseAchievement {//暂时性使用，将会�
 	}
 	
 	public void display(){ //显示达成成就的动画
-		System.out.println("达成成就"+Achievement001.title);	
+		System.out.println("达成成就"+title);	
 	}
 	
 }
