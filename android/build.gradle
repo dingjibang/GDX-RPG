@@ -27,7 +27,7 @@ configurations { natives }
 
 dependencies {
     compile 'com.android.support:support-v4:22.0.0'
-    compile project(":core")
+    compile project(':core')
     compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
     natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
     natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
