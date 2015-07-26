@@ -101,7 +101,7 @@ public class GameView extends View{
 		if(postEnable)
 			post.capture();
 		
-//		DistantController.draw((SpriteBatch)stage.getBatch(),this); XXX 远景
+		DistantController.draw((SpriteBatch)stage.getBatch(),this);
 		
 		MapController.draw(this);
 
@@ -119,8 +119,10 @@ public class GameView extends View{
 		
 		if(null!=stackView)
 			stackView.draw(batch);
-		else
+		else{
 			ThreadPool.logic();
+			CGController.draw((SpriteBatch) PostUtil.stage.getBatch());
+		}
 
 	}
 

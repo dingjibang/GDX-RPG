@@ -11,21 +11,19 @@ import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.utils.game.Move;
 
-public class Teleporter extends Script {
-	
+public class CGLoop1 extends Script {
+	Image black,cg;
 	@Override
 	public void init() {
-		Logger.info("地图传送模块正被执行。");
 		$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				Move.teleportAnotherMap(Teleporter.this, npc.params.get("TELEPORT") + ".tmx",
-						Integer.parseInt((String) npc.params.get("TELEPORTX")),
-						Integer.parseInt((String) npc.params.get("TELEPORTY")),
-						Integer.parseInt((String) npc.params.get("TELEPORTZ")));
+				black=Res.getNP(Setting.UI_BASE_IMG);
+				black.setSize(GameUtil.screen_width, GameUtil.screen_height);
+				black.setColor(Color.BLACK);
+				CGController.push(black);
 			}
 		});
+		removeSelf();
 	}
-
-
 }

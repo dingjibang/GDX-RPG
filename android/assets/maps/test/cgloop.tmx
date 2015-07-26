@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="5" height="5" tilewidth="48" tileheight="48">
+ <tileset firstgid="1" name="glo" tilewidth="48" tileheight="48">
+  <image source="glo.png" width="96" height="96"/>
+ </tileset>
+ <tileset firstgid="5" name="tilea4wallscyn_750" tilewidth="48" tileheight="48">
+  <image source="tilea4wallscyn_750.png" width="768" height="886"/>
+ </tileset>
+ <layer name="块层 1" width="5" height="5">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoD0AAMrGiJlkAAAA
+  </data>
+ </layer>
+ <objectgroup name="a">
+  <object name="CGLOOP1" type="NPC" gid="1" x="144" y="96" width="48" height="95">
+   <properties>
+    <property name="IMAGE" value="empty"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="块层 2" width="5" height="5">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACxNmZGAQpjEGAK857EBkAAAA
+  </data>
+ </layer>
+</map>

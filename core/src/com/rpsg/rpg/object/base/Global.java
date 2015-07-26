@@ -18,7 +18,7 @@ import com.rpsg.rpg.utils.game.GameDate;
 public class Global implements Serializable {
 	private static final long serialVersionUID = 1L;
 	// 初始地图
-	public String map = "test/inner.tmx";
+	public String map = "test/cgloop.tmx";
 	// 地图相关
 	public ArrayList<NPC> npcs = new ArrayList<NPC>();
 	public ArrayList<Hero> currentHeros = new ArrayList<Hero>();
@@ -26,7 +26,7 @@ public class Global implements Serializable {
 	public ArrayList<Hero> support = new ArrayList<Hero>();
 	public int x = 15;
 	public int y = 6;
-	public int z = 3;
+	public int z = 1;
 
 	public boolean first = true;
 
