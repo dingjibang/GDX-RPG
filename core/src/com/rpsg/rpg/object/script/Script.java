@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.badlogic.gdx.math.Vector2;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.FGType;
 import com.rpsg.rpg.object.base.MsgType;
 import com.rpsg.rpg.object.rpg.CollideType;
@@ -14,6 +15,7 @@ import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FG; 
 import com.rpsg.rpg.utils.display.Msg;
+import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.display.WeatherUtil;
 import com.rpsg.rpg.utils.game.Base;
@@ -122,6 +124,25 @@ public abstract class Script implements MsgType,FGType{
 	/**
 	 * 在屏幕上打印出一句话
 	 * @param str 要说的话
+	 * @param title 要说话的人
+	 * @return
+	 */
+	public BaseScriptExecutor say(String str,String title){
+		return Msg.say(this, str, title, 22);
+	}
+	
+	/**
+	 * 显示/隐藏菜单
+	 * @param flag 是否显示
+	 * @return
+	 */
+	public BaseScriptExecutor showMenu(boolean flag){
+		return PostUtil.showMenu(this, flag);
+	}
+	
+	/**
+	 * 在屏幕上打印出一句话
+	 * @param str 要说的话
 	 * @return
 	 */
 	public BaseScriptExecutor say(String str){
@@ -190,6 +211,22 @@ public abstract class Script implements MsgType,FGType{
 	}
 	
 	/**
+	 * 播放音乐
+	 * @return
+	 */
+	public BaseScriptExecutor playMusic(String musicName){
+		return Music.playMusic(this, musicName);
+	}
+	
+	/**
+	 * 播放音效
+	 * @return
+	 */
+	public BaseScriptExecutor playSE(String musicName){
+		return Music.playSE(this, musicName);
+	}
+	
+	/**
 	 * 立即移除当前脚本自身并换为另一个脚本
 	 * @param script 脚本的class类型
 	 * @return
@@ -205,6 +242,13 @@ public abstract class Script implements MsgType,FGType{
 	 */
 	public BaseScriptExecutor showMSG(String msgType){
 		return Msg.show(this, msgType);
+	}
+	
+	/**
+	 * 停止所有SE播放
+	 */
+	public BaseScriptExecutor stopAllSE(float time){
+		return Music.stopAllSE(this,time);
 	}
 	
 	/**

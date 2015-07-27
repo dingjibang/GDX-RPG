@@ -1,17 +1,26 @@
 package com.rpsg.rpg.io;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.script.BaseScriptExecutor;
+import com.rpsg.rpg.object.script.Script;
+import com.rpsg.rpg.object.script.ScriptExecutor;
+import com.rpsg.rpg.system.base.Res;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.Logger;
 
 public class Music {
 	public static com.badlogic.gdx.audio.Music MUSIC;
 	public static Map<String,com.badlogic.gdx.audio.Music> bgm=new HashMap<String,com.badlogic.gdx.audio.Music>();
-	public static Map<String,Sound> se=new HashMap<String, Sound>();
+	public static Map<String,SE> se=new HashMap<String, SE>();
 	public static Sound hint,err;
 	
 	public static void playMusic(String music){
@@ -23,6 +32,22 @@ public class Music {
 		MUSIC=bgm.get(music);
 	}
 	
+	public static BaseScriptExecutor playMusic(Script script,final String music){
+		return script.$(new BaseScriptExecutor() {
+			public void init() {
+				playMusic(music);
+			}
+		});
+	}
+	
+	public static BaseScriptExecutor playSE(Script script,final String se){
+		return script.$(new BaseScriptExecutor() {
+			public void init() {
+				playSE(se);
+			}
+		});
+	}
+	
 	public static void stopCurrentMusic(){
 		if(MUSIC!=null && MUSIC.isPlaying())
 			MUSIC.stop();
@@ -30,10 +55,10 @@ public class Music {
 	
 	public static void playSE(String name){
 		if(null==se.get(name)){
-			se.put(name, Gdx.audio.newSound(Gdx.files.internal(Setting.GAME_RES_MUSIC_SE+name+".wav")));
+			se.put(name, new SE(Gdx.audio.newSound(Gdx.files.internal(Setting.GAME_RES_MUSIC_SE+name))));
 			Logger.info("成功创建音效："+name);
 		}
-		se.get(name).play();
+		se.get(name).setId(se.get(name).getSound().play());
 	}
 	public static void fadeOutMusic(){
 		for(int i=500000;i>0;i--){
@@ -41,4 +66,24 @@ public class Music {
 		}
 		MUSIC.stop();
 	}
+
+	public static BaseScriptExecutor stopAllSE(Script script,float time) {
+		return script.$(new ScriptExecutor(script) {
+			Actor proxy=new Actor();
+			public void init() {
+				proxy.addAction(Actions.fadeOut(time));
+			}
+			
+			public void step(){
+				System.out.println(proxy.getColor().a);
+				proxy.act(Gdx.graphics.getDeltaTime());
+				for(String key:se.keySet()){
+					se.get(key).getSound().setVolume(se.get(key).getId(), proxy.getColor().a);
+				}
+				if(proxy.getColor().a==0)
+					dispose();
+			}
+		});
+	}
+	
 }

@@ -24,6 +24,7 @@ public class Setting {
 	
 	public static final String GAME_RES_IMAGE_BG		=GAME_RES_PATH+GAME_RES_IMAGE+"/background/";
 	public static final String GAME_RES_IMAGE_MENU		=GAME_RES_PATH+GAME_RES_IMAGE+"/menu/";
+	public static final String GAME_RES_IMAGE_CG		=GAME_RES_PATH+GAME_RES_IMAGE+"/cg/";
 	
 	//Menu images/menu/
 	public static final String GAME_RES_IMAGE_MENU_GLOBAL		=GAME_RES_IMAGE_MENU +"global/";

@@ -1,5 +1,7 @@
 package com.rpsg.rpg.object.base;
 
+import com.badlogic.gdx.graphics.Color;
+
 public interface MsgType {
 	public static String 爱丽丝="alice.png";
 	public static String 正常="default.png";
@@ -21,4 +23,13 @@ public interface MsgType {
 	public static String 早苗="sanae.png";
 	public static String 妖梦="youmu.png";
 	public static String 紫="yukari.png";
+	
+	public static Color getColor(String MsgType){
+		switch(MsgType){
+		case 紫:case 妖梦:
+			return Color.BLACK;
+		default:
+			return Color.WHITE;
+		}
+	}
 }

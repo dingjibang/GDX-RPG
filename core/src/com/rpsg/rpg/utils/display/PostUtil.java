@@ -24,6 +24,9 @@ import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxFrame;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.rpg.CollideType;
+import com.rpsg.rpg.object.script.BaseScriptExecutor;
+import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.InputController;
 import com.rpsg.rpg.system.controller.MoveController;
@@ -41,6 +44,7 @@ public class PostUtil {
 	static double p4=Math.PI/4;
 	static GdxQuery others;
 	static boolean VZPress=false;
+	public static boolean showMenu=true;
 	public static boolean isVZPress(){
 		return VZPress;//?!(VZPress=false):false;
 	}
@@ -73,26 +77,28 @@ public class PostUtil {
 		Logger.info("Post特效创建成功。");
 	}
 	public static void draw( boolean menuEnable){
-		others.not("menu").setVisible(Setting.persistence.touchMod);
-		if(Setting.persistence.touchMod && GameViews.gameview.stackView==null){
-			float x=pad.getKnobPercentX();
-			float y=pad.getKnobPercentY();
-			double tan=Math.atan2(y,x);
-			if(tan<p4*3 && tan > p4)
-				MoveController.up();
-			else if(tan>p4*3 || (tan < -p4*3 && tan < 0))
-				MoveController.left();
-			else if(tan>-p4*3 && tan <-p4)
-				MoveController.down();
-			else if((tan>-p4 && tan <0) || (tan>0 && tan < p4))
-				MoveController.right();
+		if(showMenu){
+			others.not("menu").setVisible(Setting.persistence.touchMod);
+			if(Setting.persistence.touchMod && GameViews.gameview.stackView==null){
+				float x=pad.getKnobPercentX();
+				float y=pad.getKnobPercentY();
+				double tan=Math.atan2(y,x);
+				if(tan<p4*3 && tan > p4)
+					MoveController.up();
+				else if(tan>p4*3 || (tan < -p4*3 && tan < 0))
+					MoveController.left();
+				else if(tan>-p4*3 && tan <-p4)
+					MoveController.down();
+				else if((tan>-p4 && tan <0) || (tan>0 && tan < p4))
+					MoveController.right();
+			}
+			others.cleanActions();
+			for(Actor actor:others.getItems())
+				actor.addAction(GameViews.gameview.stackView==null?Actions.fadeIn(0.1f):Actions.fadeOut(0.1f));
+			stage.act();
+			if(menuEnable)
+				stage.draw();
 		}
-		others.cleanActions();
-		for(Actor actor:others.getItems())
-			actor.addAction(GameViews.gameview.stackView==null?Actions.fadeIn(0.1f):Actions.fadeOut(0.1f));
-		stage.act();
-		if(menuEnable)
-			stage.draw();
 	}
 	
 	public static boolean mouseMoved(int x,int y){
@@ -112,5 +118,14 @@ public class PostUtil {
 	}
 
 	public static void keyTyped(char c) {
+	}
+	
+	public static BaseScriptExecutor showMenu(final Script script,final boolean show){
+		return script.$(new BaseScriptExecutor() {
+			@Override
+			public void init() {
+				showMenu=show;
+			}
+		});
 	}
 }

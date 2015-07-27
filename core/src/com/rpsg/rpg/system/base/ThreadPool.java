@@ -27,6 +27,7 @@ public class ThreadPool {
 			}
 		}catch(Exception e){
 			Logger.error("正常异常，脚本迭代错误");
+			e.printStackTrace();
 		}
 	}
 	

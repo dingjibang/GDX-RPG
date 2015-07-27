@@ -52,6 +52,7 @@ public class Msg {
 	private static int DISPLAY_OFFSET=0;
 	static boolean show=false;
 	static boolean firstZPress=false;
+	static Color titleColor=Color.WHITE;
 	public static BaseScriptExecutor say(final Script script,final String str,final String title,final int size){
 		firstZPress=false;
 		return script.$(new ScriptExecutor(script) {
@@ -78,7 +79,7 @@ public class Msg {
 				}
 				batch.begin();
 				FontUtil.draw(batch, currentText.substring(0, currentTextPoint), size, Color.WHITE, 50, 130, (int) (msgbox.getWidth() - 60));
-				FontUtil.draw(batch, title, 22, Color.WHITE, getOrPosX(title, 22), 178, (int) (msgbox.getWidth()-60));
+				FontUtil.draw(batch, title, 22, titleColor, getOrPosX(title, 22), 178, (int) (msgbox.getWidth()-60));
 				batch.end();
 			}
 			public void init() {
@@ -107,13 +108,9 @@ public class Msg {
 			@Override
 			public void init() {
 				show = true;
-				final Image i = Res.get(Setting.GAME_RES_MESSAGE + msgType);
-				i.loaded = new Runnable() {
-					@Override
-					public void run() {
-						msgbox.setDrawable(i.getDrawable());
-					}
-				};
+				final Image i = Res.getNP(Setting.GAME_RES_MESSAGE + msgType);
+				msgbox.setDrawable(i.getDrawable());
+				titleColor=MsgType.getColor(msgType);
 			}
 		});
 	}
