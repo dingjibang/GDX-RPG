@@ -110,7 +110,7 @@ public class Msg {
 				show = true;
 				final Image i = Res.getNP(Setting.GAME_RES_MESSAGE + msgType);
 				msgbox.setDrawable(i.getDrawable());
-				titleColor=MsgType.getColor(msgType);
+				titleColor=getColor(msgType);
 			}
 		});
 	}
@@ -135,6 +135,15 @@ public class Msg {
 		if(msgbox.getColor().a>0){
 //			GameUtil.resetBacth(batch);
 			msgbox.draw(batch);
+		}
+	}
+	
+	public static Color getColor(String mt){
+		switch(mt){
+		case MsgType.紫:case MsgType.妖梦:
+			return Color.BLACK;
+		default:
+			return Color.WHITE;
 		}
 	}
 	

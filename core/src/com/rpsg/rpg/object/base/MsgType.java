@@ -24,12 +24,4 @@ public interface MsgType {
 	public static String 妖梦="youmu.png";
 	public static String 紫="yukari.png";
 	
-	public static Color getColor(String MsgType){
-		switch(MsgType){
-		case 紫:case 妖梦:
-			return Color.BLACK;
-		default:
-			return Color.WHITE;
-		}
-	}
 }

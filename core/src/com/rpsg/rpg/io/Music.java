@@ -67,7 +67,7 @@ public class Music {
 		MUSIC.stop();
 	}
 
-	public static BaseScriptExecutor stopAllSE(Script script,float time) {
+	public static BaseScriptExecutor stopAllSE(Script script,final float time) {
 		return script.$(new ScriptExecutor(script) {
 			Actor proxy=new Actor();
 			public void init() {
