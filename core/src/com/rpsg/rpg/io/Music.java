@@ -75,7 +75,6 @@ public class Music {
 			}
 			
 			public void step(){
-				System.out.println(proxy.getColor().a);
 				proxy.act(Gdx.graphics.getDeltaTime());
 				for(String key:se.keySet()){
 					se.get(key).getSound().setVolume(se.get(key).getId(), proxy.getColor().a);
