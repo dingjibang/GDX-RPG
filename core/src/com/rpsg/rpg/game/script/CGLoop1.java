@@ -111,7 +111,7 @@ public class CGLoop1 extends Script {
 			y11.clearActions();
 			y11.addAction(Actions.repeat(RepeatAction.FOREVER,Actions.addAction(new Action() {
 				public boolean act(float delta) {
-					if(del++==80){
+					if(del++==100){
 						del=0;
 						flength++;
 					}
@@ -129,30 +129,31 @@ public class CGLoop1 extends Script {
 		$(new BaseScriptExecutor() {public void init() {
 			CGController.dispose(mask);
 			CGController.dispose(y11);
+			y11.clearActions();
 		}});
-		playSE("450331082.mp3");
-		$(new BaseScriptExecutor() {public void init() {
-			mask2=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"flash3.jpg")).setColor(1,1,1,1).setSize(6144, 576).setOrigin(Align.topLeft).setPosition(0,0).getItem();
-			del=0;
-			flength=0;
-			mask2.addAction(Actions.repeat(RepeatAction.FOREVER,Actions.addAction(new Action() {
-				public boolean act(float delta) {
-					if(flength++>30){
-						flength=0;
-					if(++del>5)
-						del=0;
-					}
-					mask2.setX(-del*1024);
-					return false;
-				}
-			})));
-			CGController.push(mask2);
-		}});
-		wait(20);
-		stopAllSE(0);
-		$(new BaseScriptExecutor() {public void init() {
-			CGController.dispose(mask2);
-		}});
+//		playSE("450331082.mp3");
+//		$(new BaseScriptExecutor() {public void init() {
+//			mask2=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"flash3.jpg")).setColor(1,1,1,1).setSize(6144, 576).setOrigin(Align.topLeft).setPosition(0,0).getItem();
+//			del=0;
+//			flength=0;
+//			mask2.addAction(Actions.repeat(RepeatAction.FOREVER,Actions.addAction(new Action() {
+//				public boolean act(float delta) {
+//					if(flength++>30){
+//						flength=0;
+//					if(++del>5)
+//						del=0;
+//					}
+//					mask2.setX(-del*1024);
+//					return false;
+//				}
+//			})));
+//			CGController.push(mask2);
+//		}});
+//		wait(10);
+//		stopAllSE(0);
+//		$(new BaseScriptExecutor() {public void init() {
+//			CGController.dispose(mask2);
+//		}});
 //		$(new BaseScriptExecutor() {
 //			public void init() {
 //				Move.teleportAnotherMap(CGLoop1.this, npc.params.get("TELEPORT") + ".tmx",
