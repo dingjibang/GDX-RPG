@@ -1,7 +1,7 @@
 package com.rpsg.rpg.game.achievement.specific;
 
-import com.rpsg.rpg.game.achievement.AchievementManager;
-import com.rpsg.rpg.game.achievement.BaseAchievement;
+import com.rpsg.rpg.object.base.BaseAchievement;
+import com.rpsg.rpg.utils.game.AchievementManager;
 import com.rpsg.rpg.view.GameViews;
 
 public class Achievement002 extends BaseAchievement {

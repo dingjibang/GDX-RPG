@@ -9,7 +9,7 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import com.rpsg.rpg.game.achievement.BaseAchievement;
+import com.rpsg.rpg.object.base.BaseAchievement;
 
 public class AchReader {
 

@@ -1,10 +1,11 @@
-package com.rpsg.rpg.game.achievement;
+package com.rpsg.rpg.utils.game;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+import com.rpsg.rpg.object.base.BaseAchievement;
 import com.rpsg.rpg.utils.xml.AchReader;
 
 public class AchievementManager implements Serializable {

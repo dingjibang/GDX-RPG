@@ -1,8 +1,9 @@
-package com.rpsg.rpg.game.achievement;
+package com.rpsg.rpg.object.base;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
 
+import com.rpsg.rpg.utils.game.AchievementManager;
 import com.rpsg.rpg.view.GameViews;
 
 public class BaseAchievement implements Serializable {
@@ -28,9 +29,7 @@ public class BaseAchievement implements Serializable {
 	public BaseAchievement() {
 	}
 
-	public BaseAchievement(String number, String title, String content,
-			String type, String status, String compare, String judgeString,
-			String dealString) {
+	public BaseAchievement(String number, String title, String content, String type, String status, String compare, String judgeString, String dealString) {
 		this.number = Integer.parseInt(number);
 		this.title = title;
 		this.content = content;
@@ -64,10 +63,8 @@ public class BaseAchievement implements Serializable {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				int num = Integer.parseInt(s.substring(s.indexOf('=') + 2
-						- temp));
-				switch (s.substring(s.indexOf('=') - temp, s.indexOf('=') + 2
-						- temp)) {
+				int num = Integer.parseInt(s.substring(s.indexOf('=') + 2 - temp));
+				switch (s.substring(s.indexOf('=') - temp, s.indexOf('=') + 2 - temp)) {
 
 				case ">=":
 					// flag = (copnum >= num); break;
