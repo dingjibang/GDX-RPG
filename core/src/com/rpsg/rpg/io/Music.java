@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.rpg.core.Setting;
@@ -59,6 +60,7 @@ public class Music {
 			Logger.info("成功创建音效："+name);
 		}
 		se.get(name).setId(se.get(name).getSound().play());
+		se.get(name).setVolume(0.7f);
 	}
 	public static void fadeOutMusic(){
 		for(int i=500000;i>0;i--){
@@ -71,16 +73,42 @@ public class Music {
 		return script.$(new ScriptExecutor(script) {
 			Actor proxy=new Actor();
 			public void init() {
+				proxy.getColor().a=se.size()==0?.7f:se.values().iterator().next().getVolume();
 				proxy.addAction(Actions.fadeOut(time));
 			}
 			
 			public void step(){
 				proxy.act(Gdx.graphics.getDeltaTime());
 				for(String key:se.keySet()){
-					se.get(key).getSound().setVolume(se.get(key).getId(), proxy.getColor().a);
+					se.get(key).setVolume(proxy.getColor().a);
 				}
-				if(proxy.getColor().a==0)
+				if(proxy.getColor().a==0 || se.isEmpty()){
+					for(String key:se.keySet())
+						se.get(key).getSound().dispose();
+					se.clear();
 					dispose();
+				}
+			}
+		});
+	}
+	
+	public static BaseScriptExecutor setSEVolume(Script script,final float color,final float time) {
+		return script.$(new ScriptExecutor(script) {
+			Actor proxy=new Actor();
+			public void init() {
+				proxy.getColor().a=se.size()==0?.7f:se.values().iterator().next().getVolume();
+				proxy.addAction(Actions.color(new Color(1,1,1,color),time));
+			}
+			
+			public void step(){
+				proxy.act(Gdx.graphics.getDeltaTime());
+				for(String key:se.keySet()){
+					se.get(key).setVolume(proxy.getColor().a);
+				}
+				System.out.println(proxy.getColor().a+","+color);
+				if(proxy.getColor().a==color || se.isEmpty()){
+					dispose();
+				}
 			}
 		});
 	}

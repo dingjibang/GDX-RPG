@@ -251,6 +251,10 @@ public abstract class Script implements MsgType,FGType{
 		return Music.stopAllSE(this,time);
 	}
 	
+	public BaseScriptExecutor setSEVolume(float time,float volume){
+		return Music.setSEVolume(this, volume, time);
+	}
+	
 	/**
 	 * 显示默认的对话框
 	 * @return
