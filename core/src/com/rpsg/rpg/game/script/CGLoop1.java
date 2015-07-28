@@ -92,7 +92,7 @@ public class CGLoop1 extends Script {
 		$(new BaseScriptExecutor() {public void init() {
 			y11.addAction(Actions.repeat(RepeatAction.FOREVER,Actions.addAction(new Action() {
 				public boolean act(float delta) {
-					actor.addAction(Actions.moveTo(MathUtils.random(-50,50), MathUtils.random(-40,40),0.1f,Interpolation.bounce));
+					actor.addAction(Actions.moveTo(MathUtils.random(-20,20), MathUtils.random(-20,20),0.3f,Interpolation.bounce));
 					return false;
 				}
 			})));
