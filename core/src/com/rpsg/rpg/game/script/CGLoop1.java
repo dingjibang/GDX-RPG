@@ -51,13 +51,13 @@ public class CGLoop1 extends Script {
 		playSE("woodwave.wav");
 		wait(300);
 		showMenu(false);
-		showMSG(MsgType.npc);
+		showMSG(MsgType.电脑);
 		wait(10);
 		say("哈哈哈哈，是我赢了！","？？？");
 		say("八云紫！","？？？");
 		hideMSG();
 		wait(60);
-		showMSG(MsgType.npc);
+		showMSG(MsgType.电脑);
 		say("好好看看你自己人生最后的样子吧！","？？？");
 		hideMSG();
 		wait(80);
@@ -75,7 +75,7 @@ public class CGLoop1 extends Script {
 		stopAllSE(0.01f);
 		playSE("attack.wav");
 		wait(65);
-		showMSG(MsgType.npc);
+		showMSG(MsgType.电脑);
 		say("什么！？","？？？",35);
 		hideMSG();
 		playSE("TornadoText3.mp3");
@@ -87,23 +87,23 @@ public class CGLoop1 extends Script {
 			CGController.push(y11);
 		}});
 		wait(200);
-		showMSG(MsgType.npc);
+		showMSG(MsgType.电脑);
 		say("为什么！！！","？？？");
 		hideMSG();
 		wait(30);
-		showMSG(MsgType.npc);
+		showMSG(MsgType.电脑);
 		say("这不可能！！！","？？？");
 		hideMSG();
 		wait(140);
-		showMSG(MsgType.npc);
+		showMSG(MsgType.电脑);
 		say("难道说……","？？？");
 		hideMSG();
 		wait(120);
-		showMSG(MsgType.npc);
+		showMSG(MsgType.电脑);
 		say("原来如此……","？？？");
 		hideMSG();
 		wait(30);
-		showMSG(MsgType.npc);
+		showMSG(MsgType.电脑);
 		say("哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈！！！","？？？");
 		hideMSG();
 		$(new BaseScriptExecutor() {public void init() {
@@ -111,11 +111,12 @@ public class CGLoop1 extends Script {
 			y11.clearActions();
 			y11.addAction(Actions.repeat(RepeatAction.FOREVER,Actions.addAction(new Action() {
 				public boolean act(float delta) {
-					if(del++==100){
+					System.out.println(del+","+flength);
+					if(del++==850){
 						del=0;
 						flength++;
 					}
-					actor.addAction(Actions.moveTo(MathUtils.random(-flength,flength), MathUtils.random(-flength,flength),0.3f,Interpolation.bounce));
+					actor.addAction(Actions.moveTo(MathUtils.random(-flength,flength), MathUtils.random(-flength,flength),1f));
 					return false;
 				}
 			})));
@@ -125,43 +126,40 @@ public class CGLoop1 extends Script {
 			CGController.push(mask);
 		}});
 		setSEVolume(5f, 1);
+		$(new BaseScriptExecutor() {public void init() {
+			mask2=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"flash3.jpg")).setColor(1,1,1,1).setSize(6144, 576).setOrigin(Align.topLeft).setPosition(0,0).getItem();
+			del=0;
+			flength=0;
+			mask2.addAction(Actions.repeat(RepeatAction.FOREVER,Actions.addAction(new Action() {
+				public boolean act(float delta) {
+					if(flength++>30){
+						flength=0;
+						if(++del>5)
+							del=0;
+					}
+					mask2.setX(-del*1024);
+					return false;
+				}
+			})));
+			CGController.push(mask2);
+		}});
 		stopAllSE(0);
+		playSE("450331082.mp3");
 		$(new BaseScriptExecutor() {public void init() {
 			CGController.dispose(mask);
 			CGController.dispose(y11);
 			y11.clearActions();
 		}});
-//		playSE("450331082.mp3");
-//		$(new BaseScriptExecutor() {public void init() {
-//			mask2=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"flash3.jpg")).setColor(1,1,1,1).setSize(6144, 576).setOrigin(Align.topLeft).setPosition(0,0).getItem();
-//			del=0;
-//			flength=0;
-//			mask2.addAction(Actions.repeat(RepeatAction.FOREVER,Actions.addAction(new Action() {
-//				public boolean act(float delta) {
-//					if(flength++>30){
-//						flength=0;
-//					if(++del>5)
-//						del=0;
-//					}
-//					mask2.setX(-del*1024);
-//					return false;
-//				}
-//			})));
-//			CGController.push(mask2);
-//		}});
-//		wait(10);
-//		stopAllSE(0);
-//		$(new BaseScriptExecutor() {public void init() {
-//			CGController.dispose(mask2);
-//		}});
-//		$(new BaseScriptExecutor() {
-//			public void init() {
-//				Move.teleportAnotherMap(CGLoop1.this, npc.params.get("TELEPORT") + ".tmx",
-//						Integer.parseInt((String) npc.params.get("TELEPORTX")),
-//						Integer.parseInt((String) npc.params.get("TELEPORTY")),
-//						Integer.parseInt((String) npc.params.get("TELEPORTZ")));
-//			}
-//		});
+		wait(10);
+		stopAllSE(0);
+		$(new BaseScriptExecutor() {public void init() {
+			CGController.disposeAll();
+		}});
+		$(new BaseScriptExecutor() {
+			public void init() {
+				Move.teleportAnotherMap(CGLoop1.this,  "inner.tmx",20,9,3);
+			}
+		});
 		removeSelf();
 	}
 }

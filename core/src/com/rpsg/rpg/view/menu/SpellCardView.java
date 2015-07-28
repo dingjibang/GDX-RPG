@@ -108,7 +108,7 @@ public class SpellCardView extends IMenuView{
 			@Override
 			public void run() {
 				spell = elist.getSelected();
-				Music.playSE("snd210");
+				Music.playSE("snd210.wav");
 			}
 		});
 		generateLists();
@@ -210,7 +210,7 @@ public class SpellCardView extends IMenuView{
 		sellist.onClick(new Runnable() {
 			@Override
 			public void run() {
-				Music.playSE("snd210");
+				Music.playSE("snd210.wav");
 			}
 		});
 		sellist.setItemHeight(27);
@@ -242,7 +242,7 @@ public class SpellCardView extends IMenuView{
 		}).onClick(new Runnable() {
 			@Override
 			public void run() {
-				Music.playSE("snd210");
+				Music.playSE("snd210.wav");
 			}
 		});
 		herolist.setPosition(500, 343);
@@ -397,7 +397,7 @@ public class SpellCardView extends IMenuView{
 		if(currentSelectHero!=HeroController.heros.size()-1){
 			currentSelectHero++;
 			generateHero(currentSelectHero);
-			Music.playSE("snd210"  );
+			Music.playSE("snd210.wav"  );
 		}else
 			Music.playSE("snd211");
 	}
@@ -406,7 +406,7 @@ public class SpellCardView extends IMenuView{
 		if(currentSelectHero!=0){
 			currentSelectHero--;
 			generateHero(currentSelectHero);
-			Music.playSE("snd210");
+			Music.playSE("snd210.wav");
 		}else
 			Music.playSE("snd211");
 	}

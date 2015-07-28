@@ -175,7 +175,7 @@ public class LoadView extends HoverView{
 			if(act instanceof TextButton && act.getUserObject()==null)
 				act.addListener(new InputListener(){
 					public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
-						Music.playSE("snd210");
+						Music.playSE("snd210.wav");
 					}
 					public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
 						return true;
@@ -256,7 +256,7 @@ public class LoadView extends HoverView{
 			if(act instanceof TextButton && act.getUserObject()!=null)
 				act.addListener(new InputListener(){
 					public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
-						Music.playSE("snd210");
+						Music.playSE("snd210.wav");
 					}
 					public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
 						return true;

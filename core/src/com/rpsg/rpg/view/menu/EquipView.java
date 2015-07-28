@@ -109,7 +109,7 @@ public class EquipView extends IMenuView{
 		elist.onClick(new Runnable() {
 			@Override
 			public void run() {
-				Music.playSE("snd210");
+				Music.playSE("snd210.wav");
 				equip = elist.getSelected();
 			}
 		});
@@ -139,7 +139,7 @@ public class EquipView extends IMenuView{
 		sellist.onClick(new Runnable() {
 			@Override
 			public void run() {
-				Music.playSE("snd210");
+				Music.playSE("snd210.wav");
 				EquipView.this.gengrateEList();
 			}
 		}).onDBClick(new Runnable() {
@@ -190,7 +190,7 @@ public class EquipView extends IMenuView{
 		olist.onClick(new Runnable() {
 			@Override
 			public void run() {
-				Music.playSE("snd210");
+				Music.playSE("snd210.wav");
 			}
 		});
 		cancel= new Runnable() {
@@ -347,7 +347,7 @@ public class EquipView extends IMenuView{
 			currentSelectHero++;
 			generateHero(currentSelectHero);
 			gengrateEList();
-			Music.playSE("snd210");
+			Music.playSE("snd210.wav");
 		}else
 			Music.playSE("snd211");
 	}
@@ -357,7 +357,7 @@ public class EquipView extends IMenuView{
 			currentSelectHero--;
 			generateHero(currentSelectHero);
 			gengrateEList();
-			Music.playSE("snd210");
+			Music.playSE("snd210.wav");
 		}else
 			Music.playSE("snd211");
 	}

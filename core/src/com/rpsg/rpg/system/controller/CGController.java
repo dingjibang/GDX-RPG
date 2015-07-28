@@ -37,4 +37,8 @@ public class CGController {
 		cgs.remove(i);
 	}
 	
+	public static void disposeAll(){
+		cgs.clear();
+	}
+	
 }

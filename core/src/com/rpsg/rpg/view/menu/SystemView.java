@@ -338,7 +338,7 @@ public class SystemView extends DefaultIView{
 								obj.setColor(x<0.5?new Color(1,2*x,0,1):new Color(2-2*x,1,0,1));
 							}
 							if(!(obj instanceof Image))
-								Music.playSE("snd210");
+								Music.playSE("snd210.wav");
 							isstop=true;
 							return true;
 						}

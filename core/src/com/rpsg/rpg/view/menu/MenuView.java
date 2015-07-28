@@ -95,7 +95,7 @@ public class MenuView extends StackView{
 		}});
 		$.add(exit=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_exit_p.png"))).setPosition(-100, 510).fadeOut().addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(20, 510,0.6f,Interpolation.pow2Out))).onClick(new Runnable() {
 			public void run() {
-				Music.playSE("snd210");
+				Music.playSE("snd210.wav");
 				onkeyDown(Keys.ESCAPE);
 			}
 		}).appendTo(leftBar);
@@ -168,7 +168,7 @@ public class MenuView extends StackView{
 		boxs.get(MathUtils.random(boxs.size()-1)).click();
 		//设置点击音效
 		$.add(ld).children().find(ImageButton.class,MenuHeroBox.class).onClick(new Runnable() {public void run() {
-			Music.playSE("snd210");
+			Music.playSE("snd210.wav");
 		}});
 	}
 	

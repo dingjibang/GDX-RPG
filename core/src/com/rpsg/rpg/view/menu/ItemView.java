@@ -89,7 +89,7 @@ public class ItemView extends DefaultIView{
 			@Override
 			public void run() {
 				item = elist.getSelected();
-				Music.playSE("snd210");
+				Music.playSE("snd210.wav");
 			}
 		});
 		elist.layout();
@@ -124,7 +124,7 @@ public class ItemView extends DefaultIView{
 			cell.padLeft(50).padRight(34).height(40);
 			cell.getActor().addListener(new InputListener() {
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-					Music.playSE("snd210");
+					Music.playSE("snd210.wav");
 					return true;
 				}
 			});
@@ -173,7 +173,7 @@ public class ItemView extends DefaultIView{
 		stage.addActor(sellist.onClick(new Runnable() {
 			@Override
 			public void run() {
-				Music.playSE("snd210");
+				Music.playSE("snd210.wav");
 			}
 		}));
 		
@@ -254,7 +254,7 @@ public class ItemView extends DefaultIView{
 		}).onClick(new Runnable() {
 			@Override
 			public void run() {
-				Music.playSE("snd210");
+				Music.playSE("snd210.wav");
 			}
 		});
 		herolist.setPosition(492, 273);
@@ -396,7 +396,7 @@ public class ItemView extends DefaultIView{
 			a.addListener(new InputListener(){
 				public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 					if(!(a instanceof Image))
-						Music.playSE("snd210");
+						Music.playSE("snd210.wav");
 					return true;
 				}
 			});

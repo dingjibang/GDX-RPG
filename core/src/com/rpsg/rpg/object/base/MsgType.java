@@ -14,7 +14,7 @@ public interface MsgType {
 	public static String 魔理沙="marisa.png";
 	public static String 妹红="mekou.png";
 	public static String 神子="miko.png";
-	public static String npc="npc.png";
+	public static String 电脑="npc.png";
 	public static String 其他="other.png";
 	public static String 灵梦="reimu.png";
 	public static String 蕾米="remilia.png";

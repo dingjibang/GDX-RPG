@@ -38,7 +38,7 @@ public class Persistence implements Serializable{
 		//create new settings if the "save" floder not exise
 		Gdx.files.local(Setting.GAME_PERSISTENCE).mkdirs();
 		Persistence p=new Persistence();
-		p.touchMod= /*!*/GameUtil.isDesktop;
+		p.touchMod= !GameUtil.isDesktop;
 		Files.save(p,PersistenceFileName);
 		return p;
 	}
