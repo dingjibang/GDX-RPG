@@ -29,6 +29,8 @@ public abstract class NPC extends IRPGObject{
 	
 	public Map<String,Object> params;
 	
+	public transient Script brother;//XD
+	
 	public void pushThreadAndRun(Script t){
 		t.isAlive=true;
 		threadPool.add(t); 

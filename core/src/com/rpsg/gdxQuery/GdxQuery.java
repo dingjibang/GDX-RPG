@@ -103,7 +103,7 @@ public class GdxQuery {
 			return getItems().get(index);
 	}
 	
-	public GdxQuery find( Class... cls){
+	public GdxQuery find( Class<? extends Actor>... cls){
 		GdxQuery query=$.add();
 		for(Class<? extends Actor> c:cls)
 			for(Actor actor:getItems())
@@ -259,6 +259,13 @@ public class GdxQuery {
 	public GdxQuery run (GdxQueryRunnable run){
 		if(run!=null)
 			run.run(this);
+		return this;
+	}
+	
+	public GdxQuery each(ActorRunnable run){
+		if(run!=null)
+			for(Actor actor:getItems())
+				run.run(actor);
 		return this;
 	}
 	
@@ -471,7 +478,7 @@ public class GdxQuery {
 		return values.get(0);
 	}
 
-	private boolean isEmpty() {
+	public boolean isEmpty() {
 		return values.isEmpty();
 	}
 

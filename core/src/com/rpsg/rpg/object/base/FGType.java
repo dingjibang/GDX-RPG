@@ -16,5 +16,6 @@ public interface FGType {
 	public static String 傲娇="Tsundere";
 	
 	public static String 爱丽丝立绘="alice/";
+	public static String 有栖立绘="arisu/";
 	
 }

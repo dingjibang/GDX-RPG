@@ -118,16 +118,18 @@ public class MoveController {
 		}
 
 		offsetActor.act(Gdx.graphics.getDeltaTime());
-		pos.x += offsetActor.getX();
-		pos.y += offsetActor.getY();
 		if(Setting.persistence.softCamera){
+//			System.out.println(offsetActor.getX());
 			bufferActor.clearActions();
 			if(!(HeroController.thisFrameGeneratedPosition?!(HeroController.thisFrameGeneratedPosition=false):false))
 				bufferActor.addAction(Actions.moveTo(pos.x, pos.y,0.5f,Interpolation.pow2Out));
 			else
 				bufferActor.addAction(Actions.moveTo(pos.x, pos.y));
 			bufferActor.act(Gdx.graphics.getDeltaTime());
-			gv.camera.position.set((int)bufferActor.getX(),(int)bufferActor.getY(),0);
+			gv.camera.position.set((int)bufferActor.getX()+offsetActor.getX(),(int)bufferActor.getY()+offsetActor.getY(),0);
+		}else{
+			pos.x += offsetActor.getX();
+			pos.y += offsetActor.getY();
 		}
 		gv.camera.update();
 	}
@@ -154,7 +156,7 @@ public class MoveController {
 	}
 
 	public static BaseScriptExecutor setCameraPositionWithHero(Script script, final int x, final int y, final boolean wait) {
-		return new ScriptExecutor(script) {
+		return script.$(new ScriptExecutor(script) {
 			public void init() {
 				MoveController.setCameraPosition(x, y);
 			}
@@ -163,11 +165,11 @@ public class MoveController {
 				if (!wait || (wait && !MoveController.isCameraMoving()))
 					dispose();
 			}
-		};
+		});
 	}
 
 	public static BaseScriptExecutor waitCameraMove(Script script) {
-		return new ScriptExecutor(script) {
+		return script.$(new ScriptExecutor(script) {
 			public void init() {
 			}
 
@@ -175,7 +177,7 @@ public class MoveController {
 				if (MoveController.isCameraMoving())
 					dispose();
 			}
-		};
+		});
 	}
 
 	/**

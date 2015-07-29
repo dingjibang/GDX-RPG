@@ -4,7 +4,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.badlogic.gdx.math.Vector2;
+import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.game.object.SUBWAYMARI;
+import com.rpsg.rpg.game.object.SUBWAYRENKO;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.FGType;
 import com.rpsg.rpg.object.base.MsgType;
@@ -200,6 +204,15 @@ public abstract class Script implements MsgType,FGType{
 	 */
 	public BaseScriptExecutor wait(int frame){
 		return Timer.wait(this, frame);
+	}
+	/**
+	 * 根据类型查找当前游戏内的NPC
+	 * @param class 类型
+	 * @return
+	 */
+	public NPC findNPC(Class<? extends NPC>... type){
+		GdxQuery query=$.add(GameViews.gameview.stage.getActors().items).find(type);
+		return query.isEmpty()?null:(NPC)query.getItem(); 
 	}
 	
 	/**

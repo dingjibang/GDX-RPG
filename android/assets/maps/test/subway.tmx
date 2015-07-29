@@ -17,12 +17,12 @@
   </data>
  </layer>
  <objectgroup name="对象层 1">
-  <object name="SUBWAYMARI" type="NPC" gid="301" x="0" y="240" width="48" height="64">
+  <object name="SUBWAYMARI" type="NPC" gid="301" x="-48" y="240" width="48" height="64">
    <properties>
     <property name="IMAGE" value="walk_mari"/>
    </properties>
   </object>
-  <object name="SUBWAYRENKO" type="NPC" gid="301" x="0" y="336" width="48" height="64">
+  <object name="SUBWAYRENKO" type="NPC" gid="301" x="-48" y="288" width="48" height="64">
    <properties>
     <property name="IMAGE" value="walk_renko"/>
    </properties>

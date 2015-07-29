@@ -39,7 +39,7 @@ public class FG {
 				if(position==LEFT){
 					boolean nul=currentImageL==null;
 					currentImageL=Res.get(imgPath);
-					currentImageL.setScale(0.7f);
+					currentImageL.setScale(0.35f);
 					currentImageL.setOrigin(Align.bottomLeft);
 					if(nul)
 						currentImageL.setColor(1,1,1,0f);
@@ -47,8 +47,8 @@ public class FG {
 				} else {
 					boolean nul = currentImageR == null;
 					currentImageR = Res.get(imgPath);
-					currentImageR.setScale(0.7f);
-					currentImageR.setScaleX(-0.7f);
+					currentImageR.setScale(0.35f);
+					currentImageR.setScaleX(-0.35f);
 					currentImageR.setX(GameUtil.screen_width);
 					currentImageR.setOrigin(Align.bottomLeft);
 					if (nul)
