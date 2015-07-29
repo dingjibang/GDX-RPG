@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 import com.rpsg.rpg.object.base.BaseAchievement;
-import com.rpsg.rpg.utils.xml.AchReader;
+import com.rpsg.rpg.utils.xml.NewAchReader;
 
 public class AchievementManager implements Serializable {
 
@@ -18,7 +18,7 @@ public class AchievementManager implements Serializable {
 	public static boolean flag = false;
 
 	public AchievementManager() {
-		Achs = AchReader.get("xml/Ach.xml");
+		Achs = NewAchReader.get("xml/Ach.xml");
 		compareupdate();
 	}
 
