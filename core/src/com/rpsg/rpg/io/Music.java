@@ -93,7 +93,7 @@ public class Music {
 		});
 	}
 
-	public static BaseScriptExecutor stopAllSE(Script script, float time, String without) {
+	public static BaseScriptExecutor stopAllSE(Script script, final float time, final String without) {
 		return script.$(new ScriptExecutor(script) {
 			Actor proxy=new Actor();
 			public void init() {
