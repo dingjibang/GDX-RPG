@@ -43,9 +43,5 @@ public class AchReader {
 
 	}
 
-	public static void main(String arg[]) {
-		for (BaseAchievement ach:AchReader.get("src/com/rpsg/rpg/game/achievement/Ach.xml")){
-			System.out.println(ach.judgeString);
-		};
-	}
+
 }
