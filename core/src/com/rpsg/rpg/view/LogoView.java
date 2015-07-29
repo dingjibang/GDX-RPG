@@ -1,5 +1,6 @@
 package com.rpsg.rpg.view;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -67,6 +68,8 @@ public class LogoView extends View{
 	@Override
 	public void logic() {
 		stage.act();
+		if(Gdx.input.justTouched())
+			onkeyTyped(' ');
 	}
 
 	@Override
