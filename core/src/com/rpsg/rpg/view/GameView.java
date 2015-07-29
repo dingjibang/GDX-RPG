@@ -40,6 +40,8 @@ public class GameView extends View{
 	
 	public PostProcessor post;//高清画质用
 	public Bloom bloom;//模糊用
+	
+	public boolean first=true;
 
 
 	@Override
@@ -103,7 +105,8 @@ public class GameView extends View{
 		
 		DistantController.draw((SpriteBatch)stage.getBatch(),this);
 		
-		MapController.draw(this);
+		if(!first)//第一帧不画地图相关，以让部分auto级别的脚本正常运行。
+			MapController.draw(this);
 		
 		if(postEnable)
 			post.render(true);
@@ -112,7 +115,8 @@ public class GameView extends View{
 			WeatherUtil.draw((SpriteBatch) PostUtil.stage.getBatch());
 
 		ColorUtil.draw();
-		PostUtil.draw(true);
+		if(!first)
+			PostUtil.draw(true);
 
 		DrawController.draw();
 		
@@ -121,7 +125,7 @@ public class GameView extends View{
 		else{
 			ThreadPool.logic();
 		}
-
+		first=false;
 	}
 
 	@Override

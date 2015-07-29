@@ -252,6 +252,10 @@ public abstract class Script implements MsgType,FGType{
 		return Music.stopAllSE(this,time);
 	}
 	
+	public BaseScriptExecutor stopAllSE(float time,String without){
+		return Music.stopAllSE(this,time,without);
+	}
+	
 	public BaseScriptExecutor setSEVolume(float time,float volume){
 		return Music.setSEVolume(this, volume, time);
 	}

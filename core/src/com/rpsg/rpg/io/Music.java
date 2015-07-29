@@ -56,7 +56,7 @@ public class Music {
 	
 	public static void playSE(String name){
 		if(null==se.get(name)){
-			se.put(name, new SE(Gdx.audio.newSound(Gdx.files.internal(Setting.GAME_RES_MUSIC_SE+name))));
+			se.put(name, new SE(Gdx.audio.newSound(Gdx.files.internal(Setting.GAME_RES_MUSIC_SE+name))).setPath(name));
 			Logger.info("成功创建音效："+name);
 		}
 		se.get(name).setId(se.get(name).getSound().play());
@@ -70,26 +70,7 @@ public class Music {
 	}
 
 	public static BaseScriptExecutor stopAllSE(Script script,final float time) {
-		return script.$(new ScriptExecutor(script) {
-			Actor proxy=new Actor();
-			public void init() {
-				proxy.getColor().a=se.size()==0?.7f:se.values().iterator().next().getVolume();
-				proxy.addAction(Actions.fadeOut(time));
-			}
-			
-			public void step(){
-				proxy.act(Gdx.graphics.getDeltaTime());
-				for(String key:se.keySet()){
-					se.get(key).setVolume(proxy.getColor().a);
-				}
-				if(proxy.getColor().a==0 || se.isEmpty()){
-					for(String key:se.keySet())
-						se.get(key).getSound().dispose();
-					se.clear();
-					dispose();
-				}
-			}
-		});
+		return stopAllSE(script, time, null);
 	}
 	
 	public static BaseScriptExecutor setSEVolume(Script script,final float color,final float time) {
@@ -105,8 +86,37 @@ public class Music {
 				for(String key:se.keySet()){
 					se.get(key).setVolume(proxy.getColor().a);
 				}
-				System.out.println(proxy.getColor().a+","+color);
 				if(proxy.getColor().a==color || se.isEmpty()){
+					dispose();
+				}
+			}
+		});
+	}
+
+	public static BaseScriptExecutor stopAllSE(Script script, float time, String without) {
+		return script.$(new ScriptExecutor(script) {
+			Actor proxy=new Actor();
+			public void init() {
+				proxy.getColor().a=se.size()==0?.7f:se.values().iterator().next().getVolume();
+				proxy.addAction(Actions.fadeOut(time));
+			}
+			
+			public void step(){
+				proxy.act(Gdx.graphics.getDeltaTime());
+				for(String key:se.keySet()){
+					if(without==null ||  !without.equals(se.get(key).getPath()))
+						se.get(key).setVolume(proxy.getColor().a);
+				}
+				if(proxy.getColor().a==0 || se.isEmpty()){
+					List<SE> removeList=new ArrayList<SE>();
+					for(String key:se.keySet()){
+						if(without==null ||  !without.equals(se.get(key).getPath())){
+							se.get(key).getSound().dispose();
+							removeList.add(se.get(key));
+						}
+					}
+					for(SE s:removeList)
+						se.remove(s);
 					dispose();
 				}
 			}

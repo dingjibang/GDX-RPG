@@ -11,13 +11,18 @@
    H4sIAAAAAAAACw3DBXAQBAAAwI0ajB7baNgYDMZGiYSUSEindEsIiKB0h6g00t2ponSnAtKhNEgqjXQ3/N1/YEBAQDzjm8CEJjLIxCYx2KQmM7kpTGkqUxtiGkMNM9y0pjO9GcxoJjObxaxGGGk2o8xuDqPNaS5jzG2sceYxr/nMbwE/sKAfWsjCFrGoH1nM4pawpKX82NJ+YhnLWs7yfmoFK1rJylaxqtWsbg1rWsvafmYd61rP+jawoY1sbBOb2szmtvBzW9rK1rbxC9vazvZ+aQe/sqOd/Npv7GwXu9rN7vawp73sbR/72s/+DnCgg/zWwX7n9/7gEIc6zOGOcKSjHO2PjnGs4xzvBCc6yclOcarTnO4MZzrL2c5xrvOc7wIXusjF/uTP/uISf/U3l7rM5a5wpatc7RrXus71bnCjm9zsFre6zd/9w+3ucKd/usvd7nGv+9zvAQ96yMP+5d8e8ajHPO4JT3rK057xH896zvNe8KKX/Nf/vOwVr3rN697wprf839ve8a73vO8DH/rIxz7xqc987gtf+srXvvGt7wwIxHjGN4EJTWSQiU1isElNZnJTmNJUpjbENIYaZrhpTWd6M5jRTGY2i1mNMNJsRpndHEab01zGmNtY43wP3S6dcrAEAAA=
   </data>
  </layer>
+ <layer name="块层 2" width="25" height="12">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMgqEBAGlKTgywBAAA
+  </data>
+ </layer>
  <objectgroup name="对象层 1">
-  <object name="SUBWAYMARI" type="NPC" gid="301" x="0" y="240" width="48" height="95">
+  <object name="SUBWAYMARI" type="NPC" gid="301" x="0" y="240" width="48" height="64">
    <properties>
     <property name="IMAGE" value="walk_mari"/>
    </properties>
   </object>
-  <object name="SUBWAYRENKO" type="NPC" gid="301" x="0" y="336" width="48" height="95">
+  <object name="SUBWAYRENKO" type="NPC" gid="301" x="0" y="336" width="48" height="64">
    <properties>
     <property name="IMAGE" value="walk_renko"/>
    </properties>

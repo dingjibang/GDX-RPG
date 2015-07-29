@@ -15,6 +15,7 @@ import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.CGController;
 import com.rpsg.rpg.system.ui.Image;
+import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Move;
 
@@ -23,10 +24,8 @@ public class CGLoop1 extends Script {
 	int flength,del;
 	public void init() {
 		$(new BaseScriptExecutor() {public void init() {
-				black=Res.getNP(Setting.UI_BASE_IMG);
-				black.setSize(GameUtil.screen_width, GameUtil.screen_height);
-				black.setColor(Color.BLACK);
-				CGController.push(black);
+			CGController.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem());
+			PostUtil.showMenu=false;
 		}});
 		playSE("fire.mp3");
 		wait(230);
@@ -111,7 +110,6 @@ public class CGLoop1 extends Script {
 			y11.clearActions();
 			y11.addAction(Actions.repeat(RepeatAction.FOREVER,Actions.addAction(new Action() {
 				public boolean act(float delta) {
-					System.out.println(del+","+flength);
 					if(del++==850){
 						del=0;
 						flength++;
@@ -125,39 +123,22 @@ public class CGLoop1 extends Script {
 			mask.addAction(Actions.color(new Color(1,0,0,1f),6,Interpolation.pow5In));
 			CGController.push(mask);
 		}});
-		setSEVolume(5f, 1);
-		$(new BaseScriptExecutor() {public void init() {
-			mask2=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"flash3.jpg")).setColor(1,1,1,1).setSize(6144, 576).setOrigin(Align.topLeft).setPosition(0,0).getItem();
-			del=0;
-			flength=0;
-			mask2.addAction(Actions.repeat(RepeatAction.FOREVER,Actions.addAction(new Action() {
-				public boolean act(float delta) {
-					if(flength++>30){
-						flength=0;
-						if(++del>5)
-							del=0;
-					}
-					mask2.setX(-del*1024);
-					return false;
-				}
-			})));
-			CGController.push(mask2);
-		}});
-		stopAllSE(0);
-		playSE("450331082.mp3");
+		setSEVolume(4.1f, 1);
+		playSE("fx1.wav");
+		wait(50);
 		$(new BaseScriptExecutor() {public void init() {
 			CGController.dispose(mask);
 			CGController.dispose(y11);
 			y11.clearActions();
 		}});
-		wait(10);
-		stopAllSE(0);
+		stopAllSE(0,"fx1.wav");
+		wait(180);
 		$(new BaseScriptExecutor() {public void init() {
 			CGController.disposeAll();
 		}});
 		$(new BaseScriptExecutor() {
 			public void init() {
-				Move.teleportAnotherMap(CGLoop1.this,  "inner.tmx",20,9,3);
+				Move.teleportAnotherMap(CGLoop1.this,  "subway.tmx",18,1,1);
 			}
 		});
 		removeSelf();
