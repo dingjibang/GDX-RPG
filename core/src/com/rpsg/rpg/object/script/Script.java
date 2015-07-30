@@ -7,8 +7,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.game.object.SUBWAYMARI;
-import com.rpsg.rpg.game.object.SUBWAYRENKO;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.FGType;
 import com.rpsg.rpg.object.base.MsgType;
@@ -62,6 +60,7 @@ public abstract class Script implements MsgType,FGType{
 	
 	public int point=-1;
 	public boolean currentExeced=true;
+	private Class<? extends NPC>[] type;
 	
 	
 	public void run(){
@@ -136,6 +135,33 @@ public abstract class Script implements MsgType,FGType{
 	}
 	
 	/**
+	 * 包装一个脚本执行器
+	 * @param exe 执行器
+	 * @return
+	 */
+	public void and(BaseScriptExecutor exe){
+		if(exe instanceof ScriptExecutor)
+			$(new ScriptExecutor(this) {
+				ScriptExecutor proxy=(ScriptExecutor)exe;
+				public void init() {
+					proxy.init();
+				}
+				public void step(){
+					if(!proxy.script.currentExeced)
+						proxy.step();
+					else
+						dispose();
+				}
+			});
+		else
+			$(new BaseScriptExecutor() {
+				public void init() {
+					exe.init();
+				}
+			});
+	}
+	
+	/**
 	 * 显示/隐藏菜单
 	 * @param flag 是否显示
 	 * @return
@@ -188,6 +214,10 @@ public abstract class Script implements MsgType,FGType{
 		return Move.turn(this, face);
 	}
 	
+	public BaseScriptExecutor faceTo(Script who,int face){
+		return Move.turn(who, face);
+	}
+	
 	/**
 	 * 让当前的NPC移动
 	 * @param step 移动多少步
@@ -195,6 +225,10 @@ public abstract class Script implements MsgType,FGType{
 	 */
 	public BaseScriptExecutor move(int step){
 		return Move.move(this, step);
+	}
+	
+	public BaseScriptExecutor move(Script who,int step){
+		return Move.move(who, step);
 	}
 	
 	/**

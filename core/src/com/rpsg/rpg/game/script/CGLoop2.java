@@ -15,6 +15,7 @@ import com.rpsg.rpg.object.base.MsgType;
 import com.rpsg.rpg.object.rpg.IRPGObject;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
+import com.rpsg.rpg.object.script.BatchScript;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.CGController;
@@ -27,8 +28,8 @@ import com.rpsg.rpg.view.GameViews;
 
 public class CGLoop2 extends Script {
 	Image black,flash;
-	NPC self,renko;
 	public void init() {
+		BatchScript renko=findNPC(SUBWAYRENKO.class).script();
 //		$(new BaseScriptExecutor() {public void init() {
 //			CGController.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem());
 //			PostUtil.showMenu=false;
@@ -55,25 +56,23 @@ public class CGLoop2 extends Script {
 //		}});
 //		stopAllSE(0);
 //		wait(60);
+		faceTo(IRPGObject.FACE_R);
+		and(faceTo(renko, IRPGObject.FACE_R));
+		
 		showMSG();
 		say("...");
 		hideMSG();
 		wait(60);
 		
-		$(new BaseScriptExecutor() {public void init() {
-			renko=(NPC) findNPC(SUBWAYRENKO.class).turn(IRPGObject.FACE_R);
-		}});
-		faceTo(IRPGObject.FACE_R);
 		
 		setCameraPositionWithHero(-176, 0, true);
 		move(1);
-		$(new BaseScriptExecutor() {public void init() {
-			renko.walk(1).testWalk();
-		}});
-		wait(60);
-		$(new BaseScriptExecutor() {public void init() {
-			renko.turn(IRPGObject.FACE_U);
-		}});
+		and(move(renko, 1));
+		showMSG();
+		say("...");
+		hideMSG();
+		and(faceTo(renko, IRPGObject.FACE_U));
+		wait(10);
 		removeSelf();
 	}
 }

@@ -10,8 +10,6 @@ public abstract class ScriptExecutor implements BaseScriptExecutor{
 		this.script=script;
 	}
 	
-	public ScriptExecutor(){};
-	
 	public void toInit(){
 		script.currentExeced=false;
 		init();

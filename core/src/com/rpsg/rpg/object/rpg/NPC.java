@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.script.BatchScript;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptCollide;
 
@@ -29,7 +30,11 @@ public abstract class NPC extends IRPGObject{
 	
 	public Map<String,Object> params;
 	
-	public transient Script brother;//XD
+	private transient BatchScript batch;
+	
+	public BatchScript script(){
+		return batch;
+	}
 	
 	public void pushThreadAndRun(Script t){
 		t.isAlive=true;
@@ -77,5 +82,13 @@ public abstract class NPC extends IRPGObject{
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public void act(float f) {
+		if(batch==null || !batch.isAlive())
+			batch=new BatchScript(this);
+//		if(!batch.scripts.isEmpty())
+//			batch.run();
+		super.act(f);
 	}
 }
