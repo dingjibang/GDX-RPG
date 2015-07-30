@@ -47,7 +47,7 @@ public class CGLoop2 extends Script {
 //		$(new BaseScriptExecutor() {public void init() {
 //			flash=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
 //			flash.setOrigin(Align.topRight);
-//			flash.addAction(Actions.sequence(Actions.fadeIn(0.05f),Actions.parallel(Actions.scaleTo(2, 2,0.05f),Actions.moveTo(300,400,0.05f)),Actions.color(Color.RED),Actions.moveTo(-100,200)));
+//			flash.addAction(Actions.sequence(Actions.fadeIn(0.05f),Actions.parallel(Actions.scaleTo(2, 2,0.05f),Actions.moveTo(-300,400,0.05f)),Actions.color(Color.RED),Actions.moveTo(-100,200)));
 //			CGController.push(flash);
 //		}});
 //		wait(10);
@@ -58,21 +58,49 @@ public class CGLoop2 extends Script {
 //		wait(60);
 		faceTo(IRPGObject.FACE_R);
 		and(faceTo(renko, IRPGObject.FACE_R));
-		
-		showMSG();
-		say("...");
-		hideMSG();
-		wait(60);
+//		
+//		showMSG();
+//		say("...");
+//		hideMSG();
+//		wait(60);
 		
 		
 		setCameraPositionWithHero(-176, 0, true);
-		move(1);
-		and(move(renko, 1));
-		showMSG();
-		say("...");
-		hideMSG();
-		and(faceTo(renko, IRPGObject.FACE_U));
-		wait(10);
+		
+//		showMSG(莲子);
+//		say("啊啊！真是的！为什么我们大学总是要在愚人节这天开学啊！","？？？");
+//		hideMSG();
+//		
+//		wait(60);
+		move(2);
+		and(move(renko, 2));
+		wait(50);
+		
+		faceTo(IRPGObject.FACE_D);
+//		wait(30);
+//		showMSG(梅丽);
+//		say("一开学就这么没干劲可不好啊，莲子。\n最后一年再马马虎虎的话，会毕不了业的。","？？？");
+//		hideMSG();
+//		wait(30);
+//		and(faceTo(renko,IRPGObject.FACE_U));
+//		wait(30);
+//		showMSG(莲子);
+//		say("毕业那种事情无所谓啦，只要能跟梅莉你在一起就好了。","莲子？");
+//		hideMSG();
+//		wait(30);
+//		showMSG(梅丽);
+//		say("嘴上这么说着，今天不还是迟到了吗。明明是带着我去接别人，自己却迟到了算什么啊。","梅莉？");
+//		showMSG(莲子);
+//		say("额……还在生气啊……","莲子？");
+//		showMSG(梅丽);
+//		say("没有，骗你的。","梅莉？");
+//		showMSG(莲子);
+//		say("感觉真生气了……抱歉啦，一开学就把你拉出来。","莲子？");
+//		showMSG(梅丽);
+//		say("说到一起的话，我正好有事要告诉你。","梅莉？");
+//		say("毕业之后我就要回国了，所以如果莲子不努力的话，以后可能就再也无法相见了吧。","梅莉？");
+//		hideMSG();
+		move(-2);
 		removeSelf();
 	}
 }

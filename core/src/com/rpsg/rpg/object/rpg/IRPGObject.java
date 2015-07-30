@@ -103,6 +103,13 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		return this;
 	}
 	
+	private int getCurrentFaceByRev(){
+		if(calcRevStep()==1)
+			return getCurrentFace();
+		else
+			return getReverseFace();
+	}
+	
 	public int getCurrentFace(){
 		if(this.currentImageNo==0 || this.currentImageNo==1 || this.currentImageNo==2)
 			return FACE_D;
@@ -144,8 +151,13 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		lasty=(int) position.y;
 		return flag;
 	}
-
-
+	/**
+	 * 下面这段代码是2015年7月30日20:29:42写的，我发誓3个月后来看一定会自己揍自己一拳：）
+	 * @return
+	 */
+	private int calcRevStep(){
+		return walkStack.isEmpty() || walkStack.get(0).step == 0 ? lastWalkSize > 0 ? 1 : -1 : walkStack.get(0).step > 0 ? 1 : -1;
+	}
 	
 	public boolean toWalk(){
 		if(!walked){
@@ -157,9 +169,9 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 						return false;
 				}else
 					if(Math.abs(lastPosition.y-position.y)+walkSpeed<=48)
-						position.y-=walkSpeed;
+						position.y-=walkSpeed*calcRevStep();
 					else{
-						position.y-=(48-Math.abs(lastPosition.y-position.y));
+						position.y-=(48-Math.abs(lastPosition.y-position.y))*calcRevStep();
 						return true;
 					}
 				break;
@@ -170,9 +182,9 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 						return false;
 				}else
 					if(Math.abs(lastPosition.y-position.y)+walkSpeed<=48)
-						position.y+=walkSpeed;
+						position.y+=walkSpeed*calcRevStep();
 					else{
-						position.y+=(48-Math.abs(lastPosition.y-position.y));
+						position.y+=(48-Math.abs(lastPosition.y-position.y))*calcRevStep();
 						return true;
 					}
 				break;
@@ -183,9 +195,9 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 						return false;
 				}else
 					if(Math.abs(lastPosition.x-position.x)+walkSpeed<=48)
-						position.x-=walkSpeed;
+						position.x-=walkSpeed*calcRevStep();
 					else{
-						position.x-=(48-Math.abs(lastPosition.x-position.x));
+						position.x-=(48-Math.abs(lastPosition.x-position.x))*calcRevStep();
 						return true;
 					}
 				break;
@@ -196,9 +208,9 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 						return false;
 				}else
 					if(Math.abs(lastPosition.x-position.x)+walkSpeed<=48)
-						position.x+=walkSpeed;
+						position.x+=walkSpeed*calcRevStep();
 					else{
-						position.x+=(48-Math.abs(lastPosition.x-position.x));
+						position.x+=(48-Math.abs(lastPosition.x-position.x))*calcRevStep();
 						return true;
 					}
 				break;
@@ -215,8 +227,8 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	
 	public Boolean testWalk(){
 		if(walkStack.size()!=0){
-			if(enableCollide && ((getCurrentFace()==FACE_L && !collide.left) || (getCurrentFace()==FACE_R && !collide.right) 
-			|| (getCurrentFace()==FACE_U && !collide.top) || (getCurrentFace()==FACE_D && !collide.bottom))){
+			if(enableCollide && ((getCurrentFaceByRev()==FACE_L && !collide.left) || (getCurrentFaceByRev()==FACE_R && !collide.right) 
+			|| (getCurrentFaceByRev()==FACE_U && !collide.top) || (getCurrentFaceByRev()==FACE_D && !collide.bottom))){
 				walkStack.get(0).step=0;
 				if(!waitWhenCollide){
 					testWalkerSize();
@@ -229,12 +241,12 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 					lastWalkSize=walkStack.get(0).step;
 					
 					switch(getCurrentFace()){
-					case FACE_D:{mapy++;break;}
-					case FACE_U:{mapy--;break;}
-					case FACE_L:{mapx--;break;}
-					case FACE_R:{mapx++;break;}
+					case FACE_D:{mapy+=calcRevStep();break;}
+					case FACE_U:{mapy-=calcRevStep();break;}
+					case FACE_L:{mapx-=calcRevStep();break;}
+					case FACE_R:{mapx+=calcRevStep();break;}
 					}
-					walkStack.get(0).step--;
+					walkStack.get(0).step+=walkStack.get(0).step>=0?-1:1;
 					lastPosition=new Vector2(position.x, position.y);
 					walked=false;
 					toWalk();
