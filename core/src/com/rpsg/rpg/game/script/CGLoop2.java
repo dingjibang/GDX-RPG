@@ -29,7 +29,7 @@ import com.rpsg.rpg.view.GameViews;
 public class CGLoop2 extends Script {
 	Image black,flash;
 	public void init() {
-		BatchScript renko=((NPC) findNPC(SUBWAYRENKO.class)).script();
+		BatchScript renko=findNPC(SUBWAYRENKO.class).script();
 //		$(new BaseScriptExecutor() {public void init() {
 //			CGController.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem());
 //			PostUtil.showMenu=false;
@@ -56,20 +56,23 @@ public class CGLoop2 extends Script {
 //		}});
 //		stopAllSE(0);
 //		wait(60);
+		faceTo(IRPGObject.FACE_R);
+		and(faceTo(renko, IRPGObject.FACE_R));
+		
 		showMSG();
 		say("...");
 		hideMSG();
 		wait(60);
 		
-		faceTo(IRPGObject.FACE_R);
-		and(faceTo(renko, IRPGObject.FACE_R));
 		
 		setCameraPositionWithHero(-176, 0, true);
 		move(1);
 		and(move(renko, 1));
-		wait(60);
-		
-		and(move(renko, IRPGObject.FACE_U));
+		showMSG();
+		say("...");
+		hideMSG();
+		and(faceTo(renko, IRPGObject.FACE_U));
+		wait(10);
 		removeSelf();
 	}
 }

@@ -87,8 +87,8 @@ public abstract class NPC extends IRPGObject{
 	public void act(float f) {
 		if(batch==null || !batch.isAlive())
 			batch=new BatchScript(this);
-		if(!batch.scripts.isEmpty())
-			batch.run();
+//		if(!batch.scripts.isEmpty())
+//			batch.run();
 		super.act(f);
 	}
 }

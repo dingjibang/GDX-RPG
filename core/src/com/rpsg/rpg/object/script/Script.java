@@ -7,8 +7,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.game.object.SUBWAYMARI;
-import com.rpsg.rpg.game.object.SUBWAYRENKO;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.FGType;
 import com.rpsg.rpg.object.base.MsgType;
@@ -62,6 +60,7 @@ public abstract class Script implements MsgType,FGType{
 	
 	public int point=-1;
 	public boolean currentExeced=true;
+	private Class<? extends NPC>[] type;
 	
 	
 	public void run(){
@@ -141,11 +140,25 @@ public abstract class Script implements MsgType,FGType{
 	 * @return
 	 */
 	public void and(BaseScriptExecutor exe){
-		$(new BaseScriptExecutor() {
-			public void init() {
-				__$(exe);
-			}
-		});
+		if(exe instanceof ScriptExecutor)
+			$(new ScriptExecutor(this) {
+				ScriptExecutor proxy=(ScriptExecutor)exe;
+				public void init() {
+					proxy.init();
+				}
+				public void step(){
+					if(!proxy.script.currentExeced)
+						proxy.step();
+					else
+						dispose();
+				}
+			});
+		else
+			$(new BaseScriptExecutor() {
+				public void init() {
+					exe.init();
+				}
+			});
 	}
 	
 	/**
