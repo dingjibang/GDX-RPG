@@ -139,7 +139,7 @@ public abstract class Script implements MsgType,FGType{
 	 * @param exe 执行器
 	 * @return
 	 */
-	public void and(BaseScriptExecutor exe){
+	public void and(final BaseScriptExecutor exe){
 		if(exe instanceof ScriptExecutor)
 			$(new ScriptExecutor(this) {
 				ScriptExecutor proxy=(ScriptExecutor)exe;
