@@ -20,6 +20,7 @@ import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.CGController;
 import com.rpsg.rpg.system.controller.HeroController;
+import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -66,41 +67,55 @@ public class CGLoop2 extends Script {
 		
 		
 		setCameraPositionWithHero(-176, 0, true);
+		$(new BaseScriptExecutor() {public void init() {
+			MoveController.offsetActor.addAction(Actions.scaleTo(0.8f, 0.8f,0.3f));
+		}});
 		
-//		showMSG(莲子);
-//		say("啊啊！真是的！为什么我们大学总是要在愚人节这天开学啊！","？？？");
-//		hideMSG();
-//		
-//		wait(60);
+		showMSG(莲子);
+		say("啊啊！真是的！为什么我们大学总是要在愚人节这天开学啊！","？？？");
+		hideMSG();
+		
+		wait(60);
 		move(2);
 		and(move(renko, 2));
 		wait(50);
 		
 		faceTo(IRPGObject.FACE_D);
-//		wait(30);
-//		showMSG(梅丽);
-//		say("一开学就这么没干劲可不好啊，莲子。\n最后一年再马马虎虎的话，会毕不了业的。","？？？");
-//		hideMSG();
-//		wait(30);
-//		and(faceTo(renko,IRPGObject.FACE_U));
-//		wait(30);
-//		showMSG(莲子);
-//		say("毕业那种事情无所谓啦，只要能跟梅莉你在一起就好了。","莲子？");
-//		hideMSG();
-//		wait(30);
-//		showMSG(梅丽);
-//		say("嘴上这么说着，今天不还是迟到了吗。明明是带着我去接别人，自己却迟到了算什么啊。","梅莉？");
-//		showMSG(莲子);
-//		say("额……还在生气啊……","莲子？");
-//		showMSG(梅丽);
-//		say("没有，骗你的。","梅莉？");
-//		showMSG(莲子);
-//		say("感觉真生气了……抱歉啦，一开学就把你拉出来。","莲子？");
-//		showMSG(梅丽);
-//		say("说到一起的话，我正好有事要告诉你。","梅莉？");
-//		say("毕业之后我就要回国了，所以如果莲子不努力的话，以后可能就再也无法相见了吧。","梅莉？");
-//		hideMSG();
-		move(-2);
+		wait(30);
+		showMSG(梅丽);
+		say("一开学就这么没干劲可不好啊，莲子\n最后一年再马马虎虎的话，会毕不了业的","？？？");
+		hideMSG();
+		wait(30);
+		and(faceTo(renko,IRPGObject.FACE_U));
+		wait(30);
+		showMSG(莲子);
+		say("毕业那种事情无所谓啦，只要能跟梅莉你在一起就好了","莲子？");
+		hideMSG();
+		wait(30);
+		showMSG(梅丽);
+		say("嘴上这么说着，今天不还是迟到了吗","梅莉？");
+		say("明明是带着我去接别人，自己却迟到了算什么啊","梅莉？");
+		showMSG(莲子);
+		say("额……还在生气啊……","莲子？");
+		showMSG(梅丽);
+		say("没有，骗你的","梅莉？");
+		showMSG(莲子);
+		say("感觉真生气了……抱歉啦，一开学就把你拉出来","莲子？");
+		showMSG(梅丽);
+		say("说到一起的话，我正好有事要告诉你","梅莉？");
+		say("毕业之后我就要回国了，所以如果莲子不努力的话，以后可能就再也无法相见了吧","梅莉？");
+		hideMSG();
+		wait(40);
+		and(move(renko, -1));
+		showMSG(莲子);
+		say("不……不会吧！","莲子？");
+		showMSG(梅丽);
+		say("骗你的","梅莉？");
+		hideMSG();
+		and(move(renko, 1));
+		wait(30);
+		showMSG(莲子);
+		say("吓死我了……愚人节就不要欺负咱了啦","莲子？");
 		removeSelf();
 	}
 }

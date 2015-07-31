@@ -486,6 +486,7 @@ public abstract class Script implements MsgType,FGType{
 		return MoveController.setCameraPositionWithHero(this,x,y,wait);
 	}
 	
+	
 	/**
 	 * 等待相机移动完毕
 	 * @return

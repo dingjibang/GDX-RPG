@@ -25,7 +25,7 @@ public class MoveController {
 	public static int MAP_MAX_OUT_X = 512;
 	public static int MAP_MAX_OUT_Y = 288;
 	static boolean wu = false, wd = false, wl = false, wr = false;
-	static Actor offsetActor=new Actor(),bufferActor=new Actor();
+	public static Actor offsetActor=new Actor(),bufferActor=new Actor();
 
 	public static void up() {
 		wu = true;
