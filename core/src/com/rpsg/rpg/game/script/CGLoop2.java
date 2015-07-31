@@ -31,7 +31,7 @@ import com.rpsg.rpg.view.GameViews;
 public class CGLoop2 extends Script {
 	Image black,flash;
 	public void init() {
-		BatchScript renko=findNPC(SUBWAYRENKO.class).script();
+		final BatchScript renko=findNPC(SUBWAYRENKO.class).script();
 		$(new BaseScriptExecutor() {public void init() {
 			CGController.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem());
 			PostUtil.showMenu=false;
@@ -74,7 +74,7 @@ public class CGLoop2 extends Script {
 		$(new BaseScriptExecutor() {public void init() {
 			MoveController.offsetActor.addAction(Actions.scaleTo(0.85f, 0.85f,1f,Interpolation.pow4Out));
 		}});
-		setCameraPositionWithHero(-249, 0, true);
+		setCameraPositionWithHero(-249, 40, true);
 		
 		move(2);
 		and(move(renko, 2));
