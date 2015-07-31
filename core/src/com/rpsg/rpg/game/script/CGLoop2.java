@@ -74,7 +74,7 @@ public class CGLoop2 extends Script {
 		$(new BaseScriptExecutor() {public void init() {
 			MoveController.offsetActor.addAction(Actions.scaleTo(0.85f, 0.85f,1f,Interpolation.pow4Out));
 		}});
-		setCameraPositionWithHero(-249, 40, true);
+		setCameraPositionWithHero(-249, 0, true);
 		
 		move(2);
 		and(move(renko, 2));
@@ -125,7 +125,7 @@ public class CGLoop2 extends Script {
 		hideMSG();
 		wait(60);
 		showMSG(莲子);
-		say("啊，对了……","莲子？");
+		say("啊，对了……在那边","莲子？");
 		hideMSG();
 		$(new BaseScriptExecutor() {public void init() {
 			MoveController.offsetActor.addAction(Actions.scaleTo(1, 1,1f,Interpolation.pow4Out));
@@ -215,17 +215,22 @@ public class CGLoop2 extends Script {
 		wait(50);
 		showMSG(正常);
 		say("两人的关系似乎好得要命");
-		$(new BaseScriptExecutor() {public void init() {
-			npc.turn(IRPGObject.FACE_R).setWalkSpeed(4);
-			renko.npc.turn(IRPGObject.FACE_R).setWalkSpeed(4).walk(4).testWalk();
-		}});
-		move(4);
-		showMSG(莲子);
-		say("梅莉你没有意识到这是多么奇特的事情呢\n有栖同学，麻烦把身份证给我们看一下吧","莲子");
 		hideMSG();
+		wait(45);
+		showMSG(莲子);
+		say("梅莉你没有意识到这是多么奇特的事情呢","莲子");
+		say("有栖同学，麻烦把身份证给我们看一下吧","莲子");
+		hideMSG();
+		wait(40);
+		$(new BaseScriptExecutor() {public void init() {
+			npc.turn(IRPGObject.FACE_R).setWalkSpeed(2);
+			renko.npc.turn(IRPGObject.FACE_R).setWalkSpeed(4).walk(3).testWalk();
+			HeroController.walk(1);
+			HeroController.testWalk();
+		}});
+		move(3);
 		and(faceTo(renko,IRPGObject.FACE_U));
-		faceTo(IRPGObject.FACE_D);
-		wait(30);
+		wait(80);
 		//TODO INSERT CG HERE
 		showMSG(莲子);
 		say("梅莉，你仔细看。一般人照身份证，不可能把头转过去，拍后脑勺吧","莲子");
@@ -260,11 +265,12 @@ public class CGLoop2 extends Script {
 		wait(30);
 		showMSG(莲子);
 		say("好好好…我请就是了，走吧。","莲子");
+		hideMSG();
 		//TODO STOP MUSIC?
 		$(new BaseScriptExecutor() {public void init() {
-			CGController.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(1,1,1,0).addAction(Actions.fadeIn(2f)).getItem());
+			CGController.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(0,0,0,0).addAction(Actions.color(new Color(0,0,0,1),1f)).getItem());
 		}});
-		wait(60);
+		wait(80);
 		$(new BaseScriptExecutor() {public void init() {
 			CGController.disposeAll();
 		}});
