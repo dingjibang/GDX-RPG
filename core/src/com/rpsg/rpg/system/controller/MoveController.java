@@ -1,12 +1,19 @@
 package com.rpsg.rpg.system.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
+import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.RemoveTest;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.IOMode;
@@ -131,11 +138,16 @@ public class MoveController {
 			pos.x += offsetActor.getX();
 			pos.y += offsetActor.getY();
 		}
+		gv.camera.zoom=offsetActor.getScaleX();
 		gv.camera.update();
 	}
 
 	public static void setCameraPosition(int x, int y) {
-		offsetActor.clearActions();
+		$.removeIf(offsetActor.getActions(), new RemoveTest<Action>() {
+			public boolean test(Action object) {
+				return object instanceof MoveToAction;
+			}
+		});
 		offsetActor.addAction(Actions.moveTo(x, y,0.8f,Interpolation.pow4Out));
 	}
 

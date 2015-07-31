@@ -22,6 +22,6 @@ public interface MsgType {
 	public static String 早苗="sanae.png";
 	public static String 妖梦="youmu.png";
 	public static String 紫="yukari.png";
-	public static String 梅丽="mari.png";
+	public static String 梅莉="mari.png";
 	
 }

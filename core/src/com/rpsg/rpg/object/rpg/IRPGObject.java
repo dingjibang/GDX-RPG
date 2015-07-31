@@ -23,6 +23,8 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public static final int FACE_U=4;
 	public static final int FACE_D=1;
 	
+	private static final int NORMAL_WALK_SPEED=4;
+	
 	public transient Image[] images;
 	
 	public int lastWalkSize,lastZ,lastFace;
@@ -261,12 +263,19 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		return false;
 	}
 	
-	private void testWalkerSize(){
+	private IRPGObject testWalkerSize(){
 		walkStack.remove(walkStack.get(0));
+		return this;
 	}
 	
-	public void setWalkSpeed(float s){
+	public IRPGObject setWalkSpeed(float s){
 		this.walkSpeed=s;
+		return this;
+	}
+	
+	public IRPGObject resetWalkSeped(){
+		this.walkSpeed=NORMAL_WALK_SPEED;
+		return this;
 	}
 	
 	public float getWalkSpeed(){

@@ -288,7 +288,6 @@ public abstract class Script implements MsgType,FGType{
 	 * @return
 	 */
 	public BaseScriptExecutor showMSG(String msgType){
-		System.out.println(msgType);
 		return Msg.show(this, msgType);
 	}
 	

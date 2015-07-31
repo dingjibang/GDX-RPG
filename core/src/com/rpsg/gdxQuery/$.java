@@ -1,5 +1,11 @@
 package com.rpsg.gdxQuery;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
@@ -42,5 +48,14 @@ public class $ {
 		return new GdxFrame().add(query, runnable);
 	}
 	
+	public static <T> void removeIf(Iterable<T> c,RemoveTest<T> test){
+		Iterator<T> it=c.iterator();
+		while(it.hasNext()){
+			T obj=it.next();
+			if(test.test(obj))
+				it.remove();
+		}
+		
+	}
 
 }

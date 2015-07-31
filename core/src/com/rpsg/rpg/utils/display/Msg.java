@@ -140,7 +140,7 @@ public class Msg {
 	
 	public static Color getColor(String mt){
 		switch(mt){
-		case MsgType.紫:case MsgType.妖梦:case MsgType.梅丽:
+		case MsgType.紫:case MsgType.妖梦:case MsgType.梅莉:
 			return Color.BLACK;
 		default:
 			return Color.WHITE;
