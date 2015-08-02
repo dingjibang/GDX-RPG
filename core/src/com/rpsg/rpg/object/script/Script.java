@@ -10,6 +10,7 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.FGType;
 import com.rpsg.rpg.object.base.MsgType;
+import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
@@ -512,5 +513,28 @@ public abstract class Script implements MsgType,FGType{
 	 */
 	public boolean currentSelect(String equ){
 		return SelectUtil.currentSelect.equals(equ);
+	}
+	
+	/**
+	 * 给当前某个Hero显示一个心情气球
+	 * @param c Hero类型
+	 * @param type 气球类型
+	 * @return
+	 */
+	public BaseScriptExecutor setBalloon(Class<? extends Hero> c,BalloonType type){
+		return Heros.balloon(this, c, type);
+	}
+	
+	/**
+	 * 给当前NPC显示一个心情气球
+	 * @param type 气球类型
+	 * @return
+	 */
+	public BaseScriptExecutor setBalloon(BalloonType type){
+		return Heros.balloon(this, type);
+	}
+	
+	public BaseScriptExecutor setBalloon(Script who,BalloonType type){
+		return Heros.balloon(who, type);
 	}
 }

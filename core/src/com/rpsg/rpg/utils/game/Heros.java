@@ -1,6 +1,8 @@
 package com.rpsg.rpg.utils.game;
 
+import com.rpsg.rpg.object.rpg.Balloon;
 import com.rpsg.rpg.object.rpg.Hero;
+import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.controller.HeroController;
@@ -83,6 +85,24 @@ public class Heros {
 			@Override
 			public void init() {
 				HeroController.swapHero(c, sc);
+			}
+		});
+	}
+	
+	public static BaseScriptExecutor balloon(Script script, final Class<? extends Hero> c,final BalloonType type){
+		return script.$(new BaseScriptExecutor() {
+			@Override
+			public void init() {
+				HeroController.getHero(c).setBalloon(type);
+			}
+		});
+	}
+	
+	public static BaseScriptExecutor balloon(final Script script,final BalloonType type){
+		return script.$(new BaseScriptExecutor() {
+			@Override
+			public void init() {
+				script.npc.setBalloon(type);
 			}
 		});
 	}

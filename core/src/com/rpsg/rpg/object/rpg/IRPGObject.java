@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.view.GameViews;
@@ -25,6 +27,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	
 	private static final int NORMAL_WALK_SPEED=4;
 	
+	Balloon bon=new Balloon(BalloonType.心);
 	public transient Image[] images;
 	
 	public int lastWalkSize,lastZ,lastFace;
@@ -40,8 +43,8 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	
 	public int foot=0;
 	
-	public boolean waitWhenCollide=true; 
-	public boolean enableCollide=true;
+	public boolean waitWhenCollide=true,enableCollide=true; 
+	public boolean displayBalloon=false;
 	
 	public Collide collide=new Collide();
 	
@@ -70,9 +73,15 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 			return 1;
 	}
 	
-	public void draw(SpriteBatch batch,float parentAlpha){
+	public IRPGObject draw(SpriteBatch batch,float parentAlpha){
 		this.getCurrentImage().setColor(this.getColor());
 		this.getCurrentImage().draw(batch,parentAlpha);
+		if(displayBalloon){
+			bon.getCurrentImage().setPosition(getX()+Balloon.ANIMATION_SIZE, getY()+getHeight()+Balloon.ANIMATION_SIZE/2);
+			bon.getCurrentImage().setColor(this.getColor());
+			bon.getCurrentImage().draw(batch,parentAlpha);
+		}
+		return this;
 	}
 	
 	public IRPGObject(String path,int width,int height){
@@ -82,6 +91,20 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		images=IRPGObject.generateImages(path, width, height);
 	}
 	
+	public IRPGObject setBalloon(BalloonType type){
+		this.bon.setBalloons(new Balloon(type).getBalloons()).reset();
+		return this.setDisplayBalloon(true);
+	}
+	
+	public IRPGObject resetBalloon(BalloonType type){
+		this.bon.reset();
+		return this.setDisplayBalloon(true);
+	}
+	
+	public IRPGObject setDisplayBalloon(boolean flag){
+		this.displayBalloon=flag;
+		return this;
+	}
 	
 	public static Image[] generateImages(String txt,int width,int height){
 		Image[] images=new Image[12];
@@ -130,7 +153,8 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public void act(float f) {
 		if (isStop() && lastlength++ > 5)
 			foot = 0;
-
+		//帧数补偿
+		//当游戏帧数小于60FPS时，将尝试加快IRPGObject的行走速度而达到补偿的目的
 		int fps= Gdx.graphics.getFramesPerSecond();
 		fixTime += 60-fps;
 		if (fixTime < 0){
@@ -144,6 +168,11 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		}
 
 		toWalk();
+		
+		if(displayBalloon && !bon.isStop())
+			bon.act(fps);
+		else
+			displayBalloon=false;
 	}
 	
 	public boolean isStop(){

@@ -10,11 +10,13 @@ import com.rpsg.gdxQuery.ActorRunnable;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.gdxQuery.GdxQueryRunnable;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.game.hero.Arisu;
 import com.rpsg.rpg.game.object.SUBWAYMARI;
 import com.rpsg.rpg.game.object.SUBWAYRENKO;
 import com.rpsg.rpg.object.base.MsgType;
 import com.rpsg.rpg.object.rpg.IRPGObject;
 import com.rpsg.rpg.object.rpg.NPC;
+import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.BatchScript;
 import com.rpsg.rpg.object.script.Script;
@@ -32,38 +34,37 @@ public class CGLoop2 extends Script {
 	Image black,flash;
 	public void init() {
 		final BatchScript renko=findNPC(SUBWAYRENKO.class).script();
-		$(new BaseScriptExecutor() {public void init() {
-			CGController.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem());
-			PostUtil.showMenu=false;
-		}});
-		playSE("sw.mp3");
-		wait(460);
-		$(new BaseScriptExecutor() {public void init() {
-			HeroController.walk(1);
-			black.addAction(Actions.sequence(Actions.fadeOut(0.3f),Actions.run(new Runnable() {public void run() {
-				CGController.dispose(black);
-			}})));
-		}});
-		wait(120);
-		playSE("noise.wav");
-		$(new BaseScriptExecutor() {public void init() {
-			flash=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
-			flash.setOrigin(Align.topRight);
-			flash.addAction(Actions.sequence(Actions.fadeIn(0.05f),Actions.parallel(Actions.scaleTo(2, 2,0.05f),Actions.moveTo(-300,400,0.05f)),Actions.color(Color.RED),Actions.moveTo(-100,200)));
-			CGController.push(flash);
-		}});
-		wait(10);
-		$(new BaseScriptExecutor() {public void init() {
-			CGController.dispose(flash);
-		}});
-		stopAllSE(0);
-		wait(60);
+//		$(new BaseScriptExecutor() {public void init() {
+//			CGController.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem());
+//			PostUtil.showMenu=false;
+//		}});
+//		setKeyLocker(true);
+//		playSE("sw.mp3");
+//		wait(460);
+//		$(new BaseScriptExecutor() {public void init() {
+//			HeroController.walk(1);
+//			black.addAction(Actions.sequence(Actions.fadeOut(0.3f),Actions.run(new Runnable() {public void run() {
+//				CGController.dispose(black);
+//			}})));
+//		}});
+//		wait(120);
+//		playSE("noise.wav");
+//		$(new BaseScriptExecutor() {public void init() {
+//			flash=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
+//			flash.setOrigin(Align.topRight);
+//			flash.addAction(Actions.sequence(Actions.fadeIn(0.05f),Actions.parallel(Actions.scaleTo(2, 2,0.05f),Actions.moveTo(-300,400,0.05f)),Actions.color(Color.RED),Actions.moveTo(-100,200)));
+//			CGController.push(flash);
+//		}});
+//		wait(10);
+//		$(new BaseScriptExecutor() {public void init() {
+//			CGController.dispose(flash);
+//		}});
+//		stopAllSE(0);
+//		wait(60);
 		faceTo(IRPGObject.FACE_R);
 		and(faceTo(renko, IRPGObject.FACE_R));
 		
-		showMSG();
-		say("...");
-		hideMSG();
+		setBalloon(Arisu.class, BalloonType.沉默);
 		wait(60);
 		
 		
@@ -108,6 +109,7 @@ public class CGLoop2 extends Script {
 		wait(40);
 		and(move(renko, -1));
 		wait(40);
+		and(setBalloon(renko,BalloonType.汗));
 		showMSG(莲子);
 		say("不……不会吧！","莲子？");
 		showMSG(梅莉);
@@ -140,6 +142,7 @@ public class CGLoop2 extends Script {
 		}});
 		move(12);
 		showMSG(莲子);
+		say("嗯……","莲子？");
 		say("你一定就是结城有栖同学了吧！","莲子？");
 		say("在下就是宇佐见莲子，抱歉让你久等了！","莲子？");
 		hideMSG();
@@ -154,6 +157,7 @@ public class CGLoop2 extends Script {
 		say("这就是莲子你要接的人吗？","梅莉？");
 		faceTo(IRPGObject.FACE_R);
 		hideMSG();
+		setBalloon(BalloonType.沉默);
 		wait(80);
 		showMSG(梅莉);
 		say("嗯……果然有些特别呢","梅莉？");
@@ -197,7 +201,9 @@ public class CGLoop2 extends Script {
 		showMSG(莲子);
 		say("这，这不一样！我想想……","莲子");
 		hideMSG();
+		and(setBalloon(renko,BalloonType.沉默));
 		wait(80);
+		and(setBalloon(renko,BalloonType.灵感));
 		showMSG(莲子);
 		say("对了！有栖能够一下子读出银行卡里的余额哦！","莲子");
 		showMSG(梅莉);

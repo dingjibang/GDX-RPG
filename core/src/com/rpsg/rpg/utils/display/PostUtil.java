@@ -106,15 +106,15 @@ public class PostUtil {
 	}
 	
 	public static boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		return stage.touchUp(screenX, screenY, pointer, button);
+		return showMenu?stage.touchUp(screenX, screenY, pointer, button):false;
 	}
 	
 	public static boolean touchDragged(int screenX, int screenY, int pointer) {
-		return stage.touchDragged(screenX, screenY, pointer);
+		return showMenu?stage.touchDragged(screenX, screenY, pointer):false;
 	}
 	
 	public static boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		return stage.touchDown(screenX, screenY, pointer, button);
+		return showMenu?stage.touchDown(screenX, screenY, pointer, button):false;
 	}
 
 	public static void keyTyped(char c) {
