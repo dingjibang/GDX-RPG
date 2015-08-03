@@ -224,10 +224,6 @@ public class MapController {
 	}
 	
 	public static void dispose(){
-		HeroController.dispose();
-		for(Actor a:GameViews.gameview.stage.getActors())
-			if(a instanceof IRPGObject)
-				((IRPGObject)a).dispose();
 		GameViews.gameview.stage.getActors().clear();
 	}
 	

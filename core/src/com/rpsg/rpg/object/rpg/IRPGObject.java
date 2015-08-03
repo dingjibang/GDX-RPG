@@ -366,12 +366,6 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		return getReverseFace(getCurrentFace());
 	}
 	
-	public void dispose(){
-//		for(Image i:images)
-//			i.dispose();
-		//DO NOT DISPOSE THIS!
-	}
-	
 	public int getFaceByPoint(int x,int y){
 		boolean xable=MathUtils.random(100)>50;
 		if(xable)
