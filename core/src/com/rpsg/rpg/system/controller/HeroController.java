@@ -150,10 +150,6 @@ public class HeroController {
 	}
 
 	
-	public static void dispose() {
-		for(Hero hero:heros)
-			hero.dispose();
-	}
 	static boolean walk;
 	public static void walk(int step){	
 		//TODO FUCKME2
