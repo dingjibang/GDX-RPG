@@ -52,6 +52,9 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public int bodyWidth,bodyHeight;
 	public List<Walker> walkStack=new ArrayList<Walker>(); 
 	
+	public boolean drawShadow = false;
+	protected Shadow shadow = new Shadow();
+	
 	
 	public Image getCurrentImage(){
 		images[getCurrentFoot()].setPosition(position.x, position.y);
@@ -81,6 +84,11 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 				bon.getCurrentImage().setPosition(getX()+Balloon.ANIMATION_SIZE, getY()+getHeight()+Balloon.ANIMATION_SIZE/2);
 				bon.getCurrentImage().setColor(this.getColor());
 				bon.getCurrentImage().draw(batch,parentAlpha);
+			}
+			if(this.drawShadow){
+				shadow.getShadowimage().setPosition(getX()+6.5f, getY()-3.8f);
+				shadow.getShadowimage().setColor(this.getColor());
+				shadow.getShadowimage().draw(batch,parentAlpha);
 			}
 		}
 		return this;
