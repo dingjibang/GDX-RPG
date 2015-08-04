@@ -94,6 +94,7 @@ public abstract class Hero extends IRPGObject {
 	public Hero() {
 		super();
 		this.waitWhenCollide=false;
+		this.drawShadow=true;
 	}
 	
 	public abstract void first();
@@ -102,6 +103,7 @@ public abstract class Hero extends IRPGObject {
 	public Hero(String path) {
 		super(RES_PATH+path, HERO_WIDTH, HERO_HEIGHT);
 		this.waitWhenCollide=false;
+		this.drawShadow=true;
 	}
 	
 	public String toString(){
