@@ -19,7 +19,8 @@ public class Global implements Serializable {
 	private static final long serialVersionUID = 1L;
 	// 初始地图
 //	public String map = "test/cgloop.tmx";
-	public String map = "test/subway.tmx";
+	public String map = "test/cafe.tmx";
+	
 	// 地图相关
 	public ArrayList<NPC> npcs = new ArrayList<NPC>();
 	public ArrayList<Hero> currentHeros = new ArrayList<Hero>();

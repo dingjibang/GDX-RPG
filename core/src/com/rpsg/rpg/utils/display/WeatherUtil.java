@@ -8,6 +8,7 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.controller.HeroController;
+import com.rpsg.rpg.system.controller.MapController;
 import com.rpsg.rpg.view.GameViews;
 
 public class WeatherUtil {
@@ -49,8 +50,8 @@ public class WeatherUtil {
 			gameMenuListener-=.05;
 		batch.begin();
 		Bloom bloom=GameViews.bloom;
-		bloom.setBaseIntesity(1.f*gameMenuListener);
-		bloom.setBloomSaturation((1f-0.2f)*gameMenuListener+0.2f);
+		bloom.setBaseIntesity(baseSaturation*gameMenuListener);
+		bloom.setBloomSaturation((bloomSaturation-0.2f)*gameMenuListener+0.2f);
 		if(eff!=null){
 			if(lastHeroPositionX==0)
 				lastHeroPositionX=(int) HeroController.getHeadHero().position.x;
@@ -72,10 +73,17 @@ public class WeatherUtil {
 				eff.reset();
 		}
 		batch.end();
+		setPost();
 	}
 	
 	private static void setPost() {
-		if(type==WEATHER_RAIN){
+		String post=(String) GameViews.gameview.map.getProperties().get("POST");
+		if(post!=null && post.length()!=0){
+			baseSaturation=1.1f;
+			bloomIntesity=0.2f;
+			bloomSaturation=0.5f;
+			threshold=0f;
+		}else if(type==WEATHER_RAIN){
 			baseSaturation=0.7f;
 			bloomIntesity=0.8f;
 			bloomSaturation=0.2f;
@@ -87,9 +95,11 @@ public class WeatherUtil {
 			threshold=0.3f;
 		}
 		Bloom bloom=GameViews.bloom;
-		bloom.setBaseSaturation(WeatherUtil.baseSaturation);
-		bloom.setBloomIntesity(WeatherUtil.bloomIntesity);
-		bloom.setThreshold(WeatherUtil.threshold);
+		bloom.setBaseSaturation(baseSaturation);
+		bloom.setBloomIntesity(bloomIntesity);
+		bloom.setBloomSaturation(bloomSaturation);
+		bloom.setThreshold(threshold);
+		bloom.setEnabled(true);
 	}
 	
 	public static BaseScriptExecutor setWeather(final Script script,final int t){

@@ -116,11 +116,11 @@ public class MapController {
 									(int)(((RectangleMapObject)obj).getRectangle().getWidth()),
 									(int)(((RectangleMapObject)obj).getRectangle().getHeight())
 								);
+							npc.params=GameUtil.parseMapProperties(obj.getProperties());
 							npc.init();
 							npc.generatePosition(((int)(((RectangleMapObject)obj).getRectangle().getX())/48),
 									 (int)(bot.getHeight()-2-((RectangleMapObject)obj).getRectangle().getY()/48),
 									 i-removeList.size());
-							npc.params=GameUtil.parseMapProperties(obj.getProperties());
 							Logger.info("NPC生成成功["+npc.position+","+npc.mapx+":"+npc.mapy+":"+npc.layer+"]");
 							gv.stage.addActor(npc);
 							ThreadPool.pool.add(npc.threadPool);

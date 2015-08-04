@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -15,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Image;
+import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameViews;
 
 public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>,Serializable{
@@ -345,13 +345,26 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 			this.layer=layer;
 			this.position=new Vector2(mapx*48,(l.getHeight()-this.mapy-1)*48);
 			lastPosition=new Vector2(this.position);
-			//TODO the actor bounds
-//			clipBegin(this.position.x,this.position.y,this.getWidth(),this.getHeight());
-//			clipEnd();
 		} catch (Exception e) {
+			Logger.error("无法生成RPG对象位置！", e);
 		}
 		return this;
 	}
+	
+	public IRPGObject generateAbsolutePosition(int x,int y,int layer){
+		try {
+			this.mapx=x/48;
+			this.mapy= y/48;
+			this.layer=layer;
+			this.position=new Vector2(x,y);
+			lastPosition=new Vector2(this.position);
+		} catch (Exception e) {
+			Logger.error("无法生成RPG对象位置！", e);
+		}
+		return this;
+	}
+	
+	
 	
 	public static int getReverseFace(int face){
 		if(face==FACE_L)
