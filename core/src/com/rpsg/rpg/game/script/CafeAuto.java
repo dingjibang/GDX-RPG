@@ -14,6 +14,7 @@ import com.rpsg.rpg.game.hero.Arisu;
 import com.rpsg.rpg.game.object.SUBWAYMARI;
 import com.rpsg.rpg.game.object.SUBWAYRENKO;
 import com.rpsg.rpg.object.base.MsgType;
+import com.rpsg.rpg.object.rpg.Balloon;
 import com.rpsg.rpg.object.rpg.IRPGObject;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
@@ -41,10 +42,8 @@ public class CafeAuto extends Script {
 			HeroController.setVisible(false);
 		}});
 		setKeyLocker(true);
-		final NPC npc=findNPC("1");
-		$(new BaseScriptExecutor() {public void init() {
-			System.out.println(npc);
-		}});
+		final Script npc=findNPC("1").script();
+		and(setBalloon(npc, BalloonType.沉默));
 		removeSelf();
 	}
 }

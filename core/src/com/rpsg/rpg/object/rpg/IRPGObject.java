@@ -45,7 +45,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public int foot=0;
 	
 	public boolean waitWhenCollide=true,enableCollide=true; 
-	public boolean displayBalloon=false;
+	private boolean displayBalloon=false;
 	
 	public Collide collide=new Collide();
 	
