@@ -11,6 +11,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Image;
@@ -53,7 +54,8 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public List<Walker> walkStack=new ArrayList<Walker>(); 
 	
 	public boolean drawShadow = false;
-	protected Shadow shadow = new Shadow();
+	transient Image shadow=Res.get(Setting.IRPGOBJECT_SHADOW);
+	
 	
 	
 	public Image getCurrentImage(){
@@ -79,9 +81,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public IRPGObject draw(SpriteBatch batch,float parentAlpha){
 		if(isVisible()){
 			if(this.drawShadow){
-				shadow.getShadowimage().setPosition(getX()+6.5f, getY()-3.8f);
-				shadow.getShadowimage().setColor(this.getColor());
-				shadow.getShadowimage().draw(batch,parentAlpha);
+				shadow.position(getX()+8f, getY()-3.8f).color(this.getColor()).draw(batch,parentAlpha);
 			}
 			this.getCurrentImage().setColor(this.getColor());
 			this.getCurrentImage().draw(batch,parentAlpha);

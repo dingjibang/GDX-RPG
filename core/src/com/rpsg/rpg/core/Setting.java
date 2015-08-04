@@ -67,4 +67,6 @@ public class Setting {
 		UI_BUTTON=new NinePatchDrawable(AlertUtil.processNinePatchFile(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button_p.png"));
 	}
 	
+	public static final String IRPGOBJECT_SHADOW = Setting.GAME_RES_WALK + "walk_shadow.png";
+	
 }
