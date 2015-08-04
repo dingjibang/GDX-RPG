@@ -74,12 +74,14 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	}
 	
 	public IRPGObject draw(SpriteBatch batch,float parentAlpha){
-		this.getCurrentImage().setColor(this.getColor());
-		this.getCurrentImage().draw(batch,parentAlpha);
-		if(displayBalloon){
-			bon.getCurrentImage().setPosition(getX()+Balloon.ANIMATION_SIZE, getY()+getHeight()+Balloon.ANIMATION_SIZE/2);
-			bon.getCurrentImage().setColor(this.getColor());
-			bon.getCurrentImage().draw(batch,parentAlpha);
+		if(isVisible()){
+			this.getCurrentImage().setColor(this.getColor());
+			this.getCurrentImage().draw(batch,parentAlpha);
+			if(displayBalloon){
+				bon.getCurrentImage().setPosition(getX()+Balloon.ANIMATION_SIZE, getY()+getHeight()+Balloon.ANIMATION_SIZE/2);
+				bon.getCurrentImage().setColor(this.getColor());
+				bon.getCurrentImage().draw(batch,parentAlpha);
+			}
 		}
 		return this;
 	}

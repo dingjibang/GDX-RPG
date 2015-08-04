@@ -1,6 +1,5 @@
 package com.rpsg.rpg.utils.game;
 
-import com.rpsg.rpg.object.rpg.Balloon;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
@@ -103,6 +102,15 @@ public class Heros {
 			@Override
 			public void init() {
 				script.npc.setBalloon(type);
+			}
+		});
+	}
+	
+	public static BaseScriptExecutor setHeroVisible(final Script script,final boolean vis){
+		return script.$(new BaseScriptExecutor() {
+			@Override
+			public void init() {
+				HeroController.setVisible(vis);
 			}
 		});
 	}

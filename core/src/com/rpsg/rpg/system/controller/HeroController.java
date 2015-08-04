@@ -44,6 +44,11 @@ public class HeroController {
 		heros.add(getHero(c));
 	}
 	
+	public static void setVisible(boolean visible){
+		for(Hero hero:heros)
+			hero.setVisible(visible);
+	}
+	
 	public static void addHero(Class<? extends Hero> c,int position){
 		heros.add(position,getHero(c));
 	}
