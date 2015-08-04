@@ -25,10 +25,24 @@
     <property name="IMAGE" value="empty"/>
    </properties>
   </object>
-  <object name="PUBLIC" type="NPC" gid="265" x="764" y="226" width="48" height="64">
+  <object name="PUBLIC" type="NPC" gid="265" x="767" y="175" width="48" height="64">
    <properties>
     <property name="ABSOLUTE" value="true"/>
     <property name="ID" value="1"/>
+    <property name="IMAGE" value="empty"/>
+   </properties>
+  </object>
+  <object name="PUBLIC" type="NPC" gid="265" x="766" y="244" width="48" height="64">
+   <properties>
+    <property name="ABSOLUTE" value="true"/>
+    <property name="ID" value="2"/>
+    <property name="IMAGE" value="empty"/>
+   </properties>
+  </object>
+  <object name="PUBLIC" type="NPC" gid="265" x="830" y="243" width="48" height="64">
+   <properties>
+    <property name="ABSOLUTE" value="true"/>
+    <property name="ID" value="3"/>
     <property name="IMAGE" value="empty"/>
    </properties>
   </object>
