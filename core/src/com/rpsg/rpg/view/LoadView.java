@@ -30,9 +30,10 @@ public class LoadView extends View {
 
     /**
      * 这个类是两年前写的了，懒的改了，很恶心就这样了，嗯~
+     * @return 
      */
 	@Override
-	public void init() {
+	public LoadView init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		f_load= new Sprite(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_LOAD+"f_load.png")));
 		f_load.getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
@@ -56,6 +57,7 @@ public class LoadView extends View {
 		f_load.setSize(200, 25);
 		f_load.setPosition(GameUtil.screen_width - f_load.getWidth() - 70, 30);
         stage.addActor(bg);
+		return this;
 	}
 	
 	@Override

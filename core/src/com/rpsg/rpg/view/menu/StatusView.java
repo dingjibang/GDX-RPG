@@ -24,12 +24,13 @@ import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.Label;
+import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class StatusView extends DefaultIView {
 	Group group,inner;
 	ScrollPane pane;
-	public void init() {
+	public View init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		group=(Group) $.add(new Group()).setHeight(1750).getItem();
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"menu_fg_shadow.png").disableTouch()).appendTo(group).setPosition(50, y(30)).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(.3f),Actions.moveTo(50, y(180),0.3f,Interpolation.pow4Out)));
@@ -37,6 +38,7 @@ public class StatusView extends DefaultIView {
 		pane=(ScrollPane) $.add(new ScrollPane(group)).setSize(GameUtil.screen_width-190, GameUtil.screen_height).setX(190).appendTo(stage).getItem();
 //		stage.setDebugAll(true);
 		generate();
+		return this;
 	}
 	
 	private void generate() {

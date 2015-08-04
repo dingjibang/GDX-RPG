@@ -22,8 +22,8 @@ public class SayHelloWorld extends Script{
 //		$(new BaseScriptExecutor() {
 //			  @Override
 //			  public void init() {
-//				  if(++GameViews.global.mapColor>2)
-//					  GameViews.global.mapColor=0;
+//				  if(++RPG.global.mapColor>2)
+//					  RPG.global.mapColor=0;
 //			  }
 //		  }
 //		);

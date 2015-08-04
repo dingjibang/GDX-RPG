@@ -1,31 +1,31 @@
 package com.rpsg.rpg.utils.game;
 
 
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.SpellCard;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.utils.display.AlertUtil;
-import com.rpsg.rpg.view.GameViews;
 
 public class ItemUtil {
 
 	public static void useEquip(Hero hero,Equipment equip){
 		if(hero.equips.get(equip.equipType)!=null){
 			Equipment tmp=hero.equips.get(equip.equipType);
-			GameViews.global.getItems("equipment").add(tmp);
+			RPG.global.getItems("equipment").add(tmp);
 			replace(hero, equip, false);
 		}
 		hero.equips.put(equip.equipType, equip);
 		replace(hero, equip, true);
-		GameViews.global.getItems("equipment").remove(equip);
+		RPG.global.getItems("equipment").remove(equip);
 	}
 	public static boolean throwItem(String type,Item item){
 		return throwItem(type, item, 1);
 	}
 	public static boolean throwItem(String type,Item item,int count){
 		if(item.count==0){
-			if(!GameViews.global.getItems(type).remove(item)){
+			if(!RPG.global.getItems(type).remove(item)){
 				AlertUtil.add("非法操作。", AlertUtil.Red);
 				return false;
 			}
@@ -33,11 +33,11 @@ public class ItemUtil {
 			if(item.count>=count){
 				item.count-=count;
 				if(item.count<=0){
-					GameViews.global.getItems(type).remove(item);
+					RPG.global.getItems(type).remove(item);
 					return false;
 				}
 			}else{
-				GameViews.global.getItems(type).remove(item);
+				RPG.global.getItems(type).remove(item);
 				return false;
 			}
 		}
@@ -48,7 +48,7 @@ public class ItemUtil {
 		if(hero!=null && equipType!=null && hero.equips.get(equipType)!=null){
 			Equipment tmp=hero.equips.get(equipType);
 			replace(hero, tmp, false);
-			GameViews.global.getItems("equipment").add(tmp);
+			RPG.global.getItems("equipment").add(tmp);
 			hero.equips.put(equipType, null);
 		}
 	}
@@ -73,7 +73,7 @@ public class ItemUtil {
 		String type=item.getClass().getSuperclass().getSimpleName().toLowerCase();
 		if(!(item instanceof Equipment || item instanceof SpellCard)){
 			include=false;
-			for (Item i : GameViews.global.getItems(type)) {
+			for (Item i : RPG.global.getItems(type)) {
 				if(i.getClass().equals(item.getClass())){
 					include=true;
 					i.count++;
@@ -81,8 +81,8 @@ public class ItemUtil {
 			}
 
 			if(!include)
-				GameViews.global.getItems(type).add(item);
+				RPG.global.getItems(type).add(item);
 		}else
-			GameViews.global.getItems(type).add(item);
+			RPG.global.getItems(type).add(item);
 	}
 }

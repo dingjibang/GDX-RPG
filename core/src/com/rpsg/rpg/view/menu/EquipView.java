@@ -21,7 +21,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
-import com.rpsg.gdxQuery.$;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.ListItem;
@@ -30,11 +30,10 @@ import com.rpsg.rpg.object.base.items.tip.EmptyEquip;
 import com.rpsg.rpg.object.base.items.tip.TipEquip;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.ui.HeroImage;
 import com.rpsg.rpg.system.ui.IMenuView;
-import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
+import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -58,7 +57,7 @@ public class EquipView extends IMenuView{
 	Equipment equip=new TipEquip();
 	Texture up,down;
 	
-	public void init() {
+	public View init() {
 		
 		up=new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_EQUIP+"add.png"));
 		down=new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_EQUIP+"sub.png"));
@@ -173,7 +172,7 @@ public class EquipView extends IMenuView{
 		olist.getItems().add(new ListItem("装备").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"add.png")).setRunnable(new Runnable() {
 			@Override
 			public void run() {
-				ItemUtil.useEquip(HeroController.heros.get(currentSelectHero), equip);
+				ItemUtil.useEquip(RPG.ctrl.hero.heros.get(currentSelectHero), equip);
 				EquipView.this.gengrateEList();
 			}
 		}));
@@ -226,13 +225,13 @@ public class EquipView extends IMenuView{
 					stage.setKeyboardFocus(olist);
 				} else {
 					if (sellist.getSelected() != null) {
-						ItemUtil.takeOffEquip(HeroController.heros.get(currentSelectHero), sellist.getSelected().type);
+						ItemUtil.takeOffEquip(RPG.ctrl.hero.heros.get(currentSelectHero), sellist.getSelected().type);
 						EquipView.this.gengrateEList();
 					}
 				}
 			}
 		});
-		
+		return this;
 	}
 	
 	Color blue=Color.DARK_GRAY;
@@ -241,7 +240,7 @@ public class EquipView extends IMenuView{
 	public void draw(SpriteBatch batch) {
 		stage.draw();
 		SpriteBatch sb=(SpriteBatch) stage.getBatch();
-		Hero hero=HeroController.heros.get(currentSelectHero);
+		Hero hero=RPG.ctrl.hero.heros.get(currentSelectHero);
 		sb.begin();
 		heroImage.draw(sb, step==3?1:step);
 		FontUtil.draw(sb, hero.name, 22, Color.WHITE, 220, 486, 1000);
@@ -284,7 +283,7 @@ public class EquipView extends IMenuView{
 	}
 	
 	private int getDef(String prop){
-		Hero hero=HeroController.heros.get(currentSelectHero);
+		Hero hero=RPG.ctrl.hero.heros.get(currentSelectHero);
 		if(hero.getEquipValue(equip.equipType, prop)!=0)
 			return hero.prop.get(prop)-hero.getEquipValue(equip.equipType, prop)+equip.prop.get(prop);
 		else
@@ -339,11 +338,11 @@ public class EquipView extends IMenuView{
 
 	HeroImage heroImage;
 	public void generateHero(int index){
-		heroImage=HeroImage.generateImage(HeroController.heros.get(index).images, 300, 375);
+		heroImage=HeroImage.generateImage(RPG.ctrl.hero.heros.get(index).images, 300, 375);
 	}
 	
 	public void nextHero(){
-		if(currentSelectHero!=HeroController.heros.size()-1){
+		if(currentSelectHero!=RPG.ctrl.hero.heros.size()-1){
 			currentSelectHero++;
 			generateHero(currentSelectHero);
 			gengrateEList();
@@ -371,7 +370,7 @@ public class EquipView extends IMenuView{
 		currentSelectEquip=sellist.getSelectedIndex();
 		sellist.clearItems();
 		Array<EQuipSelect> item = sellist.getItems();
-		Hero hero=HeroController.heros.get(currentSelectHero);
+		Hero hero=RPG.ctrl.hero.heros.get(currentSelectHero);
 		item.add(new EQuipSelect(Equipment.EQUIP_WEAPON,hero.getEquipName("weapon"),"武器"));
 		item.add(new EQuipSelect(Equipment.EQUIP_CLOTHES,hero.getEquipName("clothes"),"衣服"));
 		item.add(new EQuipSelect(Equipment.EQUIP_SHOES,hero.getEquipName("shoes"),"鞋子"));
@@ -382,7 +381,7 @@ public class EquipView extends IMenuView{
 		Array<Equipment> eitem=elist.getItems();
 		eitem.add(new EmptyEquip());
 		if(currentSelectEquip!=-1){
-			for (Equipment e : GameViews.global.getItems(Equipment.class)) {
+			for (Equipment e : RPG.global.getItems(Equipment.class)) {
 				if((e.equipType.equals(item.get(currentSelectEquip).type)) && (e.onlyFor==null || e.onlyFor==hero.getClass()))
 					eitem.add(e);
 			}

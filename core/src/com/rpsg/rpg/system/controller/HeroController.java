@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.rpg.Hero;
-import com.rpsg.rpg.view.GameViews;
 
 /**
  * 用来控制一组{@link Hero 英雄}进行行走、转向、增删等，他同时应用在蚂蚁队列上（HeadHero行走，后面的Hero自动跟随）
@@ -13,19 +13,19 @@ import com.rpsg.rpg.view.GameViews;
  *
  */
 public class HeroController {
-	public static ArrayList<Hero> heros;
-	public static ArrayList<Hero> allHeros;
+	public ArrayList<Hero> heros;
+	public ArrayList<Hero> allHeros;
 	
-	public static void act(){
+	public void act(){
 		for(Hero hero:heros)
 			hero.act(0);
 	}
 	
-	public static Hero getHeadHero(){
+	public Hero getHeadHero(){
 		return heros.get(0);
 	}
 	
-	public static Hero newHero(Class<? extends Hero> c){
+	public Hero newHero(Class<? extends Hero> c){
 		if(getHero(c)!=null)
 			return null;
 		Hero h=null;
@@ -39,60 +39,60 @@ public class HeroController {
 		return h;
 	}
 	
-	public static void addHero(Class<? extends Hero> c){
+	public void addHero(Class<? extends Hero> c){
 		heros.add(getHero(c));
 	}
 	
-	public static void setVisible(boolean visible){
+	public void setVisible(boolean visible){
 		for(Hero hero:heros)
 			hero.setVisible(visible);
 	}
 	
-	public static void addHero(Class<? extends Hero> c,int position){
+	public void addHero(Class<? extends Hero> c,int position){
 		heros.add(position,getHero(c));
 	}
 	
-	public static void removeHero(Class<? extends Hero> c){
+	public void removeHero(Class<? extends Hero> c){
 		heros.remove(getHero(c));
 	}
 	
-	public static void deleteHero(Class<? extends Hero> c){
+	public void deleteHero(Class<? extends Hero> c){
 		allHeros.remove(getHero(c));
 	}
 	
-	public static void swapHero(int position){
+	public void swapHero(int position){
 		Collections.swap(heros, position, 0);
 		reinit();
 	}
 	
-	public static void swapHero(Class<? extends Hero> c){
+	public void swapHero(Class<? extends Hero> c){
 		Collections.swap(heros, heros.indexOf(getHero(c)), 0);
 		reinit();
 	}
 	
-	public static void swapHero(int position,int swapposition){
+	public void swapHero(int position,int swapposition){
 		Collections.swap(heros, position, swapposition);
 		reinit();
 	}
 	
-	public static void swapHero(Class<? extends Hero> c,Class<? extends Hero> swapc){
+	public void swapHero(Class<? extends Hero> c,Class<? extends Hero> swapc){
 		Collections.swap(heros, heros.indexOf(getHero(c)), heros.indexOf(getHero(swapc)));
 		reinit();
 	}
 	
-	public static Hero getHero(Class<? extends Hero> c){
+	public Hero getHero(Class<? extends Hero> c){
 		for(Hero hero:allHeros)
 			if(hero.getClass().equals(c))
 				return hero;
 		return null;
 	}
 	
-	public static void initControler(){
-		heros=GameViews.global.currentHeros;
-		allHeros= GameViews.global.heros;
+	public void initControler(){
+		heros=RPG.global.currentHeros;
+		allHeros= RPG.global.heros;
 	}
 	
-	public static void initHeros(Stage s){
+	public void initHeros(Stage s){
 		for(Hero hero:heros){
 			hero.init();
 			hero.enableCollide=false;
@@ -105,7 +105,7 @@ public class HeroController {
 		}
 	}
 	
-	public static void reinit(){
+	public void reinit(){
 		for(int i=0;i<heros.size();i++){
 			if(i!=0){
 				heros.get(i).currentImageNo=heros.get(0).currentImageNo;
@@ -122,7 +122,7 @@ public class HeroController {
 		}
 	} 
 	
-	public static void reinitByTeleport(){
+	public void reinitByTeleport(){
 		for(int i=0;i<heros.size();i++){
 			if(i!=0){
 				heros.get(i).currentImageNo=heros.get(0).currentImageNo;
@@ -140,8 +140,8 @@ public class HeroController {
 			getHeadHero().waitWhenCollide=false;
 		}
 	} 
-	public static boolean thisFrameGeneratedPosition=false;
-	public static void generatePosition(int x,int y,int z){
+	public boolean thisFrameGeneratedPosition=false;
+	public void generatePosition(int x,int y,int z){
 		for(int i=0;i<heros.size();i++){
 			if(i==0){
 				heros.get(i).generatePosition(x, y, z);
@@ -159,8 +159,8 @@ public class HeroController {
 	}
 
 	
-	static boolean walk;
-	public static void walk(int step){	
+	boolean walk;
+	public void walk(int step){	
 		walk=getHeadHero().walk(step).testWalk();
 		if(walk)
 		for(int i=1;i<heros.size();i++){
@@ -169,7 +169,7 @@ public class HeroController {
 		}
 	}
 	
-	public static void turn(int face){
+	public void turn(int face){
 		for(int i=0;i<heros.size();i++){
 			if(i==0)
 				heros.get(i).turn(face);
@@ -179,7 +179,7 @@ public class HeroController {
 		}
 	}
 	
-	public static void testWalk(){
+	public void testWalk(){
 		for(int i=0;i<heros.size();i++){
 			if(i==0)
 				heros.get(i).testWalk();
@@ -188,11 +188,11 @@ public class HeroController {
 		}
 	}
 	
-	public static boolean walked(){
+	public boolean walked(){
 		return getHeadHero().walked;
 	}
 	
-	public static void setWalkSpeed(int speed){
+	public void setWalkSpeed(int speed){
 		for(int i=0;i<heros.size();i++){
 			heros.get(i).setWalkSpeed(speed);
 		}

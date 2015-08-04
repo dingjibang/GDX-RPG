@@ -7,20 +7,15 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.bitfire.postprocessing.PostProcessor;
 import com.bitfire.postprocessing.effects.Bloom;
-import com.bitfire.postprocessing.effects.CameraMotion;
-import com.bitfire.postprocessing.effects.CrtMonitor;
 import com.bitfire.postprocessing.effects.Vignette;
-import com.bitfire.postprocessing.filters.CrtScreen.Effect;
-import com.bitfire.postprocessing.filters.CrtScreen.RgbMode;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
-import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
@@ -48,10 +43,8 @@ public class GameViews implements ApplicationListener {
 	public static LoadView loadview;//载入界面的view（那个少女祈祷中）
 	public static TitleView titleview;//标题画面的view（咱们现在没有标题画面，所以直接跳到gameview）
 	public static GameView gameview;//游戏核心的view
-	public static Global global;//global是游戏的当前档案，里面记录了主角的等级啊，金钱啊这种，然后游戏保存的方式就是持久化这个global了。
 	
 	public static SelectUtil selectUtil;//这个是对话时候的选择框，放在这很傻逼（他应该隶属于gameview而不是gameviews，到时候会弄走的 TODO）
-	public static Input input;//游戏的全局输入
 	
 	public static PostProcessor post;//高清画质，不用管
 	public static Bloom bloom;//高斯模糊，不用管
@@ -66,14 +59,12 @@ public class GameViews implements ApplicationListener {
 		//start init
 		Setting.init();//设置一些复用的UI组件
 		//input
-		input =new Input();
-		Gdx.input.setInputProcessor(input);//注册输入
+		Gdx.input.setInputProcessor(RPG.input);//注册输入
 		//view
 		logoview = new LogoView();
 		logoview.init();//注册logoview
 		//other
 		batch = new SpriteBatch();//构建画笔
-		global=new Global();//创建存档
 		AlertUtil.init();//提示工具类，可以在屏幕右下角显示一个个的小框
 		if(Setting.persistence.errorMessage!=null && Setting.persistence.errorMessage.length()!=0){//当游戏异常退出之前，会尝试把错误信息写到Setting.persistence.errorMessage这里然后保存，然后下一次启动游戏的时候，看看这个变量是不是空的，如果不是，就把上次的异常信息显示出来。
 			AlertUtil.add(Setting.persistence.errorMessage, AlertUtil.Red);
@@ -116,11 +107,9 @@ public class GameViews implements ApplicationListener {
 			logoview.logic();
 			if(logoview.played){
 				logoview.dispose();
-				loadview=new LoadView();
-				loadview.init();
+				loadview=new LoadView().init();
 				state=STATE_LOAD;
-				titleview = new TitleView();
-				titleview.init();
+				titleview = new TitleView().init();
 			}
 			logoview.draw(batch);
 			break;
@@ -154,7 +143,7 @@ public class GameViews implements ApplicationListener {
 		}
 		}
 	
-		HoverController.draw(batch);//悬浮窗口，一些特殊的置顶窗口会使用。
+		RPG.hover.draw(batch);//悬浮窗口，一些特殊的置顶窗口会使用。
 		GameUtil.drawFPS(batch);//绘制FPS
 		TimeUtil.logic();//STEP一下时间工具包
 		AlertUtil.draw(batch);//STEP一下提示工具包

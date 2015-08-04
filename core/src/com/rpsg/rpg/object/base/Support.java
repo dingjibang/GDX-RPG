@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.rpg.Hero;
-import com.rpsg.rpg.view.GameViews;
 
 public abstract class Support implements Serializable{
 	
@@ -21,24 +21,24 @@ public abstract class Support implements Serializable{
 	}
 	
 	public static void addToSupport(Hero hero){
-		if(GameViews.global.support.size()>=4)
+		if(RPG.global.support.size()>=4)
 			return;
-		GameViews.global.support.add(hero);
+		RPG.global.support.add(hero);
 	}
 	
 	public static void removeSupport(Hero hero){
-		GameViews.global.support.remove(hero);
+		RPG.global.support.remove(hero);
 	}
 	
 	public static List<Hero> getSupportList(){
-		List<Hero> sup=GameViews.global.support;
+		List<Hero> sup=RPG.global.support;
 		boolean flag=false;
 		for(Hero hero:sup){
 			if(hero.lead)
 				flag=true;
-			if(!GameViews.global.heros.contains(hero))
+			if(!RPG.global.heros.contains(hero))
 				flag=true;
-			if(GameViews.global.currentHeros.contains(hero))
+			if(RPG.global.currentHeros.contains(hero))
 				flag=true;
 		}
 		if(flag)
@@ -49,9 +49,9 @@ public abstract class Support implements Serializable{
 	public static List<Hero> getPreSupportList(){
 		List<Hero> sList=getSupportList();
 		@SuppressWarnings("unchecked")
-		List<Hero> tmp=(List<Hero>) GameViews.global.heros.clone();
+		List<Hero> tmp=(List<Hero>) RPG.global.heros.clone();
 		tmp.removeAll(sList);
-		tmp.removeAll(GameViews.global.currentHeros);
+		tmp.removeAll(RPG.global.currentHeros);
 		List<Hero> removeList=new ArrayList<>();
 		for(Hero hero:tmp)
 			if(hero.lead)

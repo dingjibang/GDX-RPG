@@ -9,12 +9,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.PixmapIO;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.SLData;
 import com.rpsg.rpg.object.rpg.NPC;
-import com.rpsg.rpg.system.controller.HeroController;
-import com.rpsg.rpg.system.controller.MapController;
+import com.rpsg.rpg.system.controller.MapLoader;
 import com.rpsg.rpg.system.controller.MenuController;
 import com.rpsg.rpg.utils.display.WeatherUtil;
 import com.rpsg.rpg.utils.game.Logger;
@@ -24,10 +24,10 @@ public class SL {
 	@SuppressWarnings("unchecked")
 	public static boolean save(int fileID,Pixmap px,Runnable callback) {
 		try{
-			Global global = GameViews.global;
-			global.npcs = (ArrayList<NPC>)MapController.getNPCs().clone();
-			global.heros =  HeroController.allHeros;
-			global.currentHeros =HeroController.heros;
+			Global global = RPG.global;
+			global.npcs = (ArrayList<NPC>)RPG.maps.loader.getNPCs().clone();
+			global.heros =  RPG.ctrl.hero.allHeros;
+			global.currentHeros =RPG.ctrl.hero.heros;
 			global.weather=WeatherUtil.type;
 			Files.save(global,Setting.GAME_PERSISTENCE+fileID+".dat");
 			global.npcs.clear();
@@ -35,9 +35,9 @@ public class SL {
 			slData.gameDate=/*global.date+"年"+*/global.date.getMonth()+"月"+global.date.getDay()+"日";
 			slData.id=fileID;
 			slData.level=global.currentHeros.get(0).prop.get("level");
-			slData.mapName=(String)GameViews.gameview.map.getProperties().get("name");
+			slData.mapName=(String)RPG.maps.map.getProperties().get("name");
 			slData.saveDate=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
-			slData.heroName=HeroController.getHeadHero().name;
+			slData.heroName=RPG.ctrl.hero.getHeadHero().name;
 			Files.save(slData,Setting.GAME_PERSISTENCE+fileID+"_sld.dat");
 			PixmapIO.writePNG(new FileHandle(Gdx.files.getLocalStoragePath()+Setting.GAME_PERSISTENCE+fileID+".png"),px==null?MenuController.pbg:px);
 			if(callback!=null)

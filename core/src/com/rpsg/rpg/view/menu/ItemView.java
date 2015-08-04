@@ -23,7 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
-import com.rpsg.gdxQuery.$;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.game.items.equipment.Sunshade;
 import com.rpsg.rpg.game.items.medicine.CopyOfYaoWan;
@@ -33,12 +33,12 @@ import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.tip.TipItem;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.TextButton;
 import com.rpsg.rpg.system.ui.TextButton.TextButtonStyle;
+import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.display.NumberUtil;
@@ -64,7 +64,7 @@ public class ItemView extends DefaultIView{
 	int currentCount=0;
 	
 	Image[] throwimg=new Image[10];
-	public void init() {
+	public View init() {
 		add=new ParticleEffect();
 		add.load(Gdx.files.internal(Setting.GAME_RES_PARTICLE + "addp.p"), Gdx.files.internal(Setting.GAME_RES_PARTICLE));
 		add.setPosition(835, 111);
@@ -242,7 +242,7 @@ public class ItemView extends DefaultIView{
 		herolist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		herolist.offsetX2=20;
 		herolist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"no.png")));
-		for (Hero h : HeroController.heros) {
+		for (Hero h : RPG.ctrl.hero.heros) {
 			herolist.getItems().add(new ListItem(h.name).setUserObject(h));
 		}
 
@@ -272,7 +272,7 @@ public class ItemView extends DefaultIView{
 			}
 		};
 		TextButtonStyle butstyle=new TextButtonStyle();
-		butstyle.over=butstyle.checkedOver=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button_hover.png");
+		butstyle.over=butstyle.checkedOver=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button_RPG.hover.png");
 		butstyle.down=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button_active.png");
 		butstyle.up=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button.png");
 		group=new Group();
@@ -413,6 +413,7 @@ public class ItemView extends DefaultIView{
 		can3.run();
 		can2.run();
 		can.run();
+		return this;
 		
 		
 	}
@@ -522,7 +523,7 @@ public class ItemView extends DefaultIView{
 		float y=pane.getScrollX();
 		Array<Item> sc = elist.getItems();
 		sc.clear();
-		for (Item e : GameViews.global.items.get(type)) {
+		for (Item e : RPG.global.items.get(type)) {
 			sc.add(e);
 		}
 

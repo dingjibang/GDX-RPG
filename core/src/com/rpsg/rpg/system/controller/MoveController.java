@@ -1,8 +1,5 @@
 package com.rpsg.rpg.system.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -14,12 +11,13 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.RemoveTest;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Collide;
 import com.rpsg.rpg.object.rpg.Hero;
-import com.rpsg.rpg.object.rpg.IRPGObject;
+import com.rpsg.rpg.object.rpg.RPGObject;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptCollide;
@@ -56,49 +54,49 @@ public class MoveController {
 
 	public static void logic(GameView gv) {
 		for (Actor a : gv.stage.getActors()) {
-			if (a instanceof IRPGObject && ((IRPGObject) a).enableCollide) {
-				IRPGObject o = (IRPGObject) a;
-				o.collide.testCollide(o.mapx, o.mapy, ((TiledMapTileLayer) MapController.layer.get(o.layer)), gv.stage.getActors(), o);
+			if (a instanceof RPGObject && ((RPGObject) a).enableCollide) {
+				RPGObject o = (RPGObject) a;
+				o.collide.testCollide(o.mapx, o.mapy, ((TiledMapTileLayer) RPG.maps.loader.layer.get(o.layer)), gv.stage.getActors(), o);
 			}
 		}
-		for (ScriptCollide sc : Collide.testNPCCollide(gv, HeroController.getHeadHero(), gv.stage.getActors())) {
+		for (ScriptCollide sc : Collide.testNPCCollide(gv, RPG.ctrl.hero.getHeadHero(), gv.stage.getActors())) {
 			sc.toCollide();
 		}
-		HeroController.setWalkSpeed(Input.isPress(Keys.CONTROL_LEFT) ? 8 : 4);
-		if (InputController.currentIOMode == IOMode.MapInput.NORMAL && HoverController.isEmpty()) {
-			if ((Input.isPress(Keys.RIGHT) || Input.isPress(Keys.D) || wr) && HeroController.walked()) {
+		RPG.ctrl.hero.setWalkSpeed(Input.isPress(Keys.CONTROL_LEFT) ? 8 : 4);
+		if (InputController.currentIOMode == IOMode.MapInput.NORMAL && RPG.hover.isEmpty()) {
+			if ((Input.isPress(Keys.RIGHT) || Input.isPress(Keys.D) || wr) && RPG.ctrl.hero.walked()) {
 				wr = false;
-				HeroController.turn(Hero.FACE_R);
-				HeroController.walk(1);
-				HeroController.testWalk();
+				RPG.ctrl.hero.turn(Hero.FACE_R);
+				RPG.ctrl.hero.walk(1);
+				RPG.ctrl.hero.testWalk();
 			}
-			if ((Input.isPress(Keys.LEFT) || Input.isPress(Keys.A) || wl) && HeroController.walked()) {
+			if ((Input.isPress(Keys.LEFT) || Input.isPress(Keys.A) || wl) && RPG.ctrl.hero.walked()) {
 				wl = false;
-				HeroController.turn(Hero.FACE_L);
-				HeroController.walk(1);
-				HeroController.testWalk();
+				RPG.ctrl.hero.turn(Hero.FACE_L);
+				RPG.ctrl.hero.walk(1);
+				RPG.ctrl.hero.testWalk();
 			}
-			if ((Input.isPress(Keys.UP) || Input.isPress(Keys.W) || wu) && HeroController.walked()) {
+			if ((Input.isPress(Keys.UP) || Input.isPress(Keys.W) || wu) && RPG.ctrl.hero.walked()) {
 				wu = false;
-				HeroController.turn(Hero.FACE_U);
-				HeroController.walk(1);
-				HeroController.testWalk();
+				RPG.ctrl.hero.turn(Hero.FACE_U);
+				RPG.ctrl.hero.walk(1);
+				RPG.ctrl.hero.testWalk();
 			}
-			if ((Input.isPress(Keys.DOWN) || Input.isPress(Keys.S) || wd) && HeroController.walked()) {
+			if ((Input.isPress(Keys.DOWN) || Input.isPress(Keys.S) || wd) && RPG.ctrl.hero.walked()) {
 				wd = false;
-				HeroController.turn(Hero.FACE_D);
-				HeroController.walk(1);
-				HeroController.testWalk();
+				RPG.ctrl.hero.turn(Hero.FACE_D);
+				RPG.ctrl.hero.walk(1);
+				RPG.ctrl.hero.testWalk();
 			}
 		}
 		// core
 		// twidth theight 是地图的总宽度和高度
-		int twidth = MapController.mapWidth;
-		int theight = MapController.mapHeight;
+		int twidth = RPG.maps.loader.mapWidth;
+		int theight = RPG.maps.loader.mapHeight;
 
 		// 这两个坐标herox heroy 来确定了hero的位置
-		float herox = HeroController.getHeadHero().position.x + (HeroController.getHeadHero().getWidth() / 2);
-		float heroy = HeroController.getHeadHero().position.y + (HeroController.getHeadHero().getHeight() / 2);
+		float herox = RPG.ctrl.hero.getHeadHero().position.x + (RPG.ctrl.hero.getHeadHero().getWidth() / 2);
+		float heroy = RPG.ctrl.hero.getHeadHero().position.y + (RPG.ctrl.hero.getHeadHero().getHeight() / 2);
 		
 		
 		Vector3 pos = Setting.persistence.softCamera?new Vector3():gv.camera.position;
@@ -128,7 +126,7 @@ public class MoveController {
 		if(Setting.persistence.softCamera){
 //			System.out.println(offsetActor.getX());
 			bufferActor.clearActions();
-			if(!(HeroController.thisFrameGeneratedPosition?!(HeroController.thisFrameGeneratedPosition=false):false))
+			if(!(RPG.ctrl.hero.thisFrameGeneratedPosition?!(RPG.ctrl.hero.thisFrameGeneratedPosition=false):false))
 				bufferActor.addAction(Actions.moveTo(pos.x, pos.y,0.5f,Interpolation.pow2Out));
 			else
 				bufferActor.addAction(Actions.moveTo(pos.x, pos.y));
@@ -156,8 +154,8 @@ public class MoveController {
 	}
 
 	public static boolean testCameraPos(GameView gv) {
-		float herox = HeroController.getHeadHero().position.x + (HeroController.getHeadHero().getWidth() / 2);
-		float heroy = HeroController.getHeadHero().position.y + (HeroController.getHeadHero().getHeight() / 2);
+		float herox = RPG.ctrl.hero.getHeadHero().position.x + (RPG.ctrl.hero.getHeadHero().getWidth() / 2);
+		float heroy = RPG.ctrl.hero.getHeadHero().position.y + (RPG.ctrl.hero.getHeadHero().getHeight() / 2);
 		return !(herox > MAP_MAX_OUT_X && herox < (48 * 48) - MAP_MAX_OUT_X) && (heroy > MAP_MAX_OUT_Y && heroy < (48 * 48) - MAP_MAX_OUT_Y);
 	}
 
@@ -196,8 +194,8 @@ public class MoveController {
 	 * X/Y BASE ( LEFT/BOTTOM )
 	 */
 	public static BaseScriptExecutor setCameraPositionWithAbsolute(Script script, final int x, final int y, final boolean wait) {
-		int herox = (int) (HeroController.getHeadHero().position.x + (HeroController.getHeadHero().getWidth() / 2));
-		int heroy = (int) (HeroController.getHeadHero().position.y + (HeroController.getHeadHero().getHeight() / 2));
+		int herox = (int) (RPG.ctrl.hero.getHeadHero().position.x + (RPG.ctrl.hero.getHeadHero().getWidth() / 2));
+		int heroy = (int) (RPG.ctrl.hero.getHeadHero().position.y + (RPG.ctrl.hero.getHeadHero().getHeight() / 2));
 		return setCameraPositionWithHero(script, herox - x, heroy - y, wait);
 	}
 

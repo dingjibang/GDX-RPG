@@ -6,7 +6,7 @@ import com.rpsg.rpg.game.sc.patientBack;
 import com.rpsg.rpg.object.base.Resistance;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.rpg.Hero;
-import com.rpsg.rpg.object.rpg.IRPGObject;
+import com.rpsg.rpg.object.rpg.RPGObject;
 
 public class Arisu extends Hero{
 	
@@ -42,6 +42,6 @@ public class Arisu extends Hero{
 	}
 	
 	public void init(){
-		this.images=IRPGObject.generateImages(Hero.RES_PATH+imgPath, HERO_WIDTH, HERO_HEIGHT);
+		this.images=RPGObject.generateImages(Hero.RES_PATH+imgPath, HERO_WIDTH, HERO_HEIGHT);
 	}
 }

@@ -4,11 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.bitfire.postprocessing.effects.Bloom;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.system.controller.HeroController;
-import com.rpsg.rpg.system.controller.MapController;
 import com.rpsg.rpg.view.GameViews;
 
 public class WeatherUtil {
@@ -31,7 +30,7 @@ public class WeatherUtil {
 	
 	public static void init(int type){
 		WeatherUtil.type=type;
-		GameViews.global.weather=type;
+		RPG.global.weather=type;
 		if(eff!=null)
 			eff.dispose();
 		if(type==WEATHER_RAIN){
@@ -54,10 +53,10 @@ public class WeatherUtil {
 		bloom.setBloomSaturation((bloomSaturation-0.2f)*gameMenuListener+0.2f);
 		if(eff!=null){
 			if(lastHeroPositionX==0)
-				lastHeroPositionX=(int) HeroController.getHeadHero().position.x;
+				lastHeroPositionX=(int) RPG.ctrl.hero.getHeadHero().position.x;
 			else{
-				if(lastHeroPositionX!=HeroController.getHeadHero().position.x){
-					if(lastHeroPositionX>HeroController.getHeadHero().position.x){//LEFT
+				if(lastHeroPositionX!=RPG.ctrl.hero.getHeadHero().position.x){
+					if(lastHeroPositionX>RPG.ctrl.hero.getHeadHero().position.x){//LEFT
 						eff.getEmitters().get(0).getVelocity().setHigh(500, 500);
 					}else{
 						eff.getEmitters().get(0).getVelocity().setHigh(-500, -500);
@@ -65,7 +64,7 @@ public class WeatherUtil {
 				}else{
 					eff.getEmitters().get(0).getVelocity().setHigh(0, 0);
 				}
-				lastHeroPositionX=(int) HeroController.getHeadHero().position.x;
+				lastHeroPositionX=(int) RPG.ctrl.hero.getHeadHero().position.x;
 			}
 			eff.draw(batch,Gdx.graphics.getDeltaTime());
 			eff.setPosition(0, 524);
@@ -77,7 +76,7 @@ public class WeatherUtil {
 	}
 	
 	private static void setPost() {
-		String post=(String) GameViews.gameview.map.getProperties().get("POST");
+		String post=(String) RPG.maps.getProp().get("POST");
 		if(post!=null && post.length()!=0){
 			baseSaturation=1.1f;
 			bloomIntesity=0.2f;

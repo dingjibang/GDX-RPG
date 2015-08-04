@@ -23,14 +23,12 @@ import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxFrame;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.gdxQuery.GdxQueryRunnable;
-import com.rpsg.gdxQuery.NullActor;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.controller.HeroController;
-import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.system.controller.MenuController;
 import com.rpsg.rpg.system.controller.MenuController.Menu;
 import com.rpsg.rpg.system.ui.CheckBox;
@@ -41,11 +39,10 @@ import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.MenuHeroBox;
 import com.rpsg.rpg.system.ui.StackView;
 import com.rpsg.rpg.system.ui.View;
-import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.WeatherUtil;
+import com.rpsg.rpg.utils.game.GameDate.Time;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.TimeUtil;
-import com.rpsg.rpg.utils.game.GameDate.Time;
 import com.rpsg.rpg.view.GameViews;
 import com.rpsg.rpg.view.hover.LoadView;
 import com.rpsg.rpg.view.hover.SaveView;
@@ -58,7 +55,7 @@ public class MenuView extends StackView{
 	List<GdxQuery> boxs;
 	boolean status=false;
 	@Override
-	public void init() {
+	public View init() {
 		final WidgetGroup leftBar;//左边栏
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		//左边栏相关
@@ -72,20 +69,20 @@ public class MenuView extends StackView{
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_gold.png")).setPosition(-100, 275).appendTo(ld).addAction(Actions.moveTo(35, 275,0.55f,Interpolation.pow2Out));
 		$.add(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"ico_flag.png")).setPosition(-100, 212).appendTo(ld).addAction(Actions.moveTo(35, 212,0.55f,Interpolation.pow2Out));
 		frames=$.add($.add(new Label("",24).setWidth(1000).setPos(0, 558)).appendTo(ld).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(120,558,0.5f))),new GdxQueryRunnable() {public void run(GdxQuery self) {
-			((Label)self.getItem()).setText(/*GameViews.global.tyear+"/"+*/GameViews.global.date.getMonth()+"月"+GameViews.global.date.getDay()+"日");
+			((Label)self.getItem()).setText(/*RPG.global.tyear+"/"+*/RPG.global.date.getMonth()+"月"+RPG.global.date.getDay()+"日");
 		}});
 		frames.add($.add(new Label("",24).setWidth(1000).right(true).setPos(0, 558)).appendTo(ld).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(380,558,0.5f,Interpolation.pow2Out))),new GdxQueryRunnable() {public void run(GdxQuery self) {
-			((Label)self.getItem()).setText(((GameViews.global.date.getTime()==Time.DAY?"上午":(GameViews.global.date.getTime()==Time.NIGHT?"夜晚":"黄昏"))+" "+WeatherUtil.getName()));
+			((Label)self.getItem()).setText(((RPG.global.date.getTime()==Time.DAY?"上午":(RPG.global.date.getTime()==Time.NIGHT?"夜晚":"黄昏"))+" "+WeatherUtil.getName()));
 		}}); 
 		frames.add($.add(new Label("",18).setWidth(1000).right(true).setPos(383, 525)).appendTo(ld).setColor(1,1,1,0).addAction(Actions.fadeIn(0.7f)),new GdxQueryRunnable() {public void run(GdxQuery self) {
 			((Label)self.getItem()).setText("游戏已进行"+TimeUtil.getGameRunningTime());
 		}});
 		$.add(hr=Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"hr.png")).setPosition(-200, 490).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.delay(0.2f, Actions.parallel(Actions.fadeIn(0.1f),Actions.moveTo(20, 490,0.1f))));
 		frames.add($.add(new Label("",24).setWidth(1000)).setPosition(-300, 357).appendTo(ld).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(75,357,0.5f,Interpolation.pow2Out))),new GdxQueryRunnable() {public void run(GdxQuery self) {
-			((Label)self.getItem()).setText((String)GameViews.gameview.map.getProperties().get("name")+"["+HeroController.getHeadHero().mapx+","+HeroController.getHeadHero().mapy+"]");
+			((Label)self.getItem()).setText((String)RPG.maps.getProp().get("name")+"["+RPG.ctrl.hero.getHeadHero().mapx+","+RPG.ctrl.hero.getHeadHero().mapy+"]");
 		}});
 		frames.add($.add(new Label("",24).setWidth(1000)).setPosition(-300,302).appendTo(ld).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(75,302,0.5f,Interpolation.pow2Out))),new GdxQueryRunnable() {public void run(GdxQuery self) {
-			((Label)self.getItem()).setText("持有"+GameViews.global.gold+"金币");
+			((Label)self.getItem()).setText("持有"+RPG.global.gold+"金币");
 		}});
 		frames.add($.add(new Label("",24).setWidth(1000)).setPosition(-300, 245).appendTo(ld).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(75,245,0.5f,Interpolation.pow2Out))),new GdxQueryRunnable() {public void run(GdxQuery self) {
 			((Label)self.getItem()).setText("任务模块制作中");
@@ -142,15 +139,15 @@ public class MenuView extends StackView{
 			}
 		}}).appendTo(ld).setSize(370, 50).setPosition(-100, 20).addAction(Actions.moveTo(23, 20, .5f,Interpolation.pow2Out)).getCell().prefSize(370,50);
 		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"btn_save.png"))).onClick(new Runnable() {public void run() {
-			HoverController.add(SaveView.class);
+			RPG.hover.add(SaveView.class);
 		}}).appendTo(ld).setSize(172, 76).setPosition(-100, 90).addAction(Actions.moveTo(23, 90, 0.5f,Interpolation.pow2Out)).getCell().prefSize(172,76);
 		$.add(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.GAME_RES_IMAGE_MENU_NEW_GLOBAL+"btn_load.png"))).onClick(new Runnable() {public void run() {
-			HoverController.add(LoadView.class);
+			RPG.hover.add(LoadView.class);
 		}}).appendTo(ld).setSize(172, 76).setPosition(0, 90).addAction(Actions.moveTo(221, 90, 0.5f,Interpolation.pow2Out)).getCell().prefSize(172,76);
 		boxs=new ArrayList<GdxQuery>();//角色框
 		
-		for(int i=0;i<HeroController.heros.size();i++)
-			boxs.add($.add(new MenuHeroBox(HeroController.heros.get(i))).appendTo(ld).setPosition(-i*100, 400).addAction(Actions.moveTo(i*100+25, 400,0.7f,Interpolation.pow2Out)).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
+		for(int i=0;i<RPG.ctrl.hero.heros.size();i++)
+			boxs.add($.add(new MenuHeroBox(RPG.ctrl.hero.heros.get(i))).appendTo(ld).setPosition(-i*100, 400).addAction(Actions.moveTo(i*100+25, 400,0.7f,Interpolation.pow2Out)).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
 				if(current==null || current!=((MenuHeroBox)self.getItem()).hero){
 					for(GdxQuery _box:boxs)
 						((MenuHeroBox) _box.getItem()).setSelect(false);
@@ -170,6 +167,7 @@ public class MenuView extends StackView{
 		$.add(ld).children().find(ImageButton.class,MenuHeroBox.class).onClick(new Runnable() {public void run() {
 			Music.playSE("snd210.wav");
 		}});
+		return this;
 	}
 	
 	public void click(Hero hero){

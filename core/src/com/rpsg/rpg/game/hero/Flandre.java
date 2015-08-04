@@ -3,7 +3,7 @@ package com.rpsg.rpg.game.hero;
 import com.rpsg.rpg.game.association.association.Devil;
 import com.rpsg.rpg.game.association.support.AnimaUp;
 import com.rpsg.rpg.object.rpg.Hero;
-import com.rpsg.rpg.object.rpg.IRPGObject;
+import com.rpsg.rpg.object.rpg.RPGObject;
 
 public class Flandre extends Hero{
 	
@@ -21,6 +21,6 @@ public class Flandre extends Hero{
 	}
 	
 	public void init(){
-		this.images=IRPGObject.generateImages(Hero.RES_PATH+imgPath, HERO_WIDTH, HERO_HEIGHT);
+		this.images=RPGObject.generateImages(Hero.RES_PATH+imgPath, HERO_WIDTH, HERO_HEIGHT);
 	}
 }

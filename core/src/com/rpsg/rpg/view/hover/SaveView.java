@@ -8,13 +8,13 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.Array;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.io.SL;
 import com.rpsg.rpg.object.base.ObjectRunnable;
 import com.rpsg.rpg.object.base.SLData;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.Label;
@@ -104,7 +104,7 @@ public class SaveView extends HoverView{
 		savebutton=new TextButton("保存游戏", butstyle).onClick(new Runnable() {
 			@Override
 			public void run() {
-				HoverController.add(ConfirmView.getDefault("确定要保存到这个位置么？", new ObjectRunnable() {
+				RPG.hover.add(ConfirmView.getDefault("确定要保存到这个位置么？", new ObjectRunnable() {
 					@Override
 					public void run(Object view) {
 						if (currentSelect != -1) {
@@ -140,7 +140,7 @@ public class SaveView extends HoverView{
 		TextButton deletebutton=new TextButton("删除档案", butstyle).onClick(new Runnable() {
 			@Override
 			public void run() {
-				HoverController.add(ConfirmView.getDefault("确定要删除这个档案么？", new ObjectRunnable() {
+				RPG.hover.add(ConfirmView.getDefault("确定要删除这个档案么？", new ObjectRunnable() {
 					@Override
 					public void run(Object view) {
 						if (currentSelect != -1) {

@@ -23,13 +23,13 @@ public class SayFuckMe extends Script{
 //		$(new BaseScriptExecutor() {
 //			public void init() {
 //				i=Res.get(Setting.GAME_RES_WALK+"npcs/door.png");
-//				CGController.push(i);
+//				RPG.ctrl.cg.push(i);
 //			}
 //		});
 //		wait(300);
 //		$(new BaseScriptExecutor() {
 //			public void init() {
-//				CGController.dispose(i);
+//				RPG.ctrl.cg.dispose(i);
 //			}
 //		});
 	}

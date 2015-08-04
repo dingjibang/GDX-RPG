@@ -1,8 +1,8 @@
 package com.rpsg.rpg.game.achievement.specific;
 
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.base.BaseAchievement;
 import com.rpsg.rpg.utils.game.AchievementManager;
-import com.rpsg.rpg.view.GameViews;
 
 public class Achievement002 extends BaseAchievement {
 
@@ -18,7 +18,7 @@ public class Achievement002 extends BaseAchievement {
 	public static String compare = "gold";
 	
 	public void judge() {
-		if (GameViews.global.gold >= 1000000 && status == 0) {
+		if (RPG.global.gold >= 1000000 && status == 0) {
 			status = 1;
 			deal();
 		}
@@ -26,7 +26,7 @@ public class Achievement002 extends BaseAchievement {
 
 	public void deal() {
 		if (Achievement002.status == 1) {
-			GameViews.global.gold += 100000;
+			RPG.global.gold += 100000;
 			display();
 		}
 		AchievementManager.flag=true;

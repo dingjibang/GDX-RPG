@@ -23,7 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
-import com.rpsg.gdxQuery.$;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.ListItem;
@@ -31,14 +31,12 @@ import com.rpsg.rpg.object.base.items.SpellCard;
 import com.rpsg.rpg.object.base.items.tip.TipSpellCard;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.ui.HeroImage;
 import com.rpsg.rpg.system.ui.IMenuView;
-import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
+import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
-import com.rpsg.rpg.view.GameViews;
 
 public class SpellCardView extends IMenuView{
 	Stage stage;
@@ -56,7 +54,7 @@ public class SpellCardView extends IMenuView{
 	ParticleEffect add;
 	
 	SpellCard spell=new TipSpellCard();
-	public void init() {
+	public View init() {
 		add=new ParticleEffect();
 		add.load(Gdx.files.internal(Setting.GAME_RES_PARTICLE+"addp.p"),Gdx.files.internal(Setting.GAME_RES_PARTICLE));
 		add.setPosition(845, 261);
@@ -223,7 +221,7 @@ public class SpellCardView extends IMenuView{
 		herolist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		herolist.offsetX2=20;
 		herolist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"no.png")));
-		for (Hero h : HeroController.heros) {
+		for (Hero h : RPG.ctrl.hero.heros) {
 			herolist.getItems().add(new ListItem(h.name).setUserObject(h));
 		}
 
@@ -234,7 +232,7 @@ public class SpellCardView extends IMenuView{
 					can2.run();
 				} else {
 					if (herolist.getSelected().userObject != null && !(herolist.getSelected().userObject instanceof Image))
-						if (spell.use(HeroController.heros.get(currentSelectHero), ((Hero) herolist.getSelected().userObject)))
+						if (spell.use(RPG.ctrl.hero.heros.get(currentSelectHero), ((Hero) herolist.getSelected().userObject)))
 							can2.run();
 					drawp = true;
 				}
@@ -262,6 +260,7 @@ public class SpellCardView extends IMenuView{
 		
 		can2.run();
 		can.run();
+		return this;
 		
 		
 	}
@@ -276,7 +275,7 @@ public class SpellCardView extends IMenuView{
 	public void draw(SpriteBatch batch) {
 		stage.draw();
 		SpriteBatch sb=(SpriteBatch) stage.getBatch();
-		Hero hero=HeroController.heros.get(currentSelectHero);
+		Hero hero=RPG.ctrl.hero.heros.get(currentSelectHero);
 		sb.begin();
 		FontUtil.draw(sb,hero.prop.get("level")+"", 30, Color.GRAY, 160+60/2-FontUtil.getTextWidth(hero.prop.get("level")+"", 30), 487, 1000);
 		FontUtil.draw(sb, hero.prop.get("maxsc")+"", 16,Color.BLACK, 325, 324, 200,-7,0);
@@ -379,7 +378,7 @@ public class SpellCardView extends IMenuView{
 
 	HeroImage heroImage;
 	public void generateHero(int index){
-		heroImage=HeroImage.generateImage(HeroController.heros.get(index).images, 316, 370);
+		heroImage=HeroImage.generateImage(RPG.ctrl.hero.heros.get(index).images, 316, 370);
 		generateLists();
 	}
 	
@@ -387,14 +386,14 @@ public class SpellCardView extends IMenuView{
 	public void generateLists(){
 		Array<SpellCard> sc = elist.getItems();
 		sc.clear();
-        for (SpellCard spellCard : HeroController.heros.get(currentSelectHero).sc) {
+        for (SpellCard spellCard : RPG.ctrl.hero.heros.get(currentSelectHero).sc) {
             sc.add(spellCard);
         }
 
     }
 	
 	public void nextHero(){
-		if(currentSelectHero!=HeroController.heros.size()-1){
+		if(currentSelectHero!=RPG.ctrl.hero.heros.size()-1){
 			currentSelectHero++;
 			generateHero(currentSelectHero);
 			Music.playSE("snd210.wav"  );

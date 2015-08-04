@@ -6,20 +6,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import box2dLight.PointLight;
 
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
@@ -32,56 +18,52 @@ import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.game.hero.Arisu;
-import com.rpsg.rpg.game.hero.Flandre;
-import com.rpsg.rpg.game.hero.Marisa;
-import com.rpsg.rpg.game.hero.Reimu;
-import com.rpsg.rpg.game.hero.Yuuka;
-import com.rpsg.rpg.game.items.equipment.Sunshade;
 import com.rpsg.rpg.game.items.equipment.Shoes;
+import com.rpsg.rpg.game.items.equipment.Sunshade;
 import com.rpsg.rpg.game.items.medicine.YaoWan;
 import com.rpsg.rpg.object.rpg.CollideType;
-import com.rpsg.rpg.object.rpg.IRPGObject;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
+import com.rpsg.rpg.object.rpg.RPGObject;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.ThreadPool;
-import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
-public class MapController {
+public class MapLoader {
 	
-	public static int mapWidth,mapHeight;
+	public int mapWidth,mapHeight;
 	
-	public static List<IRPGObject> drawlist=new ArrayList<IRPGObject>();
-	public static MapLayers layer ;
-	public static void init(GameView gv){
+	public List<RPGObject> drawlist=new ArrayList<RPGObject>();
+	public MapLayers layer ;
+	public void load(GameView gv){
 		//初始化角色
-		HeroController.initControler();
+		RPG.ctrl.hero.initControler();
 		if(gv.global.first){
 			gv.global.first=false;
-			HeroController.newHero(Arisu.class);
-			HeroController.addHero(Arisu.class);
-//			HeroController.newHero(Marisa.class);
-//			HeroController.addHero(Marisa.class);
-//			HeroController.newHero(Reimu.class);
-//			HeroController.addHero(Reimu.class);
-//			HeroController.newHero(Yuuka.class);
-//			HeroController.addHero(Yuuka.class);
-//			HeroController.newHero(Flandre.class);
+			RPG.ctrl.hero.newHero(Arisu.class);
+			RPG.ctrl.hero.addHero(Arisu.class);
+//			RPG.ctrl.hero.newHero(Marisa.class);
+//			RPG.ctrl.hero.addHero(Marisa.class);
+//			RPG.ctrl.hero.newHero(Reimu.class);
+//			RPG.ctrl.hero.addHero(Reimu.class);
+//			RPG.ctrl.hero.newHero(Yuuka.class);
+//			RPG.ctrl.hero.addHero(Yuuka.class);
+//			RPG.ctrl.hero.newHero(Flandre.class);
 			gv.global.getItems("equipment").add(new Shoes());
 			gv.global.getItems("equipment").add(new Sunshade());
 			gv.global.getItems("medicine").add(new YaoWan());
 		}
-		HeroController.initHeros(gv.stage);
+		RPG.ctrl.hero.initHeros(gv.stage);
 		
 		//设置抗锯齿
 		if(Setting.persistence.antiAliasing)
-			for (TiledMapTileSet ms : gv.map.getTileSets()) {
+			for (TiledMapTileSet ms : RPG.maps.map.getTileSets()) {
 				for (TiledMapTile tile : ms) {
 					tile.getTextureRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
 				}
@@ -89,8 +71,8 @@ public class MapController {
 		;
 
 		//获取灯光
-		for(int i=0;i<gv.map.getLayers().getCount();i++){
-			MapLayer m = gv.map.getLayers().get(i);
+		for(int i=0;i<RPG.maps.map.getLayers().getCount();i++){
+			MapLayer m = RPG.maps.map.getLayers().get(i);
 			for(MapObject obj:m.getObjects()){
 				if (obj.getProperties().get("type")!=null && obj.getProperties().get("type").equals("LIGHT")){
 					PointLight pl= new PointLight(gv.ray,20);
@@ -105,9 +87,9 @@ public class MapController {
 		layer=new MapLayers();
 		if(gv.global.npcs.isEmpty()){
 			List<MapLayer> removeList=new ArrayList<MapLayer>();
-			for(int i=0;i<gv.map.getLayers().getCount();i++){
-				TiledMapTileLayer bot=(TiledMapTileLayer) gv.map.getLayers().get(0);
-				 MapLayer m = gv.map.getLayers().get(i);
+			for(int i=0;i<RPG.maps.map.getLayers().getCount();i++){
+				TiledMapTileLayer bot=(TiledMapTileLayer) RPG.maps.map.getLayers().get(0);
+				 MapLayer m = RPG.maps.map.getLayers().get(i);
 				if(m.getObjects().getCount()!=0)
 					removeList.add(m);
 				for(MapObject obj:m.getObjects()){
@@ -142,7 +124,7 @@ public class MapController {
 					}
 				}
 			}
-			for(MapLayer lay:gv.map.getLayers()){
+			for(MapLayer lay:RPG.maps.map.getLayers()){
 				boolean inc=false;
 				for(MapLayer re:removeList)
 					if(re==lay)
@@ -151,16 +133,16 @@ public class MapController {
 					layer.add(lay);
 			}
 				
-			HeroController.generatePosition(gv.global.x,gv.global.y,gv.global.z);
+			RPG.ctrl.hero.generatePosition(gv.global.x,gv.global.y,gv.global.z);
 		}else{
 			List<MapLayer> removeList=new ArrayList<MapLayer>();
-			for(int i=0;i<gv.map.getLayers().getCount();i++){
-				MapLayer m=gv.map.getLayers().get(i);
+			for(int i=0;i<RPG.maps.map.getLayers().getCount();i++){
+				MapLayer m=RPG.maps.map.getLayers().get(i);
 				if(m.getObjects().getCount()!=0)
 					removeList.add(m);
 			}
 			
-			for(MapLayer lay:gv.map.getLayers()){
+			for(MapLayer lay:RPG.maps.map.getLayers()){
 				boolean inc=false;
 				for(MapLayer re:removeList)
 					if(re==lay)
@@ -184,47 +166,44 @@ public class MapController {
 		
 		
 		//生成远景图
-		DistantController.init(gv.map.getProperties().get("distant"), gv);
+		RPG.maps.distant=new Distant(RPG.maps.map.getProperties().get("distant"));
 
 		headHeroPointLight=new PointLight(gv.ray,200);
 		headHeroPointLight.setDistance(400);
 		headHeroPointLight.setSoft(true);
 		
 		//设置通用常量
-		mapWidth= (int) (((TiledMapTileLayer) MapController.layer.get(0)).getWidth() * ((TiledMapTileLayer) MapController.layer.get(0)).getTileWidth());
-		mapHeight= (int) (((TiledMapTileLayer) MapController.layer.get(0)).getHeight() * ((TiledMapTileLayer) MapController.layer.get(0)).getTileHeight());
+		mapWidth= (int) (((TiledMapTileLayer) layer.get(0)).getWidth() * ((TiledMapTileLayer) layer.get(0)).getTileWidth());
+		mapHeight= (int) (((TiledMapTileLayer) layer.get(0)).getHeight() * ((TiledMapTileLayer) layer.get(0)).getTileHeight());
 
 		Logger.info("地图模块已全部加载完成。");
 		
 	}
 
-	static PointLight headHeroPointLight;
+	PointLight headHeroPointLight;
 
-	private static float ppt = 48;
-
-
-	public synchronized static void draw(GameView gv){
-		int size=gv.map.getLayers().getCount();
+	public synchronized void draw(GameView gv){
+		int size=RPG.maps.map.getLayers().getCount();
 		SpriteBatch sb=(SpriteBatch) gv.stage.getBatch();
 		
-		headHeroPointLight.setPosition(HeroController.getHeadHero().getX()+24,HeroController.getHeadHero().getY());
+		headHeroPointLight.setPosition(RPG.ctrl.hero.getHeadHero().getX()+24,RPG.ctrl.hero.getHeadHero().getY());
 		sb.setProjectionMatrix(gv.camera.combined);
 		for(int i=0;i<size;i++){
-			if(gv.map.getLayers().get(i).getObjects().getCount()!=0)
+			if(RPG.maps.map.getLayers().get(i).getObjects().getCount()!=0)
 				continue;
 			drawlist.clear();
 			gv.render.setView(gv.camera);
 			gv.render.render(new int[]{i});
 
 			for(Actor a:gv.stage.getActors())
-				if(a instanceof IRPGObject){
-					IRPGObject c = (IRPGObject)a;
+				if(a instanceof RPGObject){
+					RPGObject c = (RPGObject)a;
 					if(c.layer==i)
 						drawlist.add(c);
 				}
 			Collections.sort(drawlist);
 			sb.begin();
-			for(IRPGObject ir:drawlist){
+			for(RPGObject ir:drawlist){
 				ir.draw(sb, 1f);
 			}
 			sb.end();
@@ -232,14 +211,14 @@ public class MapController {
 //		System.out.println(HeroControler.getHeadHero().getX()+" "+HeroControler.getHeadHero().getY()+" "+gv.camera.position.x+" "+gv.camera.position.y+" "+HeroControler.getHeadHero().mapx+" "+HeroControler.getHeadHero().mapy);
 	}
 	
-	public static void logic(GameView gv){
+	public void logic(GameView gv){
 	}
 	
-	public static void dispose(){
+	public void dispose(){
 		GameViews.gameview.stage.getActors().clear();
 	}
 	
-	public static ArrayList<NPC> getNPCs(){
+	public ArrayList<NPC> getNPCs(){
 		ArrayList<NPC> list=new ArrayList<NPC>();
 		for(Actor a:GameViews.gameview.stage.getActors())
 			if(a instanceof NPC)

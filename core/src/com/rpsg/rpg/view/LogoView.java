@@ -11,8 +11,8 @@ import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
-import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.system.ui.Image;
+import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class LogoView extends View{
@@ -21,7 +21,7 @@ public class LogoView extends View{
 	Action final1,final2;
 	int flag=0;
 	@Override
-	public void init() {
+	public View init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"wbg.png"));
 		stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"bg.png").color(1,1,1,0).action(Actions.sequence(Actions.delay(0.2f),Actions.fadeIn(0.2f))));
@@ -58,6 +58,7 @@ public class LogoView extends View{
 		};
 		stage.addActor(new Image(Setting.GAME_RES_IMAGE_LOGO+"wbg.png").color(0,0,0,0).action(Actions.sequence(Actions.delay(6),Actions.color(new Color(0,0,0,1),0.4f),Actions.addAction(final1))));
 //		Music.playMusic("logo.mp3");
+		return this;
 	}
 	
 	@Override

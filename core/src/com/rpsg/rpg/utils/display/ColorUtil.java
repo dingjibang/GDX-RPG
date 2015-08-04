@@ -3,6 +3,7 @@ package com.rpsg.rpg.utils.display;
 
 import box2dLight.RayHandler;
 
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.utils.game.GameDate;
@@ -16,7 +17,7 @@ public class ColorUtil {
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				GameViews.global.date.setTime(time);
+				RPG.global.date.setTime(time);
 			}
 		});
 	}
@@ -25,11 +26,11 @@ public class ColorUtil {
 	public static void draw(){
 		RayHandler ray=GameViews.gameview.ray;
 		ray.setCombinedMatrix(GameViews.gameview.camera.combined);
-		if(GameViews.global.date.getTime()==Time.NIGHT){
+		if(RPG.global.date.getTime()==Time.NIGHT){
 				ray.setAmbientLight(0.2f,0.2f,0.35f,0.6f);
 				ray.updateAndRender();
 		}
-		if(GameViews.global.date.getTime()==Time.DUSK){
+		if(RPG.global.date.getTime()==Time.DUSK){
 			ray.setAmbientLight(0.8f,0.8f,0.6f,0.8f);
 			ray.updateAndRender();
 		}

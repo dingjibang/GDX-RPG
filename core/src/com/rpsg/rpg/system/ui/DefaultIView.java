@@ -1,7 +1,6 @@
 package com.rpsg.rpg.system.ui;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 import com.rpsg.rpg.view.menu.MenuView;
 

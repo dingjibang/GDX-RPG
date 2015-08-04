@@ -31,7 +31,7 @@ public class Collide implements Serializable {
 		}
 	}
 	
-	public void testCollide(int x,int y,TiledMapTileLayer layer,Array<Actor> list,IRPGObject mine){
+	public void testCollide(int x,int y,TiledMapTileLayer layer,Array<Actor> list,RPGObject mine){
 		int maph=layer.getHeight();
 		left=!(x<=0 || getID(layer, x-1, maph-y-1)!=0);
 		right=!(x>=layer.getWidth()-1 || getID(layer, x+1, maph-y-1)!=0);
@@ -39,8 +39,8 @@ public class Collide implements Serializable {
 		bottom=!(y>=layer.getHeight()-1 || getID(layer, x,maph-(y+2))!=0);
 		for(int i=0;i<list.size;i++){
 			Actor a=list.get(i);
-			if(a instanceof IRPGObject && ((IRPGObject)a).enableCollide && ((IRPGObject)a).layer==mine.layer){
-				IRPGObject o=((IRPGObject)a);
+			if(a instanceof RPGObject && ((RPGObject)a).enableCollide && ((RPGObject)a).layer==mine.layer){
+				RPGObject o=((RPGObject)a);
 				if(mine.mapx+1==o.mapx && mine.mapy==o.mapy)
 					right=false;
 				if(mine.mapx-1==o.mapx && mine.mapy==o.mapy)
@@ -54,7 +54,7 @@ public class Collide implements Serializable {
 	}
 	
 	private static List<ScriptCollide> l=new ArrayList<ScriptCollide>();
-	public static List<ScriptCollide> testNPCCollide(GameView gv,IRPGObject mine,Array<Actor> list){
+	public static List<ScriptCollide> testNPCCollide(GameView gv,RPGObject mine,Array<Actor> list){
 		l.clear();
 		for(int i=0;i<list.size;i++){
 			Actor a=list.get(i);
@@ -105,19 +105,19 @@ public class Collide implements Serializable {
 		return l;
 	}
 	
-	private static boolean testFoot(IRPGObject mine,NPC o){
+	private static boolean testFoot(RPGObject mine,NPC o){
 		return mine.layer-1==o.layer && mine.mapx==o.mapx && mine.mapy==o.mapy;
 	}
 	
-	private static boolean testLayer(IRPGObject mine,NPC o){
+	private static boolean testLayer(RPGObject mine,NPC o){
 		return o.layer==mine.layer;
 	}
 	
-	private static boolean testFace(IRPGObject mine,NPC o){
+	private static boolean testFace(RPGObject mine,NPC o){
 		return testLayer(mine, o) && (mine.getCurrentFace()==o.getReverseFace() && (testFaceCollide(mine, o)));
 	}
 	
-	private static boolean testNear(IRPGObject mine,NPC o){
+	private static boolean testNear(RPGObject mine,NPC o){
 		return testLayer(mine, o) && ((
 					(mine.mapx-1==o.mapx && mine.mapy==o.mapy) 
 					|| (mine.mapx+1==o.mapx && mine.mapy==o.mapy)
@@ -126,7 +126,7 @@ public class Collide implements Serializable {
 			   )); 
 	}
 	
-	private static boolean testZ(IRPGObject mine,NPC o){
+	private static boolean testZ(RPGObject mine,NPC o){
 		return testLayer(mine, o) &&((
 					(mine.mapx-1==o.mapx && mine.mapy==o.mapy) 
 					|| (mine.mapx+1==o.mapx && mine.mapy==o.mapy)
@@ -136,7 +136,7 @@ public class Collide implements Serializable {
 			   ((Input.isPress(Keys.Z) || PostUtil.isVZPress()) && (testFaceCollide(mine, o))));
 	}
 	
-	private static boolean testFaceZ(IRPGObject mine,NPC o){
+	private static boolean testFaceZ(RPGObject mine,NPC o){
 		return testLayer(mine, o)&& ((Input.isPress(Keys.Z) || PostUtil.isVZPress()) && (mine.getCurrentFace()==o.getReverseFace() && (testFaceCollide(mine, o))));
 	}
 	
@@ -154,11 +154,11 @@ public class Collide implements Serializable {
 //		l.add(new ScriptCollide(npc, type));
 //	}
 	
-	private static boolean testFaceCollide(IRPGObject mine,IRPGObject o){
-		return  (mine.getCurrentFace()==IRPGObject.FACE_L && mine.mapx-1==o.mapx && mine.mapy==o.mapy) ||
-				(mine.getCurrentFace()==IRPGObject.FACE_R && mine.mapx+1==o.mapx && mine.mapy==o.mapy) ||
-				(mine.getCurrentFace()==IRPGObject.FACE_U && mine.mapx==o.mapx && mine.mapy-1==o.mapy) ||
-				(mine.getCurrentFace()==IRPGObject.FACE_D && mine.mapx==o.mapx && mine.mapy+1==o.mapy);
+	private static boolean testFaceCollide(RPGObject mine,RPGObject o){
+		return  (mine.getCurrentFace()==RPGObject.FACE_L && mine.mapx-1==o.mapx && mine.mapy==o.mapy) ||
+				(mine.getCurrentFace()==RPGObject.FACE_R && mine.mapx+1==o.mapx && mine.mapy==o.mapy) ||
+				(mine.getCurrentFace()==RPGObject.FACE_U && mine.mapx==o.mapx && mine.mapy-1==o.mapy) ||
+				(mine.getCurrentFace()==RPGObject.FACE_D && mine.mapx==o.mapx && mine.mapy+1==o.mapy);
 	}
 	
 	@Override

@@ -8,16 +8,14 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.game.script.Door;
-import com.rpsg.rpg.game.script.Teleporter;
 import com.rpsg.rpg.object.base.MsgType;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.DefaultNPC;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.controller.CGController;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -41,7 +39,7 @@ public class CGLOOP1 extends DefaultNPC{
 		int flength,del;
 		public void init() {
 			$(new BaseScriptExecutor() {public void init() {
-				CGController.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem());
+				RPG.ctrl.cg.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem());
 				PostUtil.showMenu=false;
 			}});
 			playSE("fire.mp3");
@@ -50,17 +48,17 @@ public class CGLOOP1 extends DefaultNPC{
 			$(new BaseScriptExecutor() {public void init() {
 				final Image cg=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"flash.png")).setColor(1,1,1,0).getItem();
 				cg.addAction(Actions.sequence(Actions.color(new Color(1,0.7f,0,0.8f),0.02f),Actions.fadeOut(0.1f),Actions.run(new Runnable() {public void run() {
-					CGController.dispose(cg);
+					RPG.ctrl.cg.dispose(cg);
 				}})));
-				CGController.push(cg);
+				RPG.ctrl.cg.push(cg);
 			}});
 			wait(79);
 			$(new BaseScriptExecutor() {public void init() {
 				final Image cg=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"flash.png")).setColor(1,1,1,0).setScale(3.8f).setPosition(-800,-300).getItem();
 				cg.addAction(Actions.sequence(Actions.color(new Color(1,1,1,0.8f),0.02f),Actions.fadeOut(0.1f),Actions.run(new Runnable() {public void run() {
-					CGController.dispose(cg);
+					RPG.ctrl.cg.dispose(cg);
 				}})));
-				CGController.push(cg);
+				RPG.ctrl.cg.push(cg);
 			}});
 			wait(83);
 			wait(130);
@@ -84,9 +82,9 @@ public class CGLOOP1 extends DefaultNPC{
 			$(new BaseScriptExecutor() {public void init() {
 				final Image cg=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setColor(1,0,0,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
 				cg.addAction(Actions.sequence(Actions.color(new Color(1,0,0,1f),0.02f),Actions.fadeOut(0.15f),Actions.run(new Runnable() {public void run() {
-					CGController.dispose(cg);
+					RPG.ctrl.cg.dispose(cg);
 				}})));
-				CGController.push(cg);
+				RPG.ctrl.cg.push(cg);
 			}});
 			stopAllSE(0.01f);
 			playSE("attack.wav");
@@ -100,7 +98,7 @@ public class CGLOOP1 extends DefaultNPC{
 			$(new BaseScriptExecutor() {public void init() {
 				y11=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
 				y11.addAction(Actions.sequence(Actions.color(new Color(1,1,1,1f),0.5f,Interpolation.pow4In)));
-				CGController.push(y11);
+				RPG.ctrl.cg.push(y11);
 			}});
 			wait(200);
 			showMSG(MsgType.电脑);
@@ -138,20 +136,20 @@ public class CGLOOP1 extends DefaultNPC{
 				y11.addAction(Actions.scaleTo(2f,2f,8f,Interpolation.pow4In));
 				mask=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setColor(1,0,0,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
 				mask.addAction(Actions.color(new Color(1,0,0,1f),6,Interpolation.pow5In));
-				CGController.push(mask);
+				RPG.ctrl.cg.push(mask);
 			}});
 			setSEVolume(4.1f, 1);
 			playSE("fx1.wav");
 			wait(50);
 			$(new BaseScriptExecutor() {public void init() {
-				CGController.dispose(mask);
-				CGController.dispose(y11);
+				RPG.ctrl.cg.dispose(mask);
+				RPG.ctrl.cg.dispose(y11);
 				y11.clearActions();
 			}});
 			stopAllSE(0,"fx1.wav");
 			wait(180);
 			$(new BaseScriptExecutor() {public void init() {
-				CGController.disposeAll();
+				RPG.ctrl.cg.disposeAll();
 			}});
 			$(new BaseScriptExecutor() {
 				public void init() {

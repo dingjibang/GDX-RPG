@@ -4,21 +4,22 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector3;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameView;
 
-public class DistantController {
-	static Image distant;
-	static float w,h,sw,sh;
-	static float bgScale=1.05f;
-	public static void init(Object disName,GameView gv){
+public class Distant {
+	Image distant;
+	float w,h,sw,sh;
+	float bgScale=1.05f;
+	public Distant(Object disName){
 		if(disName==null)
 			distant=null;
 		else{
-			TiledMapTileLayer layer=(TiledMapTileLayer)MapController.layer.get(0);
+			TiledMapTileLayer layer=(TiledMapTileLayer)RPG.maps.loader.layer.get(0);
 			float width=(layer.getWidth()*layer.getTileWidth());
 			float height=(layer.getHeight()*layer.getTileHeight());
 			distant=Res.get(Setting.GAME_RES_IMAGE_BACKGROUND+disName);
@@ -32,11 +33,11 @@ public class DistantController {
 		}
 	}
 	
-	public static void draw(SpriteBatch batch,GameView gv){
+	public void draw(SpriteBatch batch,GameView gv){
 		OrthographicCamera camera=gv.camera;
 		if(distant!=null){
 			batch.begin();
-			TiledMapTileLayer layer=(TiledMapTileLayer)gv.map.getLayers().get(0);
+			TiledMapTileLayer layer=(TiledMapTileLayer)RPG.maps.map.getLayers().get(0);
 			float width=(layer.getWidth()*layer.getTileWidth());
 			float height=(layer.getHeight()*layer.getTileHeight());
 			float x=camera.view.getTranslation(new Vector3()).x;

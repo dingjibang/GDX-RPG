@@ -18,7 +18,7 @@ import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
 import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.utils.display.ColorUtil;
-import com.rpsg.rpg.utils.display.FG; 
+import com.rpsg.rpg.utils.display.FG;
 import com.rpsg.rpg.utils.display.Msg;
 import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.display.SelectUtil;

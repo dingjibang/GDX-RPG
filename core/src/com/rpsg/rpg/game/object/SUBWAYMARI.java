@@ -5,19 +5,17 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.game.hero.Arisu;
-import com.rpsg.rpg.game.script.*;
+import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.DefaultNPC;
-import com.rpsg.rpg.object.rpg.IRPGObject;
-import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
+import com.rpsg.rpg.object.rpg.RPGObject;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.BatchScript;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.controller.CGController;
-import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.PostUtil;
@@ -40,16 +38,16 @@ public class SUBWAYMARI extends DefaultNPC{
 		public void init() {
 			final BatchScript renko=findNPC(SUBWAYRENKO.class).script();
 			$(new BaseScriptExecutor() {public void init() {
-				CGController.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem());
+				RPG.ctrl.cg.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem());
 				PostUtil.showMenu=false;
 			}});
 			setKeyLocker(true);
 			playSE("sw.mp3");
 			wait(460);
 			$(new BaseScriptExecutor() {public void init() {
-				HeroController.walk(1);
+				RPG.ctrl.hero.walk(1);
 				black.addAction(Actions.sequence(Actions.fadeOut(0.3f),Actions.run(new Runnable() {public void run() {
-					CGController.dispose(black);
+					RPG.ctrl.cg.dispose(black);
 				}})));
 			}});
 			wait(120);
@@ -58,16 +56,16 @@ public class SUBWAYMARI extends DefaultNPC{
 				flash=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
 				flash.setOrigin(Align.topRight);
 				flash.addAction(Actions.sequence(Actions.fadeIn(0.05f),Actions.parallel(Actions.scaleTo(2, 2,0.05f),Actions.moveTo(-300,400,0.05f)),Actions.color(Color.RED),Actions.moveTo(-100,200)));
-				CGController.push(flash);
+				RPG.ctrl.cg.push(flash);
 			}});
 			wait(10);
 			$(new BaseScriptExecutor() {public void init() {
-				CGController.dispose(flash);
+				RPG.ctrl.cg.dispose(flash);
 			}});
 			stopAllSE(0);
 			wait(60);
-			faceTo(IRPGObject.FACE_R);
-			and(faceTo(renko, IRPGObject.FACE_R));
+			faceTo(RPGObject.FACE_R);
+			and(faceTo(renko, RPGObject.FACE_R));
 			
 			setBalloon(Arisu.class, BalloonType.沉默);
 			wait(60);
@@ -86,13 +84,13 @@ public class SUBWAYMARI extends DefaultNPC{
 			and(move(renko, 2));
 			
 			wait(60);
-			faceTo(IRPGObject.FACE_D);
+			faceTo(RPGObject.FACE_D);
 			wait(30);
 			showMSG(梅莉);
 			say("一开学就这么没干劲可不好啊，莲子\n最后一年再马马虎虎的话，会毕不了业的","？？？");
 			hideMSG();
 			wait(30);
-			and(faceTo(renko,IRPGObject.FACE_U));
+			and(faceTo(renko,RPGObject.FACE_U));
 			wait(30);
 			showMSG(莲子);
 			say("毕业那种事情无所谓啦，只要能跟梅莉你在一起就好了","莲子？");
@@ -139,11 +137,11 @@ public class SUBWAYMARI extends DefaultNPC{
 			}});
 			setCameraPositionWithHero(0, 0, true);
 			$(new BaseScriptExecutor() {public void init() {
-				HeroController.turn(IRPGObject.FACE_L);
+				RPG.ctrl.hero.turn(RPGObject.FACE_L);
 			}});
 			$(new BaseScriptExecutor() {public void init() {
-				npc.turn(IRPGObject.FACE_R).setWalkSpeed(6);
-				renko.npc.turn(IRPGObject.FACE_R).setWalkSpeed(6).walk(12).testWalk();
+				npc.turn(RPGObject.FACE_R).setWalkSpeed(6);
+				renko.npc.turn(RPGObject.FACE_R).setWalkSpeed(6).walk(12).testWalk();
 			}});
 			move(12);
 			showMSG(莲子);
@@ -152,15 +150,15 @@ public class SUBWAYMARI extends DefaultNPC{
 			say("在下就是宇佐见莲子，抱歉让你久等了！","莲子？");
 			hideMSG();
 			wait(60);
-			faceTo(IRPGObject.FACE_D);
-			and(faceTo(renko,IRPGObject.FACE_U));
+			faceTo(RPGObject.FACE_D);
+			and(faceTo(renko,RPGObject.FACE_U));
 			$(new BaseScriptExecutor() {public void init() {
 				MoveController.offsetActor.addAction(Actions.scaleTo(0.9f,0.9f,1f,Interpolation.pow4Out));
 			}});
 			setCameraPositionWithHero(-60, 0, true);
 			showMSG(梅莉);
 			say("这就是莲子你要接的人吗？","梅莉？");
-			faceTo(IRPGObject.FACE_R);
+			faceTo(RPGObject.FACE_R);
 			hideMSG();
 			setBalloon(BalloonType.沉默);
 			wait(80);
@@ -168,38 +166,38 @@ public class SUBWAYMARI extends DefaultNPC{
 			say("嗯……果然有些特别呢","梅莉？");
 			showMSG(莲子);
 			say("嗯嗯，银灰色的头发，好像只在TVgame里有见过呢","莲子");
-			faceTo(IRPGObject.FACE_D);
+			faceTo(RPGObject.FACE_D);
 			showMSG(梅莉);
 			say("不是指这个啦，笨蛋","梅莉？");
 			say("……她身上有着没有见过的境界呢\n能力者？","梅莉？");
 			hideMSG();
-			faceTo(IRPGObject.FACE_R);
-			and(faceTo(renko,IRPGObject.FACE_U));
+			faceTo(RPGObject.FACE_R);
+			and(faceTo(renko,RPGObject.FACE_U));
 			showMSG(莲子);
 			say("诶，梅莉你看到什么了吗？","宇佐见莲子");
-			and(faceTo(renko,IRPGObject.FACE_R));
+			and(faceTo(renko,RPGObject.FACE_R));
 			say("啊……有栖同学","宇佐见莲子");
 			say("这位是梅莉，也是秘封俱乐部的另一位成员啦","莲子");
-			faceTo(IRPGObject.FACE_D);
+			faceTo(RPGObject.FACE_D);
 			showMSG(梅莉);
 			say("看人家的表情就知道你从来没有跟她提起过我……","梅莉");
-			and(faceTo(renko,IRPGObject.FACE_U));
+			and(faceTo(renko,RPGObject.FACE_U));
 			showMSG(莲子);
 			say("因为只在网上聊过啦","莲子");
 			showMSG(梅莉);
 			say("你到底跟同时跟多少女孩子在网上聊天啊！","梅莉");
 			showMSG(莲子);
 			say("这……这不重要！总之我认为，结城有栖同学在春假突然获得了奇异的力量！","莲子");
-			and(faceTo(renko,IRPGObject.FACE_R));
-			faceTo(IRPGObject.FACE_R);
+			and(faceTo(renko,RPGObject.FACE_R));
+			faceTo(RPGObject.FACE_R);
 			say("是吧，有栖同学！？","莲子");
 			hideMSG();
 			wait(45);
-			faceTo(IRPGObject.FACE_D);
+			faceTo(RPGObject.FACE_D);
 			showMSG(梅莉);
 			say("你看人家完全没有理解你的话……","梅莉");
 			showMSG(莲子);
-			and(faceTo(renko,IRPGObject.FACE_U));
+			and(faceTo(renko,RPGObject.FACE_U));
 			say("是这样的……有栖在网上找到我，说在她身边发生了奇怪的事情。打牌的时候连赢了好多把","莲子");
 			showMSG(梅莉);
 			say("我跟莲子你玩抽鬼牌时不也是一直赢到天边的吗","梅莉");
@@ -234,13 +232,13 @@ public class SUBWAYMARI extends DefaultNPC{
 			hideMSG();
 			wait(40);
 			$(new BaseScriptExecutor() {public void init() {
-				npc.turn(IRPGObject.FACE_R).setWalkSpeed(2);
-				renko.npc.turn(IRPGObject.FACE_R).setWalkSpeed(4).walk(3).testWalk();
-				HeroController.walk(1);
-				HeroController.testWalk();
+				npc.turn(RPGObject.FACE_R).setWalkSpeed(2);
+				renko.npc.turn(RPGObject.FACE_R).setWalkSpeed(4).walk(3).testWalk();
+				RPG.ctrl.hero.walk(1);
+				RPG.ctrl.hero.testWalk();
 			}});
 			move(3);
-			and(faceTo(renko,IRPGObject.FACE_U));
+			and(faceTo(renko,RPGObject.FACE_U));
 			wait(80);
 			//TODO INSERT CG HERE
 			showMSG(莲子);
@@ -279,11 +277,11 @@ public class SUBWAYMARI extends DefaultNPC{
 			hideMSG();
 			//TODO STOP MUSIC?
 			$(new BaseScriptExecutor() {public void init() {
-				CGController.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(0,0,0,0).addAction(Actions.color(new Color(0,0,0,1),1f)).getItem());
+				RPG.ctrl.cg.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(0,0,0,0).addAction(Actions.color(new Color(0,0,0,1),1f)).getItem());
 			}});
 			wait(80);
 			$(new BaseScriptExecutor() {public void init() {
-				CGController.disposeAll();
+				RPG.ctrl.cg.disposeAll();
 			}});
 			removeSelf();
 		}

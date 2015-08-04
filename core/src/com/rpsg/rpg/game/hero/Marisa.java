@@ -4,7 +4,7 @@ import com.rpsg.rpg.game.association.association.Star;
 import com.rpsg.rpg.game.sc.MagicGun;
 import com.rpsg.rpg.game.sc.patientBack;
 import com.rpsg.rpg.object.rpg.Hero;
-import com.rpsg.rpg.object.rpg.IRPGObject;
+import com.rpsg.rpg.object.rpg.RPGObject;
 
 public class Marisa extends Hero{
 	
@@ -27,6 +27,6 @@ public class Marisa extends Hero{
 	}
 	
 	public void init(){
-		this.images=IRPGObject.generateImages(Hero.RES_PATH+imgPath, HERO_WIDTH, HERO_HEIGHT);
+		this.images=RPGObject.generateImages(Hero.RES_PATH+imgPath, HERO_WIDTH, HERO_HEIGHT);
 	}
 }

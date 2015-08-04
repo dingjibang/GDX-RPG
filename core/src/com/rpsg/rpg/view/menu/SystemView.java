@@ -8,24 +8,21 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
-import com.rpsg.gdxQuery.$;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.ObjectRunnable;
 import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.controller.HeroController;
-import com.rpsg.rpg.system.controller.HoverController;
 import com.rpsg.rpg.system.controller.MenuController;
 import com.rpsg.rpg.system.ui.CheckBox;
+import com.rpsg.rpg.system.ui.CheckBox.CheckBoxStyle;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Image;
@@ -33,25 +30,26 @@ import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.Slider;
 import com.rpsg.rpg.system.ui.Slider.SliderStyle;
 import com.rpsg.rpg.system.ui.TextButton;
-import com.rpsg.rpg.system.ui.CheckBox.CheckBoxStyle;
 import com.rpsg.rpg.system.ui.TextButton.TextButtonStyle;
+import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.TimeUtil;
 import com.rpsg.rpg.view.GameViews;
 import com.rpsg.rpg.view.hover.ConfirmView;
+import com.rpsg.rpg.view.hover.LoadView;
 import com.rpsg.rpg.view.hover.SaveView;
 
 public class SystemView extends DefaultIView{
 	Label lvl5,ttest;
 	boolean isstop;
-	public void init() {
+	public View init() {
 		
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		Table table = new Table();
 		
 		TextButtonStyle butstyle=new TextButtonStyle();
-		butstyle.over=butstyle.checkedOver=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button_hover.png");
+		butstyle.over=butstyle.checkedOver=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button_RPG.hover.png");
 		butstyle.down=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button_active.png");
 		butstyle.up=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button.png");
 		
@@ -65,16 +63,16 @@ public class SystemView extends DefaultIView{
 		
 		WidgetGroup group=new WidgetGroup();
 		group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebar.png"));
-		Label lvl=new Label("LV "+HeroController.getHeadHero().prop.get("level"),40).setWidth(1000).setPad(-15);
+		Label lvl=new Label("LV "+RPG.ctrl.hero.getHeadHero().prop.get("level"),40).setWidth(1000).setPad(-15);
 		lvl.setPosition(360, 190);
 		group.addActor(lvl);
-		Label lvl2=new Label("【"+(String)GameViews.gameview.map.getProperties().get("name")+"】",40).setWidth(1000).setPad(0);
+		Label lvl2=new Label("【"+(String)RPG.maps.getName()+"】",40).setWidth(1000).setPad(0);
 		lvl2.setPosition(480, 190);
 		group.addActor(lvl2);
 		Label lvl3=new Label("档案所在位置：",18).setWidth(1000).setPad(0);
 		lvl3.setPosition(370, 140);
 		group.addActor(lvl3);
-		Label lvl4=new Label(" ["+HeroController.getHeadHero().mapx+","+HeroController.getHeadHero().mapy+"]",18).setWidth(1000).setPad(0);
+		Label lvl4=new Label(" ["+RPG.ctrl.hero.getHeadHero().mapx+","+RPG.ctrl.hero.getHeadHero().mapy+"]",18).setWidth(1000).setPad(0);
 		lvl4.setPosition(480, 140);
 		group.addActor(lvl4);
 		Label lvl5h=new Label("档案进行时间：",18).setWidth(1000).setPad(0);
@@ -86,7 +84,7 @@ public class SystemView extends DefaultIView{
 		TextButton sbutton=new TextButton("保存游戏", butstyle).onClick(new Runnable() {
 			@Override
 			public void run() {
-				HoverController.add(SaveView.class);
+				RPG.hover.add(SaveView.class);
 			}
 		});
 		sbutton.setOffset(17).setSize(250,60);
@@ -95,7 +93,7 @@ public class SystemView extends DefaultIView{
 		TextButton sbutton2=new TextButton("读取游戏", butstyle).onClick(new Runnable() {
 			@Override
 			public void run() {
-				HoverController.add(com.rpsg.rpg.view.hover.LoadView.class);
+				RPG.hover.add(LoadView.class);
 			}
 		});
 		sbutton2.setOffset(17).setSize(250,60);
@@ -104,7 +102,7 @@ public class SystemView extends DefaultIView{
 		TextButton sbutton3=new TextButton("回到菜单", butstyle).onClick(new Runnable() {
 			@Override
 			public void run() {
-				HoverController.add(ConfirmView.getDefault("确定要回到主菜单么？如未存档当前档案将会消失", new ObjectRunnable() {
+				RPG.hover.add(ConfirmView.getDefault("确定要回到主菜单么？如未存档当前档案将会消失", new ObjectRunnable() {
 					@Override
 					public void run(Object view) {
 						GameViews.state = GameViews.STATE_LOGO;
@@ -362,6 +360,7 @@ public class SystemView extends DefaultIView{
 			}
 
 		}
+		return this;
 
 
 		

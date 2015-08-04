@@ -10,7 +10,7 @@ import com.rpsg.rpg.object.script.BatchScript;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptCollide;
 
-public abstract class NPC extends IRPGObject{
+public abstract class NPC extends RPGObject{
 
 
 	private static final long serialVersionUID = -3609365853239176493L;

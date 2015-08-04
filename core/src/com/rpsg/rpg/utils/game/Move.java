@@ -2,18 +2,15 @@ package com.rpsg.rpg.utils.game;
 
 import java.util.Random;
 
-
-
 import com.badlogic.gdx.math.Vector2;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.rpg.CollideType;
-import com.rpsg.rpg.object.rpg.IRPGObject;
+import com.rpsg.rpg.object.rpg.RPGObject;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
 import com.rpsg.rpg.system.base.Initialization;
 import com.rpsg.rpg.system.base.ThreadPool;
-import com.rpsg.rpg.system.controller.HeroController;
-import com.rpsg.rpg.view.GameViews;
 
 
 public class Move {
@@ -63,38 +60,38 @@ public class Move {
 					int face;
 					if(point==null){
 						face = r.nextInt(4);
-						if(face == 3) face=IRPGObject.FACE_D;
-						else if(face == 2) face=IRPGObject.FACE_U;
-						else if(face == 1) face=IRPGObject.FACE_L;
-						else if(face == 0) face=IRPGObject.FACE_R;
+						if(face == 3) face=RPGObject.FACE_D;
+						else if(face == 2) face=RPGObject.FACE_U;
+						else if(face == 1) face=RPGObject.FACE_L;
+						else if(face == 0) face=RPGObject.FACE_R;
 					}else if(point.x!= -1 && point.y!= -1){
 						face = script.npc.getFaceByPoint((int)point.x, (int)point.y);
 					}else{
-						face = script.npc.getFaceByPoint(HeroController.getHeadHero().mapx,HeroController.getHeadHero().mapy);
+						face = script.npc.getFaceByPoint(RPG.ctrl.hero.getHeadHero().mapx,RPG.ctrl.hero.getHeadHero().mapy);
 					}
 					if(bo2!=null){
-						if(face==IRPGObject.FACE_D){
+						if(face==RPGObject.FACE_D){
 							if(bo2.y+step<bounds.y){
 								bo2.y+=step;
 							}else{
 								if(bo2.y<bounds.y) step=(int)bounds.y-step; else step=0;
 								bo2.y=bounds.y;
 							}
-						}else if(face==IRPGObject.FACE_U){
+						}else if(face==RPGObject.FACE_U){
 							if(bo2.y-step>-bounds.y){
 								bo2.y-=step;
 							}else{
 								if(bo2.y>-bounds.y) step=Math.abs((int) Math.abs(bounds.y)-step); else step=0;
 								bo2.y=-bounds.y;
 							}
-						}else if(face==IRPGObject.FACE_R){
+						}else if(face==RPGObject.FACE_R){
 							if(bo2.x+step<bounds.x){
 								bo2.x+=step;
 							}else{
 								if(bo2.x<bounds.x) step=(int)bounds.x-step; else step=0;
 								bo2.x=bounds.x;
 							}
-						}else if(face==IRPGObject.FACE_L){
+						}else if(face==RPGObject.FACE_L){
 							if(bo2.x-step>-bounds.x){
 								bo2.x-=step;
 							}else{
@@ -104,7 +101,7 @@ public class Move {
 						}
 					}
 					script.__$(Move.move(script, step>0?step:0));
-					script.__$(Move.turn(script, step>0?face:IRPGObject.getReverseFace(face)));
+					script.__$(Move.turn(script, step>0?face:RPGObject.getReverseFace(face)));
 				}
 			}
 		});
@@ -114,7 +111,7 @@ public class Move {
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				script.npc.turn(HeroController.getHeadHero().getReverseFace());
+				script.npc.turn(RPG.ctrl.hero.getHeadHero().getReverseFace());
 			}
 		});
 	}
@@ -132,13 +129,13 @@ public class Move {
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				GameViews.global.map = "test/" + map;
-				GameViews.global.x = x;
-				GameViews.global.y = y;
-				GameViews.global.z = z;
+				RPG.global.map = "test/" + map;
+				RPG.global.x = x;
+				RPG.global.y = y;
+				RPG.global.z = z;
 				ThreadPool.pool.clear();
 				Initialization.restartGame();
-				HeroController.reinitByTeleport();
+				RPG.ctrl.hero.reinitByTeleport();
 			}
 		});
 	}

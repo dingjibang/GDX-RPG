@@ -6,30 +6,41 @@ import com.badlogic.gdx.assets.AssetLoaderParameters;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.*;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.*;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.bitfire.postprocessing.PostProcessor;
 import com.bitfire.postprocessing.effects.Bloom;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Hero;
-import com.rpsg.rpg.system.base.*;
-import com.rpsg.rpg.system.controller.*;
-import com.rpsg.rpg.system.ui.View;
+import com.rpsg.rpg.system.base.Initialization;
+import com.rpsg.rpg.system.base.ThreadPool;
+import com.rpsg.rpg.system.controller.Distant;
+import com.rpsg.rpg.system.controller.DrawController;
+import com.rpsg.rpg.system.controller.InputController;
+import com.rpsg.rpg.system.controller.MapLoader;
+import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.system.ui.StackView;
-import com.rpsg.rpg.utils.display.*;
+import com.rpsg.rpg.system.ui.View;
+import com.rpsg.rpg.utils.display.ColorUtil;
+import com.rpsg.rpg.utils.display.GameViewRes;
+import com.rpsg.rpg.utils.display.Msg;
+import com.rpsg.rpg.utils.display.PostUtil;
+import com.rpsg.rpg.utils.display.WeatherUtil;
 import com.rpsg.rpg.utils.game.Logger;
 
 public class GameView extends View{
 	
 	public OrthoCachedTiledMapRenderer render ;//地图绘制器
 	public Stage stage = GameViewRes.stage;//舞台
-	public TiledMap map;//地图文件
 	public boolean inited=false;//是否加载完成的状态标志
-	public Global global=GameViews.global;//游戏存档
+	public Global global=RPG.global;//游戏存档
 	public OrthographicCamera camera = GameViewRes.camera;//摄像机
 	public RayHandler ray = GameViewRes.ray;//灯光
 	public World world =GameViewRes.world;//box2d world（没用）
@@ -45,7 +56,7 @@ public class GameView extends View{
 
 
 	@Override
-	public void init() {
+	public View init() {
 		inited=false;
 		Logger.info("开始加载图形。");
 		stage.clear();
@@ -54,8 +65,8 @@ public class GameView extends View{
 		parameter = new TmxMapLoader.Parameters();
 		parameter.loadedCallback= new AssetLoaderParameters.LoadedCallback() {
 			public void finishedLoading(AssetManager assetManager, String fileName, Class type) {
-				map = ma.get(Setting.GAME_RES_MAP + global.map);
-				render=new OrthoCachedTiledMapRenderer(map);
+				RPG.maps.map = ma.get(Setting.GAME_RES_MAP + global.map);
+				render=new OrthoCachedTiledMapRenderer(RPG.maps.map);
 				render.setBlending(true);
 				render.setView(camera);
 				ray.setWorld(world);
@@ -63,20 +74,21 @@ public class GameView extends View{
 				inited = true;
 				post = GameViews.post;
 				bloom = GameViews.bloom;
-				WeatherUtil.init(GameViews.global.weather);
+				WeatherUtil.init(RPG.global.weather);
 				Logger.info("图形加载完成。");
 			}
 		};
 		filename=Setting.GAME_RES_MAP+global.map;
 		ma.load(filename, TiledMap.class ,parameter);
+		return this;
 	}
 	
 	@Override
 	public void dispose() {
-		MapController.dispose();
+		RPG.maps.loader.dispose();
 		Msg.dispose();
 		if(!Setting.persistence.cacheResource){
-			map.dispose();
+			RPG.maps.map.dispose();
 			ma.unload(filename);
 		}
 		if(null!=stackView){
@@ -103,22 +115,22 @@ public class GameView extends View{
 		if(postEnable)
 			post.capture();
 		
-		DistantController.draw((SpriteBatch)stage.getBatch(),this);
+		RPG.maps.distant.draw((SpriteBatch)stage.getBatch(), this);
 		
 		if(!first)//第一帧不画地图相关，以让部分auto级别的脚本正常运行。
-			MapController.draw(this);
+			RPG.maps.loader.draw(this);
 		
 		if(postEnable)
 			post.render(true);
 		
-		if(Setting.persistence.betterLight && map.getProperties().get("weather")==null)
+		if(Setting.persistence.betterLight && RPG.maps.getProp().get("weather")==null)
 			WeatherUtil.draw((SpriteBatch) PostUtil.stage.getBatch());
 
 		ColorUtil.draw();
 		if(!first)
 			PostUtil.draw(true);
 
-		DrawController.draw();
+		RPG.ctrl.draw.draw();
 		
 		if(null!=stackView)
 			stackView.draw(batch);
@@ -133,11 +145,11 @@ public class GameView extends View{
 		if(!ma.update() || !inited)
 			return;
 		if(null==stackView){
-			MapController.logic(this);
+			RPG.maps.loader.logic(this);
 			for(Actor i:stage.getActors())
 				if(!(i instanceof Hero))
 					i.act(0);
-			HeroController.act();
+			RPG.ctrl.hero.act();
 			MoveController.logic(this);
 		}else{
 			stackView.logic();

@@ -1,17 +1,17 @@
 package com.rpsg.rpg.utils.game;
 
-import com.rpsg.rpg.object.rpg.Hero;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
+import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.system.controller.HeroController;
 
 public class Heros {
 	public static BaseScriptExecutor addNewHero(Script script, final Class<? extends Hero> c){
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				HeroController.newHero(c);
+				RPG.ctrl.hero.newHero(c);
 			}
 		});
 	}
@@ -20,7 +20,7 @@ public class Heros {
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				HeroController.addHero(c);
+				RPG.ctrl.hero.addHero(c);
 			}
 		});
 	}
@@ -29,7 +29,7 @@ public class Heros {
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				HeroController.addHero(c, position);
+				RPG.ctrl.hero.addHero(c, position);
 			}
 		});
 	}
@@ -38,7 +38,7 @@ public class Heros {
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				HeroController.removeHero(c);
+				RPG.ctrl.hero.removeHero(c);
 			}
 		});
 	}
@@ -47,7 +47,7 @@ public class Heros {
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				HeroController.deleteHero(c);
+				RPG.ctrl.hero.deleteHero(c);
 			}
 		});
 	}
@@ -56,7 +56,7 @@ public class Heros {
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				HeroController.swapHero(position);
+				RPG.ctrl.hero.swapHero(position);
 			}
 		});
 	}
@@ -65,7 +65,7 @@ public class Heros {
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				HeroController.swapHero(position, swappos);
+				RPG.ctrl.hero.swapHero(position, swappos);
 			}
 		});
 	}
@@ -74,7 +74,7 @@ public class Heros {
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				HeroController.swapHero(c);
+				RPG.ctrl.hero.swapHero(c);
 			}
 		});
 	}
@@ -83,7 +83,7 @@ public class Heros {
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				HeroController.swapHero(c, sc);
+				RPG.ctrl.hero.swapHero(c, sc);
 			}
 		});
 	}
@@ -92,7 +92,7 @@ public class Heros {
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				HeroController.getHero(c).setBalloon(type);
+				RPG.ctrl.hero.getHero(c).setBalloon(type);
 			}
 		});
 	}
@@ -110,7 +110,7 @@ public class Heros {
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				HeroController.setVisible(vis);
+				RPG.ctrl.hero.setVisible(vis);
 			}
 		});
 	}

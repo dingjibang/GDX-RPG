@@ -7,9 +7,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.system.ui.Image;
 
 public class CGController {
-	static ArrayList<Image> cgs = new ArrayList<Image>();
+	ArrayList<Image> cgs = new ArrayList<Image>();
 
-	public static void draw(SpriteBatch sb) {
+	public void draw(SpriteBatch sb) {
 		if(cgs.size()==0)
 			return;
 		try{
@@ -21,7 +21,7 @@ public class CGController {
 		}
 	}
 
-	public static Image push(Image i) {
+	public Image push(Image i) {
 		if(cgs.contains(i)){
 			Image re=new Image(i);
 			cgs.add(re);
@@ -33,11 +33,11 @@ public class CGController {
 			
 	}
 
-	public static void dispose(Image i) {
+	public void dispose(Image i) {
 		cgs.remove(i);
 	}
 	
-	public static void disposeAll(){
+	public void disposeAll(){
 		cgs.clear();
 	}
 	

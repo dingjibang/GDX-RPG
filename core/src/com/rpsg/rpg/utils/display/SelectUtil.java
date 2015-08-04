@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
@@ -19,7 +20,6 @@ import com.rpsg.rpg.object.script.ScriptExecutor;
 import com.rpsg.rpg.system.controller.InputController;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
-import com.rpsg.rpg.view.GameViews;
 
 public class SelectUtil implements InputProcessor {
 	Image but,click,hover,mask;
@@ -59,7 +59,7 @@ public class SelectUtil implements InputProcessor {
 
 					stage.getBatch().end();
 				}else{
-					Gdx.input.setInputProcessor(GameViews.input);
+					Gdx.input.setInputProcessor(RPG.input);
 					if(!isLocked)
 						InputController.currentIOMode=IOMode.MapInput.NORMAL;
 					stage.clear();

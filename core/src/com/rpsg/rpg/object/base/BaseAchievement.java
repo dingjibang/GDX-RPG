@@ -3,8 +3,8 @@ package com.rpsg.rpg.object.base;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.utils.game.AchievementManager;
-import com.rpsg.rpg.view.GameViews;
 
 public class BaseAchievement implements Serializable {
 	/**
@@ -58,8 +58,8 @@ public class BaseAchievement implements Serializable {
 
 				String field = s.substring(0, s.indexOf('=') - temp);
 				try {
-					Field f = GameViews.global.getClass().getField(field); // 获取参与判定的参数的对应的值
-					copnum = (int) f.getInt(GameViews.global); // 因为参与数值比较，所以默认为整形(global中所有的数值变量都不可以使用包装类)
+					Field f = RPG.global.getClass().getField(field); // 获取参与判定的参数的对应的值
+					copnum = (int) f.getInt(RPG.global); // 因为参与数值比较，所以默认为整形(global中所有的数值变量都不可以使用包装类)
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -95,7 +95,7 @@ public class BaseAchievement implements Serializable {
 
 	public void deal() {
 		if (this.status == 1) {
-			GameViews.global.$(this.dealString);
+			RPG.global.$(this.dealString);
 			display();
 		}
 		AchievementManager.flag = true;

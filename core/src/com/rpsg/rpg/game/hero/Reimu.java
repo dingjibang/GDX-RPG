@@ -2,7 +2,7 @@ package com.rpsg.rpg.game.hero;
 
 import com.rpsg.rpg.game.association.association.Justice;
 import com.rpsg.rpg.object.rpg.Hero;
-import com.rpsg.rpg.object.rpg.IRPGObject;
+import com.rpsg.rpg.object.rpg.RPGObject;
 
 public class Reimu extends Hero{
 	
@@ -23,6 +23,6 @@ public class Reimu extends Hero{
 	}
 	
 	public void init(){
-		this.images=IRPGObject.generateImages(Hero.RES_PATH+imgPath, HERO_WIDTH, HERO_HEIGHT);
+		this.images=RPGObject.generateImages(Hero.RES_PATH+imgPath, HERO_WIDTH, HERO_HEIGHT);
 	}
 }

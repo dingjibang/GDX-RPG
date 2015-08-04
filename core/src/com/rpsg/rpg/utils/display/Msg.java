@@ -15,7 +15,6 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
-import com.rpsg.rpg.view.GameViews;
 
 
 public class Msg {

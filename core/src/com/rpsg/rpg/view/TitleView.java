@@ -5,8 +5,9 @@ import com.rpsg.rpg.system.ui.View;
 public class TitleView extends View{
 	public boolean inited=false;
 	@Override
-	public void init() {
+	public TitleView init() {
 		inited=true;
+		return this;
 	}
 	
 	@Override

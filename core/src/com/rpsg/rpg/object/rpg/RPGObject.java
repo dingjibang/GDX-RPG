@@ -11,6 +11,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.system.base.Res;
@@ -18,7 +19,7 @@ import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameViews;
 
-public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>,Serializable{
+public abstract class RPGObject extends Actor implements Comparable<RPGObject>,Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	public static final int FACE_L=7;
@@ -38,7 +39,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	
 	public boolean walked=true;
 	
-	public IRPGObject(){}
+	public RPGObject(){}
 	
 	public int currentImageNo=1;
 	
@@ -64,7 +65,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	}
 	
 	@Override
-	public int compareTo(IRPGObject i) {
+	public int compareTo(RPGObject i) {
 		if(i.mapy>this.mapy)
 			return -1;
 		else if(i.mapy==this.mapy)
@@ -78,7 +79,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 			return 1;
 	}
 	
-	public IRPGObject draw(SpriteBatch batch,float parentAlpha){
+	public RPGObject draw(SpriteBatch batch,float parentAlpha){
 		if(isVisible()){
 			if(this.drawShadow){
 				shadow.position(getX()+8f, getY()-3.8f).color(this.getColor()).draw(batch,parentAlpha);
@@ -94,24 +95,24 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		return this;
 	}
 	
-	public IRPGObject(String path,int width,int height){
+	public RPGObject(String path,int width,int height){
 		imgPath=path;
 		bodyWidth=width;
 		bodyHeight=height;
-		images=IRPGObject.generateImages(path, width, height);
+		images=RPGObject.generateImages(path, width, height);
 	}
 	
-	public IRPGObject setBalloon(BalloonType type){
+	public RPGObject setBalloon(BalloonType type){
 		this.bon.setBalloons(new Balloon(type).getBalloons()).reset();
 		return this.setDisplayBalloon(true);
 	}
 	
-	public IRPGObject resetBalloon(BalloonType type){
+	public RPGObject resetBalloon(BalloonType type){
 		this.bon.reset();
 		return this.setDisplayBalloon(true);
 	}
 	
-	public IRPGObject setDisplayBalloon(boolean flag){
+	public RPGObject setDisplayBalloon(boolean flag){
 		this.displayBalloon=flag;
 		return this;
 	}
@@ -125,7 +126,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		return images;
 	};
 	
-	public IRPGObject turn(int face){
+	public RPGObject turn(int face){
 			this.currentImageNo=face;
 		return this;
 	}
@@ -133,7 +134,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public float walkSpeed=3f;
 	
 	public Vector2 lastPosition;
-	public IRPGObject walk(int step){
+	public RPGObject walk(int step){
 		walkStack.add(new Walker(this.getCurrentFace(),step));
 		return this;
 	}
@@ -302,17 +303,17 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		return false;
 	}
 	
-	private IRPGObject testWalkerSize(){
+	private RPGObject testWalkerSize(){
 		walkStack.remove(walkStack.get(0));
 		return this;
 	}
 	
-	public IRPGObject setWalkSpeed(float s){
+	public RPGObject setWalkSpeed(float s){
 		this.walkSpeed=s;
 		return this;
 	}
 	
-	public IRPGObject resetWalkSeped(){
+	public RPGObject resetWalkSeped(){
 		this.walkSpeed=NORMAL_WALK_SPEED;
 		return this;
 	}
@@ -345,9 +346,9 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		return this.getCurrentImage().getHeight();
 	}
 	
-	public IRPGObject generatePosition(int mapx,int mapy,int layer){
+	public RPGObject generatePosition(int mapx,int mapy,int layer){
 		try {
-			TiledMapTileLayer l=(TiledMapTileLayer)GameViews.gameview.map.getLayers().get(layer);
+			TiledMapTileLayer l=(TiledMapTileLayer)RPG.maps.map.getLayers().get(layer);
 			this.mapx=mapx;
 			this.mapy= mapy;
 			this.layer=layer;
@@ -359,7 +360,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 		return this;
 	}
 	
-	public IRPGObject generateAbsolutePosition(int x,int y,int layer){
+	public RPGObject generateAbsolutePosition(int x,int y,int layer){
 		try {
 			this.mapx=x/48;
 			this.mapy= y/48;

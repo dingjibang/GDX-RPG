@@ -2,14 +2,13 @@ package com.rpsg.rpg.system.controller;
 
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.MathUtils;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.io.SL;
-import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.base.IOMode.MapInput;
 import com.rpsg.rpg.system.base.Initialization;
 import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.view.GameView;
-import com.rpsg.rpg.view.GameViews;
 
 
 
@@ -32,7 +31,7 @@ public class InputController{
 			MoveController.setCameraPosition(MathUtils.random(-350,350), MathUtils.random(-350,350));
 		}
 		if(keycode==Keys.R){
-			GameViews.global=SL.load(0);
+			RPG.global=SL.load(0);
 			Initialization.restartGame();
 		}
 		if(keycode==Keys.L){

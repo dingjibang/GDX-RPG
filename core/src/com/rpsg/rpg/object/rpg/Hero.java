@@ -17,7 +17,7 @@ import com.rpsg.rpg.object.base.Support;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.SpellCard;
 
-public abstract class Hero extends IRPGObject {
+public abstract class Hero extends RPGObject {
 	
 	private static final long serialVersionUID = 1L;
 	public static final int HERO_WIDTH=48;
