@@ -8,6 +8,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.view.GameViews;
 
+/**
+ * 用来控制一组{@link Hero 英雄}进行行走、转向、增删等，他同时应用在蚂蚁队列上（HeadHero行走，后面的Hero自动跟随）
+ * @author dingjibang
+ *
+ */
 public class HeroController {
 	public static ArrayList<Hero> heros;
 	public static ArrayList<Hero> allHeros;
