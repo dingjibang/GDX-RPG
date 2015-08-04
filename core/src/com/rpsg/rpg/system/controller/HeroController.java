@@ -3,7 +3,6 @@ package com.rpsg.rpg.system.controller;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.view.GameViews;
@@ -162,7 +161,6 @@ public class HeroController {
 	
 	static boolean walk;
 	public static void walk(int step){	
-		//TODO FUCKME2
 		walk=getHeadHero().walk(step).testWalk();
 		if(walk)
 		for(int i=1;i<heros.size();i++){

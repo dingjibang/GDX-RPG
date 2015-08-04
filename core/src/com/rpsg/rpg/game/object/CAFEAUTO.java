@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.game.script.*;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.DefaultNPC;
 import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
