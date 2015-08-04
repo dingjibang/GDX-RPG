@@ -14,6 +14,11 @@
    H4sIAAAAAAAACw3DA5QQBgAA0Lvurrtcyy3Xlm3ba9m2W7Zte2txy7Zt21hadm25/97/gQEBAeEMMtgQwxtqmBGMaCQjG8WoRjO6MfzBmMYytnGMazzjm8AfTWgiE5vEpCYzuSlM6U/+bCpTm8a0pjO9GcxoJjObxaxmM7s5zGkuc5vHvOYzvwUsaCELW8SiFrO4JSxpKUtbxrKW8xfL+6sVrGglK1vFqlazujWsaS1rW8e61rO+DWxoIxvbxKY2s7ktbGkrW9vGtrazvb/ZwY52srNd7Go3u9vDnvayt33saz/7O8CBDnKwQxzqMIc7wpGOcrRjHOs4xzvBiU5yslOc6jSnO8OZzvJ3/3C2fzrHuc5zvgtc6F/+7SIXu8SlLnO5K1zpKle7xrWuc70b3OgmN7vFrW5zuzvc6S53u8e97nO/BzzoIQ97xKMe87gnPOkpT3vGs57zvBe86CUve8WrXvO6N7zpLW/7j3e86z3v+8B/fegjH/vEpz7zuS986Stf+8a3vvO9//m/H/zoJz/7xa9+MyAQwxlksCGGN9QwvwOKxMetIAQAAA==
   </data>
  </layer>
+ <layer name="块层 2" width="22" height="12">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMAuwAAN9OCrMgBAAA
+  </data>
+ </layer>
  <objectgroup name="a">
   <object name="CAFEAUTO" type="NPC" gid="265" x="720" y="144" width="48" height="64">
    <properties>

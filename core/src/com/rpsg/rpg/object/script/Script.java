@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Setting;
@@ -14,6 +15,7 @@ import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
+import com.rpsg.rpg.object.rpg.PublicNPC;
 import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FG; 
@@ -248,6 +250,13 @@ public abstract class Script implements MsgType,FGType{
 	public NPC findNPC(Class<? extends NPC>... type){
 		GdxQuery query=$.add(GameViews.gameview.stage.getActors().items).find(type);
 		return query.isEmpty()?null:(NPC)query.getItem(); 
+	}
+	
+	public NPC findNPC (String id){
+		for(Actor npc:GameViews.gameview.stage.getActors())
+			if(npc instanceof PublicNPC && ((PublicNPC)npc).getId().equals(id))
+				return (PublicNPC)npc;
+		return null;
 	}
 	
 	/**

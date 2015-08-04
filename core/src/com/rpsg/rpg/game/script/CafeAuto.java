@@ -41,7 +41,10 @@ public class CafeAuto extends Script {
 			HeroController.setVisible(false);
 		}});
 		setKeyLocker(true);
-		
+		final NPC npc=findNPC("1");
+		$(new BaseScriptExecutor() {public void init() {
+			System.out.println(npc);
+		}});
 		removeSelf();
 	}
 }

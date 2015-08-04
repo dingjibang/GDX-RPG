@@ -4,12 +4,22 @@ package com.rpsg.rpg.object.rpg;
 public class PublicNPC extends DefaultNPC {
 
 	private static final long serialVersionUID = 1L;
-	String id;
-
+	private String id;
+	
+	
+	public PublicNPC(String id,String path, Integer width, Integer height) {
+		super(path, width, height);
+		this.id=id;
+	}
 	public void init() {
-		if(this.params.get("ID")==null)
-			return;
-		this.id=(String) this.params.get("ID");
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

@@ -18,6 +18,8 @@ import java.util.List;
 
 
 
+
+
 import box2dLight.PointLight;
 
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
@@ -42,6 +44,7 @@ import com.rpsg.rpg.game.items.medicine.YaoWan;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.IRPGObject;
 import com.rpsg.rpg.object.rpg.NPC;
+import com.rpsg.rpg.object.rpg.PublicNPC;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.ThreadPool;
 import com.rpsg.rpg.utils.display.ColorUtil;
@@ -110,15 +113,24 @@ public class MapController {
 				for(MapObject obj:m.getObjects()){
 					if(obj.getProperties().get("type")!=null && obj.getProperties().get("type").equals("NPC")){
 						try {
-							NPC npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.getName()).getConstructor(String.class,Integer.class,Integer.class)
+							NPC npc;
+							if(!obj.getName().equals("PUBLIC"))
+							npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.getName()).getConstructor(String.class,Integer.class,Integer.class)
 								.newInstance(
 									obj.getProperties().get("IMAGE")+".png",
 									(int)(((RectangleMapObject)obj).getRectangle().getWidth()),
 									(int)(((RectangleMapObject)obj).getRectangle().getHeight())
 								);
+							else
+								npc=new PublicNPC((String) obj.getProperties().get("ID"),obj.getProperties().get("IMAGE")+".png",(int)(((RectangleMapObject)obj).getRectangle().getWidth()),(int)(((RectangleMapObject)obj).getRectangle().getHeight()));
 							npc.params=GameUtil.parseMapProperties(obj.getProperties());
 							npc.init();
-							npc.generatePosition(((int)(((RectangleMapObject)obj).getRectangle().getX())/48),
+							if(obj.getProperties().get("ABSOLUTE")!=null && obj.getProperties().get("ABSOLUTE").equals("true"))
+								npc.generateAbsolutePosition(((int)(((RectangleMapObject)obj).getRectangle().getX())),
+										 (int)(((RectangleMapObject)obj).getRectangle().getY()),
+										 i-removeList.size());
+							else
+								npc.generatePosition(((int)(((RectangleMapObject)obj).getRectangle().getX())/48),
 									 (int)(bot.getHeight()-2-((RectangleMapObject)obj).getRectangle().getY()/48),
 									 i-removeList.size());
 							Logger.info("NPC生成成功["+npc.position+","+npc.mapx+":"+npc.mapy+":"+npc.layer+"]");

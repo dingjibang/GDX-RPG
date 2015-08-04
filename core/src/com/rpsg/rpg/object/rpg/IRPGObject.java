@@ -346,7 +346,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 			this.position=new Vector2(mapx*48,(l.getHeight()-this.mapy-1)*48);
 			lastPosition=new Vector2(this.position);
 		} catch (Exception e) {
-			Logger.error("无法生成RPG对象位置！", e);
+			Logger.error("无法生成RPG对象位置！请检查坐标设置是否正确>>["+e.getMessage()+"]");
 		}
 		return this;
 	}
