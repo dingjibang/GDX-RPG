@@ -28,7 +28,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	
 	private static final int NORMAL_WALK_SPEED=4;
 	
-	Balloon bon=new Balloon(BalloonType.心);
+	transient Balloon bon=new Balloon(BalloonType.心);
 	public transient Image[] images;
 	
 	public int lastWalkSize,lastZ,lastFace;
@@ -54,7 +54,7 @@ public abstract class IRPGObject extends Actor implements Comparable<IRPGObject>
 	public List<Walker> walkStack=new ArrayList<Walker>(); 
 	
 	public boolean drawShadow = false;
-	transient Image shadow=Res.get(Setting.IRPGOBJECT_SHADOW);
+	static Image shadow=Res.get(Setting.IRPGOBJECT_SHADOW);
 	
 	
 	
