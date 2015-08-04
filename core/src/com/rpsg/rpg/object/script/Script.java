@@ -91,8 +91,11 @@ public abstract class Script implements MsgType,FGType{
 	 * 插入一个新的执行器到当前指针
 	 */
 	public BaseScriptExecutor _$(BaseScriptExecutor exe){
-		scripts.remove(scripts.size()-1);
-		scripts.add(point+1, exe);
+		scripts.remove(exe);
+		int _point=point;
+		while(scripts.get(++_point).isInsert);
+		exe.isInsert=true;
+		scripts.add(_point, exe);
 		return exe;
 	}
 	
@@ -100,6 +103,7 @@ public abstract class Script implements MsgType,FGType{
 	 * 插入一个新的执行器到当前指针后一位
 	 */
 	public BaseScriptExecutor __$(BaseScriptExecutor exe){
+		exe.isInsert=true;
 		scripts.remove(scripts.size()-1);
 		scripts.add(point==-1?0:point, exe);
 		if(point>=0)

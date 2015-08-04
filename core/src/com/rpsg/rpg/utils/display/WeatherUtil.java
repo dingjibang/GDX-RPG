@@ -78,20 +78,23 @@ public class WeatherUtil {
 	private static void setPost() {
 		String post=(String) RPG.maps.getProp().get("POST");
 		if(post!=null && post.length()!=0){
-			baseSaturation=1.1f;
+			baseSaturation=1f;
 			bloomIntesity=0.2f;
-			bloomSaturation=0.5f;
+			bloomSaturation=1.1f;
 			threshold=0f;
+			GameViews.vignette.setEnabled(false);
 		}else if(type==WEATHER_RAIN){
 			baseSaturation=0.7f;
 			bloomIntesity=0.8f;
 			bloomSaturation=0.2f;
 			threshold=0f;
+			GameViews.vignette.setEnabled(true);
 		}else if(type==WEATHER_NO){
 			baseSaturation=1f;
 			bloomIntesity=0.7f;
 			bloomSaturation=1.2f;
 			threshold=0.3f;
+			GameViews.vignette.setEnabled(true);
 		}
 		Bloom bloom=GameViews.bloom;
 		bloom.setBaseSaturation(baseSaturation);

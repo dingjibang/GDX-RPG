@@ -48,6 +48,7 @@ public class GameViews implements ApplicationListener {
 	
 	public static PostProcessor post;//高清画质，不用管
 	public static Bloom bloom;//高斯模糊，不用管
+	public static Vignette vignette;
 	
 	@Override
 	public void create() {
@@ -81,9 +82,9 @@ public class GameViews implements ApplicationListener {
 		bloom=new Bloom((int)(Gdx.graphics.getWidth() * 0.25f), (int)(Gdx.graphics.getHeight() * 0.25f));
 		post.addEffect(bloom);
 		
-		Vignette v=new Vignette(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
-		v.setIntensity(0.5f);
-		post.addEffect(v);
+		vignette=new Vignette(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false);
+		vignette.setIntensity(0.5f);
+		post.addEffect(vignette);
 		
 		//高清画质一系列的东西，不用管
 		

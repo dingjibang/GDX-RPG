@@ -1,5 +1,6 @@
 package com.rpsg.rpg.object.script;
 
-public interface BaseScriptExecutor {
-	public void init();
+public abstract class BaseScriptExecutor {
+	public abstract void init();
+	public boolean isInsert=false;
 }

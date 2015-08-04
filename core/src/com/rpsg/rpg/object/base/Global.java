@@ -35,9 +35,9 @@ public class Global implements Serializable {
 //	public int x = 15;
 //	public int y = 6;
 //	public int z = 1;
-	public int x = 18;
-	public int y = 4;
-	public int z = 3;
+	public int x = 15;//18;
+	public int y = 1;
+	public int z = 1;
 
 	public boolean first = true;
 
