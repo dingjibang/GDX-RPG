@@ -1,5 +1,7 @@
 package com.rpsg.rpg.desktop;
 
+import io.nondev.nonfilesystem.DesktopFiles;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
@@ -35,6 +37,6 @@ public class DesktopLauncher {
         Setting.persistence = Persistence.read();//读取配置文件
         config.initialBackgroundColor= Color.WHITE;
         config.samples=Setting.persistence.antiAliasing?8:0;//如果游戏配置“抗锯齿”打开，则设置抗锯齿8级否则不抗锯齿。
-		new LwjglApplication(new GameViews(), config);//gameviews就是咱们游戏的核心了。
+		new LwjglApplication(new GameViews(new DesktopFiles()), config);//gameviews就是咱们游戏的核心了。
 	}
 }
