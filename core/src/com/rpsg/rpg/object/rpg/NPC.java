@@ -15,7 +15,7 @@ public abstract class NPC extends RPGObject{
 
 	private static final long serialVersionUID = -3609365853239176493L;
 
-	public static final String RES_PATH=Setting.GAME_RES_WALK+"npcs/";
+	public static final String RES_PATH=Setting.WALK+"npcs/";
 	
 	public abstract void toCollide(ScriptCollide sc);
 	public transient Map<CollideType, Class<? extends Script>> scripts=new HashMap<CollideType, Class<? extends Script>>();

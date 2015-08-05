@@ -22,7 +22,7 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.utils.game.Logger;
 
 public final class ShaderLoader {
-	public static String BasePath = Setting.GAME_RES_SHADER;
+	public static String BasePath = Setting.SHADER;
 	public static boolean Pedantic = true;
 
 	public static ShaderProgram fromFile( String vertexFileName, String fragmentFileName ) {

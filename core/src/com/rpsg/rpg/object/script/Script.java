@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxQuery;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.FGType;
@@ -19,7 +20,6 @@ import com.rpsg.rpg.object.rpg.PublicNPC;
 import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FG;
-import com.rpsg.rpg.utils.display.Msg;
 import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.display.WeatherUtil;
@@ -128,7 +128,7 @@ public abstract class Script implements MsgType,FGType{
 	 * @return
 	 */
 	public BaseScriptExecutor say(String str,String title,int size){
-		return Msg.say(this, str, title, size);
+		return RPG.ctrl.msg.say(this, str, title, size);
 	}
 	
 	/**
@@ -138,7 +138,7 @@ public abstract class Script implements MsgType,FGType{
 	 * @return
 	 */
 	public BaseScriptExecutor say(String str,String title){
-		return Msg.say(this, str, title, 22);
+		return RPG.ctrl.msg.say(this, str, title, 22);
 	}
 	
 	/**
@@ -183,7 +183,7 @@ public abstract class Script implements MsgType,FGType{
 	 * @return
 	 */
 	public BaseScriptExecutor say(String str){
-		return Msg.say(this, str, "", 22);
+		return RPG.ctrl.msg.say(this, str, "", 22);
 	}
 	
 	/**
@@ -192,7 +192,7 @@ public abstract class Script implements MsgType,FGType{
 	 * @return
 	 */
 	public BaseScriptExecutor setKeyLocker(boolean b){
-		return Msg.setKeyLocker(this, b);
+		return RPG.ctrl.msg.setKeyLocker(this, b);
 	}
 	
 	/**
@@ -302,7 +302,7 @@ public abstract class Script implements MsgType,FGType{
 	 * @return
 	 */
 	public BaseScriptExecutor showMSG(String msgType){
-		return Msg.show(this, msgType);
+		return RPG.ctrl.msg.show(this, msgType);
 	}
 	
 	/**
@@ -325,7 +325,7 @@ public abstract class Script implements MsgType,FGType{
 	 * @return
 	 */
 	public BaseScriptExecutor showMSG(){
-		return Msg.show(this, 正常);
+		return RPG.ctrl.msg.show(this, 正常);
 	}
 	
 	/**
@@ -333,7 +333,7 @@ public abstract class Script implements MsgType,FGType{
 	 * @return
 	 */
 	public BaseScriptExecutor hideMSG(){
-		return Msg.hide(this);
+		return RPG.ctrl.msg.hide(this);
 	}
 	
 	/**
@@ -342,7 +342,7 @@ public abstract class Script implements MsgType,FGType{
 	 * @return
 	 */
 	public BaseScriptExecutor hideFG(int position){
-		return FG.hide(this, position);
+		return RPG.ctrl.fg.hide(this, position);
 	}
 	
 	/**
@@ -350,7 +350,7 @@ public abstract class Script implements MsgType,FGType{
 	 * @return
 	 */
 	public BaseScriptExecutor hideFG(){
-		return FG.hideAll(this);
+		return RPG.ctrl.fg.hideAll(this);
 	}
 	
 	/**
@@ -360,7 +360,7 @@ public abstract class Script implements MsgType,FGType{
 	 * @return
 	 */
 	public BaseScriptExecutor showFGLeft(String people,String look){
-		return FG.show(this, Setting.GAME_RES_IMAGE_FG+people+look+".png", FG.LEFT);
+		return RPG.ctrl.fg.show(this, Setting.IMAGE_FG+people+look+".png", RPG.ctrl.fg.LEFT);
 	}
 	
 	/**
@@ -370,7 +370,7 @@ public abstract class Script implements MsgType,FGType{
 	 * @return
 	 */
 	public BaseScriptExecutor showFGRight(String people,String look){
-		return FG.show(this, Setting.GAME_RES_IMAGE_FG+people+look+".png", FG.RIGHT);
+		return RPG.ctrl.fg.show(this, Setting.IMAGE_FG+people+look+".png", RPG.ctrl.fg.RIGHT);
 	}
 	
 	/**
@@ -485,7 +485,7 @@ public abstract class Script implements MsgType,FGType{
 	 * @return
 	 */
 	public BaseScriptExecutor setWeather(int type){
-		return WeatherUtil.setWeather(this, type);
+		return RPG.ctrl.weather.setWeather(this, type);
 	}
 	
 	/**

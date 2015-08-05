@@ -1,5 +1,6 @@
 package com.rpsg.rpg.game.items.medicine;
 
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.items.Medicine;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -22,7 +23,7 @@ public class YaoWan extends Medicine{
 			return throwSelf("使用成功。",AlertUtil.Green);
 		}else{
 			Music.playSE("err");
-			AlertUtil.add(hero.name+"的生命值已满。",AlertUtil.Yellow);
+			RPG.putMessage(hero.name+"的生命值已满。",AlertUtil.Yellow);
 			return false;
 		}
 	}

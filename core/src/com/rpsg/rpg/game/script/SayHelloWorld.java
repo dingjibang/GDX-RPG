@@ -1,10 +1,9 @@
 package com.rpsg.rpg.game.script;
 
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.WeatherUtil;
-import com.rpsg.rpg.view.GameViews;
 
 public class SayHelloWorld extends Script{
 	
@@ -12,7 +11,7 @@ public class SayHelloWorld extends Script{
 		$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				if(WeatherUtil.type==WeatherUtil.WEATHER_NO){
+				if(RPG.ctrl.weather.type==WeatherUtil.WEATHER_NO){
 					_$(setWeather(WeatherUtil.WEATHER_RAIN));
 				}else{
 					_$(setWeather(WeatherUtil.WEATHER_NO));

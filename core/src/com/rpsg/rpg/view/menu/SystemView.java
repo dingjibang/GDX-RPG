@@ -49,20 +49,20 @@ public class SystemView extends DefaultIView{
 		Table table = new Table();
 		
 		TextButtonStyle butstyle=new TextButtonStyle();
-		butstyle.over=butstyle.checkedOver=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button_RPG.hover.png");
-		butstyle.down=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button_active.png");
-		butstyle.up=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button.png");
+		butstyle.over=butstyle.checkedOver=Res.getDrawable(Setting.IMAGE_GLOBAL+"button_RPG.hover.png");
+		butstyle.down=Res.getDrawable(Setting.IMAGE_GLOBAL+"button_active.png");
+		butstyle.up=Res.getDrawable(Setting.IMAGE_GLOBAL+"button.png");
 		
 		CheckBoxStyle cs=new CheckBoxStyle();
-		cs.checkboxOff=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"optb_s.png");
-		cs.checkboxOn=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"optb.png");
+		cs.checkboxOff=Res.getDrawable(Setting.IMAGE_GLOBAL+"optb_s.png");
+		cs.checkboxOn=Res.getDrawable(Setting.IMAGE_GLOBAL+"optb.png");
 		
 		SliderStyle slsty=new SliderStyle();
-		slsty.background=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"sliderbar.png");
-		slsty.knob=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"slider.png");
+		slsty.background=Res.getDrawable(Setting.IMAGE_GLOBAL+"sliderbar.png");
+		slsty.knob=Res.getDrawable(Setting.IMAGE_GLOBAL+"slider.png");
 		
 		WidgetGroup group=new WidgetGroup();
-		group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebar.png"));
+		group.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"savebar.png"));
 		Label lvl=new Label("LV "+RPG.ctrl.hero.getHeadHero().prop.get("level"),40).setWidth(1000).setPad(-15);
 		lvl.setPosition(360, 190);
 		group.addActor(lvl);
@@ -125,7 +125,7 @@ public class SystemView extends DefaultIView{
 		table.row();
 		
 		WidgetGroup group2=new WidgetGroup();
-		group2.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"graphics.png"));
+		group2.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"graphics.png"));
 		final CheckBox box=new CheckBox("", cs,22);
 		box.setPosition(190,276);
 		group2.addActor(box.onClick(new Runnable() {
@@ -154,7 +154,7 @@ public class SystemView extends DefaultIView{
 		table.row();
 		
 		WidgetGroup group3=new WidgetGroup();
-		group3.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"performance.png"));
+		group3.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"performance.png"));
 		final Slider sd1=new Slider(256, 1024, 1, false, slsty);
 		sd1.setStrEnd(" MB").setLabelful(true).setPosition(200, 135);
 		sd1.setWidth(620);
@@ -177,7 +177,7 @@ public class SystemView extends DefaultIView{
 		table.row();
 		
 		WidgetGroup group4=new WidgetGroup();
-		group4.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"sound.png"));
+		group4.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"sound.png"));
 		final Slider sd2=new Slider(0, 100, 1, false, slsty);
 		sd2.setStrEnd(" %").setLabelful(true).setPosition(200, 165);
 		sd2.setWidth(620);
@@ -212,7 +212,7 @@ public class SystemView extends DefaultIView{
 		table.row();
 		
 		WidgetGroup group5=new WidgetGroup();
-		group5.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"game.png"));
+		group5.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"game.png"));
 		ttest=new Label(ttstr, 26);
 		ttest.setWidth(1000).setPosition(200, 663);
 		group5.addActor(ttest);
@@ -264,7 +264,7 @@ public class SystemView extends DefaultIView{
 		table.row();
 		
 		WidgetGroup group6=new WidgetGroup();
-		group6.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"about.png"));
+		group6.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"about.png"));
 		Label gamever=new Label(Setting.GAME_VERSION,23).setWidth(1000).setPad(-7);
 		gamever.setPosition(405,811);
 		group6.addActor(gamever);
@@ -283,7 +283,7 @@ public class SystemView extends DefaultIView{
 				try {
 					Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler http://www.rpsg-team.com");
 				} catch (Exception e) {
-					AlertUtil.add("无法正确打开网页。", AlertUtil.Red);
+					RPG.putMessage("无法正确打开网页。", AlertUtil.Red);
 				}
 			}
 		});
@@ -377,7 +377,7 @@ public class SystemView extends DefaultIView{
 	}
 	int step=0;
 	int stepmax=1;
-	String ttstr=Setting.GAME_MENU_SYSTEM_TEST_MESSAGE;
+	String ttstr=Setting.MENU_SYSTEM_TEST_MESSAGE;
 	public void logic() {
 		stage.act();
 		lvl5.setText(TimeUtil.getGameRunningTime());

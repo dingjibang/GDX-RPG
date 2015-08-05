@@ -22,7 +22,7 @@ public class Distant {
 			TiledMapTileLayer layer=(TiledMapTileLayer)RPG.maps.loader.layer.get(0);
 			float width=(layer.getWidth()*layer.getTileWidth());
 			float height=(layer.getHeight()*layer.getTileHeight());
-			distant=Res.get(Setting.GAME_RES_IMAGE_BACKGROUND+disName);
+			distant=Res.get(Setting.IMAGE_BACKGROUND+disName);
 			distant.setWidth(w=(width+GameUtil.screen_width));
 			distant.setHeight(h=height+GameUtil.screen_height);
 			distant.setScale(bgScale);

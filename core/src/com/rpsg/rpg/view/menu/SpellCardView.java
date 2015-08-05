@@ -56,7 +56,7 @@ public class SpellCardView extends IMenuView{
 	SpellCard spell=new TipSpellCard();
 	public View init() {
 		add=new ParticleEffect();
-		add.load(Gdx.files.internal(Setting.GAME_RES_PARTICLE+"addp.p"),Gdx.files.internal(Setting.GAME_RES_PARTICLE));
+		add.load(Gdx.files.internal(Setting.PARTICLE+"addp.p"),Gdx.files.internal(Setting.PARTICLE));
 		add.setPosition(845, 261);
 		
 		
@@ -66,13 +66,13 @@ public class SpellCardView extends IMenuView{
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		
 		
-		Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_SC+"bg.png");
+		Image bg=Res.get(Setting.IMAGE_MENU_SC+"bg.png");
 		bg.setColor(1,1,1,0);
 		bg.setPosition(160,28);
 		bg.addAction(Actions.fadeIn(0.2f));
 		stage.addActor(bg);
 		
-		ImageButton left=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"left.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"lefts.png"));
+		ImageButton left=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"left.png"),Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"lefts.png"));
 		left.setPosition(262, 383);
 		left.addListener(new InputListener(){
 			public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
@@ -84,7 +84,7 @@ public class SpellCardView extends IMenuView{
 		});
 		stage.addActor(left);
 		
-		ImageButton right=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"right.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"rights.png"));
+		ImageButton right=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"right.png"),Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"rights.png"));
 		right.setPosition(395, 383);
 		right.addListener(new InputListener(){
 			public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
@@ -99,7 +99,7 @@ public class SpellCardView extends IMenuView{
 		
 		ListStyle style=new ListStyle();
 		style.font=FontUtil.generateFont(" ".toCharArray()[0], 22);
-		style.selection=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipsel.png");
+		style.selection=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"equipsel.png");
 		style.fontColorSelected=Color.valueOf("f5e70c");
 		elist=new com.rpsg.rpg.system.ui.List<SpellCard>(style);
 		elist.onClick(new Runnable() {
@@ -112,8 +112,8 @@ public class SpellCardView extends IMenuView{
 		generateLists();
 		elist.layout();
 		ScrollPane pane=new ScrollPane(elist);
-		pane.getStyle().vScroll=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"scrollbar.png");
-		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"scrollbarin.png");
+		pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"scrollbar.png");
+		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"scrollbarin.png");
 		pane.setForceScroll(false, true);
 		pane.layout();
 		Table table=new Table();
@@ -139,7 +139,7 @@ public class SpellCardView extends IMenuView{
 		});
 		stage.addActor(mask);
 		
-		scuse=Res.get(Setting.GAME_RES_IMAGE_MENU_SC+"sc_use.png");
+		scuse=Res.get(Setting.IMAGE_MENU_SC+"sc_use.png");
 		scuse.loaded= new Runnable() {
 			@Override
 			public void run() {
@@ -190,7 +190,7 @@ public class SpellCardView extends IMenuView{
 			}
 		});
 		sellist.offsetX2=20;
-		sellist.getItems().add(new ListItem("使用").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"yes.png")).setRunnable(new Runnable() {
+		sellist.getItems().add(new ListItem("使用").setUserObject(Res.get(Setting.IMAGE_ICONS+"yes.png")).setRunnable(new Runnable() {
 			@Override
 			public void run() {
 				scfor.visible = true;
@@ -199,7 +199,7 @@ public class SpellCardView extends IMenuView{
 				layer = 2;
 			}
 		}));
-		sellist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"no.png")).setRunnable(new Runnable() {
+		sellist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.IMAGE_ICONS+"no.png")).setRunnable(new Runnable() {
 			@Override
 			public void run() {
 				can.run();
@@ -214,13 +214,13 @@ public class SpellCardView extends IMenuView{
 		sellist.setItemHeight(27);
 		sellist.padTop=2;
 		stage.addActor(mask2);			
-		scfor=Res.get(Setting.GAME_RES_IMAGE_MENU_SC+"sc_for.png");
+		scfor=Res.get(Setting.IMAGE_MENU_SC+"sc_for.png");
 		scfor.setPosition(500, 87);
 		
 		
 		herolist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		herolist.offsetX2=20;
-		herolist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"no.png")));
+		herolist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.IMAGE_ICONS+"no.png")));
 		for (Hero h : RPG.ctrl.hero.heros) {
 			herolist.getItems().add(new ListItem(h.name).setUserObject(h));
 		}

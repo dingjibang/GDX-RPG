@@ -16,23 +16,23 @@ import com.rpsg.rpg.view.GameViews;
 
 
 public class FG {
-	static Image currentImageL;
-	static Image currentImageR;
+	Image currentImageL;
+	Image currentImageR;
 
 	public static final int LEFT=0;
 	public static final int RIGHT=1;
 
-	static boolean leftFade=true;
-	static boolean rightFade=true;
-	public static Stage stage;
-
-	public static void init(){
+	boolean leftFade=true;
+	boolean rightFade=true;
+	public Stage stage;
+	
+	public void init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),GameViews.gameview.stage.getBatch());
 		currentImageL=currentImageR=null;
 		Logger.info("立绘控制器初始化完成。");
 	}
 
-	public static BaseScriptExecutor show(final Script script,final String imgPath,final int position){
+	public BaseScriptExecutor show(final Script script,final String imgPath,final int position){
 		return script.$((BaseScriptExecutor) new BaseScriptExecutor() {
 			@Override
 			public void init() {
@@ -59,7 +59,7 @@ public class FG {
 		});
 	}
 
-	public static BaseScriptExecutor hide(final Script script,final String imgPath,final int position){
+	public BaseScriptExecutor hide(final Script script,final String imgPath,final int position){
 		return script.$((BaseScriptExecutor) new BaseScriptExecutor() {
 			@Override
 			public void init() {
@@ -71,7 +71,7 @@ public class FG {
 		});
 	}
 
-	public static BaseScriptExecutor hideAll(final Script script){
+	public BaseScriptExecutor hideAll(final Script script){
 		return script.$((BaseScriptExecutor) new BaseScriptExecutor() {
 			@Override
 			public void init() {
@@ -81,7 +81,7 @@ public class FG {
 		});
 	}
 
-	public static BaseScriptExecutor hide(final Script script,final int position){
+	public BaseScriptExecutor hide(final Script script,final int position){
 		return script.$((BaseScriptExecutor) new BaseScriptExecutor() {
 			@Override
 			public void init() {
@@ -93,7 +93,7 @@ public class FG {
 		});
 	}
 
-	public static void draw(SpriteBatch sb){
+	public void draw(SpriteBatch sb){
 		sb.end();
 		sb.begin();
 		if(currentImageL!=null){

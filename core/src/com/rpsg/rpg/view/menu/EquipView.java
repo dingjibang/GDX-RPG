@@ -59,18 +59,18 @@ public class EquipView extends IMenuView{
 	
 	public View init() {
 		
-		up=new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_EQUIP+"add.png"));
-		down=new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_MENU_EQUIP+"sub.png"));
+		up=new Texture(Gdx.files.internal(Setting.IMAGE_MENU_EQUIP+"add.png"));
+		down=new Texture(Gdx.files.internal(Setting.IMAGE_MENU_EQUIP+"sub.png"));
 		
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		
-		Image walkerbox=Res.get(Setting.GAME_RES_IMAGE_MENU_EQUIP+"walkerbox.png");
+		Image walkerbox=Res.get(Setting.IMAGE_MENU_EQUIP+"walkerbox.png");
 		walkerbox.setPosition(160, 350);
 		walkerbox.setColor(1,1,1,0);
 		walkerbox.addAction(Actions.fadeIn(0.2f));
 		stage.addActor(walkerbox);
 		
-		ImageButton left=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"left.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"lefts.png"));
+		ImageButton left=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"left.png"),Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"lefts.png"));
 		left.setPosition(245, 390);
 		left.addListener(new InputListener(){
 			public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
@@ -82,7 +82,7 @@ public class EquipView extends IMenuView{
 		});
 		stage.addActor(left);
 		
-		ImageButton right=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"right.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"rights.png"));
+		ImageButton right=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"right.png"),Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"rights.png"));
 		right.setPosition(377, 390);
 		right.addListener(new InputListener(){
 			public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
@@ -94,7 +94,7 @@ public class EquipView extends IMenuView{
 		});
 		stage.addActor(right);
 		
-		Image bot=Res.get(Setting.GAME_RES_IMAGE_MENU_EQUIP+"botbar.png");
+		Image bot=Res.get(Setting.IMAGE_MENU_EQUIP+"botbar.png");
 		bot.setColor(1,1,1,0);
 		bot.addAction(Actions.fadeIn(0.2f));
 		bot.setPosition(130, 13);
@@ -102,7 +102,7 @@ public class EquipView extends IMenuView{
 		
 		ListStyle style=new ListStyle();
 		style.font=FontUtil.generateFont(" ".toCharArray()[0], 22);
-		style.selection=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipsel.png");
+		style.selection=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"equipsel.png");
 		style.fontColorSelected=Color.valueOf("f5e70c");
 		elist=new com.rpsg.rpg.system.ui.List<Equipment>(style);
 		elist.onClick(new Runnable() {
@@ -113,12 +113,12 @@ public class EquipView extends IMenuView{
 			}
 		});
 		ScrollPane pane=new ScrollPane(elist);
-		pane.getStyle().vScroll=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"scrollbar.png");
-		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"scrollbarin.png");
+		pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"scrollbar.png");
+		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"scrollbarin.png");
 		pane.setForceScroll(false, true);
 		pane.layout();
 		Table table=new Table();
-		table.setBackground(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipbox.png"));
+		table.setBackground(Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"equipbox.png"));
 		table.add(pane);
 		table.padRight(20);
 		table.setPosition(600, 120);
@@ -164,24 +164,24 @@ public class EquipView extends IMenuView{
 		});
 		stage.addActor(mask);
 		
-		final Image msg=Res.get(Setting.GAME_RES_IMAGE_MENU_EQUIP+"equipmsgbox.png");
+		final Image msg=Res.get(Setting.IMAGE_MENU_EQUIP+"equipmsgbox.png");
 		msg.setPosition(380, 140);
 		stage.addActor(msg);
 		olist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		olist.offsetX2=20;
-		olist.getItems().add(new ListItem("装备").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"add.png")).setRunnable(new Runnable() {
+		olist.getItems().add(new ListItem("装备").setUserObject(Res.get(Setting.IMAGE_ICONS+"add.png")).setRunnable(new Runnable() {
 			@Override
 			public void run() {
 				ItemUtil.useEquip(RPG.ctrl.hero.heros.get(currentSelectHero), equip);
 				EquipView.this.gengrateEList();
 			}
 		}));
-		olist.getItems().add(new ListItem("丢弃").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"bin.png")).setRunnable(new Runnable() {
+		olist.getItems().add(new ListItem("丢弃").setUserObject(Res.get(Setting.IMAGE_ICONS+"bin.png")).setRunnable(new Runnable() {
 			@Override
 			public void run() {
 				if (equip.throwable) {
 					ItemUtil.throwItem("equipment", equip);
-					AlertUtil.add("丢弃成功。", AlertUtil.Yellow);
+					RPG.putMessage("丢弃成功。", AlertUtil.Yellow);
 					EquipView.this.gengrateEList();
 				}
 			}
@@ -202,7 +202,7 @@ public class EquipView extends IMenuView{
 			}
 		};
 		cancel.run();
-		olist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"no.png")));
+		olist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.IMAGE_ICONS+"no.png")));
 		olist.onDBClick(new Runnable() {
 			@Override
 			public void run() {

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.IOMode;
@@ -18,18 +19,16 @@ import com.rpsg.rpg.utils.game.Logger;
 
 
 public class Msg {
-	public static Image msgbox;
+	public Image msgbox;
 	
-	public static void dispose(){
+	public void dispose(){
 		if(msgbox!=null){
 			msgbox.dispose();
 			msgbox=null;
 		}
 	}
-	
-	public static void init(){
-		dispose();
-		msgbox=new Image(Setting.GAME_RES_MESSAGE+MsgType.正常);
+	public Msg() {
+		msgbox=new Image(Setting.MESSAGE+MsgType.正常);
 		float ss=msgbox.getWidth();
 		msgbox.setWidth(GameUtil.screen_width-40);
 		ss=ss/msgbox.getWidth();
@@ -45,17 +44,17 @@ public class Msg {
 		Logger.info("文本模块初始化完成。");
 	}
 	
-	static String currentText="";
-	static int currentTextPoint=0;
-	static int TEXT_DISPLAY_SPEED=30;
-	private static int DISPLAY_OFFSET=0;
-	static boolean show=false;
-	static boolean firstZPress=false;
-	static Color titleColor=Color.WHITE;
-	public static BaseScriptExecutor say(final Script script,final String str,final String title,final int size){
+	String currentText="";
+	int currentTextPoint=0;
+	int TEXT_DISPLAY_SPEED=30;
+	private int DISPLAY_OFFSET=0;
+	boolean show=false;
+	boolean firstZPress=false;
+	Color titleColor=Color.WHITE;
+	public BaseScriptExecutor say(final Script script,final String str,final String title,final int size){
 		firstZPress=false;
 		return script.$(new ScriptExecutor(script) {
-			SpriteBatch batch= (SpriteBatch) FG.stage.getBatch();
+			SpriteBatch batch= (SpriteBatch) RPG.ctrl.fg.stage.getBatch();
 			public void step() {
 				if(Input.isPress(Keys.CONTROL_LEFT)){
 					if(currentTextPoint<=currentText.length()-5)
@@ -88,7 +87,7 @@ public class Msg {
 		});
 	}
 	
-	public static BaseScriptExecutor setKeyLocker(Script script,final boolean flag){
+	public BaseScriptExecutor setKeyLocker(Script script,final boolean flag){
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
@@ -97,24 +96,24 @@ public class Msg {
 		});
 	}
 	
-	private static int getOrPosX(String txt,int size){
+	private int getOrPosX(String txt,int size){
 		int o=(200/2-FontUtil.getTextWidth(txt, size, Setting.STRING_PADDING_LR)/2);
 		return 20+o;
 	}
 	
-	public static BaseScriptExecutor show(Script script,final String msgType){
+	public BaseScriptExecutor show(Script script,final String msgType){
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				show = true;
-				final Image i = Res.getNP(Setting.GAME_RES_MESSAGE + msgType);
+				final Image i = Res.getNP(Setting.MESSAGE + msgType);
 				msgbox.setDrawable(i.getDrawable());
 				titleColor=getColor(msgType);
 			}
 		});
 	}
 	
-	public static BaseScriptExecutor hide(Script script){
+	public BaseScriptExecutor hide(Script script){
 		return script.$(new BaseScriptExecutor() {
 			@Override
 			public void init() {
@@ -123,8 +122,8 @@ public class Msg {
 		});
 	}
 	
-	public static void draw(SpriteBatch sb){
-		SpriteBatch batch= (SpriteBatch) FG.stage.getBatch();
+	public void draw(SpriteBatch sb){
+		SpriteBatch batch= (SpriteBatch) RPG.ctrl.fg.stage.getBatch();
 		if(show)
 			if(msgbox.getColor().a<1)
 				msgbox.setColor(1,1,1,msgbox.getColor().a+=0.1f);
@@ -137,7 +136,7 @@ public class Msg {
 		}
 	}
 	
-	public static Color getColor(String mt){
+	public Color getColor(String mt){
 		switch(mt){
 		case MsgType.紫:case MsgType.妖梦:case MsgType.梅莉:
 			return Color.BLACK;

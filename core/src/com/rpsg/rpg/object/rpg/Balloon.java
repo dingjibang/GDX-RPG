@@ -12,7 +12,7 @@ import com.rpsg.rpg.system.ui.Image;
 
 public class Balloon extends Actor implements Serializable{
 	private static final long serialVersionUID = 1L;
-	static final String BALLOON=Setting.GAME_RES_MESSAGE+"balloon.png";
+	static final String BALLOON=Setting.MESSAGE+"balloon.png";
 	static final int ICON_SIZE=32,ANIMATION_SIZE=7,ANIMATION_SPEED=10;
 	
 	Image[] balloons=new Image[ANIMATION_SIZE];

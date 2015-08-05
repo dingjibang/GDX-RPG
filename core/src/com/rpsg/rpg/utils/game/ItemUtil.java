@@ -26,7 +26,7 @@ public class ItemUtil {
 	public static boolean throwItem(String type,Item item,int count){
 		if(item.count==0){
 			if(!RPG.global.getItems(type).remove(item)){
-				AlertUtil.add("非法操作。", AlertUtil.Red);
+				RPG.putMessage("非法操作。", AlertUtil.Red);
 				return false;
 			}
 		}else{

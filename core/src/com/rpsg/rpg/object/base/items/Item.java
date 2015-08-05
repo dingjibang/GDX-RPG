@@ -20,11 +20,11 @@ public abstract class Item implements Serializable {
 	protected int icon=0;
 	
 	public String getIcon(){
-		return Setting.GAME_RES_IMAGE_ICONS+"i"+icon+".png";
+		return Setting.IMAGE_ICONS+"i"+icon+".png";
 	}
 	
 	public static String getNormalIcon(){
-		return Setting.GAME_RES_IMAGE_ICONS+"i0.png";
+		return Setting.IMAGE_ICONS+"i0.png";
 	}
 
 	public boolean use(){

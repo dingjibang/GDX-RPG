@@ -53,7 +53,7 @@ public class SUBWAYMARI extends DefaultNPC{
 			wait(120);
 			playSE("noise.wav");
 			$(new BaseScriptExecutor() {public void init() {
-				flash=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
+				flash=(Image) $.add(Res.getNP(Setting.IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
 				flash.setOrigin(Align.topRight);
 				flash.addAction(Actions.sequence(Actions.fadeIn(0.05f),Actions.parallel(Actions.scaleTo(2, 2,0.05f),Actions.moveTo(-300,400,0.05f)),Actions.color(Color.RED),Actions.moveTo(-100,200)));
 				RPG.ctrl.cg.push(flash);

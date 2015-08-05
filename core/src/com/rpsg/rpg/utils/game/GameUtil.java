@@ -6,7 +6,10 @@ import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapProperties;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.utils.display.FontUtil;
@@ -50,5 +53,12 @@ public class GameUtil {
 
 	public static float getScale(){
 		return (float)Gdx.graphics.getWidth()/(float)GameUtil.screen_width;
+	}
+	
+	public static NinePatch processNinePatchFile(String fname) {
+	    final Texture t = new Texture(Gdx.files.internal(fname));
+	    final int width = t.getWidth() - 2;
+	    final int height = t.getHeight() - 2;
+	    return new NinePatch(new TextureRegion(t, 1, 1, width, height), 12, 12, 12, 12);
 	}
 }

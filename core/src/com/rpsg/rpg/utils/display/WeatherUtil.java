@@ -13,13 +13,13 @@ import com.rpsg.rpg.view.GameViews;
 public class WeatherUtil {
 	public static int WEATHER_NO=0;
 	public static int WEATHER_RAIN=1;
-	public static int type;
+	public int type;
 	
-	public static float baseSaturation,bloomIntesity,bloomSaturation,threshold;
+	public float baseSaturation,bloomIntesity,bloomSaturation,threshold;
 	
-	private static ParticleEffect eff;
+	private ParticleEffect eff;
 	
-	public static String getName(){
+	public String getName(){
 		if(type==WEATHER_NO)
 			return "晴";
 		if(type==WEATHER_RAIN)
@@ -28,21 +28,21 @@ public class WeatherUtil {
 			return "数据异常";
 	}
 	
-	public static void init(int type){
-		WeatherUtil.type=type;
+	public void init(int type){
+		this.type=type;
 		RPG.global.weather=type;
 		if(eff!=null)
 			eff.dispose();
 		if(type==WEATHER_RAIN){
 			eff=new ParticleEffect();
-			eff.load(Gdx.files.internal(Setting.GAME_RES_PARTICLE+"rainp.p"),Gdx.files.internal(Setting.GAME_RES_PARTICLE));
+			eff.load(Gdx.files.internal(Setting.PARTICLE+"rainp.p"),Gdx.files.internal(Setting.PARTICLE));
 		}
 		setPost();
 	}
 	
-	private static int lastHeroPositionX;
-	static float gameMenuListener=1;
-	public static void draw(SpriteBatch batch){
+	private int lastHeroPositionX;
+	float gameMenuListener=1;
+	public void draw(SpriteBatch batch){
 		if(GameViews.gameview.stackView==null && gameMenuListener<1)
 			gameMenuListener+=.05;
 		if(GameViews.gameview.stackView != null && gameMenuListener>0)
@@ -75,7 +75,7 @@ public class WeatherUtil {
 		setPost();
 	}
 	
-	private static void setPost() {
+	private void setPost() {
 		String post=(String) RPG.maps.getProp().get("POST");
 		if(post!=null && post.length()!=0){
 			baseSaturation=1f;
@@ -104,11 +104,11 @@ public class WeatherUtil {
 		bloom.setEnabled(true);
 	}
 	
-	public static BaseScriptExecutor setWeather(final Script script,final int t){
+	public BaseScriptExecutor setWeather(final Script script,final int t){
 		return script.$((BaseScriptExecutor) new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				WeatherUtil.init(t);
+				WeatherUtil.this.init(t);
 			}
 		});
 	}

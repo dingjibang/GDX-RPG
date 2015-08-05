@@ -28,8 +28,8 @@ public class SL {
 			global.npcs = (ArrayList<NPC>)RPG.maps.loader.getNPCs().clone();
 			global.heros =  RPG.ctrl.hero.allHeros;
 			global.currentHeros =RPG.ctrl.hero.heros;
-			global.weather=WeatherUtil.type;
-			Files.save(global,Setting.GAME_PERSISTENCE+fileID+".dat");
+			global.weather=RPG.ctrl.weather.type;
+			Files.save(global,Setting.PERSISTENCE+fileID+".dat");
 			global.npcs.clear();
 			SLData slData=new SLData();
 			slData.gameDate=/*global.date+"年"+*/global.date.getMonth()+"月"+global.date.getDay()+"日";
@@ -38,8 +38,8 @@ public class SL {
 			slData.mapName=(String)RPG.maps.map.getProperties().get("name");
 			slData.saveDate=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
 			slData.heroName=RPG.ctrl.hero.getHeadHero().name;
-			Files.save(slData,Setting.GAME_PERSISTENCE+fileID+"_sld.dat");
-			PixmapIO.writePNG(new FileHandle(Gdx.files.getLocalStoragePath()+Setting.GAME_PERSISTENCE+fileID+".png"),px==null?MenuController.pbg:px);
+			Files.save(slData,Setting.PERSISTENCE+fileID+"_sld.dat");
+			PixmapIO.writePNG(new FileHandle(Gdx.files.getLocalStoragePath()+Setting.PERSISTENCE+fileID+".png"),px==null?MenuController.pbg:px);
 			if(callback!=null)
 				callback.run();
 			return true;
@@ -54,12 +54,12 @@ public class SL {
 	}
 	
 	public static Global load(int fileID){
-		return (Global) Files.load(Setting.GAME_PERSISTENCE+fileID+".dat");
+		return (Global) Files.load(Setting.PERSISTENCE+fileID+".dat");
 	}
 	
 	public static boolean delete(int fileID){
-		return 	new FileHandle(Gdx.files.getLocalStoragePath()+Setting.GAME_PERSISTENCE+fileID+".png").delete() &
-				new FileHandle(Gdx.files.getLocalStoragePath()+Setting.GAME_PERSISTENCE+fileID+".dat").delete() &
-				new FileHandle(Gdx.files.getLocalStoragePath()+Setting.GAME_PERSISTENCE+fileID+"_sld.dat").delete();
+		return 	new FileHandle(Gdx.files.getLocalStoragePath()+Setting.PERSISTENCE+fileID+".png").delete() &
+				new FileHandle(Gdx.files.getLocalStoragePath()+Setting.PERSISTENCE+fileID+".dat").delete() &
+				new FileHandle(Gdx.files.getLocalStoragePath()+Setting.PERSISTENCE+fileID+"_sld.dat").delete();
 	}
 }

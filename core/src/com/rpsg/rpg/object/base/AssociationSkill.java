@@ -8,7 +8,7 @@ public abstract class AssociationSkill implements Serializable {
 	private static final long serialVersionUID = 1L;
 	public String name = "";
 	public String illustration = "";
-	public String imagePath=Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_default_icon.png";
+	public String imagePath=Setting.IMAGE_MENU_TACTIC+"link_default_icon.png";
 	public int t_level=0;
 
 	public void exec() {

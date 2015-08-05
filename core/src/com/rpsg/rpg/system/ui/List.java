@@ -208,23 +208,23 @@ public class List<T> extends Widget implements Cullable {
 				int offset=0;
 				if(item instanceof Equipment){
 					if(!((Equipment)item).throwable){
-						Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"throwable.png").draw(batch, x+width-61+offset, y+itemY - itemHeight+4+padTop, 61, 17);
+						Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"throwable.png").draw(batch, x+width-61+offset, y+itemY - itemHeight+4+padTop, 61, 17);
 						offset=-70;
 					}
 					if(((Equipment)item).onlyFor!=null){
-						Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"only.png").draw(batch, x+width-61+offset, y+itemY - itemHeight+4+padTop, 61, 17);
+						Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"only.png").draw(batch, x+width-61+offset, y+itemY - itemHeight+4+padTop, 61, 17);
 						offset=-70;
 					}
 					Equipment e=(Equipment)item;
 					if(e.equipType!=null && offsetX2!=0){
 						if(e.equipType.equals(Equipment.EQUIP_CLOTHES))
-							batch.draw(Res.getTexture(Setting.GAME_RES_IMAGE_ICONS+"armor.png"),x+28, y+itemY - itemHeight+5+padTop);
+							batch.draw(Res.getTexture(Setting.IMAGE_ICONS+"armor.png"),x+28, y+itemY - itemHeight+5+padTop);
 						if(e.equipType.equals(Equipment.EQUIP_SHOES))
-							batch.draw(Res.getTexture(Setting.GAME_RES_IMAGE_ICONS+"shoes.png"),x+28, y+itemY - itemHeight+5+padTop);
+							batch.draw(Res.getTexture(Setting.IMAGE_ICONS+"shoes.png"),x+28, y+itemY - itemHeight+5+padTop);
 						if(e.equipType.equals(Equipment.EQUIP_WEAPON))
-							batch.draw(Res.getTexture(Setting.GAME_RES_IMAGE_ICONS+"sword.png"),x+28, y+itemY - itemHeight+5+padTop);
+							batch.draw(Res.getTexture(Setting.IMAGE_ICONS+"sword.png"),x+28, y+itemY - itemHeight+5+padTop);
 						if(e.equipType.equals(Equipment.EQUIP_ORNAMENT1) || e.equipType.equals(Equipment.EQUIP_ORNAMENT2))
-							batch.draw(Res.getTexture(Setting.GAME_RES_IMAGE_ICONS+"accessory.png"),x+28, y+itemY - itemHeight+5+padTop);
+							batch.draw(Res.getTexture(Setting.IMAGE_ICONS+"accessory.png"),x+28, y+itemY - itemHeight+5+padTop);
 					}
 				}
 				if(item instanceof ListItem){

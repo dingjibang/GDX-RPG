@@ -7,7 +7,7 @@ import com.rpsg.rpg.core.Setting;
 
 public class Smoother extends ShaderProgram {
 	public Smoother () {
-		super(Gdx.files.internal(Setting.GAME_RES_SHADER+"distancefield.vert"), Gdx.files.internal(Setting.GAME_RES_SHADER+"distancefield.frag"));
+		super(Gdx.files.internal(Setting.SHADER+"distancefield.vert"), Gdx.files.internal(Setting.SHADER+"distancefield.frag"));
 		if (!isCompiled()) {
 			throw new RuntimeException("Shader compilation failed:\n" + getLog());
 		}

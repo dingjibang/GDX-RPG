@@ -50,20 +50,20 @@ public class TacticView extends DefaultIView {
 	Label tipLib,tipLib2;
 	public View init() {
 		eff=new ParticleEffect();
-		eff.load(Gdx.files.internal(Setting.GAME_RES_PARTICLE+"link.p"),Gdx.files.internal(Setting.GAME_RES_PARTICLE));
+		eff.load(Gdx.files.internal(Setting.PARTICLE+"link.p"),Gdx.files.internal(Setting.PARTICLE));
 		
-		linkerc=Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_effect.png").disableTouch();
-		linkerl=Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_effect_left.png").disableTouch();
-		linkerr=Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_effect_right.png").disableTouch();
+		linkerc=Res.get(Setting.IMAGE_MENU_TACTIC+"link_effect.png").disableTouch();
+		linkerl=Res.get(Setting.IMAGE_MENU_TACTIC+"link_effect_left.png").disableTouch();
+		linkerr=Res.get(Setting.IMAGE_MENU_TACTIC+"link_effect_right.png").disableTouch();
 		
-		linkbox1=Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"linking_heroselbox2.png").disableTouch();
-		linkbox2=Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"linking_heroselbox2.png").disableTouch();
+		linkbox1=Res.get(Setting.IMAGE_MENU_TACTIC+"linking_heroselbox2.png").disableTouch();
+		linkbox2=Res.get(Setting.IMAGE_MENU_TACTIC+"linking_heroselbox2.png").disableTouch();
 		
 		stage = new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		
 		butstyle=new TextButtonStyle();
-		butstyle.down=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_but_active.png");
-		butstyle.up=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_but.png");
+		butstyle.down=Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"link_but_active.png");
+		butstyle.up=Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"link_but.png");
 		
 		group=new WidgetGroup();
 		group.setSize(GameUtil.screen_width*page,  GameUtil.screen_height);
@@ -75,8 +75,8 @@ public class TacticView extends DefaultIView {
 		stage.addActor(linkbox1.color(1,1,1,0));
 		stage.addActor(linkbox2.color(1,1,1,0));
 		
-		group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link.png").position(280, 430).object(new PageMask()));
-		group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"support.png").position(280+1024, 420).object(new PageMask()));
+		group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link.png").position(280, 430).object(new PageMask()));
+		group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"support.png").position(280+1024, 420).object(new PageMask()));
 		
 		generateHeroImage();
 		generateSupport();
@@ -158,7 +158,7 @@ public class TacticView extends DefaultIView {
 		public HeroImg(final Hero hero, final int idx){
 			this.hero=hero;
 			this.idx=idx;
-			final Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_herobg.png");
+			final Image bg=Res.get(Setting.IMAGE_MENU_TACTIC+"link_herobg.png");
 			group.addActor(bg.position(212*idx+174, 170).onClick(new Runnable() {
 				@Override
 				public void run() {
@@ -188,16 +188,16 @@ public class TacticView extends DefaultIView {
 								}
 							}
 							if (currentLinking == null) {
-								group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC + "link_heroselbox.png").position(212 * idx + 171, 167).disableTouch().object(new HeroImgMask3()).action(Actions.repeat(RepeatAction.FOREVER, Actions.sequence(Actions.color(Color.WHITE, 0.5f), Actions.color(new Color(1, 1, 1, 0.5f), 0.5f)))));
-								group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC + "link_herosel.png").position(212 * idx + 174, 170).disableTouch().object(new HeroImgMask()));
+								group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "link_heroselbox.png").position(212 * idx + 171, 167).disableTouch().object(new HeroImgMask3()).action(Actions.repeat(RepeatAction.FOREVER, Actions.sequence(Actions.color(Color.WHITE, 0.5f), Actions.color(new Color(1, 1, 1, 0.5f), 0.5f)))));
+								group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "link_herosel.png").position(212 * idx + 174, 170).disableTouch().object(new HeroImgMask()));
 							} else {
-								group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC + "link_herosel.png").position(212 * idx + 174, 170).disableTouch().object(new HeroImgMask2()));
+								group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "link_herosel.png").position(212 * idx + 174, 170).disableTouch().object(new HeroImgMask2()));
 							}
 							if (hero.linkTo != null && getIDX(hero.linkTo) != -1) {
 								int tmpIDX = getIDX(hero.linkTo);
-								group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC + "linked_herosel.png").position(212 * tmpIDX + 174, 170).disableTouch().object(new HeroImgMask()));
+								group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "linked_herosel.png").position(212 * tmpIDX + 174, 170).disableTouch().object(new HeroImgMask()));
 								group.addActor(new Label("连携中", 35).setPos(212 * tmpIDX + 190, 305).userObj(new HeroImgMask()).setWidth(1000));
-								group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC + "linking_heroselbox.png").position(212 * tmpIDX + 118, 124).disableTouch().object(new HeroImgMask3()).color(Color.valueOf("ffffff77")));
+								group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "linking_heroselbox.png").position(212 * tmpIDX + 118, 124).disableTouch().object(new HeroImgMask3()).color(Color.valueOf("ffffff77")));
 								TextButton but = new TextButton("取消连携关系", butstyle, 18);
 								but.setUserObject(new HeroImgMask());
 								but.setPosition(212 * idx + 189, 264);
@@ -225,11 +225,11 @@ public class TacticView extends DefaultIView {
 												if (a.getUserObject() != null && a.getUserObject() instanceof HeroImgMask4)
 													it2.remove();
 											}
-											group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC + "link_skill_border.png").object(new HeroImgMask4()).position(positionX - 12, 49).action(Actions.repeat(RepeatAction.FOREVER, Actions.sequence(Actions.color(Color.WHITE, 0.5f), Actions.color(new Color(1, 1, 1, 0.5f), 0.5f)))));
+											group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "link_skill_border.png").object(new HeroImgMask4()).position(positionX - 12, 49).action(Actions.repeat(RepeatAction.FOREVER, Actions.sequence(Actions.color(Color.WHITE, 0.5f), Actions.color(new Color(1, 1, 1, 0.5f), 0.5f)))));
 											group.addActor(new Label(skill.name, 50).setWidth(1000).setPos(670, 134).userObj(new HeroImgMask4()).color(1, 1, 1, 0).addAct(Actions.fadeIn(0.1f)));
 											group.addActor(new Label(skill.getClass().getSimpleName(), 30).setWidth(1000).setPad(-10).setPos(710, 104).userObj(new HeroImgMask4()).color(1, 1, 1, 0).addAct(Actions.alpha(0.15f, 0.5f)));
 											group.addActor(new Label("获得条件：连携者等级超过" + skill.t_level + "级", 18).setWidth(1000).setPos(689, 75).userObj(new HeroImgMask4()).color(1, 1, 1, 0).addAct(Actions.fadeIn(0.2f)));
-											group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC + "link_n_bg.png").object(new HeroImgMask4()).position(128, 0).color(1, 1, 1, 0).action(Actions.fadeIn(0.3f)));
+											group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "link_n_bg.png").object(new HeroImgMask4()).position(128, 0).color(1, 1, 1, 0).action(Actions.fadeIn(0.3f)));
 											group.addActor(new Label(skill.illustration, 16).setWidth(1000).setPos(165, 24).userObj(new HeroImgMask4()));
 										}
 									}).oranCenter().scale(1.13f).color(1, 1, 1, 0).action(Actions.parallel(Actions.fadeIn(0.3f), Actions.scaleTo(1, 1, 0.3f))));
@@ -269,9 +269,9 @@ public class TacticView extends DefaultIView {
 										for (HeroImg img : imglist) {
 											if (img.hero != null)
 												if (img != that && img.hero.linkTo == null) {
-													group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC + "linking_heroselbox.png").position(212 * img.idx + 118, 124).disableTouch().object(new HeroImgMask3()).color(Color.valueOf("0660f600")).action(Actions.fadeIn(0.3f)));
+													group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "linking_heroselbox.png").position(212 * img.idx + 118, 124).disableTouch().object(new HeroImgMask3()).color(Color.valueOf("0660f600")).action(Actions.fadeIn(0.3f)));
 												} else if (hero == null || img.hero.linkTo != null) {
-													group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC + "link_disable.png").position(212 * img.idx + 174, 170).disableTouch().object(new HeroImgMask()).color(1, 1, 1, 0).action(Actions.fadeIn(0.3f)));
+													group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "link_disable.png").position(212 * img.idx + 174, 170).disableTouch().object(new HeroImgMask()).color(1, 1, 1, 0).action(Actions.fadeIn(0.3f)));
 												}
 										}
 									}
@@ -289,16 +289,16 @@ public class TacticView extends DefaultIView {
 				}
 			}));
 			if(hero!=null){
-				group.addActor(Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/head.png").position(212*idx+174, 170).disableTouch());
+				group.addActor(Res.get(Setting.IMAGE_FG+hero.fgname+"/head.png").position(212*idx+174, 170).disableTouch());
 			}
-			group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_mask.png").position(212*idx+174, 170).disableTouch());
-			group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_level.png").position(212*idx+174+7, 177).color((hero!=null && hero.lead)?Color.valueOf("cc3333"):Color.valueOf("528431")).disableTouch());
+			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link_mask.png").position(212*idx+174, 170).disableTouch());
+			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link_level.png").position(212*idx+174+7, 177).color((hero!=null && hero.lead)?Color.valueOf("cc3333"):Color.valueOf("528431")).disableTouch());
 			group.addActor(new Label(hero!=null?hero.name:"", 28).setWidth(1000).align(212*idx+247, 240));
 			group.addActor(new Label(hero!=null?(hero.lead?"LEADER":"Level "+hero.association.level):"<空>", 22).setPad(-7).setWidth(1000).align(212*idx+252, 202));
 		}
 		
 		void setLinkBorder(){
-			group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"link_heroselbox.png").position(212*idx+171, 167).disableTouch().object(new HeroImgMask()).action(Actions.repeat(RepeatAction.FOREVER, Actions.sequence(Actions.color(Color.WHITE,0.5f),Actions.color(new Color(1,1,1,0.5f),0.5f)))).object(new HeroImgMask2()));
+			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link_heroselbox.png").position(212*idx+171, 167).disableTouch().object(new HeroImgMask()).action(Actions.repeat(RepeatAction.FOREVER, Actions.sequence(Actions.color(Color.WHITE,0.5f),Actions.color(new Color(1,1,1,0.5f),0.5f)))).object(new HeroImgMask2()));
 		}
 	}
 	
@@ -337,7 +337,7 @@ public class TacticView extends DefaultIView {
 			if(obj!=null && obj instanceof PageMask)
 				i.remove();
 		}
-		stage.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"left.png").position(180, 433).object(new PageMask()).onClick(new Runnable() {
+		stage.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"left.png").position(180, 433).object(new PageMask()).onClick(new Runnable() {
 			@Override
 			public void run() {
 				if(page>1)
@@ -345,7 +345,7 @@ public class TacticView extends DefaultIView {
 			}
 		}).color(page==1?Color.GRAY:Color.WHITE));
 		
-		stage.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"right.png").position(920, 433).object(new PageMask()).onClick(new Runnable() {
+		stage.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"right.png").position(920, 433).object(new PageMask()).onClick(new Runnable() {
 			@Override
 			public void run() {
 				if (page < TacticView.this.page)
@@ -369,18 +369,18 @@ public class TacticView extends DefaultIView {
 			this.y=y;
 			table=new Table();
 			ScrollPane pane=new ScrollPane(table);
-			pane.getStyle().vScroll=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"scrollbar.png");
-			pane.getStyle().vScrollKnob=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP+"scrollbarin.png");
+			pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"scrollbar.png");
+			pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"scrollbarin.png");
 			pane.setSize(330, 315);
 			pane.setPosition(x, y-13);
-			group.addActor(new Image(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_box.png").position(x-33, y-50));
+			group.addActor(new Image(Setting.IMAGE_MENU_TACTIC+"sup_box.png").position(x-33, y-50));
 			group.addActor(pane);
 			pane.setForceScroll(false, true);
 		}
 		
 		SupGroup generate(List<Hero> heroList){
 			for(Hero hero:heroList){
-				final SupImage si=new SupImage(Res.getTexture(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_herobox.png"));
+				final SupImage si=new SupImage(Res.getTexture(Setting.IMAGE_MENU_TACTIC+"sup_herobox.png"));
 				table.add(si.generate(hero,this).onClick(new Runnable() {
 					@Override
 					public void run() {
@@ -431,7 +431,7 @@ public class TacticView extends DefaultIView {
 		};
 		func_resetLabel.run();
 		final ImageButton l;
-		group.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_right.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_right_p.png")).onClick(new Runnable() {
+		group.addActor(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"sup_right.png"), Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"sup_right_p.png")).onClick(new Runnable() {
 			@Override
 			public void run() {
 				if (currentSelect != null && s_l == currentSelect.parent) {
@@ -455,7 +455,7 @@ public class TacticView extends DefaultIView {
 				}
 			}
 		}).pos(1555, 320));
-		group.addActor(l=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_left.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_left_p.png")).onClick(new Runnable() {
+		group.addActor(l=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"sup_left.png"), Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"sup_left_p.png")).onClick(new Runnable() {
 			@Override
 			public void run() {
 				if (currentSelect != null && s_r == currentSelect.parent) {
@@ -479,7 +479,7 @@ public class TacticView extends DefaultIView {
 				}
 			}
 		}).pos(1555, 240));
-		group.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_ll.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_ll_p.png")).onClick(new Runnable() {
+		group.addActor(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"sup_ll.png"), Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"sup_ll_p.png")).onClick(new Runnable() {
 			@Override
 			public void run() {
 				for (int i = 0; i < s_r.table.getCells().size; i++) {
@@ -488,7 +488,7 @@ public class TacticView extends DefaultIView {
 				}
 			}
 		}).pos(1555, 160));
-		group.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_info.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_info_p.png")).onClick(new Runnable() {
+		group.addActor(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"sup_info.png"), Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"sup_info_p.png")).onClick(new Runnable() {
 			@Override
 			public void run() {
 				if (currentSelect != null) {
@@ -512,8 +512,8 @@ public class TacticView extends DefaultIView {
 		public SupImage generate(Hero hero,SupGroup parent){
 			this.parent=parent;
 			this.hero=hero;
-			sbox=Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC+"sup_herobox_sel.png").disableTouch();
-			face=Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/face.png");
+			sbox=Res.get(Setting.IMAGE_MENU_TACTIC+"sup_herobox_sel.png").disableTouch();
+			face=Res.get(Setting.IMAGE_FG+hero.fgname+"/face.png");
 			name=new Label(hero.name,24).setWidth(1000);
 			level=new Label(hero.support!=null?hero.support.name:"无支援技能",16).setWidth(1000);
 			association=new Label(hero.association.name,32).color(1,1,1,.16f).setWidth(1000);

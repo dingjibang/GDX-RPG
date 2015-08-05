@@ -26,7 +26,7 @@ public abstract class Hero extends RPGObject {
 	public static final int TRUE=1;
 	public static final int FALSE=0;
 	
-	public static final String RES_PATH=Setting.GAME_RES_WALK+"heros/";
+	public static final String RES_PATH=Setting.WALK+"heros/";
 	
 	public String name;
 	public String jname;

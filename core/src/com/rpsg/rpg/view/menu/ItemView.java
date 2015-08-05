@@ -66,7 +66,7 @@ public class ItemView extends DefaultIView{
 	Image[] throwimg=new Image[10];
 	public View init() {
 		add=new ParticleEffect();
-		add.load(Gdx.files.internal(Setting.GAME_RES_PARTICLE + "addp.p"), Gdx.files.internal(Setting.GAME_RES_PARTICLE));
+		add.load(Gdx.files.internal(Setting.PARTICLE + "addp.p"), Gdx.files.internal(Setting.PARTICLE));
 		add.setPosition(835, 111);
 		
 		render=new ShapeRenderer();
@@ -74,7 +74,7 @@ public class ItemView extends DefaultIView{
 		
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		
-		Image bg=Res.get(Setting.GAME_RES_IMAGE_MENU_ITEM+"item_bg.png");
+		Image bg=Res.get(Setting.IMAGE_MENU_ITEM+"item_bg.png");
 		bg.setColor(1, 1, 1, 0);
 		bg.setPosition(160, 28);
 		bg.addAction(Actions.fadeIn(0.2f));
@@ -82,7 +82,7 @@ public class ItemView extends DefaultIView{
 		
 		ListStyle style=new ListStyle();
 		style.font=FontUtil.generateFont(" ".toCharArray()[0], 22);
-		style.selection=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_EQUIP + "equipsel.png");
+		style.selection=Res.getDrawable(Setting.IMAGE_MENU_EQUIP + "equipsel.png");
 		style.fontColorSelected=Color.valueOf("f5e70c");
 		elist=new com.rpsg.rpg.system.ui.List<Item>(style);
 		elist.onClick(new Runnable() {
@@ -94,8 +94,8 @@ public class ItemView extends DefaultIView{
 		});
 		elist.layout();
 		pane=new ScrollPane(elist);
-		pane.getStyle().vScroll=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_ITEM+"scrollbar.png");
-		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_ITEM+"scrollbarin.png");
+		pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_ITEM+"scrollbar.png");
+		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_ITEM+"scrollbarin.png");
 		pane.setForceScroll(false, true);
 		pane.layout();
 		
@@ -108,9 +108,9 @@ public class ItemView extends DefaultIView{
 		table.setColor(1, 1, 1, 0);
 		table.addAction(Actions.fadeIn(0.2f));
 		stage.addActor(table);
-		topbarSel=Res.get(Setting.GAME_RES_IMAGE_MENU_ITEM+"topsel.png");
+		topbarSel=Res.get(Setting.IMAGE_MENU_ITEM+"topsel.png");
 		topbar=new Table();
-		topbar.setBackground(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_ITEM + "topbar.png"));
+		topbar.setBackground(Res.getDrawable(Setting.IMAGE_MENU_ITEM + "topbar.png"));
 		topbar.setSize(818, 42);
 		topbar.setPosition(160, 455);
 		int tmpI=0,offsetX=135;
@@ -143,7 +143,7 @@ public class ItemView extends DefaultIView{
 			}
 		});
 		stage.addActor(mask);
-		scuse=Res.get(Setting.GAME_RES_IMAGE_MENU_SC+"sc_use.png");
+		scuse=Res.get(Setting.IMAGE_MENU_SC+"sc_use.png");
 		scuse.loaded= new Runnable() {
 			@Override
 			public void run() {
@@ -193,7 +193,7 @@ public class ItemView extends DefaultIView{
 				sellist.offsetX2 = 20;
 				sellist.getItems().clear();
 				if (item.type == Item.TYPE_USEINMAP)
-					sellist.getItems().add(new ListItem("使用").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS + "yes.png")).setRunnable(new Runnable() {
+					sellist.getItems().add(new ListItem("使用").setUserObject(Res.get(Setting.IMAGE_ICONS + "yes.png")).setRunnable(new Runnable() {
 						@Override
 						public void run() {
 							scfor.visible = true;
@@ -203,7 +203,7 @@ public class ItemView extends DefaultIView{
 						}
 					}));
 				if (item.throwable)
-					sellist.getItems().add(new ListItem("丢弃").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS + "bin.png")).setRunnable(new Runnable() {
+					sellist.getItems().add(new ListItem("丢弃").setUserObject(Res.get(Setting.IMAGE_ICONS + "bin.png")).setRunnable(new Runnable() {
 						@Override
 						public void run() {
 							group.setVisible(true);
@@ -213,7 +213,7 @@ public class ItemView extends DefaultIView{
 							layer = 3;
 						}
 					}));
-				sellist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS + "no.png")).setRunnable(new Runnable() {
+				sellist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.IMAGE_ICONS + "no.png")).setRunnable(new Runnable() {
 					@Override
 					public void run() {
 						can.run();
@@ -236,12 +236,12 @@ public class ItemView extends DefaultIView{
 		
 		
 		stage.addActor(mask2);			
-		scfor=Res.get(Setting.GAME_RES_IMAGE_MENU_ITEM+"selbg.png");
+		scfor=Res.get(Setting.IMAGE_MENU_ITEM+"selbg.png");
 		scfor.setPosition(500, 87);
 		
 		herolist=new com.rpsg.rpg.system.ui.List<ListItem>(style);
 		herolist.offsetX2=20;
-		herolist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.GAME_RES_IMAGE_ICONS+"no.png")));
+		herolist.getItems().add(new ListItem("取消").setUserObject(Res.get(Setting.IMAGE_ICONS+"no.png")));
 		for (Hero h : RPG.ctrl.hero.heros) {
 			herolist.getItems().add(new ListItem(h.name).setUserObject(h));
 		}
@@ -272,11 +272,11 @@ public class ItemView extends DefaultIView{
 			}
 		};
 		TextButtonStyle butstyle=new TextButtonStyle();
-		butstyle.over=butstyle.checkedOver=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button_RPG.hover.png");
-		butstyle.down=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button_active.png");
-		butstyle.up=Res.getDrawable(Setting.GAME_RES_IMAGE_GLOBAL+"button.png");
+		butstyle.over=butstyle.checkedOver=Res.getDrawable(Setting.IMAGE_GLOBAL+"button_RPG.hover.png");
+		butstyle.down=Res.getDrawable(Setting.IMAGE_GLOBAL+"button_active.png");
+		butstyle.up=Res.getDrawable(Setting.IMAGE_GLOBAL+"button.png");
 		group=new Group();
-		Image tbg=new Image(Setting.GAME_RES_IMAGE_MENU_SC+"throw.png");
+		Image tbg=new Image(Setting.IMAGE_MENU_SC+"throw.png");
 		tbg.setPosition(350, 200);
 		group.addActor(tbg);
 		TextButton button;
@@ -284,7 +284,7 @@ public class ItemView extends DefaultIView{
 			@Override
 			public void run() {
 				ItemUtil.throwItem(currentBar.name, item, currentCount);
-				AlertUtil.add("丢弃成功。", AlertUtil.Yellow);
+				RPG.putMessage("丢弃成功。", AlertUtil.Yellow);
 				ItemView.this.generateLists(currentBar.name);
 				item = new TipItem();
 				can3.run();
@@ -303,7 +303,7 @@ public class ItemView extends DefaultIView{
 		button2.setPosition(630, 225);
 		button2.setSize(100, 50);
 		group.addActor(button2);
-		ImageButton upbutton1=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"up.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"ups.png"));
+		ImageButton upbutton1=new ImageButton(Res.getDrawable(Setting.IMAGE_NUMBER+"up.png"), Res.getDrawable(Setting.IMAGE_NUMBER+"ups.png"));
 		upbutton1.onClick(new Runnable() {
 			@Override
 			public void run() {
@@ -312,7 +312,7 @@ public class ItemView extends DefaultIView{
 			}
 		}).setPosition(395, 340);
 		group.addActor(upbutton1);
-		ImageButton upbutton2=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"up.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"ups.png"));
+		ImageButton upbutton2=new ImageButton(Res.getDrawable(Setting.IMAGE_NUMBER+"up.png"), Res.getDrawable(Setting.IMAGE_NUMBER+"ups.png"));
 		upbutton2.onClick(new Runnable() {
 			@Override
 			public void run() {
@@ -321,7 +321,7 @@ public class ItemView extends DefaultIView{
 			}
 		}).setPosition(435, 340);
 		group.addActor(upbutton2);
-		ImageButton upbutton3=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"up.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"ups.png"));
+		ImageButton upbutton3=new ImageButton(Res.getDrawable(Setting.IMAGE_NUMBER+"up.png"), Res.getDrawable(Setting.IMAGE_NUMBER+"ups.png"));
 		upbutton3.onClick(new Runnable() {
 			@Override
 			public void run() {
@@ -330,7 +330,7 @@ public class ItemView extends DefaultIView{
 			}
 		}).setPosition(475, 340);
 		group.addActor(upbutton3);
-		ImageButton dbutton1=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"down.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"downs.png"));
+		ImageButton dbutton1=new ImageButton(Res.getDrawable(Setting.IMAGE_NUMBER+"down.png"), Res.getDrawable(Setting.IMAGE_NUMBER+"downs.png"));
 		dbutton1.onClick(new Runnable() {
 			@Override
 			public void run() {
@@ -339,7 +339,7 @@ public class ItemView extends DefaultIView{
 			}
 		}).setPosition(395, 240);
 		group.addActor(dbutton1);
-		ImageButton dbutton2=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"down.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"downs.png"));
+		ImageButton dbutton2=new ImageButton(Res.getDrawable(Setting.IMAGE_NUMBER+"down.png"), Res.getDrawable(Setting.IMAGE_NUMBER+"downs.png"));
 		dbutton2.onClick(new Runnable() {
 			@Override
 			public void run() {
@@ -348,7 +348,7 @@ public class ItemView extends DefaultIView{
 			}
 		}).setPosition(435, 240);
 		group.addActor(dbutton2);
-		ImageButton dbutton3=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"down.png"), Res.getDrawable(Setting.GAME_RES_IMAGE_NUMBER+"downs.png"));
+		ImageButton dbutton3=new ImageButton(Res.getDrawable(Setting.IMAGE_NUMBER+"down.png"), Res.getDrawable(Setting.IMAGE_NUMBER+"downs.png"));
 		dbutton3.onClick(new Runnable() {
 			@Override
 			public void run() {
@@ -541,9 +541,9 @@ public class ItemView extends DefaultIView{
 		boolean selected=false;
 		Image bigImg,miniImg;
 		public TopBar(final String name,int offsetX){
-			bigImg=Res.get(Setting.GAME_RES_IMAGE_MENU_ITEM+name+".png");
+			bigImg=Res.get(Setting.IMAGE_MENU_ITEM+name+".png");
 			bigImg.setPosition(700, 300);
-			miniImg=Res.get(Setting.GAME_RES_IMAGE_MENU_ITEM+name+"_m.png");
+			miniImg=Res.get(Setting.IMAGE_MENU_ITEM+name+"_m.png");
 			miniImg.setPosition(230+offsetX, 465);
 			this.name=name;
 			this.setTouchable(miniImg.getTouchable());

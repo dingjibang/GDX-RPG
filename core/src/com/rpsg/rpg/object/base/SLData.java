@@ -29,7 +29,7 @@ public class SLData implements Serializable{
 	public String gameDate;
 	public String heroName;
 	public static void generate(final int id,int i, final Stage stage, final HoverView sv) {
-		final Image im=Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebl.png").position(i>1?44+(i-2)*483:44+i*483, i>1?270:114);
+		final Image im=Res.get(Setting.IMAGE_MENU_SYSTEM+"savebl.png").position(i>1?44+(i-2)*483:44+i*483, i>1?270:114);
 		im.setUserObject(new exMask());
 		stage.addActor(im);
 		SLData slData = null;
@@ -54,10 +54,10 @@ public class SLData implements Serializable{
 						((TextButton) e).click();
 			}
 		});
-		String fileName = Setting.GAME_PERSISTENCE+(id+"_sld.dat");
+		String fileName = Setting.PERSISTENCE+(id+"_sld.dat");
 		if(!Gdx.files.local(fileName).exists()){
 			slData = new SLData();
-			String path=Setting.GAME_RES_IMAGE_MENU_SYSTEM+"ea.png";
+			String path=Setting.IMAGE_MENU_SYSTEM+"ea.png";
 			slData.thumbnail=Res.get(path);
 			stage.addActor(new Label("空位置",26).userObj(new Object()).setWidth(1000).setPos(i>1?324+(i-2)*483:324+i*483, i>1?347:191));
 		}else{
@@ -74,7 +74,7 @@ public class SLData implements Serializable{
 		slData.thumbnail.setUserObject(new Object());
 		slData.thumbnail.setSize(207,112);
 		stage.addActor(slData.thumbnail.position(i>1?54+(i-2)*483:54+i*483, i>1?277:121));
-		stage.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"/saveno.png").position(i>1?54+(i-2)*483:54+i*483, i>1?277:121));
+		stage.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"/saveno.png").position(i>1?54+(i-2)*483:54+i*483, i>1?277:121));
 		stage.addActor(new Label(id+"",14).userObj(new Object()).setWidth(1000).setPad(-5).setPos(0, i>1?295:139).setAlignX(i>1?83+(i-2)*483:83+i*483));
 	}
 	

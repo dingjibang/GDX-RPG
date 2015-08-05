@@ -34,7 +34,7 @@ public class Res {
 
 	private static void generateTempTexture() {
 		if(NO_TEXTURE==null )
-			NO_TEXTURE=new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_GLOBAL+"noTexture.png"));
+			NO_TEXTURE=new Texture(Gdx.files.internal(Setting.IMAGE_GLOBAL+"noTexture.png"));
 	}
 
 	public static Drawable getDrawable(String resPath) {

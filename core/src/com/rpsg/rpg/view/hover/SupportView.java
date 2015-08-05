@@ -34,12 +34,12 @@ public class SupportView extends HoverView {
 			}));
 			stage.addActor(group);
 			group.pack();
-			group.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_TACTIC + "sup_detabox.png").size(784, GameUtil.screen_height).position(240, 0));
-			$.add(Res.get(Setting.GAME_RES_IMAGE_FG+hero.fgname+"/Normal.png").position(1100, 0).scaleY(0.35f).color(1,1,1,.5f).scaleX(-0.35f)).setOrigin(Align.bottomLeft).appendTo(group);
+			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "sup_detabox.png").size(784, GameUtil.screen_height).position(240, 0));
+			$.add(Res.get(Setting.IMAGE_FG+hero.fgname+"/Normal.png").position(1100, 0).scaleY(0.35f).color(1,1,1,.5f).scaleX(-0.35f)).setOrigin(Align.bottomLeft).appendTo(group);
 			group.addActor(new Label(hero.name,55).setPos(490, 520).setWidth(1000));
 			group.addActor(new Label(hero.jname,43).setPos(560, 490).setWidth(1000).color(1, 1, 1, .3f).setPad(-18));
 			group.addActor(new Label("角色等级"+hero.prop.get("level")+"，社群("+hero.association.name+")等级"+hero.association.level,36).setPos(420, 440).setWidth(1000).color(1, 1, 1, .7f).setPad(-1));
-			group.addActor(new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"left.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_TACTIC+"left_p.png")).pos(430, 465).onClick(new Runnable() {
+			group.addActor(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"left.png"),Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"left_p.png")).pos(430, 465).onClick(new Runnable() {
 				@Override
 				public void run() {
 					SupportView.this.keyDown(Keys.ESCAPE);

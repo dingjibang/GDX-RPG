@@ -21,16 +21,12 @@ import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Initialization;
 import com.rpsg.rpg.system.base.ThreadPool;
-import com.rpsg.rpg.system.controller.Distant;
-import com.rpsg.rpg.system.controller.DrawController;
 import com.rpsg.rpg.system.controller.InputController;
-import com.rpsg.rpg.system.controller.MapLoader;
 import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.system.ui.StackView;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
-import com.rpsg.rpg.utils.display.Msg;
 import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.display.WeatherUtil;
 import com.rpsg.rpg.utils.game.Logger;
@@ -65,7 +61,7 @@ public class GameView extends View{
 		parameter = new TmxMapLoader.Parameters();
 		parameter.loadedCallback= new AssetLoaderParameters.LoadedCallback() {
 			public void finishedLoading(AssetManager assetManager, String fileName, Class type) {
-				RPG.maps.map = ma.get(Setting.GAME_RES_MAP + global.map);
+				RPG.maps.map = ma.get(Setting.MAP + global.map);
 				render=new OrthoCachedTiledMapRenderer(RPG.maps.map);
 				render.setBlending(true);
 				render.setView(camera);
@@ -74,11 +70,11 @@ public class GameView extends View{
 				inited = true;
 				post = GameViews.post;
 				bloom = GameViews.bloom;
-				WeatherUtil.init(RPG.global.weather);
+				RPG.ctrl.weather.init(RPG.global.weather);
 				Logger.info("图形加载完成。");
 			}
 		};
-		filename=Setting.GAME_RES_MAP+global.map;
+		filename=Setting.MAP+global.map;
 		ma.load(filename, TiledMap.class ,parameter);
 		return this;
 	}
@@ -86,7 +82,7 @@ public class GameView extends View{
 	@Override
 	public void dispose() {
 		RPG.maps.loader.dispose();
-		Msg.dispose();
+		RPG.ctrl.msg.dispose();
 		if(!Setting.persistence.cacheResource){
 			RPG.maps.map.dispose();
 			ma.unload(filename);
@@ -124,7 +120,7 @@ public class GameView extends View{
 			post.render(true);
 		
 		if(Setting.persistence.betterLight && RPG.maps.getProp().get("weather")==null)
-			WeatherUtil.draw((SpriteBatch) PostUtil.stage.getBatch());
+			RPG.ctrl.weather.draw((SpriteBatch) PostUtil.stage.getBatch());
 
 		ColorUtil.draw();
 		if(!first)

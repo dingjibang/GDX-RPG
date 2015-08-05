@@ -46,7 +46,7 @@ public class CGLOOP1 extends DefaultNPC{
 			wait(230);
 			playSE("YS070523.wav");
 			$(new BaseScriptExecutor() {public void init() {
-				final Image cg=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"flash.png")).setColor(1,1,1,0).getItem();
+				final Image cg=(Image) $.add(Res.getNP(Setting.IMAGE_CG+"flash.png")).setColor(1,1,1,0).getItem();
 				cg.addAction(Actions.sequence(Actions.color(new Color(1,0.7f,0,0.8f),0.02f),Actions.fadeOut(0.1f),Actions.run(new Runnable() {public void run() {
 					RPG.ctrl.cg.dispose(cg);
 				}})));
@@ -54,7 +54,7 @@ public class CGLOOP1 extends DefaultNPC{
 			}});
 			wait(79);
 			$(new BaseScriptExecutor() {public void init() {
-				final Image cg=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"flash.png")).setColor(1,1,1,0).setScale(3.8f).setPosition(-800,-300).getItem();
+				final Image cg=(Image) $.add(Res.getNP(Setting.IMAGE_CG+"flash.png")).setColor(1,1,1,0).setScale(3.8f).setPosition(-800,-300).getItem();
 				cg.addAction(Actions.sequence(Actions.color(new Color(1,1,1,0.8f),0.02f),Actions.fadeOut(0.1f),Actions.run(new Runnable() {public void run() {
 					RPG.ctrl.cg.dispose(cg);
 				}})));
@@ -96,7 +96,7 @@ public class CGLOOP1 extends DefaultNPC{
 			setSEVolume(0, 0.13f);
 			wait(30);
 			$(new BaseScriptExecutor() {public void init() {
-				y11=(Image) $.add(Res.getNP(Setting.GAME_RES_IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
+				y11=(Image) $.add(Res.getNP(Setting.IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
 				y11.addAction(Actions.sequence(Actions.color(new Color(1,1,1,1f),0.5f,Interpolation.pow4In)));
 				RPG.ctrl.cg.push(y11);
 			}});

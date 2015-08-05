@@ -10,8 +10,6 @@ import com.bitfire.postprocessing.effects.Bloom;
 import com.bitfire.postprocessing.effects.Vignette;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.io.Input;
-import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.utils.display.AlertUtil;
@@ -66,13 +64,12 @@ public class GameViews implements ApplicationListener {
 		logoview.init();//注册logoview
 		//other
 		batch = new SpriteBatch();//构建画笔
-		AlertUtil.init();//提示工具类，可以在屏幕右下角显示一个个的小框
 		if(Setting.persistence.errorMessage!=null && Setting.persistence.errorMessage.length()!=0){//当游戏异常退出之前，会尝试把错误信息写到Setting.persistence.errorMessage这里然后保存，然后下一次启动游戏的时候，看看这个变量是不是空的，如果不是，就把上次的异常信息显示出来。
-			AlertUtil.add(Setting.persistence.errorMessage, AlertUtil.Red);
+			RPG.putMessage(Setting.persistence.errorMessage, AlertUtil.Red);
 			Setting.persistence.errorMessage="";
 		}
 		if(!GameUtil.isDesktop)
-			AlertUtil.add("检测到您的游戏环境为手机/平板，已进行相应优化。", AlertUtil.Green);//然而并没有优化hhh（有的）
+			RPG.putMessage("检测到您的游戏环境为手机/平板，已进行相应优化。", AlertUtil.Green);//然而并没有优化hhh（有的）
 		
 		TimeUtil.init();//时间工具类，可以记录游戏运行时间等东西。
 		selectUtil=new SelectUtil();//TODO 试着把它移到gameview而不是gameviews。
@@ -147,7 +144,7 @@ public class GameViews implements ApplicationListener {
 		RPG.hover.draw(batch);//悬浮窗口，一些特殊的置顶窗口会使用。
 		GameUtil.drawFPS(batch);//绘制FPS
 		TimeUtil.logic();//STEP一下时间工具包
-		AlertUtil.draw(batch);//STEP一下提示工具包
+		RPG.alert.draw(batch);//STEP一下提示工具包
 		
 		batch.end();
 		

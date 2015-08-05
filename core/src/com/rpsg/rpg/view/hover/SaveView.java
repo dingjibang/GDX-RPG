@@ -27,8 +27,8 @@ public class SaveView extends HoverView{
 	public int currentSelect=-1;
 	public TextButton autobut,savebutton;
 	public void init() {
-		stage.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebg.png").color(1,1,1,0).action(Actions.fadeIn(0.2f)));
-		ImageButton exit=new ImageButton(Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"file_exit.png"),Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"file_exit_active.png"));
+		stage.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"savebg.png").color(1,1,1,0).action(Actions.fadeIn(0.2f)));
+		ImageButton exit=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"file_exit.png"),Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"file_exit_active.png"));
 		exit.setPosition(945, 530);
 		exit.addAction(Actions.moveTo(945, 500,0.1f));
 		exit.addListener(new InputListener(){
@@ -42,8 +42,8 @@ public class SaveView extends HoverView{
 		stage.addActor(exit);
 		
 		butstyle=new TextButtonStyle();
-		butstyle.up=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebut.png");
-		butstyle.down=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebuth.png");
+		butstyle.up=Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"savebut.png");
+		butstyle.down=Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"savebuth.png");
 		
 		TextButton llbutton=new TextButton("<<", butstyle).onClick(new Runnable() {
 			@Override
@@ -76,10 +76,10 @@ public class SaveView extends HoverView{
 		TextButton rbutton=new TextButton(">", butstyle).onClick(new Runnable() {
 			@Override
 			public void run() {
-				if (currentPageStart + 5 < Setting.GAME_SAVE_FILE_MAX_PAGE)
+				if (currentPageStart + 5 < Setting.SAVE_FILE_MAX_PAGE)
 					currentPageStart += 1;
 				else
-					currentPageStart = Setting.GAME_SAVE_FILE_MAX_PAGE - 5;
+					currentPageStart = Setting.SAVE_FILE_MAX_PAGE - 5;
 				SaveView.this.generateList();
 			}
 		});
@@ -90,10 +90,10 @@ public class SaveView extends HoverView{
 		TextButton rrbutton=new TextButton(">>", butstyle).onClick(new Runnable() {
 			@Override
 			public void run() {
-				if (currentPageStart + 10 < Setting.GAME_SAVE_FILE_MAX_PAGE)
+				if (currentPageStart + 10 < Setting.SAVE_FILE_MAX_PAGE)
 					currentPageStart += 5;
 				else
-					currentPageStart = Setting.GAME_SAVE_FILE_MAX_PAGE - 5;
+					currentPageStart = Setting.SAVE_FILE_MAX_PAGE - 5;
 				SaveView.this.generateList();
 			}
 		});
@@ -109,12 +109,12 @@ public class SaveView extends HoverView{
 					public void run(Object view) {
 						if (currentSelect != -1) {
 							if (SL.save(currentSelect))
-								AlertUtil.add("存档完成。", AlertUtil.Green);
+								RPG.putMessage("存档完成。", AlertUtil.Green);
 							else
-								AlertUtil.add("存档失败。", AlertUtil.Red);
+								RPG.putMessage("存档失败。", AlertUtil.Red);
 							SaveView.this.generateList();
 						} else {
-							AlertUtil.add("请选择要保存的位置。", AlertUtil.Yellow);
+							RPG.putMessage("请选择要保存的位置。", AlertUtil.Yellow);
 							Music.playSE("err");
 						}
 						((HoverView) view).disposed = true;
@@ -145,12 +145,12 @@ public class SaveView extends HoverView{
 					public void run(Object view) {
 						if (currentSelect != -1) {
 							if (SL.delete(currentSelect)) {
-								AlertUtil.add("删除档案成功。", AlertUtil.Green);
+								RPG.putMessage("删除档案成功。", AlertUtil.Green);
 								SaveView.this.generateList();
 							} else
-								AlertUtil.add("删除档案失败。", AlertUtil.Red);
+								RPG.putMessage("删除档案失败。", AlertUtil.Red);
 						} else
-							AlertUtil.add("请选择要删除的档案。", AlertUtil.Yellow);
+							RPG.putMessage("请选择要删除的档案。", AlertUtil.Yellow);
 						((HoverView) view).disposed = true;
 					}
 				}));
@@ -186,7 +186,7 @@ public class SaveView extends HoverView{
 
         stage.getActors().removeAll(removeList, true);
 		
-		if(!(currentPageStart+5>Setting.GAME_SAVE_FILE_MAX_PAGE))
+		if(!(currentPageStart+5>Setting.SAVE_FILE_MAX_PAGE))
 			for(int i=0;i<5;i++){
 //				if(currentPageStart+i>=Setting.GAME_SAVE_FILE_MAX_PAGE)
 //					continue;
@@ -218,12 +218,12 @@ public class SaveView extends HoverView{
             }
         }
 
-        if(currentPage!=Setting.GAME_SAVE_FILE_MAX_PAGE-1){
+        if(currentPage!=Setting.SAVE_FILE_MAX_PAGE-1){
 			autobut=new TextButton("Auto", butstyle).onClick(new Runnable() {
                 @Override
                 public void run() {
-                    currentPageStart = Setting.GAME_SAVE_FILE_MAX_PAGE - 5;
-                    currentPage = Setting.GAME_SAVE_FILE_MAX_PAGE - 1;
+                    currentPageStart = Setting.SAVE_FILE_MAX_PAGE - 5;
+                    currentPage = Setting.SAVE_FILE_MAX_PAGE - 1;
                     SaveView.this.generateList();
                 }
             });

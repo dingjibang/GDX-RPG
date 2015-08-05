@@ -17,7 +17,7 @@ import com.rpsg.rpg.utils.game.StringUtil;
 public class FontUtil {
 	public static final FreeTypeFontGenerator generator;
 	static{
-		generator=new FreeTypeFontGenerator(Gdx.files.internal(Setting.GAME_RES_PATH+"font/xyj.ttf"));
+		generator=new FreeTypeFontGenerator(Gdx.files.internal(Setting.BASE_PATH+"font/xyj.ttf"));
 	}
 	
 	private static BitmapFont getBitFont(int fontsize,char str){

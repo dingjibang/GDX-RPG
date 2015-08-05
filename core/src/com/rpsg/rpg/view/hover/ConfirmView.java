@@ -23,12 +23,12 @@ public class ConfirmView extends HoverView{
 	
 	static TextButtonStyle style=new TextButtonStyle();
 	static{	
-		style.up=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebut.png");
-		style.down=Res.getDrawable(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebuth.png");
+		style.up=Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"savebut.png");
+		style.down=Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"savebuth.png");
 	}
 	public void init() {
 		int offset=0;
-		stage.addActor(Res.get(Setting.GAME_RES_IMAGE_MENU_SYSTEM+"savebl.png").size(GameUtil.screen_width, GameUtil.screen_height).color(0,0,0,0.9f));
+		stage.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"savebl.png").size(GameUtil.screen_width, GameUtil.screen_height).color(0,0,0,0.9f));
 		for(final Confirm con:confirms){
 			TextButton but= new TextButton(con.name, style).onClick(new Runnable() {
 				@Override
