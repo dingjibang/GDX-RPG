@@ -44,7 +44,6 @@ import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.display.NumberUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.ItemUtil;
-import com.rpsg.rpg.view.GameViews;
 
 public class ItemView extends DefaultIView{
 	Image map,topbarSel;

@@ -1,10 +1,6 @@
 package com.rpsg.rpg.game.script;
 
-import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.controller.CGController;
 import com.rpsg.rpg.system.ui.Image;
 
 public class SayFuckMe extends Script{

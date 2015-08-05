@@ -29,7 +29,6 @@ import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
 import com.rpsg.rpg.object.rpg.RPGObject;
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.system.base.ThreadPool;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameView;
@@ -117,7 +116,7 @@ public class MapLoader {
 									 i-removeList.size());
 							Logger.info("NPC生成成功["+npc.position+","+npc.mapx+":"+npc.mapy+":"+npc.layer+"]");
 							gv.stage.addActor(npc);
-							ThreadPool.pool.add(npc.threadPool);
+							RPG.ctrl.thread.pool.add(npc.threadPool);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -158,7 +157,7 @@ public class MapLoader {
 				n.threadPool=new LinkedList<Script>();
 				n.init();
 				gv.stage.addActor(n);
-				ThreadPool.pool.add(n.threadPool);
+				RPG.ctrl.thread.pool.add(n.threadPool);
 				n.images=NPC.generateImages(n.imgPath, n.bodyWidth, n.bodyHeight);
 			}
 		}

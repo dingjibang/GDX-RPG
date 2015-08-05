@@ -9,7 +9,7 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.TextButton;
-import com.rpsg.rpg.system.ui.TextButton.*;
+import com.rpsg.rpg.system.ui.TextButton.TextButtonStyle;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class ConfirmView extends HoverView{

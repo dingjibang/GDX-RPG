@@ -38,8 +38,8 @@ public class CAFEAUTO extends DefaultNPC{
 			}});
 			setKeyLocker(true);
 			final Script yuki=findNPC("1").script();
-			final Script renko=findNPC("2").script();
-			final Script mari=findNPC("3").script();
+//			final Script renko=findNPC("2").script();
+//			final Script mari=findNPC("3").script();
 			and(setBalloon(yuki, BalloonType.沉默));
 			showMSG(梅莉);
 			say("果然你是出于这种考虑啊","梅莉");

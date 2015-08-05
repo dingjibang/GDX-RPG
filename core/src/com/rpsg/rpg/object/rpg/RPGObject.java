@@ -17,7 +17,6 @@ import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.Logger;
-import com.rpsg.rpg.view.GameViews;
 
 public abstract class RPGObject extends Actor implements Comparable<RPGObject>,Serializable{
 	

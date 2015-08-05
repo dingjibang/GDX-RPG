@@ -39,10 +39,8 @@ import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.MenuHeroBox;
 import com.rpsg.rpg.system.ui.StackView;
 import com.rpsg.rpg.system.ui.View;
-import com.rpsg.rpg.utils.display.WeatherUtil;
 import com.rpsg.rpg.utils.game.GameDate.Time;
 import com.rpsg.rpg.utils.game.GameUtil;
-import com.rpsg.rpg.utils.game.TimeUtil;
 import com.rpsg.rpg.view.GameViews;
 import com.rpsg.rpg.view.hover.LoadView;
 import com.rpsg.rpg.view.hover.SaveView;
@@ -75,7 +73,7 @@ public class MenuView extends StackView{
 			((Label)self.getItem()).setText(((RPG.global.date.getTime()==Time.DAY?"上午":(RPG.global.date.getTime()==Time.NIGHT?"夜晚":"黄昏"))+" "+RPG.ctrl.weather.getName()));
 		}}); 
 		frames.add($.add(new Label("",18).setWidth(1000).right(true).setPos(383, 525)).appendTo(ld).setColor(1,1,1,0).addAction(Actions.fadeIn(0.7f)),new GdxQueryRunnable() {public void run(GdxQuery self) {
-			((Label)self.getItem()).setText("游戏已进行"+TimeUtil.getGameRunningTime());
+			((Label)self.getItem()).setText("游戏已进行"+RPG.time.getGameRunningTime());
 		}});
 		$.add(hr=Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"hr.png")).setPosition(-200, 490).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.delay(0.2f, Actions.parallel(Actions.fadeIn(0.1f),Actions.moveTo(20, 490,0.1f))));
 		frames.add($.add(new Label("",24).setWidth(1000)).setPosition(-300, 357).appendTo(ld).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(75,357,0.5f,Interpolation.pow2Out))),new GdxQueryRunnable() {public void run(GdxQuery self) {

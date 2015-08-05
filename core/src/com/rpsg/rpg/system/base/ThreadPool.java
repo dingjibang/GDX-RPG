@@ -10,10 +10,10 @@ import com.rpsg.rpg.utils.game.Logger;
 
 public class ThreadPool {
 
-	public static List<List<Script>> pool =new LinkedList<List<Script>>();
+	public List<List<Script>> pool =new LinkedList<List<Script>>();
 	 
-	private static List<Script> removeList=new ArrayList<Script>();
-	public static synchronized void logic(){
+	private List<Script> removeList=new ArrayList<Script>();
+	public synchronized void logic(){
 		removeList.clear();
 		try{
 			for(int i=0;i<pool.size();i++){
@@ -31,7 +31,7 @@ public class ThreadPool {
 		}
 	}
 	
-	public static synchronized void init(){
+	public synchronized void init(){
 		for(int i=0;i<pool.size();i++){
 			pool.get(i).clear();
 		}

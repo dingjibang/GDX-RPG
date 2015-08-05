@@ -20,7 +20,6 @@ import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Initialization;
-import com.rpsg.rpg.system.base.ThreadPool;
 import com.rpsg.rpg.system.controller.InputController;
 import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.system.ui.StackView;
@@ -28,7 +27,6 @@ import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.display.PostUtil;
-import com.rpsg.rpg.utils.display.WeatherUtil;
 import com.rpsg.rpg.utils.game.Logger;
 
 public class GameView extends View{
@@ -131,7 +129,7 @@ public class GameView extends View{
 		if(null!=stackView)
 			stackView.draw(batch);
 		else{
-			ThreadPool.logic();
+			RPG.ctrl.thread.logic();
 		}
 		first=false;
 	}

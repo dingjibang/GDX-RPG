@@ -38,7 +38,6 @@ import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.ItemUtil;
-import com.rpsg.rpg.view.GameViews;
 
 public class EquipView extends IMenuView{
 	Stage stage;

@@ -5,6 +5,7 @@ import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.system.controller.Hover;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
+import com.rpsg.rpg.utils.game.TimeUtil;
 
 
 /**
@@ -19,6 +20,7 @@ public class RPG {
 	public static Input input = new Input();
 	public static Global global = new Global();
 	public static AlertUtil alert = new AlertUtil();
+	public static TimeUtil time = new TimeUtil();
 	
 	public static void putMessage(String msg,Image image){
 		alert.add(msg, image);

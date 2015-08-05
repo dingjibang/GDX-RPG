@@ -34,7 +34,6 @@ import com.rpsg.rpg.system.ui.TextButton.TextButtonStyle;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
-import com.rpsg.rpg.utils.game.TimeUtil;
 import com.rpsg.rpg.view.GameViews;
 import com.rpsg.rpg.view.hover.ConfirmView;
 import com.rpsg.rpg.view.hover.LoadView;
@@ -78,7 +77,7 @@ public class SystemView extends DefaultIView{
 		Label lvl5h=new Label("档案进行时间：",18).setWidth(1000).setPad(0);
 		lvl5h.setPosition(370, 110);
 		group.addActor(lvl5h);
-		lvl5=new Label(TimeUtil.getGameRunningTime(),18).setWidth(1000).setPad(-3);
+		lvl5=new Label(RPG.time.getGameRunningTime()	,18).setWidth(1000).setPad(-3);
 		lvl5.setPosition(500, 110);
 		group.addActor(lvl5);
 		TextButton sbutton=new TextButton("保存游戏", butstyle).onClick(new Runnable() {
@@ -380,7 +379,7 @@ public class SystemView extends DefaultIView{
 	String ttstr=Setting.MENU_SYSTEM_TEST_MESSAGE;
 	public void logic() {
 		stage.act();
-		lvl5.setText(TimeUtil.getGameRunningTime());
+		lvl5.setText(RPG.time.getGameRunningTime());
 		if(--step<=0){
 			step=stepmax;
 			if(ttest.getText().length()>=ttstr.length())

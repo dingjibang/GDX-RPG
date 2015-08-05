@@ -17,7 +17,6 @@ import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
-import com.rpsg.rpg.utils.game.TimeUtil;
 /**
  * GameViews 游戏核心入口类
  * @author dingjibang
@@ -71,7 +70,6 @@ public class GameViews implements ApplicationListener {
 		if(!GameUtil.isDesktop)
 			RPG.putMessage("检测到您的游戏环境为手机/平板，已进行相应优化。", AlertUtil.Green);//然而并没有优化hhh（有的）
 		
-		TimeUtil.init();//时间工具类，可以记录游戏运行时间等东西。
 		selectUtil=new SelectUtil();//TODO 试着把它移到gameview而不是gameviews。
 		
 		//高清画质一系列的东西，不用管
@@ -143,7 +141,6 @@ public class GameViews implements ApplicationListener {
 	
 		RPG.hover.draw(batch);//悬浮窗口，一些特殊的置顶窗口会使用。
 		GameUtil.drawFPS(batch);//绘制FPS
-		TimeUtil.logic();//STEP一下时间工具包
 		RPG.alert.draw(batch);//STEP一下提示工具包
 		
 		batch.end();

@@ -6,7 +6,7 @@ import com.rpsg.rpg.view.GameViews;
 
 public class Initialization {
 	public static void init(GameView gv){
-		ThreadPool.init();
+		RPG.ctrl.thread.init();
 		RPG.maps.loader.load(gv);
 		RPG.ctrl.fg.init();
 //		RadarUtil.init(100,new TextureRegion(new Texture(Gdx.files.internal(Setting.GAME_RES_IMAGE_LOGO+"bg.png"))),200);
