@@ -80,7 +80,6 @@ public class GameView extends View{
 	@Override
 	public void dispose() {
 		RPG.maps.loader.dispose();
-		RPG.ctrl.msg.dispose();
 		if(!Setting.persistence.cacheResource){
 			RPG.maps.map.dispose();
 			ma.unload(filename);

@@ -21,12 +21,6 @@ import com.rpsg.rpg.utils.game.Logger;
 public class Msg {
 	public Image msgbox;
 	
-	public void dispose(){
-		if(msgbox!=null){
-			msgbox.dispose();
-			msgbox=null;
-		}
-	}
 	public Msg() {
 		msgbox=new Image(Setting.MESSAGE+MsgType.正常);
 		float ss=msgbox.getWidth();
