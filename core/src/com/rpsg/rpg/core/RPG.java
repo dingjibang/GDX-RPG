@@ -25,4 +25,12 @@ public class RPG {
 	public static void putMessage(String msg,Image image){
 		alert.add(msg, image);
 	}
+	
+	public static Object getFlag(Object key){
+		return global.flag.get(key);
+	}
+	
+	public static void setFlag(Object key,Object value){
+		global.flag.put(key, value);
+	}
 }
