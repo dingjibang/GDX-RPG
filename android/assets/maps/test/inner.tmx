@@ -47,7 +47,7 @@
  </layer>
  <layer name="块层 2" width="25" height="21">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+NlYmDgpQOWRcJPgfgZmhghLMrMwCAGxOLMmHIwO+SgWAGo5iuQ/oYkhoyXA/EKIF6JJq4K1KcGxOrMmHpgdtAS0NMOW6Af/YDYF4hLmLGr7QWFLygsgFgehxp8diCDGhz655Lh36nMpNkBAueYEJhYMNzifCjZsRVLXA42f4DUvWXEXWaBAC45bHaAzJJgRah5xwhR95cRezkmBzUDlxy6HUugajWAdigDw7ccyK9goCxM8ek1ZiZOHSV2kKNuoOzAV7+hy5MLcKUFbGmFXAAAh8bSTjQIAAA=
+   H4sIAAAAAAAAC+NlYmDgpQOWRcJPgfgZmhghLMrMwCAGxOLMmHIwO+SgWAGo5iuQ/oYkhoyXA/EKIF6JJq4K1KcGxOrMmHpgdtAS0NMOW6Af/YDYF4hLmLGr7QWFLygsgFgehxp8diCDGhz655Lh36nMpNkBAueYEJhYMNzifCjZsRVLXA42f4DUvWXEXWaBAC45bHaAzJJgRah5xwhR95cRezkmBzUDlxy6HUugapWhYVsOxBUMlIUpLr3GzMSpo8QOctUNlB346jd0eXIBrrSALa2QCwDfAluxNAgAAA==
   </data>
  </layer>
  <objectgroup name="对象层 1">
@@ -69,11 +69,6 @@
     <property name="TELEPORTZ" value="2"/>
    </properties>
   </object>
-  <object name="FOONPC" type="NPC" gid="1066" x="768" y="336" width="48" height="64">
-   <properties>
-    <property name="IMAGE" value="walk_marisa"/>
-   </properties>
-  </object>
   <object name="DOOR" type="NPC" gid="1066" x="1104" y="240" width="48" height="48">
    <properties>
     <property name="IMAGE" value="empty"/>
@@ -87,6 +82,18 @@
    <properties>
     <property name="IMAGE" value="empty"/>
     <property name="SAYING" value="人类为何要互相伤害呢？\n回车测试？"/>
+   </properties>
+  </object>
+  <object name="INNERAUTO" type="NPC" gid="1066" x="768" y="960" width="48" height="64">
+   <properties>
+    <property name="IMAGE" value="empty"/>
+   </properties>
+  </object>
+  <object name="PUBLIC" type="NPC" gid="1066" x="336" y="816" width="48" height="64">
+   <properties>
+    <property name="ID" value="2"/>
+    <property name="IMAGE" value="walk_renko"/>
+    <property name="SHADOW" value="true"/>
    </properties>
   </object>
  </objectgroup>

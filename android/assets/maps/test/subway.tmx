@@ -20,11 +20,13 @@
   <object name="SUBWAYMARI" type="NPC" gid="301" x="-48" y="144" width="48" height="64">
    <properties>
     <property name="IMAGE" value="walk_mari"/>
+    <property name="SHADOW" value="true"/>
    </properties>
   </object>
   <object name="SUBWAYRENKO" type="NPC" gid="301" x="-48" y="240" width="48" height="64">
    <properties>
     <property name="IMAGE" value="walk_renko"/>
+    <property name="SHADOW" value="true"/>
    </properties>
   </object>
  </objectgroup>

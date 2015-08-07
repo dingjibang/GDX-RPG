@@ -114,6 +114,8 @@ public class MapLoader {
 								npc.generatePosition(((int)(((RectangleMapObject)obj).getRectangle().getX())/48),
 									 (int)(bot.getHeight()-2-((RectangleMapObject)obj).getRectangle().getY()/48),
 									 i-removeList.size());
+							if(obj.getProperties().get("SHADOW")!=null && obj.getProperties().get("SHADOW").equals("true"))
+								npc.drawShadow=true;
 							Logger.info("NPC生成成功["+npc.position+","+npc.mapx+":"+npc.mapy+":"+npc.layer+"]");
 							gv.stage.addActor(npc);
 							RPG.ctrl.thread.pool.add(npc.threadPool);
