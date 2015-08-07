@@ -41,6 +41,9 @@ project(":desktop") {
         compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
         compile "io.nondev:nonfilesystem-desktop:$nonfilesystemVersion"
         compile "io.nondev:nonlua:$nonluaVersion:natives-desktop"
+		compile 'com.eclipsesource.j2v8:j2v8_win32_x86_64:3.0.0'
+		compile 'com.eclipsesource.j2v8:j2v8_linux_x86_64:3.0.0'
+		compile 'com.eclipsesource.j2v8:j2v8_macosx_x86_64:3.0.0'
     }
 }
 
@@ -67,6 +70,9 @@ project(":android") {
         natives "io.nondev:nonlua:$nonluaVersion:natives-armeabi"
         natives "io.nondev:nonlua:$nonluaVersion:natives-armeabi-v7a"
         natives "io.nondev:nonlua:$nonluaVersion:natives-x86"
+		compile 'com.eclipsesource.j2v8:j2v8_android:3.0.0'
+		compile 'com.eclipsesource.j2v8:j2v8_android_armv7l:3.0.0'
+		compile 'com.eclipsesource.j2v8:j2v8_android_x86:3.0.0'
     }
 }
 
@@ -81,6 +87,7 @@ project(":core") {
         compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
         compile "io.nondev:nonfilesystem:$nonfilesystemVersion"
         compile "io.nondev:nonlua:$nonluaVersion"
+		compile "com.eclipsesource.j2v8:j2v8:1.0"
     }
 }
 

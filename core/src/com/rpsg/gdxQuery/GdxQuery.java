@@ -118,7 +118,7 @@ public class GdxQuery {
 			return getItems().get(index);
 	}
 	
-	public GdxQuery find( Class<? extends Actor>... cls){
+	public GdxQuery find( @SuppressWarnings("unchecked") Class<? extends Actor>... cls){
 		GdxQuery query=$.add();
 		for(Class<? extends Actor> c:cls)
 			for(Actor actor:getItems())

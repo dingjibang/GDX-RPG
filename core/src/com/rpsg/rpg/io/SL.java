@@ -14,11 +14,8 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.SLData;
 import com.rpsg.rpg.object.rpg.NPC;
-import com.rpsg.rpg.system.controller.MapLoader;
 import com.rpsg.rpg.system.controller.MenuController;
-import com.rpsg.rpg.utils.display.WeatherUtil;
 import com.rpsg.rpg.utils.game.Logger;
-import com.rpsg.rpg.view.GameViews;
 
 public class SL {
 	@SuppressWarnings("unchecked")

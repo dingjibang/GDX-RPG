@@ -10,7 +10,6 @@ import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
 import com.rpsg.rpg.system.base.Initialization;
-import com.rpsg.rpg.system.base.ThreadPool;
 
 
 public class Move {
