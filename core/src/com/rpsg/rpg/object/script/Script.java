@@ -1,9 +1,5 @@
 package com.rpsg.rpg.object.script;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.LinkedList;
-import java.util.List;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -31,7 +27,6 @@ import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FG;
 import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.display.SelectUtil;
-import com.rpsg.rpg.utils.display.WeatherUtil;
 import com.rpsg.rpg.utils.game.Base;
 import com.rpsg.rpg.utils.game.GameDate;
 import com.rpsg.rpg.utils.game.Heros;
@@ -90,9 +85,12 @@ public abstract class Script implements MsgType,FGType{
 			public Object invoke(V8Object receiver, V8Array parameters) {
 				if(callback instanceof ParamRunnable){
 					((ParamRunnable)callback).run(parameters);
-					currentExeced=exeMode.first;
-					if(hold)
+					if(hold){
+						currentExeced=exeMode.first;
 						hold();
+					}else{
+						currentExeced=exeMode.stop;
+					}
 					return null;
 				}else{
 					currentExeced=exeMode.stop;
@@ -276,7 +274,9 @@ public abstract class Script implements MsgType,FGType{
 		register(runtime, "waitCameraMove",new ParamRunnable() {public void run(V8Array param) {
 			MoveController.waitCameraMove(Script.this);
 		}});
-		
+		register(runtime, "print",new ParamRunnable() {public void run(V8Array param) {
+			System.out.println("Script:"+param.get(0).toString());
+		}},false);
 	}
 	
 	/**
