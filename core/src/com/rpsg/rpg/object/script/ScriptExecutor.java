@@ -1,5 +1,7 @@
 package com.rpsg.rpg.object.script;
 
+import com.rpsg.rpg.object.script.Script.exeMode;
+
 public abstract class ScriptExecutor extends BaseScriptExecutor{
 	public abstract void init();
 	public void step(){}
@@ -11,11 +13,11 @@ public abstract class ScriptExecutor extends BaseScriptExecutor{
 	}
 	
 	public void toInit(){
-		script.currentExeced=false;
+		script.currentExeced=exeMode.running;
 		init();
 	}
 	
 	public void dispose(){
-		script.currentExeced=true;
+		script.currentExeced=exeMode.stop;
 	}
 }

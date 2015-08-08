@@ -42,7 +42,7 @@ public class SelectUtil implements InputProcessor {
 	public static String currentSelect="";
 	boolean select=false;
 	boolean isLocked;
-	public BaseScriptExecutor select(Script script, final String ...str){
+	public BaseScriptExecutor select(Script script, final String... str){
 		final SelectUtil that=this;
 		return script.$(new ScriptExecutor(script) {
 			public void step() {

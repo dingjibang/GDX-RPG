@@ -42,6 +42,10 @@ public class Setting {
 	public static final String IMAGE_GLOBAL = BASE_PATH + IMAGE_BASE_PATH + "/global/";
 	public static final String IMAGE_ICONS = BASE_PATH + IMAGE_BASE_PATH + "/icons/";
 	public static final String PARTICLE = BASE_PATH + "particle/";
+	
+	//script
+	public static final String SCRIPT = BASE_PATH + "script";
+	public static final String SCRIPT_MAP = SCRIPT + "/map/";
 
 	// 存档最大页数
 	public static final int SAVE_FILE_MAX_PAGE = 20;

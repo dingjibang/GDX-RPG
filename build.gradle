@@ -87,7 +87,10 @@ project(":core") {
         compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
         compile "io.nondev:nonfilesystem:$nonfilesystemVersion"
         compile "io.nondev:nonlua:$nonluaVersion"
-		compile "com.eclipsesource.j2v8:j2v8:1.0"
+		//compile "com.eclipsesource.j2v8:j2v8:1.0"
+		compile 'com.eclipsesource.j2v8:j2v8_win32_x86_64:3.0.0'
+		compile 'com.eclipsesource.j2v8:j2v8_linux_x86_64:3.0.0'
+		compile 'com.eclipsesource.j2v8:j2v8_macosx_x86_64:3.0.0'
     }
 }
 

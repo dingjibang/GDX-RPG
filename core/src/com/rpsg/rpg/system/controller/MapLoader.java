@@ -105,7 +105,6 @@ public class MapLoader {
 							else
 								npc=new PublicNPC((String) obj.getProperties().get("ID"),obj.getProperties().get("IMAGE")+".png",(int)(((RectangleMapObject)obj).getRectangle().getWidth()),(int)(((RectangleMapObject)obj).getRectangle().getHeight()));
 							npc.params=GameUtil.parseMapProperties(obj.getProperties());
-							npc.init();
 							if(obj.getProperties().get("ABSOLUTE")!=null && obj.getProperties().get("ABSOLUTE").equals("true"))
 								npc.generateAbsolutePosition(((int)(((RectangleMapObject)obj).getRectangle().getX())),
 										 (int)(((RectangleMapObject)obj).getRectangle().getY()),

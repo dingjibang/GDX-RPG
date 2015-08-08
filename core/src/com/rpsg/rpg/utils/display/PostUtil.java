@@ -106,13 +106,4 @@ public class PostUtil {
 
 	public static void keyTyped(char c) {
 	}
-	
-	public static BaseScriptExecutor showMenu(final Script script,final boolean show){
-		return script.$(new BaseScriptExecutor() {
-			@Override
-			public void init() {
-				showMenu=show;
-			}
-		});
-	}
 }

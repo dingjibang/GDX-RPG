@@ -1,10 +1,17 @@
 package com.rpsg.rpg.object.script;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.eclipsesource.v8.JavaCallback;
+import com.eclipsesource.v8.V8;
+import com.eclipsesource.v8.V8Array;
+import com.eclipsesource.v8.V8Object;
+import com.eclipsesource.v8.utils.V8Executor;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.RPG;
@@ -12,6 +19,8 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.FGType;
 import com.rpsg.rpg.object.base.MsgType;
+import com.rpsg.rpg.object.base.ParamReturnRunnable;
+import com.rpsg.rpg.object.base.ParamRunnable;
 import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -43,8 +52,71 @@ public abstract class Script implements MsgType,FGType{
 	public Script generate(NPC npc,CollideType type){
 		this.npc=npc;
 		this.callType=type;
-		init();
+		try {
+			start();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return this;
+	}
+	
+	public void start(V8Object worker, String... s) {
+		String script = (String) s[0];
+		V8Executor executor = new V8Executor(script, true, "messageHandler") {
+			@Override
+			protected void setup(V8 runtime) {
+				configureWorker(runtime);
+			}
+		};
+		worker.getRutime().registerV8Executor(worker, executor);
+		executor.start();
+	}
+
+	V8Executor mainExecutor;
+	public void start() throws InterruptedException {
+		String result=Gdx.files.internal(Setting.SCRIPT_MAP+"test.js").readString();
+		mainExecutor = new V8Executor(result) {
+			@Override
+			protected void setup(V8 runtime) {
+				configureWorker(runtime);
+			}
+		};
+		mainExecutor.start();
+		
+	}
+	
+	private void register(V8 runtime,String jsMethod,final Object callback,final boolean hold){
+		runtime.registerJavaMethod(new JavaCallback() {
+			public Object invoke(V8Object receiver, V8Array parameters) {
+				if(callback instanceof ParamRunnable){
+					((ParamRunnable)callback).run(parameters);
+					currentExeced=exeMode.first;
+					if(hold)
+						hold();
+					return null;
+				}else{
+					currentExeced=exeMode.stop;
+					return ((ParamReturnRunnable)callback).run(parameters);
+				}
+			}
+		}, jsMethod);
+	}
+	
+	private void register(V8 runtime,String jsMethod,final Object callback){
+		register(runtime, jsMethod, callback,true);
+	}
+	
+	
+	
+	private void hold(){
+		while(currentExeced!=exeMode.stop){
+//			System.out.println("t2:running");
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public abstract void init();
@@ -52,364 +124,169 @@ public abstract class Script implements MsgType,FGType{
 	public boolean isAlive=false;
 	
 	public boolean isAlive(){
-		return isAlive;
+		return isAlive ;
 	}
 	
 	public void dispose(){
 		this.isAlive=false;
 	}
 	
-	public List<BaseScriptExecutor> scripts=new LinkedList<BaseScriptExecutor>();
+	public BaseScriptExecutor currentScript;
 	
 	public int point=-1;
-	public boolean currentExeced=true;
+	public exeMode currentExeced=exeMode.first;
 	private Class<? extends NPC>[] type;
+	
+	public static enum exeMode{
+		first,running,stop
+	}
 	
 	
 	public void run(){
+//		System.out.println("maint:"+currentExeced);
 		if(waitTime>0){
 			waitTime--;
 			return;
 		}
-		if(currentExeced)
-			if(++point==scripts.size()){
-				this.dispose();
-				return;
+		if(currentExeced==exeMode.first && currentScript!=null)
+			if(currentScript instanceof ScriptExecutor){
+				((ScriptExecutor)currentScript).toInit();
 			}else{
-				if(scripts.get(point) instanceof ScriptExecutor){
-					((ScriptExecutor)scripts.get(point)).toInit();
-					currentExeced=false;
-				}else{
-					scripts.get(point).init();
-				}
+				currentScript.init();
+				currentExeced=exeMode.stop;
 			}
-		if(scripts.get(point) instanceof ScriptExecutor)
-			((ScriptExecutor)scripts.get(point)).step();
+		if(currentScript instanceof ScriptExecutor && currentExeced==exeMode.running)
+			((ScriptExecutor)currentScript).step();
 	}
 	
-	/**
-	 * 插入一个新的执行器到当前指针
-	 */
-	public BaseScriptExecutor _$(BaseScriptExecutor exe){
-		scripts.remove(exe);
-		int _point=point;
-		while(scripts.get(++_point).isInsert);
-		exe.isInsert=true;
-		scripts.add(_point, exe);
-		return exe;
-	}
-	
-	/**
-	 * 插入一个新的执行器到当前指针后一位
-	 */
-	public BaseScriptExecutor __$(BaseScriptExecutor exe){
-		exe.isInsert=true;
-		scripts.remove(scripts.size()-1);
-		scripts.add(point==-1?0:point, exe);
-		if(point>=0)
-			point--;
-		currentExeced=true;
-		return exe;
+	private void configureWorker(final V8 runtime) {
+		register(runtime, "say",new ParamRunnable() {public void run(V8Array param) {
+			if(param.length()==1)
+				RPG.ctrl.msg.say(Script.this, (String)param.get(0), "", 22);
+			else if(param.length()==2)
+				RPG.ctrl.msg.say(Script.this, (String)param.get(0), (String)param.get(1), 22);
+			else
+				RPG.ctrl.msg.say(Script.this, (String)param.get(0), (String)param.get(1), (Integer)param.get(2));
+		}});
+		register(runtime, "shwoMenu",new ParamRunnable() {public void run(V8Array param) {
+			PostUtil.showMenu=param.getBoolean(0);
+		}},false);
+		register(runtime, "keyLock",new ParamRunnable() {public void run(V8Array param) {
+			RPG.ctrl.msg.setKeyLocker(Script.this, param.getBoolean(0));
+		}});
+		register(runtime, "dispose",new ParamRunnable() {public void run(V8Array param) {
+			dispose();
+			mainExecutor.shutdown();
+			mainExecutor.forceTermination();
+			mainExecutor.stop();
+		}});
+		register(runtime, "lock",new ParamRunnable() {public void run(V8Array param) {
+			 Move.lock(Script.this, param.getBoolean(0));
+		}});
+		register(runtime, "faceToHero",new ParamRunnable() {public void run(V8Array param) {
+			 Move.faceToHero(Script.this);
+		}});
+		register(runtime, "faceTo",new ParamRunnable() {public void run(V8Array param) {
+			Move.turn(Script.this, param.getInteger(0));
+		}});
+		register(runtime, "move",new ParamRunnable() {public void run(V8Array param) {
+			Move.move(Script.this, param.getInteger(0));
+		}});
+		register(runtime, "move",new ParamRunnable() {public void run(V8Array param) {
+			Move.move((Script)param.get(0),param.getInteger(0));
+		}});
+		register(runtime, "wait",new ParamRunnable() {public void run(V8Array param) {
+			Timer.wait(Script.this, param.getInteger(0));
+		}});
+		register(runtime, "findNPC",new ParamReturnRunnable() {public Object run(V8Array param) {
+			GdxQuery query =$.add();
+			try {
+				query.add(GameViews.gameview.stage.getActors().items).find(ClassLoader.getSystemClassLoader().loadClass("com.rpsg.rpg.game.object."+param.get(0)));
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			return query.isEmpty()?null:((NPC) query.getItem()).script(); 
+		}});
+		register(runtime, "findPublicNPC",new ParamReturnRunnable() {public Object run(V8Array param) {
+			for(Actor npc:GameViews.gameview.stage.getActors())
+				if(npc instanceof PublicNPC && ((PublicNPC)npc).getId().equals(param.getInteger(0)))
+					return (PublicNPC)npc;
+			return null;
+		}});
+		register(runtime, "removeSelf",new ParamRunnable() {public void run(V8Array param) {
+			Base.removeSelf(Script.this);
+		}});
+		register(runtime, "playMusic",new ParamRunnable() {public void run(V8Array param) {
+			Music.playMusic(Script.this, param.getString(0));
+		}});
+		register(runtime, "playSE",new ParamRunnable() {public void run(V8Array param) {
+			Music.playSE(Script.this, param.getString(0));
+		}});
+		register(runtime, "changeSelf",new ParamRunnable() {public void run(V8Array param) {
+//			Base.changeSelf(this,script);
+		}});
+		register(runtime, "showMSG",new ParamRunnable() {public void run(V8Array param) {
+			if(param.length()==1)
+				RPG.ctrl.msg.show(Script.this, param.getString(0));
+			else
+				RPG.ctrl.msg.show(Script.this,正常);
+		}});
+		register(runtime, "stopAllSE",new ParamRunnable() {public void run(V8Array param) {
+			if(param.length()==1)
+				Music.stopAllSE(Script.this,(float) param.getDouble(0));
+			else if(param.get(1) instanceof String)
+				Music.stopAllSE(Script.this,(float) param.getDouble(0),param.getString(1));
+		}});
+		register(runtime, "setSEVolume",new ParamRunnable() {public void run(V8Array param) {
+			Music.setSEVolume(Script.this,(float) param.getDouble(0),(float) param.getDouble(1));
+		}});
+		register(runtime, "hideMSG",new ParamRunnable() {public void run(V8Array param) {
+			RPG.ctrl.msg.hide(Script.this);
+		}});
+		register(runtime, "hideFG",new ParamRunnable() {public void run(V8Array param) {
+			if(param.length()==1)
+				RPG.ctrl.fg.hide(Script.this, param.getInteger(0));
+			else
+				RPG.ctrl.fg.hideAll(Script.this);
+		}});
+		register(runtime, "showFGLeft",new ParamRunnable() {public void run(V8Array param) {
+			RPG.ctrl.fg.show(Script.this, Setting.IMAGE_FG+param.getString(0)+param.getString(1)+".png", FG.LEFT);
+		}});
+		register(runtime, "showFGRight",new ParamRunnable() {public void run(V8Array param) {
+			RPG.ctrl.fg.show(Script.this, Setting.IMAGE_FG+param.getString(0)+param.getString(1)+".png", FG.RIGHT);
+		}});
+		register(runtime, "swapHeroQueue",new ParamRunnable() {public void run(V8Array param) {
+			if(param.length()==1)
+				Heros.swapHeroQueue(Script.this, param.getInteger(0));
+			else
+				Heros.swapHeroQueue(Script.this, param.getInteger(0),param.getInteger(1));
+		}});
+		register(runtime, "select",new ParamRunnable() {public void run(V8Array param) {
+			String[] str=new String[param.length()];
+			for(int i=0;i<param.length();i++)
+				str[i]=param.get(i).toString();
+			GameViews.selectUtil.select(Script.this, str);
+		}});
+		register(runtime, "currentSelect",new ParamReturnRunnable() {public Object run(V8Array param) {
+			return SelectUtil.currentSelect;
+		}});
+		register(runtime, "setWeather",new ParamRunnable() {public void run(V8Array param) {
+			RPG.ctrl.weather.setWeather(Script.this, param.getInteger(0));
+		}});
+		register(runtime, "waitCameraMove",new ParamRunnable() {public void run(V8Array param) {
+			MoveController.waitCameraMove(Script.this);
+		}});
+		
 	}
 	
 	/**
 	 * 插入一个新的执行器到堆栈的最后一位
 	 */
 	public BaseScriptExecutor $ (BaseScriptExecutor exe){
-		scripts.add(exe);
+		currentScript=exe;
 		return exe;
 	}
 	
-	/**
-	 * 在屏幕上打印出一句话
-	 * @param str 要说的话
-	 * @param title 要说话的人
-	 * @param size 文本字号
-	 * @return
-	 */
-	public BaseScriptExecutor say(String str,String title,int size){
-		return RPG.ctrl.msg.say(this, str, title, size);
-	}
-	
-	/**
-	 * 在屏幕上打印出一句话
-	 * @param str 要说的话
-	 * @param title 要说话的人
-	 * @return
-	 */
-	public BaseScriptExecutor say(String str,String title){
-		return RPG.ctrl.msg.say(this, str, title, 22);
-	}
-	
-	/**
-	 * 包装一个脚本执行器
-	 * @param exe 执行器
-	 * @return
-	 */
-	public void and(final BaseScriptExecutor exe){
-		if(exe instanceof ScriptExecutor)
-			$(new ScriptExecutor(this) {
-				ScriptExecutor proxy=(ScriptExecutor)exe;
-				public void init() {
-					proxy.init();
-				}
-				public void step(){
-					if(!proxy.script.currentExeced)
-						proxy.step();
-					else
-						dispose();
-				}
-			});
-		else
-			$(new BaseScriptExecutor() {
-				public void init() {
-					exe.init();
-				}
-			});
-	}
-	
-	/**
-	 * 显示/隐藏菜单
-	 * @param flag 是否显示
-	 * @return
-	 */
-	public BaseScriptExecutor showMenu(boolean flag){
-		return PostUtil.showMenu(this, flag);
-	}
-	
-	/**
-	 * 在屏幕上打印出一句话
-	 * @param str 要说的话
-	 * @return
-	 */
-	public BaseScriptExecutor say(String str){
-		return RPG.ctrl.msg.say(this, str, "", 22);
-	}
-	
-	/**
-	 * 锁定玩家键盘，此时玩家只能按z键对话。
-	 * @param b 是否锁定
-	 * @return
-	 */
-	public BaseScriptExecutor setKeyLocker(boolean b){
-		return RPG.ctrl.msg.setKeyLocker(this, b);
-	}
-	
-	/**
-	 * 锁定当前NPC，禁止其转向或移动
-	 * @param b 是否锁定
-	 * @return
-	 */
-	public BaseScriptExecutor lock(boolean b){
-		return Move.lock(this, b);
-	}
-	
-	/**
-	 * 让当前NPC面向玩家
-	 * @return
-	 */
-	public BaseScriptExecutor faceToHero(){
-		return Move.faceToHero(this);
-	}
-	
-	/**
-	 * 让当前NPC面向一个方向
-	 * @param face {@link IRPGObject.FACE_?} 要面向的方向
-	 * @return
-	 */
-	public BaseScriptExecutor faceTo(int face){
-		return Move.turn(this, face);
-	}
-	
-	public BaseScriptExecutor faceTo(Script who,int face){
-		return Move.turn(who, face);
-	}
-	
-	/**
-	 * 让当前的NPC移动
-	 * @param step 移动多少步
-	 * @return
-	 */
-	public BaseScriptExecutor move(int step){
-		return Move.move(this, step);
-	}
-	
-	public BaseScriptExecutor move(Script who,int step){
-		return Move.move(who, step);
-	}
-	
-	/**
-	 * 当前脚本暂停
-	 * @param frame 暂停的毫秒数
-	 * @return
-	 */
-	public BaseScriptExecutor wait(int frame){
-		return Timer.wait(this, frame);
-	}
-	/**
-	 * 根据类型查找当前游戏内的NPC
-	 * @param class 类型
-	 * @return
-	 */
-	public NPC findNPC(Class<? extends NPC>... type){
-		GdxQuery query=$.add(GameViews.gameview.stage.getActors().items).find(type);
-		return query.isEmpty()?null:(NPC)query.getItem(); 
-	}
-	
-	public NPC findNPC (String id){
-		for(Actor npc:GameViews.gameview.stage.getActors())
-			if(npc instanceof PublicNPC && ((PublicNPC)npc).getId().equals(id))
-				return (PublicNPC)npc;
-		return null;
-	}
-	
-	/**
-	 * 立即移除当前脚本自身
-	 * @return
-	 */
-	public BaseScriptExecutor removeSelf(){
-		return Base.removeSelf(this);
-	}
-	
-	/**
-	 * 播放音乐
-	 * @return
-	 */
-	public BaseScriptExecutor playMusic(String musicName){
-		return Music.playMusic(this, musicName);
-	}
-	
-	/**
-	 * 播放音效
-	 * @return
-	 */
-	public BaseScriptExecutor playSE(String musicName){
-		return Music.playSE(this, musicName);
-	}
-	
-	/**
-	 * 立即移除当前脚本自身并换为另一个脚本
-	 * @param script 脚本的class类型
-	 * @return
-	 */
-	public BaseScriptExecutor changeSelf(Class<? extends Script> script){
-		return Base.changeSelf(this,script);
-	}
-	
-	/**
-	 * 显示对话框
-	 * @param {@link MsgType} 要显示什么样的对话框 
-	 * @return
-	 */
-	public BaseScriptExecutor showMSG(String msgType){
-		return RPG.ctrl.msg.show(this, msgType);
-	}
-	
-	/**
-	 * 停止所有SE播放
-	 */
-	public BaseScriptExecutor stopAllSE(float time){
-		return Music.stopAllSE(this,time);
-	}
-	
-	public BaseScriptExecutor stopAllSE(float time,String without){
-		return Music.stopAllSE(this,time,without);
-	}
-	
-	public BaseScriptExecutor setSEVolume(float time,float volume){
-		return Music.setSEVolume(this, volume, time);
-	}
-	
-	/**
-	 * 显示默认的对话框
-	 * @return
-	 */
-	public BaseScriptExecutor showMSG(){
-		return RPG.ctrl.msg.show(this, 正常);
-	}
-	
-	/**
-	 * 隐藏对话框
-	 * @return
-	 */
-	public BaseScriptExecutor hideMSG(){
-		return RPG.ctrl.msg.hide(this);
-	}
-	
-	/**
-	 * 隐藏立绘
-	 * @param position 左侧的立绘还是右侧的立绘 {@link FG}
-	 * @return
-	 */
-	public BaseScriptExecutor hideFG(int position){
-		return RPG.ctrl.fg.hide(this, position);
-	}
-	
-	/**
-	 * 隐藏全部当前屏幕上的立绘
-	 * @return
-	 */
-	public BaseScriptExecutor hideFG(){
-		return RPG.ctrl.fg.hideAll(this);
-	}
-	
-	/**
-	 * 在屏幕左侧显示一张立绘
-	 * @param people 要显示谁的立绘 
-	 * @param {@link FGType} 立绘的类型
-	 * @return
-	 */
-	public BaseScriptExecutor showFGLeft(String people,String look){
-		return RPG.ctrl.fg.show(this, Setting.IMAGE_FG+people+look+".png", RPG.ctrl.fg.LEFT);
-	}
-	
-	/**
-	 * 在屏幕右侧显示一张立绘
-	 * @param people 要显示谁的立绘 
-	 * @param {@link FGType} 立绘的类型
-	 * @return
-	 */
-	public BaseScriptExecutor showFGRight(String people,String look){
-		return RPG.ctrl.fg.show(this, Setting.IMAGE_FG+people+look+".png", RPG.ctrl.fg.RIGHT);
-	}
-	
-	/**
-	 * 将当前英雄队列的某个人和第一个人（head）交换
-	 * @param position 要交换的英雄在队列里的位置
-	 * @return
-	 */
-	public BaseScriptExecutor swapHeroQueue(int position){
-		return Heros.swapHeroQueue(this, position);
-	}
-	
-	/**
-	 * 将当前英雄队列的某个人和第一个人（head）交换
-	 * @param c 要交换的英雄的class类型
-	 * @return
-	 */
-	public BaseScriptExecutor swapHeroQueue(Class<? extends Hero> c){
-		return Heros.swapHeroQueue(this, c);
-	}
-	
-	/**
-	 * 将当前英雄队列的某个人和另一个人交换
-	 * @param position 小张
-	 * @param position2 小王
-	 * @return
-	 */
-	public BaseScriptExecutor swapHeroQueue(int position,int position2){
-		return Heros.swapHeroQueue(this, position, position2);
-	}
-	
-	/**
-	 * 将当前英雄队列的某个人和另一个人交换
-	 * @param 小张的class类型
-	 * @param 小王的class类型
-	 * @return
-	 */
-	public BaseScriptExecutor swapHeroQueue(Class<? extends Hero> c1,Class<? extends Hero> c2){
-		return Heros.swapHeroQueue(this, c1 , c2);
-	}
 	
 	/**
 	 * 设置当前游戏的时间
@@ -418,23 +295,6 @@ public abstract class Script implements MsgType,FGType{
 	 */
 	public BaseScriptExecutor setGameTime(GameDate.Time time){
 		return ColorUtil.set(this, time);
-	}
-	
-	/**
-	 * 显示选择框，可以让玩家进行游戏选项
-	 * @param args 要选择的内容
-	 * @return
-	 */
-	public BaseScriptExecutor select(String ... args){
-		return GameViews.selectUtil.select(this, args);
-	}
-	
-	/**
-	 * 当前玩家选择的内容
-	 * @return
-	 */
-	public String currentSelect(){
-		return SelectUtil.currentSelect;
 	}
 	
 	/**
@@ -479,14 +339,6 @@ public abstract class Script implements MsgType,FGType{
 		return Move.random(this,speed,length,new Vector2(3,3),new Vector2(this.npc.mapx,this.npc.mapy));
 	}
 	
-	/**
-	 * 设置天气
-	 * @param type 天气的类型，请查询WeatherUtil TODO 需要改进成enum下吧
-	 * @return
-	 */
-	public BaseScriptExecutor setWeather(int type){
-		return RPG.ctrl.weather.setWeather(this, type);
-	}
 	
 	/**
 	 * 移动相机，偏移值根据HERO的当前位置，x和y可以为负数，这样就是反方向移动了qwq
@@ -499,15 +351,6 @@ public abstract class Script implements MsgType,FGType{
 		return MoveController.setCameraPositionWithHero(this,x,y,wait);
 	}
 	
-	
-	/**
-	 * 等待相机移动完毕
-	 * @return
-	 */
-	public BaseScriptExecutor waitCameraMove(){
-		return MoveController.waitCameraMove(this);
-	}
-	
 	/**
 	 * 移动相机，根据地图的左下角(0,0)为偏移
 	 * @param x 往x方向移动多少
@@ -517,15 +360,6 @@ public abstract class Script implements MsgType,FGType{
 	 */
 	public BaseScriptExecutor setCameraPositionWithAbsolute(final int x,final int y,final boolean wait){
 		return MoveController.setCameraPositionWithAbsolute(this, x, y, wait);
-	}
-	
-	/**
-	 * 当前玩家选择的是否是某个字符串
-	 * @param equ 字符串
-	 * @return
-	 */
-	public boolean currentSelect(String equ){
-		return SelectUtil.currentSelect.equals(equ);
 	}
 	
 	/**

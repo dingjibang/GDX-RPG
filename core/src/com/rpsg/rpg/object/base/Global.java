@@ -25,7 +25,7 @@ public class Global implements Serializable {
 	private static final long serialVersionUID = 1L;
 	// 初始地图
 //	public String map = "test/cgloop.tmx";
-	public String map = "test/cafe.tmx";
+	public String map = "test/inner.tmx";
 	
 	// 地图相关
 	public ArrayList<NPC> npcs = new ArrayList<NPC>();
@@ -35,8 +35,8 @@ public class Global implements Serializable {
 //	public int x = 15;
 //	public int y = 6;
 //	public int z = 1;
-	public int x = 15;//18;
-	public int y = 5;
+	public int x = 7;//18;
+	public int y = 18;
 	public int z = 3;
 
 	public boolean first = true;
