@@ -118,13 +118,17 @@ public class GdxQuery {
 			return getItems().get(index);
 	}
 	
-	public GdxQuery find( @SuppressWarnings("unchecked") Class<? extends Actor>... cls){
+	public GdxQuery find(Class<?>... cls){
 		GdxQuery query=$.add();
-		for(Class<? extends Actor> c:cls)
+		for(Class<?> c:cls)
 			for(Actor actor:getItems())
 				if(actor.getClass().equals(c) || actor.getClass().getSuperclass().equals(c))
 					query.add(actor);
 		return query;
+	}
+	
+	public GdxQuery findByClass(Class<?>... cls){
+		return find(cls);
 	}
 	
 	public GdxQuery find(Object userObject){

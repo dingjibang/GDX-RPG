@@ -1,5 +1,7 @@
 package com.rpsg.rpg.object.script;
 
+import java.lang.reflect.Method;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -157,7 +159,7 @@ public abstract class Script implements MsgType,FGType{
 			((ScriptExecutor)currentScript).step();
 	}
 	
-	private void configureWorker(final V8 runtime) {
+	private synchronized void configureWorker(final V8 runtime) {
 		register(runtime, "say",new ParamRunnable() {public void run(V8Array param) {
 			if(param.length()==1)
 				RPG.ctrl.msg.say(Script.this, (String)param.get(0), "", 22);
@@ -198,12 +200,19 @@ public abstract class Script implements MsgType,FGType{
 		}});
 		register(runtime, "findNPC",new ParamReturnRunnable() {public Object run(V8Array param) {
 			GdxQuery query =$.add();
+			System.out.println("bbb");
 			try {
-				query.add(GameViews.gameview.stage.getActors().items).find(ClassLoader.getSystemClassLoader().loadClass("com.rpsg.rpg.game.object."+param.get(0)));
-			} catch (ClassNotFoundException e) {
+				query=query.add(GameViews.gameview.stage.getActors().items).findByClass(Class.forName("com.rpsg.rpg.game.object."+param.get(0)));
+				System.out.println(query.getItem()+"a"+","+query.getItems());
+				Script s= ((NPC) query.getItem()).script();
+				System.out.println("s"+s);
+				V8Object obj=new V8Object(runtime);
+				registerBridge(obj, s);
+				return obj;
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return query.isEmpty()?null:((NPC) query.getItem()).script(); 
+			return null;
 		}});
 		register(runtime, "findPublicNPC",new ParamReturnRunnable() {public Object run(V8Array param) {
 			for(Actor npc:GameViews.gameview.stage.getActors())
@@ -285,6 +294,16 @@ public abstract class Script implements MsgType,FGType{
 	public BaseScriptExecutor $ (BaseScriptExecutor exe){
 		currentScript=exe;
 		return exe;
+	}
+	
+	public void registerBridge(V8Object v8o, Object obj) {
+		Class<?> c = obj.getClass();
+		Method[] methods = c.getDeclaredMethods();
+		for (Method m : methods){ 
+			V8Object o = v8o.getRutime().executeObjectScript(c.getSimpleName() + ".prototype");
+			o.registerJavaMethod(obj, m.getName(), m.getName(), m.getParameterTypes(), false);
+			o.release();
+		}
 	}
 	
 	
