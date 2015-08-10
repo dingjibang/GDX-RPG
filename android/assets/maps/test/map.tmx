@@ -3,6 +3,7 @@
  <properties>
   <property name="distant" value="bgnd2.jpg"/>
   <property name="name" value="测试地图"/>
+  <property name="temp" value="function Vector(){var o=new Object();o.x=0;o.y=0;return o;}point=new Vector();point.x=-1;point.y=-1;"/>
  </properties>
  <tileset firstgid="1" name="Cliff_tileset_0" tilewidth="48" tileheight="48">
   <image source="Cliff_tileset_0.png" trans="000000" width="755" height="777"/>

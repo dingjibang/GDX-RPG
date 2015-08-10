@@ -18,7 +18,9 @@ public abstract class DefaultNPC extends NPC {
 		super(path, width, height);
 	}
 
-	public abstract void init();
+	public void init(){
+		super.init();
+	}
 	
 	
 	@Override

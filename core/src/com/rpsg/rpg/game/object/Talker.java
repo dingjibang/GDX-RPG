@@ -14,8 +14,8 @@ public class Talker extends DefaultNPC{
 	@Override
 	public void init() {
 		this.enableCollide=false;
-		scripts.put(CollideType.z, TalkerScript.class);
-		scripts.put(CollideType.facez, TalkerScript.class);
+//		scripts.put(CollideType.z, TalkerScript.class);
+//		scripts.put(CollideType.facez, TalkerScript.class);
 	}
 	
 }

@@ -41,7 +41,7 @@ public class Test {
 		Class<?> c = obj.getClass();
 		Method[] methods = c.getDeclaredMethods();
 		for (Method m : methods){ 
-			V8Object o = v8o.getRutime().executeObjectScript(c.getSimpleName() + ".prototype");
+			V8Object o = v8o.getObject("prototype");
 			o.registerJavaMethod(obj, m.getName(), m.getName(), m.getParameterTypes(), false);
 			o.release();
 		}

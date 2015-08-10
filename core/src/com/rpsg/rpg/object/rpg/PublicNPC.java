@@ -12,6 +12,7 @@ public class PublicNPC extends DefaultNPC {
 		this.id=id;
 	}
 	public void init() {
+		super.init();
 	}
 
 	public String getId() {

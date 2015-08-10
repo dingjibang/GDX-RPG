@@ -1,17 +1,19 @@
 package com.rpsg.rpg.object.script;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.HashMap;
+import java.util.Map;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.eclipsesource.v8.JavaCallback;
+import com.eclipsesource.v8.JavaVoidCallback;
 import com.eclipsesource.v8.V8;
 import com.eclipsesource.v8.V8Array;
 import com.eclipsesource.v8.V8Object;
-import com.eclipsesource.v8.utils.V8Executor;
-import com.rpsg.gdxQuery.$;
-import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
@@ -24,7 +26,10 @@ import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
+import com.rpsg.rpg.object.rpg.RPGObject;
+import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.MoveController;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FG;
 import com.rpsg.rpg.utils.display.PostUtil;
@@ -37,48 +42,59 @@ import com.rpsg.rpg.utils.game.Timer;
 import com.rpsg.rpg.view.GameViews;
 
 
-public abstract class Script implements MsgType,FGType{
-	private int waitTime=0;
-	
-	public void sleep(int frame){
-		waitTime+=frame;
-	}
+public class Script implements MsgType,FGType{
 	
 	public NPC npc;
 	public CollideType callType;
-	public Script generate(NPC npc,CollideType type){
+	public String script="";
+	private Map<Long,Object> bindObjectPool = new HashMap<Long,Object>();
+	private long sequence = 0;
+	
+	private long nextSeq(){
+		return ++sequence;
+	}
+	
+	private long bind(Object object){
+		long id = nextSeq();
+		bindObjectPool.put(id, object);
+		return id;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private <T> T getBind(long l,Class<T> type){
+		return (T)bindObjectPool.get(l);
+	}
+	
+	private Object getBind(long l){
+		return getBind(l,Object.class);
+	}
+	
+	public Script generate(NPC npc,CollideType type,String script){
 		this.npc=npc;
 		this.callType=type;
+		this.script=script;
 		try {
 			start();
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return this;
 	}
 	
-	public void start(V8Object worker, String... s) {
-		String script = (String) s[0];
-		V8Executor executor = new V8Executor(script, true, "messageHandler") {
-			@Override
-			protected void setup(V8 runtime) {
-				configureWorker(runtime);
-			}
-		};
-		worker.getRutime().registerV8Executor(worker, executor);
-		executor.start();
-	}
-
-	V8Executor mainExecutor;
+	V8ExecutorEx mainExecutor;
 	public void start() throws InterruptedException {
-		String result=Gdx.files.internal(Setting.SCRIPT_MAP+"test.js").readString();
-		mainExecutor = new V8Executor(result) {
-			@Override
-			protected void setup(V8 runtime) {
-				configureWorker(runtime);
-			}
-		};
-		mainExecutor.start();
+		try {
+			mainExecutor = new V8ExecutorEx(script) {
+				@Override
+				protected void setup(V8 runtime) {
+					configureWorker(runtime);
+				}
+			};
+			mainExecutor.setName(npc.toString()+(npc instanceof PublicNPC?" & ID:"+((PublicNPC)npc).getId():"")+" (collide: "+callType+") : "+mainExecutor.getId());
+			mainExecutor.start();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -119,8 +135,6 @@ public abstract class Script implements MsgType,FGType{
 		}
 	}
 	
-	public abstract void init();
-	
 	public boolean isAlive=false;
 	
 	public boolean isAlive(){
@@ -135,7 +149,6 @@ public abstract class Script implements MsgType,FGType{
 	
 	public int point=-1;
 	public exeMode currentExeced=exeMode.first;
-	private Class<? extends NPC>[] type;
 	
 	public static enum exeMode{
 		first,running,stop
@@ -144,10 +157,6 @@ public abstract class Script implements MsgType,FGType{
 	
 	public void run(){
 //		System.out.println("maint:"+currentExeced);
-		if(waitTime>0){
-			waitTime--;
-			return;
-		}
 		if(currentExeced==exeMode.first && currentScript!=null)
 			if(currentScript instanceof ScriptExecutor){
 				((ScriptExecutor)currentScript).toInit();
@@ -174,11 +183,15 @@ public abstract class Script implements MsgType,FGType{
 		register(runtime, "keyLock",new ParamRunnable() {public void run(V8Array param) {
 			RPG.ctrl.msg.setKeyLocker(Script.this, param.getBoolean(0));
 		}});
-		register(runtime, "dispose",new ParamRunnable() {public void run(V8Array param) {
-			dispose();
-			mainExecutor.shutdown();
-			mainExecutor.forceTermination();
-			mainExecutor.stop();
+		register(runtime, "end",new ParamRunnable() {public void run(V8Array param) {
+			try{
+				dispose();
+				mainExecutor.forceTermination();
+				mainExecutor.shutdown();
+				mainExecutor.stop();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}});
 		register(runtime, "lock",new ParamRunnable() {public void run(V8Array param) {
 			 Move.lock(Script.this, param.getBoolean(0));
@@ -187,37 +200,27 @@ public abstract class Script implements MsgType,FGType{
 			 Move.faceToHero(Script.this);
 		}});
 		register(runtime, "faceTo",new ParamRunnable() {public void run(V8Array param) {
-			Move.turn(Script.this, param.getInteger(0));
+			if(param.length()==1)
+				Move.turn(Script.this, param.getInteger(0));
 		}});
+		register(runtime, "otherFaceTo",new ParamRunnable() {public void run(V8Array param) {
+			getNPC((String) param.get(0)).turn((int)param.get(1));
+		}},false);
 		register(runtime, "move",new ParamRunnable() {public void run(V8Array param) {
-			Move.move(Script.this, param.getInteger(0));
+				Move.move(Script.this, param.getInteger(0));
 		}});
-		register(runtime, "move",new ParamRunnable() {public void run(V8Array param) {
-			Move.move((Script)param.get(0),param.getInteger(0));
-		}});
+		register(runtime, "otherMove",new ParamRunnable() {public void run(V8Array param) {
+			getNPC((String) param.get(0)).walk((int)param.get(1)).testWalk();
+		}},false);
 		register(runtime, "wait",new ParamRunnable() {public void run(V8Array param) {
 			Timer.wait(Script.this, param.getInteger(0));
 		}});
-		register(runtime, "findNPC",new ParamReturnRunnable() {public Object run(V8Array param) {
-			GdxQuery query =$.add();
-			System.out.println("bbb");
+		register(runtime, "findNPC",new ParamReturnRunnable() {public Object run(final V8Array param) {
 			try {
-				query=query.add(GameViews.gameview.stage.getActors().items).findByClass(Class.forName("com.rpsg.rpg.game.object."+param.get(0)));
-				System.out.println(query.getItem()+"a"+","+query.getItems());
-				Script s= ((NPC) query.getItem()).script();
-				System.out.println("s"+s);
-				V8Object obj=new V8Object(runtime);
-				registerBridge(obj, s);
-				return obj;
+				return param.get(0);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return null;
-		}});
-		register(runtime, "findPublicNPC",new ParamReturnRunnable() {public Object run(V8Array param) {
-			for(Actor npc:GameViews.gameview.stage.getActors())
-				if(npc instanceof PublicNPC && ((PublicNPC)npc).getId().equals(param.getInteger(0)))
-					return (PublicNPC)npc;
 			return null;
 		}});
 		register(runtime, "removeSelf",new ParamRunnable() {public void run(V8Array param) {
@@ -286,8 +289,101 @@ public abstract class Script implements MsgType,FGType{
 		register(runtime, "print",new ParamRunnable() {public void run(V8Array param) {
 			System.out.println("Script:"+param.get(0).toString());
 		}},false);
+		
+		V8Object rpgo=new V8Object(runtime);
+		rpgo.add("FACE_L", RPGObject.FACE_L);
+		rpgo.add("FACE_R", RPGObject.FACE_R);
+		rpgo.add("FACE_U", RPGObject.FACE_U);
+		rpgo.add("FACE_D", RPGObject.FACE_D);
+		rpgo.registerJavaMethod(new JavaCallback() {public Object invoke(V8Object receiver, V8Array parameters) {
+			return RPGObject.getReverseFace((int) parameters.get(0));
+		}}, "getReverseFace");
+		runtime.add("RPGObject", rpgo);
+		rpgo.release();
+		
+		V8Object self=new V8Object(runtime);
+		self.registerJavaMethod(new JavaCallback() {public Object invoke(V8Object receiver, V8Array parameters) {
+			return npc.getFaceByPoint((int)parameters.get(0), (int)parameters.get(1));
+		}}, "getFaceByPoint");
+		runtime.add("NPC", self);
+		self.release();
+		
+		V8Object hero=new V8Object(runtime);
+		hero.add("mapx", RPG.ctrl.hero.getHeadHero().mapy);
+		hero.add("mapy", RPG.ctrl.hero.getHeadHero().mapy);
+		runtime.add("Hero", hero);
+		hero.release();
+		
+		V8Object setting=new V8Object(runtime);
+		for(Field f:Setting.class.getFields())
+			if(f.getType().equals(String.class))
+				try {
+					setting.add(f.getName(), f.get(Setting.class).toString());
+				} catch (IllegalArgumentException | IllegalAccessException e) {
+					e.printStackTrace();
+				}
+		runtime.add("Setting",setting);
+		setting.release();
+		
+		runtime.registerJavaMethod(new JavaCallback() {public Object invoke(V8Object receiver, V8Array parameters) {
+			try {
+				Image i =Res.fuckOPENGL(parameters.get(0).toString());
+				receiver.add("bind", bind(i));
+				registerBridge(receiver,i ,true);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return receiver;
+		}}, "getImage");
+		
+		V8Object cg=new V8Object(runtime);
+		cg.registerJavaMethod(new JavaVoidCallback() {public void invoke(V8Object receiver, V8Array parameters) {
+			RPG.ctrl.cg.push(getBind(parameters.getObject(0).getInteger("bind"),Image.class));
+		}}, "push");
+		runtime.add("CG",cg);
+		cg.release();
+		V8Object actions=new V8Object(runtime);
+		for(final Method m:Actions.class.getMethods()){
+			actions.registerJavaMethod(new JavaCallback() {
+				public Object invoke(V8Object receiver, V8Array parameters) {
+					try {
+						Object[] arr=readObjectArray(parameters);
+						Method _m =null;
+						for(final Method __m:Actions.class.getMethods()){
+							if(__m.getName().equals(m.getName()) && __m.getParameterTypes().length== parameters.length())
+								_m=__m;
+						}
+						if(_m==null){
+							return null;
+						}
+						Object o = _m.invoke(Actions.class, arr);
+						receiver.add("bind", bind(o));
+						return receiver;
+					} catch (Throwable e) {
+						e.printStackTrace();
+						return null;
+					}
+				}
+			}, m.getName());
+		}
+		runtime.add("Actions",actions);
+		actions.release();
+		
 	}
 	
+	protected NPC getNPC(String s) {
+		NPC npc = null;
+		try {
+			for(Actor _npc:GameViews.gameview.stage.getActors())
+				if(_npc instanceof PublicNPC && ((PublicNPC)_npc).getId().equals(s))
+					npc= (PublicNPC)_npc;
+			return npc;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	/**
 	 * 插入一个新的执行器到堆栈的最后一位
 	 */
@@ -296,14 +392,57 @@ public abstract class Script implements MsgType,FGType{
 		return exe;
 	}
 	
-	public void registerBridge(V8Object v8o, Object obj) {
-		Class<?> c = obj.getClass();
-		Method[] methods = c.getDeclaredMethods();
-		for (Method m : methods){ 
-			V8Object o = v8o.getRutime().executeObjectScript(c.getSimpleName() + ".prototype");
-			o.registerJavaMethod(obj, m.getName(), m.getName(), m.getParameterTypes(), false);
-			o.release();
+	private Object[] readObjectArray(V8Array parameters){
+		Object[] arr=new Object[parameters.length()];
+		for(int i=0;i<parameters.length();i++){
+			Object o = parameters.get(i);
+			if(o instanceof Double){
+				Float f = new Float((Double)o);
+				arr[i]=f;
+			}else
+				arr[i]=o;
 		}
+		return arr;
+	}
+	
+	@SuppressWarnings("unused")
+	private Class<?>[] readClassArray(V8Array parameters){
+		Class<?>[] arr=new Class<?>[parameters.length()];
+		for(int i=0;i<parameters.length();i++){
+			Object o = parameters.get(i);
+			if(o instanceof Double){
+				arr[i]=Float.class;
+			}else
+				arr[i]=o.getClass();
+		}
+		return arr;
+	}
+	
+	public void registerBridge(V8Object v8o, final Object obj,boolean superClass) {
+			Class<?> c = !superClass?obj.getClass():obj.getClass().getSuperclass();
+			Method[] methods = c.getDeclaredMethods();
+			for (final Method m : methods){ 
+				try{
+					if(Modifier.isPublic(m.getModifiers()))
+						v8o.registerJavaMethod(new JavaCallback() {
+							public Object invoke(V8Object receiver, V8Array parameters) {
+								Object[] arr=readObjectArray(parameters);
+								try {
+									Object o=m.invoke(obj,arr);
+									if(o==null || !(o instanceof V8Object))
+										return receiver;
+									else
+										return o;
+								} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+									e.printStackTrace();
+								}
+								return null;
+							}
+						}, m.getName());
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
 	}
 	
 	
@@ -316,48 +455,6 @@ public abstract class Script implements MsgType,FGType{
 		return ColorUtil.set(this, time);
 	}
 	
-	/**
-	 * 让当前NPC进行随机移动
-	 * @param speed 移动速度
-	 * @param length 最大随机步伐 random(0 to length)
-	 * @return
-	 */
-	public BaseScriptExecutor randomWalk(int speed,int length){
-		return Move.random(this, speed,length,null, null);
-	}
-	
-	/**
-	 * 让当前NPC在某个矩形区域内进行随机移动（不保证NPC会随机移动出判定矩阵，不过会尽快在下一次随机移动里回到矩阵内的）
-	 * @param speed 移动速度
-	 * @param length 最大随机步伐 random(0 to length)
-	 * @param bounds 越界矩形区域（x和y）
-	 * @param poi poi！！！啊，不是，是给参数某个点，NPC会在这个点附近进行移动而不是瞎逼走，如果想让NPC瞎逼走就把poi设为null就好了
-	 * @return
-	 */
-	public BaseScriptExecutor randomWalk(int speed,int length,Vector2 bounds,Vector2 poi){
-		return Move.random(this, speed,length,bounds, poi);
-	}
-	
-	/**
-	 * 让当前的NPC随机移动，并且慢慢靠近HERO的所在位置wwwww
-	 * @param speed 移动速度
-	 * @param length 最大随机步伐 random(0 to length)
-	 * @return
-	 */
-	public BaseScriptExecutor randomWalkByHero(int speed,int length){
-		return Move.random(this,speed,length,null,new Vector2(-1,-1));
-	}
-	
-	/**
-	 * 让当前的NPC随机移动，并且尽可能的在自己的出生点附近移动而不是随机的瞎逼走wwww
-	 * @param speed 移动速度
-	 * @param length 最大随机步伐 random(0 to length)
-	 * @return
-	 */
-	public BaseScriptExecutor randomWalkBySelf(int speed,int length){
-		return Move.random(this,speed,length,new Vector2(3,3),new Vector2(this.npc.mapx,this.npc.mapy));
-	}
-	
 	
 	/**
 	 * 移动相机，偏移值根据HERO的当前位置，x和y可以为负数，这样就是反方向移动了qwq
@@ -368,6 +465,28 @@ public abstract class Script implements MsgType,FGType{
 	 */
 	public BaseScriptExecutor setCameraPositionWithHero(final int x,final int y,final boolean wait){
 		return MoveController.setCameraPositionWithHero(this,x,y,wait);
+	}
+	
+	public void and(final BaseScriptExecutor exe){
+		if(exe instanceof ScriptExecutor)
+			$(new ScriptExecutor(this) {
+				ScriptExecutor proxy=(ScriptExecutor)exe;
+				public void init() {
+					proxy.init();
+				}
+				public void step(){
+					if(proxy.script.currentExeced==exeMode.running)
+						proxy.step();
+					else
+						dispose();
+				}
+			});
+		else
+			$(new BaseScriptExecutor() {
+				public void init() {
+					exe.init();
+				}
+			});
 	}
 	
 	/**

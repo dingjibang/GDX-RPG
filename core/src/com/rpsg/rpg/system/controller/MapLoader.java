@@ -8,6 +8,7 @@ import java.util.List;
 
 import box2dLight.PointLight;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapLayer;
@@ -105,6 +106,7 @@ public class MapLoader {
 							else
 								npc=new PublicNPC((String) obj.getProperties().get("ID"),obj.getProperties().get("IMAGE")+".png",(int)(((RectangleMapObject)obj).getRectangle().getWidth()),(int)(((RectangleMapObject)obj).getRectangle().getHeight()));
 							npc.params=GameUtil.parseMapProperties(obj.getProperties());
+							npc.init();
 							if(obj.getProperties().get("ABSOLUTE")!=null && obj.getProperties().get("ABSOLUTE").equals("true"))
 								npc.generateAbsolutePosition(((int)(((RectangleMapObject)obj).getRectangle().getX())),
 										 (int)(((RectangleMapObject)obj).getRectangle().getY()),
@@ -154,7 +156,7 @@ public class MapLoader {
 			@SuppressWarnings("unchecked")
 			ArrayList<NPC> npcs=(ArrayList<NPC>)gv.global.npcs.clone();
 			for(NPC n:npcs){
-				n.scripts=new HashMap<CollideType, Class<? extends Script>>();
+				n.scripts=new HashMap<CollideType, String>();
 				n.threadPool=new LinkedList<Script>();
 				n.init();
 				gv.stage.addActor(n);

@@ -16,8 +16,8 @@ public class DOOR extends DefaultNPC{
 	@Override
 	public void init() {
 		this.enableCollide=false;
-		scripts.put(CollideType.near, Door.class);
-		scripts.put(CollideType.foot,Teleporter.class);
+//		scripts.put(CollideType.near, Door.class);
+//		scripts.put(CollideType.foot,Teleporter.class);
 	}
 	
 }

@@ -28,6 +28,10 @@ public class Res {
 		return new Image(getTexture(resPath));
 	}
 	
+	public static synchronized Image fuckOPENGL(String resPath){
+		return new ProxyImage(resPath);
+	}
+	
 	public static void logic(){
 	}
 	

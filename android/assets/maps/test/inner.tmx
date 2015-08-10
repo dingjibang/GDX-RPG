@@ -84,11 +84,12 @@
     <property name="SAYING" value="人类为何要互相伤害呢？\n回车测试？"/>
    </properties>
   </object>
-  <object name="INNERRENKO" type="NPC" gid="1066" x="336" y="816" width="48" height="64">
+  <object name="PUBLIC" type="NPC" gid="1066" x="336" y="816" width="48" height="64">
    <properties>
-    <property name="ID" value="2"/>
+    <property name="ID" value="1"/>
     <property name="IMAGE" value="walk_renko"/>
     <property name="SHADOW" value="true"/>
+    <property name="Z_SCRIPT" value="test.js"/>
    </properties>
   </object>
  </objectgroup>

@@ -141,7 +141,10 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	}
 	
 	public Image dispose(){
-		getTexture().dispose();
+		try {
+			getTexture().dispose();
+		} catch (Exception e) {
+		}
 		return this;
 	}
 	
@@ -170,6 +173,15 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		return this;
 	}
 	
+	public Image color4(Object r,Object g,Object b,Object a){
+		double _r,_g,_b,_a;
+		if(r instanceof Integer) _r=(int)r; else _r=(float)r;
+		if(g instanceof Integer) _g=(int)g; else _g=(float)g;
+		if(b instanceof Integer) _b=(int)b; else _b=(float)b;
+		if(a instanceof Integer) _a=(int)a; else _a=(float)a;
+		return color((float)_r, (float)_g, (float)_b, (float)_a);
+	}
+	
 	public Image color(Color c){
 		super.setColor(c);
 		return this;
@@ -180,10 +192,6 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		return this;
 	}
 	
-	public Image position(int x,int y){
-		super.setPosition(x, y);
-		return this;
-	}
 	
 	public Image object(Object o){
 		super.setUserObject(o);
@@ -231,5 +239,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 			setOrigin(originAlignment);
 		setAnti();
 	}
+	
+	
 	
 }
