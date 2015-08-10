@@ -53,10 +53,13 @@ public class MoveController {
 	}
 
 	public static void logic(GameView gv) {
-		for (Actor a : gv.stage.getActors()) {
-			if (a instanceof RPGObject && ((RPGObject) a).enableCollide) {
-				RPGObject o = (RPGObject) a;
-				o.collide.testCollide(o.mapx, o.mapy, ((TiledMapTileLayer) RPG.maps.loader.layer.get(o.layer)), gv.stage.getActors(), o);
+		synchronized (gv.stage.getActors()) {
+			for (int i = 0; i < gv.stage.getActors().size; i++) {
+				Actor a=gv.stage.getActors().get(i);
+				if (a instanceof RPGObject && ((RPGObject) a).enableCollide) {
+					RPGObject o = (RPGObject) a;
+					o.collide.testCollide(o.mapx, o.mapy, ((TiledMapTileLayer) RPG.maps.loader.layer.get(o.layer)), gv.stage.getActors(), o);
+				}
 			}
 		}
 		for (ScriptCollide sc : Collide.testNPCCollide(gv, RPG.ctrl.hero.getHeadHero(), gv.stage.getActors())) {

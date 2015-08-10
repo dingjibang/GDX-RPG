@@ -48,7 +48,7 @@ public abstract class NPC extends RPGObject{
 	List<Script> removeList=new LinkedList<Script>();
 	public boolean isScriptRunning(){
 		for(Script t:threadPool)
-			if(t.isAlive() && !t.callType.equals(CollideType.auto))
+			if(t.isAlive && !t.callType.equals(CollideType.auto))
 				return true;
 		return false;
 	}

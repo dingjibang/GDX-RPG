@@ -1,8 +1,10 @@
-//var img=getImage(Setting.IMAGE_GLOBAL+"o.png");
-//CG.push(img);
-//img.scale(5).position(100,200).color4(1,0.3,1,1);
-var act=Actions.scaleTo(0.2,0.2,0.2);
-print("aaa");
-print(act);
-print("bbb"):
+eval(""+load('global.js'));
+
+faceTo(getNPC("1"),RPGObject.FACE_R);
+var img= Res.get(Setting.IMAGE_BACKGROUND+"bgnd2.jpg");
+CG.push(img);
+img.setScale(0.2);
+sleep(4000);
+img.addAction(Actions.moveTo(200,200,0.3));
+print("en");
 end();

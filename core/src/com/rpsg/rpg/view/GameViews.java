@@ -2,9 +2,6 @@ package com.rpsg.rpg.view;
 
 
 
-import io.nondev.nonfilesystem.Files;
-import io.nondev.nonlua.Lua;
-
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -51,7 +48,7 @@ public class GameViews implements ApplicationListener {
 	public static Bloom bloom;//高斯模糊，不用管
 	public static Vignette vignette;
 	
-	public GameViews(Files f) {
+	public GameViews() {
 //		Lua l=new Lua(f);
 		
 	}

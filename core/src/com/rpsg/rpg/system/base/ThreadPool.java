@@ -20,7 +20,7 @@ public class ThreadPool {
 				List<Script> list=pool.get(i);
 				for(Script s:list)
 					if(s.isAlive)
-						s.run();
+						s.step();
 					else
 						removeList.add(s);
 				list.removeAll(removeList);
