@@ -1,16 +1,11 @@
 package com.rpsg.rpg.object.script;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptableObject;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.rpsg.gdxQuery.$;
-import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
@@ -21,8 +16,6 @@ import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
-import com.rpsg.rpg.object.rpg.RPGObject;
-import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FG;
@@ -56,7 +49,7 @@ public class Script extends Thread implements MsgType,FGType {
 	@Override
 	public void run() {
 		try {
-			Context ctx =Context.enter();;
+			Context ctx =Context.enter();
 			ScriptableObject scope =ctx.initStandardObjects();
 			scope.setPrototype(((NativeJavaObject)Context.javaToJS(Script.this, scope)));
 			scope.put("Hero", scope, Context.javaToJS(RPG.ctrl.hero.getHeadHero(), scope));
@@ -373,7 +366,7 @@ public class Script extends Thread implements MsgType,FGType {
 	 * @return
 	 */
 	public BaseScriptExecutor showFGLeft(String people,String look){
-		return RPG.ctrl.fg.show(this, Setting.IMAGE_FG+people+look+".png", RPG.ctrl.fg.LEFT);
+		return RPG.ctrl.fg.show(this, Setting.IMAGE_FG+people+look+".png", FG.LEFT);
 	}
 	
 	/**
@@ -383,7 +376,7 @@ public class Script extends Thread implements MsgType,FGType {
 	 * @return
 	 */
 	public BaseScriptExecutor showFGRight(String people,String look){
-		return RPG.ctrl.fg.show(this, Setting.IMAGE_FG+people+look+".png", RPG.ctrl.fg.RIGHT);
+		return RPG.ctrl.fg.show(this, Setting.IMAGE_FG+people+look+".png", FG.RIGHT);
 	}
 	
 	/**
