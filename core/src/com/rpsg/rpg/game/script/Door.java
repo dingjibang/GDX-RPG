@@ -9,7 +9,7 @@ public class Door extends Script{
 
 	@Override
 	public void init() {
-		$(new BaseScriptExecutor() {
+		set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				if (npc.currentImageNo == NPC.FACE_D) {

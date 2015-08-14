@@ -45,7 +45,7 @@ public class SelectUtil implements InputProcessor {
 	boolean isLocked;
 	public BaseScriptExecutor select(Script script, final String... str){
 		final SelectUtil that=this;
-		return script.$(new ScriptExecutor(script) {
+		return script.set(new ScriptExecutor(script) {
 			public void step() {
 				if(!select){
 					stage.act();

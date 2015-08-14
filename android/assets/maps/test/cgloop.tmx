@@ -12,9 +12,9 @@
   </data>
  </layer>
  <objectgroup name="a">
-  <object name="CGLOOP1" type="NPC" gid="1" x="144" y="96" width="48" height="95">
+  <object name="PUBLIC" type="NPC" gid="1" x="144" y="96" width="48" height="95">
    <properties>
-    <property name="IMAGE" value="empty"/>
+    <property name="AUTO_SCRIPT" value="s0-0.js"/>
    </properties>
   </object>
  </objectgroup>

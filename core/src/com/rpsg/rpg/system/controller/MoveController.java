@@ -169,7 +169,7 @@ public class MoveController {
 	}
 
 	public static BaseScriptExecutor setCameraPositionWithHero(Script script, final int x, final int y, final boolean wait) {
-		return script.$(new ScriptExecutor(script) {
+		return script.set(new ScriptExecutor(script) {
 			public void init() {
 				MoveController.setCameraPosition(x, y);
 			}
@@ -182,7 +182,7 @@ public class MoveController {
 	}
 
 	public static BaseScriptExecutor waitCameraMove(Script script) {
-		return script.$(new ScriptExecutor(script) {
+		return script.set(new ScriptExecutor(script) {
 			public void init() {
 			}
 

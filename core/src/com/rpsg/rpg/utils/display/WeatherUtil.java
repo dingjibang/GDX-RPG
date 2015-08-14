@@ -105,7 +105,7 @@ public class WeatherUtil {
 	}
 	
 	public BaseScriptExecutor setWeather(final Script script,final int t){
-		return script.$((BaseScriptExecutor) new BaseScriptExecutor() {
+		return script.set((BaseScriptExecutor) new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				WeatherUtil.this.init(t);

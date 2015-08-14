@@ -10,7 +10,7 @@ import com.rpsg.rpg.system.base.Initialization;
 
 public class Move {
 	public static BaseScriptExecutor move(Script script,final int step){
-		return script.$(new ScriptExecutor(script) {
+		return script.set(new ScriptExecutor(script) {
 			public void step() {
 				if(script.npc.walkStack.size()==0)
 					this.dispose();
@@ -25,7 +25,7 @@ public class Move {
 	}
 	
 	public static BaseScriptExecutor turn(final Script script,final int faceTo){
-		return script.$(new BaseScriptExecutor() {
+		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				script.npc.turn(faceTo);
@@ -35,7 +35,7 @@ public class Move {
 	
 	
 	public static BaseScriptExecutor faceToHero(final Script script){
-		return script.$(new BaseScriptExecutor() {
+		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				script.npc.turn(RPG.ctrl.hero.getHeadHero().getReverseFace());
@@ -44,7 +44,7 @@ public class Move {
 	}
 	
 	public static BaseScriptExecutor faceToPoint(final Script script, final int x, final int y){
-		return script.$(new BaseScriptExecutor() {
+		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				script.npc.turn(script.npc.getFaceByPoint(x, y));
@@ -53,7 +53,7 @@ public class Move {
 	}
 	
 	public static BaseScriptExecutor teleportAnotherMap(Script script, final String map, final int x, final int y, final int z){
-		return script.$(new BaseScriptExecutor() {
+		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				RPG.global.map = "test/" + map;
@@ -68,7 +68,7 @@ public class Move {
 	}
 	
 	public static BaseScriptExecutor lock(Script script, final boolean flag){
-		return script.$(new ScriptExecutor(script) {
+		return script.set(new ScriptExecutor(script) {
 			public void init(){
 				if(flag){
 					for (Script sc : script.npc.threadPool) {

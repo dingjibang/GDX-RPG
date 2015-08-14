@@ -33,7 +33,7 @@ public class FG {
 	}
 
 	public BaseScriptExecutor show(final Script script,final String imgPath,final int position){
-		return script.$((BaseScriptExecutor) new BaseScriptExecutor() {
+		return script.set((BaseScriptExecutor) new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				if(position==LEFT){
@@ -60,7 +60,7 @@ public class FG {
 	}
 
 	public BaseScriptExecutor hide(final Script script,final String imgPath,final int position){
-		return script.$((BaseScriptExecutor) new BaseScriptExecutor() {
+		return script.set((BaseScriptExecutor) new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				if (position == LEFT)
@@ -72,7 +72,7 @@ public class FG {
 	}
 
 	public BaseScriptExecutor hideAll(final Script script){
-		return script.$((BaseScriptExecutor) new BaseScriptExecutor() {
+		return script.set((BaseScriptExecutor) new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				leftFade = false;
@@ -82,7 +82,7 @@ public class FG {
 	}
 
 	public BaseScriptExecutor hide(final Script script,final int position){
-		return script.$((BaseScriptExecutor) new BaseScriptExecutor() {
+		return script.set((BaseScriptExecutor) new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				if (position == LEFT)

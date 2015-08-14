@@ -8,7 +8,7 @@ import com.rpsg.rpg.utils.display.WeatherUtil;
 public class SayHelloWorld extends Script{
 	
 	public void init() {
-		$(new BaseScriptExecutor() {
+		set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				if(RPG.ctrl.weather.type==WeatherUtil.WEATHER_NO){

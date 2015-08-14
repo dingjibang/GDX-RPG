@@ -32,7 +32,7 @@ public class Music {
 	}
 	
 	public static BaseScriptExecutor playMusic(Script script,final String music){
-		return script.$(new BaseScriptExecutor() {
+		return script.set(new BaseScriptExecutor() {
 			public void init() {
 				playMusic(music);
 			}
@@ -40,7 +40,7 @@ public class Music {
 	}
 	
 	public static BaseScriptExecutor playSE(Script script,final String se){
-		return script.$(new BaseScriptExecutor() {
+		return script.set(new BaseScriptExecutor() {
 			public void init() {
 				playSE(se);
 			}
@@ -72,7 +72,7 @@ public class Music {
 	}
 	
 	public static BaseScriptExecutor setSEVolume(Script script,final float color,final float time) {
-		return script.$(new ScriptExecutor(script) {
+		return script.set(new ScriptExecutor(script) {
 			Actor proxy=new Actor();
 			public void init() {
 				proxy.getColor().a=se.size()==0?.7f:se.values().iterator().next().getVolume();
@@ -92,7 +92,7 @@ public class Music {
 	}
 
 	public static BaseScriptExecutor stopAllSE(Script script, final float time, final String without) {
-		return script.$(new ScriptExecutor(script) {
+		return script.set(new ScriptExecutor(script) {
 			Actor proxy=new Actor();
 			public void init() {
 				proxy.getColor().a=se.size()==0?.7f:se.values().iterator().next().getVolume();

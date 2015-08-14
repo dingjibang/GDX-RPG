@@ -14,7 +14,7 @@ import com.rpsg.rpg.view.GameViews;
 public class ColorUtil {
 	
 	public static BaseScriptExecutor set(final Script script, final GameDate.Time time){
-		return script.$(new BaseScriptExecutor() {
+		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				RPG.global.date.setTime(time);

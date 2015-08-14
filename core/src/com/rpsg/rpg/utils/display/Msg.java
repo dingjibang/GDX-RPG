@@ -22,7 +22,7 @@ public class Msg {
 	public Image msgbox;
 	
 	public Msg() {
-		msgbox=new Image(Setting.MESSAGE+MsgType.正常);
+		msgbox=new Image(Setting.MESSAGE+MsgType.正常.path());
 		float ss=msgbox.getWidth();
 		msgbox.setWidth(GameUtil.screen_width-40);
 		ss=ss/msgbox.getWidth();
@@ -47,7 +47,7 @@ public class Msg {
 	Color titleColor=Color.WHITE;
 	public BaseScriptExecutor say(final Script script,final String str,final String title,final int size){
 		firstZPress=false;
-		return script.$(new ScriptExecutor(script) {
+		return script.set(new ScriptExecutor(script) {
 			SpriteBatch batch= (SpriteBatch) RPG.ctrl.fg.stage.getBatch();
 			public void step() {
 				if(Input.isPress(Keys.CONTROL_LEFT)){
@@ -82,7 +82,7 @@ public class Msg {
 	}
 	
 	public BaseScriptExecutor setKeyLocker(Script script,final boolean flag){
-		return script.$(new BaseScriptExecutor() {
+		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				com.rpsg.rpg.system.controller.InputController.currentIOMode = flag ? IOMode.MapInput.MESSAGING : IOMode.MapInput.NORMAL;
@@ -96,7 +96,7 @@ public class Msg {
 	}
 	
 	public BaseScriptExecutor show(Script script,final String msgType){
-		return script.$(new BaseScriptExecutor() {
+		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				show = true;
@@ -108,7 +108,7 @@ public class Msg {
 	}
 	
 	public BaseScriptExecutor hide(Script script){
-		return script.$(new BaseScriptExecutor() {
+		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				show = false;
@@ -132,7 +132,7 @@ public class Msg {
 	
 	public Color getColor(String mt){
 		switch(mt){
-		case MsgType.紫:case MsgType.妖梦:case MsgType.梅莉:
+		case MsgType.紫.path():case MsgType.妖梦.path():case MsgType.梅莉.path():
 			return Color.BLACK;
 		default:
 			return Color.WHITE;

@@ -24,8 +24,8 @@ import com.rpsg.rpg.utils.game.GameDate;
 public class Global implements Serializable {
 	private static final long serialVersionUID = 1L;
 	// 初始地图
-//	public String map = "test/cgloop.tmx";
-	public String map = "test/inner.tmx";
+	public String map = "test/cgloop.tmx";
+//	public String map = "test/inner.tmx";
 	
 	// 地图相关
 	public ArrayList<NPC> npcs = new ArrayList<NPC>();

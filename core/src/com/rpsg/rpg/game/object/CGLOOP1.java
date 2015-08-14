@@ -38,14 +38,14 @@ public class CGLOOP1 extends DefaultNPC{
 		Image black,y11,mask,mask2; 
 		int flength,del;
 		public void init() {
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				RPG.ctrl.cg.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem());
 				PostUtil.showMenu=false;
 			}});
 			playSE("fire.mp3");
 			wait(230);
 			playSE("YS070523.wav");
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				final Image cg=(Image) $.add(Res.getNP(Setting.IMAGE_CG+"flash.png")).setColor(1,1,1,0).getItem();
 				cg.addAction(Actions.sequence(Actions.color(new Color(1,0.7f,0,0.8f),0.02f),Actions.fadeOut(0.1f),Actions.run(new Runnable() {public void run() {
 					RPG.ctrl.cg.dispose(cg);
@@ -53,7 +53,7 @@ public class CGLOOP1 extends DefaultNPC{
 				RPG.ctrl.cg.push(cg);
 			}});
 			wait(79);
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				final Image cg=(Image) $.add(Res.getNP(Setting.IMAGE_CG+"flash.png")).setColor(1,1,1,0).setScale(3.8f).setPosition(-800,-300).getItem();
 				cg.addAction(Actions.sequence(Actions.color(new Color(1,1,1,0.8f),0.02f),Actions.fadeOut(0.1f),Actions.run(new Runnable() {public void run() {
 					RPG.ctrl.cg.dispose(cg);
@@ -79,7 +79,7 @@ public class CGLOOP1 extends DefaultNPC{
 			say("这句话，","八云紫");
 			say("我想原封不动地还给你才最恰当呢。","八云紫");
 			hideMSG();
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				final Image cg=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setColor(1,0,0,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
 				cg.addAction(Actions.sequence(Actions.color(new Color(1,0,0,1f),0.02f),Actions.fadeOut(0.15f),Actions.run(new Runnable() {public void run() {
 					RPG.ctrl.cg.dispose(cg);
@@ -95,7 +95,7 @@ public class CGLOOP1 extends DefaultNPC{
 			playSE("TornadoText3.mp3");
 			setSEVolume(0, 0.13f);
 			wait(30);
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				y11=(Image) $.add(Res.getNP(Setting.IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
 				y11.addAction(Actions.sequence(Actions.color(new Color(1,1,1,1f),0.5f,Interpolation.pow4In)));
 				RPG.ctrl.cg.push(y11);
@@ -120,7 +120,7 @@ public class CGLOOP1 extends DefaultNPC{
 			showMSG(MsgType.电脑);
 			say("哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈！！！","？？？");
 			hideMSG();
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				y11.setOrigin(Align.center);
 				y11.clearActions();
 				y11.addAction(Actions.repeat(RepeatAction.FOREVER,Actions.addAction(new Action() {
@@ -141,17 +141,17 @@ public class CGLOOP1 extends DefaultNPC{
 			setSEVolume(4.1f, 1);
 			playSE("fx1.wav");
 			wait(50);
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				RPG.ctrl.cg.dispose(mask);
 				RPG.ctrl.cg.dispose(y11);
 				y11.clearActions();
 			}});
 			stopAllSE(0,"fx1.wav");
 			wait(180);
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				RPG.ctrl.cg.disposeAll();
 			}});
-			$(new BaseScriptExecutor() {
+			set(new BaseScriptExecutor() {
 				public void init() {
 					Move.teleportAnotherMap(Instance.this,  "subway.tmx",18,1,1);
 				}

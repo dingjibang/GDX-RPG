@@ -1,21 +1,29 @@
 package com.rpsg.rpg.object.base;
 
-public interface FGType {
-	public static String 生气="Angry";
-	public static String 自信="Confident";
-	public static String 哭="Cry";
-	public static String 大笑="Happy";
-	public static String 呆="Horseface";
-	public static String 普通="Normal";
-	public static String 悲伤="Sad";
-	public static String 惊="Serious";
-	public static String 羞="Shy";
-	public static String 叹="Sigh";
-	public static String 笑="Smile";
-	public static String 思考="Thinking";
-	public static String 傲娇="Tsundere";
+public enum FGType {
+	生气("Angry"),
+	自信("Confident"),
+	哭("Cry"),
+	大笑("Happy"),
+	呆("Horseface"),
+	普通("Normal"),
+	悲伤("Sad"),
+	惊("Serious"),
+	羞("Shy"),
+	叹("Sigh"),
+	笑("Smile"),
+	思考("Thinking"),
+	傲娇("Tsundere"),
 	
-	public static String 爱丽丝立绘="alice/";
-	public static String 有栖立绘="arisu/";
+	爱丽丝("alice/"),
+	有栖("arisu/");
 	
+	private String value;
+	private FGType(String value){
+		this.value=value;
+	}
+	
+	public String value() {
+		return value;
+	}
 }

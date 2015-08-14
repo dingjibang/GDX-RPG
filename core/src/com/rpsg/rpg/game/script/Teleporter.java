@@ -10,7 +10,7 @@ public class Teleporter extends Script {
 	@Override
 	public void init() {
 		Logger.info("地图传送模块正被执行。");
-		$(new BaseScriptExecutor() {
+		set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				Move.teleportAnotherMap(Teleporter.this, npc.params.get("TELEPORT") + ".tmx",

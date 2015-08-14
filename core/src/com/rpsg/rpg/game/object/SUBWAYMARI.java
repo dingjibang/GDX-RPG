@@ -37,14 +37,14 @@ public class SUBWAYMARI extends DefaultNPC{
 		Image black,flash;
 		public void init() {
 			final BatchScript renko=findNPC(SUBWAYRENKO.class).script();
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				RPG.ctrl.cg.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem());
 				PostUtil.showMenu=false;
 			}});
 			setKeyLocker(true);
 			playSE("sw.mp3");
 			wait(460);
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				RPG.ctrl.hero.walk(1);
 				black.addAction(Actions.sequence(Actions.fadeOut(0.3f),Actions.run(new Runnable() {public void run() {
 					RPG.ctrl.cg.dispose(black);
@@ -52,14 +52,14 @@ public class SUBWAYMARI extends DefaultNPC{
 			}});
 			wait(120);
 			playSE("noise.wav");
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				flash=(Image) $.add(Res.getNP(Setting.IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
 				flash.setOrigin(Align.topRight);
 				flash.addAction(Actions.sequence(Actions.fadeIn(0.05f),Actions.parallel(Actions.scaleTo(2, 2,0.05f),Actions.moveTo(-300,400,0.05f)),Actions.color(Color.RED),Actions.moveTo(-100,200)));
 				RPG.ctrl.cg.push(flash);
 			}});
 			wait(10);
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				RPG.ctrl.cg.dispose(flash);
 			}});
 			stopAllSE(0);
@@ -75,7 +75,7 @@ public class SUBWAYMARI extends DefaultNPC{
 			showMSG(莲子);
 			say("啊啊！真是的！为什么我们大学总是要在愚人节这天开学啊！","？？？");
 			hideMSG();
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				MoveController.offsetActor.addAction(Actions.scaleTo(0.85f, 0.85f,1f,Interpolation.pow4Out));
 			}});
 			setCameraPositionWithHero(-249, 0, true);
@@ -132,14 +132,14 @@ public class SUBWAYMARI extends DefaultNPC{
 			showMSG(莲子);
 			say("啊，对了……在那边","莲子？");
 			hideMSG();
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				MoveController.offsetActor.addAction(Actions.scaleTo(1, 1,1f,Interpolation.pow4Out));
 			}});
 			setCameraPositionWithHero(0, 0, true);
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				RPG.ctrl.hero.turn(RPGObject.FACE_L);
 			}});
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				npc.turn(RPGObject.FACE_R).setWalkSpeed(6);
 				renko.npc.turn(RPGObject.FACE_R).setWalkSpeed(6).walk(12).testWalk();
 			}});
@@ -152,7 +152,7 @@ public class SUBWAYMARI extends DefaultNPC{
 			wait(60);
 			faceTo(RPGObject.FACE_D);
 			and(faceTo(renko,RPGObject.FACE_U));
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				MoveController.offsetActor.addAction(Actions.scaleTo(0.9f,0.9f,1f,Interpolation.pow4Out));
 			}});
 			setCameraPositionWithHero(-60, 0, true);
@@ -231,7 +231,7 @@ public class SUBWAYMARI extends DefaultNPC{
 			say("有栖同学，麻烦把身份证给我们看一下吧","莲子");
 			hideMSG();
 			wait(40);
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				npc.turn(RPGObject.FACE_R).setWalkSpeed(2);
 				renko.npc.turn(RPGObject.FACE_R).setWalkSpeed(4).walk(3).testWalk();
 				RPG.ctrl.hero.walk(1);
@@ -276,11 +276,11 @@ public class SUBWAYMARI extends DefaultNPC{
 			say("好好好…我请就是了，走吧。","莲子");
 			hideMSG();
 			//TODO STOP MUSIC?
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				RPG.ctrl.cg.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(0,0,0,0).addAction(Actions.color(new Color(0,0,0,1),1f)).getItem());
 			}});
 			wait(80);
-			$(new BaseScriptExecutor() {public void init() {
+			set(new BaseScriptExecutor() {public void init() {
 				RPG.ctrl.cg.disposeAll();
 			}});
 			removeSelf();

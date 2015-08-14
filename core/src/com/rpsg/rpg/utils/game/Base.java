@@ -6,7 +6,7 @@ import com.rpsg.rpg.object.script.Script;
 
 public class Base {
 	public static BaseScriptExecutor removeSelf(final Script script){
-		return script.$(new BaseScriptExecutor() {
+		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				script.npc.scripts.remove(script.callType);
@@ -15,7 +15,7 @@ public class Base {
 	}
 	
 	public static BaseScriptExecutor changeSelf(final Script script,final Class<? extends Script> newScript){
-		return script.$(new BaseScriptExecutor() {
+		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				CollideType callType = script.callType;
@@ -26,7 +26,7 @@ public class Base {
 	}
 	
 	public static BaseScriptExecutor addScript(final Script script,final Class<? extends Script> newScript,final CollideType type){
-		return script.$(new BaseScriptExecutor() {
+		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
 				script.npc.scripts.put(type, newScript);

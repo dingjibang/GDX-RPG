@@ -7,7 +7,7 @@ import com.rpsg.rpg.object.script.ScriptExecutor;
 
 public class Timer {
 	public static BaseScriptExecutor wait(final Script script, final int frame) {
-		return script.$(new ScriptExecutor(script) {
+		return script.set(new ScriptExecutor(script) {
 			int time=frame;
 			public void init() {
 			}

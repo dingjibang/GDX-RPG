@@ -6,6 +6,7 @@ import org.mozilla.javascript.ScriptableObject;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
@@ -29,7 +30,7 @@ import com.rpsg.rpg.utils.game.Timer;
 import com.rpsg.rpg.view.GameViews;
 
 
-public class Script extends Thread implements MsgType,FGType {
+public class Script extends Thread{
 	
 	public NPC npc;
 	public CollideType callType;
@@ -133,7 +134,7 @@ public class Script extends Thread implements MsgType,FGType {
 	/**
 	 * 插入一个新的执行器到堆栈的最后一位
 	 */
-	public BaseScriptExecutor $ (BaseScriptExecutor exe){
+	public BaseScriptExecutor set (BaseScriptExecutor exe){
 		currentExeced=exeMode.first;
 		currentScript=exe;
 		hold();
@@ -168,7 +169,7 @@ public class Script extends Thread implements MsgType,FGType {
 	 */
 	public BaseScriptExecutor and(final BaseScriptExecutor exe){
 		if(exe instanceof ScriptExecutor)
-			$(new ScriptExecutor(this) {
+			set(new ScriptExecutor(this) {
 				ScriptExecutor proxy=(ScriptExecutor)exe;
 				public void init() {
 					proxy.init();
@@ -181,7 +182,7 @@ public class Script extends Thread implements MsgType,FGType {
 				}
 			});
 		else
-			$(new BaseScriptExecutor() {
+			set(new BaseScriptExecutor() {
 				public void init() {
 					exe.init();
 				}
@@ -275,6 +276,10 @@ public class Script extends Thread implements MsgType,FGType {
 		return Base.removeSelf(this);
 	}
 	
+	public GdxQuery $ (Object... o){
+		return new GdxQuery(o);
+	}
+	
 	/**
 	 * 播放音乐
 	 * @return
@@ -305,8 +310,8 @@ public class Script extends Thread implements MsgType,FGType {
 	 * @param {@link MsgType} 要显示什么样的对话框 
 	 * @return
 	 */
-	public BaseScriptExecutor showMSG(String msgType){
-		return RPG.ctrl.msg.show(this, msgType);
+	public BaseScriptExecutor showMSG(MsgType msgType){
+		return RPG.ctrl.msg.show(this, msgType.path());
 	}
 	
 	/**
@@ -329,7 +334,7 @@ public class Script extends Thread implements MsgType,FGType {
 	 * @return
 	 */
 	public BaseScriptExecutor showMSG(){
-		return RPG.ctrl.msg.show(this, 正常);
+		return RPG.ctrl.msg.show(this, MsgType.正常.path());
 	}
 	
 	/**
@@ -363,8 +368,8 @@ public class Script extends Thread implements MsgType,FGType {
 	 * @param {@link FGType} 立绘的类型
 	 * @return
 	 */
-	public BaseScriptExecutor showFGLeft(String people,String look){
-		return RPG.ctrl.fg.show(this, Setting.IMAGE_FG+people+look+".png", FG.LEFT);
+	public BaseScriptExecutor showFGLeft(FGType people,FGType look){
+		return RPG.ctrl.fg.show(this, Setting.IMAGE_FG+people.value()+look.value()+".png", FG.LEFT);
 	}
 	
 	/**
