@@ -53,7 +53,6 @@ public class Script extends Thread implements MsgType,FGType {
 			ScriptableObject scope =ctx.initStandardObjects();
 			scope.setPrototype(((NativeJavaObject)Context.javaToJS(Script.this, scope)));
 			scope.put("Hero", scope, Context.javaToJS(RPG.ctrl.hero.getHeadHero(), scope));
-			
 			ctx.evaluateString(scope, script, null, 1, null);
 			setName(npc.toString()+(npc instanceof PublicNPC?" & ID:"+((PublicNPC)npc).getId():"")+" (collide: "+callType+") : "+getId());
 		} catch (Exception e) {
@@ -105,7 +104,6 @@ public class Script extends Thread implements MsgType,FGType {
 	
 	
 	public void step(){
-//		System.out.println("maint:"+currentExeced);
 		if(currentExeced==exeMode.first && currentScript!=null)
 			if(currentScript instanceof ScriptExecutor){
 				((ScriptExecutor)currentScript).toInit();
@@ -516,6 +514,7 @@ public class Script extends Thread implements MsgType,FGType {
 	}
 	
 	public BaseScriptExecutor teleport(String map,int x,int y,int z){
+		if(!map.endsWith(".tmx")) map+=".tmx";
 		return Move.teleportAnotherMap(this, map, x, y, z);
 	}
 }

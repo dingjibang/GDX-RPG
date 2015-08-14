@@ -81,7 +81,6 @@ public class GameView extends View{
 	public void dispose() {
 		RPG.maps.loader.dispose();
 		if(!Setting.persistence.cacheResource){
-			RPG.maps.map.dispose();
 			ma.unload(filename);
 		}
 		if(null!=stackView){

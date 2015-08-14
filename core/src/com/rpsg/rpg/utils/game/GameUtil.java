@@ -46,9 +46,13 @@ public class GameUtil {
 		Map<String,Object> m=new HashMap<String, Object>();
 		while(i.hasNext()){
 			String s=i.next();
-			m.put(s, mp.get(s));
+			m.put(s, parseEsc(mp.get(s)));
 		}
 		return m;
+	}
+	
+	private static String parseEsc(Object esc){
+		return esc.toString().replaceAll("&quot;", "\"");
 	}
 
 	public static float getScale(){

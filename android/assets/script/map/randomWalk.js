@@ -1,4 +1,5 @@
 eval(""+load('global.js'));
+
 npc.walkSpeed=1;
 if(typeof(speed)=="undefined" || speed==null)
 	var speed = 60;

@@ -103,8 +103,11 @@ public class MapLoader {
 									(int)(((RectangleMapObject)obj).getRectangle().getWidth()),
 									(int)(((RectangleMapObject)obj).getRectangle().getHeight())
 								);
-							else
-								npc=new PublicNPC((String) obj.getProperties().get("ID"),obj.getProperties().get("IMAGE")+".png",(int)(((RectangleMapObject)obj).getRectangle().getWidth()),(int)(((RectangleMapObject)obj).getRectangle().getHeight()));
+							else{
+								String imgPath=(String) obj.getProperties().get("IMAGE");
+								imgPath=imgPath==null?"empty":imgPath;
+								npc=new PublicNPC((String) obj.getProperties().get("ID"),imgPath+".png",(int)(((RectangleMapObject)obj).getRectangle().getWidth()),(int)(((RectangleMapObject)obj).getRectangle().getHeight()));
+							}
 							npc.params=GameUtil.parseMapProperties(obj.getProperties());
 							npc.init();
 							if(obj.getProperties().get("ABSOLUTE")!=null && obj.getProperties().get("ABSOLUTE").equals("true"))

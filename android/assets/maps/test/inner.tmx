@@ -51,37 +51,14 @@
   </data>
  </layer>
  <objectgroup name="对象层 1">
-  <object name="DOOR" type="NPC" gid="1066" x="864" y="720" width="48" height="48">
+  <object name="PUBLIC" type="NPC" gid="1066" x="1104" y="240" width="48" height="48">
    <properties>
-    <property name="IMAGE" value="empty"/>
-    <property name="TELEPORT" value="broom"/>
-    <property name="TELEPORTX" value="0"/>
-    <property name="TELEPORTY" value="1"/>
-    <property name="TELEPORTZ" value="2"/>
+    <property name="NEAR_EXECUTE" value="teleport(&quot;twofloor&quot;,2,6,2)"/>
    </properties>
   </object>
-  <object name="DOOR" type="NPC" gid="1066" x="1104" y="288" width="48" height="48">
+  <object name="PUBLIC" type="NPC" gid="1066" x="912" y="144" width="48" height="48">
    <properties>
-    <property name="IMAGE" value="empty"/>
-    <property name="TELEPORT" value="twofloor"/>
-    <property name="TELEPORTX" value="2"/>
-    <property name="TELEPORTY" value="6"/>
-    <property name="TELEPORTZ" value="2"/>
-   </properties>
-  </object>
-  <object name="DOOR" type="NPC" gid="1066" x="1104" y="240" width="48" height="48">
-   <properties>
-    <property name="IMAGE" value="empty"/>
-    <property name="TELEPORT" value="twofloor"/>
-    <property name="TELEPORTX" value="2"/>
-    <property name="TELEPORTY" value="6"/>
-    <property name="TELEPORTZ" value="2"/>
-   </properties>
-  </object>
-  <object name="Talker" type="NPC" gid="1066" x="912" y="144" width="48" height="48">
-   <properties>
-    <property name="IMAGE" value="empty"/>
-    <property name="SAYING" value="人类为何要互相伤害呢？\n回车测试？"/>
+    <property name="Z_EXECUTE" value="say(&quot;人类为何要互相伤害呢？\n回车测试？&quot;)"/>
    </properties>
   </object>
   <object name="PUBLIC" type="NPC" gid="1066" x="336" y="816" width="48" height="64">
@@ -90,6 +67,16 @@
     <property name="IMAGE" value="walk_renko"/>
     <property name="SHADOW" value="true"/>
     <property name="Z_SCRIPT" value="test.js"/>
+   </properties>
+  </object>
+  <object name="PUBLIC" type="NPC" gid="1066" x="1104" y="288" width="48" height="48">
+   <properties>
+    <property name="NEAR_EXECUTE" value="teleport(&quot;twofloor&quot;,2,6,2)"/>
+   </properties>
+  </object>
+  <object name="PUBLIC" type="NPC" gid="1066" x="864" y="720" width="48" height="48">
+   <properties>
+    <property name="NEAR_EXECUTE" value="teleport(&quot;broom&quot;,0,1,2);"/>
    </properties>
   </object>
  </objectgroup>
