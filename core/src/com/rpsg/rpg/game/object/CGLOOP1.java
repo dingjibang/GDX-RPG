@@ -129,6 +129,7 @@ public class CGLOOP1 extends DefaultNPC{
 							del=0;
 							flength++;
 						}
+						getActor()
 						actor.addAction(Actions.moveTo(MathUtils.random(-flength,flength), MathUtils.random(-flength,flength),1f));
 						return false;
 					}

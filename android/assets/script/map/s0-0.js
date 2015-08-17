@@ -1,6 +1,7 @@
 eval(""+load('global.js'));
 
 var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
+CG.push(black);
 PostUtil.showMenu=false;
 playSE("fire.mp3");
 pause(230);
@@ -30,23 +31,93 @@ pause(300);
 
 showMenu(false);
 
-showMSG(MsgType.µçÄÔ);
+showMSG(MsgType.ç”µè„‘);
 pause(10);
-say("¹ş¹ş¹ş¹ş£¬ÊÇÎÒÓ®ÁË£¡","£¿£¿£¿");
-say("°ËÔÆ×Ï£¡","£¿£¿£¿");
+say("å“ˆå“ˆå“ˆå“ˆï¼Œæ˜¯æˆ‘èµ¢äº†ï¼","ï¼Ÿï¼Ÿï¼Ÿ");
+say("å…«äº‘ç´«ï¼","ï¼Ÿï¼Ÿï¼Ÿ");
 hideMSG();
 pause(60);
 
-showMSG(MsgType.µçÄÔ);
-say("ºÃºÃ¿´¿´Äã×Ô¼ºÈËÉú×îºóµÄÑù×Ó°É£¡","£¿£¿£¿");
+showMSG(MsgType.ç”µè„‘);
+say("å¥½å¥½çœ‹çœ‹ä½ è‡ªå·±äººç”Ÿæœ€åçš„æ ·å­å§ï¼","ï¼Ÿï¼Ÿï¼Ÿ");
 hideMSG();
 pause(80);
 
-showMSG(MsgType.×Ï);
-say("Õâ¾ä»°£¬","°ËÔÆ×Ï");
-say("ÎÒÏëÔ­·â²»¶¯µØ»¹¸øÄã²Å×îÇ¡µ±ÄØ¡£","°ËÔÆ×Ï");
+showMSG(MsgType.ç´«);
+say("è¿™å¥è¯ï¼Œ","å…«äº‘ç´«");
+say("æˆ‘æƒ³åŸå°ä¸åŠ¨åœ°è¿˜ç»™ä½ æ‰æœ€æ°å½“å‘¢ã€‚","å…«äº‘ç´«");
 hideMSG();
 
+var cg = $(Res.get(Setting.UI_BASE_IMG)).setColor(1,0,0,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
+cg.addAction(Actions.sequence(Actions.color(new Color(1,0,0,1),0.02),Actions.fadeOut(0.15),Actions.run(function(){
+	CG.dispose(cg);
+})));
+CG.push(cg);
+
+stopAllSE(0.01);
+
+playSE("attack.wav");
+pause(65);
+showMSG(MsgType.ç”µè„‘);
+say("ä»€ä¹ˆï¼ï¼Ÿ","ï¼Ÿï¼Ÿï¼Ÿ",35);
+hideMSG();
+playSE("TornadoText3.mp3");
+setSEVolume(0, 0.13);
+pause(30);
+
+var y11=$(Res.get(Setting.IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
+y11.addAction(Actions.sequence(Actions.color(new Color(1,1,1,1),0.5,Interpolation.pow4In)));
+CG.push(y11);
+
+pause(200);
+showMSG(MsgType.ç”µè„‘);
+say("ä¸ºä»€ä¹ˆï¼ï¼ï¼","ï¼Ÿï¼Ÿï¼Ÿ");
+hideMSG();
+pause(30);
+showMSG(MsgType.ç”µè„‘);
+say("è¿™ä¸å¯èƒ½ï¼ï¼ï¼","ï¼Ÿï¼Ÿï¼Ÿ");
+hideMSG();
+pause(140);
+showMSG(MsgType.ç”µè„‘);
+say("éš¾é“è¯´â€¦â€¦","ï¼Ÿï¼Ÿï¼Ÿ");
+hideMSG();
+pause(120);
+showMSG(MsgType.ç”µè„‘);
+say("åŸæ¥å¦‚æ­¤â€¦â€¦","ï¼Ÿï¼Ÿï¼Ÿ");
+hideMSG();
+pause(30);
+showMSG(MsgType.ç”µè„‘);
+say("å“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆå“ˆï¼ï¼ï¼","ï¼Ÿï¼Ÿï¼Ÿ");
+hideMSG();
+
+y11.setOrigin(Align.center);
+y11.clearActions();
+var del=0,flength=0;
+y11.addAction(Actions.repeat(RepeatAction.FOREVER,Actions.addAction(new Action(){
+	act:function(delta) {
+		if(del++==850){
+			del=0;
+			flength++;
+		}
+		y11.addAction(Actions.moveTo(MathUtils.random(-flength,flength), MathUtils.random(-flength,flength),1));
+		return false;
+	}
+})));
+y11.addAction(Actions.scaleTo(2,2,8,Interpolation.pow4In));
+var mask=$(Res.get(Setting.UI_BASE_IMG)).setColor(1,0,0,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
+mask.addAction(Actions.color(new Color(1,0,0,1),6,Interpolation.pow5In));
+CG.push(mask);
+setSEVolume(4.1, 1);
+playSE("fx1.wav");
+pause(50);
+CG.dispose(mask);
+CG.dispose(y11);
+y11.clearActions();
+
+stopAllSE(0,"fx1.wav");
+pause(180);
+CG.disposeAll();
+teleport("subway",18,1,1);
 
 removeSelf();
 end();

@@ -63,6 +63,7 @@
   </object>
   <object name="PUBLIC" type="NPC" gid="1066" x="336" y="816" width="48" height="64">
    <properties>
+    <property name="AUTO_SCRIPT" value="innerRenko.js"/>
     <property name="ID" value="1"/>
     <property name="IMAGE" value="walk_renko"/>
     <property name="SHADOW" value="true"/>
