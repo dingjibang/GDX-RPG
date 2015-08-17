@@ -131,12 +131,10 @@ public class Msg {
 	}
 	
 	public Color getColor(String mt){
-		switch(mt){
-		case MsgType.紫.path():case MsgType.妖梦.path():case MsgType.梅莉.path():
+		if(mt.equals(MsgType.紫.path()) || mt.equals(MsgType.紫.path()) || mt.equals(MsgType.紫.path()))
 			return Color.BLACK;
-		default:
+		else
 			return Color.WHITE;
-		}
 	}
 	
 	
