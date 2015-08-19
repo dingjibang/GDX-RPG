@@ -25,7 +25,6 @@ public class CAFEAUTO extends DefaultNPC{
 
 	@Override
 	public void init() {
-		scripts.put(CollideType.auto,Instance.class);
 	}
 	
 	public static class Instance extends Script {

@@ -20,7 +20,7 @@ public class Base {
 			public void init() {
 				CollideType callType = script.callType;
 				script.npc.scripts.remove(callType);
-				script.npc.scripts.put(callType, newScript);
+//				TODO script.npc.scripts.put(callType, newScript);
 			}
 		});
 	}
@@ -29,7 +29,7 @@ public class Base {
 		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				script.npc.scripts.put(type, newScript);
+//				TODO script.npc.scripts.put(type, newScript);
 			}
 		});
 	}

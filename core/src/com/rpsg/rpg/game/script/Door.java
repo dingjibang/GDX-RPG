@@ -7,7 +7,6 @@ import com.rpsg.rpg.object.script.Script;
 
 public class Door extends Script{
 
-	@Override
 	public void init() {
 		set(new BaseScriptExecutor() {
 			@Override

@@ -12,9 +12,9 @@ public class SayHelloWorld extends Script{
 			@Override
 			public void init() {
 				if(RPG.ctrl.weather.type==WeatherUtil.WEATHER_NO){
-					_$(setWeather(WeatherUtil.WEATHER_RAIN));
+//					_$(setWeather(WeatherUtil.WEATHER_RAIN));
 				}else{
-					_$(setWeather(WeatherUtil.WEATHER_NO));
+//					_$(setWeather(WeatherUtil.WEATHER_NO));
 				}
 			}
 		});

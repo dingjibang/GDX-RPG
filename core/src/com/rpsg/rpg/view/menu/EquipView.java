@@ -68,7 +68,7 @@ public class EquipView extends IMenuView{
 		walkerbox.setColor(1,1,1,0);
 		walkerbox.addAction(Actions.fadeIn(0.2f));
 		stage.addActor(walkerbox);
-		
+					
 		ImageButton left=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"left.png"),Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"lefts.png"));
 		left.setPosition(245, 390);
 		left.addListener(new InputListener(){

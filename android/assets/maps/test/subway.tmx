@@ -17,14 +17,17 @@
   </data>
  </layer>
  <objectgroup name="对象层 1">
-  <object name="SUBWAYMARI" type="NPC" gid="301" x="-48" y="144" width="48" height="64">
+  <object name="PUBLIC" type="NPC" gid="301" x="-48" y="144" width="48" height="64">
    <properties>
+    <property name="AUTO_SCRIPT" value="s0-1.js"/>
+    <property name="ID" value="SUBWAYMARI"/>
     <property name="IMAGE" value="walk_mari"/>
     <property name="SHADOW" value="true"/>
    </properties>
   </object>
-  <object name="SUBWAYRENKO" type="NPC" gid="301" x="-48" y="240" width="48" height="64">
+  <object name="PUBLIC" type="NPC" gid="301" x="-48" y="240" width="48" height="64">
    <properties>
+    <property name="ID" value="SUBWAYRENKO"/>
     <property name="IMAGE" value="walk_renko"/>
     <property name="SHADOW" value="true"/>
    </properties>

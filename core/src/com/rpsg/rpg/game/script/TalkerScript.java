@@ -6,7 +6,6 @@ import com.rpsg.rpg.object.script.Script;
 
 public class TalkerScript extends Script{
 
-	@Override
 	public void init() {
 		setKeyLocker(true);
 		showMSG();

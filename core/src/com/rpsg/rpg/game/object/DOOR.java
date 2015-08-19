@@ -1,8 +1,5 @@
 package com.rpsg.rpg.game.object;
 
-import com.rpsg.rpg.game.script.Door;
-import com.rpsg.rpg.game.script.Teleporter;
-import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.DefaultNPC;
 
 public class DOOR extends DefaultNPC{
