@@ -20,14 +20,14 @@
   <object name="PUBLIC" type="NPC" gid="301" x="-48" y="144" width="48" height="64">
    <properties>
     <property name="AUTO_SCRIPT" value="s0-1.js"/>
-    <property name="ID" value="SUBWAYMARI"/>
+    <property name="ID" value="mari"/>
     <property name="IMAGE" value="walk_mari"/>
     <property name="SHADOW" value="true"/>
    </properties>
   </object>
   <object name="PUBLIC" type="NPC" gid="301" x="-48" y="240" width="48" height="64">
    <properties>
-    <property name="ID" value="SUBWAYRENKO"/>
+    <property name="ID" value="renko"/>
     <property name="IMAGE" value="walk_renko"/>
     <property name="SHADOW" value="true"/>
    </properties>

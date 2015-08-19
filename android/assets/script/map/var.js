@@ -1,0 +1,1 @@
+var Arisu = com.rpsg.rpg.game.hero.Arisu;
