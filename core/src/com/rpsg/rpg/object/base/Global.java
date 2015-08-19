@@ -92,7 +92,6 @@ public class Global implements Serializable {
 						(int) f.get(this)
 								- Integer.parseInt(s.substring(s.indexOf("-") + 1)));
 			} else if (s.contains(".set(")) {
-
 			}
 
 			AchievementManager.determine(field);

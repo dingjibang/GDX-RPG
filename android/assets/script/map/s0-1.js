@@ -2,22 +2,22 @@ eval(""+load('global.js'));
 eval(""+load('var.js'));
 
 var renko = getNPC("renko");
-var black = $(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
+var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
 CG.push(black);
 PostUtil.showMenu=false;
 setKeyLocker(true);
 playSE("sw.mp3");
 pause(460);
 
-Hero.walk(1);
+Hero.walk(1).testWalk();
 black.addAction(Actions.sequence(Actions.fadeOut(0.3),Actions.run(function(){
 	CG.dispose(black);
-}})));
+})));
 pause(120);
 
 playSE("noise.wav");
 
-var flash=$(Res.getNP(Setting.IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
+var flash=$(Res.get(Setting.IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
 flash.setOrigin(Align.topRight);
 flash.addAction(Actions.sequence(Actions.fadeIn(0.05),Actions.parallel(Actions.scaleTo(2, 2,0.05),Actions.moveTo(-300,400,0.05)),Actions.color(Color.RED),Actions.moveTo(-100,200)));
 CG.push(flash);
@@ -30,7 +30,7 @@ pause(60);
 faceTo(RPGObject.FACE_R);
 faceTo(renko, RPGObject.FACE_R);
 
-setBalloon(Arisu.class, BalloonType.沉默);
+setBalloon(Arisu, BalloonType.沉默);
 pause(60);
 
 showMSG(MsgType.莲子);
@@ -94,6 +94,8 @@ say("啊，对了……在那边","莲子？");
 hideMSG();
 
 MoveController.offsetActor.addAction(Actions.scaleTo(1,1,1,Interpolation.pow4Out));
+setCameraPositionWithHero(0, 0, true);
+
 Hero.turn(RPGObject.FACE_L);
 npc.turn(RPGObject.FACE_R).setWalkSpeed(6);
 renko.turn(RPGObject.FACE_R).setWalkSpeed(6).walk(12).testWalk();

@@ -3,12 +3,13 @@
 **/
 
 //初始地图
-map = "test/cgloop.tmx";
+//map = "test/cgloop.tmx";
+map = "test/subway.tmx";x=18;y=1;z=1;
 
 //初始坐标
-x = 7;
-y = 18;
-z = 3;
+//x = 7;
+//y = 18;
+//z = 3;
 
 //初始天气
 weather = com.rpsg.rpg.utils.display.WeatherUtil.WEATHER_NO;

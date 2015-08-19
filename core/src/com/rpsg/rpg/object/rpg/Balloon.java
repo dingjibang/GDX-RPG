@@ -12,15 +12,15 @@ import com.rpsg.rpg.system.ui.Image;
 
 public class Balloon extends Actor implements Serializable{
 	private static final long serialVersionUID = 1L;
-	static final String BALLOON=Setting.MESSAGE+"balloon.png";
+	static final Texture BALLOON=Res.getTexture(Setting.MESSAGE+"balloon.png");
 	static final int ICON_SIZE=32,ANIMATION_SIZE=7,ANIMATION_SPEED=10;
 	
 	Image[] balloons=new Image[ANIMATION_SIZE];
 	int current=0,buffer=0;
 	public Balloon(BalloonType type) {
 		int y=type.value();
-		Texture tex=Res.getTexture(BALLOON);
-		TextureRegion region=new TextureRegion(tex,0,y*ICON_SIZE,tex.getWidth(),ICON_SIZE);
+		//multi thread and fix fuck opengl
+		TextureRegion region=new TextureRegion(BALLOON,0,y*ICON_SIZE,BALLOON.getWidth(),ICON_SIZE);
 		for(int i=0;i<balloons.length;i++)
 			balloons[i]=new Image(new TextureRegion(region,i*ICON_SIZE,0,ICON_SIZE,ICON_SIZE));
 	}

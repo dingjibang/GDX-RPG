@@ -50,8 +50,10 @@ public class Res {
 	}
 
 	public static Texture getTexture(String resPath) {
-		ma.load(resPath, Texture.class);
-		while(!ma.update());
+		if(!ma.containsAsset(resPath)){
+			ma.load(resPath, Texture.class);
+			while(!ma.update());
+		}
 		Texture txt=ma.get(resPath);
 		if(Setting.persistence.scaleAliasing)
 			txt.setFilter(TextureFilter.Linear, TextureFilter.Linear);

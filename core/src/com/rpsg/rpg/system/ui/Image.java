@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.base.Res;
+import com.rpsg.rpg.utils.game.Logger;
 /**
  * GDX-RPG Image组件
  * 允许开启抗锯齿、销毁的图形组件。
@@ -113,8 +114,12 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	}
 	
 	private void setAnti(){
-		if(Setting.persistence.scaleAliasing)
-			getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		try{
+			if(Setting.persistence.scaleAliasing)
+				getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		}catch(java.lang.RuntimeException re){
+			Logger.error("尝试多线程读取openGL资源但遭到失败。");
+		}
 		addListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
