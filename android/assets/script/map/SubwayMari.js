@@ -8,7 +8,7 @@ setKeyLocker(true);
 playSE("sw.mp3");
 wait(460);
 hero.walk(1);
-black.addAction(Actions.sequence(Actions.fadeOut(0.3f),Actions.run(function {cg.dispose(black)});
+black.addAction(Actions.sequence(Actions.fadeOut(0.3f),Actions.run(function {cg.dispose(black)}));
 wait(120);
 playSE("noise.wav");
 
