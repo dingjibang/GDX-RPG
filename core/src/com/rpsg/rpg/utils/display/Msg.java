@@ -131,7 +131,7 @@ public class Msg {
 	}
 	
 	public Color getColor(String mt){
-		if(mt.equals(MsgType.紫.path()) || mt.equals(MsgType.紫.path()) || mt.equals(MsgType.紫.path()))
+		if(mt.equals(MsgType.紫.path()) || mt.equals(MsgType.梅莉.path()) || mt.equals(MsgType.正常.path()))
 			return Color.BLACK;
 		else
 			return Color.WHITE;

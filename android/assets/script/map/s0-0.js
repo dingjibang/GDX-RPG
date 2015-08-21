@@ -90,6 +90,7 @@ showMSG(MsgType.电脑);
 say("哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈！！！","？？？");
 hideMSG();
 
+
 y11.setOrigin(Align.center);
 y11.clearActions();
 var del=0,flength=0;

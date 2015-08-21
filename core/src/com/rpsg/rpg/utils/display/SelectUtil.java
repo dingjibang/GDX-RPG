@@ -2,7 +2,7 @@ package com.rpsg.rpg.utils.display;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -11,7 +11,10 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
+import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.ActorRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.IOMode;
@@ -20,6 +23,7 @@ import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
 import com.rpsg.rpg.system.controller.InputController;
 import com.rpsg.rpg.system.ui.Image;
+import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class SelectUtil implements InputProcessor {
@@ -34,10 +38,10 @@ public class SelectUtil implements InputProcessor {
 		style=new ImageButtonStyle();
 		style.over=hover.getDrawable();
 		style.down=click.getDrawable();
-		style.up=but.getDrawable();
-		mask.setWidth(GameUtil.getScreenWidth());
+		style.imageUp=but.getDrawable();
+		mask.setWidth(GameUtil.screen_width);
 		mask.setPosition(0, 0);
-		stage=new Stage();
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 	}
 	
 	public static String currentSelect="";
@@ -48,17 +52,14 @@ public class SelectUtil implements InputProcessor {
 		return script.set(new ScriptExecutor(script) {
 			public void step() {
 				if(!select){
+					stage.draw();
 					stage.act();
-					stage.getBatch().begin();
-					for (Actor but : stage.getActors()) {
-						but.draw(stage.getBatch(), 1);
-						if(but instanceof ImageButton){
-							String str=(String)but.getUserObject();
-							FontUtil.draw((SpriteBatch) stage.getBatch(), str, 22, but.getColor(), 124+777/2-FontUtil.getTextWidth(str, 22)/2,(int)but.getY()+33, 1000);
+					$.add(stage).findByClass(Label.class).each(new ActorRunnable() {
+						public void run(Actor child) {
+							child.setY(((ImageButton) child.getUserObject()).getY()+33);
+							child.setColor(((ImageButton) child.getUserObject()).getColor());
 						}
-					}
-
-					stage.getBatch().end();
+					});
 				}else{
 					Gdx.input.setInputProcessor(RPG.input);
 					if(!isLocked)
@@ -75,14 +76,10 @@ public class SelectUtil implements InputProcessor {
 				int yoff=0;
 				mask.setColor(1,1,1,0);
 				mask.addAction(Actions.fadeIn(0.1f));
-				mask.setWidth(GameUtil.getScreenWidth());
 				stage.addActor(mask);
 				for(final String s:str){
 					final ImageButton button=new ImageButton(style);
-					float absWidth = (float)GameUtil.getScreenHeight()*0.643f;
-					float absHeight = (float)GameUtil.getScreenHeight()*0.1225f;
-					System.out.println(absWidth);
-					$.add(button).setSize(absWidth, absHeight).getCell().prefSize(absWidth, absHeight);
+					final Label l;
 					button.setUserObject(s);
 					button.addListener(new InputListener(){
 						public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
@@ -113,9 +110,11 @@ public class SelectUtil implements InputProcessor {
 						}
 					});
 					button.setColor(1,1,1,0);
-					button.setPosition(GameUtil.getScreenWidth()/2-button.getWidth()/2, (yoff+=70)-30);
+					button.setPosition(GameUtil.screen_width/2-button.getWidth()/2, (yoff+=70)-30);
 					button.addAction(Actions.parallel(Actions.fadeIn(0.1f),Actions.moveBy(0, +30,0.1f)));
 					stage.addActor(button);
+					stage.addActor(l=new Label(s,22).align(124+777/2));
+					l.setUserObject(button);
 				}
 			}
 		});
@@ -155,4 +154,3 @@ public class SelectUtil implements InputProcessor {
 	
 
 }
-

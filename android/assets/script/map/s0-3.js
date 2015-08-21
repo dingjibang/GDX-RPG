@@ -19,8 +19,7 @@ CG.push(black);
 var tip1=$(Res.get(Setting.IMAGE_GLOBAL+(GameUtil.isDesktop?"tip_pc1.png":"tip_mobile1.png")));
 var tip2=$(Res.get(Setting.IMAGE_GLOBAL+(GameUtil.isDesktop?"tip_pc2.png":"tip_mobile2.png")));
 
-tip1 = tip1.setColor(new Color(1,1,1,0)).setPosition((GameUtil.screen_width/2-793/2),(GameUtil.screen_height/2-500/2)).getItem();
-tip1.oranCenter()
+tip1 = tip1.setColor(new Color(1,1,1,0)).setPosition((GameUtil.screen_width/2-793/2),(GameUtil.screen_height/2-500/2)).getItem().oranCenter();
 CG.push(tip1);
 tip1.addAction(Actions.sequence(Actions.color(new Color(1,1,1,1),0.3)));
 say("   ");			

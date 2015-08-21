@@ -399,7 +399,8 @@ public class GdxQuery {
 				for(Button button:((ButtonGroup)obj).getButtons())
 					getItems().add(button);
 			else if(obj instanceof Stage)
-				getItems().addAll((Collection<? extends Actor>) ((Stage)obj).getActors());
+				for(Actor actor:((Stage)obj).getActors())
+					getItems().add(actor);
 			else if(obj instanceof GdxQuery)
 				getItems().addAll(((GdxQuery)obj).getItems());
 			else if(obj instanceof Collection)
