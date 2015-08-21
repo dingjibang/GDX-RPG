@@ -1,20 +1,8 @@
 package com.rpsg.rpg.game.object;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.rpsg.gdxQuery.$;
-import com.rpsg.rpg.core.RPG;
-import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.game.object.CGLOOP1.Instance;
-import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
-import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.DefaultNPC;
-import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Image;
-import com.rpsg.rpg.utils.display.PostUtil;
-import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Move;
 
 public class CAFEAUTO extends DefaultNPC{

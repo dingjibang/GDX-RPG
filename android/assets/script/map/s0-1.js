@@ -2,7 +2,7 @@ eval(""+load('global.js'));
 eval(""+load('var.js'));
 
 var renko = getNPC("renko");
-var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem());
+var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
 CG.push(black);
 PostUtil.showMenu=false;
 setKeyLocker(true);
@@ -32,7 +32,7 @@ faceTo(renko, RPGObject.FACE_R);
 
 setBalloon(Arisu, BalloonType.沉默);
 pause(60);
-
+com.rp
 showMSG(MsgType.莲子);
 say("啊啊！真是的！为什么我们大学总是要在愚人节这天开学啊！","？？？");
 hideMSG();
@@ -152,6 +152,7 @@ showMSG(MsgType.梅莉);
 say("你看人家完全没有理解你的话……","梅莉");
 showMSG(MsgType.莲子);
 faceTo(renko,RPGObject.FACE_U);
+
 say("是这样的……有栖在网上找到我，说在她身边发生了奇怪的事情。打牌的时候连赢了好多把","莲子");
 showMSG(MsgType.梅莉);
 say("我跟莲子你玩抽鬼牌时不也是一直赢到天边的吗","梅莉");
@@ -176,7 +177,7 @@ showMSG(MsgType.梅莉);
 say("因为都被我烧掉了。你真的喜欢看些肉麻话的话，我倒是可以写一大堆给你","莲子");
 hideMSG();
 pause(50);
-showMSG(正常);
+showMSG(MsgType.正常);
 say("两人的关系似乎好得要命");
 hideMSG();
 pause(45);
@@ -188,16 +189,20 @@ pause(40);
 
 
 npc.turn(RPGObject.FACE_R).setWalkSpeed(2);
-renko.npc.turn(RPGObject.FACE_R).setWalkSpeed(4).walk(3).testWalk();
-hero.walk(1);
-hero.testWalk();
+renko.turn(RPGObject.FACE_R).setWalkSpeed(4).walk(3).testWalk();
+Hero.walk(1).testWalk();
 
 move(3);
 faceTo(renko,RPGObject.FACE_U);
+wait(30);
+var y12a = $(Res.get(Setting.IMAGE_CG+"y12cga.jpg")).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(1,1,1,0).addAction(Actions.fadeIn(0.5)).getItem();
+CG.push(y12a);
+
 pause(80);
 showMSG(MsgType.莲子);
 say("梅莉，你仔细看。一般人照身份证，不可能把头转过去，拍后脑勺吧","莲子");
 hideFG();
+hideMSG();
 pause(30);
 showMSG(MsgType.梅莉);
 say("她是怎么用这张身份证上火车的……","梅莉");
@@ -205,6 +210,9 @@ showMSG(MsgType.莲子);
 say("事实上，她身份证上照片只要在她手中就会发生变化","莲子");
 say("来，有栖同学，你用一下你的能力","莲子");
 hideMSG();
+
+var y12a = $(Res.get(Setting.IMAGE_CG+"y12cgb.jpg")).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(1,1,1,0).addAction(Actions.fadeIn(0.5)).getItem();
+CG.push(y12a);
 pause(60);
 showMSG(MsgType.梅莉);
 say("原来如此……","梅莉");
@@ -217,6 +225,8 @@ say("甚至是操纵卡片吗……真是奇怪","梅莉");
 showMSG(MsgType.莲子);
 say("嗯，纸牌、身份证、明信片等等，都是卡片呢……","莲子");
 hideMSG();
+CG.disposeAll();
+pause(60);
 setCameraPositionWithHero(-100, 0, true);
 showMSG(MsgType.莲子);
 say("啊，不知不觉在这里呆了那么久","莲子");
@@ -228,8 +238,8 @@ pause(30);
 showMSG(MsgType.莲子);
 say("好好好…我请就是了，走吧。","莲子");
 hideMSG();
-cg.push(black);
+CG.push($(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(0,0,0,0).addAction(Actions.color(new Color(0,0,0,1),1)).getItem());
 pause(80);
-cg.disposeAll();
+CG.disposeAll();
 removeSelf();
 end();

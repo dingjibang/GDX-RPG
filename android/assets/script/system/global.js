@@ -1,20 +1,19 @@
 /**
-*	GDX-RPG ���� ��Ϸ��ʼ���ű�
+*	GDX-RPG 引擎 游戏初始化脚本
 **/
 
-//��ʼ��ͼ
+//初始地图
 map = "test/inner.tmx";
 //map = "test/subway.tmx";x=18;y=1;z=1;
 //map = "test/cgloop.tmx";
 
-//��ʼ����
+//初始坐标
 //x = 7;
 //y = 18;
 //z = 3;
 
-//��ʼ����
+//初始天气
 weather = com.rpsg.rpg.utils.display.WeatherUtil.WEATHER_NO;
 
-//��ʼЯ��
+//初始携带
 gold = 120;
-
