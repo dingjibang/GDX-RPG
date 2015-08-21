@@ -194,7 +194,7 @@ Hero.walk(1).testWalk();
 
 move(3);
 faceTo(renko,RPGObject.FACE_U);
-wait(30);
+pause(30);
 var y12a = $(Res.get(Setting.IMAGE_CG+"y12cga.jpg")).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(1,1,1,0).addAction(Actions.fadeIn(0.5)).getItem();
 CG.push(y12a);
 
@@ -241,5 +241,6 @@ hideMSG();
 CG.push($(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(0,0,0,0).addAction(Actions.color(new Color(0,0,0,1),1)).getItem());
 pause(80);
 CG.disposeAll();
+teleport("cafe",1,21,11);
 removeSelf();
 end();

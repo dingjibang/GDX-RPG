@@ -3,8 +3,8 @@
 **/
 
 //初始地图
-map = "test/inner.tmx";
-//map = "test/subway.tmx";x=18;y=1;z=1;
+//map = "test/inner.tmx";
+map = "test/cafe.tmx";x=21;y=1;z=1;
 //map = "test/cgloop.tmx";
 
 //初始坐标
