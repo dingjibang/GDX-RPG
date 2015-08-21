@@ -45,10 +45,8 @@ public class GameView extends View{
 	
 	public PostProcessor post;//高清画质用
 	public Bloom bloom;//模糊用
+	public boolean renderAble = true;
 	
-	public boolean first=true;
-
-
 	@Override
 	public View init() {
 		inited=false;
@@ -102,6 +100,7 @@ public class GameView extends View{
 			PostUtil.draw(false);
 			return;
 		}
+		
 		boolean postEnable=Setting.persistence.betterLight;
 		
 		if(postEnable)
@@ -109,7 +108,7 @@ public class GameView extends View{
 		
 		RPG.maps.distant.draw((SpriteBatch)stage.getBatch(), this);
 		
-		if(!first)//第一帧不画地图相关，以让部分auto级别的脚本正常运行。
+		if(renderAble)
 			RPG.maps.loader.draw(this);
 		
 		if(postEnable)
@@ -119,7 +118,8 @@ public class GameView extends View{
 			RPG.ctrl.weather.draw((SpriteBatch) PostUtil.stage.getBatch());
 
 		ColorUtil.draw();
-		if(!first)
+		
+		if(renderAble)
 			PostUtil.draw(true);
 
 		RPG.ctrl.draw.draw();
@@ -129,7 +129,6 @@ public class GameView extends View{
 		else{
 			RPG.ctrl.thread.logic();
 		}
-		first=false;
 	}
 
 	@Override

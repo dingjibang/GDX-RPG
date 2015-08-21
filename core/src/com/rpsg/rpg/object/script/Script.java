@@ -103,6 +103,9 @@ public class Script extends Thread{
 		first,running,stop
 	}
 	
+	public void setRenderAble(boolean r){
+		GameViews.gameview.renderAble=r;
+	}
 	
 	public void step(){
 		if(currentExeced==exeMode.first && currentScript!=null)

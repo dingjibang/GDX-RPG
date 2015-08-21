@@ -6,6 +6,7 @@ var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameU
 CG.push(black);
 PostUtil.showMenu=false;
 setKeyLocker(true);
+setRenderAble(true);
 playSE("sw.mp3");
 pause(460);
 
@@ -240,6 +241,6 @@ hideMSG();
 CG.push($(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(0,0,0,0).addAction(Actions.color(new Color(0,0,0,1),1)).getItem());
 pause(80);
 CG.disposeAll();
-teleport("cafe",1,21,11);
+teleport("cafe",21,11,1);
 removeSelf();
 end();

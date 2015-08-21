@@ -3,6 +3,7 @@ eval(""+load('global.js'));
 var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
 CG.push(black);
 PostUtil.showMenu=false;
+setRenderAble(true);
 playSE("fire.mp3");
 pause(230);
 playSE("YS070523.wav");

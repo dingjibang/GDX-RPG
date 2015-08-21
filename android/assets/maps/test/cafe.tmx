@@ -25,6 +25,7 @@
     <property name="ABSOLUTE" value="true"/>
     <property name="AUTO_SCRIPT" value="s0-2.js"/>
     <property name="ID" value="1"/>
+    <property name="LOCK" value="true"/>
    </properties>
   </object>
   <object name="PUBLIC" type="NPC" gid="265" x="766" y="244" width="48" height="64">

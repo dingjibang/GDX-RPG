@@ -41,7 +41,7 @@ public class MapLoader {
 	public List<RPGObject> drawlist=new ArrayList<RPGObject>();
 	public MapLayers layer ;
 	public void load(GameView gv){
-		//初始化角色
+		//初始化角色 TODO 放到script.js里
 		RPG.ctrl.hero.initControler();
 		if(gv.global.first){
 			gv.global.first=false;
@@ -119,6 +119,8 @@ public class MapLoader {
 									 i-removeList.size());
 							if(obj.getProperties().get("SHADOW")!=null && obj.getProperties().get("SHADOW").equals("true"))
 								npc.drawShadow=true;
+							if(obj.getProperties().get("LOCK")!=null && obj.getProperties().get("LOCK").equals("true"))
+								GameViews.gameview.renderAble=false;
 							Logger.info("NPC生成成功["+npc.position+","+npc.mapx+":"+npc.mapy+":"+npc.layer+"]");
 							gv.stage.addActor(npc);
 							RPG.ctrl.thread.pool.add(npc.threadPool);

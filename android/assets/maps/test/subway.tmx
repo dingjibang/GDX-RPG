@@ -22,6 +22,7 @@
     <property name="AUTO_SCRIPT" value="s0-1.js"/>
     <property name="ID" value="mari"/>
     <property name="IMAGE" value="walk_mari"/>
+    <property name="LOCK" value="true"/>
     <property name="SHADOW" value="true"/>
    </properties>
   </object>
