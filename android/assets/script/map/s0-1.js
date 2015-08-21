@@ -1,7 +1,7 @@
 eval(""+load('global.js'));
 eval(""+load('var.js'));
 
-var renko = getNPC("renko");
+var renko = getC("renko");
 var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem());
 CG.push(black);
 PostUtil.showMenu=false;
@@ -189,9 +189,8 @@ pause(40);
 
 
 npc.turn(RPGObject.FACE_R).setWalkSpeed(2);
-renko.npc.turn(RPGObject.FACE_R).setWalkSpeed(4).walk(3).testWalk();
-hero.walk(1);
-hero.testWalk();
+renko.turn(RPGObject.FACE_R).setWalkSpeed(4).walk(3).testWalk();
+hero.walk(1).testWalk();
 
 move(3);
 faceTo(renko,RPGObject.FACE_U);
@@ -229,7 +228,7 @@ pause(30);
 showMSG(MsgType.莲子);
 say("好好好…我请就是了，走吧。","莲子");
 hideMSG();
-cg.push(black);
+cg.push($(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(0,0,0,0).addAction(Actions.color(new Color(0,0,0,1),1f)).getItem());
 pause(80);
 cg.disposeAll();
 removeSelf();

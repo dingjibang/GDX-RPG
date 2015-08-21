@@ -1,25 +1,7 @@
 package com.rpsg.rpg.game.object;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
-import com.rpsg.gdxQuery.$;
-import com.rpsg.rpg.core.RPG;
-import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.base.MsgType;
-import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.DefaultNPC;
-import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.ui.Image;
-import com.rpsg.rpg.utils.display.PostUtil;
-import com.rpsg.rpg.utils.game.GameUtil;
-import com.rpsg.rpg.utils.game.Move;
 
 public class CGLOOP1 extends DefaultNPC{
 
