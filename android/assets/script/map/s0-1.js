@@ -32,7 +32,6 @@ faceTo(renko, RPGObject.FACE_R);
 
 setBalloon(Arisu, BalloonType.沉默);
 pause(60);
-com.rp
 showMSG(MsgType.莲子);
 say("啊啊！真是的！为什么我们大学总是要在愚人节这天开学啊！","？？？");
 hideMSG();
