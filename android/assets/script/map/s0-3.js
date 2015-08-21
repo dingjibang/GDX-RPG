@@ -31,9 +31,8 @@ tip2.oranCenter();
 CG.push(tip2);
 say("   ");
 tip2.addAction(Actions.sequence(Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(tip2)})));
-CG.addAction(Actions.sequence(Actions.color(new Color(0,0,0,0),0.3),Actions.run(function(){CG.dispose(black)})));
+CG.push(black);
 setKeyLocker(false);				
 }			
 removeSelf();
 end();
-
