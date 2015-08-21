@@ -11,13 +11,13 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
-import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.InputController;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -34,8 +34,8 @@ public class SelectUtil implements InputProcessor {
 		style=new ImageButtonStyle();
 		style.over=hover.getDrawable();
 		style.down=click.getDrawable();
-		style.imageUp=but.getDrawable();
-		mask.setWidth(GameUtil.screen_width);
+		style.up=but.getDrawable();
+		mask.setWidth(GameUtil.getScreenWidth());
 		mask.setPosition(0, 0);
 		stage=new Stage();
 	}
@@ -75,9 +75,14 @@ public class SelectUtil implements InputProcessor {
 				int yoff=0;
 				mask.setColor(1,1,1,0);
 				mask.addAction(Actions.fadeIn(0.1f));
+				mask.setWidth(GameUtil.getScreenWidth());
 				stage.addActor(mask);
 				for(final String s:str){
 					final ImageButton button=new ImageButton(style);
+					float absWidth = (float)GameUtil.getScreenHeight()*0.643f;
+					float absHeight = (float)GameUtil.getScreenHeight()*0.1225f;
+					System.out.println(absWidth);
+					$.add(button).setSize(absWidth, absHeight).getCell().prefSize(absWidth, absHeight);
 					button.setUserObject(s);
 					button.addListener(new InputListener(){
 						public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
@@ -108,7 +113,7 @@ public class SelectUtil implements InputProcessor {
 						}
 					});
 					button.setColor(1,1,1,0);
-					button.setPosition(GameUtil.screen_width/2-button.getWidth()/2, (yoff+=70)-30);
+					button.setPosition(GameUtil.getScreenWidth()/2-button.getWidth()/2, (yoff+=70)-30);
 					button.addAction(Actions.parallel(Actions.fadeIn(0.1f),Actions.moveBy(0, +30,0.1f)));
 					stage.addActor(button);
 				}

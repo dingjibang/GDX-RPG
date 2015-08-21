@@ -20,7 +20,7 @@ public class CGLOOP1 extends DefaultNPC{
 //		int flength,del;
 //		public void init() {
 //			set(new BaseScriptExecutor() {public void init() {
-//				RPG.ctrl.cg.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem());
+//				RPG.ctrl.cg.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.getScreenWidth(), GameUtil.getScreenHeight()).setColor(Color.BLACK).getItem());
 //				PostUtil.showMenu=false;
 //			}});
 //			playSE("fire.mp3");
@@ -61,7 +61,7 @@ public class CGLOOP1 extends DefaultNPC{
 //			say("我想原封不动地还给你才最恰当呢。","八云紫");
 //			hideMSG();
 //			set(new BaseScriptExecutor() {public void init() {
-//				final Image cg=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setColor(1,0,0,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
+//				final Image cg=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setColor(1,0,0,0).setSize(GameUtil.getScreenWidth(),GameUtil.getScreenHeight()).setPosition(0,0).getItem();
 //				cg.addAction(Actions.sequence(Actions.color(new Color(1,0,0,1f),0.02f),Actions.fadeOut(0.15f),Actions.run(new Runnable() {public void run() {
 //					RPG.ctrl.cg.dispose(cg);
 //				}})));
@@ -77,7 +77,7 @@ public class CGLOOP1 extends DefaultNPC{
 //			setSEVolume(0, 0.13f);
 //			wait(30);
 //			set(new BaseScriptExecutor() {public void init() {
-//				y11=(Image) $.add(Res.getNP(Setting.IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
+//				y11=(Image) $.add(Res.getNP(Setting.IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.getScreenWidth(),GameUtil.getScreenHeight()).setPosition(0,0).getItem();
 //				y11.addAction(Actions.sequence(Actions.color(new Color(1,1,1,1f),0.5f,Interpolation.pow4In)));
 //				RPG.ctrl.cg.push(y11);
 //			}});
@@ -115,7 +115,7 @@ public class CGLOOP1 extends DefaultNPC{
 //					}
 //				})));
 //				y11.addAction(Actions.scaleTo(2f,2f,8f,Interpolation.pow4In));
-//				mask=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setColor(1,0,0,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
+//				mask=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setColor(1,0,0,0).setSize(GameUtil.getScreenWidth(),GameUtil.getScreenHeight()).setPosition(0,0).getItem();
 //				mask.addAction(Actions.color(new Color(1,0,0,1f),6,Interpolation.pow5In));
 //				RPG.ctrl.cg.push(mask);
 //			}});

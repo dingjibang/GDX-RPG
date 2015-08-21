@@ -14,7 +14,18 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.utils.display.FontUtil;
 
+/**
+ * 遊戲工具類
+ * 並沒有軟用
+ * TODO 可以把它合并到其他随便什么类里。。。
+ * 为啥变成繁体字了，你妹哦
+ * @author Administrator
+ *
+ */
 public class GameUtil {
+	//注意，screen_width、screen_height和getScreenWidth、getScreenHeight完全不同，
+	//前者是常量（1024,576），他负责UI组件的拉抻完整，请勿修改！
+	//后者是变量，表明了游戏当前openGL窗口的物理尺寸
 	public static int screen_width;
 	public static int screen_height;
 	public static boolean isDesktop=false;

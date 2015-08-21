@@ -11,7 +11,7 @@ public class InnerRenko extends Script {
 //			if(RPG.getFlag("1-1-inner")==null){
 //				RPG.setFlag("1-1-inner",true);
 //				$(new BaseScriptExecutor() {public void init() {
-//					RPG.ctrl.cg.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem()).addAction(Actions.sequence(Actions.fadeOut(0.3f),Actions.run(new Runnable() {public void run() {
+//					RPG.ctrl.cg.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.getScreenWidth(), GameUtil.getScreenHeight()).setColor(Color.BLACK).getItem()).addAction(Actions.sequence(Actions.fadeOut(0.3f),Actions.run(new Runnable() {public void run() {
 //						RPG.ctrl.cg.dispose(black);
 //					}})));
 //					PostUtil.showMenu=false;
@@ -29,18 +29,18 @@ public class InnerRenko extends Script {
 //				hideMSG();
 //				wait(20);
 //				$(new BaseScriptExecutor() {public void init() {
-//					RPG.ctrl.cg.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(0,0,0,0).getItem()).addAction(Actions.color(new Color(0,0,0,0.5f),0.3f));
+//					RPG.ctrl.cg.push(black=(Image) $.add(Res.getNP(Setting.UI_BASE_IMG)).setSize(GameUtil.getScreenWidth(), GameUtil.getScreenHeight()).setColor(0,0,0,0).getItem()).addAction(Actions.color(new Color(0,0,0,0.5f),0.3f));
 //				}});
 //				$(new BaseScriptExecutor() {public void init() {
 //					tip1=Res.getNP(Setting.IMAGE_GLOBAL+(GameUtil.isDesktop?"tip_pc1.png":"tip_mobile1.png"));
 //					tip2=Res.getNP(Setting.IMAGE_GLOBAL+(GameUtil.isDesktop?"tip_pc2.png":"tip_mobile2.png"));
 //					_$(new BaseScriptExecutor() {public void init() {
-//						RPG.ctrl.cg.push(tip1.color(1,1,1,0).oranCenter().position((int)(GameUtil.screen_width/2-tip1.getWidth()/2), (int)(GameUtil.screen_height/2-+tip1.getHeight()/2))).addAction(Actions.color(new Color(1,1,1,1),0.3f));
+//						RPG.ctrl.cg.push(tip1.color(1,1,1,0).oranCenter().position((int)(GameUtil.getScreenWidth()/2-tip1.getWidth()/2), (int)(GameUtil.getScreenHeight()/2-+tip1.getHeight()/2))).addAction(Actions.color(new Color(1,1,1,1),0.3f));
 //					}});
 //					_$(say("   "));
 //					_$(new BaseScriptExecutor() {public void init() {
 //						RPG.ctrl.cg.dispose(tip1);
-//						RPG.ctrl.cg.push(tip2.oranCenter().position((int)(GameUtil.screen_width/2-tip2.getWidth()/2), (int)(GameUtil.screen_height/2-+tip2.getHeight()/2)));
+//						RPG.ctrl.cg.push(tip2.oranCenter().position((int)(GameUtil.getScreenWidth()/2-tip2.getWidth()/2), (int)(GameUtil.getScreenHeight()/2-+tip2.getHeight()/2)));
 //					}});
 //					_$(say("   "));
 //					_$(new BaseScriptExecutor() {public void init() {
