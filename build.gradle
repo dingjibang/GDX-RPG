@@ -76,3 +76,8 @@ project(":core") {
     }
 }
 
+task prepareWrapper(type: Wrapper) {
+   gradleVersion = '1.12'
+   distributionUrl = 'alternative.location'
+}
+

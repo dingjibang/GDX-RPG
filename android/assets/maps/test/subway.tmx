@@ -19,7 +19,7 @@
  <objectgroup name="对象层 1">
   <object name="PUBLIC" type="NPC" gid="301" x="-48" y="144" width="48" height="64">
    <properties>
-    <property name="AUTO_SCRIPT" value="s0-1.js"/>
+    <property name="AUTO_SCRIPT" value="SubwayMari.js"/>
     <property name="ID" value="mari"/>
     <property name="IMAGE" value="walk_mari"/>
     <property name="SHADOW" value="true"/>
