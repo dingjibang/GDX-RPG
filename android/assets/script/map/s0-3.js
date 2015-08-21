@@ -19,20 +19,21 @@ CG.push(black);
 var tip1=$(Res.get(Setting.IMAGE_GLOBAL+(GameUtil.isDesktop?"tip_pc1.png":"tip_mobile1.png")));
 var tip2=$(Res.get(Setting.IMAGE_GLOBAL+(GameUtil.isDesktop?"tip_pc2.png":"tip_mobile2.png")));
 
-tip1 = tip1.setColor(new Color(1,1,1,0)).setPosition((GameUtil.screen_width/2-tip1.getWidth()/2),(GameUtil.screen_height/2-+tip1.getHeight()/2)).getItem();
+tip1 = tip1.setColor(new Color(1,1,1,0)).setPosition((GameUtil.screen_width/2-793/2),(GameUtil.screen_height/2-500/2)).getItem();
 tip1.oranCenter()
 CG.push(tip1);
 tip1.addAction(Actions.sequence(Actions.color(new Color(1,1,1,1),0.3)));
 say("   ");			
 CG.dispose(tip1);
 
-tip2 = tip2.setPosition((GameUtil.screen_width/2-tip2.getWidth()/2), (GameUtil.screen_height/2-+tip2.getHeight()/2)).getItem();
+tip2 = tip2.setPosition((GameUtil.screen_width/2-793/2), (GameUtil.screen_height/2-500/2)).getItem();
 tip2.oranCenter();
 CG.push(tip2);
 say("   ");
 tip2.addAction(Actions.sequence(Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(tip2)})));
-cg.addAction(Actions.sequence(Actions.color(new Color(0,0,0,0),0.3),Actions.run(function(){CG.dispose(black)})));
+CG.addAction(Actions.sequence(Actions.color(new Color(0,0,0,0),0.3),Actions.run(function(){CG.dispose(black)})));
 setKeyLocker(false);				
 }			
 removeSelf();
 end();
+
