@@ -32,7 +32,7 @@ faceTo(renko, RPGObject.FACE_R);
 
 setBalloon(Arisu, BalloonType.沉默);
 pause(60);
-
+com.rp
 showMSG(MsgType.莲子);
 say("啊啊！真是的！为什么我们大学总是要在愚人节这天开学啊！","？？？");
 hideMSG();
@@ -152,6 +152,7 @@ showMSG(MsgType.梅莉);
 say("你看人家完全没有理解你的话……","梅莉");
 showMSG(MsgType.莲子);
 faceTo(renko,RPGObject.FACE_U);
+
 say("是这样的……有栖在网上找到我，说在她身边发生了奇怪的事情。打牌的时候连赢了好多把","莲子");
 showMSG(MsgType.梅莉);
 say("我跟莲子你玩抽鬼牌时不也是一直赢到天边的吗","梅莉");

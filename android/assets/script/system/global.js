@@ -17,4 +17,3 @@ weather = com.rpsg.rpg.utils.display.WeatherUtil.WEATHER_NO;
 
 //��ʼЯ��
 gold = 120;
-
