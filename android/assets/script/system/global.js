@@ -1,19 +1,20 @@
 /**
-*	GDX-RPG ÒýÇæ ÓÎÏ·³õÊ¼»¯½Å±¾
+*	GDX-RPG ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï·ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Å±ï¿½
 **/
 
-//³õÊ¼µØÍ¼
+//ï¿½ï¿½Ê¼ï¿½ï¿½Í¼
+map = "test/inner.tmx";
+//map = "test/subway.tmx";x=18;y=1;z=1;
 //map = "test/cgloop.tmx";
-map = "test/subway.tmx";x=18;y=1;z=1;
 
-//³õÊ¼×ø±ê
+//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
 //x = 7;
 //y = 18;
 //z = 3;
 
-//³õÊ¼ÌìÆø
+//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
 weather = com.rpsg.rpg.utils.display.WeatherUtil.WEATHER_NO;
 
-//³õÊ¼Ð¯´ø
+//ï¿½ï¿½Ê¼Ð¯ï¿½ï¿½
 gold = 120;
 
