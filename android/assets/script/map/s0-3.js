@@ -36,7 +36,8 @@ if(RPG.getFlag("1-1-inner")==null){
 	say("   ");
 	tip2.addAction(Actions.sequence(Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(tip2)})));
 	
-	setKeyLocker(false);				
+	setKeyLocker(false);
+	PostUtil.showMenu=true;
 }else{
 	setRenderAble(true);
 }

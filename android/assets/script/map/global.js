@@ -16,3 +16,4 @@ var Action = com.badlogic.gdx.scenes.scene2d.Action;
 var MathUtils = com.badlogic.gdx.math.MathUtils;
 var MoveController = com.rpsg.rpg.system.controller.MoveController;
 var RPG = com.rpsg.rpg.core.RPG;
+var Item = com.rpsg.rpg.utils.game.ItemUtil;

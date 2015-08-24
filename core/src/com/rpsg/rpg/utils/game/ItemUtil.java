@@ -9,7 +9,12 @@ import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.utils.display.AlertUtil;
 
 public class ItemUtil {
-
+	
+	/**
+	 * 给某个角色穿上装备
+	 * @param hero 角色 
+	 * @param equip 装备
+	 */
 	public static void useEquip(Hero hero,Equipment equip){
 		if(hero.equips.get(equip.equipType)!=null){
 			Equipment tmp=hero.equips.get(equip.equipType);
@@ -20,9 +25,23 @@ public class ItemUtil {
 		replace(hero, equip, true);
 		RPG.global.getItems("equipment").remove(equip);
 	}
+	/**
+	 * 扔掉某个道具
+	 * @param type 道具类型（比如"equipment"、"spellcard"等）
+	 * @param item 道具
+	 * @return 是否成功丢弃
+	 */
 	public static boolean throwItem(String type,Item item){
 		return throwItem(type, item, 1);
 	}
+	
+	/**
+	 * 扔掉某个道具
+	 * @param type 道具类型（比如"equipment"、"spellcard"等）
+	 * @param item 道具
+	 * @param count 扔掉的数量
+	 * @return 是否成功丢弃
+	 */
 	public static boolean throwItem(String type,Item item,int count){
 		if(item.count==0){
 			if(!RPG.global.getItems(type).remove(item)){
@@ -44,6 +63,12 @@ public class ItemUtil {
 		return true;
 	}
 	
+	/**
+	 * 从某个Hero上脱下某件装备
+	 * @param hero 角色
+	 * @param equipType 装备类型（是类型不是装备 ）
+	 * @see  {@link Equipment}
+	 */
 	public static void takeOffEquip(Hero hero,String equipType){
 		if(hero!=null && equipType!=null && hero.equips.get(equipType)!=null){
 			Equipment tmp=hero.equips.get(equipType);
@@ -69,6 +94,11 @@ public class ItemUtil {
 	}
 	
 	private static boolean include=false;
+	
+	/**
+	 * 增加一个道具到仓库
+	 * @param item 道具
+	 */
 	public static void addItem(Item item){
 		String type=item.getClass().getSuperclass().getSimpleName().toLowerCase();
 		if(!(item instanceof Equipment || item instanceof SpellCard)){
