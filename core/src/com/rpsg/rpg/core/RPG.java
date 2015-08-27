@@ -1,36 +1,94 @@
 package com.rpsg.rpg.core;
 
+import org.mozilla.javascript.Context;
+import org.mozilla.javascript.NativeJavaObject;
+import org.mozilla.javascript.ScriptableObject;
+
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.system.controller.Hover;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
+import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.utils.game.TimeUtil;
 
 
 /**
  * GDX-RPG Engine Context Class <br>
- * All RPG game object you can visitd by this class
+ * All RPG game object you can visitd by this class<br>
+ * <br>
+ * <b>GDX-RPG 引擎核心上下文</b>
  * @author dingjibang
  */
 public class RPG {
+	/** GDX-RPG Controllers <br><b>GDX-RPG 各种控制器（游戏内）</b> **/
 	public static Controllers ctrl = new Controllers();
+	
+	/** GDX-RPG map data context <br><b>GDX-RPG 当前游戏地图数据</b>**/
 	public static Maps maps = new Maps();
-	public static Hover hover = new Hover();
+	
+	/** GDX-RPG popup view controller <br><b>GDX-RPG 弹出窗口管理器</b>**/
+	public static Hover popup = new Hover();
+	
+	/** GDX-RPG input controller <br><b>GDX-RPG 输入控制器</b>**/
 	public static Input input = new Input();
+	
+	/** GDX-RPG game persistence data <br><b>GDX-RPG 当前游戏存档</b>**/
 	public static Global global = new Global();
-	public static AlertUtil alert = new AlertUtil();
+	
+	/** GDX-RPG toast util <br><b>GDX-RPG 提示（类似安卓的toast）控制器</b>**/
+	public static AlertUtil toast = new AlertUtil();
+	
+	/** GDX-RPG time util <br><b>GDX-RPG 时间管理器</b>**/
 	public static TimeUtil time = new TimeUtil();
 	
+	/**
+	 * put a message to GDX-RPG toast controller<br>
+	 * <br><b>压入一条字符串，在下一帧时将会以toast的形式显示到屏幕上</b>
+	 * @param msg message
+	 * @param image the message {@link AlertUtil type} (e.g. AlertUtil.Red/AlertUtil.Yellow)
+	 */
 	public static void putMessage(String msg,Image image){
-		alert.add(msg, image);
+		toast.add(msg, image);
 	}
 	
+	/**
+	 * get {@link Global.flag} by key<br>
+	 * <br><b>获取游戏存档变量</b>
+	 * @param key
+	 * @return the value of key
+	 */
 	public static Object getFlag(Object key){
 		return global.flag.get(key);
 	}
 	
+	/**
+	 * set {@link Global.flag} by key<br>
+	 * <br><b>设置游戏存档变量</b>
+	 * @param key
+	 * @param value
+	 */
 	public static void setFlag(Object key,Object value){
 		global.flag.put(key, value);
+	}
+	
+	public static boolean executeJS(String js,Object self){
+		try {
+			Context ctx = Context.enter();
+			ScriptableObject scope =ctx.initStandardObjects();
+			if(self!=null)
+				scope.setPrototype(((NativeJavaObject)Context.javaToJS(null, scope)));
+			ctx.evaluateString(scope, js, null, 1, null);
+			Context.exit();
+			return true;
+		} catch (Exception e) {
+			Logger.error("无法执行脚本", e);
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public static boolean executeJS(String js){
+		return executeJS(js,null);
 	}
 }

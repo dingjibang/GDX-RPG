@@ -492,7 +492,7 @@ public class TacticView extends DefaultIView {
 			@Override
 			public void run() {
 				if (currentSelect != null) {
-					RPG.hover.add(new SupportView(currentSelect.hero).superInit());
+					RPG.popup.add(new SupportView(currentSelect.hero).superInit());
 				}
 			}
 		}).pos(1555, 80));

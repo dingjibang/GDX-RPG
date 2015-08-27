@@ -104,7 +104,7 @@ public class SaveView extends HoverView{
 		savebutton=new TextButton("保存游戏", butstyle).onClick(new Runnable() {
 			@Override
 			public void run() {
-				RPG.hover.add(ConfirmView.getDefault("确定要保存到这个位置么？", new ObjectRunnable() {
+				RPG.popup.add(ConfirmView.getDefault("确定要保存到这个位置么？", new ObjectRunnable() {
 					@Override
 					public void run(Object view) {
 						if (currentSelect != -1) {
@@ -140,7 +140,7 @@ public class SaveView extends HoverView{
 		TextButton deletebutton=new TextButton("删除档案", butstyle).onClick(new Runnable() {
 			@Override
 			public void run() {
-				RPG.hover.add(ConfirmView.getDefault("确定要删除这个档案么？", new ObjectRunnable() {
+				RPG.popup.add(ConfirmView.getDefault("确定要删除这个档案么？", new ObjectRunnable() {
 					@Override
 					public void run(Object view) {
 						if (currentSelect != -1) {

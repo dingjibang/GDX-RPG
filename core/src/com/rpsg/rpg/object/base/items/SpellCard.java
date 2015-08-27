@@ -9,7 +9,7 @@ public class SpellCard extends Item {
 	
 	public int maxCount=0;
 	
-	public String story;
+	public String illustration2;
 	
 	public int added=0;
 	

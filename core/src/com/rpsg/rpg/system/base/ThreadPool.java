@@ -7,7 +7,14 @@ import java.util.List;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.utils.game.Logger;
 
-
+/**
+ * 名字好像很牛逼啊<br>
+ * 线程池233<br>
+ * <br>
+ * 其实并不，只是单线程模拟多线程而已<br>
+ * @author dingjibang
+ *
+ */
 public class ThreadPool {
 
 	public List<List<Script>> pool =new LinkedList<List<Script>>();

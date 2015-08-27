@@ -271,7 +271,7 @@ public class ItemView extends DefaultIView{
 			}
 		};
 		TextButtonStyle butstyle=new TextButtonStyle();
-		butstyle.over=butstyle.checkedOver=Res.getDrawable(Setting.IMAGE_GLOBAL+"button_RPG.hover.png");
+		butstyle.over=butstyle.checkedOver=Res.getDrawable(Setting.IMAGE_GLOBAL+"button_RPG.popup.png");
 		butstyle.down=Res.getDrawable(Setting.IMAGE_GLOBAL+"button_active.png");
 		butstyle.up=Res.getDrawable(Setting.IMAGE_GLOBAL+"button.png");
 		group=new Group();

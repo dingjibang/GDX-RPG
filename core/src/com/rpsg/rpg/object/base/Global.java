@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,13 +13,7 @@ import org.mozilla.javascript.ScriptableObject;
 
 import com.badlogic.gdx.Gdx;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.base.items.Cooking;
-import com.rpsg.rpg.object.base.items.Equipment;
-import com.rpsg.rpg.object.base.items.Important;
 import com.rpsg.rpg.object.base.items.Item;
-import com.rpsg.rpg.object.base.items.Material;
-import com.rpsg.rpg.object.base.items.Medicine;
-import com.rpsg.rpg.object.base.items.SpellCard;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.utils.game.AchievementManager;
@@ -37,10 +30,10 @@ public class Global implements Serializable {
 	public String map;
 	
 	// 地图相关
-	public ArrayList<NPC> npcs = new ArrayList<NPC>();
-	public ArrayList<Hero> currentHeros = new ArrayList<Hero>();
-	public ArrayList<Hero> heros = new ArrayList<Hero>();
-	public ArrayList<Hero> support = new ArrayList<Hero>();
+	public ArrayList<NPC> npcs = new ArrayList<>();
+	public ArrayList<Hero> currentHeros = new ArrayList<>();
+	public ArrayList<Hero> heros = new ArrayList<>();
+	public ArrayList<Hero> support = new ArrayList<>();
 	public int x;
 	public int y;
 	public int z;
@@ -55,21 +48,12 @@ public class Global implements Serializable {
 	public int gold;
 	
 	//全局变量存储
-	public Map<Object,Object> flag = new HashMap<Object,Object>();
+	public Map<Object,Object> flag = new HashMap<>();
 
 	// 物品、装备等道具
 
-	public Map<String, List<? extends Item>> items = new HashMap<String, List<? extends Item>>();
-	{
-		if (items.isEmpty()) {
-			items.put("equipment", new LinkedList<Equipment>());
-			items.put("important", new LinkedList<Important>());
-			items.put("material", new LinkedList<Material>());
-			items.put("medicine", new LinkedList<Medicine>());
-			items.put("spellcard", new LinkedList<SpellCard>());
-			items.put("cooking", new LinkedList<Cooking>());
-		}
-	}
+	public List<Item> items = new ArrayList<>(); 
+	
 	public AchievementManager ach = new AchievementManager();
 
 	public void $(String s) {
@@ -119,16 +103,6 @@ public class Global implements Serializable {
 		AchievementManager.determine(field);
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Item> getItems(String name) {
-		return (List<Item>) items.get(name);
-	}
-
-	@SuppressWarnings("unchecked")
-	public <T> List<T> getItems(Class<T> c) {
-		return (List<T>) items.get(c.getSimpleName().toLowerCase());
-	}
-	
 	public void read(){
 		Context ctx = Context.enter();
 		ScriptableObject scope =ctx.initStandardObjects();

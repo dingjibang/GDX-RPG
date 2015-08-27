@@ -11,7 +11,7 @@ public class YaoWan extends Medicine{
 	private static final long serialVersionUID = 1L;
 	
 	public YaoWan() {
-		illustration="要完要完，使用后HP恢复10。";
+		illustration="使用后HP恢复10。";
 		count=5;
 		name="药丸";
 	}

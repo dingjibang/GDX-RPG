@@ -48,7 +48,7 @@ public class SystemView extends DefaultIView{
 		Table table = new Table();
 		
 		TextButtonStyle butstyle=new TextButtonStyle();
-		butstyle.over=butstyle.checkedOver=Res.getDrawable(Setting.IMAGE_GLOBAL+"button_RPG.hover.png");
+		butstyle.over=butstyle.checkedOver=Res.getDrawable(Setting.IMAGE_GLOBAL+"button_RPG.popup.png");
 		butstyle.down=Res.getDrawable(Setting.IMAGE_GLOBAL+"button_active.png");
 		butstyle.up=Res.getDrawable(Setting.IMAGE_GLOBAL+"button.png");
 		
@@ -83,7 +83,7 @@ public class SystemView extends DefaultIView{
 		TextButton sbutton=new TextButton("保存游戏", butstyle).onClick(new Runnable() {
 			@Override
 			public void run() {
-				RPG.hover.add(SaveView.class);
+				RPG.popup.add(SaveView.class);
 			}
 		});
 		sbutton.setOffset(17).setSize(250,60);
@@ -92,7 +92,7 @@ public class SystemView extends DefaultIView{
 		TextButton sbutton2=new TextButton("读取游戏", butstyle).onClick(new Runnable() {
 			@Override
 			public void run() {
-				RPG.hover.add(LoadView.class);
+				RPG.popup.add(LoadView.class);
 			}
 		});
 		sbutton2.setOffset(17).setSize(250,60);
@@ -101,7 +101,7 @@ public class SystemView extends DefaultIView{
 		TextButton sbutton3=new TextButton("回到菜单", butstyle).onClick(new Runnable() {
 			@Override
 			public void run() {
-				RPG.hover.add(ConfirmView.getDefault("确定要回到主菜单么？如未存档当前档案将会消失", new ObjectRunnable() {
+				RPG.popup.add(ConfirmView.getDefault("确定要回到主菜单么？如未存档当前档案将会消失", new ObjectRunnable() {
 					@Override
 					public void run(Object view) {
 						GameViews.state = GameViews.STATE_LOGO;

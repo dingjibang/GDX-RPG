@@ -74,6 +74,7 @@ public abstract class Hero extends RPGObject {
 	
 	public List<SpellCard> sc=new ArrayList<SpellCard>();
 	
+	
 	public LinkedHashMap<String,Equipment> equips=new LinkedHashMap<String, Equipment>();
 	{
 		equips.put(Equipment.EQUIP_SHOES, null);

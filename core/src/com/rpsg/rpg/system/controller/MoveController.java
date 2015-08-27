@@ -66,7 +66,7 @@ public class MoveController {
 			sc.toCollide();
 		}
 		RPG.ctrl.hero.setWalkSpeed(Input.isPress(Keys.CONTROL_LEFT) ? 8 : 4);
-		if (InputController.currentIOMode == IOMode.MapInput.NORMAL && RPG.hover.isEmpty()) {
+		if (InputController.currentIOMode == IOMode.MapInput.NORMAL && RPG.popup.isEmpty()) {
 			if ((Input.isPress(Keys.RIGHT) || Input.isPress(Keys.D) || wr) && RPG.ctrl.hero.walked()) {
 				wr = false;
 				RPG.ctrl.hero.turn(Hero.FACE_R);

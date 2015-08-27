@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.rpsg.rpg.object.rpg.Hero;
 
-public abstract class Equipment extends Item implements java.io.Serializable{
+public class Equipment extends Item implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;
 
 	public Map<String,Integer> prop=new HashMap<String, Integer>();
@@ -22,7 +22,7 @@ public abstract class Equipment extends Item implements java.io.Serializable{
 	
 	public Class<? extends Hero> onlyFor;
 	
-	public String statusName;
+	public String illustration2;
 	
 	public String equipType;
 	

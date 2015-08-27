@@ -1,8 +1,8 @@
 eval(""+load('global.js'));
-
 if(RPG.getFlag("1-1-inner")==null){
 	RPG.setFlag("1-1-inner",true);
 	Hero.setVisible(true);
+	
 	Hero.turn(RPGObject.FACE_U);
 	var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
 	black.addAction(Actions.sequence(Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(black)})));	
