@@ -54,9 +54,6 @@ public class MapLoader {
 //			RPG.ctrl.hero.newHero(Yuuka.class);
 //			RPG.ctrl.hero.addHero(Yuuka.class);
 //			RPG.ctrl.hero.newHero(Flandre.class);
-			gv.global.getItems("equipment").add(new Shoes());
-			gv.global.getItems("equipment").add(new Sunshade());
-			gv.global.getItems("medicine").add(new YaoWan());
 		}
 		RPG.ctrl.hero.initHeros(gv.stage);
 		

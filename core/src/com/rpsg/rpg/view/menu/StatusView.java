@@ -87,7 +87,7 @@ public class StatusView extends DefaultIView {
 		for(String key:parent.current.equips.keySet()){
 			Equipment equip=parent.current.equips.get(key);
 			yoff+=89;
-			$.add(Res.get(equip==null?Item.getNormalIcon():equip.getIcon())).appendTo(group4).setPosition(12f, yoff-80).setSize(73,70);
+			$.add(Res.get(equip==null?Item.getDefaultIcon():equip.getIcon())).appendTo(group4).setPosition(12f, yoff-80).setSize(73,70);
 			$.add(new Label(equip==null?"":equip.illustration,16).setPos(100, yoff-55).setWidth(385)).appendTo(group4);
 			$.add(new Label(equip==null?"无装备":equip.name,30).setPos(equip!=null?90:240, yoff-(equip==null?37:18))).appendTo(group4);
 		}

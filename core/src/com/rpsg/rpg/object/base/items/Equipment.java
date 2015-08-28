@@ -32,4 +32,8 @@ public class Equipment extends Item implements java.io.Serializable{
 	public static String EQUIP_ORNAMENT1="ornament1";
 	public static String EQUIP_ORNAMENT2="ornament2";
 	
+	public void put(String _prop,int num){
+		prop.put(_prop, num);
+	}
+	
 }

@@ -34,6 +34,10 @@ public class ItemController {
 			item.count++;
 	}
 	
+	public void put(Item item){
+		put(item.id);
+	}
+	
 	/**
 	 * 根据ID从文件里读取出一个Item
 	 * @param id id键
@@ -46,7 +50,7 @@ public class ItemController {
 	/**
 	 * 根据ID从文件里读取出一个Item，并且造型
 	 * @param id id键
-	 * @param type 类型
+	 * @param _cType 类型
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
@@ -141,5 +145,72 @@ public class ItemController {
 	private static void initReader(){
 		if(reader==null)
 			reader = new JsonReader();
-	} 
+	}
+	
+	/**
+	 * 使用一个道具继承对象（道具 或 符卡 或 装备 等）
+	 * @param id 要使用道具的ID
+	 * @return 是否成功
+	 */
+	public boolean use(int id){
+		return use(search(id));
+	}
+	
+	/**
+	 * 使用一个道具继承对象（道具 或 符卡 或 装备 等）
+	 * @param item 要使用的道具
+	 * @return 是否成功
+	 */
+	public boolean use(Item item){
+		if(item==null)
+			return false;
+		
+		item.use();
+		
+		if(item instanceof Equipment){
+			if(item.user==null)
+				return false;
+			Equipment equip=(Equipment)item;
+			
+			takeOff(equip);
+			
+			item.user.equips.put(equip.equipType, equip);
+			replace(item.user, equip, true);//计算穿上装备后的Hero属性数值变化
+			remove(equip);
+		}
+		return true;
+	}
+	
+	/**
+	 * 从某个角色上脱下某件装备
+	 * @param item 新装备对比（不是要脱下的装备）（看不懂的话就别用这个方法……用下面那个方法）
+	 * @return 是否成功脱下
+	 */
+	public boolean takeOff(Item item){
+		if(!(item instanceof Equipment))
+			return false;
+		return takeOff(item.user,((Equipment)item).equipType);
+	}
+	
+	/**
+	 * 从某个角色上脱下某件装备
+	 * @param hero 角色
+	 * @param equipType 装备的类型（如{@link Equipment.EQUIP_SHOES}）
+	 * @return 是否成功脱下
+	 */
+	public boolean takeOff(Hero hero,String equipType){
+		if(hero.equips.get(equipType)!=null){//脱下原先的装备（如果有）
+			Equipment tmp=hero.equips.get(equipType);
+			put(tmp);
+			replace(hero, tmp, false);//计算脱下装备后的Hero属性数值变化
+			return true;
+		}
+		return false;
+	}
+	
+	private static void replace(Hero hero,Equipment equip,boolean add){
+		for(String key:equip.prop.keySet())
+			hero.prop.put(key, add?hero.prop.get(key)+equip.prop.get(key):hero.prop.get(key)-equip.prop.get(key));
+	}
+	
 }
