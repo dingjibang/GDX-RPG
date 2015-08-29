@@ -18,8 +18,8 @@ public class Arisu extends Hero{
 		jname="Yuki Arisu";
 		fgname="arisu";
 		tag="主角";
-		sc.add(new MagicGun());
-		sc.add(new patientBack());
+//		sc.add(new MagicGun());
+//		sc.add(new patientBack());
 		prop.put("hp", 150);
 		prop.put("maxhp", 150);
 		prop.put("exp", 3);
@@ -30,7 +30,7 @@ public class Arisu extends Hero{
 		resistance.put("sun", Resistance.weak);
 		prop.put("dead", Hero.FALSE);
 		color="59669ecc";
-		equips.put(Equipment.EQUIP_SHOES, new Shoes());
+//		equips.put(Equipment.EQUIP_SHOES, new Shoes());
 		
 		lead=true;
 		prop.put("courage", 100);			//勇气

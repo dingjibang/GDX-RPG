@@ -30,6 +30,7 @@ public class Setting {
 	public static final String IMAGE_MENU_NEW_GLOBAL = IMAGE_MENU + "nglobal/";
 	public static final String IMAGE_MENU_MAP = IMAGE_MENU + "map/";
 	public static final String IMAGE_MENU_EQUIP = IMAGE_MENU + "equip/";
+	public static final String IMAGE_MENU_NEW_EQUIP = IMAGE_MENU + "nequip/";
 	public static final String IMAGE_MENU_SC = IMAGE_MENU + "sc/";
 	public static final String IMAGE_MENU_ITEM = IMAGE_MENU + "item/";
 	public static final String IMAGE_MENU_NEW_STATUS = IMAGE_MENU + "nstatus/";

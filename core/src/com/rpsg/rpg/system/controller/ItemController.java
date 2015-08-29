@@ -157,7 +157,7 @@ public class ItemController {
 	}
 	
 	/**
-	 * 使用一个道具继承对象（道具 或 符卡 或 装备 等）
+	 * 使用一个道具（道具 或 符卡 或 装备 等）
 	 * @param item 要使用的道具
 	 * @return 是否成功
 	 */

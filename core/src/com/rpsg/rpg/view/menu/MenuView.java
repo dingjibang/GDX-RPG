@@ -123,6 +123,7 @@ public class MenuView extends StackView{
 						menuLabel.text(currentMenu.name);
 						if(currentMenu.view != null){
 							tryToAdd(currentMenu.view);
+							fgGroup.clearActions();
 							if(!currentMenu.view.equals(StatusView.class))
 								fgGroup.addAction(Actions.parallel(Actions.moveTo(500,0),Actions.fadeOut(0)));
 							else
