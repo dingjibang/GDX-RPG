@@ -131,17 +131,13 @@ public class StatusView extends DefaultIView {
 	}
 	
 	private void prev(){
-		if(parent.getHeros().indexOf(parent.current)!=0){
-			parent.click(parent.getHeros().get(parent.getHeros().indexOf(parent.current)-1));
+		if(parent.prev())
 			generate();
-		}
 	}
 	
 	private void next(){
-		if(parent.getHeros().indexOf(parent.current)!=parent.getHeros().size()-1){
-			parent.click(parent.getHeros().get(parent.getHeros().indexOf(parent.current)+1));
+		if(parent.next())
 			generate();
-		}
 	}
 	
 	public void draw(SpriteBatch batch) {

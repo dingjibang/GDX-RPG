@@ -34,7 +34,7 @@
   </data>
  </layer>
  <objectgroup name="对象层 1">
-  <object name="PUBLIC" type="NPC" gid="945" x="0" y="48" width="48" height="81">
+  <object name="PUBLIC" type="NPC" gid="945" x="0" y="-48" width="48" height="81">
    <properties>
     <property name="NEAR_EXECUTE" value="teleport(&quot;inner&quot;,18,12,3)"/>
    </properties>

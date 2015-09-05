@@ -306,4 +306,21 @@ public class MenuView extends StackView{
 		return false;
 	}
 	
+	
+	public boolean prev(){
+		if(getHeros().indexOf(current)!=0){
+			click(getHeros().get(getHeros().indexOf(current)-1));
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean next(){
+		if(getHeros().indexOf(current)!=getHeros().size()-1){
+			click(getHeros().get(getHeros().indexOf(current)+1));
+			return true;
+		}
+		return false;
+	}
+	
 }

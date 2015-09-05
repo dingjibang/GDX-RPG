@@ -51,7 +51,7 @@
   </data>
  </layer>
  <objectgroup name="对象层 1">
-  <object name="PUBLIC" type="NPC" gid="1066" x="1104" y="240" width="48" height="48">
+  <object name="PUBLIC" type="NPC" gid="1066" x="1152" y="240" width="48" height="48">
    <properties>
     <property name="NEAR_EXECUTE" value="teleport(&quot;twofloor&quot;,2,6,2)"/>
    </properties>
@@ -71,7 +71,7 @@
     <property name="Z_SCRIPT" value="test.js"/>
    </properties>
   </object>
-  <object name="PUBLIC" type="NPC" gid="1066" x="1104" y="288" width="48" height="48">
+  <object name="PUBLIC" type="NPC" gid="1066" x="1152" y="288" width="48" height="48">
    <properties>
     <property name="NEAR_EXECUTE" value="teleport(&quot;twofloor&quot;,2,6,2)"/>
    </properties>
