@@ -38,11 +38,7 @@
  <objectgroup name="oblay">
   <object name="DOOR" type="NPC" gid="1" x="336" y="624" width="48" height="81">
    <properties>
-    <property name="IMAGE" value="empty"/>
-    <property name="TELEPORT" value="map"/>
-    <property name="TELEPORTX" value="8"/>
-    <property name="TELEPORTY" value="13"/>
-    <property name="TELEPORTZ" value="2"/>
+    <property name="NEAR_EXECUTE" value="teleport(&quot;map&quot;,8,13,2)"/>
    </properties>
   </object>
  </objectgroup>

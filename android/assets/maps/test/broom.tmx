@@ -36,11 +36,7 @@
  <objectgroup name="对象层 1">
   <object name="DOOR" type="NPC" gid="945" x="0" y="48" width="48" height="81">
    <properties>
-    <property name="IMAGE" value="empty"/>
-    <property name="TELEPORT" value="inner"/>
-    <property name="TELEPORTX" value="18"/>
-    <property name="TELEPORTY" value="12"/>
-    <property name="TELEPORTZ" value="3"/>
+    <property name="NEAR_EXECUTE" value="teleport(&quot;inner&quot;,18,12,3)"/>
    </properties>
   </object>
  </objectgroup>
