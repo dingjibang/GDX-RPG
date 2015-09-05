@@ -45,7 +45,7 @@
   </data>
  </layer>
  <objectgroup name="对象层 1">
-  <object name="DOOR" type="NPC" gid="1485" x="96" y="624" width="48" height="95">
+  <object name="PUBLIC" type="NPC" gid="1485" x="96" y="624" width="48" height="95">
    <properties>
     <property name="NEAR_EXECUTE" value="teleport(&quot;twofloor&quot;,23,3,2)"/>
    </properties>
