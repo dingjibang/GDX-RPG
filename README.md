@@ -7,9 +7,6 @@ learning libgdx...
 
 need java7+, and friendly for 'IDEA' IDE
 
-# PAUSE UPDATE
-I'm playing kan-colle now, and pause the code update some days<br/>
-暂停更新：这几天打舰娘的夏活_(:3」∠)_
 # Game
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/share.png)
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/1.png)
