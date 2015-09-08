@@ -8,6 +8,7 @@ import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.base.IOMode.MapInput;
 import com.rpsg.rpg.system.base.Initialization;
 import com.rpsg.rpg.utils.display.PostUtil;
+import com.rpsg.rpg.utils.game.Path;
 import com.rpsg.rpg.view.GameView;
 
 
@@ -79,6 +80,7 @@ public class InputController{
 		case NORMAL:{
 			
 			PostUtil.touchDown(screenX, screenY, pointer, button);
+			Path.click(screenX, screenY);
 			break;
 		}
 		}
