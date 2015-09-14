@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+
 public class PathFinder {
 	
 	static int[][] data = new int[][]{
@@ -93,7 +95,6 @@ public class PathFinder {
 				enable=false;
 			return this;
 		}
-		
 		public Path getParents(Path p){
 			Path current = this;
 			while(true){
