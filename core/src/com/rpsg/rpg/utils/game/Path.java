@@ -5,11 +5,13 @@ import java.util.Collections;
 import java.util.List;
 
 import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.rpg.Collide;
+import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.RPGObject;
 import com.rpsg.rpg.view.GameViews;
 
@@ -204,66 +206,74 @@ public class Path {
 
 	public static void click(int x, int y) {
 
-		int goalX = (int) Math.ceil((float) x / 48f);
-		int goalY = (int) Math.ceil(12 - (float) y / 48f);
-		int a = RPG.ctrl.hero.getHeadHero().layer;
-		TiledMapTileLayer tileLayer = (TiledMapTileLayer) RPG.maps.loader.layer
-				.get(a);
+		int zIndex = RPG.ctrl.hero.getHeadHero().layer;
+		TiledMapTileLayer tileLayer = (TiledMapTileLayer) RPG.maps.loader.layer.get(zIndex);
 		int height = tileLayer.getHeight();
 		int width = tileLayer.getWidth();
 		int[][] s = new int[height][width];
 		for (int i = 0; i < width; i++) {
 			for (int j = height -1; j >=0; j--) {
 				if(Collide.getID(tileLayer,i,j)==0){
-					s[j][i] = 0;
-				}else{
 					s[j][i] = 1;
+				}else{
+					s[j][i] = 0;
 				}
 			}
 		}
-		;
-		for (int i = 0; i < GameViews.gameview.stage.getActors().size; i++) {
-			Actor actor=GameViews.gameview.stage.getActors().get(i);
-			int ax = (int) Math.ceil((float) actor.getX() / 48f);
-			int ay = (int) Math.ceil((float) actor.getY() / 48f);
-			s[ay-1][ay-1] = 1;
-		}
 			
-		for(int[] i :s){
+//		for(int[] i :s){
+//			System.out.println();
+//			for (int j : i ){
+//				System.out.print(j+" ");
+//			}
+//		}
+//		for (MapLayer layer : RPG.maps.map.getLayers()) {
+//			if (layer instanceof TiledMapTileLayer) {
+//				TiledMapTileLayer tileLayer = (TiledMapTileLayer) layer;
+//				System.out.println(Collide.getID(tileLayer, gosuanalX, goalY));
+//
+//			}
+//		}
+
+//		 // for (int j = 12; j > 0; j--) {
+//		 for (int i = 0; i < 21; i++) {
+//		 Cell cell = tileLayer.getCell(i, j);
+//		 if (cell != null) {
+//		 s[j][i] = 1;
+//		 }
+//		 }
+//		 }
+//		 }
+		
+		
+		for(Actor a:GameViews.gameview.stage.getActors())
+			try {
+				if(a instanceof NPC){
+					NPC n = ((NPC)a);
+					int _x = n.mapx;
+					int _y = n.mapy;
+					if(_x<0 || _y<0 || _x>=s.length || _y>= s[_x].length)
+						continue;
+					System.out.println(_x+","+_y);
+					s[_y][s[_y].length-_x]=2;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+
+		for (int[] i : s) {
 			System.out.println();
-			for (int j : i ){
-				System.out.print(j+" ");
+			for (int j : i) {
+				System.out.print(j);
 			}
 		}
-		// if (layer instanceof TiledMapTileLayer) {
-		// TiledMapTileLayer tileLayer = (TiledMapTileLayer) layer;
-		// System.out.println(Collide.getID(tileLayer,goalX,goalY));
-		//
-		// }
-
-		// // for (int j = 12; j > 0; j--) {
-		// for (int i = 0; i < 21; i++) {
-		// Cell cell = tileLayer.getCell(i, j);
-		// if (cell != null) {
-		// s[j][i] = 1;
-		// }
-		// }
-		// }
-		// }
-
-		// for(int[] i:s){
-		// System.out.println();
-		// for(int j:i){
-		// System.out.print(j);
-		// }
-		// }
 		// System.out.println(s);
 
-		// System.out.println(RPG.maps.map.getLayers());
-		// System.out.println(RPG.ctrl.hero.getHeadHero().layer);
-		// System.out.println(RPG.ctrl.hero.getHeadHero().mapx);
-		// System.out.println(RPG.ctrl.hero.getHeadHero().mapy);
-		// System.out.println(RPG.ctrl.hero.getHeadHero().getX());
-		// System.out.println(RPG.ctrl.hero.getHeadHero().getY());
+//		 System.out.println(RPG.maps.map.getLayers());
+//		 System.out.println(RPG.ctrl.hero.getHeadHero().layer);
+		 System.out.println(RPG.ctrl.hero.getHeadHero().mapx+" & "+RPG.ctrl.hero.getHeadHero().mapy);
+//		 System.out.println(RPG.ctrl.hero.getHeadHero().getX());
+//		 System.out.println(RPG.ctrl.hero.getHeadHero().getY());
 	}
 }

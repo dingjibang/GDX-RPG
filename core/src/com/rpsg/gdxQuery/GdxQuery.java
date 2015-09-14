@@ -404,7 +404,7 @@ public class GdxQuery {
 			else if(obj instanceof GdxQuery)
 				getItems().addAll(((GdxQuery)obj).getItems());
 			else if(obj instanceof Collection)
-				for(Object col:(Collection)obj)
+				for(Object col:(Collection<?>)obj)
 					add(col);
 		return this;
 	}
@@ -418,9 +418,9 @@ public class GdxQuery {
 		return add(a);
 	}
 	
-	public GdxQuery not( Class... cls){
+	public GdxQuery not( Class<?>... cls){
 		GdxQuery query=$.add();
-		for(Class<? extends Actor> c:cls)
+		for(Class<?> c:cls)
 			for(Actor actor:getItems())
 				if(!(actor.getClass().equals(c) || actor.getClass().getSuperclass().equals(c)))
 					query.add(actor);
@@ -555,7 +555,7 @@ public class GdxQuery {
 		return this;
 	}
 	
-	public Cell getCell(){
+	public Cell<?> getCell(){
 		try {
 			if(getItem() instanceof Table)
 				return ((Table)getItem()).getCells().get(0);
