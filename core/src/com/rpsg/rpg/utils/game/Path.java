@@ -7,10 +7,13 @@ import java.util.List;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.core.RPG;
+import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Collide;
 import com.rpsg.rpg.object.rpg.RPGObject;
+import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
 public class Path {
@@ -166,17 +169,17 @@ public class Path {
 
 	public static void main(String[] args) {
 		int[][] map = new int[][] {// 地图数组
-				new int[]{0,0,0,0,0,0,0,0,0,0,0,0},
-				new int[]{0,1,1,1,1,1,1,1,1,1,1,0},
-				new int[]{0,1,1,1,1,1,1,1,1,1,1,0},
-				new int[]{0,1,1,1,1,1,1,1,1,1,1,0},
-				new int[]{0,1,1,1,0,1,1,1,1,1,1,0},
-				new int[]{0,1,1,1,0,1,1,1,1,1,1,0},
-				new int[]{0,1,1,1,0,1,1,1,1,1,1,0},
-				new int[]{0,1,1,0,1,1,1,1,1,1,1,0},
-				new int[]{0,1,0,1,1,1,1,1,1,1,1,0},
-				new int[]{0,0,0,0,0,0,0,0,0,0,0,0}
-		
+		new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				new int[] { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+
 		};
 		Path p = new Path(map, 10, 12);
 		int flag = p.search(6, 2, 7, 8);
@@ -203,67 +206,71 @@ public class Path {
 	}
 
 	public static void click(int x, int y) {
+		Vector3 pos = Setting.persistence.softCamera ? new Vector3()
+				: GameViews.gameview.camera.position;
 
-		int goalX = (int) Math.ceil((float) x / 48f);
-		int goalY = (int) Math.ceil(12 - (float) y / 48f);
-		int a = RPG.ctrl.hero.getHeadHero().layer;
-		TiledMapTileLayer tileLayer = (TiledMapTileLayer) RPG.maps.loader.layer
-				.get(a);
-		int height = tileLayer.getHeight();
-		int width = tileLayer.getWidth();
-		int[][] s = new int[height][width];
-		for (int i = 0; i < width; i++) {
-			for (int j = height -1; j >=0; j--) {
-				if(Collide.getID(tileLayer,i,j)==0){
-					s[j][i] = 0;
-				}else{
-					s[j][i] = 1;
-				}
-			}
+		int twidth = RPG.maps.loader.mapWidth;
+		int theight = RPG.maps.loader.mapHeight;
+
+		float herox = RPG.ctrl.hero.getHeadHero().position.x
+				+ (RPG.ctrl.hero.getHeadHero().getWidth() / 2);
+		float heroy = RPG.ctrl.hero.getHeadHero().position.y
+				+ (RPG.ctrl.hero.getHeadHero().getHeight() / 2);
+		if (GameUtil.screen_width < twidth) {
+			if (herox > 512 && herox < (twidth) - 512)
+				pos.x = herox;
+			else if (!(herox > 512))//
+				pos.x = 512;
+			else
+				pos.x = (twidth) - 512;
+		} else {
+			pos.x = twidth / 2;
 		}
-		;
-		for (int i = 0; i < GameViews.gameview.stage.getActors().size; i++) {
-			Actor actor=GameViews.gameview.stage.getActors().get(i);
-			int ax = (int) Math.ceil((float) actor.getX() / 48f);
-			int ay = (int) Math.ceil((float) actor.getY() / 48f);
-			s[ay-1][ay-1] = 1;
+		if (GameUtil.screen_height < theight) {
+			if (heroy > 288 && heroy < (theight) - 288)
+				pos.y = heroy;
+			else if (!(heroy > 288))
+				pos.y = 288;
+			else
+				pos.y = (theight) - 288;
+		} else {
+			pos.y = theight / 2;
 		}
-			
-		for(int[] i :s){
-			System.out.println();
-			for (int j : i ){
-				System.out.print(j+" ");
-			}
-		}
+
+		int goalX = (int) Math.ceil((pos.x + (x - 512)) / 48f);
+		int goalY = (int) Math.ceil((pos.y - (y - 288)) / 48f);
+
+		System.out.println(goalX);
+		System.out.println(goalY);
+		// int a = RPG.ctrl.hero.getHeadHero().layer;
+		// TiledMapTileLayer tileLayer = (TiledMapTileLayer)
+		// RPG.maps.loader.layer
+		// .get(a);
+		// int height = tileLayer.getHeight();
+		// int width = tileLayer.getWidth();
+		// int[][] s = new int[height][width];
+		// for (int i = 0; i < width; i++) {
+		// for (int j = height -1; j >=0; j--) {
+		// if(Collide.getID(tileLayer,i,j)==0){
+		// s[j][i] = 0;
+		// }else{
+		// s[j][i] = 1;
+		// }
+		// }
+		// }
+		// ;
+		// for (int i = 0; i < GameViews.gameview.stage.getActors().size; i++) {
+		// Actor actor=GameViews.gameview.stage.getActors().get(i);
+		// int ax = (int) Math.ceil((float) actor.getX() / 48f);
+		// int ay = (int) Math.ceil((float) actor.getY() / 48f);
+		// s[ay-1][ay-1] = 1;
+		// }
+
 		// if (layer instanceof TiledMapTileLayer) {
 		// TiledMapTileLayer tileLayer = (TiledMapTileLayer) layer;
 		// System.out.println(Collide.getID(tileLayer,goalX,goalY));
 		//
 		// }
 
-		// // for (int j = 12; j > 0; j--) {
-		// for (int i = 0; i < 21; i++) {
-		// Cell cell = tileLayer.getCell(i, j);
-		// if (cell != null) {
-		// s[j][i] = 1;
-		// }
-		// }
-		// }
-		// }
-
-		// for(int[] i:s){
-		// System.out.println();
-		// for(int j:i){
-		// System.out.print(j);
-		// }
-		// }
-		// System.out.println(s);
-
-		// System.out.println(RPG.maps.map.getLayers());
-		// System.out.println(RPG.ctrl.hero.getHeadHero().layer);
-		// System.out.println(RPG.ctrl.hero.getHeadHero().mapx);
-		// System.out.println(RPG.ctrl.hero.getHeadHero().mapy);
-		// System.out.println(RPG.ctrl.hero.getHeadHero().getX());
-		// System.out.println(RPG.ctrl.hero.getHeadHero().getY());
 	}
 }
