@@ -5,18 +5,20 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+
 public class PathFinder {
 	
 	static int[][] data = new int[][]{
 		new int[]{1,1,1,1,1,1,1,1,1,1,1,1},
 		new int[]{1,0,0,0,0,0,0,0,0,0,0,1},
-		new int[]{1,0,0,0,1,0,1,0,0,0,0,1},
-		new int[]{1,0,0,0,0,1,0,1,0,0,0,1},
-		new int[]{1,0,0,0,0,1,0,1,0,0,0,1},
-		new int[]{1,0,0,0,0,1,0,1,1,1,0,1},
-		new int[]{1,0,0,0,1,0,0,0,0,0,0,1},
-		new int[]{1,0,0,1,0,0,0,1,0,1,0,1},
-		new int[]{1,0,1,0,0,0,0,0,0,0,0,1},
+		new int[]{1,0,0,0,1,1,1,1,0,0,0,1},
+		new int[]{1,0,0,1,0,1,0,1,0,0,0,1},
+		new int[]{1,0,0,1,0,1,0,0,0,0,0,1},
+		new int[]{1,0,0,1,0,1,0,1,0,0,0,1},
+		new int[]{1,0,0,1,0,1,0,1,1,0,0,1},
+		new int[]{1,0,0,1,0,1,0,0,1,0,0,1},
+		new int[]{1,0,0,0,0,1,0,0,0,0,0,1},
 		new int[]{1,1,1,1,1,1,1,1,1,1,1,1},
 	};
 	public static void main(String[] args) {
@@ -93,7 +95,6 @@ public class PathFinder {
 				enable=false;
 			return this;
 		}
-		
 		public Path getParents(Path p){
 			Path current = this;
 			while(true){
