@@ -21,7 +21,6 @@ import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.view.GameViews;
 
 public class Path {
-	public static boolean flag = true;// 是否开启寻路
 
 	private int[][] map; // 1可通过 0不可通过
 	private List<Point> openList;
@@ -229,11 +228,25 @@ public class Path {
 
 		color.a = .5f;
 		
-		Path path = new Path(mapData);
 		Hero head = RPG.ctrl.hero.getHeadHero();
 		List<Image> imgPoints = new ArrayList<>();
 		
-		List<Point> results = path.search(head.mapx, mapData[0].length-head.mapy-1, goalX, goalY);
+		List<Point> results = new Path(mapData).search(head.mapx, mapData[0].length-head.mapy-1, goalX, goalY);
+		if (results==null) {
+			color=Color.valueOf("BD3B3B");
+		}else{
+			List<MoveStack> stack = new ArrayList<>();
+			for(int i=0;i<results.size();i++){
+				Point point=results.get(i);
+				if(i!=results.size()-1){
+					Point nextPoint=results.get(i+1);
+					stack.add(new MoveStack(MoveStack.calcFace(point.x, point.y, nextPoint.x, nextPoint.y), 1));
+				}
+				imgPoints.add((Image) $.add(Res.get(Setting.IMAGE_GLOBAL + "path.png")).setColor(color).setColorA(1f).setPosition(point.x*48, point.y*48).getItem());
+			}
+		}
+		
+		
 		if (results==null) {
 			color=Color.valueOf("BD3B3B");
 		}else{

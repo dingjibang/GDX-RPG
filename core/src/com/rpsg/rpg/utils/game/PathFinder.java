@@ -25,8 +25,9 @@ public class PathFinder {
 		find(new Path(5,2),new Path(7,6),data);
 	}
 	
-	public static void find(Path start,Path end,int[][] map){
+	public static List<Path> find(Path start,Path end,int[][] map){
 		Path current = start;
+		List<Path> paths=new ArrayList<Path>();
 //		map[end.x][end.y]=3;
 		
 		int count = 0;
@@ -56,10 +57,11 @@ public class PathFinder {
 		while(true){
 			if(current==null)
 				break;
+			paths.add(current);
 			map[current.x][current.y]=3;
 			current=current.parent;
 		}
-		print(map);
+		return paths;
 	}
 	
 	private static boolean testWalkAble(int[][] map,int x,int y){

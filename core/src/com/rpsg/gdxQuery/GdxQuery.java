@@ -401,9 +401,9 @@ public class GdxQuery {
 				getItems().add((Actor)obj);
 			else if(obj instanceof Cell<?>)
 				getItems().add(((Cell<?>)obj).getActor());
-			else if(obj instanceof ButtonGroup)
-				for(Button button:((ButtonGroup)obj).getButtons())
-					getItems().add(button);
+//			else if(obj instanceof ButtonGroup)
+//				for(Button button:((ButtonGroup)obj).getButtons())
+//					getItems().add(button);
 			else if(obj instanceof Stage)
 				for(Actor actor:((Stage)obj).getActors())
 					getItems().add(actor);
@@ -465,7 +465,7 @@ public class GdxQuery {
 					((ScrollPane)o).setWidget(getItem());
 			else if(o instanceof Table)
 				for(Actor a:getItems())
-					((Table)o).add(a).fill().row().prefSize(a.getWidth(),a.getHeight());
+					((Table)o).add(a).fill().prefSize(a.getWidth(),a.getHeight()).row();
 			else if(o instanceof Group)
 				for(Actor a:getItems())
 					((Group)o).addActor(a);
