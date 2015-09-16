@@ -8,6 +8,7 @@ import java.util.List;
 
 import box2dLight.PointLight;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapLayer;
@@ -18,17 +19,18 @@ import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.game.hero.Arisu;
-import com.rpsg.rpg.game.items.equipment.Shoes;
-import com.rpsg.rpg.game.items.equipment.Sunshade;
-import com.rpsg.rpg.game.items.medicine.YaoWan;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
 import com.rpsg.rpg.object.rpg.RPGObject;
 import com.rpsg.rpg.object.script.Script;
+import com.rpsg.rpg.system.base.Res;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameView;
@@ -184,7 +186,8 @@ public class MapLoader {
 	}
 
 	PointLight headHeroPointLight;
-
+	
+	
 	public synchronized void draw(GameView gv){
 		int size=RPG.maps.map.getLayers().getCount();
 		SpriteBatch sb=(SpriteBatch) gv.stage.getBatch();
@@ -209,9 +212,22 @@ public class MapLoader {
 			for(RPGObject ir:drawlist){
 				ir.draw(sb, 1f);
 			}
+			
+			
 			sb.end();
 		}
-//		System.out.println(HeroControler.getHeadHero().getX()+" "+HeroControler.getHeadHero().getY()+" "+gv.camera.position.x+" "+gv.camera.position.y+" "+HeroControler.getHeadHero().mapx+" "+HeroControler.getHeadHero().mapy);
+		sb.begin();
+		//draw map path
+		if(path!=null){
+			path.actAndDraw(sb);
+		}
+		sb.end();
+	}
+	
+	private Image path;
+	public void putPath(int mapx,int mapy){
+		path=Res.get(Setting.IMAGE_GLOBAL+"path.png").color(Color.RED);
+		$.add(path).setPosition(mapx*48,mapy*48).addAction(Actions.forever(Actions.sequence(Actions.fadeIn(0.1f),Actions.fadeOut(0.1f))));
 	}
 	
 	public void logic(GameView gv){

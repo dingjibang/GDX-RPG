@@ -108,6 +108,11 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 			this.draw(sb, 1);
 	}
 	
+	public void actAndDraw(Batch sb){
+		act(Gdx.graphics.getDeltaTime());
+		draw(sb);
+	}
+	
 	public void draw(Batch batch, float parentAlpha) {
 		delaydbClickTime++;
 		super.draw(batch, parentAlpha);
