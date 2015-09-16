@@ -225,9 +225,9 @@ public class MapLoader {
 	}
 	
 	private Image path;
-	public void putPath(int mapx,int mapy){
-		path=Res.get(Setting.IMAGE_GLOBAL+"path.png").color(Color.RED);
-		$.add(path).setPosition(mapx*48,mapy*48).addAction(Actions.forever(Actions.sequence(Actions.fadeIn(0.1f),Actions.fadeOut(0.1f))));
+	public void putPath(int mapx,int mapy,Color color){
+		path=Res.get(Setting.IMAGE_GLOBAL+"path.png").color(color);
+		$.add(path).setPosition(mapx*48,mapy*48).addAction(Actions.forever(Actions.sequence(Actions.fadeIn(0.2f),Actions.fadeOut(0.2f))));
 	}
 	
 	public void logic(GameView gv){

@@ -70,6 +70,14 @@ public class GameUtil {
 		return (float)Gdx.graphics.getWidth()/(float)GameUtil.screen_width;
 	}
 	
+	public static float getScaleW(){
+		return (float)Gdx.graphics.getWidth()/(float)GameUtil.screen_width;
+	}
+	
+	public static float getScaleH(){
+		return (float)Gdx.graphics.getHeight()/(float)GameUtil.screen_height;
+	}
+	
 	public static NinePatch processNinePatchFile(String fname) {
 	    final Texture t = new Texture(Gdx.files.internal(fname));
 	    final int width = t.getWidth() - 2;

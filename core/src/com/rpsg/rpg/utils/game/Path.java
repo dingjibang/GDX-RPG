@@ -4,13 +4,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Collide;
 import com.rpsg.rpg.object.rpg.NPC;
+import com.rpsg.rpg.object.rpg.PublicNPC;
+import com.rpsg.rpg.object.rpg.RPGObject;
+import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
 public class Path {
@@ -23,17 +30,18 @@ public class Path {
 	private int row;// 行
 	private int column;// 列
 
-	public Path(int[][] map, int row, int column) {
+	public Path(int[][] map) {
 		this.map = map;
-		this.row = row;
-		this.column = column;
+		this.row = map.length;
+		this.column = map[0].length;
 		openList = new ArrayList<Point>();
 		closeList = new ArrayList<Point>();
 	}
 
 	// 查找坐标
 	public int search(int x1, int y1, int x2, int y2) {
-		if (x1 < 0 || x1 >= row || x2 < 0 || x2 >= row || y1 < 0 || y1 >= column || y2 < 0 || y2 >= column) {
+		if (x1 < 0 || x1 >= row || x2 < 0 || x2 >= row || y1 < 0
+				|| y1 >= column || y2 < 0 || y2 >= column) {
 			return -1;
 		}
 		if (map[x1][y1] == 0 || map[x2][y2] == 0) {
@@ -90,7 +98,8 @@ public class Path {
 	}
 
 	// 查询此路是否能走通
-	private boolean checkPath(int x, int y, Point parentPoint, Point ePoint, int cost) {
+	private boolean checkPath(int x, int y, Point parentPoint, Point ePoint,
+			int cost) {
 		Point point = new Point(x, y, parentPoint);
 
 		if (map[x][y] == 0) {
@@ -164,11 +173,20 @@ public class Path {
 
 	public static void main(String[] args) {
 		int[][] map = new int[][] {// 地图数组
-		new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, new int[] { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 }, new int[] { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 }, new int[] { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 }, new int[] { 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 }, new int[] { 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 }, new int[] { 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 }, new int[] { 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0 }, new int[] { 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 }, new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+				new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				new int[] { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
+				new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
 
 		};
-		Path p = new Path(map, 10, 12);
-		int flag = p.search(6, 2, 7, 8);
+		Path path = new Path(map);
+		int flag = path.search(6, 2, 7, 8);
 		if (flag == -1) {
 			System.out.println("传输数据有误！");
 		} else if (flag == 0) {
@@ -192,13 +210,17 @@ public class Path {
 	}
 
 	public static void click(int x, int y) {
-		Vector3 pos = Setting.persistence.softCamera ? new Vector3() : GameViews.gameview.camera.position;
+		System.out.println("x:"+x+",y:"+y);
+		Vector3 pos = Setting.persistence.softCamera ? new Vector3()
+				: GameViews.gameview.camera.position;
 
 		int twidth = RPG.maps.loader.mapWidth;
 		int theight = RPG.maps.loader.mapHeight;
 
-		float herox = RPG.ctrl.hero.getHeadHero().position.x + (RPG.ctrl.hero.getHeadHero().getWidth() / 2);
-		float heroy = RPG.ctrl.hero.getHeadHero().position.y + (RPG.ctrl.hero.getHeadHero().getHeight() / 2);
+		float herox = RPG.ctrl.hero.getHeadHero().position.x
+				+ (RPG.ctrl.hero.getHeadHero().getWidth() / 2);
+		float heroy = RPG.ctrl.hero.getHeadHero().position.y
+				+ (RPG.ctrl.hero.getHeadHero().getHeight() / 2);
 		if (GameUtil.screen_width < twidth) {
 			if (herox > 512 && herox < (twidth) - 512)
 				pos.x = herox;
@@ -219,111 +241,41 @@ public class Path {
 		} else {
 			pos.y = theight / 2;
 		}
-
-		int goalX = (int) Math.ceil((pos.x + (x - 512)) / 48f);
-		int goalY = (int) Math.ceil((pos.y - (y - 288)) / 48f);
-
-		System.out.println(goalX + "," + goalY + ">>>");
 		
-		RPG.maps.loader.putPath(goalX, goalY);
 
-		// int a = RPG.ctrl.hero.getHeadHero().layer;
-		// TiledMapTileLayer tileLayer = (TiledMapTileLayer)
-		// RPG.maps.loader.layer
-		// .get(a);
-		// int height = tileLayer.getHeight();
-		// int width = tileLayer.getWidth();
-		// int[][] s = new int[height][width];
-		// for (int i = 0; i < width; i++) {
-		// for (int j = height -1; j >=0; j--) {
-		// if(Collide.getID(tileLayer,i,j)==0){
-		// s[j][i] = 0;
-		// }else{
-		// s[j][i] = 1;
-		// }
-		// }
-		// }
-		// ;
-		// for (int i = 0; i < GameViews.gameview.stage.getActors().size; i++) {
-		// Actor actor=GameViews.gameview.stage.getActors().get(i);
-		// int ax = (int) Math.ceil((float) actor.getX() / 48f);
-		// int ay = (int) Math.ceil((float) actor.getY() / 48f);
-		// s[ay-1][ay-1] = 1;
-		// }
-
-		// if (layer instanceof TiledMapTileLayer) {
-		// TiledMapTileLayer tileLayer = (TiledMapTileLayer) layer;
-		// System.out.println(Collide.getID(tileLayer,goalX,goalY));
-		//
-		// }
-
+		int goalX = (int) Math.ceil((pos.x + (x*(1/GameUtil.getScaleW()) - 512)) / 48f)-1;
+		int goalY = (int) Math.ceil((pos.y - (y*(1/GameUtil.getScaleH()) - 288)) / 48f)-1;
+		
 		int zIndex = RPG.ctrl.hero.getHeadHero().layer;
 		TiledMapTileLayer tileLayer = (TiledMapTileLayer) RPG.maps.loader.layer.get(zIndex);
 		int height = tileLayer.getHeight();
 		int width = tileLayer.getWidth();
-		int[][] s = new int[height][width];
+		int[][] mapData = new int[height][width];
 		for (int i = 0; i < width; i++) {
-			for (int j = height - 1; j >= 0; j--) {
-				if (Collide.getID(tileLayer, i, j) == 0) {
-					s[j][i] = 1;
-				} else {
-					s[j][i] = 0;
+			for (int j = height -1; j >=0; j--) {
+				if(Collide.getID(tileLayer,i,j)==0){
+					mapData[j][i] = 1;
+				}else{
+					mapData[j][i] = 0;
 				}
 			}
 		}
-
-		// for(int[] i :s){
-		// System.out.println();
-		// for (int j : i ){
-		// System.out.print(j+" ");
-		// }
-		// }
-		// for (MapLayer layer : RPG.maps.map.getLayers()) {
-		// if (layer instanceof TiledMapTileLayer) {
-		// TiledMapTileLayer tileLayer = (TiledMapTileLayer) layer;
-		// System.out.println(Collide.getID(tileLayer, gosuanalX, goalY));
-		//
-		// }
-		// }
-
-		// // for (int j = 12; j > 0; j--) {
-		// for (int i = 0; i < 21; i++) {
-		// Cell cell = tileLayer.getCell(i, j);
-		// if (cell != null) {
-		// s[j][i] = 1;
-		// }
-		// }
-		// }
-		// }
-
-//		for (Actor a : GameViews.gameview.stage.getActors())
-//			try {
-//				if (a instanceof NPC) {
-//					NPC n = ((NPC) a);
-//					int _x = n.mapx;
-//					int _y = n.mapy;
-//					if (_x < 0 || _y < 0 || _x >= s.length || _y >= s[_x].length)
-//						continue;
-//					System.out.println(_x + "," + _y);
-//					s[_y][s[_y].length - _x] = 2;
-//				}
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-
-		// for (int[] i : s) {
-		// System.out.println();
-		// for (int j : i) {
-		// System.out.print(j);
-		// }
-		// }
-		// System.out.println(s);
-
-		// System.out.println(RPG.maps.map.getLayers());
-		// System.out.println(RPG.ctrl.hero.getHeadHero().layer);
-		// System.out.println(RPG.ctrl.hero.getHeadHero().mapx+" & "+RPG.ctrl.hero.getHeadHero().mapy);
-		// System.out.println(RPG.ctrl.hero.getHeadHero().getX());
-		// System.out.println(RPG.ctrl.hero.getHeadHero().getY());
-
+		
+		for(Actor a:GameViews.gameview.stage.getActors()){
+			if(a instanceof NPC){
+				NPC npc=(NPC)a;
+				if(npc.mapx>=0 && npc.mapy>=0 && npc.mapy<mapData.length && npc.mapx<mapData[npc.mapy].length)
+					mapData[mapData.length-npc.mapy-1][npc.mapx]=0;
+			}
+		}
+		
+		
+		Color color = Color.valueOf("3BBD64");//green
+		if(mapData[goalY][goalX]==0)
+			color=Color.valueOf("BD3B3B");//red
+		RPG.maps.loader.putPath(goalX, goalY, color);
+		System.out.println(goalX);
+		System.out.println(goalY);
+		
 	}
 }
