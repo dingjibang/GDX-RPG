@@ -5,19 +5,19 @@ import java.util.Collections;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.maps.MapLayer;
-import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Collide;
+import com.rpsg.rpg.object.rpg.Hero;
+import com.rpsg.rpg.object.rpg.MoveStack;
 import com.rpsg.rpg.object.rpg.NPC;
-import com.rpsg.rpg.object.rpg.PublicNPC;
-import com.rpsg.rpg.object.rpg.RPGObject;
-import com.rpsg.rpg.view.GameView;
+import com.rpsg.rpg.system.base.Res;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.view.GameViews;
 
 public class Path {
@@ -32,32 +32,28 @@ public class Path {
 
 	public Path(int[][] map) {
 		this.map = map;
-		this.row = map.length;
-		this.column = map[0].length;
+		this.column = map.length;
+		this.row = map[0].length;
 		openList = new ArrayList<Point>();
 		closeList = new ArrayList<Point>();
 	}
 
 	// 查找坐标
-	public int search(int x1, int y1, int x2, int y2) {
-		if (x1 < 0 || x1 >= row || x2 < 0 || x2 >= row || y1 < 0
-				|| y1 >= column || y2 < 0 || y2 >= column) {
-			return -1;
+	public List<Point> search(int x1, int y1, int x2, int y2) {
+		if (x1 < 0 || x1 >= row || x2 < 0 || x2 >= row || y1 < 0 || y1 >= column || y2 < 0 || y2 >= column) {
+			return null;
 		}
 		if (map[x1][y1] == 0 || map[x2][y2] == 0) {
-			return -1;
+			return null;
 		}
 		Point spoint = new Point(x1, y1, null);
 		Point epoint = new Point(x2, y2, null);
 		openList.add(spoint);
 		List<Point> resultList = search(spoint, epoint);
-		if (resultList.size() == 0) {
-			return 0;
-		}
 		for (Point p : resultList) {
 			map[p.x][p.y] = 2;
 		}
-		return 1;
+		return resultList;
 	}
 
 	// 核心算法
@@ -98,8 +94,7 @@ public class Path {
 	}
 
 	// 查询此路是否能走通
-	private boolean checkPath(int x, int y, Point parentPoint, Point ePoint,
-			int cost) {
+	private boolean checkPath(int x, int y, Point parentPoint, Point ePoint, int cost) {
 		Point point = new Point(x, y, parentPoint);
 
 		if (map[x][y] == 0) {
@@ -171,56 +166,14 @@ public class Path {
 		point.f = point.g + point.h;
 	}
 
-	public static void main(String[] args) {
-		int[][] map = new int[][] {// 地图数组
-				new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				new int[] { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
-				new int[] { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
-				new int[] { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
-				new int[] { 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
-				new int[] { 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
-				new int[] { 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
-				new int[] { 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0 },
-				new int[] { 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
-				new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
-
-		};
-		Path path = new Path(map);
-		int flag = path.search(6, 2, 7, 8);
-		if (flag == -1) {
-			System.out.println("传输数据有误！");
-		} else if (flag == 0) {
-			System.out.println("没找到！");
-		} else {
-			for (int x = 0; x < 10; x++) {
-				System.out.println();
-				for (int y = 0; y < 12; y++) {
-
-					if (map[x][y] == 1) {
-						System.out.print("　");
-					} else if (map[x][y] == 0) {
-						System.out.print("〓");
-					} else if (map[x][y] == 2) {// 输出搜索路径
-						System.out.print("※");
-					}
-				}
-				System.out.println();
-			}
-		}
-	}
-
-	public static void click(int x, int y) {
-		System.out.println("x:"+x+",y:"+y);
-		Vector3 pos = Setting.persistence.softCamera ? new Vector3()
-				: GameViews.gameview.camera.position;
+	public static void click(int mouseX, int mouseY) {
+		Vector3 pos = Setting.persistence.softCamera ? new Vector3() : GameViews.gameview.camera.position;
 
 		int twidth = RPG.maps.loader.mapWidth;
 		int theight = RPG.maps.loader.mapHeight;
 
-		float herox = RPG.ctrl.hero.getHeadHero().position.x
-				+ (RPG.ctrl.hero.getHeadHero().getWidth() / 2);
-		float heroy = RPG.ctrl.hero.getHeadHero().position.y
-				+ (RPG.ctrl.hero.getHeadHero().getHeight() / 2);
+		float herox = RPG.ctrl.hero.getHeadHero().position.x + (RPG.ctrl.hero.getHeadHero().getWidth() / 2);
+		float heroy = RPG.ctrl.hero.getHeadHero().position.y + (RPG.ctrl.hero.getHeadHero().getHeight() / 2);
 		if (GameUtil.screen_width < twidth) {
 			if (herox > 512 && herox < (twidth) - 512)
 				pos.x = herox;
@@ -241,41 +194,74 @@ public class Path {
 		} else {
 			pos.y = theight / 2;
 		}
-		
 
-		int goalX = (int) Math.ceil((pos.x + (x*(1/GameUtil.getScaleW()) - 512)) / 48f)-1;
-		int goalY = (int) Math.ceil((pos.y - (y*(1/GameUtil.getScaleH()) - 288)) / 48f)-1;
-		
+		int goalX = (int) Math.ceil((pos.x + (mouseX * (1 / GameUtil.getScaleW()) - 512)) / 48f) - 1;
+		int goalY = (int) Math.ceil((pos.y - (mouseY * (1 / GameUtil.getScaleH()) - 288)) / 48f) - 1;
+
 		int zIndex = RPG.ctrl.hero.getHeadHero().layer;
 		TiledMapTileLayer tileLayer = (TiledMapTileLayer) RPG.maps.loader.layer.get(zIndex);
 		int height = tileLayer.getHeight();
 		int width = tileLayer.getWidth();
-		int[][] mapData = new int[height][width];
+		int[][] mapData = new int[width][height];
 		for (int i = 0; i < width; i++) {
-			for (int j = height -1; j >=0; j--) {
-				if(Collide.getID(tileLayer,i,j)==0){
-					mapData[j][i] = 1;
-				}else{
-					mapData[j][i] = 0;
+			for (int j = height - 1; j >= 0; j--) {
+				if (Collide.getID(tileLayer, i, j) == 0) {
+					mapData[i][j] = 1;
+				} else {
+					mapData[i][j] = 0;
 				}
 			}
 		}
+
+		for (Actor a : GameViews.gameview.stage.getActors()) {
+			if (a instanceof NPC) {
+				NPC npc = (NPC) a;
+				if (npc.mapx >= 0 && npc.mapy >= 0 && npc.mapx < mapData.length && npc.mapy < mapData[npc.mapx].length)
+					mapData[npc.mapx][mapData[0].length - npc.mapy - 1] = 3;
+			}
+		}
+
+		Color color = Color.valueOf("3BBD64");// green
+		if (mapData[goalX][goalY] == 0)
+			color = Color.valueOf("BD3B3B");// red
+		else if (mapData[goalX][goalY] == 3)
+			color = Color.valueOf("3B5CBD");// blue
+
+		color.a = .5f;
 		
-		for(Actor a:GameViews.gameview.stage.getActors()){
-			if(a instanceof NPC){
-				NPC npc=(NPC)a;
-				if(npc.mapx>=0 && npc.mapy>=0 && npc.mapy<mapData.length && npc.mapx<mapData[npc.mapy].length)
-					mapData[mapData.length-npc.mapy-1][npc.mapx]=0;
+		Path path = new Path(mapData);
+		Hero head = RPG.ctrl.hero.getHeadHero();
+		List<Image> imgPoints = new ArrayList<>();
+		
+		List<Point> results = path.search(head.mapx, mapData[0].length-head.mapy-1, goalX, goalY);
+		if (results==null) {
+			color=Color.valueOf("BD3B3B");
+		}else{
+			List<MoveStack> stack = new ArrayList<>();
+			for(int i=0;i<results.size();i++){
+				Point point=results.get(i);
+				if(i!=results.size()-1){
+					Point nextPoint=results.get(i+1);
+					stack.add(new MoveStack(MoveStack.calcFace(point.x, point.y, nextPoint.x, nextPoint.y), 1));
+				}
+				imgPoints.add((Image) $.add(Res.get(Setting.IMAGE_GLOBAL + "path.png")).setColor(color).setColorA(1f).setPosition(point.x*48, point.y*48).getItem());
 			}
 		}
 		
+		final Image end = Res.get(Setting.IMAGE_GLOBAL + "path.png").color(color);
+		end.setUserObject(0);
+		$.add(end).setPosition(goalX * 48, goalY * 48).addAction(Actions.forever(Actions.sequence(Actions.color(new Color(color.r, color.g, color.b, 0.5f), 0.2f), Actions.fadeOut(0.2f), Actions.run(new Runnable() {
+			public void run() {
+				end.setUserObject(((Integer) end.getUserObject()) + 1);
+				if (((Integer) end.getUserObject()) == 3)
+					end.clearActions();
+			}
+		}))));
+
 		
-		Color color = Color.valueOf("3BBD64");//green
-		if(mapData[goalY][goalX]==0)
-			color=Color.valueOf("BD3B3B");//red
-		RPG.maps.loader.putPath(goalX, goalY, color);
-		System.out.println(goalX);
-		System.out.println(goalY);
 		
+		imgPoints.add(end);
+		RPG.maps.loader.putPath(imgPoints);
+
 	}
 }

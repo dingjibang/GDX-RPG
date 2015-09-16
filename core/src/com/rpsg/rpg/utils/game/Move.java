@@ -83,7 +83,7 @@ public class Move {
 			
 			public void step(){
 				try {
-					com.rpsg.rpg.object.rpg.Walker wk= script.npc.walkStack.get(0);
+					com.rpsg.rpg.object.rpg.MoveStack wk= script.npc.walkStack.get(0);
 					wk.step=0;
 					script.npc.walkStack.clear();
 					script.npc.walkStack.add(wk);

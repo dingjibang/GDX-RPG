@@ -20,6 +20,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.utils.Array;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
@@ -33,6 +34,7 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
+import com.rpsg.rpg.utils.game.Point;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
@@ -216,18 +218,20 @@ public class MapLoader {
 			
 			sb.end();
 		}
-		sb.begin();
+		
 		//draw map path
-		if(path!=null){
+		
+		sb.begin();
+		
+		for(Image path:points)
 			path.actAndDraw(sb);
-		}
+		
 		sb.end();
 	}
 	
-	private Image path;
-	public void putPath(int mapx,int mapy,Color color){
-		path=Res.get(Setting.IMAGE_GLOBAL+"path.png").color(color);
-		$.add(path).setPosition(mapx*48,mapy*48).addAction(Actions.forever(Actions.sequence(Actions.fadeIn(0.2f),Actions.fadeOut(0.2f))));
+	private List<Image> points = new ArrayList<>();
+	public void putPath(List<Image> points){
+		this.points=points;
 	}
 	
 	public void logic(GameView gv){

@@ -51,7 +51,7 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	
 	public String imgPath;
 	public int bodyWidth,bodyHeight;
-	public List<Walker> walkStack=new ArrayList<Walker>(); 
+	public List<MoveStack> walkStack=new ArrayList<MoveStack>(); 
 	
 	public boolean drawShadow = false;
 	static Image shadow=Res.get(Setting.IRPGOBJECT_SHADOW);
@@ -134,7 +134,7 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	
 	public Vector2 lastPosition;
 	public RPGObject walk(int step){
-		walkStack.add(new Walker(this.getCurrentFace(),step));
+		walkStack.add(new MoveStack(this.getCurrentFace(),step));
 		return this;
 	}
 	
