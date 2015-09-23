@@ -48,15 +48,15 @@
     <property name="IMAGE" value="door"/>
    </properties>
   </object>
-  <object name="PUBLIC" type="NPC" gid="509" x="0" y="384" width="48" height="48">
-   <properties>
-    <property name="NEAR_EXECUTE" value="teleport(&quot;inner&quot;,23,5,3)"/>
-   </properties>
-  </object>
   <object name="PUBLIC" type="NPC" gid="509" x="1104" y="144" width="48" height="95">
    <properties>
     <property name="FACE_EXECUTE" value="teleport(&quot;ykroom&quot;,2,10,3)"/>
     <property name="IMAGE" value="door"/>
+   </properties>
+  </object>
+  <object name="PUBLIC" type="NPC" gid="509" x="-48" y="384" width="48" height="48">
+   <properties>
+    <property name="NEAR_EXECUTE" value="teleport(&quot;inner&quot;,22,5,3)"/>
    </properties>
   </object>
  </objectgroup>

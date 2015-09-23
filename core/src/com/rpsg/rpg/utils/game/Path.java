@@ -31,8 +31,8 @@ public class Path {
 
 	public Path(int[][] map) {
 		this.map = map;
-		this.column = map.length;
-		this.row = map[0].length;
+		this.column = map[0].length;
+		this.row = map.length;
 		openList = new ArrayList<Point>();
 		closeList = new ArrayList<Point>();
 	}
@@ -256,7 +256,6 @@ public class Path {
 		
 		//x24 y20
 		//mapdata=x[y]
-		System.out.println(mapData.length+","+mapData[0].length);
 		List<Point> results = new Path(mapData).search(head.mapx, height-head.mapy-1, goalX, goalY);
 		
 		if (results==null) {
