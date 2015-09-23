@@ -207,11 +207,18 @@ public class Path {
 
 		int goalX = (int) Math.ceil((pos.x + (mouseX * (1 / GameUtil.getScaleW()) - 512)) / 48f) - 1;
 		int goalY = (int) Math.ceil((pos.y - (mouseY * (1 / GameUtil.getScaleH()) - 288)) / 48f) - 1;
-
+		
 		int zIndex = RPG.ctrl.hero.getHeadHero().layer;
 		TiledMapTileLayer tileLayer = (TiledMapTileLayer) RPG.maps.loader.layer.get(zIndex);
 		int height = tileLayer.getHeight();
 		int width = tileLayer.getWidth();
+		
+		if(goalX<0)	goalX=0;
+		if(goalY<0)	goalY=0;
+		if(goalX>width-1) goalX=width-1;
+		if(goalY>height-1) goalY=height-1;
+		
+		
 		int[][] mapData = new int[width][height];
 		for (int i = 0; i < width; i++) {
 			for (int j = height - 1; j >= 0; j--) {
@@ -232,19 +239,29 @@ public class Path {
 		}
 
 		Color color = Color.valueOf("3BBD64");// green
-		if (mapData[goalX][goalY] == 0)
+		if (mapData[goalX][goalY] == 0){
 			color = Color.valueOf("BD3B3B");// red
+			System.out.println("fuck");
+		}
 		else if (mapData[goalX][goalY] == 3)
 			color = Color.valueOf("3B5CBD");// blue
 
-		color.a = .5f;
+		color.a = .2f;
 		
 		Hero head = RPG.ctrl.hero.getHeadHero();
+		
+		System.out.println(goalX+","+goalY+"   ,   "+head.mapx+","+head.mapy);
+		
 		List<Image> imgPoints = new ArrayList<>();
 		
-		List<Point> results = new Path(mapData).search(head.mapx, mapData[0].length-head.mapy-1, goalX, goalY);
+		//x24 y20
+		//mapdata=x[y]
+		System.out.println(mapData.length+","+mapData[0].length);
+		List<Point> results = new Path(mapData).search(head.mapx, height-head.mapy-1, goalX, goalY);
+		
 		if (results==null) {
 			color=Color.valueOf("BD3B3B");
+			System.out.println("wall");
 		}else{
 			List<MoveStack> stack = new ArrayList<>();
 			for(int i=0;i<results.size();i++){
@@ -253,23 +270,13 @@ public class Path {
 					Point nextPoint=results.get(i+1);
 					stack.add(new MoveStack(MoveStack.calcFace(point.x, point.y, nextPoint.x, nextPoint.y), 1));
 				}
-				imgPoints.add((Image) $.add(Res.get(Setting.IMAGE_GLOBAL + "path.png")).setColor(color).setColorA(1f).setPosition(point.x*48, point.y*48).getItem());
+				imgPoints.add((Image) $.add(Res.get(Setting.UI_BASE_IMG)).setSize(48,48).setColor(color).setPosition(point.x*48, point.y*48).getItem());
 			}
 		}
 		
-		
-		if (results==null) {
-			color=Color.valueOf("BD3B3B");
-		}else{
-			List<MoveStack> stack = new ArrayList<>();
-			for(int i=0;i<results.size();i++){
-				Point point=results.get(i);
-				if(i!=results.size()-1){
-					Point nextPoint=results.get(i+1);
-					stack.add(new MoveStack(MoveStack.calcFace(point.x, point.y, nextPoint.x, nextPoint.y), 1));
-				}
-				imgPoints.add((Image) $.add(Res.get(Setting.IMAGE_GLOBAL + "path.png")).setColor(color).setColorA(1f).setPosition(point.x*48, point.y*48).getItem());
-			}
+		if(imgPoints.size()>2){
+			imgPoints.remove(imgPoints.size()-1);
+			imgPoints.remove(0);
 		}
 		
 		final Image end = Res.get(Setting.IMAGE_GLOBAL + "path.png").color(color);
