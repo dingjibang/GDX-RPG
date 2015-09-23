@@ -67,21 +67,31 @@ public class Path {
 				isFind = true;
 				break;
 			}
+			
+			int cost = 10;
+			
+			if(point.parentPoint!=null && point.parentPoint.parentPoint!=null){
+				if(point.x==point.parentPoint.x && point.parentPoint.x==point.parentPoint.parentPoint.x)
+					cost=5;
+				else if(point.y==point.parentPoint.y && point.parentPoint.y==point.parentPoint.parentPoint.y)
+					cost=5;
+			}
+			
 			// 上
 			if ((point.y - 1) >= 0) {
-				checkPath(point.x, point.y - 1, point, ePoint, 10);
+				checkPath(point.x, point.y - 1, point, ePoint, cost);
 			}
 			// 下
 			if ((point.y + 1) < column) {
-				checkPath(point.x, point.y + 1, point, ePoint, 10);
+				checkPath(point.x, point.y + 1, point, ePoint, cost);
 			}
 			// 左
 			if ((point.x - 1) >= 0) {
-				checkPath(point.x - 1, point.y, point, ePoint, 10);
+				checkPath(point.x - 1, point.y, point, ePoint, cost);
 			}
 			// 右
 			if ((point.x + 1) < row) {
-				checkPath(point.x + 1, point.y, point, ePoint, 10);
+				checkPath(point.x + 1, point.y, point, ePoint, cost);
 			}
 			closeList.add(openList.remove(0));
 			Collections.sort(openList, new PointFComparator());
@@ -154,6 +164,7 @@ public class Path {
 		} else {
 			point.g = (point.parentPoint.g + cost);
 		}
+		
 	}
 
 	private void countH(Point point, Point eNode) {
