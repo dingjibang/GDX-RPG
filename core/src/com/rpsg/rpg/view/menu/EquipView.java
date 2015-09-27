@@ -25,7 +25,7 @@ import com.rpsg.rpg.utils.game.GameUtil;
 public class EquipView extends DefaultIView{
 	
 	List<Hero> heros;
-	Group inner;
+	Group inner,data;
 	public EquipView init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(137,79).setColor(0,0,0,0.52f).setPosition(240,470).appendTo(stage);
@@ -34,7 +34,7 @@ public class EquipView extends DefaultIView{
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"info.png");
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"info_p.png");// help button press
 		$.add(new CheckBox("", cstyle, 1)).appendTo(stage).setPosition(880,486).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
-//			phelp.addAction(self.isChecked()?Actions.fadeIn(0.3f):Actions.fadeOut(0.3f)); TODO LOGIC for info button
+			data.addAction(self.isChecked()?Actions.fadeIn(0.3f):Actions.fadeOut(0.3f));
 		}});}});
 		
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,282).setColor(0,0,0,0.85f).setPosition(240,178).appendTo(stage);
@@ -50,14 +50,15 @@ public class EquipView extends DefaultIView{
 			removeEquip();//TODO
 		}}).appendTo(stage).setSize(297,49).setPosition(698, 12).getCell().prefSize(297,49);
 		
-		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(570, 150).onClick(new Runnable() {public void run() {
+		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).onClick(new Runnable() {public void run() {
 			next();
 		}}).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);
-		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"m_right.png")).setScale(.8f).setScaleX(-.8f).appendTo(stage).setPosition(36, 150).onClick(new Runnable() {public void run() {
+		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"m_right.png")).setScale(.8f).setScaleX(-.8f).appendTo(stage).setPosition(196, 483).onClick(new Runnable() {public void run() {
 			prev();
 		}}).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);
 		
 		inner = new Group();
+		data=(Group) $.add(new Group()).setColor(1,1,1,0).appendTo(stage).getItem();
 		generate();
 		
 		return this;
@@ -65,6 +66,8 @@ public class EquipView extends DefaultIView{
 	
 	private void generate() {
 		inner.clear();
+		data.clear();
+		$.add(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"data.png")).setSize(187, 312).setPosition(838,174).appendTo(data);
 		
 	}
 	

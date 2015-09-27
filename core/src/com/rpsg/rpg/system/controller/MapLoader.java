@@ -227,18 +227,24 @@ public class MapLoader {
 		
 		for(Image path:points)
 			path.actAndDraw(sb);
-		
+		if(lastPoint!=null)
+			lastPoint.actAndDraw(sb);
 		sb.end();
 	}
 	
 	private List<Image> points = new ArrayList<>();
+	private Image lastPoint;
+	
 	public void putPath(List<Image> points){
 		this.points=points;
 	}
 	
 	public void removePath(){
-		if(!points.isEmpty())
+		if(!points.isEmpty()){
+			lastPoint=points.get(0);
 			points.remove(0);
+			lastPoint.addAction(Actions.fadeOut(0.2f));
+		}
 	}
 	
 	public void removeAllPath(){
