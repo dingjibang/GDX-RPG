@@ -45,6 +45,8 @@ public class MapLoader {
 	public List<RPGObject> drawlist=new ArrayList<RPGObject>();
 	public MapLayers layer ;
 	public void load(GameView gv){
+		removeAllPath();
+		
 		//初始化角色 TODO 放到script.js里
 		RPG.ctrl.hero.initControler();
 		if(gv.global.first){
@@ -232,6 +234,15 @@ public class MapLoader {
 	private List<Image> points = new ArrayList<>();
 	public void putPath(List<Image> points){
 		this.points=points;
+	}
+	
+	public void removePath(){
+		if(!points.isEmpty())
+			points.remove(0);
+	}
+	
+	public void removeAllPath(){
+		points.clear();
 	}
 	
 	public void logic(GameView gv){

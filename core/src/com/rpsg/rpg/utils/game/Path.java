@@ -250,8 +250,6 @@ public class Path {
 		
 		Hero head = RPG.ctrl.hero.getHeadHero();
 		
-		System.out.println(goalX+","+goalY+"   ,   "+head.mapx+","+head.mapy);
-		
 		List<Image> imgPoints = new ArrayList<>();
 		
 		//x24 y20
@@ -260,9 +258,8 @@ public class Path {
 		
 		if (results==null) {
 			color=Color.valueOf("BD3B3B");
-			System.out.println("wall");
 		}else{
-			List<MoveStack> stack = new ArrayList<>();
+			ArrayList<MoveStack> stack = new ArrayList<>();
 			for(int i=0;i<results.size();i++){
 				Point point=results.get(i);
 				if(i!=results.size()-1){
@@ -271,7 +268,9 @@ public class Path {
 				}
 				imgPoints.add((Image) $.add(Res.get(Setting.UI_BASE_IMG)).setSize(48,48).setColor(color).setPosition(point.x*48, point.y*48).getItem());
 			}
+			RPG.ctrl.hero.pushStack(stack);
 		}
+		
 		
 		if(imgPoints.size()>2){
 			imgPoints.remove(imgPoints.size()-1);
@@ -288,8 +287,6 @@ public class Path {
 			}
 		}))));
 
-		
-		
 		imgPoints.add(end);
 		RPG.maps.loader.putPath(imgPoints);
 

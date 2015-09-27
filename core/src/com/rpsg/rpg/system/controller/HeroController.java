@@ -6,6 +6,7 @@ import java.util.Collections;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.rpg.Hero;
+import com.rpsg.rpg.object.rpg.MoveStack;
 
 /**
  * 用来控制一组{@link Hero 英雄}进行行走、转向、增删等，他同时应用在蚂蚁队列上（HeadHero行走，后面的Hero自动跟随）
@@ -16,9 +17,28 @@ public class HeroController {
 	public ArrayList<Hero> heros;
 	public ArrayList<Hero> allHeros;
 	
+	public ArrayList<MoveStack> stack = new ArrayList<>();
+	
+	public void pushStack(ArrayList<MoveStack> stack){
+		this.stack=stack;
+	}
+	
 	public void act(){
 		for(Hero hero:heros)
 			hero.act(0);
+		if(walked(false) && !stack.isEmpty()){
+			System.out.println(stack.size());
+			MoveStack last=stack.get(0);
+			stack.remove(0);
+			RPG.maps.loader.removePath();
+			turn(last.face);
+			walk(last.step,false).testWalk();
+		}
+	}
+	
+	public void stopStack(){
+		stack.clear();
+		RPG.maps.loader.removeAllPath();
 	}
 	
 	public Hero getHeadHero(){
@@ -160,16 +180,24 @@ public class HeroController {
 
 	
 	boolean walk;
-	public void walk(int step){	
+	public HeroController walk(int step,boolean clear){	
 		walk=getHeadHero().walk(step).testWalk();
 		if(walk)
 		for(int i=1;i<heros.size();i++){
 			heros.get(i).walk(heros.get(i-1).lastWalkSize);
 			heros.get(i).layer=heros.get(i-1).lastZ;
 		}
+		if(clear)
+			stopStack();
+		return this;
 	}
 	
-	public void turn(int face){
+	public HeroController walk(int step){
+		return walk(step,true);
+	}
+	
+	
+	public HeroController turn(int face){
 		for(int i=0;i<heros.size();i++){
 			if(i==0)
 				heros.get(i).turn(face);
@@ -177,6 +205,7 @@ public class HeroController {
 				if(walk)
 					heros.get(i).turn(heros.get(i-1).lastFace);
 		}
+		return this;
 	}
 	
 	public void testWalk(){
@@ -189,6 +218,12 @@ public class HeroController {
 	}
 	
 	public boolean walked(){
+		return walked(true);
+	}
+	
+	public boolean walked(boolean dirty){
+		if(dirty)
+			stopStack();
 		return getHeadHero().walked;
 	}
 	
