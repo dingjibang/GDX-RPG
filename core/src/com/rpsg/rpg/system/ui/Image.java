@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.ObjectRunnable;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.utils.game.Logger;
 /**
@@ -30,6 +31,9 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		public void run() {
 		}
 	};
+	
+	public boolean isLoaded = false;
+	
 	Runnable run,drun;
 	private int delaydbClickTime=30;
 	public String texturePath;

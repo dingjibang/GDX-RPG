@@ -31,7 +31,8 @@ public class ItemController {
 		if(item==null)
 			RPG.global.items.add(get(id));
 		else
-			item.count++;
+//			item.count++; //TODO DEBUG!!!!
+			RPG.global.items.add(get(id));
 	}
 	
 	public void put(Item item){

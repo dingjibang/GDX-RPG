@@ -32,7 +32,7 @@ public class ProxyImage extends Image {
 		super.draw(sb);
 	}
 	
-	private void lazyLoad() {
+	public void lazyLoad() {
 		if(lazy){
 			lazy=false;
 			TextureParameter parameter=new TextureParameter();
@@ -41,6 +41,7 @@ public class ProxyImage extends Image {
 				public void finishedLoading(AssetManager assetManager, String fileName, Class type) {
 					ProxyImage.this.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) Res.ma2.get(texturePath))));
 					ProxyImage.this.reGenerateSize();
+					ProxyImage.this.isLoaded=true;
 					ProxyImage.this.loaded.run();
 				}
 			};

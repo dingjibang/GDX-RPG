@@ -2,6 +2,8 @@ package com.rpsg.rpg.system.ui;
 
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.base.Res;
@@ -21,29 +23,30 @@ public class ImageList extends Group{
 	}
 	
 	public ImageList generate(){
-		addActor(Res.get(Setting.UI_BASE_IMG).size((int)this.getWidth(),(int)this.getHeight()).color(1,1,1,0.3f));
-		Group inner = new Group();
+		Table inner = new Table();
 		ScrollPane pane =new ScrollPane(inner);
 		pane.setSize(getWidth(), getHeight());
 		
 		int padding = 6;
-		
-		int col = (int) (getWidth()/(70+(padding/2)));
+		inner.padTop(9).padBottom(1);
+		int col = (int) (getWidth()/(70+padding*2));
 		int row = 0;
-		System.out.println(items);
+//		System.out.println(items);
 		int currentCol = -1;
+		
+		inner.align(Align.topLeft);
+		
 		for(Icon i:items){
-			if(currentCol++ > col){
+			if(currentCol++ == col-1){
 				row++;
-				currentCol = -1;
+				currentCol = 0;
+				inner.row();
 			}
-			inner.addActor($.add(i).setPosition(i.getWidth()*currentCol+padding, i.getHeight()*row+padding).setSize(70, 70).getItem());
+			inner.add($.add(i).setPosition(i.getWidth()*currentCol+padding, i.getHeight()*row+padding).setSize(70, 70).getItem()).align(Align.topLeft).pad(padding).prefSize(70,70);
 		}
 		
 		inner.setSize(getWidth(), (row+1)*(70+padding/2));
 		
-//		pane.setDebug(true);
-		inner.setDebug(true);
 		addActor(pane);
 		return this;
 	}

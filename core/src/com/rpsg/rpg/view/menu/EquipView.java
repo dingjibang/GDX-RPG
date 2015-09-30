@@ -43,7 +43,7 @@ public class EquipView extends DefaultIView{
 			data.addAction(self.isChecked()?Actions.fadeIn(0.3f):Actions.fadeOut(0.3f));
 		}});}});
 		
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,282).setColor(0,0,0,0.85f).setPosition(240,178).appendTo(stage);
+		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,282).setColor(.2f,.2f,.2f,0.85f).setPosition(240,178).appendTo(stage);
 		
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(155,155).setColor(0,0,0,0.55f).setPosition(240,12).appendTo(stage);
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(597,103).setColor(0,0,0,0.55f).setPosition(398,64).appendTo(stage);
@@ -76,8 +76,8 @@ public class EquipView extends DefaultIView{
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"data.png")).setSize(187, 312).setPosition(838,174).appendTo(data);
 		
 		ImageList ilist=new ImageList(getEquips(Equipment.EQUIP_SHOES));
-		ilist.setSize(755, 283);
-		ilist.setPosition(240, 177);
+		ilist.setSize(738, 282);
+		ilist.setPosition(248, 178);
 		ilist.generate();
 		
 		inner.addActor(ilist);
@@ -90,7 +90,7 @@ public class EquipView extends DefaultIView{
 		for(Equipment e:equips){
 			if(!e.equipType.equalsIgnoreCase(equipType))
 				continue;
-			Icon obj=new Icon(e);
+			Icon obj=new Icon().generateIcon(e, true);
 			if(e.onlyFor!=null && !e.onlyFor.equals(parent.getClass()))//filter by hero class
 				obj.enable=false;
 			io.add(obj);
