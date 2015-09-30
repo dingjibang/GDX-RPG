@@ -70,7 +70,6 @@ public class MapLoader {
 					tile.getTextureRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
 				}
 			}
-		;
 
 		//获取灯光
 		for(int i=0;i<RPG.maps.map.getLayers().getCount();i++){

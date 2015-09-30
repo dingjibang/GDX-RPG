@@ -23,7 +23,7 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.CheckBox;
 import com.rpsg.rpg.system.ui.CheckBox.CheckBoxStyle;
 import com.rpsg.rpg.system.ui.DefaultIView;
-import com.rpsg.rpg.system.ui.IconObject;
+import com.rpsg.rpg.system.ui.Icon;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.ImageList;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -75,7 +75,7 @@ public class EquipView extends DefaultIView{
 		data.clear();
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"data.png")).setSize(187, 312).setPosition(838,174).appendTo(data);
 		
-		ImageList ilist=new ImageList(getEquips(Equipment.EQUIP_CLOTHES));
+		ImageList ilist=new ImageList(getEquips(Equipment.EQUIP_SHOES));
 		ilist.setSize(755, 283);
 		ilist.setPosition(240, 177);
 		ilist.generate();
@@ -84,13 +84,13 @@ public class EquipView extends DefaultIView{
 		
 	}
 	
-	private List<IconObject> getEquips(String equipType){
+	private List<Icon> getEquips(String equipType){
 		List<Equipment> equips=RPG.ctrl.item.search(Equipment.class.getSimpleName(),Equipment.class);
-		List<IconObject> io= new ArrayList<>();
+		List<Icon> io= new ArrayList<>();
 		for(Equipment e:equips){
 			if(!e.equipType.equalsIgnoreCase(equipType))
 				continue;
-			IconObject obj=new IconObject(e);
+			Icon obj=new Icon(e);
 			if(e.onlyFor!=null && !e.onlyFor.equals(parent.getClass()))//filter by hero class
 				obj.enable=false;
 			io.add(obj);

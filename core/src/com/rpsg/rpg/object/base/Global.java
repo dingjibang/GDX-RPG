@@ -12,6 +12,7 @@ import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptableObject;
 
 import com.badlogic.gdx.Gdx;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.rpg.Hero;

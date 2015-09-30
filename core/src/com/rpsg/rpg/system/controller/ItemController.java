@@ -64,7 +64,7 @@ public class ItemController {
 			if(type.equalsIgnoreCase(Equipment.class.getSimpleName())){
 				Equipment e =(Equipment)(item=new Equipment());
 				e.illustration2 = result.has("illustration2")?result.getString("illustration2"):"";
-				e.onlyFor=(Class<? extends Hero>) (result.has("onlyFor")?Class.forName("com.rpsg.rpg.game.hero"+result.getString("onlyFor")):null);
+				e.onlyFor=(Class<? extends Hero>) (result.has("onlyFor")?Class.forName("com.rpsg.rpg.game.hero."+result.getString("onlyFor")):null);
 				e.equipType=result.getString("equipType");
 			}else if(type.equalsIgnoreCase(SpellCard.class.getSimpleName())){				//TODO
 				SpellCard e =(SpellCard)(item=new SpellCard());
@@ -73,7 +73,7 @@ public class ItemController {
 				item = new Item();
 			}
 			
-			item.id=result.getInt("id");
+			item.id=id;
 			item.disable=false;
 			item.illustration=result.getString("illustration");
 			item.throwable=result.has("throwable")?result.getBoolean("throwable"):true;
@@ -84,7 +84,8 @@ public class ItemController {
 			
 			return (T) item;
 		} catch (Exception e) {
-			Logger.error("无法读取物品："+id, e);
+			System.out.println("无法读取物品："+id);
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -122,7 +123,7 @@ public class ItemController {
 		return remove(search(id),count);
 	}
 	
-	public Item search(int id){
+	public synchronized Item search(int id){
 		for(Item item:RPG.global.items)
 			if(item.id==id)
 				return item;

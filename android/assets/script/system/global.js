@@ -2,6 +2,9 @@
 *	GDX-RPG 引擎 游戏初始化脚本
 **/
 
+var RPG = com.rpsg.rpg.core.RPG;
+var item = RPG.ctrl.item;
+
 //初始地图
 //map = "test/cgloop.tmx";
 
@@ -18,3 +21,9 @@ weather = com.rpsg.rpg.utils.display.WeatherUtil.WEATHER_NO;
 
 //初始携带
 gold = 120;
+
+//初始化道具
+item.put(1);
+item.put(2);
+item.put(3);
+item.put(4);
