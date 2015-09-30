@@ -1,6 +1,5 @@
 package com.rpsg.rpg.game.hero;
 
-import com.rpsg.rpg.game.items.equipment.Shoes;
 import com.rpsg.rpg.game.sc.MagicGun;
 import com.rpsg.rpg.game.sc.patientBack;
 import com.rpsg.rpg.object.base.Resistance;

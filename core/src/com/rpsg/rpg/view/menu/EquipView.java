@@ -1,5 +1,7 @@
 package com.rpsg.rpg.view.menu;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.badlogic.gdx.Input.Keys;
@@ -13,13 +15,17 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.gdxQuery.GdxQueryRunnable;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.CheckBox;
 import com.rpsg.rpg.system.ui.CheckBox.CheckBoxStyle;
 import com.rpsg.rpg.system.ui.DefaultIView;
+import com.rpsg.rpg.system.ui.IconObject;
 import com.rpsg.rpg.system.ui.ImageButton;
+import com.rpsg.rpg.system.ui.ImageList;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class EquipView extends DefaultIView{
@@ -57,7 +63,7 @@ public class EquipView extends DefaultIView{
 			prev();
 		}}).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);
 		
-		inner = new Group();
+		inner = (Group) $.add(new Group()).appendTo(stage).getItem();
 		data=(Group) $.add(new Group()).setColor(1,1,1,0).appendTo(stage).getItem();
 		generate();
 		
@@ -69,6 +75,28 @@ public class EquipView extends DefaultIView{
 		data.clear();
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"data.png")).setSize(187, 312).setPosition(838,174).appendTo(data);
 		
+		ImageList ilist=new ImageList(getEquips(Equipment.EQUIP_CLOTHES));
+		ilist.setSize(755, 283);
+		ilist.setPosition(240, 177);
+		ilist.generate();
+		
+		inner.addActor(ilist);
+		
+	}
+	
+	private List<IconObject> getEquips(String equipType){
+		List<Equipment> equips=RPG.ctrl.item.search(Equipment.class.getSimpleName(),Equipment.class);
+		List<IconObject> io= new ArrayList<>();
+		for(Equipment e:equips){
+			if(!e.equipType.equalsIgnoreCase(equipType))
+				continue;
+			IconObject obj=new IconObject(e);
+			if(e.onlyFor!=null && !e.onlyFor.equals(parent.getClass()))//filter by hero class
+				obj.enable=false;
+			io.add(obj);
+		}
+		Collections.sort(io);//将无效的内容放在后面
+		return io;
 	}
 	
 	private void prev(){

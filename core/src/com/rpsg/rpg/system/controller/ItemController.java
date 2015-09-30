@@ -142,6 +142,11 @@ public class ItemController {
 		return result;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public <T> ArrayList<T> search(String type,Class<T> classType){
+		return (ArrayList<T>)search(type);
+	}
+	
 	private static void initReader(){
 		if(reader==null)
 			reader = new JsonReader();

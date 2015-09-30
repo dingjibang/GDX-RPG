@@ -10,6 +10,7 @@ import com.rpsg.rpg.system.base.Initialization;
 import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.game.Path;
 import com.rpsg.rpg.view.GameView;
+import com.rpsg.rpg.view.GameViews;
 
 
 
@@ -78,9 +79,10 @@ public class InputController{
 			break;
 		}
 		case NORMAL:{
-			
-			PostUtil.touchDown(screenX, screenY, pointer, button);
-			Path.click(screenX, screenY);
+			if(GameViews.gameview.inited && GameViews.gameview.renderAble){
+				PostUtil.touchDown(screenX, screenY, pointer, button);
+				Path.click(screenX, screenY);
+			}
 			break;
 		}
 		}

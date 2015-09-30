@@ -24,6 +24,10 @@ public class Res {
 		return new ProxyImage(resPath);
 	}
 	
+	public static boolean exist(String path){
+		return Gdx.files.internal(path).exists();
+	}
+	
 	public static Image getNP(String resPath){
 		return new Image(getTexture(resPath));
 	}

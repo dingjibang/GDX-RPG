@@ -26,11 +26,11 @@ public class Equipment extends Item implements java.io.Serializable{
 	
 	public String equipType;
 	
-	public static String EQUIP_SHOES="shoes";
-	public static String EQUIP_CLOTHES="clothes";
-	public static String EQUIP_WEAPON="weapon";
-	public static String EQUIP_ORNAMENT1="ornament1";
-	public static String EQUIP_ORNAMENT2="ornament2";
+	public static String EQUIP_SHOES="EQUIP_SHOES";
+	public static String EQUIP_CLOTHES="EQUIP_CLOTHES";
+	public static String EQUIP_WEAPON="EQUIP_WEAPON";
+	public static String EQUIP_ORNAMENT1="EQUIP_ORNAMENT1";
+	public static String EQUIP_ORNAMENT2="EQUIP_ORNAMENT2";
 	
 	public void put(String _prop,int num){
 		prop.put(_prop, num);
