@@ -49,7 +49,6 @@ public class PostUtil {
 		}})).appendTo(stage).setUserObject("menu"));
 		TouchpadStyle tstyle=new TouchpadStyle();
 		tstyle.background=Res.getDrawable(Setting.IMAGE_GLOBAL+"pad_bg.png");
-		System.out.println(tstyle.background.getMinWidth());
 		tstyle.knob=Res.getDrawable(Setting.IMAGE_GLOBAL+"pad_knob.png");
 		others.add($.add(pad=new Touchpad(0, tstyle)).setPosition(35, 25).setVisible(!GameUtil.isDesktop));
 		others.add($.add(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button_a.png"), Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button_a_p.png"))).setPosition(830, 65).setVisible(!GameUtil.isDesktop).addListener(new InputListener(){

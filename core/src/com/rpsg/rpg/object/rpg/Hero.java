@@ -145,7 +145,6 @@ public abstract class Hero extends RPGObject {
 			this.linkTo=hero;
 			hero.linkTo=this;
 			this.linkSkills=hero.linkSkills=generateLinkList(hero);
-//			System.out.println(hero.name+"与"+this.name+"连携将得到技能："+skills.toString());
 		}else{
 			this.linkTo=null;
 			hero.linkTo=null;

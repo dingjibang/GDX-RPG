@@ -127,7 +127,6 @@ public class MoveController {
 
 		offsetActor.act(Gdx.graphics.getDeltaTime());
 		if(Setting.persistence.softCamera){
-//			System.out.println(offsetActor.getX());
 			bufferActor.clearActions();
 			if(!(RPG.ctrl.hero.thisFrameGeneratedPosition?!(RPG.ctrl.hero.thisFrameGeneratedPosition=false):false))
 				bufferActor.addAction(Actions.moveTo(pos.x, pos.y,0.5f,Interpolation.pow2Out));

@@ -60,7 +60,6 @@ public class Collide implements Serializable {
 			Actor a=list.get(i);
 			if(a instanceof NPC){
 				NPC o=((NPC)a);
-//				System.out.println(fullTest(mine, o)+",cable:"+o.collideAble);
 				if(!o.collideZAble){
 					if(!testZ(mine, o))
 						o.collideZAble=true;
@@ -139,20 +138,6 @@ public class Collide implements Serializable {
 	private static boolean testFaceZ(RPGObject mine,NPC o){
 		return testLayer(mine, o)&& ((Input.isPress(Keys.Z) || PostUtil.isVZPress()) && (mine.getCurrentFace()==o.getReverseFace() && (testFaceCollide(mine, o))));
 	}
-	
-//	private static boolean fullTest(IRPGObject mine,NPC o){
-////		System.out.print("testFoot:"+testFoot(mine, o));
-////		System.out.print("   testLay:"+testFoot(mine, o));
-//		return testFoot(mine, o)==false 
-//			&& testFace(mine, o)==false
-//			&& testZ(mine, o)==false
-//			&& testNear(mine, o)==false
-//			&& testFaceZ(mine, o)==false;
-//	}
-	
-//	private static void add(ScriptCollide sc,NPC npc,int type){
-//		l.add(new ScriptCollide(npc, type));
-//	}
 	
 	private static boolean testFaceCollide(RPGObject mine,RPGObject o){
 		return  (mine.getCurrentFace()==RPGObject.FACE_L && mine.mapx-1==o.mapx && mine.mapy==o.mapy) ||

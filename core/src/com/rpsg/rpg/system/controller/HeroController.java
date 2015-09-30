@@ -27,7 +27,6 @@ public class HeroController {
 		for(Hero hero:heros)
 			hero.act(0);
 		if(walked(false) && !stack.isEmpty()){
-			System.out.println(stack.size());
 			MoveStack last=stack.get(0);
 			stack.remove(0);
 			RPG.maps.loader.removePath();

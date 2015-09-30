@@ -40,11 +40,7 @@ public class PathFinder {
 			Path result = current.generate(map, end).getBestChild();
 			
 			map[current.x][current.y]=2;
-			print(map);
-			System.out.println(current);
-			System.out.println(current.getAround());
-			System.out.println();
-			
+			print(map);			
 			if(result==null){
 				current.setEnable(false);
 				current=current.parent.setEnable(true);

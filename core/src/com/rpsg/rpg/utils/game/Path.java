@@ -241,7 +241,6 @@ public class Path {
 		Color color = Color.valueOf("3BBD64");// green
 		if (mapData[goalX][goalY] == 0){
 			color = Color.valueOf("BD3B3B");// red
-			System.out.println("fuck");
 		}
 		else if (mapData[goalX][goalY] == 3)
 			color = Color.valueOf("3B5CBD");// blue

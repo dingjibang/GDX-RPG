@@ -41,7 +41,6 @@ public class Test {
 		NativeArray array = (NativeArray)o;
 		NativeObject obj = ((NativeObject)array.get(0));
 		((Function)obj.get("use")).call(Context.enter(), obj, obj, null);
-		System.out.println(obj.get("id"));
 //		test.use();
 	}
 }
