@@ -32,6 +32,7 @@ public class EquipView extends DefaultIView{
 	
 	List<Hero> heros;
 	Group inner,data;
+	ImageList ilist;
 	public EquipView init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(137,79).setColor(0,0,0,0.52f).setPosition(240,470).appendTo(stage);
@@ -75,7 +76,7 @@ public class EquipView extends DefaultIView{
 		data.clear();
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"data.png")).setSize(187, 312).setPosition(838,174).appendTo(data);
 		
-		ImageList ilist=new ImageList(getEquips(Equipment.EQUIP_SHOES));
+		ilist=new ImageList(getEquips(Equipment.EQUIP_SHOES));
 		ilist.setSize(738, 282);
 		ilist.setPosition(248, 178);
 		ilist.generate();
