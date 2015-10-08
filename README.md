@@ -20,7 +20,7 @@ and, you have to [set "ANDROID_HOME" variable](https://www.google.com.hk/#newwin
 ####2.first run this game by eclipse, and got an error "Exception in thread "LWJGL Application" com.badlogic.gdx.utils.GdxRuntimeException: Couldn't load file: xxxxxxxxx"
 easy ,[click me.](http://stackoverflow.com/questions/24879812/libgdx-project-exception-in-thread-lwjgl-application-couldnt-load-file-erro)
 
-####3.the project have some errors!
+####3.oh no, there are some errors in this project!
 don't worry, the game is working, those errors is my debugging.
 
 ####4.and more...
