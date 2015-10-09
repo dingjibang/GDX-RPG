@@ -48,7 +48,7 @@ public class GdxQuery {
 	
 	private InputListener clickListener=(new InputListener(){
 		public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
-			if(click!=null) click.run();
+			if(click!=null && x>=0 && y>=0 && x <= event.getListenerActor().getWidth() && y <= event.getListenerActor().getHeight()) click.run();
 			if(touchUp!=null) touchUp.run();
 		}
 		public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {

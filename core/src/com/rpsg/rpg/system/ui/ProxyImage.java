@@ -27,9 +27,10 @@ public class ProxyImage extends Image {
 	}
 
 	@Override
-	public void draw(Batch sb) {
+	public Image draw(Batch sb) {
 		lazyLoad();
 		super.draw(sb);
+		return this;
 	}
 	
 	public void lazyLoad() {

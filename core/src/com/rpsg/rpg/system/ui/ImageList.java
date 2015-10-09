@@ -61,6 +61,9 @@ public class ImageList extends Group{
 
 	protected void setCurrent(Icon i) {
 		current=i;
+		for(Icon icon:items)
+			icon.select=icon==current;
+		System.out.println("a");
 	}
 	
 }

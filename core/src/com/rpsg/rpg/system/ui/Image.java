@@ -15,7 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.base.ObjectRunnable;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.utils.game.Logger;
 /**
@@ -25,12 +24,14 @@ import com.rpsg.rpg.utils.game.Logger;
  */
 public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
-	public boolean visible=true;
-	public boolean lazy=true;
-	public Runnable loaded= new Runnable() {
+	private static Runnable _loaded = new Runnable() {
 		public void run() {
 		}
 	};
+	
+	public boolean visible=true;
+	public boolean lazy=true;
+	public Runnable loaded= _loaded; 
 	
 	public boolean isLoaded = false;
 	
@@ -106,10 +107,11 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		super(ninePatchDrawable);
 	}
 
-	public void draw(Batch sb){ 
+	public Image draw(Batch sb){ 
 		delaydbClickTime++;
 		if(visible)
 			this.draw(sb, 1);
+		return this;
 	}
 	
 	public void actAndDraw(Batch sb){
@@ -158,6 +160,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		try {
 			getTexture().dispose();
 		} catch (Exception e) {
+			
 		}
 		return this;
 	}
