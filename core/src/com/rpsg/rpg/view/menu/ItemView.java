@@ -25,7 +25,6 @@ import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.game.items.equipment.Sunshade;
 import com.rpsg.rpg.game.items.medicine.CopyOfYaoWan;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.ListItem;
@@ -43,7 +42,6 @@ import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.display.NumberUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
-import com.rpsg.rpg.utils.game.ItemUtil;
 
 public class ItemView extends DefaultIView{
 	Image map,topbarSel;
