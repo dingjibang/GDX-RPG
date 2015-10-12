@@ -74,7 +74,7 @@ public class EquipView extends DefaultIView{
 	private void generate() {
 		inner.clear();
 		data.clear();
-		$.add(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"data.png")).setSize(187, 312).setPosition(838,174).appendTo(data);
+		$.add(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"data.png").disableTouch()).setSize(187, 312).setPosition(838,174).appendTo(data);
 		
 		ilist=new ImageList(getEquips(Equipment.EQUIP_SHOES));
 		ilist.setSize(738, 282);

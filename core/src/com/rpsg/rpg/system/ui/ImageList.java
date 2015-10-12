@@ -1,6 +1,8 @@
 package com.rpsg.rpg.system.ui;
 
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
@@ -30,7 +32,7 @@ public class ImageList extends Group{
 	public ImageList generate(){
 		Table inner = new Table();
 		ScrollPane pane =new ScrollPane(inner);
-		pane.setSize(getWidth(), getHeight());
+		
 		pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"scrollbar.png");
 		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"scrollbarin.png");
 		int padding = 6;
@@ -52,8 +54,7 @@ public class ImageList extends Group{
 				setCurrent(i);
 			}}).getItem()).align(Align.topLeft).pad(padding).prefSize(70,70);
 		}
-		
-		inner.setSize(getWidth(), (row+1)*(70+padding/2));
+		pane.setSize(getWidth(), getHeight());
 		
 		addActor(pane);
 		return this;
