@@ -8,7 +8,6 @@ import java.util.List;
 
 import box2dLight.PointLight;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapLayer;
@@ -20,21 +19,21 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.utils.Array;
-import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.game.hero.Arisu;
+import com.rpsg.rpg.game.hero.Flandre;
+import com.rpsg.rpg.game.hero.Marisa;
+import com.rpsg.rpg.game.hero.Reimu;
+import com.rpsg.rpg.game.hero.Yuuka;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
 import com.rpsg.rpg.object.rpg.RPGObject;
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
-import com.rpsg.rpg.utils.game.Point;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
@@ -53,8 +52,8 @@ public class MapLoader {
 			gv.global.first=false;
 			RPG.ctrl.hero.newHero(Arisu.class);
 			RPG.ctrl.hero.addHero(Arisu.class);
-//			RPG.ctrl.hero.newHero(Marisa.class);
-//			RPG.ctrl.hero.addHero(Marisa.class);
+			RPG.ctrl.hero.newHero(Marisa.class);
+			RPG.ctrl.hero.addHero(Marisa.class);
 //			RPG.ctrl.hero.newHero(Reimu.class);
 //			RPG.ctrl.hero.addHero(Reimu.class);
 //			RPG.ctrl.hero.newHero(Yuuka.class);

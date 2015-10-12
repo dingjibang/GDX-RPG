@@ -17,6 +17,7 @@ import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.gdxQuery.GdxQueryRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.CustomRunnable;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
@@ -76,12 +77,11 @@ public class EquipView extends DefaultIView{
 		data.clear();
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"data.png").disableTouch()).setSize(187, 312).setPosition(838,174).appendTo(data);
 		
-		ilist=new ImageList(getEquips(Equipment.EQUIP_SHOES));
-		ilist.setSize(738, 282);
-		ilist.setPosition(248, 178);
-		ilist.generate();
-		
-		inner.addActor(ilist);
+		ilist=((ImageList) $.add(new ImageList(getEquips(Equipment.EQUIP_SHOES))).setSize(738, 282).setPosition(248, 178).appendTo(inner).getItem()).generate().onChange(new CustomRunnable<Icon>() {
+			public void run(Icon t) {
+				
+			}
+		});
 		
 	}
 	

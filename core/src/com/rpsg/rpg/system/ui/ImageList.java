@@ -1,13 +1,12 @@
 package com.rpsg.rpg.system.ui;
 
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.CustomRunnable;
 import com.rpsg.rpg.system.base.Res;
 
 /**
@@ -19,6 +18,7 @@ public class ImageList extends Group{
 	
 	java.util.List<Icon> items;
 	Icon current;
+	CustomRunnable<Icon> change;
 	
 	public ImageList(java.util.List<Icon> items) {
 		super();
@@ -28,6 +28,18 @@ public class ImageList extends Group{
 	public Icon getCurrent(){
 		return current;
 	}
+	
+	public ImageList onChange(CustomRunnable<Icon> onchange){
+		change=onchange;
+		return this;
+	}
+	
+	public ImageList change(Icon i){
+		if(change!=null)
+			change.run(i);
+		return this;
+	}
+	
 	
 	public ImageList generate(){
 		Table inner = new Table();
@@ -64,7 +76,7 @@ public class ImageList extends Group{
 		current=i;
 		for(Icon icon:items)
 			icon.select=icon==current;
-		System.out.println("a");
+		change(i);
 	}
 	
 }

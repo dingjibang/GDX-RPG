@@ -1,8 +1,6 @@
 package com.rpsg.rpg.game.hero;
 
 import com.rpsg.rpg.game.association.association.Star;
-import com.rpsg.rpg.game.sc.MagicGun;
-import com.rpsg.rpg.game.sc.patientBack;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.RPGObject;
 
@@ -16,8 +14,6 @@ public class Marisa extends Hero{
 		jname="Kirisame Marisa";
 		fgname="marisa";
 		tag="魔法使";
-		sc.add(new MagicGun());
-		sc.add(new patientBack());
 		prop.put("hp", 50);
 		prop.put("maxhp", 150);
 		prop.put("mp", 100);
