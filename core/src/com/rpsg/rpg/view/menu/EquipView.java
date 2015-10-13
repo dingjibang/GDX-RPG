@@ -25,14 +25,16 @@ import com.rpsg.rpg.system.ui.CheckBox;
 import com.rpsg.rpg.system.ui.CheckBox.CheckBoxStyle;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.Icon;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.ImageList;
+import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class EquipView extends DefaultIView{
 	
 	List<Hero> heros;
-	Group inner,data;
+	Group inner,data,description;
 	ImageList ilist;
 	public EquipView init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
@@ -66,6 +68,7 @@ public class EquipView extends DefaultIView{
 		}}).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);
 		
 		inner = (Group) $.add(new Group()).appendTo(stage).getItem();
+		description = (Group) $.add(new Group()).appendTo(stage).getItem();
 		data=(Group) $.add(new Group()).setColor(1,1,1,0).appendTo(stage).getItem();
 		generate();
 		
@@ -73,15 +76,24 @@ public class EquipView extends DefaultIView{
 	}
 	
 	private void generate() {
+		float oldTop = 0;
+		if(ilist!=null)
+			oldTop = ilist.getScrollPercentY()*100;
+		System.out.println(ilist+","+ilist==null?"":ilist.getScrollPercentY());
 		inner.clear();
 		data.clear();
+		description.clear();
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"data.png").disableTouch()).setSize(187, 312).setPosition(838,174).appendTo(data);
 		
-		ilist=((ImageList) $.add(new ImageList(getEquips(Equipment.EQUIP_SHOES))).setSize(738, 282).setPosition(248, 178).appendTo(inner).getItem()).generate().onChange(new CustomRunnable<Icon>() {
+		ilist=((ImageList) $.add(new ImageList(getEquips(Equipment.EQUIP_SHOES))).setSize(735, 266).setPosition(248, 185).appendTo(inner).getItem()).generate().onChange(new CustomRunnable<Icon>() {
 			public void run(Icon t) {
-				
+				description.clear();
+				$.add(new Label(t.item.name,30)).setPosition(395, 153).appendTo(description);
+				$.add(new Label(t.item.illustration,16).setWidth(558)).setPosition(405, 117).appendTo(description);
+				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
 			}
 		});
+		ilist.setScrollPercentY(oldTop);
 		
 	}
 	

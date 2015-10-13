@@ -131,6 +131,15 @@ public class GdxQuery {
 		return find(cls);
 	}
 	
+	public <T> T findAndParse(@SuppressWarnings("unchecked") Class<T>... cls){
+		return find(cls).parse(cls[0]);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <T> T parse(Class<T> clazz){
+		return (T)getItem();
+	}
+	
 	public GdxQuery find(Object userObject){
 		for(Actor actor:getItems())
 			if(actor.getUserObject()!=null && actor.getUserObject().equals(userObject))

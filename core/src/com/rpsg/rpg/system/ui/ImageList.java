@@ -17,8 +17,10 @@ import com.rpsg.rpg.system.base.Res;
 public class ImageList extends Group{
 	
 	java.util.List<Icon> items;
-	Icon current;
 	CustomRunnable<Icon> change;
+	Icon current;
+	Table inner;
+	ScrollPane pane;
 	
 	public ImageList(java.util.List<Icon> items) {
 		super();
@@ -40,15 +42,24 @@ public class ImageList extends Group{
 		return this;
 	}
 	
+	public float getScrollPercentY(){
+		return pane.getScrollPercentY();
+	}
+	
+	public ImageList setScrollPercentY(float per){
+		pane.setScrollPercentY(per);
+		pane.setScrollPercentY(.3f);
+		return this;
+	}
 	
 	public ImageList generate(){
-		Table inner = new Table();
-		ScrollPane pane =new ScrollPane(inner);
-		
+		inner = new Table();
+		pane=new ScrollPane(inner);
 		pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"scrollbar.png");
 		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"scrollbarin.png");
-		int padding = 6;
-		inner.padTop(9).padBottom(1);
+		pane.setFadeScrollBars(false);
+		pane.setScrollingDisabled(true, false);
+		int padding = 5;
 		int col = (int) (getWidth()/(70+padding*2));
 		int row = 0;
 //		System.out.println(items);
