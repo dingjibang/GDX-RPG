@@ -93,6 +93,7 @@ public class EquipView extends DefaultIView{
 				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
 			}
 		});
+		//TODO SETXX NOT WORK
 		ilist.setScrollPercentY(oldTop);
 		
 	}
