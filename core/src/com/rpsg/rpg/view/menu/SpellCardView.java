@@ -167,20 +167,6 @@ public class SpellCardView extends IMenuView{
 		sellist.layout();
 		
 		stage.addActor(sellist);
-		
-		elist.onDBClick(new Runnable() {
-			@Override
-			public void run() {
-				if (spell.type == SpellCard.TYPE_USEINMAP) {
-					scuse.visible = true;
-					sellist.setVisible(true);
-					sellist.setSelectedIndex(0);
-					mask.setVisible(true);
-					layer = 1;
-				}
-			}
-		});
-		
 		final Actor mask2=new Actor();
 		mask2.setWidth(GameUtil.screen_width);
 		mask2.setHeight(GameUtil.screen_height);
@@ -232,8 +218,6 @@ public class SpellCardView extends IMenuView{
 					can2.run();
 				} else {
 					if (herolist.getSelected().userObject != null && !(herolist.getSelected().userObject instanceof Image))
-						if (spell.use(RPG.ctrl.hero.heros.get(currentSelectHero), ((Hero) herolist.getSelected().userObject)))
-							can2.run();
 					drawp = true;
 				}
 			}
@@ -282,7 +266,6 @@ public class SpellCardView extends IMenuView{
 		FontUtil.draw(sb, hero.name, 22, Color.WHITE, 215, 480, 1000);
 		FontUtil.draw(sb, spell.name, 40, Color.WHITE, 475, 435, 1000);
 		FontUtil.draw(sb, spell.illustration, 18, Color.WHITE, 488, 325, 450);
-		FontUtil.draw(sb, spell.story, 18, Color.WHITE, 488, 195, 450);
 		FontUtil.draw(sb, spell.magicConsume+"", 14,Color.BLACK, 595+64/2-FontUtil.getTextWidth(spell.magicConsume+"", 16,-5)/2, 374, 450,-5,0);
 		heroImage.draw(sb, step==3?1:step);
 		scuse.draw(sb);

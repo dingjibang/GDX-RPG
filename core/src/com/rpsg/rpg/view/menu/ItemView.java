@@ -25,7 +25,6 @@ import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.game.items.medicine.CopyOfYaoWan;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.ListItem;
 import com.rpsg.rpg.object.base.items.Item;
@@ -189,16 +188,16 @@ public class ItemView extends DefaultIView{
 				scuse.visible = true;
 				sellist.offsetX2 = 20;
 				sellist.getItems().clear();
-				if (item.type == Item.TYPE_USEINMAP)
-					sellist.getItems().add(new ListItem("使用").setUserObject(Res.get(Setting.IMAGE_ICONS + "yes.png")).setRunnable(new Runnable() {
-						@Override
-						public void run() {
-							scfor.visible = true;
-							herolist.setVisible(true);
-							mask2.setVisible(true);
-							layer = 2;
-						}
-					}));
+//				if (item.type == Item.TYPE_USEINMAP)
+//					sellist.getItems().add(new ListItem("使用").setUserObject(Res.get(Setting.IMAGE_ICONS + "yes.png")).setRunnable(new Runnable() {
+//						@Override
+//						public void run() {
+//							scfor.visible = true;
+//							herolist.setVisible(true);
+//							mask2.setVisible(true);
+//							layer = 2;
+//						}
+//					}));
 				if (item.throwable)
 					sellist.getItems().add(new ListItem("丢弃").setUserObject(Res.get(Setting.IMAGE_ICONS + "bin.png")).setRunnable(new Runnable() {
 						@Override
@@ -280,7 +279,6 @@ public class ItemView extends DefaultIView{
 		button = new TextButton("确定", butstyle).onClick(new Runnable() {
 			@Override
 			public void run() {
-				ItemUtil.throwItem(currentBar.name, item, currentCount);
 				RPG.putMessage("丢弃成功。", AlertUtil.Yellow);
 				ItemView.this.generateLists(currentBar.name);
 				item = new TipItem();
@@ -484,13 +482,6 @@ public class ItemView extends DefaultIView{
 	}
 	
 	public void onkeyDown(int keyCode) {
-		if(Keys.M==keyCode){
-			ItemUtil.addItem(new Sunshade());
-		}
-		if(Keys.V==keyCode){
-			ItemUtil.addItem(new CopyOfYaoWan());
-			
-		}
 		if(Keys.ESCAPE==keyCode || keyCode==Keys.X){
 			if(layer==0)
 				this.disposed=true;
@@ -520,9 +511,6 @@ public class ItemView extends DefaultIView{
 		float y=pane.getScrollX();
 		Array<Item> sc = elist.getItems();
 		sc.clear();
-		for (Item e : RPG.global.items.get(type)) {
-			sc.add(e);
-		}
 
 		elist.layout();
 		for (Cell cell : topbar.getCells()) {

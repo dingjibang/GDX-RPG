@@ -9,7 +9,6 @@ public class EmptyEquip extends Equipment{
 
 	public EmptyEquip() {
 		name=gloname;
-		statusName="卸下当前装备";
 		illustration="把当前穿戴的装备卸下。";
 		onlyFor=null;
 		disable=true;

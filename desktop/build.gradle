@@ -15,6 +15,10 @@ task run(dependsOn: classes, type: JavaExec) {
     ignoreExitValue = true
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 task dist(type: Jar) {
     from files(sourceSets.main.output.classesDir)
     from files(sourceSets.main.output.resourcesDir)

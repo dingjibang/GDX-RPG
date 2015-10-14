@@ -24,6 +24,7 @@ import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.game.Base;
 import com.rpsg.rpg.utils.game.GameDate;
+import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Heros;
 import com.rpsg.rpg.utils.game.Move;
 import com.rpsg.rpg.utils.game.Timer;
@@ -51,6 +52,8 @@ public class Script extends Thread{
 	public void run() {
 		try {
 			Context ctx =Context.enter();
+			if(!GameUtil.isDesktop)
+				ctx.setOptimizationLevel(-1);
 			ScriptableObject scope =ctx.initStandardObjects();
 			scope.setPrototype(((NativeJavaObject)Context.javaToJS(Script.this, scope)));
 			scope.put("Hero", scope, Context.javaToJS(RPG.ctrl.hero.getHeadHero(), scope));

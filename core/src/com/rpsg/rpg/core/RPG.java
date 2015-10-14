@@ -9,6 +9,7 @@ import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.system.controller.Hover;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
+import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.utils.game.TimeUtil;
 
@@ -75,6 +76,9 @@ public class RPG {
 	public static boolean executeJS(String js,Object self){
 		try {
 			Context ctx = Context.enter();
+			if(!GameUtil.isDesktop)
+				ctx.setOptimizationLevel(-1);
+			
 			ScriptableObject scope =ctx.initStandardObjects();
 			if(self!=null)
 				scope.setPrototype(((NativeJavaObject)Context.javaToJS(null, scope)));

@@ -79,7 +79,6 @@ public class EquipView extends DefaultIView{
 		float oldTop = 0;
 		if(ilist!=null)
 			oldTop = ilist.getScrollPercentY()*100;
-		System.out.println(ilist+","+ilist==null?"":ilist.getScrollPercentY());
 		inner.clear();
 		data.clear();
 		description.clear();
