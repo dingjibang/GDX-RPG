@@ -32,6 +32,7 @@ import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.ImageList;
 import com.rpsg.rpg.system.ui.Label;
+import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class EquipView extends DefaultIView{
@@ -39,6 +40,7 @@ public class EquipView extends DefaultIView{
 	List<Hero> heros;
 	Group inner,data,description;
 	ImageList ilist;
+	String currentFilter = Equipment.EQUIP_CLOTHES;
 	public EquipView init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(137,79).setColor(0,0,0,0.52f).setPosition(240,470).appendTo(stage);
@@ -54,7 +56,6 @@ public class EquipView extends DefaultIView{
 		
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(155,155).setColor(0,0,0,0.55f).setPosition(240,12).appendTo(stage);
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(597,103).setColor(0,0,0,0.55f).setPosition(398,64).appendTo(stage);
-		
 		
 		$.add(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_take.png"))).onClick(new Runnable() {public void run() {
 			useEquip();//TODO
@@ -83,25 +84,33 @@ public class EquipView extends DefaultIView{
 		cstyle2.checkboxOn.setMinWidth(75);
 		int offset = -1,padding = 54,_top = 400;
 		ButtonGroup bg = new ButtonGroup(
-				(Button)($.add(new CheckBox(Equipment.EQUIP_WEAPON, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
-					(Button)($.add(new CheckBox(Equipment.EQUIP_CLOTHES, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
-					(Button)($.add(new CheckBox(Equipment.EQUIP_SHOES, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
-					(Button)($.add(new CheckBox(Equipment.EQUIP_ORNAMENT1, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
-					(Button)($.add(new CheckBox(Equipment.EQUIP_ORNAMENT2, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem())
-				);
-		
-		generate();
+			(Button)($.add(new CheckBox(Equipment.EQUIP_WEAPON, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
+			(Button)($.add(new CheckBox(Equipment.EQUIP_CLOTHES, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
+			(Button)($.add(new CheckBox(Equipment.EQUIP_SHOES, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
+			(Button)($.add(new CheckBox(Equipment.EQUIP_ORNAMENT1, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
+			(Button)($.add(new CheckBox(Equipment.EQUIP_ORNAMENT2, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem())
+		);
 		
 		for(Button but:bg.getButtons()){
 			stage.addActor(but);
-			CheckBox box =((CheckBox)but);
-			box.setForeground(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+box.getText()+".png").size(40, 40)).setFgOff(35);
+			final CheckBox box =((CheckBox)but);
+			box.setForeground(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+box.getText()+".png").size(40, 40)).setFgOff(37).onClick(new Runnable(){
+				public void run() {
+					currentFilter = box.getText();
+					generate();
+				}
+			});
+			if(but.equals(bg.getButtons().get(0)))
+				box.click().setChecked(true);
 		}
+		
+//		stage.setDebugAll(true);
+		
 		return this;
 	}
 	
 	private void generate() {
-		float oldTop = 0;
+		float oldTop = 0f;
 		if(ilist!=null)
 			oldTop = ilist.getScrollPercentY();
 		
@@ -111,7 +120,17 @@ public class EquipView extends DefaultIView{
 		
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"data.png").disableTouch()).setSize(187, 312).setPosition(838,174).appendTo(data);
 		
-		ilist=((ImageList) $.add(new ImageList(getEquips(Equipment.EQUIP_SHOES))).setSize(655, 266).setPosition(328, 185).appendTo(inner).getItem()).generate().onChange(new CustomRunnable<Icon>() {
+		ilist=((ImageList) $.add(new ImageList(getEquips(currentFilter))).setSize(655, 266).setPosition(328, 185).appendTo(inner).getItem());
+		
+		Equipment currentHeroEquip = RPG.ctrl.item.getHeroEquip(parent.current, currentFilter);
+		ilist.onTakeoff(new Runnable(){
+			public void run() {
+				RPG.ctrl.item.takeOff(parent.current, currentFilter);
+				generate();
+			}
+		}).generate(new Icon().generateIcon(currentHeroEquip, true).setCurrent(true));
+		
+		ilist.onChange(new CustomRunnable<Icon>() {
 			public void run(Icon t) {
 				description.clear();
 				$.add(new Label(t.item.name,30)).setPosition(395, 153).appendTo(description);
@@ -119,7 +138,8 @@ public class EquipView extends DefaultIView{
 				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
 			}
 		});
-		ilist.setScrollPercentY(oldTop);
+		
+		ilist.setScrollPercentY(Float.isNaN(oldTop)?0:oldTop);
 		
 		$.add(new HeroImage(parent.current,0)).appendTo(inner).setPosition(285, 480);
 		$.add(new Label(parent.current.name,30)).setPosition(420, 522).appendTo(inner);
@@ -157,7 +177,10 @@ public class EquipView extends DefaultIView{
 	}
 	
 	private void useEquip(){
-		
+		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().item!=null)
+			if(!RPG.ctrl.item.use(ilist.getCurrent().item.setUser(parent.current)))
+				RPG.putMessage("程序异常，装备失败。", AlertUtil.Red);
+		generate();
 	}
 	
 	private void removeEquip(){

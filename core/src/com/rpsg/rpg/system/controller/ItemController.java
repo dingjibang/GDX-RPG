@@ -11,7 +11,6 @@ import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.SpellCard;
 import com.rpsg.rpg.object.rpg.Hero;
-import com.rpsg.rpg.utils.game.Logger;
 
 /**
  * GDX-RPG 道具核心管理器
@@ -218,6 +217,10 @@ public class ItemController {
 	private static void replace(Hero hero,Equipment equip,boolean add){
 		for(String key:equip.prop.keySet())
 			hero.prop.put(key, add?hero.prop.get(key)+equip.prop.get(key):hero.prop.get(key)-equip.prop.get(key));
+	}
+	
+	public Equipment getHeroEquip(Hero hero,String equipType){
+		return hero.equips.get(equipType);
 	}
 	
 }

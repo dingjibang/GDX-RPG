@@ -2,7 +2,6 @@ package com.rpsg.rpg.system.ui;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.Item;
@@ -12,7 +11,8 @@ public class Icon extends Image implements Comparable<Icon>{
 	public Item item = null;
 	public boolean enable = true;
 	public boolean select = false;
-	private Image selectBox,hover;
+	private Image selectBox,hover,currentMask;
+	public boolean current = false;
 	private static Color selectColor = Color.valueOf("33FF5F");
 	
 	public Icon() {
@@ -21,7 +21,17 @@ public class Icon extends Image implements Comparable<Icon>{
 		hover = Res.get(Setting.UI_BASE_IMG).size(74,74).action(Actions.forever(Actions.sequence(Actions.alpha(.3f,.5f),Actions.alpha(.5f,.5f))));
 	}
 	
+	public Icon setCurrent(boolean c){
+		current = c;
+		if(current)
+			currentMask=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"current.png");
+		return this;
+	}
+	
 	public Icon generateIcon(Item item,final boolean enable){
+		if(item==null)
+			return this;
+		
 		this.item=item;
 		final ProxyImage i = (ProxyImage)(Res.exist(item.getIcon())?Res.get(item.getIcon()):Res.get(Item.getDefaultIcon()));
 		i.loaded=new Runnable() {
@@ -52,6 +62,9 @@ public class Icon extends Image implements Comparable<Icon>{
 			hover.position(getX()-2, getY()-2).actAndDraw(batch);
 		else
 			hover.color(Color.WHITE);
+		
+		if(current)
+			currentMask.position(getX(), getY()).actAndDraw(batch);
 	}
 	
 //	public

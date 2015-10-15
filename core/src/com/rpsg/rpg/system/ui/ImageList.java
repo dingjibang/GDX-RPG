@@ -18,6 +18,7 @@ public class ImageList extends Group{
 	
 	java.util.List<Icon> items;
 	CustomRunnable<Icon> change;
+	Runnable takeoff;
 	Icon current;
 	Table inner;
 	ScrollPane pane;
@@ -42,18 +43,34 @@ public class ImageList extends Group{
 		return this;
 	}
 	
+	public ImageList onTakeoff(Runnable onchange){
+		takeoff=onchange;
+		return this;
+	}
+	
+	public ImageList takeoff(){
+		if(takeoff!=null)
+			takeoff.run();
+		return this;
+	}
+	
 	public float getScrollPercentY(){
 		return pane.getScrollPercentY();
 	}
 	
 	public ImageList setScrollPercentY(float per){
-		pane.layout();
 		pane.setScrollPercentY(per);
 		pane.setSmoothScrolling(false);
+		pane.layout();
+		getStage().setScrollFocus(pane);
 		return this;
 	}
 	
 	public ImageList generate(){
+		return this.generate(null);
+	}
+	
+	public ImageList generate(Icon before){
 		inner = new Table();
 		pane=new ScrollPane(inner);
 		pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"scrollbar.png");
@@ -68,6 +85,9 @@ public class ImageList extends Group{
 		
 		inner.align(Align.topLeft);
 		
+		if(before!=null && before.item!=null)
+			items.add(0, (Icon)before.onClick(takeoff));
+		
 		for(final Icon i:items){
 			if(currentCol++ == col-1){
 				row++;
@@ -75,11 +95,11 @@ public class ImageList extends Group{
 				inner.row();
 			}
 			inner.add($.add(i).setPosition(i.getWidth()*currentCol+padding, i.getHeight()*row+padding).setSize(70, 70).onClick(new Runnable() {public void run() {
-				setCurrent(i);
-			}}).getItem()).align(Align.topLeft).pad(padding).prefSize(70,70);
+				if(i.enable)
+					setCurrent(i);
+			}}).getItem()).align(Align.topLeft).pad(padding).prefSize(70,70).getActor().setColor(1,1,1,i.enable?1:.5f);;
 		}
 		pane.setSize(getWidth(), getHeight());
-		
 		addActor(pane);
 		return this;
 	}
@@ -91,9 +111,4 @@ public class ImageList extends Group{
 		change(i);
 	}
 
-	private ImageList layout() {
-		pane.layout();
-		return this;
-	}
-	
 }
