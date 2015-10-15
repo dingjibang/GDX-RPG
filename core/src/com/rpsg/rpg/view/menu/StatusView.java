@@ -41,7 +41,7 @@ public class StatusView extends DefaultIView {
 		return this;
 	}
 	
-	private void generate() {
+	protected void generate() {
 		inner.clear();
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"m_right.png")).appendTo(inner).setPosition(570, y(150)).onClick(new Runnable() {public void run() {
 			next();

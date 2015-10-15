@@ -175,6 +175,7 @@ public class MenuView extends StackView{
 		for(GdxQuery box:boxs)
 			if(((MenuHeroBox)box.getItem()).hero.equals(hero))
 				box.click();
+		generateStatusView();
 	}
 	
 	public void click(){
@@ -182,6 +183,13 @@ public class MenuView extends StackView{
 		for(GdxQuery box:boxs)
 			if(((MenuHeroBox)box.getItem()).hero.equals(current))
 				box.click();
+		generateStatusView();
+	}
+	
+	private void generateStatusView(){
+		for(IMenuView view:viewStack)
+			if(view instanceof StatusView)
+				((StatusView)view).generate();
 	}
 
 	@Override
