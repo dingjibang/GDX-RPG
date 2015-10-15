@@ -88,6 +88,7 @@ public class CheckBox extends TextButton {
 		image.draw(batch);
 		image.setPosition(getX(), getY());
 //		super.draw(batch, parentAlpha);
+		if(fontSize!=0)
 		FontUtil.draw((SpriteBatch)batch, getText(), fontSize, style.fontColor==null?Color.WHITE:style.fontColor,(int)(getX()+image.getWidth()), (int)(image.getY()+fontSize), 1000);
 		if(fg!=null){
 			fg.setX(getX()+(getPrefWidth()/2-fg.getWidth()/2)+fgoff);

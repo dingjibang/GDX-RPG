@@ -86,7 +86,7 @@ public class ImageButton extends Button {
 		this(new ImageButtonStyle(null, null, null, imageUp, imageDown, imageChecked));
 	}
 	
-	Image fg;
+	public Image fg;
 	public ImageButton setFg(Image fg){
 		this.fg=fg;
 		return this;

@@ -105,8 +105,7 @@ public class MenuView extends StackView{
 			hr.addAction(Actions.parallel(Actions.sizeTo(147, hr.getHeight(),0.2f),Actions.moveTo(250, 490,0.3f)));
 			$.add(menuLabel.text("状态")).setPosition(-200, 545).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(310,545,0.3f))).appendTo(leftBar);
 			
-			ScrollPane pane;
-			final GdxQuery table=$.add(new Table()).appendTo($.add(pane=new ScrollPane(null)).appendTo(stage).setPosition(-250, 0).setSize(220, 475).addAction(Actions.moveTo(-10,0,0.5f,Interpolation.pow4)).getItem());
+			final GdxQuery table=$.add(new Table()).appendTo($.add(new ScrollPane(null)).appendTo(stage).setPosition(-250, 0).setSize(220, 475).addAction(Actions.moveTo(-10,0,0.5f,Interpolation.pow4)).getItem());
 			
 			CheckBoxStyle cstyle=new CheckBoxStyle();
 			cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button.png");
@@ -178,7 +177,7 @@ public class MenuView extends StackView{
 		generateStatusView();
 	}
 	
-	public void click(){
+	public void click(){ 	
 //		if(viewStack.size()>=1 && !(viewStack.get(0) instanceof StatusView))
 		for(GdxQuery box:boxs)
 			if(((MenuHeroBox)box.getItem()).hero.equals(current))
@@ -310,7 +309,6 @@ public class MenuView extends StackView{
 
 	@Override
 	public boolean scrolled(int amount) {
-		stage.scrolled(amount);
 		if(viewStack.size()!=0)
 			viewStack.get(viewStack.size()-1).scrolled(amount);
 		return false;

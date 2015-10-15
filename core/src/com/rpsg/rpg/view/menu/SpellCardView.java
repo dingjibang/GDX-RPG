@@ -361,7 +361,7 @@ public class SpellCardView extends IMenuView{
 
 	HeroImage heroImage;
 	public void generateHero(int index){
-		heroImage=HeroImage.generateImage(RPG.ctrl.hero.heros.get(index).images, 316, 370);
+//		heroImage=HeroImage.generateImage(RPG.ctrl.hero.heros.get(index).images, 316, 370);
 		generateLists();
 	}
 	

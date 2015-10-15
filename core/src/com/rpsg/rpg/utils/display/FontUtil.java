@@ -30,6 +30,8 @@ public class FontUtil {
 	public static List<Font> fontlist=new ArrayList<Font>();
 	static final char enter="\n".toCharArray()[0];
 	public static void draw(SpriteBatch sb,String str,int fontsize,Color color,int x,int y,int width,int paddinglr,int paddingtb){
+		if(fontsize==0)
+			return;
 		GameUtil.resetBacth(sb);
 		char[] dstr=StringUtil.dereplication(str).toCharArray();
 		String addStr="";

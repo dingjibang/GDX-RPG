@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
@@ -24,6 +26,7 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.CheckBox;
 import com.rpsg.rpg.system.ui.CheckBox.CheckBoxStyle;
 import com.rpsg.rpg.system.ui.DefaultIView;
+import com.rpsg.rpg.system.ui.HeroImage;
 import com.rpsg.rpg.system.ui.Icon;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
@@ -70,21 +73,45 @@ public class EquipView extends DefaultIView{
 		inner = (Group) $.add(new Group()).appendTo(stage).getItem();
 		description = (Group) $.add(new Group()).appendTo(stage).getItem();
 		data=(Group) $.add(new Group()).setColor(1,1,1,0).appendTo(stage).getItem();
+		
+		CheckBoxStyle cstyle2 = new CheckBoxStyle();
+		cstyle2.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button.png");
+		cstyle2.checkboxOff.setMinHeight(47);
+		cstyle2.checkboxOff.setMinWidth(75);
+		cstyle2.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"menu_button_select.png");
+		cstyle2.checkboxOn.setMinHeight(47);
+		cstyle2.checkboxOn.setMinWidth(75);
+		int offset = -1,padding = 54,_top = 400;
+		ButtonGroup bg = new ButtonGroup(
+				(Button)($.add(new CheckBox(Equipment.EQUIP_WEAPON, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
+					(Button)($.add(new CheckBox(Equipment.EQUIP_CLOTHES, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
+					(Button)($.add(new CheckBox(Equipment.EQUIP_SHOES, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
+					(Button)($.add(new CheckBox(Equipment.EQUIP_ORNAMENT1, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
+					(Button)($.add(new CheckBox(Equipment.EQUIP_ORNAMENT2, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem())
+				);
+		
 		generate();
 		
+		for(Button but:bg.getButtons()){
+			stage.addActor(but);
+			CheckBox box =((CheckBox)but);
+			box.setForeground(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+box.getText()+".png").size(40, 40)).setFgOff(35);
+		}
 		return this;
 	}
 	
 	private void generate() {
 		float oldTop = 0;
 		if(ilist!=null)
-			oldTop = ilist.getScrollPercentY()*100;
+			oldTop = ilist.getScrollPercentY();
+		
 		inner.clear();
 		data.clear();
 		description.clear();
+		
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"data.png").disableTouch()).setSize(187, 312).setPosition(838,174).appendTo(data);
 		
-		ilist=((ImageList) $.add(new ImageList(getEquips(Equipment.EQUIP_SHOES))).setSize(735, 266).setPosition(248, 185).appendTo(inner).getItem()).generate().onChange(new CustomRunnable<Icon>() {
+		ilist=((ImageList) $.add(new ImageList(getEquips(Equipment.EQUIP_SHOES))).setSize(655, 266).setPosition(328, 185).appendTo(inner).getItem()).generate().onChange(new CustomRunnable<Icon>() {
 			public void run(Icon t) {
 				description.clear();
 				$.add(new Label(t.item.name,30)).setPosition(395, 153).appendTo(description);
@@ -92,8 +119,11 @@ public class EquipView extends DefaultIView{
 				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
 			}
 		});
-		//TODO SETXX NOT WORK
 		ilist.setScrollPercentY(oldTop);
+		
+		$.add(new HeroImage(parent.current,0)).appendTo(inner).setPosition(285, 480);
+		$.add(new Label(parent.current.name,30)).setPosition(420, 522).appendTo(inner);
+		$.add(new Label(parent.current.jname,24).setPad(-7)).setAlpha(.1f).setPosition(420, 503).appendTo(inner);
 		
 	}
 	

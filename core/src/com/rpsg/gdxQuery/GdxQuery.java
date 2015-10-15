@@ -248,7 +248,7 @@ public class GdxQuery {
 		return this;
 	}
 	
-	public GdxQuery setColorA(float a){
+	public GdxQuery setAlpha(float a){
 		for(Actor actor:getItems())
 			actor.getColor().a=a;
 		return this;

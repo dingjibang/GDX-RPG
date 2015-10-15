@@ -5,11 +5,15 @@ import com.rpsg.rpg.object.rpg.Hero;
 
 
 public class HeroImage extends BGActor{
-	private Image shadow;  
-	private final static int goffset=9;
-	private int offset=0,step=30;
+	private final static int _goffset=9;
+	private int offset=0,step=30,goffset;
 	private Hero hero;
 	public HeroImage(Hero hero) {
+		this(hero,_goffset);
+	}
+	
+	public HeroImage(Hero hero,int off){
+		goffset=off;
 		this.hero=hero;
 		this.image=new Image();
 		this.image.setSize(hero.getWidth(), hero.getHeight());
@@ -26,11 +30,5 @@ public class HeroImage extends BGActor{
 		image.setDrawable(hero.images[goffset+(offset==3?1:offset)].getDrawable());
 		image.setColor(hero.prop.get("dead").equals(Hero.TRUE)?Color.valueOf("00000033"):new Color(1,1,1,1));
 	}
-
-	public static HeroImage generateImage(Image[] images, int i, int j) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 
 }

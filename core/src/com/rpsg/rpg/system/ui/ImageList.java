@@ -47,8 +47,9 @@ public class ImageList extends Group{
 	}
 	
 	public ImageList setScrollPercentY(float per){
+		pane.layout();
 		pane.setScrollPercentY(per);
-		pane.setScrollPercentY(.3f);
+		pane.setSmoothScrolling(false);
 		return this;
 	}
 	
@@ -88,6 +89,11 @@ public class ImageList extends Group{
 		for(Icon icon:items)
 			icon.select=icon==current;
 		change(i);
+	}
+
+	private ImageList layout() {
+		pane.layout();
+		return this;
 	}
 	
 }
