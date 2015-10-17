@@ -7,7 +7,7 @@ learning libgdx...
 
 need java7+, and friendly for 'IDEA' IDE
 
-# Usual build faults (important  ( •́ .̫ •̀ ) )
+# Usual build faults!important( •́ .̫ •̀  )
 ####1."SDK location not found ..." or other errors when build the gradle.
 please download "android sdk" at first. you have to download those modules:
 - Android SDK Build-tools (22.0.1)
