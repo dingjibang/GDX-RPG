@@ -41,6 +41,8 @@ public class EquipView extends DefaultIView{
 	Group inner,data,description;
 	ImageList ilist;
 	String currentFilter = Equipment.EQUIP_CLOTHES;
+	ImageButton takeButton;
+	Image take=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_take.png"),off=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_off.png");
 	public EquipView init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(137,79).setColor(0,0,0,0.52f).setPosition(240,470).appendTo(stage);
@@ -57,9 +59,8 @@ public class EquipView extends DefaultIView{
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(155,155).setColor(0,0,0,0.55f).setPosition(240,12).appendTo(stage);
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(597,103).setColor(0,0,0,0.55f).setPosition(398,64).appendTo(stage);
 		
-		$.add(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_take.png"))).onClick(new Runnable() {public void run() {
-			useEquip();//TODO
-		}}).appendTo(stage).setSize(297,49).setPosition(398, 12).getCell().prefSize(297,49);
+		$.add(takeButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(take)).appendTo(stage).setSize(297,49).setPosition(398, 12).getCell().prefSize(297,49);
+		
 		$.add(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_remove.png"))).onClick(new Runnable() {public void run() {
 			removeEquip();//TODO
 		}}).appendTo(stage).setSize(297,49).setPosition(698, 12).getCell().prefSize(297,49);
@@ -123,12 +124,7 @@ public class EquipView extends DefaultIView{
 		ilist=((ImageList) $.add(new ImageList(getEquips(currentFilter))).setSize(655, 266).setPosition(328, 185).appendTo(inner).getItem());
 		
 		Equipment currentHeroEquip = RPG.ctrl.item.getHeroEquip(parent.current, currentFilter);
-		ilist.onTakeoff(new Runnable(){
-			public void run() {
-				RPG.ctrl.item.takeOff(parent.current, currentFilter);
-				generate();
-			}
-		}).generate(new Icon().generateIcon(currentHeroEquip, true).setCurrent(true));
+		ilist.generate(new Icon().generateIcon(currentHeroEquip, true).setCurrent(true));
 		
 		ilist.onChange(new CustomRunnable<Icon>() {
 			public void run(Icon t) {
@@ -136,6 +132,15 @@ public class EquipView extends DefaultIView{
 				$.add(new Label(t.item.name,30)).setPosition(395, 153).appendTo(description);
 				$.add(new Label(t.item.illustration,16).setWidth(558)).setPosition(405, 117).appendTo(description);
 				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
+				if(t.current)
+					takeButton.setFg(off).onClick(new Runnable(){public void run() {
+						RPG.ctrl.item.takeOff(parent.current, currentFilter);
+						generate();
+					}});
+				else
+					takeButton.setFg(take).onClick(new Runnable(){public void run() {
+						useEquip();
+					}});
 			}
 		});
 		

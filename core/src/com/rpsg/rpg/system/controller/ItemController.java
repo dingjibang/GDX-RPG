@@ -209,6 +209,8 @@ public class ItemController {
 			Equipment tmp=hero.equips.get(equipType);
 			put(tmp);
 			replace(hero, tmp, false);//计算脱下装备后的Hero属性数值变化
+			
+			hero.equips.remove(equipType);
 			return true;
 		}
 		return false;

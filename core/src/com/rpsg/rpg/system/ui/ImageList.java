@@ -18,7 +18,6 @@ public class ImageList extends Group{
 	
 	java.util.List<Icon> items;
 	CustomRunnable<Icon> change;
-	Runnable takeoff;
 	Icon current;
 	Table inner;
 	ScrollPane pane;
@@ -40,17 +39,6 @@ public class ImageList extends Group{
 	public ImageList change(Icon i){
 		if(change!=null)
 			change.run(i);
-		return this;
-	}
-	
-	public ImageList onTakeoff(Runnable onchange){
-		takeoff=onchange;
-		return this;
-	}
-	
-	public ImageList takeoff(){
-		if(takeoff!=null)
-			takeoff.run();
 		return this;
 	}
 	
@@ -86,7 +74,7 @@ public class ImageList extends Group{
 		inner.align(Align.topLeft);
 		
 		if(before!=null && before.item!=null)
-			items.add(0, (Icon)before.onClick(takeoff));
+			items.add(0,before);
 		
 		for(final Icon i:items){
 			if(currentCol++ == col-1){
