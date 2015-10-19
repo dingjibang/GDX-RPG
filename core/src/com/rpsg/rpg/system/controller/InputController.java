@@ -80,8 +80,8 @@ public class InputController{
 		}
 		case NORMAL:{
 			if(GameViews.gameview.inited && GameViews.gameview.renderAble){
-				PostUtil.touchDown(screenX, screenY, pointer, button);
-				Path.click(screenX, screenY);
+				if(!PostUtil.touchDown(screenX, screenY, pointer, button))
+					Path.click(screenX, screenY);
 			}
 			break;
 		}
