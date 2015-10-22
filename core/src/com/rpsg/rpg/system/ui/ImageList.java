@@ -83,7 +83,7 @@ public class ImageList extends Group{
 				inner.row();
 			}
 			inner.add($.add(i).setPosition(i.getWidth()*currentCol+padding, i.getHeight()*row+padding).setSize(70, 70).onClick(new Runnable() {public void run() {
-				if(i.enable)
+//				if(i.enable)
 					setCurrent(i);
 			}}).getItem()).align(Align.topLeft).pad(padding).prefSize(70,70).getActor().setColor(1,1,1,i.enable?1:.5f);;
 		}

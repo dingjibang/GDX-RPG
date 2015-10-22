@@ -20,6 +20,7 @@ import com.rpsg.gdxQuery.GdxQueryRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.CustomRunnable;
+import com.rpsg.rpg.object.base.ObjectRunnable;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
@@ -27,6 +28,7 @@ import com.rpsg.rpg.system.ui.CheckBox;
 import com.rpsg.rpg.system.ui.CheckBox.CheckBoxStyle;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.HeroImage;
+import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Icon;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
@@ -34,6 +36,7 @@ import com.rpsg.rpg.system.ui.ImageList;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.view.hover.ConfirmView;
 
 public class EquipView extends DefaultIView{
 	
@@ -41,8 +44,8 @@ public class EquipView extends DefaultIView{
 	Group inner,data,description;
 	ImageList ilist;
 	String currentFilter = Equipment.EQUIP_CLOTHES;
-	ImageButton takeButton;
-	Image take=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_take.png"),off=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_off.png");
+	ImageButton takeButton,throwButton;
+	Image take=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_take.png"),off=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_off.png"),throwImg=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_remove.png");
 	public EquipView init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(137,79).setColor(0,0,0,0.52f).setPosition(240,470).appendTo(stage);
@@ -61,9 +64,7 @@ public class EquipView extends DefaultIView{
 		
 		$.add(takeButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(take)).appendTo(stage).setSize(297,49).setPosition(398, 12).getCell().prefSize(297,49);
 		
-		$.add(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_remove.png"))).onClick(new Runnable() {public void run() {
-			removeEquip();//TODO
-		}}).appendTo(stage).setSize(297,49).setPosition(698, 12).getCell().prefSize(297,49);
+		$.add(throwButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(throwImg)).appendTo(stage).setSize(297,49).setPosition(698, 12).getCell().prefSize(297,49);
 		
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).onClick(new Runnable() {public void run() {
 			next();
@@ -129,22 +130,42 @@ public class EquipView extends DefaultIView{
 		ilist.onChange(new CustomRunnable<Icon>() {
 			public void run(Icon t) {
 				description.clear();
-				$.add(new Label(t.item.name,30)).setPosition(395, 153).appendTo(description);
-				$.add(new Label(t.item.illustration,16).setWidth(558)).setPosition(405, 117).appendTo(description);
+				
+				String append = "\n";
+				if(!t.enable){
+					takeButton.setFg(take.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
+					append += "当前角色无法使用此装备。";
+				}else{
+					if(t.current)
+						takeButton.setFg(off).onClick(new Runnable(){public void run() {
+							RPG.ctrl.item.takeOff(parent.current, currentFilter);
+							generate();
+						}});
+					else
+						takeButton.setFg(take.a(1)).fgSelfColor(true).onClick(new Runnable(){public void run() {
+							useEquip();
+						}});
+				}
+				
+				if(!t.item.throwable){
+					throwButton.setFg(throwImg.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
+					append += "无法丢弃本装备。";
+				}else{
+					throwButton.setFg(throwImg.a(1)).fgSelfColor(true).onClick(new Runnable(){public void run() {
+						removeEquip();
+					}});
+				}
+				
+				if(!append.equals("\n"))
+					append = "※"+append;
+				
+				$.add(new Label(t.item.name,30)).setPosition(395, 155).appendTo(description);
+				$.add(new Label(t.item.illustration+append,16).setWidth(558)).setPosition(405, 120).appendTo(description);
 				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
-				if(t.current)
-					takeButton.setFg(off).onClick(new Runnable(){public void run() {
-						RPG.ctrl.item.takeOff(parent.current, currentFilter);
-						generate();
-					}});
-				else
-					takeButton.setFg(take).onClick(new Runnable(){public void run() {
-						useEquip();
-					}});
 			}
 		});
 		
-		ilist.setScrollPercentY(Float.isNaN(oldTop)?0:oldTop);
+		ilist.setScrollPercentY(oldTop!=oldTop?0:oldTop);
 		
 		$.add(new HeroImage(parent.current,0)).appendTo(inner).setPosition(285, 480);
 		$.add(new Label(parent.current.name,30)).setPosition(420, 522).appendTo(inner);
@@ -189,7 +210,15 @@ public class EquipView extends DefaultIView{
 	}
 	
 	private void removeEquip(){
-		
+		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().item!=null)
+		RPG.popup.add(ConfirmView.getDefault("确定要丢弃装备"+ilist.getCurrent().item.name+"么？", new ObjectRunnable() {
+			public void run(Object view) {
+				RPG.ctrl.item.remove(ilist.getCurrent().item);
+				RPG.toast.add("丢弃成功。", AlertUtil.Green);
+				((HoverView) view).disposed = true;
+				generate();
+			}
+		}));
 	}
 
 	public void logic() {

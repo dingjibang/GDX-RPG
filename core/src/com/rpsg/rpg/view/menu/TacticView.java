@@ -395,7 +395,7 @@ public class TacticView extends DefaultIView {
 				})).prefSize(324, 58).row();
 			}
 			table.align(Align.top);
-			for (Cell c : table.getCells()) {
+			for (Cell<?> c : table.getCells()) {
 				c.padTop(3).padBottom(3);
 			}
 
@@ -404,7 +404,7 @@ public class TacticView extends DefaultIView {
 		
 		List<SupImage> getAll(){
 			List<SupImage> imgs=new ArrayList<SupImage>();
-			for (Cell c : table.getCells()) {
+			for (Cell<?> c : table.getCells()) {
 				imgs.add((SupImage) c.getActor());
 			}
 
@@ -443,7 +443,7 @@ public class TacticView extends DefaultIView {
 					s_l.table.layout();
 
 					s_r.table.add(currentSelect).prefSize(324, 58).row();
-					for (Cell c : s_r.table.getCells()) {
+					for (Cell<?> c : s_r.table.getCells()) {
 						c.padTop(3).padBottom(3);
 					}
 
@@ -467,7 +467,7 @@ public class TacticView extends DefaultIView {
 					s_r.table.layout();
 
 					s_l.table.add(currentSelect).prefSize(324, 58).row();
-					for (Cell c : s_l.table.getCells()) {
+					for (Cell<?> c : s_l.table.getCells()) {
 						c.padTop(3).padBottom(3);
 					}
 

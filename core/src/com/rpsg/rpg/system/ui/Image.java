@@ -214,6 +214,14 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		return this;
 	}
 	
+	public Image a(float a){
+		return setAlpha(a);
+	}
+	
+	public Image setAlpha(float a){
+		return color(getColor().r, getColor().g, getColor().b, a);
+	}
+	
 	public Image scaleY(float s){
 		super.setScaleY(s);
 		return this;
