@@ -18,7 +18,7 @@ please download "android sdk" at first. you have to download those modules:
 and, you have to [set "ANDROID_HOME" variable](https://www.google.com.hk/#newwindow=1&q=how+to+set+ANDROID_HOME) or [create a local.properties file on project root!](http://stackoverflow.com/questions/23983221/importing-gradle-project-android-error)
 
 ####2.first run this game by eclipse or android studio, and got an error "Exception in thread "LWJGL Application" com.badlogic.gdx.utils.GdxRuntimeException: Couldn't load file: xxxxxxxxx"
-easy ,it's [eclipse solution](http://stackoverflow.com/questions/24879812/libgdx-project-exception-in-thread-lwjgl-application-couldnt-load-file-erro), and here is [android studio  solution](http://stackoverflow.com/questions/24879812/libgdx-project-exception-in-thread-lwjgl-application-couldnt-load-file-erro)
+easy ,it's [eclipse solution](http://stackoverflow.com/questions/22822767/new-libgdx-setup-receive-file-not-found/22833470#22833470), and here is [android studio  solution](http://stackoverflow.com/questions/24879812/libgdx-project-exception-in-thread-lwjgl-application-couldnt-load-file-erro)
 
 ####3.oh no, there are some errors in this project!
 don't worry, the game is working, those errors is my debugging.
