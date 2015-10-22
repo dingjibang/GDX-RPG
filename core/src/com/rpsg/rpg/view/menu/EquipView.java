@@ -5,8 +5,10 @@ import java.util.Collections;
 import java.util.List;
 
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -131,7 +133,7 @@ public class EquipView extends DefaultIView{
 			public void run(Icon t) {
 				description.clear();
 				
-				String append = "\n";
+				String append = "";
 				if(!t.enable){
 					takeButton.setFg(take.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
 					append += "当前角色无法使用此装备。";
@@ -147,7 +149,7 @@ public class EquipView extends DefaultIView{
 						}});
 				}
 				
-				if(!t.item.throwable){
+				if(!t.item.throwable || t.current){
 					throwButton.setFg(throwImg.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
 					append += "无法丢弃本装备。";
 				}else{
@@ -156,11 +158,11 @@ public class EquipView extends DefaultIView{
 					}});
 				}
 				
-				if(!append.equals("\n"))
-					append = "※"+append;
+				if(append.length()!=0)
+					append = "\n<!-ff0000"+append+">";
 				
-				$.add(new Label(t.item.name,30)).setPosition(395, 155).appendTo(description);
-				$.add(new Label(t.item.illustration+append,16).setWidth(558)).setPosition(405, 120).appendTo(description);
+				$.add(new Label("<!-ff6600"+t.item.name+">",30)).setPosition(395, 157).appendTo(description);
+				$.add(new Label(t.item.illustration+append,16).setWidth(558).setYOffset(4)).setPosition(405, 124).appendTo(description);
 				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
 			}
 		});
@@ -170,6 +172,11 @@ public class EquipView extends DefaultIView{
 		$.add(new HeroImage(parent.current,0)).appendTo(inner).setPosition(285, 480);
 		$.add(new Label(parent.current.name,30)).setPosition(420, 522).appendTo(inner);
 		$.add(new Label(parent.current.jname,24).setPad(-7)).setAlpha(.1f).setPosition(420, 503).appendTo(inner);
+		
+		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)parent.current.prop.get("hp")/(float)parent.current.prop.get("maxhp")*161,20).setPosition(851, 456).appendTo(data).setColor(Color.valueOf("c33737"));
+		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)parent.current.prop.get("mp")/(float)parent.current.prop.get("maxmp")*161,20).setPosition(851, 429).appendTo(data).setColor(Color.valueOf("3762c3"));
+		$.add(new Label(parent.current.prop.get("hp")+"/"+parent.current.prop.get("maxhp"),18).align(925, 473).setPad(-8)).setColor(Color.valueOf("2BC706")).appendTo(data);
+		$.add(new Label(parent.current.prop.get("mp")+"/"+parent.current.prop.get("maxmp"),18).align(925, 445).setPad(-8)).setColor(Color.YELLOW).appendTo(data);
 		
 	}
 	
@@ -211,7 +218,7 @@ public class EquipView extends DefaultIView{
 	
 	private void removeEquip(){
 		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().item!=null)
-		RPG.popup.add(ConfirmView.getDefault("确定要丢弃装备"+ilist.getCurrent().item.name+"么？", new ObjectRunnable() {
+		RPG.popup.add(ConfirmView.getDefault("确定要丢弃装备 <!-ff0000"+ilist.getCurrent().item.name+"> 么？", new ObjectRunnable() {
 			public void run(Object view) {
 				RPG.ctrl.item.remove(ilist.getCurrent().item);
 				RPG.toast.add("丢弃成功。", AlertUtil.Green);

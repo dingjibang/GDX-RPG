@@ -29,6 +29,7 @@ public class FontUtil {
 	
 	public static List<Font> fontlist=new ArrayList<Font>();
 	static final char enter="\n".toCharArray()[0];
+	static Color lastColor = null;
 	public static void draw(SpriteBatch sb,String str,int fontsize,Color color,int x,int y,int width,int paddinglr,int paddingtb){
 		if(fontsize==0)
 			return;
@@ -50,16 +51,40 @@ public class FontUtil {
 		
 		int currentX=x;
 		int currentY=y;
-		for(char c:str.toCharArray()){
+		int skip = 0;
+		char[] carr = str.toCharArray();
+		for(int i=0;i<carr.length;i++){
+			char c = carr[i];
+			
+			if(skip>0){
+				skip--;
+				continue;
+			}
+			
+			if(c=='<' && i+8 < carr.length && carr[i+1]=='!' && carr[i+2]=='-'){
+				String _c = (carr[i+3]+"")+(carr[i+4]+"")+(carr[i+5]+"")+(carr[i+6]+"")+(carr[i+7]+"")+(carr[i+8]+"");
+				lastColor = Color.valueOf(_c);
+				skip = 8;
+				continue;
+			}
+			
+			if(lastColor!=null && c=='>'){
+				lastColor=null;
+				continue;
+			}
+			
 			if(currentX-x>width || c==enter){
 				currentX=x;
 				currentY-=fontsize+paddingtb;
 			}
+			
 			if(c==enter)
 				continue;
+			
 			currentX+=fontsize+paddinglr;
 			BitmapFont f=getBitFont(fontsize, c);
-			f.setColor(color);
+			
+			f.setColor(lastColor==null?color:lastColor);
 			String tstr=new String(new char[]{c});
 			int bound=(int) f.getBounds(tstr).width;
 			f.draw(sb, tstr, currentX-bound/2, currentY);
@@ -71,7 +96,28 @@ public class FontUtil {
 	}
 	
 	public static int getTextWidth(String txt,int size,int paddinglr){
-		return (size+(paddinglr))*txt.length();
+		char[] carr = txt.toCharArray();
+		int skip=0;
+		int width = 0;
+		for(int i=0;i<carr.length;i++){
+			char c = carr[i];
+			if(skip>0){
+				skip--;
+				continue;
+			}
+			if(c=='<' && i+8 < carr.length && carr[i+1]=='!' && carr[i+2]=='-'){
+				String _c = (carr[i+3]+"")+(carr[i+4]+"")+(carr[i+5]+"")+(carr[i+6]+"")+(carr[i+7]+"")+(carr[i+8]+"");
+				lastColor = Color.valueOf(_c);
+				skip = 8;
+				continue;
+			}
+			if(lastColor!=null && c=='>'){
+				lastColor=null;
+				continue;
+			}
+			width+=(size+paddinglr);
+		}
+		return width;
 	}
 	
 	public static int getTextWidth(String txt,int size){
