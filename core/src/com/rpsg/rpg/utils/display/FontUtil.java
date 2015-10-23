@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.math.Vector2;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.text.Font;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -30,10 +31,18 @@ public class FontUtil {
 	public static List<Font> fontlist=new ArrayList<Font>();
 	static final char enter="\n".toCharArray()[0];
 	static Color lastColor = null;
-	public static void draw(SpriteBatch sb,String str,int fontsize,Color color,int x,int y,int width,int paddinglr,int paddingtb){
+	public static Vector2 draw(SpriteBatch sb,String str,int fontsize,Color color,int x,int y,int width,int paddinglr,int paddingtb){
+		return draw(sb, str, fontsize, color, x, y, width, paddinglr, paddingtb, false);
+	}
+	
+	public static Vector2 draw(SpriteBatch sb,String str,int fontsize,Color color,int x,int y,int width,int paddinglr,int paddingtb,boolean calc){
+		Vector2 vec2 = new Vector2();
 		if(fontsize==0)
-			return;
-		GameUtil.resetBacth(sb);
+			return vec2;
+		
+		if(!calc)
+			GameUtil.resetBacth(sb);
+		
 		char[] dstr=StringUtil.dereplication(str).toCharArray();
 		String addStr="";
 		for(char c:dstr){
@@ -51,6 +60,7 @@ public class FontUtil {
 		
 		int currentX=x;
 		int currentY=y;
+		int maxX = 0;
 		int skip = 0;
 		char[] carr = str.toCharArray();
 		for(int i=0;i<carr.length;i++){
@@ -73,7 +83,9 @@ public class FontUtil {
 				continue;
 			}
 			
-			if(currentX-x>width || c==enter){
+			
+			if(x>=0 && (currentX-x>width || c==enter)){
+				maxX=currentX;
 				currentX=x;
 				currentY-=fontsize+paddingtb;
 			}
@@ -82,44 +94,30 @@ public class FontUtil {
 				continue;
 			
 			currentX+=fontsize+paddinglr;
-			BitmapFont f=getBitFont(fontsize, c);
 			
-			f.setColor(lastColor==null?color:lastColor);
-			String tstr=new String(new char[]{c});
-			int bound=(int) f.getBounds(tstr).width;
-			f.draw(sb, tstr, currentX-bound/2, currentY);
-			f.setColor(Color.WHITE);
+			if(!calc){
+				BitmapFont f=getBitFont(fontsize, c);
+				f.setColor(lastColor==null?color:lastColor);
+				String tstr=new String(new char[]{c});
+				int bound=(int) f.getBounds(tstr).width;
+				f.draw(sb, tstr, currentX-bound/2, currentY);
+				f.setColor(Color.WHITE);
+			};
 		}
+		return vec2.set(x<0?currentX-x:maxX,( y-(currentY-fontsize)));
 	}
+	
 	public static void draw(SpriteBatch sb,String str,int fontsize,Color color,int x,int y,int width){
 		draw(sb,str,fontsize,color,x,y,width,Setting.STRING_PADDING_LR*2,Setting.STRING_PADDING_TB*2);
 	}
 	
 	public static int getTextWidth(String txt,int size,int paddinglr){
-		char[] carr = txt.toCharArray();
-		int skip=0;
-		int width = 0;
-		for(int i=0;i<carr.length;i++){
-			char c = carr[i];
-			if(skip>0){
-				skip--;
-				continue;
-			}
-			if(c=='<' && i+8 < carr.length && carr[i+1]=='!' && carr[i+2]=='-'){
-				String _c = (carr[i+3]+"")+(carr[i+4]+"")+(carr[i+5]+"")+(carr[i+6]+"")+(carr[i+7]+"")+(carr[i+8]+"");
-				lastColor = Color.valueOf(_c);
-				skip = 8;
-				continue;
-			}
-			if(lastColor!=null && c=='>'){
-				lastColor=null;
-				continue;
-			}
-			width+=(size+paddinglr);
-		}
-		return width;
+		return (int) draw(null, txt, size, null, -1, 0, 0, paddinglr, 0, true).x;
 	}
 	
+	public static int getTextHeight(String txt, int size, int width,int padlr,int padtb) {
+		return (int) draw(null,txt, size, null, 0, 0, width, padlr, padtb, true).y;
+	}
 	public static int getTextWidth(String txt,int size){
 		return getTextWidth(txt,size,Setting.STRING_PADDING_LR);
 	}

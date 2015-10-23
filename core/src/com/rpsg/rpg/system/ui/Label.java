@@ -5,7 +5,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.ui.Widget;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.utils.StringBuilder;
 import com.rpsg.rpg.utils.display.FontUtil;
 /**
@@ -13,7 +14,7 @@ import com.rpsg.rpg.utils.display.FontUtil;
  * 使用FontUtil技术，无需缓存字体。
  *
  */
-public class Label extends Widget {
+public class Label extends Actor{
 	static private final Color tempColor = new Color();
 	
 	private int width,pad;
@@ -24,8 +25,8 @@ public class Label extends Widget {
 	public Label (CharSequence text,int fontSize) {
 		if (text != null) this.text.append(text);
 		this.fontSize=fontSize;
-		setSize(getWidth(), getHeight());
 		setWidth(1000);
+		setSize(getWidth(), getHeight());
 	}
 
 
@@ -42,7 +43,6 @@ public class Label extends Widget {
 			text.setLength(0);
 			text.append(newText);
 		}
-		invalidateHierarchy();
 	}
 	
 	public Label text(CharSequence txt){
@@ -63,16 +63,6 @@ public class Label extends Widget {
 		return text.toString();
 	}
 
-	public void invalidate () {
-		super.invalidate();
-	}
-
-
-
-	public void layout () {
-
-	}
-	
 	int yoff=0;
 	public Label setYOffset(int yoff){
 		this.yoff=yoff;
@@ -86,16 +76,19 @@ public class Label extends Widget {
 	}
 	
 	public void draw (Batch batch, float parentAlpha) {
-		validate();
 		Color color = tempColor.set(getColor());
 		color.a *= parentAlpha;
-//		cache.tint(color);
-//		cache.setPosition(getX(), getY());
-//		cache.draw(batch);
+		int x = 0,y=(int) getY();
 		if(alignX==0)
-			FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color, !rightAble?(int)getX():(int)getX()-FontUtil.getTextWidth(getText(), fontSize,pad), (int)getY(),(int)getWidth(),pad,yoff);
+			x= !rightAble?(int)getX():(int)getX()-FontUtil.getTextWidth(getText(), fontSize,pad);
 		else
-			FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color, alignX+(xoff?(int)getX():0)-FontUtil.getTextWidth(getText(), fontSize,pad)/2, (int)getY(),(int)getWidth(),pad,yoff);
+			x=alignX+(xoff?(int)getX():0)-FontUtil.getTextWidth(getText(), fontSize,pad)/2;
+		
+		if(layout2){//fix position
+			x-=fontSize/2;//-8;
+			y-=yoff-getHeight();
+		}
+		FontUtil.draw((SpriteBatch)batch, getText().toString(), fontSize, color,x , y,(int)getWidth(),pad,yoff);
 	}
 	
 	public float getWidth() {
@@ -103,7 +96,14 @@ public class Label extends Widget {
 	}
 	public Label setWidth(int width) {
 		this.width = width;
+		sizeChanged();
 		return this;
+	}
+	
+	@Override
+	public void setWidth(float width) {
+		super.setWidth(width);
+		sizeChanged();
 	}
 	
 	public Label addAct(Action act) {
@@ -161,6 +161,16 @@ public class Label extends Widget {
 	boolean rightAble=false;
 	public Label right(boolean r){
 		rightAble=r;
+		return this;
+	}
+
+	boolean layout2=false;
+	public Label layout() {
+		layout2=true;
+		setHeight(FontUtil.getTextHeight(getText(),fontSize,(int)getWidth(),pad,yoff));
+		setOrigin(Align.topLeft);
+		setSize(getWidth(), getHeight());
+		
 		return this;
 	}
 }

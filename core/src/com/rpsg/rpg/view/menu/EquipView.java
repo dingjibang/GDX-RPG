@@ -13,6 +13,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
@@ -163,9 +166,16 @@ public class EquipView extends DefaultIView{
 				if(append.length()!=0)
 					append = "\n<!-d38181"+append+">";
 				
-				$.add(new Label("<!-ff6600"+t.item.name+">",30)).setPosition(395, 157).appendTo(description);
+				$.add(new Label("<!-ff6600"+t.item.name+">",30)).setPosition(395, 156).appendTo(description);
 				$.add(new Label((t.item==currentHeroEquip?"(当前)":"")+"拥有"+t.item.count+"个",16).setPos(FontUtil.getTextWidth(t.item.name, 30)+20+395, 147)).appendTo(description);
-				$.add(new Label(t.item.illustration+append,16).setWidth(558).setYOffset(4)).setPosition(405, 124).appendTo(description);
+				Table table = new Table().align(Align.topLeft);
+				table.add(new Label(t.item.illustration+append,17).setWidth(558).setYOffset(4).layout()).padLeft(10).padBottom(5).padRight(0).align(Align.topLeft);
+				ScrollPane pane = new ScrollPane(table);
+				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbar.png");
+				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbarin.png");
+				pane.setFadeScrollBars(false);
+				$.add(pane).setSize(588, 55).setPosition(400, 72).appendTo(description);
+//				$.add(new Label(t.item.illustration+append,16).setWidth(558).setYOffset(4).layout()).setPosition(405, 124).appendTo(description);
 				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
 			}
 		});
