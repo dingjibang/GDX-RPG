@@ -8,7 +8,6 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -37,6 +36,7 @@ import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.ImageList;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.display.AlertUtil;
+import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.hover.ConfirmView;
 
@@ -131,6 +131,8 @@ public class EquipView extends DefaultIView{
 		
 		ilist.onChange(new CustomRunnable<Icon>() {
 			public void run(Icon t) {
+				Equipment currentHeroEquip = RPG.ctrl.item.getHeroEquip(parent.current, currentFilter);
+				
 				description.clear();
 				
 				String append = "";
@@ -159,9 +161,10 @@ public class EquipView extends DefaultIView{
 				}
 				
 				if(append.length()!=0)
-					append = "\n<!-ff0000"+append+">";
+					append = "\n<!-d38181"+append+">";
 				
 				$.add(new Label("<!-ff6600"+t.item.name+">",30)).setPosition(395, 157).appendTo(description);
+				$.add(new Label((t.item==currentHeroEquip?"(当前)":"")+"拥有"+t.item.count+"个",16).setPos(FontUtil.getTextWidth(t.item.name, 30)+20+395, 147)).appendTo(description);
 				$.add(new Label(t.item.illustration+append,16).setWidth(558).setYOffset(4)).setPosition(405, 124).appendTo(description);
 				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
 			}
@@ -178,6 +181,13 @@ public class EquipView extends DefaultIView{
 		$.add(new Label(parent.current.prop.get("hp")+"/"+parent.current.prop.get("maxhp"),18).align(925, 473).setPad(-8)).setColor(Color.valueOf("2BC706")).appendTo(data);
 		$.add(new Label(parent.current.prop.get("mp")+"/"+parent.current.prop.get("maxmp"),18).align(925, 445).setPad(-8)).setColor(Color.YELLOW).appendTo(data);
 		
+		int pad = 38,off = 441,x=975;
+		$.add(new Label(parent.current.prop.get("hit")+"",22).align(x, off-=pad).setPad(-8)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("speed")+"",22).align(x, off-=pad).setPad(-8)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("defense")+"",22).align(x, off-=pad).setPad(-8)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("magicDefense")+"",22).align(x, off-=pad).setPad(-8)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("attack")+"",22).align(x, off-=pad).setPad(-8)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("magicAttack")+"",22).align(x, off-=pad).setPad(-8)).appendTo(data);
 	}
 	
 	private List<Icon> getEquips(String equipType){

@@ -2,7 +2,7 @@
 	type:"Equipment",
 	name:"御币",
 	illustration:"博丽灵梦手里常持的家伙。",
-	illustration2:"御币[攻击+12 魔攻+3]",
+	illustration2:"攻击+12 魔攻+3",
 	equipType:"EQUIP_WEAPON",
 	use:"
 		prop.put('attack', 12);

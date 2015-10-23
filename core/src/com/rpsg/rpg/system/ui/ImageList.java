@@ -49,8 +49,7 @@ public class ImageList extends Group{
 	public ImageList setScrollPercentY(float per){
 		pane.setScrollPercentY(per);
 		pane.setSmoothScrolling(false);
-		pane.layout();
-		getStage().setScrollFocus(pane);
+		pane.invalidate();
 		return this;
 	}
 	
