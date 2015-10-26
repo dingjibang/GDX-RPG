@@ -171,6 +171,7 @@ public class EquipView extends DefaultIView{
 				Table table = new Table().align(Align.topLeft);
 				table.add(new Label(t.item.illustration+append,17).setWidth(558).setYOffset(4).layout()).padLeft(10).padBottom(5).padRight(0).align(Align.topLeft);
 				ScrollPane pane = new ScrollPane(table);
+				pane.setupOverscroll(20, 200, 200);
 				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbar.png");
 				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbarin.png");
 				pane.setFadeScrollBars(false);
