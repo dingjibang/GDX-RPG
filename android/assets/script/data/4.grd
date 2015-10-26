@@ -7,8 +7,8 @@
 	onlyFor:"Yuuka",
 	throwable:false,
 	use:"
-		prop.put('attack', 5);
-		prop.put('magicAttack', 1);
-		prop.put('hit', -1);
+		put('attack', 5);
+		put('magicAttack', 1);
+		put('hit', -1);
 	"
 }

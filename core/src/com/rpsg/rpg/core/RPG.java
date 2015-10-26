@@ -87,7 +87,7 @@ public class RPG {
 			
 			ScriptableObject scope =ctx.initStandardObjects();
 			if(self!=null)
-				scope.setPrototype(((NativeJavaObject)Context.javaToJS(null, scope)));
+				scope.setPrototype(((NativeJavaObject)Context.javaToJS(self, scope)));
 			ctx.evaluateString(scope, js, null, 1, null);
 			Context.exit();
 			return true;

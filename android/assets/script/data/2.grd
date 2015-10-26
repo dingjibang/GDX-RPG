@@ -5,7 +5,8 @@
 	illustration2:"防御+5 魔防+1",
 	equipType:"EQUIP_SHOES",
 	use:"
-		prop.put('defense', 5);
-		prop.put('magicDefense', 1);
+		put('defense', 5);
+		put('magicDefense', 1);
+		put('maxhp',50);
 	"
 }

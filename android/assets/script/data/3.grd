@@ -5,7 +5,7 @@
 	illustration2:"攻击+12 魔攻+3",
 	equipType:"EQUIP_WEAPON",
 	use:"
-		prop.put('attack', 12);
-		prop.put('magicAttack', 3);
+		put('attack', 12);
+		put('magicAttack', 3);
 	"
 }

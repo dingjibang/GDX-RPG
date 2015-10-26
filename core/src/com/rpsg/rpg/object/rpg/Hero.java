@@ -118,6 +118,11 @@ public abstract class Hero extends RPGObject {
 	}
 
 	public void addProp(String name, int c) {
+		if(c<0){
+			subProp(name, c);
+			return;
+		}
+		
 		if (name.equals("hp") || name.equals("mp"))
 			if (prop.get(name) + c > prop.get("max" + name))
 				prop.put(name, prop.get("max" + name));

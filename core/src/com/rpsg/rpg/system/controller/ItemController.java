@@ -217,8 +217,17 @@ public class ItemController {
 	}
 	
 	private static void replace(Hero hero,Equipment equip,boolean add){
-		for(String key:equip.prop.keySet())
+		for(String key:equip.prop.keySet()){
 			hero.prop.put(key, add?hero.prop.get(key)+equip.prop.get(key):hero.prop.get(key)-equip.prop.get(key));
+		}
+		//防止HP MP溢出
+		postOverflow(hero, "hp");
+		postOverflow(hero, "map");
+	}
+	
+	private static void postOverflow(Hero hero,String prop){
+		if(hero.prop.get(prop)>hero.prop.get("max"+prop))
+			hero.prop.put(prop,hero.prop.get("max"+prop));
 	}
 	
 	public Equipment getHeroEquip(Hero hero,String equipType){

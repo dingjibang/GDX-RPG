@@ -27,7 +27,7 @@ public class DesktopLauncher {
         RayHandler.useDiffuseLight (true);
         
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		boolean debug=!!false;//如果开启debug模式，窗口小一半，没太多意义233
+		boolean debug=!false;//如果开启debug模式，窗口小一半，没太多意义233
 		config.width=1024/(debug?2:1);
 		config.height=576/(debug?2:1);
 //      config.backgroundFPS=config.foregroundFPS=40;

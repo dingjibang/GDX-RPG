@@ -169,14 +169,13 @@ public class EquipView extends DefaultIView{
 				$.add(new Label("<!-ff6600"+t.item.name+">",30)).setPosition(395, 156).appendTo(description);
 				$.add(new Label((t.item==currentHeroEquip?"(当前)":"")+"拥有"+t.item.count+"个",16).setPos(FontUtil.getTextWidth(t.item.name, 30)+20+395, 147)).appendTo(description);
 				Table table = new Table().align(Align.topLeft);
-				table.add(new Label(t.item.illustration+append,17).setWidth(558).setYOffset(4).layout()).padLeft(10).padBottom(5).padRight(0).align(Align.topLeft);
+				table.add(new Label(t.item.illustration+append+"\n"+((Equipment)t.item).illustration2,17).setWidth(558).setYOffset(4).layout()).padLeft(10).padBottom(5).padRight(0).align(Align.topLeft);
 				ScrollPane pane = new ScrollPane(table);
 				pane.setupOverscroll(20, 200, 200);
 				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbar.png");
 				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbarin.png");
 				pane.setFadeScrollBars(false);
 				$.add(pane).setSize(588, 55).setPosition(400, 72).appendTo(description);
-//				$.add(new Label(t.item.illustration+append,16).setWidth(558).setYOffset(4).layout()).setPosition(405, 124).appendTo(description);
 				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
 			}
 		});
@@ -192,7 +191,7 @@ public class EquipView extends DefaultIView{
 		$.add(new Label(parent.current.prop.get("hp")+"/"+parent.current.prop.get("maxhp"),18).align(925, 473).setPad(-8)).setColor(Color.valueOf("2BC706")).appendTo(data);
 		$.add(new Label(parent.current.prop.get("mp")+"/"+parent.current.prop.get("maxmp"),18).align(925, 445).setPad(-8)).setColor(Color.YELLOW).appendTo(data);
 		
-		int pad = 38,off = 441,x=975;
+		int pad = 38,off = 441,x = 975;
 		$.add(new Label(parent.current.prop.get("hit")+"",22).align(x, off-=pad).setPad(-8)).appendTo(data);
 		$.add(new Label(parent.current.prop.get("speed")+"",22).align(x, off-=pad).setPad(-8)).appendTo(data);
 		$.add(new Label(parent.current.prop.get("defense")+"",22).align(x, off-=pad).setPad(-8)).appendTo(data);

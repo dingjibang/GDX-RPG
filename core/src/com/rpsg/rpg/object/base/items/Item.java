@@ -60,8 +60,9 @@ public class Item implements Serializable {
 	 * @return
 	 */
 	public boolean use(){
-		if(useScript!=null && useScript.length()==0)
-			return RPG.executeJS(useScript);
+		if(useScript!=null && useScript.length()!=0){
+			return RPG.executeJS(useScript,this);
+		}
 		return false;
 	}
 	
