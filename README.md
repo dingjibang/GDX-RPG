@@ -1,11 +1,13 @@
-# GDX-RPG
-learning libgdx...
+# GDX-RPG (╯￣Д￣)╯
+A ~~not work now~~ cross-platform RPG game engine ~~(tease you)~~
+
+made by [Libgdx](https://github.com/libgdx/libgdx).
 
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-LAZY-FONT/master/foobar.png)
 
-官网/website:  [http://shadow.rpsg-team.com](http://shadow.rpsg-team.com)<br/>
+官网 / website:  [http://shadow.rpsg-team.com](http://shadow.rpsg-team.com)
 
-need java7+, and friendly for 'IDEA' IDE
+"git clone" this project into your IDE, build, and enjoy it.
 
 # Usual build faults!important( •́ .̫ •̀  )
 ####1."SDK location not found ..." or other errors when build the gradle.
@@ -26,23 +28,22 @@ don't worry, the game is working, those errors is my debugging.
 ####4.and more...
 you can create an issue, or mail to dingjibang@qq.com.
 
-# Game
+# Game(￣∀￣)
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/share.png)
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/1.png)
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/2.png)
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/3.png)
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/4.png)
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/android/assets/share/5.png)
-# How To Start
-clone this project into your IDE, and, run it now<br/>
-or clone the project and compile to jar file.
 
-# What's this
-It's a (big) RPG game use "Touhou Project(東方Project)" store background by Libgdx Engine.
+# What's this╮（￣▽￣）╭
+It's a ~~big~~ RPG game use "Touhou Project(東方Project)" background story.<br/>
+You can visit [http://shadow.rpsg-team.com](http://shadow.rpsg-team.com) to see more info.<br/>
+(because my energy is limited, this game has only Chinese language can be choose.)
 
-# What am I doing
+# What am I doing (｀･ω･´)
 now, i'm reconstitute the MENU UI module
 
-#Others
+#Others(╭￣3￣)╭♡ 
 Sorry,the project inner images is protected by COPYRIGHT, don't use in other places please :) <br/>
 Others ,it's noncommercial.
