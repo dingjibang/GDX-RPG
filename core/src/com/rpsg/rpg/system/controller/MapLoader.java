@@ -17,15 +17,13 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
+import com.badlogic.gdx.maps.tiled.objects.TiledMapTileMapObject;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.game.hero.Arisu;
-import com.rpsg.rpg.game.hero.Flandre;
 import com.rpsg.rpg.game.hero.Marisa;
-import com.rpsg.rpg.game.hero.Reimu;
-import com.rpsg.rpg.game.hero.Yuuka;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
@@ -93,35 +91,36 @@ public class MapLoader {
 				if(m.getObjects().getCount()!=0)
 					removeList.add(m);
 				for(MapObject obj:m.getObjects()){
-					if(obj.getProperties().get("type")!=null && obj.getProperties().get("type").equals("NPC")){
+					if(obj.getProperties().get("type")!=null && obj.getProperties().get("type").equals("NPC") && obj instanceof TiledMapTileMapObject){
+						TiledMapTileMapObject tobj = (TiledMapTileMapObject)obj;
+						int w = tobj.getProperties().get("width",Float.class).intValue();
+						int h = tobj.getProperties().get("height",Float.class).intValue();
+						int x = tobj.getProperties().get("x",Float.class).intValue();
+						int y = tobj.getProperties().get("y",Float.class).intValue();
 						try {
 							NPC npc;
 							if(!obj.getName().equals("PUBLIC"))
 							npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.getName()).getConstructor(String.class,Integer.class,Integer.class)
-								.newInstance(
-									obj.getProperties().get("IMAGE")+".png",
-									(int)(((RectangleMapObject)obj).getRectangle().getWidth()),
-									(int)(((RectangleMapObject)obj).getRectangle().getHeight())
-								);
+								.newInstance(obj.getProperties().get("IMAGE")+".png",w,h);
 							else{
 								String imgPath=(String) obj.getProperties().get("IMAGE");
 								imgPath=imgPath==null?"empty":imgPath;
-								npc=new PublicNPC((String) obj.getProperties().get("ID"),imgPath+".png",(int)(((RectangleMapObject)obj).getRectangle().getWidth()),(int)(((RectangleMapObject)obj).getRectangle().getHeight()));
+								npc=new PublicNPC((String) obj.getProperties().get("ID"),imgPath+".png",w,h);
 							}
 							npc.params=GameUtil.parseMapProperties(obj.getProperties());
 							npc.init();
+							
 							if(obj.getProperties().get("ABSOLUTE")!=null && obj.getProperties().get("ABSOLUTE").equals("true"))
-								npc.generateAbsolutePosition(((int)(((RectangleMapObject)obj).getRectangle().getX())),
-										 (int)(((RectangleMapObject)obj).getRectangle().getY()),
-										 i-removeList.size());
+								npc.generateAbsolutePosition(x,y,i-removeList.size());
 							else
-								npc.generatePosition(((int)(((RectangleMapObject)obj).getRectangle().getX())/48),
-									 (int)(bot.getHeight()-2-((RectangleMapObject)obj).getRectangle().getY()/48),
-									 i-removeList.size());
+								npc.generatePosition(x/48, (int)(bot.getHeight()-(Math.ceil(h/48))-y/48-2),i-removeList.size());//TODO FIX IT 
+							
+							
 							if(obj.getProperties().get("SHADOW")!=null && obj.getProperties().get("SHADOW").equals("true"))
 								npc.drawShadow=true;
 							if(obj.getProperties().get("LOCK")!=null && obj.getProperties().get("LOCK").equals("true"))
 								GameViews.gameview.renderAble=false;
+							
 							Logger.info("NPC生成成功["+npc.position+","+npc.mapx+":"+npc.mapy+":"+npc.layer+"]");
 							gv.stage.addActor(npc);
 							RPG.ctrl.thread.pool.add(npc.threadPool);

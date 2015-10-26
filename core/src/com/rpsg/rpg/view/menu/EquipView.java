@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
@@ -90,7 +90,7 @@ public class EquipView extends DefaultIView{
 		cstyle2.checkboxOn.setMinHeight(47);
 		cstyle2.checkboxOn.setMinWidth(75);
 		int offset = -1,padding = 54,_top = 400;
-		ButtonGroup bg = new ButtonGroup(
+		ButtonGroup<Button> bg = new ButtonGroup<Button>(
 			(Button)($.add(new CheckBox(Equipment.EQUIP_WEAPON, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
 			(Button)($.add(new CheckBox(Equipment.EQUIP_CLOTHES, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
 			(Button)($.add(new CheckBox(Equipment.EQUIP_SHOES, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),

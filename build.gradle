@@ -1,6 +1,7 @@
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
+        maven{ url 'http://maven.oschina.net/content/groups/public/'}
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.2.3'
@@ -8,20 +9,22 @@ buildscript {
 }
 
 allprojects {
+    apply plugin: "eclipse"
     apply plugin: "idea"
 
     version = '1.0'
     ext {
-        appName = 'RPG'
-        gdxVersion = '1.4.1'
-        roboVMVersion = '1.0.0-beta-01'
-        box2DLightsVersion = '1.3'
-        ashleyVersion = '1.3.1'
-        aiVersion = '1.4.0'
+        appName = "RPG"
+        gdxVersion = '1.7.0'
+        roboVMVersion = '1.8.0'
+        box2DLightsVersion = '1.4'
+        ashleyVersion = '1.6.0'
+        aiVersion = '1.6.0'
     }
 
     repositories {
         mavenCentral()
+		maven{ url 'http://maven.oschina.net/content/groups/public/'}
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
     }
@@ -42,6 +45,7 @@ project(":desktop") {
 
 project(":android") {
     apply plugin: "android"
+
     configurations { natives }
 
     dependencies {
@@ -59,7 +63,6 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
         compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
-
     }
 }
 
@@ -67,17 +70,15 @@ project(":core") {
     apply plugin: "java"
 
 
-	dependencies {
-		compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-		compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-		compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-		compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
+    dependencies {
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+        compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
 		compile "org.mozilla:rhino:1.7.7"
-	}
+    }
 }
 
-task prepareWrapper(type: Wrapper) {
-   gradleVersion = '1.12'
-   distributionUrl = 'alternative.location'
+tasks.eclipse.doLast {
+    delete ".project"
 }
-

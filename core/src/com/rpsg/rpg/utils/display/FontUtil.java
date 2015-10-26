@@ -99,7 +99,7 @@ public class FontUtil {
 				BitmapFont f=getBitFont(fontsize, c);
 				f.setColor(lastColor==null?color:lastColor);
 				String tstr=new String(new char[]{c});
-				int bound=(int) f.getBounds(tstr).width;
+				int bound=(int) f.getData().getGlyph(c).width;
 				f.draw(sb, tstr, currentX-bound/2, currentY);
 				f.setColor(Color.WHITE);
 			};
