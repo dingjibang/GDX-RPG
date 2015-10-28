@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
@@ -29,7 +30,6 @@ import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.CheckBox;
-import com.rpsg.rpg.system.ui.CheckBox.CheckBoxStyle;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.HeroImage;
 import com.rpsg.rpg.system.ui.HoverView;
@@ -39,7 +39,6 @@ import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.ImageList;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.display.AlertUtil;
-import com.rpsg.rpg.utils.display.FontUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.hover.ConfirmView;
 
@@ -58,7 +57,8 @@ public class EquipView extends DefaultIView{
 		CheckBoxStyle cstyle=new CheckBoxStyle();
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"info.png");
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"info_p.png");// help button press
-		$.add(new CheckBox("", cstyle, 1)).appendTo(stage).setPosition(880,486).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
+		cstyle.font = Res.font.get(20);
+		$.add(new CheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
 			data.addAction(self.isChecked()?Actions.fadeIn(0.3f):Actions.fadeOut(0.3f));
 		}});}});
 		
@@ -89,29 +89,31 @@ public class EquipView extends DefaultIView{
 		cstyle2.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"menu_button_select.png");
 		cstyle2.checkboxOn.setMinHeight(47);
 		cstyle2.checkboxOn.setMinWidth(75);
+		cstyle2.font = Res.font.get(18);
 		int offset = -1,padding = 54,_top = 400;
 		ButtonGroup<Button> bg = new ButtonGroup<Button>(
-			(Button)($.add(new CheckBox(Equipment.EQUIP_WEAPON, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
-			(Button)($.add(new CheckBox(Equipment.EQUIP_CLOTHES, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
-			(Button)($.add(new CheckBox(Equipment.EQUIP_SHOES, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
-			(Button)($.add(new CheckBox(Equipment.EQUIP_ORNAMENT1, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem()),
-			(Button)($.add(new CheckBox(Equipment.EQUIP_ORNAMENT2, cstyle2, 0)).setPosition(250, _top-(++offset * padding)).getItem())
+			(Button)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_WEAPON).setPosition(250, _top-(++offset * padding)).getItem()),
+			(Button)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_CLOTHES).setPosition(250, _top-(++offset * padding)).getItem()),
+			(Button)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_SHOES).setPosition(250, _top-(++offset * padding)).getItem()),
+			(Button)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_ORNAMENT1).setPosition(250, _top-(++offset * padding)).getItem()),
+			(Button)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_ORNAMENT2).setPosition(250, _top-(++offset * padding)).getItem())
 		);
 		
 		for(Button but:bg.getButtons()){
 			stage.addActor(but);
 			final CheckBox box =((CheckBox)but);
-			box.setForeground(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+box.getText()+".png").size(40, 40)).setFgOff(37).onClick(new Runnable(){
+			box.setForeground(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+box.getUserObject().toString()+".png").size(40, 40)).setFgOff(0).onClick(new Runnable(){
 				public void run() {
-					currentFilter = box.getText();
+					currentFilter = box.getUserObject().toString();
 					generate();
 				}
 			});
+			box.setWidth(box.getStyle().checkboxOff.getMinWidth());
 			if(but.equals(bg.getButtons().get(0)))
 				box.click().setChecked(true);
 		}
 		
-//		stage.setDebugAll(true);
+		stage.setDebugAll(true);
 		
 		return this;
 	}
@@ -164,12 +166,12 @@ public class EquipView extends DefaultIView{
 				}
 				
 				if(append.length()!=0)
-					append = "\n<!-d38181"+append+">";
+					append = "\n[#d38181]"+append+"[]";
 				
-				$.add(new Label("<!-ff6600"+t.item.name+">",30)).setPosition(395, 156).appendTo(description);
-				$.add(new Label((t.item==currentHeroEquip?"(当前)":"")+"拥有"+t.item.count+"个",16).setPos(FontUtil.getTextWidth(t.item.name, 30)+20+395, 147)).appendTo(description);
+				$.add(new Label("[#ff6600]"+t.item.name+"[]",30).markup(true)).setPosition(395, 156).appendTo(description);
+				$.add(new Label((t.item==currentHeroEquip?"(当前)":"")+"拥有"+t.item.count+"个",16).position(Res.font.getTextWidth(t.item.name, 30)+20+395, 147)).appendTo(description);
 				Table table = new Table().align(Align.topLeft);
-				table.add(new Label(t.item.illustration+append+"\n"+((Equipment)t.item).illustration2,17).setWidth(558).setYOffset(4).layout()).padLeft(10).padBottom(5).padRight(0).align(Align.topLeft);
+				table.add(new Label(t.item.illustration+append+"\n"+((Equipment)t.item).illustration2,17).width(558).markup(true)).padLeft(10).padBottom(5).padRight(0).align(Align.topLeft);
 				ScrollPane pane = new ScrollPane(table);
 				pane.setupOverscroll(20, 200, 200);
 				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbar.png");
@@ -184,20 +186,20 @@ public class EquipView extends DefaultIView{
 		
 		$.add(new HeroImage(parent.current,0)).appendTo(inner).setPosition(285, 480);
 		$.add(new Label(parent.current.name,30)).setPosition(420, 522).appendTo(inner);
-		$.add(new Label(parent.current.jname,24).setPad(-7)).setAlpha(.1f).setPosition(420, 503).appendTo(inner);
+		$.add(new Label(parent.current.jname,24)).setAlpha(.1f).setPosition(420, 503).appendTo(inner);
 		
 		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)parent.current.prop.get("hp")/(float)parent.current.prop.get("maxhp")*161,20).setPosition(851, 456).appendTo(data).setColor(Color.valueOf("c33737"));
 		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)parent.current.prop.get("mp")/(float)parent.current.prop.get("maxmp")*161,20).setPosition(851, 429).appendTo(data).setColor(Color.valueOf("3762c3"));
-		$.add(new Label(parent.current.prop.get("hp")+"/"+parent.current.prop.get("maxhp"),18).align(925, 473).setPad(-8)).setColor(Color.valueOf("2BC706")).appendTo(data);
-		$.add(new Label(parent.current.prop.get("mp")+"/"+parent.current.prop.get("maxmp"),18).align(925, 445).setPad(-8)).setColor(Color.YELLOW).appendTo(data);
+		$.add(new Label(parent.current.prop.get("hp")+"/"+parent.current.prop.get("maxhp"),18).align(925, 473)).setColor(Color.valueOf("2BC706")).appendTo(data);
+		$.add(new Label(parent.current.prop.get("mp")+"/"+parent.current.prop.get("maxmp"),18).align(925, 445)).setColor(Color.YELLOW).appendTo(data);
 		
 		int pad = 38,off = 441,x = 975;
-		$.add(new Label(parent.current.prop.get("hit")+"",22).align(x, off-=pad).setPad(-8)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("speed")+"",22).align(x, off-=pad).setPad(-8)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("defense")+"",22).align(x, off-=pad).setPad(-8)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("magicDefense")+"",22).align(x, off-=pad).setPad(-8)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("attack")+"",22).align(x, off-=pad).setPad(-8)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("magicAttack")+"",22).align(x, off-=pad).setPad(-8)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("hit")+"",22).align(x, off-=pad)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("speed")+"",22).align(x, off-=pad)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("defense")+"",22).align(x, off-=pad)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("magicDefense")+"",22).align(x, off-=pad)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("attack")+"",22).align(x, off-=pad)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("magicAttack")+"",22).align(x, off-=pad)).appendTo(data);
 	}
 	
 	private List<Icon> getEquips(String equipType){

@@ -3,6 +3,7 @@ package com.rpsg.rpg.utils.display;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
@@ -20,6 +21,7 @@ import com.rpsg.rpg.utils.game.Logger;
 
 public class Msg {
 	public Image msgbox;
+	private BitmapFont font;
 	
 	public Msg() {
 		msgbox=new Image(Setting.MESSAGE+MsgType.正常.path());
@@ -34,6 +36,7 @@ public class Msg {
 		currentTextPoint=0;
 		TEXT_DISPLAY_SPEED=30;
 		DISPLAY_OFFSET=0;
+		font = Res.font.get(22);
 		show=false;
 		Logger.info("文本模块初始化完成。");
 	}
@@ -70,8 +73,10 @@ public class Msg {
 						++currentTextPoint;
 				}
 				batch.begin();
-				FontUtil.draw(batch, currentText.substring(0, currentTextPoint), size, Color.WHITE, 50, 130, (int) (msgbox.getWidth() - 100));
-				FontUtil.draw(batch, title, 22, titleColor, getOrPosX(title, 22), 178, (int) (msgbox.getWidth()-60));
+				font.draw(batch, currentText.substring(0, currentTextPoint), 50, 130,(msgbox.getWidth()-100),10,false);
+				font.setColor(titleColor);
+				font.draw(batch, title, getOrPosX(title, 22), 178, (int) (msgbox.getWidth()-60),10,false);
+				font.setColor(Color.WHITE);
 				batch.end();
 			}
 			public void init() {
@@ -91,8 +96,8 @@ public class Msg {
 	}
 	
 	private int getOrPosX(String txt,int size){
-		int o=(200/2-FontUtil.getTextWidth(txt, size, Setting.STRING_PADDING_LR)/2);
-		return 20+o;
+		int o=190/2+(Res.font.getTextWidth(txt, size))/2;
+		return o;
 	}
 	
 	public BaseScriptExecutor show(Script script,final String msgType){

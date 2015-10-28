@@ -61,6 +61,10 @@ public class GameViews implements ApplicationListener {
 			Setting.persistence = Persistence.read();//如果是安卓、ios的话，会先初始化libgdx引擎，才开始读取游戏设置，而如果是桌面版，会在main方法就读取游戏设置。
 		Logger.info ("底层引擎初始化成功。");
 		//start init
+		
+		Res.init();
+		GameUtil.init();
+		
 		Setting.init();//设置一些复用的UI组件
 		//input
 		Gdx.input.setInputProcessor(RPG.input);//注册输入

@@ -316,6 +316,15 @@ public class GdxQuery {
 		return this;
 	}
 	
+	public GdxQuery setAlign(int align){
+		for(Actor actor:getItems()){
+			if(actor instanceof Label){
+				((Label)actor).setAlignment(align);
+			}
+		}
+		return this;
+	}
+	
 	public Object getUserObject(){
 		return getItem().getUserObject();
 	}
@@ -493,7 +502,7 @@ public class GdxQuery {
 		GdxQuery query=new GdxQuery();
 		for(Actor actor:getItems()){
 			if(actor instanceof Group)
-				query.add(((Group)actor).getChildren().items);
+				query.add((Object[])((Group)actor).getChildren().items);
 			if(actor instanceof com.badlogic.gdx.scenes.scene2d.ui.List<?>)
 				query.add(((com.badlogic.gdx.scenes.scene2d.ui.List<?>)actor).getItems());
 			if(actor instanceof SelectBox<?>)
@@ -510,6 +519,11 @@ public class GdxQuery {
 		if(isEmpty())
 			return new NullActor();
 		return values.get(0);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <T> T getItem(Class<T> c){
+		return (T)getItem();
 	}
 
 	public boolean isEmpty() {

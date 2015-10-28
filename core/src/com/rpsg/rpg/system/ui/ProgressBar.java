@@ -6,18 +6,18 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.Disableable;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Pools;
-import com.rpsg.rpg.utils.display.FontUtil;
+import com.rpsg.rpg.system.base.Res;
 
 /**
  * GDX-RPG ProgressBar组件
@@ -36,9 +36,12 @@ public class ProgressBar extends Widget implements Disableable {
 	boolean disabled;
 	boolean shiftIgnoresSnap;
 	
-	public boolean label=false;
+	private boolean labelful=false;
+	private Label label;
 	public ProgressBar setLabelful(boolean l){
-		label=l;
+		labelful=l;
+		if(l)
+			label = Res.font.getLabel(fontSize);
 		return this;
 	}
 	
@@ -185,8 +188,10 @@ public class ProgressBar extends Widget implements Disableable {
 					width - (int)(position + knobWidthHalf), knobAfter.getMinHeight());
 			}
 			if (knob != null) knob.draw(batch, (int)(x + position), (int)(y + (height - knobHeight) * 0.5f), knobWidth, knobHeight);
-			if(label){
-				FontUtil.draw((SpriteBatch)batch,(int) this.getValue()+end, fontSize, Color.WHITE, (int)(getX()+getWidth()+40),(int)(getY()+getHeight()-6), 1000,-5,0);
+			if(labelful){
+				label.setText(getValue()+end);
+				label.setPosition((int)(getX()+getWidth()+40),(int)(getY()+getHeight()-6));
+				label.draw(batch, getColor().a);
 			}
 		}
 	}

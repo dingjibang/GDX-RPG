@@ -7,7 +7,10 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.utils.Array;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
@@ -19,15 +22,13 @@ import com.rpsg.rpg.system.base.Initialization;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Image;
-import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.TextButton;
-import com.rpsg.rpg.system.ui.TextButton.TextButtonStyle;
 import com.rpsg.rpg.utils.display.AlertUtil;
 
 
 
 public class LoadView extends HoverView{
-	TextButtonStyle butstyle;
+	TextButtonStyle butstyle;	
 	public int currentSelect=-1;
 	public TextButton autobut,savebutton;
 	public void init() {
@@ -49,8 +50,10 @@ public class LoadView extends HoverView{
 		butstyle=new TextButtonStyle();
 		butstyle.up=Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"savebut.png");
 		butstyle.down=Res.getDrawable(Setting.IMAGE_MENU_SYSTEM + "savebuth.png");
+		butstyle.font = Res.font.get(18);
 		
-		TextButton llbutton=new TextButton("<<", butstyle).onClick(new Runnable() {
+		
+		stage.addActor($.add(new TextButton("<<", butstyle)).onClick(new Runnable() {
 			@Override
 			public void run() {
 				if (currentPageStart - 5 > 1)
@@ -59,12 +62,10 @@ public class LoadView extends HoverView{
 					currentPageStart = 1;
 				LoadView.this.generateList();
 			}
-		});
-		llbutton.setOffset(5).setPad(-5).setHof(-1).setSize(62,33);
-		llbutton.setPosition(44,422);
-		stage.addActor(llbutton);
+		}).setSize(62,33).setPosition(44,422).getItem());
 		
-		TextButton lbutton=new TextButton("<", butstyle).onClick(new Runnable() {
+		
+		stage.addActor($.add(new TextButton("<", butstyle)).onClick(new Runnable() {
 			@Override
 			public void run() {
 				if (currentPageStart - 1 > 1)
@@ -73,12 +74,10 @@ public class LoadView extends HoverView{
 					currentPageStart = 1;
 				LoadView.this.generateList();
 			}
-		});
-		lbutton.setOffset(1).setPad(-5).setHof(-1).setSize(62,33);
-		lbutton.setPosition(124,422);
-		stage.addActor(lbutton);
+		}).setSize(62,33).setPosition(124,422).getItem());
 		
-		TextButton rbutton=new TextButton(">", butstyle).onClick(new Runnable() {
+		
+		stage.addActor($.add(new TextButton(">", butstyle)).onClick(new Runnable() {
 			@Override
 			public void run() {
 				if (currentPageStart + 5 < Setting.SAVE_FILE_MAX_PAGE)
@@ -87,12 +86,10 @@ public class LoadView extends HoverView{
 					currentPageStart = Setting.SAVE_FILE_MAX_PAGE - 5;
 				LoadView.this.generateList();
 			}
-		});
-		rbutton.setOffset(1).setPad(-5).setHof(-1).setSize(62,33);
-		rbutton.setPosition(715,422);
-		stage.addActor(rbutton);
+		}).setSize(62,33).setPosition(715,422).getItem());
 		
-		TextButton rrbutton=new TextButton(">>", butstyle).onClick(new Runnable() {
+
+		stage.addActor($.add(new TextButton(">", butstyle)).onClick(new Runnable() {
 			@Override
 			public void run() {
 				if (currentPageStart + 10 < Setting.SAVE_FILE_MAX_PAGE)
@@ -101,12 +98,10 @@ public class LoadView extends HoverView{
 					currentPageStart = Setting.SAVE_FILE_MAX_PAGE - 5;
 				LoadView.this.generateList();
 			}
-		});
-		rrbutton.setOffset(5).setPad(-5).setHof(-1).setSize(62,33);
-		rrbutton.setPosition(795,422);
-		stage.addActor(rrbutton);
+		}).setSize(62,33).setPosition(795,422).getItem());
 		
-		savebutton=new TextButton("读取游戏", butstyle).onClick(new Runnable() {
+		
+		savebutton=$.add(new TextButton("读取游戏", butstyle)).onClick(new Runnable() {
 			@Override
 			public void run() {
 				RPG.popup.add(ConfirmView.getDefault("确定要读取这个存档么？", new ObjectRunnable() {
@@ -130,23 +125,23 @@ public class LoadView extends HoverView{
 					}
 				}));
 			}
-		});
-		savebutton.setOffset(10).setPad(1).setHof(-2).setSize(192,58);
-		savebutton.setPosition(562,28);
+		}).setSize(192,58).setPosition(562, 28).getItem(TextButton.class);
+		
 		savebutton.setName("mask");
 		stage.addActor(savebutton);
 		
-		TextButton cancelbutton=new TextButton("取消", butstyle).onClick(new Runnable() {
+		TextButton cancelbutton=$.add(new TextButton("取消", butstyle)).onClick(new Runnable() {
 			@Override
 			public void run() {
 				disposed = true;
 			}
-		});
-		cancelbutton.setOffset(10).setPad(1).setHof(-2).setSize(192,58);
+		}).getItem(TextButton.class);
+		
+		cancelbutton.setSize(192,58);
 		cancelbutton.setPosition(792,28);
 		stage.addActor(cancelbutton);
 		
-		TextButton deletebutton=new TextButton("删除档案", butstyle).onClick(new Runnable() {
+		TextButton deletebutton=$.add(new TextButton("删除档案", butstyle)).onClick(new Runnable() {
 			@Override
 			public void run() {
 				RPG.popup.add(ConfirmView.getDefault("确定要删除这个档案么？", new ObjectRunnable() {
@@ -164,8 +159,8 @@ public class LoadView extends HoverView{
 					}
 				}));
 			}
-		});
-		deletebutton.setOffset(10).setPad(1).setHof(-2).setSize(192,58);
+		}).getItem(TextButton.class);
+		deletebutton.setSize(192,58);
 		deletebutton.setPosition(45,28);
 		stage.addActor(deletebutton);
 		
@@ -200,7 +195,7 @@ public class LoadView extends HoverView{
 //					continue;
 				final TextButton tmp=new TextButton(""+(currentPageStart+i), butstyle);
 				tmp.setUserObject(new Object());
-				tmp.setOffset(1).setPad(tmp.getText().length()==2?-2:-4).setHof(-1).onClick(new Runnable() {
+				$.add(tmp).onClick(new Runnable() {
 					@Override
 					public void run() {
 						currentPage = Integer.parseInt(tmp.getText().toString());
@@ -220,22 +215,23 @@ public class LoadView extends HoverView{
 					img.setPosition(tmp.getX(), tmp.getY());
 					img.setUserObject(new Object());
 					stage.addActor(img);
-					stage.addActor(new Label(currentPage+"",22).setWidth(1000).setPos((int) tmp.getX()+(tmp.getText().length()==2?1:13), (int)tmp.getY()+26).setPad(tmp.getText().length()==2?-2:-4).userObj(new Object()));
+					stage.addActor($.add(Res.font.getLabel(currentPage+"",22)).setWidth(1000).setPosition((int) tmp.getX()+(tmp.getText().length()==2?1:13), (int)tmp.getY()+26).setUserObject(new Object()).getItem());
 					tmp.remove();
 				}
 			}
 		}
 
 		if(currentPage!=Setting.SAVE_FILE_MAX_PAGE-1){
-			autobut=new TextButton("Auto", butstyle).onClick(new Runnable() {
+			autobut=$.add(new TextButton("Auto", butstyle)).onClick(new Runnable() {
 				@Override
 				public void run() {
 					currentPageStart = Setting.SAVE_FILE_MAX_PAGE - 5;
 					currentPage = Setting.SAVE_FILE_MAX_PAGE - 1;
 					LoadView.this.generateList();
 				}
-			});
-			autobut.setOffset(17).setPad(-5).setHof(-1).setSize(110,33);
+			}).getItem(TextButton.class);
+			
+			autobut.setSize(110,33);
 			autobut.setPosition(874,422);
 			autobut.setUserObject(new Object());
 			stage.addActor(autobut);
@@ -245,7 +241,7 @@ public class LoadView extends HoverView{
 			img.setPosition(874,422);
 			img.setUserObject(new Object());
 			stage.addActor(img);
-			stage.addActor(new Label("Auto",22).setWidth(1000).setPos(887, 448).setPad(-5).userObj(new Object()));
+			stage.addActor($.add(Res.font.getLabel("Auto",22)).setWidth(1000).setPosition(887, 448).setUserObject(new Object()).getItem(Label.class));
 		}
 		for(int i=0;i<4;i++){
 			SLData.generate((currentPage-1)*4+i,i,stage,this);

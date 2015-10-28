@@ -1,20 +1,21 @@
 package com.rpsg.rpg.object.base;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
+import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
-import com.rpsg.rpg.utils.display.FontUtil;
 
 public class Alert {
 	public Image type;
 	public String str;
 	public int size;
 	public Image box;
+	public BitmapFont font;
 	
 	public boolean dispose=false,hide=false;
 	
@@ -34,9 +35,10 @@ public class Alert {
 	
 	private void init(){
 		box=new Image(new NinePatchDrawable(AlertUtil.box));
-		box.setWidth(FontUtil.getTextWidth(str, size)+100);
+		box.setWidth(Res.font.getTextWidth(font, str)+100);
 		box.setHeight(50);
 		xoffset=(int) (box.getWidth()+100);
+		font = Res.font.get(size);
 	}
 	int xoffset;
 	
@@ -63,7 +65,9 @@ public class Alert {
 		box.addAction(last);
 		box.act(Gdx.graphics.getDeltaTime());
 		box.draw(sb);
-		FontUtil.draw(sb, str, size,Color.WHITE,(int)box.getX()-size+62,(int)box.getY()+25+size/2,(int)box.getWidth());
+		
+		font.draw(sb, str, (int)box.getX()-size+62, (int)box.getY()+25+size/2);
+		
 		type.setX(box.getX()+10);
 		type.setY(box.getY()+9);
 		type.draw(sb);

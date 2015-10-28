@@ -222,7 +222,7 @@ public class ItemController {
 		}
 		//防止HP MP溢出
 		postOverflow(hero, "hp");
-		postOverflow(hero, "map");
+		postOverflow(hero, "mp");
 	}
 	
 	private static void postOverflow(Hero hero,String prop){

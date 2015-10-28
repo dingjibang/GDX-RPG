@@ -25,7 +25,7 @@ public class ColorUtil {
 
 	public static void draw(){
 		RayHandler ray=GameViews.gameview.ray;
-		ray.setCombinedMatrix(GameViews.gameview.camera.combined);
+		ray.setCombinedMatrix(GameViews.gameview.camera);//TODO
 		if(RPG.global.date.getTime()==Time.NIGHT){
 				ray.setAmbientLight(0.2f,0.2f,0.35f,0.6f);
 				ray.updateAndRender();

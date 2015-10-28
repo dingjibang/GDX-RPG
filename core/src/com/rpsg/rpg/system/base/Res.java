@@ -5,9 +5,11 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.system.controller.LazyBitmapFontConctoller;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ProxyImage;
 import com.rpsg.rpg.utils.display.GameViewRes;
@@ -17,11 +19,18 @@ public class Res {
 	public static AssetManager ma = GameViewRes.ma;
 	public static AssetManager ma2 = GameViewRes.ma2;
 	public static Texture NO_TEXTURE;
+	
+	public static LazyBitmapFontConctoller font;
+	
 	public static Image get(String resPath) {
 		Logger.info("伪装加载纹理：" + resPath);
 	
 		generateTempTexture();
 		return new ProxyImage(resPath);
+	}
+	
+	public static Label get(String text,int fontSize){
+		return font.getLabel(text,fontSize);
 	}
 	
 	public static boolean exist(String path){
@@ -73,5 +82,9 @@ public class Res {
 		} catch (Exception e) {
 			Logger.error("无法卸载纹理 - " + resPath);
 		}
+	}
+	
+	public static void init(){
+		font = new LazyBitmapFontConctoller();
 	}
 }
