@@ -15,8 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
@@ -113,7 +111,7 @@ public class EquipView extends DefaultIView{
 				box.click().setChecked(true);
 		}
 		
-		stage.setDebugAll(true);
+		stage.setDebugAll(Setting.persistence.uiDebug);
 		
 		return this;
 	}
@@ -168,14 +166,15 @@ public class EquipView extends DefaultIView{
 				if(append.length()!=0)
 					append = "\n[#d38181]"+append+"[]";
 				
-				$.add(new Label("[#ff6600]"+t.item.name+"[]",30).markup(true)).setPosition(395, 156).appendTo(description);
-				$.add(new Label((t.item==currentHeroEquip?"(当前)":"")+"拥有"+t.item.count+"个",16).position(Res.font.getTextWidth(t.item.name, 30)+20+395, 147)).appendTo(description);
+				Label name;
+				$.add(name = new Label(t.item.name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
+				$.add(new Label(("("+(t.item==currentHeroEquip?"当前，":"")+"拥有"+t.item.count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
 				ScrollPane pane = new ScrollPane(new Label(t.item.illustration+append+"\n"+((Equipment)t.item).illustration2,17).warp(true).markup(true));
 				pane.setupOverscroll(20, 200, 200);
 				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbar.png");
 				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbarin.png");
 				pane.setFadeScrollBars(false);
-				$.add(pane).setSize(578, 55).setPosition(410, 72).appendTo(description);
+				$.add(pane).setSize(578, 60).setPosition(410, 68).appendTo(description);
 				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
 			}
 		});
@@ -183,21 +182,21 @@ public class EquipView extends DefaultIView{
 		ilist.setScrollPercentY(oldTop!=oldTop?0:oldTop);
 		
 		$.add(new HeroImage(parent.current,0)).appendTo(inner).setPosition(285, 480);
-		$.add(new Label(parent.current.name,30)).setPosition(420, 522).appendTo(inner);
-		$.add(new Label(parent.current.jname,24)).setAlpha(.1f).setPosition(420, 503).appendTo(inner);
+		$.add(new Label(parent.current.name,30)).setPosition(420, 495).appendTo(inner);
+		$.add(new Label(parent.current.jname,24)).setAlpha(.1f).setPosition(420, 483).appendTo(inner);
 		
 		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)parent.current.prop.get("hp")/(float)parent.current.prop.get("maxhp")*161,20).setPosition(851, 456).appendTo(data).setColor(Color.valueOf("c33737"));
 		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)parent.current.prop.get("mp")/(float)parent.current.prop.get("maxmp")*161,20).setPosition(851, 429).appendTo(data).setColor(Color.valueOf("3762c3"));
-		$.add(new Label(parent.current.prop.get("hp")+"/"+parent.current.prop.get("maxhp"),18).align(925, 473)).setColor(Color.valueOf("2BC706")).appendTo(data);
-		$.add(new Label(parent.current.prop.get("mp")+"/"+parent.current.prop.get("maxmp"),18).align(925, 445)).setColor(Color.YELLOW).appendTo(data);
+		$.add(new Label(parent.current.prop.get("hp")+"/"+parent.current.prop.get("maxhp"),18).align(851, 455).width(161)).setColor(Color.valueOf("2BC706")).appendTo(data);
+		$.add(new Label(parent.current.prop.get("mp")+"/"+parent.current.prop.get("maxmp"),18).align(851, 428).width(161)).setColor(Color.YELLOW).appendTo(data);
 		
-		int pad = 38,off = 441,x = 975;
-		$.add(new Label(parent.current.prop.get("hit")+"",22).align(x, off-=pad)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("speed")+"",22).align(x, off-=pad)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("defense")+"",22).align(x, off-=pad)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("magicDefense")+"",22).align(x, off-=pad)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("attack")+"",22).align(x, off-=pad)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("magicAttack")+"",22).align(x, off-=pad)).appendTo(data);
+		int pad = 38,off = 421,x = 942;
+		$.add(new Label(parent.current.prop.get("hit")+"",22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("speed")+"",22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("defense")+"",22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("magicDefense")+"",22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("attack")+"",22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("magicAttack")+"",22).align(x, off-=pad).width(80)).appendTo(data);
 	}
 	
 	private List<Icon> getEquips(String equipType){
