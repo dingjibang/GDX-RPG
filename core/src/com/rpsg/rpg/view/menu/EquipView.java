@@ -170,14 +170,12 @@ public class EquipView extends DefaultIView{
 				
 				$.add(new Label("[#ff6600]"+t.item.name+"[]",30).markup(true)).setPosition(395, 156).appendTo(description);
 				$.add(new Label((t.item==currentHeroEquip?"(当前)":"")+"拥有"+t.item.count+"个",16).position(Res.font.getTextWidth(t.item.name, 30)+20+395, 147)).appendTo(description);
-				Table table = new Table().align(Align.topLeft);
-				table.add(new Label(t.item.illustration+append+"\n"+((Equipment)t.item).illustration2,17).width(558).markup(true)).padLeft(10).padBottom(5).padRight(0).align(Align.topLeft);
-				ScrollPane pane = new ScrollPane(table);
+				ScrollPane pane = new ScrollPane(new Label(t.item.illustration+append+"\n"+((Equipment)t.item).illustration2,17).warp(true).markup(true));
 				pane.setupOverscroll(20, 200, 200);
 				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbar.png");
 				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbarin.png");
 				pane.setFadeScrollBars(false);
-				$.add(pane).setSize(588, 55).setPosition(400, 72).appendTo(description);
+				$.add(pane).setSize(578, 55).setPosition(410, 72).appendTo(description);
 				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
 			}
 		});

@@ -55,11 +55,7 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 			}
 		}
 		
-		boolean oldFlag = true;
-		if(enableMarkup){
-			oldFlag = getStyle().font.getData().markupEnabled;
-			getStyle().font.getData().markupEnabled = true;
-		}
+		getStyle().font.getData().markupEnabled = enableMarkup;
 		
 		if(overflow){
 			setText(overflowd);
@@ -67,10 +63,6 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 			setText(oldText);
 		}else{
 			super.draw(batch, parentAlpha);
-		}
-		
-		if(enableMarkup){
-			getStyle().font.getData().markupEnabled = oldFlag;
 		}
 	}
 	
