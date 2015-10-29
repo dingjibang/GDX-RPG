@@ -12,7 +12,7 @@ made by [Libgdx](https://github.com/libgdx/libgdx).
 # Usual build faults!important( •́ .̫ •̀  )
 ####1."SDK location not found ..." or other errors when build the gradle.
 please download "android sdk" at first. you have to download those modules:
-- Android SDK Build-tools (22.0.1)
+- Android SDK Build-tools (23.0.1)
 - Android 5.1.1 (API 22)
 - Android Support Library (23.0.1)
 - Android Support Repository (22)
