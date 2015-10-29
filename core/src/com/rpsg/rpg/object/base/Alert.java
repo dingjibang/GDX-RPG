@@ -34,11 +34,11 @@ public class Alert {
 	}
 	
 	private void init(){
+		font = Res.font.get(size);
 		box=new Image(new NinePatchDrawable(AlertUtil.box));
 		box.setWidth(Res.font.getTextWidth(font, str)+100);
 		box.setHeight(50);
 		xoffset=(int) (box.getWidth()+100);
-		font = Res.font.get(size);
 	}
 	int xoffset;
 	
