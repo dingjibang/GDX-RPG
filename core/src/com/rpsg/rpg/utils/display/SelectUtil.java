@@ -11,6 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton.ImageButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
@@ -21,9 +23,9 @@ import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
+import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.InputController;
 import com.rpsg.rpg.system.ui.Image;
-import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class SelectUtil implements InputProcessor {
@@ -48,7 +50,6 @@ public class SelectUtil implements InputProcessor {
 	boolean select=false;
 	boolean isLocked;
 	public BaseScriptExecutor select(Script script, final String... str){
-		final SelectUtil that=this;
 		return script.set(new ScriptExecutor(script) {
 			public void step() {
 				if(!select){
@@ -70,7 +71,7 @@ public class SelectUtil implements InputProcessor {
 			}
 			public void init() {
 				select=false;
-				Gdx.input.setInputProcessor(that);
+				Gdx.input.setInputProcessor(SelectUtil.this);
 				isLocked=(InputController.currentIOMode==IOMode.MapInput.MESSAGING);
 				InputController.currentIOMode=IOMode.MapInput.MESSAGING;
 				int yoff=0;
@@ -113,7 +114,10 @@ public class SelectUtil implements InputProcessor {
 					button.setPosition(GameUtil.screen_width/2-button.getWidth()/2, (yoff+=70)-30);
 					button.addAction(Actions.parallel(Actions.fadeIn(0.1f),Actions.moveBy(0, +30,0.1f)));
 					stage.addActor(button);
-					stage.addActor(l=new Label(s,22).align(124+777/2));
+					
+					stage.addActor(l=Res.font.getLabel(s,22));
+					l.setAlignment(Align.center);
+					l.setX(124+777/2);
 					l.setUserObject(button);
 				}
 			}

@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
+import com.badlogic.gdx.utils.Align;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -25,7 +26,7 @@ public class MenuHeroBox extends Group {
 		addActor(image);
 		addActor($.add(new HeroImage(hero)).setPosition(10, 5).getItem());
 		addActor(lv=Res.get(Setting.UI_BASE_IMG).size(70, 17).disableTouch().color(hero.prop.get("dead").equals(Hero.TRUE)?Color.valueOf("666666"):new Color(1,1,1,0.9f)));
-		addActor(new Label(hero.prop.get("level")+"",18).color(0, 0, 0, 1).align(25).setXOffset(true).setPos(4, 15).setPad(-5));
+		addActor($.add(Res.font.getLabel(hero.prop.get("level")+"",15)).setColor(0, 0, 0, 1).setPosition(32, 0).setAlign(Align.center).getItem());
 		addActor($.add(Res.get(Setting.UI_BASE_IMG)).setSize(0,4).setY(-4).setColor(hero.prop.get("dead").equals(Hero.TRUE)?Color.valueOf("424242"):HPColor).addAction(Actions.sizeTo((float)hero.prop.get("hp")/(float)hero.prop.get("maxhp")*70, 4,0.8f,Interpolation.pow4)).getItem());
 		addActor($.add(Res.get(Setting.UI_BASE_IMG)).setSize(0,4).setY(-8).setColor(hero.prop.get("dead").equals(Hero.TRUE)?Color.valueOf("505050"):MPColor).addAction(Actions.sizeTo((float)hero.prop.get("mp")/(float)hero.prop.get("maxmp")*70, 4,0.8f,Interpolation.pow4)).getItem());
 		addActor(select=(Image) $.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"hero_select.png").disableTouch()).setPosition(-3, -10).addAction(Actions.repeat(RepeatAction.FOREVER, Actions.sequence(Actions.color(Color.WHITE, 0.5f), Actions.color(new Color(1, 1, 1, 0.5f), 0.5f)))).getItem());

@@ -45,17 +45,19 @@
    H4sIAAAAAAAAC2NgoD+QZYJgYoA4M0I9MsYH5IiQh2FygQHQXaxAzMaMXX470OwdQLwTzQ5ToHozIDbHoW8gwA8KwgEdtCL5yxXIDgPiUCDmwONfXaCcHhDrExkmvWSG3WMq+nMU0AZsBeJtQLydhnbsBWJeIN5PQzvIAaSUi+QC5LIPhP8x0saeo0B8DIjrgbiBNlaMggECABsnu1o0CAAA
   </data>
  </layer>
+ <objectgroup name="对象层 2">
+  <object name="PUBLIC" type="NPC" gid="1066" x="1104" y="288" width="48" height="48">
+   <properties>
+    <property name="FOOT_EXECUTE" value="teleport(&quot;twofloor&quot;,2,6,2)"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer name="块层 2" width="25" height="21">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+NlYmDgpQOWRcJPgfgZmhghLMrMwCAGxOLMmHIwO+SgWAGo5iuQ/oYkhoyXA/EKIF6JJq4K1KcGxOrMmHpgdtAS0NMOW6Af/YDYF4hLmLGr7QWFLygsgFgehxp8diCDGhz655Lh36nMpNkBAueYEJhYMNzifCjZsRVLXA42f4DUvWXEXWaBAC45bHaAzJJgRah5xwhR95cRezkmBzUDlxy6HUugapWhYVsOxBUMlIUpLr3GzMSpo8QOctUNlB346jd0eXIBrrSALa2QCwDfAluxNAgAAA==
   </data>
  </layer>
  <objectgroup name="对象层 1">
-  <object name="PUBLIC" type="NPC" gid="1066" x="1152" y="240" width="48" height="48">
-   <properties>
-    <property name="NEAR_EXECUTE" value="teleport(&quot;twofloor&quot;,2,6,2)"/>
-   </properties>
-  </object>
   <object name="PUBLIC" type="NPC" gid="1066" x="912" y="144" width="48" height="48">
    <properties>
     <property name="Z_EXECUTE" value="say(&quot;人类为何要互相伤害呢？\n回车测试？&quot;)"/>
@@ -71,12 +73,7 @@
     <property name="Z_SCRIPT" value="test.js"/>
    </properties>
   </object>
-  <object name="PUBLIC" type="NPC" gid="1066" x="1152" y="288" width="48" height="48">
-   <properties>
-    <property name="NEAR_EXECUTE" value="teleport(&quot;twofloor&quot;,2,6,2)"/>
-   </properties>
-  </object>
-  <object name="PUBLIC" type="NPC" gid="1066" x="864" y="720" width="48" height="48">
+  <object name="PUBLIC" type="NPC" gid="1066" x="864" y="768" width="48" height="48">
    <properties>
     <property name="NEAR_EXECUTE" value="teleport(&quot;broom&quot;,0,1,2);"/>
    </properties>

@@ -17,12 +17,13 @@ public class Persistence implements Serializable{
 	public int seVolume = 100;
 	public int textSpeed = 2;
 	public boolean showFPS = false;
-	public boolean debugMod = false;
+	public boolean debugMod = true;
 	public boolean onErrorSendMsg = true;
 	public boolean touchMod = false;
 	public boolean betterLight = true;
 	public boolean cacheResource = true;
 	public boolean softCamera=true;
+	public boolean uiDebug = false;
 	
 	public String errorMessage="";
 	

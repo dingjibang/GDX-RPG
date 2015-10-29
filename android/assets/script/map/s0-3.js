@@ -1,5 +1,5 @@
 eval(""+load('global.js'));
-if(RPG.getFlag("1-1-inner")==null){
+if(RPG.getFlag("1-1-inner")!=null){
 	RPG.setFlag("1-1-inner",true);
 	Hero.setVisible(true);
 	

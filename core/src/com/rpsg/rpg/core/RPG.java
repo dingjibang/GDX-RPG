@@ -73,6 +73,12 @@ public class RPG {
 		global.flag.put(key, value);
 	}
 	
+	/**
+	 * execute a java-script string ,and set the "this" object to executor.<br>
+	 * <br><b>执行一段JS脚本，并且设置“this”变量。</b>
+	 * @param js javascript
+	 * @param self "this" object
+	 */
 	public static boolean executeJS(String js,Object self){
 		try {
 			Context ctx = Context.enter();
@@ -81,7 +87,7 @@ public class RPG {
 			
 			ScriptableObject scope =ctx.initStandardObjects();
 			if(self!=null)
-				scope.setPrototype(((NativeJavaObject)Context.javaToJS(null, scope)));
+				scope.setPrototype(((NativeJavaObject)Context.javaToJS(self, scope)));
 			ctx.evaluateString(scope, js, null, 1, null);
 			Context.exit();
 			return true;
@@ -92,6 +98,11 @@ public class RPG {
 		}
 	}
 	
+	/**
+	 * execute a java-script string.<br>
+	 * <br><b>执行一段JS脚本。</b>
+	 * @param js javascript
+	 */
 	public static boolean executeJS(String js){
 		return executeJS(js,null);
 	}

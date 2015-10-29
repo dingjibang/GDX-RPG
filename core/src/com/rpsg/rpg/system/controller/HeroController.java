@@ -158,7 +158,8 @@ public class HeroController {
 			getHeadHero().enableCollide=true;
 			getHeadHero().waitWhenCollide=false;
 		}
-	} 
+	}
+	
 	public boolean thisFrameGeneratedPosition=false;
 	public void generatePosition(int x,int y,int z){
 		for(int i=0;i<heros.size();i++){

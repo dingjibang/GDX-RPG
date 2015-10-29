@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.badlogic.gdx.utils.Align;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -14,7 +14,6 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
-import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class SupportView extends HoverView {
@@ -36,17 +35,17 @@ public class SupportView extends HoverView {
 			group.pack();
 			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "sup_detabox.png").size(784, GameUtil.screen_height).position(240, 0));
 			$.add(Res.get(Setting.IMAGE_FG+hero.fgname+"/Normal.png").position(1100, 0).scaleY(0.35f).color(1,1,1,.5f).scaleX(-0.35f)).setOrigin(Align.bottomLeft).appendTo(group);
-			group.addActor(new Label(hero.name,55).setPos(490, 520).setWidth(1000));
-			group.addActor(new Label(hero.jname,43).setPos(560, 490).setWidth(1000).color(1, 1, 1, .3f).setPad(-18));
-			group.addActor(new Label("角色等级"+hero.prop.get("level")+"，社群("+hero.association.name+")等级"+hero.association.level,36).setPos(420, 440).setWidth(1000).color(1, 1, 1, .7f).setPad(-1));
+			group.addActor($.add(Res.get(hero.name,55)).setPosition(490, 520).getItem());
+			group.addActor($.add(Res.get(hero.jname,43)).setPosition(560, 490).setColor(1, 1, 1, .3f).getItem());
+			group.addActor($.add(Res.get("角色等级"+hero.prop.get("level")+"，社群("+hero.association.name+")等级"+hero.association.level,36)).setPosition(420, 440).setColor(1, 1, 1, .7f).getItem());
 			group.addActor(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"left.png"),Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"left_p.png")).pos(430, 465).onClick(new Runnable() {
-				@Override
 				public void run() {
 					SupportView.this.keyDown(Keys.ESCAPE);
 				}
 			}));
-			group.addActor(new Label(hero.support.name,50).setPos(430, 280).setWidth(1000).color(hero.support.r, hero.support.g, hero.support.b, hero.support.a));
-			group.addActor(new Label(hero.support.illustration,20).setPos(480, 210).setWidth(1000));
+			group.addActor($.add(Res.get(hero.support.name,50)).setPosition(430, 280).setColor(hero.support.r, hero.support.g, hero.support.b, hero.support.a).getItem());
+			group.addActor($.add(Res.get(hero.support.illustration,20)).setPosition(480, 210).getItem());
+			
 			group.setPosition(GameUtil.screen_width-200, 0);
 			group.addAction(Actions.moveTo(0, 0,0.4f,Interpolation.pow3));
 		}

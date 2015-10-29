@@ -3,7 +3,7 @@ package com.rpsg.rpg.system.ui;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.badlogic.gdx.utils.Align;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.CustomRunnable;
@@ -47,13 +47,17 @@ public class ImageList extends Group{
 	}
 	
 	public ImageList setScrollPercentY(float per){
-		pane.layout();
 		pane.setScrollPercentY(per);
 		pane.setSmoothScrolling(false);
+		pane.invalidate();
 		return this;
 	}
 	
 	public ImageList generate(){
+		return this.generate(null);
+	}
+	
+	public ImageList generate(Icon before){
 		inner = new Table();
 		pane=new ScrollPane(inner);
 		pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"scrollbar.png");
@@ -68,6 +72,9 @@ public class ImageList extends Group{
 		
 		inner.align(Align.topLeft);
 		
+		if(before!=null && before.item!=null)
+			items.add(0,before);
+		
 		for(final Icon i:items){
 			if(currentCol++ == col-1){
 				row++;
@@ -75,11 +82,11 @@ public class ImageList extends Group{
 				inner.row();
 			}
 			inner.add($.add(i).setPosition(i.getWidth()*currentCol+padding, i.getHeight()*row+padding).setSize(70, 70).onClick(new Runnable() {public void run() {
-				setCurrent(i);
-			}}).getItem()).align(Align.topLeft).pad(padding).prefSize(70,70);
+//				if(i.enable)
+					setCurrent(i);
+			}}).getItem()).align(Align.topLeft).pad(padding).prefSize(70,70).getActor().setColor(1,1,1,i.enable?1:.5f);;
 		}
 		pane.setSize(getWidth(), getHeight());
-		
 		addActor(pane);
 		return this;
 	}
@@ -91,9 +98,4 @@ public class ImageList extends Group{
 		change(i);
 	}
 
-	private ImageList layout() {
-		pane.layout();
-		return this;
-	}
-	
 }

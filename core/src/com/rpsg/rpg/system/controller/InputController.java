@@ -29,7 +29,7 @@ public class InputController{
 		tmpIO=null;
 	}
 	public static boolean keyDown(int keycode,GameView gv) {
-		if(keycode==Keys.O){//DEBUG 如果按下键盘的“O”键，则随机的移动一下镜头
+		if(keycode==Keys.O){//TODO REMOVE IT DEBUG 如果按下键盘的“O”键，则随机的移动一下镜头
 			MoveController.setCameraPosition(MathUtils.random(-350,350), MathUtils.random(-350,350));
 		}
 		if(keycode==Keys.R){
@@ -80,8 +80,8 @@ public class InputController{
 		}
 		case NORMAL:{
 			if(GameViews.gameview.inited && GameViews.gameview.renderAble){
-				PostUtil.touchDown(screenX, screenY, pointer, button);
-				Path.click(screenX, screenY);
+				if(!PostUtil.touchDown(screenX, screenY, pointer, button))//如果没点到屏幕的UI，则自动移动
+					Path.click(screenX, screenY);
 			}
 			break;
 		}

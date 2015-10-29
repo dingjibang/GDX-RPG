@@ -32,6 +32,7 @@ public class PostUtil {
 	static GdxQuery others;
 	static boolean VZPress=false;
 	public static boolean showMenu=true;
+	static Actor mask;
 	public static boolean isVZPress(){
 		return VZPress;//?!(VZPress=false):false;
 	}
@@ -60,6 +61,9 @@ public class PostUtil {
 			}
 		}));
 		others.appendTo(stage);
+		
+		mask = $.add(Res.get(Setting.UI_BASE_IMG).disableTouch()).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(1,1,1,.1f).appendTo(stage).getItem();
+		
 		Logger.info("Post特效创建成功。");
 	}
 	public static void draw( boolean menuEnable){
@@ -81,6 +85,7 @@ public class PostUtil {
 			others.cleanActions();
 			for(Actor actor:others.getItems())
 				actor.addAction(GameViews.gameview.stackView==null?Actions.fadeIn(0.1f):Actions.fadeOut(0.1f));
+			mask.setColor(1,1,1,(1-others.first().getItem().getColor().a)*.15f);
 			stage.act();
 			if(menuEnable)
 				stage.draw();

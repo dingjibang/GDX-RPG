@@ -346,15 +346,21 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	}
 	
 	public RPGObject generatePosition(int mapx,int mapy,int layer){
+		
+		int yoff = (int) Math.ceil(getHeight()/48);
+		
+		System.out.println(yoff);
+		
 		try {
-			TiledMapTileLayer l=(TiledMapTileLayer)RPG.maps.map.getLayers().get(layer);
+			TiledMapTileLayer l=(TiledMapTileLayer)RPG.maps.loader.layer.get(layer);
 			this.mapx=mapx;
-			this.mapy= mapy;
+			this.mapy= mapy-yoff;
 			this.layer=layer;
 			this.position=new Vector2(mapx*48,(l.getHeight()-this.mapy-1)*48);
 			lastPosition=new Vector2(this.position);
 		} catch (Exception e) {
 			Logger.error("无法生成RPG对象位置！请检查坐标设置是否正确>>["+e.getMessage()+"]");
+			e.printStackTrace();
 		}
 		return this;
 	}

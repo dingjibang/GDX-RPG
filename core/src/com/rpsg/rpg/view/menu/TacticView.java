@@ -20,8 +20,9 @@ import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.RPG;
@@ -35,7 +36,6 @@ import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.TextButton;
-import com.rpsg.rpg.system.ui.TextButton.TextButtonStyle;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.hover.SupportView;
@@ -64,6 +64,7 @@ public class TacticView extends DefaultIView {
 		butstyle=new TextButtonStyle();
 		butstyle.down=Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"link_but_active.png");
 		butstyle.up=Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"link_but.png");
+		butstyle.font=Res.font.get(18);
 		
 		group=new WidgetGroup();
 		group.setSize(GameUtil.screen_width*page,  GameUtil.screen_height);
@@ -82,8 +83,8 @@ public class TacticView extends DefaultIView {
 		generateSupport();
 		
 		
-		group.addActor(tipLib=new Label("", 26).setWidth(1000).setPos(870, 483).right(true));
-		group.addActor(tipLib2=new Label("", 15).setWidth(1000).setPos(874, 453).right(true));
+		group.addActor(tipLib=new Label("", 26).width(1000).position(870, 483).right());
+		group.addActor(tipLib2=new Label("", 15).width(1000).position(874, 453).right());
 		pageTo(1);
 		return this;
 	}
@@ -146,8 +147,8 @@ public class TacticView extends DefaultIView {
 	}
 	
 	public void addTip(){
-		group.addActor(new Label("连携成功后将获得连携技能", 35).setWidth(1000).setPos(155,148).userObj(new HeroImgMask4()));
-		group.addActor(new Label("获得的连携技能将根据连携者的不同而不同。两名非主角连携后，仅能获得最基本的“追击”技能。\n在少数情况下，两名非主角连携后将获得额外的特殊连携技能。\n而结城有栖（主角）不受此限制影响：\n结城有栖与任何角色连携后，都会获得基础的“追击”加与角色对应社群等级的连携技能。", 17).setWidth(1000).setPos(164,102).userObj(new HeroImgMask4()).setYOffset(5));
+		group.addActor(new Label("连携成功后将获得连携技能", 35).width(1000).position(155,148).userObject(new HeroImgMask4()));
+		group.addActor(new Label("获得的连携技能将根据连携者的不同而不同。两名非主角连携后，仅能获得最基本的“追击”技能。\n在少数情况下，两名非主角连携后将获得额外的特殊连携技能。\n而结城有栖（主角）不受此限制影响：\n结城有栖与任何角色连携后，都会获得基础的“追击”加与角色对应社群等级的连携技能。", 17).width(1000).position(164,102).userObject(new HeroImgMask4()));
 	}
 	
 	HeroImg currentLinking;
@@ -196,13 +197,11 @@ public class TacticView extends DefaultIView {
 							if (hero.linkTo != null && getIDX(hero.linkTo) != -1) {
 								int tmpIDX = getIDX(hero.linkTo);
 								group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "linked_herosel.png").position(212 * tmpIDX + 174, 170).disableTouch().object(new HeroImgMask()));
-								group.addActor(new Label("连携中", 35).setPos(212 * tmpIDX + 190, 305).userObj(new HeroImgMask()).setWidth(1000));
+								group.addActor(new Label("连携中", 35).position(212 * tmpIDX + 190, 305).userObject(new HeroImgMask()).width(1000));
 								group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "linking_heroselbox.png").position(212 * tmpIDX + 118, 124).disableTouch().object(new HeroImgMask3()).color(Color.valueOf("ffffff77")));
-								TextButton but = new TextButton("取消连携关系", butstyle, 18);
+								TextButton but = new TextButton("取消连携关系", butstyle);
 								but.setUserObject(new HeroImgMask());
 								but.setPosition(212 * idx + 189, 264);
-								but.offset = 4;
-								but.hof = -2;
 								but.onClick(new Runnable() {
 									@Override
 									public void run() {
@@ -226,11 +225,11 @@ public class TacticView extends DefaultIView {
 													it2.remove();
 											}
 											group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "link_skill_border.png").object(new HeroImgMask4()).position(positionX - 12, 49).action(Actions.repeat(RepeatAction.FOREVER, Actions.sequence(Actions.color(Color.WHITE, 0.5f), Actions.color(new Color(1, 1, 1, 0.5f), 0.5f)))));
-											group.addActor(new Label(skill.name, 50).setWidth(1000).setPos(670, 134).userObj(new HeroImgMask4()).color(1, 1, 1, 0).addAct(Actions.fadeIn(0.1f)));
-											group.addActor(new Label(skill.getClass().getSimpleName(), 30).setWidth(1000).setPad(-10).setPos(710, 104).userObj(new HeroImgMask4()).color(1, 1, 1, 0).addAct(Actions.alpha(0.15f, 0.5f)));
-											group.addActor(new Label("获得条件：连携者等级超过" + skill.t_level + "级", 18).setWidth(1000).setPos(689, 75).userObj(new HeroImgMask4()).color(1, 1, 1, 0).addAct(Actions.fadeIn(0.2f)));
+											group.addActor(new Label(skill.name, 50).width(1000).position(670, 134).userObject(new HeroImgMask4()).color(1, 1, 1, 0).action(Actions.fadeIn(0.1f)));
+											group.addActor(new Label(skill.getClass().getSimpleName(), 30).width(1000).position(710, 104).userObject(new HeroImgMask4()).color(1, 1, 1, 0).action(Actions.alpha(0.15f, 0.5f)));
+											group.addActor(new Label("获得条件：连携者等级超过" + skill.t_level + "级", 18).width(1000).position(689, 75).userObject(new HeroImgMask4()).color(1, 1, 1, 0).action(Actions.fadeIn(0.2f)));
 											group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "link_n_bg.png").object(new HeroImgMask4()).position(128, 0).color(1, 1, 1, 0).action(Actions.fadeIn(0.3f)));
-											group.addActor(new Label(skill.illustration, 16).setWidth(1000).setPos(165, 24).userObj(new HeroImgMask4()));
+											group.addActor(new Label(skill.illustration, 16).width(1000).position(165, 24).userObject(new HeroImgMask4()));
 										}
 									}).oranCenter().scale(1.13f).color(1, 1, 1, 0).action(Actions.parallel(Actions.fadeIn(0.3f), Actions.scaleTo(1, 1, 0.3f))));
 									tmp.click();
@@ -238,11 +237,9 @@ public class TacticView extends DefaultIView {
 
 							} else {
 								addTip();
-								final TextButton but = new TextButton(currentLinking == null ? "连携此角色" : "连携此角色", butstyle, 18);
+								final TextButton but = new TextButton(currentLinking == null ? "连携此角色" : "连携此角色", butstyle);
 								but.setUserObject(currentLinking == null ? new HeroImgMask() : new HeroImgMask2());
 								but.setPosition(212 * idx + 189, 264);
-								but.offset = 4;
-								but.hof = -2;
 								final Runnable fin = new Runnable() {
 									@Override
 									public void run() {
@@ -264,7 +261,6 @@ public class TacticView extends DefaultIView {
 										but.setUserObject(new HeroImgMask());
 										currentLinking = that;
 										tipLib.setText("选择角色用以与" + currentLinking.hero.name + "连携");
-										but.offset = 8;
 										but.onClick(fin);
 										for (HeroImg img : imglist) {
 											if (img.hero != null)
@@ -293,8 +289,8 @@ public class TacticView extends DefaultIView {
 			}
 			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link_mask.png").position(212*idx+174, 170).disableTouch());
 			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link_level.png").position(212*idx+174+7, 177).color((hero!=null && hero.lead)?Color.valueOf("cc3333"):Color.valueOf("528431")).disableTouch());
-			group.addActor(new Label(hero!=null?hero.name:"", 28).setWidth(1000).align(212*idx+247, 240));
-			group.addActor(new Label(hero!=null?(hero.lead?"LEADER":"Level "+hero.association.level):"<空>", 22).setPad(-7).setWidth(1000).align(212*idx+252, 202));
+			group.addActor(new Label(hero!=null?hero.name:"", 28).width(1000).align(212*idx+247, 240));
+			group.addActor(new Label(hero!=null?(hero.lead?"LEADER":"Level "+hero.association.level):"<空>", 22).width(1000).align(212*idx+252, 202));
 		}
 		
 		void setLinkBorder(){
@@ -395,7 +391,7 @@ public class TacticView extends DefaultIView {
 				})).prefSize(324, 58).row();
 			}
 			table.align(Align.top);
-			for (Cell c : table.getCells()) {
+			for (Cell<?> c : table.getCells()) {
 				c.padTop(3).padBottom(3);
 			}
 
@@ -404,7 +400,7 @@ public class TacticView extends DefaultIView {
 		
 		List<SupImage> getAll(){
 			List<SupImage> imgs=new ArrayList<SupImage>();
-			for (Cell c : table.getCells()) {
+			for (Cell<?> c : table.getCells()) {
 				imgs.add((SupImage) c.getActor());
 			}
 
@@ -420,8 +416,8 @@ public class TacticView extends DefaultIView {
 		s_l=new SupGroup(1200, 65).generate(Support.getPreSupportList());
 		s_r=new SupGroup(1670, 65).generate(Support.getSupportList());
 		final Label nl,nr;
-		group.addActor(nl=new Label("",20).setWidth(1000).align(1360, 391));
-		group.addActor(nr=new Label("",20).setWidth(1000).align(1825, 391));
+		group.addActor(nl=new Label("",20).width(1000).align(1360, 391));
+		group.addActor(nr=new Label("",20).width(1000).align(1825, 391));
 		final Runnable func_resetLabel= new Runnable() {
 			@Override
 			public void run() {
@@ -443,7 +439,7 @@ public class TacticView extends DefaultIView {
 					s_l.table.layout();
 
 					s_r.table.add(currentSelect).prefSize(324, 58).row();
-					for (Cell c : s_r.table.getCells()) {
+					for (Cell<?> c : s_r.table.getCells()) {
 						c.padTop(3).padBottom(3);
 					}
 
@@ -467,7 +463,7 @@ public class TacticView extends DefaultIView {
 					s_r.table.layout();
 
 					s_l.table.add(currentSelect).prefSize(324, 58).row();
-					for (Cell c : s_l.table.getCells()) {
+					for (Cell<?> c : s_l.table.getCells()) {
 						c.padTop(3).padBottom(3);
 					}
 
@@ -514,9 +510,9 @@ public class TacticView extends DefaultIView {
 			this.hero=hero;
 			sbox=Res.get(Setting.IMAGE_MENU_TACTIC+"sup_herobox_sel.png").disableTouch();
 			face=Res.get(Setting.IMAGE_FG+hero.fgname+"/face.png");
-			name=new Label(hero.name,24).setWidth(1000);
-			level=new Label(hero.support!=null?hero.support.name:"无支援技能",16).setWidth(1000);
-			association=new Label(hero.association.name,32).color(1,1,1,.16f).setWidth(1000);
+			name=new Label(hero.name,24).width(1000);
+			level=new Label(hero.support!=null?hero.support.name:"无支援技能",16).width(1000);
+			association=new Label(hero.association.name,32).color(1,1,1,.16f).width(1000);
 			return this;
 		}
 		

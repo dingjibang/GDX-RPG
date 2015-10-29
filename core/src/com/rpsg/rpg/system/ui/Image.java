@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.CustomRunnable;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.utils.game.Logger;
 /**
@@ -58,6 +59,15 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public Image onClick(Runnable r){
 		run=r;
+		return this;
+	}
+	
+	public Image onClick(final CustomRunnable<?> r){
+		run = new Runnable(){
+			public void run(){
+				r.run(null);
+			}
+		};
 		return this;
 	}
 	
@@ -202,6 +212,14 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	public Image color(Color c){
 		super.setColor(c);
 		return this;
+	}
+	
+	public Image a(float a){
+		return setAlpha(a);
+	}
+	
+	public Image setAlpha(float a){
+		return color(getColor().r, getColor().g, getColor().b, a);
 	}
 	
 	public Image scaleY(float s){

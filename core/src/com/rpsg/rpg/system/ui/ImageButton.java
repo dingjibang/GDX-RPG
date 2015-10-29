@@ -56,9 +56,15 @@ public class ImageButton extends Button {
 		setSize(getPrefWidth(), getPrefHeight());
 		addListener(new InputListener(){
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				return true;
+			}
+			
+			@Override
+			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+				if(x>=0 && y>=0 && x <= event.getListenerActor().getWidth() && y <= event.getListenerActor().getHeight())
 				if(run!=null)
 					run.run();
-				return true;
+				super.touchUp(event, x, y, pointer, button);
 			}
 		});
 	}
@@ -87,8 +93,14 @@ public class ImageButton extends Button {
 	}
 	
 	public Image fg;
+	public boolean fgSelfColor =false;
 	public ImageButton setFg(Image fg){
 		this.fg=fg;
+		return this;
+	}
+	
+	public ImageButton fgSelfColor(boolean flag){
+		this.fgSelfColor=flag;
 		return this;
 	}
 
@@ -102,6 +114,8 @@ public class ImageButton extends Button {
 	public ImageButtonStyle getStyle () {
 		return style;
 	}
+	
+	
 
 	private void updateImage () {
 		Drawable drawable = null;
@@ -124,7 +138,7 @@ public class ImageButton extends Button {
 		if(fg!=null){
 			fg.setX((int)(getX()+(getPrefWidth()/2-fg.getWidth()/2)));
 			fg.setY((int)(getY()+(getHeight()/2-fg.getHeight()/2)));
-			fg.setColor(getColor());
+			fg.setColor(fgSelfColor?fg.getColor():getColor());
 			fg.draw(batch);
 		}
 	}

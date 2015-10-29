@@ -1,11 +1,14 @@
 {
 	type:"Equipment",
-	name:"御币",
-	illustration:"博丽灵梦手里常持的家伙。",
-	illustration2:"御币[攻击+12 魔攻+3]",
+	name:"阳伞",
+	illustration:"看似很普通的一把阳伞，幽香小姐似乎无时无刻都带在身边。不过据说有人看见幽香小姐用其射出了巨大的魔炮。",
+	illustration2:"攻击+5 魔攻+1 命中-1",
 	equipType:"EQUIP_WEAPON",
+	onlyFor:"Yuuka",
+	throwable:false,
 	use:"
-		prop.put('attack', 12);
-		prop.put('magicAttack', 3);
+		put('attack', 5);
+		put('magicAttack', 1);
+		put('hit', -1);
 	"
 }

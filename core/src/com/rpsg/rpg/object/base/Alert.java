@@ -17,9 +17,10 @@ public class Alert {
 	public String str;
 	public int size;
 	public Image box;
-	public boolean dispose = false, hide = false;
-
 	public BitmapFont font;
+	
+	public boolean dispose=false,hide=false;
+	
 	public Alert(Image type, String str, int size) {
 		this.type = type;
 		this.str = str;
@@ -67,9 +68,9 @@ public class Alert {
 		last = Actions.moveTo(box.getX(), 30 + oy, 0.03f);
 		box.addAction(last);
 		box.act(Gdx.graphics.getDeltaTime());
-		box.draw(sb);	
+		box.draw(sb);
 		
-		font.draw(sb, str, (int)box.getX()-size+62, (int)box.getY()+25+size/2);		
+		font.draw(sb, str, (int)box.getX()-size+62, (int)box.getY()+25+size/2);
 		type.setX(box.getX()+10);
 		type.setY(box.getY()+9);
 		type.draw(sb);

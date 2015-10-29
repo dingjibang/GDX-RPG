@@ -11,7 +11,6 @@ import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.SpellCard;
 import com.rpsg.rpg.object.rpg.Hero;
-import com.rpsg.rpg.utils.game.Logger;
 
 /**
  * GDX-RPG 道具核心管理器
@@ -210,14 +209,29 @@ public class ItemController {
 			Equipment tmp=hero.equips.get(equipType);
 			put(tmp);
 			replace(hero, tmp, false);//计算脱下装备后的Hero属性数值变化
+			
+			hero.equips.remove(equipType);
 			return true;
 		}
 		return false;
 	}
 	
 	private static void replace(Hero hero,Equipment equip,boolean add){
-		for(String key:equip.prop.keySet())
+		for(String key:equip.prop.keySet()){
 			hero.prop.put(key, add?hero.prop.get(key)+equip.prop.get(key):hero.prop.get(key)-equip.prop.get(key));
+		}
+		//防止HP MP溢出
+		postOverflow(hero, "hp");
+		postOverflow(hero, "mp");
+	}
+	
+	private static void postOverflow(Hero hero,String prop){
+		if(hero.prop.get(prop)>hero.prop.get("max"+prop))
+			hero.prop.put(prop,hero.prop.get("max"+prop));
+	}
+	
+	public Equipment getHeroEquip(Hero hero,String equipType){
+		return hero.equips.get(equipType);
 	}
 	
 }

@@ -9,8 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
@@ -22,7 +24,6 @@ import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.MenuController;
 import com.rpsg.rpg.system.ui.CheckBox;
-import com.rpsg.rpg.system.ui.CheckBox.CheckBoxStyle;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Image;
@@ -30,7 +31,6 @@ import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.Slider;
 import com.rpsg.rpg.system.ui.Slider.SliderStyle;
 import com.rpsg.rpg.system.ui.TextButton;
-import com.rpsg.rpg.system.ui.TextButton.TextButtonStyle;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -55,6 +55,7 @@ public class SystemView extends DefaultIView{
 		CheckBoxStyle cs=new CheckBoxStyle();
 		cs.checkboxOff=Res.getDrawable(Setting.IMAGE_GLOBAL+"optb_s.png");
 		cs.checkboxOn=Res.getDrawable(Setting.IMAGE_GLOBAL+"optb.png");
+		cs.font=Res.font.get(22);
 		
 		SliderStyle slsty=new SliderStyle();
 		slsty.background=Res.getDrawable(Setting.IMAGE_GLOBAL+"sliderbar.png");
@@ -62,22 +63,22 @@ public class SystemView extends DefaultIView{
 		
 		WidgetGroup group=new WidgetGroup();
 		group.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"savebar.png"));
-		Label lvl=new Label("LV "+RPG.ctrl.hero.getHeadHero().prop.get("level"),40).setWidth(1000).setPad(-15);
+		Label lvl=new Label("LV "+RPG.ctrl.hero.getHeadHero().prop.get("level"),40).width(1000);
 		lvl.setPosition(360, 190);
 		group.addActor(lvl);
-		Label lvl2=new Label("【"+(String)RPG.maps.getName()+"】",40).setWidth(1000).setPad(0);
+		Label lvl2=new Label("【"+(String)RPG.maps.getName()+"】",40).width(1000);
 		lvl2.setPosition(480, 190);
 		group.addActor(lvl2);
-		Label lvl3=new Label("档案所在位置：",18).setWidth(1000).setPad(0);
+		Label lvl3=new Label("档案所在位置：",18).width(1000);
 		lvl3.setPosition(370, 140);
 		group.addActor(lvl3);
-		Label lvl4=new Label(" ["+RPG.ctrl.hero.getHeadHero().mapx+","+RPG.ctrl.hero.getHeadHero().mapy+"]",18).setWidth(1000).setPad(0);
+		Label lvl4=new Label(" ["+RPG.ctrl.hero.getHeadHero().mapx+","+RPG.ctrl.hero.getHeadHero().mapy+"]",18).width(1000);
 		lvl4.setPosition(480, 140);
 		group.addActor(lvl4);
-		Label lvl5h=new Label("档案进行时间：",18).setWidth(1000).setPad(0);
+		Label lvl5h=new Label("档案进行时间：",18).width(1000);
 		lvl5h.setPosition(370, 110);
 		group.addActor(lvl5h);
-		lvl5=new Label(RPG.time.getGameRunningTime()	,18).setWidth(1000).setPad(-3);
+		lvl5=new Label(RPG.time.getGameRunningTime()	,18).width(1000);
 		lvl5.setPosition(500, 110);
 		group.addActor(lvl5);
 		TextButton sbutton=new TextButton("保存游戏", butstyle).onClick(new Runnable() {
@@ -86,7 +87,7 @@ public class SystemView extends DefaultIView{
 				RPG.popup.add(SaveView.class);
 			}
 		});
-		sbutton.setOffset(17).setSize(250,60);
+		sbutton.setSize(250,60);
 		sbutton.setPosition(180, 14);
 		group.addActor(sbutton);
 		TextButton sbutton2=new TextButton("读取游戏", butstyle).onClick(new Runnable() {
@@ -95,7 +96,7 @@ public class SystemView extends DefaultIView{
 				RPG.popup.add(LoadView.class);
 			}
 		});
-		sbutton2.setOffset(17).setSize(250,60);
+		sbutton2.setSize(250,60);
 		sbutton2.setPosition(444, 14);
 		group.addActor(sbutton2);
 		TextButton sbutton3=new TextButton("回到菜单", butstyle).onClick(new Runnable() {
@@ -112,7 +113,7 @@ public class SystemView extends DefaultIView{
 				}));
 			}
 		});
-		sbutton3.setOffset(17).setSize(250,60);
+		sbutton3.setSize(250,60);
 		sbutton3.setPosition(710, 14);
 		group.addActor(sbutton3);
 		Image screens = new Image(MenuController.bg);
@@ -125,7 +126,7 @@ public class SystemView extends DefaultIView{
 		
 		WidgetGroup group2=new WidgetGroup();
 		group2.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"graphics.png"));
-		final CheckBox box=new CheckBox("", cs,22);
+		final CheckBox box=new CheckBox("", cs);
 		box.setPosition(190,276);
 		group2.addActor(box.onClick(new Runnable() {
 			@Override
@@ -133,7 +134,7 @@ public class SystemView extends DefaultIView{
 				Setting.persistence.antiAliasing = box.isChecked();
 			}
 		}).check(Setting.persistence.antiAliasing));
-		final CheckBox box2=new CheckBox("", cs,22);
+		final CheckBox box2=new CheckBox("", cs);
 		box2.setPosition(190,149);
 		group2.addActor(box2.onClick(new Runnable() {
 			@Override
@@ -141,7 +142,7 @@ public class SystemView extends DefaultIView{
 				Setting.persistence.scaleAliasing = box2.isChecked();
 			}
 		}).check(Setting.persistence.scaleAliasing));
-		final CheckBox box3=new CheckBox("", cs,22);
+		final CheckBox box3=new CheckBox("", cs);
 		box3.setPosition(190,44);
 		group2.addActor(box3.onClick(new Runnable() {
 			@Override
@@ -164,7 +165,7 @@ public class SystemView extends DefaultIView{
 			}
 		}).setValue(Setting.persistence.MemorySize);
 		group3.addActor(sd1);
-		final CheckBox box6=new CheckBox("", cs,22);
+		final CheckBox box6=new CheckBox("", cs);
 		box6.setPosition(190,82);
 		group3.addActor(box6.onClick(new Runnable() {
 			@Override
@@ -213,7 +214,7 @@ public class SystemView extends DefaultIView{
 		WidgetGroup group5=new WidgetGroup();
 		group5.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"game.png"));
 		ttest=new Label(ttstr, 26);
-		ttest.setWidth(1000).setPosition(200, 663);
+		ttest.width(1000).setPosition(200, 663);
 		group5.addActor(ttest);
 		final Slider sd5=new Slider(1, 15, 1, false, slsty);
 		sd5.setStrEnd(" 帧/字").setLabelful(true).setPosition(200, 506);
@@ -227,7 +228,7 @@ public class SystemView extends DefaultIView{
 		}).setValue(Setting.persistence.textSpeed);
 		sd5.onScroll();
 		group5.addActor(sd5);
-		final CheckBox box7=new CheckBox("", cs,22);
+		final CheckBox box7=new CheckBox("", cs);
 		box7.setPosition(190,440);
 		group5.addActor(box7.onClick(new Runnable() {
 			@Override
@@ -235,7 +236,7 @@ public class SystemView extends DefaultIView{
 				Setting.persistence.showFPS = box7.isChecked();
 			}
 		}).check(Setting.persistence.showFPS));
-		final CheckBox box8=new CheckBox("", cs,22);
+		final CheckBox box8=new CheckBox("", cs);
 		box8.setPosition(190,340);
 		group5.addActor(box8.onClick(new Runnable() {
 			@Override
@@ -243,7 +244,7 @@ public class SystemView extends DefaultIView{
 				Setting.persistence.debugMod = box8.isChecked();
 			}
 		}).check(Setting.persistence.debugMod));
-		final CheckBox box9=new CheckBox("", cs,22);
+		final CheckBox box9=new CheckBox("", cs);
 		box9.setPosition(190,228);
 		group5.addActor(box9.onClick(new Runnable() {
 			@Override
@@ -251,7 +252,7 @@ public class SystemView extends DefaultIView{
 				Setting.persistence.onErrorSendMsg = box9.isChecked();
 			}
 		}).check(Setting.persistence.onErrorSendMsg));
-		final CheckBox box10=new CheckBox("", cs,22);
+		final CheckBox box10=new CheckBox("", cs);
 		box10.setPosition(190,63);
 		group5.addActor(box10.onClick(new Runnable() {
 			@Override
@@ -264,16 +265,16 @@ public class SystemView extends DefaultIView{
 		
 		WidgetGroup group6=new WidgetGroup();
 		group6.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"about.png"));
-		Label gamever=new Label(Setting.GAME_VERSION,23).setWidth(1000).setPad(-7);
+		Label gamever=new Label(Setting.GAME_VERSION,23).width(1000);
 		gamever.setPosition(405,811);
 		group6.addActor(gamever);
-		Label ever=new Label(Setting.GDXRPG_VERSION,23).setWidth(1000).setPad(-7);
+		Label ever=new Label(Setting.GDXRPG_VERSION,23).width(1000);
 		ever.setPosition(415,749);
 		group6.addActor(ever);
-		Label sys=new Label(System.getProperty("os.name"),23).setWidth(1000).setPad(-7);
+		Label sys=new Label(System.getProperty("os.name"),23).width(1000);
 		sys.setPosition(295,780);
 		group6.addActor(sys);
-		Label jv=new Label(System.getProperty("java.version"),23).setWidth(1000).setPad(-7);
+		Label jv=new Label(System.getProperty("java.version"),23).width(1000);
 		jv.setPosition(305,719);
 		group6.addActor(jv);
 		TextButton sbutton5=new TextButton("访问官网", butstyle).onClick(new Runnable() {
@@ -286,7 +287,7 @@ public class SystemView extends DefaultIView{
 				}
 			}
 		});
-		sbutton5.setOffset(17).setSize(250,60);
+		sbutton5.setSize(250,60);
 		sbutton5.setPosition(414, 64);
 		group6.addActor(sbutton5);
 		table.add(group6).prefSize(1024,999);
