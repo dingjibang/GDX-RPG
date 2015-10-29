@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Alert;
 import com.rpsg.rpg.system.ui.Image;
@@ -18,6 +19,8 @@ public class AlertUtil {
 	public static NinePatch box;
 	
 	public List<Alert> list=new ArrayList<Alert>();
+	
+	public static Stage stage = new Stage();
 	
 	public AlertUtil() {
 		Yellow=new Image(Setting.IMAGE_GLOBAL+"t.png");
@@ -42,8 +45,9 @@ public class AlertUtil {
 				removeList.add(a);
 		list.removeAll(removeList);
 		for(int i=0;i<list.size();i++){
-			list.get(i).draw(sb, i*60);
+			list.get(i).draw(sb, i*60,stage);
 		}
+		stage.draw();
 		sb.setColor(1,1,1,1);
 	}
 	
