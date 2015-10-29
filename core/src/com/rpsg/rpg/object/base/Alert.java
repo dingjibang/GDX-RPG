@@ -1,25 +1,25 @@
 package com.rpsg.rpg.object.base;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
+import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
-import com.rpsg.rpg.utils.display.FontUtil;
 
 public class Alert {
 	public Image type;
 	public String str;
 	public int size;
 	public Image box;
-
 	public boolean dispose = false, hide = false;
 
+	public BitmapFont font;
 	public Alert(Image type, String str, int size) {
 		this.type = type;
 		this.str = str;
@@ -34,9 +34,10 @@ public class Alert {
 		init();
 	}
 
-	private void init() {
-		box = new Image(new NinePatchDrawable(AlertUtil.box));
-		box.setWidth(FontUtil.getTextWidth(str, size) + 100);
+	private void init(){
+		font = Res.font.get(size);
+		box=new Image(new NinePatchDrawable(AlertUtil.box));
+		box.setWidth(Res.font.getTextWidth(font, str)+100);
 		box.setHeight(50);
 		xoffset = (int) (box.getWidth() + 100);
 	}
@@ -66,11 +67,11 @@ public class Alert {
 		last = Actions.moveTo(box.getX(), 30 + oy, 0.03f);
 		box.addAction(last);
 		box.act(Gdx.graphics.getDeltaTime());
-		box.draw(sb);
-		FontUtil.draw(sb, str, size, Color.WHITE, (int) box.getX() - size + 62,
-				(int) box.getY() + 25 + size / 2, (int) box.getWidth());
-		type.setX(box.getX() + 10);
-		type.setY(box.getY() + 9);
+		box.draw(sb);	
+		
+		font.draw(sb, str, (int)box.getX()-size+62, (int)box.getY()+25+size/2);		
+		type.setX(box.getX()+10);
+		type.setY(box.getY()+9);
 		type.draw(sb);
 	}
 
@@ -90,8 +91,8 @@ public class Alert {
 		box.addAction(last);
 		box.act(Gdx.graphics.getDeltaTime());
 		stage.addActor(box);
-		FontUtil.draw(sb, str, size, Color.WHITE, (int) box.getX() - size + 62,
-				(int) box.getY() + 25 + size / 2, (int) box.getWidth());
+	//	FontUtil.draw(sb, str, size, Color.WHITE, (int) box.getX() - size + 62,
+	//			(int) box.getY() + 25 + size / 2, (int) box.getWidth());
 		type.setX(box.getX() + 10);
 		type.setY(box.getY() + 9);	
 		stage.addActor(type);
