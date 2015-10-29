@@ -8,8 +8,10 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
@@ -18,6 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.ActorRunnable;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.gdxQuery.GdxQueryRunnable;
 import com.rpsg.rpg.core.RPG;
@@ -191,12 +194,14 @@ public class EquipView extends DefaultIView{
 		$.add(new Label(parent.current.prop.get("mp")+"/"+parent.current.prop.get("maxmp"),18).align(851, 428).width(161)).setColor(Color.YELLOW).appendTo(data);
 		
 		int pad = 38,off = 421,x = 942;
-		$.add(new Label(parent.current.prop.get("hit")+"",22).align(x, off-=pad).width(80)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("speed")+"",22).align(x, off-=pad).width(80)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("defense")+"",22).align(x, off-=pad).width(80)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("magicDefense")+"",22).align(x, off-=pad).width(80)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("attack")+"",22).align(x, off-=pad).width(80)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("magicAttack")+"",22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("hit"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("speed"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("defense"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("magicDefense"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("attack"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.prop.get("magicAttack"),22).align(x, off-=pad).width(80)).appendTo(data);
+		
+		$.add(data).children().setTouchable(Touchable.disabled);
 	}
 	
 	private List<Icon> getEquips(String equipType){

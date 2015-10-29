@@ -40,18 +40,18 @@
    H4sIAAAAAAAAC2NgGAWkAG4gZoJifiBWBmJRJDEYFoNiRTRxRiTMjSYHA8xEukWARLe3IhmMbgcus4h1Cwz0ImkQQ8L4zCLVDnx6sZmlBMTSDIgwliLCXFzx0cKM273IcSlNhB3IANlMcvQTYz4l4Tzc7NhHhD20BkMlrEi1AzkfHKeiPejgLBCfA+LzVLKDFLtHsh0AvhWjXjQIAAA=
   </data>
  </layer>
- <objectgroup name="对象层 2">
-  <object name="PUBLIC" type="NPC" gid="1066" x="1102.67" y="273.333" width="48" height="48">
-   <properties>
-    <property name="FOOT_EXECUTE" value="teleport(&quot;twofloor&quot;,2,6,2)"/>
-   </properties>
-  </object>
- </objectgroup>
  <layer name="块层 5" width="25" height="21">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoD+QZYJgYoA4M0I9MsYH5IiQh2FygQHQXaxAzMaMXX470OwdQLwTzQ5ToHozIDbHoW8gwA8KwgEdtCL5yxXIDgPiUCDmwONfXaCcHhDrExkmvWSG3WMq+nMU0AZsBeJtQLydhnbsBWJeIN5PQzvIAaSUi+QC5LIPhP8x0saeo0B8DIjrgbiBNlaMggECABsnu1o0CAAA
   </data>
  </layer>
+ <objectgroup name="对象层 2">
+  <object name="PUBLIC" type="NPC" gid="1066" x="1104" y="288" width="48" height="48">
+   <properties>
+    <property name="FOOT_EXECUTE" value="teleport(&quot;twofloor&quot;,2,6,2)"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer name="块层 2" width="25" height="21">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+NlYmDgpQOWRcJPgfgZmhghLMrMwCAGxOLMmHIwO+SgWAGo5iuQ/oYkhoyXA/EKIF6JJq4K1KcGxOrMmHpgdtAS0NMOW6Af/YDYF4hLmLGr7QWFLygsgFgehxp8diCDGhz655Lh36nMpNkBAueYEJhYMNzifCjZsRVLXA42f4DUvWXEXWaBAC45bHaAzJJgRah5xwhR95cRezkmBzUDlxy6HUugapWhYVsOxBUMlIUpLr3GzMSpo8QOctUNlB346jd0eXIBrrSALa2QCwDfAluxNAgAAA==

@@ -27,6 +27,7 @@ public class ConfirmView extends HoverView{
 	static{	
 		style.up=Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"savebut.png");
 		style.down=Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"savebuth.png");
+		style.font=Res.font.get(20);
 	}
 	public void init() {
 		int offset=0;
@@ -36,7 +37,7 @@ public class ConfirmView extends HoverView{
 				public void run() {
 					con.callBack.run(ConfirmView.this);
 				}
-			}).getCell().size(200,50).getActor();
+			}).getItem();//.getCell().size(200,50).getActor();
 			
 			but.setPosition(offset+=277, 200);
 			stage.addActor(but);

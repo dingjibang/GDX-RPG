@@ -84,12 +84,15 @@ public class MapLoader {
 		//生成NPC
 		layer=new MapLayers();
 		if(gv.global.npcs.isEmpty()){
-			List<MapLayer> removeList=new ArrayList<MapLayer>();
+			int remove = 0;
 			for(int i=0;i<RPG.maps.map.getLayers().getCount();i++){
-				TiledMapTileLayer bot=(TiledMapTileLayer) RPG.maps.map.getLayers().get(0);
+				TiledMapTileLayer baseLayer=(TiledMapTileLayer) RPG.maps.map.getLayers().get(0);
 				 MapLayer m = RPG.maps.map.getLayers().get(i);
-				if(m.getObjects().getCount()!=0)
-					removeList.add(m);
+				if(m.getObjects().getCount()==0){
+					layer.add(m);
+				}else{
+					remove++;
+				}
 				for(MapObject obj:m.getObjects()){
 					if(obj.getProperties().get("type")!=null && obj.getProperties().get("type").equals("NPC") && obj instanceof TiledMapTileMapObject){
 						TiledMapTileMapObject tobj = (TiledMapTileMapObject)obj;
@@ -111,10 +114,9 @@ public class MapLoader {
 							npc.init();
 							
 							if(obj.getProperties().get("ABSOLUTE")!=null && obj.getProperties().get("ABSOLUTE").equals("true"))
-								npc.generateAbsolutePosition(x,y,i-removeList.size());
+								npc.generateAbsolutePosition(x,y,i-remove);
 							else
-								npc.generatePosition(x/48, (int)(bot.getHeight()-(Math.ceil(h/48))-y/48-2),i-removeList.size());//TODO FIX IT 
-							
+								npc.generatePosition(x/48, (int)(baseLayer.getHeight()-y/48-1),i-remove);//TODO FIX IT 
 							
 							if(obj.getProperties().get("SHADOW")!=null && obj.getProperties().get("SHADOW").equals("true"))
 								npc.drawShadow=true;
@@ -130,17 +132,11 @@ public class MapLoader {
 					}
 				}
 			}
-			for(MapLayer lay:RPG.maps.map.getLayers()){
-				boolean inc=false;
-				for(MapLayer re:removeList)
-					if(re==lay)
-						inc=true;
-				if(!inc)
-					layer.add(lay);
-			}
-				
-			RPG.ctrl.hero.generatePosition(gv.global.x,gv.global.y,gv.global.z);
+			
+			RPG.ctrl.hero.generatePosition(gv.global.x,gv.global.y+2,gv.global.z);
+			
 		}else{
+			
 			List<MapLayer> removeList=new ArrayList<MapLayer>();
 			for(int i=0;i<RPG.maps.map.getLayers().getCount();i++){
 				MapLayer m=RPG.maps.map.getLayers().get(i);
@@ -168,6 +164,7 @@ public class MapLoader {
 				n.images=NPC.generateImages(n.imgPath, n.bodyWidth, n.bodyHeight);
 			}
 		}
+		
 		gv.global.npcs.clear();
 		
 		
@@ -194,20 +191,29 @@ public class MapLoader {
 		SpriteBatch sb=(SpriteBatch) gv.stage.getBatch();
 		
 		headHeroPointLight.setPosition(RPG.ctrl.hero.getHeadHero().getX()+24,RPG.ctrl.hero.getHeadHero().getY());
+		
 		sb.setProjectionMatrix(gv.camera.combined);
+		
+		int skip = 0;
 		for(int i=0;i<size;i++){
-			if(RPG.maps.map.getLayers().get(i).getObjects().getCount()!=0)
+			
+			if(RPG.maps.map.getLayers().get(i).getObjects().getCount()!=0){
+				skip++;
 				continue;
+			}
+			
 			drawlist.clear();
 			gv.render.setView(gv.camera);
 			gv.render.render(new int[]{i});
 
-			for(Actor a:gv.stage.getActors())
+			for(Actor a:gv.stage.getActors()){
 				if(a instanceof RPGObject){
 					RPGObject c = (RPGObject)a;
-					if(c.layer==i)
+					if(c.layer==i-skip)
 						drawlist.add(c);
 				}
+			}
+			
 			Collections.sort(drawlist);
 			sb.begin();
 			for(RPGObject ir:drawlist){
