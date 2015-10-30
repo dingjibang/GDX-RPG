@@ -1,5 +1,7 @@
 package com.rpsg.rpg.view.hover;
 
+import java.lang.reflect.Type;
+
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -104,7 +106,7 @@ public class LoadView extends HoverView{
 		savebutton=$.add(new TextButton("读取游戏", butstyle)).onClick(new Runnable() {
 			@Override
 			public void run() {
-				RPG.popup.add(ConfirmView.getDefault("确定要读取这个存档么？", new ObjectRunnable() {
+				RPG.popup.add(ConfirmView.okCancel("确定要读取这个存档么？", new ObjectRunnable() {
 					@Override
 					public void run(Object view) {
 						if (currentSelect != -1) {
@@ -144,7 +146,7 @@ public class LoadView extends HoverView{
 		TextButton deletebutton=$.add(new TextButton("删除档案", butstyle)).onClick(new Runnable() {
 			@Override
 			public void run() {
-				RPG.popup.add(ConfirmView.getDefault("确定要删除这个档案么？", new ObjectRunnable() {
+				RPG.popup.add(ConfirmView.okCancel("确定要删除这个档案么？", new ObjectRunnable() {
 					@Override
 					public void run(Object view) {
 						if (currentSelect != -1) {

@@ -102,7 +102,7 @@ public class SystemView extends DefaultIView{
 		TextButton sbutton3=new TextButton("回到菜单", butstyle).onClick(new Runnable() {
 			@Override
 			public void run() {
-				RPG.popup.add(ConfirmView.getDefault("确定要回到主菜单么？如未存档当前档案将会消失", new ObjectRunnable() {
+				RPG.popup.add(ConfirmView.okCancel("确定要回到主菜单么？如未存档当前档案将会消失", new ObjectRunnable() {
 					@Override
 					public void run(Object view) {
 						GameViews.state = GameViews.STATE_LOGO;

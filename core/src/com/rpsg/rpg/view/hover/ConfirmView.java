@@ -37,12 +37,12 @@ public class ConfirmView extends HoverView{
 				public void run() {
 					con.callBack.run(ConfirmView.this);
 				}
-			}).getItem();//.getCell().size(200,50).getActor();
+			}).setSize(200,50).getItem();//.getCell().size(200,50).getActor();
 			
-			but.setPosition(offset+=277, 200);
+			but.setPosition(offset+=277, 150);
 			stage.addActor(but);
 		}
-		stage.addActor($.add(Res.font.getLabel(msg,22)).setPosition(503, 370).setAlign(Align.center).getItem());
+		stage.addActor($.add(Res.font.getLabel(msg,22).width(800).warp(true)).setHeight(300).setPosition(115, 230).setAlign(Align.center).getItem());
 	}
 	
 	
@@ -64,8 +64,25 @@ public class ConfirmView extends HoverView{
 		return stage.keyDown(keycode);
 	}
 	
-	public static ConfirmView getDefault(String msg,ObjectRunnable okCallBack){
+	public static ConfirmView okCancel(String msg,ObjectRunnable okCallBack){
 		ConfirmView view = new ConfirmView(msg,Confirm.OK(okCallBack),Confirm.CANCEL(new ObjectRunnable() {
+			@Override
+			public void run(Object view2) {
+				((HoverView) view2).disposed = true;
+			}
+		}));
+		view.superInit();
+		return view;
+	}
+	
+	public static ConfirmView ok(String msg,ObjectRunnable okCallBack){
+		ConfirmView view = new ConfirmView(msg,Confirm.OK(okCallBack));
+		view.superInit();
+		return view;
+	}
+	
+	public static ConfirmView ok(String msg){
+		ConfirmView view = new ConfirmView(msg,Confirm.OK(new ObjectRunnable() {
 			@Override
 			public void run(Object view2) {
 				((HoverView) view2).disposed = true;

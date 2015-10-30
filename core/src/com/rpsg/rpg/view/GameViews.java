@@ -2,8 +2,6 @@ package com.rpsg.rpg.view;
 
 
 
-import org.mozilla.javascript.Context;
-
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;

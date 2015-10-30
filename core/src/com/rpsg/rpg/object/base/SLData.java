@@ -60,23 +60,23 @@ public class SLData implements Serializable{
 			slData = new SLData();
 			String path=Setting.IMAGE_MENU_SYSTEM+"ea.png";
 			slData.thumbnail=Res.get(path);
-			stage.addActor($.add(Res.font.getLabel("空位置",26)).setUserObject(new Object()).setWidth(1000).setPosition(i>1?324+(i-2)*483:324+i*483, i>1?347:191).getItem());
+			stage.addActor($.add(Res.font.getLabel("空位置",26)).setUserObject(new Object()).setWidth(200).setPosition(i>1?350+(i-2)*483:350+i*483, i>1?327:171).getItem());
 		}else{
 			slData = (SLData) Files.load(fileName);
 			Res.dispose("save/"+id+".png");
 			Gdx.files.local("save").mkdirs();
 			Texture txt = new Texture(Gdx.files.local("save/" + id + ".png"));
 			slData.thumbnail=new Image(new TextureRegion(txt,0,txt.getHeight(),txt.getWidth(),-txt.getHeight()));
-			stage.addActor($.add(Res.font.getLabel("LV "+slData.level,30)).setUserObject(new Object()).setWidth(1000).setPosition(i>1?270+(i-2)*483:270+i*483, i>1?382:226).getItem());
-			stage.addActor($.add(Res.font.getLabel(slData.mapName+","+slData.heroName,18)).setUserObject(new Object()).setWidth(1000).setPosition(i>1?274+(i-2)*483:274+i*483, i>1?347:191).getItem());
-			stage.addActor($.add(Res.font.getLabel(slData.gameDate,18)).setUserObject(new Object()).setWidth(1000).setPosition(i>1?274+(i-2)*483:274+i*483, i>1?322:166).getItem());
-			stage.addActor($.add(Res.font.getLabel(slData.saveDate,14)).setUserObject(new Object()).setWidth(1000).setPosition(i>1?283+(i-2)*483:283+i*483, i>1?295:139).getItem());
+			stage.addActor($.add(Res.font.getLabel("LV "+slData.level,30)).setUserObject(new Object()).setWidth(200).setPosition(i>1?280+(i-2)*483:280+i*483, i>1?358:202).setTouchable(null).getItem());
+			stage.addActor($.add(Res.font.getLabel(slData.mapName+","+slData.heroName,18)).setUserObject(new Object()).setWidth(200).setPosition(i>1?280+(i-2)*483:280+i*483, i>1?332:176).setTouchable(null).getItem());
+			stage.addActor($.add(Res.font.getLabel(slData.gameDate,18)).setUserObject(new Object()).setWidth(200).setPosition(i>1?280+(i-2)*483:280+i*483, i>1?308:151).setTouchable(null).getItem());
+			stage.addActor($.add(Res.font.getLabel(slData.saveDate,14)).setUserObject(new Object()).setWidth(200).setPosition(i>1?280+(i-2)*483:280+i*483, i>1?286:130).setTouchable(null).getItem());
 		}
 		slData.thumbnail.setUserObject(new Object());
 		slData.thumbnail.setSize(207,112);
 		stage.addActor(slData.thumbnail.position(i>1?54+(i-2)*483:54+i*483, i>1?277:121));
 		stage.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"/saveno.png").position(i>1?54+(i-2)*483:54+i*483, i>1?277:121));
-		stage.addActor($.add(Res.font.getLabel(id+"",14)).setUserObject(new Object()).setWidth(1000).setPosition(i>1?83+(i-2)*483:83+i*483, i>1?295:139).setAlign(Align.center).getItem());
+		stage.addActor($.add(Res.font.getLabel(id+"",14)).setUserObject(new Object()).setWidth(200).setPosition(i>1?83+(i-2)*483:83+i*483, i>1?295:139).setAlign(Align.center).getItem());
 	}
 	
 	public static class exMask{}

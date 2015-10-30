@@ -97,7 +97,7 @@ public class SaveView extends HoverView{
 		savebutton=$.add(new TextButton("保存游戏", butstyle)).onClick(new Runnable() {
 			@Override
 			public void run() {
-				RPG.popup.add(ConfirmView.getDefault("确定要保存到这个位置么？", new ObjectRunnable() {
+				RPG.popup.add(ConfirmView.okCancel("确定要保存到这个位置么？", new ObjectRunnable() {
 					@Override
 					public void run(Object view) {
 						if (currentSelect != -1) {
@@ -132,7 +132,7 @@ public class SaveView extends HoverView{
 		TextButton deletebutton=$.add(new TextButton("删除档案", butstyle)).onClick(new Runnable() {
 			@Override
 			public void run() {
-				RPG.popup.add(ConfirmView.getDefault("确定要删除这个档案么？", new ObjectRunnable() {
+				RPG.popup.add(ConfirmView.okCancel("确定要删除这个档案么？", new ObjectRunnable() {
 					@Override
 					public void run(Object view) {
 						if (currentSelect != -1) {
@@ -164,7 +164,7 @@ public class SaveView extends HoverView{
 					}
 				});
 		}
-
+		
 	}
 	
 	int currentPageStart=1,currentPage=1;
@@ -204,7 +204,7 @@ public class SaveView extends HoverView{
 					img.setPosition(tmp.getX(), tmp.getY());
 					img.setUserObject(new Object());
 					stage.addActor(img);
-					stage.addActor($.add(Res.font.getLabel(currentPage+"",22)).setWidth(1000).setPosition((int) tmp.getX()+(tmp.getText().length()==2?1:13), (int)tmp.getY()+26).setUserObject(new Object()).getItem());
+					stage.addActor($.add(Res.font.getLabel(currentPage+"",22)).setWidth(300).setPosition((int) tmp.getX()+(tmp.getText().length()==2?1:13), (int)tmp.getY()+26).setUserObject(new Object()).getItem());
 					tmp.remove();
 				}
 			}
@@ -230,7 +230,7 @@ public class SaveView extends HoverView{
 			img.setPosition(874,422);
 			img.setUserObject(new Object());
 			stage.addActor(img);
-			stage.addActor($.add(Res.font.getLabel("Auto",22)).setWidth(1000).setPosition(887, 448).setUserObject(new Object()).getItem(Label.class));
+			stage.addActor($.add(Res.font.getLabel("Auto",22)).setWidth(300).setPosition(887, 448).setUserObject(new Object()).getItem(Label.class));
 		}
 		for(int i=0;i<4;i++){
 			SLData.generate((currentPage-1)*4+i,i,stage,this);

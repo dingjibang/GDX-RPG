@@ -80,7 +80,7 @@ public class Res {
 			ma.unload(resPath);
 			while (!ma.update());
 		} catch (Exception e) {
-			Logger.error("无法卸载纹理 - " + resPath);
+			Logger.error("纹理已被卸载或不存在，无法卸载纹理：" + resPath);
 		}
 	}
 	

@@ -8,7 +8,6 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
@@ -20,7 +19,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
-import com.rpsg.gdxQuery.ActorRunnable;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.gdxQuery.GdxQueryRunnable;
 import com.rpsg.rpg.core.RPG;
@@ -53,20 +51,20 @@ public class EquipView extends DefaultIView{
 	Image take=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_take.png"),off=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_off.png"),throwImg=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_remove.png");
 	public EquipView init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(137,79).setColor(0,0,0,0.52f).setPosition(240,470).appendTo(stage);
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(680,48).setColor(0,0,0,0.85f).setPosition(377,486).appendTo(stage);
+		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(137,79).setColor(0,0,0,.52f).setPosition(240,470).appendTo(stage);
+		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(680,48).setColor(0,0,0,.85f).setPosition(377,486).appendTo(stage);
 		CheckBoxStyle cstyle=new CheckBoxStyle();
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"info.png");
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"info_p.png");// help button press
 		cstyle.font = Res.font.get(20);
 		$.add(new CheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
-			data.addAction(self.isChecked()?Actions.fadeIn(0.3f):Actions.fadeOut(0.3f));
+			data.addAction(self.isChecked()?Actions.fadeIn(.3f):Actions.fadeOut(.3f));
 		}});}});
 		
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,282).setColor(.2f,.2f,.2f,0.85f).setPosition(240,178).appendTo(stage);
+		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,282).setColor(.2f,.2f,.2f,.85f).setPosition(240,178).appendTo(stage);
 		
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(155,155).setColor(0,0,0,0.55f).setPosition(240,12).appendTo(stage);
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(597,103).setColor(0,0,0,0.55f).setPosition(398,64).appendTo(stage);
+		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(155,155).setColor(0,0,0,.55f).setPosition(240,12).appendTo(stage);
+		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(597,103).setColor(0,0,0,.55f).setPosition(398,64).appendTo(stage);
 		
 		$.add(takeButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(take)).appendTo(stage).setSize(297,49).setPosition(398, 12).getCell().prefSize(297,49);
 		
@@ -74,10 +72,10 @@ public class EquipView extends DefaultIView{
 		
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).onClick(new Runnable() {public void run() {
 			next();
-		}}).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);
+		}}).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"m_right.png")).setScale(.8f).setScaleX(-.8f).appendTo(stage).setPosition(196, 483).onClick(new Runnable() {public void run() {
 			prev();
-		}}).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);
+		}}).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
 		
 		inner = (Group) $.add(new Group()).appendTo(stage).getItem();
 		description = (Group) $.add(new Group()).appendTo(stage).getItem();
@@ -242,7 +240,7 @@ public class EquipView extends DefaultIView{
 	
 	private void removeEquip(){
 		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().item!=null)
-		RPG.popup.add(ConfirmView.getDefault("确定要丢弃装备 <!-ff0000"+ilist.getCurrent().item.name+"> 么？", new ObjectRunnable() {
+		RPG.popup.add(ConfirmView.okCancel("确定要丢弃装备 <!-ff0000"+ilist.getCurrent().item.name+"> 么？", new ObjectRunnable() {
 			public void run(Object view) {
 				RPG.ctrl.item.remove(ilist.getCurrent().item);
 				RPG.toast.add("丢弃成功。", AlertUtil.Green);
