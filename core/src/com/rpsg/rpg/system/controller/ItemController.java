@@ -11,6 +11,7 @@ import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.SpellCard;
 import com.rpsg.rpg.object.rpg.Hero;
+import com.rpsg.rpg.utils.game.Logger;
 
 /**
  * GDX-RPG 道具核心管理器
@@ -84,7 +85,7 @@ public class ItemController {
 			
 			return (T) item;
 		} catch (Exception e) {
-			System.out.println("无法读取物品："+id);
+			Logger.error("无法读取物品："+id,e);
 			e.printStackTrace();
 			return null;
 		}

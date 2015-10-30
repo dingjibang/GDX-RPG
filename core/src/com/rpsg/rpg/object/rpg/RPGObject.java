@@ -349,8 +349,6 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 		
 		int yoff = (int) Math.ceil(getHeight()/48);
 		
-		System.out.println(yoff);
-		
 		try {
 			TiledMapTileLayer l=(TiledMapTileLayer)RPG.maps.loader.layer.get(layer);
 			this.mapx=mapx;

@@ -5,8 +5,13 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-
+/**
+ * @deprecated
+ * 自己瞎比写的自动寻路算法，写完就没用过wwwww
+ * @author dingjibang
+ * @see Path
+ *
+ */
 public class PathFinder {
 	
 	static int[][] data = new int[][]{
