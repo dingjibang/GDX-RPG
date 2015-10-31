@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
@@ -83,7 +84,7 @@ public class SaveView extends HoverView{
 		}).setSize(62,33).setPosition(715,422).getItem());
 		
 
-		stage.addActor($.add(new TextButton(">", butstyle)).onClick(new Runnable() {
+		stage.addActor($.add(new TextButton(">>", butstyle)).onClick(new Runnable() {
 			@Override
 			public void run() {
 				if (currentPageStart + 10 < Setting.SAVE_FILE_MAX_PAGE)
@@ -182,7 +183,8 @@ public class SaveView extends HoverView{
 			for(int i=0;i<5;i++){
 //				if(currentPageStart+i>=Setting.GAME_SAVE_FILE_MAX_PAGE)
 //					continue;
-				final TextButton tmp=new TextButton(""+(currentPageStart+i), butstyle);
+				final TextButton tmp=new TextButton(""+(currentPageStart+i), new TextButtonStyle(butstyle));
+				
 				tmp.setUserObject(new Object());
 				$.add(tmp).onClick(new Runnable() {
 					@Override
@@ -192,6 +194,8 @@ public class SaveView extends HoverView{
 					}
 				}).setSize(62,33);
 				tmp.setPosition(260+i*80,422);
+				if(currentPage==currentPageStart+i)
+					tmp.getStyle().up=tmp.getStyle().down;
 				stage.addActor(tmp);
 			}
 
@@ -230,7 +234,7 @@ public class SaveView extends HoverView{
 			img.setPosition(874,422);
 			img.setUserObject(new Object());
 			stage.addActor(img);
-			stage.addActor($.add(Res.font.getLabel("Auto",22)).setWidth(300).setPosition(887, 448).setUserObject(new Object()).getItem(Label.class));
+			stage.addActor($.add(Res.font.getLabel("Auto",18)).setWidth(110).setAlign(Align.center).setPosition(874,428).setUserObject(new Object()).getItem(Label.class));
 		}
 		for(int i=0;i<4;i++){
 			SLData.generate((currentPage-1)*4+i,i,stage,this);

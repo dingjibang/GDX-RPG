@@ -41,7 +41,7 @@ public class SLData implements Serializable{
 				for (Actor actor : stage.getActors())
 					if (actor.getUserObject() != null && actor.getUserObject().getClass().equals(exMask.class))
 						((Image) actor).setColor(1, 1, 1, 1);
-				im.color(Color.valueOf("ff5030ff"));
+				im.color(Color.valueOf("FF0000"));
 				if (sv instanceof SaveView)
 					((SaveView) sv).currentSelect = id;
 				else
