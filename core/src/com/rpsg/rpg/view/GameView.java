@@ -78,18 +78,23 @@ public class GameView extends View{
 	@Override
 	public void dispose() {
 		RPG.maps.loader.dispose();
+		
 		if(!Setting.persistence.cacheResource){
 			ma.unload(filename);
+			ma.clear();
 		}
+		
 		if(null!=stackView){
 			stackView.dispose();
 			stackView=null;
 			InputController.currentIOMode=IOMode.MapInput.NORMAL;
 		}
 		GameViewRes.ray.removeAll();
+		
 		parameter.loadedCallback=null;
 		parameter=null;
-
+		
+		render.dispose();
 
 		System.gc();
 	}
