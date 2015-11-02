@@ -2,8 +2,8 @@ package com.rpsg.rpg.system.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.system.ui.HoverView;
@@ -11,14 +11,21 @@ import com.rpsg.rpg.system.ui.HoverView;
 public class Hover{
 	List<HoverView> stack=new ArrayList<HoverView>();
 	
-	public void add(Class<? extends HoverView> c){
+	@SuppressWarnings("unchecked")
+	public <T extends HoverView> T add(Class<? extends HoverView> c,Map<Object,Object> initParam){
+		HoverView view = null;
 		try {
-			HoverView view = c.newInstance();
-			view.superInit();
+			view = c.newInstance();
+			view.superInit(initParam);
 			stack.add(view);
 		} catch (InstantiationException | IllegalAccessException e) {
 			com.rpsg.rpg.utils.game.Logger.error("无法创建HoverView:"+c.toString(),e);
 		}
+		return (T)view;
+	}
+	
+	public <T extends HoverView> T add(Class<? extends HoverView> c){
+		return add(c,null);
 	}
 	
 	public boolean isEmpty(){
@@ -29,10 +36,10 @@ public class Hover{
 		stack.add(hv);
 	}
 	
-	public void draw(SpriteBatch batch){
+	public void draw(){
 		logic();
 		for (HoverView view : stack) {
-			view.draw(batch);
+			view.draw();
 		}
 	}
 	

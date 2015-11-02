@@ -5,12 +5,12 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.controller.LazyBitmapFontConctoller;
 import com.rpsg.rpg.system.ui.Image;
+import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.ProxyImage;
 import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.game.Logger;
@@ -29,8 +29,8 @@ public class Res {
 		return new ProxyImage(resPath);
 	}
 	
-	public static Label get(String text,int fontSize){
-		return font.getLabel(text,fontSize);
+	public static Label get(Object text,int fontSize){
+		return font.getLabel(text.toString(),fontSize);
 	}
 	
 	public static boolean exist(String path){

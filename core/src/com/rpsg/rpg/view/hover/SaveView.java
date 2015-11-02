@@ -1,7 +1,6 @@
 package com.rpsg.rpg.view.hover;
 
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -254,18 +253,6 @@ public class SaveView extends HoverView{
 
     }
 	
-	public void logic() {
-		stage.act();
-	}
-
-	public void draw(SpriteBatch batch) {
-		stage.draw();
-	}
-
-	public void close() {
-		
-	}
-
 	public boolean keyDown(int keycode) {
 		if(keycode==Keys.ESCAPE)
 			disposed=true;

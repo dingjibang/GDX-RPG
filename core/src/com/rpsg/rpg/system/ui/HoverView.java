@@ -1,8 +1,9 @@
 package com.rpsg.rpg.system.ui;
 
 
+import java.util.Map;
+
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
@@ -11,8 +12,15 @@ import com.rpsg.rpg.utils.game.GameUtil;
 public abstract class HoverView{
 	public boolean disposed=false;
 	public Stage stage;
-	public final HoverView superInit(){
+	protected Map<Object,Object> param;
+	
+	public HoverView superInit(){
+		return this.superInit(null);
+	}
+	
+	public HoverView superInit(Map<Object, Object> initParam){
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
+		this.param = initParam;
 		init();
 		return this;
 	}
@@ -23,10 +31,6 @@ public abstract class HoverView{
 		return this;
 	}
 	
-	public void setDispose(){
-		this.disposed=true;
-	}
-	
 	public void dispose(){
 		close();
 		stage.dispose();
@@ -35,9 +39,15 @@ public abstract class HoverView{
 	}
 	
 	public abstract void init();
-	public abstract void logic();
-	public abstract void draw(SpriteBatch batch);
-	public abstract void close();
+	public void logic(){
+		stage.act();
+	};
+	
+	public void draw(){
+		stage.draw();
+	};
+	
+	public void close(){};
 
 	
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {

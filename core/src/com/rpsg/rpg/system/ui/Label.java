@@ -1,5 +1,6 @@
 package com.rpsg.rpg.system.ui;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.utils.Align;
@@ -40,19 +41,27 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 		return this;
 	}
 	
+	public Label color(Color c){
+		setColor(c);
+		return this;
+	}
+	
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
 		
 		if(overflow && !oldText.equals(getText().toString())){
 			oldText = getText().toString();//cpy
-			for(int i=0;i<oldText.length();i++){
-				CharSequence sub = oldText.subSequence(0, oldText.length()-i);
-				int width = Res.font.getTextWidth(getStyle().font,sub.toString());
-				if(width < getWidth()){
-					overflowd = sub.subSequence(0, sub.length()-3)+"……";
-					break;
+			if(Res.font.getTextWidth(getStyle().font, oldText.toString())>getWidth())
+				for(int i=0;i<oldText.length();i++){
+					CharSequence sub = oldText.subSequence(0, oldText.length()-i);
+					int width = Res.font.getTextWidth(getStyle().font,sub.toString());
+					if(width < getWidth()){
+						overflowd = (sub.length()<=3?sub:sub.subSequence(0, sub.length()-3)+"……");
+						break;
+					}
 				}
-			}
+			else
+				overflowd = oldText;
 		}
 		
 		getStyle().font.getData().markupEnabled = enableMarkup;
@@ -125,6 +134,11 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 	
 	public Label text(String text){
 		setText(text);
+		return this;
+	}
+
+	public Label height(int i) {
+		setHeight(i);
 		return this;
 	}
 

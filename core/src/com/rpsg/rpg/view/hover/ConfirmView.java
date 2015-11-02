@@ -1,7 +1,6 @@
 package com.rpsg.rpg.view.hover;
 
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.utils.Align;
@@ -28,6 +27,7 @@ public class ConfirmView extends HoverView{
 		style.up=Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"savebut.png");
 		style.down=Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"savebuth.png");
 		style.font=Res.font.get(20);
+		style.font.getData().markupEnabled = true;
 	}
 	public void init() {
 		int offset=0;
@@ -42,22 +42,9 @@ public class ConfirmView extends HoverView{
 			but.setPosition(offset+=277, 150);
 			stage.addActor(but);
 		}
-		stage.addActor($.add(Res.font.getLabel(msg,22).width(800).warp(true)).setHeight(300).setPosition(115, 230).setAlign(Align.center).getItem());
+		stage.addActor($.add(Res.font.getLabel(msg,22).width(800).warp(true).markup(true)).setHeight(300).setPosition(115, 230).setAlign(Align.center).getItem());
 	}
 	
-	
-	public void logic() {
-		stage.act();
-	}
-
-	public void draw(SpriteBatch batch) {
-		stage.draw();
-	}
-
-	public void close() {
-		
-	}
-
 	public boolean keyDown(int keycode) {
 		if(keycode==Keys.ESCAPE)
 			disposed=true;

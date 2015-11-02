@@ -2,6 +2,7 @@ package com.rpsg.rpg.view.menu;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import com.badlogic.gdx.Input.Keys;
@@ -24,14 +25,12 @@ import com.rpsg.gdxQuery.GdxQueryRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.CustomRunnable;
-import com.rpsg.rpg.object.base.ObjectRunnable;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.CheckBox;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.HeroImage;
-import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Icon;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
@@ -39,7 +38,7 @@ import com.rpsg.rpg.system.ui.ImageList;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
-import com.rpsg.rpg.view.hover.ConfirmView;
+import com.rpsg.rpg.view.hover.ThrowItemView;
 
 public class EquipView extends DefaultIView{
 	
@@ -144,7 +143,7 @@ public class EquipView extends DefaultIView{
 					append += "当前角色无法使用此装备。";
 				}else{
 					if(t.current)
-						takeButton.setFg(off).onClick(new Runnable(){public void run() {
+						takeButton.setFg(off.a(1)).onClick(new Runnable(){public void run() {
 							RPG.ctrl.item.takeOff(parent.current, currentFilter);
 							generate();
 						}});
@@ -174,6 +173,7 @@ public class EquipView extends DefaultIView{
 				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbar.png");
 				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbarin.png");
 				pane.setFadeScrollBars(false);
+				pane.layout();
 				$.add(pane).setSize(578, 60).setPosition(410, 68).appendTo(description);
 				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
 			}
@@ -239,16 +239,21 @@ public class EquipView extends DefaultIView{
 		generate();
 	}
 	
+	@SuppressWarnings("serial")
 	private void removeEquip(){
 		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().item!=null)
-		RPG.popup.add(ConfirmView.okCancel("确定要丢弃装备 <!-ff0000"+ilist.getCurrent().item.name+"> 么？", new ObjectRunnable() {
-			public void run(Object view) {
-				RPG.ctrl.item.remove(ilist.getCurrent().item);
-				RPG.toast.add("丢弃成功。", AlertUtil.Green);
-				((HoverView) view).disposed = true;
-				generate();
-			}
-		}));
+			
+		RPG.popup.add(ThrowItemView.class,new HashMap<Object, Object>(){{
+			put("title","丢弃物品");
+			put("width",100);
+			put("item",ilist.getCurrent());
+			put("callback",new CustomRunnable<Integer>() {
+				public void run(Integer t) {
+					System.out.println("okay");
+				}
+			});
+		}});
+		
 	}
 
 	public void logic() {

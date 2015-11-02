@@ -52,7 +52,6 @@ public class $ {
 			if(test.test(obj))
 				it.remove();
 		}
-		
 	}
-
+	
 }
