@@ -2,7 +2,6 @@ package com.rpsg.rpg.utils.game;
 
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.object.script.Script.exeMode;
 import com.rpsg.rpg.object.script.ScriptExecutor;
 
 public class Timer {

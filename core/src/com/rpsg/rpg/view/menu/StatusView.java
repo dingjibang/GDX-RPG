@@ -34,16 +34,27 @@ public class StatusView extends DefaultIView {
 	public View init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		group=(Group) $.add(new Group()).setHeight(1750).getItem();
-		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"menu_fg_shadow.png").disableTouch()).appendTo(group).setPosition(50, y(30)).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(.3f),Actions.moveTo(50, y(180),0.3f,Interpolation.pow4Out)));
 		inner=(Group) $.add(new Group()).setHeight(1750).appendTo(group).getItem();
 		pane=(ScrollPane) $.add(new ScrollPane(group)).setSize(GameUtil.screen_width-190, GameUtil.screen_height).setX(190).appendTo(stage).getItem();
-//		stage.setDebugAll(true);
 		generate();
 		return this;
 	}
 	
 	protected void generate() {
 		inner.clear();
+		
+		if(parent.current.lead){
+			this.group.setHeight(1750);
+		}else{
+			this.group.setHeight(1500);
+			inner.setY(0);
+		}
+		
+		pane.invalidate();
+		pane.layout();
+		
+		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"menu_fg_shadow.png").disableTouch()).appendTo(inner).setPosition(50, y(30)).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(.3f),Actions.moveTo(50, y(180),0.3f,Interpolation.pow4Out)));
+		
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"m_right.png")).appendTo(inner).setPosition(570, y(150)).onClick(new Runnable() {public void run() {
 			next();
 		}}).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);
@@ -124,9 +135,9 @@ public class StatusView extends DefaultIView {
 			$.add(new CheckBox("", cstyle)).appendTo(group6).setPosition(392,190).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
 				pe_help.addAction(self.isChecked()?Actions.fadeIn(0.3f):Actions.fadeOut(0.3f));
 			}});}});
-			
 		}
-		stage.setDebugAll(Setting.persistence.uiDebug);
+		
+		stage.setDebugAll(!Setting.persistence.uiDebug);
 	}
 	
 
