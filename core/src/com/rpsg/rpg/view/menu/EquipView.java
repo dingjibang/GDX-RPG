@@ -48,7 +48,7 @@ public class EquipView extends DefaultIView{
 	ImageList ilist;
 	String currentFilter = Equipment.EQUIP_CLOTHES;
 	ImageButton takeButton,throwButton;
-	Image take=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_take.png"),off=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_off.png"),throwImg=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_remove.png");
+	Image take=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_take.png"),off=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_off.png").a(.3f),throwImg=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_remove.png").a(.3f);
 	public EquipView init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(137,79).setColor(0,0,0,.52f).setPosition(240,470).appendTo(stage);
@@ -121,7 +121,6 @@ public class EquipView extends DefaultIView{
 		float oldTop = 0f;
 		if(ilist!=null)
 			oldTop = ilist.getScrollPercentY();
-		
 		inner.clear();
 		data.clear();
 		description.clear();
@@ -131,8 +130,8 @@ public class EquipView extends DefaultIView{
 		ilist=((ImageList) $.add(new ImageList(getEquips(currentFilter))).setSize(655, 266).setPosition(328, 185).appendTo(inner).getItem());
 		
 		Equipment currentHeroEquip = RPG.ctrl.item.getHeroEquip(parent.current, currentFilter);
-		ilist.generate(new Icon().generateIcon(currentHeroEquip, true).setCurrent(true));
 		
+		ilist.generate(new Icon().generateIcon(currentHeroEquip, true).setCurrent(true));
 		ilist.onChange(new CustomRunnable<Icon>() {
 			public void run(Icon t) {
 				Equipment currentHeroEquip = RPG.ctrl.item.getHeroEquip(parent.current, currentFilter);
@@ -181,6 +180,8 @@ public class EquipView extends DefaultIView{
 		});
 		
 		ilist.setScrollPercentY(oldTop!=oldTop?0:oldTop);
+		
+		ilist.setCurrent(currentHeroEquip);
 		
 		$.add(new HeroImage(parent.current,0)).appendTo(inner).setPosition(285, 480);
 		$.add(new Label(parent.current.name,30)).setPosition(420, 495).appendTo(inner);

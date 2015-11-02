@@ -137,7 +137,7 @@ public class StatusView extends DefaultIView {
 			}});}});
 		}
 		
-		stage.setDebugAll(!Setting.persistence.uiDebug);
+		stage.setDebugAll(Setting.persistence.uiDebug);
 	}
 	
 

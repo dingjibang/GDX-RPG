@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.Align;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.CustomRunnable;
+import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.system.base.Res;
 
 /**
@@ -47,14 +48,21 @@ public class ImageList extends Group{
 	}
 	
 	public ImageList setScrollPercentY(float per){
-		pane.setScrollPercentY(per);
 		pane.setSmoothScrolling(false);
-		pane.invalidate();
+		pane.layout();
+		pane.setScrollPercentY(per);
 		return this;
 	}
 	
 	public ImageList generate(){
 		return this.generate(null);
+	}
+	
+	public ImageList setCurrent(Item item){
+		for(Icon icon:items)
+			if(icon.item==item)
+				setCurrent(icon);
+		return this;
 	}
 	
 	public ImageList generate(Icon before){
