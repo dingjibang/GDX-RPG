@@ -6,7 +6,10 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Scaling;
@@ -49,7 +52,17 @@ public abstract class SidebarView extends HoverView{
 		if(initParam!=null && initParam.get("width")!=null)
 			width = (Integer)initParam.get("width");
 		group.addAction(Actions.moveTo(width, 0,0.4f,Interpolation.pow3));
-		group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "sup_detabox.png").size(784, GameUtil.screen_height).position(240, 0).a(.9f));
+		
+		Image bg;
+		group.addActor(bg = Res.get(Setting.IMAGE_MENU_TACTIC + "sup_databox.png").size(784, GameUtil.screen_height).position(240, 0).a(.9f));
+		bg.addCaptureListener(new InputListener(){
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+				if(x<150)
+					mask.click();
+				return true;
+			}
+		});
+		
 		group.addActor(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"left.png"),Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"left_p.png")).pos(430, 465).onClick(new Runnable() {
 			public void run() {
 				SidebarView.this.keyDown(Keys.ESCAPE);
@@ -66,14 +79,15 @@ public abstract class SidebarView extends HoverView{
 	
 	@Override
 	public boolean keyDown(int keycode) {
-		if(keycode==Keys.ESCAPE){
+		if(keycode==Keys.ESCAPE || keycode==Keys.X){
 			group.clearActions();
-			group.addAction(Actions.sequence(Actions.moveTo(GameUtil.screen_width,0,0.3f,Interpolation.pow3),Actions.after(new Action() {
+			group.addAction(Actions.sequence(Actions.moveTo(GameUtil.screen_width,0,0.2f,Interpolation.pow3),Actions.after(new Action() {
 				public boolean act(float delta) {
 					disposed=true;
 					return false;
 				}
 			})));
+			
 			mask.addAction(Actions.fadeOut(.2f));
 		}
 		return super.keyDown(keycode);
