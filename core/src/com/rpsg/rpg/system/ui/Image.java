@@ -238,12 +238,12 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		return this;
 	}
 	
-	public Image X(int x){
+	public Image x(int x){
 		super.setX(x);
 		return this;
 	}
 	
-	public Image Y(int y){
+	public Image y(int y){
 		super.setY(y);
 		return this;
 	}

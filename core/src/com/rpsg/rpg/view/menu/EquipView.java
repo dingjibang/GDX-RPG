@@ -88,18 +88,18 @@ public class EquipView extends DefaultIView{
 		cstyle2.checkboxOn.setMinHeight(47);
 		cstyle2.checkboxOn.setMinWidth(75);
 		cstyle2.font = Res.font.get(18);
+		
 		int offset = -1,padding = 54,_top = 400;
-		ButtonGroup<Button> bg = new ButtonGroup<Button>(
-			(Button)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_WEAPON).setPosition(250, _top-(++offset * padding)).getItem()),
-			(Button)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_CLOTHES).setPosition(250, _top-(++offset * padding)).getItem()),
-			(Button)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_SHOES).setPosition(250, _top-(++offset * padding)).getItem()),
-			(Button)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_ORNAMENT1).setPosition(250, _top-(++offset * padding)).getItem()),
-			(Button)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_ORNAMENT2).setPosition(250, _top-(++offset * padding)).getItem())
+		ButtonGroup<CheckBox> bg = new ButtonGroup<CheckBox>(
+			(CheckBox)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_WEAPON).setPosition(250, _top-(++offset * padding)).getItem()),
+			(CheckBox)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_CLOTHES).setPosition(250, _top-(++offset * padding)).getItem()),
+			(CheckBox)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_SHOES).setPosition(250, _top-(++offset * padding)).getItem()),
+			(CheckBox)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_ORNAMENT1).setPosition(250, _top-(++offset * padding)).getItem()),
+			(CheckBox)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_ORNAMENT2).setPosition(250, _top-(++offset * padding)).getItem())
 		);
 		
-		for(Button but:bg.getButtons()){
-			stage.addActor(but);
-			final CheckBox box =((CheckBox)but);
+		for(final CheckBox box:bg.getButtons()){
+			stage.addActor(box);
 			box.setForeground(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+box.getUserObject().toString()+".png").size(40, 40)).setFgOff(0).onClick(new Runnable(){
 				public void run() {
 					currentFilter = box.getUserObject().toString();
@@ -107,7 +107,7 @@ public class EquipView extends DefaultIView{
 				}
 			});
 			box.setWidth(box.getStyle().checkboxOff.getMinWidth());
-			if(but.equals(bg.getButtons().get(0)))
+			if(box.equals(bg.getButtons().get(0)))
 				box.click().setChecked(true);
 		}
 		
@@ -249,7 +249,9 @@ public class EquipView extends DefaultIView{
 			put("item",ilist.getCurrent());
 			put("callback",new CustomRunnable<Integer>() {
 				public void run(Integer t) {
-					System.out.println("okay");
+					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().item.name+" "+t+" 个", AlertUtil.Green);
+					RPG.ctrl.item.remove(ilist.getCurrent().item, t);
+					generate();
 				}
 			});
 		}});
