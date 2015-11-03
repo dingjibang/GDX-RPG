@@ -5,10 +5,14 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
@@ -16,7 +20,9 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
@@ -198,8 +204,8 @@ public class EquipView extends DefaultIView{
 		$.add(new Label(parent.current.prop.get("defense"),22).align(x, off-=pad).width(80)).appendTo(data);
 		$.add(new Label(parent.current.prop.get("magicDefense"),22).align(x, off-=pad).width(80)).appendTo(data);
 		$.add(new Label(parent.current.prop.get("attack"),22).align(x, off-=pad).width(80)).appendTo(data);
-		$.add(new Label(parent.current.prop.get("magicAttack"),22).align(x, off-=pad).width(80)).appendTo(data);
 		
+		$.add(new Label(parent.current.prop.get("magicAttack"),22).align(x, off-=pad).width(80)).appendTo(data);
 		$.add(data).children().setTouchable(Touchable.disabled);
 	}
 	
