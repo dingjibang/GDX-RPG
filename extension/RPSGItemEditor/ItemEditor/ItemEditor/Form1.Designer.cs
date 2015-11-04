@@ -33,36 +33,36 @@
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打开Assets目录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ItemList = new System.Windows.Forms.ListBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.IconBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.NameBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TypeTaskBox = new System.Windows.Forms.RadioButton();
+            this.TypeCookingBox = new System.Windows.Forms.RadioButton();
+            this.TypeSpellcardBox = new System.Windows.Forms.RadioButton();
+            this.TypeItemBox = new System.Windows.Forms.RadioButton();
+            this.TypeEquipmentBox = new System.Windows.Forms.RadioButton();
+            this.IDBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.EnableBox = new System.Windows.Forms.CheckBox();
+            this.ThrowableBox = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.IllustrationBox = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.readItemButton = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button7 = new System.Windows.Forms.Button();
             this.SearchBox = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.button8 = new System.Windows.Forms.Button();
+            this.refreshButton = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IconBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,15 +104,15 @@
             this.ItemList.Size = new System.Drawing.Size(324, 384);
             this.ItemList.TabIndex = 1;
             // 
-            // pictureBox1
+            // IconBox
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(607, 49);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.IconBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.IconBox.Location = new System.Drawing.Point(607, 49);
+            this.IconBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.IconBox.Name = "IconBox";
+            this.IconBox.Size = new System.Drawing.Size(200, 200);
+            this.IconBox.TabIndex = 2;
+            this.IconBox.TabStop = false;
             // 
             // label1
             // 
@@ -124,20 +124,20 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "物品名称：";
             // 
-            // textBox1
+            // NameBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(706, 305);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(295, 27);
-            this.textBox1.TabIndex = 4;
+            this.NameBox.Location = new System.Drawing.Point(706, 305);
+            this.NameBox.Name = "NameBox";
+            this.NameBox.Size = new System.Drawing.Size(295, 27);
+            this.NameBox.TabIndex = 4;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton6);
-            this.groupBox1.Controls.Add(this.radioButton4);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.TypeTaskBox);
+            this.groupBox1.Controls.Add(this.TypeCookingBox);
+            this.groupBox1.Controls.Add(this.TypeSpellcardBox);
+            this.groupBox1.Controls.Add(this.TypeItemBox);
+            this.groupBox1.Controls.Add(this.TypeEquipmentBox);
             this.groupBox1.Location = new System.Drawing.Point(618, 455);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(383, 60);
@@ -145,67 +145,67 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "物品类型：";
             // 
-            // radioButton6
+            // TypeTaskBox
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(307, 26);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(57, 24);
-            this.radioButton6.TabIndex = 4;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "任务";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.TypeTaskBox.AutoSize = true;
+            this.TypeTaskBox.Location = new System.Drawing.Point(307, 26);
+            this.TypeTaskBox.Name = "TypeTaskBox";
+            this.TypeTaskBox.Size = new System.Drawing.Size(57, 24);
+            this.TypeTaskBox.TabIndex = 4;
+            this.TypeTaskBox.TabStop = true;
+            this.TypeTaskBox.Text = "任务";
+            this.TypeTaskBox.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // TypeCookingBox
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(236, 26);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(57, 24);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "料理";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.TypeCookingBox.AutoSize = true;
+            this.TypeCookingBox.Location = new System.Drawing.Point(236, 26);
+            this.TypeCookingBox.Name = "TypeCookingBox";
+            this.TypeCookingBox.Size = new System.Drawing.Size(57, 24);
+            this.TypeCookingBox.TabIndex = 3;
+            this.TypeCookingBox.TabStop = true;
+            this.TypeCookingBox.Text = "料理";
+            this.TypeCookingBox.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // TypeSpellcardBox
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(165, 26);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(57, 24);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "符卡";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.TypeSpellcardBox.AutoSize = true;
+            this.TypeSpellcardBox.Location = new System.Drawing.Point(165, 26);
+            this.TypeSpellcardBox.Name = "TypeSpellcardBox";
+            this.TypeSpellcardBox.Size = new System.Drawing.Size(57, 24);
+            this.TypeSpellcardBox.TabIndex = 2;
+            this.TypeSpellcardBox.TabStop = true;
+            this.TypeSpellcardBox.Text = "符卡";
+            this.TypeSpellcardBox.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // TypeItemBox
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(94, 26);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(57, 24);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "道具";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.TypeItemBox.AutoSize = true;
+            this.TypeItemBox.Location = new System.Drawing.Point(94, 26);
+            this.TypeItemBox.Name = "TypeItemBox";
+            this.TypeItemBox.Size = new System.Drawing.Size(57, 24);
+            this.TypeItemBox.TabIndex = 1;
+            this.TypeItemBox.TabStop = true;
+            this.TypeItemBox.Text = "道具";
+            this.TypeItemBox.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // TypeEquipmentBox
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(23, 26);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(57, 24);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "装备";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.TypeEquipmentBox.AutoSize = true;
+            this.TypeEquipmentBox.Location = new System.Drawing.Point(23, 26);
+            this.TypeEquipmentBox.Name = "TypeEquipmentBox";
+            this.TypeEquipmentBox.Size = new System.Drawing.Size(57, 24);
+            this.TypeEquipmentBox.TabIndex = 0;
+            this.TypeEquipmentBox.TabStop = true;
+            this.TypeEquipmentBox.Text = "装备";
+            this.TypeEquipmentBox.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // IDBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(706, 263);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(101, 27);
-            this.textBox2.TabIndex = 9;
+            this.IDBox.Location = new System.Drawing.Point(706, 263);
+            this.IDBox.Name = "IDBox";
+            this.IDBox.Size = new System.Drawing.Size(101, 27);
+            this.IDBox.TabIndex = 9;
             // 
             // label2
             // 
@@ -235,25 +235,26 @@
             this.button2.Text = "检查冲突";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // EnableBox
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(829, 93);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(73, 24);
-            this.checkBox2.TabIndex = 9;
-            this.checkBox2.Text = "已启用";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.EnableBox.AutoSize = true;
+            this.EnableBox.Location = new System.Drawing.Point(829, 93);
+            this.EnableBox.Name = "EnableBox";
+            this.EnableBox.Size = new System.Drawing.Size(73, 24);
+            this.EnableBox.TabIndex = 9;
+            this.EnableBox.Text = "已启用";
+            this.EnableBox.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // ThrowableBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(829, 63);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(103, 24);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "无法丢弃的";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.ThrowableBox.AutoSize = true;
+            this.ThrowableBox.Location = new System.Drawing.Point(829, 63);
+            this.ThrowableBox.Name = "ThrowableBox";
+            this.ThrowableBox.Size = new System.Drawing.Size(103, 24);
+            this.ThrowableBox.TabIndex = 8;
+            this.ThrowableBox.Text = "无法丢弃的";
+            this.ThrowableBox.UseVisualStyleBackColor = true;
+            this.ThrowableBox.CheckedChanged += new System.EventHandler(this.ThrowableBox_CheckedChanged);
             // 
             // label3
             // 
@@ -265,13 +266,13 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "物品描述：";
             // 
-            // textBox3
+            // IllustrationBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(706, 349);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(295, 88);
-            this.textBox3.TabIndex = 13;
+            this.IllustrationBox.Location = new System.Drawing.Point(706, 349);
+            this.IllustrationBox.Multiline = true;
+            this.IllustrationBox.Name = "IllustrationBox";
+            this.IllustrationBox.Size = new System.Drawing.Size(295, 88);
+            this.IllustrationBox.TabIndex = 13;
             // 
             // button3
             // 
@@ -292,14 +293,15 @@
             this.button4.Text = "还原";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // readItemButton
             // 
-            this.button5.Location = new System.Drawing.Point(363, 167);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(219, 55);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "读取->";
-            this.button5.UseVisualStyleBackColor = true;
+            this.readItemButton.Location = new System.Drawing.Point(363, 167);
+            this.readItemButton.Name = "readItemButton";
+            this.readItemButton.Size = new System.Drawing.Size(219, 55);
+            this.readItemButton.TabIndex = 16;
+            this.readItemButton.Text = "读取->";
+            this.readItemButton.UseVisualStyleBackColor = true;
+            this.readItemButton.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -334,22 +336,22 @@
             // SearchBox
             // 
             this.SearchBox.AcceptsTab = true;
-            this.SearchBox.Font = new System.Drawing.Font("微软雅黑 Light", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.SearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.SearchBox.ForeColor = System.Drawing.Color.DarkGray;
             this.SearchBox.Location = new System.Drawing.Point(18, 93);
             this.SearchBox.Name = "SearchBox";
-            this.SearchBox.Size = new System.Drawing.Size(324, 27);
+            this.SearchBox.Size = new System.Drawing.Size(324, 24);
             this.SearchBox.TabIndex = 21;
             this.SearchBox.Text = "搜索道具";
             // 
-            // button8
+            // refreshButton
             // 
-            this.button8.Location = new System.Drawing.Point(363, 456);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(219, 59);
-            this.button8.TabIndex = 22;
-            this.button8.Text = "重新读取所有道具";
-            this.button8.UseVisualStyleBackColor = true;
+            this.refreshButton.Location = new System.Drawing.Point(363, 456);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(219, 59);
+            this.refreshButton.TabIndex = 22;
+            this.refreshButton.Text = "重新读取所有道具";
+            this.refreshButton.UseVisualStyleBackColor = true;
             // 
             // button9
             // 
@@ -376,26 +378,26 @@
             this.ClientSize = new System.Drawing.Size(1022, 544);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
+            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.SearchBox);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.readItemButton);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.EnableBox);
+            this.Controls.Add(this.IllustrationBox);
+            this.Controls.Add(this.ThrowableBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.IDBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.NameBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.IconBox);
             this.Controls.Add(this.ItemList);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("微软雅黑", 11F);
@@ -408,7 +410,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IconBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -422,32 +424,32 @@
         private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 打开Assets目录ToolStripMenuItem;
         private System.Windows.Forms.ListBox ItemList;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox IconBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox NameBox;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.RadioButton TypeTaskBox;
+        private System.Windows.Forms.RadioButton TypeCookingBox;
+        private System.Windows.Forms.RadioButton TypeSpellcardBox;
+        private System.Windows.Forms.RadioButton TypeItemBox;
+        private System.Windows.Forms.RadioButton TypeEquipmentBox;
+        private System.Windows.Forms.TextBox IDBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox EnableBox;
+        private System.Windows.Forms.CheckBox ThrowableBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox IllustrationBox;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button readItemButton;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.TextBox SearchBox;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
     }

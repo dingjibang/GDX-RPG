@@ -1,5 +1,5 @@
 {
-	type:"Medicine",
+	type:"Item",
 	name:"药丸",
 	illustration:"为我方某个角色恢复10点生命值",
 	use:"
