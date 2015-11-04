@@ -29,7 +29,7 @@ public class ThrowItemView extends SidebarView{
 		tstyle.up = Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"throwbut.png");
 		tstyle.font = Res.font.get(22);
 		
-		$.add(new TextButton("确定丢弃",tstyle)).appendTo(group).setSize(454,55).setPosition(435,40).onClick(new Runnable() {
+		$.add(new TextButton("确定丢弃",tstyle)).appendTo(group).setSize(454,55).setPosition(435,40).onClick(new Runnable() {@SuppressWarnings("unchecked")
 			public void run() {
 				if(counter.get() != 0)
 					((CustomRunnable<Integer>)param.get("callback")).run(counter.get());
