@@ -14,10 +14,11 @@ import com.rpsg.rpg.system.ui.TextButton;
 
 
 public class ThrowItemView extends SidebarView{
-
+	
+	TextButton okay;
+	Counter counter;
 	public void init() {
 		Icon icon = (Icon) param.get("item");
-		final Counter counter;
 		group.addActor(Res.get(Setting.UI_BASE_IMG).size(545, 160).position(400, 280).a(.13f));
 		group.addActor(new Image(icon).x(435).y(300).scale(.6f));
 		group.addActor(Res.get(icon.item.name, 38).position(575, 365).width(330).overflow(true).color(Color.valueOf("ff6600")));
@@ -29,14 +30,33 @@ public class ThrowItemView extends SidebarView{
 		tstyle.up = Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"throwbut.png");
 		tstyle.font = Res.font.get(22);
 		
-		$.add(new TextButton("确定丢弃",tstyle)).appendTo(group).setSize(454,55).setPosition(435,40).onClick(new Runnable() {@SuppressWarnings("unchecked")
+		$.add(okay = new TextButton("确定丢弃",tstyle).onClick(new Runnable() {@SuppressWarnings("unchecked")
 			public void run() {
 				if(counter.get() != 0)
 					((CustomRunnable<Integer>)param.get("callback")).run(counter.get());
 				ThrowItemView.this.keyDown(Keys.ESCAPE);
 			}
-		}).getCell().prefSize(454,55);
+		})).appendTo(group).setSize(454,55).setPosition(435,40).getCell().prefSize(454,55);
 		
 //		stage.setDebugAll(true);
+	}
+	
+	@Override
+	public boolean keyDown(int keycode) {
+		if(keycode==Keys.ENTER)
+			okay.click();
+		if(keycode==Keys.LEFT)
+			counter.add(-1);
+		if(keycode==Keys.RIGHT)
+			counter.add(1);
+		if(keycode==Keys.UP)
+			counter.add(10);
+		if(keycode==Keys.DOWN)
+			counter.add(-10);
+		if(keycode==Keys.M)
+			counter.set(counter.getMax());
+		if(keycode==Keys.C)
+			counter.set(0);
+		return super.keyDown(keycode);
 	}
 }

@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
@@ -17,6 +18,7 @@ import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.gdxQuery.GdxQueryRunnable;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.system.base.Res;
@@ -56,9 +58,11 @@ public class StatusView extends DefaultIView {
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"menu_fg_shadow.png").disableTouch()).appendTo(inner).setPosition(50, y(30)).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(.3f),Actions.moveTo(50, y(180),0.3f,Interpolation.pow4Out)));
 		
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"m_right.png")).appendTo(inner).setPosition(570, y(150)).onClick(new Runnable() {public void run() {
+			Music.playSE("snd210.wav");
 			next();
 		}}).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);
 		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"m_right.png")).setScaleX(-1).appendTo(inner).setPosition(36, y(150)).onClick(new Runnable() {public void run() {
+			Music.playSE("snd210.wav");
 			prev();
 		}}).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);
 		$.add(new Label(parent.current.name,parent.current.name.length()>7?50:60).align(107, y(135)).width(450)).appendTo(inner).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);
@@ -136,6 +140,15 @@ public class StatusView extends DefaultIView {
 				pe_help.addAction(self.isChecked()?Actions.fadeIn(0.3f):Actions.fadeOut(0.3f));
 			}});}});
 		}
+		
+		$.add(inner).children().find(Group.class).children().find(Button.class,CheckBox.class).onClick(new Runnable() {
+			public void run() {
+				Music.playSE("snd210.wav");
+			}
+		});
+		
+		System.out.println($.add(inner).children().find(Group.class).children().find(Button.class).getItems());
+		
 		
 		stage.setDebugAll(Setting.persistence.uiDebug);
 	}

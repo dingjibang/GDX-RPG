@@ -11,6 +11,7 @@ import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptableObject;
 
 import com.badlogic.gdx.Gdx;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -52,63 +53,8 @@ public class Global implements Serializable {
 	// 物品、装备等道具
 
 	public List<Item> items = new ArrayList<>(); 
-	
-//	public AchievementManager ach = new AchievementManager();
-//
-//	public void $(String s) {
-//		// global.$("gold+10000") global.$("gold.set(10000)")
-//		// global.$("items.add(YaoWan,3)")
-//		try {
-//			String field = "";
-//			if (s.contains("+")) {
-//				field = s.substring(0, s.indexOf("+"));
-//				Field f = this.getClass().getField(field);
-//				f.setAccessible(true);
-//				f.set(this,
-//						(int) f.get(this)
-//								+ Integer.parseInt(s.substring(s.indexOf("+") + 1)));
-//			} else if (s.contains("-")) {
-//				field = s.substring(0, s.indexOf("-"));
-//				Field f = this.getClass().getField(field);
-//				f.setAccessible(true);
-//				f.set(this,
-//						(int) f.get(this)
-//								- Integer.parseInt(s.substring(s.indexOf("-") + 1)));
-//			} else if (s.contains(".set(")) {
-//			}
-//
-//			AchievementManager.determine(field);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	public void update(String field, String action) { // global.update("gold","+100000")
-//		try {
-//			Field f = this.getClass().getField(field);
-//			int i = (int) f.get(this);
-//			f.setAccessible(true);
-//			if (action.charAt(0) == '+') {
-//				i += Integer.parseInt(action.substring(1));
-//			} else if (action.charAt(0) == '-') {
-//				i -= Integer.parseInt(action.substring(1));
-//			} else {
-//				i = Integer.parseInt(action);
-//			}
-//			f.set(this, i);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		AchievementManager.determine(field);
-//	}
 
 	public void read(){
-		Context ctx = Context.enter();
-		if(!GameUtil.isDesktop)
-			ctx.setOptimizationLevel(-1);
-		ScriptableObject scope =ctx.initStandardObjects();
-		scope.setPrototype(((NativeJavaObject)Context.javaToJS(Global.this, scope)));
-		ctx.evaluateString(scope, Gdx.files.internal(Setting.SCRIPT_SYSTEM+"global.js").readString(), null, 1, null);
-		Context.exit();
+		RPG.executeJS( Gdx.files.internal(Setting.SCRIPT_SYSTEM+"global.js").readString(), this);
 	}
 }
