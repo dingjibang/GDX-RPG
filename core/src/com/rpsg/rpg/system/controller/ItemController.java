@@ -79,9 +79,8 @@ public class ItemController {
 			item.illustration=result.getString("illustration");
 			item.throwable=result.has("throwable")?result.getBoolean("throwable"):true;
 			item.name=result.getString("name");
-			item.useScript=result.has("use")?result.getString("use"):"";
+			item.use=result.has("use")?result.getString("use"):"";
 			item.type=result.getString("type");
-			
 			
 			return (T) item;
 		} catch (Exception e) {
@@ -185,6 +184,7 @@ public class ItemController {
 			replace(item.user, equip, true);//计算穿上装备后的Hero属性数值变化
 			remove(equip);
 		}
+		
 		return true;
 	}
 	

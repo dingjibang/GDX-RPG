@@ -7,38 +7,51 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
 
 /**
- * GDX-RPG 道具（ITEM）超类
+ * <i>GDX-RPG</i> 道具（ITEM）超类
+ * <br>
+ * Item是游戏中道具的数据结构。<br>
+ * 在目前，Item拥有以下几种子类型：<br>
+ * <br>
+ * Item(道具) - 最普通的道具，和Item类本身相同。<br>
+ * {@link Equipment} (装备) - 装备类，继承Item。<br>
+ * {@link SpellCard} (符卡) - 符卡类，继承Item（未完成）。<br>
+ * <br>
+ * <i>GDX-RPG</i>的所有道具数据，均存储于[/rpg/android/assets/script/data]这个位置。<br>
+ * 存储的规范是，使用数字（即道具的唯一ID）进行命名，文件后缀为.grd(GDX RPG Data)。<br>
+ * 相应的，存储的格式是<b>Json<b>格式。<br>
+ * <br>
  * @author dingjibang
- *
  */
 public class Item implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	//本道具是否可以丢弃
+	/**本道具是否可以丢弃*/
 	public boolean throwable = true;
 	
-	//道具名称
+	/**道具名称*/
 	public String name = "";
 	
-	//道具数量
+	/**道具数量*/
 	public int count = 1;
 	
-	//道具描述信息
+	/**道具描述信息*/
 	public String illustration = "";
 	
-	//道具是否可用
+	/**道具是否可用*/
 	public boolean disable = false;
 	
-	//物品ID（需要唯一性/ID和物品的图标有关联）
+	/**道具ID（需要唯一性/ID和物品的图标有关联）*/
 	public int id=0;
 	
-	//物品类型
+	/**道具类型*/
 	public String type=null;
 
-	public String useScript = "";
+	/**道具的特殊JS脚本。*/
+	public String use = "";
 	
-	//注入到js的变量
+	/**注入到js的变量*/
 	public Hero user;
+	
 	
 	public String getIcon(){
 		return Setting.IMAGE_ICONS+"i"+id+".png";
@@ -60,8 +73,8 @@ public class Item implements Serializable {
 	 * @return
 	 */
 	public boolean use(){
-		if(useScript!=null && useScript.length()!=0){
-			return RPG.executeJS(useScript,this);
+		if(use!=null && use.length()!=0){
+			return RPG.executeJS(use,this);
 		}
 		return false;
 	}

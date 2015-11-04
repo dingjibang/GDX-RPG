@@ -105,18 +105,19 @@ namespace ItemEditor
 
             if (item.type.Equals("item", StringComparison.OrdinalIgnoreCase))
                 TypeItemBox.Checked = true;
+            
 
         }
 
         private void ThrowableBox_CheckedChanged(object sender, EventArgs e)
         {
             Item item = ((Item)ItemList.SelectedItem);
-
+            MessageBox.Show(JObject.FromObject(item).ToString());
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-
+            
         }
 
     }
