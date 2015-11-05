@@ -6,9 +6,9 @@
 	equipType:"EQUIP_WEAPON",
 	onlyFor:"Yuuka",
 	throwable:false,
-	use:"
-		put('attack', 5);
-		put('magicAttack', 1);
-		put('hit', -1);
-	"
+	prop:{
+		attack:5,
+		magicAttack:1,
+		hit:-1
+	}
 }

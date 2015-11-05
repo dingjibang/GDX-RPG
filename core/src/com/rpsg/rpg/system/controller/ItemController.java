@@ -1,6 +1,8 @@
 package com.rpsg.rpg.system.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.JsonReader;
@@ -62,11 +64,21 @@ public class ItemController {
 		try {
 			Item item;
 			
+			//差别处理
 			if(type.equalsIgnoreCase(Equipment.class.getSimpleName())){
 				Equipment e =(Equipment)(item=new Equipment());
 				e.illustration2 = result.has("illustration2")?result.getString("illustration2"):"";
 				e.onlyFor=(Class<? extends Hero>) (result.has("onlyFor")?Class.forName("com.rpsg.rpg.game.hero."+result.getString("onlyFor")):null);
 				e.equipType=result.getString("equipType");
+				
+				//读取装备属性
+				Map<String,Integer> replace = new HashMap<>();
+				for(String prop:e.prop.keySet()){
+					JsonValue _p = result.get("prop");
+					replace.put(prop,_p.has(prop)?_p.getInt(prop):0);
+				}
+				e.prop = replace;
+				
 			}else if(type.equalsIgnoreCase(SpellCard.class.getSimpleName())){				//TODO
 				SpellCard e =(SpellCard)(item=new SpellCard());
 				e.illustration2 = result.has("illustration2")?result.getString("illustration2"):"";

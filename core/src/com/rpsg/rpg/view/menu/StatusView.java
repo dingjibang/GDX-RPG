@@ -147,9 +147,6 @@ public class StatusView extends DefaultIView {
 			}
 		});
 		
-		System.out.println($.add(inner).children().find(Group.class).children().find(Button.class).getItems());
-		
-		
 		stage.setDebugAll(Setting.persistence.uiDebug);
 	}
 	

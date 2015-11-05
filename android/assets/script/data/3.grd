@@ -4,8 +4,8 @@
 	illustration:"博丽灵梦手里常持的家伙。",
 	illustration2:"攻击+12 魔攻+3",
 	equipType:"EQUIP_WEAPON",
-	use:"
-		put('attack', 12);
-		put('magicAttack', 3);
-	"
+	prop:{
+		attack:12,
+		magicAttack:3
+	}
 }
