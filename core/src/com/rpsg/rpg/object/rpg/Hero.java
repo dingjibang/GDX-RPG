@@ -14,7 +14,7 @@ import com.rpsg.rpg.object.base.EmptyAssociation;
 import com.rpsg.rpg.object.base.Resistance;
 import com.rpsg.rpg.object.base.Support;
 import com.rpsg.rpg.object.base.items.Equipment;
-import com.rpsg.rpg.object.base.items.SpellCard;
+import com.rpsg.rpg.object.base.items.Spellcard;
 
 public abstract class Hero extends RPGObject {
 
@@ -70,7 +70,7 @@ public abstract class Hero extends RPGObject {
 		resistance.put("physical", Resistance.normal);
 	}
 
-	public List<SpellCard> sc = new ArrayList<SpellCard>();
+	public List<Spellcard> sc = new ArrayList<Spellcard>();
 
 	public LinkedHashMap<String, Equipment> equips = new LinkedHashMap<String, Equipment>();
 	{

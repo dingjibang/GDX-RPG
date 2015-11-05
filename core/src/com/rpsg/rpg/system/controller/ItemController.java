@@ -11,7 +11,7 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
-import com.rpsg.rpg.object.base.items.SpellCard;
+import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.utils.game.Logger;
 
@@ -33,8 +33,8 @@ public class ItemController {
 		if(item==null)
 			RPG.global.items.add(get(id));
 		else
-			item.count++; //TODO DEBUG!!!!
-//			RPG.global.items.add(get(id));
+//			item.count++; //TODO DEBUG!!!!
+			RPG.global.items.add(get(id));
 	}
 	
 	public void put(Item item){
@@ -79,8 +79,8 @@ public class ItemController {
 				}
 				e.prop = replace;
 				
-			}else if(type.equalsIgnoreCase(SpellCard.class.getSimpleName())){				//TODO
-				SpellCard e =(SpellCard)(item=new SpellCard());
+			}else if(type.equalsIgnoreCase(Spellcard.class.getSimpleName())){				//TODO
+				Spellcard e =(Spellcard)(item=new Spellcard());
 				e.illustration2 = result.has("illustration2")?result.getString("illustration2"):"";
 			}else{
 				item = new Item();
@@ -150,7 +150,7 @@ public class ItemController {
 	public ArrayList<Item> search(String type){
 		ArrayList<Item> result = new ArrayList<Item>();
 		for(Item item:RPG.global.items)
-			if(item.type.equals(type))
+			if(item.type.equalsIgnoreCase(type))
 				result.add(item);
 		return result;
 	}
