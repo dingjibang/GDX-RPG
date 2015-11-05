@@ -1,19 +1,19 @@
-H:\RPSGItemEditor\ItemEditor\ItemEditor\bin\Debug\ItemEditor.exe.config
-H:\RPSGItemEditor\ItemEditor\ItemEditor\bin\Debug\ItemEditor.exe
-H:\RPSGItemEditor\ItemEditor\ItemEditor\bin\Debug\ItemEditor.pdb
-H:\RPSGItemEditor\ItemEditor\ItemEditor\obj\Debug\ItemEditor.csprojResolveAssemblyReference.cache
-H:\RPSGItemEditor\ItemEditor\ItemEditor\obj\Debug\ItemEditor.Form1.resources
-H:\RPSGItemEditor\ItemEditor\ItemEditor\obj\Debug\ItemEditor.Properties.Resources.resources
-H:\RPSGItemEditor\ItemEditor\ItemEditor\obj\Debug\ItemEditor.csproj.GenerateResource.Cache
-H:\RPSGItemEditor\ItemEditor\ItemEditor\obj\Debug\ItemEditor.exe
-H:\RPSGItemEditor\ItemEditor\ItemEditor\obj\Debug\ItemEditor.pdb
-E:\Workspaces\MyEclipse 8.5\rpg\extension\RPSGItemEditor\ItemEditor\ItemEditor\bin\Debug\ItemEditor.exe.config
-E:\Workspaces\MyEclipse 8.5\rpg\extension\RPSGItemEditor\ItemEditor\ItemEditor\obj\Debug\ItemEditor.exe
-E:\Workspaces\MyEclipse 8.5\rpg\extension\RPSGItemEditor\ItemEditor\ItemEditor\obj\Debug\ItemEditor.pdb
-E:\Workspaces\MyEclipse 8.5\rpg\extension\RPSGItemEditor\ItemEditor\ItemEditor\bin\Debug\ItemEditor.exe
-E:\Workspaces\MyEclipse 8.5\rpg\extension\RPSGItemEditor\ItemEditor\ItemEditor\bin\Debug\ItemEditor.pdb
-E:\Workspaces\MyEclipse 8.5\rpg\extension\RPSGItemEditor\ItemEditor\ItemEditor\obj\Debug\ItemEditor.csprojResolveAssemblyReference.cache
-E:\Workspaces\MyEclipse 8.5\rpg\extension\RPSGItemEditor\ItemEditor\ItemEditor\obj\Debug\ItemEditor.Form1.resources
-E:\Workspaces\MyEclipse 8.5\rpg\extension\RPSGItemEditor\ItemEditor\ItemEditor\obj\Debug\ItemEditor.Properties.Resources.resources
-E:\Workspaces\MyEclipse 8.5\rpg\extension\RPSGItemEditor\ItemEditor\ItemEditor\obj\Debug\ItemEditor.csproj.GenerateResource.Cache
-E:\Workspaces\MyEclipse 8.5\rpg\extension\RPSGItemEditor\ItemEditor\ItemEditor\bin\Debug\Newtonsoft.Json.dll
+c:\users\zichao\documents\visual studio 2013\Projects\ItemEditor\ItemEditor\bin\Debug\ItemEditor.exe.config
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\obj\Debug\MainWindow.baml
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\obj\Debug\MainWindow.g.cs
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\obj\Debug\App.g.cs
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\obj\Debug\ItemEditor_MarkupCompile.cache
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\obj\Debug\ItemEditor_MarkupCompile.lref
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\bin\Debug\ItemEditor.exe
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\bin\Debug\ItemEditor.pdb
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\obj\Debug\Common\Themes\Generic.baml
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\obj\Debug\ItemEditor.g.resources
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\obj\Debug\ItemEditor.Properties.Resources.resources
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\obj\Debug\ItemEditor.csproj.GenerateResource.Cache
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\obj\Debug\ItemEditor.exe
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\obj\Debug\ItemEditor.pdb
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\obj\Debug\App.baml
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\bin\Debug\Newtonsoft.Json.dll
+C:\Users\zichao\Documents\Visual Studio 2013\Projects\ItemEditor\ItemEditor\bin\Debug\Newtonsoft.Json.xml
+C:\Users\zichao\documents\visual studio 2013\Projects\ItemEditor\ItemEditor\obj\Debug\ItemEditor.csprojResolveAssemblyReference.cache
