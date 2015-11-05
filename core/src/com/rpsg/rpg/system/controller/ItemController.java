@@ -9,8 +9,11 @@ import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
+import com.rpsg.rpg.object.base.items.ItemOption.ItemForward;
+import com.rpsg.rpg.object.base.items.ItemOption.ItemRange;
 import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.utils.game.Logger;
@@ -29,16 +32,16 @@ public class ItemController {
 	 * @param id 道具ID
 	 */
 	public void put(int id){
-		Item item =search(id);
-		if(item==null)
-			RPG.global.items.add(get(id));
+		BaseItem baseItem =search(id);
+		if(baseItem==null)
+			RPG.global.baseItems.add(get(id));
 		else
 //			item.count++; //TODO DEBUG!!!!
-			RPG.global.items.add(get(id));
+			RPG.global.baseItems.add(get(id));
 	}
 	
-	public void put(Item item){
-		put(item.id);
+	public void put(BaseItem baseItem){
+		put(baseItem.id);
 	}
 	
 	/**
@@ -46,8 +49,8 @@ public class ItemController {
 	 * @param id id键
 	 * @return
 	 */
-	public Item get(int id){
-		return get(id,Item.class);
+	public BaseItem get(int id){
+		return get(id,BaseItem.class);
 	}
 	
 	/**
@@ -62,11 +65,11 @@ public class ItemController {
 		JsonValue result=reader.parse(Gdx.files.internal(Setting.SCRIPT_DATA+id+".grd"));
 		String type=result.getString("type");
 		try {
-			Item item;
+			BaseItem baseItem;
 			
 			//差别处理
 			if(type.equalsIgnoreCase(Equipment.class.getSimpleName())){
-				Equipment e =(Equipment)(item=new Equipment());
+				Equipment e =(Equipment)(baseItem=new Equipment());
 				e.illustration2 = result.has("illustration2")?result.getString("illustration2"):"";
 				e.onlyFor=(Class<? extends Hero>) (result.has("onlyFor")?Class.forName("com.rpsg.rpg.game.hero."+result.getString("onlyFor")):null);
 				e.equipType=result.getString("equipType");
@@ -80,21 +83,24 @@ public class ItemController {
 				e.prop = replace;
 				
 			}else if(type.equalsIgnoreCase(Spellcard.class.getSimpleName())){				//TODO
-				Spellcard e =(Spellcard)(item=new Spellcard());
+				Spellcard e =(Spellcard)(baseItem=new Spellcard());
 				e.illustration2 = result.has("illustration2")?result.getString("illustration2"):"";
 			}else{
-				item = new Item();
+				Item item = (Item)(baseItem = new Item());
+				item.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
+				item.range = result.has("range")?ItemRange.valueOf(result.getString("range")):ItemRange.one;
+				item.type = Item.class.getSimpleName();
 			}
 			
-			item.id=id;
-			item.disable=false;
-			item.illustration=result.getString("illustration");
-			item.throwable=result.has("throwable")?result.getBoolean("throwable"):true;
-			item.name=result.getString("name");
-			item.use=result.has("use")?result.getString("use"):"";
-			item.type=result.getString("type");
+			baseItem.id=id;
+			baseItem.disable=false;
+			baseItem.illustration=result.getString("illustration");
+			baseItem.throwable=result.has("throwable")?result.getBoolean("throwable"):true;
+			baseItem.name=result.getString("name");
+			baseItem.use=result.has("use")?result.getString("use"):"";
+			baseItem.type=result.getString("type");
 			
-			return (T) item;
+			return (T) baseItem;
 		} catch (Exception e) {
 			Logger.error("无法读取物品："+id,e);
 			e.printStackTrace();
@@ -109,25 +115,25 @@ public class ItemController {
 	
 	/**
 	 * 移除数个 <b><i>当前背包</i></b> 里的某个道具
-	 * @param item 道具实体类
+	 * @param baseItem 道具实体类
 	 * @param count 数量
 	 * @return 操作是否成功
 	 */
-	public boolean remove(Item item,int count){
-		if(item==null)
+	public boolean remove(BaseItem baseItem,int count){
+		if(baseItem==null)
 			return false;
-		if(item.count-count < 0)
+		if(baseItem.count-count < 0)
 			return false;
-		if(item.count-count == 0)
-			RPG.global.items.remove(item);
+		if(baseItem.count-count == 0)
+			RPG.global.baseItems.remove(baseItem);
 		else
-			item.count-=count;
+			baseItem.count-=count;
 		return true;
 	}
 	
 	/** 移除1个 <b><i>当前背包</i></b> 里的某个道具（根据实体类）**/
-	public boolean remove(Item item){
-		return remove(item,1);
+	public boolean remove(BaseItem baseItem){
+		return remove(baseItem,1);
 	}
 	
 	/** 移除数个 <b><i>当前背包</i></b> 里的某个道具（根据ID）**/
@@ -135,10 +141,10 @@ public class ItemController {
 		return remove(search(id),count);
 	}
 	
-	public synchronized Item search(int id){
-		for(Item item:RPG.global.items)
-			if(item.id==id)
-				return item;
+	public synchronized BaseItem search(int id){
+		for(BaseItem baseItem:RPG.global.baseItems)
+			if(baseItem.id==id)
+				return baseItem;
 		return null;
 	}
 	
@@ -147,11 +153,11 @@ public class ItemController {
 	 * @param type 类型
 	 * @return
 	 */
-	public ArrayList<Item> search(String type){
-		ArrayList<Item> result = new ArrayList<Item>();
-		for(Item item:RPG.global.items)
-			if(item.type.equalsIgnoreCase(type))
-				result.add(item);
+	public ArrayList<BaseItem> search(String type){
+		ArrayList<BaseItem> result = new ArrayList<BaseItem>();
+		for(BaseItem baseItem:RPG.global.baseItems)
+			if(baseItem.type.equalsIgnoreCase(type))
+				result.add(baseItem);
 		return result;
 	}
 	
@@ -176,24 +182,24 @@ public class ItemController {
 	
 	/**
 	 * 使用一个道具（道具 或 符卡 或 装备 等）
-	 * @param item 要使用的道具
+	 * @param baseItem 要使用的道具
 	 * @return 是否成功
 	 */
-	public boolean use(Item item){
-		if(item==null)
+	public boolean use(BaseItem baseItem){
+		if(baseItem==null)
 			return false;
 		
-		item.use();
+		baseItem.use();
 		
-		if(item instanceof Equipment){
-			if(item.user==null)
+		if(baseItem instanceof Equipment){
+			if(baseItem.user==null)
 				return false;
-			Equipment equip=(Equipment)item;
+			Equipment equip=(Equipment)baseItem;
 			
 			takeOff(equip);
 			
-			item.user.equips.put(equip.equipType, equip);
-			replace(item.user, equip, true);//计算穿上装备后的Hero属性数值变化
+			baseItem.user.equips.put(equip.equipType, equip);
+			replace(baseItem.user, equip, true);//计算穿上装备后的Hero属性数值变化
 			remove(equip);
 		}
 		
@@ -202,13 +208,13 @@ public class ItemController {
 	
 	/**
 	 * 从某个角色上脱下某件装备
-	 * @param item 新装备对比（不是要脱下的装备）（看不懂的话就别用这个方法……用下面那个方法）
+	 * @param baseItem 新装备对比（不是要脱下的装备）（看不懂的话就别用这个方法……用下面那个方法）
 	 * @return 是否成功脱下
 	 */
-	public boolean takeOff(Item item){
-		if(!(item instanceof Equipment))
+	public boolean takeOff(BaseItem baseItem){
+		if(!(baseItem instanceof Equipment))
 			return false;
-		return takeOff(item.user,((Equipment)item).equipType);
+		return takeOff(baseItem.user,((Equipment)baseItem).equipType);
 	}
 	
 	/**

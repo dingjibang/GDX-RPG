@@ -7,5 +7,6 @@
 	prop:{
 		attack:12,
 		magicAttack:3
-	}
+	},
+	use:""
 }

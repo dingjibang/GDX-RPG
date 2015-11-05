@@ -1,7 +1,6 @@
 package com.rpsg.rpg.view.menu;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,27 +10,20 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
-import com.rpsg.gdxQuery.GdxQuery;
-import com.rpsg.gdxQuery.GdxQueryRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.CustomRunnable;
-import com.rpsg.rpg.object.base.items.Equipment;
+import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.ItemType;
-import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.ui.CheckBox;
 import com.rpsg.rpg.system.ui.DefaultIView;
-import com.rpsg.rpg.system.ui.HeroImage;
 import com.rpsg.rpg.system.ui.Icon;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
@@ -47,12 +39,12 @@ public class ItemView extends DefaultIView{
 	ImageList ilist;
 	String currentFilter = Item.class.getSimpleName();
 	ImageButton takeButton,throwButton;
-	Image take=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_take.png"),off=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_off.png").a(.3f),throwImg=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_remove.png").a(.3f);
+	Image take=Res.get(Setting.IMAGE_MENU_NEW_ITEM+"but_use.png"),off=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_off.png").a(.3f),throwImg=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_remove.png").a(.3f);
 	public ItemView init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		
 		//topBar
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,60).setColor(.2f,.2f,.2f,.85f).setPosition(240,486).appendTo(stage);
+		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,60).setColor(Color.valueOf("3d3d3d")).setPosition(240,486).appendTo(stage);
 		
 		CheckBoxStyle cstyle=new CheckBoxStyle();
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"info.png");
@@ -70,14 +62,14 @@ public class ItemView extends DefaultIView{
 		inner = (Group) $.add(new Group()).appendTo(stage).getItem();
 		description = (Group) $.add(new Group()).appendTo(stage).getItem();
 		
-		generate();
+		generate(true);
 		
 		stage.setDebugAll(!true || Setting.persistence.uiDebug);
 		
 		return this;
 	}
 	
-	private void generate() {
+	private void generate(boolean animate) {
 		float oldTop = 0f;
 		if(ilist!=null)
 			oldTop = ilist.getScrollPercentY();
@@ -86,10 +78,24 @@ public class ItemView extends DefaultIView{
 		
 		//generate topbar
 		
-		inner.addActor(new Image(Setting.UI_BASE_IMG).size(160, 73).color(Color.valueOf("8f1717")).position(240, 479));
 		
-		for(ItemType type:ItemType.values()){
-			
+		int offset = -14, pad = 119;
+		for(final ItemType type:ItemType.values()){
+			if(type.name().equalsIgnoreCase(currentFilter)){
+				inner.addActor(new Image(Setting.UI_BASE_IMG).size(0, 73).color(Color.valueOf("8f171700")).position(135+(offset+=pad), 479).action(Actions.parallel(Actions.fadeIn(animate?.1f:0),Actions.sizeBy(160, 0,animate?.07f:0))));
+				offset+=70;
+				inner.addActor(new Image(Setting.IMAGE_MENU_NEW_ITEM+"i_"+type.name()+".png").position(98+offset, 500).a(0).action(Actions.fadeIn(animate?.1f:0)));
+				$.add(new Label(type.value(),26)).setPosition(143+offset, 500).setColor(1,1,1,0).appendTo(inner).setAlpha(0).addAction(Actions.fadeIn(animate?.1f:0));
+			}else{
+				inner.addActor(new Image(Setting.UI_BASE_IMG).size(90, 60).color(Color.valueOf("3d3d3d")).position(135+(offset+=pad), 486).onClick(new Runnable(){
+					public void run() {
+						currentFilter = type.name();
+						generate(true);
+					}
+				}));
+				inner.addActor(new Image(Setting.IMAGE_MENU_NEW_ITEM+"i_"+type.name()+".png").position(140+offset+25, 500).disableTouch());
+			}
+				
 		}
 		
 		ilist=((ImageList) $.add(new ImageList(getItems(currentFilter))).setSize(735, 266).setPosition(248, 185).appendTo(inner).getItem());
@@ -107,7 +113,7 @@ public class ItemView extends DefaultIView{
 					if(t.current)
 						takeButton.setFg(off.a(1)).onClick(new Runnable(){public void run() {
 							RPG.ctrl.item.takeOff(parent.current, currentFilter);
-							generate();
+							generate(false);
 						}});
 					else
 						takeButton.setFg(take.a(1)).fgSelfColor(true).onClick(new Runnable(){public void run() {
@@ -115,7 +121,7 @@ public class ItemView extends DefaultIView{
 						}});
 				}
 				
-				if(!t.item.throwable || t.current){
+				if(!t.baseItem.throwable || t.current){
 					throwButton.setFg(throwImg.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
 					append += "无法丢弃此道具。";
 				}else{
@@ -128,9 +134,9 @@ public class ItemView extends DefaultIView{
 					append = "\n[#d38181]"+append+"[]";
 				
 				Label name;
-				$.add(name = new Label(t.item.name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
-				$.add(new Label(("("+"拥有"+t.item.count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
-				ScrollPane pane = new ScrollPane(new Label(t.item.illustration+append,17).warp(true).markup(true));
+				$.add(name = new Label(t.baseItem.name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
+				$.add(new Label(("("+"拥有"+t.baseItem.count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
+				ScrollPane pane = new ScrollPane(new Label(t.baseItem.illustration+append,17).warp(true).markup(true));
 				pane.setupOverscroll(20, 200, 200);
 				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbar.png");
 				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbarin.png");
@@ -145,10 +151,10 @@ public class ItemView extends DefaultIView{
 	}
 	
 	private List<Icon> getItems(String type){
-		List<Item> items = RPG.ctrl.item.search(type);
+		List<BaseItem> baseItems = RPG.ctrl.item.search(type);
 		
 		List<Icon> io= new ArrayList<>();
-		for(Item e:items){
+		for(BaseItem e:baseItems){
 			Icon obj=new Icon().generateIcon(e, true);
 			io.add(obj);
 		}
@@ -156,30 +162,20 @@ public class ItemView extends DefaultIView{
 		return io;
 	}
 	
-	private void prev(){
-		if(parent.prev())
-			generate();
-	}
-	
-	private void next(){
-		if(parent.next())
-			generate();
-	}
-
 	public void draw(SpriteBatch batch) {
 		stage.draw();
 	}
 	
 	private void useEquip(){
-		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().item!=null)
-			if(!RPG.ctrl.item.use(ilist.getCurrent().item.setUser(parent.current)))
-				RPG.putMessage("程序异常，装备失败。", AlertUtil.Red);
-		generate();
+		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().baseItem!=null)
+			if(!RPG.ctrl.item.use(ilist.getCurrent().baseItem.setUser(parent.current)))
+				RPG.putMessage("程序异常，使用失败。", AlertUtil.Red);
+		generate(false);
 	}
 	
 	@SuppressWarnings("serial")
 	private void removeEquip(){
-		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().item!=null)
+		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().baseItem!=null)
 			
 		RPG.popup.add(ThrowItemView.class,new HashMap<Object, Object>(){{
 			put("title","丢弃物品");
@@ -187,9 +183,9 @@ public class ItemView extends DefaultIView{
 			put("item",ilist.getCurrent());
 			put("callback",new CustomRunnable<Integer>() {
 				public void run(Integer t) {
-					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().item.name+" "+t+" 个", AlertUtil.Green);
-					RPG.ctrl.item.remove(ilist.getCurrent().item, t);
-					generate();
+					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().baseItem.name+" "+t+" 个", AlertUtil.Green);
+					RPG.ctrl.item.remove(ilist.getCurrent().baseItem, t);
+					generate(false);
 				}
 			});
 		}});

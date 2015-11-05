@@ -1,14 +1,10 @@
 package com.rpsg.rpg.object.base.items;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.rpsg.rpg.object.rpg.Hero;
 
-public class Equipment extends Item implements java.io.Serializable{
+public class Equipment extends BaseItem implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;
 
-	public Map<String,Integer> prop=new HashMap<String, Integer>();
 	{
 		prop.put("maxhp", 0);
 		prop.put("maxmp", 0);

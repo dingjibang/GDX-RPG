@@ -4,11 +4,11 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.base.items.Item;
+import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.system.base.Res;
 
 public class Icon extends Image implements Comparable<Icon>{
-	public Item item = null;
+	public BaseItem baseItem = null;
 	public boolean enable = true;
 	public boolean select = false;
 	private Image selectBox,hover,currentMask;
@@ -28,12 +28,12 @@ public class Icon extends Image implements Comparable<Icon>{
 		return this;
 	}
 	
-	public Icon generateIcon(Item item,final boolean enable){
-		if(item==null)
+	public Icon generateIcon(BaseItem baseItem,final boolean enable){
+		if(baseItem==null)
 			return this;
 		
-		this.item=item;
-		final ProxyImage i = (ProxyImage)(Res.exist(item.getIcon())?Res.get(item.getIcon()):Res.get(Item.getDefaultIcon()));
+		this.baseItem=baseItem;
+		final ProxyImage i = (ProxyImage)(Res.exist(baseItem.getIcon())?Res.get(baseItem.getIcon()):Res.get(BaseItem.getDefaultIcon()));
 		i.loaded=new Runnable() {
 			public void run() {
 				Icon.this.setDrawable(i.getDrawable());

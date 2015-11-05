@@ -1,6 +1,6 @@
 package com.rpsg.rpg.object.base.items;
 
-public class Metrial extends Item{
+public class Metrial extends BaseItem{
 
 	/**
 	 * 

@@ -13,7 +13,7 @@ import org.mozilla.javascript.ScriptableObject;
 import com.badlogic.gdx.Gdx;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.base.items.Item;
+import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.utils.game.GameDate;
@@ -52,7 +52,7 @@ public class Global implements Serializable {
 
 	// 物品、装备等道具
 
-	public List<Item> items = new ArrayList<>(); 
+	public List<BaseItem> baseItems = new ArrayList<>(); 
 
 	public void read(){
 		RPG.executeJS( Gdx.files.internal(Setting.SCRIPT_SYSTEM+"global.js").readString(), this);
