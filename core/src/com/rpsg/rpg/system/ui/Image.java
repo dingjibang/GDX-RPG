@@ -148,8 +148,9 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				if (x > 0 && x < getWidth() && y > 0 && y < getHeight())
-					if (run != null)
+					if (run != null){
 						run.run();
+					}
 			}
 		});
 	}

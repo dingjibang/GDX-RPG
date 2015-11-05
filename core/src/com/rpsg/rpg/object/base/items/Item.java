@@ -14,7 +14,7 @@ import com.rpsg.rpg.object.rpg.Hero;
  * <br>
  * Item(道具) - 最普通的道具，和Item类本身相同。<br>
  * {@link Equipment} (装备) - 装备类，继承Item。<br>
- * {@link SpellCard} (符卡) - 符卡类，继承Item（未完成）。<br>
+ * {@link Spellcard} (符卡) - 符卡类，继承Item（未完成）。<br>
  * <br>
  * <i>GDX-RPG</i>的所有道具数据，均存储于[/rpg/android/assets/script/data]这个位置。<br>
  * 存储的规范是，使用数字（即道具的唯一ID）进行命名，文件后缀为.grd(GDX RPG Data)。<br>

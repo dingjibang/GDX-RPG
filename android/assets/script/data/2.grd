@@ -8,5 +8,6 @@
 		defense:5,
 		magicDefense:1,
 		maxhp:50
-	}
+	},
+	use:""
 }

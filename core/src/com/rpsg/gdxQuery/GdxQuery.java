@@ -143,7 +143,7 @@ public class GdxQuery {
 	
 	public GdxQuery find(Object userObject){
 		if(userObject instanceof Class)
-			return find((Class)userObject,null);
+			return find((Class<?>)userObject,null);
 		for(Actor actor:getItems())
 			if(actor.getUserObject()!=null && actor.getUserObject().equals(userObject))
 				return $.add(actor);
@@ -506,7 +506,7 @@ public class GdxQuery {
 		GdxQuery query=new GdxQuery();
 		for(Actor actor:getItems()){
 			if(actor instanceof Group)
-				query.add(((Group)actor).getChildren().toArray());
+				query.add((Object[])((Group)actor).getChildren().toArray());
 			if(actor instanceof com.badlogic.gdx.scenes.scene2d.ui.List<?>)
 				query.add(((com.badlogic.gdx.scenes.scene2d.ui.List<?>)actor).getItems());
 			if(actor instanceof SelectBox<?>)

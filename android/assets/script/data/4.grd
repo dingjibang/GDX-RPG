@@ -10,5 +10,6 @@
 		attack:5,
 		magicAttack:1,
 		hit:-1
-	}
+	},
+	use:""
 }
