@@ -34,13 +34,13 @@ public class ItemController {
 	public void put(int id){
 		BaseItem baseItem =search(id);
 		if(baseItem==null)
-			RPG.global.baseItems.add(get(id));
+			RPG.global.items.add(get(id));
 		else
 			//如果可叠加的，则数量+1，否则新建实例_(:3」∠)_
 			if(baseItem.packable)
 				baseItem.count++;
 			else
-				RPG.global.baseItems.add(get(id));
+				RPG.global.items.add(get(id));
 	}
 	
 	public void put(BaseItem baseItem){
@@ -129,7 +129,7 @@ public class ItemController {
 		if(baseItem.count-count < 0)
 			return false;
 		if(baseItem.count-count == 0)
-			RPG.global.baseItems.remove(baseItem);
+			RPG.global.items.remove(baseItem);
 		else
 			baseItem.count-=count;
 		return true;
@@ -146,7 +146,7 @@ public class ItemController {
 	}
 	
 	public synchronized BaseItem search(int id){
-		for(BaseItem baseItem:RPG.global.baseItems)
+		for(BaseItem baseItem:RPG.global.items)
 			if(baseItem.id==id)
 				return baseItem;
 		return null;
@@ -159,7 +159,7 @@ public class ItemController {
 	 */
 	public ArrayList<BaseItem> search(String type){
 		ArrayList<BaseItem> result = new ArrayList<BaseItem>();
-		for(BaseItem baseItem:RPG.global.baseItems)
+		for(BaseItem baseItem:RPG.global.items)
 			if(baseItem.type.equalsIgnoreCase(type))
 				result.add(baseItem);
 		return result;

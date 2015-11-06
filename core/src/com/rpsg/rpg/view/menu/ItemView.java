@@ -122,7 +122,7 @@ public class ItemView extends DefaultIView{
 						}});
 				}
 				
-				if(!t.baseItem.throwable || t.current){
+				if(!t.item.throwable || t.current){
 					throwButton.setFg(throwImg.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
 					append += "无法丢弃此道具。";
 				}else{
@@ -135,9 +135,9 @@ public class ItemView extends DefaultIView{
 					append = "\n[#d38181]"+append+"[]";
 				
 				Label name;
-				$.add(name = new Label(t.baseItem.name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
-				$.add(new Label(("("+"拥有"+t.baseItem.count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
-				ScrollPane pane = new ScrollPane(new Label(t.baseItem.illustration+append,17).warp(true).markup(true));
+				$.add(name = new Label(t.item.name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
+				$.add(new Label(("("+"拥有"+t.item.count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
+				ScrollPane pane = new ScrollPane(new Label(t.item.illustration+append,17).warp(true).markup(true));
 				pane.setupOverscroll(20, 200, 200);
 				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbar.png");
 				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbarin.png");
@@ -145,6 +145,7 @@ public class ItemView extends DefaultIView{
 				pane.layout();
 				$.add(pane).setSize(578, 60).setPosition(410, 68).appendTo(description);
 				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
+				
 			}
 		});
 		
@@ -168,7 +169,11 @@ public class ItemView extends DefaultIView{
 	}
 	
 	private void useEquip(){
-		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().baseItem!=null)
+		if(ilist.getCurrent()==null)
+			return;
+		BaseItem item = ilist.getCurrent().item;
+		if(item!=null )
+			
 			RPG.popup.add(UseItemView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
 				put("title","使用物品");
 				put("width",100);
@@ -186,7 +191,7 @@ public class ItemView extends DefaultIView{
 	
 	@SuppressWarnings("serial")
 	private void removeEquip(){
-		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().baseItem!=null)
+		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().item!=null)
 			
 		RPG.popup.add(ThrowItemView.class,new HashMap<Object, Object>(){{
 			put("title","丢弃物品");
@@ -194,8 +199,8 @@ public class ItemView extends DefaultIView{
 			put("item",ilist.getCurrent());
 			put("callback",new CustomRunnable<Integer>() {
 				public void run(Integer t) {
-					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().baseItem.name+" "+t+" 个", AlertUtil.Green);
-					RPG.ctrl.item.remove(ilist.getCurrent().baseItem, t);
+					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().item.name+" "+t+" 个", AlertUtil.Green);
+					RPG.ctrl.item.remove(ilist.getCurrent().item, t);
 					generate(false);
 				}
 			});

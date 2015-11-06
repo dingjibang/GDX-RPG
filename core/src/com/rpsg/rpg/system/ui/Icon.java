@@ -8,7 +8,7 @@ import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.system.base.Res;
 
 public class Icon extends Image implements Comparable<Icon>{
-	public BaseItem baseItem = null;
+	public BaseItem item = null;
 	public boolean enable = true;
 	public boolean select = false;
 	private Image selectBox,hover,currentMask;
@@ -32,7 +32,7 @@ public class Icon extends Image implements Comparable<Icon>{
 		if(baseItem==null)
 			return this;
 		
-		this.baseItem=baseItem;
+		this.item=baseItem;
 		final ProxyImage i = (ProxyImage)(Res.exist(baseItem.getIcon())?Res.get(baseItem.getIcon()):Res.get(BaseItem.getDefaultIcon()));
 		i.loaded=new Runnable() {
 			public void run() {

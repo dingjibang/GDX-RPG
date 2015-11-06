@@ -4,12 +4,10 @@
 	illustration:"为我方某个角色恢复10点生命值",
 	forward:"friend",
 	range:"one",
+	packable:false,
 	prop:{
 		hp:10,
 		level:1
-	}
-	use:"
-		user.addProp('hp',10);
-		remove();
-	"
+	},
+	use:""
 }

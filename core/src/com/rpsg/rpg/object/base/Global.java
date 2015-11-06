@@ -47,7 +47,7 @@ public class Global implements Serializable {
 
 	// 物品、装备等道具
 
-	public List<BaseItem> baseItems = new ArrayList<>(); 
+	public List<BaseItem> items = new ArrayList<>(); 
 
 	public void read(){
 		RPG.executeJS( Gdx.files.internal(Setting.SCRIPT_SYSTEM+"global.js").readString(), this);
