@@ -1,8 +1,5 @@
 package com.rpsg.rpg.object.base.items;
 
-import com.rpsg.rpg.object.base.items.ItemOption.ItemForward;
-import com.rpsg.rpg.object.base.items.ItemOption.ItemRange;
-import com.rpsg.rpg.object.rpg.Hero;
 
 public class Item extends BaseItem{
 
@@ -16,5 +13,24 @@ public class Item extends BaseItem{
 	
 	/**道具使用范围*/
 	public ItemRange range = ItemRange.one;
+	
+	
+	/**
+	 * 道具指向
+	 * @author dingjibang
+	 */
+	public static enum ItemForward{
+		friend,//我方
+		enemy//敌人
+	}
+	
+	/**
+	 * 道具使用范围
+	 * @author dingjibang
+	 */
+	public static enum ItemRange{
+		one,//一人
+		all//全部
+	}
 
 }
