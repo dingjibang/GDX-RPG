@@ -32,6 +32,7 @@ import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.hover.ThrowItemView;
+import com.rpsg.rpg.view.hover.UseItemView;
 
 public class ItemView extends DefaultIView{
 	
@@ -168,9 +169,19 @@ public class ItemView extends DefaultIView{
 	
 	private void useEquip(){
 		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().baseItem!=null)
-			if(!RPG.ctrl.item.use(ilist.getCurrent().baseItem.setUser(parent.current)))
-				RPG.putMessage("程序异常，使用失败。", AlertUtil.Red);
-		generate(false);
+			RPG.popup.add(UseItemView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
+				put("title","使用物品");
+				put("width",100);
+				put("item",ilist.getCurrent());
+				put("callback",new CustomRunnable<Integer>() {
+					public void run(Integer t) {
+//						RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().baseItem.name+" "+t+" 个", AlertUtil.Green);
+//						RPG.ctrl.item.remove(ilist.getCurrent().baseItem, t);
+						generate(false);
+					}
+				});
+			}});
+//		generate(false);
 	}
 	
 	@SuppressWarnings("serial")

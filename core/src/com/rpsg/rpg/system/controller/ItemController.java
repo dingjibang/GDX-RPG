@@ -36,8 +36,11 @@ public class ItemController {
 		if(baseItem==null)
 			RPG.global.baseItems.add(get(id));
 		else
-//			item.count++; //TODO DEBUG!!!!
-			RPG.global.baseItems.add(get(id));
+			//如果可叠加的，则数量+1，否则新建实例_(:3」∠)_
+			if(baseItem.packable)
+				baseItem.count++;
+			else
+				RPG.global.baseItems.add(get(id));
 	}
 	
 	public void put(BaseItem baseItem){
@@ -92,13 +95,14 @@ public class ItemController {
 				item.type = Item.class.getSimpleName();
 			}
 			
-			baseItem.id=id;
-			baseItem.disable=false;
-			baseItem.illustration=result.getString("illustration");
-			baseItem.throwable=result.has("throwable")?result.getBoolean("throwable"):true;
-			baseItem.name=result.getString("name");
-			baseItem.use=result.has("use")?result.getString("use"):"";
-			baseItem.type=result.getString("type");
+			baseItem.id = id;
+			baseItem.disable = false;
+			baseItem.illustration = result.getString("illustration");
+			baseItem.throwable = result.has("throwable") ? result.getBoolean("throwable") : true;
+			baseItem.name = result.getString("name");
+			baseItem.use = result.has("use") ? result.getString("use") : "";
+			baseItem.type = result.getString("type");
+			baseItem.packable = result.has("packable") ? result.getBoolean("packable") : true;
 			
 			return (T) baseItem;
 		} catch (Exception e) {
@@ -203,6 +207,7 @@ public class ItemController {
 			remove(equip);
 		}
 		
+//		syso
 		return true;
 	}
 	

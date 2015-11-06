@@ -58,6 +58,8 @@ public abstract class BaseItem implements Serializable {
 	/**注入到js的变量*/
 	public Hero user;
 	
+	/**道具是否可叠加的*/
+	public boolean packable = true; 
 	
 	public String getIcon(){
 		return Setting.IMAGE_ICONS+"i"+id+".png";

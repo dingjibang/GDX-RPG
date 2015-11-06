@@ -14,6 +14,8 @@ public class Item extends BaseItem{
 	/**道具使用范围*/
 	public ItemRange range = ItemRange.one;
 	
+	/**道具是否为一次性的*/
+	public boolean removeAble = true;
 	
 	/**
 	 * 道具指向

@@ -5,7 +5,8 @@
 	forward:"friend",
 	range:"one",
 	prop:{
-	
+		hp:10,
+		level:1
 	}
 	use:"
 		user.addProp('hp',10);
