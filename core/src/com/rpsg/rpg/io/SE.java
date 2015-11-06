@@ -22,8 +22,6 @@ public class SE {
 	public void setSound(Sound sound) {
 		this.sound = sound;
 	}
-	public SE() {
-	}
 
 	public long getId() {
 		return id;

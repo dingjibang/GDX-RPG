@@ -7,22 +7,45 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Files;
 import com.rpsg.rpg.utils.game.GameUtil;
 
+/**
+ * GDX-RPG 用户设定类<br>
+ * 他被保存在根目录/save/文件夹下（开发时则保存在/android/assets/save/下），文件名为perisitence.es。<br>
+ * 此文件存在时，则进行反持久化读入，不存在则新建此文件并根据下方的初始设定进行持久化。
+ * @author dinjibang
+ *
+ */
 public class Persistence implements Serializable{
 	private static final long serialVersionUID = 1L;
+	/**抗锯齿*/
 	public boolean antiAliasing = true;
+	/**纹理抗拉抻(filter)*/
 	public boolean scaleAliasing = true;
+	/**内存大小  * @deprecated 
+	 * */
 	public int MemorySize = 512;
+	/**全局音量*/
 	public int volume = 100;
+	/**音乐音量*/
 	public int musicVolume = 70;
+	/**音效音量*/
 	public int seVolume = 100;
+	/**文本卷动速度*/
 	public int textSpeed = 2;
+	/**显示"FPS"在屏幕左上角*/
 	public boolean showFPS = false;
+	/**全局音量*/
 	public boolean debugMod = false;
+	/**当程序异常时是否上报错误 TODO*/
 	public boolean onErrorSendMsg = true;
+	/**是否将UI设定为触屏模式*/
 	public boolean touchMod = false;
+	/**是否启用更好的灯光系统*/
 	public boolean betterLight = true;
+	/**是否缓存资源到内存中，以便于快速进图*/
 	public boolean cacheResource = true;
+	/**是否启用柔和的摄像机移动*/
 	public boolean softCamera=true;
+	/**是否启用UI的调试模式（开发者）*/
 	public boolean uiDebug = false;
 	
 	public String errorMessage="";

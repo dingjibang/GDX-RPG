@@ -13,8 +13,8 @@ public enum ItemType {
 	metrial("材料"),	
 	spellcard("符卡"),
 	task("任务")
-	
 	;
+	
 	private String value;
 	private ItemType(String value){
 		this.value=value;

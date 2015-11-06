@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.utils.Align;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.base.ObjectRunnable;
+import com.rpsg.rpg.object.base.CustomRunnable;
 import com.rpsg.rpg.system.base.Confirm;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.HoverView;
@@ -51,28 +51,28 @@ public class ConfirmView extends HoverView{
 		return stage.keyDown(keycode);
 	}
 	
-	public static ConfirmView okCancel(String msg,ObjectRunnable okCallBack){
-		ConfirmView view = new ConfirmView(msg,Confirm.OK(okCallBack),Confirm.CANCEL(new ObjectRunnable() {
+	public static ConfirmView okCancel(String msg,CustomRunnable<HoverView> okCallBack){
+		ConfirmView view = new ConfirmView(msg,Confirm.OK(okCallBack),Confirm.CANCEL(new CustomRunnable<HoverView>() {
 			@Override
-			public void run(Object view2) {
-				((HoverView) view2).disposed = true;
+			public void run(HoverView view2) {
+				view2.disposed = true;
 			}
 		}));
 		view.superInit();
 		return view;
 	}
 	
-	public static ConfirmView ok(String msg,ObjectRunnable okCallBack){
+	public static ConfirmView ok(String msg,CustomRunnable<HoverView> okCallBack){
 		ConfirmView view = new ConfirmView(msg,Confirm.OK(okCallBack));
 		view.superInit();
 		return view;
 	}
 	
 	public static ConfirmView ok(String msg){
-		ConfirmView view = new ConfirmView(msg,Confirm.OK(new ObjectRunnable() {
+		ConfirmView view = new ConfirmView(msg,Confirm.OK(new CustomRunnable<HoverView>() {
 			@Override
-			public void run(Object view2) {
-				((HoverView) view2).disposed = true;
+			public void run(HoverView view2) {
+				view2.disposed = true;
 			}
 		}));
 		view.superInit();

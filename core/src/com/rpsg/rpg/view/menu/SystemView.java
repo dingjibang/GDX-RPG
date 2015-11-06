@@ -19,7 +19,7 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
-import com.rpsg.rpg.object.base.ObjectRunnable;
+import com.rpsg.rpg.object.base.CustomRunnable;
 import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.MenuController;
@@ -102,9 +102,9 @@ public class SystemView extends DefaultIView{
 		TextButton sbutton3=new TextButton("回到菜单", butstyle).onClick(new Runnable() {
 			@Override
 			public void run() {
-				RPG.popup.add(ConfirmView.okCancel("确定要回到主菜单么？如未存档当前档案将会消失", new ObjectRunnable() {
+				RPG.popup.add(ConfirmView.okCancel("确定要回到主菜单么？如未存档当前档案将会消失", new CustomRunnable<HoverView>() {
 					@Override
-					public void run(Object view) {
+					public void run(HoverView view) {
 						GameViews.state = GameViews.STATE_LOGO;
 						GameViews.gameview.dispose();
 						GameViews.gameview = null;
