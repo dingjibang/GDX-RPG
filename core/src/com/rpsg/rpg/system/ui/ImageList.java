@@ -7,7 +7,7 @@ import com.badlogic.gdx.utils.Align;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.CustomRunnable;
-import com.rpsg.rpg.object.base.items.Item;
+import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.system.base.Res;
 
 /**
@@ -58,9 +58,9 @@ public class ImageList extends Group{
 		return this.generate(null);
 	}
 	
-	public ImageList setCurrent(Item item){
+	public ImageList setCurrent(BaseItem baseItem){
 		for(Icon icon:items)
-			if(icon.item==item)
+			if(icon.item==baseItem)
 				setCurrent(icon);
 		return this;
 	}

@@ -39,18 +39,18 @@
    H4sIAAAAAAAAC2NgGJxgHSNhNWysDAzsrKhih5gg9DQm3PrEgHrEWXHLj4KhDwBicAlF2AIAAA==
   </data>
  </layer>
+ <objectgroup name="对象层 1">
+  <object name="PUBLIC" type="NPC" gid="1485" x="96" y="624" width="48" height="48">
+   <properties>
+    <property name="FOOT_EXECUTE" value="teleport(&quot;twofloor&quot;,10,3,2)"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer name="块层 3" width="14" height="13">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC5vLyMAwl0y8lkQM06fGysBwl5mBYR0jBH9jYWD4DsQ3gfgWEIcD8SYmBgZTIN3GhNBnBtRnANSHDl4C1b0C4nQWCN8VSsP0gYADFn24AEzfWxbi9SDr+4tH3wSg3GQgnsSCqY+XFbe+BUD1C4F4ERZ9pAJK9cH0kpNWQICUNANLIyCwjpF4DAAbynLx2AIAAA==
   </data>
  </layer>
- <objectgroup name="对象层 1">
-  <object name="PUBLIC" type="NPC" gid="1485" x="96" y="624" width="48" height="95">
-   <properties>
-    <property name="NEAR_EXECUTE" value="teleport(&quot;twofloor&quot;,10,3,2)"/>
-   </properties>
-  </object>
- </objectgroup>
  <layer name="块层 4" width="14" height="13">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoAycZWZgOAfE5SwMDBUspOm9x0yh5aNgFOAAAKFgpn/YAgAA

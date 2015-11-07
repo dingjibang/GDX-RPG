@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Matrix4;
 import com.rpsg.rpg.system.ui.PolygonRegion;
 
+/**@deprecated*/
 public class RadarUtil {
 	private static PolygonRegion region;
 	private static TextureRegion txtr;

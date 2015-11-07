@@ -6,18 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.mozilla.javascript.Context;
-import org.mozilla.javascript.NativeJavaObject;
-import org.mozilla.javascript.ScriptableObject;
-
 import com.badlogic.gdx.Gdx;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.base.items.Item;
+import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.utils.game.GameDate;
-import com.rpsg.rpg.utils.game.GameUtil;
 
 /**
  * RPG全局变量类，存储了游戏内所需保存的变量、对象等。持久化本类即为保存游戏，反持久化则为读取游戏。<br>
@@ -52,7 +47,7 @@ public class Global implements Serializable {
 
 	// 物品、装备等道具
 
-	public List<Item> items = new ArrayList<>(); 
+	public List<BaseItem> items = new ArrayList<>(); 
 
 	public void read(){
 		RPG.executeJS( Gdx.files.internal(Setting.SCRIPT_SYSTEM+"global.js").readString(), this);

@@ -19,6 +19,7 @@ import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.CustomRunnable;
+import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.ItemType;
 import com.rpsg.rpg.system.base.Res;
@@ -31,6 +32,7 @@ import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.hover.ThrowItemView;
+import com.rpsg.rpg.view.hover.UseItemView;
 
 public class ItemView extends DefaultIView{
 	
@@ -43,7 +45,7 @@ public class ItemView extends DefaultIView{
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		
 		//topBar
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,60).setColor(.2f,.2f,.2f,.85f).setPosition(240,486).appendTo(stage);
+		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,60).setColor(Color.valueOf("3d3d3d")).setPosition(240,486).appendTo(stage);
 		
 		CheckBoxStyle cstyle=new CheckBoxStyle();
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"info.png");
@@ -78,7 +80,7 @@ public class ItemView extends DefaultIView{
 		//generate topbar
 		
 		
-		int offset = 0, pad = 105;
+		int offset = -14, pad = 119;
 		for(final ItemType type:ItemType.values()){
 			if(type.name().equalsIgnoreCase(currentFilter)){
 				inner.addActor(new Image(Setting.UI_BASE_IMG).size(0, 73).color(Color.valueOf("8f171700")).position(135+(offset+=pad), 479).action(Actions.parallel(Actions.fadeIn(animate?.1f:0),Actions.sizeBy(160, 0,animate?.07f:0))));
@@ -86,7 +88,7 @@ public class ItemView extends DefaultIView{
 				inner.addActor(new Image(Setting.IMAGE_MENU_NEW_ITEM+"i_"+type.name()+".png").position(98+offset, 500).a(0).action(Actions.fadeIn(animate?.1f:0)));
 				$.add(new Label(type.value(),26)).setPosition(143+offset, 500).setColor(1,1,1,0).appendTo(inner).setAlpha(0).addAction(Actions.fadeIn(animate?.1f:0));
 			}else{
-				inner.addActor(new Image(Setting.UI_BASE_IMG).size(90, 73).color(Color.valueOf("585858")).position(135+(offset+=pad), 479).onClick(new Runnable(){
+				inner.addActor(new Image(Setting.UI_BASE_IMG).size(90, 60).color(Color.valueOf("3d3d3d")).position(135+(offset+=pad), 486).onClick(new Runnable(){
 					public void run() {
 						currentFilter = type.name();
 						generate(true);
@@ -107,7 +109,7 @@ public class ItemView extends DefaultIView{
 				String append = "";
 				if(!t.enable){
 					takeButton.setFg(take.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
-					append += "无法使用此道具。";
+					append += "无法使用此道具�;
 				}else{
 					if(t.current)
 						takeButton.setFg(off.a(1)).onClick(new Runnable(){public void run() {
@@ -122,7 +124,7 @@ public class ItemView extends DefaultIView{
 				
 				if(!t.item.throwable || t.current){
 					throwButton.setFg(throwImg.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
-					append += "无法丢弃此道具。";
+					append += "无法丢弃此道具�;
 				}else{
 					throwButton.setFg(throwImg.a(1)).fgSelfColor(true).onClick(new Runnable(){public void run() {
 						removeEquip();
@@ -134,7 +136,7 @@ public class ItemView extends DefaultIView{
 				
 				Label name;
 				$.add(name = new Label(t.item.name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
-				$.add(new Label(("("+"拥有"+t.item.count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
+				$.add(new Label(("("+"拥有"+t.item.count+"�)+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
 				ScrollPane pane = new ScrollPane(new Label(t.item.illustration+append,17).warp(true).markup(true));
 				pane.setupOverscroll(20, 200, 200);
 				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbar.png");
@@ -143,6 +145,7 @@ public class ItemView extends DefaultIView{
 				pane.layout();
 				$.add(pane).setSize(578, 60).setPosition(410, 68).appendTo(description);
 				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
+				
 			}
 		});
 		
@@ -150,10 +153,10 @@ public class ItemView extends DefaultIView{
 	}
 	
 	private List<Icon> getItems(String type){
-		List<Item> items = RPG.ctrl.item.search(type);
+		List<BaseItem> baseItems = RPG.ctrl.item.search(type);
 		
 		List<Icon> io= new ArrayList<>();
-		for(Item e:items){
+		for(BaseItem e:baseItems){
 			Icon obj=new Icon().generateIcon(e, true);
 			io.add(obj);
 		}
@@ -166,10 +169,24 @@ public class ItemView extends DefaultIView{
 	}
 	
 	private void useEquip(){
-		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().item!=null)
-			if(!RPG.ctrl.item.use(ilist.getCurrent().item.setUser(parent.current)))
-				RPG.putMessage("程序异常，装备失败。", AlertUtil.Red);
-		generate(false);
+		if(ilist.getCurrent()==null)
+			return;
+		BaseItem item = ilist.getCurrent().item;
+		if(item!=null )
+			
+			RPG.popup.add(UseItemView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
+				put("title","使用物品");
+				put("width",100);
+				put("item",ilist.getCurrent());
+				put("callback",new CustomRunnable<Integer>() {
+					public void run(Integer t) {
+//						RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().baseItem.name+" "+t+" �, AlertUtil.Green);
+//						RPG.ctrl.item.remove(ilist.getCurrent().baseItem, t);
+						generate(false);
+					}
+				});
+			}});
+//		generate(false);
 	}
 	
 	@SuppressWarnings("serial")
@@ -182,7 +199,7 @@ public class ItemView extends DefaultIView{
 			put("item",ilist.getCurrent());
 			put("callback",new CustomRunnable<Integer>() {
 				public void run(Integer t) {
-					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().item.name+" "+t+" 个", AlertUtil.Green);
+					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().item.name+" "+t+" �, AlertUtil.Green);
 					RPG.ctrl.item.remove(ilist.getCurrent().item, t);
 					generate(false);
 				}

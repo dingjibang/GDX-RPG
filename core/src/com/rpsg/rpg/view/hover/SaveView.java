@@ -15,7 +15,7 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.io.SL;
-import com.rpsg.rpg.object.base.ObjectRunnable;
+import com.rpsg.rpg.object.base.CustomRunnable;
 import com.rpsg.rpg.object.base.SLData;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.HoverView;
@@ -97,9 +97,9 @@ public class SaveView extends HoverView{
 		savebutton=$.add(new TextButton("保存游戏", butstyle)).onClick(new Runnable() {
 			@Override
 			public void run() {
-				RPG.popup.add(ConfirmView.okCancel("确定要保存到这个位置么？", new ObjectRunnable() {
+				RPG.popup.add(ConfirmView.okCancel("确定要保存到这个位置么？", new CustomRunnable<HoverView>() {
 					@Override
-					public void run(Object view) {
+					public void run(HoverView view) {
 						if (currentSelect != -1) {
 							if (SL.save(currentSelect))
 								RPG.putMessage("存档完成。", AlertUtil.Green);
@@ -132,9 +132,9 @@ public class SaveView extends HoverView{
 		TextButton deletebutton=$.add(new TextButton("删除档案", butstyle)).onClick(new Runnable() {
 			@Override
 			public void run() {
-				RPG.popup.add(ConfirmView.okCancel("确定要删除这个档案么？", new ObjectRunnable() {
+				RPG.popup.add(ConfirmView.okCancel("确定要删除这个档案么？", new CustomRunnable<HoverView>() {
 					@Override
-					public void run(Object view) {
+					public void run(HoverView view) {
 						if (currentSelect != -1) {
 							if (SL.delete(currentSelect)) {
 								RPG.putMessage("删除档案成功。", AlertUtil.Green);
