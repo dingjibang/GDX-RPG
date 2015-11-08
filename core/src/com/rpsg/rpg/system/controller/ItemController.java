@@ -19,7 +19,7 @@ import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.utils.game.Logger;
 
 /**
- * GDX-RPG 道具核心管理�
+ * GDX-RPG 道具核心管理器
  * @author dingjibang
  *
  */
@@ -28,7 +28,7 @@ public class ItemController {
 	private static JsonReader reader = null;
 	
 	/**
-	 * 给当前游戏存档放入一个道�
+	 * 给当前游戏存档放入一个道具
 	 * @param id 道具ID
 	 */
 	public void put(int id){
@@ -49,7 +49,7 @@ public class ItemController {
 	
 	/**
 	 * 根据ID从文件里读取出一个Item
-	 * @param id id�
+	 * @param id id键
 	 * @return
 	 */
 	public BaseItem get(int id){
@@ -58,7 +58,7 @@ public class ItemController {
 	
 	/**
 	 * 根据ID从文件里读取出一个Item，并且造型
-	 * @param id id�
+	 * @param id id键
 	 * @param _cType 类型
 	 * @return
 	 */
@@ -77,7 +77,7 @@ public class ItemController {
 				e.onlyFor=(Class<? extends Hero>) (result.has("onlyFor")?Class.forName("com.rpsg.rpg.game.hero."+result.getString("onlyFor")):null);
 				e.equipType=result.getString("equipType");
 				
-				//读取装备属�
+				//读取装备属性
 				Map<String,Integer> replace = new HashMap<>();
 				for(String prop:e.prop.keySet()){
 					JsonValue _p = result.get("prop");
@@ -106,20 +106,20 @@ public class ItemController {
 			
 			return (T) baseItem;
 		} catch (Exception e) {
-			Logger.error("无法读取物品�+id,e);
+			Logger.error("无法读取物品："+id,e);
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	/** 移除1�<b><i>当前背包</i></b> 里的某个道具（根据ID�*/
+	/** 移除1个 <b><i>当前背包</i></b> 里的某个道具（根据ID）**/
 	public boolean remove(int id){
 		return remove(search(id),1);
 	}
 	
 	/**
 	 * 移除数个 <b><i>当前背包</i></b> 里的某个道具
-	 * @param baseItem 道具实体�
+	 * @param baseItem 道具实体类
 	 * @param count 数量
 	 * @return 操作是否成功
 	 */
@@ -135,12 +135,12 @@ public class ItemController {
 		return true;
 	}
 	
-	/** 移除1�<b><i>当前背包</i></b> 里的某个道具（根据实体类�*/
+	/** 移除1个 <b><i>当前背包</i></b> 里的某个道具（根据实体类）**/
 	public boolean remove(BaseItem baseItem){
 		return remove(baseItem,1);
 	}
 	
-	/** 移除数个 <b><i>当前背包</i></b> 里的某个道具（根据ID�*/
+	/** 移除数个 <b><i>当前背包</i></b> 里的某个道具（根据ID）**/
 	public boolean remove(int id,int count){
 		return remove(search(id),count);
 	}
@@ -153,7 +153,7 @@ public class ItemController {
 	}
 	
 	/**
-	 * 根据道具类型搜索�<b><i>当前背包</i></b> 里的一个或道具
+	 * 根据道具类型搜索出<b><i>当前背包</i></b> 里的一个或道具
 	 * @param type 类型
 	 * @return
 	 */
@@ -176,7 +176,7 @@ public class ItemController {
 	}
 	
 	/**
-	 * 使用一个道具继承对象（道具 �符卡 �装备 等）
+	 * 使用一个道具继承对象（道具 或 符卡 或 装备 等）
 	 * @param id 要使用道具的ID
 	 * @return 是否成功
 	 */
@@ -185,7 +185,7 @@ public class ItemController {
 	}
 	
 	/**
-	 * 使用一个道具（道具 �符卡 �装备 等）
+	 * 使用一个道具（道具 或 符卡 或 装备 等）
 	 * @param baseItem 要使用的道具
 	 * @return 是否成功
 	 */
@@ -203,7 +203,7 @@ public class ItemController {
 			takeOff(equip);
 			
 			baseItem.user.equips.put(equip.equipType, equip);
-			replace(baseItem.user, equip, true);//计算穿上装备后的Hero属性数值变�
+			replace(baseItem.user, equip, true);//计算穿上装备后的Hero属性数值变化
 			remove(equip);
 		}
 		
@@ -213,7 +213,7 @@ public class ItemController {
 	
 	/**
 	 * 从某个角色上脱下某件装备
-	 * @param baseItem 新装备对比（不是要脱下的装备）（看不懂的话就别用这个方法……用下面那个方法�
+	 * @param baseItem 新装备对比（不是要脱下的装备）（看不懂的话就别用这个方法……用下面那个方法）
 	 * @return 是否成功脱下
 	 */
 	public boolean takeOff(BaseItem baseItem){
@@ -225,14 +225,14 @@ public class ItemController {
 	/**
 	 * 从某个角色上脱下某件装备
 	 * @param hero 角色
-	 * @param equipType 装备的类型（如{@link Equipment.EQUIP_SHOES}�
+	 * @param equipType 装备的类型（如{@link Equipment.EQUIP_SHOES}）
 	 * @return 是否成功脱下
 	 */
 	public boolean takeOff(Hero hero,String equipType){
 		if(hero.equips.get(equipType)!=null){//脱下原先的装备（如果有）
 			Equipment tmp=hero.equips.get(equipType);
 			put(tmp);
-			replace(hero, tmp, false);//计算脱下装备后的Hero属性数值变�
+			replace(hero, tmp, false);//计算脱下装备后的Hero属性数值变化
 			
 			hero.equips.remove(equipType);
 			return true;
