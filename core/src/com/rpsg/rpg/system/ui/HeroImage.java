@@ -33,4 +33,9 @@ public class HeroImage extends Group{
 		super.draw(batch, parentAlpha);
 	}
 	
+	public HeroImage position(int x,int y){
+		setPosition(x, y);
+		return this;
+	}
+	
 }

@@ -144,10 +144,25 @@ public class GdxQuery {
 	public GdxQuery find(Object userObject){
 		if(userObject instanceof Class)
 			return find((Class<?>)userObject,null);
+		
+		GdxQuery result = $.add().setFather(this);
+		
 		for(Actor actor:getItems())
 			if(actor.getUserObject()!=null && actor.getUserObject().equals(userObject))
-				return $.add(actor);
-		return $.add();
+				result.add(actor);
+		
+		return result;
+	}
+	
+	public GdxQuery findUserObjectInstanceOf(Class<?>... clz){
+		GdxQuery result = $.add().setFather(this);
+		
+		for(Class<?> c:clz)
+			for(Actor actor:getItems())
+				if(actor.getUserObject()!=null && (actor.getUserObject().getClass().equals(c) || actor.getUserObject().getClass().getSuperclass().equals(c)))
+					result.add(actor);
+		
+		return result;
 	}
 	
 	public GdxQuery remove(Object... o){
