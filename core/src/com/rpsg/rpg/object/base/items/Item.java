@@ -31,7 +31,7 @@ public class Item extends BaseItem{
 	 * @author dingjibang
 	 */
 	public static enum ItemRange{
-		one,//一人
+		one,//一�
 		all//全部
 	}
 

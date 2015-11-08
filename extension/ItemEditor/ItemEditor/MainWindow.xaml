@@ -1,0 +1,195 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:ItemEditor"
+        xmlns:Convertor="clr-namespace:ItemEditor.Convertor" x:Class="ItemEditor.MainWindow"
+        Title="MainWindow" Height="600" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Convertor:ImageConvertor x:Key="ImageConvertor"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <StaticResource ResourceKey="MainViewModel"/>
+    </Window.DataContext>
+    <Window.CommandBindings>
+        <!--<CommandBinding Command="{StaticResource PropertyCourse}" CanExecute="CourseProperty"/>
+        <CommandBinding Command="{StaticResource PreviewCourse}" CanExecute="CoursePreview"/>
+        <CommandBinding Command="{StaticResource About}" CanExecute="About"/>
+        <CommandBinding Command="{StaticResource Close}" CanExecute="CloseCourse"/>-->
+        <CommandBinding Command="ApplicationCommands.Save" Executed="CommandBinding_Save"/>
+        <!--<CommandBinding Command="ApplicationCommands.New" Executed="CommandBinding_New" />-->
+        <CommandBinding Command="ApplicationCommands.Open" Executed="CommandBinding_Open"  />
+        <CommandBinding Command="ApplicationCommands.Close" Executed="CommandBinding_Close"  />
+        <!--<CommandBinding Command="ApplicationCommands.Delete" Executed="CommandBinding_Delete"  />
+        <CommandBinding Command="ApplicationCommands.Copy" Executed="CommandBinding_Copy"  />
+        <CommandBinding Command="ApplicationCommands.Paste" Executed="CommandBinding_Paste"  />
+        <CommandBinding Command="ApplicationCommands.Redo" Executed="ApplicationCommands_Redo" CanExecute="RedoCommandBinding_CanExecute" />
+        <CommandBinding Command="ApplicationCommands.Undo" Executed="ApplicationCommands_Undo" CanExecute="UndoCommandBinding_CanExecute"/>
+        <CommandBinding Command="ApplicationCommands.Cut" Executed="CommandBinding_Cut"  />-->
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="18"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="272*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="145"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Header="文件" >
+                <MenuItem Header="打开" Command="ApplicationCommands.Open"/>
+                <MenuItem Header="保存" Command="ApplicationCommands.Save"  />
+                <Separator/>
+                <MenuItem Header="关闭" Command="ApplicationCommands.Close"  />
+            </MenuItem>
+        </Menu>
+        <ToolBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+            <Button Content="添加" VerticalAlignment="Stretch" Width="75" Click="Button_Click_1"/>
+            <Button Content="删除" Height="19" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
+        </ToolBar>
+        <ListBox x:Name="lstItems" Grid.Row="2" ItemsSource="{Binding Items}" SelectedItem="{Binding CurrentItem}">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type i:ItemViewModel}">
+                    <TextBlock><Run Text="{Binding name}"/><Run Text=" "/><Run Text="("/><Run Text=" "/><Run Text="{Binding id}"/><Run Text=" "/><Run Text=")"/></TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid Grid.Row="2" Grid.Column="1" DataContext="{Binding CurrentItem}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="220"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Border Height="200" Width="200" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" BorderThickness="2">
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionColorKey}}"/>
+                </Border.BorderBrush>
+                <Image Stretch="Fill" Source="{Binding IconPath, Converter={StaticResource ImageConvertor}, Mode=OneWay}"/>
+            </Border>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="64"></ColumnDefinition>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+    
+                <Label>物品序号:</Label>
+                <TextBox Grid.Column="1" Text="{Binding id}"></TextBox>
+                <Label Grid.Row="1">物品名称:</Label>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding name}"></TextBox>
+                <Label Grid.Row="2">描述:</Label>
+                <TextBox Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Text="{Binding illustration}" TextWrapping="Wrap"></TextBox>
+                <Label Grid.Row="5">类型:</Label>
+                <i:EnumSelectorCombox Grid.Row="5"  Grid.Column="1" EditorSource="{Binding type}" Width="200" HorizontalAlignment="Left"></i:EnumSelectorCombox>
+                <Grid Grid.Column="3" Grid.RowSpan="10" VerticalAlignment="Stretch" Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32"></RowDefinition>
+                        <RowDefinition Height="32"></RowDefinition>
+                        <RowDefinition Height="32"></RowDefinition>
+                        <RowDefinition Height="32"></RowDefinition>
+                        <RowDefinition Height="32"></RowDefinition>
+                        <RowDefinition Height="32"></RowDefinition>
+                        <RowDefinition Height="32"></RowDefinition>
+                        <RowDefinition Height="32"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="64"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding type}" Value="Material">
+                                    <Setter  Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding type}" Value="Spellcard">
+                                    <Setter  Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding type}" Value="Equipment">
+                                    <Setter  Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding type}" Value="Task">
+                                    <Setter  Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding type, FallbackValue=Item}" Value="Item">
+                                    <Setter  Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding type}" Value="Cooking">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <Label>角色限定:</Label>
+                    <TextBox Grid.Column="1" Text="{Binding onlyFor}"></TextBox>
+                    <Label Grid.Row="1">装备类型:</Label>
+                    <i:EnumSelectorCombox Grid.Row="1"  Grid.Column="1" EditorSource="{Binding equipType}" Width="200" HorizontalAlignment="Left"></i:EnumSelectorCombox>
+                    <Label Grid.Row="2">装备描述:</Label>
+                    <TextBox Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Text="{Binding illustration2}"></TextBox>
+                    <Label Grid.Row="4">装备属性:</Label>
+                    <Grid Grid.Row="4" Grid.Column="1" Grid.RowSpan="4" DataContext="{Binding EquipmentProp}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="32"></RowDefinition>
+                                <RowDefinition Height="32"></RowDefinition>
+                                <RowDefinition Height="32"></RowDefinition>
+                                <RowDefinition Height="32"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="84"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0">最大生命量:</Label>
+                            <TextBox Grid.Row="0" Grid.Column="1"  Text="{Binding maxhp}"></TextBox>
+                            <Label Grid.Row="1">最大魔法量:</Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding mapmp}"></TextBox>
+                            <Label Grid.Row="2">攻击:</Label>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding attack}"></TextBox>
+                            <Label Grid.Row="3">魔法攻击:</Label>
+                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding magicAttack}"></TextBox>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="32"></RowDefinition>
+                                <RowDefinition Height="32"></RowDefinition>
+                                <RowDefinition Height="32"></RowDefinition>
+                                <RowDefinition Height="32"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="64"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0">防御:</Label>
+                            <TextBox Grid.Row="0" Grid.Column="1"  Text="{Binding defense}"></TextBox>
+                            <Label Grid.Row="1">魔法防御:</Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding magicDefense}"></TextBox>
+                            <Label Grid.Row="2">速度:</Label>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding speed}"></TextBox>
+                            <Label Grid.Row="3">命中率:</Label>
+                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding hit}"></TextBox>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Button Content="添加图片" HorizontalAlignment="Left" Margin="240,10,0,0" VerticalAlignment="Top" Width="153" Height="40" RenderTransformOrigin="0.307,0.475" Click="Button_Click"/>
+        </Grid>
+        <CheckBox IsChecked="{Binding CurrentItem.disable}" Content="不可使用" Grid.Column="1" HorizontalAlignment="Left" Margin="242,67,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <CheckBox IsChecked="{Binding CurrentItem.throwable}" Content="可抛弃" Grid.Column="1" HorizontalAlignment="Left" Margin="242,87,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        
+    </Grid>
+</Window>
