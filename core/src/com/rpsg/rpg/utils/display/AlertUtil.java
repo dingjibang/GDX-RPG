@@ -3,9 +3,11 @@ package com.rpsg.rpg.utils.display;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Alert;
 import com.rpsg.rpg.system.ui.Image;
@@ -18,9 +20,9 @@ public class AlertUtil {
 	
 	public static NinePatch box;
 	
-	public List<Alert> list=new ArrayList<Alert>();
+	private List<Alert> list=new ArrayList<Alert>();
 	
-	public static Stage stage = new Stage();
+	private final static Stage stage = new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 	
 	public AlertUtil() {
 		Yellow=new Image(Setting.IMAGE_GLOBAL+"t.png");
@@ -31,24 +33,31 @@ public class AlertUtil {
 	}
 	
 	public void add(String alert,Image type){
-		list.add(new Alert(new Image(type), alert));
+		add(alert,type,20);
 	}
 	
 	public void add(String alert,Image type,int fontsize){
-		list.add(new Alert(new Image(type), alert, fontsize));
+		Alert a = new Alert(new Image(type), alert, fontsize);
+		list.add(a);
+		stage.addActor(a);
 	}
 	
-	public void draw(SpriteBatch sb){
+	public void draw(){
 		List<Alert> removeList=new ArrayList<>();
-		for (Alert a:list)
-			if(a.dispose)
+		for (Alert a:list){
+			if(a.dispose){
 				removeList.add(a);
-		list.removeAll(removeList);
-		for(int i=0;i<list.size();i++){
-			list.get(i).draw(sb, i*60,stage);
+				stage.getActors().removeIndex(stage.getActors().indexOf(a, true));//这是什么傻逼API，remove一个元素有这么复杂？？！，笑死
+			}
 		}
+		list.removeAll(removeList);
+		
+		stage.act();
+		
+		for(int i=0;i<list.size();i++)
+			list.get(i).update(i*60);
+		
 		stage.draw();
-		sb.setColor(1,1,1,1);
 	}
 	
 }

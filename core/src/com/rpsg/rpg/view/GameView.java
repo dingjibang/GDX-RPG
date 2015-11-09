@@ -58,7 +58,8 @@ public class GameView extends View{
 		parameter.loadedCallback= new AssetLoaderParameters.LoadedCallback() {
 			public void finishedLoading(AssetManager assetManager, String fileName, Class type) {
 				RPG.maps.map = ma.get(Setting.MAP + global.map);
-				render=new OrthoCachedTiledMapRenderer(RPG.maps.map);
+				if(render == null)
+					render=new OrthoCachedTiledMapRenderer(RPG.maps.map);
 				render.setBlending(true);
 				render.setView(camera);
 				ray.setWorld(world);
