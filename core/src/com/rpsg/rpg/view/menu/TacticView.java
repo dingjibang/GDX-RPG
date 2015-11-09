@@ -78,8 +78,8 @@ public class TacticView extends DefaultIView {
 		stage.addActor(linkbox1.color(1,1,1,0));
 		stage.addActor(linkbox2.color(1,1,1,0));
 		
-		group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link.png").position(300, 430).object(new PageMask()));
-		group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"support.png").position(300+1024, 420).object(new PageMask()));
+		group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link.png").position(300, 450).object(new PageMask()));
+		group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"support.png").position(300+1024, 440).object(new PageMask()));
 		
 		generateHeroImage();
 		generateSupport();
@@ -128,6 +128,7 @@ public class TacticView extends DefaultIView {
 			this.disposed = true;
 		} else
 			stage.keyDown(keyCode);
+		
 	}
 
 	public void dispose() {
@@ -149,8 +150,8 @@ public class TacticView extends DefaultIView {
 	}
 	
 	public void addTip(){
-		group.addActor(new Label("连携成功后将获得连携技能", 35).width(1000).position(215,128).userObject(new HeroImgMask4()));
-		group.addActor(new Label("获得的连携技能将根据连携者的不同而不同。两名非主角连携后，仅能获得最基本的“追击”技能。\n在少数情况下，两名非主角连携后将获得额外的特殊连携技能。\n而结城有栖（主角）不受此限制影响：\n结城有栖与任何角色连携后，都会获得基础的“追击”加与角色对应社群等级的连携技能。", 17).width(1000).position(215,22).userObject(new HeroImgMask4()));
+		group.addActor(new Label("连携成功后将获得连携技能", 30).width(1000).position(215,124).userObject(new HeroImgMask4()));
+		group.addActor(new Label("获得的连携技能将根据连携者的不同而不同。两名非主角连携后，仅能获得最基本的“追击”技能。\n在少数情况下，两名非主角连携后将获得额外的特殊连携技能。\n而结城有栖（主角）不受此限制影响：\n结城有栖与任何角色连携后，都会获得基础的“追击”加与角色对应社群等级的连携技能。", 16).width(1000).position(215,22).userObject(new HeroImgMask4()));
 	}
 	
 	HeroImg currentLinking;
@@ -230,7 +231,7 @@ public class TacticView extends DefaultIView {
 											group.addActor(new Label(skill.name, 50).width(1000).position(720, 98).userObject(new HeroImgMask4()).color(1, 1, 1, 0).action(Actions.fadeIn(0.1f)));
 											group.addActor(new Label(skill.getClass().getSimpleName(), 30).width(1000).position(740, 84).userObject(new HeroImgMask4()).color(1, 1, 1, 0).action(Actions.alpha(0.12f, 0.5f)));
 											group.addActor(new Label("获得条件：连携者等级超过" + skill.t_level + "级", 18).width(1000).position(720, 65).userObject(new HeroImgMask4()).color(1, 1, 1, 0).action(Actions.fadeIn(0.2f)));
-											group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "link_n_bg.png").object(new HeroImgMask4()).position(128, 0).color(1, 1, 1, 0).action(Actions.fadeIn(0.3f)).size(830,30).x(210));
+											group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "link_n_bg.png").object(new HeroImgMask4()).position(128, 0).color(1, 1, 1, 0).action(Actions.fadeIn(0.3f)).size(814,30).x(210));
 											group.addActor(new Label(skill.illustration, 16).width(1000).position(230, 6).userObject(new HeroImgMask4()));
 										}
 									}).oranCenter().scale(1.13f).color(1, 1, 1, 0).action(Actions.parallel(Actions.fadeIn(0.3f), Actions.scaleTo(1, 1, 0.3f))));
@@ -335,7 +336,7 @@ public class TacticView extends DefaultIView {
 			if(obj!=null && obj instanceof PageMask)
 				i.remove();
 		}
-		stage.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"left.png").position(210, 433).object(new PageMask()).onClick(new Runnable() {
+		stage.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"left.png").position(210, 453).object(new PageMask()).onClick(new Runnable() {
 			@Override
 			public void run() {
 				if(page>1)
@@ -343,7 +344,7 @@ public class TacticView extends DefaultIView {
 			}
 		}).color(page==1?Color.GRAY:Color.WHITE));
 		
-		stage.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"right.png").position(920, 433).object(new PageMask()).onClick(new Runnable() {
+		stage.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"right.png").position(920, 453).object(new PageMask()).onClick(new Runnable() {
 			@Override
 			public void run() {
 				if (page < TacticView.this.page)
@@ -545,4 +546,6 @@ public class TacticView extends DefaultIView {
 	public boolean allowEsc() {
 		return true;
 	}
+	
+	
 }
