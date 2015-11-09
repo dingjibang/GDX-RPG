@@ -54,6 +54,7 @@ public class UseItemView extends SidebarView {
 				int _count = item.count;
 				count.setText("持有 "+_count+" 个");
 				box.generate();
+				box.set(current).animate();
 				if(_count<=0){
 					button.setText("关闭");
 					button.onClick(new Runnable() {
@@ -71,6 +72,11 @@ public class UseItemView extends SidebarView {
 		
 		group.addActor(itemInfoGroup);
 	}
-
+	
+	@Override
+	public void dispose() {
+		super.dispose();
+		box.dispose();
+	}
 }
 	

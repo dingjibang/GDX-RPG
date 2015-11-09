@@ -2,26 +2,60 @@ package com.rpsg.rpg.system.ui;
 
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.utils.Disposable;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 
-public class HeroSelectBox extends Group {
+public class HeroSelectBox extends Group implements Disposable{
 	
 	private Hero hero;
 	private boolean forAllHeros = false;
+	
+	ParticleEffect particle;
+	int particleTime = 0;
 	
 	public HeroSelectBox(int width, int height, boolean forAllHeros) {
 		size(width, height);
 		sizeChanged();
 		this.forAllHeros = forAllHeros;
+		
+		particle = new ParticleEffect();
+		particle.load(Gdx.files.internal(Setting.PARTICLE + "addp.p"), Gdx.files.internal(Setting.PARTICLE));
+		
 		generate();
+	}
+	
+	@Override
+	public void act(float delta) {
+		if(particleTime>=0){
+			particleTime--;
+			if(particle.isComplete())
+				particle.reset();
+		}else{
+			particle.allowCompletion();
+		}
+		super.act(delta);
+	}
+	
+	@Override
+	public void draw(Batch batch, float parentAlpha) {
+		super.draw(batch, parentAlpha);
+		particle.draw(batch,Gdx.graphics.getDeltaTime());
+	}
+	
+	public void dispose(){
+		particle.dispose();
 	}
 	
 	public HeroSelectBox generate(){
@@ -88,5 +122,15 @@ public class HeroSelectBox extends Group {
 	public HeroSelectBox size(int width, int height) {
 		setSize(width, height);
 		return this;
+	}
+
+	public void animate() {
+		Vector2 vec2;
+		if(get()==null)
+			return;
+		vec2 = $.add(this).children().find(get()).getPosition().cpy();
+		particle.setPosition(vec2.x+getX()+35, vec2.y+getY()+10);
+		particleTime = 40;
+//		particle.start();
 	}
 }
