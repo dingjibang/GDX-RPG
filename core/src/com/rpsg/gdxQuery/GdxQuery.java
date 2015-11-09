@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -27,6 +28,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
+import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 /**
  * GDX-Query 
@@ -48,6 +50,8 @@ public class GdxQuery {
 	
 	private InputListener clickListener=(new InputListener(){
 		public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
+			if(b != Buttons.LEFT)
+				return;
 			if(click!=null && x>=0 && y>=0 && x <= event.getListenerActor().getWidth() && y <= event.getListenerActor().getHeight()) click.run();
 			if(touchUp!=null) touchUp.run();
 		}
@@ -502,7 +506,7 @@ public class GdxQuery {
 			else if(o instanceof Table)
 				for(Actor a:getItems())
 					((Table)o).add(a).fill().prefSize(a.getWidth(),a.getHeight()).row();
-			else if(o instanceof Group)
+			else if(o instanceof Group || o instanceof WidgetGroup)
 				for(Actor a:getItems())
 					((Group)o).addActor(a);
 			

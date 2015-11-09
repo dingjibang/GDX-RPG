@@ -20,6 +20,7 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.CustomRunnable;
 import com.rpsg.rpg.object.base.items.BaseItem;
+import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.ItemType;
 import com.rpsg.rpg.system.base.Res;
@@ -29,6 +30,7 @@ import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.ImageList;
 import com.rpsg.rpg.system.ui.Label;
+import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.hover.ThrowItemView;
 import com.rpsg.rpg.view.hover.UseItemView;
@@ -103,10 +105,8 @@ public class ItemView extends DefaultIView{
 				
 				description.clear();
 				
-				String append = "";
-				if(!t.enable){
+				if(!t.enable || t.item instanceof Equipment){
 					takeButton.setFg(take.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
-					append += "无法使用此道具";
 				}else{
 					if(t.current)
 						takeButton.setFg(off.a(1)).onClick(new Runnable(){public void run() {
@@ -121,20 +121,16 @@ public class ItemView extends DefaultIView{
 				
 				if(!t.item.throwable || t.current){
 					throwButton.setFg(throwImg.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
-					append += "无法丢弃此道具";
 				}else{
 					throwButton.setFg(throwImg.a(1)).fgSelfColor(true).onClick(new Runnable(){public void run() {
 						removeEquip();
 					}});
 				}
 				
-				if(append.length()!=0)
-					append = "\n[#d38181]"+append+"[]";
-				
 				Label name;
 				$.add(name = new Label(t.item.name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
 				$.add(new Label(("("+"拥有"+t.item.count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
-				ScrollPane pane = new ScrollPane(new Label(t.item.illustration+append,17).warp(true).markup(true));
+				ScrollPane pane = new ScrollPane(new Label(t.item.illustration,17).warp(true).markup(true));
 				pane.setupOverscroll(20, 200, 200);
 				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbar.png");
 				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbarin.png");
@@ -192,8 +188,10 @@ public class ItemView extends DefaultIView{
 			put("title","丢弃物品");
 			put("width",100);
 			put("item",ilist.getCurrent());
-			put("callback",new Runnable() {
-				public void run() {
+			put("callback",new CustomRunnable<Integer>() {
+				public void run(Integer t) {
+					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().item.name+" "+t+" 个", AlertUtil.Green);
+					RPG.ctrl.item.remove(ilist.getCurrent().item, t);
 					generate(false);
 				}
 			});

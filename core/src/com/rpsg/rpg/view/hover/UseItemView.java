@@ -33,10 +33,10 @@ public class UseItemView extends SidebarView {
 		group.addActor(box = new HeroSelectBox(460,200,forAll).position(430, 240-120));
 		
 		Group itemInfoGroup = new Group();
-		itemInfoGroup.addActor(Res.get(Setting.UI_BASE_IMG).size(460, 120).position(430, 280).a(.2f));
-		itemInfoGroup.addActor(new Image(icon).x(455).y(300).scale(.4f));
-		itemInfoGroup.addActor(Res.get(item.name, 38).position(595, 340).width(325).overflow(true).color(Color.valueOf("ff6600")));
-		itemInfoGroup.addActor(count = Res.get("持有 "+item.count+" 个", 22).position(595, 310).width(330).overflow(true));
+		itemInfoGroup.addActor(Res.get(Setting.UI_BASE_IMG).size(460, 100).position(430, 280).a(.2f));
+		itemInfoGroup.addActor(new Image(icon).x(455).y(290).scale(.4f));
+		itemInfoGroup.addActor(Res.get(item.name, 33).position(595, 328).width(325).overflow(true).color(Color.valueOf("ff6600")));
+		itemInfoGroup.addActor(count = Res.get("持有 "+item.count+" 个", 20).position(595, 300).width(330).overflow(true));
 		
 		TextButtonStyle tstyle = new TextButtonStyle();
 		tstyle.down = Setting.UI_BUTTON;
@@ -68,7 +68,7 @@ public class UseItemView extends SidebarView {
 		}
 	})).appendTo(group).setSize(454,55).setPosition(435,40).getCell().prefSize(454,55);
 		
-		itemInfoGroup.setY(50);
+		itemInfoGroup.setY(60);
 		
 		group.addActor(itemInfoGroup);
 	}
