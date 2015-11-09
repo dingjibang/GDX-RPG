@@ -23,7 +23,10 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.game.hero.Arisu;
+import com.rpsg.rpg.game.hero.Flandre;
 import com.rpsg.rpg.game.hero.Marisa;
+import com.rpsg.rpg.game.hero.Reimu;
+import com.rpsg.rpg.game.hero.Yuuka;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
@@ -52,11 +55,11 @@ public class MapLoader {
 			RPG.ctrl.hero.addHero(Arisu.class);
 			RPG.ctrl.hero.newHero(Marisa.class);
 			RPG.ctrl.hero.addHero(Marisa.class);
-//			RPG.ctrl.hero.newHero(Reimu.class);
-//			RPG.ctrl.hero.addHero(Reimu.class);
-//			RPG.ctrl.hero.newHero(Yuuka.class);
-//			RPG.ctrl.hero.addHero(Yuuka.class);
-//			RPG.ctrl.hero.newHero(Flandre.class);
+			RPG.ctrl.hero.newHero(Reimu.class);
+			RPG.ctrl.hero.addHero(Reimu.class);
+			RPG.ctrl.hero.newHero(Yuuka.class);
+			RPG.ctrl.hero.addHero(Yuuka.class);
+			RPG.ctrl.hero.newHero(Flandre.class);
 		}
 		RPG.ctrl.hero.initHeros(gv.stage);
 		

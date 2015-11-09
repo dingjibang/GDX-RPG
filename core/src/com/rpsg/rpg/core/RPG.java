@@ -75,7 +75,7 @@ public class RPG {
 	
 	/**
 	 * execute a java-script string ,and set the "this" object to executor.<br>
-	 * <br><b>执行一段JS脚本，并且设置“this”变量。</b>
+	 * <br><b>执行一段JS脚本，并且设置本脚本里“this”变量的java变量指向。</b>
 	 * @param js javascript
 	 * @param self "this" object
 	 */

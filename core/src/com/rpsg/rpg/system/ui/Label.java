@@ -3,6 +3,7 @@ package com.rpsg.rpg.system.ui;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Align;
 import com.rpsg.rpg.system.base.Res;
 
@@ -14,10 +15,12 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 	
 	public Label(Object text, LabelStyle style) {
 		super(text.toString(), style);
+		setTouchable(Touchable.disabled);
 	}
 	
 	public Label (Object text,int fontsize){
 		super(text.toString(),genStyle(fontsize));
+		setTouchable(Touchable.disabled);
 	}
 	
 	public Label markup(boolean enable){
