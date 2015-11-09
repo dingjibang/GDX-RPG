@@ -29,7 +29,6 @@ import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.ImageList;
 import com.rpsg.rpg.system.ui.Label;
-import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.hover.ThrowItemView;
 import com.rpsg.rpg.view.hover.UseItemView;
@@ -78,8 +77,6 @@ public class ItemView extends DefaultIView{
 		description.clear();
 		
 		//generate topbar
-		
-		
 		int offset = -14, pad = 119;
 		for(final ItemType type:ItemType.values()){
 			if(type.name().equalsIgnoreCase(currentFilter)){
