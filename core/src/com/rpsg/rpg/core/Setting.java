@@ -11,7 +11,6 @@ public class Setting {
 	public static final String BASE_PATH = "";
 	public static final String IMAGE_BASE_PATH = "images";
 
-	public static final String IMAGE_NUMBER = BASE_PATH + IMAGE_BASE_PATH + "/number/";
 	public static final String IMAGE_BACKGROUND = BASE_PATH + IMAGE_BASE_PATH + "/background/";
 	public static final String IMAGE_LOGO = BASE_PATH + IMAGE_BASE_PATH + "/logo/";
 	public static final String IMAGE_LOAD = BASE_PATH + IMAGE_BASE_PATH + "/load/";
