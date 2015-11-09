@@ -369,11 +369,12 @@ public class TacticView extends DefaultIView {
 			ScrollPane pane=new ScrollPane(table);
 			pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"scrollbar.png");
 			pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"scrollbarin.png");
-			pane.setSize(330, 315);
+			pane.setSize(295, 315);
 			pane.setPosition(x, y-13);
-			group.addActor(new Image(Setting.IMAGE_MENU_TACTIC+"sup_box.png").position(x-30, y-50));
+			group.addActor(new Image(Setting.IMAGE_MENU_TACTIC+"sup_box.png").position(x-32, y-50));
 			group.addActor(pane);
 			pane.setForceScroll(false, true);
+			pane.setScrollingDisabled(true, false);
 		}
 		
 		SupGroup generate(List<Hero> heroList){
@@ -390,7 +391,7 @@ public class TacticView extends DefaultIView {
 						si.select = true;
 						currentSelect = si;
 					}
-				})).prefSize(324, 58).row();
+				})).prefSize(300, 58).row();
 			}
 			table.align(Align.top);
 			for (Cell<?> c : table.getCells()) {
@@ -418,8 +419,8 @@ public class TacticView extends DefaultIView {
 		s_l=new SupGroup(1240, 65).generate(Support.getPreSupportList());
 		s_r=new SupGroup(1694, 65).generate(Support.getSupportList());
 		final Label nl,nr;
-		group.addActor(nl=new Label("",20).width(1000).align(900, 383));
-		group.addActor(nr=new Label("",20).width(1000).align(1365, 383));
+		group.addActor(nl=new Label("",20).width(1000).align(885, 383));
+		group.addActor(nr=new Label("",20).width(1000).align(1350, 383));
 		final Runnable func_resetLabel= new Runnable() {
 			@Override
 			public void run() {
@@ -440,7 +441,7 @@ public class TacticView extends DefaultIView {
 							i.remove();
 					s_l.table.layout();
 
-					s_r.table.add(currentSelect).prefSize(324, 58).row();
+					s_r.table.add(currentSelect).prefSize(300, 58).row();
 					for (Cell<?> c : s_r.table.getCells()) {
 						c.padTop(3).padBottom(3);
 					}
@@ -452,7 +453,7 @@ public class TacticView extends DefaultIView {
 					func_resetLabel.run();
 				}
 			}
-		}).pos(1588, 320));
+		}).pos(1573, 320));
 		group.addActor(l=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"sup_left.png"), Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"sup_left_p.png")).onClick(new Runnable() {
 			@Override
 			public void run() {
@@ -464,7 +465,7 @@ public class TacticView extends DefaultIView {
 							i.remove();
 					s_r.table.layout();
 
-					s_l.table.add(currentSelect).prefSize(324, 58).row();
+					s_l.table.add(currentSelect).prefSize(300, 58).row();
 					for (Cell<?> c : s_l.table.getCells()) {
 						c.padTop(3).padBottom(3);
 					}
@@ -476,7 +477,7 @@ public class TacticView extends DefaultIView {
 					func_resetLabel.run();
 				}
 			}
-		}).pos(1588, 240));
+		}).pos(1573, 240));
 		group.addActor(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"sup_ll.png"), Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"sup_ll_p.png")).onClick(new Runnable() {
 			@Override
 			public void run() {
@@ -485,7 +486,7 @@ public class TacticView extends DefaultIView {
 					l.click();
 				}
 			}
-		}).pos(1588, 160));
+		}).pos(1573, 160));
 		group.addActor(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"sup_info.png"), Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"sup_info_p.png")).onClick(new Runnable() {
 			@SuppressWarnings("serial")
 			@Override
@@ -497,7 +498,7 @@ public class TacticView extends DefaultIView {
 					}});
 				}
 			}
-		}).pos(1588, 80));
+		}).pos(1573, 80));
 	}
 	
 	class SupImage extends Image{
@@ -530,7 +531,7 @@ public class TacticView extends DefaultIView {
 			name.draw(sb, parentAlpha);
 			level.setPosition(getX()+120, getY()+7);
 			level.draw(sb, parentAlpha);
-			association.setPosition(getX()+240, getY()+10);
+			association.setPosition(getX()+220, getY()+10);
 			association.draw(sb, parentAlpha);
 			sbox.setPosition(getX(), getY()-1);
 			if(select)
