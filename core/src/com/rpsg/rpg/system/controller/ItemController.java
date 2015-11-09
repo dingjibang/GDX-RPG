@@ -78,12 +78,7 @@ public class ItemController {
 				e.equipType=result.getString("equipType");
 				
 				//读取装备属性
-				Map<String,Integer> replace = new HashMap<>();
-				for(String prop:e.prop.keySet()){
-					JsonValue _p = result.get("prop");
-					replace.put(prop,_p.has(prop)?_p.getInt(prop):0);
-				}
-				e.prop = replace;
+				readProp(e, result);
 				
 			}else if(type.equalsIgnoreCase(Spellcard.class.getSimpleName())){				//TODO
 				Spellcard e =(Spellcard)(baseItem=new Spellcard());
@@ -93,6 +88,9 @@ public class ItemController {
 				item.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
 				item.range = result.has("range")?ItemRange.valueOf(result.getString("range")):ItemRange.one;
 				item.type = Item.class.getSimpleName();
+				
+				//读取道具属性 TODO
+				readProp(item, result);
 			}
 			
 			baseItem.id = id;
@@ -112,6 +110,15 @@ public class ItemController {
 		}
 	}
 	
+	private void readProp(BaseItem item,JsonValue result){
+		Map<String,Integer> replace = new HashMap<>();
+		JsonValue props = result.get("prop");
+		for(int i=0;i<props.size;i++){
+			replace.put(props.get(i).name,props.getInt(props.get(i).name));
+		}
+		item.prop = replace;
+	}
+	
 	/** 移除1个 <b><i>当前背包</i></b> 里的某个道具（根据ID）**/
 	public boolean remove(int id){
 		return remove(search(id),1);
@@ -128,10 +135,10 @@ public class ItemController {
 			return false;
 		if(baseItem.count-count < 0)
 			return false;
-		if(baseItem.count-count == 0)
+		
+		baseItem.count-=count;
+		if(baseItem.count <= 0)
 			RPG.global.items.remove(baseItem);
-		else
-			baseItem.count-=count;
 		return true;
 	}
 	
@@ -193,7 +200,6 @@ public class ItemController {
 		if(baseItem==null)
 			return false;
 		
-		baseItem.use();
 		
 		if(baseItem instanceof Equipment){
 			if(baseItem.user==null)
@@ -205,9 +211,20 @@ public class ItemController {
 			baseItem.user.equips.put(equip.equipType, equip);
 			replace(baseItem.user, equip, true);//计算穿上装备后的Hero属性数值变化
 			remove(equip);
+		}else if(baseItem instanceof Item){
+			Item item = (Item)baseItem;
+			if(item.user==null || item.disable)
+				return false;
+			Hero hero = item.user;
+			for(String key:item.prop.keySet()){
+				System.out.println(key+":"+item.prop.get(key));
+				hero.addProp(key, item.prop.get(key));//使用道具，增加各项属性
+			}
+			if(item.removeAble)
+				remove(item);
 		}
 		
-//		syso
+		baseItem.use();
 		return true;
 	}
 	

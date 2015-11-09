@@ -197,10 +197,8 @@ public class ItemView extends DefaultIView{
 			put("title","丢弃物品");
 			put("width",100);
 			put("item",ilist.getCurrent());
-			put("callback",new CustomRunnable<Integer>() {
-				public void run(Integer t) {
-					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().item.name+" "+t+" 个", AlertUtil.Green);
-					RPG.ctrl.item.remove(ilist.getCurrent().item, t);
+			put("callback",new Runnable() {
+				public void run() {
 					generate(false);
 				}
 			});

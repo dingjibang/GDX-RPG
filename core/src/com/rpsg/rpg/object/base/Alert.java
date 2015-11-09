@@ -11,26 +11,20 @@ import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class Alert extends Group {
-	public Image box;
-	public boolean dispose=false,hide=false;
-	public Label label;
-	Action last;
-	public int showTime = 100;
+	private Image box;
+	public boolean dispose=false;
+	private boolean hide=false;
+	private Label label;
+	private Action last;
+	private int showTime = 100;
 	
-	public int size;
+	private int size;
 	
-	public String str;
+	private String str;
 
-	public Image type;
+	private Image type;
 
-	int xoffset;
-
-	public Alert(Image type, String str) {
-		this.type = type;
-		this.str = str;
-		this.size = 20;
-		init();
-	}
+	private int xoffset;
 
 	public Alert(Image type, String str, int size) {
 		this.type = type;
@@ -38,6 +32,7 @@ public class Alert extends Group {
 		this.size = size;
 		init();
 	}
+	
 	private void init(){
 		label = new Label("",size);
 		box=new Image(new NinePatchDrawable(AlertUtil.box));
