@@ -1,5 +1,8 @@
 package com.rpsg.rpg.system.ui;
 
+import java.lang.reflect.Field;
+
+import com.badlogic.gdx.utils.StringBuilder;
 import com.rpsg.rpg.object.base.CustomRunnable;
 
 /**
@@ -9,10 +12,18 @@ import com.rpsg.rpg.object.base.CustomRunnable;
  */
 public class FrameLabel extends Label {
 	
-	CustomRunnable<Label> frame;
+	CustomRunnable<FrameLabel> frame;
 	
+	StringBuilder text;
 	public FrameLabel(Object text, int fontsize) {
 		super(text, fontsize);
+		try {
+			Field f = this.getClass().getSuperclass().getSuperclass().getDeclaredField("text");
+			f.setAccessible(true);
+			this.text = (StringBuilder)f.get(this);
+		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public FrameLabel frame(){
@@ -22,9 +33,15 @@ public class FrameLabel extends Label {
 		return this;
 	}
 	
-	public FrameLabel frame(CustomRunnable<Label> onFrame){
+	public FrameLabel frame(CustomRunnable<FrameLabel> onFrame){
 		this.frame = onFrame;
 		return this;
+	}
+	
+	public void setNoLayoutText(CharSequence newText) {
+		text.setLength(0);
+		text.append(newText);
+		this.layout();
 	}
 	
 	@Override
