@@ -1,5 +1,6 @@
 package com.rpsg.rpg.utils.game;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -12,8 +13,10 @@ import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapProperties;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.base.Res;
+import com.rpsg.rpg.utils.display.AlertUtil;
 
 /**
  * 遊戲工具類
@@ -93,5 +96,9 @@ public class GameUtil {
 	    final int width = t.getWidth() - 2;
 	    final int height = t.getHeight() - 2;
 	    return new NinePatch(new TextureRegion(t, 1, 1, width, height), 12, 12, 12, 12);
+	}
+	
+	public static void openURL(String httpURL){
+		Gdx.net.openURI(httpURL);
 	}
 }

@@ -5,8 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.base.CustomRunnable;
 import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.system.base.Res;
 

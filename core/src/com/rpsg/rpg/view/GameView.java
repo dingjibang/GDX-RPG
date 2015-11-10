@@ -82,7 +82,7 @@ public class GameView extends View{
 		
 		if(!Setting.persistence.cacheResource){
 			ma.unload(filename);
-			ma.clear();
+//			ma.clear(); FIXME 可能导致其他纹理也被卸载。。。
 		}
 		
 		if(null!=stackView){

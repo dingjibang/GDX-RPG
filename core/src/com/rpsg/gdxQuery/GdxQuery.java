@@ -318,9 +318,11 @@ public class GdxQuery {
 		return this;
 	}
 	
-	public GdxQuery each(ActorRunnable run){
+	
+	@SuppressWarnings("unchecked")
+	public <T> GdxQuery  each(CustomRunnable<T> run){
 		if(run!=null)
-			for(Actor actor:getItems())
+			for(T actor:(List<T>)getItems())
 				run.run(actor);
 		return this;
 	}

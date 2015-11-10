@@ -62,7 +62,7 @@ public class PostUtil {
 		}));
 		others.appendTo(stage);
 		
-		mask = $.add(Res.get(Setting.UI_BASE_IMG).disableTouch()).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(1,1,1,.1f).appendTo(stage).getItem();
+		mask = $.add(Res.get(Setting.UI_BASE_IMG).disableTouch()).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(1,1,1,.5f).appendTo(stage).getItem();
 		
 		Logger.info("Post特效创建成功。");
 	}
@@ -85,7 +85,10 @@ public class PostUtil {
 			others.cleanActions();
 			for(Actor actor:others.getItems())
 				actor.addAction(GameViews.gameview.stackView==null?Actions.fadeIn(0.1f):Actions.fadeOut(0.1f));
-			mask.setColor(1,1,1,(1-others.first().getItem().getColor().a)*.15f);
+			if(Setting.persistence.betterLight)
+				mask.setColor(.5f,.5f,.5f,(1-others.first().getItem().getColor().a)*.3f);
+			else
+				mask.setColor(.2f,.2f,.2f,(1-others.first().getItem().getColor().a)*.85f);
 			stage.act();
 			if(menuEnable)
 				stage.draw();

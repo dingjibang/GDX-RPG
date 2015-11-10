@@ -45,6 +45,11 @@ public class ProgressBar extends Widget implements Disableable {
 		return this;
 	}
 	
+	public ProgressBar value(float v){
+		setValue(v);
+		return this;
+	}
+	
 	public String end="";
 	public ProgressBar setStrEnd(String str){
 		end=str;
@@ -190,7 +195,7 @@ public class ProgressBar extends Widget implements Disableable {
 			if (knob != null) knob.draw(batch, (int)(x + position), (int)(y + (height - knobHeight) * 0.5f), knobWidth, knobHeight);
 			if(labelful){
 				label.setText(getValue()+end);
-				label.setPosition((int)(getX()+getWidth()+40),(int)(getY()+getHeight()-6));
+				label.setPosition((int)(getX()+getWidth()+35),(int)(getY()+getHeight()-14));
 				label.draw(batch, getColor().a);
 			}
 		}

@@ -1,6 +1,6 @@
 package com.rpsg.rpg.system.base;
 
-import com.rpsg.rpg.object.base.CustomRunnable;
+import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.system.ui.HoverView;
 
 public class Confirm {

@@ -38,7 +38,7 @@ public class Persistence implements Serializable{
 	/**当程序异常时是否上报错误 TODO*/
 	public boolean onErrorSendMsg = true;
 	/**是否将UI设定为触屏模式*/
-	public boolean touchMod = false;
+	public boolean touchMod = true;
 	/**是否启用更好的灯光系统*/
 	public boolean betterLight = true;
 	/**是否缓存资源到内存中，以便于快速进图*/
@@ -47,6 +47,9 @@ public class Persistence implements Serializable{
 	public boolean softCamera=true;
 	/**是否启用UI的调试模式（开发者）*/
 	public boolean uiDebug = false;
+	
+	/**启动自动寻路*/
+	public boolean pathFind = true;
 	
 	public String errorMessage="";
 	
