@@ -41,7 +41,7 @@ public class ItemView extends DefaultIView{
 	ImageList ilist;
 	String currentFilter = Item.class.getSimpleName();
 	ImageButton takeButton,throwButton;
-	Image take=Res.get(Setting.IMAGE_MENU_NEW_ITEM+"but_use.png"),off=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_off.png").a(.3f),throwImg=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_remove.png").a(.3f);
+	Image take=Res.get(Setting.IMAGE_MENU_ITEM+"but_use.png"),off=Res.get(Setting.IMAGE_MENU_EQUIP+"but_off.png").a(.3f),throwImg=Res.get(Setting.IMAGE_MENU_EQUIP+"but_remove.png").a(.3f);
 	public ItemView init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		
@@ -49,17 +49,17 @@ public class ItemView extends DefaultIView{
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,60).setColor(Color.valueOf("3d3d3d")).setPosition(240,486).appendTo(stage);
 		
 		CheckBoxStyle cstyle=new CheckBoxStyle();
-		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"info.png");
-		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"info_p.png");// help button press
+		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info.png");
+		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info_p.png");// help button press
 		cstyle.font = Res.font.get(20);
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,282).setColor(.2f,.2f,.2f,.85f).setPosition(240,178).appendTo(stage);
 		
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(155,155).setColor(0,0,0,.55f).setPosition(240,12).appendTo(stage);
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(597,103).setColor(0,0,0,.55f).setPosition(398,64).appendTo(stage);
 		
-		$.add(takeButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(take)).appendTo(stage).setSize(297,49).setPosition(398, 12).getCell().prefSize(297,49);
+		$.add(takeButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(take)).appendTo(stage).setSize(297,49).setPosition(398, 12).getCell().prefSize(297,49);
 		
-		$.add(throwButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(throwImg)).appendTo(stage).setSize(297,49).setPosition(698, 12).getCell().prefSize(297,49);
+		$.add(throwButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(throwImg)).appendTo(stage).setSize(297,49).setPosition(698, 12).getCell().prefSize(297,49);
 		
 		inner = (Group) $.add(new Group()).appendTo(stage).getItem();
 		description = (Group) $.add(new Group()).appendTo(stage).getItem();
@@ -84,7 +84,7 @@ public class ItemView extends DefaultIView{
 			if(type.name().equalsIgnoreCase(currentFilter)){
 				inner.addActor(new Image(Setting.UI_BASE_IMG).size(0, 73).color(Color.valueOf("8f171700")).position(135+(offset+=pad), 479).action(Actions.parallel(Actions.fadeIn(animate?.1f:0),Actions.sizeBy(160, 0,animate?.07f:0))));
 				offset+=70;
-				inner.addActor(new Image(Setting.IMAGE_MENU_NEW_ITEM+"i_"+type.name()+".png").position(98+offset, 500).a(0).action(Actions.fadeIn(animate?.1f:0)));
+				inner.addActor(new Image(Setting.IMAGE_MENU_ITEM+"i_"+type.name()+".png").position(98+offset, 500).a(0).action(Actions.fadeIn(animate?.1f:0)));
 				$.add(new Label(type.value(),26)).setPosition(143+offset, 500).setColor(1,1,1,0).appendTo(inner).setAlpha(0).addAction(Actions.fadeIn(animate?.1f:0));
 			}else{
 				inner.addActor(new Image(Setting.UI_BASE_IMG).size(90, 60).color(Color.valueOf("3d3d3d")).position(135+(offset+=pad), 486).onClick(new Runnable(){
@@ -93,7 +93,7 @@ public class ItemView extends DefaultIView{
 						generate(true);
 					}
 				}));
-				inner.addActor(new Image(Setting.IMAGE_MENU_NEW_ITEM+"i_"+type.name()+".png").position(140+offset+25, 500).disableTouch());
+				inner.addActor(new Image(Setting.IMAGE_MENU_ITEM+"i_"+type.name()+".png").position(140+offset+25, 500).disableTouch());
 			}
 				
 		}
@@ -132,8 +132,8 @@ public class ItemView extends DefaultIView{
 				$.add(new Label(("("+"拥有"+t.item.count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
 				ScrollPane pane = new ScrollPane(new Label(t.item.illustration,17).warp(true).markup(true));
 				pane.setupOverscroll(20, 200, 200);
-				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbar.png");
-				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbarin.png");
+				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbar.png");
+				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbarin.png");
 				pane.setFadeScrollBars(false);
 				pane.layout();
 				$.add(pane).setSize(578, 60).setPosition(410, 68).appendTo(description);

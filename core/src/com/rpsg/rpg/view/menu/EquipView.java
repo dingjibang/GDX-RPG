@@ -46,14 +46,14 @@ public class EquipView extends DefaultIView{
 	ImageList ilist;
 	String currentFilter = Equipment.EQUIP_CLOTHES;
 	ImageButton takeButton,throwButton;
-	Image take=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_take.png"),off=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_off.png").a(.3f),throwImg=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"but_remove.png").a(.3f);
+	Image take=Res.get(Setting.IMAGE_MENU_EQUIP+"but_take.png"),off=Res.get(Setting.IMAGE_MENU_EQUIP+"but_off.png").a(.3f),throwImg=Res.get(Setting.IMAGE_MENU_EQUIP+"but_remove.png").a(.3f);
 	public EquipView init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(137,79).setColor(0,0,0,.52f).setPosition(240,470).appendTo(stage);
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(680,48).setColor(0,0,0,.85f).setPosition(377,486).appendTo(stage);
 		CheckBoxStyle cstyle=new CheckBoxStyle();
-		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"info.png");
-		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"info_p.png");// help button press
+		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info.png");
+		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info_p.png");// help button press
 		cstyle.font = Res.font.get(20);
 		$.add(new CheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
 			data.addAction(self.isChecked()?Actions.fadeIn(.3f):Actions.fadeOut(.3f));
@@ -64,14 +64,14 @@ public class EquipView extends DefaultIView{
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(155,155).setColor(0,0,0,.55f).setPosition(240,12).appendTo(stage);
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(597,103).setColor(0,0,0,.55f).setPosition(398,64).appendTo(stage);
 		
-		$.add(takeButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(take)).appendTo(stage).setSize(297,49).setPosition(398, 12).getCell().prefSize(297,49);
+		$.add(takeButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(take)).appendTo(stage).setSize(297,49).setPosition(398, 12).getCell().prefSize(297,49);
 		
-		$.add(throwButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(throwImg)).appendTo(stage).setSize(297,49).setPosition(698, 12).getCell().prefSize(297,49);
+		$.add(throwButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(throwImg)).appendTo(stage).setSize(297,49).setPosition(698, 12).getCell().prefSize(297,49);
 		
-		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).onClick(new Runnable() {public void run() {
+		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).onClick(new Runnable() {public void run() {
 			next();
 		}}).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
-		$.add(Res.get(Setting.IMAGE_MENU_NEW_GLOBAL+"m_right.png")).setScale(.8f).setScaleX(-.8f).appendTo(stage).setPosition(196, 483).onClick(new Runnable() {public void run() {
+		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).setScale(.8f).setScaleX(-.8f).appendTo(stage).setPosition(196, 483).onClick(new Runnable() {public void run() {
 			prev();
 		}}).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
 		
@@ -80,10 +80,10 @@ public class EquipView extends DefaultIView{
 		data=(Group) $.add(new Group()).setColor(1,1,1,0).appendTo(stage).getItem();
 		
 		CheckBoxStyle cstyle2 = new CheckBoxStyle();
-		cstyle2.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"button.png");
+		cstyle2.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button.png");
 		cstyle2.checkboxOff.setMinHeight(47);
 		cstyle2.checkboxOff.setMinWidth(75);
-		cstyle2.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_NEW_GLOBAL+"menu_button_select.png");
+		cstyle2.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"menu_button_select.png");
 		cstyle2.checkboxOn.setMinHeight(47);
 		cstyle2.checkboxOn.setMinWidth(75);
 		cstyle2.font = Res.font.get(18);
@@ -99,7 +99,7 @@ public class EquipView extends DefaultIView{
 		
 		for(final CheckBox box:bg.getButtons()){
 			stage.addActor(box);
-			box.setForeground(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+box.getUserObject().toString()+".png").size(40, 40)).setFgOff(0).onClick(new Runnable(){
+			box.setForeground(Res.get(Setting.IMAGE_MENU_EQUIP+box.getUserObject().toString()+".png").size(40, 40)).setFgOff(0).onClick(new Runnable(){
 				public void run() {
 					currentFilter = box.getUserObject().toString();
 					generate();
@@ -123,7 +123,7 @@ public class EquipView extends DefaultIView{
 		data.clear();
 		description.clear();
 		
-		$.add(Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"data.png").disableTouch()).setSize(187, 312).setPosition(838,174).appendTo(data);
+		$.add(Res.get(Setting.IMAGE_MENU_EQUIP+"data.png").disableTouch()).setSize(187, 312).setPosition(838,174).appendTo(data);
 		
 		ilist=((ImageList) $.add(new ImageList(getEquips(currentFilter))).setSize(655, 266).setPosition(328, 185).appendTo(inner).getItem());
 		
@@ -169,8 +169,8 @@ public class EquipView extends DefaultIView{
 				$.add(new Label(("("+(t.item==currentHeroEquip?"当前，":"")+"拥有"+t.item.count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
 				ScrollPane pane = new ScrollPane(new Label(t.item.illustration+append+"\n"+((Equipment)t.item).illustration2,17).warp(true).markup(true));
 				pane.setupOverscroll(20, 200, 200);
-				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbar.png");
-				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"mini_scrollbarin.png");
+				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbar.png");
+				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbarin.png");
 				pane.setFadeScrollBars(false);
 				pane.layout();
 				$.add(pane).setSize(578, 60).setPosition(410, 68).appendTo(description);

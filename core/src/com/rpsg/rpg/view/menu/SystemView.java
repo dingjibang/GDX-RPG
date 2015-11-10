@@ -65,7 +65,7 @@ public class SystemView extends DefaultIView{
 		
 		TextButtonStyle tstyle = new TextButtonStyle();
 		tstyle.down = Setting.UI_BUTTON;
-		tstyle.up = Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"throwbut.png");
+		tstyle.up = Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"throwbut.png");
 		tstyle.font = Res.font.get(22);
 		
 		CheckBoxStyle cstyle=new CheckBoxStyle();
@@ -81,7 +81,7 @@ public class SystemView extends DefaultIView{
 		{
 			Table table = new Table().left().padLeft(50);
 			table.add(new Label("游戏档案",55)).left().padTop(50).row();
-			table.add(Res.get(Setting.IMAGE_MENU_NEW_SYSTEM+"split.png")).padTop(15).left().row();
+			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"split.png")).padTop(15).left().row();
 			table.add(new Label("Save & Load",20).align(Align.right)).width(300).align(Align.right).height(0).padTop(-40).row();
 			table.add(Res.get(Setting.UI_BASE_IMG).color(Color.DARK_GRAY).a(.65f)).prefSize(734, 160).padTop(20).row();
 			table.add(Res.get(Setting.UI_BASE_IMG).color(Color.BLACK).a(.5f)).prefSize(734, 80).row();
@@ -117,7 +117,7 @@ public class SystemView extends DefaultIView{
 				}
 			}));
 			for(Cell<?> c:buttons.getCells())
-				c.padLeft(25).padRight(25).width(200).height(50);
+				c.padLeft(17).padRight(17).width(200).height(50);
 			table.add(buttons).padTop(-80);
 			table.layout();
 			parentTable.add(table).align(Align.topLeft).row();
@@ -129,7 +129,7 @@ public class SystemView extends DefaultIView{
 		{
 			Table table = new Table().left().padLeft(50);
 			table.add(new Label("图形选项",55)).left().padTop(50).row();
-			table.add(Res.get(Setting.IMAGE_MENU_NEW_SYSTEM+"split.png")).padTop(15).left().row();
+			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"split.png")).padTop(15).left().row();
 			table.add(new Label("Graphics Options",20).align(Align.right)).width(300).align(Align.right).height(0).padTop(-40).row();
 			
 			table.add(new CheckBox("开启平滑纹理",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
@@ -156,7 +156,7 @@ public class SystemView extends DefaultIView{
 		{
 			Table table = new Table().left().padLeft(50);
 			table.add(new Label("游戏选项",55)).left().padTop(50).row();
-			table.add(Res.get(Setting.IMAGE_MENU_NEW_SYSTEM+"split.png")).padTop(15).left().row();
+			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"split.png")).padTop(15).left().row();
 			table.add(new Label("Game Options",20).align(Align.right)).width(300).align(Align.right).height(0).padTop(-40).row();
 			
 			table.add(new CheckBox("触屏模式",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
@@ -183,7 +183,7 @@ public class SystemView extends DefaultIView{
 		{
 			Table table = new Table().left().padLeft(50);
 			table.add(new Label("音频选项",55)).left().padTop(50).row();
-			table.add(Res.get(Setting.IMAGE_MENU_NEW_SYSTEM+"split.png")).padTop(15).left().row();
+			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"split.png")).padTop(15).left().row();
 			table.add(new Label("Sound Options",20).align(Align.right)).width(300).align(Align.right).height(0).padTop(-40).row();
 			
 			table.add(new Label("游戏整体音量",24)).left().padTop(50).row();
@@ -216,7 +216,7 @@ public class SystemView extends DefaultIView{
 		{
 			Table table = new Table().left().padLeft(50);
 			table.add(new Label("其他选项",55)).left().padTop(50).row();
-			table.add(Res.get(Setting.IMAGE_MENU_NEW_SYSTEM+"split.png")).padTop(15).left().row();
+			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"split.png")).padTop(15).left().row();
 			table.add(new Label("Other Options",20).align(Align.right)).width(300).align(Align.right).height(0).padTop(-40).row();
 			
 			table.add(new CheckBox("输出调试信息",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
@@ -254,7 +254,7 @@ public class SystemView extends DefaultIView{
 		{
 			Table table = new Table().left().padLeft(50);
 			table.add(new Label("关于",55)).left().padTop(50).row();
-			table.add(Res.get(Setting.IMAGE_MENU_NEW_SYSTEM+"split.png")).padTop(15).left().row();
+			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"split.png")).padTop(15).left().row();
 			table.add(new Label("About",20).align(Align.right)).width(300).align(Align.right).height(0).padTop(-40).row();
 			
 			table.add(Res.get(Setting.IMAGE_LOGO+"logo_without_border.png")).padTop(200).row();

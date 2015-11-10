@@ -68,8 +68,8 @@ public class ImageList extends Group{
 	public ImageList generate(Icon before){
 		inner = new Table();
 		pane=new ScrollPane(inner);
-		pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"scrollbar.png");
-		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"scrollbarin.png");
+		pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"scrollbar.png");
+		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"scrollbarin.png");
 		pane.setFadeScrollBars(false);
 		pane.setScrollingDisabled(true, false);
 		int padding = 5;

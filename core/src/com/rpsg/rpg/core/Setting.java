@@ -25,17 +25,13 @@ public class Setting {
 	public static final String IMAGE_CG = BASE_PATH + IMAGE_BASE_PATH + "/cg/";
 
 	// Menu images/menu/
-	public static final String IMAGE_MENU_GLOBAL = IMAGE_MENU + "global/";
-	public static final String IMAGE_MENU_NEW_GLOBAL = IMAGE_MENU + "nglobal/";
+	public static final String IMAGE_MENU_GLOBAL = IMAGE_MENU + "nglobal/";
 	public static final String IMAGE_MENU_MAP = IMAGE_MENU + "map/";
-	public static final String IMAGE_MENU_EQUIP = IMAGE_MENU + "equip/";
-	public static final String IMAGE_MENU_NEW_EQUIP = IMAGE_MENU + "nequip/";
+	public static final String IMAGE_MENU_EQUIP = IMAGE_MENU + "nequip/";
 	public static final String IMAGE_MENU_SC = IMAGE_MENU + "sc/";
-	public static final String IMAGE_MENU_ITEM = IMAGE_MENU + "item/";
-	public static final String IMAGE_MENU_NEW_ITEM = IMAGE_MENU + "nitem/";
-	public static final String IMAGE_MENU_NEW_STATUS = IMAGE_MENU + "nstatus/";
-	public static final String IMAGE_MENU_SYSTEM = IMAGE_MENU + "system/";
-	public static final String IMAGE_MENU_NEW_SYSTEM = IMAGE_MENU + "nsystem/";
+	public static final String IMAGE_MENU_ITEM = IMAGE_MENU + "nitem/";
+	public static final String IMAGE_MENU_STATUS = IMAGE_MENU + "nstatus/";
+	public static final String IMAGE_MENU_SYSTEM = IMAGE_MENU + "nsystem/";
 	public static final String IMAGE_MENU_TACTIC = IMAGE_MENU + "tactic/";
 
 	public static final String MESSAGE = BASE_PATH + IMAGE_BASE_PATH + "/message/";
@@ -67,11 +63,11 @@ public class Setting {
 
 	// UI
 	public static NinePatchDrawable UI_BUTTON;
-	public static String UI_BASE_IMG = Setting.IMAGE_MENU_NEW_GLOBAL + "white.jpg";
-	public static String UI_BASE_PRO = Setting.IMAGE_MENU_NEW_GLOBAL + "prograssbar.png";
+	public static String UI_BASE_IMG = Setting.IMAGE_MENU_GLOBAL + "white.jpg";
+	public static String UI_BASE_PRO = Setting.IMAGE_MENU_GLOBAL + "prograssbar.png";
 
 	public static void init() {
-		UI_BUTTON = new NinePatchDrawable(GameUtil.processNinePatchFile(Setting.IMAGE_MENU_NEW_GLOBAL + "button_p.png"));
+		UI_BUTTON = new NinePatchDrawable(GameUtil.processNinePatchFile(Setting.IMAGE_MENU_GLOBAL + "button_p.png"));
 	}
 
 	public static final String IRPGOBJECT_SHADOW = Setting.WALK + "walk_shadow.png";
