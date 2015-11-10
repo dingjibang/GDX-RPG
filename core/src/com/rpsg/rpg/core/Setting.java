@@ -35,6 +35,7 @@ public class Setting {
 	public static final String IMAGE_MENU_NEW_ITEM = IMAGE_MENU + "nitem/";
 	public static final String IMAGE_MENU_NEW_STATUS = IMAGE_MENU + "nstatus/";
 	public static final String IMAGE_MENU_SYSTEM = IMAGE_MENU + "system/";
+	public static final String IMAGE_MENU_NEW_SYSTEM = IMAGE_MENU + "nsystem/";
 	public static final String IMAGE_MENU_TACTIC = IMAGE_MENU + "tactic/";
 
 	public static final String MESSAGE = BASE_PATH + IMAGE_BASE_PATH + "/message/";

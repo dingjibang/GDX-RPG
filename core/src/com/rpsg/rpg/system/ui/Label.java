@@ -3,6 +3,7 @@ package com.rpsg.rpg.system.ui;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Align;
 import com.rpsg.rpg.system.base.Res;
@@ -142,6 +143,16 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 
 	public Label height(int i) {
 		setHeight(i);
+		return this;
+	}
+
+	public Label x(int i) {
+		setX(i);
+		return this;
+	}
+	
+	public Label y(int i){
+		setY(i);
 		return this;
 	}
 

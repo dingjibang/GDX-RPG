@@ -28,10 +28,6 @@ public class InputController{
 		tmpIO=null;
 	}
 	public static boolean keyDown(int keycode,GameView gv) {
-		if(keycode==Keys.R){
-			RPG.global=SL.load(0);
-			Initialization.restartGame();
-		}
 		if(keycode==Keys.L){
 			SL.save(0);
 		}
