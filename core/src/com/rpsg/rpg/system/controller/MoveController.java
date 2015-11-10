@@ -25,32 +25,39 @@ import com.rpsg.rpg.object.script.ScriptExecutor;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameView;
 
+/**
+ * 有毒
+ */
 public class MoveController {
 
 	public static int MAP_MAX_OUT_X = 512;
 	public static int MAP_MAX_OUT_Y = 288;
-	static boolean wu = false, wd = false, wl = false, wr = false;
 	public static Actor offsetActor=new Actor(),bufferActor=new Actor();
 
 	public static void up() {
-		wu = true;
-		wd = wl = wr = false;
+		stop();
+		Input.press(Keys.UP);
 	}
 
 	public static void down() {
-		wd = true;
-		wu = wl = wr = false;
+		stop();
+		Input.press(Keys.DOWN);
 	}
 
 	public static void left() {
-		wl = true;
-		wd = wu = wr = false;
+		stop();
+		Input.press(Keys.LEFT);
 	}
 
 	public static void right() {
-		wr = true;
-		wd = wu = wl = false;
+		stop();
+		Input.press(Keys.RIGHT);
 	}
+	
+	public static void stop(){
+		Input.cleanPress();
+	}
+	
 
 	public static void logic(GameView gv) {
 		synchronized (gv.stage.getActors()) {
@@ -66,31 +73,29 @@ public class MoveController {
 			sc.toCollide();
 		}
 		RPG.ctrl.hero.setWalkSpeed(Input.isPress(Keys.CONTROL_LEFT) ? 8 : 4);
+		
 		if (InputController.currentIOMode == IOMode.MapInput.NORMAL && RPG.popup.isEmpty()) {
-			if ((Input.isPress(Keys.RIGHT) || Input.isPress(Keys.D) || wr) && RPG.ctrl.hero.walked()) {
-				wr = false;
+			if ((Input.isPress(Keys.RIGHT) || Input.isPress(Keys.D)) && RPG.ctrl.hero.walked()) {
 				RPG.ctrl.hero.turn(Hero.FACE_R);
 				RPG.ctrl.hero.walk(1);
 				RPG.ctrl.hero.testWalk();
 			}
-			if ((Input.isPress(Keys.LEFT) || Input.isPress(Keys.A) || wl) && RPG.ctrl.hero.walked()) {
-				wl = false;
+			if ((Input.isPress(Keys.LEFT) || Input.isPress(Keys.A)) && RPG.ctrl.hero.walked()) {
 				RPG.ctrl.hero.turn(Hero.FACE_L);
 				RPG.ctrl.hero.walk(1);
 				RPG.ctrl.hero.testWalk();
 			}
-			if ((Input.isPress(Keys.UP) || Input.isPress(Keys.W) || wu) && RPG.ctrl.hero.walked()) {
-				wu = false;
+			if ((Input.isPress(Keys.UP) || Input.isPress(Keys.W)) && RPG.ctrl.hero.walked()) {
 				RPG.ctrl.hero.turn(Hero.FACE_U);
 				RPG.ctrl.hero.walk(1);
 				RPG.ctrl.hero.testWalk();
 			}
-			if ((Input.isPress(Keys.DOWN) || Input.isPress(Keys.S) || wd) && RPG.ctrl.hero.walked()) {
-				wd = false;
+			if ((Input.isPress(Keys.DOWN) || Input.isPress(Keys.S)) && RPG.ctrl.hero.walked()) {
 				RPG.ctrl.hero.turn(Hero.FACE_D);
 				RPG.ctrl.hero.walk(1);
 				RPG.ctrl.hero.testWalk();
 			}
+			
 		}
 		// core
 		// twidth theight 是地图的总宽度和高度
