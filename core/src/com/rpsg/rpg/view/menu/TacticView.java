@@ -61,7 +61,7 @@ public class TacticView extends DefaultIView {
 		linkbox2=Res.get(Setting.IMAGE_MENU_TACTIC+"linking_heroselbox2.png").disableTouch();
 		
 		stage = new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
-//		stage.setDebugAll(true);
+		stage.setDebugAll(Setting.persistence.uiDebug);
 		
 		butstyle=new TextButtonStyle();
 		butstyle.down=Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"link_but_active.png");

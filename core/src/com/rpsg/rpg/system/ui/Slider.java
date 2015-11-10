@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Pools;
+import com.rpsg.gdxQuery.CustomRunnable;
 
 public class Slider extends ProgressBar {
 	int draggingPointer = -1;
@@ -18,15 +19,15 @@ public class Slider extends ProgressBar {
 	public Slider (float min, float max, float stepSize, boolean vertical, Skin skin, String styleName) {
 		this(min, max, stepSize, vertical, skin.get(styleName, SliderStyle.class));
 	}
-	Runnable run;
-	public Slider onScroll(Runnable r){
+	CustomRunnable<Slider> run;
+	public Slider onScroll(CustomRunnable<Slider> r){
 		run=r;
 		return this;
 	}
 	
 	public Slider onScroll(){
 		if(run!=null)
-			run.run();
+			run.run(this);
 		return this;
 	}
 
@@ -103,7 +104,7 @@ public class Slider extends ProgressBar {
 		if (value == oldValue) position = oldPosition;
 		
 		if(run!=null)
-			run.run();
+			run.run(Slider.this);
 		return valueSet;
 	}
 

@@ -3,7 +3,7 @@ package com.rpsg.rpg.system.ui;
 import java.lang.reflect.Field;
 
 import com.badlogic.gdx.utils.StringBuilder;
-import com.rpsg.rpg.object.base.CustomRunnable;
+import com.rpsg.gdxQuery.CustomRunnable;
 
 /**
  * frameAble label widget.

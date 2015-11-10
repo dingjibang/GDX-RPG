@@ -16,7 +16,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
-import com.rpsg.gdxQuery.ActorRunnable;
+import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.IOMode;
@@ -55,7 +55,7 @@ public class SelectUtil implements InputProcessor {
 				if(!select){
 					stage.draw();
 					stage.act();
-					$.add(stage).findByClass(Label.class).each(new ActorRunnable() {
+					$.add(stage).findByClass(Label.class).each(new CustomRunnable<Actor>() {
 						public void run(Actor child) {
 							child.setY(((ImageButton) child.getUserObject()).getY()+33);
 							child.setColor(((ImageButton) child.getUserObject()).getColor());

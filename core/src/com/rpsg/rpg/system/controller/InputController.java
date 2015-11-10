@@ -2,6 +2,7 @@ package com.rpsg.rpg.system.controller;
 
 import com.badlogic.gdx.Input.Keys;
 import com.rpsg.rpg.core.RPG;
+import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.SL;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.base.IOMode.MapInput;
@@ -72,7 +73,7 @@ public class InputController{
 		}
 		case NORMAL:{
 			if(GameViews.gameview.inited && GameViews.gameview.renderAble){
-				if(!PostUtil.touchDown(screenX, screenY, pointer, button))//如果没点到屏幕的UI，则自动移动
+				if((!PostUtil.touchDown(screenX, screenY, pointer, button)) && Setting.persistence.pathFind)//如果没点到屏幕的UI，则自动移动
 					Path.click(screenX, screenY);
 			}
 			break;
