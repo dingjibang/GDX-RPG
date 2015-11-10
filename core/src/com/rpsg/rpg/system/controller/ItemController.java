@@ -217,7 +217,6 @@ public class ItemController {
 				return false;
 			Hero hero = item.user;
 			for(String key:item.prop.keySet()){
-				System.out.println(key+":"+item.prop.get(key));
 				hero.addProp(key, item.prop.get(key));//使用道具，增加各项属性
 			}
 			if(item.removeAble)

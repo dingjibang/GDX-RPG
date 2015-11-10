@@ -53,6 +53,9 @@ public class Music {
 	}
 
 	public static void playSE(String name) {
+		if(name.indexOf(".")<0)
+			name += ".wav";
+		
 		if (null == se.get(name)) {
 			se.put(name, new SE(Gdx.audio.newSound(Gdx.files.internal(Setting.MUSIC_SE + name))).setPath(name));
 			Logger.info("成功创建音效：" + name);
