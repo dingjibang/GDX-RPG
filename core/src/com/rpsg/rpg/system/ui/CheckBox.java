@@ -4,6 +4,7 @@ package com.rpsg.rpg.system.ui;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxQuery;
+import com.rpsg.rpg.object.base.CustomRunnable;
 
 /**
  * GDXRPG引擎 checkbox组件
@@ -61,8 +62,17 @@ public class CheckBox extends com.badlogic.gdx.scenes.scene2d.ui.CheckBox {
 	}
 	
 	public CheckBox onClick(Runnable run){
-		return query.onClick(run).getItem(CheckBox.class);
+		return query.onClick(run).getItem(getClass());
 	}
+	
+	public CheckBox onClick(final CustomRunnable<CheckBox> run){
+		return query.onClick(new Runnable() {
+			public void run() {
+				run.run(CheckBox.this);
+			}
+		}).getItem(getClass());
+	}
+	
 	public CheckBox setFgOff(int off){
 		fgoff=off;
 		return this;

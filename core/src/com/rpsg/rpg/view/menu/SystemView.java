@@ -50,6 +50,8 @@ public class SystemView extends DefaultIView{
 	private void generate() {
 		stage.clear();
 		
+		final Persistence set = Setting.persistence;
+		
 		if(pane != null)
 			lastTop = pane.getScrollY();
 		
@@ -63,7 +65,7 @@ public class SystemView extends DefaultIView{
 		CheckBoxStyle cstyle=new CheckBoxStyle();
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_GLOBAL+"optb_s.png");
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_GLOBAL+"optb.png");
-		cstyle.font=Res.font.get(22);
+		cstyle.font=Res.font.get(24);
 		
 		//**游戏档案 start
 		{
@@ -107,6 +109,7 @@ public class SystemView extends DefaultIView{
 			for(Cell<?> c:buttons.getCells())
 				c.padLeft(25).padRight(25).width(200).height(50);
 			table.add(buttons).padTop(-80);
+			table.layout();
 			parentTable.add(table).align(Align.topLeft).row();
 			
 		}
@@ -118,8 +121,15 @@ public class SystemView extends DefaultIView{
 			table.add(new Label("图形选项",55)).left().padTop(50).row();
 			table.add(Res.get(Setting.IMAGE_MENU_NEW_SYSTEM+"split.png")).padTop(15).left().row();
 			table.add(new Label("Graphics Options",20).align(Align.right)).width(300).align(Align.right).height(0).padTop(-40).row();
-			table.add(new CheckBox("开启平滑纹理",cstyle)).left().padTop(20).row();
-			table.add(new Label("将对纹理进行双线性过滤操作，使纹理变得更加平滑，无锯齿状，对手机/平板最佳。",22).warp(true).color(Color.GRAY)).width(400).left().padTop(20).row();
+			table.add(new CheckBox("开启平滑纹理",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
+				set.scaleAliasing = t.isChecked();
+			}}).check(set.scaleAliasing).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
+			table.add(new Label("对纹理进行双线性过滤操作，使纹理变得更加平滑，屏幕窗口拉抻时，纹理不会产生锯齿，适用于手机/平板。",20).warp(true).color(Color.LIGHT_GRAY)).width(660).padLeft(75).left().padTop(20).row();
+			table.add(new CheckBox("开启平滑纹理",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
+				set.scaleAliasing = t.isChecked();
+			}}).check(set.scaleAliasing).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
+			table.add(new Label("对纹理进行双线性过滤操作，使纹理变得更加平滑，屏幕窗口拉抻时，纹理不会产生锯齿，适用于手机/平板。",20).warp(true).color(Color.LIGHT_GRAY)).width(660).padLeft(75).left().padTop(20).row();
+			table.layout();
 			parentTable.add(table).align(Align.topLeft).row();
 			
 		}
