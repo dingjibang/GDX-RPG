@@ -23,14 +23,14 @@ public class LogoView extends View{
 	@Override
 	public View init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
-		stage.addActor(new Image(Setting.IMAGE_LOGO+"wbg.png"));
+		stage.addActor(new Image(Setting.UI_BASE_IMG).size(1024,576));
 		stage.addActor(new Image(Setting.IMAGE_LOGO+"bg.png").color(1,1,1,0).action(Actions.sequence(Actions.delay(0.2f),Actions.fadeIn(0.2f))));
 		stage.addActor(new Image(Setting.IMAGE_LOGO+"logo.png").color(1,1,1,0).position(351, 295).action(Actions.sequence(Actions.delay(1f),Actions.parallel(Actions.fadeIn(0.2f),Actions.moveBy(0, 45,0.3f)))));
 		stage.addActor(new Image(Setting.IMAGE_LOGO+"hr.png").color(1,1,1,0).size(3, 36).position(124, 300).action(Actions.sequence(Actions.delay(0.4f),Actions.parallel(Actions.fadeIn(0.4f),Actions.sizeTo(774, 36,0.4f)))));
 		stage.addActor(new Image(Setting.IMAGE_LOGO+"info.png").color(1,1,1,0).position(290, 280).action(Actions.sequence(Actions.delay(2.6f),Actions.fadeIn(0.4f))));
 		final2=new Action(){
 			public boolean act(float delta) {
-				stage.addActor(new Image(Setting.IMAGE_LOGO+"wbg.png").color(0,0,0,0).action(Actions.sequence(Actions.color(new Color(0,0,0,1),0.2f),Actions.addAction(new Action(){
+				stage.addActor(new Image(Setting.UI_BASE_IMG).size(1024,576).color(0,0,0,0).action(Actions.sequence(Actions.color(new Color(0,0,0,1),0.2f),Actions.addAction(new Action(){
 					public boolean act(float delta) {
 						flag=2;
 						played=true;
@@ -43,12 +43,12 @@ public class LogoView extends View{
 		final1=new Action(){
 			public boolean act(float delta) {
 				Music.stopCurrentMusic();
-				stage.addActor(new Image(Setting.IMAGE_LOGO+"wbg.png").color(0,0,0,0).action(Actions.sequence(Actions.color(new Color(0,0,0,1),0.2f),Actions.addAction(new Action(){
+				stage.addActor(new Image(Setting.UI_BASE_IMG).size(1024,576).color(0,0,0,0).action(Actions.sequence(Actions.color(new Color(0,0,0,1),0.2f),Actions.addAction(new Action(){
 					public boolean act(float delta) {
 						stage.clear();
 						stage.addActor(new Image(Setting.IMAGE_LOGO+"bg2.png").color(1,1,1,0).action(Actions.sequence(Actions.delay(0.1f),Actions.fadeIn(0.4f))));
 						stage.addActor(new Image(Setting.IMAGE_LOGO+"hv.png").color(1,1,1,0).action(Actions.sequence(Actions.delay(0.5f),Actions.fadeIn(0.5f))));
-						stage.addActor(new Image(Setting.IMAGE_LOGO+"wbg.png").color(0,0,0,0).action(Actions.sequence(Actions.delay(4f),Actions.color(new Color(0,0,0,1),0.2f),Actions.addAction(final2))));
+						stage.addActor(new Image(Setting.UI_BASE_IMG).size(1024,576).color(0,0,0,0).action(Actions.sequence(Actions.delay(4f),Actions.color(new Color(0,0,0,1),0.2f),Actions.addAction(final2))));
 						return true;
 					}
 				}))));
@@ -56,7 +56,7 @@ public class LogoView extends View{
 				return true;
 			}
 		};
-		stage.addActor(new Image(Setting.IMAGE_LOGO+"wbg.png").color(0,0,0,0).action(Actions.sequence(Actions.delay(6),Actions.color(new Color(0,0,0,1),0.4f),Actions.addAction(final1))));
+		stage.addActor(new Image(Setting.UI_BASE_IMG).size(1024,576).color(0,0,0,0).action(Actions.sequence(Actions.delay(6),Actions.color(new Color(0,0,0,1),0.4f),Actions.addAction(final1))));
 //		Music.playMusic("logo.mp3");
 		return this;
 	}

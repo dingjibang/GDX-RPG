@@ -23,7 +23,7 @@ public class Counter extends Group {
 		
 		TextButtonStyle tstyle = new TextButtonStyle();
 		tstyle.down = Setting.UI_BUTTON;
-		tstyle.up = Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"throwbut.png");
+		tstyle.up = Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"throwbut.png");
 		tstyle.font = Res.font.get(18);
 		
 		$.add(new TextButton("+1", tstyle)).appendTo(this).onClick(new Runnable() {public void run() {

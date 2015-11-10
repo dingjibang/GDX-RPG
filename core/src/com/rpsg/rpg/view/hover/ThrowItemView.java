@@ -27,7 +27,7 @@ public class ThrowItemView extends SidebarView{
 		
 		TextButtonStyle tstyle = new TextButtonStyle();
 		tstyle.down = Setting.UI_BUTTON;
-		tstyle.up = Res.getDrawable(Setting.IMAGE_MENU_NEW_EQUIP+"throwbut.png");
+		tstyle.up = Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"throwbut.png");
 		tstyle.font = Res.font.get(22);
 		
 		$.add(okay = new TextButton("确定丢弃",tstyle).onClick(new Runnable() {@SuppressWarnings("unchecked")

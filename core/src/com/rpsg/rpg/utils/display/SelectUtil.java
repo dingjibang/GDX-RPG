@@ -57,8 +57,10 @@ public class SelectUtil implements InputProcessor {
 					stage.act();
 					$.add(stage).findByClass(Label.class).each(new CustomRunnable<Actor>() {
 						public void run(Actor child) {
-							child.setY(((ImageButton) child.getUserObject()).getY()+33);
+							child.setY(((ImageButton) child.getUserObject()).getY()+13);
+							child.setX(130);
 							child.setColor(((ImageButton) child.getUserObject()).getColor());
+							child.setWidth(765);
 						}
 					});
 				}else{

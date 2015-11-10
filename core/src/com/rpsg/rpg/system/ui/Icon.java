@@ -24,7 +24,7 @@ public class Icon extends Image implements Comparable<Icon>{
 	public Icon setCurrent(boolean c){
 		current = c;
 		if(current)
-			currentMask=Res.get(Setting.IMAGE_MENU_NEW_EQUIP+"current.png");
+			currentMask=Res.get(Setting.IMAGE_MENU_EQUIP+"current.png");
 		return this;
 	}
 	
