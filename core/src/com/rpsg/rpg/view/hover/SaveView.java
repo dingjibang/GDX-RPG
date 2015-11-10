@@ -36,7 +36,7 @@ public class SaveView extends HoverView{
 			public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
 				disposed=true;
 			}
-			public boolean touchDown	 (InputEvent event, float x, float y, int pointer, int b) {
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
 				return true;
 			}
 		});

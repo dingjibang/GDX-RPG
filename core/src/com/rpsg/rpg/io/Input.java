@@ -1,5 +1,10 @@
 package com.rpsg.rpg.io;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javafx.scene.input.KeyCode;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.rpsg.rpg.core.RPG;
@@ -8,6 +13,7 @@ import com.rpsg.rpg.view.GameViews;
 
 public class Input implements InputProcessor {
 	public static IOMode.GameInput state = IOMode.GameInput.NORMAL;
+	private static List<Integer> pressList = new ArrayList<>();
 
 	@Override
 	public boolean keyDown(int keycode) {
@@ -122,7 +128,20 @@ public class Input implements InputProcessor {
 	}
 
 	public static boolean isPress(int keyCode) {
+		for(Integer code:pressList)
+			if(code.equals(keyCode))
+				return true;
+		
 		return Gdx.input.isKeyPressed(keyCode);
+	}
+	
+	public static void press(int key){
+		if(!pressList.contains(key))
+			pressList.add(key);
+	}
+	
+	public static void cleanPress(){
+		pressList.clear();
 	}
 
 }

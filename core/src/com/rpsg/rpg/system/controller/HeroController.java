@@ -209,12 +209,8 @@ public class HeroController {
 	}
 	
 	public void testWalk(){
-		for(int i=0;i<heros.size();i++){
-			if(i==0)
-				heros.get(i).testWalk();
-			else
-				heros.get(i).testWalk();
-		}
+		for(Hero hero:heros)
+			hero.testWalk();
 	}
 	
 	public boolean walked(){
@@ -228,8 +224,12 @@ public class HeroController {
 	}
 	
 	public void setWalkSpeed(int speed){
-		for(int i=0;i<heros.size();i++){
-			heros.get(i).setWalkSpeed(speed);
-		}
+		for(Hero hero:heros)
+			hero.setWalkSpeed(speed);
+	}
+
+	public void toWalk() {
+		for(Hero hero:heros)
+			hero.toWalk();
 	}
 }
