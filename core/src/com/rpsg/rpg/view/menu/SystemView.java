@@ -131,7 +131,6 @@ public class SystemView extends DefaultIView{
 			table.add(new Label("对纹理进行双线性过滤操作，使纹理变得更加平滑，屏幕窗口拉抻时，纹理不会产生锯齿，适用于手机/平板。",20).warp(true).color(Color.LIGHT_GRAY)).width(660).padLeft(75).left().padTop(20).row();
 			table.layout();
 			parentTable.add(table).align(Align.topLeft).row();
-			
 		}
 		//**图形选项 end
 		
