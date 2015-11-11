@@ -8,7 +8,7 @@ public class PursueAndAttack extends AssociationSkill {
 
 	public PursueAndAttack() {
 		name = "追击";
-		illustration = "与连携对象共同对敌人菊花进行致命一击。";
+		description = "与连携对象共同对敌人菊花进行致命一击。";
 	}
 	
 }

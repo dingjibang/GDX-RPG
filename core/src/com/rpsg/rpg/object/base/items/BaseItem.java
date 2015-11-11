@@ -1,8 +1,6 @@
 package com.rpsg.rpg.object.base.items;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
@@ -37,7 +35,7 @@ public abstract class BaseItem implements Serializable {
 	public int count = 1;
 	
 	/**道具描述信息*/
-	public String illustration = "";
+	public String description = "";
 	
 	/**道具是否可用*/
 	public boolean disable = false;
@@ -47,19 +45,21 @@ public abstract class BaseItem implements Serializable {
 	
 	/**道具类型*/
 	public String type=null;
+	
+	/**买入金钱**/
+	public int buy = 0;
+	
+	/**卖出金钱**/
+	public int sell = 0;
 
-	/**道具的特殊JS脚本。*/
-	public String use = "";
-	
-	/**道具属性*/
-	public Map<String,Integer> prop=new HashMap<String, Integer>();
-	
-	
 	/**注入到js的变量*/
 	public Hero user;
 	
 	/**道具是否可叠加的*/
 	public boolean packable = true; 
+	
+	/**道具效果**/
+	public Effect effect = new Effect();
 	
 	public String getIcon(){
 		return Setting.IMAGE_ICONS+"i"+id+".png";
@@ -81,9 +81,7 @@ public abstract class BaseItem implements Serializable {
 	 * @return
 	 */
 	public boolean use(){
-		if(use!=null && use.length()!=0){
-			return RPG.executeJS(use,this);
-		}
+		//TODO
 		return false;
 	}
 	

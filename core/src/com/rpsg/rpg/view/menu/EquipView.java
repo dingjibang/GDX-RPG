@@ -167,7 +167,7 @@ public class EquipView extends DefaultIView{
 				Label name;
 				$.add(name = new Label(t.item.name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
 				$.add(new Label(("("+(t.item==currentHeroEquip?"当前，":"")+"拥有"+t.item.count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
-				ScrollPane pane = new ScrollPane(new Label(t.item.illustration+append+"\n"+((Equipment)t.item).illustration2,17).warp(true).markup(true));
+				ScrollPane pane = new ScrollPane(new Label(t.item.description+append+"\n"+((Equipment)t.item).description2,17).warp(true).markup(true));
 				pane.setupOverscroll(20, 200, 200);
 				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbar.png");
 				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbarin.png");

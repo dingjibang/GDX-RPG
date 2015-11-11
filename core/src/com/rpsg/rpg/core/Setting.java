@@ -44,7 +44,9 @@ public class Setting {
 	//script
 	public static final String SCRIPT = BASE_PATH + "script";
 	public static final String SCRIPT_MAP = SCRIPT + "/map/";
-	public static final String SCRIPT_DATA = SCRIPT + "/data/";
+	public static final String SCRIPT_DATA = SCRIPT +"/data/";
+	public static final String SCRIPT_DATA_ITEM = SCRIPT_DATA + "/item/";
+	public static final String SCRIPT_DATA_BUFF = SCRIPT_DATA + "/buff/";
 	public static final String SCRIPT_SYSTEM = SCRIPT + "/system/";
 
 	// 存档最大页数

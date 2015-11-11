@@ -1,23 +1,20 @@
 package com.rpsg.rpg.object.base.items;
 
+import com.rpsg.rpg.object.base.items.Item.ItemForward;
+import com.rpsg.rpg.object.base.items.Item.ItemRange;
+
 
 public class Spellcard extends BaseItem {
 	
 	private static final long serialVersionUID = 1L;
+	
+	public int cost;
+	public ItemRange range = ItemRange.one;
+	public ItemForward forward = ItemForward.all;
+	public int success;
+	
+	public int animation;
 
-	public int magicConsume=0;
+	public String description2;
 	
-	public int maxCount=0;
-	
-	public String illustration2;
-	
-	public int added=0;
-	
-	public String toString(){
-		return name;
-	}
-	
-	public boolean use(){
-		return true;
-	}
 }

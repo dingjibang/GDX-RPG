@@ -38,20 +38,35 @@ public abstract class Hero extends RPGObject {
 	public String color = "000000cc";
 	public Map<String, Integer> prop = new HashMap<String, Integer>();
 	{
+		//等级
 		prop.put("level", 1);
+		//经验
 		prop.put("exp", 0);
+		//最大经验值至下一次升级
 		prop.put("maxexp", 10);
+		//生命值
 		prop.put("hp", 0);
+		//最大生命值
 		prop.put("maxhp", 1);
+		//魔法量
 		prop.put("mp", 0);
+		//魔法量
 		prop.put("maxmp", 1);
+		//攻击
 		prop.put("attack", 0);
+		//魔法攻击
 		prop.put("magicAttack", 0);
+		//防御
 		prop.put("defense", 0);
+		//魔法防御
 		prop.put("magicDefense", 0);
+		//速度
 		prop.put("speed", 0);
+		//准确率
 		prop.put("hit", 0);
+		//最大可携带副卡量
 		prop.put("maxsc", 10);
+		//是否是死亡状态的
 		prop.put("dead", FALSE);
 	}
 
@@ -81,14 +96,6 @@ public abstract class Hero extends RPGObject {
 		equips.put(Equipment.EQUIP_ORNAMENT2, null);
 	}
 
-	public String getEquipName(String name) {
-		return equips.get(name) == null ? "无" : equips.get(name).name;
-	}
-
-	public int getEquipValue(String name, String value) {
-		return equips.get(name) == null ? 0 : equips.get(name).prop.get(value);
-	}
-
 	public Hero() {
 		super();
 		this.waitWhenCollide = false;
@@ -109,29 +116,35 @@ public abstract class Hero extends RPGObject {
 		return name;
 	}
 
-	public boolean subProp(String name, int c) {
-		if (prop.get(name) - c < 0)
-			return false;
-		else
-			prop.put(name, prop.get(name) - c);
-		return true;
+	public void addProp(String name, String p) {
+		if(p.indexOf("%")<0){
+			prop.put(name, prop.get(name) + Integer.parseInt(p));
+		}else{
+			float f = Float.parseFloat(p.split("%")[0]);
+			prop.put(name, prop.get(name) + (int)(f / 100));
+		}
+		postOverflow();
 	}
-
-	public void addProp(String name, int c) {
-		if(c<0){
-			subProp(name, c);
-			return;
+	
+	public void addProps(Map<String,String> map){
+		for(String key:map.keySet())
+			addProp(key,map.get(key));
+	}
+	
+	public void postOverflow(){
+		for(String name:prop.keySet()){
+			if(prop.get(name)<0)
+				prop.put(name, 0);
 		}
 		
-		if (name.equals("hp") || name.equals("mp"))
-			if (prop.get(name) + c > prop.get("max" + name))
-				prop.put(name, prop.get("max" + name));
-			else
-				prop.put(name, prop.get(name) + c);
-		else
-			prop.put(name, prop.get(name) + c);
+		if(prop.get("hp")>prop.get("maxhp"))
+			prop.put("hp",prop.get("maxhp"));
+		
+		if(prop.get("mp")>prop.get("maxmp"))
+			prop.put("mp",prop.get("maxmp"));
+		
 	}
-
+	
 	public boolean full(String name) {
 		if (name.equals("hp") || name.equals("mp"))
 			return prop.get("max" + name).equals(prop.get(name));

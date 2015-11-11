@@ -8,7 +8,7 @@ public class LeadingActor extends AssociationSkill {
 
 	public LeadingActor() {
 		name = "主角光环";
-		illustration = "将提供三回合的“主角光环”Buff。主角光环Buff会增幅10%的物理与魔法攻击。";
+		description = "将提供三回合的“主角光环”Buff。主角光环Buff会增幅10%的物理与魔法攻击。";
 	}
 	
 }

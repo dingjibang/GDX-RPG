@@ -1,0 +1,16 @@
+{
+	type:"Equipment",
+	name:"阳伞",
+	description:"看似很普通的一把阳伞，幽香小姐似乎无时无刻都带在身边。不过据说有人看见幽香小姐用其射出了巨大的魔炮。",
+	description2:"攻击+5 魔攻+1 命中-1",
+	equipType:"EQUIP_WEAPON",
+	onlyFor:"Yuuka",
+	throwable:false,
+	effect:{
+		prop:{
+			attack:"5",
+			magicAttack:"1",
+			hit:"-1"
+		}
+	}
+}

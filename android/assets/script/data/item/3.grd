@@ -1,0 +1,13 @@
+{
+	type:"Equipment",
+	name:"御币",
+	description:"博丽灵梦手里常持的家伙。",
+	description2:"攻击+12 魔攻+3",
+	equipType:"EQUIP_WEAPON",
+	effect:{
+		prop:{
+			attack:"12",
+			magicAttack:"3"
+		}
+	}
+}

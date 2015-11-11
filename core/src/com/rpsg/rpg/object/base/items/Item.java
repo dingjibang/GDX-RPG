@@ -17,13 +17,17 @@ public class Item extends BaseItem{
 	/**道具是否为一次性的*/
 	public boolean removeAble = true;
 	
+	/**道具使用动画**/
+	public int animation = 0;
+	
 	/**
 	 * 道具指向
 	 * @author dingjibang
 	 */
 	public static enum ItemForward{
 		friend,//我方
-		enemy//敌人
+		enemy,//敌人
+		all//全部
 	}
 	
 	/**

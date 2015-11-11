@@ -297,7 +297,7 @@ public class SpellCardView extends IMenuView{
 //		Res.font.draw(sb, hero.prop.get("maxsc")+"", 16,Color.BLACK, 325, 324, 200,-7,0);
 //		Res.font.draw(sb, hero.name, 22, Color.WHITE, 215, 480, 1000);
 //		Res.font.draw(sb, spell.name, 40, Color.WHITE, 475, 435, 1000);
-//		Res.font.draw(sb, spell.illustration, 18, Color.WHITE, 488, 325, 450);
+//		Res.font.draw(sb, spell.description, 18, Color.WHITE, 488, 325, 450);
 //		Res.font.draw(sb, spell.magicConsume+"", 14,Color.BLACK, 595+64/2-Res.font.getTextWidth(spell.magicConsume+"", 16,-5)/2, 374, 450,-5,0);
 //		heroImage.draw(sb, step==3?1:step);
 //		scuse.draw(sb);
