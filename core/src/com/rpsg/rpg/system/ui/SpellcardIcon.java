@@ -14,7 +14,7 @@ import com.rpsg.rpg.system.base.Res;
 public class SpellcardIcon extends Actor{
 	Label label;
 	Image icon,bg;
-	Spellcard sc;
+	public Spellcard sc;
 	boolean select;
 	GdxQuery query;
 	
@@ -25,7 +25,8 @@ public class SpellcardIcon extends Actor{
 		label = new Label(sc.name,22);
 		label.setText(sc.name);
 		label.setAlignment(Align.center);
-		query = $.add(bg = Res.get(Setting.UI_BASE_IMG));
+		bg = Res.get(Setting.UI_BASE_IMG);
+		query = $.add(this);
 	}
 	
 	public SpellcardIcon onClick(final CustomRunnable<SpellcardIcon> run){
@@ -57,13 +58,14 @@ public class SpellcardIcon extends Actor{
 		if(select){
 			bg.setPosition(getX(), getY());
 			bg.setSize(getWidth(), getHeight());
+			bg.a(.2f);
 			bg.draw(batch);
 		}
 		label.setPosition((int)(getX()+getHeight()+25), (int)(getY()));
 		label.setHeight(getHeight());
-		icon.setPosition(getX(), getY());
-		icon.setHeight(getHeight());
-		icon.setWidth(getHeight());
+		icon.setPosition(getX()+7, getY()+7);
+		icon.setHeight(getHeight()-14);
+		icon.setWidth(getHeight()-14);
 		icon.draw(batch);
 		label.draw(batch, parentAlpha);
 		super.draw(batch, parentAlpha);
@@ -72,5 +74,9 @@ public class SpellcardIcon extends Actor{
 	public SpellcardIcon select(boolean flag){
 		select = flag;
 		return this;
+	}
+	
+	public boolean select(){
+		return select;
 	}
 }

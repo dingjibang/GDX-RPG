@@ -115,6 +115,15 @@ public abstract class Hero extends RPGObject {
 	public String toString() {
 		return name;
 	}
+	
+	public boolean addSpellcard(Spellcard sc){
+		if(this.sc.size()>=prop.get("maxsc"))
+			return false;
+		for(Spellcard _sc:this.sc)
+			if(_sc.id==sc.id)
+				return false;
+		return this.sc.add(sc);
+	}
 
 	public void addProp(String name, String p) {
 		if(p.indexOf("%")<0){

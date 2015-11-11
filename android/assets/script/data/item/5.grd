@@ -3,12 +3,14 @@
 	name:"续命术",
 	description:"续一秒",
 	description2:"HP + 30",
-	range:"all",
+	range:"one",
 	forward:"friend",
-	cost:1,
+	occasion:"all",
+	cost:5,
+	packable:false,
 	effect:{
 		prop:{
-			hp:"10"
+			hp:"30"
 		}
 	}
 }

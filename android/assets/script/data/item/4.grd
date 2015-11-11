@@ -5,6 +5,7 @@
 	description2:"攻击+5 魔攻+1 命中-1",
 	equipType:"EQUIP_WEAPON",
 	onlyFor:"Yuuka",
+	packable:false,
 	throwable:false,
 	effect:{
 		prop:{

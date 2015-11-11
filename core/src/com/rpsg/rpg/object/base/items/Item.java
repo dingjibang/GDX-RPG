@@ -14,6 +14,9 @@ public class Item extends BaseItem{
 	/**道具使用范围*/
 	public ItemRange range = ItemRange.one;
 	
+	/**道具使用场景**/
+	public ItemOccasion occasion = ItemOccasion.all;
+	
 	/**道具是否为一次性的*/
 	public boolean removeAble = true;
 	
@@ -37,6 +40,16 @@ public class Item extends BaseItem{
 	public static enum ItemRange{
 		one,//一人
 		all//全部
+	}
+	
+	/**
+	 * 道具使用场景
+	 * @author dingjibang
+	 */
+	public static enum ItemOccasion{
+		battle,//仅战斗时
+		map,//仅非战斗时
+		all//所有场景
 	}
 
 }

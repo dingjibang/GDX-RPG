@@ -2,6 +2,7 @@ package com.rpsg.rpg.system.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
@@ -14,6 +15,7 @@ import com.rpsg.rpg.object.base.items.Effect;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
+import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
 import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -78,7 +80,7 @@ public class ItemController {
 				e.onlyFor=(Class<? extends Hero>) (result.has("onlyFor")?Class.forName("com.rpsg.rpg.game.hero."+result.getString("onlyFor")):null);
 				e.equipType=result.getString("equipType");
 				e.animation = result.has("animation")?result.getInt("animation"):0;
-			}else if(type.equalsIgnoreCase(Spellcard.class.getSimpleName())){//TODO
+			}else if(type.equalsIgnoreCase(Spellcard.class.getSimpleName())){
 				Spellcard e =(Spellcard)(baseItem=new Spellcard());
 				e.description2 = result.has("description2")?result.getString("description2"):"";
 				e.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
@@ -86,10 +88,12 @@ public class ItemController {
 				e.animation = result.has("animation")?result.getInt("animation"):0;
 				e.success = result.has("success")?result.getInt("success"):0;
 				e.cost = result.has("cost")?result.getInt("cost"):0;
+				e.occasion = result.has("occasion")?ItemOccasion.valueOf(result.getString("occasion")):ItemOccasion.all;
 			}else{
 				Item item = (Item)(baseItem = new Item());
 				item.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
 				item.range = result.has("range")?ItemRange.valueOf(result.getString("range")):ItemRange.one;
+				item.occasion = result.has("occasion")?ItemOccasion.valueOf(result.getString("occasion")):ItemOccasion.all;
 				item.animation = result.has("animation")?result.getInt("animation"):0;
 			}
 			
@@ -216,20 +220,52 @@ public class ItemController {
 			Equipment equip=(Equipment)baseItem;
 			
 			takeOff(equip);
+			if(baseItem.user instanceof Hero){
+				Hero hero = (Hero)baseItem.user;
+				hero.equips.put(equip.equipType, equip);
+				replace(hero, equip, true);//计算穿上装备后的Hero属性数值变化
+				remove(equip);
+			}
 			
-			baseItem.user.equips.put(equip.equipType, equip);
-			replace(baseItem.user, equip, true);//计算穿上装备后的Hero属性数值变化
-			remove(equip);
 		}else if(baseItem instanceof Item){
 			Item item = (Item)baseItem;
-			if(item.user==null || item.disable || item.effect==null)
+			if(((item.range != ItemRange.all) && item.user==null) || item.disable || item.effect==null)
 				return false;
-			Hero hero = item.user;
 			
-			hero.addProps(item.effect.prop);
+			if(baseItem.user instanceof Hero || baseItem.user == null){
+				List<Hero> heros = new ArrayList<>();
+				if(item.range == ItemRange.all)
+					heros = RPG.ctrl.hero.heros;
+				else
+					heros.add((Hero)baseItem.user);
+				
+				for(Hero hero:heros)
+					hero.addProps(item.effect.prop);
+				
+				if(item.removeAble)
+					remove(item);
+			}
 			
-			if(item.removeAble)
-				remove(item);
+		}else if(baseItem instanceof Spellcard){
+			Spellcard sc = (Spellcard)baseItem;
+			if(((sc.range != ItemRange.all) && sc.user==null) || sc.user2==null || sc.disable || sc.effect==null)
+				return false;
+			
+			Hero from = sc.user2;
+			if(from.prop.get("mp") < sc.cost)
+				return false;
+			if(sc.user instanceof Hero || sc.user==null){
+				List<Hero> heros = new ArrayList<>();
+				if(sc.range == ItemRange.all)
+					heros = RPG.ctrl.hero.heros;
+				else
+					heros.add((Hero)baseItem.user);
+				
+				for(Hero hero:heros)
+					hero.addProps(sc.effect.prop);
+				
+				from.addProp("mp", -sc.cost+"");
+			}
 		}
 		
 		baseItem.use();
@@ -244,7 +280,7 @@ public class ItemController {
 	public boolean takeOff(BaseItem baseItem){
 		if(!(baseItem instanceof Equipment))
 			return false;
-		return takeOff(baseItem.user,((Equipment)baseItem).equipType);
+		return takeOff((Hero)baseItem.user,((Equipment)baseItem).equipType);
 	}
 	
 	/**

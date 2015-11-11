@@ -166,7 +166,6 @@ public class ItemView extends DefaultIView{
 			return;
 		BaseItem item = ilist.getCurrent().item;
 		if(item!=null )
-			
 			RPG.popup.add(UseItemView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
 				put("title","使用物品");
 				put("width",100);
@@ -177,7 +176,6 @@ public class ItemView extends DefaultIView{
 					}
 				});
 			}});
-//		generate(false);
 	}
 	
 	@SuppressWarnings("serial")

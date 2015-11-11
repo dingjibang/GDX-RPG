@@ -54,7 +54,7 @@ public abstract class BaseItem implements Serializable {
 	public int sell = 0;
 
 	/**注入到js的变量*/
-	public Hero user;
+	public Object user;
 	
 	/**道具是否可叠加的*/
 	public boolean packable = true; 
