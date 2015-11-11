@@ -1,0 +1,14 @@
+{
+	type:"Spellcard",
+	name:"续命术",
+	description:"续一秒",
+	description2:"HP + 30",
+	range:"all",
+	forward:"friend",
+	cost:1,
+	effect:{
+		prop:{
+			hp:"10"
+		}
+	}
+}

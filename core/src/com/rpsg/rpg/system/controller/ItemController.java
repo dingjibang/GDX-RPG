@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.BaseItem;
+import com.rpsg.rpg.object.base.items.Effect;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
@@ -76,20 +77,20 @@ public class ItemController {
 				e.description2 = result.has("description2")?result.getString("description2"):"";
 				e.onlyFor=(Class<? extends Hero>) (result.has("onlyFor")?Class.forName("com.rpsg.rpg.game.hero."+result.getString("onlyFor")):null);
 				e.equipType=result.getString("equipType");
-				
-				//读取装备属性
-				readProp(e, result.get("effect"));
-				
-			}else if(type.equalsIgnoreCase(Spellcard.class.getSimpleName())){				//TODO
+				e.animation = result.has("animation")?result.getInt("animation"):0;
+			}else if(type.equalsIgnoreCase(Spellcard.class.getSimpleName())){//TODO
 				Spellcard e =(Spellcard)(baseItem=new Spellcard());
 				e.description2 = result.has("description2")?result.getString("description2"):"";
+				e.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
+				e.range = result.has("range")?ItemRange.valueOf(result.getString("range")):ItemRange.one;
+				e.animation = result.has("animation")?result.getInt("animation"):0;
+				e.success = result.has("success")?result.getInt("success"):0;
+				e.cost = result.has("cost")?result.getInt("cost"):0;
 			}else{
 				Item item = (Item)(baseItem = new Item());
 				item.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
 				item.range = result.has("range")?ItemRange.valueOf(result.getString("range")):ItemRange.one;
-				
-				//读取道具属性
-				readProp(item, result.get("effect"));
+				item.animation = result.has("animation")?result.getInt("animation"):0;
 			}
 			
 			baseItem.id = id;
@@ -101,6 +102,7 @@ public class ItemController {
 			baseItem.packable = result.has("packable") ? result.getBoolean("packable") : true;
 			baseItem.buy = result.has("buy") ? result.getInt("buy") : 0;
 			baseItem.sell = result.has("sell") ? result.getInt("sell") : 0;
+			baseItem.effect = result.has("effect")?readEffect(result.get("effect")):new Effect();
 			
 			return (T) baseItem;
 		} catch (Exception e) {
@@ -110,15 +112,20 @@ public class ItemController {
 		}
 	}
 	
-	private void readProp(BaseItem item,JsonValue result){
+	private Effect readEffect(JsonValue json){
+		Effect e = new Effect();
+		if(json.has("prop"))
+			e.prop = readProp(json.get("prop"));
+		e.use = json.has("use")?json.getString("use"):"";
+		return e;
+	}
+	
+	private Map<String,String> readProp(JsonValue json){
 		Map<String,String> replace = new HashMap<>();
-		JsonValue props = result.get("prop");
-		for(int i=0;i<props.size;i++){
-			replace.put(props.get(i).name,props.getString(props.get(i).name));
+		for(int i=0;i<json.size;i++){
+			replace.put(json.get(i).name,json.getString(json.get(i).name));
 		}
-		
-		item.effect.prop = replace;
-		
+		return replace; 
 	}
 	
 	/** 移除1个 <b><i>当前背包</i></b> 里的某个道具（根据ID）**/

@@ -2,6 +2,7 @@ package com.rpsg.rpg.object.base.items;
 
 import java.io.Serializable;
 
+import com.badlogic.gdx.Gdx;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -59,10 +60,13 @@ public abstract class BaseItem implements Serializable {
 	public boolean packable = true; 
 	
 	/**道具效果**/
-	public Effect effect = new Effect();
+	public Effect effect;
 	
 	public String getIcon(){
-		return Setting.IMAGE_ICONS+"i"+id+".png";
+		String name = Setting.IMAGE_ICONS+"i"+id+".png";
+		if(Gdx.files.internal(name).exists())
+			return name;
+		return getDefaultIcon();
 	}
 	
 	public static String getDefaultIcon(){

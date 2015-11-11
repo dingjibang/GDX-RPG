@@ -25,7 +25,6 @@ import com.rpsg.gdxQuery.GdxQueryRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.Equipment;
-import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.CheckBox;
 import com.rpsg.rpg.system.ui.DefaultIView;
@@ -41,7 +40,6 @@ import com.rpsg.rpg.view.hover.ThrowItemView;
 
 public class EquipView extends DefaultIView{
 	
-	List<Hero> heros;
 	Group inner,data,description;
 	ImageList ilist;
 	String currentFilter = Equipment.EQUIP_CLOTHES;
