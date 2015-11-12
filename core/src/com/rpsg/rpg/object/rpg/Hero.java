@@ -146,12 +146,12 @@ public abstract class Hero extends RPGObject {
 				prop.put(name, 0);
 		}
 		
-		if(prop.get("hp")>prop.get("maxhp"))
-			prop.put("hp",prop.get("maxhp"));
-		
-		if(prop.get("mp")>prop.get("maxmp"))
-			prop.put("mp",prop.get("maxmp"));
-		
+		if (prop.get("hp") > prop.get("maxhp"))
+			prop.put("hp", prop.get("maxhp"));
+
+		if (prop.get("mp") > prop.get("maxmp"))
+			prop.put("mp", prop.get("maxmp"));
+
 	}
 	
 	public boolean full(String name) {

@@ -14,6 +14,7 @@ import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.base.items.Effect;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
+import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
@@ -89,12 +90,15 @@ public class ItemController {
 				e.success = result.has("success")?result.getInt("success"):0;
 				e.cost = result.has("cost")?result.getInt("cost"):0;
 				e.occasion = result.has("occasion")?ItemOccasion.valueOf(result.getString("occasion")):ItemOccasion.all;
+				e.deadable = result.has("deadable")?ItemDeadable.valueOf(result.getString("deadable")):ItemDeadable.no;
 			}else{
-				Item item = (Item)(baseItem = new Item());
-				item.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
-				item.range = result.has("range")?ItemRange.valueOf(result.getString("range")):ItemRange.one;
-				item.occasion = result.has("occasion")?ItemOccasion.valueOf(result.getString("occasion")):ItemOccasion.all;
-				item.animation = result.has("animation")?result.getInt("animation"):0;
+				Item e = (Item)(baseItem = new Item());
+				e.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
+				e.range = result.has("range")?ItemRange.valueOf(result.getString("range")):ItemRange.one;
+				e.occasion = result.has("occasion")?ItemOccasion.valueOf(result.getString("occasion")):ItemOccasion.all;
+				e.animation = result.has("animation")?result.getInt("animation"):0;
+				e.removeable = result.has("removeable")?result.getBoolean("removeable"):true;
+				e.deadable = result.has("deadable")?ItemDeadable.valueOf(result.getString("deadable")):ItemDeadable.no;
 			}
 			
 			baseItem.id = id;
@@ -242,7 +246,7 @@ public class ItemController {
 				for(Hero hero:heros)
 					hero.addProps(item.effect.prop);
 				
-				if(item.removeAble)
+				if(item.removeable)
 					remove(item);
 			}
 			

@@ -1,5 +1,6 @@
 package com.rpsg.rpg.object.base.items;
 
+import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
@@ -14,6 +15,7 @@ public class Spellcard extends BaseItem {
 	public ItemRange range = ItemRange.one;
 	public ItemForward forward = ItemForward.all;
 	public ItemOccasion occasion = ItemOccasion.all;
+	public ItemDeadable deadable = ItemDeadable.no;
 	public int success;
 	
 	public Hero user2;
