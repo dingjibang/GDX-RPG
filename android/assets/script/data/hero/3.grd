@@ -1,0 +1,11 @@
+imgPath="/walk_marisa.png";
+name="ÎíÓêÄ§ÀíÉ³";
+jname="Kirisame Marisa";
+fgname="marisa";
+tag="Ä§·¨Ê¹";
+prop.put("hp", 50);
+prop.put("maxhp", 150);
+prop.put("mp", 100);
+prop.put("maxmp", 100);
+association=new Star();
+color="ffcf70cc";

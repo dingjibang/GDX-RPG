@@ -10,6 +10,7 @@ import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.Spellcard;
+import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
@@ -33,12 +34,19 @@ public class UseItemView extends SidebarView {
 		boolean forAll = false;
 		
 		final boolean sc = item instanceof Spellcard;
-		if(item instanceof Item)
-			forAll = ((Item)item).range == Item.ItemRange.all;
-		if(item instanceof Spellcard)
-			forAll = ((Spellcard)item).range == Item.ItemRange.all;
+		ItemDeadable deadable = null;
 		
-		group.addActor(box = new HeroSelectBox(460,200,forAll).position(430, 240-120));
+		if(item instanceof Item){
+			forAll = ((Item)item).range == Item.ItemRange.all;
+			deadable = ((Item)item).deadable;
+		}
+		
+		if(item instanceof Spellcard){
+			forAll = ((Spellcard)item).range == Item.ItemRange.all;
+			deadable = ((Spellcard)item).deadable;
+		}
+		
+		group.addActor(box = new HeroSelectBox(460,200,forAll,deadable==null?ItemDeadable.no:deadable).position(430, 240-120));
 		
 		Group itemInfoGroup = new Group();
 		itemInfoGroup.addActor(Res.get(Setting.UI_BASE_IMG).size(460, 100).position(430, 280).a(.2f));

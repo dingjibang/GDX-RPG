@@ -14,6 +14,8 @@ import com.badlogic.gdx.utils.Disposable;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
+import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 
@@ -21,15 +23,16 @@ public class HeroSelectBox extends Group implements Disposable{
 	
 	private Hero hero;
 	private boolean forAllHeros = false;
+	private ItemDeadable deadable;
 	
 	ParticleEffect particle;
 	int particleTime = 0;
 	
-	public HeroSelectBox(int width, int height, boolean forAllHeros) {
+	public HeroSelectBox(int width, int height, boolean forAllHeros,ItemDeadable deadable) {
 		size(width, height);
 		sizeChanged();
 		this.forAllHeros = forAllHeros;
-		
+		this.deadable = deadable;
 		particle = new ParticleEffect();
 		particle.load(Gdx.files.internal(Setting.PARTICLE + "addp.p"), Gdx.files.internal(Setting.PARTICLE));
 		
@@ -97,7 +100,12 @@ public class HeroSelectBox extends Group implements Disposable{
 			addActor(new Label(hero.prop.get("hp")+"/"+hero.prop.get("maxhp"),14).width(130).align(x+67, y+30).color(Color.LIGHT_GRAY));
 			addActor(new Label(hero.prop.get("mp")+"/"+hero.prop.get("maxmp"),14).width(130).align(x+67, y+10).color(Color.LIGHT_GRAY));
 		}
-//		$.add(this).children().setDebug(true);
+		
+		if((deadable == ItemDeadable.yes && !hero.isDead()) || (deadable == ItemDeadable.no && hero.isDead())){
+			addActor(Res.get(Setting.UI_BASE_IMG).size(w,h).color(Color.BLACK).a(.85f).position(x, y));
+			addActor(new Label("无法使用",22).position(x+63, y+30));
+		}
+	
 		$.add(this).children().find(Label.class).setTouchable(Touchable.disabled);
 		return this;
 	}

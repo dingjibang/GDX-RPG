@@ -1,0 +1,14 @@
+{
+	type:"Item",
+	name:"续命露",
+	description:"最强王者，起死回生。",
+	forward:"friend",
+	range:"one",
+	deadable:"yes",
+	effect:{
+		prop:{
+			dead:0
+		}
+	},
+	use:""
+}

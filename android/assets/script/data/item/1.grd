@@ -4,6 +4,7 @@
 	description:"为我方某个角色恢复10点生命值",
 	forward:"friend",
 	range:"one",
+	deadable:"no",
 	effect:{
 		prop:{
 			hp:"10",

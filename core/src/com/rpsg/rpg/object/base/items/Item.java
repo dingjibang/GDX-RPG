@@ -33,7 +33,8 @@ public class Item extends BaseItem{
 	public static enum ItemForward{
 		friend,//我方
 		enemy,//敌人
-		all//全部
+		all,//全部
+		link//对与自己连携的对象使用的。
 	}
 	
 	/**

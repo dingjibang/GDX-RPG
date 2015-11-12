@@ -156,4 +156,9 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 		return this;
 	}
 
+	public Actor a(float f) {
+		setColor(getColor().r,getColor().g,getColor().b,f);
+		return this;
+	}
+
 }

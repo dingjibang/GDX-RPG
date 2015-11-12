@@ -27,8 +27,8 @@ item.put(1);
 item.put(2);
 item.put(3);
 item.put(4);
+item.put(6);
 
-item.put(1);
 item.put(1);
 item.put(1);
 item.put(1);
