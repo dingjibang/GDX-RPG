@@ -39,7 +39,7 @@ public class Arisu extends Hero{
 		resistance.put("earth", Resistance.reflect);
 		resistance.put("metal", Resistance.invalid);
 		resistance.put("sun", Resistance.weak);
-		prop.put("dead", Hero.FALSE);
+		prop.put("dead", Hero.TRUE);
 		color="59669ecc";
 //		equips.put(Equipment.EQUIP_SHOES, new Shoes());
 		

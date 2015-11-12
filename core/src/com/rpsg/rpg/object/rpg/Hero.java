@@ -111,6 +111,10 @@ public abstract class Hero extends RPGObject {
 		this.waitWhenCollide = false;
 		this.drawShadow = true;
 	}
+	
+	public boolean isDead(){
+		return prop.get("dead")==TRUE;
+	}
 
 	public String toString() {
 		return name;
