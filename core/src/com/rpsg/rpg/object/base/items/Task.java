@@ -1,6 +1,6 @@
 package com.rpsg.rpg.object.base.items;
 
-public class Task extends BaseItem{
+public class Task extends Item{
 
 	/**
 	 * 

@@ -2,6 +2,7 @@ package com.rpsg.rpg.system.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
@@ -10,9 +11,12 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.BaseItem;
+import com.rpsg.rpg.object.base.items.Effect;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
+import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
+import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
 import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -65,7 +69,7 @@ public class ItemController {
 	@SuppressWarnings("unchecked")
 	public <T> T get(int id,Class<T> _cType){
 		initReader();
-		JsonValue result=reader.parse(Gdx.files.internal(Setting.SCRIPT_DATA+id+".grd"));
+		JsonValue result=reader.parse(Gdx.files.internal(Setting.SCRIPT_DATA_ITEM+id+".grd"));
 		String type=result.getString("type");
 		try {
 			BaseItem baseItem;
@@ -73,34 +77,40 @@ public class ItemController {
 			//差别处理
 			if(type.equalsIgnoreCase(Equipment.class.getSimpleName())){
 				Equipment e =(Equipment)(baseItem=new Equipment());
-				e.illustration2 = result.has("illustration2")?result.getString("illustration2"):"";
+				e.description2 = result.has("description2")?result.getString("description2"):"";
 				e.onlyFor=(Class<? extends Hero>) (result.has("onlyFor")?Class.forName("com.rpsg.rpg.game.hero."+result.getString("onlyFor")):null);
 				e.equipType=result.getString("equipType");
-				
-				//读取装备属性
-				readProp(e, result);
-				
-			}else if(type.equalsIgnoreCase(Spellcard.class.getSimpleName())){				//TODO
+				e.animation = result.has("animation")?result.getInt("animation"):0;
+			}else if(type.equalsIgnoreCase(Spellcard.class.getSimpleName())){
 				Spellcard e =(Spellcard)(baseItem=new Spellcard());
-				e.illustration2 = result.has("illustration2")?result.getString("illustration2"):"";
+				e.description2 = result.has("description2")?result.getString("description2"):"";
+				e.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
+				e.range = result.has("range")?ItemRange.valueOf(result.getString("range")):ItemRange.one;
+				e.animation = result.has("animation")?result.getInt("animation"):0;
+				e.success = result.has("success")?result.getInt("success"):0;
+				e.cost = result.has("cost")?result.getInt("cost"):0;
+				e.occasion = result.has("occasion")?ItemOccasion.valueOf(result.getString("occasion")):ItemOccasion.all;
+				e.deadable = result.has("deadable")?ItemDeadable.valueOf(result.getString("deadable")):ItemDeadable.no;
 			}else{
-				Item item = (Item)(baseItem = new Item());
-				item.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
-				item.range = result.has("range")?ItemRange.valueOf(result.getString("range")):ItemRange.one;
-				item.type = Item.class.getSimpleName();
-				
-				//读取道具属性 TODO
-				readProp(item, result);
+				Item e = (Item)(baseItem = new Item());
+				e.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
+				e.range = result.has("range")?ItemRange.valueOf(result.getString("range")):ItemRange.one;
+				e.occasion = result.has("occasion")?ItemOccasion.valueOf(result.getString("occasion")):ItemOccasion.all;
+				e.animation = result.has("animation")?result.getInt("animation"):0;
+				e.removeable = result.has("removeable")?result.getBoolean("removeable"):true;
+				e.deadable = result.has("deadable")?ItemDeadable.valueOf(result.getString("deadable")):ItemDeadable.no;
 			}
 			
 			baseItem.id = id;
 			baseItem.disable = false;
-			baseItem.illustration = result.getString("illustration");
+			baseItem.description = result.getString("description");
 			baseItem.throwable = result.has("throwable") ? result.getBoolean("throwable") : true;
 			baseItem.name = result.getString("name");
-			baseItem.use = result.has("use") ? result.getString("use") : "";
 			baseItem.type = result.getString("type");
 			baseItem.packable = result.has("packable") ? result.getBoolean("packable") : true;
+			baseItem.buy = result.has("buy") ? result.getInt("buy") : 0;
+			baseItem.sell = result.has("sell") ? result.getInt("sell") : 0;
+			baseItem.effect = result.has("effect")?readEffect(result.get("effect")):new Effect();
 			
 			return (T) baseItem;
 		} catch (Exception e) {
@@ -110,13 +120,20 @@ public class ItemController {
 		}
 	}
 	
-	private void readProp(BaseItem item,JsonValue result){
-		Map<String,Integer> replace = new HashMap<>();
-		JsonValue props = result.get("prop");
-		for(int i=0;i<props.size;i++){
-			replace.put(props.get(i).name,props.getInt(props.get(i).name));
+	private Effect readEffect(JsonValue json){
+		Effect e = new Effect();
+		if(json.has("prop"))
+			e.prop = readProp(json.get("prop"));
+		e.use = json.has("use")?json.getString("use"):"";
+		return e;
+	}
+	
+	private Map<String,String> readProp(JsonValue json){
+		Map<String,String> replace = new HashMap<>();
+		for(int i=0;i<json.size;i++){
+			replace.put(json.get(i).name,json.getString(json.get(i).name));
 		}
-		item.prop = replace;
+		return replace; 
 	}
 	
 	/** 移除1个 <b><i>当前背包</i></b> 里的某个道具（根据ID）**/
@@ -207,20 +224,52 @@ public class ItemController {
 			Equipment equip=(Equipment)baseItem;
 			
 			takeOff(equip);
+			if(baseItem.user instanceof Hero){
+				Hero hero = (Hero)baseItem.user;
+				hero.equips.put(equip.equipType, equip);
+				replace(hero, equip, true);//计算穿上装备后的Hero属性数值变化
+				remove(equip);
+			}
 			
-			baseItem.user.equips.put(equip.equipType, equip);
-			replace(baseItem.user, equip, true);//计算穿上装备后的Hero属性数值变化
-			remove(equip);
 		}else if(baseItem instanceof Item){
 			Item item = (Item)baseItem;
-			if(item.user==null || item.disable)
+			if(((item.range != ItemRange.all) && item.user==null) || item.disable || item.effect==null)
 				return false;
-			Hero hero = item.user;
-			for(String key:item.prop.keySet()){
-				hero.addProp(key, item.prop.get(key));//使用道具，增加各项属性
+			
+			if(baseItem.user instanceof Hero || baseItem.user == null){
+				List<Hero> heros = new ArrayList<>();
+				if(item.range == ItemRange.all)
+					heros = RPG.ctrl.hero.heros;
+				else
+					heros.add((Hero)baseItem.user);
+				
+				for(Hero hero:heros)
+					hero.addProps(item.effect.prop);
+				
+				if(item.removeable)
+					remove(item);
 			}
-			if(item.removeAble)
-				remove(item);
+			
+		}else if(baseItem instanceof Spellcard){
+			Spellcard sc = (Spellcard)baseItem;
+			if(((sc.range != ItemRange.all) && sc.user==null) || sc.user2==null || sc.disable || sc.effect==null)
+				return false;
+			
+			Hero from = sc.user2;
+			if(from.prop.get("mp") < sc.cost)
+				return false;
+			if(sc.user instanceof Hero || sc.user==null){
+				List<Hero> heros = new ArrayList<>();
+				if(sc.range == ItemRange.all)
+					heros = RPG.ctrl.hero.heros;
+				else
+					heros.add((Hero)baseItem.user);
+				
+				for(Hero hero:heros)
+					hero.addProps(sc.effect.prop);
+				
+				from.addProp("mp", -sc.cost+"");
+			}
 		}
 		
 		baseItem.use();
@@ -235,7 +284,7 @@ public class ItemController {
 	public boolean takeOff(BaseItem baseItem){
 		if(!(baseItem instanceof Equipment))
 			return false;
-		return takeOff(baseItem.user,((Equipment)baseItem).equipType);
+		return takeOff((Hero)baseItem.user,((Equipment)baseItem).equipType);
 	}
 	
 	/**
@@ -257,17 +306,16 @@ public class ItemController {
 	}
 	
 	private static void replace(Hero hero,Equipment equip,boolean add){
-		for(String key:equip.prop.keySet()){
-			hero.prop.put(key, add?hero.prop.get(key)+equip.prop.get(key):hero.prop.get(key)-equip.prop.get(key));
+		Map<String,String> prop = equip.effect.prop;
+		for(String key:prop.keySet()){
+			if(!add)
+				if(prop.get(key).indexOf("-")>0)
+					hero.addProp(key,prop.get(key));
+				else
+					hero.addProp(key,"-"+prop.get(key));
+			else
+				hero.addProp(key,prop.get(key));
 		}
-		//防止HP MP溢出
-		postOverflow(hero, "hp");
-		postOverflow(hero, "mp");
-	}
-	
-	private static void postOverflow(Hero hero,String prop){
-		if(hero.prop.get(prop)>hero.prop.get("max"+prop))
-			hero.prop.put(prop,hero.prop.get("max"+prop));
 	}
 	
 	public Equipment getHeroEquip(Hero hero,String equipType){

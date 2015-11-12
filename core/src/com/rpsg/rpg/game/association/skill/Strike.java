@@ -8,7 +8,7 @@ public class Strike extends AssociationSkill {
 
 	public Strike() {
 		name = "强袭";
-		illustration = "对敌人造成普通攻击的230%倍伤害。";
+		description = "对敌人造成普通攻击的230%倍伤害。";
 	}
 	
 }

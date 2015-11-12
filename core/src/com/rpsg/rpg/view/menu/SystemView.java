@@ -14,7 +14,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
@@ -134,7 +133,7 @@ public class SystemView extends DefaultIView{
 			
 			table.add(new CheckBox("开启平滑纹理",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.scaleAliasing = t.isChecked();
-			}}).check(set.scaleAliasing).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
+			}}).check(set.scaleAliasing).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(50).row();
 			table.add(new Label("对纹理进行双线性过滤操作，使纹理变得更加平滑，屏幕窗口拉抻时，纹理不会产生锯齿，适用于手机/平板。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.add(new CheckBox("开启图形抗锯齿",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
@@ -161,7 +160,7 @@ public class SystemView extends DefaultIView{
 			
 			table.add(new CheckBox("触屏模式",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.touchMod = t.isChecked();
-			}}).check(set.touchMod).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
+			}}).check(set.touchMod).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(50).row();
 			table.add(new Label("开启后将对触屏进行一部分优化，适合手机/平板。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.add(new CheckBox("点击地面时自动寻路",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
@@ -221,7 +220,7 @@ public class SystemView extends DefaultIView{
 			
 			table.add(new CheckBox("输出调试信息",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.debugMod = t.isChecked();
-			}}).check(set.debugMod).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
+			}}).check(set.debugMod).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(50).row();
 			table.add(new Label("输出游戏的调试信息到控制台（开发者）。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.add(new CheckBox("缓存游戏资源",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
@@ -252,16 +251,16 @@ public class SystemView extends DefaultIView{
 		
 		//**关于 start
 		{
-			Table table = new Table().left().padLeft(50);
-			table.add(new Label("关于",55)).left().padTop(50).row();
-			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"split.png")).padTop(15).left().row();
-			table.add(new Label("About",20).align(Align.right)).width(300).align(Align.right).height(0).padTop(-40).row();
+			Table table = new Table().left().padLeft(10);
+			table.add(new Label("关于",55)).left().padTop(50).padLeft(40).row();
+			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"split.png")).padTop(15).padLeft(40).left().row();
+			table.add(new Label("About",20).align(Align.right)).width(300).align(Align.right).height(0).padLeft(40).padTop(-40).row();
 			
 			table.add(Res.get(Setting.IMAGE_LOGO+"logo_without_border.png")).padTop(200).row();
 			table.add(new Label("秘封异闻录",35)).padTop(30).row();
 			
-			table.add(new Label("秘封异闻录RPSG制作组所制作的一款《东方Project》同人游戏。\n它采用开源角色扮演框架 GDX-RPG 制作。",20)).left().padTop(80).row();
-			table.add(new Label("秘封异闻录游戏版本："+Setting.GAME_VERSION+"\nGDX-RPG引擎版本："+Setting.GDXRPG_VERSION,20)).left().padTop(30).row();
+			table.add(new Label("秘封异闻录RPSG制作组所制作的一款《东方Project》同人游戏。\n它采用开源角色扮演框架 GDX-RPG 制作。",20).center()).center().padTop(80).row();
+			table.add(new Label("秘封异闻录游戏版本："+Setting.GAME_VERSION+"\nGDX-RPG引擎版本："+Setting.GDXRPG_VERSION,20).center()).center().padTop(30).row();
 			table.add(Res.get(Setting.IMAGE_LOGO+"title.png")).padTop(450).padBottom(50).row();
 			table.add(new TextButton("访问官网", tstyle).onClick(new Runnable() {
 				public void run() {

@@ -1,6 +1,6 @@
 package com.rpsg.rpg.object.base.items;
 
-public class Cooking extends BaseItem{
+public class Cooking extends Item{
 
 	/**
 	 * 

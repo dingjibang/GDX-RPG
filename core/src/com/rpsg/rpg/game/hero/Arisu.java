@@ -1,6 +1,8 @@
 package com.rpsg.rpg.game.hero;
 
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.base.Resistance;
+import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.RPGObject;
 
@@ -14,8 +16,21 @@ public class Arisu extends Hero{
 		jname="Yuki Arisu";
 		fgname="arisu";
 		tag="主角";
-//		sc.add(new MagicGun());
-//		sc.add(new patientBack());
+		addSpellcard(RPG.ctrl.item.get(5,Spellcard.class));
+		addSpellcard(RPG.ctrl.item.get(5,Spellcard.class));
+		addSpellcard(RPG.ctrl.item.get(5,Spellcard.class));
+		addSpellcard(RPG.ctrl.item.get(5,Spellcard.class));
+		addSpellcard(RPG.ctrl.item.get(5,Spellcard.class));
+		addSpellcard(RPG.ctrl.item.get(5,Spellcard.class));
+		addSpellcard(RPG.ctrl.item.get(5,Spellcard.class));
+		addSpellcard(RPG.ctrl.item.get(5,Spellcard.class));
+		addSpellcard(RPG.ctrl.item.get(5,Spellcard.class));
+		addSpellcard(RPG.ctrl.item.get(5,Spellcard.class));
+		addSpellcard(RPG.ctrl.item.get(5,Spellcard.class));
+		addSpellcard(RPG.ctrl.item.get(5,Spellcard.class));
+		addSpellcard(RPG.ctrl.item.get(5,Spellcard.class));
+		addSpellcard(RPG.ctrl.item.get(5,Spellcard.class));
+		addSpellcard(RPG.ctrl.item.get(5,Spellcard.class));
 		prop.put("hp", 150);
 		prop.put("maxhp", 150);
 		prop.put("exp", 3);

@@ -8,7 +8,7 @@ public class AmplificationMagic extends AssociationSkill {
 
 	public AmplificationMagic() {
 		name = "魔法增幅";
-		illustration = "增加一回合“魔法增幅”Buff。处于“魔法增幅”Buff下，使用技能将不会消耗魔法。";
+		description = "增加一回合“魔法增幅”Buff。处于“魔法增幅”Buff下，使用技能将不会消耗魔法。";
 	}
 	
 }

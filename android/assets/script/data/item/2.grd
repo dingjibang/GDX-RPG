@@ -1,0 +1,15 @@
+{
+	type:"Equipment",
+	name:"草鞋",
+	description:"很普通的草鞋，仅仅是贫穷的象征，穿上去感觉怪怪的。",
+	description2:"防御+5 魔防+1",
+	equipType:"EQUIP_SHOES",
+	packable:false,
+	effect:{
+		prop:{
+			defense:"5",
+			magicDefense:"1",
+			maxhp:"50"
+		}
+	}
+}

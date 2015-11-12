@@ -3,8 +3,6 @@ package com.rpsg.rpg.io;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.input.KeyCode;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.rpsg.rpg.core.RPG;

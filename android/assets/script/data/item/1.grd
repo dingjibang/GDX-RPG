@@ -1,0 +1,14 @@
+{
+	type:"Item",
+	name:"药丸",
+	description:"为我方某个角色恢复10点生命值",
+	forward:"friend",
+	range:"one",
+	effect:{
+		prop:{
+			hp:"10",
+			level:"1"
+		}
+	},
+	use:""
+}

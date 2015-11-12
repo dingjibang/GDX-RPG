@@ -5,6 +5,9 @@ made by [Libgdx](https://github.com/libgdx/libgdx).
 
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-LAZY-FONT/master/foobar.png)
 
+
+![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/extension/readme.jpg)
+
 官网 / website:  [http://shadow.rpsg-team.com](http://shadow.rpsg-team.com)
 
 "git clone" this project into your IDE, build, and enjoy it.

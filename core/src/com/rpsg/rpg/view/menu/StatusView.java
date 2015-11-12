@@ -8,8 +8,8 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
@@ -19,8 +19,8 @@ import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.gdxQuery.GdxQueryRunnable;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
-import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.BaseItem;
+import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.CheckBox;
 import com.rpsg.rpg.system.ui.DefaultIView;
@@ -104,7 +104,7 @@ public class StatusView extends DefaultIView {
 			Equipment equip=parent.current.equips.get(key);
 			yoff+=89;
 			$.add(Res.get(equip==null?BaseItem.getDefaultIcon():equip.getIcon())).appendTo(group4).setPosition(12f, yoff-80).setSize(73,70);
-			$.add(new Label(equip==null?"":equip.illustration,16).position(110, yoff-70).overflow(true).width(385)).appendTo(group4);
+			$.add(new Label(equip==null?"":equip.description,16).position(110, yoff-70).overflow(true).width(385)).appendTo(group4);
 			$.add(new Label(equip==null?"无装备":equip.name,30).width(385).align(equip!=null?Align.left:Align.center).position(110, yoff-(equip==null?60:48))).appendTo(group4);
 		}
 		

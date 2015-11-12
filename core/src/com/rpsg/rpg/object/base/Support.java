@@ -14,7 +14,7 @@ public abstract class Support implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	public String name;
-	public String illustration;
+	public String description;
 	public float r=1,g=1,b=1,a=1;
 	
 	public void execute() {
