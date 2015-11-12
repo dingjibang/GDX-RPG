@@ -1,0 +1,11 @@
+imgPath="/walk_reimu.png";
+name="≤©¿ˆ¡È√Œ";
+jname="Hakurei Reimu";
+fgname="reimu";
+tag="Œ◊≈Æ";
+association=new Justice();
+color="d93426cc";
+prop.put("hp", 100);
+prop.put("maxhp", 100);
+prop.put("mp", 100);
+prop.put("maxmp", 100);

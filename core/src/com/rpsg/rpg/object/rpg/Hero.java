@@ -134,8 +134,13 @@ public abstract class Hero extends RPGObject {
 			prop.put(name, prop.get(name) + Integer.parseInt(p));
 		}else{
 			float f = Float.parseFloat(p.split("%")[0]);
-			prop.put(name, prop.get(name) + (int)(f / 100));
+			prop.put(name, prop.get(name) * (int)(f / 100));
 		}
+		
+		if(name.equalsIgnoreCase("dead")){
+			prop.put(name, Integer.parseInt(p));
+		}
+		
 		postOverflow();
 	}
 	
