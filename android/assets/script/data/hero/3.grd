@@ -1,8 +1,8 @@
-imgPath="/walk_marisa.png";
-name="ÎíÓêÄ§ÀíÉ³";
+ï»¿imgPath="/walk_marisa.png";
+name="é›¾é›¨é­”ç†æ²™";
 jname="Kirisame Marisa";
 fgname="marisa";
-tag="Ä§·¨Ê¹";
+tag="é­”æ³•ä½¿";
 prop.put("hp", 50);
 prop.put("maxhp", 150);
 prop.put("mp", 100);

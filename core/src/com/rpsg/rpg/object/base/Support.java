@@ -46,9 +46,9 @@ public abstract class Support implements Serializable{
 		return sup;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static List<Hero> getPreSupportList(){
 		List<Hero> sList=getSupportList();
-		@SuppressWarnings("unchecked")
 		List<Hero> tmp=(List<Hero>) RPG.global.heros.clone();
 		tmp.removeAll(sList);
 		tmp.removeAll(RPG.global.currentHeros);

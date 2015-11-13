@@ -48,7 +48,7 @@ public class SpellCardView extends DefaultIView{
 	
 	private void generate(){
 		stage.clear();
-		stage.setDebugAll(!true || Setting.persistence.uiDebug);
+		stage.setDebugAll(Setting.persistence.uiDebug);
 		final Hero hero = parent.current;
 		
 		final Group data = $.add(new Group()).setAlpha(0).getItem(Group.class);

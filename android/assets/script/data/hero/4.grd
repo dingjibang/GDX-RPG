@@ -1,8 +1,8 @@
-imgPath="/walk_reimu.png";
-name="²©ÀöÁéÃÎ";
+ï»¿imgPath="/walk_reimu.png";
+name="åšä¸½çµæ¢¦";
 jname="Hakurei Reimu";
 fgname="reimu";
-tag="Î×Å®";
+tag="å·«å¥³";
 association=new Justice();
 color="d93426cc";
 prop.put("hp", 100);
