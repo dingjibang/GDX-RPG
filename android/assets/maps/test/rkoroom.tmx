@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="14" height="13" tilewidth="48" tileheight="48">
- <tileset firstgid="1" name="shadows" tilewidth="48" tileheight="48">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="14" height="13" tilewidth="48" tileheight="48" nextobjectid="13">
+ <tileset firstgid="1" name="shadows" tilewidth="48" tileheight="48" tilecount="100">
   <image source="shadows.png" width="480" height="480"/>
  </tileset>
- <tileset firstgid="101" name="tile_elements_ii_by_ayene_chan-d4becnf" tilewidth="48" tileheight="48">
+ <tileset firstgid="101" name="tile_elements_ii_by_ayene_chan-d4becnf" tilewidth="48" tileheight="48" tilecount="72">
   <image source="tile_elements_ii_by_ayene_chan-d4becnf.png" width="432" height="384"/>
  </tileset>
- <tileset firstgid="173" name="tilea4wallscyn_750" tilewidth="48" tileheight="48">
+ <tileset firstgid="173" name="tilea4wallscyn_750" tilewidth="48" tileheight="48" tilecount="288">
   <image source="tilea4wallscyn_750.png" width="768" height="886"/>
  </tileset>
- <tileset firstgid="461" name="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6" tilewidth="48" tileheight="48">
+ <tileset firstgid="461" name="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6" tilewidth="48" tileheight="48" tilecount="256">
   <image source="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6.png" width="768" height="768"/>
  </tileset>
- <tileset firstgid="717" name="rpg_maker_vx___tile_c_by_ayene_chan-d7kwsoc" tilewidth="48" tileheight="48">
+ <tileset firstgid="717" name="rpg_maker_vx___tile_c_by_ayene_chan-d7kwsoc" tilewidth="48" tileheight="48" tilecount="256">
   <image source="rpg_maker_vx___tile_c_by_ayene_chan-d7kwsoc.png" width="768" height="768"/>
  </tileset>
- <tileset firstgid="973" name="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6" tilewidth="48" tileheight="48">
+ <tileset firstgid="973" name="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6" tilewidth="48" tileheight="48" tilecount="256">
   <image source="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6.png" width="768" height="768"/>
  </tileset>
- <tileset firstgid="1229" name="request_march_by_nicnubill-d7a6dq7" tilewidth="48" tileheight="48">
+ <tileset firstgid="1229" name="request_march_by_nicnubill-d7a6dq7" tilewidth="48" tileheight="48" tilecount="256">
   <image source="request_march_by_nicnubill-d7a6dq7.png" width="768" height="768"/>
  </tileset>
- <tileset firstgid="1485" name="glo" tilewidth="48" tileheight="48">
+ <tileset firstgid="1485" name="glo" tilewidth="48" tileheight="48" tilecount="4">
   <image source="glo.png" width="96" height="96"/>
  </tileset>
  <layer name="块层 1" width="14" height="13">
@@ -40,7 +40,7 @@
   </data>
  </layer>
  <objectgroup name="对象层 1">
-  <object name="PUBLIC" type="NPC" gid="1485" x="96" y="624" width="48" height="48">
+  <object id="1" name="PUBLIC" type="NPC" gid="1485" x="96" y="624" width="48" height="48">
    <properties>
     <property name="FOOT_EXECUTE" value="teleport(&quot;twofloor&quot;,10,3,2)"/>
    </properties>
@@ -51,6 +51,13 @@
    H4sIAAAAAAAAC5vLyMAwl0y8lkQM06fGysBwl5mBYR0jBH9jYWD4DsQ3gfgWEIcD8SYmBgZTIN3GhNBnBtRnANSHDl4C1b0C4nQWCN8VSsP0gYADFn24AEzfWxbi9SDr+4tH3wSg3GQgnsSCqY+XFbe+BUD1C4F4ERZ9pAJK9cH0kpNWQICUNANLIyCwjpF4DAAbynLx2AIAAA==
   </data>
  </layer>
+ <objectgroup name="对象层 2">
+  <object id="12" name="PUBLIC" type="NPC" gid="119" x="528.167" y="144.083" width="48" height="48">
+   <properties>
+    <property name="Z_SCRIPT" value="testComputer.js"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer name="块层 4" width="14" height="13">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgoAycZWZgOAfE5SwMDBUspOm9x0yh5aNgFOAAAKFgpn/YAgAA
