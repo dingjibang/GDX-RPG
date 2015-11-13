@@ -20,7 +20,7 @@ import com.badlogic.gdx.utils.GdxRuntimeException;
  * GDX-LAZY-FONT for LibGDX 1.5.0+<br/>
  * <b>Auto generate & manage your bitmapfont without pre-generate.</b>
  * 
- * @version 2.1.0
+ * @version 2.1.5
  * @see see https://github.com/dingjibang/GDX-LAZY-FONT
  * @author dingjibang
  *
@@ -53,7 +53,7 @@ public class LazyBitmapFont extends BitmapFont {
 			Field f = getClass().getSuperclass().getDeclaredField("data");
 			f.setAccessible(true);
 			f.set(this, data);
-		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -66,7 +66,7 @@ public class LazyBitmapFont extends BitmapFont {
 			Field field = generator.getClass().getDeclaredField("face");
 			field.setAccessible(true);
 			face = (Face) field.get(generator);
-		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return;
 		}
