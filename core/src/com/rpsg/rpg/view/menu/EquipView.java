@@ -207,7 +207,7 @@ public class EquipView extends DefaultIView{
 			if(!e.equipType.equalsIgnoreCase(equipType))
 				continue;
 			Icon obj=new Icon().generateIcon(e, true);
-			if(e.onlyFor!=null && !e.onlyFor.equals(parent.getClass()))//filter by hero class
+			if(e.onlyFor!=null && !e.onlyFor.equals(parent.current.getName()))//filter by hero class
 				obj.enable=false;
 			io.add(obj);
 		}

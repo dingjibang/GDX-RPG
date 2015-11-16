@@ -1,4 +1,6 @@
-﻿imgPath="/walk_marisa.png";
+﻿var Association = com.rpsg.rpg.object.base.Association;
+id=2;
+imgPath="/walk_marisa.png";
 name="雾雨魔理沙";
 jname="Kirisame Marisa";
 fgname="marisa";
@@ -7,5 +9,5 @@ prop.put("hp", 50);
 prop.put("maxhp", 150);
 prop.put("mp", 100);
 prop.put("maxmp", 100);
-association=new Star();
+association=Association.read(3);
 color="ffcf70cc";

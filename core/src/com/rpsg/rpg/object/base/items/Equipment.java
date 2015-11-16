@@ -5,7 +5,9 @@ import com.rpsg.rpg.object.rpg.Hero;
 public class Equipment extends BaseItem implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;
 
-	public Class<? extends Hero> onlyFor;
+	//public Class<? extends Hero> onlyFor;
+	//There is no Class differecnce
+	public String onlyFor;
 	
 	public String description2;
 	

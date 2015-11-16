@@ -1,0 +1,13 @@
+var Association = com.rpsg.rpg.object.base.Association;
+imgPath="/walk_yuuka.png";
+name="·ç¼ûÓÄÏã";
+jname="Kazami Yuuka";
+fgname="yuuka";
+tag="Ñý¹Ö";
+id=4;
+association=Association.read(2);
+color="99cc33cc";
+prop.put("hp", 100);
+prop.put("maxhp", 100);
+prop.put("mp", 100);
+prop.put("maxmp", 100);

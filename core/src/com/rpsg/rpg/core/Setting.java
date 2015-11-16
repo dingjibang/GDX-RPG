@@ -47,6 +47,7 @@ public class Setting {
 	public static final String SCRIPT_DATA = SCRIPT +"/data/";
 	public static final String SCRIPT_DATA_ITEM = SCRIPT_DATA + "/item/";
 	public static final String SCRIPT_DATA_ASSOCIATION = SCRIPT_DATA + "/association/";
+	public static final String SCRIPT_DATA_HERO = SCRIPT_DATA + "/hero/";
 	public static final String SCRIPT_DATA_BUFF = SCRIPT_DATA + "/buff/";
 	public static final String SCRIPT_SYSTEM = SCRIPT + "/system/";
 

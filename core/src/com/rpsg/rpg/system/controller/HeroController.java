@@ -3,8 +3,10 @@ package com.rpsg.rpg.system.controller;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.core.RPG;
+import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.MoveStack;
 
@@ -44,6 +46,19 @@ public class HeroController {
 		return heros.get(0);
 	}
 	
+	public static Hero newHero(String filename)
+	{
+		Hero hero = new Hero();
+		java.io.File file = new java.io.File(filename);
+		if(!file.isAbsolute())
+		{
+			file = new java.io.File(Setting.SCRIPT_DATA_HERO,filename);
+		}
+		System.out.println("new Hero File " + file.getPath());
+		RPG.executeJS(Gdx.files.internal(file.getPath()).readString(), hero);
+		return hero;
+	}
+	
 	public Hero newHero(Class<? extends Hero> c){
 		if(getHero(c)!=null)
 			return null;
@@ -61,10 +76,17 @@ public class HeroController {
 	public void addHero(Class<? extends Hero> c){
 		heros.add(getHero(c));
 	}
+	public void addHero(int id){
+		heros.add(getHero(id));
+	}
 	
 	public void setVisible(boolean visible){
 		for(Hero hero:heros)
 			hero.setVisible(visible);
+	}
+	
+	public void addHero(int id,int position){
+		heros.add(position,getHero(id));
 	}
 	
 	public void addHero(Class<? extends Hero> c,int position){
@@ -102,6 +124,13 @@ public class HeroController {
 	public Hero getHero(Class<? extends Hero> c){
 		for(Hero hero:allHeros)
 			if(hero.getClass().equals(c))
+				return hero;
+		return null;
+	}
+	
+	public Hero getHero(int id){
+		for(Hero hero:allHeros)
+			if(hero.id == id)
 				return hero;
 		return null;
 	}

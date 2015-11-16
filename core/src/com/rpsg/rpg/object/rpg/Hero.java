@@ -16,7 +16,7 @@ import com.rpsg.rpg.object.base.Support;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Spellcard;
 
-public abstract class Hero extends RPGObject {
+public class Hero extends RPGObject {
 
 	private static final long serialVersionUID = 1L;
 	public static final int HERO_WIDTH = 48;
@@ -104,9 +104,15 @@ public abstract class Hero extends RPGObject {
 		this.drawShadow = true;
 	}
 
-	public abstract void first();
+	public  void first()
+	{
+		//TODO: Loading from js 
+	}
 
-	public abstract void init();
+	public void init()
+	{
+		this.images=RPGObject.generateImages(Hero.RES_PATH+imgPath, HERO_WIDTH, HERO_HEIGHT);
+	}
 
 	public Hero(String path) {
 		super(RES_PATH + path, HERO_WIDTH, HERO_HEIGHT);

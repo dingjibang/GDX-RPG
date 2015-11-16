@@ -1,8 +1,12 @@
+var Association = com.rpsg.rpg.object.base.Association;
+var AnimaUp = com.rpsg.rpg.game.association.support.AnimaUp;
+
+id=5;
 imgPath="/walk_flandre.png";
 name="芙兰朵露";
 tag="恶魔";
 jname="Flandre Scarlet";
 fgname="flandre";
-association=new Devil();
+association=Association.read(1);
 support=new AnimaUp();
 color="d55d41cc";

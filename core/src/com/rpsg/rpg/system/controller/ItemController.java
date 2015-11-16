@@ -78,7 +78,7 @@ public class ItemController {
 			if(type.equalsIgnoreCase(Equipment.class.getSimpleName())){
 				Equipment e =(Equipment)(baseItem=new Equipment());
 				e.description2 = result.has("description2")?result.getString("description2"):"";
-				e.onlyFor=(Class<? extends Hero>) (result.has("onlyFor")?Class.forName("com.rpsg.rpg.game.hero."+result.getString("onlyFor")):null);
+				e.onlyFor= result.has("onlyFor")?result.getString("onlyFor"):null;//(Class<? extends Hero>) (result.has("onlyFor")?Class.forName("com.rpsg.rpg.game.hero."+result.getString("onlyFor")):null);
 				e.equipType=result.getString("equipType");
 				e.animation = result.has("animation")?result.getInt("animation"):0;
 			}else if(type.equalsIgnoreCase(Spellcard.class.getSimpleName())){
