@@ -218,7 +218,7 @@ public class TacticView extends DefaultIView {
 								for (int i = hero.linkSkills.size() - 1; i >= 0; i--) {
 									final int positionX = 100 * i + 214;
 									final AssociationSkill skill = hero.linkSkills.get(i);
-									group.addActor(tmp = Res.get(skill.imagePath).object(new HeroImgMask()).position(positionX, 60).onClick(new Runnable() {
+									group.addActor(tmp = Res.get(skill.spellcard.getIcon()).size(80,80).object(new HeroImgMask()).position(positionX, 60).onClick(new Runnable() {
 										@Override
 										public void run() {
 											Iterator<Actor> it2 = group.getChildren().iterator();
@@ -228,11 +228,11 @@ public class TacticView extends DefaultIView {
 													it2.remove();
 											}
 											group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "link_skill_border.png").object(new HeroImgMask4()).position(positionX - 12, 49).action(Actions.repeat(RepeatAction.FOREVER, Actions.sequence(Actions.color(Color.WHITE, 0.5f), Actions.color(new Color(1, 1, 1, 0.5f), 0.5f)))));
-											group.addActor(new Label(skill.name, 50).width(1000).position(720, 98).userObject(new HeroImgMask4()).color(1, 1, 1, 0).action(Actions.fadeIn(0.1f)));
+											group.addActor(new Label(skill.spellcard.name, 50).width(1000).position(720, 98).userObject(new HeroImgMask4()).color(1, 1, 1, 0).action(Actions.fadeIn(0.1f)));
 											group.addActor(new Label(skill.getClass().getSimpleName(), 30).width(1000).position(740, 84).userObject(new HeroImgMask4()).color(1, 1, 1, 0).action(Actions.alpha(0.12f, 0.5f)));
-											group.addActor(new Label("获得条件：连携者等级超过" + skill.t_level + "级", 18).width(1000).position(720, 65).userObject(new HeroImgMask4()).color(1, 1, 1, 0).action(Actions.fadeIn(0.2f)));
+											group.addActor(new Label("获得条件：连携者等级超过" + skill.level + "级", 18).width(1000).position(720, 65).userObject(new HeroImgMask4()).color(1, 1, 1, 0).action(Actions.fadeIn(0.2f)));
 											group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC + "link_n_bg.png").object(new HeroImgMask4()).position(128, 0).color(1, 1, 1, 0).action(Actions.fadeIn(0.3f)).size(814,30).x(210));
-											group.addActor(new Label(skill.description, 16).width(1000).position(230, 6).userObject(new HeroImgMask4()));
+											group.addActor(new Label(skill.spellcard.description, 16).width(1000).position(230, 6).userObject(new HeroImgMask4()));
 										}
 									}).oranCenter().scale(1.13f).color(1, 1, 1, 0).action(Actions.parallel(Actions.fadeIn(0.3f), Actions.scaleTo(1, 1, 0.3f))));
 									tmp.click();

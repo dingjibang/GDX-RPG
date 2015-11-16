@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Association;
 import com.rpsg.rpg.object.base.AssociationSkill;
@@ -187,34 +188,32 @@ public abstract class Hero extends RPGObject {
 		}
 	}
 
-	private ArrayList<AssociationSkill> generateLinkList(Hero hero) {
-		ArrayList<AssociationSkill> skills = new ArrayList<AssociationSkill>();
-		tryAddLink(this.association.getCurrentLevelLinkSkills(), skills);
-		tryAddLink(hero.association.getCurrentLevelLinkSkills(), skills);
-		if (!hero.lead && !this.lead) {
-			ArrayList<AssociationSkill> available = new ArrayList<AssociationSkill>();
-			setAvailableList(this, hero, available, skills);
-			setAvailableList(hero, this, available, skills);
-			skills = available;
+	private ArrayList<AssociationSkill> generateLinkList(Hero that) {
+		ArrayList<AssociationSkill> list = new ArrayList<AssociationSkill>();
+		
+		if(this.lead){
+			list = that.association.getCurrentLevelLinkSkills();
+		}else if(that.lead){
+			list = this.association.getCurrentLevelLinkSkills();
+		}else{
+			List<AssociationSkill> all = new ArrayList<AssociationSkill>();
+			all.addAll(that.association.getCurrentLevelLinkSkills());
+			all.addAll(this.association.getCurrentLevelLinkSkills());
+			
+			ArrayList<AssociationSkill> result = new ArrayList<AssociationSkill>();
+			for(AssociationSkill skill : all)
+				for(int i : skill.special)
+					if(this.id == i || that.id == i)
+						result.add(skill);
+			
+			list = result;
 		}
-		return skills;
+		
+		return list;
 	}
 
 	public int getLinkSize(Hero hero) {
 		return generateLinkList(hero).size();
-	}
-
-	private void setAvailableList(Hero hero, Hero hero2, ArrayList<AssociationSkill> available, ArrayList<AssociationSkill> skills) {
-		for (AssociationSkill skill : skills)
-			for (SpecialLink link : hero.association.specialLink)
-				if ((link.hero.equals(hero.getClass()) || link.hero.equals(hero2.getClass())) && link.associationSkill.equals(skill.getClass()))
-					available.add(skill);
-	}
-
-	private void tryAddLink(ArrayList<AssociationSkill> currentLevelLinkSkills, ArrayList<AssociationSkill> skills) {
-		for (AssociationSkill s : currentLevelLinkSkills)
-			if (!skills.contains(s))
-				skills.add(s);
 	}
 
 }

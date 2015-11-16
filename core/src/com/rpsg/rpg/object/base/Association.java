@@ -46,8 +46,9 @@ public class Association implements Serializable {
 			skill.spellcard = (Spellcard)RPG.ctrl.item.get(value.getInt("spellcard"));
 			if(value.has("special") && value.get("special").size != 0){
 				for(JsonValue spec:value.get("special"))
-					skill.special.add(spec.getInt(0));
+					skill.special.add(spec.asInt());
 			}
+			ass.skills.add(skill);
 		}
 		return ass;
 	}

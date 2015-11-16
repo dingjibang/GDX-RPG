@@ -1,7 +1,12 @@
 {
 	name:"太阳",
-	level:1,
+	level:3,
 	favor:20,
 	skill:[
+		{
+			level:3,
+			spellcard:7,
+			special:[1,2]
+		}
 	]
 }
