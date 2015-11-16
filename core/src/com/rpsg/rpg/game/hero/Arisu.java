@@ -11,6 +11,7 @@ public class Arisu extends Hero{
 	private static final long serialVersionUID = 1L;
 
 	public void first(){
+		id=0;
 		imgPath="/walk_yuki.png";
 		name="结成有栖";
 		jname="Yuki Arisu";

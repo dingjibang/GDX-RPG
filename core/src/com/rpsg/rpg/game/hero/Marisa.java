@@ -1,6 +1,6 @@
 package com.rpsg.rpg.game.hero;
 
-import com.rpsg.rpg.game.association.association.Star;
+import com.rpsg.rpg.object.base.Association;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.RPGObject;
 
@@ -9,6 +9,7 @@ public class Marisa extends Hero{
 	private static final long serialVersionUID = 1L;
 
 	public void first(){
+		id = 2;
 		imgPath="/walk_marisa.png";
 		name="雾雨魔理沙";
 		jname="Kirisame Marisa";
@@ -18,7 +19,7 @@ public class Marisa extends Hero{
 		prop.put("maxhp", 150);
 		prop.put("mp", 100);
 		prop.put("maxmp", 100);
-		association=new Star();
+		association=Association.read(3);
 		color="ffcf70cc";
 	}
 	

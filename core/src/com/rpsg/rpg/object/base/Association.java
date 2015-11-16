@@ -2,12 +2,16 @@ package com.rpsg.rpg.object.base;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-import com.rpsg.rpg.object.rpg.Hero;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.JsonReader;
+import com.badlogic.gdx.utils.JsonValue;
+import com.rpsg.rpg.core.RPG;
+import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.items.Spellcard;
 
-public abstract class Association implements Serializable {
+public class Association implements Serializable {
 	/**
 	 * 
 	 */
@@ -17,28 +21,39 @@ public abstract class Association implements Serializable {
 	public String name = "";
 	public int favor = 0;
 
-	public Map<Integer, AssociationSkill> skills = new HashMap<Integer, AssociationSkill>();
-	public ArrayList<SpecialLink> specialLink = new ArrayList<SpecialLink>();
-
-	public static class SpecialLink implements Serializable {
-		private static final long serialVersionUID = 1L;
-		public Class<? extends Hero> hero;
-		public Class<? extends AssociationSkill> associationSkill;
-
-		public SpecialLink(Class<? extends Hero> hero, Class<? extends AssociationSkill> associationSkill) {
-			this.hero = hero;
-			this.associationSkill = associationSkill;
-		}
-	}
+	public List<AssociationSkill> skills = new ArrayList<>();
 
 	public ArrayList<AssociationSkill> getCurrentLevelLinkSkills() {
-		ArrayList<AssociationSkill> t_skills=new ArrayList<AssociationSkill>();
-		for(Integer i=0;i<=level;i++)
-			if(skills.get(i)!=null){
-				skills.get(i).t_level=i;
-				t_skills.add(skills.get(i));
-			}
-		return t_skills;
+		ArrayList<AssociationSkill> result = new ArrayList<>();
+		
+		for(AssociationSkill skill:skills)
+			if(skill.level <= level)
+				result.add(skill);
+		
+		return result;
 	}
-
+	
+	public static Association read(String json){
+		Association ass = new Association();
+		JsonReader reader = new JsonReader();
+		JsonValue object = reader.parse(json);
+		ass.name = object.getString("name");
+		ass.level = object.getInt("level");
+		ass.favor = object.getInt("favor");
+		for(JsonValue value:object.get("skill")){
+			AssociationSkill skill = new AssociationSkill();
+			skill.level = value.getInt("level");
+			skill.spellcard = (Spellcard)RPG.ctrl.item.get(value.getInt("spellcard"));
+			if(value.has("special") && value.get("special").size != 0){
+				for(JsonValue spec:value.get("special"))
+					skill.special.add(spec.getInt(0));
+			}
+		}
+		return ass;
+	}
+	
+	public static Association read(int id){
+		return read(Gdx.files.internal(Setting.SCRIPT_DATA_ASSOCIATION+id+".grd").readString());
+	}
+	
 }

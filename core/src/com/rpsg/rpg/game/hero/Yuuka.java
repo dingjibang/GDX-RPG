@@ -1,7 +1,7 @@
 package com.rpsg.rpg.game.hero;
 
 
-import com.rpsg.rpg.game.association.association.Sun;
+import com.rpsg.rpg.object.base.Association;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.RPGObject;
 
@@ -15,7 +15,8 @@ public class Yuuka extends Hero{
 		jname="Kazami Yuuka";
 		fgname="yuuka";
 		tag="妖怪";
-		association=new Sun();
+		id=4;
+		association=Association.read(2);
 		color="99cc33cc";
 		prop.put("hp", 100);
 		prop.put("maxhp", 100);

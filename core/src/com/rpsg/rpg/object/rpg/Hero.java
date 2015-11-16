@@ -8,7 +8,6 @@ import java.util.Map;
 
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Association;
-import com.rpsg.rpg.object.base.Association.SpecialLink;
 import com.rpsg.rpg.object.base.AssociationSkill;
 import com.rpsg.rpg.object.base.EmptyAssociation;
 import com.rpsg.rpg.object.base.Resistance;
@@ -26,7 +25,9 @@ public abstract class Hero extends RPGObject {
 	public static final int FALSE = 0;
 
 	public static final String RES_PATH = Setting.WALK + "heros/";
-
+	
+	public int id = -1;
+	
 	public String name;
 	public String jname;
 	public String fgname;
@@ -182,8 +183,6 @@ public abstract class Hero extends RPGObject {
 		} else {
 			this.linkTo = null;
 			hero.linkTo = null;
-			for (AssociationSkill s : linkSkills)
-				s.t_level = 0;
 			this.linkSkills = hero.linkSkills = new ArrayList<AssociationSkill>();
 		}
 	}
@@ -194,7 +193,6 @@ public abstract class Hero extends RPGObject {
 		tryAddLink(hero.association.getCurrentLevelLinkSkills(), skills);
 		if (!hero.lead && !this.lead) {
 			ArrayList<AssociationSkill> available = new ArrayList<AssociationSkill>();
-			available.add(skills.get(0));// add "PursueAndAttack" when ever.
 			setAvailableList(this, hero, available, skills);
 			setAvailableList(hero, this, available, skills);
 			skills = available;
