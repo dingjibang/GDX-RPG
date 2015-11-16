@@ -95,7 +95,6 @@ public class ItemView extends DefaultIView{
 				}));
 				inner.addActor(new Image(Setting.IMAGE_MENU_ITEM+"i_"+type.name()+".png").position(140+offset+25, 500).disableTouch());
 			}
-				
 		}
 		
 		ilist=((ImageList) $.add(new ImageList(getItems(currentFilter))).setSize(735, 266).setPosition(248, 185).appendTo(inner).getItem());

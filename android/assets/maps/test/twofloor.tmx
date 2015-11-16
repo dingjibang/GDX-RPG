@@ -39,7 +39,7 @@
  <objectgroup name="对象层 1">
   <object name="PUBLIC" type="NPC" gid="509" x="-48" y="336" width="48" height="48">
    <properties>
-    <property name="NEAR_EXECUTE" value="teleport(&quot;inner&quot;,22,5,3)"/>
+    <property name="NEAR_EXECUTE" value="teleport(&quot;inner&quot;,16,5,3)"/>
    </properties>
   </object>
   <object name="PUBLIC" type="NPC" gid="509" x="480" y="144" width="48" height="95">
@@ -56,7 +56,7 @@
   </object>
   <object name="PUBLIC" type="NPC" gid="509" x="-48" y="384" width="48" height="48">
    <properties>
-    <property name="NEAR_EXECUTE" value="teleport(&quot;inner&quot;,22,5,3)"/>
+    <property name="NEAR_EXECUTE" value="teleport(&quot;inner&quot;,16,5,3)"/>
    </properties>
   </object>
  </objectgroup>

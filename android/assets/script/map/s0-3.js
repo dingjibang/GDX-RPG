@@ -1,6 +1,6 @@
 eval(""+load('global.js'));
-if(RPG.getFlag("1-1-inner")!=null){
-	RPG.setFlag("1-1-inner",true);
+if(RPG.getFlag("11inner")!=null){
+	RPG.setFlag("11inner",true);
 	Hero.setVisible(true);
 	
 	Hero.turn(RPGObject.FACE_U);

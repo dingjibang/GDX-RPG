@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="21" tilewidth="48" tileheight="48">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="19" height="19" tilewidth="48" tileheight="48">
  <tileset firstgid="1" name="shadows" tilewidth="48" tileheight="48">
   <image source="shadows.png" width="480" height="480"/>
  </tileset>
@@ -30,40 +30,40 @@
  <tileset firstgid="1070" name="request_march_by_nicnubill-d7a6dq7" tilewidth="48" tileheight="48">
   <image source="request_march_by_nicnubill-d7a6dq7.png" width="768" height="768"/>
  </tileset>
- <layer name="块层 1" width="25" height="21">
+ <layer name="块层 1" width="19" height="19">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAACxNkZGAQHMWjeBSP4mGECQF8akbtIB6M2jG47CBkPzUAAC9C8mE0CAAA
+   H4sIAAAAAAAACxNkZGAQHMWjeBQPKYwM0PnI4qSahQuMmkWaWYTsIQUAAHCHpYqkBQAA
   </data>
  </layer>
- <layer name="fin" width="25" height="21">
+ <layer name="fin" width="19" height="19">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWkAG4gZoJifiBWBmJRJDEYFoNiRTRxRiTMjSYHA8xEukWARLe3IhmMbgcus4h1Cwz0ImkQQ8L4zCLVDnx6sZmlBMTSDIgwliLCXFzx0cKM273IcSlNhB3IANlMcvQTYz4l4Tzc7NhHhD20BkMlrEi1AzkfHKeiPejgLBCfA+LzVLKDFLtHsh0AvhWjXjQIAAA=
+   H4sIAAAAAAAAC2NgGBmAG4iZoJgfiJWBWBTKF4NiRSifEQkj62OCmsVMoVtakQxAN0sAi3psYjDQi2SAGBLGZjaymBJ+J2LoxWcWNsCExEZW18KMqQ/kFmkkPVJEuosJqg8X2ArE24B4Ow5zSI3HfTjEyDELF6CWu8g1CxfAZhZyvjhOoVkgcBaIzwHxeSq5i5lEd8HMw+YuZhLdRaod+AAAYonm3qQFAAA=
   </data>
  </layer>
- <layer name="块层 5" width="25" height="21">
+ <layer name="块层 5" width="19" height="19">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgoD+QZYJgYoA4M0I9MsYH5IiQh2FygQHQXaxAzMaMXX470OwdQLwTzQ5ToHozIDbHoW8gwA8KwgEdtCL5yxXIDgPiUCDmwONfXaCcHhDrExkmvWSG3WMq+nMU0AZsBeJtQLydhnbsBWJeIN5PQzvIAaSUi+QC5LIPhP8x0saeo0B8DIjrgbiBNlaMggECABsnu1o0CAAA
+   H4sIAAAAAAAAC2NgoB2QZYJgQvLYMDKQw2IGSAwbJgQMmBkYWIGYjRkhth2obwcQ74TqNwXKmQGxOTN2M2gFfhDhfnTQiuRGVyA7DIhDgZiDDLf3kqhHF6heD4j1qRROj8nwP73AXiDmBeL9VDJvGwlqCeUjXhLMQs8v/xhJ0IwFHAXiY0BcD8QNlBk1CnAAAGgw7x6kBQAA
   </data>
  </layer>
  <objectgroup name="对象层 2">
-  <object name="PUBLIC" type="NPC" gid="1066" x="1104" y="288" width="48" height="48">
+  <object name="PUBLIC" type="NPC" gid="1066" x="816" y="288" width="48" height="48">
    <properties>
-    <property name="FOOT_EXECUTE" value="teleport(&quot;twofloor&quot;,2,6,2)"/>
+    <property name="FOOT_EXECUTE" value="com.rpsg.rpg.core.RPG.setFlag(&quot;11isVisitedTwoFloor&quot;,true);teleport(&quot;twofloor&quot;,2,6,2);"/>
    </properties>
   </object>
  </objectgroup>
- <layer name="块层 2" width="25" height="21">
+ <layer name="块层 2" width="19" height="19">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+NlYmDgpQOWRcJPgfgZmhghLMrMwCAGxOLMmHIwO+SgWAGo5iuQ/oYkhoyXA/EKIF6JJq4K1KcGxOrMmHpgdtAS0NMOW6Af/YDYF4hLmLGr7QWFLygsgFgehxp8diCDGhz655Lh36nMpNkBAueYEJhYMNzifCjZsRVLXA42f4DUvWXEXWaBAC45bHaAzJJgRah5xwhR95cRezkmBzUDlxy6HUugapWhYVsOxBUMlIUpLr3GzMSpo8QOctUNlB346jd0eXIBrrSALa2QCwDfAluxNAgAAA==
+   H4sIAAAAAAAAC+NlYmDgpSKWRcJPgfgZmhgyFmVmYBADYnFmVHGYWXJQrACU/wqkvyGJLQfiFUC8EspXBapRA2J1ZoQaOSSzqAFoYZYt0L1+QOwLxCXM1HNXDRazekHhCwofIJbHIj+VmXiz5hIRDqSE1zkmBKbULGq6i5pmgdS9ZcSdH2RxmAXSI8GKUPOOEaLuLyNqWkfH6GYtYYCIK0PjsxyIKxiIcz8uNcbMxKkjVQ2lZpHjLnzxgi5PCOCLGxBA5+MDALXZX/ekBQAA
   </data>
  </layer>
  <objectgroup name="对象层 1">
-  <object name="PUBLIC" type="NPC" gid="1066" x="912" y="144" width="48" height="48">
+  <object name="PUBLIC" type="NPC" gid="1066" x="624" y="144" width="48" height="48">
    <properties>
     <property name="Z_EXECUTE" value="say(&quot;人类为何要互相伤害呢？\n回车测试？&quot;)"/>
    </properties>
   </object>
-  <object name="PUBLIC" type="NPC" gid="1066" x="336" y="816" width="48" height="64">
+  <object name="PUBLIC" type="NPC" gid="1066" x="336" y="720" width="48" height="64">
    <properties>
     <property name="AUTO_SCRIPT" value="s0-3.js"/>
     <property name="ID" value="1"/>
@@ -73,15 +73,15 @@
     <property name="Z_SCRIPT" value="test.js"/>
    </properties>
   </object>
-  <object name="PUBLIC" type="NPC" gid="1066" x="864" y="768" width="48" height="48">
+  <object name="PUBLIC" type="NPC" gid="1066" x="624" y="672" width="48" height="48">
    <properties>
     <property name="NEAR_EXECUTE" value="teleport(&quot;broom&quot;,0,1,2);"/>
    </properties>
   </object>
  </objectgroup>
- <layer name="块层 4" width="25" height="21">
+ <layer name="块层 4" width="19" height="19">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgoA+wZWJgsGPCLvccKP6CiXj16OpgwBfI9iNCD6nqfUkwk16gFugmXmYGBj4g5memzKwfOPz3mIr+5qDQjchgKg6z6qloxygY2oCXCT/Gp4ZY8wiBdBLcO4cEtcggn0x9owAVEJtWRgEDAwCgOVgJNAgAAA==
+   H4sIAAAAAAAAC2NgoC6wZWJgsGPCLvccKP6CCb8aZOALVONHQB0xaoYK+IHFH7VAMV5mBgY+IOZnJt4sDhLUEgL1VDRrqAFeJgRG5yOL49OHTV06kfbPweMuGMgn0qzhCLCFM7b4GsoAAEuMQiSkBQAA
   </data>
  </layer>
 </map>
