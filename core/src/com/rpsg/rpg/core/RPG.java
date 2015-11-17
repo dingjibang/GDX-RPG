@@ -22,6 +22,9 @@ import com.rpsg.rpg.utils.game.TimeUtil;
  * @author dingjibang
  */
 public class RPG {
+	/** GDX-RPG game persistence data <br><b>GDX-RPG 当前游戏存档</b>**/
+	public static Global global = new Global();
+	
 	/** GDX-RPG Controllers <br><b>GDX-RPG 各种控制器（游戏内）</b> **/
 	public static Controllers ctrl = new Controllers();
 	
@@ -33,9 +36,6 @@ public class RPG {
 	
 	/** GDX-RPG input controller <br><b>GDX-RPG 输入控制器</b>**/
 	public static Input input = new Input();
-	
-	/** GDX-RPG game persistence data <br><b>GDX-RPG 当前游戏存档</b>**/
-	public static Global global = new Global();
 	
 	/** GDX-RPG toast util <br><b>GDX-RPG 提示（类似安卓的toast）控制器</b>**/
 	public static AlertUtil toast = new AlertUtil();

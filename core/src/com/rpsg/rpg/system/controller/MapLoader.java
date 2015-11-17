@@ -47,26 +47,6 @@ public class MapLoader {
 	public void load(GameView gv){
 		removeAllPath();
 		
-		//初始化角色 TODO 放到script.js里
-		RPG.ctrl.hero.initControler();
-		if(gv.global.first){
-			gv.global.first=false;
-			int[] ids = new int[] {0,5,2,3};
-			
-			for(int i =0 ;i< ids.length;i++)
-			{
-				RPG.ctrl.hero.addHero(ids[i]);
-			}
-			/*RPG.ctrl.hero.newHero(Arisu.class);
-			RPG.ctrl.hero.addHero(Arisu.class);
-			RPG.ctrl.hero.newHero(Marisa.class);
-			RPG.ctrl.hero.addHero(Marisa.class);
-			RPG.ctrl.hero.newHero(Reimu.class);
-			RPG.ctrl.hero.addHero(Reimu.class);
-			RPG.ctrl.hero.newHero(Yuuka.class);
-			RPG.ctrl.hero.addHero(Yuuka.class);
-			RPG.ctrl.hero.newHero(Flandre.class);*/
-		}
 		RPG.ctrl.hero.initHeros(gv.stage);
 		
 		//设置抗锯齿

@@ -22,7 +22,7 @@ public class MenuHeroBox extends Group {
 	public MenuHeroBox(Hero hero) {
 		this.hero=hero;
 		this.setSize(70, 70);
-		image.size((int)getWidth(),(int)getHeight()).setColor(Color.valueOf(hero.prop.get("dead").equals(Hero.TRUE)?"555555":hero.color));
+		image.size((int)getWidth(),(int)getHeight()).setColor(Color.valueOf(hero.isDead()?"555555":hero.color));
 		addActor(image);
 		addActor($.add(new HeroImage(hero)).setPosition(10, 5).getItem());
 		addActor(lv=Res.get(Setting.UI_BASE_IMG).size(70, 17).disableTouch().color(hero.prop.get("dead").equals(Hero.TRUE)?Color.valueOf("666666"):new Color(1,1,1,0.9f)));

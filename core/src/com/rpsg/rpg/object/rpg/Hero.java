@@ -6,7 +6,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Association;
 import com.rpsg.rpg.object.base.AssociationSkill;
@@ -41,19 +40,19 @@ public class Hero extends RPGObject {
 	public Map<String, Integer> prop = new HashMap<String, Integer>();
 	{
 		//等级
-		prop.put("level", 1);
+		prop.put("level", 0);
 		//经验
 		prop.put("exp", 0);
 		//最大经验值至下一次升级
-		prop.put("maxexp", 10);
+		prop.put("maxexp", 0);
 		//生命值
 		prop.put("hp", 0);
 		//最大生命值
-		prop.put("maxhp", 1);
+		prop.put("maxhp", 0);
 		//魔法量
 		prop.put("mp", 0);
 		//魔法量
-		prop.put("maxmp", 1);
+		prop.put("maxmp", 0);
 		//攻击
 		prop.put("attack", 0);
 		//魔法攻击
@@ -67,7 +66,7 @@ public class Hero extends RPGObject {
 		//准确率
 		prop.put("hit", 0);
 		//最大可携带副卡量
-		prop.put("maxsc", 10);
+		prop.put("maxsc", 0);
 		//是否是死亡状态的
 		prop.put("dead", FALSE);
 	}
@@ -104,13 +103,7 @@ public class Hero extends RPGObject {
 		this.drawShadow = true;
 	}
 
-	public  void first()
-	{
-		//TODO: Loading from js 
-	}
-
-	public void init()
-	{
+	public void init(){
 		this.images=RPGObject.generateImages(Hero.RES_PATH+imgPath, HERO_WIDTH, HERO_HEIGHT);
 	}
 
@@ -125,7 +118,7 @@ public class Hero extends RPGObject {
 	}
 
 	public String toString() {
-		return name;
+		return "RPG Hero(name:"+name+")";
 	}
 	
 	public boolean addSpellcard(Spellcard sc){
@@ -137,9 +130,10 @@ public class Hero extends RPGObject {
 		return this.sc.add(sc);
 	}
 
-	public void addProp(String name, String p) {
+	public void addProp(String name, String p, boolean post) {
 		if(p.indexOf("%")<0){
-			prop.put(name, prop.get(name) + Integer.parseInt(p));
+			Integer val = prop.get(name);
+			prop.put(name,(val==null?0:val) + Integer.parseInt(p));
 		}else{
 			float f = Float.parseFloat(p.split("%")[0]);
 			prop.put(name, prop.get(name) * (int)(f / 100));
@@ -149,7 +143,16 @@ public class Hero extends RPGObject {
 			prop.put(name, Integer.parseInt(p));
 		}
 		
-		postOverflow();
+		if(post)
+			postOverflow();
+	}
+	
+	public void addProp(String name, String p) {
+		addProp(name, p);
+	}
+	
+	public void setProp(String name,Integer d){
+		addProp(name, d+"",false);
 	}
 	
 	public void addProps(Map<String,String> map){

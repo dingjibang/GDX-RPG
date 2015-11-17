@@ -1,5 +1,7 @@
-﻿var Association = com.rpsg.rpg.object.base.Association;
-id=3;
+﻿id=4;
+
+var Association = com.rpsg.rpg.object.base.Association;
+
 imgPath="/walk_reimu.png";
 name="博丽灵梦";
 jname="Hakurei Reimu";
@@ -7,7 +9,8 @@ fgname="reimu";
 tag="巫女";
 association=Association.read(4);
 color="d93426cc";
-prop.put("hp", 100);
-prop.put("maxhp", 100);
-prop.put("mp", 100);
-prop.put("maxmp", 100);
+setProp("hp", 100);
+setProp("maxhp", 100);
+setProp("mp", 100);
+setProp("maxmp", 100);
+setProp("level",1);

@@ -70,7 +70,7 @@ public class HeroSelectBox extends Group implements Disposable{
 		int w = (int) ((getWidth()-margin*3)/2);
 		int h = (int) ((getHeight()-margin*3)/2);
 		
-		List<Hero> heros = RPG.ctrl.hero.heros;
+		List<Hero> heros = RPG.ctrl.hero.currentHeros;
 		generateHeroBox(margin, h+margin*2, w, h,heros.size()>0?heros.get(0):null);
 		generateHeroBox(w+margin*2, h+margin*2, w, h,heros.size()>1?heros.get(1):null);
 		generateHeroBox(margin, margin, w, h,heros.size()>2?heros.get(2):null);

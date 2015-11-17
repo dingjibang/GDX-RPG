@@ -1,6 +1,7 @@
 package com.rpsg.rpg.view;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.system.ui.View;
 public class TitleView extends View{
 	public boolean inited=false;
@@ -21,6 +22,8 @@ public class TitleView extends View{
 
 	@Override
 	public void logic() {
+		RPG.global.read();//TODO
+		
 		GameViews.state=GameViews.STATE_GAME;
 		if(GameViews.gameview!=null)
 			GameViews.gameview.dispose();

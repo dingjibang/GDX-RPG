@@ -89,7 +89,7 @@ public class SystemView extends DefaultIView{
 			table.add(new Label(RPG.maps.getName(),40)).width(450).padTop(-355).padLeft(233).align(Align.left).row();
 			table.add(new FrameLabel("",20).frame(new CustomRunnable<FrameLabel>() {
 				public void run(FrameLabel t) {
-					t.setNoLayoutText("["+RPG.ctrl.hero.getHeadHero().mapx+":"+RPG.ctrl.hero.getHeadHero().mapy+"]    队伍共有 "+RPG.ctrl.hero.heros.size()+" 人，游戏已进行 "+RPG.time.getGameRunningTime());
+					t.setNoLayoutText("["+RPG.ctrl.hero.getHeadHero().mapx+":"+RPG.ctrl.hero.getHeadHero().mapy+"]    队伍共有 "+RPG.ctrl.hero.currentHeros.size()+" 人，游戏已进行 "+RPG.time.getGameRunningTime());
 				}
 			})).width(450).padTop(-270).padLeft(233).align(Align.left).row();
 			Table buttons = new Table().center();

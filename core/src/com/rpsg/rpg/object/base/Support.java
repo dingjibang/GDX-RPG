@@ -36,7 +36,7 @@ public abstract class Support implements Serializable{
 		for(Hero hero:sup){
 			if(hero.lead)
 				flag=true;
-			if(!RPG.global.heros.contains(hero))
+			if(!RPG.global.allHeros.contains(hero))
 				flag=true;
 			if(RPG.global.currentHeros.contains(hero))
 				flag=true;
@@ -49,7 +49,7 @@ public abstract class Support implements Serializable{
 	@SuppressWarnings("unchecked")
 	public static List<Hero> getPreSupportList(){
 		List<Hero> sList=getSupportList();
-		List<Hero> tmp=(List<Hero>) RPG.global.heros.clone();
+		List<Hero> tmp=(List<Hero>) RPG.global.allHeros.clone();
 		tmp.removeAll(sList);
 		tmp.removeAll(RPG.global.currentHeros);
 		List<Hero> removeList=new ArrayList<>();

@@ -398,15 +398,6 @@ public class Script extends Thread{
 	}
 	
 	/**
-	 * 将当前英雄队列的某个人和第一个人（head）交换
-	 * @param c 要交换的英雄的class类型
-	 * @return
-	 */
-	public BaseScriptExecutor swapHeroQueue(Class<? extends Hero> c){
-		return Heros.swapHeroQueue(this, c);
-	}
-	
-	/**
 	 * 将当前英雄队列的某个人和另一个人交换
 	 * @param position 小张
 	 * @param position2 小王
@@ -414,16 +405,6 @@ public class Script extends Thread{
 	 */
 	public BaseScriptExecutor swapHeroQueue(int position,int position2){
 		return Heros.swapHeroQueue(this, position, position2);
-	}
-	
-	/**
-	 * 将当前英雄队列的某个人和另一个人交换
-	 * @param 小张的class类型
-	 * @param 小王的class类型
-	 * @return
-	 */
-	public BaseScriptExecutor swapHeroQueue(Class<? extends Hero> c1,Class<? extends Hero> c2){
-		return Heros.swapHeroQueue(this, c1 , c2);
 	}
 	
 	/**
@@ -507,9 +488,11 @@ public class Script extends Thread{
 	 * @param type 气球类型
 	 * @return
 	 */
-	public BaseScriptExecutor setBalloon(Class<? extends Hero> c,BalloonType type){
-		return Heros.balloon(this, c, type);
+	public void setBalloon(int hero,BalloonType type){
+		RPG.ctrl.hero.getHero(hero).setBalloon(type);
 	}
+	
+	
 	
 	/**
 	 * 给当前NPC显示一个心情气球

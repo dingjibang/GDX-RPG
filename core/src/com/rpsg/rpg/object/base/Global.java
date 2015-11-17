@@ -28,7 +28,7 @@ public class Global implements Serializable {
 	public ArrayList<NPC> npcs = new ArrayList<>();
 	//heros 为 所有的hero（被初始化的、有数据的），而currentHeros为当前【队列】里的hero。
 	public ArrayList<Hero> currentHeros = new ArrayList<>();
-	public ArrayList<Hero> heros = new ArrayList<>();
+	public ArrayList<Hero> allHeros = new ArrayList<>();
 	public ArrayList<Hero> support = new ArrayList<>();
 	public int x;
 	public int y;

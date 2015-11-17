@@ -136,15 +136,7 @@ item.put(1);
 item.put(1);
 
 //HERO INIT
-var heroController = com.rpsg.rpg.system.controller.HeroController;
-var allHeroJsFileNames = new Array("1.grd","2.grd","3.grd","4.grd");
-for(var i = 0; i < allHeroJsFileNames.length; i++)
-{
-	var filename = allHeroJsFileNames[i];
-	var hero = heroController.newHero(filename);
-	if(hero != null)
-	{
-		heros.add(hero);
-	}
-}
-
+RPG.ctrl.hero.add(1);
+RPG.ctrl.hero.add(5);
+RPG.ctrl.hero.add(3);
+RPG.ctrl.hero.add(4);

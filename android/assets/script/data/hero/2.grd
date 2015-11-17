@@ -1,7 +1,8 @@
+id=2;
+
 var Association = com.rpsg.rpg.object.base.Association;
 var AnimaUp = com.rpsg.rpg.game.association.support.AnimaUp;
 
-id=5;
 imgPath="/walk_flandre.png";
 name="芙兰朵露";
 tag="恶魔";
@@ -10,3 +11,4 @@ fgname="flandre";
 association=Association.read(1);
 support=new AnimaUp();
 color="d55d41cc";
+setProp("level",1);

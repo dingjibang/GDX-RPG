@@ -239,7 +239,7 @@ public class ItemController {
 			if(baseItem.user instanceof Hero || baseItem.user == null){
 				List<Hero> heros = new ArrayList<>();
 				if(item.range == ItemRange.all)
-					heros = RPG.ctrl.hero.heros;
+					heros = RPG.ctrl.hero.currentHeros;
 				else
 					heros.add((Hero)baseItem.user);
 				
@@ -261,7 +261,7 @@ public class ItemController {
 			if(sc.user instanceof Hero || sc.user==null){
 				List<Hero> heros = new ArrayList<>();
 				if(sc.range == ItemRange.all)
-					heros = RPG.ctrl.hero.heros;
+					heros = RPG.ctrl.hero.currentHeros;
 				else
 					heros.add((Hero)baseItem.user);
 				

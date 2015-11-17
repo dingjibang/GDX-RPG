@@ -142,7 +142,7 @@ public class TacticView extends DefaultIView {
 		for(int i=0;i<4;i++){
 			Hero hero=null;
 			try{
-				hero=RPG.ctrl.hero.heros.get(i);
+				hero=RPG.ctrl.hero.currentHeros.get(i);
 			}catch(Exception e){}
 			imglist.add(new HeroImg(hero,i));
 		}

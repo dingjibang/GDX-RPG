@@ -23,8 +23,8 @@ public class SL {
 		try{
 			Global global = RPG.global;
 			global.npcs = (ArrayList<NPC>)RPG.maps.loader.getNPCs().clone();
-			global.heros =  RPG.ctrl.hero.allHeros;
-			global.currentHeros =RPG.ctrl.hero.heros;
+			global.allHeros =  RPG.ctrl.hero.allHeros;
+			global.currentHeros =RPG.ctrl.hero.currentHeros;
 			global.weather=RPG.ctrl.weather.type;
 			Files.save(global,Setting.PERSISTENCE+fileID+".dat");
 			global.npcs.clear();

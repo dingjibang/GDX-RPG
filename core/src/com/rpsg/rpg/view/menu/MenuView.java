@@ -148,8 +148,8 @@ public class MenuView extends StackView{
 		}}).appendTo(ld).setSize(172, 76).setPosition(0, 90).addAction(Actions.moveTo(221, 90, 0.5f,Interpolation.pow2Out)).getCell().prefSize(172,76);
 		boxs=new ArrayList<GdxQuery>();//角色框
 		
-		for(int i=0;i<RPG.ctrl.hero.heros.size();i++)
-			boxs.add($.add(new MenuHeroBox(RPG.ctrl.hero.heros.get(i))).appendTo(ld).setPosition(-i*100, 400).addAction(Actions.moveTo(i*100+25, 400,0.7f,Interpolation.pow2Out)).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
+		for(int i=0;i<RPG.ctrl.hero.currentHeros.size();i++)
+			boxs.add($.add(new MenuHeroBox(RPG.ctrl.hero.currentHeros.get(i))).appendTo(ld).setPosition(-i*100, 400).addAction(Actions.moveTo(i*100+25, 400,0.7f,Interpolation.pow2Out)).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
 				if(current==null || current!=((MenuHeroBox)self.getItem()).hero){
 					for(GdxQuery _box:boxs)
 						((MenuHeroBox) _box.getItem()).setSelect(false);

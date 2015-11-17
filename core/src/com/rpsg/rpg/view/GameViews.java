@@ -89,10 +89,8 @@ public class GameViews implements ApplicationListener {
 		vignette.setIntensity(0.5f);
 		post.addEffect(vignette);
 		
-		//冷启动脚本引擎并且读取global
-		RPG.global.read();
-		
 		Logger.info("Gdx-RPG引擎初始化成功。");
+		
 	}
 
 	@Override
