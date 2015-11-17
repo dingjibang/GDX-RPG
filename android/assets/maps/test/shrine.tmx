@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="50" tilewidth="48" tileheight="48">
+ <tileset firstgid="1" name="shadows" tilewidth="48" tileheight="48">
+  <image source="shadows.png" trans="000000" width="480" height="480"/>
+ </tileset>
+ <tileset firstgid="101" name="Cliff_tileset_0" tilewidth="48" tileheight="48">
+  <image source="Cliff_tileset_0.png" trans="000000" width="755" height="777"/>
+ </tileset>
+ <tileset firstgid="341" name="ground_tiles" tilewidth="48" tileheight="48">
+  <image source="ground_tiles.png" trans="000000" width="1008" height="1052"/>
+ </tileset>
+ <tileset firstgid="782" name="object- layer_1" tilewidth="48" tileheight="48">
+  <image source="object- layer_1.png" trans="000000" width="716" height="329"/>
+ </tileset>
+ <tileset firstgid="866" name="treesv6_0_0" tilewidth="48" tileheight="48">
+  <image source="treesv6_0_0.png" trans="000000" width="1008" height="288"/>
+ </tileset>
+ <tileset firstgid="992" name="20090302_575844" tilewidth="48" tileheight="48">
+  <image source="20090302_575844.png" trans="000000" width="384" height="1740"/>
+ </tileset>
+ <layer name="块层 1" width="25" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3RsQ2AMAxE0bB5GAI6ZkDAAhQWLEA6FoApOEtegOJcXaSvVCR5uHal9KgS9wGN5J35fjnkkEMOOeRgOXyxHb40DznkkEMOOeTIdxjZYQkOv6OhB70Ex4z2iOWwOL8R52Hxfw6iY0VX3MFyTDFrpsMSHBaOGy1Eh8/8RNuP7z4xP1XkiBMAAA==
+  </data>
+ </layer>
+ <layer name="块层 2" width="25" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+1XS07DMBB100MCJ6iECidgAfQMbLlC+ewpRaaw46O0ok17gHIK3ki2ZKzETjxjNuRJT5GiaF5n3szYVapHj/+Fg0KpQ/Co+P3+a6jUGtwM+RpjxD4Dj4v4txyNEXiaUeMCsS/BSaLGdKDUjcfbgexv1IhXgktwZZ4LR6PO666YId4jOAdfwA1YGY1zxD4R8MHNYeHViOsDgbzYg98mh0rYB4I2OVD8+4b4TfNHqDB7W3AXmMG1V/86jIU8mQZ6VsITgnZ6tk3+KfBr5s7lNaMPQjtTm16j2dkydUKg3F69uc9RR5uPP5su3qD3Dn6Anwna2uyZkAYXtt8kPfHrfWc8+atcumh07Y0m36V6jGZxl7lW7hmZU2PfYkZiCNXVPV9ynF/Wi9Qc2twhm3KQ3FltdhUXdu/m3O2+Tuju6NavzodYfVN2SVfk9sX2b5lRw94lYncwDqifrpixH+DzzHg9x/PJ812qb0vEXYIrxtxK/vfskYbnjLWP+fsDBPq4IYgTAAA=
+  </data>
+ </layer>
+ <layer name="块层 3" width="25" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAUjFfCwDC778bnnMDOEPspMmh0iLPj51AAyLPj5lAIFoHmKQKzEgp0/1EDDEHU3PjAc/TQKhjYgt8wcLECDiu6mplnUAIPNPYMZUCusiDVHfTRuSAJDJS0PxfKQmmE7WNL1UIyHUYAb7APG435oXB4E0oeQ4pVaae4y0JwrULOuAenrdEw7gym9+jIjMKVgsJQH1Aa3gf66A8R3h5D/ACim8VKIEwAA
+  </data>
+ </layer>
+ <layer name="块层 4" width="25" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAXEgnAWBoYUCnAYC2E74olQgw/EEWnHA2YGhofMuOlHzKh6kMWJtYMbiHnwYA4g5kTCXFBxXhbsdhxhxrRDGIhF8GABIBZEwkJQcVEcdmDzhzQQy+DBIDsMgNgQiI2gdoDEZUmwQwGIFfFgCSC2AGJLILYCYimouBKRdsQQmUZToWYlo4nHQsVPU5g+BxIYMxNWMxSA6QD64/gwCUMYIDVN0Mv/N4D57CaOvEYo/pHl0ctMSoEEGea9BPrjFZpf8IWjGh45VQr9sxuofw8ZZvwAuv8nEP8C4t9A/AeI/w6hspBQuqVH2WgPtMOBCHvIzWM+QH2+QOzHTJk5+EAU0MxoII6hUzmgD7THgMZ22QLNtyNgB7I7qBGu2PIxMe4gBAiFFyXlIczf1HDnSAKwOEFON7B4QE4H6OnKjMgwBqkb6nFCrF8HMzhAhB8orb+vkqGfXHepYkmvuIAgUF4ICQvTID7lmSFYAYoV8dhBbr0RDtQTAcWRBPQj5zl89qGnbXLrD1rl8cPM2OOXnv1FAMeTtS6IEwAA
+  </data>
+ </layer>
+ <layer name="块层 5" width="25" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2Vt04FMRBFV3oGvo+SkoYMP0CGgtSQoSA1ZChIDRIVEgJKoAIKUkEqiD2nAGFZxjs2ftISrnT09q1Xc2fssZ0k//JRsZJh+1aqEiWj3vJOqlIlw/ZtTOXUJx//s6YCcip0UKTs35vvv6sD4h3C0RdxtyP4HRPjBE4zuA75UEcuSTqhC7qhJxffY4yY4zABkzAVwcPMdYXnVViDddgQepj1m9Jz3Xl/3uV3D/aFHnr9+ZJZvylpri6Z9Zsy+6gMyqECKiP42/qoHhqgEZo8Pc7Y4+dwAZdwpex91At90A8Dnh7XxLyBW7iDe2Xvo2mYgVmYE3jofftAzEd4gmd4gVfL+bWpxd0SeMTat64zxmffuuK4cvXZt644oWeMKVec0DPGlE+cn3oHmPJdn5C6fdcni3WHyFa3Pn82xeirtLszxvzq85c2Hjq/+vyljaf1VRVj1VADtVCXh/VuJmYLtEIbtAs8fPMaZHwIhmEERgUevnnNM74Ai7AEywKPkLx8FZJXVvVX748Qxbrff5veAEpR7P+IEwAA
+  </data>
+ </layer>
+ <layer name="块层 6" width="25" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3RQQqCQBiG4VlMepyO0H3SVbZQKahU0LKu4TU8gkfqdedqFuK/8nvgBUHmG0Tn9uXsnUso9XZ3XNjO6Gp0R8FuSZ5udDe458nmiyqqqVlxxzFwpuVdR2/6UE9f+vnwuTUO7EUUG/7z2bjx/om9nB6L3WnxPBh/j4iIiIiIiIhs6w88pitHiBMAAA==
+  </data>
+ </layer>
+</map>
