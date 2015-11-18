@@ -54,7 +54,7 @@ public class Association implements Serializable {
 	}
 	
 	public static Association read(int id){
-		return read(Gdx.files.internal(Setting.SCRIPT_DATA_ASSOCIATION+id+".grd").readString());
+		return read(Gdx.files.internal(Setting.SCRIPT_DATA_ASSOCIATION+id+".grd").readString("utf-8"));
 	}
 	
 }

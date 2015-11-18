@@ -72,7 +72,7 @@ public abstract class NPC extends RPGObject{
 			for(CollideType c:CollideType.values()){
 				if(key.contains(c.name().toUpperCase()))
 					if(key.endsWith("_SCRIPT"))
-						scripts.put(c, Gdx.files.internal(Setting.SCRIPT_MAP+params.get(key)).readString());
+						scripts.put(c, Gdx.files.internal(Setting.SCRIPT_MAP+params.get(key)).readString("utf-8"));
 					else if(key.endsWith("_EXECUTE"))
 						scripts.put(c, params.get(key).toString());
 			}

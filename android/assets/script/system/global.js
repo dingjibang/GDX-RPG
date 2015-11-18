@@ -6,15 +6,11 @@ var RPG = com.rpsg.rpg.core.RPG;
 var item = RPG.ctrl.item;
 
 //初始地图
-//map = "test/cgloop.tmx";
+map = "test/test.tmx";
+x=3;
+y=2;
+z=2;
 
-//map = "test/cafe.tmx";x=21;y=1;z=1;
-//map = "test/inner.tmx";x=7;y=18;z=3;
-map = "test/rkoroom.tmx";x=3;y=4;z=3;
-//初始坐标
-//x = 1;
-//y = 1;
-//z = 1;
 
 //初始天气
 weather = com.rpsg.rpg.utils.display.WeatherUtil.WEATHER_NO;

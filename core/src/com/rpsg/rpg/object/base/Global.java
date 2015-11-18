@@ -51,6 +51,6 @@ public class Global implements Serializable {
 	public List<BaseItem> items = new ArrayList<>(); 
 
 	public void read(){
-		RPG.executeJS( Gdx.files.internal(Setting.SCRIPT_SYSTEM+"global.js").readString(), this);
+		RPG.executeJS( Gdx.files.internal(Setting.SCRIPT_SYSTEM+"global.js").readString("utf-8"), this);
 	}
 }

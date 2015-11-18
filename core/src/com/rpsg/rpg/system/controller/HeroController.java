@@ -50,7 +50,7 @@ public class HeroController {
 		Hero hero = getHero(id);
 		if(hero==null){
 			hero = new Hero();
-			RPG.executeJS(Gdx.files.internal(Setting.SCRIPT_DATA_HERO+id+".grd").readString(), hero);
+			RPG.executeJS(Gdx.files.internal(Setting.SCRIPT_DATA_HERO+id+".grd").readString("utf-8"), hero);
 			allHeros.add(hero);
 		}
 		currentHeros.add(hero);

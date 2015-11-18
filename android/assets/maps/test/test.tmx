@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="48" tileheight="48">
+ <tileset firstgid="1" name="ground_tiles" tilewidth="48" tileheight="48">
+  <image source="ground_tiles.png" trans="000000" width="1008" height="1052"/>
+ </tileset>
+ <tileset firstgid="442" name="treesv6_0_0" tilewidth="48" tileheight="48">
+  <image source="treesv6_0_0.png" trans="000000" width="1008" height="288"/>
+ </tileset>
+ <tileset firstgid="568" name="rpg_maker_vx__modernrtp_tileb_by_painhurt-d3f7sii" tilewidth="48" tileheight="48">
+  <image source="rpg_maker_vx__modernrtp_tileb_by_painhurt-d3f7sii.png" trans="000000" width="768" height="768"/>
+ </tileset>
+ <layer name="1" width="30" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC9NhYGDQBWIdOtOOQOw0ADS9/TnqX/LcS2//Ukv/aPyO+nfUv6P+HfXvqH9H/Tvq31H/jvp3KPkXAKh/MbsQDgAA
+  </data>
+ </layer>
+ <layer name="2" width="30" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OsQ0AIAwEsVdmIew/IkxAhZTGlq6/BOCvVUnfdk2fAADwcgCDGhxBEA4AAA==
+  </data>
+ </layer>
+ <layer name="3" width="30" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OAQ0AMAgDsAUDx79aZPCQVkET4KpXSdf2AgCAXw3dYnf7EA4AAA==
+  </data>
+ </layer>
+ <layer name="4" width="30" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3NsQ3AIAxEUcMASOw/VAgzJDBDgCLXpaJ1k/+kL7mwdGaAryOYFXWqGvx2L23dqqnuuPtoa6ipluNuit+d4/4PAAAA//UCAvm07hAOAAA=
+  </data>
+ </layer>
+</map>

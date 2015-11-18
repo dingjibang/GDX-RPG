@@ -65,7 +65,7 @@ public class Script extends Thread{
 	}
 	
 	public String load(String fileName){
-		return Gdx.files.internal(Setting.SCRIPT_MAP+fileName).readString();
+		return Gdx.files.internal(Setting.SCRIPT_MAP+fileName).readString("utf-8");
 	}
 	
 	public void print(Object o){

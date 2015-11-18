@@ -3,10 +3,10 @@ id=5;
 var Association = com.rpsg.rpg.object.base.Association;
 
 imgPath="/walk_yuuka.png";
-name="·ç¼ûÓÄÏã";
+name="é£è§å¹½é¦™";
 jname="Kazami Yuuka";
 fgname="yuuka";
-tag="Ñı¹Ö";
+tag="å¦–æ€ª";
 
 association=Association.read(2);
 color="99cc33cc";
