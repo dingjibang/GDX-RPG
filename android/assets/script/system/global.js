@@ -4,6 +4,7 @@
 
 var RPG = com.rpsg.rpg.core.RPG;
 var item = RPG.ctrl.item;
+var GameDate = com.rpsg.rpg.utils.game.GameDate;
 
 //初始地图
 map = "test/test.tmx";
@@ -11,6 +12,9 @@ x=3;
 y=2;
 z=2;
 
+//初始时间
+date = new GameDate();
+date.time = GameDate.Time.DAY;
 
 //初始天气
 weather = com.rpsg.rpg.utils.display.WeatherUtil.WEATHER_NO;

@@ -63,9 +63,9 @@ public class MapLoader {
 			for(MapObject obj:m.getObjects()){
 				if (obj.getProperties().get("type")!=null && obj.getProperties().get("type").equals("LIGHT")){
 					PointLight pl= new PointLight(gv.ray,20);
+					int h = obj.getProperties().get("height",Float.class).intValue();
 					pl.setDistance(Float.parseFloat((String)obj.getProperties().get("STRENGTH")));
-					pl.setPosition((int)(((RectangleMapObject)obj).getRectangle().getX()+24),
-								(int)(((RectangleMapObject)obj).getRectangle().getY()+((RectangleMapObject)obj).getRectangle().getHeight())+24);
+					pl.setPosition((int)(((TiledMapTileMapObject)obj).getX()+24),(int)(((TiledMapTileMapObject)obj).getY()+h+24));
 				}
 			}
 		}

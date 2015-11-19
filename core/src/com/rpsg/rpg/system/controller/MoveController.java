@@ -72,7 +72,15 @@ public class MoveController {
 		for (ScriptCollide sc : Collide.testNPCCollide(gv, RPG.ctrl.hero.getHeadHero(), gv.stage.getActors())) {
 			sc.toCollide();
 		}
-		RPG.ctrl.hero.setWalkSpeed(Input.isPress(Keys.CONTROL_LEFT) ? 8 : 4);
+		
+		int speed;
+		if(Input.isPress(Keys.CONTROL_LEFT))
+			speed = Setting.persistence.runmod ? 4 : 8;
+		else
+			speed = Setting.persistence.runmod ? 8 : 4;
+		
+		RPG.ctrl.hero.setWalkSpeed(speed);
+		
 		
 		if (InputController.currentIOMode == IOMode.MapInput.NORMAL && RPG.popup.isEmpty()) {
 			if ((Input.isPress(Keys.RIGHT) || Input.isPress(Keys.D)) && RPG.ctrl.hero.walked()) {

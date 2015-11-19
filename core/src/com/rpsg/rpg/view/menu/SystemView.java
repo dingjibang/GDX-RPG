@@ -164,9 +164,14 @@ public class SystemView extends DefaultIView{
 			table.add(new Label("开启后将对触屏进行一部分优化，适合手机/平板。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.add(new CheckBox("点击地面时自动寻路",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
-				set.pathFind = t.isChecked();//TODO
+				set.pathFind = t.isChecked();
 			}}).check(set.pathFind).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("当点击游戏的地图时，会进行自动寻路操作。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
+			
+			table.add(new CheckBox("默认奔跑状态",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
+				set.runmod = t.isChecked();
+			}}).check(set.runmod).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
+			table.add(new Label("启动后，默认是“奔跑”状态，按住ctrl(B键)可以还原。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.add(new CheckBox("平滑视角",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.softCamera = t.isChecked();

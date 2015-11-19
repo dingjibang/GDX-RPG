@@ -20,9 +20,6 @@ public class Persistence implements Serializable{
 	public boolean antiAliasing = true;
 	/**纹理抗拉抻(filter)*/
 	public boolean scaleAliasing = true;
-	/**内存大小  * @deprecated 
-	 * */
-	public int MemorySize = 512;
 	/**全局音量*/
 	public int volume = 100;
 	/**音乐音量*/
@@ -47,6 +44,9 @@ public class Persistence implements Serializable{
 	public boolean softCamera=true;
 	/**是否启用UI的调试模式（开发者）*/
 	public boolean uiDebug = false;
+	/**总是奔跑的*/
+	public boolean runmod = false;
+	
 	
 	/**启动自动寻路*/
 	public boolean pathFind = true;

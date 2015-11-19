@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeType;
@@ -154,6 +155,9 @@ public class LazyBitmapFont extends BitmapFont {
 
 			Pixmap map = gab.bitmap.getPixmap(Format.RGBA8888);
 			TextureRegion rg = new TextureRegion(new Texture(map));
+			
+			rg.getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+			
 			map.dispose();
 
 			font.getRegions().add(rg);
