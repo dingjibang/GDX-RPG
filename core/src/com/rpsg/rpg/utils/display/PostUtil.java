@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.Res;
@@ -30,15 +31,8 @@ public class PostUtil {
 	static Touchpad pad;
 	static double p4=Math.PI/4;
 	static GdxQuery others;
-	static boolean VZPress=false;
 	public static boolean showMenu=true;
 	static Actor mask;
-	public static boolean isVZPress(){
-		return VZPress;//?!(VZPress=false):false;
-	}
-	public static boolean setVZPress(boolean v){
-		return VZPress=v;
-	}
 	public static boolean first=true; 
 	
 	public static void init(){
@@ -52,12 +46,22 @@ public class PostUtil {
 		tstyle.background=Res.getDrawable(Setting.IMAGE_GLOBAL+"pad_bg.png");
 		tstyle.knob=Res.getDrawable(Setting.IMAGE_GLOBAL+"pad_knob.png");
 		others.add($.add(pad=new Touchpad(0, tstyle)).setPosition(35, 25).setVisible(!GameUtil.isDesktop));
-		others.add($.add(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button_a.png"), Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button_a_p.png"))).setPosition(830, 65).addListener(new InputListener(){
+		others.add($.add(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button_a.png"), Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button_a_p.png"))).setPosition(810, 45).addListener(new InputListener(){
 			public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
-				VZPress=false;
+				Input.cleanPress(Keys.Z);
 			}
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
-				return VZPress=true;
+				Input.press(Keys.Z);
+				return true;
+			}
+		}));
+		others.add($.add(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button_b.png"), Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button_b_p.png"))).setPosition(880, 95).addListener(new InputListener(){
+			public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
+				Input.cleanPress(Keys.CONTROL_LEFT);
+			}
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+				Input.press(Keys.CONTROL_LEFT);
+				return true;
 			}
 		}));
 		others.appendTo(stage);

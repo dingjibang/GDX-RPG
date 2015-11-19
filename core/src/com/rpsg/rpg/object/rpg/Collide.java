@@ -10,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.script.ScriptCollide;
-import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.view.GameView;
 
 public class Collide implements Serializable {
@@ -119,11 +118,11 @@ public class Collide implements Serializable {
 	}
 
 	private static boolean testZ(RPGObject mine, NPC o) {
-		return testLayer(mine, o) && (((mine.mapx - 1 == o.mapx && mine.mapy == o.mapy) || (mine.mapx + 1 == o.mapx && mine.mapy == o.mapy) || (mine.mapx == o.mapx && mine.mapy + 1 == o.mapy) || (mine.mapx == o.mapx && mine.mapy - 1 == o.mapy)) && ((Input.isPress(Keys.Z) || PostUtil.isVZPress()) && (testFaceCollide(mine, o))));
+		return testLayer(mine, o) && (((mine.mapx - 1 == o.mapx && mine.mapy == o.mapy) || (mine.mapx + 1 == o.mapx && mine.mapy == o.mapy) || (mine.mapx == o.mapx && mine.mapy + 1 == o.mapy) || (mine.mapx == o.mapx && mine.mapy - 1 == o.mapy)) && (Input.isPress(Keys.Z) && (testFaceCollide(mine, o))));
 	}
 
 	private static boolean testFaceZ(RPGObject mine, NPC o) {
-		return testLayer(mine, o) && ((Input.isPress(Keys.Z) || PostUtil.isVZPress()) && (mine.getCurrentFace() == o.getReverseFace() && (testFaceCollide(mine, o))));
+		return testLayer(mine, o) && (Input.isPress(Keys.Z) && (mine.getCurrentFace() == o.getReverseFace() && (testFaceCollide(mine, o))));
 	}
 
 	private static boolean testFaceCollide(RPGObject mine, RPGObject o) {

@@ -1,8 +1,9 @@
 package com.rpsg.rpg.object.base.items;
 
-import com.rpsg.rpg.object.rpg.Hero;
+import java.io.Serializable;
 
-public class Equipment extends BaseItem implements java.io.Serializable{
+
+public class Equipment extends BaseItem implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	//public Class<? extends Hero> onlyFor;

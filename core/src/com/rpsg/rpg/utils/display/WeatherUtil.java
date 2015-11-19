@@ -1,13 +1,19 @@
 package com.rpsg.rpg.utils.display;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.bitfire.postprocessing.effects.Bloom;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
+import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public class WeatherUtil {
@@ -16,6 +22,9 @@ public class WeatherUtil {
 	public int type;
 	
 	public float baseSaturation,bloomIntesity,bloomSaturation,threshold;
+	Stage stage;
+	
+	public Texture txt = new Texture(Setting.IMAGE_BACKGROUND+"bgnd2.jpg");
 	
 	private ParticleEffect eff;
 	
@@ -29,13 +38,18 @@ public class WeatherUtil {
 	}
 	
 	public void init(int type){
-		this.type=type;
-		RPG.global.weather=type;
-		if(eff!=null)
+		this.type = type;
+		RPG.global.weather = type;
+		if (eff != null)
 			eff.dispose();
-		if(type==WEATHER_RAIN){
-			eff=new ParticleEffect();
-			eff.load(Gdx.files.internal(Setting.PARTICLE+"rainp.p"),Gdx.files.internal(Setting.PARTICLE));
+		if (stage == null)
+			stage = new Stage(new ScalingViewport(Scaling.stretch, 1024, 576, new OrthographicCamera()),GameViews.batch);
+		if (type == WEATHER_RAIN) {
+			eff = new ParticleEffect();
+			eff.load(Gdx.files.internal(Setting.PARTICLE + "rainp.p"), Gdx.files.internal(Setting.PARTICLE));
+			eff.start();
+		} else {
+			eff = null;
 		}
 		setPost();
 	}
@@ -47,7 +61,10 @@ public class WeatherUtil {
 			gameMenuListener+=.05;
 		if(GameViews.gameview.stackView != null && gameMenuListener>0)
 			gameMenuListener-=.05;
-		batch.begin();
+		batch.end();
+		
+		stage.getBatch().setProjectionMatrix(stage.getCamera().combined);
+		
 		Bloom bloom=GameViews.bloom;
 		bloom.setBaseIntesity(baseSaturation*gameMenuListener);
 		bloom.setBloomSaturation((bloomSaturation-0.2f)*gameMenuListener+0.2f);
@@ -66,12 +83,16 @@ public class WeatherUtil {
 				}
 				lastHeroPositionX=(int) RPG.ctrl.hero.getHeadHero().position.x;
 			}
-			eff.draw(batch,Gdx.graphics.getDeltaTime());
-			eff.setPosition(0, 524);
+			eff.setPosition(0,GameUtil.getScreenHeight());
+			
+			stage.getBatch().begin();
+			eff.draw(stage.getBatch(),Gdx.graphics.getDeltaTime());
+			stage.getBatch().end();
+			
 			if(eff.isComplete())
 				eff.reset();
 		}
-		batch.end();
+		batch.begin();
 		setPost();
 	}
 	

@@ -25,6 +25,13 @@ public class HeroController {
 		this.stack=stack;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Hero> getOtherHeros(){
+		ArrayList<Hero> list = (ArrayList<Hero>)allHeros.clone();
+		list.removeAll(currentHeros);
+		return list;
+	}
+	
 	public void act(){
 		for(Hero hero:currentHeros)
 			hero.act(0);

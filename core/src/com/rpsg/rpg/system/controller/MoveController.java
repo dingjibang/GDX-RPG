@@ -55,7 +55,10 @@ public class MoveController {
 	}
 	
 	public static void stop(){
-		Input.cleanPress();
+		Input.cleanPress(Keys.UP);
+		Input.cleanPress(Keys.DOWN);
+		Input.cleanPress(Keys.LEFT);
+		Input.cleanPress(Keys.RIGHT);
 	}
 	
 

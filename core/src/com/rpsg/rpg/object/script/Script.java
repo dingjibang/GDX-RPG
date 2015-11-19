@@ -107,7 +107,7 @@ public class Script extends Thread{
 	}
 	
 	public void setRenderAble(boolean r){
-		GameViews.gameview.renderAble=r;
+		GameViews.gameview.renderable=r;
 	}
 	
 	public void step(){

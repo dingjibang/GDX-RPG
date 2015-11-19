@@ -45,7 +45,7 @@ public class GameView extends View{
 	
 	public PostProcessor post;//高清画质用
 	public Bloom bloom;//模糊用
-	public boolean renderAble = true;
+	public boolean renderable = true;
 	
 	@Override
 	public View init() {
@@ -107,34 +107,33 @@ public class GameView extends View{
 			return;
 		}
 		
-		boolean postEnable=Setting.persistence.betterLight;
+		boolean postable = Setting.persistence.betterLight;
 		
-		if(postEnable)
+		if(postable)
 			post.capture();
 		
 		RPG.maps.distant.draw((SpriteBatch)stage.getBatch(), this);
 		
-		if(renderAble)
+		if(renderable)
 			RPG.maps.loader.draw(this);
 		
-		if(postEnable)
+		if(Setting.persistence.betterLight && RPG.maps.getProp().get("weather")==null && renderable)
+			RPG.ctrl.weather.draw((SpriteBatch)batch);
+		
+		if(postable)
 			post.render(true);
 		
-		if(Setting.persistence.betterLight && RPG.maps.getProp().get("weather")==null)
-			RPG.ctrl.weather.draw((SpriteBatch) PostUtil.stage.getBatch());
-
 		ColorUtil.draw();
 		
-		if(renderAble)
+		if(renderable)
 			PostUtil.draw(true);
 
 		RPG.ctrl.draw.draw();
 		
 		if(null!=stackView)
 			stackView.draw(batch);
-		else{
+		else
 			RPG.ctrl.thread.logic();
-		}
 	}
 
 	@Override

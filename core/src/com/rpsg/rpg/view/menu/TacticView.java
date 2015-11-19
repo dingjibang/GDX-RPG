@@ -29,7 +29,6 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.AssociationSkill;
-import com.rpsg.rpg.object.base.Support;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.DefaultIView;
@@ -417,8 +416,8 @@ public class TacticView extends DefaultIView {
 	SupImage currentSelect=null;
 	@SuppressWarnings("rawtypes")
 	private void generateSupport() {
-		s_l=new SupGroup(1240, 65).generate(Support.getPreSupportList());
-		s_r=new SupGroup(1694, 65).generate(Support.getSupportList());
+		s_l=new SupGroup(1240, 65).generate(RPG.ctrl.hero.getOtherHeros());
+		s_r=new SupGroup(1694, 65).generate(RPG.global.support);
 		final Label nl,nr;
 		group.addActor(nl=new Label("",20).width(1000).align(885, 383));
 		group.addActor(nr=new Label("",20).width(1000).align(1350, 383));
@@ -435,7 +434,7 @@ public class TacticView extends DefaultIView {
 			@Override
 			public void run() {
 				if (currentSelect != null && s_l == currentSelect.parent) {
-					Support.addToSupport(currentSelect.hero);
+					RPG.global.support.add(currentSelect.hero);
 					Iterator<Cell> i = s_l.table.getCells().iterator();
 					while (i.hasNext())
 						if (i.next().getActor() == currentSelect)
@@ -459,7 +458,7 @@ public class TacticView extends DefaultIView {
 			@Override
 			public void run() {
 				if (currentSelect != null && s_r == currentSelect.parent) {
-					Support.removeSupport(currentSelect.hero);
+					RPG.global.support.remove(currentSelect.hero);
 					Iterator<Cell> i = s_r.table.getCells().iterator();
 					while (i.hasNext())
 						if (i.next().getActor() == currentSelect)

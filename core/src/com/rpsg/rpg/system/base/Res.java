@@ -45,10 +45,6 @@ public class Res {
 		return new ProxyImage(resPath);
 	}
 	
-	public static void logic(){
-	}
-	
-
 	private static void generateTempTexture() {
 		if(NO_TEXTURE==null )
 			NO_TEXTURE=new Texture(Gdx.files.internal(Setting.IMAGE_GLOBAL+"noTexture.png"));

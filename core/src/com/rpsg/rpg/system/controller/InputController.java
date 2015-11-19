@@ -72,7 +72,7 @@ public class InputController{
 			break;
 		}
 		case NORMAL:{
-			if(GameViews.gameview.inited && GameViews.gameview.renderAble){
+			if(GameViews.gameview.inited && GameViews.gameview.renderable){
 				if((!PostUtil.touchDown(screenX, screenY, pointer, button)) && Setting.persistence.pathFind)//如果没点到屏幕的UI，则自动移动
 					Path.click(screenX, screenY);
 			}

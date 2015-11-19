@@ -11,7 +11,6 @@ import com.rpsg.rpg.object.base.Association;
 import com.rpsg.rpg.object.base.AssociationSkill;
 import com.rpsg.rpg.object.base.EmptyAssociation;
 import com.rpsg.rpg.object.base.Resistance;
-import com.rpsg.rpg.object.base.Support;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Spellcard;
 
@@ -32,7 +31,7 @@ public class Hero extends RPGObject {
 	public String jname;
 	public String fgname;
 	public String tag = "";
-	public Support support = null;
+	public Spellcard support;
 	public Association association = new EmptyAssociation();
 	public Hero linkTo;
 	public ArrayList<AssociationSkill> linkSkills = new ArrayList<AssociationSkill>();
@@ -148,7 +147,7 @@ public class Hero extends RPGObject {
 	}
 	
 	public void addProp(String name, String p) {
-		addProp(name, p);
+		addProp(name, p,true);
 	}
 	
 	public void setProp(String name,Integer d){

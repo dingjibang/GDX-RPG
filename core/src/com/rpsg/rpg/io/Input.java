@@ -141,5 +141,9 @@ public class Input implements InputProcessor {
 	public static void cleanPress(){
 		pressList.clear();
 	}
+	
+	public static void cleanPress(int key){
+		pressList.remove((Integer)key);
+	}
 
 }

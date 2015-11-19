@@ -3,7 +3,6 @@ var RPG=com.rpsg.rpg.core.RPG;
 var Spellcard = com.rpsg.rpg.object.base.items.Spellcard;
 var Resistance = com.rpsg.rpg.object.base.Resistance;
 var Hero = com.rpsg.rpg.object.rpg.Hero;
-var SpellcardClass = Spellcard.getClassEx();
 
 
 id=1;
@@ -13,26 +12,30 @@ name="结成有栖";
 jname="Yuki Arisu";
 fgname="arisu";
 tag="主角";
-addSpellcard(RPG.ctrl.item.get(5,SpellcardClass));
-addSpellcard(RPG.ctrl.item.get(5,SpellcardClass));
-addSpellcard(RPG.ctrl.item.get(5,SpellcardClass));
-addSpellcard(RPG.ctrl.item.get(5,SpellcardClass));
-addSpellcard(RPG.ctrl.item.get(5,SpellcardClass));
-addSpellcard(RPG.ctrl.item.get(5,SpellcardClass));
-addSpellcard(RPG.ctrl.item.get(5,SpellcardClass));
-addSpellcard(RPG.ctrl.item.get(5,SpellcardClass));
-addSpellcard(RPG.ctrl.item.get(5,SpellcardClass));
-addSpellcard(RPG.ctrl.item.get(5,SpellcardClass));
-addSpellcard(RPG.ctrl.item.get(5,SpellcardClass));
-addSpellcard(RPG.ctrl.item.get(5,SpellcardClass));
-addSpellcard(RPG.ctrl.item.get(5,SpellcardClass));
-addSpellcard(RPG.ctrl.item.get(5,SpellcardClass));
-addSpellcard(RPG.ctrl.item.get(5,SpellcardClass));
+
 setProp("hp", 150);
 setProp("maxhp", 150);
 setProp("exp", 3);
 setProp("mp", 100);
 setProp("maxmp", 100);
+setProp("maxsc",12);
+
+addSpellcard(RPG.ctrl.item.get(5));
+addSpellcard(RPG.ctrl.item.get(5));
+addSpellcard(RPG.ctrl.item.get(5));
+addSpellcard(RPG.ctrl.item.get(5));
+addSpellcard(RPG.ctrl.item.get(5));
+addSpellcard(RPG.ctrl.item.get(5));
+addSpellcard(RPG.ctrl.item.get(5));
+addSpellcard(RPG.ctrl.item.get(5));
+addSpellcard(RPG.ctrl.item.get(5));
+addSpellcard(RPG.ctrl.item.get(5));
+addSpellcard(RPG.ctrl.item.get(5));
+addSpellcard(RPG.ctrl.item.get(5));
+addSpellcard(RPG.ctrl.item.get(5));
+addSpellcard(RPG.ctrl.item.get(5));
+addSpellcard(RPG.ctrl.item.get(5));
+
 resistance.put("earth", Resistance.reflect);
 resistance.put("metal", Resistance.invalid);
 resistance.put("sun", Resistance.weak);
