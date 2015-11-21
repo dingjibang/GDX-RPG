@@ -54,7 +54,7 @@ public class PostUtil {
 				Input.press(Keys.Z);
 				return true;
 			}
-		}));
+		}).setVisible(GameUtil.isDesktop));
 		others.add($.add(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button_b.png"), Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button_b_p.png"))).setPosition(880, 95).addListener(new InputListener(){
 			public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
 				Input.cleanPress(Keys.CONTROL_LEFT);
@@ -63,7 +63,7 @@ public class PostUtil {
 				Input.press(Keys.CONTROL_LEFT);
 				return true;
 			}
-		}));
+		}).setVisible(GameUtil.isDesktop));
 		others.appendTo(stage);
 		
 		mask = $.add(Res.get(Setting.UI_BASE_IMG).disableTouch()).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(1,1,1,.5f).appendTo(stage).getItem();

@@ -62,6 +62,7 @@ public class Input implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		RPG.touch.start();
 		if (state == IOMode.GameInput.HOVER)
 			return RPG.popup.touchDown(screenX, screenY, pointer, button);
 		switch (GameViews.state) {
@@ -75,6 +76,7 @@ public class Input implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		RPG.touch.stop();
 		if (state == IOMode.GameInput.HOVER)
 			return RPG.popup.touchUp(screenX, screenY, pointer, button);
 		switch (GameViews.state) {
@@ -88,6 +90,7 @@ public class Input implements InputProcessor {
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		RPG.touch.setPosition(screenX, screenY);
 		if (state == IOMode.GameInput.HOVER)
 			return RPG.popup.touchDragged(screenX, screenY, pointer);
 		switch (GameViews.state) {

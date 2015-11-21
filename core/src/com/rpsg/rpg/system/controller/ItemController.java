@@ -161,7 +161,7 @@ public class ItemController {
 	
 	/** 移除1个 <b><i>当前背包</i></b> 里的某个道具（根据实体类）**/
 	public boolean remove(BaseItem baseItem){
-		return remove(baseItem,1);
+		return remove(baseItem.id,1);
 	}
 	
 	/** 移除数个 <b><i>当前背包</i></b> 里的某个道具（根据ID）**/
@@ -200,7 +200,7 @@ public class ItemController {
 	}
 	
 	/**
-	 * 使用一个道具继承对象（道具 或 符卡 或 装备 等）
+	 * 使用一个道具
 	 * @param id 要使用道具的ID
 	 * @return 是否成功
 	 */
@@ -209,7 +209,7 @@ public class ItemController {
 	}
 	
 	/**
-	 * 使用一个道具（道具 或 符卡 或 装备 等）
+	 * 使用一个道具
 	 * @param baseItem 要使用的道具
 	 * @return 是否成功
 	 */
@@ -278,13 +278,13 @@ public class ItemController {
 	
 	/**
 	 * 从某个角色上脱下某件装备
-	 * @param baseItem 新装备对比（不是要脱下的装备）（看不懂的话就别用这个方法……用下面那个方法）
+	 * @param typeOfBaseItem 新装备对比（不是要脱下的装备）（看不懂的话就别用这个方法……用下面那个方法）
 	 * @return 是否成功脱下
 	 */
-	public boolean takeOff(BaseItem baseItem){
-		if(!(baseItem instanceof Equipment))
+	public boolean takeOff(BaseItem typeOfBaseItem){
+		if(!(typeOfBaseItem instanceof Equipment))
 			return false;
-		return takeOff((Hero)baseItem.user,((Equipment)baseItem).equipType);
+		return takeOff((Hero)typeOfBaseItem.user,((Equipment)typeOfBaseItem).equipType);
 	}
 	
 	/**

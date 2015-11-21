@@ -148,7 +148,8 @@ public class GameViews implements ApplicationListener {
 		RPG.popup.draw();//悬浮窗口，一些特殊的置顶窗口会使用。
 		GameUtil.drawFPS(batch);//绘制FPS
 		RPG.toast.draw();//STEP一下提示工具包
-		batch.setTransformMatrix(batch.getTransformMatrix());
+//		batch.setTransformMatrix(batch.getTransformMatrix()); //TODO
+		RPG.touch.draw(batch);
 		
 		batch.end();
 		

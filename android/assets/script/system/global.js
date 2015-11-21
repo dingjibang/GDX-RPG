@@ -18,7 +18,7 @@ map = "test/inner.tmx";x=7;y=18;z=3;
 date.time = GameDate.Time.DAY;
 
 //初始天气
-weather = com.rpsg.rpg.utils.display.WeatherUtil.WEATHER_RAIN;
+weather = com.rpsg.rpg.utils.display.WeatherUtil.WEATHER_NO;
 
 //初始携带
 gold = 120;

@@ -1,12 +1,10 @@
 package com.rpsg.rpg.system.controller;
 
 import com.badlogic.gdx.Input.Keys;
-import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.SL;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.base.IOMode.MapInput;
-import com.rpsg.rpg.system.base.Initialization;
 import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.game.Path;
 import com.rpsg.rpg.view.GameView;
@@ -46,6 +44,8 @@ public class InputController{
 			MenuController.keyDown(keycode);
 			break;
 		}
+		default:
+			break;
 		
 		}
 		return false;
@@ -61,6 +61,8 @@ public class InputController{
 			MenuController.keyUp(keycode);
 			break;
 		}
+		default:
+			break;
 		}
 		return false;
 	}
@@ -78,6 +80,8 @@ public class InputController{
 			}
 			break;
 		}
+		default:
+			break;
 		}
 		return false;
 	}
@@ -89,6 +93,8 @@ public class InputController{
 			PostUtil.keyTyped(character);
 			break;
 		}
+		default:
+			break;
 		}
 		return false;
 	}
@@ -104,6 +110,8 @@ public class InputController{
 			PostUtil.touchDragged( screenX,  screenY,  pointer);
 			break;
 		}
+		default:
+			break;
 		}
 		return false;
 	}
@@ -118,6 +126,8 @@ public class InputController{
 			PostUtil.touchUp(screenX, screenY, pointer, button);
 			break;
 		}
+		default:
+			break;
 		}
 		return false;
 	}
@@ -128,6 +138,8 @@ public class InputController{
 			MenuController.scrolled(amount);
 			break;
 		}
+		default:
+			break;
 		}
 	}
 
@@ -137,6 +149,8 @@ public class InputController{
 			PostUtil.mouseMoved(x, y);
 			break;
 		}
+		default:
+			break;
 		}
 	}
 

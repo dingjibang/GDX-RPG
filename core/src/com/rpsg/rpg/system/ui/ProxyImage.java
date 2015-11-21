@@ -39,7 +39,7 @@ public class ProxyImage extends Image {
 			TextureParameter parameter=new TextureParameter();
 			parameter.loadedCallback= new AssetLoaderParameters.LoadedCallback() {
 				@Override
-				public void finishedLoading(AssetManager assetManager, String fileName, Class type) {
+				public void finishedLoading(AssetManager assetManager, String fileName, @SuppressWarnings("rawtypes") Class type) {
 					ProxyImage.this.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) Res.ma2.get(texturePath))));
 					ProxyImage.this.reGenerateSize();
 					ProxyImage.this.isLoaded=true;

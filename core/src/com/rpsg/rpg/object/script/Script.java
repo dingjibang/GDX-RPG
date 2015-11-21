@@ -14,7 +14,6 @@ import com.rpsg.rpg.object.base.FGType;
 import com.rpsg.rpg.object.base.MsgType;
 import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.object.rpg.CollideType;
-import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
 import com.rpsg.rpg.system.controller.MoveController;

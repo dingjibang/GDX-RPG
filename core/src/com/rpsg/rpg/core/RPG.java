@@ -9,6 +9,7 @@ import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.system.controller.Hover;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.AlertUtil;
+import com.rpsg.rpg.utils.display.TouchParticle;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.utils.game.TimeUtil;
@@ -42,6 +43,9 @@ public class RPG {
 	
 	/** GDX-RPG time util <br><b>GDX-RPG 时间管理器</b>**/
 	public static TimeUtil time = new TimeUtil();
+	
+	/** GDX-RPG touch-particle controller <br><b>GDX-RPG 触屏粒子效果管理器</b>*/
+	public static TouchParticle touch = new TouchParticle();
 	
 	/**
 	 * put a message to GDX-RPG toast controller<br>
