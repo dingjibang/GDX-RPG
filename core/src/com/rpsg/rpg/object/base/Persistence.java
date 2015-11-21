@@ -46,6 +46,8 @@ public class Persistence implements Serializable{
 	public boolean uiDebug = false;
 	/**总是奔跑的*/
 	public boolean runmod = false;
+	/**触屏粒子*/
+	public boolean touchParticle = false;
 	
 	
 	/**启动自动寻路*/

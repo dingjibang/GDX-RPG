@@ -163,6 +163,11 @@ public class SystemView extends DefaultIView{
 			}}).check(set.touchMod).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(50).row();
 			table.add(new Label("开启后将对触屏进行一部分优化，适合手机/平板。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
+			table.add(new CheckBox("触屏粒子",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
+				set.touchParticle = t.isChecked();
+			}}).check(set.touchParticle).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
+			table.add(new Label("开启后，点击/滑动屏幕会有粒子特效。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
+			
 			table.add(new CheckBox("点击地面时自动寻路",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.pathFind = t.isChecked();
 			}}).check(set.pathFind).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
@@ -176,7 +181,7 @@ public class SystemView extends DefaultIView{
 			table.add(new CheckBox("平滑视角",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.softCamera = t.isChecked();
 			}}).check(set.softCamera).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
-			table.add(new Label("移动时，视角会变得平滑，可以作为卡顿的视觉补偿。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
+			table.add(new Label("移动时，视角会变得平滑。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.layout();
 			parentTable.add(table).align(Align.topLeft).row();

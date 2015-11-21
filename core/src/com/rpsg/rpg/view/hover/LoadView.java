@@ -1,6 +1,7 @@
 package com.rpsg.rpg.view.hover;
 
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -23,7 +24,6 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.TextButton;
-import com.rpsg.rpg.utils.display.AlertUtil;
 
 
 
@@ -110,15 +110,15 @@ public class LoadView extends HoverView{
 						if (currentSelect != -1) {
 							Object o = SL.load(currentSelect);
 							if (o != null) {
-								RPG.putMessage("读取档案成功。", AlertUtil.Green);
+								RPG.putMessage("读取档案成功。", Color.GREEN);
 								RPG.global = (Global) o;
 								Initialization.restartGame();
 								LoadView.this.disposed = true;
 							} else
-								RPG.putMessage("读取档案失败。", AlertUtil.Red);
+								RPG.putMessage("读取档案失败。", Color.RED);
 							LoadView.this.generateList();
 						} else {
-							RPG.putMessage("请选择要读取的档案位置。", AlertUtil.Yellow);
+							RPG.putMessage("请选择要读取的档案位置。", Color.YELLOW);
 							Music.playSE("err");
 						}
 						((HoverView) view).disposed = true;
@@ -149,12 +149,12 @@ public class LoadView extends HoverView{
 					public void run(HoverView view) {
 						if (currentSelect != -1) {
 							if (SL.delete(currentSelect)) {
-								RPG.putMessage("删除档案成功。", AlertUtil.Green);
+								RPG.putMessage("删除档案成功。", Color.GREEN);
 								LoadView.this.generateList();
 							} else
-								RPG.putMessage("删除档案失败。", AlertUtil.Red);
+								RPG.putMessage("删除档案失败。", Color.RED);
 						} else
-							RPG.putMessage("请选择要删除的档案。", AlertUtil.Yellow);
+							RPG.putMessage("请选择要删除的档案。", Color.YELLOW);
 						((HoverView) view).disposed = true;
 					}
 				}));

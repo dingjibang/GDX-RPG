@@ -89,10 +89,14 @@ public class GameUtil {
 	}
 	
 	public static NinePatch processNinePatchFile(String fname) {
+		return processNinePatchFile(fname,2,2,1,1,12,12,12,12);
+	}
+	
+	public static NinePatch processNinePatchFile(String fname,int wpad,int hpad,int woff,int hoff,int left,int right,int top,int bottom) {
 	    final Texture t = new Texture(Gdx.files.internal(fname));
-	    final int width = t.getWidth() - 2;
-	    final int height = t.getHeight() - 2;
-	    return new NinePatch(new TextureRegion(t, 1, 1, width, height), 12, 12, 12, 12);
+	    final int width = t.getWidth() - wpad;
+	    final int height = t.getHeight() - hpad;
+	    return new NinePatch(new TextureRegion(t, woff, hoff, width, height), left, right, top, bottom);
 	}
 	
 	public static void openURL(String httpURL){

@@ -67,11 +67,13 @@ public class Setting {
 
 	// UI
 	public static NinePatchDrawable UI_BUTTON;
+	public static NinePatchDrawable UI_TOAST;
 	public static String UI_BASE_IMG = Setting.IMAGE_MENU_GLOBAL + "white.jpg";
 	public static String UI_BASE_PRO = Setting.IMAGE_MENU_GLOBAL + "prograssbar.png";
 
 	public static void init() {
 		UI_BUTTON = new NinePatchDrawable(GameUtil.processNinePatchFile(Setting.IMAGE_MENU_GLOBAL + "button_p.png"));
+		UI_TOAST = new NinePatchDrawable(GameUtil.processNinePatchFile(Setting.IMAGE_MENU_GLOBAL + "toast_box.png",2,2,1,1,5,5,5,5));
 	}
 
 	public static final String IRPGOBJECT_SHADOW = Setting.WALK + "walk_shadow.png";

@@ -249,6 +249,16 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		return this;
 	}
 	
+	public Image width(float width){
+		super.setWidth(width);
+		return this;
+	}
+	
+	public Image height(float height){
+		super.setHeight(height);
+		return this;
+	}
+	
 	public Image disableTouch(){
 		super.setTouchable(null);
 		return this;

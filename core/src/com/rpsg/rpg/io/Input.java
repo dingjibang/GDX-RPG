@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.view.GameViews;
@@ -15,6 +17,8 @@ public class Input implements InputProcessor {
 
 	@Override
 	public boolean keyDown(int keycode) {
+		if(keycode == Keys.O)
+		RPG.toast.add("博丽灵梦升级了\n15 → [RED]16[]", Color.SKY ,22,true);
 		if (state == IOMode.GameInput.HOVER)
 			return RPG.popup.keyDown(keycode);
 		switch (GameViews.state) {
@@ -62,7 +66,7 @@ public class Input implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		RPG.touch.start();
+		RPG.touch.start().setPosition(screenX, screenY);
 		if (state == IOMode.GameInput.HOVER)
 			return RPG.popup.touchDown(screenX, screenY, pointer, button);
 		switch (GameViews.state) {
@@ -76,7 +80,7 @@ public class Input implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		RPG.touch.stop();
+		RPG.touch.stop().setPosition(screenX, screenY);
 		if (state == IOMode.GameInput.HOVER)
 			return RPG.popup.touchUp(screenX, screenY, pointer, button);
 		switch (GameViews.state) {

@@ -4,6 +4,7 @@ package com.rpsg.rpg.view;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.bitfire.postprocessing.PostProcessor;
@@ -13,7 +14,6 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -54,6 +54,8 @@ public class GameViews implements ApplicationListener {
 
 	@Override
 	public void create() {
+		//other
+		batch = new SpriteBatch();//构建画笔
 		
 		if(!GameUtil.isDesktop)
 			Setting.persistence = Persistence.read();//如果是安卓、ios的话，会先初始化libgdx引擎，才开始读取游戏设置，而如果是桌面版，会在main方法就读取游戏设置。
@@ -69,14 +71,13 @@ public class GameViews implements ApplicationListener {
 		//view
 		logoview = new LogoView();
 		logoview.init();//注册logoview
-		//other
-		batch = new SpriteBatch();//构建画笔
+		
 		if(Setting.persistence.errorMessage!=null && Setting.persistence.errorMessage.length()!=0){//当游戏异常退出之前，会尝试把错误信息写到Setting.persistence.errorMessage这里然后保存，然后下一次启动游戏的时候，看看这个变量是不是空的，如果不是，就把上次的异常信息显示出来。
-			RPG.putMessage(Setting.persistence.errorMessage, AlertUtil.Red);
+			RPG.putMessage(Setting.persistence.errorMessage, Color.RED);
 			Setting.persistence.errorMessage="";
 		}
 		if(!GameUtil.isDesktop)
-			RPG.putMessage("检测到您的游戏环境为手机/平板，已进行相应优化。", AlertUtil.Green);//然而并没有优化hhh（有的）
+			RPG.putMessage("检测到您的游戏环境为手机/平板，已进行相应优化。", Color.GREEN);//然而并没有优化hhh（有的）
 		
 		selectUtil=new SelectUtil();//TODO 试着把它移到gameview而不是gameviews。
 		
@@ -90,6 +91,7 @@ public class GameViews implements ApplicationListener {
 		post.addEffect(vignette);
 		
 		Logger.info("Gdx-RPG引擎初始化成功。");
+		
 		
 	}
 
@@ -148,8 +150,7 @@ public class GameViews implements ApplicationListener {
 		RPG.popup.draw();//悬浮窗口，一些特殊的置顶窗口会使用。
 		GameUtil.drawFPS(batch);//绘制FPS
 		RPG.toast.draw();//STEP一下提示工具包
-//		batch.setTransformMatrix(batch.getTransformMatrix()); //TODO
-		RPG.touch.draw(batch);
+		RPG.touch.draw();
 		
 		batch.end();
 		

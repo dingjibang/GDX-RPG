@@ -4,11 +4,11 @@ import org.mozilla.javascript.Context;
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptableObject;
 
+import com.badlogic.gdx.graphics.Color;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.system.controller.Hover;
-import com.rpsg.rpg.system.ui.Image;
-import com.rpsg.rpg.utils.display.AlertUtil;
+import com.rpsg.rpg.utils.display.Toasts;
 import com.rpsg.rpg.utils.display.TouchParticle;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
@@ -39,7 +39,7 @@ public class RPG {
 	public static Input input = new Input();
 	
 	/** GDX-RPG toast util <br><b>GDX-RPG 提示（类似安卓的toast）控制器</b>**/
-	public static AlertUtil toast = new AlertUtil();
+	public static Toasts toast = new Toasts();
 	
 	/** GDX-RPG time util <br><b>GDX-RPG 时间管理器</b>**/
 	public static TimeUtil time = new TimeUtil();
@@ -51,10 +51,10 @@ public class RPG {
 	 * put a message to GDX-RPG toast controller<br>
 	 * <br><b>压入一条字符串，在下一帧时将会以toast的形式显示到屏幕上</b>
 	 * @param msg message
-	 * @param image the message {@link AlertUtil type} (e.g. AlertUtil.Red/AlertUtil.Yellow)
+	 * @param color toast border-color.
 	 */
-	public static void putMessage(String msg,Image image){
-		toast.add(msg, image);
+	public static void putMessage(String msg,Color color){
+		toast.add(msg, color);
 	}
 	
 	/**

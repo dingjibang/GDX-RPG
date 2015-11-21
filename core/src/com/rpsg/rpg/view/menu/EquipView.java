@@ -34,7 +34,6 @@ import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.ImageList;
 import com.rpsg.rpg.system.ui.Label;
-import com.rpsg.rpg.utils.display.AlertUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.hover.ThrowItemView;
 
@@ -232,7 +231,7 @@ public class EquipView extends DefaultIView{
 	private void useEquip(){
 		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().item!=null)
 			if(!RPG.ctrl.item.use(ilist.getCurrent().item.setUser(parent.current)))
-				RPG.putMessage("程序异常，装备失败。", AlertUtil.Red);
+				RPG.putMessage("程序异常，装备失败。", Color.RED);
 		generate();
 	}
 	
@@ -246,7 +245,7 @@ public class EquipView extends DefaultIView{
 			put("item",ilist.getCurrent());
 			put("callback",new CustomRunnable<Integer>() {
 				public void run(Integer t) {
-					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().item.name+" "+t+" 个", AlertUtil.Green);
+					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().item.name+" "+t+" 个", Color.RED);
 					RPG.ctrl.item.remove(ilist.getCurrent().item, t);
 					generate();
 				}

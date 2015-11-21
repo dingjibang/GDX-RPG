@@ -9,9 +9,9 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.base.items.Item;
-import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
+import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.HeroSelectBox;
@@ -19,7 +19,6 @@ import com.rpsg.rpg.system.ui.Icon;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.TextButton;
-import com.rpsg.rpg.utils.display.AlertUtil;
 
 public class UseItemView extends SidebarView {
 
@@ -78,7 +77,7 @@ public class UseItemView extends SidebarView {
 					if(success){
 						box.animate();
 					}else{
-						RPG.putMessage("使用失败。", AlertUtil.Red);
+						RPG.putMessage("使用失败。", Color.RED);
 						Music.playSE("err");
 					}
 					if(_count<=0){
@@ -91,7 +90,7 @@ public class UseItemView extends SidebarView {
 						});
 					}
 				}else{
-					RPG.putMessage("请先选择使用者。", AlertUtil.Red);
+					RPG.putMessage("请先选择使用者。", Color.RED);
 					Music.playSE("err");
 				}
 			}
