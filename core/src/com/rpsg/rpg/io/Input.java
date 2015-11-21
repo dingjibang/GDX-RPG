@@ -18,7 +18,7 @@ public class Input implements InputProcessor {
 	@Override
 	public boolean keyDown(int keycode) {
 		if(keycode == Keys.O)
-		RPG.toast.add("博丽灵梦升级了\n15 → [RED]16[]", Color.SKY ,22,true);
+		RPG.toast.add("博丽灵梦升级了\n等级：15 → [RED]16[]\n攻击力：5 → [RED]7[]", Color.SKY ,22,true);
 		if (state == IOMode.GameInput.HOVER)
 			return RPG.popup.keyDown(keycode);
 		switch (GameViews.state) {
