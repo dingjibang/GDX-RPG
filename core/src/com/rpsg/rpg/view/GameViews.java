@@ -77,7 +77,7 @@ public class GameViews implements ApplicationListener {
 			Setting.persistence.errorMessage="";
 		}
 		if(!GameUtil.isDesktop)
-			RPG.putMessage("检测到您的游戏环境为手机/平板，已进行相应优化。", Color.GREEN);//然而并没有优化hhh（有的）
+			RPG.putMessage("检测到您的游戏环境为手机/平板，已进行相应优化", Color.GREEN);//然而并没有优化hhh（有的）
 		
 		selectUtil=new SelectUtil();//TODO 试着把它移到gameview而不是gameviews。
 		

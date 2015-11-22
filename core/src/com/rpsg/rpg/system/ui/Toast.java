@@ -23,6 +23,7 @@ public class Toast extends Group {
 	static{
 		p = new ParticleEffect();
 		p.load(Gdx.files.internal(Setting.PARTICLE+"toast.p"),Gdx.files.internal(Setting.PARTICLE));
+		p.getEmitters().get(0).setAligned(true);
 	}
 	
 	public Toast(String msg, Color color, int fontSize) {
@@ -72,7 +73,7 @@ public class Toast extends Group {
 			proxy = new Actor();
 			proxy.setColor(1,1,1,0);
 			proxy.addAction(Actions.sequence(
-				Actions.delay(.5f),
+				Actions.delay(.35f),
 				Actions.color(new Color(1,1,1,.9f)),
 				Actions.parallel(
 					Actions.scaleTo(2f, 2f,.5f),
@@ -82,7 +83,7 @@ public class Toast extends Group {
 			
 			addAction(Actions.scaleTo(1, 1 ,1.7f,Interpolation.elasticOut));
 			
-			addAction(Actions.sequence(Actions.delay(.5f),Actions.run(new Runnable() {
+			addAction(Actions.sequence(Actions.delay(.1f),Actions.run(new Runnable() {
 				public void run() {
 					p.reset();
 					p.getEmitters().get(0).getTint().setColors(new float[]{1-color.r,1-color.g,1-color.b});

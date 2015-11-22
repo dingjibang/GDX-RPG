@@ -102,12 +102,12 @@ public class SaveView extends HoverView{
 					public void run(HoverView view) {
 						if (currentSelect != -1) {
 							if (SL.save(currentSelect))
-								RPG.putMessage("存档完成。", Color.GREEN);
+								RPG.putMessage("存档完成", Color.GREEN);
 							else
-								RPG.putMessage("存档失败。", Color.RED);
+								RPG.putMessage("存档失败", Color.RED);
 							SaveView.this.generateList();
 						} else {
-							RPG.putMessage("请选择要保存的位置。", Color.YELLOW);
+							RPG.putMessage("请选择要保存的位置", Color.YELLOW);
 							Music.playSE("err");
 						}
 						((HoverView) view).disposed = true;
@@ -137,12 +137,12 @@ public class SaveView extends HoverView{
 					public void run(HoverView view) {
 						if (currentSelect != -1) {
 							if (SL.delete(currentSelect)) {
-								RPG.putMessage("删除档案成功。", Color.GREEN);
+								RPG.putMessage("删除档案成功", Color.GREEN);
 								SaveView.this.generateList();
 							} else
-								RPG.putMessage("删除档案失败。", Color.RED);
+								RPG.putMessage("删除档案失败", Color.RED);
 						} else
-							RPG.putMessage("请选择要删除的档案。", Color.YELLOW);
+							RPG.putMessage("请选择要删除的档案", Color.YELLOW);
 						((HoverView) view).disposed = true;
 					}
 				}));

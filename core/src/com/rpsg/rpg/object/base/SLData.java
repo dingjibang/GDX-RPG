@@ -66,7 +66,13 @@ public class SLData implements Serializable{
 			slData = (SLData) Files.load(fileName);
 			Res.dispose("save/"+id+".png");
 			Gdx.files.local("save").mkdirs();
-			Texture txt = new Texture(Gdx.files.local("save/" + id + ".png"));
+			Texture txt;
+			try {
+				txt = new Texture(Gdx.files.local("save/" + id + ".png"));
+			} catch (Exception e) {
+				txt = new Texture(Gdx.files.internal(Setting.UI_BASE_IMG));
+			}
+				// TODO: handle exception
 			slData.thumbnail=new Image(new TextureRegion(txt,0,txt.getHeight(),txt.getWidth(),-txt.getHeight()));
 			stage.addActor($.add(Res.font.getLabel("LV "+slData.level,30)).setUserObject(new Object()).setWidth(200).setPosition(i>1?280+(i-2)*483:280+i*483, i>1?358:202).setTouchable(null).getItem());
 			stage.addActor($.add(Res.font.getLabel(slData.mapName+","+slData.heroName,18)).setUserObject(new Object()).setWidth(200).setPosition(i>1?280+(i-2)*483:280+i*483, i>1?332:176).setTouchable(null).getItem());

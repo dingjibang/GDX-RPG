@@ -77,7 +77,7 @@ public class UseItemView extends SidebarView {
 					if(success){
 						box.animate();
 					}else{
-						RPG.putMessage("使用失败。", Color.RED);
+						RPG.putMessage("使用失败", Color.RED);
 						Music.playSE("err");
 					}
 					if(_count<=0){
@@ -90,7 +90,7 @@ public class UseItemView extends SidebarView {
 						});
 					}
 				}else{
-					RPG.putMessage("请先选择使用者。", Color.RED);
+					RPG.putMessage("请先选择使用者", Color.RED);
 					Music.playSE("err");
 				}
 			}
