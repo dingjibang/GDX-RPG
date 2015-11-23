@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="48" tileheight="48" nextobjectid="1">
+ <tileset firstgid="1" name="treesv6_0_0" tilewidth="48" tileheight="48" tilecount="126">
+  <image source="treesv6_0_0.png" trans="000000" width="1008" height="288"/>
+  <tile id="21">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="42">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="43">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="44">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="63">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="64">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="65">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="66">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="84">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="85">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="86">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="87">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="105">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="106">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="107">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="108">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="127" name="ground_tiles" tilewidth="48" tileheight="48" tilecount="441">
+  <image source="ground_tiles.png" trans="000000" width="1008" height="1052"/>
+  <terraintypes>
+   <terrain name="草地" tile="44"/>
+   <terrain name="沙子" tile="132"/>
+   <terrain name="石头" tile="274"/>
+  </terraintypes>
+  <tile id="43" terrain="0,0,0,0"/>
+  <tile id="44" terrain="0,0,0,0"/>
+  <tile id="64" terrain="0,0,0,0"/>
+  <tile id="65" terrain="0,0,0,0"/>
+  <tile id="72" terrain="0,0,0,1"/>
+  <tile id="73" terrain="0,0,1,0"/>
+  <tile id="90" terrain="0,0,0,1"/>
+  <tile id="91" terrain="0,0,1,1"/>
+  <tile id="92" terrain="0,0,1,0"/>
+  <tile id="93" terrain="0,1,0,0"/>
+  <tile id="94" terrain="1,0,0,0"/>
+  <tile id="106" terrain="1,1,1,1"/>
+  <tile id="107" terrain="1,1,1,1"/>
+  <tile id="108" terrain="1,1,1,1"/>
+  <tile id="111" terrain="0,1,0,1"/>
+  <tile id="113" terrain="1,0,1,0"/>
+  <tile id="114" terrain="1,1,1,0"/>
+  <tile id="115" terrain="1,1,0,1"/>
+  <tile id="127" terrain="1,1,1,1"/>
+  <tile id="128" terrain="1,1,1,1"/>
+  <tile id="129" terrain="1,1,1,1"/>
+  <tile id="132" terrain="0,1,0,0"/>
+  <tile id="133" terrain="1,1,0,0"/>
+  <tile id="134" terrain="1,0,0,0"/>
+  <tile id="135" terrain="1,0,1,1"/>
+  <tile id="136" terrain="0,1,1,1"/>
+  <tile id="148" terrain="1,1,1,1"/>
+  <tile id="149" terrain="1,1,1,1"/>
+  <tile id="150" terrain="1,1,1,1"/>
+  <tile id="258" terrain="0,0,0,0"/>
+  <tile id="259" terrain="0,0,2,2"/>
+  <tile id="260" terrain="0,0,2,0"/>
+  <tile id="262" terrain="2,0,2,0"/>
+  <tile id="274" terrain="2,2,2,2"/>
+  <tile id="275" terrain="2,2,2,2"/>
+  <tile id="277" terrain="2,0,0,0"/>
+  <tile id="278" terrain="0,2,0,0"/>
+  <tile id="279" terrain="0,2,0,2"/>
+  <tile id="280" terrain="2,2,2,2"/>
+  <tile id="281" terrain="2,2,2,0"/>
+  <tile id="282" terrain="2,2,2,0"/>
+  <tile id="283" terrain="2,2,0,2"/>
+  <tile id="295" terrain="2,2,2,2"/>
+  <tile id="296" terrain="2,2,2,2"/>
+  <tile id="298" terrain="0,0,2,0"/>
+  <tile id="299" terrain="0,0,0,2"/>
+  <tile id="300" terrain="0,2,0,0"/>
+  <tile id="301" terrain="2,2,0,0"/>
+  <tile id="302" terrain="2,0,0,0"/>
+  <tile id="303" terrain="2,0,2,2"/>
+  <tile id="304" terrain="0,2,2,2"/>
+ </tileset>
+ <layer name="regions" width="100" height="100">
+  <properties>
+   <property name="DeleteTiles" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzslRAkAARFGiAEkAqBJIgKVQEgBUMAGWYklACd4+z925zHtV/9SX7nQA4H91Uy+9pH6xDdIwjWqfathrGqdJmhbbLM3TIi0r/2rVKr2l97Qutk3apl36SJ9Vn7XpK+3TIX0X2zGd0jldKv9q1TXd0j09iu0n/aZn7VMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADThD6I0Cys=
+  </data>
+ </layer>
+ <layer name="input_auto" width="100" height="100">
+  <properties>
+   <property name="DeleteTiles" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzssRAVEYhNEbzZDDIAaDFBjlkcAQvC5LAfgX95yqb9Wbbg0A6gxpldbVR/ga0yZt0674C63t05QO6ZhOtXe6d06XNKdr8Zde3NI9PdLzZ1vSK73/fQoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgC58AC+cB7s=
+  </data>
+ </layer>
+ <layer name="output_t0" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztziEOgDAQRNFetiFp4QIth2cECoMD0feSnxVrphQAAOBNve/264q1tNTTno7Hb6SZzq9HAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACwhAszEAPs
+  </data>
+ </layer>
+ <layer name="output_t1" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztzqERADAIBEGqDB3QfwnEILGJ2Z059eYjAACAcW65bPXyCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8E0DfkABFA==
+  </data>
+ </layer>
+ <layer name="output_t2" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztzskJQjEYhdFXhUMDKjg0oD4cGnAES7AKa/cuJeDSuMg58EHgz+J2HQD81iAN0yiNi9skTdOs9qiGzdMiLdOquK3TJm1TX3lXq3Zpnw7pWNxO6Zwu6ZpuVZe16f7xfnz580rPClsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAID/eQOLnAar
+  </data>
+ </layer>
+</map>

@@ -1,0 +1,16 @@
+id=6;
+
+var Association = com.rpsg.rpg.object.base.Association;
+
+imgPath="/walk_renko.png";
+name="宇佐见莲子";
+jname="Usami Renko";
+fgname="renko";
+tag="人类";
+//association=Association.read(4);
+color="d93426cc";
+setProp("hp", 100);
+setProp("maxhp", 100);
+setProp("mp", 100);
+setProp("maxmp", 100);
+setProp("level",1);

@@ -159,10 +159,6 @@ public class MapLoader {
 		//生成远景图
 		RPG.maps.distant=new Distant(RPG.maps.map.getProperties().get("distant"));
 
-		headHeroPointLight=new PointLight(gv.ray,200);
-		headHeroPointLight.setDistance(400);
-		headHeroPointLight.setSoft(true);
-		
 		//设置通用常量
 		mapWidth= (int) (((TiledMapTileLayer) layer.get(0)).getWidth() * ((TiledMapTileLayer) layer.get(0)).getTileWidth());
 		mapHeight= (int) (((TiledMapTileLayer) layer.get(0)).getHeight() * ((TiledMapTileLayer) layer.get(0)).getTileHeight());
@@ -171,14 +167,9 @@ public class MapLoader {
 		
 	}
 
-	PointLight headHeroPointLight;
-	
-	
 	public synchronized void draw(GameView gv){
 		int size=RPG.maps.map.getLayers().getCount();
 		SpriteBatch sb=(SpriteBatch) gv.stage.getBatch();
-		
-		headHeroPointLight.setPosition(RPG.ctrl.hero.getHeadHero().getX()+24,RPG.ctrl.hero.getHeadHero().getY());
 		
 		sb.setProjectionMatrix(gv.camera.combined);
 		

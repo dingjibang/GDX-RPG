@@ -301,6 +301,10 @@ public class Script extends Thread{
 		return Music.playSE(this, musicName);
 	}
 	
+	public BaseScriptExecutor playSE(String musicName,boolean loop){
+		return Music.playSE(this, musicName,loop);
+	}
+	
 	/**
 	 * 立即移除当前脚本自身并换为另一个脚本
 	 * @param script 脚本的class类型

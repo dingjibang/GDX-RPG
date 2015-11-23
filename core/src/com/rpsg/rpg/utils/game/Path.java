@@ -175,6 +175,8 @@ public class Path {
 	private void countF(Point point) {
 		point.f = point.g + point.h;
 	}
+	
+	static int lastGoalX = 0,lastGoalY = 0;
 
 	public static void click(int mouseX, int mouseY) {
 		Vector3 pos = Setting.persistence.softCamera ? new Vector3() : GameViews.gameview.camera.position;
@@ -207,6 +209,12 @@ public class Path {
 
 		int goalX = (int) Math.ceil((pos.x + (mouseX * (1 / GameUtil.getScaleW()) - 512)) / 48f) - 1;
 		int goalY = (int) Math.ceil((pos.y - (mouseY * (1 / GameUtil.getScaleH()) - 288)) / 48f) - 1;
+		
+		if(goalX == lastGoalX && goalY == lastGoalY)
+			return;
+		
+		lastGoalX = goalX;
+		lastGoalY = goalY;
 		
 		int zIndex = RPG.ctrl.hero.getHeadHero().layer;
 		TiledMapTileLayer tileLayer = (TiledMapTileLayer) RPG.maps.loader.layer.get(zIndex);
@@ -245,7 +253,7 @@ public class Path {
 		else if (mapData[goalX][goalY] == 3)
 			color = Color.valueOf("3B5CBD");// blue
 
-		color.a = .2f;
+		color.a = .05f;
 		
 		Hero head = RPG.ctrl.hero.getHeadHero();
 		

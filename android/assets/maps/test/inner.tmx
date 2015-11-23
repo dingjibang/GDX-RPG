@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="19" height="19" tilewidth="48" tileheight="48">
- <tileset firstgid="1" name="shadows" tilewidth="48" tileheight="48">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="19" height="19" tilewidth="48" tileheight="48" nextobjectid="5">
+ <tileset firstgid="1" name="shadows" tilewidth="48" tileheight="48" tilecount="100">
   <image source="shadows.png" width="480" height="480"/>
  </tileset>
- <tileset firstgid="101" name="rpg_maker_vx___princess_room_by_ayene_chan-d5ygs7b" tilewidth="48" tileheight="48">
+ <tileset firstgid="101" name="rpg_maker_vx___princess_room_by_ayene_chan-d5ygs7b" tilewidth="48" tileheight="48" tilecount="112">
   <image source="rpg_maker_vx___princess_room_by_ayene_chan-d5ygs7b.png" width="384" height="672"/>
  </tileset>
- <tileset firstgid="213" name="tile_elements_ii_by_ayene_chan-d4becnf" tilewidth="48" tileheight="48">
+ <tileset firstgid="213" name="tile_elements_ii_by_ayene_chan-d4becnf" tilewidth="48" tileheight="48" tilecount="72">
   <image source="tile_elements_ii_by_ayene_chan-d4becnf.png" width="432" height="384"/>
  </tileset>
- <tileset firstgid="285" name="tilea4wallscyn_750" tilewidth="48" tileheight="48">
+ <tileset firstgid="285" name="tilea4wallscyn_750" tilewidth="48" tileheight="48" tilecount="288">
   <image source="tilea4wallscyn_750.png" width="768" height="886"/>
  </tileset>
- <tileset firstgid="573" name="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6" tilewidth="48" tileheight="48">
+ <tileset firstgid="573" name="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6" tilewidth="48" tileheight="48" tilecount="256">
   <image source="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6.png" width="768" height="768"/>
  </tileset>
- <tileset firstgid="829" name="rpg_maker_vx_ace___kitchen_cabinets_by_ayene_chan-d7l0gdr" tilewidth="48" tileheight="48">
+ <tileset firstgid="829" name="rpg_maker_vx_ace___kitchen_cabinets_by_ayene_chan-d7l0gdr" tilewidth="48" tileheight="48" tilecount="72">
   <image source="rpg_maker_vx_ace___kitchen_cabinets_by_ayene_chan-d7l0gdr.png" width="384" height="432"/>
  </tileset>
- <tileset firstgid="901" name="rpg_maker_vx___stairs_by_ayene_chan-d6vzlkv" tilewidth="48" tileheight="48">
+ <tileset firstgid="901" name="rpg_maker_vx___stairs_by_ayene_chan-d6vzlkv" tilewidth="48" tileheight="48" tilecount="48">
   <image source="rpg_maker_vx___stairs_by_ayene_chan-d6vzlkv.png" width="414" height="312"/>
  </tileset>
- <tileset firstgid="949" name="rpg_maker_vx___flowers_and_pots_by_ayene_chan-d7kq66n" tilewidth="48" tileheight="48">
+ <tileset firstgid="949" name="rpg_maker_vx___flowers_and_pots_by_ayene_chan-d7kq66n" tilewidth="48" tileheight="48" tilecount="117">
   <image source="rpg_maker_vx___flowers_and_pots_by_ayene_chan-d7kq66n.png" width="624" height="432"/>
  </tileset>
- <tileset firstgid="1066" name="glo" tilewidth="48" tileheight="48">
+ <tileset firstgid="1066" name="glo" tilewidth="48" tileheight="48" tilecount="4">
   <image source="glo.png" width="96" height="96"/>
  </tileset>
- <tileset firstgid="1070" name="request_march_by_nicnubill-d7a6dq7" tilewidth="48" tileheight="48">
+ <tileset firstgid="1070" name="request_march_by_nicnubill-d7a6dq7" tilewidth="48" tileheight="48" tilecount="256">
   <image source="request_march_by_nicnubill-d7a6dq7.png" width="768" height="768"/>
  </tileset>
  <layer name="块层 1" width="19" height="19">
@@ -46,7 +46,7 @@
   </data>
  </layer>
  <objectgroup name="对象层 2">
-  <object name="PUBLIC" type="NPC" gid="1066" x="816" y="288" width="48" height="48">
+  <object id="1" name="PUBLIC" type="NPC" gid="1066" x="816" y="288" width="48" height="48">
    <properties>
     <property name="FOOT_EXECUTE" value="com.rpsg.rpg.core.RPG.setFlag(&quot;11isVisitedTwoFloor&quot;,true);teleport(&quot;twofloor&quot;,2,6,2);"/>
    </properties>
@@ -54,16 +54,16 @@
  </objectgroup>
  <layer name="块层 2" width="19" height="19">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+NlYmDgpSKWRcJPgfgZmhgyFmVmYBADYnFmVHGYWXJQrACU/wqkvyGJLQfiFUC8EspXBapRA2J1ZoQaOSSzqAFoYZYt0L1+QOwLxCXM1HNXDRazekHhCwofIJbHIj+VmXiz5hIRDqSE1zkmBKbULGq6i5pmgdS9ZcSdH2RxmAXSI8GKUPOOEaLuLyNqWkfH6GYtYYCIK0PjsxyIKxiIcz8uNcbMxKkjVQ2lZpHjLnzxgi5PCOCLGxBA5+MDALXZX/ekBQAA
+   H4sIAAAAAAAAC+NlYmDgpSKWRcJPgfgZmhgyFmVmYBADYnFmVHGYWXJQrACU/wqkvyGJLQfiFUC8EspXBapRA2J1ZoQaOSSzqAFoYZYt0L1+QOwLxCXM1HNXDRazekHhCwofIJbHIj+VmXiz5hIRDqSE1zkmBKbULGq6i5pmgdS9ZYSkcRDAliewmQXSI8GKUPOOEaLuLyMkjYMAcppHTvvIYAlUnTI0PsuBuIKBOPfjUmPMTJw6UtVQahY57sJVTmGLL0IAFjfYMAig8/EBAG/jv8ykBQAA
   </data>
  </layer>
  <objectgroup name="对象层 1">
-  <object name="PUBLIC" type="NPC" gid="1066" x="624" y="144" width="48" height="48">
+  <object id="2" name="PUBLIC" type="NPC" gid="1066" x="624" y="144" width="48" height="48">
    <properties>
     <property name="Z_EXECUTE" value="say(&quot;人类为何要互相伤害呢？\n回车测试？&quot;)"/>
    </properties>
   </object>
-  <object name="PUBLIC" type="NPC" gid="1066" x="336" y="720" width="48" height="64">
+  <object id="3" name="PUBLIC" type="NPC" gid="1066" x="336" y="720" width="48" height="64">
    <properties>
     <property name="AUTO_SCRIPT" value="s0-3.js"/>
     <property name="ID" value="1"/>
@@ -73,7 +73,7 @@
     <property name="Z_SCRIPT" value="test.js"/>
    </properties>
   </object>
-  <object name="PUBLIC" type="NPC" gid="1066" x="624" y="672" width="48" height="48">
+  <object id="4" name="PUBLIC" type="NPC" gid="1066" x="624" y="672" width="48" height="48">
    <properties>
     <property name="NEAR_EXECUTE" value="teleport(&quot;broom&quot;,0,1,2);"/>
    </properties>

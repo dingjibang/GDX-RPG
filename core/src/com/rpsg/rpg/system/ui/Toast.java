@@ -23,7 +23,7 @@ public class Toast extends Group {
 	static{
 		p = new ParticleEffect();
 		p.load(Gdx.files.internal(Setting.PARTICLE+"toast.p"),Gdx.files.internal(Setting.PARTICLE));
-		p.getEmitters().get(0).setAligned(true);
+		p.getEmitters().get(0).setAligned(true);//并没有卵用？！
 	}
 	
 	public Toast(String msg, Color color, int fontSize) {

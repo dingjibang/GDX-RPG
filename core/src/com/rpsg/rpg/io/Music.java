@@ -42,7 +42,15 @@ public class Music {
 	public static BaseScriptExecutor playSE(Script script, final String se) {
 		return script.set(new BaseScriptExecutor() {
 			public void init() {
-				playSE(se);
+				playSE(se,false);
+			}
+		});
+	}
+	
+	public static BaseScriptExecutor playSE(Script script, final String se,final boolean loop) {
+		return script.set(new BaseScriptExecutor() {
+			public void init() {
+				playSE(se,loop);
 			}
 		});
 	}
@@ -52,7 +60,11 @@ public class Music {
 			MUSIC.stop();
 	}
 
-	public static void playSE(String name) {
+	public static void playSE(String name){
+		playSE(name,false);
+	}
+	
+	public static void playSE(String name,boolean loop) {
 		if(name.indexOf(".")<0)
 			name += ".wav";
 		
@@ -62,6 +74,8 @@ public class Music {
 		}
 		se.get(name).setId(se.get(name).getSound().play());
 		se.get(name).setVolume(0.7f);
+		
+			se.get(name).getSound().setLooping(se.get(name).getId(), loop);
 	}
 
 	public static BaseScriptExecutor stopAllSE(Script script, final float time) {
