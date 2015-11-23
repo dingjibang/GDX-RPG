@@ -212,7 +212,7 @@ public class Path {
 		
 		if(goalX == lastGoalX && goalY == lastGoalY)
 			return;
-		
+//		
 		lastGoalX = goalX;
 		lastGoalY = goalY;
 		
@@ -257,9 +257,6 @@ public class Path {
 		
 		Hero head = RPG.ctrl.hero.getHeadHero();
 		
-		List<Image> imgPoints = new ArrayList<>();
-		
-		//x24 y20
 		//mapdata=x[y]
 		List<Point> results = new Path(mapData).search(head.mapx, height-head.mapy-1, goalX, goalY);
 		
@@ -273,15 +270,8 @@ public class Path {
 					Point nextPoint=results.get(i+1);
 					stack.add(new MoveStack(MoveStack.calcFace(point.x, point.y, nextPoint.x, nextPoint.y), 1));
 				}
-				imgPoints.add((Image) $.add(Res.get(Setting.UI_BASE_IMG)).setSize(48,48).setColor(color).setPosition(point.x*48, point.y*48).getItem());
 			}
 			RPG.ctrl.hero.pushStack(stack);
-		}
-		
-		
-		if(imgPoints.size()>2){
-			imgPoints.remove(imgPoints.size()-1);
-			imgPoints.remove(0);
 		}
 		
 		final Image end = Res.get(Setting.IMAGE_GLOBAL + "path.png").color(color);
@@ -294,8 +284,6 @@ public class Path {
 			}
 		}))));
 
-		imgPoints.add(end);
-		RPG.maps.loader.putPath(imgPoints);
-
+		RPG.maps.loader.putPath(end);
 	}
 }

@@ -21,7 +21,9 @@ public class HeroController {
 	
 	public ArrayList<MoveStack> stack = new ArrayList<>();
 	
-	public void pushStack(ArrayList<MoveStack> stack){
+	public boolean show = true;
+	
+	public synchronized void pushStack(ArrayList<MoveStack> stack){
 		this.stack=stack;
 	}
 	
@@ -32,21 +34,19 @@ public class HeroController {
 		return list;
 	}
 	
-	public void act(){
-		for(Hero hero:currentHeros)
-			hero.act(0);
+	public synchronized void act(){
 		if(walked(false) && !stack.isEmpty()){
 			MoveStack last=stack.get(0);
 			stack.remove(0);
-			RPG.maps.loader.removePath();
-			turn(last.face);
-			walk(last.step,false).testWalk();
+			turn(last.face).walk(last.step,false).testWalk();
 		}
+		
+		for(Hero hero:currentHeros)
+			hero.act(0);
 	}
 	
 	public void stopStack(){
 		stack.clear();
-		RPG.maps.loader.removeAllPath();
 	}
 	
 	public Hero getHeadHero(){
@@ -187,9 +187,10 @@ public class HeroController {
 		return this;
 	}
 	
-	public void testWalk(){
+	public HeroController testWalk(){
 		for(Hero hero:currentHeros)
 			hero.testWalk();
+		return this;
 	}
 	
 	public boolean walked(){

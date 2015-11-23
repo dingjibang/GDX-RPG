@@ -61,6 +61,7 @@ public class Move {
 				RPG.global.y = y;
 				RPG.global.z = z;
 				RPG.ctrl.thread.pool.clear();
+				RPG.global.npcs.clear();
 				Initialization.restartGame();
 				RPG.ctrl.hero.reinitByTeleport();
 			}

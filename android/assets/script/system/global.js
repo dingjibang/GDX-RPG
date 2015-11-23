@@ -138,6 +138,5 @@ item.put(1);
 
 //HERO INIT
 RPG.ctrl.hero.add(1);
-RPG.ctrl.hero.add(5);
-RPG.ctrl.hero.add(3);
-RPG.ctrl.hero.add(4);
+RPG.ctrl.hero.add(6);
+RPG.ctrl.hero.add(7);

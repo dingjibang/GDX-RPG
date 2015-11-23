@@ -26,7 +26,7 @@ public class Global implements Serializable {
 	
 	// 地图相关
 	public ArrayList<NPC> npcs = new ArrayList<>();
-	//heros 为 所有的hero（被初始化的、有数据的），而currentHeros为当前【队列】里的hero。
+	//allHeros 为 所有的hero（被初始化的、有数据的），而currentHeros为当前【队列】里的hero。
 	public ArrayList<Hero> currentHeros = new ArrayList<>();
 	public ArrayList<Hero> allHeros = new ArrayList<>();
 	public ArrayList<Hero> support = new ArrayList<>();

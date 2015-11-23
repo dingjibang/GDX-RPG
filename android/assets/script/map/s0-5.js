@@ -1,22 +1,12 @@
 eval(""+load('global.js'));
-setKeyLocker(true);
-showMSG(MsgType.莲子);
-say("嗯……就是这里了么","莲子");
-setCameraPositionWithHero(0, -90, true);
-showMSG(MsgType.莲子);
-say("这张符咒，看起来很旧了，这个神社到底荒废了多久呢","莲子");
-showMSG(MsgType.梅莉);
-say("贴在门上感觉像是要封印什么东西一样……","梅莉");
-say("想要调查神社里面的话，就要撕掉这个符咒……感觉很不祥啊……","梅莉");
-hideMSG();
-setCameraPositionWithHero(0, 0, true);
-pause(30);
-playSE("tear");
-showMSG(MsgType.莲子);
-say("诶诶诶诶诶！！","莲子");
-setCameraPositionWithHero(0, -90, true);
-say("有栖你下手太快了吧！万一真的发生了什么怎么办！","莲子");
-
-faceTo(getNPC("6"),4);
-setKeyLocker(false);
-end();
+if(RPG.getFlag("1-1-shrine") == null){
+	var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).setAlpha(0).getItem();
+	CG.push(black);
+	black.addAction(Actions.sequence(Actions.fadeIn(.5),Actions.run(function(){
+	})));
+	pause(60);
+	RPG.setFlag("1-1-shrine",true);
+	teleport("shrine.tmx",11,13,3);
+	CG.disposeAll();
+	end();
+}

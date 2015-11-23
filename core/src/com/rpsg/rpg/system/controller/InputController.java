@@ -107,8 +107,7 @@ public class InputController{
 		}
 		case NORMAL:{
 			if(GameViews.gameview.inited && GameViews.gameview.renderable){
-				if((!PostUtil.touchDragged( screenX,  screenY,  pointer)) && Setting.persistence.pathFind)//如果没点到屏幕的UI，则自动移动
-					Path.click(screenX, screenY);
+				PostUtil.touchDragged( screenX,  screenY,  pointer);
 			}
 			break;
 		}

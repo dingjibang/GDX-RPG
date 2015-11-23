@@ -27,6 +27,7 @@ import com.rpsg.rpg.game.hero.Marisa;
 import com.rpsg.rpg.game.hero.Reimu;
 import com.rpsg.rpg.game.hero.Yuuka;*/
 import com.rpsg.rpg.object.rpg.CollideType;
+import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
 import com.rpsg.rpg.object.rpg.RPGObject;
@@ -44,7 +45,6 @@ public class MapLoader {
 	public List<RPGObject> drawlist=new ArrayList<RPGObject>();
 	public MapLayers layer ;
 	public void load(GameView gv){
-		removeAllPath();
 		
 		RPG.ctrl.hero.initHeros(gv.stage);
 		
@@ -95,6 +95,7 @@ public class MapLoader {
 								.newInstance(obj.getProperties().get("IMAGE")+".png",w,h);
 							else{
 								String imgPath=(String) obj.getProperties().get("IMAGE");
+								System.out.println(imgPath);
 								imgPath=imgPath==null?"empty":imgPath;
 								npc=new PublicNPC((String) obj.getProperties().get("ID"),imgPath+".png",w,h);
 							}
@@ -188,8 +189,10 @@ public class MapLoader {
 			for(Actor a:gv.stage.getActors()){
 				if(a instanceof RPGObject){
 					RPGObject c = (RPGObject)a;
-					if(c.layer==i-skip)
+					if(c.layer==i-skip && !(!RPG.ctrl.hero.show && c instanceof Hero && c != RPG.ctrl.hero.getHeadHero()))
 						drawlist.add(c);
+					
+					
 				}
 			}
 			
@@ -207,31 +210,18 @@ public class MapLoader {
 		
 		sb.begin();
 		
-		for(Image path:points)
-			path.actAndDraw(sb);
 		if(lastPoint!=null)
 			lastPoint.actAndDraw(sb);
 		sb.end();
 	}
 	
-	private List<Image> points = new ArrayList<>();
 	private Image lastPoint;
 	
-	public void putPath(List<Image> points){
-		this.points=points;
-	}
-	
 	public void removePath(){
-		if(!points.isEmpty()){
-			lastPoint=points.get(0);
-			points.remove(0);
+		if(lastPoint!=null)
 			lastPoint.addAction(Actions.fadeOut(0.2f));
-		}
 	}
 	
-	public void removeAllPath(){
-		points.clear();
-	}
 	
 	public void logic(GameView gv){
 	}
@@ -246,5 +236,9 @@ public class MapLoader {
 			if(a instanceof NPC)
 				list.add((NPC)a);
 		return list;
+	}
+
+	public void putPath(Image end) {
+		lastPoint = end;
 	}
 }
