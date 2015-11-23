@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="7" height="7" tilewidth="48" tileheight="48">
- <tileset firstgid="1" name="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6" tilewidth="48" tileheight="48">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="7" height="7" tilewidth="48" tileheight="48" nextobjectid="2">
+ <tileset firstgid="1" name="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6" tilewidth="48" tileheight="48" tilecount="256">
   <image source="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6.png" width="768" height="768"/>
  </tileset>
- <tileset firstgid="257" name="tile_elements_ii_by_ayene_chan-d4becnf" tilewidth="48" tileheight="48">
+ <tileset firstgid="257" name="tile_elements_ii_by_ayene_chan-d4becnf" tilewidth="48" tileheight="48" tilecount="72">
   <image source="tile_elements_ii_by_ayene_chan-d4becnf.png" width="432" height="384"/>
  </tileset>
- <tileset firstgid="329" name="tilea4wallscyn_750" tilewidth="48" tileheight="48">
+ <tileset firstgid="329" name="tilea4wallscyn_750" tilewidth="48" tileheight="48" tilecount="288">
   <image source="tilea4wallscyn_750.png" width="768" height="886"/>
  </tileset>
- <tileset firstgid="617" name="rpg_maker_vx__modernrtp_tileb_by_painhurt-d3f7sii" tilewidth="48" tileheight="48">
+ <tileset firstgid="617" name="rpg_maker_vx__modernrtp_tileb_by_painhurt-d3f7sii" tilewidth="48" tileheight="48" tilecount="256">
   <image source="rpg_maker_vx__modernrtp_tileb_by_painhurt-d3f7sii.png" width="768" height="768"/>
  </tileset>
- <tileset firstgid="873" name="rpg_maker_vx___carpets_autotiles_by_ayene_chan-d5og8bo" tilewidth="48" tileheight="48">
+ <tileset firstgid="873" name="rpg_maker_vx___carpets_autotiles_by_ayene_chan-d5og8bo" tilewidth="48" tileheight="48" tilecount="72">
   <image source="rpg_maker_vx___carpets_autotiles_by_ayene_chan-d5og8bo.png" width="576" height="288"/>
  </tileset>
- <tileset firstgid="945" name="glo" tilewidth="48" tileheight="48">
+ <tileset firstgid="945" name="glo" tilewidth="48" tileheight="48" tilecount="4">
   <image source="glo.png" width="96" height="96"/>
  </tileset>
  <layer name="块层 1" width="7" height="7">
@@ -34,9 +34,9 @@
   </data>
  </layer>
  <objectgroup name="对象层 1">
-  <object name="PUBLIC" type="NPC" gid="945" x="0" y="0" width="48" height="81">
+  <object id="1" name="PUBLIC" type="NPC" gid="945" x="0" y="0" width="48" height="81">
    <properties>
-    <property name="NEAR_EXECUTE" value="teleport(&quot;inner&quot;,18,12,3)"/>
+    <property name="NEAR_EXECUTE" value="teleport(&quot;inner&quot;,13,10,3)"/>
    </properties>
   </object>
  </objectgroup>
