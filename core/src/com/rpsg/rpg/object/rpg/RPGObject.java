@@ -54,7 +54,7 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	public List<MoveStack> walkStack=new ArrayList<MoveStack>(); 
 	
 	public boolean drawShadow = false;
-	static Image shadow=Res.get(Setting.IRPGOBJECT_SHADOW);
+	static Image shadow=Res.get(Setting.RPGOBJECT_SHADOW);
 	
 	
 	

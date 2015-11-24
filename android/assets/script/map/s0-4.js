@@ -5,7 +5,9 @@ var mari = getNPC("17");
 var monster = getNPC("21");
 
 renko.setVisible(false);
+renko.enableCollide = false;
 mari.setVisible(false);
+mari.enableCollide = false;
 monster.setVisible(false);
 monster.enableCollide = false;
 
@@ -86,7 +88,6 @@ if(RPG.getFlag("1-1-shrine")!=null){
 	playSE("opendoor");
 	faceTo(10);
 	monster.setColor(0,0,0,1);
-	monster.addAction(Actions.color(new Color(1,1,1,1),2));
 	monster.setVisible(true);
 	//TODO let the monster hide
 	setCameraPositionWithHero(0, 30, false);
@@ -96,6 +97,7 @@ if(RPG.getFlag("1-1-shrine")!=null){
 	RPG.maps.loader.getLight(51).light.setDistance(0);
 	pause(40);
 	say("……发生的","梅莉");
+	//monster.addAction(Actions.color(new Color(1,1,1,1),2));
 	hideMSG();
 	setKeyLocker(false);
 	

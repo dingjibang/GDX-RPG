@@ -2,7 +2,6 @@ package com.rpsg.rpg.system.controller;
 
 import com.badlogic.gdx.Input.Keys;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.io.SL;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.base.IOMode.MapInput;
 import com.rpsg.rpg.utils.display.PostUtil;
@@ -27,9 +26,6 @@ public class InputController{
 		tmpIO=null;
 	}
 	public static boolean keyDown(int keycode,GameView gv) {
-		if(keycode==Keys.L){
-			SL.save(0);
-		}
 		switch(currentIOMode){
 		case NORMAL:{
 			if(keycode==Keys.ESCAPE || keycode==Keys.X){

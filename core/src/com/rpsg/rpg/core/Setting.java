@@ -76,6 +76,6 @@ public class Setting {
 		UI_TOAST = new NinePatchDrawable(GameUtil.processNinePatchFile(Setting.IMAGE_MENU_GLOBAL + "toast_box.png",2,2,1,1,5,5,5,5));
 	}
 
-	public static final String IRPGOBJECT_SHADOW = Setting.WALK + "walk_shadow.png";
+	public static final String RPGOBJECT_SHADOW = Setting.WALK + "walk_shadow.png";
 
 }
