@@ -161,6 +161,8 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	private int fixTime=0;
 	@Override
 	public void act(float f) {
+		super.act(f);
+		
 		if (isStop() && lastlength++ > 5)
 			foot = 0;
 		//帧数补偿

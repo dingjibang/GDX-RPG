@@ -20,7 +20,7 @@ public abstract class DefaultNPC extends NPC {
 	}
 
 	@Override
-	public void toCollide(ScriptCollide sc) {
+	public synchronized void toCollide(ScriptCollide sc) {
 		if (sc.collideType != CollideType.auto)
 			Logger.info("碰撞模块触发[" + sc + "]");
 		if (!isScriptRunning() && scripts.get(sc.collideType) != null)

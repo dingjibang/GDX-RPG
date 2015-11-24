@@ -31,7 +31,7 @@ pause(60);
 faceTo(RPGObject.FACE_R);
 faceTo(renko, RPGObject.FACE_R);
 
-setBalloon(Arisu, BalloonType.沉默);
+setBalloon(1, BalloonType.沉默);
 pause(60);
 showMSG(MsgType.莲子);
 say("啊啊！真是的！为什么我们大学总是要在愚人节这天开学啊！","？？？");
@@ -128,7 +128,7 @@ hideMSG();
 faceTo(RPGObject.FACE_R);
 faceTo(renko,RPGObject.FACE_U);
 showMSG(MsgType.莲子);
-say("诶，梅莉你看到什么了吗？","宇佐见莲子");
+say("诶，梅莉你看到什么了吗？","莲子");
 faceTo(renko,RPGObject.FACE_R);
 say("啊……有栖同学","宇佐见莲子");
 say("这位是梅莉，也是秘封俱乐部的另一位成员啦","莲子");

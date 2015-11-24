@@ -28,8 +28,8 @@ public class DesktopLauncher {
         
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		boolean debug=false;//如果开启debug模式，窗口小一半，没太多意义233
-		config.width=(int) (1024/(debug?1.5f:1));
-		config.height=(int) (576/(debug?1.5f:1));
+		config.width=(int) (1024/(debug?2f:1));
+		config.height=(int) (576/(debug?2f:1));
 //      config.backgroundFPS=config.foregroundFPS=40;
         Gdx.files=new LwjglFiles();
         Setting.persistence = Persistence.read();//读取配置文件

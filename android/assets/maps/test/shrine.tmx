@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="50" tilewidth="48" tileheight="48" nextobjectid="17">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="50" tilewidth="48" tileheight="48" nextobjectid="22">
  <tileset firstgid="1" name="shadows" tilewidth="48" tileheight="48" tilecount="100">
   <image source="shadows.png" trans="000000" width="480" height="480"/>
  </tileset>
@@ -194,7 +194,7 @@
  </layer>
  <layer name="t1" width="25" height="50">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAXEgnAWBoYUCnAYC2E74olQgw/EEWnHA2YGhofMuOlHzKh6kMWJtYMbiHnwYA4g5kTCXFBxXhbi7RAGYhE8WACIBZGwEFRclAQ7pIFYBg8WQDNHCCouS4IdCkCsiAdLoJkjBRVXItKOGCLTaCrUrGQ08VggPk1h2hwFtAHHmQmrGclgKTDdLsOSds3whBsoTE2JDNdzSGafH2Z5ZKSnLVz+JzZtDEewHej3HWT6f7imJ2zpgZg08gOtvPgD5Q+Huha9fMWVbnClieGaVnABSv07lMqkwR639AxLUspTSsregQaDPX0O9jRJC0ANP9MyTVKaZoZKnAIAdtIatIgTAAA=
+   H4sIAAAAAAAAC2NgGAXEgnAWBoYUCnAYC2E74olQgw/EEWnHA2YGhofMuOlHzKh6kMWJtYMbiHnwYA4g5kTCXFBxXhbi7RAGYhE8WACIBZGwEFRclAQ7pIFYBg8WQDNHCCouS4IdCkCsiAdLoJnDygARVyLSjhgi02gq1KxkNPFYCtMlDJxmwc8fBaSD48yE1YxksBSYxpZhSWdmeMINFKamRIbrOSSzzw+z9DzS0xYu/xObNoYj2A70+w4y/T9c0xO29EBMGvmBVl78gfKHQ72IXr7iSje40sRwTSu4AKX+HUpl0mCPW3qGJSnlKSVl70CDwZ4+B3uapAWghp9pmSYpTTNDJU4BnH/aAogTAAA=
   </data>
  </layer>
  <objectgroup name="对象层 1">
@@ -203,22 +203,15 @@
     <property name="STRENGTH" value="200"/>
    </properties>
   </object>
-  <object id="2" name="PUBLIC" type="LIGHT" gid="1280" x="816" y="528" width="48" height="48">
+  <object id="2" name="PUBLIC" type="LIGHT" gid="1280" x="624" y="576" width="48" height="48">
    <properties>
-    <property name="STRENGTH" value="200"/>
+    <property name="ID" value="51"/>
+    <property name="STRENGTH" value="300"/>
    </properties>
   </object>
   <object id="4" name="PUBLIC" type="NPC" gid="1280" x="528" y="480" width="48" height="48">
    <properties>
     <property name="Z_SCRIPT" value="s0-5.js"/>
-   </properties>
-  </object>
-  <object id="6" name="PUBLIC" type="NPC" gid="1280" x="480" y="480" width="144" height="96">
-   <properties>
-    <property name="AUTO_SCRIPT" value="s0-4.js"/>
-    <property name="ID" value="6"/>
-    <property name="IMAGE" value="door2"/>
-    <property name="LOCK" value="true"/>
    </properties>
   </object>
   <object id="9" name="PUBLIC" type="NPC" gid="1280" x="540" y="1440" width="48" height="48">
@@ -241,10 +234,42 @@
     <property name="Z_SCRIPT" value="s0-7.js"/>
    </properties>
   </object>
+  <object id="17" name="PUBLIC" type="NPC" gid="1280" x="480" y="720" width="48" height="64">
+   <properties>
+    <property name="ID" value="17"/>
+    <property name="IMAGE" value="walk_mari"/>
+   </properties>
+  </object>
+  <object id="18" name="PUBLIC" type="NPC" gid="1280" x="480" y="480" width="144" height="96">
+   <properties>
+    <property name="AUTO_SCRIPT" value="s0-4.js"/>
+    <property name="ID" value="6"/>
+    <property name="IMAGE" value="door2"/>
+    <property name="LOCK" value="true"/>
+   </properties>
+  </object>
+  <object id="19" name="PUBLIC" type="NPC" gid="1280" x="576" y="720" width="48" height="64">
+   <properties>
+    <property name="ID" value="19"/>
+    <property name="IMAGE" value="walk_renko"/>
+   </properties>
+  </object>
+  <object id="20" name="PUBLIC" type="LIGHT" gid="1280" x="432" y="576" width="48" height="48">
+   <properties>
+    <property name="ID" value="50"/>
+    <property name="STRENGTH" value="300"/>
+   </properties>
+  </object>
+  <object id="21" name="PUBLIC" type="NPC" gid="1280" x="528" y="480" width="48" height="64">
+   <properties>
+    <property name="ID" value="21"/>
+    <property name="IMAGE" value="walk_renko"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="t2" width="25" height="50">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2XS07DMBCGLcXAmXoMliw5BdAeACoBvUChorDrilcqNoCEBGLHDXguCnTBoxt2/SvFIoo89oybSJbaX/oU1XHGntHvSarUXBItax62uVytaB4NyxhXq5qHbW6ZSvQ/5ndsWsCeFh0sWfZMjYeoV4hTs8S9ibBuodpMlNoCzaS6NdqIvQf2QaeidY4R9wScgjNwXmE+j4h974gvrWma81Of6S1pTS+zuNe4XjHXkNb0Nov7gOudltXBV1NKMXsr5GxJ6xBz/jat4dl1sAHqljiu/Ln13Mb9HbALWsK9cut5gHtdcAiOhGtw65nmxi+IOU84Z8/gBbyCt8LZDj1XeQ0Q8x18gE8wrOD994WY3+AH/IJRtoZ511K+oTxBjf859k75hvJEyNmjfEN5guuVfL4+31Ce8Hklll5T1jeLK99YcvXJ10+NTK6cuUVJ+mlo75X009Dey+mnIXMnmsXv6Glz5niyjJx9nqRyluTH9WSx50jyk3rSKKb/RjFoDDKpLH6IEwAA
+   H4sIAAAAAAAAC+2XTU7DMBCFI8XAHbhJj8GSJafg7wAFiZ8LUBClu65KSxAbQEICseMGpcACaBdA2bDjIcVqFHnsGTdGluBJn6o47tgzfZ6kSfIviRYUD9NcrhYVj3XDGFdLiodpbpVK1QR9HZtmsKdZC3OGPVPjPmqX4tRwPR+gTlfKfv1bqqdJsgE203Br7CF2A+yDg0DrdBD3GHRBD5wEzKeP2LeW+NKaZoXf/pTpA2lNz/O4l/i8YK4hrel1HvcOnzdKVgdXTSnF7C2fsyWtQ8z5m7SM766AVbBmiGPLn1vPLdzfBjtgV7hXbj0Pca8JjkBLuAa3nllh/IyYc49zNgAP4BE8lc6277kq6hkxX8ArGIJRgGfVG2K+gw8wBp/5Gvq5SPmG8gQ1/mXZO+UbyhM+Z4/yDeUJrleK+bp8Q3nC5ZVYek1V7yy2fGPJ1SVXP9XSuXLmliXpp769V9JPfXsvp5/6zP3RX3yPnjZnjieryNnlSSpnSX5cT5Z7jiQ/qSe1YvpvFIO+AfNUTsuIEwAA
   </data>
  </layer>
  <layer name="块层 6" width="25" height="50">

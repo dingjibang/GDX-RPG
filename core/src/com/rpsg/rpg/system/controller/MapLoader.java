@@ -21,17 +21,13 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
-/*import com.rpsg.rpg.game.hero.Arisu;
-import com.rpsg.rpg.game.hero.Flandre;
-import com.rpsg.rpg.game.hero.Marisa;
-import com.rpsg.rpg.game.hero.Reimu;
-import com.rpsg.rpg.game.hero.Yuuka;*/
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
 import com.rpsg.rpg.object.rpg.RPGObject;
 import com.rpsg.rpg.object.script.Script;
+import com.rpsg.rpg.system.base.Light;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
@@ -42,9 +38,11 @@ public class MapLoader {
 	
 	public int mapWidth,mapHeight;
 	
-	public List<RPGObject> drawlist=new ArrayList<RPGObject>();
-	public MapLayers layer ;
+	public List<RPGObject> drawlist=new ArrayList<>();
+	private List<Light> lights = new ArrayList<>();
+	public MapLayers layer;
 	public void load(GameView gv){
+		clearLights();
 		
 		RPG.ctrl.hero.initHeros(gv.stage);
 		
@@ -65,6 +63,8 @@ public class MapLoader {
 					int h = obj.getProperties().get("height",Float.class).intValue();
 					pl.setDistance(Float.parseFloat((String)obj.getProperties().get("STRENGTH")));
 					pl.setPosition((int)(((TiledMapTileMapObject)obj).getX()+24),(int)(((TiledMapTileMapObject)obj).getY()+h+24));
+					Object id = obj.getProperties().get("ID");
+					addLight(id==null?null:Integer.valueOf(id.toString()), pl);
 				}
 			}
 		}
@@ -95,7 +95,6 @@ public class MapLoader {
 								.newInstance(obj.getProperties().get("IMAGE")+".png",w,h);
 							else{
 								String imgPath=(String) obj.getProperties().get("IMAGE");
-								System.out.println(imgPath);
 								imgPath=imgPath==null?"empty":imgPath;
 								npc=new PublicNPC((String) obj.getProperties().get("ID"),imgPath+".png",w,h);
 							}
@@ -163,11 +162,26 @@ public class MapLoader {
 		//设置通用常量
 		mapWidth= (int) (((TiledMapTileLayer) layer.get(0)).getWidth() * ((TiledMapTileLayer) layer.get(0)).getTileWidth());
 		mapHeight= (int) (((TiledMapTileLayer) layer.get(0)).getHeight() * ((TiledMapTileLayer) layer.get(0)).getTileHeight());
-
 		Logger.info("地图模块已全部加载完成。");
 		
 	}
-
+	
+	public void clearLights(){
+		lights.clear();
+	}
+	
+	public Light getLight(int id){
+		for(Light l : lights){
+			if(l.id!=null && id == l.id)
+				return l;
+		}
+		return null;
+	}
+	
+	private void addLight(Integer id,box2dLight.Light light){
+		lights.add(new Light(id,light));
+	}
+	
 	public synchronized void draw(GameView gv){
 		int size=RPG.maps.map.getLayers().getCount();
 		SpriteBatch sb=(SpriteBatch) gv.stage.getBatch();
@@ -191,8 +205,6 @@ public class MapLoader {
 					RPGObject c = (RPGObject)a;
 					if(c.layer==i-skip && !(!RPG.ctrl.hero.show && c instanceof Hero && c != RPG.ctrl.hero.getHeadHero()))
 						drawlist.add(c);
-					
-					
 				}
 			}
 			

@@ -17,7 +17,7 @@ import com.rpsg.rpg.utils.game.Logger;
  */
 public class ThreadPool {
 
-	public List<List<Script>> pool =new LinkedList<List<Script>>();
+	public volatile List<List<Script>> pool =new LinkedList<List<Script>>();
 	 
 	private List<Script> removeList=new ArrayList<Script>();
 	public synchronized void logic(){

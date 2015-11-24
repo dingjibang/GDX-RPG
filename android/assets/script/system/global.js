@@ -7,10 +7,10 @@ var item = RPG.ctrl.item;
 var GameDate = com.rpsg.rpg.utils.game.GameDate;
 
 //初始地图
-map = "test/test.tmx";
+map = "test/subway.tmx";
 x=3;
 y=2;
-z=2;
+z=1;
 
 map = "test/shrine.tmx";x=11;y=12;z=3;
 

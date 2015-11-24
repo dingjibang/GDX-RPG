@@ -5,7 +5,7 @@ if(RPG.getFlag("11inner")!=null){
 	
 	Hero.turn(RPGObject.FACE_U);
 	var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
-	black.addAction(Actions.sequence(Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(black)})));	
+	black.addAction(Actions.sequence(Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(black);})));	
 	CG.push(black);
 	
 	PostUtil.showMenu=false;
@@ -27,14 +27,14 @@ if(RPG.getFlag("11inner")!=null){
 	tip1.addAction(Actions.color(new Color(1,1,1,1),0.3));
 	CG.push(tip1);
 	say("   ");
-	tip1.addAction(Actions.sequence(Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(tip1)})));
+	tip1.addAction(Actions.sequence(Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(tip1);})));
 	pause(30);
 
 	tip2 = tip2.setColor(new Color(1,1,1,0)).setPosition((GameUtil.screen_width/2-793/2), (GameUtil.screen_height/2-500/2)).getItem().oranCenter();
 	tip2.addAction(Actions.color(new Color(1,1,1,1),0.3));
 	CG.push(tip2);
 	say("   ");
-	tip2.addAction(Actions.sequence(Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(tip2)})));
+	tip2.addAction(Actions.sequence(Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(tip2);})));
 	
 	setKeyLocker(false);
 	PostUtil.showMenu=true;

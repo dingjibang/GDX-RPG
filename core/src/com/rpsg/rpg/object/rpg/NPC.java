@@ -20,7 +20,7 @@ public abstract class NPC extends RPGObject{
 	public abstract void toCollide(ScriptCollide sc);
 	public transient Map<CollideType, String> scripts=new HashMap<CollideType, String>();
 	
-	public transient List<Script> threadPool=new LinkedList<Script>();
+	public volatile transient List<Script> threadPool=new LinkedList<Script>();
 	
 	public boolean collideZAble=true;
 	public boolean collideNearAble=true;
@@ -30,9 +30,10 @@ public abstract class NPC extends RPGObject{
 	
 	public Map<String,Object> params;
 	
-	public void pushThreadAndRun(Script t){
+	public synchronized void pushThreadAndRun(Script t){
 		t.isAlive=true;
-		threadPool.add(t); 
+		threadPool.add(t);
+		t.start();
 	}
 	
 	/**
@@ -89,7 +90,7 @@ public abstract class NPC extends RPGObject{
 		//TODO add 'import'
 	}
 	
-	public Script getScript(CollideType type,NPC npc){
+	public synchronized Script getScript(CollideType type,NPC npc){
 		try {
 			return new Script().generate(this, type, npc.scripts.get(type));
 		} catch (Exception e) {
@@ -98,9 +99,4 @@ public abstract class NPC extends RPGObject{
 		return null;
 	}
 	
-	public void act(float f) {
-//		if(!batch.scripts.isEmpty())
-//			batch.run();
-		super.act(f);
-	}
 }

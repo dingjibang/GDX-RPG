@@ -36,14 +36,10 @@ public class Script extends Thread{
 	public CollideType callType;
 	public String script="";
 	public Script generate(NPC npc,CollideType type,String script){
+		setName(npc.toString()+(npc instanceof PublicNPC?":(ID:"+((PublicNPC)npc).getId():"")+" (collide: "+type+")),ThreadId:"+getId());
 		this.npc=npc;
 		this.callType=type;
 		this.script=script;
-		try {
-			start();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		return this;
 	}
 	
@@ -57,7 +53,6 @@ public class Script extends Thread{
 			scope.setPrototype(((NativeJavaObject)Context.javaToJS(Script.this, scope)));
 			scope.put("Hero", scope, Context.javaToJS(RPG.ctrl.hero.getHeadHero(), scope));
 			ctx.evaluateString(scope, script, null, 1, null);
-			setName(npc.toString()+(npc instanceof PublicNPC?" & ID:"+((PublicNPC)npc).getId():"")+" (collide: "+callType+") : "+getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
