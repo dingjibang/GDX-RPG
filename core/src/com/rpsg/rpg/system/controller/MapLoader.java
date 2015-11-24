@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import box2dLight.PointLight;
 
@@ -21,6 +22,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.rpg.Collide;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
@@ -40,6 +42,7 @@ public class MapLoader {
 	
 	public List<RPGObject> drawlist=new ArrayList<>();
 	private List<Light> lights = new ArrayList<>();
+	private Map<TiledMapTileLayer,int[][]> m_MapDataCache;
 	public MapLayers layer;
 	public void load(GameView gv){
 		clearLights();
@@ -71,6 +74,7 @@ public class MapLoader {
 		
 		//生成NPC
 		layer=new MapLayers();
+		m_MapDataCache = new HashMap<TiledMapTileLayer,int[][]>();
 		if(gv.global.npcs.isEmpty()){
 			int remove = 0;
 			for(int i=0;i<RPG.maps.map.getLayers().getCount();i++){
@@ -166,6 +170,35 @@ public class MapLoader {
 		
 	}
 	
+	public int[][] getMapData(int zIndex)
+	{
+		
+		TiledMapTileLayer tileLayer = (TiledMapTileLayer)layer.get(zIndex);
+		return getMapData(tileLayer);
+	}
+	
+	public int[][] getMapData(TiledMapTileLayer tileLayer)
+	{
+		if(m_MapDataCache.containsKey(tileLayer))
+		{
+			return	m_MapDataCache.get(tileLayer);
+		}
+		int height = tileLayer.getHeight();
+		int width = tileLayer.getWidth();
+		int[][] mapData = new int[width][height];
+		for (int i = 0; i < width; i++) {
+			for (int j = height - 1; j >= 0; j--) {
+				if (Collide.getID(tileLayer, i, j) == 0) {
+					mapData[i][j] = 1;
+				} else {
+					mapData[i][j] = 0;
+				}
+			}
+		}
+		m_MapDataCache.put(tileLayer, mapData);
+		return mapData;
+	}
+	
 	public void clearLights(){
 		lights.clear();
 	}
@@ -239,6 +272,8 @@ public class MapLoader {
 	}
 	
 	public void dispose(){
+		m_MapDataCache.clear();
+		m_MapDataCache = null;
 		GameViews.gameview.stage.getActors().clear();
 	}
 	
