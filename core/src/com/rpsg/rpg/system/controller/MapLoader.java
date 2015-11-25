@@ -37,7 +37,6 @@ import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
 public class MapLoader {
 	
