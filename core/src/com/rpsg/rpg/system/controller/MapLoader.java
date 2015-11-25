@@ -20,6 +20,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.objects.TiledMapTileMapObject;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.utils.Array;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Collide;
@@ -30,11 +31,13 @@ import com.rpsg.rpg.object.rpg.PublicNPC;
 import com.rpsg.rpg.object.rpg.RPGObject;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.Light;
+import com.rpsg.rpg.system.ui.Animation;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
+import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
 public class MapLoader {
 	
@@ -211,8 +214,26 @@ public class MapLoader {
 		return null;
 	}
 	
-	private void addLight(Integer id,box2dLight.Light light){
+	public void addLight(Integer id,box2dLight.Light light){
 		lights.add(new Light(id,light));
+	}
+	
+	/**
+	 * FIXME nmb，能把灯光销毁，但是gameview.ray里还存着这个灯光，然后就导致出现神绮的bug。<br>
+	 * 目前解决办法只能是灯光和地图统一销毁，而这个removeLight方法就是假的，只是把灯光大小调到了0让他不显示。
+	 */
+	public void removeLight(int id){
+		for(Light l : lights)
+			if(l.id !=null && l.id == id)
+				l.light.setDistance(0);
+	}
+	
+	public int addLight(Integer id,int x,int y,int distance){
+		PointLight pl = new PointLight(GameViews.gameview.ray, 20);
+		pl.setPosition(x,y);
+		pl.setDistance(distance);
+		addLight(id, pl);
+		return id;
 	}
 	
 	public synchronized void draw(GameView gv){
@@ -232,22 +253,28 @@ public class MapLoader {
 			drawlist.clear();
 			gv.render.setView(gv.camera);
 			gv.render.render(new int[]{i});
-
+			
+			Array<Actor> removeList1 = new Array<>();
+			
 			for(Actor a:gv.stage.getActors()){
 				if(a instanceof RPGObject){
 					RPGObject c = (RPGObject)a;
+					if(c instanceof Animation){
+						if(((Animation)c).remove)
+							removeList1.add(c);
+					}
 					if(c.layer==i-skip && !(!RPG.ctrl.hero.show && c instanceof Hero && c != RPG.ctrl.hero.getHeadHero()))
 						drawlist.add(c);
 				}
 			}
+			
+			gv.stage.getActors().removeAll(removeList1, true);
 			
 			Collections.sort(drawlist);
 			sb.begin();
 			for(RPGObject ir:drawlist){
 				ir.draw(sb, 1f);
 			}
-			
-			
 			sb.end();
 		}
 		

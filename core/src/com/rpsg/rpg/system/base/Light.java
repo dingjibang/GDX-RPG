@@ -9,4 +9,5 @@ public class Light {
 		this.id = id;
 		this.light = light;
 	}
+	
 }

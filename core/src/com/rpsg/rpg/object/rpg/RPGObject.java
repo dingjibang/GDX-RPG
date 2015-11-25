@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.MathUtils;
@@ -78,7 +78,8 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 			return 1;
 	}
 	
-	public RPGObject draw(SpriteBatch batch,float parentAlpha){
+	@Override
+	public void draw(Batch batch,float parentAlpha){
 		if(isVisible()){
 			if(this.drawShadow){
 				shadow.position(getX()+8f, getY()-3.8f).color(this.getColor()).draw(batch,parentAlpha);
@@ -91,7 +92,6 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 				bon.getCurrentImage().draw(batch,parentAlpha);
 			}
 		}
-		return this;
 	}
 	
 	public RPGObject(String path,int width,int height){
@@ -335,6 +335,21 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	@Override
 	public float getY(){
 		return this.position.y;
+	}
+	
+	@Override
+	public void setX(float x) {
+		this.position.x = x;
+	}
+	
+	@Override
+	public void setY(float y) {
+		this.position.y = y;
+	}
+	
+	@Override
+	public void setPosition(float x, float y) {
+		this.position.set(x,y);
 	}
 	
 	@Override

@@ -228,16 +228,6 @@ public class Path {
 		
 		
 		int[][] mapData =  RPG.maps.loader.getMapData(tileLayer);
-		/* new int[width][height];
-		for (int i = 0; i < width; i++) {
-			for (int j = height - 1; j >= 0; j--) {
-				if (Collide.getID(tileLayer, i, j) == 0) {
-					mapData[i][j] = 1;
-				} else {
-					mapData[i][j] = 0;
-				}
-			}
-		} */
 
 		for (Actor a : GameViews.gameview.stage.getActors()) {
 			if (a instanceof NPC) {

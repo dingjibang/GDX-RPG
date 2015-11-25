@@ -131,6 +131,7 @@ public class GameView extends View{
 
 		RPG.ctrl.draw.draw();
 		
+		
 		if(null!=stackView)
 			stackView.draw(batch);
 		else
