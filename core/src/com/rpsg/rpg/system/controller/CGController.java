@@ -33,7 +33,7 @@ public class CGController {
 			
 	}
 
-	public void dispose(Image i) {
+	public synchronized void dispose(Image i) {
 		cgs.remove(i);
 	}
 	

@@ -81,19 +81,24 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	Hero.turn(RPGObject.FACE_U).setBalloon(BalloonType.惊讶).walk(-2).testWalk();
 	playSE("opendoor");
 	faceTo(10);
-	monster.setColor(0, 0, 0, 1);
-	//monster.addAction(Actions.color(new Color(1,1,1,1),2));
-	monster.setVisible(true);
-	//TODO let the monster hide
+	
 	setCameraPositionWithHero(0, 30, false);
-	monster.walk(1).testWalk();
 	RPG.maps.loader.getLight(50).light.setDistance(0);
 	RPG.maps.loader.getLight(51).light.setDistance(0);
 	
 	pause(40);
 	showMSG(MsgType.莲子);
-	say("发生的……", "莲子");
-	setCameraPositionWithHero(0, -90, false);
+	monster.setColor(0, 0, 0, 1);
+	//monster.addAction(Actions.color(new Color(1,1,1,1),2));
+	monster.setVisible(true);
+	monster.setWalkSpeed(1);
+	monster.walk(1).testWalk();
+	mari.setBalloon(BalloonType.惊讶);
+	renko.setBalloon(BalloonType.惊讶);
+	Hero.setBalloon(BalloonType.惊讶);
+	pause(80);
+	//TODO let the monster hide
+	setCameraPositionWithHero(0, -50, false);
 	mari.turn(RPGObject.FACE_R);
 	showMSG(MsgType.梅莉);
 	say("莲子你个乌鸦嘴！", "梅莉");
@@ -121,7 +126,8 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	showMSG(MsgType.梅莉);
 	say("哈……哈……完全没有效果", "梅莉");
 	showMSG(MsgType.莲子);
-	say("怎么会……虽然都是些不难搞到的素材，但也是我精心改造调制的……威力已经可以媲美常规的军队武器了……\n束手无策了吗……", "莲子");
+	say("怎么会……虽然都是些不难搞到的素材，但也是我精心改造调制的……威力已经可以媲美常规的军队武器了……", "莲子");
+	say("束手无策了吗……", "莲子");
 	showMSG(MsgType.梅莉);
 	mari.setBalloon(BalloonType.惊讶);
 	say("不……还有一个办法", "梅莉");
@@ -147,24 +153,40 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	animation.setPosition(455,1700);
 	animation.layer = 3;
 	
-	var light = RPG.maps.loader.addLight(99,552,1786,530);
+	var lightID = RPG.maps.loader.addLight(99,552,1786,0);
+	var light = RPG.maps.loader.getLight(lightID);
 	
 	var white = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(1,1,1,0).getItem();
 	
+	var proxy = $(Res.get(Setting.UI_BASE_IMG)).setColor(1,1,1,0).setSize(50,50).getItem();
+	
+	CG.push(proxy);
+	
+	proxy.addAction(Actions.sizeTo(700,700,2,Interpolation.pow4In));
+	
+	proxy.addAction(Actions.repeat(150,Actions.run(function(){
+		light.light.setDistance(proxy.getWidth()*2+Math.random() * 50);	
+	})));
+	
+	
 	playSE("mg1");
 	pause(100);
-	CG.push(white);
 	white.addAction(Actions.fadeIn(1,Interpolation.pow4));
+	CG.push(white);
 	
 	pause(60);
 	
-	RPG.maps.loader.removeLight(light);
+	RPG.maps.loader.removeLight(lightID);
+	
 	animation.remove();
 	monster.setVisible(false);
 	
-	white.addAction(Actions.sequence(Actions.fadeOut(.3),Actions.run(function(){
+	
+	white.addAction(Actions.sequence(Actions.fadeOut(.5),Actions.run(function(){
 		CG.dispose(white);
+		CG.dispose(proxy);
 	})));
+	
 	
 	setKeyLocker(false);
 
