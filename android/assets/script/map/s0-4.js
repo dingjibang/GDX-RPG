@@ -90,6 +90,7 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	showMSG(MsgType.莲子);
 	monster.setColor(0, 0, 0, 1);
 	//monster.addAction(Actions.color(new Color(1,1,1,1),2));
+	pause(30);
 	monster.setVisible(true);
 	monster.setWalkSpeed(1);
 	monster.walk(1).testWalk();
@@ -100,10 +101,15 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	//TODO let the monster hide
 	setCameraPositionWithHero(0, -50, false);
 	mari.turn(RPGObject.FACE_R);
+	showMSG(MsgType.莲子);
+	say("喂喂喂喂喂……", "莲子");
 	showMSG(MsgType.梅莉);
 	say("莲子你个乌鸦嘴！", "梅莉");
+	renko.turn(RPGObject.FACE_L);
 	showMSG(MsgType.莲子);
 	say("诶……嘿嘿", "莲子");
+	mari.turn(RPGObject.FACE_U);
+	renko.turn(RPGObject.FACE_U);
 	showMSG(MsgType.梅莉);
 	say("别傻笑了！不知道之前准备的那些武器对这些怪物有没有用……要是能争取到逃跑的时间就好了", "梅莉");
 	showMSG(MsgType.莲子);
@@ -168,7 +174,11 @@ if (RPG.getFlag("1-1-shrine") != null) {
 		light.light.setDistance(proxy.getWidth()*2+Math.random() * 50);	
 	})));
 	
+	var animation2 = RPG.ctrl.animation.add(2);
+	animation2.setPosition(455,1700);
+	animation2.layer = 3;
 	
+	pause(100);
 	playSE("mg1");
 	pause(100);
 	white.addAction(Actions.fadeIn(1,Interpolation.pow4));
@@ -179,6 +189,7 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	RPG.maps.loader.removeLight(lightID);
 	
 	animation.remove();
+	animation2.remove();
 	monster.setVisible(false);
 	
 	

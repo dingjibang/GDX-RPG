@@ -93,6 +93,8 @@ public class Animation extends NPC {
 		proxy.setDrawable(getDrawable(animation.getKeyFrame(time += Gdx.graphics.getDeltaTime(),true)));
 		proxy.setColor(getColor());
 		proxy.setPosition(getX(), getY());
+		proxy.setScale(getScaleX(),getScaleY());
+		proxy.setOrigin(Align.center);
 		
 		proxy.draw(batch, parentAlpha);
 	}
