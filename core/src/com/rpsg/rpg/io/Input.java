@@ -19,11 +19,11 @@ public class Input implements InputProcessor {
 	public boolean keyDown(int keycode) {
 		if(keycode == Keys.O){
 //		RPG.toast.add("获得道具\ntest", Color.SKY ,22,false,Res.getNP(Setting.IMAGE_ICONS+"i1.png"));
-			RPG.ctrl.animation.removeAll();
-			Animation a = RPG.ctrl.animation.add(2);
-			a.setPosition(435,1700);
-			a.setScale(1f);
-			a.layer = 3;
+//			RPG.ctrl.animation.removeAll();
+//			Animation a = RPG.ctrl.animation.add(2);
+//			a.setPosition(435,1700);
+//			a.setScale(1f);
+//			a.layer = 3;
 		}
 		if (state == IOMode.GameInput.HOVER)
 			return RPG.popup.keyDown(keycode);

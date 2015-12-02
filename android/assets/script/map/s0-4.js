@@ -4,8 +4,11 @@ var renko = getNPC("19");
 var mari = getNPC("17");
 var monster = getNPC("21");
 
+
 renko.setVisible(false);
+renko.enableCollide = false;
 mari.setVisible(false);
+mari.enableCollide = false;
 monster.setVisible(false);
 monster.enableCollide = false;
 
@@ -158,6 +161,8 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	var animation = RPG.ctrl.animation.add(1);
 	animation.setPosition(455,1700);
 	animation.layer = 3;
+	animation.setColor(1,1,1,0);
+	animation.addAction(Actions.fadeIn(1));
 	
 	var lightID = RPG.maps.loader.addLight(99,552,1786,0);
 	var light = RPG.maps.loader.getLight(lightID);
@@ -168,17 +173,14 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	
 	CG.push(proxy);
 	
-	proxy.addAction(Actions.sizeTo(700,700,2,Interpolation.pow4In));
-	
-	proxy.addAction(Actions.repeat(150,Actions.run(function(){
+	proxy.addAction(Actions.repeat(350,Actions.run(function(){
 		light.light.setDistance(proxy.getWidth()*2+Math.random() * 50);	
 	})));
 	
-	var animation2 = RPG.ctrl.animation.add(2);
-	animation2.setPosition(455,1700);
-	animation2.layer = 3;
+	pause(50);
+	proxy.addAction(Actions.sizeTo(700,700,2,Interpolation.pow4In));
 	
-	pause(100);
+	
 	playSE("mg1");
 	pause(100);
 	white.addAction(Actions.fadeIn(1,Interpolation.pow4));
@@ -186,12 +188,11 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	
 	pause(60);
 	
+	proxy.clear();
 	RPG.maps.loader.removeLight(lightID);
 	
 	animation.remove();
-	animation2.remove();
 	monster.setVisible(false);
-	
 	
 	white.addAction(Actions.sequence(Actions.fadeOut(.5),Actions.run(function(){
 		CG.dispose(white);
