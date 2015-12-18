@@ -158,6 +158,7 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	
 	pause(30);
 	
+	
 	var animation = RPG.ctrl.animation.add(1);
 	animation.setPosition(455,1700);
 	animation.layer = 3;
@@ -177,12 +178,9 @@ if (RPG.getFlag("1-1-shrine") != null) {
 		light.light.setDistance(proxy.getWidth()*2+Math.random() * 50);	
 	})));
 	
-	pause(50);
 	proxy.addAction(Actions.sizeTo(700,700,2,Interpolation.pow4In));
-	
-	
 	playSE("mg1");
-	pause(100);
+	pause(50);
 	white.addAction(Actions.fadeIn(1,Interpolation.pow4));
 	CG.push(white);
 	
