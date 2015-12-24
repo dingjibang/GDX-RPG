@@ -1,5 +1,6 @@
 package com.rpsg.gdxQuery;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -42,7 +43,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
  */
 public class GdxQuery {
 
-	private LinkedList<Actor> values = new LinkedList<Actor>();
+	private ArrayList<Actor> values = new ArrayList<Actor>();
 	
 	private Runnable click,touchUp,touchDown;
 	
@@ -120,6 +121,10 @@ public class GdxQuery {
 			return null;
 		else
 			return getItems().get(index);
+	}
+	
+	public GdxQuery eq(int index){
+		return new GdxQuery(getItem(index));
 	}
 	
 	public GdxQuery find(Class<?>... cls){

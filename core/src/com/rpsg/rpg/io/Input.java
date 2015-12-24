@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.InputProcessor;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.base.IOMode;
+import com.rpsg.rpg.system.ui.Animation;
 import com.rpsg.rpg.view.GameViews;
 
 public class Input implements InputProcessor {
@@ -17,8 +17,14 @@ public class Input implements InputProcessor {
 
 	@Override
 	public boolean keyDown(int keycode) {
-		if(keycode == Keys.O)
-		RPG.toast.add("博丽灵梦升级了\n等级：15 → [RED]16[]\n攻击力：5 → [RED]7[]", Color.SKY ,22,true);
+		if(keycode == Keys.O){
+//		RPG.toast.add("获得道具\ntest", Color.SKY ,22,false,Res.getNP(Setting.IMAGE_ICONS+"i1.png"));
+//			RPG.ctrl.animation.removeAll();
+//			Animation a = RPG.ctrl.animation.add(2);
+//			a.setPosition(435,1700);
+//			a.setScale(1f);
+//			a.layer = 3;
+		}
 		if (state == IOMode.GameInput.HOVER)
 			return RPG.popup.keyDown(keycode);
 		switch (GameViews.state) {

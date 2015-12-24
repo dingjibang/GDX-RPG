@@ -35,14 +35,14 @@ public class HeroController {
 	}
 	
 	public synchronized void act(){
+		for(Hero hero:currentHeros)
+			hero.act(0);
+		
 		if(walked(false) && !stack.isEmpty()){
 			MoveStack last=stack.get(0);
 			stack.remove(0);
 			turn(last.face).walk(last.step,false).testWalk();
 		}
-		
-		for(Hero hero:currentHeros)
-			hero.act(0);
 	}
 	
 	public void stopStack(){

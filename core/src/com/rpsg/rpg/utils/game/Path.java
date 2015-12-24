@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.rpg.Collide;
+//import com.rpsg.rpg.object.rpg.Collide;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.MoveStack;
 import com.rpsg.rpg.object.rpg.NPC;
@@ -227,16 +227,7 @@ public class Path {
 		if(goalY>height-1) goalY=height-1;
 		
 		
-		int[][] mapData = new int[width][height];
-		for (int i = 0; i < width; i++) {
-			for (int j = height - 1; j >= 0; j--) {
-				if (Collide.getID(tileLayer, i, j) == 0) {
-					mapData[i][j] = 1;
-				} else {
-					mapData[i][j] = 0;
-				}
-			}
-		}
+		int[][] mapData =  RPG.maps.loader.getMapData(tileLayer);
 
 		for (Actor a : GameViews.gameview.stage.getActors()) {
 			if (a instanceof NPC) {

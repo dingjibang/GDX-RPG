@@ -16,6 +16,7 @@ public class Setting {
 	public static final String IMAGE_LOAD = BASE_PATH + IMAGE_BASE_PATH + "/load/";
 	public static final String IMAGE_TITLE = BASE_PATH + IMAGE_BASE_PATH + "/title/";
 	public static final String IMAGE_FG = BASE_PATH + IMAGE_BASE_PATH + "/fg/";
+	public static final String IMAGE_ANIMATION = BASE_PATH + IMAGE_BASE_PATH + "/animation/";
 
 	public static final String MUSIC_BGM = BASE_PATH + "sound/bgm/";
 	public static final String MUSIC_SE = BASE_PATH + "sound/se/";

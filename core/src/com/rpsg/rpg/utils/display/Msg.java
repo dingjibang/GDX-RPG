@@ -73,7 +73,7 @@ public class Msg {
 						++currentTextPoint;
 				}
 				batch.begin();
-				font.draw(batch, currentText.substring(0, currentTextPoint), 50, 130,(msgbox.getWidth()-100),10,false);
+				font.draw(batch, currentText.substring(0, currentTextPoint), 50, 130,(msgbox.getWidth()-60),10,true);
 				font.setColor(titleColor);
 				font.draw(batch, title, getOrPosX(title, 22), 178, (int) (msgbox.getWidth()-60),10,false);
 				font.setColor(Color.WHITE);

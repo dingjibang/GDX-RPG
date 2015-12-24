@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import box2dLight.PointLight;
 
@@ -19,8 +20,10 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.objects.TiledMapTileMapObject;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.utils.Array;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.rpg.Collide;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
@@ -28,6 +31,7 @@ import com.rpsg.rpg.object.rpg.PublicNPC;
 import com.rpsg.rpg.object.rpg.RPGObject;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.Light;
+import com.rpsg.rpg.system.ui.Animation;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
@@ -40,6 +44,7 @@ public class MapLoader {
 	
 	public List<RPGObject> drawlist=new ArrayList<>();
 	private List<Light> lights = new ArrayList<>();
+	private Map<TiledMapTileLayer,int[][]> m_MapDataCache;
 	public MapLayers layer;
 	public void load(GameView gv){
 		clearLights();
@@ -71,6 +76,7 @@ public class MapLoader {
 		
 		//生成NPC
 		layer=new MapLayers();
+		m_MapDataCache = new HashMap<TiledMapTileLayer,int[][]>();
 		if(gv.global.npcs.isEmpty()){
 			int remove = 0;
 			for(int i=0;i<RPG.maps.map.getLayers().getCount();i++){
@@ -166,6 +172,35 @@ public class MapLoader {
 		
 	}
 	
+	public int[][] getMapData(int zIndex)
+	{
+		
+		TiledMapTileLayer tileLayer = (TiledMapTileLayer)layer.get(zIndex);
+		return getMapData(tileLayer);
+	}
+	
+	public int[][] getMapData(TiledMapTileLayer tileLayer)
+	{
+		if(m_MapDataCache.containsKey(tileLayer))
+		{
+			return	m_MapDataCache.get(tileLayer);
+		}
+		int height = tileLayer.getHeight();
+		int width = tileLayer.getWidth();
+		int[][] mapData = new int[width][height];
+		for (int i = 0; i < width; i++) {
+			for (int j = height - 1; j >= 0; j--) {
+				if (Collide.getID(tileLayer, i, j) == 0) {
+					mapData[i][j] = 1;
+				} else {
+					mapData[i][j] = 0;
+				}
+			}
+		}
+		m_MapDataCache.put(tileLayer, mapData);
+		return mapData;
+	}
+	
 	public void clearLights(){
 		lights.clear();
 	}
@@ -178,8 +213,26 @@ public class MapLoader {
 		return null;
 	}
 	
-	private void addLight(Integer id,box2dLight.Light light){
+	public void addLight(Integer id,box2dLight.Light light){
 		lights.add(new Light(id,light));
+	}
+	
+	/**
+	 * FIXME nmb，能把灯光销毁，但是gameview.ray里还存着这个灯光，然后就导致出现神绮的bug。<br>
+	 * 目前解决办法只能是灯光和地图统一销毁，而这个removeLight方法就是假的，只是把灯光大小调到了0让他不显示。
+	 */
+	public void removeLight(int id){
+		for(Light l : lights)
+			if(l.id !=null && l.id == id)
+				l.light.setDistance(0);
+	}
+	
+	public int addLight(Integer id,int x,int y,int distance){
+		PointLight pl = new PointLight(GameViews.gameview.ray, 20);
+		pl.setPosition(x,y);
+		pl.setDistance(distance);
+		addLight(id, pl);
+		return id;
 	}
 	
 	public synchronized void draw(GameView gv){
@@ -199,22 +252,28 @@ public class MapLoader {
 			drawlist.clear();
 			gv.render.setView(gv.camera);
 			gv.render.render(new int[]{i});
-
+			
+			Array<Actor> removeList1 = new Array<>();
+			
 			for(Actor a:gv.stage.getActors()){
 				if(a instanceof RPGObject){
 					RPGObject c = (RPGObject)a;
+					if(c instanceof Animation){
+						if(((Animation)c).remove)
+							removeList1.add(c);
+					}
 					if(c.layer==i-skip && !(!RPG.ctrl.hero.show && c instanceof Hero && c != RPG.ctrl.hero.getHeadHero()))
 						drawlist.add(c);
 				}
 			}
+			
+			gv.stage.getActors().removeAll(removeList1, true);
 			
 			Collections.sort(drawlist);
 			sb.begin();
 			for(RPGObject ir:drawlist){
 				ir.draw(sb, 1f);
 			}
-			
-			
 			sb.end();
 		}
 		
@@ -239,6 +298,8 @@ public class MapLoader {
 	}
 	
 	public void dispose(){
+		m_MapDataCache.clear();
+		m_MapDataCache = null;
 		GameViews.gameview.stage.getActors().clear();
 	}
 	

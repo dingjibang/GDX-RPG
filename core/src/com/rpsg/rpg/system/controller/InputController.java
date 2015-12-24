@@ -103,7 +103,8 @@ public class InputController{
 		}
 		case NORMAL:{
 			if(GameViews.gameview.inited && GameViews.gameview.renderable){
-				PostUtil.touchDragged( screenX,  screenY,  pointer);
+				if(!PostUtil.touchDragged( screenX,  screenY,  pointer))
+					Path.click(screenX, screenY);
 			}
 			break;
 		}

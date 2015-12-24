@@ -34,7 +34,7 @@ public class GameUtil {
 	private static BitmapFont font;
 	
 	public static void init(){
-		font = Res.font.get((int) (15*getScale()));
+		font = Res.font.get(18);
 	}
 	
 	public static int getScreenWidth(){
@@ -47,12 +47,14 @@ public class GameUtil {
 	
 	public static void drawFPS(SpriteBatch batch){
 		if(Setting.persistence.showFPS){
+			batch.end();
+			batch.begin();
 			fps=Gdx.graphics.getFramesPerSecond();
 			
 			font.setColor(Color.BLACK);
-			font.draw(batch,"FPS:"+fps,13,(int) (getScreenWidth()-13*getScale()));
+			font.draw(batch,"FPS:"+fps,13,(int) (screen_height-13));
 			font.setColor(Color.WHITE);
-			font.draw(batch,"FPS:"+fps,12,(int) (getScreenWidth()-12*getScale()));
+			font.draw(batch,"FPS:"+fps,12,(int) (screen_height-12));
 		}
 	}
 	

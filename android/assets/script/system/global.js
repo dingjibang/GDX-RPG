@@ -18,7 +18,7 @@ map = "test/shrine.tmx";x=11;y=12;z=3;
 date.time = GameDate.Time.NIGHT;
 
 //初始天气
-weather = com.rpsg.rpg.utils.display.WeatherUtil.WEATHER_RAIN;
+weather = com.rpsg.rpg.utils.display.WeatherUtil.WEATHER_NO;
 
 //初始携带
 gold = 120;

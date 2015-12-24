@@ -151,7 +151,6 @@ public class GameViews implements ApplicationListener {
 		GameUtil.drawFPS(batch);//绘制FPS
 		RPG.toast.draw();//STEP一下提示工具包
 		RPG.touch.draw();
-		
 		batch.end();
 		
 		
