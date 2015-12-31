@@ -28,7 +28,7 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	
 	private static final long serialVersionUID = 1L;
 	
-	static Image shadow=Res.get(Setting.IRPGOBJECT_SHADOW);
+	static Image shadow=Res.get(Setting.RPGOBJECT_SHADOW);
 	public static Image[] generateImages(String txt,int width,int height){
 		Image[] images=new Image[12];
 		for(int i=0;i<4;i++)
@@ -84,14 +84,9 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	
 	public float walkSpeed=3f;
 	
-<<<<<<< HEAD
-	public boolean drawShadow = false;
-	static Image shadow=Res.get(Setting.RPGOBJECT_SHADOW);
-=======
 	public List<MoveStack> walkStack=new ArrayList<MoveStack>();
 	
 	public RPGObject(){}
->>>>>>> e423046948d7df7f62ecd3c232687086fb226923
 	
 	public RPGObject(String path,int width,int height){
 		imgPath=path;

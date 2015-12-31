@@ -84,24 +84,17 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	Hero.turn(RPGObject.FACE_U).setBalloon(BalloonType.惊讶).walk(-2).testWalk();
 	playSE("opendoor");
 	faceTo(10);
-<<<<<<< HEAD
 	monster.setColor(0,0,0,1);
 	monster.setVisible(true);
 	//TODO let the monster hide
 	setCameraPositionWithHero(0, 30, false);
 	monster.walk(1).testWalk();
-=======
->>>>>>> e423046948d7df7f62ecd3c232687086fb226923
-	
-	setCameraPositionWithHero(0, 30, false);
 	RPG.maps.loader.getLight(50).light.setDistance(0);
 	RPG.maps.loader.getLight(51).light.setDistance(0);
 	
 	pause(40);
-<<<<<<< HEAD
 	say("……发生的","梅莉");
 	//monster.addAction(Actions.color(new Color(1,1,1,1),2));
-=======
 	showMSG(MsgType.莲子);
 	monster.setColor(0, 0, 0, 1);
 	//monster.addAction(Actions.color(new Color(1,1,1,1),2));
@@ -159,7 +152,6 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	renko.turn(RPGObject.FACE_L);
 	showMSG(MsgType.莲子);
 	say("对了，还有那个符咒，有栖快试试看！", "莲子");
->>>>>>> e423046948d7df7f62ecd3c232687086fb226923
 	hideMSG();
 	
 	pause(30);
