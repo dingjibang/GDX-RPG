@@ -1,4 +1,5 @@
 eval(""+load('global.js'));
+
 setKeyLocker(true);
 showMSG(MsgType.莲子);
 say("只有这个赛钱箱看起来还算干净，难道真的会有人来这种神社塞钱吗","莲子");
