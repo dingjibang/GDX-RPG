@@ -7,11 +7,7 @@ package com.rpsg.rpg.object.base;
  */
 public class BattleParam {
 	
-	public BattleParam(Object obj) {
-		System.out.println(obj);
-	}
-
-	private int enemy;
+	public int enemy;
 
 	public int getEnemy() {
 		return enemy;

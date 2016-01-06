@@ -1,6 +1,7 @@
 package com.rpsg.rpg.object.script;
 
 import org.mozilla.javascript.Context;
+import org.mozilla.javascript.JavaAdapter;
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptableObject;
 
@@ -17,7 +18,6 @@ import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
-import com.rpsg.rpg.system.controller.BattleController;
 import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FG;
@@ -27,6 +27,7 @@ import com.rpsg.rpg.utils.game.Base;
 import com.rpsg.rpg.utils.game.GameDate;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Heros;
+import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.utils.game.Move;
 import com.rpsg.rpg.utils.game.Timer;
 import com.rpsg.rpg.view.GameViews;
@@ -495,8 +496,12 @@ public class Script extends Thread{
 	/**
 	 * 触发战斗
 	 */
-	public void battle(BattleParam param){
-		RPG.ctrl.battle.battle(param);
+	public void battle(Object param){
+		try {
+			RPG.ctrl.battle.start((BattleParam)JavaAdapter.getAdapterSelf(BattleParam.class, param));
+		} catch (NoSuchFieldException | IllegalAccessException e) {
+			Logger.error("读取战斗模块出错",e);
+		}
 	}
 	
 	/**

@@ -113,6 +113,7 @@ public class GameView extends View{
 		if(RPG.ctrl.battle.logic()){
 			//TODO postFX?
 			battleView.draw(batch);
+			return;
 		}
 		
 		boolean postable = Setting.persistence.betterLight;
@@ -138,7 +139,6 @@ public class GameView extends View{
 
 		RPG.ctrl.draw.draw();
 		
-		
 		if(null!=stackView)
 			stackView.draw(batch);
 		else
@@ -148,6 +148,8 @@ public class GameView extends View{
 	@Override
 	public void logic() {
 		if(!ma.update() || !inited)
+			return;
+		if(RPG.ctrl.battle.logic())
 			return;
 		if(null==stackView){
 			RPG.maps.loader.logic(this);

@@ -110,4 +110,8 @@ public class RPG {
 	public static boolean executeJS(String js){
 		return executeJS(js,null);
 	}
+	
+	/**
+	 * Rhino JS 对象 转为 Java
+	 */
 }

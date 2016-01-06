@@ -1,6 +1,7 @@
 eval(""+load('global.js'));
 
-battle(new BattleParam(){
+
+battle({
 	enemy:1
 });
 

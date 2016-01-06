@@ -15,7 +15,7 @@ public class BattleController {
 	boolean flag;
 	BattleParam param;
 	
-	public void battle(BattleParam param) {
+	public void start(BattleParam param) {
 		if(isBattle())
 			return;
 		
@@ -26,6 +26,8 @@ public class BattleController {
 	public void stop(){
 		flag = false;
 		param = null;
+		//TODO 需要dispose？？？
+//		GameViews.gameview.battleView = null;
 	}
 	
 	public boolean isBattle(){
@@ -35,7 +37,7 @@ public class BattleController {
 	public boolean logic(){
 		if(flag && param != null){
 			flag = false;
-			GameViews.gameview.battleView = new BattleView(param);
+			GameViews.gameview.battleView = new BattleView(param).init();
 			return true;
 		}
 		return isBattle();
