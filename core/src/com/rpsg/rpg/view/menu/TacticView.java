@@ -31,7 +31,7 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.AssociationSkill;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.ui.DefaultIView;
+import com.rpsg.rpg.system.ui.IMenuView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.Label;
@@ -40,7 +40,7 @@ import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.hover.SupportView;
 
-public class TacticView extends DefaultIView {
+public class TacticView extends IMenuView {
 	int page=2;
 	WidgetGroup group;
 	TextButtonStyle butstyle;

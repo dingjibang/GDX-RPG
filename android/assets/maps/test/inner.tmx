@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="19" height="19" tilewidth="48" tileheight="48" nextobjectid="5">
+ <properties>
+  <property name="name" value="宿舍"/>
+ </properties>
  <tileset firstgid="1" name="shadows" tilewidth="48" tileheight="48" tilecount="100">
   <image source="shadows.png" width="480" height="480"/>
  </tileset>

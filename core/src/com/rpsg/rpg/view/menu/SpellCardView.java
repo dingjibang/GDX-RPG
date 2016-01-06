@@ -27,8 +27,8 @@ import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.CheckBox;
-import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.HeroImage;
+import com.rpsg.rpg.system.ui.IMenuView;
 import com.rpsg.rpg.system.ui.Icon;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.Label;
@@ -37,7 +37,7 @@ import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.hover.UseItemView;
 
-public class SpellCardView extends DefaultIView{
+public class SpellCardView extends IMenuView{
 	
 	@Override
 	public View init() {

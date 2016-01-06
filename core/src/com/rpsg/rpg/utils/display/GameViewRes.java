@@ -14,7 +14,7 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class GameViewRes {
-	public static Stage stage =new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
+	public static Stage stage = new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 	public static OrthographicCamera camera = (OrthographicCamera) stage.getCamera();
 	public static RayHandler ray =new RayHandler(null);
 	public static World world ;

@@ -24,7 +24,7 @@ import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.ItemType;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.ui.DefaultIView;
+import com.rpsg.rpg.system.ui.IMenuView;
 import com.rpsg.rpg.system.ui.Icon;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
@@ -34,7 +34,7 @@ import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.hover.ThrowItemView;
 import com.rpsg.rpg.view.hover.UseItemView;
 
-public class ItemView extends DefaultIView{
+public class ItemView extends IMenuView{
 	
 	Group inner,description;
 	ImageList ilist;

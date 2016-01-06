@@ -29,6 +29,7 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.CheckBox;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.HeroImage;
+import com.rpsg.rpg.system.ui.IMenuView;
 import com.rpsg.rpg.system.ui.Icon;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
@@ -37,7 +38,7 @@ import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.hover.ThrowItemView;
 
-public class EquipView extends DefaultIView{
+public class EquipView extends IMenuView{
 	
 	Group inner,data,description;
 	ImageList ilist;

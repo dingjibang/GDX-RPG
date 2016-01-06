@@ -39,7 +39,7 @@ addSpellcard(RPG.ctrl.item.get(5));
 resistance.put("earth", Resistance.reflect);
 resistance.put("metal", Resistance.invalid);
 resistance.put("sun", Resistance.weak);
-setProp("dead", Hero.TRUE);
+setProp("dead", Hero.FALSE);
 color="59669ecc";
 lead=true;
 setProp("level",1);

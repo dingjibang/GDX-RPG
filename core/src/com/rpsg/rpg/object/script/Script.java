@@ -10,12 +10,14 @@ import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Music;
+import com.rpsg.rpg.object.base.BattleParam;
 import com.rpsg.rpg.object.base.FGType;
 import com.rpsg.rpg.object.base.MsgType;
 import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
+import com.rpsg.rpg.system.controller.BattleController;
 import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FG;
@@ -490,7 +492,12 @@ public class Script extends Thread{
 		RPG.ctrl.hero.getHero(hero).setBalloon(type);
 	}
 	
-	
+	/**
+	 * 触发战斗
+	 */
+	public void battle(BattleParam param){
+		RPG.ctrl.battle.battle(param);
+	}
 	
 	/**
 	 * 给当前NPC显示一个心情气球

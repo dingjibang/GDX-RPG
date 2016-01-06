@@ -1,6 +1,7 @@
 package com.rpsg.rpg.core;
 
 import com.rpsg.rpg.system.base.ThreadPool;
+import com.rpsg.rpg.system.controller.BattleController;
 import com.rpsg.rpg.system.controller.CGController;
 import com.rpsg.rpg.system.controller.DrawController;
 import com.rpsg.rpg.system.controller.HeroController;
@@ -25,4 +26,5 @@ public class Controllers {
 	public ThreadPool thread = new ThreadPool();
 	public ItemController item = new ItemController();
 	public Animations animation = new Animations();
+	public BattleController battle = new BattleController();
 }

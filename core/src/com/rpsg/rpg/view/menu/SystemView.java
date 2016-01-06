@@ -25,9 +25,9 @@ import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.MenuController;
 import com.rpsg.rpg.system.ui.CheckBox;
-import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.FrameLabel;
 import com.rpsg.rpg.system.ui.HoverView;
+import com.rpsg.rpg.system.ui.IMenuView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.Slider;
@@ -40,7 +40,7 @@ import com.rpsg.rpg.view.hover.ConfirmView;
 import com.rpsg.rpg.view.hover.LoadView;
 import com.rpsg.rpg.view.hover.SaveView;
 
-public class SystemView extends DefaultIView{
+public class SystemView extends IMenuView{
 	public View init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		stage.setDebugAll(Setting.persistence.uiDebug);

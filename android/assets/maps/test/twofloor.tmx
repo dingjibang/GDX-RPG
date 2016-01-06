@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="8" tilewidth="48" tileheight="48">
- <tileset firstgid="1" name="shadows" tilewidth="48" tileheight="48">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="8" tilewidth="48" tileheight="48" nextobjectid="5">
+ <properties>
+  <property name="name" value="宿舍"/>
+ </properties>
+ <tileset firstgid="1" name="shadows" tilewidth="48" tileheight="48" tilecount="100">
   <image source="shadows.png" width="480" height="480"/>
  </tileset>
- <tileset firstgid="101" name="tilea4wallscyn_750" tilewidth="48" tileheight="48">
+ <tileset firstgid="101" name="tilea4wallscyn_750" tilewidth="48" tileheight="48" tilecount="288">
   <image source="tilea4wallscyn_750.png" width="768" height="886"/>
  </tileset>
- <tileset firstgid="389" name="tile_elements_ii_by_ayene_chan-d4becnf" tilewidth="48" tileheight="48">
+ <tileset firstgid="389" name="tile_elements_ii_by_ayene_chan-d4becnf" tilewidth="48" tileheight="48" tilecount="72">
   <image source="tile_elements_ii_by_ayene_chan-d4becnf.png" width="432" height="384"/>
  </tileset>
- <tileset firstgid="461" name="rpg_maker_vx___stairs_by_ayene_chan-d6vzlkv" tilewidth="48" tileheight="48">
+ <tileset firstgid="461" name="rpg_maker_vx___stairs_by_ayene_chan-d6vzlkv" tilewidth="48" tileheight="48" tilecount="48">
   <image source="rpg_maker_vx___stairs_by_ayene_chan-d6vzlkv.png" width="414" height="312"/>
  </tileset>
- <tileset firstgid="509" name="glo" tilewidth="48" tileheight="48">
+ <tileset firstgid="509" name="glo" tilewidth="48" tileheight="48" tilecount="4">
   <image source="glo.png" width="96" height="96"/>
  </tileset>
- <tileset firstgid="513" name="rpg_maker_vx___carpets_autotiles_by_ayene_chan-d5og8bo" tilewidth="48" tileheight="48">
+ <tileset firstgid="513" name="rpg_maker_vx___carpets_autotiles_by_ayene_chan-d5og8bo" tilewidth="48" tileheight="48" tilecount="72">
   <image source="rpg_maker_vx___carpets_autotiles_by_ayene_chan-d5og8bo.png" width="576" height="288"/>
  </tileset>
- <tileset firstgid="585" name="rpg_maker_vx___princess_room_by_ayene_chan-d5ygs7b" tilewidth="48" tileheight="48">
+ <tileset firstgid="585" name="rpg_maker_vx___princess_room_by_ayene_chan-d5ygs7b" tilewidth="48" tileheight="48" tilecount="112">
   <image source="rpg_maker_vx___princess_room_by_ayene_chan-d5ygs7b.png" width="384" height="672"/>
  </tileset>
  <layer name="块层 1" width="30" height="8">
@@ -37,24 +40,24 @@
   </data>
  </layer>
  <objectgroup name="对象层 1">
-  <object name="PUBLIC" type="NPC" gid="509" x="-48" y="336" width="48" height="48">
+  <object id="1" name="PUBLIC" type="NPC" gid="509" x="-48" y="336" width="48" height="48">
    <properties>
     <property name="NEAR_EXECUTE" value="teleport(&quot;inner&quot;,16,5,3)"/>
    </properties>
   </object>
-  <object name="PUBLIC" type="NPC" gid="509" x="480" y="144" width="48" height="95">
+  <object id="2" name="PUBLIC" type="NPC" gid="509" x="480" y="144" width="48" height="95">
    <properties>
     <property name="FACE_EXECUTE" value="teleport(&quot;rkoroom&quot;,2,10,3)"/>
     <property name="IMAGE" value="door"/>
    </properties>
   </object>
-  <object name="PUBLIC" type="NPC" gid="509" x="1104" y="144" width="48" height="95">
+  <object id="3" name="PUBLIC" type="NPC" gid="509" x="1104" y="144" width="48" height="95">
    <properties>
     <property name="FACE_EXECUTE" value="teleport(&quot;ykroom&quot;,2,10,3)"/>
     <property name="IMAGE" value="door"/>
    </properties>
   </object>
-  <object name="PUBLIC" type="NPC" gid="509" x="-48" y="384" width="48" height="48">
+  <object id="4" name="PUBLIC" type="NPC" gid="509" x="-48" y="384" width="48" height="48">
    <properties>
     <property name="NEAR_EXECUTE" value="teleport(&quot;inner&quot;,16,5,3)"/>
    </properties>

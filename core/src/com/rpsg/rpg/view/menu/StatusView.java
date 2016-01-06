@@ -23,14 +23,14 @@ import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.CheckBox;
-import com.rpsg.rpg.system.ui.DefaultIView;
+import com.rpsg.rpg.system.ui.IMenuView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.game.GameUtil;
 
-public class StatusView extends DefaultIView {
+public class StatusView extends IMenuView {
 	Group group,inner;
 	ScrollPane pane;
 	public View init() {

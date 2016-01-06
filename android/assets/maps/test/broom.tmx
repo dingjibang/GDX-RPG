@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="7" height="7" tilewidth="48" tileheight="48" nextobjectid="2">
+ <properties>
+  <property name="name" value="宿舍"/>
+ </properties>
  <tileset firstgid="1" name="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6" tilewidth="48" tileheight="48" tilecount="256">
   <image source="rpg_maker_vx__modernrtp_tilec_by_painhurt-d3f7sm6.png" width="768" height="768"/>
  </tileset>

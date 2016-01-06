@@ -44,6 +44,8 @@ public class GameView extends View{
 	String filename;//地图文件名（卸载地图纹理时候用到）
 	TmxMapLoader.Parameters parameter;//地图加载完成的回调
 	
+	public BattleView battleView;
+	
 	public PostProcessor post;//高清画质用
 	public Bloom bloom;//模糊用
 	public boolean renderable = true;
@@ -106,6 +108,11 @@ public class GameView extends View{
 		if(!ma.update() || !inited){
 			PostUtil.draw(false);
 			return;
+		}
+		
+		if(RPG.ctrl.battle.logic()){
+			//TODO postFX?
+			battleView.draw(batch);
 		}
 		
 		boolean postable = Setting.persistence.betterLight;

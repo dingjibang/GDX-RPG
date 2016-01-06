@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="22" height="12" tilewidth="48" tileheight="48">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="22" height="12" tilewidth="48" tileheight="48" nextobjectid="4">
  <properties>
   <property name="POST" value="false"/>
  </properties>
- <tileset firstgid="1" name="cafe" tilewidth="48" tileheight="48">
+ <tileset firstgid="1" name="cafe" tilewidth="48" tileheight="48" tilecount="264">
   <image source="cafe.png" width="1056" height="576"/>
  </tileset>
- <tileset firstgid="265" name="glo" tilewidth="48" tileheight="48">
+ <tileset firstgid="265" name="glo" tilewidth="48" tileheight="48" tilecount="4">
   <image source="glo.png" width="96" height="96"/>
  </tileset>
  <layer name="块层 1" width="22" height="12">
@@ -20,7 +20,7 @@
   </data>
  </layer>
  <objectgroup name="a">
-  <object name="PUBLIC" type="NPC" gid="265" x="767" y="175" width="48" height="64">
+  <object id="1" name="PUBLIC" type="NPC" gid="265" x="767" y="175" width="48" height="64">
    <properties>
     <property name="ABSOLUTE" value="true"/>
     <property name="AUTO_SCRIPT" value="s0-2.js"/>
@@ -28,13 +28,13 @@
     <property name="LOCK" value="true"/>
    </properties>
   </object>
-  <object name="PUBLIC" type="NPC" gid="265" x="766" y="244" width="48" height="64">
+  <object id="2" name="PUBLIC" type="NPC" gid="265" x="766" y="244" width="48" height="64">
    <properties>
     <property name="ABSOLUTE" value="true"/>
     <property name="ID" value="2"/>
    </properties>
   </object>
-  <object name="PUBLIC" type="NPC" gid="265" x="830" y="243" width="48" height="64">
+  <object id="3" name="PUBLIC" type="NPC" gid="265" x="830" y="243" width="48" height="64">
    <properties>
     <property name="ABSOLUTE" value="true"/>
     <property name="ID" value="3"/>

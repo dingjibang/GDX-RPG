@@ -77,10 +77,10 @@ public class MenuView extends StackView{
 		}});
 		$.add(hr=Res.get(Setting.IMAGE_MENU_GLOBAL+"hr.png")).setPosition(-200, 490).appendTo(leftBar).setColor(1,1,1,0).addAction(Actions.delay(0.2f, Actions.parallel(Actions.fadeIn(0.1f),Actions.moveTo(20, 490,0.1f))));
 		frames.add($.add(new Label("",24)).setPosition(-300, 357).appendTo(ld).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(75,357,0.5f,Interpolation.pow2Out))),new GdxQueryRunnable() {public void run(GdxQuery self) {
-			((Label)self.getItem()).setText((String)RPG.maps.getProp().get("name")+"["+RPG.ctrl.hero.getHeadHero().mapx+","+RPG.ctrl.hero.getHeadHero().mapy+"]");
+			((Label)self.getItem()).setText((String)RPG.maps.getName()+" [ "+RPG.ctrl.hero.getHeadHero().mapx+" , "+RPG.ctrl.hero.getHeadHero().mapy+" ]");
 		}});
 		frames.add($.add(new Label("",24)).setPosition(-300,302).appendTo(ld).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(75,302,0.5f,Interpolation.pow2Out))),new GdxQueryRunnable() {public void run(GdxQuery self) {
-			((Label)self.getItem()).setText("持有"+RPG.global.gold+"金币");
+			((Label)self.getItem()).setText("持有 "+RPG.global.gold+" 金币");
 		}});
 		frames.add($.add(new Label("",24)).setPosition(-300, 245).appendTo(ld).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.3f),Actions.moveTo(75,245,0.5f,Interpolation.pow2Out))),new GdxQueryRunnable() {public void run(GdxQuery self) {
 			((Label)self.getItem()).setText("任务模块制作中");
