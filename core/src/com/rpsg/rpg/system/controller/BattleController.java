@@ -35,7 +35,7 @@ public class BattleController {
 	}
 	
 	public boolean logic(){
-		if(flag && param != null){
+		if(flag && param != null){//开始战斗*queue
 			flag = false;
 			GameViews.gameview.battleView = new BattleView(param).init();
 			return true;

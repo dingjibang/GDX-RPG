@@ -1,7 +1,10 @@
 package com.rpsg.rpg.core;
 
+import java.lang.reflect.Field;
+
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.NativeJavaObject;
+import org.mozilla.javascript.NativeObject;
 import org.mozilla.javascript.ScriptableObject;
 
 import com.badlogic.gdx.graphics.Color;
@@ -110,8 +113,23 @@ public class RPG {
 	public static boolean executeJS(String js){
 		return executeJS(js,null);
 	}
+
+	public static <T> T jsToJava(Class<T> cls, NativeObject param) {
+		try {
+			T obj = cls.getConstructor().newInstance();
+			for(Object key:param.getAllIds()){
+				Field f = obj.getClass().getDeclaredField(key.toString());
+				Object val = param.get(key);
+				if(val.getClass().equals(Double.class) && f.getType().equals(Integer.class))//js to java (double)
+					val = Integer.valueOf(val.toString());
+				
+				f.set(obj, val);
+			}
+			return obj;
+		} catch (Exception e) {
+			Logger.error("无法从js中生成java对象",e);
+			return null;
+		}
+	}
 	
-	/**
-	 * Rhino JS 对象 转为 Java
-	 */
 }

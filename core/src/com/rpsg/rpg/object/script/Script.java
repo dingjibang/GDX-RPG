@@ -1,8 +1,11 @@
 package com.rpsg.rpg.object.script;
 
+import java.util.Arrays;
+
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.JavaAdapter;
 import org.mozilla.javascript.NativeJavaObject;
+import org.mozilla.javascript.NativeObject;
 import org.mozilla.javascript.ScriptableObject;
 
 import com.badlogic.gdx.Gdx;
@@ -496,12 +499,9 @@ public class Script extends Thread{
 	/**
 	 * 触发战斗
 	 */
-	public void battle(Object param){
-		try {
-			RPG.ctrl.battle.start((BattleParam)JavaAdapter.getAdapterSelf(BattleParam.class, param));
-		} catch (NoSuchFieldException | IllegalAccessException e) {
-			Logger.error("读取战斗模块出错",e);
-		}
+	public void battle(NativeObject param){
+		RPG.jsToJava(BattleParam.class,param);
+//		RPG.ctrl.battle.start(RPG.jsToJava(BattleParam.class,param));
 	}
 	
 	/**

@@ -9,12 +9,9 @@ public class BattleParam {
 	
 	public int enemy;
 
-	public int getEnemy() {
-		return enemy;
-	}
-
-	public void setEnemy(int enemy) {
-		this.enemy = enemy;
+	@Override
+	public String toString() {
+		return "BattleParam [enemy=" + enemy + "]";
 	}
 
 }

@@ -40,7 +40,7 @@ public class BattleView extends DefaultIView{
 			}
 		});
 		
-		System.out.println(param.getEnemy());
+		System.out.println(param.enemy);
 		return this;
 	}
 
