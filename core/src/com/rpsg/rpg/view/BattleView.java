@@ -27,7 +27,7 @@ public class BattleView extends DefaultIView{
 	@Override
 	public BattleView init() {
 		stage = new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
-		$.add(new Label("啊啊啊啊战斗中QAQ",30)).setPosition(0,400).appendTo(stage);
+		$.add(new Label("啊啊啊啊战斗中QAQ",30)).setPosition(233,400).appendTo(stage);
 		
 		TextButtonStyle tstyle = new TextButtonStyle();
 		tstyle.down = Setting.UI_BUTTON;
@@ -40,16 +40,13 @@ public class BattleView extends DefaultIView{
 			}
 		});
 		
-		System.out.println(param.enemy);
 		return this;
 	}
 
 	@Override
 	public void draw(SpriteBatch batch) {
 		logic();
-		
 		stage.draw();
-		
 	}
 
 	@Override

@@ -230,7 +230,7 @@ public class MenuView extends StackView{
 			for(View view:viewStack)
 				view.dispose();
 			this.dispose();
-			com.rpsg.rpg.system.controller.InputController.currentIOMode=IOMode.MapInput.NORMAL;
+			com.rpsg.rpg.system.controller.InputController.currentIOMode=IOMode.MapInput.normal;
 			frames=null;
 			stage=null;
 			GameViews.gameview.stackView=null;

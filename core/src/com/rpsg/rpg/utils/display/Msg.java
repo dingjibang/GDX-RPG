@@ -90,7 +90,7 @@ public class Msg {
 		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				com.rpsg.rpg.system.controller.InputController.currentIOMode = flag ? IOMode.MapInput.MESSAGING : IOMode.MapInput.NORMAL;
+				com.rpsg.rpg.system.controller.InputController.currentIOMode = flag ? IOMode.MapInput.messaging : IOMode.MapInput.normal;
 			}
 		});
 	}

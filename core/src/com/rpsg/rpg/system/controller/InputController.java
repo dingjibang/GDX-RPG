@@ -13,31 +13,37 @@ import com.rpsg.rpg.view.GameViews;
 
 public class InputController{
 	
-	public static MapInput currentIOMode=IOMode.MapInput.NORMAL; 
+	public static MapInput currentIOMode=IOMode.MapInput.normal; 
 	static IOMode.MapInput tmpIO=null;
 	
-	public static void setTempIOMode(int IOMode){
-		tmpIO=currentIOMode;
+	public static void saveIOMode(MapInput IOMode){
+		tmpIO = currentIOMode;
+		currentIOMode = IOMode;
 	}
 	
-	public static void resotryIOMode(){
+	public static void loadIOMode(){
 		if(tmpIO!=null)
-			currentIOMode=tmpIO;
-		tmpIO=null;
+			currentIOMode = tmpIO;
+		tmpIO = null;
 	}
+	
 	public static boolean keyDown(int keycode,GameView gv) {
 		switch(currentIOMode){
-		case NORMAL:{
+		case normal:{
 			if(keycode==Keys.ESCAPE || keycode==Keys.X){
 				MenuController.createMenu();
-				currentIOMode=IOMode.MapInput.MENU;
+				currentIOMode=IOMode.MapInput.menu;
 			}else{
 					MoveController.keyDown(keycode, gv);
 			}
 			break;
 		}
-		case MENU:{
+		case menu:{
 			MenuController.keyDown(keycode);
+			break;
+		}
+		case battle:{
+			GameViews.gameview.battleView.onkeyDown(keycode);
 			break;
 		}
 		default:
@@ -49,12 +55,16 @@ public class InputController{
 
 	public static boolean keyUp(int keycode,GameView gv) {
 		switch(currentIOMode){
-		case NORMAL:{
+		case normal:{
 			MoveController.keyUp(keycode, gv);
 			break;
 		}
-		case MENU:{
+		case menu:{
 			MenuController.keyUp(keycode);
+			break;
+		}
+		case battle:{
+			GameViews.gameview.battleView.onkeyUp(keycode);
 			break;
 		}
 		default:
@@ -65,15 +75,19 @@ public class InputController{
 	
 	public static boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		switch(currentIOMode){
-		case MENU:{
+		case menu:{
 			MenuController.touchDown(screenX, screenY, pointer, button);
 			break;
 		}
-		case NORMAL:{
+		case normal:{
 			if(GameViews.gameview.inited && GameViews.gameview.renderable){
 				if((!PostUtil.touchDown(screenX, screenY, pointer, button)) && Setting.persistence.pathFind)//如果没点到屏幕的UI，则自动移动
 					Path.click(screenX, screenY);
 			}
+			break;
+		}
+		case battle:{
+			GameViews.gameview.battleView.touchDown(screenX, screenY, pointer, button);
 			break;
 		}
 		default:
@@ -84,9 +98,13 @@ public class InputController{
 
 	public static boolean keyTyped(char character) {
 		switch(currentIOMode){
-		case NORMAL:{
+		case normal:{
 			
 			PostUtil.keyTyped(character);
+			break;
+		}
+		case battle:{
+			GameViews.gameview.battleView.onkeyTyped(character);;
 			break;
 		}
 		default:
@@ -97,15 +115,19 @@ public class InputController{
 
 	public static boolean touchDragged(int screenX, int screenY, int pointer) {
 		switch(currentIOMode){
-		case MENU:{
+		case menu:{
 			MenuController.touchDragged(screenX, screenY, pointer);
 			break;
 		}
-		case NORMAL:{
+		case normal:{
 			if(GameViews.gameview.inited && GameViews.gameview.renderable){
 				if(!PostUtil.touchDragged( screenX,  screenY,  pointer))
 					Path.click(screenX, screenY);
 			}
+			break;
+		}
+		case battle:{
+			GameViews.gameview.battleView.touchDragged(screenX, screenY, pointer);
 			break;
 		}
 		default:
@@ -116,12 +138,16 @@ public class InputController{
 
 	public static boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		switch(currentIOMode){
-		case MENU:{
+		case menu:{
 			MenuController.touchUp(screenX, screenY, pointer, button);
 			break;
 		}
-		case NORMAL:{
+		case normal:{
 			PostUtil.touchUp(screenX, screenY, pointer, button);
+			break;
+		}
+		case battle:{
+			GameViews.gameview.battleView.touchUp(screenX, screenY, pointer, button);
 			break;
 		}
 		default:
@@ -132,8 +158,12 @@ public class InputController{
 
 	public static void scrolled(int amount) {
 		switch(currentIOMode){
-		case MENU:{
+		case menu:{
 			MenuController.scrolled(amount);
+			break;
+		}
+		case battle:{
+			GameViews.gameview.battleView.scrolled(amount);
 			break;
 		}
 		default:
@@ -143,8 +173,12 @@ public class InputController{
 
 	public static void mouseMoved(int x, int y) {
 		switch(currentIOMode){
-		case NORMAL:{
+		case normal:{
 			PostUtil.mouseMoved(x, y);
+			break;
+		}
+		case battle:{
+			GameViews.gameview.battleView.mouseMoved(x, y);
 			break;
 		}
 		default:

@@ -1,6 +1,7 @@
 package com.rpsg.rpg.system.controller;
 
 import com.rpsg.rpg.object.base.BattleParam;
+import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.view.BattleView;
 import com.rpsg.rpg.view.GameViews;
 
@@ -19,6 +20,8 @@ public class BattleController {
 		if(isBattle())
 			return;
 		
+		InputController.saveIOMode(IOMode.MapInput.battle);
+		
 		this.param = param;
 		flag = true;
 	}
@@ -26,6 +29,9 @@ public class BattleController {
 	public void stop(){
 		flag = false;
 		param = null;
+		
+		InputController.loadIOMode();
+		
 		//TODO 需要dispose？？？
 //		GameViews.gameview.battleView = null;
 	}

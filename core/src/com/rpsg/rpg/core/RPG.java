@@ -120,11 +120,12 @@ public class RPG {
 			for(Object key:param.getAllIds()){
 				Field f = obj.getClass().getDeclaredField(key.toString());
 				Object val = param.get(key);
-				if(val.getClass().equals(Double.class) && f.getType().equals(Integer.class))//js to java (double)
-					val = Integer.valueOf(val.toString());
+				if(val.getClass().equals(Double.class) && f.getType().getName().equalsIgnoreCase("int"))//js to java (double)
+					val = Double.valueOf(val.toString()).intValue();
 				
 				f.set(obj, val);
 			}
+			
 			return obj;
 		} catch (Exception e) {
 			Logger.error("无法从js中生成java对象",e);

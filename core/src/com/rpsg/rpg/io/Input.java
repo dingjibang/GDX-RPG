@@ -12,7 +12,7 @@ import com.rpsg.rpg.system.ui.Animation;
 import com.rpsg.rpg.view.GameViews;
 
 public class Input implements InputProcessor {
-	public static IOMode.GameInput state = IOMode.GameInput.NORMAL;
+	public static IOMode.GameInput state = IOMode.GameInput.normal;
 	private static List<Integer> pressList = new ArrayList<>();
 
 	@Override
@@ -25,7 +25,7 @@ public class Input implements InputProcessor {
 //			a.setScale(1f);
 //			a.layer = 3;
 		}
-		if (state == IOMode.GameInput.HOVER)
+		if (state == IOMode.GameInput.hover)
 			return RPG.popup.keyDown(keycode);
 		switch (GameViews.state) {
 		case GameViews.STATE_TITLE: {
@@ -42,7 +42,7 @@ public class Input implements InputProcessor {
 
 	@Override
 	public boolean keyUp(int keycode) {
-		if (state == IOMode.GameInput.HOVER)
+		if (state == IOMode.GameInput.hover)
 			return RPG.popup.keyUp(keycode);
 		switch (GameViews.state) {
 		case GameViews.STATE_GAME: {
@@ -55,7 +55,7 @@ public class Input implements InputProcessor {
 
 	@Override
 	public boolean keyTyped(char character) {
-		if (state == IOMode.GameInput.HOVER)
+		if (state == IOMode.GameInput.hover)
 			return RPG.popup.keyTyped(character);
 		switch (GameViews.state) {
 		case GameViews.STATE_LOGO: {
@@ -73,7 +73,7 @@ public class Input implements InputProcessor {
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		RPG.touch.start().setPosition(screenX, screenY);
-		if (state == IOMode.GameInput.HOVER)
+		if (state == IOMode.GameInput.hover)
 			return RPG.popup.touchDown(screenX, screenY, pointer, button);
 		switch (GameViews.state) {
 		case GameViews.STATE_GAME: {
@@ -87,7 +87,7 @@ public class Input implements InputProcessor {
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		RPG.touch.stop().setPosition(screenX, screenY);
-		if (state == IOMode.GameInput.HOVER)
+		if (state == IOMode.GameInput.hover)
 			return RPG.popup.touchUp(screenX, screenY, pointer, button);
 		switch (GameViews.state) {
 		case GameViews.STATE_GAME: {
@@ -101,7 +101,7 @@ public class Input implements InputProcessor {
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
 		RPG.touch.setPosition(screenX, screenY);
-		if (state == IOMode.GameInput.HOVER)
+		if (state == IOMode.GameInput.hover)
 			return RPG.popup.touchDragged(screenX, screenY, pointer);
 		switch (GameViews.state) {
 		case GameViews.STATE_GAME: {
@@ -114,7 +114,7 @@ public class Input implements InputProcessor {
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		if (state == IOMode.GameInput.HOVER)
+		if (state == IOMode.GameInput.hover)
 			return RPG.popup.mouseMoved(screenX, screenY);
 		switch (GameViews.state) {
 		case GameViews.STATE_GAME: {
@@ -127,7 +127,7 @@ public class Input implements InputProcessor {
 
 	@Override
 	public boolean scrolled(int amount) {
-		if (state == IOMode.GameInput.HOVER)
+		if (state == IOMode.GameInput.hover)
 			return RPG.popup.scrolled(amount);
 		switch (GameViews.state) {
 		case GameViews.STATE_GAME: {

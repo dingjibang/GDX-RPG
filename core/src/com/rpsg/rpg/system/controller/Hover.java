@@ -44,7 +44,7 @@ public class Hover{
 	}
 	
 	void logic(){
-		Input.state=stack.isEmpty()?IOMode.GameInput.NORMAL:IOMode.GameInput.HOVER;
+		Input.state=stack.isEmpty()?IOMode.GameInput.normal:IOMode.GameInput.hover;
 		List<HoverView> removeList=new ArrayList<HoverView>();
 		for(HoverView view:stack){
 			if(view.disposed){

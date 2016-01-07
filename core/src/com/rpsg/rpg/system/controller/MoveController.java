@@ -85,7 +85,7 @@ public class MoveController {
 		RPG.ctrl.hero.setWalkSpeed(speed);
 		
 		
-		if (InputController.currentIOMode == IOMode.MapInput.NORMAL && RPG.popup.isEmpty()) {
+		if (InputController.currentIOMode == IOMode.MapInput.normal && RPG.popup.isEmpty()) {
 			if ((Input.isPress(Keys.RIGHT) || Input.isPress(Keys.D)) && RPG.ctrl.hero.walked()) {
 				RPG.ctrl.hero.turn(Hero.FACE_R);
 				RPG.ctrl.hero.walk(1);

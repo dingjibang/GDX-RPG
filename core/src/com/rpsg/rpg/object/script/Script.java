@@ -500,8 +500,7 @@ public class Script extends Thread{
 	 * 触发战斗
 	 */
 	public void battle(NativeObject param){
-		RPG.jsToJava(BattleParam.class,param);
-//		RPG.ctrl.battle.start(RPG.jsToJava(BattleParam.class,param));
+		RPG.ctrl.battle.start(RPG.jsToJava(BattleParam.class,param));
 	}
 	
 	/**

@@ -66,7 +66,7 @@ public class SelectUtil implements InputProcessor {
 				}else{
 					Gdx.input.setInputProcessor(RPG.input);
 					if(!isLocked)
-						InputController.currentIOMode=IOMode.MapInput.NORMAL;
+						InputController.currentIOMode=IOMode.MapInput.normal;
 					stage.clear();
 					dispose();
 				}
@@ -74,8 +74,8 @@ public class SelectUtil implements InputProcessor {
 			public void init() {
 				select=false;
 				Gdx.input.setInputProcessor(SelectUtil.this);
-				isLocked=(InputController.currentIOMode==IOMode.MapInput.MESSAGING);
-				InputController.currentIOMode=IOMode.MapInput.MESSAGING;
+				isLocked=(InputController.currentIOMode==IOMode.MapInput.messaging);
+				InputController.currentIOMode=IOMode.MapInput.messaging;
 				int yoff=0;
 				mask.setColor(1,1,1,0);
 				mask.addAction(Actions.fadeIn(0.1f));
