@@ -91,7 +91,7 @@ public class PostUtil {
 			others.cleanActions();
 			for(Actor actor:others.getItems())
 				actor.addAction(GameViews.gameview.stackView==null?Actions.fadeIn(0.1f):Actions.fadeOut(0.1f));
-			if(Setting.persistence.betterLight)
+			if(Setting.persistence.betterDisplay)
 				mask.setColor(.5f,.5f,.5f,(1-others.first().getItem().getColor().a)*.3f);
 			else
 				mask.setColor(.2f,.2f,.2f,(1-others.first().getItem().getColor().a)*.85f);

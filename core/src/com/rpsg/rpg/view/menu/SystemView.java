@@ -142,9 +142,14 @@ public class SystemView extends IMenuView{
 			table.add(new Label("开启抗锯齿，你懂的。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.add(new CheckBox("高级画质",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
-				set.betterLight = t.isChecked();
-			}}).check(set.betterLight).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
+				set.betterDisplay = t.isChecked();
+			}}).check(set.betterDisplay).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("对画面使用二次渲染，可以提高游戏视觉效果，但可能会降低一些性能。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
+			
+			table.add(new CheckBox("显示天气效果",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
+				set.weather = t.isChecked();
+			}}).check(set.weather).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
+			table.add(new Label("选择是否启用天气效果，可能降低一些性能，对游戏的剧情不产生影响。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.layout();
 			parentTable.add(table).align(Align.topLeft).row();

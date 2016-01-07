@@ -4,7 +4,7 @@ var renko = getNPC("19");
 var mari = getNPC("17");
 var monster = getNPC("21");
 
-
+setWeather(Weather.rain);
 renko.setVisible(false);
 renko.enableCollide = false;
 mari.setVisible(false);
@@ -126,6 +126,10 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	showMSG(MsgType.梅莉);
 	say("别分神，准备战斗！", "梅莉");
 	
+	battle({
+		enemy:1
+	});
+	
 	setCameraPositionWithHero(0, 0, false);
 	monster.walk(1).testWalk();
 	Hero.walk(-1).testWalk();
@@ -163,14 +167,20 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	
 	pause(30);
 	
+	monster.setBalloon(BalloonType.惊讶);
+	monster.walk(-1).testWalk();
+	
+	//TODO 这里来张符卡特写？？
+	
+	pause(50);
 	
 	var animation = RPG.ctrl.animation.add(1);
-	animation.setPosition(455,1700);
+	animation.setPosition(455,1708);
 	animation.layer = 3;
 	animation.setColor(1,1,1,0);
 	animation.addAction(Actions.fadeIn(1));
 	
-	var lightID = RPG.maps.loader.addLight(99,552,1786,0);
+	var lightID = RPG.maps.loader.addLight(99,552,1794,0);
 	var light = RPG.maps.loader.getLight(lightID);
 	
 	var white = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(1,1,1,0).getItem();

@@ -116,17 +116,20 @@ public class GameView extends View{
 			return;
 		}
 		
-		boolean postable = Setting.persistence.betterLight;
+		boolean postable = Setting.persistence.betterDisplay;
 		
 		if(postable)
 			post.capture();
 		
 		RPG.maps.distant.draw((SpriteBatch)stage.getBatch(), this);
 		
-		if(renderable)
+		if(renderable){
 			RPG.maps.loader.draw(this);
+			//set post
+			RPG.ctrl.weather.logic();
+		}
 		
-		if(Setting.persistence.betterLight && RPG.maps.getProp().get("weather")==null && renderable)
+		if(Setting.persistence.weather && RPG.maps.getProp().get("weather")==null && renderable)
 			RPG.ctrl.weather.draw((SpriteBatch)batch);
 		
 		if(postable)

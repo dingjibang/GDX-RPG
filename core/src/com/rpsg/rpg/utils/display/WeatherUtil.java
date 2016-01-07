@@ -11,15 +11,15 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.bitfire.postprocessing.effects.Bloom;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.Weather;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameViews;
 
 public class WeatherUtil {
-	public static int WEATHER_NO=0;
-	public static int WEATHER_RAIN=1;
-	public int type;
+	
+	public Weather type;
 	
 	public float baseSaturation,bloomIntesity,bloomSaturation,threshold;
 	Stage stage;
@@ -29,45 +29,35 @@ public class WeatherUtil {
 	private ParticleEffect eff;
 	
 	public String getName(){
-		if(type==WEATHER_NO)
-			return "晴";
-		if(type==WEATHER_RAIN)
-			return "雨";
-		else
+		if(type == null)
 			return "数据异常";
+		
+		return type.value();
 	}
 	
-	public void init(int type){
+	public void init(Weather type){
 		this.type = type;
 		RPG.global.weather = type;
 		if (eff != null)
 			eff.dispose();
 		if (stage == null)
 			stage = new Stage(new ScalingViewport(Scaling.stretch, 1024, 576, new OrthographicCamera()),GameViews.batch);
-		if (type == WEATHER_RAIN) {
+		if (type == Weather.rain) {
 			eff = new ParticleEffect();
 			eff.load(Gdx.files.internal(Setting.PARTICLE + "rainp.p"), Gdx.files.internal(Setting.PARTICLE));
 			eff.start();
 		} else {
 			eff = null;
 		}
-		setPost();
+		logic();
 	}
 	
 	private int lastHeroPositionX;
 	float gameMenuListener=1;
 	public void draw(SpriteBatch batch){
-		if(GameViews.gameview.stackView==null && gameMenuListener<1)
-			gameMenuListener+=.05;
-		if(GameViews.gameview.stackView != null && gameMenuListener>0)
-			gameMenuListener-=.05;
 		batch.end();
 		
 		stage.getBatch().setProjectionMatrix(stage.getCamera().combined);
-		
-		Bloom bloom=GameViews.bloom;
-		bloom.setBaseIntesity(baseSaturation*gameMenuListener);
-		bloom.setBloomSaturation((bloomSaturation-0.2f)*gameMenuListener+0.2f);
 		if(eff!=null){
 			if(lastHeroPositionX==0)
 				lastHeroPositionX=(int) RPG.ctrl.hero.getHeadHero().position.x;
@@ -92,7 +82,20 @@ public class WeatherUtil {
 			if(eff.isComplete())
 				eff.reset();
 		}
+		
 		batch.begin();
+	}
+	
+	public void logic(){
+		if(GameViews.gameview.stackView==null && gameMenuListener<1)
+			gameMenuListener+=.05;
+		if(GameViews.gameview.stackView != null && gameMenuListener>0)
+			gameMenuListener-=.05;
+		
+		Bloom bloom=GameViews.bloom;
+		bloom.setBaseIntesity(baseSaturation*gameMenuListener);
+		bloom.setBloomSaturation((bloomSaturation-0.2f)*gameMenuListener+0.2f);
+		
 		setPost();
 	}
 	
@@ -104,13 +107,13 @@ public class WeatherUtil {
 			bloomSaturation=1.1f;
 			threshold=0f;
 			GameViews.vignette.setEnabled(false);
-		}else if(type==WEATHER_RAIN){
+		}else if(type==Weather.rain){
 			baseSaturation=0.7f;
 			bloomIntesity=0.8f;
 			bloomSaturation=0.2f;
 			threshold=0f;
 			GameViews.vignette.setEnabled(true);
-		}else if(type==WEATHER_NO){
+		}else if(type==Weather.no){
 			baseSaturation=1f;
 			bloomIntesity=0.7f;
 			bloomSaturation=1.2f;
@@ -125,7 +128,7 @@ public class WeatherUtil {
 		bloom.setEnabled(true);
 	}
 	
-	public BaseScriptExecutor setWeather(final Script script,final int t){
+	public BaseScriptExecutor setWeather(final Script script,final Weather t){
 		return script.set((BaseScriptExecutor) new BaseScriptExecutor() {
 			@Override
 			public void init() {

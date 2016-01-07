@@ -38,7 +38,7 @@ public class Global implements Serializable {
 
 	// 时间模块
 	public GameDate date = new GameDate();
-	public int weather;
+	public Weather weather;
 
 	// 金钱
 	public int gold;

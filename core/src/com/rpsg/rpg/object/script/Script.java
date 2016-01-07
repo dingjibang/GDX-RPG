@@ -1,9 +1,6 @@
 package com.rpsg.rpg.object.script;
 
-import java.util.Arrays;
-
 import org.mozilla.javascript.Context;
-import org.mozilla.javascript.JavaAdapter;
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.NativeObject;
 import org.mozilla.javascript.ScriptableObject;
@@ -17,6 +14,7 @@ import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.BattleParam;
 import com.rpsg.rpg.object.base.FGType;
 import com.rpsg.rpg.object.base.MsgType;
+import com.rpsg.rpg.object.base.Weather;
 import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.NPC;
@@ -30,7 +28,6 @@ import com.rpsg.rpg.utils.game.Base;
 import com.rpsg.rpg.utils.game.GameDate;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Heros;
-import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.utils.game.Move;
 import com.rpsg.rpg.utils.game.Timer;
 import com.rpsg.rpg.view.GameViews;
@@ -439,10 +436,10 @@ public class Script extends Thread{
 	
 	/**
 	 * 设置天气
-	 * @param type 天气的类型，请查询WeatherUtil TODO 需要改进成enum下吧
+	 * @param type 天气的类型，请查询enum#Weather
 	 * @return
 	 */
-	public BaseScriptExecutor setWeather(int type){
+	public BaseScriptExecutor setWeather(Weather type){
 		return RPG.ctrl.weather.setWeather(this, type);
 	}
 	

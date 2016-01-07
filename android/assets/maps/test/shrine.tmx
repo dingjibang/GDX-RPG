@@ -244,6 +244,7 @@
    <properties>
     <property name="ID" value="17"/>
     <property name="IMAGE" value="walk_mari"/>
+    <property name="SHADOW" value="true"/>
    </properties>
   </object>
   <object id="18" name="PUBLIC" type="NPC" gid="1280" x="480" y="480" width="144" height="96">
@@ -258,6 +259,7 @@
    <properties>
     <property name="ID" value="19"/>
     <property name="IMAGE" value="walk_renko"/>
+    <property name="SHADOW" value="true"/>
    </properties>
   </object>
   <object id="20" name="PUBLIC" type="LIGHT" gid="1280" x="432" y="576" width="48" height="48">

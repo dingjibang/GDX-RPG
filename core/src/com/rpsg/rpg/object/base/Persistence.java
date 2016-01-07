@@ -36,8 +36,10 @@ public class Persistence implements Serializable{
 	public boolean onErrorSendMsg = true;
 	/**是否将UI设定为触屏模式*/
 	public boolean touchMod = true;
-	/**是否启用更好的灯光系统*/
-	public boolean betterLight = true;
+	/**是否启用更好的视觉效果*/
+	public boolean betterDisplay = true;
+	/**是否启用天气系统*/
+	public boolean weather = true;
 	/**是否缓存资源到内存中，以便于快速进图*/
 	public boolean cacheResource = true;
 	/**是否启用柔和的摄像机移动*/

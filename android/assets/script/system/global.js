@@ -5,6 +5,7 @@
 var RPG = com.rpsg.rpg.core.RPG;
 var item = RPG.ctrl.item;
 var GameDate = com.rpsg.rpg.utils.game.GameDate;
+var Weather = com.rpsg.rpg.object.base.Weather;
 
 //初始地图
 map = "test/subway.tmx";
@@ -18,7 +19,7 @@ map = "test/shrine.tmx";x=11;y=12;z=3;
 date.time = GameDate.Time.NIGHT;
 
 //初始天气
-weather = com.rpsg.rpg.utils.display.WeatherUtil.WEATHER_NO;
+weather = Weather.no;
 
 //初始携带
 gold = 120;

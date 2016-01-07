@@ -19,3 +19,4 @@ var RPG = com.rpsg.rpg.core.RPG;
 var Item = com.rpsg.rpg.utils.game.ItemUtil;
 var Actor = com.badlogic.gdx.scenes.scene2d.Actor;
 var BattleParam = com.rpsg.rpg.object.base.BattleParam;
+var Weather = com.rpsg.rpg.object.base.Weather;
