@@ -26,19 +26,26 @@ eval(""+load('global.js'));
  *
  * 	#maxLength : Number
  * 	 行走最大可能长度，比如每次行走最大走3步，默认为3。
+ *
+ * 	#minLength : Number
+ * 	 行走最小可能长度，比如每次行走最小走1步，默认为1。
  * 
  *  #bounds : Vector2
  * 	根据x和y，制定一个矩形区域，NPC会在这个矩形内行走而不会越界，越界就会减速并掉头，他的优先级是最高的，并不会屌前面的参数	
  * 
  */
-
-npc.walkSpeed=1;
+ 
+if(typeof(defaultWalkSpeed)=="undefined" || defaultWalkSpeed==null)
+	npc.walkSpeed=1;
 
 if(typeof(speed)=="undefined" || speed==null)
 	var speed = 60;
 	
 if(typeof(maxLength)=="undefined" || maxLength==null)
 	var maxLength = 3;
+
+if(typeof(minWalkLength)=="undefined" || minWalkLength==null)
+	minWalkLength=1; 
 
 var sleepMaxTime=speed,sleepTime=0,count=-1,maxCount=-1;
 var maxWalkLength=maxLength;
@@ -47,7 +54,9 @@ var bo2;
 if(typeof(bounds)!="undefined" && bounds!=null)
 	bo2==new Vector();
 
-var _step = parseInt(Math.random()*maxWalkLength);
+if(typeof(_step)=="undefined" || _step==null)
+	var _step = parseInt(Math.random()*(maxWalkLength-minWalkLength)+minWalkLength);
+
 var face = 0;
 
 if(typeof(_point)=="undefined" || _point==null){
