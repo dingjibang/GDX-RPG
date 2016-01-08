@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="48" tileheight="48">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="48" tileheight="48" nextobjectid="2">
  <properties>
   <property name="distant" value="bgnd2.jpg"/>
   <property name="name" value="测试地图"/>
   <property name="temp" value="function Vector(){var o=new Object();o.x=0;o.y=0;return o;};var _point=new Vector();_point.x=-1;_point.y=-1;"/>
  </properties>
- <tileset firstgid="1" name="Cliff_tileset_0" tilewidth="48" tileheight="48">
+ <tileset firstgid="1" name="Cliff_tileset_0" tilewidth="48" tileheight="48" tilecount="240">
   <image source="Cliff_tileset_0.png" trans="000000" width="755" height="777"/>
  </tileset>
- <tileset firstgid="241" name="ground_tiles" tilewidth="48" tileheight="48">
+ <tileset firstgid="241" name="ground_tiles" tilewidth="48" tileheight="48" tilecount="441">
   <image source="ground_tiles.png" trans="000000" width="1008" height="1052"/>
  </tileset>
- <tileset firstgid="682" name="objects" tilewidth="48" tileheight="48">
+ <tileset firstgid="682" name="objects" tilewidth="48" tileheight="48" tilecount="84">
   <image source="object- layer_1.png" trans="000000" width="716" height="329"/>
  </tileset>
- <tileset firstgid="766" name="treesv6_0_0" tilewidth="48" tileheight="48">
+ <tileset firstgid="766" name="treesv6_0_0" tilewidth="48" tileheight="48" tilecount="126">
   <image source="treesv6_0_0.png" trans="000000" width="1008" height="288"/>
  </tileset>
- <tileset firstgid="892" name="glo" tilewidth="48" tileheight="48">
+ <tileset firstgid="892" name="glo" tilewidth="48" tileheight="48" tilecount="4">
   <image source="glo.png" width="96" height="96"/>
  </tileset>
  <layer name="块层 1" width="30" height="30">
@@ -36,8 +36,9 @@
   </data>
  </layer>
  <objectgroup name="对象层 2">
-  <object name="FOONPC" type="NPC" gid="892" x="1008" y="480" width="48" height="64">
+  <object id="1" name="PUBLIC" type="NPC" gid="892" x="1008" y="480" width="48" height="64">
    <properties>
+    <property name="AUTO_SCRIPT" value="randomWalk.js"/>
     <property name="IMAGE" value="walk_marisa"/>
    </properties>
   </object>

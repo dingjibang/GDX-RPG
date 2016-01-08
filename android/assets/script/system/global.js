@@ -13,7 +13,7 @@ x=3;
 y=2;
 z=1;
 
-map = "test/shrine.tmx";x=11;y=12;z=3;
+map = "test/map.tmx";x=11;y=12;z=3;
 
 //初始时间
 date.time = GameDate.Time.NIGHT;

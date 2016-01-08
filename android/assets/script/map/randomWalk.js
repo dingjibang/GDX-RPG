@@ -1,15 +1,22 @@
 eval(""+load('global.js'));
 
 npc.walkSpeed=1;
+
+//speed = 行走等待速度，越高行走越慢，默认60（1秒）
 if(typeof(speed)=="undefined" || speed==null)
 	var speed = 60;
+	
+//maxLength = 行走最大可能长度，比如每次最大走3步
 if(typeof(maxLength)=="undefined" || maxLength==null)
 	var maxLength = 3;
+
 var sleepMaxTime=speed,sleepTime=0,count=-1,maxCount=-1;
 var maxWalkLength=maxLength;
 var bo2;
+
 if(typeof(bounds)!="undefined" && bounds!=null)
 	bo2==new Vector();
+
 var _step = parseInt(Math.random()*maxWalkLength);
 var face = 0;
 
