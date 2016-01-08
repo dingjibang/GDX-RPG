@@ -56,7 +56,7 @@ public class Move {
 		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				RPG.global.map = "test/" + map;
+				RPG.global.map = map.indexOf('/') < 0 ? ("test/" + map) : map;
 				RPG.global.x = x;
 				RPG.global.y = y;
 				RPG.global.z = z;

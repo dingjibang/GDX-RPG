@@ -13,10 +13,10 @@ x=3;
 y=2;
 z=1;
 
-map = "test/map.tmx";x=11;y=12;z=3;
+map = "11/outside1.tmx";x=11;y=12;z=2;
 
 //初始时间
-date.time = GameDate.Time.NIGHT;
+date.time = GameDate.Time.DAY;
 
 //初始天气
 weather = Weather.no;
