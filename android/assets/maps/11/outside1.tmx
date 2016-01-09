@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="80" tilewidth="48" tileheight="48" nextobjectid="2">
+ <properties>
+  <property name="distant" value="bgnd2.jpg"/>
+  <property name="name" value="测试地图"/>
+  <property name="temp" value="function Vector(){var o=new Object();o.x=0;o.y=0;return o;};var _point=new Vector();_point.x=-1;_point.y=-1;"/>
+ </properties>
+ <tileset firstgid="1" name="Cliff_tileset_0" tilewidth="48" tileheight="48" tilecount="240">
+  <image source="../test/Cliff_tileset_0.png" trans="000000" width="755" height="777"/>
+ </tileset>
+ <tileset firstgid="241" name="ground_tiles" tilewidth="48" tileheight="48" tilecount="441">
+  <image source="../test/ground_tiles.png" trans="000000" width="1008" height="1052"/>
+  <terraintypes>
+   <terrain name="草地" tile="44"/>
+   <terrain name="沙子" tile="132"/>
+   <terrain name="石头" tile="274"/>
+  </terraintypes>
+  <tile id="43" terrain="0,0,0,0"/>
+  <tile id="44" terrain="0,0,0,0"/>
+  <tile id="64" terrain="0,0,0,0"/>
+  <tile id="65" terrain="0,0,0,0"/>
+  <tile id="72" terrain="0,0,0,1"/>
+  <tile id="73" terrain="0,0,1,0"/>
+  <tile id="90" terrain="0,0,0,1"/>
+  <tile id="91" terrain="0,0,1,1"/>
+  <tile id="92" terrain="0,0,1,0"/>
+  <tile id="93" terrain="0,1,0,0"/>
+  <tile id="94" terrain="1,0,0,0"/>
+  <tile id="106" terrain="1,1,1,1"/>
+  <tile id="107" terrain="1,1,1,1"/>
+  <tile id="108" terrain="1,1,1,1"/>
+  <tile id="111" terrain="0,1,0,1"/>
+  <tile id="113" terrain="1,0,1,0"/>
+  <tile id="114" terrain="1,1,1,0"/>
+  <tile id="115" terrain="1,1,0,1"/>
+  <tile id="127" terrain="1,1,1,1"/>
+  <tile id="128" terrain="1,1,1,1"/>
+  <tile id="129" terrain="1,1,1,1"/>
+  <tile id="132" terrain="0,1,0,0"/>
+  <tile id="133" terrain="1,1,0,0"/>
+  <tile id="134" terrain="1,0,0,0"/>
+  <tile id="135" terrain="1,0,1,1"/>
+  <tile id="136" terrain="0,1,1,1"/>
+  <tile id="148" terrain="1,1,1,1"/>
+  <tile id="149" terrain="1,1,1,1"/>
+  <tile id="150" terrain="1,1,1,1"/>
+  <tile id="258" terrain="0,0,0,0"/>
+  <tile id="259" terrain="0,0,2,2"/>
+  <tile id="260" terrain="0,0,2,0"/>
+  <tile id="262" terrain="2,0,2,0"/>
+  <tile id="274" terrain="2,2,2,2"/>
+  <tile id="275" terrain="2,2,2,2"/>
+  <tile id="277" terrain="2,0,0,0"/>
+  <tile id="278" terrain="0,2,0,0"/>
+  <tile id="279" terrain="0,2,0,2"/>
+  <tile id="280" terrain="2,2,2,2"/>
+  <tile id="281" terrain="2,2,2,0"/>
+  <tile id="282" terrain="2,2,2,0"/>
+  <tile id="283" terrain="2,2,0,2"/>
+  <tile id="295" terrain="2,2,2,2"/>
+  <tile id="296" terrain="2,2,2,2"/>
+  <tile id="298" terrain="0,0,2,0"/>
+  <tile id="299" terrain="0,0,0,2"/>
+  <tile id="300" terrain="0,2,0,0"/>
+  <tile id="301" terrain="2,2,0,0"/>
+  <tile id="302" terrain="2,0,0,0"/>
+  <tile id="303" terrain="2,0,2,2"/>
+  <tile id="304" terrain="0,2,2,2"/>
+ </tileset>
+ <tileset firstgid="682" name="objects" tilewidth="48" tileheight="48" tilecount="84">
+  <image source="../test/object- layer_1.png" trans="000000" width="716" height="329"/>
+ </tileset>
+ <tileset firstgid="766" name="treesv6_0_0" tilewidth="48" tileheight="48" tilecount="126">
+  <image source="../test/treesv6_0_0.png" trans="000000" width="1008" height="288"/>
+  <tile id="21">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="42">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="43">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="44">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="63">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="64">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="65">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="66">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="84">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="85">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="86">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="87">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="105">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="106">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="107">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="108">
+   <properties>
+    <property name="DeleteTiles" value="yes"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="892" name="glo" tilewidth="48" tileheight="48" tilecount="4">
+  <image source="../test/glo.png" width="96" height="96"/>
+ </tileset>
+ <layer name="块层 1" width="50" height="80">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC9VbW24TQRBMGwRBcAFEQuAI5I9cAYIPYFuyQg6wawlCDkB84ID4ZRq6mPJir+fp7H60xvY63umu7urHbE7k6OjUyUmldelk4eSbkwv6vPS93jk5r7h+cnLtZG66fHRyWeFetXDA+sHJrZPGybqjz8WI8Fja/mdOPjv5SnIzIjyWpoPicKWfT46Ofrj1p5P7EeGB+JiZHsdOj0dOfrnX78X719Dx0PWL6aJ6nDodXjt5MvE6Xo0AD8ZlaveEb72a/PU7jfvLEeDBqwr7lurRGCZjwIPXXb41Jjw0tv/kdeKt5QjxwJ7Vtx6Tbx0SD83NHyUvF7Mez8m3pgm/lYqH8qfmYfhzLh5vJn8566QA1jE6q0+rP8N+OXg8pVjH79bGQ/1J+V155mxSJj703vdmm7cWJ7XxQK66kPya6F8sGAbA5WxSHw9wPPcPWbYzDN4Y94J/DxEf0OWuo0+07UyHl06e0forA+NYvlJdwFeqTwrnI29AnlO8HzqfQ59tnI8cc7nj7xEPLwrhUDKfo4+4lM1Y6oujY/MpxMih4qNvRX+BuNF+HH3TNrz+1AKGyWPC5fyB8TgX72sQ6NXt9bjfOCUfQ25/SDy2rV2MEC/bOPyYMHloPPbxG896+HPUWi/Jt4aExzZ+w6znVDZrLdaDe96h4NG3cq3FevDroeGxbe3igX49td56SDyUC6biczw4S/NRbA13CPvvxYZyCfe5Q8Mj5DvcrwOn84h7DAGPE/E58Yz6w5j8PhQ80Bsq56I/vB8ZHphpgbfAXWOKD5zzMP9yjTIWPJSbVrI5Q0GcDD0+0K+gxv8uvv5iiTkXKW1/7ql4vyy6dz1rawyLufx/5sa12KHw6Np3bvaFrRvx55y6zsSftd0RHjnnUiXsj72vbU8Lez+z92u6NrfrK7uOM1D0j6l7SdGd59WqQ2t7xN7u7LPGXjd2vSX7q3R9aRpw75J4LG0/d7Z37Ofa3q9sn7jOWMxJv+4zDjlriu44S16YDlP7HD3rQrxvYc+IhTXp1kp+XOTi0Yo/E+frOFvYJdemA3RdFcIlVOduTGAfIecg/Jr1VJ0QV4c4j0LtAP8GD8GnUvM5/HAtNAuqiAeePVqJjwnwS259hXNnzItr4gG7rWSTZ3LrK34WqJG854BCdebnRMAzoT30rmuKBfIkOHpGdqrFV5gRMlfl4IFaFzH3WTbPJGrlD9QgyA2hHNOHcfc8BXwWGnspeCDe12a7m0w8GJdWDldfoR4BFqF/t+87PNNOPXuMxQPcG2O70N9eS/pzJqE6IzZa8fm3FB6co1LzeqjOzJHg3dCaaEh4wF5z8X0R560SeKCXqo2H+hP3GuhZ9+X30NyEnrw2HrAX5/dG9vNXin1r4IE6qMvx4MtG+vkrxb418ECMMx6ME2rHXdzf99vc16TMrWLwgE+hhuPnSro6xuKBuh21YmhPk4oHZiDM8fC3fT1d32/zM3awE3CJ+b+EEF25nkOMQIeFbM4bcvMH5hDfJa5miK2vMPu7lc25T9/sKQZz6LDvN1PzB+oSzAsx8wipe0PxQL0QU0vH4MH9Zyubc8AQm8XggTqhRj8IWzXSHwe5eIATwSU1+Ip9KJbbQ77DPfNKPL+XxqOV9BlT6Hd5ntWtHUrmDz6nKI0H3wuYxPQ4IboC87l4Xq+BB88xYvN6qK14xh7bI8TeI+VZ1FBbLQ0P+G0NPOBTKX1hiK7b8K6FRyv+fLEkXyEHptQ8KXjwWU8pvgIOqKtr5g9du+dZpfiKa7eUmieVrzB/L4UH9EjFISU+VuLrn5h7/gYUnrkXgD4AAA==
+  </data>
+ </layer>
+ <layer name="块层 4" width="50" height="80">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQEAAACAkP6v7ggKAAAAAAAAAAAAAAAAAAAAao3nfFeAPgAA
+  </data>
+ </layer>
+ <layer name="auto" width="50" height="80">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+Vax44UQQxttslXcj6QczyQczwAS84cyDkeCB8PvJWmpVbJsexukHjS087sVPd4bfezy7VN8/9gbts088D54AJwYZuzdmysgi2rwTXgWnCdYJtn7djYA1v2gvvA/eABwTbPWg7RmE5hfQvOBuf0rj2H1+fBC+BF8JJwX89aDtGYLsP65eAKcGXv2vt4/QB8CD4CHwv39azlwMWU83OJHfhsJ7gL3N1b9xGvP4GfwS/gV+EenrUcuJhyfi5xCp+dBs+AZxOfT6sfO3Ax5fxc4jY+uwPeBe9N1q3Hzw3gRnATuLni77P6sQMXU6uf3+Kzd+B78MNk3UH8PAQeBo+AR1u/nlj9OAPJb5SfrbiM9VfAq+A0eK3164knXym/daD8bMUTrH8KPgOfgy9aXk84X3r8SPktA99wn+/gD/Dn5J6cnnC+9PiR8lsf3udVegY4PcnwJeW3PqS8oyA9A5yeaL60QtJpyVfUdTV9UulLa70oIem05Cvqukif5K0XJSSdlvKOui7SJ3nqBQVOp7W+gLou0idF+xtOp7U4R+qkxw4rOJ3W4lxeJ8XP0pNQdmT0ad44S/Gr3eN4dZ+CN85S/Gr3rRk10ttfSfGr1WNrjcyct0jx0/SYs0PrNzpkzluk+Gl6HLUjY96SgagdUt5698cRROc+Ut5G+50sOyyQ8larg1qNWoT3i8El4FLGri7mnB0ZOaHVQa1GbcH7reA2cDtjgxbzjJzQ6qBWo47h/XHwBHiSsUGLebQHnoFWB7UadR3vb4A3wVuMDVrMh5rx9aHVqJf43SvwNfimpWudFvPsnjoDVK3TYh6ZPf2aaprfYIPrZjmvlfRl7Jpr0UsOkr5knHF4YNFLDpK+ZJxxeGDRSw6SvmSccXhg0UsOf0NfuJ6/1EsPIvpSi0jPP2YvrEHSQc3OIXth7x5V0kHNzoy+h4M3TyQd1Owcsu/x1ktJBzU7M3SJ6xsy66VmZ6lLNXM/rm+I1svSPx79rJn7cX0DmSetvdeL9FU1cz9L31BjU6Svqjkbs/QNNTZF+irr3K8PS99QYxPnn8h+xAJJI2p6Pc4/1hyt7VUkjYj0eiWsOVrbq1g0IuM8x5qjtb0KpRFlbDPOc6w5WturUBpRxjbjPEfK0X5vmrmHKmPr1XXvs9rvTTP3UGVsvbrufVaHmuVEY+t9Voea5URjSz2rkuYNMcuhvs+7R6TiKWneELMc6vu8e0QqnkP9zxwH6vsynsOs//PiUOYM9X0Zz6FF8yLn8GXOUN831kw1Mguz5Ez0ObTWRU/+lrEb4+zbWhc9+VvGboyzb2td9ORvGbvI2bcV1h7Wk79U7Did8NZlDlyfE9nXULHjdMJblzlwfU5kX0PFjtOJSF22zBWya7xHJ6x12TJXoO4V2T9bdKLzr3UvYpkrlPeK7p8tOuGdLdbMvjx5VjsP884Wa2Zfnl6ydo7s9W/N7Muzf66dI0fOkYdA7Rw5c7aYgX/Jr38ARLhsboA+AAA=
+  </data>
+ </layer>
+ <layer name="t0" width="50" height="80">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3ZTQqAQAgGUGEO239U918k3aBFZfAefHthBgWNAAAAAAAq2lrEnjna15UAUFmXc6LPDJnRzAAAAADgY1OLmDNLZrWvgou7H8D/VOrdlWrhHm/HW/w14AknoOwspYA+AAA=
+  </data>
+ </layer>
+ <layer name="t1" width="50" height="80">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3ZsQmAUAwFwAcZUUFB959DKzsLG82XuwkeJCSQJAAAAADwL1sle32dAoARTOe+mO0MAAAAAJpYKlndq+Di7wcwnk6zu1MWnlE73qLXAO4d5GNhu4A+AAA=
+  </data>
+ </layer>
+ <objectgroup name="对象层 2">
+  <object id="1" name="PUBLIC" type="NPC" gid="892" x="1008" y="480" width="48" height="64">
+   <properties>
+    <property name="AUTO_SCRIPT" value="randomWalk.js"/>
+    <property name="IMAGE" value="walk_marisa"/>
+    <property name="NEAR_EXECUTE" value="print(&quot;asd&quot;);"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="t2" width="50" height="80">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3aSU/CUBiF4YY64VZRBpWt8wBucVZwS8ICEv3/P8N3iUkllsZwP/M+yUlYni+3vW1zyTJJkiRJkhTNRp5lm2SL1Ml2vupGy+nQ+4AckiPSDTrHNb1vSI/0yW3QOV7p/UaGZETeg84xm+v9we/PoHNI+m6He3mXNMhe4Pv6mO4n5JScBZ5jQPc7ck8eAs8xnus+CTyHJEmSJEmR1PgGz8kaWQ/8Pb5P9yZpkXbgOc7pfkEuyVXgOR7p/kSeyUuwOX4695sGm8Nzv7R47if9rZT+s1GlS0p7d5UuKe3dZboUrV0qe3eZ58iitVv13l3mOZLSdVRF0dqltGf9VtHapbRnVfGfr7WIfN+UpMW+APetRxuAPgAA
+  </data>
+ </layer>
+ <layer name="块层 6" width="50" height="80">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQEAAACAkP6v7ggKAAAAAAAAAAAAAAAAAAAAao3nfFeAPgAA
+  </data>
+ </layer>
+</map>
