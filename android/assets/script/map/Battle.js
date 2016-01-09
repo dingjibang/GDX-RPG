@@ -29,13 +29,13 @@ eval(""+load('global.js'));
  *  #accelerate1WalkSpeed : Number
  * 	加速模式1行走速度，指默认NPC行走速度，默认2
  *  #accelerate2WalkSpeed : Number
- * 	加速模式2行走速度，指默认NPC行走速度，默认4
+ * 	加速模式2行走速度，指默认NPC行走速度，默认3
  *  #speed : Number
- * 	默认行走等待速度，指脚本执行完毕后，下一次重新执行的延时，越高行走越慢，默认60（1秒）
+ * 	默认行走等待速度，指脚本执行完毕后，下一次重新执行的延时，越高行走越慢，默认6（0.1秒）
  *  #accelerate1Speed : Number
- * 	加速模式1行走等待速度，指脚本执行完毕后，下一次重新执行的延时，越高行走越慢，默认20（0.333秒）
+ * 	加速模式1行走等待速度，指脚本执行完毕后，下一次重新执行的延时，越高行走越慢，默认2（0.033秒）
  *  #accelerate2Speed : Number
- * 	加速模式2行走等待速度，指脚本执行完毕后，下一次重新执行的延时，越高行走越慢，默认10（0.167秒）
+ * 	加速模式2行走等待速度，指脚本执行完毕后，下一次重新执行的延时，越高行走越慢，默认2（0.033秒）
  *
  * 	#maxLength : Number
  * 	 行走最大可能长度，比如每次行走最大走1步，默认为1。
@@ -54,16 +54,16 @@ if(typeof(accelerate1WalkSpeed)=="undefined" || accelerate1WalkSpeed==null)
 	var accelerate1WalkSpeed = 2;
 	
 if(typeof(accelerate2WalkSpeed)=="undefined" || accelerate2WalkSpeed==null)
-	var accelerate2WalkSpeed = 4;
+	var accelerate2WalkSpeed = 3;
 
 if(typeof(speed)=="undefined" || speed==null)
-	var speed = 10;
+	var speed = 6;
 
 if(typeof(accelerate1Speed)=="undefined" || accelerate1Speed==null)
 	var accelerate1Speed = 2;
 	
 if(typeof(accelerate2Speed)=="undefined" || accelerate2Speed==null)
-	var accelerate2Speed = 4;
+	var accelerate2Speed = 2;
 
 if(typeof(accelerate1Length)=="undefined" || accelerate1Length==null)
 	var accelerate1Length = 5;
@@ -110,13 +110,13 @@ else
 	switch(mode)
 	{
 		case 1:
-		speed = accelerate1Speed;
+		speed = accelerate1WalkSpeed;
 		npc.walkSpeed=accelerate1Speed;
 		_point = {x:-1,y:-1};
 		break;
 		case 2:
 		speed = accelerate2Speed;
-		npc.walkSpeed=accelerate2Speed;
+		npc.walkSpeed=accelerate2WalkSpeed;
 		_point = {x:-1,y:-1};
 		if(npcDistance == 0)
 		{
