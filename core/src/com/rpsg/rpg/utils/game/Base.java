@@ -14,22 +14,20 @@ public class Base {
 		});
 	}
 	
-	public static BaseScriptExecutor changeSelf(final Script script,final Class<? extends Script> newScript){
+	public static BaseScriptExecutor changeSelf(final Script script,final String newScript){
 		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-				CollideType callType = script.callType;
-				script.npc.scripts.remove(callType);
-//				TODO script.npc.scripts.put(callType, newScript);
+				script.script = newScript;
 			}
 		});
 	}
 	
-	public static BaseScriptExecutor addScript(final Script script,final Class<? extends Script> newScript,final CollideType type){
+	public static BaseScriptExecutor addScript(final Script script,final String scriptstr,final CollideType type){
 		return script.set(new BaseScriptExecutor() {
 			@Override
 			public void init() {
-//				TODO script.npc.scripts.put(type, newScript);
+				script.npc.scripts.put(type, scriptstr);
 			}
 		});
 	}

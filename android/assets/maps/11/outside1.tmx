@@ -243,11 +243,10 @@
   </data>
  </layer>
  <objectgroup name="对象层 2">
-  <object id="1" name="PUBLIC" type="NPC" gid="892" x="1632" y="1008" width="48" height="64">
+  <object id="1" name="PUBLIC" type="NPC" gid="892" x="816" y="2832" width="48" height="64">
    <properties>
-    <property name="AUTO_SCRIPT" value="randomWalk.js"/>
+    <property name="AUTO_SCRIPT" value="battle.js"/>
     <property name="IMAGE" value="walk_marisa"/>
-    <property name="NEAR_EXECUTE" value="print(&quot;asd&quot;);"/>
    </properties>
   </object>
  </objectgroup>

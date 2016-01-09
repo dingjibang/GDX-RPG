@@ -308,7 +308,7 @@ public class Script extends Thread{
 	 * @param script 脚本的class类型
 	 * @return
 	 */
-	public BaseScriptExecutor changeSelf(Class<? extends Script> script){
+	public BaseScriptExecutor changeSelf(String script){
 		return Base.changeSelf(this,script);
 	}
 	

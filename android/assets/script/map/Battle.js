@@ -57,7 +57,7 @@ if(typeof(accelerate2WalkSpeed)=="undefined" || accelerate2WalkSpeed==null)
 	var accelerate2WalkSpeed = 4;
 
 if(typeof(speed)=="undefined" || speed==null)
-	var speed = 60;
+	var speed = 10;
 
 if(typeof(accelerate1Speed)=="undefined" || accelerate1Speed==null)
 	var accelerate1Speed = 2;
