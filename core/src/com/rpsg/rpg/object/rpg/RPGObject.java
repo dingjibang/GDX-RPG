@@ -149,7 +149,7 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	public void draw(Batch batch,float parentAlpha){
 		if(isVisible()){
 			if(this.drawShadow){
-				shadow.position(getX()+8f, getY()-3.8f).color(this.getColor()).draw(batch,parentAlpha);
+				shadow.position(getX()+8f, getY()-0f).color(this.getColor()).draw(batch,parentAlpha);
 			}
 			this.getCurrentImage().setColor(this.getColor());
 			this.getCurrentImage().draw(batch,parentAlpha);
