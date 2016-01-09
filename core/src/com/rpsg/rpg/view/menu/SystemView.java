@@ -233,15 +233,20 @@ public class SystemView extends IMenuView{
 			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"split.png")).padTop(15).left().row();
 			table.add(new Label("Other Options",20).align(Align.right)).width(300).align(Align.right).height(0).padTop(-40).row();
 			
-			table.add(new CheckBox("输出调试信息",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
-				set.debugMod = t.isChecked();
-			}}).check(set.debugMod).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(50).row();
-			table.add(new Label("输出游戏的调试信息到控制台（开发者）。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
-			
 			table.add(new CheckBox("缓存游戏资源",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.cacheResource = t.isChecked();//TODO
 			}}).check(set.cacheResource).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("游戏将尝试缓存已读取的资源，在下次进入菜单、地图时会加快读取，但会增加内存的消耗。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
+			
+			table.add(new CheckBox("在屏幕上显示帧数",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
+				set.showFPS = t.isChecked();
+			}}).check(set.showFPS).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(50).row();
+			table.add(new Label("你是强迫症么？",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
+			
+			table.add(new CheckBox("输出调试信息",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
+				set.debugMod = t.isChecked();
+			}}).check(set.debugMod).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(50).row();
+			table.add(new Label("输出游戏的调试信息到控制台（开发者）。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.add(new CheckBox("调试布局",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.uiDebug = t.isChecked();
