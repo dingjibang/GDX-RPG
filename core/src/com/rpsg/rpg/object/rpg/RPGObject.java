@@ -217,8 +217,12 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	}
 	
 	public int getFaceByPoint(int x,int y){
-		boolean xable=MathUtils.random(100)>50;
-		if(xable)
+		//boolean xable=MathUtils.random(100)>50;
+		int dx,dy;
+		dx=Math.abs(x-mapx);
+		dy=Math.abs(y-mapy);
+		int face =this.getCurrentFace();
+		if((dx!=0 && (face==FACE_L||face==FACE_R))|| dy == 0)
 			return mapx>x?FACE_L:FACE_R;
 		else
 			return mapy>y?FACE_U:FACE_D;

@@ -117,12 +117,16 @@ switch(mode)
 
 if(!npc.scripts.containsKey(CollideType.near))
 {
-	npc.scripts.put(CollideType.near,"var rpgObject=com.rpsg.rpg.object.rpg.RPGObject;"+
+	var battleScriptStr ="var rpgObject=com.rpsg.rpg.object.rpg.RPGObject;"+
 	"var dx,dy;"+
 	"dx=Math.abs(npc.mapx-Hero.mapx);dy=Math.abs(npc.mapy-Hero.mapy);"+
-	"if((dx==1||dy==1) &&(dx!=dy))"+//"if(parseInt(npc.getCurrentFace()) == parseInt(rpgObject.getReverseFace(npc.getFaceByPoint(Hero.mapx,Hero.mapy))))"+
-	"{battle({enemy:1});npc.remove();}"+
-	"removeSelf();end();");
+	"if((dx==1||dy==1) &&(dx!=dy))"+
+	"if(npc.currentImageNo==1 || npc.currentImageNo==4 || npc.currentImageNo==7 || currentImageNo ==10)"+
+	"if(parseInt(npc.getCurrentFace()) == parseInt(npc.getFaceByPoint(Hero.mapx,Hero.mapy)))"+
+	"{pause(60);battle({enemy:1});npc.remove();}"+
+	"removeSelf();end();";
+	npc.scripts.put(CollideType.near,battleScriptStr);
+	npc.scripts.put(CollideType.face,battleScriptStr);
 }
 
 eval("" + load("randomWalk.js"));
