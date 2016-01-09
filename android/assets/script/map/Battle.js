@@ -121,9 +121,9 @@ if(!npc.scripts.containsKey(CollideType.near))
 	"var dx,dy;"+
 	"dx=Math.abs(npc.mapx-Hero.mapx);dy=Math.abs(npc.mapy-Hero.mapy);"+
 	"if((dx==1||dy==1) &&(dx!=dy))"+
-	"if(npc.currentImageNo==1 || npc.currentImageNo==4 || npc.currentImageNo==7 || currentImageNo ==10)"+
+	"if(npc.currentImageNo==1 || npc.currentImageNo==4 || npc.currentImageNo==7 || npc.currentImageNo ==10)"+
 	"if(parseInt(npc.getCurrentFace()) == parseInt(npc.getFaceByPoint(Hero.mapx,Hero.mapy)))"+
-	"{pause(60);battle({enemy:1});npc.remove();}"+
+	"{battle({enemy:1});npc.remove();}"+
 	"removeSelf();end();";
 	npc.scripts.put(CollideType.near,battleScriptStr);
 	npc.scripts.put(CollideType.face,battleScriptStr);
