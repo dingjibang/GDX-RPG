@@ -178,9 +178,9 @@
    eJztzlsKgVEYhtE9GszBYQxOU+CXs3CDwXtzJVdK2cVa9dx89dVbCgDU00rt1Kk9hIdu6qV+GlTeQinDNErjNEnTunP+3izNU5MWlbf8mm3apX06PN2XaZXWafPyc0nXdPvGQAAA+NAxndK59hAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOBtd/CWCtU=
   </data>
  </layer>
- <layer name="output_t0" width="100" height="100" visible="0">
+ <layer name="output_t0" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJztzkEKg0AUREEvK4KJ0WDcaA5vL1yIGwUhA6EKHgMfBrqqAACAM/X2NkVX/KdX6tOQ3rt7mx7pmbrDnzkt6fuLgQAAcNOYPmkqPQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALhsBfQKBwY=
+   eJztzkEKglAYhVGX1YYkUCtDnZiL9xINokmOfCjnwMeDHx7cqgIAAP6pP++16IpzuqdH6tPz696kNnXp9vNnTq+07DEQAODALqUH8DakMU2lhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJutU8wHPg==
   </data>
  </layer>
  <layer name="output_t1" width="100" height="100" visible="0">
