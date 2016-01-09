@@ -82,40 +82,57 @@ var mode = 0;
 
 HeroX = Hero.mapx;
 HeroY = Hero.mapy;
-npcDistance = Math.max(Math.abs(parseInt(npc.mapx-HeroX)),Math.abs(parseInt(npc.mapy-HeroY)));
+var dx = Math.abs(parseInt(npc.mapx-HeroX));
+var dy = Math.abs(parseInt(npc.mapy-HeroY));
+npcDistance = Math.max(dx,dy);
+var rpgObject=com.rpsg.rpg.object.rpg.RPGObject;
 
-if(npcDistance <= accelerate2Length)
-{
-	mode = 2;
+if(((npcDistance ==1 && dx != dy) && // near checked
+(npc.currentImageNo==1 || npc.currentImageNo==4 || npc.currentImageNo==7 || npc.currentImageNo ==10) && // static Image NO. checked
+parseInt(npc.getCurrentFace()) == parseInt(npc.getFaceByPoint(HeroX,HeroY)) //Check if the face is to Hero 
+	|| npcDistance == 0))
+{	
+	battle({enemy:1});npc.remove();
+	removeSelf();
+	end();
 }
-else if(npcDistance <= accelerate1Length)
+else
 {
-	mode = 1;
-}
-
-switch(mode)
-{
-	case 1:
-	speed = accelerate1Speed;
-	npc.walkSpeed=accelerate1Speed;
-	_point = {x:-1,y:-1};
-	break;
-	case 2:
-	speed = accelerate2Speed;
-	npc.walkSpeed=accelerate2Speed;
-	_point = {x:-1,y:-1};
-	if(npcDistance == 0)
+	if(npcDistance <= accelerate2Length)
 	{
-		_step = 0;
+		mode = 2;
 	}
-	break;
-	case 0:
-	default: 
-	npc.walkSpeed=defaultWalkSpeed;
-	break;
+	else if(npcDistance <= accelerate1Length)
+	{
+		mode = 1;
+	}
+
+	switch(mode)
+	{
+		case 1:
+		speed = accelerate1Speed;
+		npc.walkSpeed=accelerate1Speed;
+		_point = {x:-1,y:-1};
+		break;
+		case 2:
+		speed = accelerate2Speed;
+		npc.walkSpeed=accelerate2Speed;
+		_point = {x:-1,y:-1};
+		if(npcDistance == 0)
+		{
+			_step = 0;
+		}
+		break;
+		case 0:
+		default: 
+		npc.walkSpeed=defaultWalkSpeed;
+		break;
+	}
+	eval("" + load("randomWalk.js"));
 }
 
-if(!npc.scripts.containsKey(CollideType.near))
+
+/*if(!npc.scripts.containsKey(CollideType.near))
 {
 	var battleScriptStr ="var rpgObject=com.rpsg.rpg.object.rpg.RPGObject;"+
 	"var dx,dy;"+
@@ -127,6 +144,5 @@ if(!npc.scripts.containsKey(CollideType.near))
 	"removeSelf();end();";
 	npc.scripts.put(CollideType.near,battleScriptStr);
 	npc.scripts.put(CollideType.face,battleScriptStr);
-}
+}*/
 
-eval("" + load("randomWalk.js"));
