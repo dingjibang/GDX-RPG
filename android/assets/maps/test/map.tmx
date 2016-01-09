@@ -35,17 +35,17 @@
    H4sIAAAAAAAAC1NjYGAQZ0CA00wMDGeYIGxVBtoBUyBWQ7L7JtDOW1B7mYGYBYhZgZiNDnaDgBMQOyPxRYFYDE3fQSbq2e0PxAFAHAjEQWhqaBXuILvjgDgeiBOwyJvQyF5sIBwYyRHM9LcXGdDC3uOM5NuLL30tYiROHT7zBiqcnQkroTpQp0DvJTLzOSV2gkA0MD/EMKOKNeNQ20iCnfuQylZiwSQgDoOyI4C4H4onMEDKLEoBvjScCqXTqWDPcALBwLQRwkxY3SgYuYDcsmsUDD5AjfYmNkBsGtkNVLcfivcA8VckfbjMINbNW5HaM+hmPUWydxcd0/NnoF1foPjcCM1HAN5txgkQDgAA
   </data>
  </layer>
- <objectgroup name="对象层 2">
-  <object id="1" name="PUBLIC" type="NPC" gid="892" x="1008" y="480" width="48" height="64">
-   <properties>
-    <property name="AUTO_SCRIPT" value="randomWalk.js"/>
-    <property name="IMAGE" value="walk_marisa"/>
-   </properties>
-  </object>
- </objectgroup>
  <layer name="块层 3" width="30" height="30">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3VOQrCQBiG4SFxb9331n1N6763goKC3lDRe3gPr+FbWEyhVeTHgfngIYEUbwgJUer/5sF1lQog6Mp107QyyCIn2G3QaqKFtmB3QmuKGeaC3b3WOgh2TV6I5xRGBFHEhJ5bnk4BRZRQFup26HTRQx+eUHdBZ4kV1tj8sHtzlHo4n68dtc6J87Mh30Wc+0wgiZTgPVdoVVFDXbA7oDXECGPB7lZr7Qx5N+zs7Pzvwj/jivv7+PzyD7Gz87sXwKPQzxAOAAA=
   </data>
  </layer>
+ <objectgroup name="对象层 2">
+  <object id="1" name="PUBLIC" type="NPC" gid="892" x="1008" y="480" width="48" height="64">
+   <properties>
+    <property name="AUTO_SCRIPT" value="Battle.js"/>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

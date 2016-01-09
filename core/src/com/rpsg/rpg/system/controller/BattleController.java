@@ -20,8 +20,6 @@ public class BattleController {
 		if(isBattle())
 			return;
 		
-		InputController.saveIOMode(IOMode.MapInput.battle);
-		
 		this.param = param;
 		flag = true;
 	}
@@ -44,6 +42,7 @@ public class BattleController {
 		if(flag && param != null){//开始战斗*queue
 			flag = false;
 			GameViews.gameview.battleView = new BattleView(param).init();
+			InputController.saveIOMode(IOMode.MapInput.battle);
 			return true;
 		}
 		return isBattle();
