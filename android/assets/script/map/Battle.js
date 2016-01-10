@@ -85,16 +85,16 @@ var toBattle = function(){
 
 
 var rpgObject=com.rpsg.rpg.object.rpg.RPGObject;
-var heros = RPG.ctrl.hero.currentHeros;
+var isBattle = false;
 
-for(var i = 0;i<heros.size();i++){
-	var Hero = heros.get(i);
+for(var i = 0;i<Heros.size();i++){
+	var _Hero = Heros.get(i);
 	
 	var HeroX,HeroY,npcDistance;
 	var mode = 0;
+	HeroX = _Hero.mapx;
+	HeroY = _Hero.mapy;
 	
-	HeroX = Hero.mapx;
-	HeroY = Hero.mapy;
 	var dx = Math.abs(parseInt(npc.mapx-HeroX));
 	var dy = Math.abs(parseInt(npc.mapy-HeroY));
 	npcDistance = Math.max(dx,dy);
@@ -102,45 +102,47 @@ for(var i = 0;i<heros.size();i++){
 	if(((npcDistance ==1 && dx != dy) && // near checked
 	(npc.currentImageNo==1 || npc.currentImageNo==4 || npc.currentImageNo==7 || npc.currentImageNo ==10) && // static Image NO. checked
 	parseInt(npc.getCurrentFace()) == parseInt(npc.getFaceByPoint(HeroX,HeroY)) //Check if the face is to Hero 
-		|| npcDistance == 0))
-	{	
+		|| npcDistance == 0)){	
 		toBattle();
-	}
-	else
-	{
-		if(npcDistance <= accelerate2Length)
-		{
-			mode = 2;
-		}
-		else if(npcDistance <= accelerate1Length)
-		{
-			mode = 1;
-		}
-	
-		switch(mode)
-		{
-			case 1:
-			speed = accelerate1Speed;
-			npc.walkSpeed = accelerate1WalkSpeed;
-			_point = {x:-1,y:-1};
-			break;
-			case 2:
-			speed = accelerate2Speed;
-			npc.walkSpeed=accelerate2WalkSpeed;
-			_point = {x:-1,y:-1};
-			if(npcDistance == 0)
-			{
-				_step = 0;
-			}
-			break;
-			case 0:
-			default: 
-			npc.walkSpeed=defaultWalkSpeed;
-			break;
-		}
-		eval("" + load("randomWalk.js"));
+		isBattle = true;
 	}
 }
+
+
+if(!isBattle){
+	if(npcDistance <= accelerate2Length)
+	{
+		mode = 2;
+	}
+	else if(npcDistance <= accelerate1Length)
+	{
+		mode = 1;
+	}
+
+	switch(mode)
+	{
+		case 1:
+		speed = accelerate1Speed;
+		npc.walkSpeed = accelerate1WalkSpeed;
+		_point = {x:-1,y:-1};
+		break;
+		case 2:
+		speed = accelerate2Speed;
+		npc.walkSpeed=accelerate2WalkSpeed;
+		_point = {x:-1,y:-1};
+		if(npcDistance == 0)
+		{
+			_step = 0;
+		}
+		break;
+		case 0:
+		default: 
+		npc.walkSpeed=defaultWalkSpeed;
+		break;
+	}
+	eval("" + load("randomWalk.js"));
+}
+
 
 
 

@@ -55,9 +55,12 @@ public class Script extends Thread{
 			ScriptableObject scope =ctx.initStandardObjects();
 			scope.setPrototype(((NativeJavaObject)Context.javaToJS(Script.this, scope)));
 			scope.put("Hero", scope, Context.javaToJS(RPG.ctrl.hero.getHeadHero(), scope));
+			scope.put("Heros", scope, Context.javaToJS(RPG.ctrl.hero.currentHeros ,scope));
+			
 			ctx.evaluateString(scope, script, null, 1, null);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
 		}
 	}
 	
