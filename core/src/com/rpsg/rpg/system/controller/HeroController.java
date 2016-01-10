@@ -31,6 +31,7 @@ public class HeroController {
 	public ArrayList<Hero> getOtherHeros(){
 		ArrayList<Hero> list = (ArrayList<Hero>)allHeros.clone();
 		list.removeAll(currentHeros);
+		System.out.println(list.get(0).support);
 		return list;
 	}
 	

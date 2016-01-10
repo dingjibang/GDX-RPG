@@ -1,7 +1,7 @@
 id=2;
 
 var Association = com.rpsg.rpg.object.base.Association;
-var AnimaUp = com.rpsg.rpg.game.association.support.AnimaUp;
+var RPG = com.rpsg.rpg.core.RPG;
 
 imgPath="/walk_flandre.png";
 name="芙兰朵露";
@@ -12,6 +12,6 @@ fgname="flandre";
 //face=[{{0,0},{200,200},{0.1,0}}];
 face = [[200,100],[830,1000],[0.27]];
 association=Association.read(1);
-support=new AnimaUp();
+support = RPG.ctrl.item.get(7);
 color="d55d41cc";
 setProp("level",1);
