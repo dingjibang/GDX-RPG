@@ -12,7 +12,9 @@ name="结成有栖";
 jname="Yuki Arisu";
 fgname="arisu";
 tag="主角";
-
+//head=[{{0,0},{200,200},{0.1,0}}];
+//face=[{{0,0},{200,200},{0.1,0}}];
+face = [[0,0],[200,200],[0.1]];
 setProp("hp", 150);
 setProp("maxhp", 150);
 setProp("exp", 3);

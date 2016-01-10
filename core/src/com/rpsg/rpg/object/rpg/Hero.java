@@ -36,6 +36,9 @@ public class Hero extends RPGObject {
 	public Hero linkTo;
 	public ArrayList<AssociationSkill> linkSkills = new ArrayList<AssociationSkill>();
 	public String color = "000000cc";
+	public float[][] face;
+//	public float[][] face;
+	//public float[][] head;
 	public Map<String, Integer> prop = new HashMap<String, Integer>();
 	{
 		//等级

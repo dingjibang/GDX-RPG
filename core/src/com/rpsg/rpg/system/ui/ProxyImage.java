@@ -15,9 +15,14 @@ import com.rpsg.rpg.system.base.Res;
  *
  */
 public class ProxyImage extends Image {
+	public float[][] position;
 
 	public ProxyImage(String resPath) {
 		this.texturePath=resPath;
+	}
+	public ProxyImage(String resPath,float[][] pos) {
+		this.texturePath=resPath;
+		this.position = pos;
 	}
 
 	@Override
@@ -40,7 +45,14 @@ public class ProxyImage extends Image {
 			parameter.loadedCallback= new AssetLoaderParameters.LoadedCallback() {
 				@Override
 				public void finishedLoading(AssetManager assetManager, String fileName, @SuppressWarnings("rawtypes") Class type) {
-					ProxyImage.this.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) Res.ma2.get(texturePath))));
+					if(ProxyImage.this.position==null||ProxyImage.this.position.length<=0){
+						ProxyImage.this.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) Res.ma2.get(texturePath))));
+						}
+					else{
+						System.out.println(ProxyImage.this.position[0][0]+"------------------------"+ProxyImage.this.position[1][0]);
+						ProxyImage.this.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) Res.ma2.get(texturePath),ProxyImage.this.position[0][0],ProxyImage.this.position[0][1],ProxyImage.this.position[1][0],ProxyImage.this.position[1][1])));
+						//ProxyImage.this.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) Res.ma2.get(texturePath),0,0,128,256)));
+					}
 					ProxyImage.this.reGenerateSize();
 					ProxyImage.this.isLoaded=true;
 					ProxyImage.this.loaded.run();

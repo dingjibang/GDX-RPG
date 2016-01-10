@@ -19,35 +19,45 @@ public class Res {
 	public static AssetManager ma = GameViewRes.ma;
 	public static AssetManager ma2 = GameViewRes.ma2;
 	public static Texture NO_TEXTURE;
-	
+
 	public static LazyBitmapFontConctoller font;
-	
+
 	public static Image get(String resPath) {
 		Logger.info("伪装加载纹理：" + resPath);
-	
+
 		generateTempTexture();
 		return new ProxyImage(resPath);
 	}
-	
-	public static Label get(Object text,int fontSize){
-		return font.getLabel(text.toString(),fontSize);
+
+	public static Image get(String resPath, float[][] pos) {
+		Logger.info("伪装加载纹理：" + resPath);
+		generateTempTexture();
+
+		return new ProxyImage(resPath,pos);
 	}
-	
-	public static boolean exist(String path){
+
+	public static Label get(Object text, int fontSize) {
+		return font.getLabel(text.toString(), fontSize);
+	}
+
+	public static boolean exist(String path) {
 		return Gdx.files.internal(path).exists();
 	}
-	
-	public static Image getNP(String resPath){
+
+	public static Image getNP(String resPath) {
 		return new Image(getTexture(resPath));
 	}
-	
-	public static synchronized Image fuckOPENGL(String resPath){
+
+	public static synchronized Image fuckOPENGL(String resPath) {
 		return new ProxyImage(resPath);
 	}
-	
+
 	private static void generateTempTexture() {
-		if(NO_TEXTURE==null )
-			NO_TEXTURE=new Texture(Gdx.files.internal(Setting.IMAGE_GLOBAL+"noTexture.png"));
+		
+		if (NO_TEXTURE == null)
+			NO_TEXTURE = new Texture(Gdx.files.internal(Setting.IMAGE_GLOBAL
+					+ "noTexture.png"));
+
 	}
 
 	public static Drawable getDrawable(String resPath) {
@@ -59,12 +69,13 @@ public class Res {
 	}
 
 	public static Texture getTexture(String resPath) {
-		if(!ma.containsAsset(resPath)){
+		if (!ma.containsAsset(resPath)) {
 			ma.load(resPath, Texture.class);
-			while(!ma.update());
+			while (!ma.update())
+				;
 		}
-		Texture txt=ma.get(resPath);
-		if(Setting.persistence.scaleAliasing)
+		Texture txt = ma.get(resPath);
+		if (Setting.persistence.scaleAliasing)
 			txt.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		return txt;
 	}
@@ -74,13 +85,14 @@ public class Res {
 	public static void dispose(String resPath) {
 		try {
 			ma.unload(resPath);
-			while (!ma.update());
+			while (!ma.update())
+				;
 		} catch (Exception e) {
 			Logger.error("纹理已被卸载或不存在，无法卸载纹理：" + resPath);
 		}
 	}
-	
-	public static void init(){
+
+	public static void init() {
 		font = new LazyBitmapFontConctoller();
 	}
 }

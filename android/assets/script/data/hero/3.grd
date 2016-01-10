@@ -12,5 +12,9 @@ setProp("level",1);
 setProp("maxhp", 150);
 setProp("mp", 100);
 setProp("maxmp", 100);
+//head=[{{0,0},{200,200},{0.1,0}}];
+//face=[{{0,0},{200,200},{0.1,0}}];
+face = [[0,0],[200,200],[0.1]];
+
 association=Association.read(3);
 color="ffcf70cc";

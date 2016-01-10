@@ -287,14 +287,15 @@ public class TacticView extends IMenuView {
 				}
 			}));
 			if(hero!=null){
-				group.addActor(Res.get(Setting.IMAGE_FG+hero.fgname+"/head.png").position(200*idx+214, 170).disableTouch());
+				//	group.addActor(Res.get(Setting.IMAGE_FG+hero.fgname+"/normal.png").scale(hero.face[2][0]).x((int)hero.face[0][0]).y((int)hero.face[0][1]).size((int)hero.face[0][1], (int)hero.face[0][1]).position(200*idx+214, 170).disableTouch());
+				System.out.println(hero.face[2][0]+"----------------------");
+				group.addActor(Res.get(Setting.IMAGE_FG+hero.fgname+"/normal.png",hero.face).position(200*idx+214, 170).disableTouch());
 			}
 			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link_mask.png").position(200*idx+214, 170).disableTouch());
 			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link_level.png").position(200*idx+214+7, 177).color((hero!=null && hero.lead)?Color.valueOf("cc3333"):Color.valueOf("528431")).disableTouch());
 			group.addActor(new Label(hero!=null?hero.name:"", 28).width(200).align(200*idx+198, 215));
 			group.addActor(new Label(hero!=null?(hero.lead?"LEADER":"Level "+hero.association.level):"<空>", 22).width(200).align(200*idx+198, 182));
 		}
-		
 		void setLinkBorder(){
 			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link_heroselbox.png").position(200*idx+210, 167).disableTouch().object(new HeroImgMask()).action(Actions.repeat(RepeatAction.FOREVER, Actions.sequence(Actions.color(Color.WHITE,0.5f),Actions.color(new Color(1,1,1,0.5f),0.5f)))).object(new HeroImgMask2()));
 		}
@@ -305,6 +306,7 @@ public class TacticView extends IMenuView {
 			if(img.hero.equals(hero))
 				return img.idx;
 		return -1;
+		
 	}
 	
 	boolean linkeff=false;

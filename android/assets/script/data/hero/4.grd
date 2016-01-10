@@ -7,6 +7,10 @@ name="博丽灵梦";
 jname="Hakurei Reimu";
 fgname="reimu";
 tag="巫女";
+//head=[{{0,0},{200,200},{0.1,0}}];
+//face=[{{0,0},{200,200},{0.1,0}}];
+face = [[0,0],[200,200],[0.1]];
+
 association=Association.read(4);
 color="d93426cc";
 setProp("hp", 100);

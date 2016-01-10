@@ -7,6 +7,9 @@ name="风见幽香";
 jname="Kazami Yuuka";
 fgname="yuuka";
 tag="妖怪";
+//head=[{{0,0},{200,200},{0.1,0}}];
+//face=[{{0,0},{200,200},{0.1,0}}];
+face = [[0,0],[200,200],[0.1]];
 
 association=Association.read(2);
 color="99cc33cc";

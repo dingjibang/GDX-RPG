@@ -7,6 +7,10 @@ name="玛艾露贝莉 赫恩";
 jname="Maribel Hearn";
 fgname="mari";
 tag="人类";
+//head=[{{0,0},{200,200},{0.1,0}}];
+//face=[{{0,0},{200,200},{0.1,0}}];
+face = [[0,0],[200,200],[0.1]];
+
 //association=Association.read(4);
 color="372569cc";
 setProp("hp", 100);
