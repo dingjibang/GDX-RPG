@@ -49,9 +49,9 @@ public class ProxyImage extends Image {
 						ProxyImage.this.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) Res.ma2.get(texturePath))));
 						}
 					else{
-						System.out.println(ProxyImage.this.position[0][0]+"------------------------"+ProxyImage.this.position[1][0]);
-						ProxyImage.this.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) Res.ma2.get(texturePath),ProxyImage.this.position[0][0],ProxyImage.this.position[0][1],ProxyImage.this.position[1][0],ProxyImage.this.position[1][1])));
-						//ProxyImage.this.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) Res.ma2.get(texturePath),0,0,128,256)));
+						System.out.println(ProxyImage.this.position[0][0]+"-----"+ProxyImage.this.position[0][1]+"-----"+ProxyImage.this.position[1][0]+"-----"+ProxyImage.this.position[1][1]);
+						ProxyImage.this.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) Res.ma2.get(texturePath),(int)ProxyImage.this.position[0][0],(int)ProxyImage.this.position[0][1],(int)ProxyImage.this.position[1][0],(int)ProxyImage.this.position[1][1])));
+						//ProxyImage.this.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) Res.ma2.get(texturePath),500,500,1200,1200)));
 					}
 					ProxyImage.this.reGenerateSize();
 					ProxyImage.this.isLoaded=true;

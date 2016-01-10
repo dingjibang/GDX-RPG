@@ -287,9 +287,11 @@ public class TacticView extends IMenuView {
 				}
 			}));
 			if(hero!=null){
-				//	group.addActor(Res.get(Setting.IMAGE_FG+hero.fgname+"/normal.png").scale(hero.face[2][0]).x((int)hero.face[0][0]).y((int)hero.face[0][1]).size((int)hero.face[0][1], (int)hero.face[0][1]).position(200*idx+214, 170).disableTouch());
-				System.out.println(hero.face[2][0]+"----------------------");
-				group.addActor(Res.get(Setting.IMAGE_FG+hero.fgname+"/normal.png",hero.face).position(200*idx+214, 170).disableTouch());
+				int x = (int)((hero.face[1][0]-hero.face[0][0])*hero.face[2][0]);
+				
+				int y = (int)((hero.face[1][1]-hero.face[0][1])*hero.face[2][0]);
+				System.out.println("x:-------"+x+"y----------"+y);
+				group.addActor(Res.get(Setting.IMAGE_FG+hero.fgname+"/normal.png",hero.face).size(x, y).position(200*idx+214, 170).disableTouch());
 			}
 			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link_mask.png").position(200*idx+214, 170).disableTouch());
 			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link_level.png").position(200*idx+214+7, 177).color((hero!=null && hero.lead)?Color.valueOf("cc3333"):Color.valueOf("528431")).disableTouch());
