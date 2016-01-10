@@ -51,19 +51,19 @@ if(typeof(defaultWalkSpeed)=="undefined" || defaultWalkSpeed==null)
 	var defaultWalkSpeed = 2;
 
 if(typeof(accelerate1WalkSpeed)=="undefined" || accelerate1WalkSpeed==null)
-	var accelerate1WalkSpeed = 2;
+	var accelerate1WalkSpeed = 4;
 	
 if(typeof(accelerate2WalkSpeed)=="undefined" || accelerate2WalkSpeed==null)
-	var accelerate2WalkSpeed = 3;
+	var accelerate2WalkSpeed = 8;
 
 if(typeof(speed)=="undefined" || speed==null)
 	var speed = 6;
 
 if(typeof(accelerate1Speed)=="undefined" || accelerate1Speed==null)
-	var accelerate1Speed = 2;
+	var accelerate1Speed = 0;
 	
 if(typeof(accelerate2Speed)=="undefined" || accelerate2Speed==null)
-	var accelerate2Speed = 2;
+	var accelerate2Speed = 0;
 
 if(typeof(accelerate1Length)=="undefined" || accelerate1Length==null)
 	var accelerate1Length = 5;
@@ -110,8 +110,8 @@ else
 	switch(mode)
 	{
 		case 1:
-		speed = accelerate1WalkSpeed;
-		npc.walkSpeed=accelerate1Speed;
+		speed = accelerate1Speed;
+		npc.walkSpeed = accelerate1WalkSpeed;
 		_point = {x:-1,y:-1};
 		break;
 		case 2:
