@@ -6,9 +6,8 @@ imgPath="/walk_renko.png";
 name="宇佐见莲子";
 jname="Usami Renko";
 fgname="renko";
-//head=[{{0,0},{200,200},{0.1,0}}];
-//face=[{{0,0},{200,200},{0.1,0}}];
 face = [[200,100],[830,1000],[0.27]];
+head = [[200,100],[830,1000],[0.27]];
 
 tag="人类";
 //association=Association.read(4);
