@@ -141,3 +141,6 @@ item.put(1);
 RPG.ctrl.hero.add(1);
 RPG.ctrl.hero.add(6);
 RPG.ctrl.hero.add(7);
+
+var flandre = RPG.ctrl.hero.add(2);
+currentHeros.remove(flandre);

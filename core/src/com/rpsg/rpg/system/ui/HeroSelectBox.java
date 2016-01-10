@@ -90,6 +90,7 @@ public class HeroSelectBox extends Group implements Disposable{
 				set(hero);
 			}
 		}));
+		
 		if(hero!=null){
 			addActor(new HeroImage(hero,0).position(x+10, y+10));
 			addActor(new Label(hero.name,20).position(x+65, y+53));
@@ -98,12 +99,13 @@ public class HeroSelectBox extends Group implements Disposable{
 			addActor(Res.get(Setting.UI_BASE_PRO).size((int)((float)hero.prop.get("mp")/(float)hero.prop.get("maxmp")*137), 18).position(x+67, y+10).color(Color.valueOf("3762c3")).disableTouch());
 			addActor(new Label(hero.prop.get("hp")+"/"+hero.prop.get("maxhp"),14).width(130).align(x+67, y+30).color(Color.LIGHT_GRAY));
 			addActor(new Label(hero.prop.get("mp")+"/"+hero.prop.get("maxmp"),14).width(130).align(x+67, y+10).color(Color.LIGHT_GRAY));
+			
+			if((deadable == ItemDeadable.yes && !hero.isDead()) || (deadable == ItemDeadable.no && hero.isDead())){
+				addActor(Res.get(Setting.UI_BASE_IMG).size(w,h).color(Color.BLACK).a(.85f).position(x, y));
+				addActor(new Label("无法使用",22).position(x+63, y+30));
+			}
 		}
 		
-		if((deadable == ItemDeadable.yes && !hero.isDead()) || (deadable == ItemDeadable.no && hero.isDead())){
-			addActor(Res.get(Setting.UI_BASE_IMG).size(w,h).color(Color.BLACK).a(.85f).position(x, y));
-			addActor(new Label("无法使用",22).position(x+63, y+30));
-		}
 	
 		$.add(this).children().find(Label.class).setTouchable(Touchable.disabled);
 		return this;

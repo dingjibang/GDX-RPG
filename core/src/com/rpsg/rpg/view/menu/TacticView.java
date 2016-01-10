@@ -470,6 +470,7 @@ public class TacticView extends IMenuView {
 					s_r.table.layout();
 
 					s_l.table.add(currentSelect).prefSize(300, 58).row();
+					
 					for (Cell<?> c : s_l.table.getCells()) {
 						c.padTop(3).padBottom(3);
 					}
