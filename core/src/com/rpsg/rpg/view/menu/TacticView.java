@@ -294,7 +294,7 @@ public class TacticView extends IMenuView {
 			}
 			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link_mask.png").position(200*idx+214, 170).disableTouch());
 			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link_level.png").position(200*idx+214+7, 177).color((hero!=null && hero.lead)?Color.valueOf("cc3333"):Color.valueOf("528431")).disableTouch());
-			group.addActor(new Label(hero!=null?hero.name:"", 28).width(200).align(200*idx+198, 215));
+			group.addActor(new Label(hero!=null?hero.name:"", 28).overflow(true).width(200).align(200*idx+198, 215));
 			group.addActor(new Label(hero!=null?(hero.lead?"LEADER":"Level "+hero.association.level):"<空>", 22).width(200).align(200*idx+198, 182));
 		}
 		void setLinkBorder(){

@@ -60,7 +60,7 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 					CharSequence sub = oldText.subSequence(0, oldText.length()-i);
 					int width = Res.font.getTextWidth(getStyle().font,sub.toString());
 					if(width < getWidth()){
-						overflowd = (sub.length()<=3?sub:sub.subSequence(0, sub.length()-3)+"……");
+						overflowd = (sub.length()<=3?sub:sub.subSequence(0, sub.length()-3)+"…");
 						break;
 					}
 				}
