@@ -51,6 +51,7 @@ public class TacticView extends IMenuView {
 	public View init() {
 		eff=new ParticleEffect();
 		eff.load(Gdx.files.internal(Setting.PARTICLE+"link.p"),Gdx.files.internal(Setting.PARTICLE));
+		eff.setPosition(-1000, -1000);//滚粗
 		
 		linkerc=Res.get(Setting.IMAGE_MENU_TACTIC+"link_effect.png").disableTouch();
 		linkerl=Res.get(Setting.IMAGE_MENU_TACTIC+"link_effect_left.png").disableTouch();
