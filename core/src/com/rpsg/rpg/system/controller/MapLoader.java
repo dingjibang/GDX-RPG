@@ -25,10 +25,12 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Collide;
 import com.rpsg.rpg.object.rpg.CollideType;
+import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
 import com.rpsg.rpg.object.rpg.RPGObject;
+import com.rpsg.rpg.object.rpg.RandomWalkNPC;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.system.base.Light;
 import com.rpsg.rpg.system.ui.Animation;
@@ -96,13 +98,25 @@ public class MapLoader {
 						int y = tobj.getProperties().get("y",Float.class).intValue();
 						try {
 							NPC npc;
-							if(!obj.getName().equals("PUBLIC"))
-							npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.getName()).getConstructor(String.class,Integer.class,Integer.class)
-								.newInstance(obj.getProperties().get("IMAGE")+".png",w,h);
-							else{
+							if(obj.getName().equals("PUBLIC")){
 								String imgPath=(String) obj.getProperties().get("IMAGE");
 								imgPath=imgPath==null?"empty":imgPath;
 								npc=new PublicNPC((String) obj.getProperties().get("ID"),imgPath+".png",w,h);
+							}
+							else if(obj.getName().equals("RandomWalkNPC")){
+								String imgPath=(String) obj.getProperties().get("IMAGE");
+								imgPath=imgPath==null?"empty":imgPath;
+								npc=new RandomWalkNPC((String) obj.getProperties().get("ID"),imgPath+".png",w,h);
+							}
+							else if(obj.getName().equals("ENEMY")){
+								String imgPath=(String) obj.getProperties().get("IMAGE");
+								imgPath=imgPath==null?"empty":imgPath;
+								npc=new Enemy((String) obj.getProperties().get("ID"),imgPath+".png",w,h);
+							}
+							else{
+								npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.getName()).getConstructor(String.class,Integer.class,Integer.class)
+										.newInstance(obj.getProperties().get("IMAGE")+".png",w,h);
+
 							}
 							npc.params=GameUtil.parseMapProperties(obj.getProperties());
 							npc.init();

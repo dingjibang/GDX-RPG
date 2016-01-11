@@ -41,9 +41,9 @@
   </data>
  </layer>
  <objectgroup name="对象层 2">
-  <object id="1" name="PUBLIC" type="NPC" gid="892" x="1008" y="480" width="48" height="64">
+  <object id="1" name="ENEMY" type="NPC" gid="892" x="1008" y="480" width="48" height="64">
    <properties>
-    <property name="AUTO_SCRIPT" value="Battle.js"/>
+    <!--property name="AUTO_SCRIPT" value="Battle.js"/-->
     <property name="IMAGE" value="walk_marisa"/>
    </properties>
   </object>
