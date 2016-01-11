@@ -74,18 +74,10 @@ if(typeof(accelerate2Length)=="undefined" || accelerate2Length==null)
 if(typeof(maxLength)=="undefined" || maxLength==null)
 	var maxLength = 1;
 	
-//战斗
-var toBattle = function(){
-	battle({enemy:1});npc.remove();
-	removeSelf();
-	end();
-};
-
 /* Default Parameter Check End*/
 
 
 var rpgObject=com.rpsg.rpg.object.rpg.RPGObject;
-var isBattle = false;
 
 for(var i = 0;i<Heros.size();i++){
 	var _Hero = Heros.get(i);
@@ -102,46 +94,43 @@ for(var i = 0;i<Heros.size();i++){
 	if(((npcDistance ==1 && dx != dy) && // near checked
 	(npc.currentImageNo==1 || npc.currentImageNo==4 || npc.currentImageNo==7 || npc.currentImageNo ==10) && // static Image NO. checked
 	parseInt(npc.getCurrentFace()) == parseInt(npc.getFaceByPoint(HeroX,HeroY)) //Check if the face is to Hero 
-		|| npcDistance == 0)){	
-		toBattle();
-		isBattle = true;
+		|| npcDistance == 0)){
+				
+		battle({enemy:1});
+		npc.remove();
+		removeSelf();
+		end();
 	}
 }
 
 
-if(!isBattle){
-	if(npcDistance <= accelerate2Length)
-	{
-		mode = 2;
-	}
-	else if(npcDistance <= accelerate1Length)
-	{
-		mode = 1;
-	}
-
-	switch(mode)
-	{
-		case 1:
-		speed = accelerate1Speed;
-		npc.walkSpeed = accelerate1WalkSpeed;
-		_point = {x:-1,y:-1};
-		break;
-		case 2:
-		speed = accelerate2Speed;
-		npc.walkSpeed=accelerate2WalkSpeed;
-		_point = {x:-1,y:-1};
-		if(npcDistance == 0)
-		{
-			_step = 0;
-		}
-		break;
-		case 0:
-		default: 
-		npc.walkSpeed=defaultWalkSpeed;
-		break;
-	}
-	eval("" + load("randomWalk.js"));
+if(npcDistance <= accelerate2Length){
+	mode = 2;
+}else if(npcDistance <= accelerate1Length){
+	mode = 1;
 }
+
+switch(mode){
+	case 1:
+	speed = accelerate1Speed;
+	npc.walkSpeed = accelerate1WalkSpeed;
+	_point = {x:-1,y:-1};
+	break;
+	case 2:
+	speed = accelerate2Speed;
+	npc.walkSpeed=accelerate2WalkSpeed;
+	_point = {x:-1,y:-1};
+	if(npcDistance == 0){
+		_step = 0;
+	}
+	break;
+	case 0:
+	default: 
+	npc.walkSpeed=defaultWalkSpeed;
+	break;
+}
+
+eval("" + load("randomWalk.js"));
 
 
 

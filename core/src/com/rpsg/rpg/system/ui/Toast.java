@@ -69,8 +69,8 @@ public class Toast extends Table {
 
 		c_label = add(label).size(label.getWidth(), label.getHeight()).pad(15);
 
-		setWidth(c_label.getMaxWidth());
-		setHeight(c_label.getMaxHeight());
+		setWidth(c_label.getMaxWidth() + 40);
+		setHeight(c_label.getMaxHeight() + 25);
 
 		if (icon != null) {
 			setWidth(getWidth() + c_icon.getMaxWidth() + 70);

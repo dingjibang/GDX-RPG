@@ -12,6 +12,7 @@ public class PublicNPC extends DefaultNPC {
 		if(id!=null)
 			this.id=id;
 	}
+	
 	public void init() {
 		super.init();
 	}

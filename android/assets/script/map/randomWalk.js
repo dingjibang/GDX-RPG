@@ -52,7 +52,7 @@ var maxWalkLength=maxLength;
 var bo2;
 
 if(typeof(bounds)!="undefined" && bounds!=null)
-	bo2==new Vector();
+	bo2=={x:0,y:0};
 
 if(typeof(_step)=="undefined" || _step==null)
 	var _step = parseInt(Math.random()*(maxWalkLength-minWalkLength)+minWalkLength);
@@ -110,4 +110,4 @@ if(bo2!=null){
 faceTo(_step>0?face:RPGObject.getReverseFace(face));
 move(_step>0?_step:0);
 pause(speed);
-end();
+end(false);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="80" tilewidth="48" tileheight="48" nextobjectid="2">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="80" tilewidth="48" tileheight="48" nextobjectid="15">
  <properties>
   <property name="distant" value="bgnd2.jpg"/>
   <property name="name" value="测试地图"/>
@@ -224,12 +224,12 @@
  </tileset>
  <layer name="块层 1" width="50" height="80">
   <data encoding="base64" compression="gzip">
-   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
+   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
   </data>
  </layer>
  <layer name="块层 4" width="50" height="80">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2b2Q3CMAyGIzoCxwwcM3DMwDEDx5rwAoI5eOAFwQJYQhUVJZA2CbGT/5P8FuC349hORZV6smsoUTQzpVpkbbJOFlpNfbqkvUfWJxto/Ai1N1eNnu0HPUNaOyIbk02y8vpPn/lG1fVV0cV0StpnZHOyheC8WpL2FdmabOPQD2l1wicXwfkBXtTN6WKN4nguOGoC4B/4nh98/66Psxtzv4qh1unm7SIx+CkFxDotuOw3Fx0A6PA5X4Wa3QBPqubDPpOTQ1J0ciLFmB0t7m4u5om7o7ujjR+2mNyvQBxUqREp1hOQFrocR00Mx94y9sW+bvtdQB6HH3tu0tfQ+wCIAzw3Dss/erDJPdx3TefaMzDL8gc1qj5czx13JOcc9lwe6ENmpJbbeV7cauaH1Hi96+bmx6/3U7jplQriWEbybFIk9yOlPbbx1WWcYskhU0xid4p0BjtH6leOj/rB+Z0MDrj6b4+Ob3F7AIvFQ1mAPgAA
+   H4sIAAAAAAAAC+2bS24CMQyGo84RKJyhlDPwOEMLZ6DlmiAkECxgx66bqgs2VbkAlqpRR2UCmTyInfyf5F0A2/ljOyNGqV8WD0oUrUKpR7I2WaeI7Y09T+R7l+yZrKeJI9befGv8mdf406e1A7Ih2ai4XF/3mWs0Xd8UXU5fyPdXsjHZRLCupuT7G9k72cxjHNLqREiOgvUB/rDVdLVGcTwXHH0C4B6Enh9C/26Is5tyv0qh1unm7SopxCkF5DovuOw3Fz8A0BFyvoo1uwGeNNXDqpCjISl+ciLHnG0c7m4+5omTp7ujSxyumNyvQBo0qRE51hOQFzqNoybGY+WY+2pfd/0uII/1jT036WvofQCkAZ4bx+UePdjkHh66pnPtGZhl+YMaZc8O+rZCsua41lqgB33IjNy0Xerix1IfS6G6+r/Pe2Zx3Ho/5YOZv1LJ7bybIHk2qVLGkdMefzrUBZ+zfCoaMuVgkLttojX7K9G4SkLUD87vZHDA1397dFzL2xlsKD1fgD4AAA==
   </data>
  </layer>
  <layer name="t0" width="50" height="80">
@@ -243,9 +243,81 @@
   </data>
  </layer>
  <objectgroup name="对象层 2">
-  <object id="1" name="PUBLIC" type="NPC" gid="892" x="816" y="2832" width="48" height="64">
+  <object id="1" name="PUBLIC" type="NPC" gid="892" x="1008" y="1824" width="48" height="64">
    <properties>
-    <property name="AUTO_SCRIPT" value="battle.js"/>
+    <property name="AUTO_SCRIPT" value="Battle.js"/>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+  <object id="2" name="PUBLIC" type="NPC" gid="892" x="1584" y="2352" width="48" height="64">
+   <properties>
+    <property name="AUTO_SCRIPT" value="Battle.js"/>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+  <object id="3" name="PUBLIC" type="NPC" gid="892" x="1632" y="720" width="48" height="64">
+   <properties>
+    <property name="AUTO_SCRIPT" value="Battle.js"/>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+  <object id="4" name="PUBLIC" type="NPC" gid="892" x="1776" y="3264" width="48" height="64">
+   <properties>
+    <property name="AUTO_SCRIPT" value="Battle.js"/>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+  <object id="5" name="PUBLIC" type="NPC" gid="892" x="1560" y="1860" width="48" height="64">
+   <properties>
+    <property name="AUTO_SCRIPT" value="Battle.js"/>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+  <object id="6" name="PUBLIC" type="NPC" gid="892" x="1680" y="1200" width="48" height="64">
+   <properties>
+    <property name="AUTO_SCRIPT" value="Battle.js"/>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+  <object id="7" name="PUBLIC" type="NPC" gid="892" x="1248" y="1116" width="48" height="64">
+   <properties>
+    <property name="AUTO_SCRIPT" value="Battle.js"/>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+  <object id="8" name="PUBLIC" type="NPC" gid="892" x="624" y="852" width="48" height="64">
+   <properties>
+    <property name="AUTO_SCRIPT" value="Battle.js"/>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+  <object id="9" name="PUBLIC" type="NPC" gid="892" x="336" y="696" width="48" height="64">
+   <properties>
+    <property name="AUTO_SCRIPT" value="Battle.js"/>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+  <object id="10" name="PUBLIC" type="NPC" gid="892" x="60" y="1200" width="48" height="64">
+   <properties>
+    <property name="AUTO_SCRIPT" value="Battle.js"/>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+  <object id="11" name="PUBLIC" type="NPC" gid="892" x="264" y="1452" width="48" height="64">
+   <properties>
+    <property name="AUTO_SCRIPT" value="Battle.js"/>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+  <object id="12" name="PUBLIC" type="NPC" gid="892" x="1296" y="1320" width="48" height="64">
+   <properties>
+    <property name="AUTO_SCRIPT" value="Battle.js"/>
+    <property name="IMAGE" value="walk_marisa"/>
+   </properties>
+  </object>
+  <object id="13" name="PUBLIC" type="NPC" gid="892" x="2244" y="1560" width="48" height="64">
+   <properties>
+    <property name="AUTO_SCRIPT" value="Battle.js"/>
     <property name="IMAGE" value="walk_marisa"/>
    </properties>
   </object>

@@ -81,6 +81,16 @@ public class Script extends Thread{
 		}
 	}
 	
+	public void end(boolean dispose){
+		try {
+			Context.exit();
+			this.run();
+			if(dispose) dispose();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private void hold(){
 		while(currentExeced!=exeMode.stop){
 			try {
