@@ -8,6 +8,8 @@ import org.mozilla.javascript.NativeObject;
 import org.mozilla.javascript.ScriptableObject;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.utils.JsonReader;
+import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.system.controller.Hover;
@@ -131,6 +133,15 @@ public class RPG {
 			Logger.error("无法从js中生成java对象",e);
 			return null;
 		}
+	}
+	
+	public static <T> T jsonToJava(Class<T> cls,JsonValue json){
+		Json
+		return null;
+	}
+	
+	public static <T> T jsonToJava(Class<T> cls,String json){
+		return jsonToJava(cls, new JsonReader().parse(json));
 	}
 	
 }

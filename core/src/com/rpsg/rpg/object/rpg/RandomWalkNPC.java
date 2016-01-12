@@ -3,6 +3,7 @@ package com.rpsg.rpg.object.rpg;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import com.badlogic.gdx.math.Vector2;
 import com.rpsg.rpg.core.RPG;
 
 public class RandomWalkNPC extends PublicNPC {
@@ -17,27 +18,39 @@ public class RandomWalkNPC extends PublicNPC {
 	public Rectangle bounds;
 	public int maxLength;
 	public int minWalkLength;
-	protected Point _point;
+	protected Point point;
 	protected Boolean isStopped;
-	protected int _step = -1;
+	private int currentFrame;
+	public int speed = 60;
+//	private 
+	protected int step = -1;
 
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	public void act(float f) {
+		
 		if(walked){
+			
+			if(currentFrame++ < speed){
+				super.act(f);
+				return;
+			}
+			
+			currentFrame = 0;
+			
 			int maxWalkLength=maxLength;
-			Point bo2 = null;
-			if(_step == -1)
-			_step = (int)(Math.random()*(maxWalkLength-minWalkLength)+minWalkLength);
+			Vector2 bo2 = null;
+			if(step == -1)
+			step = (int)(Math.random()*(maxWalkLength-minWalkLength)+minWalkLength);
 
 			if(bounds!=null)
-				bo2=new Point(0,0);
+				bo2=new Vector2(0,0);
 
 			int face = 0;
 			Hero Hero = RPG.ctrl.hero.getHeadHero();
 
-			if(_point==null){
+			if(point==null){
 				face = (int)(Math.random()*4);
 				if(face == 3)
 					face=RPGObject.FACE_D;
@@ -47,49 +60,49 @@ public class RandomWalkNPC extends PublicNPC {
 					face=RPGObject.FACE_L;
 				else if(face == 0) 
 					face=RPGObject.FACE_R;
-			}else if(_point.x!= -1 && _point.y!= -1){
-				face = getFaceByPoint(_point.x, _point.y);
+			}else if(point.x!= -1 && point.y!= -1){
+				face = getFaceByPoint(point.x, point.y);
 			}else{
 				face = getFaceByPoint(Hero.mapx,Hero.mapy);
 			}
 
 			if(bo2!=null){
 				if(face==RPGObject.FACE_D){
-					if(bo2.y+_step<bounds.y){
-						bo2.y+=_step;
+					if(bo2.y+step<bounds.y){
+						bo2.y+=step;
 					}else{
-						if(bo2.y<bounds.y) _step=bounds.y-_step; else _step=0;
+						if(bo2.y<bounds.y) step=bounds.y-step; else step=0;
 						bo2.y=bounds.y;
 					}
 				}else if(face==RPGObject.FACE_U){
-					if(bo2.y-_step>-bounds.y){
-						bo2.y-=_step;
+					if(bo2.y-step>-bounds.y){
+						bo2.y-=step;
 					}else{
-						if(bo2.y>-bounds.y) _step=Math.abs( Math.abs(bounds.y)-_step); else _step=0;
+						if(bo2.y>-bounds.y) step=Math.abs( Math.abs(bounds.y)-step); else step=0;
 						bo2.y=-bounds.y;
 					}
 				}else if(face==RPGObject.FACE_R){
-					if(bo2.x+_step<bounds.x){
-						bo2.x+=_step;
+					if(bo2.x+step<bounds.x){
+						bo2.x+=step;
 					}else{
-						if(bo2.x<bounds.x) _step=bounds.x-_step; else _step=0;
+						if(bo2.x<bounds.x) step=bounds.x-step; else step=0;
 						bo2.x=bounds.x;
 					}
 				}else if(face==RPGObject.FACE_L){
-					if(bo2.x-_step>-bounds.x){
-						bo2.x-=_step;
+					if(bo2.x-step>-bounds.x){
+						bo2.x-=step;
 					}else{
-						if(bo2.x>-bounds.x) _step=Math.abs(Math.abs(bounds.x)-_step); else _step=0;
+						if(bo2.x>-bounds.x) step=Math.abs(Math.abs(bounds.x)-step); else step=0;
 						bo2.x=-bounds.x;
 					}
 				}
 			}
 
-			turn(_step>0?face:RPGObject.getReverseFace(face));
-			walk(_step>0?_step:0).testWalk();
-			//move(_step>0?_step:0);
-			_point = null;
-			_step = -1;
+			turn(step>0?face:RPGObject.getReverseFace(face));
+			walk(step>0?step:0).testWalk();
+//			move(_step>0?_step:0);
+			point = null;
+			step = -1;
 		}
 		super.act(f);
 	}

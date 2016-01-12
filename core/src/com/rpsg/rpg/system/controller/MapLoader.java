@@ -25,7 +25,7 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Collide;
 import com.rpsg.rpg.object.rpg.CollideType;
-import com.rpsg.rpg.object.rpg.Enemy;
+import com.rpsg.rpg.object.rpg.EnemyNPC;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
@@ -109,9 +109,9 @@ public class MapLoader {
 								npc=new RandomWalkNPC((String) obj.getProperties().get("ID"),imgPath+".png",w,h);
 							}
 							else if(obj.getName().equals("ENEMY")){
-								String imgPath=(String) obj.getProperties().get("IMAGE");
-								imgPath=imgPath==null?"empty":imgPath;
-								npc=new Enemy((String) obj.getProperties().get("ID"),imgPath+".png",w,h);
+								String imgPath=(String) obj.getProperties().get("IMAGE");//TODO 图片不存在时使用默认的
+								imgPath=imgPath==null?"walk_marisa":imgPath;
+								npc=new EnemyNPC((String) obj.getProperties().get("ID"),imgPath+".png",w,h);
 							}
 							else{
 								npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.getName()).getConstructor(String.class,Integer.class,Integer.class)

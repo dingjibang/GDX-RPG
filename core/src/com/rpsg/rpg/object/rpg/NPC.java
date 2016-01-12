@@ -63,7 +63,6 @@ public abstract class NPC extends RPGObject{
 	public NPC(String path,Integer width,Integer height) {
 		super(RES_PATH+path, width, height);
 		this.waitWhenCollide=false;
-		init();
 	}
 	
 	public void init(){
