@@ -288,8 +288,8 @@ public class TacticView extends IMenuView {
 				}
 			}));
 			if(hero!=null){
-				int x = (int)((hero.head[1][0]-hero.head[0][0])*hero.head[2][0]);				
-				int y = (int)((hero.head[1][1]-hero.head[0][1])*hero.head[2][0]);
+				int x = (int)((hero.head[1][0])*hero.head[2][0]);				
+				int y = (int)((hero.head[1][1])*hero.head[2][0]);
 				group.addActor(Res.get(Setting.IMAGE_FG+hero.fgname+"/normal.png",hero.head).size(x, y).position(200*idx+214, 170).disableTouch());
 			}
 			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link_mask.png").position(200*idx+214, 170).disableTouch());
@@ -519,8 +519,10 @@ public class TacticView extends IMenuView {
 		public SupImage generate(Hero hero,SupGroup parent){
 			this.parent=parent;
 			this.hero=hero;
-			int x = (int)((hero.face[1][0]-hero.face[0][0])*hero.face[2][0]);				
-			int y = (int)((hero.face[1][1]-hero.face[0][1])*hero.face[2][0]);
+		//	int x = (int)((hero.face[1][0]-hero.face[0][0])*hero.face[2][0]);				
+		//	int y = (int)((hero.face[1][1]-hero.face[0][1])*hero.face[2][0]);
+			int x = (int)((hero.face[1][0])*hero.face[2][0]);				
+			int y = (int)((hero.face[1][1])*hero.face[2][0]);
 			sbox=Res.get(Setting.IMAGE_MENU_TACTIC+"sup_herobox_sel.png").disableTouch();
 			face=Res.get(Setting.IMAGE_FG+hero.fgname+"/normal.png",hero.face).size(x, y);
 			name=new Label(hero.name,24).width(1000);

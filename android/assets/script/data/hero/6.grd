@@ -7,7 +7,7 @@ name="宇佐见莲子";
 jname="Usami Renko";
 fgname="renko";
 face = [[200,100],[830,1000],[0.27]];
-head = [[200,100],[830,1000],[0.27]];
+head = [[285,100],[850,920],[0.25]];
 
 tag="人类";
 //association=Association.read(4);
