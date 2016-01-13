@@ -136,7 +136,6 @@ public class RPG {
 	}
 	
 	public static <T> T jsonToJava(Class<T> cls,JsonValue json){
-		Json
 		return null;
 	}
 	
