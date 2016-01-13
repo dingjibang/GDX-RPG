@@ -64,10 +64,6 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
         compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
     }
-	
-	lintOptions {
-		abortOnError false
-	}
 }
 
 project(":core") {
