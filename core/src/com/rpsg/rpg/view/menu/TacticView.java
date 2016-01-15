@@ -545,6 +545,7 @@ public class TacticView extends IMenuView {
 			if(select)
 				sbox.draw(sb);
 		}
+	
 		
 		
 	}

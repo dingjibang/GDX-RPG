@@ -7,6 +7,7 @@ var Hero = com.rpsg.rpg.object.rpg.Hero;
 
 id=1;
 
+
 imgPath="/walk_yuki.png";
 name="结成有栖";
 jname="Yuki Arisu";

@@ -7,6 +7,7 @@ imgPath="/walk_flandre.png";
 name="芙兰朵露";
 tag="恶魔";
 jname="Flandre Scarlet";
+
 fgname="flandre";
 face = [[320,200],[650,500],[0.15]];
 head = [[200,100],[830,1000],[0.27]];

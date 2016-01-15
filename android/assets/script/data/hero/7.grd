@@ -10,6 +10,7 @@ tag="人类";
 face = [[200,100],[830,1000],[0.27]];
 head = [[275,110],[830,920],[0.25]];
 
+
 //association=Association.read(4);
 color="372569cc";
 setProp("hp", 100);
