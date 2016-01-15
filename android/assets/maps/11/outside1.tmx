@@ -246,62 +246,62 @@
   <object id="1" name="ENEMY" type="NPC" gid="892" x="624" y="2352" width="48" height="64"/>
   <object id="2" name="ENEMY" type="NPC" gid="892" x="1584" y="2352" width="48" height="64">
    <properties>
-    <property name="IMAGE" value="walk_marisa"/>
+    
    </properties>
   </object>
   <object id="3" name="ENEMY" type="NPC" gid="892" x="1632" y="720" width="48" height="64">
    <properties>
-    <property name="IMAGE" value="walk_marisa"/>
+    
    </properties>
   </object>
   <object id="4" name="ENEMY" type="NPC" gid="892" x="1776" y="3264" width="48" height="64">
    <properties>
-    <property name="IMAGE" value="walk_marisa"/>
+    
    </properties>
   </object>
   <object id="5" name="ENEMY" type="NPC" gid="892" x="1560" y="1860" width="48" height="64">
    <properties>
-    <property name="IMAGE" value="walk_marisa"/>
+    
    </properties>
   </object>
   <object id="6" name="ENEMY" type="NPC" gid="892" x="1680" y="1200" width="48" height="64">
    <properties>
-    <property name="IMAGE" value="walk_marisa"/>
+    
    </properties>
   </object>
   <object id="7" name="ENEMY" type="NPC" gid="892" x="1248" y="1116" width="48" height="64">
    <properties>
-    <property name="IMAGE" value="walk_marisa"/>
+    
    </properties>
   </object>
   <object id="8" name="ENEMY" type="NPC" gid="892" x="624" y="852" width="48" height="64">
    <properties>
-    <property name="IMAGE" value="walk_marisa"/>
+    
    </properties>
   </object>
   <object id="9" name="ENEMY" type="NPC" gid="892" x="336" y="696" width="48" height="64">
    <properties>
-    <property name="IMAGE" value="walk_marisa"/>
+    
    </properties>
   </object>
   <object id="10" name="ENEMY" type="NPC" gid="892" x="60" y="1200" width="48" height="64">
    <properties>
-    <property name="IMAGE" value="walk_marisa"/>
+    
    </properties>
   </object>
   <object id="11" name="ENEMY" type="NPC" gid="892" x="264" y="1452" width="48" height="64">
    <properties>
-    <property name="IMAGE" value="walk_marisa"/>
+    
    </properties>
   </object>
   <object id="12" name="ENEMY" type="NPC" gid="892" x="1296" y="1320" width="48" height="64">
    <properties>
-    <property name="IMAGE" value="walk_marisa"/>
+    
    </properties>
   </object>
   <object id="13" name="ENEMY" type="NPC" gid="892" x="2244" y="1560" width="48" height="64">
    <properties>
-    <property name="IMAGE" value="walk_marisa"/>
+    
    </properties>
   </object>
  </objectgroup>

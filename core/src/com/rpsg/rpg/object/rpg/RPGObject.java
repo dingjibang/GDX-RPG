@@ -8,7 +8,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.rpg.core.RPG;
@@ -27,6 +26,8 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	private static final int NORMAL_WALK_SPEED=4;
 	
 	private static final long serialVersionUID = 1L;
+	
+	public boolean markTime = false; //是否在不行走时原地踏步
 	
 	static Image shadow=Res.get(Setting.RPGOBJECT_SHADOW);
 	public static Image[] generateImages(String txt,int width,int height){
@@ -48,6 +49,7 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 		else
 			return FACE_D;
 	}
+	
 	public int bodyWidth,bodyHeight;
 	transient Balloon bon=new Balloon(BalloonType.心);
 	public Collide collide=new Collide();
@@ -99,7 +101,7 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	public void act(float f) {
 		super.act(f);
 		
-		if (isStop() && lastlength++ > 5)
+		if (isStop() && lastlength++ > 5 && !markTime)
 			foot = 0;
 		//帧数补偿
 		//当游戏帧数小于60FPS时，将尝试加快IRPGObject的行走速度而达到补偿的目的
@@ -121,6 +123,8 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 			bon.act(fps);
 		else
 			displayBalloon=false;
+		
+		if(markTime) actWalkAnimate();
 	}
 	
 	/**
@@ -403,13 +407,19 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 				break;
 			}
 			}
-			if((NEXT_FOOT-=walkSpeed)<=0){
-				if(++foot==3)
-					foot=-1;
-				NEXT_FOOT=(int) (walkSpeed*12);
-			}
+			if(!markTime)
+				actWalkAnimate();
 		}
 		return false;
+	}
+	
+	public RPGObject actWalkAnimate(){
+		if((NEXT_FOOT-=walkSpeed)<=0){
+			if(++foot==3)
+				foot=-1;
+			NEXT_FOOT=(int) (walkSpeed*12);
+		}
+		return this;
 	}
 	
 	public RPGObject turn(int face){

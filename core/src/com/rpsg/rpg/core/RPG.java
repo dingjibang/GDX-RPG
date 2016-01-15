@@ -1,6 +1,7 @@
 package com.rpsg.rpg.core;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.NativeJavaObject;
@@ -108,7 +109,7 @@ public class RPG {
 	}
 	
 	/**
-	 * execute a java-script string.<br>
+	 * execute a javascript string.<br>
 	 * <br><b>执行一段JS脚本。</b>
 	 * @param js javascript
 	 */
@@ -136,6 +137,15 @@ public class RPG {
 	}
 	
 	public static <T> T jsonToJava(Class<T> cls,JsonValue json){
+		try {
+			T obj = cls.getConstructor().newInstance();
+			for(JsonValue val : json){
+//				val.asBoolean()
+			}
+			return obj;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 		return null;
 	}
 	
