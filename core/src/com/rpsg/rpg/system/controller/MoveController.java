@@ -1,5 +1,9 @@
 package com.rpsg.rpg.system.controller;
 
+import java.io.IOException;
+import java.net.Socket;
+import java.nio.channels.SocketChannel;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -216,5 +220,5 @@ public class MoveController {
 		int heroy = (int) (RPG.ctrl.hero.getHeadHero().position.y + (RPG.ctrl.hero.getHeadHero().getHeight() / 2));
 		return setCameraPositionWithHero(script, herox - x, heroy - y, wait);
 	}
-
+	
 }

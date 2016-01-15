@@ -234,7 +234,7 @@ public class SystemView extends IMenuView{
 			table.add(new Label("Other Options",20).align(Align.right)).width(300).align(Align.right).height(0).padTop(-40).row();
 			
 			table.add(new CheckBox("缓存游戏资源",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
-				set.cacheResource = t.isChecked();//TODO
+				set.cacheResource = t.isChecked();//
 			}}).check(set.cacheResource).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("游戏将尝试缓存已读取的资源，在下次进入菜单、地图时会加快读取，但会增加内存的消耗。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			

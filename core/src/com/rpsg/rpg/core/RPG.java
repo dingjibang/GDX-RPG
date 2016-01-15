@@ -1,7 +1,6 @@
 package com.rpsg.rpg.core;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.NativeJavaObject;

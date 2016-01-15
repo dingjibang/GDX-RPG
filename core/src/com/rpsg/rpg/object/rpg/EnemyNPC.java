@@ -15,7 +15,6 @@ public class EnemyNPC extends RandomWalkNPC {
 
 	public EnemyNPC(String id, String path, Integer width, Integer height) {
 		super(id, path, width, height);
-		// TODO Auto-generated constructor stub
 		this.drawShadow = true;
 		maxLength = 1;
 		battleParam = new BattleParam();

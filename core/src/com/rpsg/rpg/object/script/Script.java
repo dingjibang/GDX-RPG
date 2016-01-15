@@ -19,7 +19,9 @@ import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
+import com.rpsg.rpg.system.controller.CGController;
 import com.rpsg.rpg.system.controller.MoveController;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FG;
 import com.rpsg.rpg.utils.display.PostUtil;
@@ -528,5 +530,9 @@ public class Script extends Thread{
 	public BaseScriptExecutor teleport(String map,int x,int y,int z){
 		if(!map.endsWith(".tmx")) map+=".tmx";
 		return Move.teleportAnotherMap(this, map, x, y, z);
+	}
+	
+	public BaseScriptExecutor pushCGSync(Image cg){
+		return RPG.ctrl.cg.pushSync(this,cg);
 	}
 }

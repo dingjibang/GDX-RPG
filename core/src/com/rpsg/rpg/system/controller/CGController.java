@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.rpsg.rpg.object.script.BaseScriptExecutor;
+import com.rpsg.rpg.object.script.Script;
+import com.rpsg.rpg.object.script.ScriptExecutor;
 import com.rpsg.rpg.system.ui.Image;
 
 public class CGController {
@@ -39,6 +42,15 @@ public class CGController {
 	
 	public void disposeAll(){
 		cgs.clear();
+	}
+
+	public BaseScriptExecutor pushSync(Script script,final Image cg) {
+		return script.set(new BaseScriptExecutor() {
+			@Override
+			public void init() {
+				push(cg);
+			}
+		});
 	}
 	
 }

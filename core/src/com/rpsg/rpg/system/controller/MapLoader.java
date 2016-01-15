@@ -109,7 +109,7 @@ public class MapLoader {
 								npc=new RandomWalkNPC((String) obj.getProperties().get("ID"),imgPath+".png",w,h);
 							}
 							else if(obj.getName().equals("ENEMY")){
-								String imgPath=(String) obj.getProperties().get("IMAGE");//TODO 图片不存在时使用默认的
+								String imgPath=(String) obj.getProperties().get("IMAGE");
 								imgPath=imgPath==null?"enemy":imgPath;
 								npc=new EnemyNPC((String) obj.getProperties().get("ID"),imgPath+".png",w,h);
 								npc.markTime = true;

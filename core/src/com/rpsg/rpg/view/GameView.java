@@ -29,6 +29,7 @@ import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.game.Logger;
+import com.sun.scenario.effect.LockableResource;
 
 public class GameView extends View{
 	
@@ -72,6 +73,7 @@ public class GameView extends View{
 				bloom = GameViews.bloom;
 				RPG.ctrl.weather.init(RPG.global.weather);
 				Logger.info("图形加载完成。");
+				System.out.println(renderable);
 			}
 		};
 		filename=Setting.MAP+global.map;
@@ -121,9 +123,8 @@ public class GameView extends View{
 		if(postable)
 			post.capture();
 		
-		RPG.maps.distant.draw((SpriteBatch)stage.getBatch(), this);
-		
 		if(renderable){
+			RPG.maps.distant.draw((SpriteBatch)stage.getBatch(), this);
 			RPG.maps.loader.draw(this);
 			//set post
 			RPG.ctrl.weather.logic();
