@@ -6,25 +6,29 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
-import com.rpsg.rpg.object.script.ScriptExecutor;
 import com.rpsg.rpg.system.ui.Image;
 
 public class CGController {
 	ArrayList<Image> cgs = new ArrayList<Image>();
 
-	public void draw(SpriteBatch sb) {
+	public synchronized void draw(SpriteBatch sb) {
 		if(cgs.size()==0)
 			return;
 		try{
-			for(Image cg:cgs){
-				cg.act(Gdx.graphics.getDeltaTime());
-				cg.draw(sb);
+			synchronized (cgs) {
+				System.out.println("dray");
+				for(Image cg:cgs){
+					cg.act(Gdx.graphics.getDeltaTime());
+					cg.draw(sb);
+				}
 			}
+			
 		}catch(Exception e){
 		}
 	}
 
-	public Image push(Image i) {
+	public synchronized Image push(Image i) {
+		System.out.println("push");
 		if(cgs.contains(i)){
 			Image re=new Image(i);
 			cgs.add(re);
@@ -44,9 +48,8 @@ public class CGController {
 		cgs.clear();
 	}
 
-	public BaseScriptExecutor pushSync(Script script,final Image cg) {
+	public BaseScriptExecutor pushSync(final Script script,final Image cg) {
 		return script.set(new BaseScriptExecutor() {
-			@Override
 			public void init() {
 				push(cg);
 			}

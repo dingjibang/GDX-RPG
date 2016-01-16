@@ -5,6 +5,7 @@ import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.NativeObject;
 import org.mozilla.javascript.ScriptableObject;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.gdxQuery.GdxQuery;
@@ -100,6 +101,11 @@ public class Script extends Thread{
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void holdSync(){
+		int frame = GameViews.gameview.frame;
+		while(frame == GameViews.gameview.frame);
 	}
 	
 	public boolean isAlive=false;
@@ -533,6 +539,7 @@ public class Script extends Thread{
 	}
 	
 	public BaseScriptExecutor pushCGSync(Image cg){
-		return RPG.ctrl.cg.pushSync(this,cg);
+		BaseScriptExecutor exe = RPG.ctrl.cg.pushSync(this,cg);
+		return exe;
 	}
 }

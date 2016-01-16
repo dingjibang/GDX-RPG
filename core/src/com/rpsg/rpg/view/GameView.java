@@ -44,6 +44,7 @@ public class GameView extends View{
 	AssetManager ma=GameViewRes.ma;//资源管理器
 	String filename;//地图文件名（卸载地图纹理时候用到）
 	TmxMapLoader.Parameters parameter;//地图加载完成的回调
+	public int frame = 0;
 	
 	public BattleView battleView;
 	
@@ -147,6 +148,9 @@ public class GameView extends View{
 			stackView.draw(batch);
 		else
 			RPG.ctrl.thread.logic();
+		
+		if(frame++ == Integer.MAX_VALUE - 1)
+			frame = 0;
 	}
 
 	@Override
