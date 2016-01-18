@@ -137,11 +137,11 @@ public class RPG {
 	
 	public static <T> T jsonToJava(Class<T> cls,JsonValue json){
 		try {
-			T obj = cls.getConstructor().newInstance();
-			for(JsonValue val : json){
-//				val.asBoolean()
-			}
-			return obj;
+//			T obj = cls.getConstructor().newInstance();
+//			for(JsonValue val : json){
+////				val.asBoolean()
+//			}
+//			return obj;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

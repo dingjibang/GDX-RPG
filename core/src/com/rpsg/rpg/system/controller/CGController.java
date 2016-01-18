@@ -16,10 +16,9 @@ public class CGController {
 			return;
 		try{
 			synchronized (cgs) {
-				System.out.println("dray");
 				for(Image cg:cgs){
-					cg.act(Gdx.graphics.getDeltaTime());
 					cg.draw(sb);
+					cg.act(Gdx.graphics.getDeltaTime());
 				}
 			}
 			
@@ -28,7 +27,6 @@ public class CGController {
 	}
 
 	public synchronized Image push(Image i) {
-		System.out.println("push");
 		if(cgs.contains(i)){
 			Image re=new Image(i);
 			cgs.add(re);

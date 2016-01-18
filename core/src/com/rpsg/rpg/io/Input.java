@@ -8,7 +8,6 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.base.IOMode;
-import com.rpsg.rpg.system.ui.Animation;
 import com.rpsg.rpg.view.GameViews;
 
 public class Input implements InputProcessor {

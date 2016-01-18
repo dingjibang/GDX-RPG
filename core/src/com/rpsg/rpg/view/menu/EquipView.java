@@ -27,7 +27,6 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.CheckBox;
-import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.HeroImage;
 import com.rpsg.rpg.system.ui.IMenuView;
 import com.rpsg.rpg.system.ui.Icon;

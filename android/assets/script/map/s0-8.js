@@ -8,10 +8,9 @@ if(RPG.getFlag("1-1-shrine-gen") != null){
 }
 
 var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
-black.addAction(Actions.sequence(Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(black)})));	
+black.addAction(Actions.sequence(Actions.run(function(){setRenderAble(true)}),Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(black)})));	
 CG.push(black);
-pause(1);
-setRenderAble(true);
+
 
 RPG.setFlag("1-1-shrine-gen",true);
 removeSelf();

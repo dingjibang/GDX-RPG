@@ -5,7 +5,6 @@ import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.NativeObject;
 import org.mozilla.javascript.ScriptableObject;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.rpsg.gdxQuery.GdxQuery;
@@ -20,7 +19,6 @@ import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.object.rpg.CollideType;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
-import com.rpsg.rpg.system.controller.CGController;
 import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.ColorUtil;

@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -20,7 +19,6 @@ public class Music {
 	public static com.badlogic.gdx.audio.Music MUSIC;
 	public static Map<String, com.badlogic.gdx.audio.Music> bgm = new HashMap<String, com.badlogic.gdx.audio.Music>();
 	public static Map<String, SE> se = new HashMap<String, SE>();
-	public static Sound hint, err;
 
 	public static void playMusic(String music) {
 		if (null == bgm.get(music)) {

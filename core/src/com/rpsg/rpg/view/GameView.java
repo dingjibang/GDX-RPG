@@ -29,7 +29,6 @@ import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.game.Logger;
-import com.sun.scenario.effect.LockableResource;
 
 public class GameView extends View{
 	
