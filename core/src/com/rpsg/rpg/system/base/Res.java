@@ -33,7 +33,7 @@ public class Res {
 		Logger.info("伪装加载纹理：" + resPath);
 		generateTempTexture();
 
-		return new ProxyImage(resPath,pos);
+		return new ProxyImage(resPath, pos);
 	}
 
 	public static Label get(Object text, int fontSize) {
@@ -53,10 +53,9 @@ public class Res {
 	}
 
 	private static void generateTempTexture() {
-		
+
 		if (NO_TEXTURE == null)
-			NO_TEXTURE = new Texture(Gdx.files.internal(Setting.IMAGE_GLOBAL
-					+ "noTexture.png"));
+			NO_TEXTURE = new Texture(Gdx.files.internal(Setting.IMAGE_GLOBAL + "noTexture.png"));
 
 	}
 
@@ -94,5 +93,6 @@ public class Res {
 
 	public static void init() {
 		font = new LazyBitmapFontConctoller();
+		Res.get(Setting.UI_BASE_IMG);
 	}
 }

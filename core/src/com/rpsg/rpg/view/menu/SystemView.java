@@ -76,6 +76,22 @@ public class SystemView extends IMenuView{
 		sstyle.background=Res.getDrawable(Setting.IMAGE_GLOBAL+"sliderbar.png");
 		sstyle.knob=Res.getDrawable(Setting.IMAGE_GLOBAL+"slider.png");
 		
+		//**RPSG账户 start
+		{
+			Table table = new Table().left().padLeft(50);
+			table.add(new Label("账户",55)).left().padTop(50).row();
+			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"split.png")).padTop(15).left().row();
+			table.add(new Label("Account",20).align(Align.right)).width(300).align(Align.right).height(0).padTop(-40).row();
+			
+			
+			
+			table.layout();
+			parentTable.add(table).align(Align.topLeft).row();
+			
+		}
+		//**RPSG账户 end
+		
+		
 		//**游戏档案 start
 		{
 			Table table = new Table().left().padLeft(50);
