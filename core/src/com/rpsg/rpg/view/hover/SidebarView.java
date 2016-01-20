@@ -29,6 +29,7 @@ import com.rpsg.rpg.utils.game.GameUtil;
 public abstract class SidebarView extends HoverView{
 	
 	WidgetGroup group=new WidgetGroup();
+	boolean enableXKey = true;
 	Image mask;
 	
 	public HoverView superInit(Map<Object, Object> initParam){
@@ -78,7 +79,7 @@ public abstract class SidebarView extends HoverView{
 	
 	@Override
 	public boolean keyDown(int keycode) {
-		if(keycode==Keys.ESCAPE || keycode==Keys.X){
+		if(keycode==Keys.ESCAPE || (keycode==Keys.X && enableXKey)){
 			group.clearActions();
 			group.addAction(Actions.sequence(Actions.moveTo(GameUtil.screen_width,0,0.2f,Interpolation.pow3),Actions.after(new Action() {
 				public boolean act(float delta) {

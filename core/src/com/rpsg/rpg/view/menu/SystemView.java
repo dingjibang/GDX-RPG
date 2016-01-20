@@ -1,5 +1,7 @@
 package com.rpsg.rpg.view.menu;
 
+import java.util.HashMap;
+
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -38,6 +40,7 @@ import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameViews;
 import com.rpsg.rpg.view.hover.ConfirmView;
 import com.rpsg.rpg.view.hover.LoadView;
+import com.rpsg.rpg.view.hover.LoginView;
 import com.rpsg.rpg.view.hover.SaveView;
 
 public class SystemView extends IMenuView{
@@ -83,7 +86,16 @@ public class SystemView extends IMenuView{
 			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"split.png")).padTop(15).left().row();
 			table.add(new Label("Account",20).align(Align.right)).width(300).align(Align.right).height(0).padTop(-40).row();
 			
+			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"login_tip.png")).padTop(40).row();
 			
+			table.add(new TextButton("登录", tstyle).onClick(new Runnable() {
+				public void run() {
+					RPG.popup.add(LoginView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
+						put("title","登录");
+						put("width",100);
+					}});
+				}
+			})).height(60).padTop(30).align(Align.left).padLeft(25);
 			
 			table.layout();
 			parentTable.add(table).align(Align.topLeft).row();
