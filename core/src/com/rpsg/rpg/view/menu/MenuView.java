@@ -117,7 +117,7 @@ public class MenuView extends StackView{
 				$.add(new CheckBox("", cstyle).setFgOff(0).setForeground(Res.getNP(Setting.IMAGE_MENU_GLOBAL+"m_"+currentMenu.fileName+".png"))).appendTo(table.getItem()).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {
 					self.onClick(new Runnable() {public void run() {
 						for(Actor box:table.children().getItems())
-							$.add(box).not(self.getItem()).setChecked(false).addAction(Actions.moveTo(21, box.getY(),0.1f,Interpolation.pow4)).setDisabled(false).run(new GdxQueryRunnable() {public void run(GdxQuery self2) {
+							$.add(box).notUserObject(self.getItem()).setChecked(false).addAction(Actions.moveTo(21, box.getY(),0.1f,Interpolation.pow4)).setDisabled(false).run(new GdxQueryRunnable() {public void run(GdxQuery self2) {
 								if(self2.length()!=0) ((CheckBox)self2.getItem()).setOther(null);
 							}});
 						((CheckBox)self.getItem()).setOther(Res.getNP(Setting.IMAGE_MENU_GLOBAL+"menu_button_box.png")).setOtherPosition(166, -12);

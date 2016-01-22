@@ -72,7 +72,7 @@ public class PostUtil {
 	}
 	public static void draw( boolean menuEnable){
 		if(showMenu){
-			others.not("menu").setVisible(Setting.persistence.touchMod);
+			others.notUserObject("menu").setVisible(Setting.persistence.touchMod);
 			if(Setting.persistence.touchMod && GameViews.gameview.stackView==null){
 				float x=pad.getKnobPercentX();
 				float y=pad.getKnobPercentY();

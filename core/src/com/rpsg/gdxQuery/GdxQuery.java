@@ -28,6 +28,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
@@ -177,7 +178,7 @@ public class GdxQuery {
 	public GdxQuery remove(Object... o){
 		for(Object obj:o){
 			$.add(obj).getItem().remove();
-			not(obj);
+			notUserObject(obj);
 		}
 		return this;
 	}
@@ -272,6 +273,13 @@ public class GdxQuery {
 	public GdxQuery setColor(Color color){
 		for(Actor actor:getItems())
 			actor.setColor(color);
+		return this;
+	}
+	
+	public GdxQuery setPlaceHolder(String ph){
+		for(Actor actor:getItems())
+			if(actor instanceof TextField)
+				((TextField)actor).setMessageText(ph);
 		return this;
 	}
 	
@@ -480,11 +488,20 @@ public class GdxQuery {
 		return query;
 	}
 	
-	public GdxQuery not(Object userObject){
+	public GdxQuery notUserObject(Object userObject){
 		for(Actor actor:getItems())
 			if(!(actor.getUserObject()!=null && actor.getUserObject().equals(userObject)))
 				return $.add(actor);
 		return $.add();
+	}
+	
+	public GdxQuery not(Actor... actors){
+		GdxQuery query=$.add();
+		for(Actor a :actors)
+			for(Actor actor:getItems())
+				if(actor != a)
+					query.add(actor);
+		return query.setFather(this);
 	}
 	
 	public boolean equals(Actor a){
