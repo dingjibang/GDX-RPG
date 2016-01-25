@@ -80,8 +80,8 @@ public class SpellCardView extends IMenuView{
 		$.add(Res.get(Setting.IMAGE_MENU_EQUIP+"data.png").disableTouch()).setSize(187, 312).setPosition(838,174).appendTo(data);
 		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)hero.prop.get("hp")/(float)hero.prop.get("maxhp")*161,20).setPosition(851, 456).appendTo(data).setColor(Color.valueOf("c33737"));
 		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)hero.prop.get("mp")/(float)hero.prop.get("maxmp")*161,20).setPosition(851, 429).appendTo(data).setColor(Color.valueOf("3762c3"));
-		$.add(new Label(hero.prop.get("hp")+"/"+hero.prop.get("maxhp"),18).align(851, 455).width(161)).setColor(Color.valueOf("2BC706")).appendTo(data);
-		$.add(new Label(hero.prop.get("mp")+"/"+hero.prop.get("maxmp"),18).align(851, 428).width(161)).setColor(Color.YELLOW).appendTo(data);
+		$.add(new Label(hero.prop.get("hp")+"/"+hero.prop.get("maxhp"),18).align(851, 455).width(161)).setColor(Color.WHITE).appendTo(data);
+		$.add(new Label(hero.prop.get("mp")+"/"+hero.prop.get("maxmp"),18).align(851, 428).width(161)).setColor(Color.WHITE).appendTo(data);
 		
 		int pad = 38,off = 421,x = 942;
 		$.add(new Label(hero.prop.get("hit"),22).align(x, off-=pad).width(80)).appendTo(data);

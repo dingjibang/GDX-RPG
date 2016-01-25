@@ -17,10 +17,10 @@ import com.rpsg.rpg.object.base.MsgType;
 import com.rpsg.rpg.object.base.Weather;
 import com.rpsg.rpg.object.rpg.Balloon.BalloonType;
 import com.rpsg.rpg.object.rpg.CollideType;
+import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.rpg.PublicNPC;
 import com.rpsg.rpg.system.controller.MoveController;
-import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.display.ColorUtil;
 import com.rpsg.rpg.utils.display.FG;
 import com.rpsg.rpg.utils.display.PostUtil;
@@ -75,6 +75,7 @@ public class Script extends Thread{
 	public void end(){
 		try {
 			Context.exit();
+			currentExeced=exeMode.stop;
 			dispose();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -536,8 +537,9 @@ public class Script extends Thread{
 		return Move.teleportAnotherMap(this, map, x, y, z);
 	}
 	
-	public BaseScriptExecutor pushCGSync(Image cg){
-		BaseScriptExecutor exe = RPG.ctrl.cg.pushSync(this,cg);
-		return exe;
+	public void toggleAllHero(boolean v){
+		for(Hero h : RPG.ctrl.hero.currentHeros)
+			h.setVisible(v);
 	}
+	
 }

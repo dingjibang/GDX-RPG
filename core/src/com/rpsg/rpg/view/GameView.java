@@ -73,7 +73,6 @@ public class GameView extends View{
 				bloom = GameViews.bloom;
 				RPG.ctrl.weather.init(RPG.global.weather);
 				Logger.info("图形加载完成。");
-				System.out.println(renderable);
 			}
 		};
 		filename=Setting.MAP+global.map;

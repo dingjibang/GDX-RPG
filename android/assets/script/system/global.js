@@ -13,7 +13,7 @@ x=3;
 y=2;
 z=1;
 
-map = "11/outside1.tmx";x=13;y=49;z=3;
+map = "11/outside1.tmx";x=15;y=58;z=3;
 
 //初始时间
 date.time = GameDate.Time.DAY;

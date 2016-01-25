@@ -58,7 +58,6 @@ public class ProxyImage extends Image {
 			ProxyImage.this.isLoaded = true;
 			ProxyImage.this.loaded.run();
 			
-			System.out.println("loaded");
 		}
 	};
 	}

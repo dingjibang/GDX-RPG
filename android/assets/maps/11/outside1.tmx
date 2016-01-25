@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="80" tilewidth="48" tileheight="48" nextobjectid="16">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="80" tilewidth="48" tileheight="48" nextobjectid="17">
  <properties>
   <property name="distant" value="bgnd2.jpg"/>
   <property name="name" value="测试地图"/>
@@ -243,24 +243,28 @@
   </data>
  </layer>
  <objectgroup name="对象层 2">
-  <object id="2" name="ENEMY" type="NPC" gid="892" x="1584" y="2352" width="48" height="64"/>
-  <object id="3" name="ENEMY" type="NPC" gid="892" x="1632" y="720" width="48" height="64"/>
   <object id="4" name="ENEMY" type="NPC" gid="892" x="1776" y="3264" width="48" height="64"/>
   <object id="5" name="ENEMY" type="NPC" gid="892" x="1560" y="1860" width="48" height="64"/>
   <object id="6" name="ENEMY" type="NPC" gid="892" x="1680" y="1200" width="48" height="64"/>
   <object id="8" name="ENEMY" type="NPC" gid="892" x="624" y="852" width="48" height="64"/>
   <object id="11" name="ENEMY" type="NPC" gid="892" x="264" y="1452" width="48" height="64"/>
-  <object id="15" name="PUBLIC" type="NPC" gid="892" x="-528" y="1776" width="48" height="64">
+  <object id="15" name="PUBLIC" type="NPC" gid="892" x="720" y="2832" width="60" height="64">
    <properties>
     <property name="AUTO_SCRIPT" value="s0-8.js"/>
-    <property name="IMAGE" value="empty"/>
+    <property name="IMAGE" value="renko_l"/>
     <property name="LOCK" value="true"/>
+   </properties>
+  </object>
+  <object id="16" name="PUBLIC" type="NPC" gid="892" x="288" y="2832" width="48" height="64">
+   <properties>
+    <property name="ID" value="16"/>
+    <property name="IMAGE" value="walk_yuki"/>
    </properties>
   </object>
  </objectgroup>
  <layer name="t2" width="50" height="80">
   <data encoding="base64" compression="gzip">
-   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
+   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
   </data>
  </layer>
  <layer name="块层 6" width="50" height="80">

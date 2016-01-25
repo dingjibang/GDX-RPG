@@ -9,6 +9,7 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.MoveStack;
+import com.rpsg.rpg.view.GameViews;
 
 /**
  * 用来控制一组{@link Hero 英雄}进行行走、转向、增删等，他同时应用在蚂蚁队列上（HeadHero行走，后面的Hero自动跟随）
@@ -31,8 +32,16 @@ public class HeroController {
 	public ArrayList<Hero> getOtherHeros(){
 		ArrayList<Hero> list = (ArrayList<Hero>)allHeros.clone();
 		list.removeAll(currentHeros);
-		System.out.println(list.get(0).support);
 		return list;
+	}
+	
+	public void remove(Hero hero){
+		currentHeros.remove(hero);
+		GameViews.gameview.stage.getActors().removeValue(hero, true);
+	}
+	
+	public void remove(int id){
+		remove(getHero(id));
 	}
 	
 	public synchronized void act(){

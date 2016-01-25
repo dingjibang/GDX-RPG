@@ -19,10 +19,11 @@ import com.rpsg.rpg.utils.game.Logger;
 
 public abstract class RPGObject extends Actor implements Comparable<RPGObject>,Serializable{
 	
-	public static final int FACE_D=1;
-	public static final int FACE_L=7;
-	public static final int FACE_R=10;
-	public static final int FACE_U=4;
+	public static final int FACE_D=1,FACE_D_L=0,FACE_D_R=2;
+	public static final int FACE_U=4,FACE_U_L=3,FACE_U_R=5;
+	public static final int FACE_L=7,FACE_L_L=6,FACE_L_R=8;
+	public static final int FACE_R=10,FACE_R_L=9,FACE_R_R=11;
+	
 	private static final int NORMAL_WALK_SPEED=4;
 	
 	private static final long serialVersionUID = 1L;
@@ -103,26 +104,26 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 		
 		if (isStop() && lastlength++ > 5 && !markTime)
 			foot = 0;
-		//帧数补偿
-		//当游戏帧数小于60FPS时，将尝试加快IRPGObject的行走速度而达到补偿的目的
-		int fps= Gdx.graphics.getFramesPerSecond();
-		fixTime += 60-fps;
-		if (fixTime < 0){
-			fixTime = 0;
-		}else if(fixTime >= 60){
-			int fixCount= (int) (fixTime/60f);
-			for(int i=0;i<fixCount;i++){
-				toWalk();
-			}
-			fixTime-=fixCount*60;
-		}
+//		//帧数补偿
+//		//当游戏帧数小于60FPS时，将尝试加快IRPGObject的行走速度而达到补偿的目的
+//		int fps= Gdx.graphics.getFramesPerSecond();
+//		fixTime += 60-fps;
+//		if (fixTime < 0){
+//			fixTime = 0;
+//		}else if(fixTime >= 60){
+//			int fixCount= (int) (fixTime/60f);
+//			for(int i=0;i<fixCount;i++){
+//				toWalk();
+//			}
+//			fixTime-=fixCount*60;
+//		}
 
 		toWalk();
 		
-		if(displayBalloon && !bon.isStop())
-			bon.act(fps);
-		else
-			displayBalloon=false;
+//		if(displayBalloon && !bon.isStop())
+//			bon.act(fps);
+//		else
+//			displayBalloon=false;
 		
 		if(markTime) actWalkAnimate();
 	}
@@ -423,7 +424,7 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	}
 	
 	public RPGObject turn(int face){
-			this.currentImageNo=face;
+		currentImageNo=face;
 		return this;
 	}
 	

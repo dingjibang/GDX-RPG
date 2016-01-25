@@ -46,12 +46,4 @@ public class CGController {
 		cgs.clear();
 	}
 
-	public BaseScriptExecutor pushSync(final Script script,final Image cg) {
-		return script.set(new BaseScriptExecutor() {
-			public void init() {
-				push(cg);
-			}
-		});
-	}
-	
 }

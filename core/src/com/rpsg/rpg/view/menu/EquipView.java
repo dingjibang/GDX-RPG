@@ -185,8 +185,8 @@ public class EquipView extends IMenuView{
 		
 		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)parent.current.prop.get("hp")/(float)parent.current.prop.get("maxhp")*161,20).setPosition(851, 456).appendTo(data).setColor(Color.valueOf("c33737"));
 		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)parent.current.prop.get("mp")/(float)parent.current.prop.get("maxmp")*161,20).setPosition(851, 429).appendTo(data).setColor(Color.valueOf("3762c3"));
-		$.add(new Label(parent.current.prop.get("hp")+"/"+parent.current.prop.get("maxhp"),18).align(851, 455).width(161)).setColor(Color.valueOf("2BC706")).appendTo(data);
-		$.add(new Label(parent.current.prop.get("mp")+"/"+parent.current.prop.get("maxmp"),18).align(851, 428).width(161)).setColor(Color.YELLOW).appendTo(data);
+		$.add(new Label(parent.current.prop.get("hp")+"/"+parent.current.prop.get("maxhp"),18).align(851, 455).width(161)).setColor(Color.WHITE).appendTo(data);
+		$.add(new Label(parent.current.prop.get("mp")+"/"+parent.current.prop.get("maxmp"),18).align(851, 428).width(161)).setColor(Color.WHITE).appendTo(data);
 		
 		int pad = 38,off = 421,x = 942;
 		$.add(new Label(parent.current.prop.get("hit"),22).align(x, off-=pad).width(80)).appendTo(data);
