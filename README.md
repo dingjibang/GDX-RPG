@@ -1,4 +1,4 @@
-# GDX-RPG (╯￣Д￣)╯![Image](hhttp://dev.rpsg-team.com/buildStatus/icon?job=rpg)
+# GDX-RPG [![Build Status](http://dev.rpsg-team.com/buildStatus/icon?job=rpg)](http://dev.rpsg-team.com/job/rpg)
 A ~~not work now~~ cross-platform RPG game engine ~~(tease you)~~
 
 made by [Libgdx](https://github.com/libgdx/libgdx).
