@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import com.badlogic.gdx.Gdx;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.Account;
 import com.rpsg.rpg.io.Files;
 import com.rpsg.rpg.utils.game.GameUtil;
 
@@ -51,6 +52,9 @@ public class Persistence implements Serializable{
 	/**触屏粒子*/
 	public boolean touchParticle = false;
 	
+	/**账户信息*/
+	public Account account;
+	
 	
 	/**启动自动寻路*/
 	public boolean pathFind = true;
@@ -67,6 +71,7 @@ public class Persistence implements Serializable{
 		//create new settings if the "save" floder not exise
 		Gdx.files.local(Setting.PERSISTENCE).mkdirs();
 		Persistence p = new Persistence();
+		p.account = new Account();
 		p.touchMod= !GameUtil.isDesktop;
 		Files.save(p,PersistenceFileName);
 		return p;

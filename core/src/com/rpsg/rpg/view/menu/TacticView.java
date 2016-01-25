@@ -176,7 +176,7 @@ public class TacticView extends IMenuView {
 								tipLib.setText("选择角色用以与" + currentLinking.hero.name + "连携");
 								tipLib2.setText("与" + that.hero.name + "连携预计获得" + that.hero.getLinkSize(currentLinking.hero) + "个技能");
 							} else {
-								tipLib.setText(hero.name + "与" + hero.linkTo + "连携中");
+								tipLib.setText(hero.name + "与" + hero.linkTo.name + "连携中");
 								tipLib2.setText("共获得了" + hero.linkSkills.size() + "个技能");
 							}
 

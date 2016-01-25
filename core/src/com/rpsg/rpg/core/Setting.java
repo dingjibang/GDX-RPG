@@ -78,5 +78,7 @@ public class Setting {
 	}
 
 	public static final String RPGOBJECT_SHADOW = Setting.WALK + "walk_shadow.png";
-
+	
+	//RPSG服务器
+	public static final String NET_LOGIN_URL = "http://rpsgvote.sinaapp.com/lyric.php";
 }

@@ -119,7 +119,7 @@ public class Hero extends RPGObject {
 	}
 
 	public String toString() {
-		return "RPG Hero(name:"+name+")";
+		return name;
 	}
 	
 	public boolean addSpellcard(Spellcard sc){

@@ -1,15 +1,20 @@
 package com.rpsg.rpg.view.hover;
 
+import java.util.HashMap;
+
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.CustomRunnable;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.io.Account.State;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.CheckBox;
+import com.rpsg.rpg.system.ui.TextButton;
 
 
 public class LoginView extends SidebarView {
@@ -25,7 +30,8 @@ public class LoginView extends SidebarView {
 		$.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"userbox.png")).appendTo(group).setPosition(480, 370);
 		$.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"passbox.png")).appendTo(group).setPosition(480, 300);
 		
-		TextField user,pass;
+		final TextField user;
+		final TextField pass;
 		$.add(user = new TextField("", tfstyle)).appendTo(group).setPlaceHolder("用户名").setPosition(550, 370).setSize(320,50);
 		$.add(pass = new TextField("", tfstyle)).appendTo(group).setPlaceHolder("密码").setPosition(550, 300).setSize(320,50);
 		
@@ -34,7 +40,8 @@ public class LoginView extends SidebarView {
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_GLOBAL+"optb.png");
 		cstyle.font=Res.font.get(22);
 		
-		$.add(new CheckBox("    记住密码",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
+		final CheckBox chk;
+		$.add(chk = new CheckBox("    记住密码",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 			
 		}})).appendTo(group).setPosition(749, 255);
 		
@@ -42,6 +49,25 @@ public class LoginView extends SidebarView {
 		tstyle.down = Setting.UI_BUTTON;
 		tstyle.up = Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"throwbut.png");
 		tstyle.font = Res.font.get(22);
+		
+		$.add(new TextButton("登录", tstyle).onClick(new Runnable() {
+			public void run() {
+				Setting.persistence.account.login(user.getText(), pass.getText(), chk.isChecked(), new CustomRunnable<State>() {
+					public void run(State t) {
+						
+					}
+				});
+			}
+		})).appendTo(group).setSize(400,50).setPosition(480, 150);
+		
+		$.add(new TextButton("注册", tstyle).onClick(new Runnable() {
+			public void run() {
+				RPG.popup.add(LoginView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
+					put("title","注册");
+					put("width",100);
+				}});
+			}
+		})).appendTo(group).setSize(400,50).setPosition(480, 70);
 		
 	}
 	

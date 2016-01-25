@@ -562,6 +562,24 @@ public class GdxQuery {
 		return query.setFather(this);
 	}
 	
+	public GdxQuery children(boolean deep){
+		GdxQuery $q = new GdxQuery();
+		for(Actor actor:getItems()){
+//			$q.add(actor);
+			
+			GdxQuery child = new GdxQuery(actor).children();
+			$q.add(child);
+			
+			if(!child.isEmpty())
+			for(Actor a:child.getItems()){
+				GdxQuery _q = new GdxQuery(a);
+				GdxQuery _qc = _q.children(true);
+				$q.add(_qc.isEmpty() ? _q : _qc);
+			}
+		}
+		return $q.setFather(this);
+	}
+	
 	public GdxQuery setTouchable(Touchable able){
 		for(Actor actor:getItems())
 			actor.setTouchable(able);

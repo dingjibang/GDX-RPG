@@ -35,7 +35,7 @@ public class Toast extends Table {
 	}
 
 	public Toast(String msg, Color color, int fontSize) {
-		this(msg, color, 22, false, null);
+		this(msg, color, fontSize, false, null);
 	}
 
 	public Toast(String msg, Color color) {
@@ -88,6 +88,7 @@ public class Toast extends Table {
 		setColor(1, 1, 1, 0);
 
 		float delay = 0 + (float) label.getText().length * .1f;
+		delay = delay > 5 ? 5 : delay;
 
 		addAction(Actions.sequence(Actions.fadeIn(.5f), Actions.delay(delay), Actions.fadeOut(.5f), Actions.run(new Runnable() {
 			public void run() {
