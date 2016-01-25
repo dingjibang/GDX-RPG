@@ -1,4 +1,4 @@
-# GDX-RPG (╯￣Д￣)╯![Image](https://travis-ci.org/dingjibang/GDX-RPG.svg)
+# GDX-RPG 
 A ~~not work now~~ cross-platform RPG game engine ~~(tease you)~~
 
 made by [Libgdx](https://github.com/libgdx/libgdx).
