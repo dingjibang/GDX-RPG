@@ -28,6 +28,10 @@ public class Res {
 		generateTempTexture();
 		return new ProxyImage(resPath);
 	}
+	
+	public static Image getSync(String resPath){
+		return ((ProxyImage) get(resPath)).sync();
+	}
 
 	public static Image get(String resPath, float[][] pos) {
 		Logger.info("伪装加载纹理：" + resPath);

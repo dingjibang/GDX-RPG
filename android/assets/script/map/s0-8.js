@@ -7,8 +7,10 @@ if(RPG.getFlag("1-1-shrine-gen") != null){
 	end();
 }
 
-var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
-black.addAction(Actions.sequence(Actions.run(function(){setRenderAble(true)}),Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(black)})));	
+var black = $(Res.getSync(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
+black.loaded = function(){
+	black.addAction(Actions.sequence(Actions.run(function(){setRenderAble(true)}),Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(black)})));	
+};
 CG.push(black);
 
 
