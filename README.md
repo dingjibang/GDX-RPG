@@ -15,6 +15,7 @@ Jenkins : [http://dev.rpsg-team.com/](http://dev.rpsg-team.com/)
 "git clone" this project into your IDE, build, and enjoy it.
 
 # Usual build faults!important( •́ .̫ •̀  )
+#### okokok, first, please set the environment variable JAVA8_HOME and JAVA7_HOME to your jdk7 and jdk8 file position
 ####1."SDK location not found ..." or other errors when build the gradle.
 please download "android sdk" at first. you have to download those modules:
 - Android SDK Build-tools (23.0.1)
