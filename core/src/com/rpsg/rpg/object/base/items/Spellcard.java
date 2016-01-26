@@ -25,8 +25,7 @@ public class Spellcard extends BaseItem {
 	public String description2;
 	
 	
-	public static Class<Spellcard> getClassEx()
-	{
+	public static Class<Spellcard> getClassEx(){
 		return Spellcard.class;
 	}
 }

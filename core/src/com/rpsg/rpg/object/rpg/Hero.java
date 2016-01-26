@@ -6,11 +6,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Association;
 import com.rpsg.rpg.object.base.AssociationSkill;
 import com.rpsg.rpg.object.base.EmptyAssociation;
+import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.Resistance;
+import com.rpsg.rpg.object.base.items.Buff;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Spellcard;
 
@@ -31,14 +34,14 @@ public class Hero extends RPGObject {
 	public String jname;
 	public String fgname;
 	public String tag = "";
-	public Spellcard support;
+	public Buff support;
 	public Association association = new EmptyAssociation();
 	public Hero linkTo;
 	public ArrayList<AssociationSkill> linkSkills = new ArrayList<AssociationSkill>();
 	public String color = "000000cc";
 	public float[][] face;
 	public float[][] head;
-	public Map<String, Integer> prop = new HashMap<String, Integer>();
+	private Map<String, Integer> prop = new HashMap<String, Integer>();
 	{
 		//等级
 		prop.put("level", 0);
@@ -73,6 +76,37 @@ public class Hero extends RPGObject {
 	}
 
 	public boolean lead = false;
+	
+	public Integer getProp(String propName){
+		//获取基本数值
+		Integer prop = this.prop.get(propName);
+		
+		//支援buff叠加
+		for(Hero hero : RPG.global.support){
+			Buff support = hero.support;
+			if(support == null) continue;
+			String result = support.prop.get(propName);
+			if(result == null) continue;
+			
+			prop = calcProp(prop, result);
+			
+		}
+		return prop;
+	}
+	
+	//计算数值（百分比或绝对值）
+	private Integer calcProp(int value,String prop){
+		try {
+			if(prop.endsWith("%")){
+				return value + value * Integer.valueOf(prop.substring(0, prop.length() - 1)) / 100;
+			}else{
+				return value + Integer.valueOf(prop);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
 
 	public LinkedHashMap<String, Resistance> resistance = new LinkedHashMap<String, Resistance>();
 	{
@@ -115,7 +149,7 @@ public class Hero extends RPGObject {
 	}
 	
 	public boolean isDead(){
-		return prop.get("dead")==TRUE;
+		return getProp("dead")==TRUE;
 	}
 
 	public String toString() {
@@ -123,7 +157,7 @@ public class Hero extends RPGObject {
 	}
 	
 	public boolean addSpellcard(Spellcard sc){
-		if(this.sc.size()>=prop.get("maxsc"))
+		if(this.sc.size()>=getProp("maxsc"))
 			return false;
 		for(Spellcard _sc:this.sc)
 			if(_sc.id==sc.id)
@@ -133,11 +167,11 @@ public class Hero extends RPGObject {
 
 	public void addProp(String name, String p, boolean post) {
 		if(p.indexOf("%")<0){
-			Integer val = prop.get(name);
+			Integer val = getProp(name);
 			prop.put(name,(val==null?0:val) + Integer.parseInt(p));
 		}else{
 			float f = Float.parseFloat(p.split("%")[0]);
-			prop.put(name, prop.get(name) * (int)(f / 100));
+			prop.put(name, getProp(name) * (int)(f / 100));
 		}
 		
 		if(name.equalsIgnoreCase("dead")){
@@ -163,21 +197,21 @@ public class Hero extends RPGObject {
 	
 	public void postOverflow(){
 		for(String name:prop.keySet()){
-			if(prop.get(name)<0)
+			if(getProp(name)<0)
 				prop.put(name, 0);
 		}
 		
-		if (prop.get("hp") > prop.get("maxhp"))
-			prop.put("hp", prop.get("maxhp"));
+		if (getProp("hp") > getProp("maxhp"))
+			prop.put("hp", getProp("maxhp"));
 
-		if (prop.get("mp") > prop.get("maxmp"))
-			prop.put("mp", prop.get("maxmp"));
+		if (getProp("mp") > getProp("maxmp"))
+			prop.put("mp", getProp("maxmp"));
 
 	}
 	
 	public boolean full(String name) {
 		if (name.equals("hp") || name.equals("mp"))
-			return prop.get("max" + name).equals(prop.get(name));
+			return getProp("max" + name).equals(getProp(name));
 		return false;
 	}
 
@@ -211,13 +245,15 @@ public class Hero extends RPGObject {
 			all.addAll(this.association.getCurrentLevelLinkSkills());
 			
 			ArrayList<AssociationSkill> result = new ArrayList<AssociationSkill>();
+			
 			for(AssociationSkill skill : all)
 				for(int i : skill.special)
 					if(this.id == i || that.id == i)
 						result.add(skill);
-			
 			list = result;
 		}
+		
+		list.add(Global.baseLinkSpellCard);
 		
 		return list;
 	}

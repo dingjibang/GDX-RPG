@@ -12,6 +12,6 @@ fgname="flandre";
 face = [[320,200],[650,500],[0.15]];
 head = [[200,100],[830,1000],[0.27]];
 association=Association.read(1);
-support = RPG.ctrl.item.get(7);
+support = RPG.ctrl.item.getBuff(1);
 color="d55d41cc";
 setProp("level",1);

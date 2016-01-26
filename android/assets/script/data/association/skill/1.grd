@@ -1,0 +1,6 @@
+{
+	level:1,
+	spellcard:8,
+	special:[],
+	trigger:"self.lastAttack == Attack.normal && self.lastAttackEnemy.hp < 30"
+}

@@ -144,3 +144,8 @@ RPG.ctrl.hero.add(7);
 
 var flandre = RPG.ctrl.hero.add(2);
 currentHeros.remove(flandre);
+
+var Association = com.rpsg.rpg.object.base.Association;
+var Global = com.rpsg.rpg.object.base.Global;
+
+Global.baseLinkSpellCard = Association.readSkill(1);

@@ -10,6 +10,7 @@ import com.badlogic.gdx.Gdx;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.BaseItem;
+import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.utils.game.GameDate;
@@ -33,6 +34,9 @@ public class Global implements Serializable {
 	public int x;
 	public int y;
 	public int z;
+	
+	
+	public static AssociationSkill baseLinkSpellCard = null;
 
 	public boolean first = true;
 
@@ -52,6 +56,7 @@ public class Global implements Serializable {
 
 	public void read(){
 		RPG.executeJS( Gdx.files.internal(Setting.SCRIPT_SYSTEM+"global.js").readString("utf-8"), this);
+		System.out.println(baseLinkSpellCard);
 	}
 	
 	public Global addSupport(){

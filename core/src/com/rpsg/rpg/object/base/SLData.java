@@ -30,6 +30,7 @@ public class SLData implements Serializable{
 	public String saveDate;
 	public String gameDate;
 	public String heroName;
+	
 	public static void generate(final int id,int i, final Stage stage, final HoverView sv) {
 		final Image im=Res.get(Setting.IMAGE_MENU_SYSTEM+"savebl.png").position(i>1?44+(i-2)*483:44+i*483, i>1?270:114);
 		im.setUserObject(new exMask());

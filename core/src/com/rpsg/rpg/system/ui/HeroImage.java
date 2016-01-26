@@ -29,7 +29,7 @@ public class HeroImage extends Group{
 			step=0;
 		}
 		image.setDrawable(hero.images[goffset+(offset==3?1:offset)].getDrawable());
-		image.setColor(hero.prop.get("dead").equals(Hero.TRUE)?Color.valueOf("00000033"):new Color(1,1,1,1));
+		image.setColor(hero.getProp("dead").equals(Hero.TRUE)?Color.valueOf("00000033"):new Color(1,1,1,1));
 		super.draw(batch, parentAlpha);
 	}
 	

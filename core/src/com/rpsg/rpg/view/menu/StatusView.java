@@ -70,32 +70,32 @@ public class StatusView extends IMenuView {
 		
 		Group group=(Group) $.add(new Group()).setX(70).addAction(Actions.parallel(Actions.moveTo(70,y(320),0.5f,Interpolation.pow4Out),Actions.fadeIn(0.4f))).setColor(1, 1, 1,0).appendTo(inner).getItem();
 		$.add(Res.get(Setting.IMAGE_MENU_STATUS+"info.png")).appendTo(group);
-		$.add(new Label(parent.current.prop.get("level"),60).align(-28, 35).width(200)).appendTo(group);
+		$.add(new Label(parent.current.getProp("level"),60).align(-28, 35).width(200)).appendTo(group);
 		$.add(new Label(parent.current.tag,20).align(-28, 10).width(200)).appendTo(group).setColor(1,1,1,0.5f);
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(327,27).setPosition(142, 75).appendTo(group);
-		$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,27).setPosition(142, 75).appendTo(group).setColor(Color.valueOf("c33737")).addAction(Actions.delay(0.3f,Actions.sizeTo(((float)parent.current.prop.get("exp")/(float)parent.current.prop.get("maxexp"))*327, 27,0.4f,Interpolation.pow4Out)));
-		$.add(new Label(parent.current.prop.get("exp")+"/"+parent.current.prop.get("maxexp"),20).align(142, 77).width(327)).appendTo(group).setColor(Color.valueOf("3bb740"));
-		$.add(new Label(parent.current.prop.get("level")+1,20).align(470, 74).width(50)).appendTo(group);
+		$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,27).setPosition(142, 75).appendTo(group).setColor(Color.valueOf("c33737")).addAction(Actions.delay(0.3f,Actions.sizeTo(((float)parent.current.getProp("exp")/(float)parent.current.getProp("maxexp"))*327, 27,0.4f,Interpolation.pow4Out)));
+		$.add(new Label(parent.current.getProp("exp")+"/"+parent.current.getProp("maxexp"),20).align(142, 77).width(327)).appendTo(group).setColor(Color.valueOf("3bb740"));
+		$.add(new Label(parent.current.getProp("level")+1,20).align(470, 74).width(50)).appendTo(group);
 		$.add(new Label(parent.current.lead?"无信息":parent.current.association.name+"（等级"+parent.current.association.level+"）",20).align(142, 44).width(327)).appendTo(group);
 		$.add(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_STATUS+"more_soc_info.png"), Res.getDrawable(Setting.IMAGE_MENU_STATUS+"more_soc_info_p.png"))).appendTo(group).setX(142);
 		
 		Group group2=(Group) $.add(new Group()).setX(70).addAction(Actions.parallel(Actions.moveTo(70,y(420),0.7f,Interpolation.pow4Out),Actions.fadeIn(0.4f))).setColor(1, 1, 1,0).appendTo(inner).getItem();
 		$.add(Res.get(Setting.IMAGE_MENU_STATUS+"info2.png")).appendTo(group2);
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(245,24).setPosition(120, 48).appendTo(group2);
-		$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(123, 51).appendTo(group2).setColor(Color.valueOf("c33737")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("hp")/(float)parent.current.prop.get("maxhp"))*239, 18,0.6f,Interpolation.pow4Out)));
+		$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(123, 51).appendTo(group2).setColor(Color.valueOf("c33737")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.getProp("hp")/(float)parent.current.getProp("maxhp"))*239, 18,0.6f,Interpolation.pow4Out)));
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(245,24).setPosition(120, 8).appendTo(group2);
-		$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(123, 11).appendTo(group2).setColor(Color.valueOf("3762c3")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("mp")/(float)parent.current.prop.get("maxmp"))*239, 18,0.6f,Interpolation.pow4Out)));
-		$.add(new Label(parent.current.prop.get("hp")+"/"+parent.current.prop.get("maxhp"),22).align(345, 48).width(200)).appendTo(group2);
-		$.add(new Label(parent.current.prop.get("mp")+"/"+parent.current.prop.get("maxmp"),22).align(345, 8).width(200)).appendTo(group2);
+		$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(123, 11).appendTo(group2).setColor(Color.valueOf("3762c3")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.getProp("mp")/(float)parent.current.getProp("maxmp"))*239, 18,0.6f,Interpolation.pow4Out)));
+		$.add(new Label(parent.current.getProp("hp")+"/"+parent.current.getProp("maxhp"),22).align(345, 48).width(200)).appendTo(group2);
+		$.add(new Label(parent.current.getProp("mp")+"/"+parent.current.getProp("maxmp"),22).align(345, 8).width(200)).appendTo(group2);
 		
 		Group group3=(Group) $.add(new Group()).setX(70).addAction(Actions.parallel(Actions.moveTo(70,y(558),0.8f,Interpolation.pow4Out),Actions.fadeIn(0.4f))).setColor(1, 1, 1,0).appendTo(inner).getItem();
 		$.add(Res.get(Setting.IMAGE_MENU_STATUS+"info3.png")).appendTo(group3);
-		$.add(new Label(parent.current.prop.get("attack"),22).align(130, 83).width(100)).appendTo(group3);
-		$.add(new Label(parent.current.prop.get("defense"),22).align(390, 83).width(100)).appendTo(group3);
-		$.add(new Label(parent.current.prop.get("magicAttack"),22).align(130, 45).width(100)).appendTo(group3);
-		$.add(new Label(parent.current.prop.get("magicDefense"),22).align(390, 45).width(100)).appendTo(group3);
-		$.add(new Label(parent.current.prop.get("speed"),22).align(130, 8).width(100)).appendTo(group3);
-		$.add(new Label(parent.current.prop.get("hit"),22).align(390, 8).width(100)).appendTo(group3);
+		$.add(new Label(parent.current.getProp("attack"),22).align(130, 83).width(100)).appendTo(group3);
+		$.add(new Label(parent.current.getProp("defense"),22).align(390, 83).width(100)).appendTo(group3);
+		$.add(new Label(parent.current.getProp("magicAttack"),22).align(130, 45).width(100)).appendTo(group3);
+		$.add(new Label(parent.current.getProp("magicDefense"),22).align(390, 45).width(100)).appendTo(group3);
+		$.add(new Label(parent.current.getProp("speed"),22).align(130, 8).width(100)).appendTo(group3);
+		$.add(new Label(parent.current.getProp("hit"),22).align(390, 8).width(100)).appendTo(group3);
 		
 		Group group4=(Group) $.add(new Group()).setX(70).addAction(Actions.parallel(Actions.moveTo(70,y(1032),1f,Interpolation.pow4Out),Actions.fadeIn(0.4f))).setColor(1, 1, 1,0).appendTo(inner).getItem();
 		$.add(Res.get(Setting.IMAGE_MENU_STATUS+"equipbox.png")).appendTo(group4);
@@ -126,15 +126,15 @@ public class StatusView extends IMenuView {
 			Group group6=(Group) $.add(new Group()).setX(70).addAction(Actions.parallel(Actions.moveTo(70,y(1702),1f,Interpolation.pow4Out),Actions.fadeIn(0.4f))).setColor(1, 1, 1,0).appendTo(inner).getItem();
 			$.add(Res.get(Setting.IMAGE_MENU_STATUS+"person.png")).appendTo(group6);
 			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(420,24).setPosition(87, 159).appendTo(group6);
-			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 162).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("courage")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
+			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 162).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.getProp("courage")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
 			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(420,24).setPosition(87, 121).appendTo(group6);
-			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 124).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("express")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
+			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 124).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.getProp("express")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
 			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(420,24).setPosition(87, 83).appendTo(group6);
-			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 87).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("respect")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
+			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 87).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.getProp("respect")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
 			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(420,24).setPosition(87, 45).appendTo(group6);
-			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 48).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("perseverance")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
+			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 48).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.getProp("perseverance")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
 			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(420,24).setPosition(87, 7).appendTo(group6);
-			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 10).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.prop.get("knowledge")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
+			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 10).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.getProp("knowledge")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
 			final Image pe_help=(Image) $.add(Res.get(Setting.IMAGE_MENU_STATUS+"person_help.png")).appendTo(group6).setColor(1,1,1,0).getItem();//resistance help button
 			$.add(new CheckBox("", cstyle)).appendTo(group6).setPosition(392,190).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
 				pe_help.addAction(self.isChecked()?Actions.fadeIn(0.3f):Actions.fadeOut(0.3f));

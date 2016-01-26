@@ -31,7 +31,7 @@ public class SL {
 			SLData slData=new SLData();
 			slData.gameDate=/*global.date+"年"+*/global.date.getMonth()+"月"+global.date.getDay()+"日";
 			slData.id=fileID;
-			slData.level=global.currentHeros.get(0).prop.get("level");
+			slData.level=global.currentHeros.get(0).getProp("level");
 			slData.mapName=(String)RPG.maps.map.getProperties().get("name");
 			slData.saveDate=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
 			slData.heroName=RPG.ctrl.hero.getHeadHero().name;

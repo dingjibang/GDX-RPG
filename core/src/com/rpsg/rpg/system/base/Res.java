@@ -16,8 +16,8 @@ import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.game.Logger;
 
 public class Res {
-	public static AssetManager ma = GameViewRes.ma;
-	public static AssetManager ma2 = GameViewRes.ma2;
+	public static AssetManager ma = GameViewRes.ma;//线程1用来加载异步代理图片
+	public static AssetManager ma2 = GameViewRes.ma2;//线程2用来同步加载纹理
 	public static Texture NO_TEXTURE;
 
 	public static LazyBitmapFontConctoller font;

@@ -1,0 +1,6 @@
+{
+	level:3,
+	spellcard:7,
+	special:[1,2],
+	trigger:"self.hp < self.maxhp * .5"
+}

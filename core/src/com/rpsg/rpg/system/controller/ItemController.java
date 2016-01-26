@@ -11,9 +11,11 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.BaseItem;
+import com.rpsg.rpg.object.base.items.Buff;
 import com.rpsg.rpg.object.base.items.Effect;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
+import com.rpsg.rpg.object.base.items.Buff.BuffType;
 import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
@@ -110,7 +112,7 @@ public class ItemController {
 			baseItem.packable = result.has("packable") ? result.getBoolean("packable") : true;
 			baseItem.buy = result.has("buy") ? result.getInt("buy") : 0;
 			baseItem.sell = result.has("sell") ? result.getInt("sell") : 0;
-			baseItem.effect = result.has("effect")?readEffect(result.get("effect")):new Effect();
+			baseItem.effect = result.has("effect")?getEffect(result.get("effect")):new Effect();
 			
 			return (T) baseItem;
 		} catch (Exception e) {
@@ -120,20 +122,34 @@ public class ItemController {
 		}
 	}
 	
-	private Effect readEffect(JsonValue json){
+	public static Effect getEffect(JsonValue json){
 		Effect e = new Effect();
 		if(json.has("prop"))
-			e.prop = readProp(json.get("prop"));
+			e.prop = getProp(json.get("prop"));
 		e.use = json.has("use")?json.getString("use"):"";
 		return e;
 	}
 	
-	private Map<String,String> readProp(JsonValue json){
+	public static Map<String,String> getProp(JsonValue json){
 		Map<String,String> replace = new HashMap<>();
 		for(int i=0;i<json.size;i++){
 			replace.put(json.get(i).name,json.getString(json.get(i).name));
 		}
 		return replace; 
+	}
+	
+	public static Buff getBuff(int id){
+		Buff buff = new Buff();
+		
+		JsonValue value = reader.parse(Gdx.files.internal(Setting.SCRIPT_DATA_BUFF+id+".grd").readString());
+		
+		buff.id = id;
+		buff.type = value.has("type") ? BuffType.valueOf(value.getString("type")) : BuffType.buff;
+		buff.name = value.has("name") ? value.getString("name") : "(??)";
+		buff.prop = getProp(value.get("prop"));
+		buff.description = value.has("description") ? value.getString("description") : "";
+		
+		return buff;
 	}
 	
 	/** 移除1个 <b><i>当前背包</i></b> 里的某个道具（根据ID）**/
@@ -256,7 +272,7 @@ public class ItemController {
 				return false;
 			
 			Hero from = sc.user2;
-			if(from.prop.get("mp") < sc.cost)
+			if(from.getProp("mp") < sc.cost)
 				return false;
 			if(sc.user instanceof Hero || sc.user==null){
 				List<Hero> heros = new ArrayList<>();

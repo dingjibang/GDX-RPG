@@ -78,19 +78,19 @@ public class SpellCardView extends IMenuView{
 		
 		
 		$.add(Res.get(Setting.IMAGE_MENU_EQUIP+"data.png").disableTouch()).setSize(187, 312).setPosition(838,174).appendTo(data);
-		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)hero.prop.get("hp")/(float)hero.prop.get("maxhp")*161,20).setPosition(851, 456).appendTo(data).setColor(Color.valueOf("c33737"));
-		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)hero.prop.get("mp")/(float)hero.prop.get("maxmp")*161,20).setPosition(851, 429).appendTo(data).setColor(Color.valueOf("3762c3"));
-		$.add(new Label(hero.prop.get("hp")+"/"+hero.prop.get("maxhp"),18).align(851, 455).width(161)).setColor(Color.WHITE).appendTo(data);
-		$.add(new Label(hero.prop.get("mp")+"/"+hero.prop.get("maxmp"),18).align(851, 428).width(161)).setColor(Color.WHITE).appendTo(data);
+		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)hero.getProp("hp")/(float)hero.getProp("maxhp")*161,20).setPosition(851, 456).appendTo(data).setColor(Color.valueOf("c33737"));
+		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)hero.getProp("mp")/(float)hero.getProp("maxmp")*161,20).setPosition(851, 429).appendTo(data).setColor(Color.valueOf("3762c3"));
+		$.add(new Label(hero.getProp("hp")+"/"+hero.getProp("maxhp"),18).align(851, 455).width(161)).setColor(Color.WHITE).appendTo(data);
+		$.add(new Label(hero.getProp("mp")+"/"+hero.getProp("maxmp"),18).align(851, 428).width(161)).setColor(Color.WHITE).appendTo(data);
 		
 		int pad = 38,off = 421,x = 942;
-		$.add(new Label(hero.prop.get("hit"),22).align(x, off-=pad).width(80)).appendTo(data);
-		$.add(new Label(hero.prop.get("speed"),22).align(x, off-=pad).width(80)).appendTo(data);
-		$.add(new Label(hero.prop.get("defense"),22).align(x, off-=pad).width(80)).appendTo(data);
-		$.add(new Label(hero.prop.get("magicDefense"),22).align(x, off-=pad).width(80)).appendTo(data);
-		$.add(new Label(hero.prop.get("attack"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(hero.getProp("hit"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(hero.getProp("speed"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(hero.getProp("defense"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(hero.getProp("magicDefense"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(hero.getProp("attack"),22).align(x, off-=pad).width(80)).appendTo(data);
 		
-		$.add(new Label(hero.prop.get("magicAttack"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(hero.getProp("magicAttack"),22).align(x, off-=pad).width(80)).appendTo(data);
 		$.add(data).children().setTouchable(Touchable.disabled);
 		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(303, 383).color(.05f,.05f,.05f,.8f).position(240,38)).appendTo(stage);
@@ -101,7 +101,7 @@ public class SpellCardView extends IMenuView{
 		final ImageButton apply;
 		$.add(apply = new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.IMAGE_MENU_ITEM+"but_use.png")).fgSelfColor(true)).appendTo(stage).setSize(405,58).setPosition(575, 39).getCell().prefSize(405,58);
 		
-		$.add(new Label(hero.name+"可持有"+hero.prop.get("maxsc")+"张符卡",18).position(240, 42).width(303).center()).appendTo(stage);
+		$.add(new Label(hero.name+"可持有"+hero.getProp("maxsc")+"张符卡",18).position(240, 42).width(303).center()).appendTo(stage);
 		
 		
 		final Table items = new Table().left().top();

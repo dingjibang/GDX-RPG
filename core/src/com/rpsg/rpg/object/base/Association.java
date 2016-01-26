@@ -40,17 +40,33 @@ public class Association implements Serializable {
 		ass.name = object.getString("name");
 		ass.level = object.getInt("level");
 		ass.favor = object.getInt("favor");
-		for(JsonValue value:object.get("skill")){
-			AssociationSkill skill = new AssociationSkill();
-			skill.level = value.getInt("level");
-			skill.spellcard = (Spellcard)RPG.ctrl.item.get(value.getInt("spellcard"));
-			if(value.has("special") && value.get("special").size != 0){
-				for(JsonValue spec:value.get("special"))
-					skill.special.add(spec.asInt());
-			}
-			ass.skills.add(skill);
-		}
+		for(JsonValue value:object.get("skill"))
+			ass.skills.add(readSkill(value.asInt()));
+		
+		System.out.println();
+		System.out.println(ass.name);
+		System.out.println(ass.skills);
 		return ass;
+	}
+	
+	public static AssociationSkill readSkill(int id){
+		String skillStr = Gdx.files.internal(Setting.SCRIPT_DATA_ASSOCIATION_SKILL+id+".grd").readString();
+		AssociationSkill skill = new AssociationSkill();
+		
+		JsonValue value = new JsonReader().parse(skillStr);
+		
+		skill.level = value.getInt("level");
+		skill.spellcard = (Spellcard)RPG.ctrl.item.get(value.getInt("spellcard"));
+		
+		if(value.has("special") && value.get("special").size != 0){
+			for(JsonValue spec:value.get("special"))
+				skill.special.add(spec.asInt());
+		}
+		
+		skill.trigger = value.has("trigger") ? value.getString("trigger") : "var result = false";
+		
+		
+		return skill;
 	}
 	
 	public static Association read(int id){
