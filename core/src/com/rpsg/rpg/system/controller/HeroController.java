@@ -5,6 +5,8 @@ import java.util.Collections;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.RemoveTest;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -29,9 +31,15 @@ public class HeroController {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public ArrayList<Hero> getOtherHeros(){
+	public ArrayList<Hero> getOtherHeros(boolean filter){
 		ArrayList<Hero> list = (ArrayList<Hero>)allHeros.clone();
 		list.removeAll(currentHeros);
+		if(filter)
+			$.removeIf(list, new RemoveTest<Hero>(){
+				public boolean test(Hero object) {
+					return object.support == null;
+				}
+			});
 		return list;
 	}
 	

@@ -419,7 +419,7 @@ public class TacticView extends IMenuView {
 	SupImage currentSelect=null;
 	@SuppressWarnings("rawtypes")
 	private void generateSupport() {
-		s_l=new SupGroup(1240, 65).generate(RPG.ctrl.hero.getOtherHeros());
+		s_l=new SupGroup(1240, 65).generate(RPG.ctrl.hero.getOtherHeros(true));
 		s_r=new SupGroup(1694, 65).generate(RPG.global.support);
 		final Label nl,nr;
 		group.addActor(nl=new Label("",20).width(1000).align(885, 383));
