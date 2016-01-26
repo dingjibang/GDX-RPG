@@ -542,4 +542,8 @@ public class Script extends Thread{
 			h.setVisible(v);
 	}
 	
+	public static void main(String[] args) {
+		System.out.println(System.getenv("JAVA8_HOME"));
+	}
+	
 }

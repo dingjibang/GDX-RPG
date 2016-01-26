@@ -16,6 +16,7 @@ if(RPG.getFlag("1-1-shrine-gen") == null){
 	yuki.setVisible(false);
 	npc.setVisible(false);
 	RPG.ctrl.hero.remove(7);
+	PostUtil.showMenu=true;
 	removeSelf();
 	end();
 }else{

@@ -5,12 +5,14 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'me.tatarka:gradle-retrolambda:3.2.4'
     }
 }
 
 allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
+    apply plugin: 'me.tatarka.retrolambda'
 
     version = '1.0'
     ext {
@@ -21,6 +23,13 @@ allprojects {
         ashleyVersion = '1.6.0'
         aiVersion = '1.6.0'
     }
+
+    retrolambda {
+        jdk System.getenv("JAVA8_HOME")
+        oldJdk System.getenv("JAVA7_HOME")
+        javaVersion JavaVersion.VERSION_1_7
+    }
+
 
     repositories {
         mavenCentral()

@@ -59,8 +59,7 @@ public class GameView extends View{
 		if(PostUtil.first)
 			PostUtil.init();
 		parameter = new TmxMapLoader.Parameters();
-		parameter.loadedCallback= new AssetLoaderParameters.LoadedCallback() {
-			public void finishedLoading(AssetManager assetManager, String fileName, @SuppressWarnings("rawtypes") Class type) {
+		parameter.loadedCallback= (AssetManager assetManager, String fileName, Class type)->{
 				RPG.maps.map = ma.get(Setting.MAP + global.map);
 				if(render == null)
 					render=new OrthoCachedTiledMapRenderer(RPG.maps.map);
@@ -73,7 +72,6 @@ public class GameView extends View{
 				bloom = GameViews.bloom;
 				RPG.ctrl.weather.init(RPG.global.weather);
 				Logger.info("图形加载完成。");
-			}
 		};
 		filename=Setting.MAP+global.map;
 		ma.load(filename, TiledMap.class ,parameter);
