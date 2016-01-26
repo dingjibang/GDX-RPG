@@ -1,5 +1,6 @@
 package com.rpsg.gdxQuery;
 
+import java.util.Collection;
 import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
@@ -45,6 +46,11 @@ public class $ {
 		return new GdxFrame().add(query, runnable);
 	}
 	
+	public static <T> void removeIfIf(boolean flag,Iterable<T> c,RemoveTest<T> test){
+		if(flag)
+			removeIf(c,test);
+	}
+	
 	public static <T> void removeIf(Iterable<T> c,RemoveTest<T> test){
 		Iterator<T> it=c.iterator();
 		while(it.hasNext()){
@@ -52,6 +58,12 @@ public class $ {
 			if(test.test(obj))
 				it.remove();
 		}
+	}
+	
+	public static <T> void each(Collection<T> c,CustomRunnable<T> run){
+		Iterator<T> it=c.iterator();
+		while(it.hasNext())
+			run.run(it.next());
 	}
 	
 }

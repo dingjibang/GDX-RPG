@@ -290,7 +290,7 @@ public class TacticView extends IMenuView {
 			if(hero!=null){
 				int x = (int)((hero.head[1][0])*hero.head[2][0]);				
 				int y = (int)((hero.head[1][1])*hero.head[2][0]);
-				group.addActor(Res.get(Setting.IMAGE_FG+hero.fgname+"/normal.png",hero.head).size(x, y).position(200*idx+214, 170).disableTouch());
+				group.addActor(Res.get(Setting.IMAGE_FG+hero.fgname+"/Normal.png",hero.head).size(x, y).position(200*idx+214, 170).disableTouch());
 			}
 			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link_mask.png").position(200*idx+214, 170).disableTouch());
 			group.addActor(Res.get(Setting.IMAGE_MENU_TACTIC+"link_level.png").position(200*idx+214+7, 177).color((hero!=null && hero.lead)?Color.valueOf("cc3333"):Color.valueOf("528431")).disableTouch());
@@ -524,7 +524,7 @@ public class TacticView extends IMenuView {
 			int x = (int)((hero.face[1][0])*hero.face[2][0]);				
 			int y = (int)((hero.face[1][1])*hero.face[2][0]);
 			sbox=Res.get(Setting.IMAGE_MENU_TACTIC+"sup_herobox_sel.png").disableTouch();
-			face=Res.get(Setting.IMAGE_FG+hero.fgname+"/normal.png",hero.face).size(x, y);
+			face=Res.get(Setting.IMAGE_FG+hero.fgname+"/Normal.png",hero.face).size(x, y);
 			name=new Label(hero.name,24).width(1000);
 			level=new Label(hero.support!=null?hero.support.name:"无支援技能",16).width(1000);
 			association=new Label(hero.association.name,32).color(1,1,1,.16f).width(1000);
