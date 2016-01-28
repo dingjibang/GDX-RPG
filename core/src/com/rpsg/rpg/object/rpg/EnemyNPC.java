@@ -52,10 +52,14 @@ public class EnemyNPC extends RandomWalkNPC {
 				getCurrentFace() == getFaceByPoint(HeroX,HeroY)) //Check if the face is to Hero 
 					|| npcDistance == 0){
 							
-//					RPG.ctrl.battle.start(battleParam);
-//					remove();
-//					this.StopRandomWalking();
-//					isBattled = true;
+					RPG.ctrl.battle.start(battleParam);
+					isBattled = true;
+					
+					super.stopRandomWalking();
+					battleParam.startCallback = ()->{
+						this.scripts.clear();
+						remove();
+					};
 				}
 			}
 

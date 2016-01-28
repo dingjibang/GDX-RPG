@@ -54,4 +54,13 @@ public class $ {
 		}
 	}
 	
+	public static <T> void each(Iterable<T> c,CustomRunnable<T> test){
+		Iterator<T> it=c.iterator();
+		while(it.hasNext())
+			test.run(it.next());
+	}
+
+	
+	
+	
 }

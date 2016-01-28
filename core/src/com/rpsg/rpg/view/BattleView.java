@@ -34,10 +34,8 @@ public class BattleView extends DefaultIView{
 		tstyle.up = Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"throwbut.png");
 		tstyle.font = Res.font.get(22);
 		
-		$.add(new TextButton("结束战斗！",tstyle)).appendTo(stage).setPosition(300,70).onClick(new Runnable() {
-			public void run() {
-				RPG.ctrl.battle.stop();
-			}
+		$.add(new TextButton("结束战斗！",tstyle)).appendTo(stage).setPosition(300,70).onClick(()->{
+			RPG.ctrl.battle.stop();
 		});
 		
 		return this;

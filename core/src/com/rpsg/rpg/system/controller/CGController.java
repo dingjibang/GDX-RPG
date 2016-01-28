@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.rpsg.rpg.object.script.BaseScriptExecutor;
-import com.rpsg.rpg.object.script.Script;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.system.ui.Image;
 
 public class CGController {
@@ -35,7 +34,11 @@ public class CGController {
 			cgs.add(i);
 			return i;
 		}
-			
+	}
+	
+	public synchronized Iterable<Image> pushAll(Iterable<Image> c){
+		$.each(c,(obj)->push(obj));
+		return c;
 	}
 
 	public synchronized void dispose(Image i) {

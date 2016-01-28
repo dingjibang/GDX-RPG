@@ -8,6 +8,8 @@ package com.rpsg.rpg.object.base;
 public class BattleParam {
 	
 	public int enemy;
+	
+	public Runnable startCallback,stopCallback;
 
 	@Override
 	public String toString() {

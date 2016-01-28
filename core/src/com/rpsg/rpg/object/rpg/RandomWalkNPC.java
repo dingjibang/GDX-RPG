@@ -19,16 +19,18 @@ public class RandomWalkNPC extends PublicNPC {
 	public int maxLength;
 	public int minWalkLength;
 	protected Point point;
-	protected Boolean isStopped;
 	private int currentFrame;
 	public int speed = 60;
 //	private 
 	protected int step = -1;
+	
+	private boolean stop = false;
 
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	public void act(float f) {
+		if(stop) return;
 		
 		if(walked){
 			
@@ -106,13 +108,9 @@ public class RandomWalkNPC extends PublicNPC {
 		}
 		super.act(f);
 	}
-	
-	public void StartRandomWalking(){
-		isStopped = false;
-	}
-	
-	public void StopRandomWalking(){
-		isStopped = true;
+
+	public void stopRandomWalking() {
+		stop = true;
 	}
 
 }

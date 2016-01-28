@@ -44,12 +44,7 @@ public abstract class SidebarView extends HoverView{
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		this.param = initParam;
 		
-		stage.addActor(mask = new Image(Setting.UI_BASE_IMG).color(1, 1, 1, 0).action(Actions.alpha(.2f,.2f)).size(GameUtil.screen_width, GameUtil.screen_height).position(0, 0).onClick(new Runnable() {
-			@Override
-			public void run() {
-				SidebarView.this.keyDown(Keys.ESCAPE);
-			}
-		}));
+		stage.addActor(mask = new Image(Setting.UI_BASE_IMG).color(1, 1, 1, 0).action(Actions.alpha(.2f,.2f)).size(GameUtil.screen_width, GameUtil.screen_height).position(0, 0).onClick(()->SidebarView.this.keyDown(Keys.ESCAPE)));
 		stage.addActor(group);
 		group.pack();
 		
@@ -70,11 +65,7 @@ public abstract class SidebarView extends HoverView{
 		});
 		
 		ImageButton closeButton;
-		base.addActor(closeButton = new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"left.png"),Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"left_p.png")).pos(430, 465).onClick(new Runnable() {
-			public void run() {
-				SidebarView.this.keyDown(Keys.ESCAPE);
-			}
-		}));
+		base.addActor(closeButton = new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"left.png"),Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"left_p.png")).pos(430, 465).onClick(()->SidebarView.this.keyDown(Keys.ESCAPE)));
 		
 		Label title;
 		base.addActor($.add(title = Res.get((initParam!=null && initParam.get("title")!=null) ? initParam.get("title") : "",55)).setPosition(520, 470).getItem());
