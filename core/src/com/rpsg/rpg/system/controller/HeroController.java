@@ -34,12 +34,7 @@ public class HeroController {
 	public ArrayList<Hero> getOtherHeros(boolean filter){
 		ArrayList<Hero> list = (ArrayList<Hero>)allHeros.clone();
 		list.removeAll(currentHeros);
-		if(filter)
-			$.removeIf(list, new RemoveTest<Hero>(){
-				public boolean test(Hero object) {
-					return object.support == null;
-				}
-			});
+		if(filter) $.removeIf(list, (obj)->obj.support == null);
 		return list;
 	}
 	

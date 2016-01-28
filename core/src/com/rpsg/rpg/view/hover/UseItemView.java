@@ -82,12 +82,10 @@ public class UseItemView extends SidebarView {
 					}
 					if(_count<=0){
 						button.setText("关闭");
-						button.onClick(new Runnable() {
-							public void run() {
-								UseItemView.this.disposed = true;
-								((Runnable)param.get("callback")).run();
-							}
-						});
+						button.onClick(() -> {
+                            UseItemView.this.disposed = true;
+                            ((Runnable)param.get("callback")).run();
+                        });
 					}
 				}else{
 					RPG.putMessage("请先选择使用者", Color.RED);

@@ -65,7 +65,7 @@ public abstract class SidebarView extends HoverView{
 		});
 		
 		ImageButton closeButton;
-		base.addActor(closeButton = new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"left.png"),Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"left_p.png")).pos(430, 465).onClick(()->SidebarView.this.keyDown(Keys.ESCAPE)));
+		base.addActor(closeButton = new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"left.png"),Res.getDrawable(Setting.IMAGE_MENU_TACTIC+"left_p.png")).pos(430, 465).onClick(() -> SidebarView.this.keyDown(Keys.ESCAPE)));
 		
 		Label title;
 		base.addActor($.add(title = Res.get((initParam!=null && initParam.get("title")!=null) ? initParam.get("title") : "",55)).setPosition(520, 470).getItem());
