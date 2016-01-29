@@ -4,7 +4,7 @@
 	description:"增加一回合“魔法增幅”Buff。处于“魔法增幅”Buff下，使用技能将不会消耗魔法。",
 	description2:"",
 	range:"one",
-	forward:"friend",
+	forward:"hero",
 	occasion:"all",
 	cost:0,
 	packable:false,

@@ -4,7 +4,7 @@
 	description:"续一秒",
 	description2:"HP + 30",
 	range:"one",
-	forward:"friend",
+	forward:"hero",
 	occasion:"all",
 	cost:5,
 	packable:false,

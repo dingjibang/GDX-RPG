@@ -24,6 +24,7 @@ public class Setting {
 
 	public static final String IMAGE_MENU = BASE_PATH + IMAGE_BASE_PATH + "/menu/";
 	public static final String IMAGE_CG = BASE_PATH + IMAGE_BASE_PATH + "/cg/";
+	public static final String IMAGE_ENEMY = BASE_PATH + IMAGE_BASE_PATH + "/enemy/";
 	public static final String IMAGE_BATTLE = BASE_PATH + IMAGE_BASE_PATH + "/battle/";
 
 	// Menu images/menu/
@@ -48,6 +49,7 @@ public class Setting {
 	public static final String SCRIPT_MAP = SCRIPT + "/map/";
 	public static final String SCRIPT_DATA = SCRIPT +"/data/";
 	public static final String SCRIPT_DATA_ITEM = SCRIPT_DATA + "/item/";
+	public static final String SCRIPT_DATA_ENEMY = SCRIPT_DATA + "/enemy/";
 	public static final String SCRIPT_DATA_ASSOCIATION = SCRIPT_DATA + "/association/";
 	public static final String SCRIPT_DATA_ASSOCIATION_SKILL = SCRIPT_DATA_ASSOCIATION + "skill/";
 	public static final String SCRIPT_DATA_HERO = SCRIPT_DATA + "/hero/";

@@ -86,7 +86,7 @@ public class ItemController {
 			}else if(type.equalsIgnoreCase(Spellcard.class.getSimpleName())){
 				Spellcard e =(Spellcard)(baseItem=new Spellcard());
 				e.description2 = result.has("description2")?result.getString("description2"):"";
-				e.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
+				e.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.hero;
 				e.range = result.has("range")?ItemRange.valueOf(result.getString("range")):ItemRange.one;
 				e.animation = result.has("animation")?result.getInt("animation"):0;
 				e.success = result.has("success")?result.getInt("success"):0;
@@ -95,7 +95,7 @@ public class ItemController {
 				e.deadable = result.has("deadable")?ItemDeadable.valueOf(result.getString("deadable")):ItemDeadable.no;
 			}else{
 				Item e = (Item)(baseItem = new Item());
-				e.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
+				e.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.hero;
 				e.range = result.has("range")?ItemRange.valueOf(result.getString("range")):ItemRange.one;
 				e.occasion = result.has("occasion")?ItemOccasion.valueOf(result.getString("occasion")):ItemOccasion.all;
 				e.animation = result.has("animation")?result.getInt("animation"):0;

@@ -20,6 +20,7 @@ import com.rpsg.rpg.object.base.BattleRes;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.DefaultIView;
+import com.rpsg.rpg.system.ui.EnemyBox;
 import com.rpsg.rpg.system.ui.HeroStatusBox;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -28,6 +29,7 @@ public class BattleView extends DefaultIView{
 	
 	BattleParam param;
 	List<HeroStatusBox> statusBox = new ArrayList<>();
+	List<EnemyBox> enemyBox = new ArrayList<>();//TODO 实现
 	
 	public BattleView(BattleParam param) {
 		this.param = param;

@@ -1,0 +1,32 @@
+{
+	type:"simple",
+	name:"妖精",
+	prop:{
+		hp:"200",
+		mp:"100",
+		attack:"20",
+		magicAttack:"0",
+		defense:"10",
+		magicDefense:"0",
+		speed:"3",
+		hit:"6"
+	},
+	aiLevel:1,
+	action:[
+		{
+			turn:1,
+			probability:100,
+			act:9
+		},{
+			turn:1,
+			probability:80,
+			prop:[
+				type:"max",
+				forward:"hero",
+				prop:{
+					hp:">50"
+				}
+			]
+		}
+	]	
+}
