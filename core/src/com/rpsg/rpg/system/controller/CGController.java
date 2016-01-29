@@ -41,12 +41,19 @@ public class CGController {
 		return c;
 	}
 
-	public synchronized void dispose(Image i) {
+	public synchronized CGController dispose(Image i) {
 		cgs.remove(i);
+		return this;
 	}
 	
-	public void disposeAll(){
+	public synchronized CGController dispose(Iterable<Image> c){
+		$.each(c,(obj)->dispose(obj));
+		return this;
+	}
+	
+	public CGController disposeAll(){
 		cgs.clear();
+		return this;
 	}
 
 }

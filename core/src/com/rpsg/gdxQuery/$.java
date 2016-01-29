@@ -65,6 +65,6 @@ public class $ {
 		while(it.hasNext())
 			test.run(it.next());
 	}
-
+	
 	
 }

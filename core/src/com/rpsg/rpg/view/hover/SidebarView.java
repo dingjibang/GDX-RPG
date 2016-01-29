@@ -72,13 +72,11 @@ public abstract class SidebarView extends HoverView{
 		
 		init();
 		
-		$.add(group).children().not(base).add(title,closeButton).each(new CustomRunnable<Actor>() {
-			public void run(Actor t) {
-				int ran = (int) (-120 - width - ++count * 70);
-				float a = t.getColor().a;
-				t.addAction(Actions.sequence(Actions.moveBy(-ran, 0,0f),Actions.moveBy(ran, 0,0.85f,Interpolation.pow4Out)));
-				t.addAction(Actions.sequence(Actions.fadeOut(0f),Actions.alpha(a,0.4f,Interpolation.pow4)));
-			}
+		$.add(group).children().not(base).add(title,closeButton).each((Actor t)->{
+			int ran = (int) (-120 - width - ++count * 70);
+			float a = t.getColor().a;
+			t.addAction(Actions.sequence(Actions.moveBy(-ran, 0,0f),Actions.moveBy(ran, 0,0.85f,Interpolation.pow4Out)));
+			t.addAction(Actions.sequence(Actions.fadeOut(0f),Actions.alpha(a,0.4f,Interpolation.pow4)));
 		});
 		
 		return this;

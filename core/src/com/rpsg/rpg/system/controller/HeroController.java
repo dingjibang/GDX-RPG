@@ -11,6 +11,7 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.MoveStack;
+import com.rpsg.rpg.system.controller.BattleController.State;
 import com.rpsg.rpg.view.GameViews;
 
 /**
@@ -51,7 +52,7 @@ public class HeroController {
 		for(Hero hero:currentHeros)
 			hero.act(0);
 		
-		if(walked(false) && !stack.isEmpty()){
+		if(walked(false) && !stack.isEmpty() && RPG.ctrl.battle.state != State.wait){
 			MoveStack last=stack.get(0);
 			stack.remove(0);
 			turn(last.face).walk(last.step,false).testWalk();

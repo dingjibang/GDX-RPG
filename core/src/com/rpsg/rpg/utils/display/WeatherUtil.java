@@ -14,6 +14,7 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Weather;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
+import com.rpsg.rpg.system.controller.BattleController.State;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.view.GameViews;
 
@@ -53,7 +54,8 @@ public class WeatherUtil {
 	}
 	
 	private int lastHeroPositionX;
-	float gameMenuListener=1;
+	float gameMenuListener=1,battleListener=0;
+	
 	public void draw(SpriteBatch batch){
 		batch.end();
 		
@@ -92,8 +94,10 @@ public class WeatherUtil {
 		if(GameViews.gameview.stackView != null && gameMenuListener>0)
 			gameMenuListener-=.05;
 		
+		battleListener = (RPG.ctrl.battle.state == State.wait) ? battleListener+ .005f : 0; 
+		
 		Bloom bloom=GameViews.bloom;
-		bloom.setBaseIntesity(baseSaturation*gameMenuListener);
+		bloom.setBaseIntesity(baseSaturation*gameMenuListener + battleListener);
 		bloom.setBloomSaturation((bloomSaturation-0.2f)*gameMenuListener+0.2f);
 		
 		setPost();

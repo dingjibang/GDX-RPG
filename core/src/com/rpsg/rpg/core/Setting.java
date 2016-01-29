@@ -24,6 +24,7 @@ public class Setting {
 
 	public static final String IMAGE_MENU = BASE_PATH + IMAGE_BASE_PATH + "/menu/";
 	public static final String IMAGE_CG = BASE_PATH + IMAGE_BASE_PATH + "/cg/";
+	public static final String IMAGE_BATTLE = BASE_PATH + IMAGE_BASE_PATH + "/battle/";
 
 	// Menu images/menu/
 	public static final String IMAGE_MENU_GLOBAL = IMAGE_MENU + "nglobal/";

@@ -27,14 +27,14 @@ public class EnemyNPC extends RandomWalkNPC {
 	public int accelerate1Length = 5;
 	public int accelerate2Length = 3;
 	public BattleParam battleParam;
+	public boolean isBattled = false;
 	
 	@Override
 	public void act(float f){
-		if(walked){
+		if(walked && !isBattled){
 			List<Hero> heros = RPG.ctrl.hero.currentHeros;
 			int npcDistance = 0;
 			int mode = 0;
-			Boolean isBattled = false;
 			for(int i = 0;i<heros.size();i++){
 				Hero _Hero = heros.get(i);
 				
@@ -56,6 +56,7 @@ public class EnemyNPC extends RandomWalkNPC {
 					isBattled = true;
 					
 					super.stopRandomWalking();
+					
 					battleParam.startCallback = ()->{
 						this.scripts.clear();
 						remove();
