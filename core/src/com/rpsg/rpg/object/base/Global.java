@@ -57,7 +57,6 @@ public class Global implements Serializable {
 
 	public void read(){
 		RPG.executeJS( Gdx.files.internal(Setting.SCRIPT_SYSTEM+"global.js").readString("utf-8"), this);
-		System.out.println(baseLinkSpellCard);
 	}
 	
 	public Global addSupport(){

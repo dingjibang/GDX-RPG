@@ -4,6 +4,8 @@
 	prop:{
 		hp:"200",
 		mp:"100",
+		maxhp:"200",
+		maxmp:"100",
 		attack:"20",
 		magicAttack:"0",
 		defense:"10",
@@ -20,11 +22,14 @@
 		},{
 			turn:1,
 			probability:80,
+			act:9,
 			prop:[
-				type:"max",
-				forward:"hero",
-				prop:{
-					hp:">50"
+				{
+					type:"max",
+					forward:"hero",
+					prop:{
+						hp:">50"
+					}	
 				}
 			]
 		}

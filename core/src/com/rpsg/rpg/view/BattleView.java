@@ -17,6 +17,7 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.BattleParam;
 import com.rpsg.rpg.object.base.BattleRes;
+import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.DefaultIView;
@@ -39,6 +40,8 @@ public class BattleView extends DefaultIView{
 	@Override
 	public BattleView init() {
 		stage.clear();
+		statusBox.clear();
+		enemyBox.clear();
 		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(1024,576).color(.5f,.5f,.5f,1)).appendTo(stage);//TODO debug;
 		
@@ -49,6 +52,14 @@ public class BattleView extends DefaultIView{
 		
 		for(int i = 0; i < heros.size(); i++)
 			statusBox.add($.add(new HeroStatusBox(heros.get(i)).position(i * 256, 28)).appendTo(stage).getItem(HeroStatusBox.class));
+		
+		List<Enemy> enemyList = Enemy.get(param.enemy);
+		$.each(enemyList, (int idx,Enemy enemy)->{
+			EnemyBox box = new EnemyBox(enemy);
+			enemyBox.add(box.position(((GameUtil.screen_width - enemyList.size()*(box.getWidth() + 50)) /2) + idx * box.getWidth() + 50 , 300));
+		});
+		$.add(enemyBox).appendTo(stage);
+		
 		
 		$.add(new TextButton("结束战斗！",BattleRes.textButtonStyle)).appendTo(stage).setPosition(300,270).onClick(()->{
 			RPG.ctrl.battle.stop();

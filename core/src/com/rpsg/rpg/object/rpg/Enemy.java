@@ -41,6 +41,25 @@ public class Enemy {
 		
 		return list;
 	}
+	
+	public static List<Enemy> name(List<Enemy> list) {
+		List<Integer> ids = new ArrayList<>();
+		
+		for(Enemy enemy : list){
+			boolean include = false;
+			for(int i:ids) if(enemy.id == i) include = true;
+			if(!include){
+				int count = 0;
+				for(Enemy child : list)
+					if(child != enemy && child.id == enemy.id)
+						child.name += ++count;
+				
+				ids.add(enemy.id);
+			}
+		}
+		
+		return list;
+	}
 
 	public  static Enemy getEnemy(int id,JsonValue value) {
 		Enemy enemy = new Enemy();
@@ -55,7 +74,7 @@ public class Enemy {
 		for(JsonValue actionValue : value.get("action")){
 			EnemyAction action = new EnemyAction();
 			action.turn = actionValue.getInt("turn");
-			action.propbabitly = actionValue.getFloat("propbabitly");
+			action.propbabitly = actionValue.getFloat("probability");
 			action.act = RPG.ctrl.item.get(actionValue.getInt("act"), Spellcard.class);
 			action.buff = actionValue.has("buff") ? actionValue.get("buff").asIntArray() : null;
 			action.special = actionValue.has("special") ? actionValue.getString("special") : null;

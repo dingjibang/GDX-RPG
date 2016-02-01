@@ -1,6 +1,5 @@
 package com.rpsg.gdxQuery;
 
-import java.util.Collection;
 import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
@@ -64,6 +63,13 @@ public class $ {
 		Iterator<T> it=c.iterator();
 		while(it.hasNext())
 			test.run(it.next());
+	}
+	
+	public static <T> void each(Iterable<T> c,Each<T> test){
+		Iterator<T> it=c.iterator();
+		int i=0;
+		while(it.hasNext())
+			test.run(i++,it.next());
 	}
 	
 	

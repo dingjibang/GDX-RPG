@@ -84,9 +84,15 @@ public class BattleController {
 				InputController.loadIOMode();
 				InputController.saveIOMode(IOMode.MapInput.battle);
 				
-				state = State.battle;
+				try {
+					state = State.battle;
+					BattleView bv = new BattleView(param);
+					bv.init();
+					GameViews.gameview.battleView = bv;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				
-				GameViews.gameview.battleView = new BattleView(param).init();
 				if(param.startCallback != null) param.startCallback.run();
 				
 				RPG.ctrl.cg.dispose(black).dispose(images);
