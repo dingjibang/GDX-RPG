@@ -18,7 +18,7 @@ public class EnemyNPC extends RandomWalkNPC {
 		this.drawShadow = true;
 		maxLength = 1;
 		battleParam = new BattleParam();
-		battleParam.enemy = 1;
+		battleParam.enemy = 2;
 	}
 
 	public int defaultWalkSpeed = 2;

@@ -9,7 +9,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
@@ -23,7 +25,7 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.EnemyBox;
 import com.rpsg.rpg.system.ui.HeroStatusBox;
-import com.rpsg.rpg.system.ui.Label;
+import com.rpsg.rpg.system.ui.Status;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class BattleView extends DefaultIView{
@@ -31,6 +33,7 @@ public class BattleView extends DefaultIView{
 	BattleParam param;
 	List<HeroStatusBox> statusBox = new ArrayList<>();
 	List<EnemyBox> enemyBox = new ArrayList<>();//TODO 实现
+	Status status;
 	
 	public BattleView(BattleParam param) {
 		this.param = param;
@@ -45,7 +48,6 @@ public class BattleView extends DefaultIView{
 		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(1024,576).color(.5f,.5f,.5f,1)).appendTo(stage);//TODO debug;
 		
-		$.add(new Label("啊啊啊啊战斗中QAQ"+Math.random(),30)).setPosition(233,400).appendTo(stage);
 		List<Hero> heros = RPG.ctrl.hero.currentHeros;
 		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.screen_width,115).color(0,0,0,.5f)).setPosition(0, 28).appendTo(stage);
@@ -54,14 +56,16 @@ public class BattleView extends DefaultIView{
 			statusBox.add($.add(new HeroStatusBox(heros.get(i)).position(i * 256, 28)).appendTo(stage).getItem(HeroStatusBox.class));
 		
 		List<Enemy> enemyList = Enemy.get(param.enemy);
+		Table table = new Table();
 		$.each(enemyList, (int idx,Enemy enemy)->{
 			EnemyBox box = new EnemyBox(enemy);
-			enemyBox.add(box.position(((GameUtil.screen_width - enemyList.size()*(box.getWidth() + 50)) /2) + idx * box.getWidth() + 50 , 300));
+			table.add(box).padLeft(25).padRight(25);
 		});
-		$.add(enemyBox).appendTo(stage);
+		$.add(table).appendTo(stage).setPosition(GameUtil.screen_width/2 - table.getWidth()/2, GameUtil.screen_height/2 - table.getHeight()/2 + 50).setAlign(Align.center);
+		$.add(status = new Status()).setPosition(0, 0).appendTo(stage);
 		
 		
-		$.add(new TextButton("结束战斗！",BattleRes.textButtonStyle)).appendTo(stage).setPosition(300,270).onClick(()->{
+		$.add(new TextButton("结束战斗！",BattleRes.textButtonStyle)).appendTo(stage).setPosition(100,170).onClick(()->{
 			RPG.ctrl.battle.stop();
 		});
 		
