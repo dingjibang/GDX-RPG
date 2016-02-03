@@ -50,13 +50,16 @@ public class BattleView extends DefaultIView{
 		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(1024,576).color(.5f,.5f,.5f,1)).appendTo(stage);//TODO debug;
 		
+		$.add(status = new Status()).setPosition(0, 0).appendTo(stage);
+		
 		List<Hero> heros = RPG.ctrl.hero.currentHeros;
 		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.screen_width,115).color(0,0,0,.5f)).setPosition(0, 28).appendTo(stage);
 		for(int i = 0; i < heros.size(); i++)
 			statusBox.add($.add(new HeroStatusBox(heros.get(i)).position(i * 256, 28)).appendTo(stage).getItem(HeroStatusBox.class));
 		
-		List<Enemy> enemyList = Enemy.get(param.enemy);
+		List<Enemy> enemyList = Enemy.name(Enemy.get(param.enemy));
+		
 		Table table = new Table();
 		$.each(enemyList, (int idx,Enemy enemy)->{
 			EnemyBox box = new EnemyBox(enemy);
@@ -69,15 +72,16 @@ public class BattleView extends DefaultIView{
 		});
 		
 		$.add(timer = new Timer(heros,enemyList,(obj)->{
-			System.out.println(obj);
+//			System.out.println(obj);
 		})).appendTo(stage);
 		
-		$.add(status = new Status()).setPosition(0, 0).appendTo(stage);
+		
 		status.add("fuck you");
 		stage.setDebugAll(!!false);
 		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.screen_width,GameUtil.screen_height).color(0,0,0,1)).appendTo(stage).addAction(Actions.sequence(Actions.fadeOut(.3f,Interpolation.pow2In),Actions.removeActor()));
 		
+		status.setZIndex(999999);
 		
 		return this;
 	}

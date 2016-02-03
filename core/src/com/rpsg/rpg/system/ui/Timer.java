@@ -27,6 +27,8 @@ public class Timer extends Group {
 		//复制速度值
 		$.each(objectList, (obj) -> list.add(new TimerClass(obj, obj.getSpeed())));
 		
+		
+		
 		avg();
 	}
 	
@@ -65,8 +67,8 @@ public class Timer extends Group {
 		if(list.isEmpty()) return;
 		Collections.sort(list);
 		TimerClass max = list.get(0);
-		float scale = 100 / max.speed;
-		$.each(list, (obj) -> obj.speed *= scale);
+		float scale = (float)max.speed / 100f;
+		$.each(list, (obj) -> obj.speed /= scale);
 	}
 	
 	public class TimerClass implements Comparable<TimerClass>{
@@ -81,7 +83,7 @@ public class Timer extends Group {
 		}
 
 		public int compareTo(TimerClass o) {
-			return this.speed - o.speed;
+			return o.speed - this.speed;
 		}
 	}
 	

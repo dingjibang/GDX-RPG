@@ -23,15 +23,15 @@ public class EnemyBox extends Group {
 		
 		Group fg = new Group();
 		fg.addActor(image = Res.getNP(enemy.imgPath));
-		fg.addActor(hp = Res.get(_hp + " / " + _maxhp, 18).align(Align.center));
+		fg.addActor(hp = Res.get(enemy.name+"\n"+_hp + " / " + _maxhp, 18).align(Align.center));
 		hp.position((int)(getWidth()/2 - hp.getWidth()/2), (int)getHeight()+40);
 		
-		fg.addActor(Res.get(Setting.UI_BASE_IMG).size(130, 10).position(getWidth()/2 - 130/2, getHeight()+20));
-		fg.addActor(hpbox = Res.get(Setting.UI_BASE_IMG).size(130, 10).position(getWidth()/2 - 130/2, getHeight()+20).color(Color.valueOf("dc3c3c")));
+		fg.addActor(Res.get(Setting.UI_BASE_IMG).size(20, 20).position(getWidth()/2 - 130/2 - 10, getHeight()+15).color(enemy.color));
+		fg.addActor(Res.get(Setting.UI_BASE_IMG).size(130, 10).position(getWidth()/2 - 130/2 + 10, getHeight()+20));
+		fg.addActor(hpbox = Res.get(Setting.UI_BASE_IMG).size(130, 10).position(getWidth()/2 - 130/2 + 10, getHeight()+20).color(Color.valueOf("dc3c3c")));
 		
 		$.add(fg).addAction(Actions.forever(Actions.sequence(Actions.moveBy(0,10,3f,Interpolation.pow2),Actions.moveBy(0, -10,3)))).appendTo(this);
 		
-//		addActor($.add(Res.get(hero.name, 28)).setPosition(25,73).getItem());
 //		
 //		addActor(timer = Res.get(Setting.UI_BASE_IMG).size(3, 103).position(10, 7));
 //		

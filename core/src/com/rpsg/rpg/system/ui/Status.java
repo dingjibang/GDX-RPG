@@ -46,7 +46,7 @@ public class Status extends Group {
 	}
 	
 	public Status add(String str){
-		table.add(label = Res.get("["+ getTime() + "] " + str, 20).align(getAlign()).overflow(false).markup(true).warp(true)).padBottom(2).padTop(1).width(GameUtil.screen_width - 28).row();
+		table.add(label = Res.get("["+ getTime() + "] " + str, 20).align(getAlign()).overflow(false).markup(true).warp(true)).padLeft(10).padRight(10).padBottom(2).padTop(1).width(GameUtil.screen_width - 48).row();
 		setPanelToScrollBattom();
 		return this;
 	}

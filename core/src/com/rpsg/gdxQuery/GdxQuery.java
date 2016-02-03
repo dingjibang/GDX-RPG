@@ -685,4 +685,10 @@ public class GdxQuery {
 		return false;
 	}
 
+	public GdxQuery setZIndex(int i) {
+		for(Actor actor:getItems())
+			actor.setZIndex(i);
+		return this;
+	}
+
 }

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.RPG;
@@ -24,6 +26,11 @@ public class Enemy implements GetSpeedAble {
 	public Map<String, String> prop;
 	public Integer aiLevel;
 	public List<EnemyAction> actions;
+	public Color color;
+	
+	public Enemy() {
+		color = new Color(MathUtils.random(.4f,.8f),MathUtils.random(.4f,.8f),MathUtils.random(.4f,.8f),1);
+	}
 
 	static JsonReader reader = new JsonReader();
 
@@ -50,6 +57,7 @@ public class Enemy implements GetSpeedAble {
 			for(int i:ids) if(enemy.id == i) include = true;
 			if(!include){
 				int count = 0;
+				enemy.name += ++count;
 				for(Enemy child : list)
 					if(child != enemy && child.id == enemy.id)
 						child.name += ++count;
@@ -104,6 +112,11 @@ public class Enemy implements GetSpeedAble {
 	
 	public int getSpeed(){
 		return Integer.valueOf(prop.get("speed"));
+	}
+	
+	@Override
+	public String toString() {
+		return "Enemy:"+name;
 	}
 
 }
