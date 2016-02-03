@@ -65,6 +65,15 @@ public class $ {
 			test.run(it.next());
 	}
 	
+	public static <T> void getIf(Iterable<T> c,RemoveTest<T> test,CustomRunnable<T> callback){
+		Iterator<T> it=c.iterator();
+		while(it.hasNext()){
+			T t = it.next();
+			if(test.test(t))
+				callback.run(t);
+		}
+	}
+	
 	public static <T> void each(Iterable<T> c,Each<T> test){
 		Iterator<T> it=c.iterator();
 		int i=0;

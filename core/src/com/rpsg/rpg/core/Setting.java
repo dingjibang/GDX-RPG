@@ -74,6 +74,7 @@ public class Setting {
 	public static NinePatchDrawable UI_BUTTON;
 	public static NinePatchDrawable UI_TOAST;
 	public static String UI_BASE_IMG = Setting.IMAGE_MENU_GLOBAL + "white.jpg";
+	public static String UI_GRAY_IMG = Setting.IMAGE_MENU_GLOBAL + "drawable_gray_opacity.png";
 	public static String UI_BASE_PRO = Setting.IMAGE_MENU_GLOBAL + "prograssbar.png";
 
 	public static void init() {

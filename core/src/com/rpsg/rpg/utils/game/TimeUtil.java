@@ -11,7 +11,7 @@ public class TimeUtil {
 		return formatDuring((new Date().getTime()-date.getTime()));
 	}
 	
-	private String formatDuring(long mss) {  
+	public static String formatDuring(long mss) {  
 		String hours = String.valueOf((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 		hours=hours.length()<=1?"0"+hours:hours;
 	    String minutes = String.valueOf((mss % (1000 * 60 * 60)) / (1000 * 60));

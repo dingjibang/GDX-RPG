@@ -17,7 +17,7 @@ import com.rpsg.rpg.object.rpg.EnemyAction.PropType;
 import com.rpsg.rpg.object.rpg.EnemyAction.RemoveType;
 import com.rpsg.rpg.system.controller.ItemController;
 
-public class Enemy {
+public class Enemy implements GetSpeedAble {
 	public int id;
 	public String imgPath;
 	public String name;
@@ -100,6 +100,10 @@ public class Enemy {
 	
 	private static JsonValue getJSON(int id){
 		return reader.parse(Gdx.files.internal(Setting.SCRIPT_DATA_ENEMY + id + ".grd").readString());
+	}
+	
+	public int getSpeed(){
+		return Integer.valueOf(prop.get("speed"));
 	}
 
 }

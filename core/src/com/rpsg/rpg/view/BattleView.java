@@ -26,14 +26,16 @@ import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.EnemyBox;
 import com.rpsg.rpg.system.ui.HeroStatusBox;
 import com.rpsg.rpg.system.ui.Status;
+import com.rpsg.rpg.system.ui.Timer;
 import com.rpsg.rpg.utils.game.GameUtil;
 
 public class BattleView extends DefaultIView{
 	
 	BattleParam param;
 	List<HeroStatusBox> statusBox = new ArrayList<>();
-	List<EnemyBox> enemyBox = new ArrayList<>();//TODO 实现
+	List<EnemyBox> enemyBox = new ArrayList<>();
 	Status status;
+	Timer timer;
 	
 	public BattleView(BattleParam param) {
 		this.param = param;
@@ -51,7 +53,6 @@ public class BattleView extends DefaultIView{
 		List<Hero> heros = RPG.ctrl.hero.currentHeros;
 		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.screen_width,115).color(0,0,0,.5f)).setPosition(0, 28).appendTo(stage);
-		
 		for(int i = 0; i < heros.size(); i++)
 			statusBox.add($.add(new HeroStatusBox(heros.get(i)).position(i * 256, 28)).appendTo(stage).getItem(HeroStatusBox.class));
 		
@@ -62,14 +63,18 @@ public class BattleView extends DefaultIView{
 			table.add(box).padLeft(25).padRight(25);
 		});
 		$.add(table).appendTo(stage).setPosition(GameUtil.screen_width/2 - table.getWidth()/2, GameUtil.screen_height/2 - table.getHeight()/2 + 50).setAlign(Align.center);
-		$.add(status = new Status()).setPosition(0, 0).appendTo(stage);
-		
 		
 		$.add(new TextButton("结束战斗！",BattleRes.textButtonStyle)).appendTo(stage).setPosition(100,170).onClick(()->{
 			RPG.ctrl.battle.stop();
 		});
 		
-		stage.setDebugAll(!false);
+		$.add(timer = new Timer(heros,enemyList,(obj)->{
+			System.out.println(obj);
+		})).appendTo(stage);
+		
+		$.add(status = new Status()).setPosition(0, 0).appendTo(stage);
+		status.add("fuck you");
+		stage.setDebugAll(!!false);
 		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.screen_width,GameUtil.screen_height).color(0,0,0,1)).appendTo(stage).addAction(Actions.sequence(Actions.fadeOut(.3f,Interpolation.pow2In),Actions.removeActor()));
 		
@@ -90,8 +95,10 @@ public class BattleView extends DefaultIView{
 	
 	@Override
 	public void onkeyDown(int keyCode) {
-		if(keyCode == Keys.R)
-			init();
+		if(keyCode == Keys.R) init();
+		if(keyCode == Keys.S) status.add("随便说一句话："+Math.random());
+		if(keyCode == Keys.D) status.append(" & "+Math.random());
+		if(keyCode == Keys.F) status.append("[#ffaabb]彩色测试[]");
 		super.onkeyDown(keyCode);
 	}
 

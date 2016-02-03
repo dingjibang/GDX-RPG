@@ -29,9 +29,7 @@ public class EnemyBox extends Group {
 		fg.addActor(Res.get(Setting.UI_BASE_IMG).size(130, 10).position(getWidth()/2 - 130/2, getHeight()+20));
 		fg.addActor(hpbox = Res.get(Setting.UI_BASE_IMG).size(130, 10).position(getWidth()/2 - 130/2, getHeight()+20).color(Color.valueOf("dc3c3c")));
 		
-		
 		$.add(fg).addAction(Actions.forever(Actions.sequence(Actions.moveBy(0,10,3f,Interpolation.pow2),Actions.moveBy(0, -10,3)))).appendTo(this);
-		
 		
 //		addActor($.add(Res.get(hero.name, 28)).setPosition(25,73).getItem());
 //		

@@ -17,7 +17,7 @@ import com.rpsg.rpg.object.base.items.Buff;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Spellcard;
 
-public class Hero extends RPGObject {
+public class Hero extends RPGObject implements GetSpeedAble{
 
 	private static final long serialVersionUID = 1L;
 	public static final int HERO_WIDTH = 48;
@@ -260,6 +260,11 @@ public class Hero extends RPGObject {
 
 	public int getLinkSize(Hero hero) {
 		return generateLinkList(hero).size();
+	}
+
+	@Override
+	public int getSpeed() {
+		return getProp("speed");
 	}
 
 }

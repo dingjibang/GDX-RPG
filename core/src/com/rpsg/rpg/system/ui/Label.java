@@ -161,4 +161,9 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 		return this;
 	}
 
+	public Label size(int w, int h) {
+		setSize(w,h);
+		return this;
+	}
+
 }
