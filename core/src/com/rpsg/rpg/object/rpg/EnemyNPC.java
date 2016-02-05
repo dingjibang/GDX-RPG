@@ -48,19 +48,22 @@ public class EnemyNPC extends RandomWalkNPC {
 				npcDistance = Math.max(dx,dy);
 				
 				if(((npcDistance ==1 && dx != dy) && // near checked
-				(currentImageNo==1 || currentImageNo==4 || currentImageNo==7 || currentImageNo ==10) && // static Image NO. checked
+				(currentImageNo==FACE_D || currentImageNo==FACE_U || currentImageNo==FACE_L || currentImageNo == FACE_R) && // static Image NO. checked
 				getCurrentFace() == getFaceByPoint(HeroX,HeroY)) //Check if the face is to Hero 
 					|| npcDistance == 0){
 							
-					RPG.ctrl.battle.start(battleParam);
-					isBattled = true;
+					if(RPG.ctrl.battle.start(battleParam)){
+						isBattled = true;
+						super.stopRandomWalking();
+						
+						battleParam.startCallback = ()->{
+							this.scripts.clear();
+							remove();
+						};
+					}
 					
-					super.stopRandomWalking();
+					return;
 					
-					battleParam.startCallback = ()->{
-						this.scripts.clear();
-						remove();
-					};
 				}
 			}
 

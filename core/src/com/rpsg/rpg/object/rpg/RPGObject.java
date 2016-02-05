@@ -31,6 +31,7 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	public boolean markTime = false; //是否在不行走时原地踏步
 	
 	static Image shadow=Res.get(Setting.RPGOBJECT_SHADOW);
+	
 	public static Image[] generateImages(String txt,int width,int height){
 		Image[] images=new Image[12];
 		for(int i=0;i<4;i++)
@@ -104,26 +105,26 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 		
 		if (isStop() && lastlength++ > 5 && !markTime)
 			foot = 0;
-//		//帧数补偿
-//		//当游戏帧数小于60FPS时，将尝试加快IRPGObject的行走速度而达到补偿的目的
-//		int fps= Gdx.graphics.getFramesPerSecond();
-//		fixTime += 60-fps;
-//		if (fixTime < 0){
-//			fixTime = 0;
-//		}else if(fixTime >= 60){
-//			int fixCount= (int) (fixTime/60f);
-//			for(int i=0;i<fixCount;i++){
-//				toWalk();
-//			}
-//			fixTime-=fixCount*60;
-//		}
+		//帧数补偿
+		//当游戏帧数小于60FPS时，将尝试加快IRPGObject的行走速度而达到补偿的目的
+		int fps= Gdx.graphics.getFramesPerSecond();
+		fixTime += 60-fps;
+		if (fixTime < 0){
+			fixTime = 0;
+		}else if(fixTime >= 60){
+			int fixCount= (int) (fixTime/60f);
+			for(int i=0;i<fixCount;i++){
+				toWalk();
+			}
+			fixTime-=fixCount*60;
+		}
 
 		toWalk();
 		
-//		if(displayBalloon && !bon.isStop())
-//			bon.act(fps);
-//		else
-//			displayBalloon=false;
+		if(displayBalloon && !bon.isStop())
+			bon.act(fps);
+		else
+			displayBalloon=false;
 		
 		if(markTime) actWalkAnimate();
 	}
@@ -153,11 +154,13 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	@Override
 	public void draw(Batch batch,float parentAlpha){
 		if(isVisible()){
+			Image current = getCurrentImage();
 			if(this.drawShadow){
 				shadow.position(getX()+8f, getY()-0f).color(this.getColor()).draw(batch,parentAlpha);
+				current.moveBy(0, 3);
 			}
-			this.getCurrentImage().setColor(this.getColor());
-			this.getCurrentImage().draw(batch,parentAlpha);
+			current.setColor(this.getColor());
+			current.draw(batch,parentAlpha);
 			if(displayBalloon){
 				bon.getCurrentImage().setPosition(getX()+Balloon.ANIMATION_SIZE, getY()+getHeight()+Balloon.ANIMATION_SIZE/2);
 				bon.getCurrentImage().setColor(this.getColor());

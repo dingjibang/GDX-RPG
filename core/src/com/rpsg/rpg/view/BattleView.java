@@ -63,7 +63,7 @@ public class BattleView extends DefaultIView{
 		Table table = new Table();
 		$.each(enemyList, (int idx,Enemy enemy)->{
 			EnemyBox box = new EnemyBox(enemy);
-			table.add(box).padLeft(25).padRight(25);
+			table.add(box).padLeft(35).padRight(35);
 		});
 		$.add(table).appendTo(stage).setPosition(GameUtil.screen_width/2 - table.getWidth()/2, GameUtil.screen_height/2 - table.getHeight()/2 + 50).setAlign(Align.center);
 		

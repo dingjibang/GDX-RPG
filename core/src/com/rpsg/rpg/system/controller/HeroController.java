@@ -6,7 +6,6 @@ import java.util.Collections;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.gdxQuery.$;
-import com.rpsg.gdxQuery.RemoveTest;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -20,33 +19,16 @@ import com.rpsg.rpg.view.GameViews;
  *
  */
 public class HeroController {
-	public ArrayList<Hero> currentHeros = RPG.global.currentHeros;
 	public ArrayList<Hero> allHeros = RPG.global.allHeros;
-	
-	public ArrayList<MoveStack> stack = new ArrayList<>();
+	public ArrayList<Hero> currentHeros = RPG.global.currentHeros;
 	
 	public boolean show = true;
 	
-	public synchronized void pushStack(ArrayList<MoveStack> stack){
-		this.stack=stack;
-	}
+	public ArrayList<MoveStack> stack = new ArrayList<>();
 	
-	@SuppressWarnings("unchecked")
-	public ArrayList<Hero> getOtherHeros(boolean filter){
-		ArrayList<Hero> list = (ArrayList<Hero>)allHeros.clone();
-		list.removeAll(currentHeros);
-		if(filter) $.removeIf(list, (obj)->obj.support == null);
-		return list;
-	}
+	public boolean thisFrameGeneratedPosition=false;
 	
-	public void remove(Hero hero){
-		currentHeros.remove(hero);
-		GameViews.gameview.stage.getActors().removeValue(hero, true);
-	}
-	
-	public void remove(int id){
-		remove(getHero(id));
-	}
+	boolean walk;
 	
 	public synchronized void act(){
 		for(Hero hero:currentHeros)
@@ -57,14 +39,6 @@ public class HeroController {
 			stack.remove(0);
 			turn(last.face).walk(last.step,false).testWalk();
 		}
-	}
-	
-	public void stopStack(){
-		stack.clear();
-	}
-	
-	public Hero getHeadHero(){
-		return currentHeros.get(0);
 	}
 	
 	public Hero add(int id) {
@@ -78,82 +52,6 @@ public class HeroController {
 		return hero;
 	}
 	
-	public void setVisible(boolean visible){
-		for(Hero hero:currentHeros)
-			hero.setVisible(visible);
-	}
-	
-	public void removeHero(int id){
-		currentHeros.remove(getHero(id));
-	}
-	
-	public void swapHero(int position){
-		Collections.swap(currentHeros, position, 0);
-		reinit();
-	}
-	
-	public void swapHero(int position,int swapposition){
-		Collections.swap(currentHeros, position, swapposition);
-		reinit();
-	}
-	
-	public Hero getHero(int id){
-		for(Hero hero:allHeros)
-			if(hero.id == id)
-				return hero;
-		return null;
-	}
-	
-	public void initHeros(Stage s){
-		for(Hero hero:currentHeros){
-			hero.init();
-			hero.enableCollide=false;
-			hero.waitWhenCollide=false;
-			s.addActor(hero);
-		}
-		if(currentHeros!=null && !currentHeros.isEmpty()){
-			getHeadHero().enableCollide=true;
-			getHeadHero().waitWhenCollide=false;
-		}
-	}
-	
-	public void reinit(){
-		for(int i=0;i<currentHeros.size();i++){
-			if(i!=0){
-				currentHeros.get(i).currentImageNo=currentHeros.get(0).currentImageNo;
-				currentHeros.get(i).lastZ=currentHeros.get(0).lastZ;
-				currentHeros.get(i).lastWalkSize=0;
-			}
-			currentHeros.get(i).enableCollide=false;
-			currentHeros.get(i).waitWhenCollide=false;
-		}
-		generatePosition(getHeadHero().mapx, getHeadHero().mapy, getHeadHero().layer);
-		if(currentHeros!=null && !currentHeros.isEmpty()){
-			getHeadHero().enableCollide=true;
-			getHeadHero().waitWhenCollide=false;
-		}
-	} 
-	
-	public void reinitByTeleport(){
-		for(int i=0;i<currentHeros.size();i++){
-			if(i!=0){
-				currentHeros.get(i).currentImageNo=currentHeros.get(0).currentImageNo;
-				currentHeros.get(i).lastZ=currentHeros.get(0).lastZ;
-				currentHeros.get(i).lastWalkSize=0;
-			}
-			currentHeros.get(i).enableCollide=false;
-			currentHeros.get(i).waitWhenCollide=false;
-			currentHeros.get(i).walkStack.clear();
-			currentHeros.get(i).walked=true;
-		}
-		generatePosition(getHeadHero().mapx, getHeadHero().mapy, getHeadHero().layer);
-		if(currentHeros!=null && !currentHeros.isEmpty()){
-			getHeadHero().enableCollide=true;
-			getHeadHero().waitWhenCollide=false;
-		}
-	}
-	
-	public boolean thisFrameGeneratedPosition=false;
 	public void generatePosition(int x,int y,int z){
 		for(int i=0;i<currentHeros.size();i++){
 			if(i==0){
@@ -170,25 +68,112 @@ public class HeroController {
 		}
 		thisFrameGeneratedPosition=true;
 	}
+	
+	public Hero getHeadHero(){
+		return currentHeros.get(0);
+	}
+	
+	public Hero getHero(int id){
+		for(Hero hero:allHeros)
+			if(hero.id == id)
+				return hero;
+		return null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Hero> getOtherHeros(boolean filter){
+		ArrayList<Hero> list = (ArrayList<Hero>)allHeros.clone();
+		list.removeAll(currentHeros);
+		if(filter) $.removeIf(list, (obj)->obj.support == null);
+		return list;
+	}
+	
+	public void initHeros(Stage s){
+		for(Hero hero:currentHeros){
+			hero.init();
+			hero.enableCollide=false;
+			hero.waitWhenCollide=false;
+			s.addActor(hero);
+		}
+		if(currentHeros!=null && !currentHeros.isEmpty()){
+			getHeadHero().enableCollide=true;
+			getHeadHero().waitWhenCollide=false;
+		}
+	}
+	
+	public synchronized void pushStack(ArrayList<MoveStack> stack){
+		this.stack=stack;
+	}
+	
+	public void reinit(boolean byTeleport){
+		for(int i=0;i<currentHeros.size();i++){
+			if(i!=0){
+				currentHeros.get(i).currentImageNo=currentHeros.get(0).currentImageNo;
+				currentHeros.get(i).lastZ=currentHeros.get(0).lastZ;
+				currentHeros.get(i).lastWalkSize=0;
+			}
+			currentHeros.get(i).enableCollide=false;
+			currentHeros.get(i).waitWhenCollide=false;
+			
+			if(byTeleport){
+				currentHeros.get(i).walkStack.clear();
+				currentHeros.get(i).walked=true;
+			}
+		}
+		generatePosition(getHeadHero().mapx, getHeadHero().mapy, getHeadHero().layer);
+		if(currentHeros!=null && !currentHeros.isEmpty()){
+			getHeadHero().enableCollide=true;
+			getHeadHero().waitWhenCollide=false;
+		}
+	}
+	
+	public void remove(Hero hero){
+		currentHeros.remove(hero);
+		GameViews.gameview.stage.getActors().removeValue(hero, true);
+	}
+	
+	public void remove(int id){
+		remove(getHero(id));
+	}
+	
+	public void removeHero(int id){
+		currentHeros.remove(getHero(id));
+	}
+	
+	public void setVisible(boolean visible){
+		for(Hero hero:currentHeros)
+			hero.setVisible(visible);
+	} 
+	
+	public void setWalkSpeed(int speed){
+		for(Hero hero:currentHeros)
+			hero.setWalkSpeed(speed);
+	}
+	public void stopStack(){
+		stack.clear();
+	}
 
 	
-	boolean walk;
-	public HeroController walk(int step,boolean clear){	
-		walk=getHeadHero().walk(step).testWalk();
-		if(walk)
-		for(int i=1;i<currentHeros.size();i++){
-			currentHeros.get(i).walk(currentHeros.get(i-1).lastWalkSize);
-			currentHeros.get(i).layer=currentHeros.get(i-1).lastZ;
-		}
-		if(clear)
-			stopStack();
+	public void swapHero(int position){
+		Collections.swap(currentHeros, position, 0);
+		reinit(false);
+	}
+	public void swapHero(int position,int swapposition){
+		Collections.swap(currentHeros, position, swapposition);
+		reinit(false);
+	}
+	
+	public HeroController testWalk(){
+		for(Hero hero:currentHeros)
+			hero.testWalk();
 		return this;
 	}
 	
-	public HeroController walk(int step){
-		return walk(step,true);
-	}
 	
+	public void toWalk() {
+		for(Hero hero:currentHeros)
+			hero.toWalk();
+	}
 	
 	public HeroController turn(int face){
 		for(int i=0;i<currentHeros.size();i++){
@@ -201,29 +186,29 @@ public class HeroController {
 		return this;
 	}
 	
-	public HeroController testWalk(){
-		for(Hero hero:currentHeros)
-			hero.testWalk();
+	public HeroController walk(int step){
+		return walk(step,true);
+	}
+	
+	public HeroController walk(int step,boolean clear){	
+		walk=getHeadHero().walk(step).testWalk();
+		if(walk)
+		for(int i=1;i<currentHeros.size();i++){
+			currentHeros.get(i).walk(currentHeros.get(i-1).lastWalkSize);
+			currentHeros.get(i).layer=currentHeros.get(i-1).lastZ;
+		}
+		if(clear)
+			stopStack();
 		return this;
 	}
 	
 	public boolean walked(){
 		return walked(true);
 	}
-	
+
 	public boolean walked(boolean dirty){
 		if(dirty)
 			stopStack();
 		return getHeadHero().walked;
-	}
-	
-	public void setWalkSpeed(int speed){
-		for(Hero hero:currentHeros)
-			hero.setWalkSpeed(speed);
-	}
-
-	public void toWalk() {
-		for(Hero hero:currentHeros)
-			hero.toWalk();
 	}
 }

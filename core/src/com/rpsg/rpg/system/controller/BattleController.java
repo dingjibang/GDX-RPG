@@ -29,14 +29,16 @@ public class BattleController {
 		stop//战斗结束
 	}
 	BattleParam param;
-	public State state;
+	public State state = State.stop;
 	
-	public void start(BattleParam param) {
-		if(isBattle())
-			return;
+	public boolean start(BattleParam param) {
+		if(state != State.stop)
+			return false;
 		
 		this.param = param;
 		state = State.prepare;
+		
+		return true;
 	}
 	
 	public void stop(){
@@ -56,9 +58,8 @@ public class BattleController {
 	}
 	
 	public boolean logic(){
-		
 		if(state == State.prepare && param != null){//开始战斗*queue
-			Image black = Res.get(Setting.UI_BASE_IMG);
+			Image black = Res.getSync(Setting.UI_BASE_IMG);
 			Drawable prepareDrawable = Res.getDrawable(Setting.IMAGE_BATTLE+"battle_prepare.png");
 			
 			List<Image> images = new ArrayList<>();
