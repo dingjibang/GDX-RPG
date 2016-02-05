@@ -36,12 +36,12 @@ public class EnemyNPC extends RandomWalkNPC {
 			int npcDistance = 0;
 			int mode = 0;
 			for(int i = 0;i<heros.size();i++){
-				Hero _Hero = heros.get(i);
+				Hero hero = heros.get(i);
 				
 				int HeroX,HeroY;
 				
-				HeroX = _Hero.mapx;
-				HeroY = _Hero.mapy;
+				HeroX = hero.mapx;
+				HeroY = hero.mapy;
 				
 				int dx = Math.abs(mapx-HeroX);
 				int dy = Math.abs(mapy-HeroY);
@@ -52,7 +52,7 @@ public class EnemyNPC extends RandomWalkNPC {
 				getCurrentFace() == getFaceByPoint(HeroX,HeroY)) //Check if the face is to Hero 
 					|| npcDistance == 0){
 							
-					if(RPG.ctrl.battle.start(battleParam)){
+					if(!hero.fade() && RPG.ctrl.battle.start(battleParam)){
 						isBattled = true;
 						super.stopRandomWalking();
 						

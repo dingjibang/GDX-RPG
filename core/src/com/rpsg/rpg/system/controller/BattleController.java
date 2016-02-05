@@ -6,6 +6,7 @@ import java.util.List;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.BattleParam;
@@ -14,6 +15,7 @@ import com.rpsg.rpg.object.base.IOMode.MapInput;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.utils.game.TimeUtil;
 import com.rpsg.rpg.view.BattleView;
 import com.rpsg.rpg.view.GameViews;
 
@@ -48,6 +50,12 @@ public class BattleController {
 		
 		if(param.stopCallback != null) param.stopCallback.run();
 		param = null;
+		
+		$.each(RPG.ctrl.hero.currentHeros,(hero)->hero.fade(true));
+		
+		TimeUtil.add(()->{
+			$.each(RPG.ctrl.hero.currentHeros,(hero)->hero.fade(false));
+		}, 2000);
 		
 		//TODO 需要dispose？？？
 //		GameViews.gameview.battleView = null;

@@ -261,6 +261,7 @@
     <property name="IMAGE" value="walk_yuki"/>
    </properties>
   </object>
+  <object id="17" name="ENEMY" type="NPC" gid="892" x="576" y="2544" width="48" height="64"/>
   <object id="18" name="ENEMY" type="NPC" gid="892" x="720" y="2544" width="48" height="64"/>
  </objectgroup>
  <layer name="t2" width="50" height="80">

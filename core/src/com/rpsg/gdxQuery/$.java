@@ -45,10 +45,6 @@ public class $ {
 		return new GdxFrame().add(query, runnable);
 	}
 	
-	public static <T> void removeIfIf(boolean flag,Iterable<T> c,RemoveTest<T> test){
-		if(flag)
-			removeIf(c,test);
-	}
 	
 	public static <T> void removeIf(Iterable<T> c,RemoveTest<T> test){
 		Iterator<T> it=c.iterator();
@@ -56,6 +52,17 @@ public class $ {
 			T obj=it.next();
 			if(test.test(obj))
 				it.remove();
+		}
+	}
+	
+	public static <T> void removeIf(Iterable<T> c,RemoveTest<T> test,CustomRunnable<T> get){
+		Iterator<T> it=c.iterator();
+		while(it.hasNext()){
+			T obj=it.next();
+			if(test.test(obj)){
+				it.remove();
+				get.run(obj);
+			}
 		}
 	}
 	

@@ -18,6 +18,7 @@ import com.rpsg.rpg.utils.display.GameViewRes;
 import com.rpsg.rpg.utils.display.SelectUtil;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
+import com.rpsg.rpg.utils.game.TimeUtil;
 /**
  * GameViews 游戏核心入口类
  * @author dingjibang
@@ -106,6 +107,7 @@ public class GameViews implements ApplicationListener {
 		Gdx.gl.glClearColor(0,0,0,1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
+		TimeUtil.logic();
 		switch(state){//根据state来让不同的view画图。
 		case STATE_LOGO:{
 			logoview.logic();
