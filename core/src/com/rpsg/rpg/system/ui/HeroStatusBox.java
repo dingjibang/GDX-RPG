@@ -25,7 +25,7 @@ public class HeroStatusBox extends Group {
 		addActor($.add(Res.get(hero.name, 28)).setPosition(25,73).getItem());
 		addActor(Res.get(Setting.UI_BASE_IMG).size(3, 103).position(10, 7));
 		
-		addActor(timer = Res.get(Setting.UI_BASE_IMG).size(3, 103).position(10, 7));
+		addActor(timer = Res.get(Setting.UI_BASE_IMG).size(3, 103).position(10, 7).color(hero.getObjectColor()));
 		
 		addActor(Res.get(Setting.UI_BASE_IMG).size(218, 10).position(25, 47));
 		addActor(hpbox = Res.get(Setting.UI_BASE_IMG).size(218, 10).position(25, 47).color(Color.valueOf("dc3c3c")));

@@ -174,6 +174,11 @@ public class SystemView extends IMenuView{
 			}}).check(set.betterDisplay).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("对画面使用二次渲染，可以提高游戏视觉效果，但可能会降低一些性能。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
+			table.add(new CheckBox("更清晰的文字",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
+				set.hdFont = t.isChecked();
+			}}).check(set.hdFont).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
+			table.add(new Label("使用更清晰的文字贴图，将大幅度提高文字的清晰度，对于手机/平板效果最佳。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
+			
 			table.add(new CheckBox("显示天气效果",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.weather = t.isChecked();
 			}}).check(set.weather).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();

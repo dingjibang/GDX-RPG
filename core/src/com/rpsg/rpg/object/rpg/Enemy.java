@@ -19,7 +19,7 @@ import com.rpsg.rpg.object.rpg.EnemyAction.PropType;
 import com.rpsg.rpg.object.rpg.EnemyAction.RemoveType;
 import com.rpsg.rpg.system.controller.ItemController;
 
-public class Enemy implements GetSpeedAble {
+public class Enemy implements Time {
 	public int id;
 	public String imgPath;
 	public String name;
@@ -27,6 +27,7 @@ public class Enemy implements GetSpeedAble {
 	public Integer aiLevel;
 	public List<EnemyAction> actions;
 	public Color color;
+	private int no = 0;
 	
 	public Enemy() {
 		color = new Color(MathUtils.random(.4f,.8f),MathUtils.random(.4f,.8f),MathUtils.random(.4f,.8f),1);
@@ -58,9 +59,10 @@ public class Enemy implements GetSpeedAble {
 			if(!include){
 				int count = 0;
 				enemy.name += ++count;
+				enemy.no = count;
 				for(Enemy child : list)
 					if(child != enemy && child.id == enemy.id)
-						child.name += ++count;
+						child.name += (child.no = ++count);
 				
 				ids.add(enemy.id);
 			}
@@ -117,6 +119,18 @@ public class Enemy implements GetSpeedAble {
 	@Override
 	public String toString() {
 		return "Enemy:"+name;
+	}
+	
+	@Override
+	public Color getObjectColor() {
+		return color;
+	}
+	
+	@Override
+	public String getSimpleName() {
+		String name = this.name.substring(0, 1);
+		if(this.no != 0) name+= this.no;
+		return name;
 	}
 
 }

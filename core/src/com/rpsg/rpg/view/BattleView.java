@@ -72,7 +72,7 @@ public class BattleView extends DefaultIView{
 		});
 		
 		$.add(timer = new Timer(heros,enemyList,(obj)->{
-//			System.out.println(obj);
+			System.out.println("callback:"+obj);
 		})).appendTo(stage);
 		
 		

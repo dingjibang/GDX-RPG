@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.badlogic.gdx.graphics.Color;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Association;
@@ -17,7 +18,7 @@ import com.rpsg.rpg.object.base.items.Buff;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Spellcard;
 
-public class Hero extends RPGObject implements GetSpeedAble{
+public class Hero extends RPGObject implements Time{
 
 	private static final long serialVersionUID = 1L;
 	public static final int HERO_WIDTH = 48;
@@ -266,5 +267,14 @@ public class Hero extends RPGObject implements GetSpeedAble{
 	public int getSpeed() {
 		return getProp("speed");
 	}
+	
+	@Override
+	public Color getObjectColor() {
+		return Color.valueOf(color);
+	}
 
+	@Override
+	public String getSimpleName() {
+		return name.substring(0, 1);
+	}
 }

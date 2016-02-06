@@ -81,6 +81,8 @@ public class Status extends Group {
 		pane.cancel();
 		pane.layout();
 		pane.setScrollPercentY(1);
+		System.out.println($.add(table).children());
+//		$.add(table).children().each((label)->((Label)label).set);
 	}
 	
 }

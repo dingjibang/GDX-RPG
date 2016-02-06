@@ -2,6 +2,7 @@ package com.rpsg.lazyFont;
 
 import java.lang.reflect.Field;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
@@ -153,7 +154,8 @@ public class LazyBitmapFont extends BitmapFont {
 			if (gab == null || gab.bitmap == null)
 				return null;
 
-			Pixmap map = gab.bitmap.getPixmap(Format.RGBA8888);
+//			Pixmap map = gab.bitmap.getPixmap(Format.RGBA8888);
+			Pixmap map = gab.bitmap.getPixmap(Format.RGBA8888, Color.WHITE, 1);
 			TextureRegion rg = new TextureRegion(new Texture(map));
 			
 			rg.getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);

@@ -151,6 +151,11 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 		return this;
 	}
 	
+	public Label x(float x){
+		setX(x);
+		return this;
+	}
+	
 	public Label y(int i){
 		setY(i);
 		return this;

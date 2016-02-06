@@ -690,5 +690,10 @@ public class GdxQuery {
 			actor.setZIndex(i);
 		return this;
 	}
+	
+	@Override
+	public String toString() {
+		return "GDX-Query:"+getItems();
+	}
 
 }
