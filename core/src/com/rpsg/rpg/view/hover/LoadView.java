@@ -112,8 +112,8 @@ public class LoadView extends HoverView{
 							if (o != null) {
 								RPG.putMessage("读取档案成功", Color.GREEN);
 								RPG.global = (Global) o;
-								Initialization.restartGame();
 								LoadView.this.disposed = true;
+								Initialization.restartGame();
 							} else
 								RPG.putMessage("读取档案失败", Color.RED);
 							LoadView.this.generateList();

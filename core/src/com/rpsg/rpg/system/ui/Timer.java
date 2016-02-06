@@ -97,6 +97,7 @@ public class Timer extends Group {
 			setDrawable(Res.getDrawable(Setting.UI_BASE_IMG));
 			setSize(48,28);
 			setColor(color);
+			a(.5f);
 			this.current = MathUtils.random(0,total/2);
 			label = Res.get(name, 20);
 			label.size(48,28).align(Align.center);

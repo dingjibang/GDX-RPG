@@ -80,10 +80,9 @@ public class GameView extends View{
 	@Override
 	public void dispose() {
 		RPG.maps.loader.dispose();
-		
 		if(!Setting.persistence.cacheResource){
-			ma.unload(filename);
-//			ma.clear(); FIXME 可能导致其他纹理也被卸载。。。
+			ma.unload(filename);//TODO 传送时会变换filename？
+//			ma.clear(); //FIXME 可能导致其他纹理也被卸载。。。
 		}
 		
 		if(null!=stackView){
@@ -91,6 +90,7 @@ public class GameView extends View{
 			stackView=null;
 			InputController.currentIOMode=IOMode.MapInput.normal;
 		}
+		
 		GameViewRes.ray.removeAll();
 		
 		parameter.loadedCallback=null;

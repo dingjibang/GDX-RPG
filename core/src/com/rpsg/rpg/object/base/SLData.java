@@ -69,7 +69,7 @@ public class SLData implements Serializable{
 			Gdx.files.local("save").mkdirs();
 			Texture txt;
 			try {
-				txt = new Texture(Gdx.files.local("save/" + id + ".png"));
+				txt = Res.getTexture(("save/" + id + ".png"));
 			} catch (Exception e) {
 				txt = new Texture(Gdx.files.internal(Setting.UI_BASE_IMG));
 			}
