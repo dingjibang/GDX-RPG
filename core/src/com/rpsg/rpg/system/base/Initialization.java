@@ -1,6 +1,7 @@
 package com.rpsg.rpg.system.base;
 
 import com.rpsg.rpg.core.RPG;
+import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
 
@@ -16,6 +17,7 @@ public class Initialization {
 	public static void restartGame() {
 		GameViews.gameview.dispose();
 		GameViews.gameview=new GameView();
+		RPG.ctrl.hero = new HeroController();
 		GameViews.gameview.init();
 	}
 }
