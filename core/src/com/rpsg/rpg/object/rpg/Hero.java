@@ -277,4 +277,9 @@ public class Hero extends RPGObject implements Time{
 	public String getSimpleName() {
 		return name.substring(0, 1);
 	}
+	
+	@Override
+	public Object getThis() {
+		return this;
+	}
 }

@@ -6,4 +6,5 @@ public interface Time {
 	public int getSpeed();
 	public Color getObjectColor();
 	public String getSimpleName();
+	public Object getThis();
 }

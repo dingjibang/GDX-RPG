@@ -132,5 +132,10 @@ public class Enemy implements Time {
 		if(this.no != 0) name+= this.no;
 		return name;
 	}
+	
+	@Override
+	public Object getThis() {
+		return this;
+	}
 
 }

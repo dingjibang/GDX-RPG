@@ -10,7 +10,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
@@ -25,7 +25,9 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.EnemyBox;
 import com.rpsg.rpg.system.ui.HeroStatusBox;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.Status;
+import com.rpsg.rpg.system.ui.TextButton;
 import com.rpsg.rpg.system.ui.Timer;
 import com.rpsg.rpg.utils.game.GameUtil;
 
@@ -72,12 +74,37 @@ public class BattleView extends DefaultIView{
 		});
 		
 		$.add(timer = new Timer(heros,enemyList,(obj)->{
-			System.out.println("callback:"+obj);
+			timer.pause(true);
+			String name = obj instanceof Enemy ? ((Enemy)obj).name : ((Hero)obj).name;
+			status.add("[#ff7171]"+name+"[] 的战斗回合");
+			if(obj instanceof Hero){
+				Hero hero = (Hero)obj;
+				Image fg = $.add(Res.get(Setting.IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(stage).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(GameUtil.screen_width+500, 0).addAction(Actions.moveBy(-400, 0,1f,Interpolation.pow4Out)).setZIndex(1).getItem(Image.class);
+				Table menu = $.add(new Table()).appendTo(stage).setPosition(600, 220).getItem(Table.class);
+				menu.add(new TextButton("攻击",BattleRes.textButtonStyle).onClick(()->{
+					RPG.ctrl.battle.stop();
+				}));
+				menu.add(new TextButton("防御",BattleRes.textButtonStyle).onClick(()->{
+					RPG.ctrl.battle.stop();
+				}));
+				menu.add(new TextButton("符卡",BattleRes.textButtonStyle).onClick(()->{
+					RPG.ctrl.battle.stop();
+				}));
+				menu.add(new TextButton("物品",BattleRes.textButtonStyle).onClick(()->{
+					RPG.ctrl.battle.stop();
+				}));
+				menu.add(new TextButton("逃跑",BattleRes.textButtonStyle).onClick(()->{
+					escape(hero);
+					menu.remove();
+					fg.remove();
+					timer.pause(false);
+				}));
+				$.each(menu.getCells(),(cell) -> cell.size(150,30));
+			}
 		})).appendTo(stage);
 		
-		
 		status.add("fuck you");
-		stage.setDebugAll(!!false);
+		stage.setDebugAll(!false);
 		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.screen_width,GameUtil.screen_height).color(0,0,0,1)).appendTo(stage).addAction(Actions.sequence(Actions.fadeOut(.3f,Interpolation.pow2In),Actions.removeActor()));
 		
@@ -104,6 +131,13 @@ public class BattleView extends DefaultIView{
 		if(keyCode == Keys.D) status.append(" & "+Math.random());
 		if(keyCode == Keys.F) status.append("[#ffaabb]彩色测试[]");
 		super.onkeyDown(keyCode);
+	}
+	
+	public boolean escape(Hero hero){
+		double random = Math.random();
+		boolean flag = random > .5;
+		status.add(hero.getName()+" 尝试逃跑……").append(flag ? "成功了" : "但是失败了",10);
+		return flag;
 	}
 
 }

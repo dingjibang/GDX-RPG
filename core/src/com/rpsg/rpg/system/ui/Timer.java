@@ -41,10 +41,11 @@ public class Timer extends Group {
 	
 	public void act(float delta) {
 		$.each(list,(obj)->{
+			if(!obj.globalPause && !obj.pause)
 			if((obj.current += obj.speed) > total){
 				//callback and reset
 				callback.run(obj.object);
-				obj.current = -MathUtils.random(0,500);
+				obj.current = -MathUtils.random(500,1000);
 			}
 		});
 		super.act(delta);
@@ -69,7 +70,7 @@ public class Timer extends Group {
 	}
 	
 	public void pause(boolean flag){
-		$.each(list, (obj) -> obj.golbalPause = flag);
+		$.each(list, (obj) -> obj.globalPause = flag);
 	}
 	
 	public void pause(Time object,boolean flag){
@@ -88,7 +89,7 @@ public class Timer extends Group {
 		public Time object;
 		public int speed;
 		public int current = 0;
-		public boolean pause = false,golbalPause = false;
+		public boolean pause = false,globalPause = false;
 		private Label label;
 		
 		public TimerClass(String name,Time object, int speed, Color color) {

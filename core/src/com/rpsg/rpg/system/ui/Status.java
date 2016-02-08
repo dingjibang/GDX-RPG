@@ -23,6 +23,7 @@ public class Status extends Group {
 	Table table;
 	boolean flag;
 	long time = System.currentTimeMillis();
+	private List<DelayTask> tasks = new ArrayList<>();
 	
 	public Status() {
 		table = new Table();
@@ -45,9 +46,21 @@ public class Status extends Group {
 		
 	}
 	
+	@Override
+	public void act(float delta) {
+		super.act(delta);
+		$.removeIf(tasks, (task)->task.time-- <= 0, (task)->task.callback.run());
+	}
+	
 	public Status add(String str){
-		table.add(label = Res.get("["+ getTime() + "] " + str, 20).align(getAlign()).overflow(false).markup(true).warp(true)).padLeft(10).padRight(10).padBottom(2).padTop(1).width(GameUtil.screen_width - 48).row();
-		setPanelToScrollBattom();
+		return add(str,0);
+	}
+	
+	public Status add(String str,long delay){
+		tasks.add(new DelayTask(delay,()->{
+			table.add(label = Res.get("["+ getTime() + "] " + str, 20).align(getAlign()).markup(true)).padLeft(10).padRight(10).height(28).width(GameUtil.screen_width - 48).row();
+			setPanelToScrollBattom();
+		}));
 		return this;
 	}
 	
@@ -63,9 +76,16 @@ public class Status extends Group {
 	}
 	
 	public Status append(String str){
-		if(label == null) add("");
-		label.setText(label.getText() + str);
-		setPanelToScrollBattom();
+		return append(str,0);
+	}
+	
+	public Status append(String str,long delay){
+		final Label label = this.label;
+		tasks.add(new DelayTask(delay,()->{
+			if(label == null) add("");
+			label.setText(label.getText() + str);
+			setPanelToScrollBattom();
+		}));
 		return this;
 	}
 	
@@ -85,4 +105,13 @@ public class Status extends Group {
 //		$.add(table).children().each((label)->((Label)label).set);
 	}
 	
+	private static class DelayTask{
+		long time;
+		Runnable callback;
+		public DelayTask(long time, Runnable callback) {
+			super();
+			this.time = time;
+			this.callback = callback;
+		}
+	}
 }

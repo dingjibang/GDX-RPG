@@ -41,9 +41,8 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	public static Image[] generateImages(String txt,int width,int height){
 		Image[] images=new Image[12];
 		for(int i=0;i<4;i++)
-			for(int j=0;j<3;j++){
+			for(int j=0;j<3;j++)
 				images[(i*3)+j]=new Image(new TextureRegion(Res.getTexture(txt),j*width,i*height,width,height));
-			}
 		return images;
 	}
 	
