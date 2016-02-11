@@ -101,6 +101,8 @@ public class GameViews implements ApplicationListener {
 		batch.dispose();
 		System.exit(0);
 	}
+	
+	final static String command = "maUpdate";
 
 	@Override
 	public void render() {
@@ -139,17 +141,19 @@ public class GameViews implements ApplicationListener {
 		case STATE_GAME:{
 			gameview.logic();
 			gameview.draw(batch);
-			loadview.logic();
-			loadview.draw();
 			if(!GameViewRes.ma.update() | !GameViewRes.ma2.update()){
-				loadview.start();
+				loadview.start(command);
 			}else{
-				loadview.stop();
+				loadview.stop(command);
 			}
 		}
 		}
 	
 		RPG.popup.draw();//悬浮窗口，一些特殊的置顶窗口会使用。
+		if(loadview != null){
+			loadview.logic();
+			loadview.draw();
+		}
 		GameUtil.drawFPS(batch);//绘制FPS
 		RPG.toast.draw();//STEP一下提示工具包
 		RPG.touch.draw();

@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.view.GameViews;
 
 public class Account implements Serializable {
 	
@@ -23,9 +24,11 @@ public class Account implements Serializable {
 		request.setUrl(Setting.NET_LOGIN_URL+"?name=小苹果！");
 		request.setMethod(HttpMethods.GET);
 		
+		String command = "sendHttpRequest";
 		HttpResponseListener listener = new HttpResponseListener() {
 			public void handleHttpResponse(HttpResponse response) {
 				RPG.toast.add(response.getResultAsString(), Color.GREEN,13);
+				GameViews.loadview.stop(command);
 			}
 			
 			public void failed(Throwable t) {
@@ -38,6 +41,7 @@ public class Account implements Serializable {
 		};
 
 		Gdx.net.sendHttpRequest(request, listener);
+		GameViews.loadview.start(command);
 	}
 	
 	public void logout(){

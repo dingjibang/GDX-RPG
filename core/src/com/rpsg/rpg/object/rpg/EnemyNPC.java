@@ -3,6 +3,7 @@ package com.rpsg.rpg.object.rpg;
 import java.awt.Point;
 import java.util.List;
 
+import com.badlogic.gdx.math.Vector2;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.base.BattleParam;
 
@@ -77,12 +78,12 @@ public class EnemyNPC extends RandomWalkNPC {
 				switch(mode){
 					case 1:
 						walkSpeed = accelerate1WalkSpeed;
-						point = new Point(-1,-1);
+						point = new Vector2(-1,-1);
 						speed = 10;
 						break;
 					case 2:
 						walkSpeed = accelerate2WalkSpeed;
-						point = new Point(-1,-1);
+						point = new Vector2(-1,-1);
 						speed = 0;
 						if(npcDistance == 0){
 							step = 0;

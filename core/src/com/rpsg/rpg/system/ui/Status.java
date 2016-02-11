@@ -79,9 +79,8 @@ public class Status extends Group {
 		return append(str,0);
 	}
 	
-	public Status append(String str,long delay){
-		final Label label = this.label;
-		tasks.add(new DelayTask(delay,()->{
+	public Status append(String str,long frameDelay){
+		tasks.add(new DelayTask(frameDelay,()->{
 			if(label == null) add("");
 			label.setText(label.getText() + str);
 			setPanelToScrollBattom();

@@ -30,6 +30,7 @@ import com.rpsg.rpg.system.ui.Status;
 import com.rpsg.rpg.system.ui.TextButton;
 import com.rpsg.rpg.system.ui.Timer;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.utils.game.TimeUtil;
 
 public class BattleView extends DefaultIView{
 	
@@ -85,7 +86,7 @@ public class BattleView extends DefaultIView{
 					RPG.ctrl.battle.stop();
 				}));
 				menu.add(new TextButton("防御",BattleRes.textButtonStyle).onClick(()->{
-					RPG.ctrl.battle.stop();
+					define(hero);
 				}));
 				menu.add(new TextButton("符卡",BattleRes.textButtonStyle).onClick(()->{
 					RPG.ctrl.battle.stop();
@@ -94,10 +95,11 @@ public class BattleView extends DefaultIView{
 					RPG.ctrl.battle.stop();
 				}));
 				menu.add(new TextButton("逃跑",BattleRes.textButtonStyle).onClick(()->{
-					escape(hero);
-					menu.remove();
-					fg.remove();
-					timer.pause(false);
+					escape(hero,()->{
+						menu.remove();
+						fg.remove();
+						timer.pause(false);
+					});
 				}));
 				$.each(menu.getCells(),(cell) -> cell.size(150,30));
 			}
@@ -133,11 +135,18 @@ public class BattleView extends DefaultIView{
 		super.onkeyDown(keyCode);
 	}
 	
-	public boolean escape(Hero hero){
+	public void escape(Hero hero,Runnable callback){
 		double random = Math.random();
 		boolean flag = random > .5;
-		status.add(hero.getName()+" 尝试逃跑……").append(flag ? "成功了" : "但是失败了",10);
-		return flag;
+		status.add(hero.getName()+" 尝试逃跑").append(".",5).append(".",10).append(".",15);
+		TimeUtil.add(()->{
+			status.append(flag ? "成功了" : "但是失败了");
+			callback.run();
+		},700);
+	}
+	
+	private void define(Hero hero){
+		
 	}
 
 }

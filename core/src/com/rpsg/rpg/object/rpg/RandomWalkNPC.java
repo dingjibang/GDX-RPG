@@ -1,6 +1,5 @@
 package com.rpsg.rpg.object.rpg;
 
-import java.awt.Point;
 import java.awt.Rectangle;
 
 import com.badlogic.gdx.math.Vector2;
@@ -18,7 +17,7 @@ public class RandomWalkNPC extends PublicNPC {
 	public Rectangle bounds;
 	public int maxLength;
 	public int minWalkLength;
-	protected Point point;
+	protected Vector2 point;
 	private int currentFrame;
 	public int speed = 60;
 //	private 
@@ -63,7 +62,7 @@ public class RandomWalkNPC extends PublicNPC {
 				else if(face == 0) 
 					face=RPGObject.FACE_R;
 			}else if(point.x!= -1 && point.y!= -1){
-				face = getFaceByPoint(point.x, point.y);
+				face = getFaceByPoint((int)point.x, (int)point.y);
 			}else{
 				face = getFaceByPoint(Hero.mapx,Hero.mapy);
 			}
