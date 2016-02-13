@@ -15,7 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
-import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.HoverView;

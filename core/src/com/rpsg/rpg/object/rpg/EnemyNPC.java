@@ -1,6 +1,5 @@
 package com.rpsg.rpg.object.rpg;
 
-import java.awt.Point;
 import java.util.List;
 
 import com.badlogic.gdx.math.Vector2;

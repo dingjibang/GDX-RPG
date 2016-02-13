@@ -58,7 +58,7 @@ public class GameView extends View{
 		if(PostUtil.first)
 			PostUtil.init();
 		parameter = new TmxMapLoader.Parameters();
-		parameter.loadedCallback= (AssetManager assetManager, String fileName, Class type)->{
+		parameter.loadedCallback= (assetManager, fileName, type)->{
 			RPG.maps.map = ma.get(Setting.MAP + global.map);
 			if(render == null)
 				render=new OrthoCachedTiledMapRenderer(RPG.maps.map);
