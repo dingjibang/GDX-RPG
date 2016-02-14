@@ -68,21 +68,31 @@ public abstract class NPC extends RPGObject{
 	public void init(){
 		if(params==null)
 			return;
+		String script = "";
+		String global = Gdx.files.internal(Setting.SCRIPT_MAP+"global.js").readString("utf-8");
 		for(String key:params.keySet()){
 			for(CollideType c:CollideType.values()){
-				if(key.contains(c.name().toUpperCase()))
+				if(key.contains(c.name().toUpperCase())){
 					if(key.endsWith("_SCRIPT"))
-						scripts.put(c, Gdx.files.internal(Setting.SCRIPT_MAP+params.get(key)).readString("utf-8"));
+						script = Gdx.files.internal(Setting.SCRIPT_MAP+params.get(key)).readString("utf-8");
 					else if(key.endsWith("_EXECUTE"))
-						scripts.put(c, params.get(key).toString());
+						script = params.get(key).toString();
+					if(script.contains("////import globaljs"))
+						script.replace("////import globaljs", global);
+						scripts.put(c, script);
+				}
 			}
 		}
 		
 		for(String key:params.keySet()){
 			for(CollideType c:CollideType.values()){
-				if(key.contains(c.name().toUpperCase()))
+				if(key.contains(c.name().toUpperCase())){
 					if(key.endsWith("_SCRIPT_PARAM"))
-						scripts.put(c,params.get(key)+"\n"+scripts.get(c));
+						script = params.get(key)+"\n"+scripts.get(c);
+					if(script.contains("////import globaljs"))
+						script.replace("////import globaljs", global);
+						scripts.put(c, script);
+				}
 			}
 		}
 		
