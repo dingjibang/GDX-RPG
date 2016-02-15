@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -25,10 +26,7 @@ import com.rpsg.rpg.utils.game.Logger;
  */
 public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
-	private static Runnable _loaded = new Runnable() {
-		public void run() {
-		}
-	};
+	private static Runnable _loaded = ()->{};
 	
 	public boolean visible=true;
 	public boolean lazy=true;
@@ -63,11 +61,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	}
 	
 	public Image onClick(final CustomRunnable<?> r){
-		run = new Runnable(){
-			public void run(){
-				r.run(null);
-			}
-		};
+		run = ()->r.run(null);
 		return this;
 	}
 	
@@ -134,6 +128,10 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		super.draw(batch, parentAlpha);
 	}
 	
+	public void setStage(Stage stage) {
+		super.setStage(stage);
+	}
+	
 	private void setAnti(){
 		try{
 			if(Setting.persistence.scaleAliasing)
@@ -177,6 +175,11 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	}
 	
 	public Image size(int width,int height){
+		super.setSize(width, height);
+		return this;
+	}
+	
+	public Image size(float width,float height){
 		super.setSize(width, height);
 		return this;
 	}

@@ -73,16 +73,16 @@ public class Setting {
 	// UI
 	public static NinePatchDrawable UI_BUTTON;
 	public static NinePatchDrawable UI_TOAST;
-	public static String UI_BASE_IMG = Setting.IMAGE_MENU_GLOBAL + "white.jpg";
-	public static String UI_GRAY_IMG = Setting.IMAGE_MENU_GLOBAL + "drawable_gray_opacity.png";
-	public static String UI_BASE_PRO = Setting.IMAGE_MENU_GLOBAL + "prograssbar.png";
+	public static String UI_BASE_IMG = IMAGE_MENU_GLOBAL + "white.jpg";
+	public static String UI_GRAY_IMG = IMAGE_MENU_GLOBAL + "drawable_gray_opacity.png";
+	public static String UI_BASE_PRO = IMAGE_MENU_GLOBAL + "progressbar.png";
 
 	public static void init() {
-		UI_BUTTON = new NinePatchDrawable(GameUtil.processNinePatchFile(Setting.IMAGE_MENU_GLOBAL + "button_p.png"));
-		UI_TOAST = new NinePatchDrawable(GameUtil.processNinePatchFile(Setting.IMAGE_MENU_GLOBAL + "toast_box.png",2,2,1,1,5,5,5,5));
+		UI_BUTTON = new NinePatchDrawable(GameUtil.processNinePatchFile(IMAGE_MENU_GLOBAL + "button_p.png"));
+		UI_TOAST = new NinePatchDrawable(GameUtil.processNinePatchFile(IMAGE_MENU_GLOBAL + "toast_box.png",2,2,1,1,5,5,5,5));
 	}
 
-	public static final String RPGOBJECT_SHADOW = Setting.WALK + "walk_shadow.png";
+	public static final String RPGOBJECT_SHADOW = WALK + "walk_shadow.png";
 	
 	//RPSG服务器
 	public static final String NET_LOGIN_URL = "http://rpsgvote.sinaapp.com/lyric.php";

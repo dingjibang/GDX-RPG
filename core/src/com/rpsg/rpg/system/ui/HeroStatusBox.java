@@ -2,6 +2,8 @@ package com.rpsg.rpg.system.ui;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
+import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar.ProgressBarStyle;
 import com.badlogic.gdx.utils.Align;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;

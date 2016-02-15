@@ -7,6 +7,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -25,6 +26,7 @@ import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.EnemyBox;
 import com.rpsg.rpg.system.ui.HeroStatusBox;
 import com.rpsg.rpg.system.ui.Image;
+import com.rpsg.rpg.system.ui.Progress;
 import com.rpsg.rpg.system.ui.Status;
 import com.rpsg.rpg.system.ui.TextButton;
 import com.rpsg.rpg.system.ui.Timer;
@@ -38,6 +40,7 @@ public class BattleView extends DefaultIView{
 	List<EnemyBox> enemyBox = new ArrayList<>();
 	Status status;
 	Timer timer;
+	Progress p;
 	
 	public BattleView(BattleParam param) {
 		this.param = param;
@@ -105,11 +108,17 @@ public class BattleView extends DefaultIView{
 		})).appendTo(stage);
 		
 		status.add("fuck you");
-		stage.setDebugAll(!false);
+		stage.setDebugAll(!!false);
 		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.screen_width,GameUtil.screen_height).color(0,0,0,1)).appendTo(stage).addAction(Actions.sequence(Actions.fadeOut(.3f,Interpolation.pow2In),Actions.removeActor()));
 		
 		status.setZIndex(999999);
+		
+		p = new Progress(Res.getNP(Setting.IMAGE_BATTLE+"progressbar_bg.png"), Res.getNP(Setting.IMAGE_BATTLE+"progressbar_full.png"), Res.getNP(Setting.IMAGE_BATTLE+"progressbar_cache.png"), 0, 100);
+		p.setSize(380,20);
+		p.setPosition(450, 170);
+		p.value(100);
+		stage.addActor(p);
 		
 		return this;
 	}
@@ -131,6 +140,7 @@ public class BattleView extends DefaultIView{
 		if(keyCode == Keys.S) status.add("随便说一句话："+Math.random());
 		if(keyCode == Keys.D) status.append(" & "+Math.random());
 		if(keyCode == Keys.F) status.append("[#ffaabb]彩色测试[]");
+		if(keyCode == Keys.P) p.value(MathUtils.random(0,100));
 		super.onkeyDown(keyCode);
 	}
 	
