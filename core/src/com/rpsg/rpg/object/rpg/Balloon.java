@@ -47,7 +47,6 @@ public class Balloon extends Actor implements Serializable {
 		return balloons[current];
 	}
 
-	@Override
 	public void act(float delta) {
 		if (++buffer > ANIMATION_SPEED) {
 			buffer = 0;

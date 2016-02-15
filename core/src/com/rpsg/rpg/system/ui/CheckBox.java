@@ -37,7 +37,6 @@ public class CheckBox extends com.badlogic.gdx.scenes.scene2d.ui.CheckBox {
 	public CheckBox click(){
 		return query.click().getItem(CheckBox.class);
 	}
-	@Override
 	public void draw (Batch batch, float parentAlpha) {
 		super.draw(batch, parentAlpha);
 		
@@ -68,7 +67,6 @@ public class CheckBox extends com.badlogic.gdx.scenes.scene2d.ui.CheckBox {
 	
 	public CheckBox onClick(final CustomRunnable<CheckBox> run){
 		return query.onClick(new Runnable() {
-			@Override
 			public void run() {
 				run.run(CheckBox.this);
 			}

@@ -33,7 +33,6 @@ import com.rpsg.rpg.utils.game.GameUtil;
 public class StatusView extends IMenuView {
 	Group group,inner;
 	ScrollPane pane;
-	@Override
 	public View init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		group=(Group) $.add(new Group()).setHeight(1750).getItem();
@@ -58,13 +57,11 @@ public class StatusView extends IMenuView {
 		
 		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"menu_fg_shadow.png").disableTouch()).appendTo(inner).setPosition(50, y(30)).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(.3f),Actions.moveTo(50, y(180),0.3f,Interpolation.pow4Out)));
 		
-		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).appendTo(inner).setPosition(570, y(150)).onClick(new Runnable() {@Override
-		public void run() {
+		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).appendTo(inner).setPosition(570, y(150)).onClick(new Runnable() {public void run() {
 			Music.playSE("snd210.wav");
 			next();
 		}}).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);
-		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).setScaleX(-1).appendTo(inner).setPosition(36, y(150)).onClick(new Runnable() {@Override
-		public void run() {
+		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).setScaleX(-1).appendTo(inner).setPosition(36, y(150)).onClick(new Runnable() {public void run() {
 			Music.playSE("snd210.wav");
 			prev();
 		}}).addAction(Actions.fadeIn(0.2f)).setColor(1,1,1,0);
@@ -121,9 +118,7 @@ public class StatusView extends IMenuView {
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_STATUS+"help_p.png");// help button press
 		cstyle.font = Res.font.get(10);
 		final Image phelp=(Image) $.add(Res.get(Setting.IMAGE_MENU_STATUS+"p_help.png")).appendTo(group5).setColor(1,1,1,0).getItem();//resistance help button
-		$.add(new CheckBox("", cstyle)).appendTo(group5).setPosition(392,342).run(new GdxQueryRunnable() {@Override
-		public void run(final GdxQuery self) {self.onClick(new Runnable() {@Override
-		public void run() {
+		$.add(new CheckBox("", cstyle)).appendTo(group5).setPosition(392,342).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
 			phelp.addAction(self.isChecked()?Actions.fadeIn(0.3f):Actions.fadeOut(0.3f));
 		}});}});
 		
@@ -141,15 +136,12 @@ public class StatusView extends IMenuView {
 			$.add(Res.get(Setting.UI_BASE_IMG)).setSize(420,24).setPosition(87, 7).appendTo(group6);
 			$.add(Res.get(Setting.UI_BASE_PRO)).setSize(0,18).setPosition(90, 10).appendTo(group6).setColor(Color.valueOf("717171")).addAction(Actions.delay(0.4f,Actions.sizeTo(((float)parent.current.getProp("knowledge")/100f)*414, 18,0.6f,Interpolation.pow4Out)));
 			final Image pe_help=(Image) $.add(Res.get(Setting.IMAGE_MENU_STATUS+"person_help.png")).appendTo(group6).setColor(1,1,1,0).getItem();//resistance help button
-			$.add(new CheckBox("", cstyle)).appendTo(group6).setPosition(392,190).run(new GdxQueryRunnable() {@Override
-			public void run(final GdxQuery self) {self.onClick(new Runnable() {@Override
-			public void run() {
+			$.add(new CheckBox("", cstyle)).appendTo(group6).setPosition(392,190).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
 				pe_help.addAction(self.isChecked()?Actions.fadeIn(0.3f):Actions.fadeOut(0.3f));
 			}});}});
 		}
 		
 		$.add(inner).children().find(Group.class).children().find(Button.class,CheckBox.class).onClick(new Runnable() {
-			@Override
 			public void run() {
 				Music.playSE("snd210.wav");
 			}
@@ -173,17 +165,14 @@ public class StatusView extends IMenuView {
 			generate();
 	}
 	
-	@Override
 	public void draw(SpriteBatch batch) {
 		stage.draw();
 	}
 
-	@Override
 	public void logic() {
 		stage.act();
 	}
 
-	@Override
 	public void onkeyDown(int keyCode) {
 		if (Keys.ESCAPE == keyCode || keyCode == Keys.X) {
 			this.disposed = true;
@@ -195,7 +184,6 @@ public class StatusView extends IMenuView {
 			next();
 	}
 
-	@Override
 	public void dispose() {
 		stage.dispose();
 	}

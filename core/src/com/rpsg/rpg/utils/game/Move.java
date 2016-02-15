@@ -11,12 +11,10 @@ import com.rpsg.rpg.system.base.Initialization;
 public class Move {
 	public static BaseScriptExecutor move(Script script,final int step){
 		return script.set(new ScriptExecutor(script) {
-			@Override
 			public void step() {
 				if(script.npc.walkStack.size()==0)
 					this.dispose();
 			}
-			@Override
 			public void init() {
 				if(step==0)
 					dispose();
@@ -72,7 +70,6 @@ public class Move {
 	
 	public static BaseScriptExecutor lock(Script script, final boolean flag){
 		return script.set(new ScriptExecutor(script) {
-			@Override
 			public void init(){
 				if(flag){
 					for (Script sc : script.npc.threadPool) {
@@ -85,7 +82,6 @@ public class Move {
 					script.npc.pushThreadAndTryRun(CollideType.auto);
 			}
 			
-			@Override
 			public void step(){
 				try {
 					com.rpsg.rpg.object.rpg.MoveStack wk= script.npc.walkStack.get(0);

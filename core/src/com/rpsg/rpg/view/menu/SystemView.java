@@ -44,7 +44,6 @@ import com.rpsg.rpg.view.hover.LoginView;
 import com.rpsg.rpg.view.hover.SaveView;
 
 public class SystemView extends IMenuView{
-	@Override
 	public View init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		stage.setDebugAll(Setting.persistence.uiDebug);
@@ -90,7 +89,6 @@ public class SystemView extends IMenuView{
 			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"login_tip.png")).padTop(40).row();
 			
 			table.add(new TextButton("登录", tstyle).onClick(new Runnable() {
-				@Override
 				public void run() {
 					RPG.popup.add(LoginView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
 						put("title","登录");
@@ -118,34 +116,29 @@ public class SystemView extends IMenuView{
 			table.add(new Image(MenuController.bg)).size(160,90).padTop(-320).padLeft(43).align(Align.left).row();
 			table.add(new Label(RPG.maps.getName(),40)).width(450).padTop(-355).padLeft(233).align(Align.left).row();
 			table.add(new FrameLabel("",20).frame(new CustomRunnable<FrameLabel>() {
-				@Override
 				public void run(FrameLabel t) {
 					t.setNoLayoutText("["+RPG.ctrl.hero.getHeadHero().mapx+":"+RPG.ctrl.hero.getHeadHero().mapy+"]    队伍共有 "+RPG.ctrl.hero.currentHeros.size()+" 人，游戏已进行 "+RPG.time.getGameRunningTime());
 				}
 			})).width(450).padTop(-270).padLeft(233).align(Align.left).row();
 			Table buttons = new Table().center();
 			buttons.add(new TextButton("保存游戏", tstyle).onClick(new Runnable() {
-				@Override
 				public void run() {
 					RPG.popup.add(SaveView.class);
 				}
 			}));
 			buttons.add(new TextButton("读取游戏", tstyle).onClick(new Runnable() {
-				@Override
 				public void run() {
 					RPG.popup.add(LoadView.class);
 				}
 			}));
 			buttons.add(new TextButton("回到菜单", tstyle).onClick(new Runnable() {
-				@Override
 				public void run() {
 					RPG.popup.add(ConfirmView.okCancel("确定要回到主菜单么？如未存档当前档案将会消失", new CustomRunnable<HoverView>() {
-						@Override
 						public void run(HoverView view) {
 							GameViews.state = GameViews.STATE_LOGO;
 							GameViews.gameview.dispose();
 							GameViews.gameview = null;
-							view.disposed = true;
+							((HoverView) view).disposed = true;
 						}
 					}));
 				}
@@ -166,32 +159,27 @@ public class SystemView extends IMenuView{
 			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"split.png")).padTop(15).left().row();
 			table.add(new Label("Graphics Options",20).align(Align.right)).width(300).align(Align.right).height(0).padTop(-40).row();
 			
-			table.add(new CheckBox("开启平滑纹理",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
-			public void run(CheckBox t) {
+			table.add(new CheckBox("开启平滑纹理",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.scaleAliasing = t.isChecked();
 			}}).check(set.scaleAliasing).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(50).row();
 			table.add(new Label("对纹理进行双线性过滤操作，使纹理变得更加平滑，屏幕窗口拉抻时，纹理不会产生锯齿，适用于手机/平板。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
-			table.add(new CheckBox("开启图形抗锯齿",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
-			public void run(CheckBox t) {
+			table.add(new CheckBox("开启图形抗锯齿",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.antiAliasing = t.isChecked();
 			}}).check(set.antiAliasing).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("开启抗锯齿，你懂的。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
-			table.add(new CheckBox("高级画质",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
-			public void run(CheckBox t) {
+			table.add(new CheckBox("高级画质",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.betterDisplay = t.isChecked();
 			}}).check(set.betterDisplay).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("对画面使用二次渲染，可以提高游戏视觉效果，但可能会降低一些性能。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
-			table.add(new CheckBox("更清晰的文字",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
-			public void run(CheckBox t) {
+			table.add(new CheckBox("更清晰的文字",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.hdFont = t.isChecked();
 			}}).check(set.hdFont).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("使用更清晰的文字贴图，将大幅度提高文字的清晰度，对于手机/平板效果最佳。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
-			table.add(new CheckBox("显示天气效果",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
-			public void run(CheckBox t) {
+			table.add(new CheckBox("显示天气效果",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.weather = t.isChecked();
 			}}).check(set.weather).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("选择是否启用天气效果，可能降低一些性能，对游戏的剧情不产生影响。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
@@ -208,32 +196,27 @@ public class SystemView extends IMenuView{
 			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"split.png")).padTop(15).left().row();
 			table.add(new Label("Game Options",20).align(Align.right)).width(300).align(Align.right).height(0).padTop(-40).row();
 			
-			table.add(new CheckBox("触屏模式",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
-			public void run(CheckBox t) {
+			table.add(new CheckBox("触屏模式",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.touchMod = t.isChecked();
 			}}).check(set.touchMod).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(50).row();
 			table.add(new Label("开启后将对触屏进行一部分优化，适合手机/平板。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
-			table.add(new CheckBox("触屏粒子",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
-			public void run(CheckBox t) {
+			table.add(new CheckBox("触屏粒子",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.touchParticle = t.isChecked();
 			}}).check(set.touchParticle).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("开启后，点击/滑动屏幕会有粒子特效。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
-			table.add(new CheckBox("点击地面时自动寻路",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
-			public void run(CheckBox t) {
+			table.add(new CheckBox("点击地面时自动寻路",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.pathFind = t.isChecked();
 			}}).check(set.pathFind).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("当点击游戏的地图时，会进行自动寻路操作。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
-			table.add(new CheckBox("默认奔跑状态",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
-			public void run(CheckBox t) {
+			table.add(new CheckBox("默认奔跑状态",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.runmod = t.isChecked();
 			}}).check(set.runmod).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("启动后，默认是“奔跑”状态，按住ctrl(B键)可以还原。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
-			table.add(new CheckBox("平滑视角",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
-			public void run(CheckBox t) {
+			table.add(new CheckBox("平滑视角",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.softCamera = t.isChecked();
 			}}).check(set.softCamera).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("移动时，视角会变得平滑。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
@@ -252,7 +235,6 @@ public class SystemView extends IMenuView{
 			
 			table.add(new Label("游戏整体音量",24)).left().padTop(50).row();
 			table.add(new Slider(0, 100, 1, false, sstyle).onScroll(new CustomRunnable<Slider>() {
-				@Override
 				public void run(Slider s) {
 					set.volume = (int) s.getValue();
 				}
@@ -260,7 +242,6 @@ public class SystemView extends IMenuView{
 			
 			table.add(new Label("音乐音量",24)).left().padTop(50).row();
 			table.add(new Slider(0, 100, 1, false, sstyle).onScroll(new CustomRunnable<Slider>() {
-				@Override
 				public void run(Slider s) {
 					set.musicVolume = (int) s.getValue();
 				}
@@ -268,7 +249,6 @@ public class SystemView extends IMenuView{
 			
 			table.add(new Label("音效音量",24)).left().padTop(50).row();
 			table.add(new Slider(0, 100, 1, false, sstyle).onScroll(new CustomRunnable<Slider>() {
-				@Override
 				public void run(Slider s) {
 					set.seVolume = (int) s.getValue();
 				}
@@ -286,37 +266,31 @@ public class SystemView extends IMenuView{
 			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"split.png")).padTop(15).left().row();
 			table.add(new Label("Other Options",20).align(Align.right)).width(300).align(Align.right).height(0).padTop(-40).row();
 			
-			table.add(new CheckBox("缓存游戏资源",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
-			public void run(CheckBox t) {
+			table.add(new CheckBox("缓存游戏资源",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.cacheResource = t.isChecked();//
 			}}).check(set.cacheResource).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("游戏将尝试缓存已读取的资源，在下次进入菜单、地图时会加快读取，但会增加内存的消耗。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
-			table.add(new CheckBox("在屏幕上显示帧数",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
-			public void run(CheckBox t) {
+			table.add(new CheckBox("在屏幕上显示帧数",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.showFPS = t.isChecked();
 			}}).check(set.showFPS).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(50).row();
 			table.add(new Label("你是强迫症么？",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
-			table.add(new CheckBox("输出调试信息",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
-			public void run(CheckBox t) {
+			table.add(new CheckBox("输出调试信息",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.debugMod = t.isChecked();
 			}}).check(set.debugMod).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(50).row();
 			table.add(new Label("输出游戏的调试信息到控制台（开发者）。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
-			table.add(new CheckBox("调试布局",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
-			public void run(CheckBox t) {
+			table.add(new CheckBox("调试布局",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.uiDebug = t.isChecked();
 			}}).check(set.uiDebug).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("启用Stage Debug（开发者）。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
-			table.add(new CheckBox("当游戏发生异常时，尝试上报错误问题",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
-			public void run(CheckBox t) {
+			table.add(new CheckBox("当游戏发生异常时，尝试上报错误问题",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.uiDebug = t.isChecked();
 			}}).check(set.uiDebug).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("上报的信息将不会收集您的任何私有资料。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			table.add($.add(new Label("点击我可以查看《隐私说明》",20).warp(true).color(Color.valueOf("8FBEE6"))).setTouchable(Touchable.enabled).onClick(new Runnable() {
-				@Override
 				public void run() {
 					GameUtil.openURL("http://www.baidu.com");
 				}
@@ -342,7 +316,6 @@ public class SystemView extends IMenuView{
 			table.add(new Label("秘封异闻录游戏版本："+Setting.GAME_VERSION+"\nGDX-RPG引擎版本："+Setting.GDXRPG_VERSION,20).center()).center().padTop(30).row();
 			table.add(Res.get(Setting.IMAGE_LOGO+"title.png")).padTop(450).padBottom(50).row();
 			table.add(new TextButton("访问官网", tstyle).onClick(new Runnable() {
-				@Override
 				public void run() {
 					GameUtil.openURL("http://www.rpsg-team.com/");
 				}
@@ -353,15 +326,12 @@ public class SystemView extends IMenuView{
 		//**游戏选项 end
 		
 		$.add(parentTable).children().children().find(Slider.class,TextButton.class,Label.class).each(new CustomRunnable<Actor>() {
-			@Override
 			public void run(final Actor t) {
 				t.addListener(new InputListener(){
-					@Override
 					public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 						pane.cancel();
 						return true;
 					}
-					@Override
 					public void touchDragged(InputEvent event, float x, float y, int pointer) {
 						pane.cancel();
 					}
@@ -374,23 +344,19 @@ public class SystemView extends IMenuView{
 		pane.setScrollY(lastTop != lastTop ? 0 : lastTop);
 	}
 
-	@Override
 	public void draw(SpriteBatch batch) {
 		stage.draw();
 	}
-	@Override
 	public void logic() {
 		stage.act();
 	}
 	
-	@Override
 	public void onkeyDown(int keyCode) {
 		if(keyCode == Keys.R)
 			generate();//for debug TODO
 		stage.keyDown(keyCode);
 	}
 
-	@Override
 	public void dispose() {
 		Persistence.save();
 		stage.dispose();

@@ -17,7 +17,6 @@ public class ThrowItemView extends SidebarView{
 	
 	TextButton okay;
 	Counter counter;
-	@Override
 	public void init() {
 		Icon icon = (Icon) param.get("item");
 		group.addActor(Res.get(Setting.UI_BASE_IMG).size(545, 160).position(400, 280).a(.13f));
@@ -31,8 +30,7 @@ public class ThrowItemView extends SidebarView{
 		tstyle.up = Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"throwbut.png");
 		tstyle.font = Res.font.get(22);
 		
-		$.add(okay = new TextButton("确定丢弃",tstyle).onClick(new Runnable() {@Override
-		@SuppressWarnings("unchecked")
+		$.add(okay = new TextButton("确定丢弃",tstyle).onClick(new Runnable() {@SuppressWarnings("unchecked")
 			public void run() {
 				if(counter.get() != 0)
 					((CustomRunnable<Integer>)param.get("callback")).run(counter.get());

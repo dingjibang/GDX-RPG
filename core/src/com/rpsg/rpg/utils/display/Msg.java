@@ -28,7 +28,7 @@ public class Msg {
 		float ss=msgbox.getWidth();
 		msgbox.setWidth(GameUtil.screen_width-40);
 		ss=ss/msgbox.getWidth();
-		msgbox.setHeight(msgbox.getHeight()/ss);
+		msgbox.setHeight((float)msgbox.getHeight()/ss);
 		msgbox.setX(GameUtil.screen_width/2-msgbox.getWidth()/2);
 		msgbox.setY(25);
 		msgbox.setColor(1,1,1,0);
@@ -52,7 +52,6 @@ public class Msg {
 		firstZPress=false;
 		return script.set(new ScriptExecutor(script) {
 			SpriteBatch batch= (SpriteBatch) RPG.ctrl.fg.stage.getBatch();
-			@Override
 			public void step() {
 				if(Input.isPress(Keys.CONTROL_LEFT)){
 					if(currentTextPoint<=currentText.length()-5)
@@ -80,7 +79,6 @@ public class Msg {
 				font.setColor(Color.WHITE);
 				batch.end();
 			}
-			@Override
 			public void init() {
 				currentText=str;
 				currentTextPoint=0;

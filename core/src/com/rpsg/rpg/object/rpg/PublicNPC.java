@@ -13,7 +13,6 @@ public class PublicNPC extends DefaultNPC {
 			this.id=id;
 	}
 	
-	@Override
 	public void init() {
 		super.init();
 	}

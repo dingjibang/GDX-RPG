@@ -39,8 +39,7 @@ public class PostUtil {
 		first=false;
 		stage=new Stage(new ScalingViewport(Scaling.stretch, 1024, 576, new OrthographicCamera()),GameViews.gameview.stage.getBatch());
 		
-		others=$.add($.add(new ImageButton(Res.getDrawable(Setting.IMAGE_GLOBAL+"menu.png"),Res.getDrawable(Setting.IMAGE_GLOBAL+"menu_active.png")).pos(GameUtil.screen_width-65, 15).onClick(new Runnable() {@Override
-		public void run() {
+		others=$.add($.add(new ImageButton(Res.getDrawable(Setting.IMAGE_GLOBAL+"menu.png"),Res.getDrawable(Setting.IMAGE_GLOBAL+"menu_active.png")).pos(GameUtil.screen_width-65, 15).onClick(new Runnable() {public void run() {
 			GameViews.gameview.onkeyDown(Keys.ESCAPE);
 		}})).appendTo(stage).setUserObject("menu"));
 		TouchpadStyle tstyle=new TouchpadStyle();
@@ -48,22 +47,18 @@ public class PostUtil {
 		tstyle.knob=Res.getDrawable(Setting.IMAGE_GLOBAL+"pad_knob.png");
 		others.add($.add(pad=new Touchpad(0, tstyle)).setPosition(35, 25).setVisible(!GameUtil.isDesktop));
 		others.add($.add(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button_a.png"), Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button_a_p.png"))).setPosition(810, 45).addListener(new InputListener(){
-			@Override
 			public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
 				Input.cleanPress(Keys.Z);
 			}
-			@Override
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
 				Input.press(Keys.Z);
 				return true;
 			}
 		}).setVisible(!GameUtil.isDesktop));
 		others.add($.add(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button_b.png"), Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button_b_p.png"))).setPosition(880, 95).addListener(new InputListener(){
-			@Override
 			public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
 				Input.cleanPress(Keys.CONTROL_LEFT);
 			}
-			@Override
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
 				Input.press(Keys.CONTROL_LEFT);
 				return true;

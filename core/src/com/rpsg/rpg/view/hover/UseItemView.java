@@ -62,7 +62,6 @@ public class UseItemView extends SidebarView {
 		final TextButton button = new TextButton("使用",tstyle);
 		
 		$.add(button.onClick(new Runnable() {
-			@Override
 			public void run() {
 				if(box.get()!=null || (item instanceof Item && ((Item)item).range == ItemRange.all) || (item instanceof Spellcard && ((Spellcard)item).range == ItemRange.all)){
 					current = box.get();

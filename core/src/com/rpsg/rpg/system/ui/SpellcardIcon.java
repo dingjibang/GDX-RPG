@@ -31,7 +31,6 @@ public class SpellcardIcon extends Actor{
 	
 	public SpellcardIcon onClick(final CustomRunnable<SpellcardIcon> run){
 		query.onClick(new Runnable(){
-			@Override
 			public void run() {
 				run.run(SpellcardIcon.this);
 			}

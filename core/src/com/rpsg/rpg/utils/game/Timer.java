@@ -9,11 +9,9 @@ public class Timer {
 		return script.set(new ScriptExecutor(script) {
 			int time = frame;
 
-			@Override
 			public void init() {
 			}
 
-			@Override
 			public void step() {
 				if (time-- == 0)
 					dispose();

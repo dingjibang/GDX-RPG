@@ -33,7 +33,6 @@ public final class Fxaa extends Antialiasing {
 		fxaaFilter = new FxaaFilter(viewportWidth, viewportHeight);
 	}
 
-	@Override
 	public void setViewportSize (int width, int height) {
 		fxaaFilter.setViewportSize(width, height);
 	}

@@ -29,13 +29,11 @@ public class ConfirmView extends HoverView{
 		style.font=Res.font.get(20);
 		style.font.getData().markupEnabled = true;
 	}
-	@Override
 	public void init() {
 		int offset=0;
 		stage.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"savebl.png").size(GameUtil.screen_width, GameUtil.screen_height).color(0,0,0,0.85f));
 		for(final Confirm con:confirms){
 			Actor but= $.add(new TextButton(con.name, style)).onClick(new Runnable() {
-				@Override
 				public void run() {
 					con.callBack.run(ConfirmView.this);
 				}
@@ -47,7 +45,6 @@ public class ConfirmView extends HoverView{
 		stage.addActor($.add(Res.font.getLabel(msg,22).width(800).warp(true).markup(true)).setHeight(300).setPosition(115, 230).setAlign(Align.center).getItem());
 	}
 	
-	@Override
 	public boolean keyDown(int keycode) {
 		if(keycode==Keys.ESCAPE)
 			disposed=true;

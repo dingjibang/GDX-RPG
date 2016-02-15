@@ -55,7 +55,6 @@ public class ImageButton extends Button {
 		setStyle(style);
 		setSize(getPrefWidth(), getPrefHeight());
 		addListener(new InputListener(){
-			@Override
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
@@ -105,7 +104,6 @@ public class ImageButton extends Button {
 		return this;
 	}
 
-	@Override
 	public void setStyle (ButtonStyle style) {
 		if (!(style instanceof ImageButtonStyle)) throw new IllegalArgumentException("style must be an ImageButtonStyle.");
 		super.setStyle(style);
@@ -113,7 +111,6 @@ public class ImageButton extends Button {
 		if (image != null) updateImage();
 	}
 
-	@Override
 	public ImageButtonStyle getStyle () {
 		return style;
 	}
@@ -135,7 +132,6 @@ public class ImageButton extends Button {
 		image.setDrawable(drawable);
 	}
 
-	@Override
 	public void draw (Batch batch, float parentAlpha) {
 		updateImage();
 		super.draw(batch, parentAlpha);

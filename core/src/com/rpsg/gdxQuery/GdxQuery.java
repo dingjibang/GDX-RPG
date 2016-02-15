@@ -51,14 +51,12 @@ public class GdxQuery {
 	private GdxQuery father;
 	
 	private InputListener clickListener=(new InputListener(){
-		@Override
 		public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
 			if(b != Buttons.LEFT)
 				return;
 			if(click!=null && x>=0 && y>=0 && x <= event.getListenerActor().getWidth() && y <= event.getListenerActor().getHeight()) click.run();
 			if(touchUp!=null) touchUp.run();
 		}
-		@Override
 		public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
 			if(touchDown!=null) touchDown.run();
 			return true;
@@ -607,7 +605,6 @@ public class GdxQuery {
 		return values.size();
 	}
 
-	@Override
 	public List<Actor> clone() {
 		List<Actor> copy = new LinkedList<Actor>();
 		copy.addAll(getItems());

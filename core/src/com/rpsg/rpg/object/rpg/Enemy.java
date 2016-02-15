@@ -112,7 +112,6 @@ public class Enemy implements Time {
 		return reader.parse(Gdx.files.internal(Setting.SCRIPT_DATA_ENEMY + id + ".grd").readString());
 	}
 	
-	@Override
 	public int getSpeed(){
 		return Integer.valueOf(prop.get("speed"));
 	}

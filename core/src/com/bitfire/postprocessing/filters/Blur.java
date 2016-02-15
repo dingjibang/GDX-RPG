@@ -58,8 +58,8 @@ public final class Blur extends MultipassFilter {
 
 	public Blur (int width, int height) {
 		// precompute constants
-		this.invWidth = 1f / width;
-		this.invHeight = 1f / height;
+		this.invWidth = 1f / (float)width;
+		this.invHeight = 1f / (float)height;
 
 		this.passes = 1;
 		this.amount = 1f;

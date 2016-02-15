@@ -26,18 +26,15 @@ public class Account implements Serializable {
 		
 		String command = "sendHttpRequest";
 		HttpResponseListener listener = new HttpResponseListener() {
-			@Override
 			public void handleHttpResponse(HttpResponse response) {
 				RPG.toast.add(response.getResultAsString(), Color.GREEN,13);
 				GameViews.loadview.stop(command);
 			}
 			
-			@Override
 			public void failed(Throwable t) {
 				t.printStackTrace();
 			}
 			
-			@Override
 			public void cancelled() {
 				System.out.println("cancelled");
 			}

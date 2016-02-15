@@ -153,7 +153,6 @@ public class Hero extends RPGObject implements Time{
 		return getProp("dead")==TRUE;
 	}
 
-	@Override
 	public String toString() {
 		return name;
 	}

@@ -31,7 +31,6 @@ public class Music {
 
 	public static BaseScriptExecutor playMusic(Script script, final String music) {
 		return script.set(new BaseScriptExecutor() {
-			@Override
 			public void init() {
 				playMusic(music);
 			}
@@ -40,7 +39,6 @@ public class Music {
 
 	public static BaseScriptExecutor playSE(Script script, final String se) {
 		return script.set(new BaseScriptExecutor() {
-			@Override
 			public void init() {
 				playSE(se,false);
 			}
@@ -49,7 +47,6 @@ public class Music {
 	
 	public static BaseScriptExecutor playSE(Script script, final String se,final boolean loop) {
 		return script.set(new BaseScriptExecutor() {
-			@Override
 			public void init() {
 				playSE(se,loop);
 			}
@@ -87,13 +84,11 @@ public class Music {
 		return script.set(new ScriptExecutor(script) {
 			Actor proxy = new Actor();
 
-			@Override
 			public void init() {
 				proxy.getColor().a = se.size() == 0 ? .7f : se.values().iterator().next().getVolume();
 				proxy.addAction(Actions.color(new Color(1, 1, 1, color), time));
 			}
 
-			@Override
 			public void step() {
 				proxy.act(Gdx.graphics.getDeltaTime());
 				for (String key : se.keySet()) {
@@ -110,13 +105,11 @@ public class Music {
 		return script.set(new ScriptExecutor(script) {
 			Actor proxy = new Actor();
 
-			@Override
 			public void init() {
 				proxy.getColor().a = se.size() == 0 ? .7f : se.values().iterator().next().getVolume();
 				proxy.addAction(Actions.fadeOut(time));
 			}
 
-			@Override
 			public void step() {
 				proxy.act(Gdx.graphics.getDeltaTime());
 				for (String key : se.keySet()) {

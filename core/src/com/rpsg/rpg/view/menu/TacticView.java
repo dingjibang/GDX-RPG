@@ -48,7 +48,6 @@ public class TacticView extends IMenuView {
 	Image linkerc,linkerl,linkerr;
 	Image linkbox1,linkbox2;
 	Label tipLib,tipLib2;
-	@Override
 	public View init() {
 		eff=new ParticleEffect();
 		eff.load(Gdx.files.internal(Setting.PARTICLE+"link.p"),Gdx.files.internal(Setting.PARTICLE));
@@ -93,7 +92,6 @@ public class TacticView extends IMenuView {
 	}
 	
 	int speeda=15;
-	@Override
 	public void draw(SpriteBatch batch) {
 		stage.draw();
 		SpriteBatch sb = (SpriteBatch) stage.getBatch();
@@ -121,12 +119,10 @@ public class TacticView extends IMenuView {
 		sb.end();
 	}
 
-	@Override
 	public void logic() {
 		stage.act();
 	}
 
-	@Override
 	public void onkeyDown(int keyCode) {
 		if (Keys.ESCAPE == keyCode || keyCode == Keys.X) {
 			this.disposed = true;
@@ -135,7 +131,6 @@ public class TacticView extends IMenuView {
 		
 	}
 
-	@Override
 	public void dispose() {
 		stage.dispose();
 		eff.dispose();
@@ -536,7 +531,6 @@ public class TacticView extends IMenuView {
 			return this;
 		}
 		
-		@Override
 		public void draw(Batch sb,float parentAlpha){
 			super.draw(sb, parentAlpha);
 			face.setPosition(getX(), getY());

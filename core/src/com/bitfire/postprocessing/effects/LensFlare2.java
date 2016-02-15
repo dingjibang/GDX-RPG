@@ -217,7 +217,7 @@ public final class LensFlare2 extends PostProcessorEffect {
 	}
 
 	public int getGhosts () {
-		return lens.getGhosts();
+		return (int)lens.getGhosts();
 	}
 
 	public boolean isBlendingEnabled () {

@@ -37,7 +37,6 @@ public class Slider extends ProgressBar {
 		shiftIgnoresSnap = true;
 
 		addListener(new InputListener() {
-			@Override
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				if (disabled) return false;
 				if (draggingPointer != -1) return false;
@@ -46,7 +45,6 @@ public class Slider extends ProgressBar {
 				return true;
 			}
 
-			@Override
 			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
 				if (pointer != draggingPointer) return;
 				draggingPointer = -1;
@@ -58,7 +56,6 @@ public class Slider extends ProgressBar {
 				}
 			}
 
-			@Override
 			public void touchDragged (InputEvent event, float x, float y, int pointer) {
 				calculatePositionAndValue(x, y);
 			}
@@ -71,7 +68,6 @@ public class Slider extends ProgressBar {
 		super.setStyle(style);
 	}
 
-	@Override
 	public SliderStyle getStyle () {
 		return (SliderStyle)super.getStyle();
 	}
