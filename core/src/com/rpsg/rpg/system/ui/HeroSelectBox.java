@@ -56,6 +56,7 @@ public class HeroSelectBox extends Group implements Disposable{
 		particle.draw(batch,Gdx.graphics.getDeltaTime());
 	}
 	
+	@Override
 	public void dispose(){
 		particle.dispose();
 	}
@@ -86,6 +87,7 @@ public class HeroSelectBox extends Group implements Disposable{
 	
 	private HeroSelectBox generateHeroBox(int x,int y,int w,int h,final Hero hero){
 		addActor(Res.get(Setting.UI_BASE_IMG).size(w,h).a(.15f).position(x, y).object(hero==null?"nullHero":hero).onClick(new Runnable() {
+			@Override
 			public void run() {
 				set(hero);
 			}

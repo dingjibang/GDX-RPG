@@ -144,6 +144,7 @@ public class LoadView extends View {
 		return false;
 	}
 
+	@Override
 	public void draw(SpriteBatch batch) {
 		this.draw();
 	}

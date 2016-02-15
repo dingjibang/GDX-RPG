@@ -10,6 +10,7 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.MoveStack;
+import com.rpsg.rpg.object.rpg.RPGObject;
 import com.rpsg.rpg.system.controller.BattleController.State;
 import com.rpsg.rpg.view.GameViews;
 
@@ -57,13 +58,13 @@ public class HeroController {
 			if(i==0){
 				currentHeros.get(i).generatePosition(x, y, z);
 			}else
-				if(currentHeros.get(i-1).getCurrentFace()==Hero.FACE_D)
+				if(currentHeros.get(i-1).getCurrentFace()==RPGObject.FACE_D)
 					currentHeros.get(i).generatePosition(x, y-1, z);
-				else if(currentHeros.get(i-1).getCurrentFace()==Hero.FACE_U)
+				else if(currentHeros.get(i-1).getCurrentFace()==RPGObject.FACE_U)
 					currentHeros.get(i).generatePosition(x, y+1, z);
-				else if(currentHeros.get(i-1).getCurrentFace()==Hero.FACE_L)
+				else if(currentHeros.get(i-1).getCurrentFace()==RPGObject.FACE_L)
 					currentHeros.get(i).generatePosition(x+1, y, z);
-				else if(currentHeros.get(i-1).getCurrentFace()==Hero.FACE_R)
+				else if(currentHeros.get(i-1).getCurrentFace()==RPGObject.FACE_R)
 					currentHeros.get(i).generatePosition(x-1, y, z);
 		}
 		thisFrameGeneratedPosition=true;

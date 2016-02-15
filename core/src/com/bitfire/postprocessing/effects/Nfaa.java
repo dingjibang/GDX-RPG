@@ -33,6 +33,7 @@ public final class Nfaa extends Antialiasing {
 		nfaaFilter = new NfaaFilter(viewportWidth, viewportHeight);
 	}
 
+	@Override
 	public void setViewportSize (int width, int height) {
 		nfaaFilter.setViewportSize(width, height);
 	}

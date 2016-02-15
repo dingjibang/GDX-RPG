@@ -35,6 +35,7 @@ public abstract class SidebarView extends HoverView{
 	Image mask;
 	int count,width;
 	
+	@Override
 	public HoverView superInit(Map<Object, Object> initParam){
 		WidgetGroup base = new WidgetGroup();
 		
@@ -56,6 +57,7 @@ public abstract class SidebarView extends HoverView{
 		Image bg;
 		base.addActor(bg = Res.get(Setting.IMAGE_MENU_TACTIC + "sup_databox.png").size(784, GameUtil.screen_height).position(240, 0).a(.9f));
 		bg.addCaptureListener(new InputListener(){
+			@Override
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				if(x<150)
 					mask.click();
@@ -72,7 +74,7 @@ public abstract class SidebarView extends HoverView{
 		init();
 		
 		$.add(group).children().not(base).add(title,closeButton).each((Actor t)->{
-			int ran = (int) (-120 - width - ++count * 70);
+			int ran = -120 - width - ++count * 70;
 			float a = t.getColor().a;
 			t.addAction(Actions.sequence(Actions.moveBy(-ran, 0,0f),Actions.moveBy(ran, 0,0.85f,Interpolation.pow4Out)));
 			t.addAction(Actions.sequence(Actions.fadeOut(0f),Actions.alpha(a,0.4f,Interpolation.pow4)));
@@ -92,6 +94,7 @@ public abstract class SidebarView extends HoverView{
 	public void close(final Runnable callback){
 		group.clearActions();
 		group.addAction(Actions.sequence(Actions.moveTo(GameUtil.screen_width,0,0.2f,Interpolation.pow3),Actions.after(new Action() {
+			@Override
 			public boolean act(float delta) {
 				disposed=true;
 				if(callback != null) callback.run();
@@ -102,6 +105,7 @@ public abstract class SidebarView extends HoverView{
 		mask.addAction(Actions.fadeOut(.2f));
 	}
 	
+	@Override
 	public void close(){
 		close(null);
 	}

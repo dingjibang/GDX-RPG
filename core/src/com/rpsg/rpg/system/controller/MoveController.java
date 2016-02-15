@@ -87,22 +87,22 @@ public class MoveController {
 		
 		if (InputController.currentIOMode == IOMode.MapInput.normal && RPG.popup.isEmpty()) {
 			if ((Input.isPress(Keys.RIGHT) || Input.isPress(Keys.D)) && RPG.ctrl.hero.walked()) {
-				RPG.ctrl.hero.turn(Hero.FACE_R);
+				RPG.ctrl.hero.turn(RPGObject.FACE_R);
 				RPG.ctrl.hero.walk(1);
 				RPG.ctrl.hero.testWalk();
 			}
 			if ((Input.isPress(Keys.LEFT) || Input.isPress(Keys.A)) && RPG.ctrl.hero.walked()) {
-				RPG.ctrl.hero.turn(Hero.FACE_L);
+				RPG.ctrl.hero.turn(RPGObject.FACE_L);
 				RPG.ctrl.hero.walk(1);
 				RPG.ctrl.hero.testWalk();
 			}
 			if ((Input.isPress(Keys.UP) || Input.isPress(Keys.W)) && RPG.ctrl.hero.walked()) {
-				RPG.ctrl.hero.turn(Hero.FACE_U);
+				RPG.ctrl.hero.turn(RPGObject.FACE_U);
 				RPG.ctrl.hero.walk(1);
 				RPG.ctrl.hero.testWalk();
 			}
 			if ((Input.isPress(Keys.DOWN) || Input.isPress(Keys.S)) && RPG.ctrl.hero.walked()) {
-				RPG.ctrl.hero.turn(Hero.FACE_D);
+				RPG.ctrl.hero.turn(RPGObject.FACE_D);
 				RPG.ctrl.hero.walk(1);
 				RPG.ctrl.hero.testWalk();
 			}
@@ -160,6 +160,7 @@ public class MoveController {
 
 	public static void setCameraPosition(int x, int y) {
 		$.removeIf(offsetActor.getActions(), new RemoveTest<Action>() {
+			@Override
 			public boolean test(Action object) {
 				return object instanceof MoveToAction;
 			}
@@ -185,10 +186,12 @@ public class MoveController {
 
 	public static BaseScriptExecutor setCameraPositionWithHero(Script script, final int x, final int y, final boolean wait) {
 		return script.set(new ScriptExecutor(script) {
+			@Override
 			public void init() {
 				MoveController.setCameraPosition(x, y);
 			}
 
+			@Override
 			public void step() {
 				if (!wait || (wait && !MoveController.isCameraMoving()))
 					dispose();
@@ -198,9 +201,11 @@ public class MoveController {
 
 	public static BaseScriptExecutor waitCameraMove(Script script) {
 		return script.set(new ScriptExecutor(script) {
+			@Override
 			public void init() {
 			}
 
+			@Override
 			public void step() {
 				if (MoveController.isCameraMoving())
 					dispose();

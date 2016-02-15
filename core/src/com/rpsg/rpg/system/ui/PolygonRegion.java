@@ -38,18 +38,22 @@ public class PolygonRegion extends com.badlogic.gdx.graphics.g2d.PolygonRegion{
 	}
 
 	/** Returns the vertices in local space. */
+	@Override
 	public float[] getVertices () {
 		return vertices;
 	}
 
+	@Override
 	public short[] getTriangles () {
 		return triangles;
 	}
 
+	@Override
 	public float[] getTextureCoords () {
 		return textureCoords;
 	}
 
+	@Override
 	public TextureRegion getRegion () {
 		return region;
 	}

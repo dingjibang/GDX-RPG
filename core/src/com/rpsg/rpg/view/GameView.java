@@ -127,7 +127,7 @@ public class GameView extends View{
 		}
 		
 		if(Setting.persistence.weather && RPG.maps.getProp().get("weather")==null && renderable)
-			RPG.ctrl.weather.draw((SpriteBatch)batch);
+			RPG.ctrl.weather.draw(batch);
 		
 		if(postable)
 			post.render(true);
@@ -166,24 +166,28 @@ public class GameView extends View{
 		}
 	}
 
+	@Override
 	public void onkeyTyped(char character) {
 		if(!ma.update() || !inited)
 			return;
 		InputController.keyTyped(character);
 	}
 	
+	@Override
 	public void onkeyDown(int keycode) {
 		if(!ma.update() || !inited)
 			return;
 		InputController.keyDown(keycode,this);
 	}
 
+	@Override
 	public void onkeyUp(int keycode) {
 		if(!ma.update() || !inited)
 			return;
 		InputController.keyUp(keycode,this);
 	}
 
+	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		InputController.touchDown(screenX, screenY, pointer, button);
 		return false;
@@ -207,6 +211,7 @@ public class GameView extends View{
 		return false;
 	}
 	
+	@Override
 	public void mouseMoved(int x,int y){
 		InputController.mouseMoved(x,y);
 	};

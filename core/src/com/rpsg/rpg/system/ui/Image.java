@@ -26,6 +26,7 @@ import com.rpsg.rpg.utils.game.Logger;
 public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	private static Runnable _loaded = new Runnable() {
+		@Override
 		public void run() {
 		}
 	};
@@ -42,6 +43,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	{
 		addListener(new InputListener(){
+			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				if(delaydbClickTime<30)
 					if(drun!=null)
@@ -64,6 +66,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public Image onClick(final CustomRunnable<?> r){
 		run = new Runnable(){
+			@Override
 			public void run(){
 				r.run(null);
 			}
@@ -129,6 +132,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		draw(sb);
 	}
 	
+	@Override
 	public void draw(Batch batch, float parentAlpha) {
 		delaydbClickTime++;
 		super.draw(batch, parentAlpha);
@@ -142,10 +146,12 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 			Logger.error("尝试多线程读取openGL资源但遭到失败。");
 		}
 		addListener(new InputListener() {
+			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
 
+			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 				if (x > 0 && x < getWidth() && y > 0 && y < getHeight())
 					if (run != null){

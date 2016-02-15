@@ -68,7 +68,7 @@ public final class RadialBlur extends Filter<RadialBlur> {
 
 	public RadialBlur (Quality quality) {
 		super(ShaderLoader.fromFile("radial-blur", "radial-blur", "#define BLUR_LENGTH " + quality.length
-			+ "\n#define ONE_ON_BLUR_LENGTH " + 1f / (float)quality.length));
+			+ "\n#define ONE_ON_BLUR_LENGTH " + 1f / quality.length));
 		this.blur_len = quality.length;
 		rebind();
 		setOrigin(0.5f, 0.5f);
@@ -90,7 +90,7 @@ public final class RadialBlur extends Filter<RadialBlur> {
 
 	public void setStrength (float strength) {
 		this.strength = strength;
-		setParam(Param.BlurDiv, strength / (float)blur_len);
+		setParam(Param.BlurDiv, strength / blur_len);
 	}
 
 	public void setZoom (float zoom) {
@@ -122,7 +122,7 @@ public final class RadialBlur extends Filter<RadialBlur> {
 	@Override
 	public void rebind () {
 		setParams(Param.Texture, u_texture0);
-		setParams(Param.BlurDiv, this.strength / (float)blur_len);
+		setParams(Param.BlurDiv, this.strength / blur_len);
 
 		// being explicit (could call setOrigin that will call endParams)
 		setParams(Param.OffsetX, x);

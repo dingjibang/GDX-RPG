@@ -8,6 +8,7 @@ import com.rpsg.rpg.system.base.Res;
 
 public class SupportView extends SidebarView {
 	Hero hero;
+	@Override
 	public void init() {
 		Hero hero = (Hero) param.get("hero");
 		if(hero.support!=null){

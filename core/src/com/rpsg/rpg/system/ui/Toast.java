@@ -87,10 +87,11 @@ public class Toast extends Table {
 
 		setColor(1, 1, 1, 0);
 
-		float delay = 0 + (float) label.getText().length * .1f;
+		float delay = 0 + label.getText().length * .1f;
 		delay = delay > 5 ? 5 : delay;
 
 		addAction(Actions.sequence(Actions.fadeIn(.5f), Actions.delay(delay), Actions.fadeOut(.5f), Actions.run(new Runnable() {
+			@Override
 			public void run() {
 				remove();
 			}
@@ -107,6 +108,7 @@ public class Toast extends Table {
 			addAction(Actions.scaleTo(1, 1, 1.7f, Interpolation.elasticOut));
 
 			addAction(Actions.sequence(Actions.delay(.1f), Actions.run(new Runnable() {
+				@Override
 				public void run() {
 					p.reset();
 					p.getEmitters().get(0).getTint().setColors(new float[] { 1 - color.r, 1 - color.g, 1 - color.b });

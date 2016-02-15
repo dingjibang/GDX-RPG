@@ -28,8 +28,8 @@ public final class Vignette extends PostProcessorEffect {
 
 	public Vignette (int viewportWidth, int viewportHeight, boolean controlSaturation) {
 		this.controlSaturation = controlSaturation;
-		oneOnW = 1f / (float)viewportWidth;
-		oneOnH = 1f / (float)viewportHeight;
+		oneOnW = 1f / viewportWidth;
+		oneOnH = 1f / viewportHeight;
 		vignetting = new Vignetting(controlSaturation);
 	}
 

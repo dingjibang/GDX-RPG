@@ -41,6 +41,7 @@ public class ItemView extends IMenuView{
 	String currentFilter = Item.class.getSimpleName();
 	ImageButton takeButton,throwButton;
 	Image take=Res.get(Setting.IMAGE_MENU_ITEM+"but_use.png"),off=Res.get(Setting.IMAGE_MENU_EQUIP+"but_off.png").a(.3f),throwImg=Res.get(Setting.IMAGE_MENU_EQUIP+"but_remove.png").a(.3f);
+	@Override
 	public ItemView init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		
@@ -87,6 +88,7 @@ public class ItemView extends IMenuView{
 				$.add(new Label(type.value(),26)).setPosition(143+offset, 500).setColor(1,1,1,0).appendTo(inner).setAlpha(0).addAction(Actions.fadeIn(animate?.1f:0));
 			}else{
 				inner.addActor(new Image(Setting.UI_BASE_IMG).size(90, 60).color(Color.valueOf("3d3d3d")).position(135+(offset+=pad), 486).onClick(new Runnable(){
+					@Override
 					public void run() {
 						currentFilter = type.name();
 						generate(true);
@@ -99,28 +101,34 @@ public class ItemView extends IMenuView{
 		ilist=((ImageList) $.add(new ImageList(getItems(currentFilter))).setSize(735, 266).setPosition(248, 185).appendTo(inner).getItem());
 		
 		ilist.generate().onChange(new CustomRunnable<Icon>() {
+			@Override
 			public void run(Icon t) {
 				
 				description.clear();
 				
 				if(!t.enable || t.item instanceof Equipment){
-					takeButton.setFg(take.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
+					takeButton.setFg(take.a(.3f)).fgSelfColor(true).onClick(new Runnable(){@Override
+					public void run() {}});
 				}else{
 					if(t.current)
-						takeButton.setFg(off.a(1)).onClick(new Runnable(){public void run() {
+						takeButton.setFg(off.a(1)).onClick(new Runnable(){@Override
+						public void run() {
 							RPG.ctrl.item.takeOff(parent.current, currentFilter);
 							generate(false);
 						}});
 					else
-						takeButton.setFg(take.a(1)).fgSelfColor(true).onClick(new Runnable(){public void run() {
+						takeButton.setFg(take.a(1)).fgSelfColor(true).onClick(new Runnable(){@Override
+						public void run() {
 							useEquip();
 						}});
 				}
 				
 				if(!t.item.throwable || t.current){
-					throwButton.setFg(throwImg.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
+					throwButton.setFg(throwImg.a(.3f)).fgSelfColor(true).onClick(new Runnable(){@Override
+					public void run() {}});
 				}else{
-					throwButton.setFg(throwImg.a(1)).fgSelfColor(true).onClick(new Runnable(){public void run() {
+					throwButton.setFg(throwImg.a(1)).fgSelfColor(true).onClick(new Runnable(){@Override
+					public void run() {
 						removeEquip();
 					}});
 				}
@@ -155,6 +163,7 @@ public class ItemView extends IMenuView{
 		return io;
 	}
 	
+	@Override
 	public void draw(SpriteBatch batch) {
 		stage.draw();
 	}
@@ -169,6 +178,7 @@ public class ItemView extends IMenuView{
 				put("width",100);
 				put("item",ilist.getCurrent());
 				put("callback",new Runnable() {
+					@Override
 					public void run() {
 						generate(false);
 					}
@@ -185,6 +195,7 @@ public class ItemView extends IMenuView{
 			put("width",100);
 			put("item",ilist.getCurrent());
 			put("callback",new CustomRunnable<Integer>() {
+				@Override
 				public void run(Integer t) {
 					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().item.name+" "+t+" 个", Color.RED);
 					RPG.ctrl.item.remove(ilist.getCurrent().item, t);
@@ -195,10 +206,12 @@ public class ItemView extends IMenuView{
 		
 	}
 
+	@Override
 	public void logic() {
 		stage.act();
 	}
 	
+	@Override
 	public void onkeyDown(int keyCode) {
 		if(Keys.ESCAPE==keyCode || Keys.X==keyCode)
 			this.disposed=true;

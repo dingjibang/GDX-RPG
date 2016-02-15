@@ -26,24 +26,30 @@ public class Counter extends Group {
 		tstyle.up = Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"throwbut.png");
 		tstyle.font = Res.font.get(18);
 		
-		$.add(new TextButton("+1", tstyle)).appendTo(this).onClick(new Runnable() {public void run() {
+		$.add(new TextButton("+1", tstyle)).appendTo(this).onClick(new Runnable() {@Override
+		public void run() {
 			add(1);
 		}}).setPosition(198,100).setSize(120,40).getCell().prefSize(140,40);
-		$.add(new TextButton("-1", tstyle)).appendTo(this).onClick(new Runnable() {public void run() {
+		$.add(new TextButton("-1", tstyle)).appendTo(this).onClick(new Runnable() {@Override
+		public void run() {
 			add(-1);
 		}}).setPosition(333,100).setSize(120,40).getCell().prefSize(140,40);
 		
-		$.add(new TextButton("+10", tstyle)).appendTo(this).onClick(new Runnable() {public void run() {
+		$.add(new TextButton("+10", tstyle)).appendTo(this).onClick(new Runnable() {@Override
+		public void run() {
 			add(10);
 		}}).setPosition(198,50).setSize(120,40).getCell().prefSize(140,40);
-		$.add(new TextButton("-10", tstyle)).appendTo(this).onClick(new Runnable() {public void run() {
+		$.add(new TextButton("-10", tstyle)).appendTo(this).onClick(new Runnable() {@Override
+		public void run() {
 			add(-10);
 		}}).setPosition(333,50).setSize(120,40).getCell().prefSize(140,40);
 		
-		$.add(new TextButton("MAX", tstyle)).appendTo(this).onClick(new Runnable() {public void run() {
+		$.add(new TextButton("MAX", tstyle)).appendTo(this).onClick(new Runnable() {@Override
+		public void run() {
 			set(getMax());
 		}}).setPosition(198,0).setSize(120,40).getCell().prefSize(140,40);
-		$.add(new TextButton("C", tstyle)).appendTo(this).onClick(new Runnable() {public void run() {
+		$.add(new TextButton("C", tstyle)).appendTo(this).onClick(new Runnable() {@Override
+		public void run() {
 			set(0);
 		}}).setPosition(333,0).setSize(120,40).getCell().prefSize(140,40);
 		

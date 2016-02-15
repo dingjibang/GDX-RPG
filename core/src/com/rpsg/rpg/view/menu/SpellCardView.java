@@ -59,15 +59,19 @@ public class SpellCardView extends IMenuView{
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info.png");
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info_p.png");// help button press
 		cstyle.font = Res.font.get(20);
-		$.add(new CheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
+		$.add(new CheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(new GdxQueryRunnable() {@Override
+		public void run(final GdxQuery self) {self.onClick(new Runnable() {@Override
+		public void run() {
 			data.addAction(self.isChecked()?Actions.fadeIn(.3f):Actions.fadeOut(.3f));
 		}});}});
 		
-		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).onClick(new Runnable() {public void run() {
+		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).onClick(new Runnable() {@Override
+		public void run() {
 			if(parent.next())
 				generate();
 		}}).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
-		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).setScale(.8f).setScaleX(-.8f).appendTo(stage).setPosition(196, 483).onClick(new Runnable() {public void run() {
+		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).setScale(.8f).setScaleX(-.8f).appendTo(stage).setPosition(196, 483).onClick(new Runnable() {@Override
+		public void run() {
 			if(parent.prev())
 				generate();
 		}}).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
@@ -107,8 +111,10 @@ public class SpellCardView extends IMenuView{
 		final Table items = new Table().left().top();
 		for(Spellcard sc:hero.sc){
 			items.add(new SpellcardIcon(sc).onClick(new CustomRunnable<SpellcardIcon>() {
+				@Override
 				public void run(final SpellcardIcon t) {
 					$.add(items).children().each(new CustomRunnable<SpellcardIcon>() {
+						@Override
 						public void run(SpellcardIcon t) {
 							t.select(false);
 						}
@@ -123,6 +129,7 @@ public class SpellCardView extends IMenuView{
 					labels.add(new Label(t.sc.description2,20).warp(true).color(Color.ORANGE)).align(Align.topLeft).prefWidth(343).padTop(20).row();
 					if(t.sc.occasion == ItemOccasion.all || t.sc.occasion == ItemOccasion.map){
 						apply.onClick(new Runnable(){
+							@Override
 							public void run() {
 								RPG.popup.add(UseItemView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
 									put("title","使用符卡");
@@ -130,6 +137,7 @@ public class SpellCardView extends IMenuView{
 									put("user2",hero);
 									put("item",new Icon().generateIcon(t.sc, true));
 									put("callback",new Runnable() {
+										@Override
 										public void run() {
 										}
 									});

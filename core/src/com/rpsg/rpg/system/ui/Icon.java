@@ -35,6 +35,7 @@ public class Icon extends Image implements Comparable<Icon>{
 		this.item=baseItem;
 		final ProxyImage i = (ProxyImage)(Res.exist(baseItem.getIcon())?Res.get(baseItem.getIcon()):Res.get(BaseItem.getDefaultIcon()));
 		i.loaded=new Runnable() {
+			@Override
 			public void run() {
 				Icon.this.setDrawable(i.getDrawable());
 				if(!enable)

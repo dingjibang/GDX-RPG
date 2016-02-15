@@ -23,6 +23,7 @@ import com.bitfire.postprocessing.filters.Lens;
 /** Lens flare effect.
  * @deprecated Please use the better {@link com.bitfire.postprocessing.effects.LensFlare2}.
  * @author Toni Sagrista */
+@Deprecated
 public final class LensFlare extends PostProcessorEffect {
 	private Lens lens = null;
 

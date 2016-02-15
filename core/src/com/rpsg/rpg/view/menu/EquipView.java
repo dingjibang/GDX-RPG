@@ -44,6 +44,7 @@ public class EquipView extends IMenuView{
 	String currentFilter = Equipment.EQUIP_CLOTHES;
 	ImageButton takeButton,throwButton;
 	Image take=Res.get(Setting.IMAGE_MENU_EQUIP+"but_take.png"),off=Res.get(Setting.IMAGE_MENU_EQUIP+"but_off.png").a(.3f),throwImg=Res.get(Setting.IMAGE_MENU_EQUIP+"but_remove.png").a(.3f);
+	@Override
 	public EquipView init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(137,79).setColor(0,0,0,.52f).setPosition(240,470).appendTo(stage);
@@ -52,7 +53,9 @@ public class EquipView extends IMenuView{
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info.png");
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info_p.png");// help button press
 		cstyle.font = Res.font.get(20);
-		$.add(new CheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
+		$.add(new CheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(new GdxQueryRunnable() {@Override
+		public void run(final GdxQuery self) {self.onClick(new Runnable() {@Override
+		public void run() {
 			data.addAction(self.isChecked()?Actions.fadeIn(.3f):Actions.fadeOut(.3f));
 		}});}});
 		
@@ -93,6 +96,7 @@ public class EquipView extends IMenuView{
 		for(final CheckBox box:bg.getButtons()){
 			stage.addActor(box);
 			box.setForeground(Res.get(Setting.IMAGE_MENU_EQUIP+box.getUserObject().toString()+".png").size(40, 40)).setFgOff(0).onClick(new Runnable(){
+				@Override
 				public void run() {
 					currentFilter = box.getUserObject().toString();
 					generate();
@@ -124,6 +128,7 @@ public class EquipView extends IMenuView{
 		
 		ilist.generate(new Icon().generateIcon(currentHeroEquip, true).setCurrent(true));
 		ilist.onChange(new CustomRunnable<Icon>() {
+			@Override
 			public void run(Icon t) {
 				Equipment currentHeroEquip = RPG.ctrl.item.getHeroEquip(parent.current, currentFilter);
 				
@@ -216,6 +221,7 @@ public class EquipView extends IMenuView{
 			generate();
 	}
 
+	@Override
 	public void draw(SpriteBatch batch) {
 		stage.draw();
 	}
@@ -236,6 +242,7 @@ public class EquipView extends IMenuView{
 			put("width",100);
 			put("item",ilist.getCurrent());
 			put("callback",new CustomRunnable<Integer>() {
+				@Override
 				public void run(Integer t) {
 					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().item.name+" "+t+" 个", Color.RED);
 					RPG.ctrl.item.remove(ilist.getCurrent().item, t);
@@ -246,10 +253,12 @@ public class EquipView extends IMenuView{
 		
 	}
 
+	@Override
 	public void logic() {
 		stage.act();
 	}
 	
+	@Override
 	public void onkeyDown(int keyCode) {
 		if(Keys.ESCAPE==keyCode || Keys.X==keyCode)
 			this.disposed=true;

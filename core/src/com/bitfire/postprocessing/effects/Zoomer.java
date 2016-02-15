@@ -50,8 +50,8 @@ public final class Zoomer extends PostProcessorEffect {
 			zoom = new Zoom();
 		}
 
-		oneOnW = 1f / (float)viewportWidth;
-		oneOnH = 1f / (float)viewportHeight;
+		oneOnW = 1f / viewportWidth;
+		oneOnH = 1f / viewportHeight;
 	}
 
 	/** Specify the zoom origin, in screen coordinates. */

@@ -89,6 +89,7 @@ public abstract class BaseItem implements Serializable {
 		return false;
 	}
 	
+	@Override
 	public String toString() {
 		return name;
 	}

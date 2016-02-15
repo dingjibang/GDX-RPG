@@ -120,7 +120,7 @@ public final class Vignetting extends Filter<Vignetting> {
 		dolut = (texLut != null);
 
 		if (dolut) {
-			lutStep = 1f / (float)texture.getHeight();
+			lutStep = 1f / texture.getHeight();
 			lutStepOffset = lutStep / 2f; // center texel
 			setParams(Param.TexLUT, u_texture1);
 			setParams(Param.LutStep, lutStep);
@@ -169,7 +169,7 @@ public final class Vignetting extends Filter<Vignetting> {
 	}
 
 	public int getLutIndexVal (int index) {
-		return (int)lutindex[index];
+		return lutindex[index];
 	}
 
 	public float getLutIntensity () {

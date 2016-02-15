@@ -18,6 +18,7 @@ import com.rpsg.rpg.system.ui.TextButton;
 
 
 public class LoginView extends SidebarView {
+	@Override
 	public void init() {
 		enableXKey = false;
 		
@@ -41,7 +42,8 @@ public class LoginView extends SidebarView {
 		cstyle.font=Res.font.get(22);
 		
 		final CheckBox chk;
-		$.add(chk = new CheckBox("    记住密码",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
+		$.add(chk = new CheckBox("    记住密码",cstyle).onClick(new CustomRunnable<CheckBox>() {@Override
+		public void run(CheckBox t) {
 			
 		}})).appendTo(group).setPosition(749, 255);
 		
@@ -51,8 +53,10 @@ public class LoginView extends SidebarView {
 		tstyle.font = Res.font.get(22);
 		
 		$.add(new TextButton("登录", tstyle).onClick(new Runnable() {
+			@Override
 			public void run() {
 				Setting.persistence.account.login(user.getText(), pass.getText(), chk.isChecked(), new CustomRunnable<State>() {
+					@Override
 					public void run(State t) {
 						
 					}
@@ -61,6 +65,7 @@ public class LoginView extends SidebarView {
 		})).appendTo(group).setSize(400,50).setPosition(480, 150);
 		
 		$.add(new TextButton("注册", tstyle).onClick(new Runnable() {
+			@Override
 			public void run() {
 				RPG.popup.add(LoginView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
 					put("title","注册");

@@ -51,11 +51,13 @@ public class SelectUtil implements InputProcessor {
 	boolean isLocked;
 	public BaseScriptExecutor select(Script script, final String... str){
 		return script.set(new ScriptExecutor(script) {
+			@Override
 			public void step() {
 				if(!select){
 					stage.draw();
 					stage.act();
 					$.add(stage).findByClass(Label.class).each(new CustomRunnable<Actor>() {
+						@Override
 						public void run(Actor child) {
 							child.setY(((ImageButton) child.getUserObject()).getY()+13);
 							child.setX(130);
@@ -71,6 +73,7 @@ public class SelectUtil implements InputProcessor {
 					dispose();
 				}
 			}
+			@Override
 			public void init() {
 				select=false;
 				Gdx.input.setInputProcessor(SelectUtil.this);
@@ -85,9 +88,11 @@ public class SelectUtil implements InputProcessor {
 					final Label l;
 					button.setUserObject(s);
 					button.addListener(new InputListener(){
+						@Override
 						public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
 							if(x>0 && x<button.getWidth() && y>0 && y<button.getHeight()){
 								button.addAction(Actions.sequence(new Action() {
+									@Override
 									public boolean act(float delta) {
 										for (Actor a : stage.getActors()) {
 											if(!a.equals(button))
@@ -100,6 +105,7 @@ public class SelectUtil implements InputProcessor {
 								},Actions.alpha(0.6f,0.08f),Actions.alpha(1,0.08f),Actions.alpha(0.6f,0.08f),Actions.alpha(1,0.08f),
 								Actions.parallel(Actions.fadeOut(0.15f),Actions.moveBy(0, -30,0.15f))
 								,Actions.after(new Action() {
+									@Override
 									public boolean act(float delta) {
 										select=true;
 										currentSelect=s;
@@ -108,6 +114,7 @@ public class SelectUtil implements InputProcessor {
 								})));
 							} 
 						}
+						@Override
 						public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 							return true;
 						}
@@ -126,34 +133,42 @@ public class SelectUtil implements InputProcessor {
 		});
 	}
 
+	@Override
 	public boolean keyDown(int keycode) {
 		return stage.keyDown(keycode);
 	}
 
+	@Override
 	public boolean keyUp(int keycode) {
 		return stage.keyUp(keycode);
 	}
 
+	@Override
 	public boolean keyTyped(char character) {
 		return stage.keyTyped(character);
 	}
 
+	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		return stage.touchDown(screenX, screenY, pointer, button);
 	}
 
+	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		return stage.touchUp(screenX, screenY, pointer, button);
 	}
 
+	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
 		return stage.touchDragged(screenX, screenY, pointer);
 	}
 
+	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
 		return stage.mouseMoved(screenX, screenY);
 	}
 
+	@Override
 	public boolean scrolled(int amount) {
 		return stage.scrolled(amount);
 	}

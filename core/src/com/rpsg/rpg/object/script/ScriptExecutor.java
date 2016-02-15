@@ -3,6 +3,7 @@ package com.rpsg.rpg.object.script;
 import com.rpsg.rpg.object.script.Script.exeMode;
 
 public abstract class ScriptExecutor extends BaseScriptExecutor{
+	@Override
 	public abstract void init();
 	public void step(){}
 	

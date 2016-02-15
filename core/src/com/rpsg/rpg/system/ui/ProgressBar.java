@@ -260,6 +260,7 @@ public class ProgressBar extends Widget implements Disableable {
 		this.stepSize = stepSize;
 	}
 
+	@Override
 	public float getPrefWidth () {
 		if (vertical) {
 			final Drawable knob = (disabled && style.disabledKnob != null) ? style.disabledKnob : style.knob;
@@ -269,6 +270,7 @@ public class ProgressBar extends Widget implements Disableable {
 			return 140;
 	}
 
+	@Override
 	public float getPrefHeight () {
 		if (vertical)
 			return 140;
@@ -317,10 +319,12 @@ public class ProgressBar extends Widget implements Disableable {
 		return value;
 	}
 
+	@Override
 	public void setDisabled (boolean disabled) {
 		this.disabled = disabled;
 	}
 
+	@Override
 	public boolean isDisabled () {
 		return disabled;
 	}

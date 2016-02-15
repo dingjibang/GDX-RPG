@@ -112,6 +112,7 @@ public class Animation extends NPC {
 	}
 	
 	//remove self
+	@Override
 	public boolean remove(){
 		return remove = true;
 	}

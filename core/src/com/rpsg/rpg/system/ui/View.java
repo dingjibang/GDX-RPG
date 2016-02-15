@@ -15,6 +15,7 @@ public abstract class View implements Disposable{
 	public abstract boolean touchDragged(int screenX, int screenY, int pointer);
 	public abstract boolean scrolled(int amount);
 	public void mouseMoved(int x,int y){};
+	@Override
 	public abstract void dispose();
 	
 	public boolean disposed=false;

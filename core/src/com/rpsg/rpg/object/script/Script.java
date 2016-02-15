@@ -193,9 +193,11 @@ public class Script extends Thread{
 		if(exe instanceof ScriptExecutor)
 			set(new ScriptExecutor(this) {
 				ScriptExecutor proxy=(ScriptExecutor)exe;
+				@Override
 				public void init() {
 					proxy.init();
 				}
+				@Override
 				public void step(){
 					if(proxy.script.currentExeced==exeMode.running)
 						proxy.step();
@@ -205,6 +207,7 @@ public class Script extends Thread{
 			});
 		else
 			set(new BaseScriptExecutor() {
+				@Override
 				public void init() {
 					exe.init();
 				}

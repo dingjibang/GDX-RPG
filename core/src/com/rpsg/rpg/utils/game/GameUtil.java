@@ -52,9 +52,9 @@ public class GameUtil {
 			fps=Gdx.graphics.getFramesPerSecond();
 			
 			font.setColor(Color.BLACK);
-			font.draw(batch,"FPS:"+fps,13,(int) (screen_height-13));
+			font.draw(batch,"FPS:"+fps,13,screen_height-13);
 			font.setColor(Color.WHITE);
-			font.draw(batch,"FPS:"+fps,12,(int) (screen_height-12));
+			font.draw(batch,"FPS:"+fps,12,screen_height-12);
 		}
 	}
 	

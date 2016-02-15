@@ -125,7 +125,7 @@ public class MapLoader {
 							if(obj.getProperties().get("ABSOLUTE")!=null && obj.getProperties().get("ABSOLUTE").equals("true"))
 								npc.generateAbsolutePosition(x,y,i-remove);
 							else
-								npc.generatePosition(x/48, (int)(baseLayer.getHeight()-y/48-1),i-remove);//TODO FIX IT 
+								npc.generatePosition(x/48, baseLayer.getHeight()-y/48-1,i-remove);//TODO FIX IT 
 							
 							if(obj.getProperties().get("SHADOW")!=null && obj.getProperties().get("SHADOW").equals("true"))
 								npc.drawShadow=true;
@@ -170,7 +170,7 @@ public class MapLoader {
 				n.init();
 				gv.stage.addActor(n);
 				RPG.ctrl.thread.pool.add(n.threadPool);
-				n.images=NPC.generateImages(n.imgPath, n.bodyWidth, n.bodyHeight);
+				n.images=RPGObject.generateImages(n.imgPath, n.bodyWidth, n.bodyHeight);
 			}
 		}
 		

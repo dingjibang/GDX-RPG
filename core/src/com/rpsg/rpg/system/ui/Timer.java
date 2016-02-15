@@ -39,6 +39,7 @@ public class Timer extends Group {
 		avg();
 	}
 	
+	@Override
 	public void act(float delta) {
 		$.each(list,(obj)->{
 			if(!obj.globalPause && !obj.pause)
@@ -81,7 +82,7 @@ public class Timer extends Group {
 		if(list.isEmpty()) return;
 		Collections.sort(list);
 		TimerClass max = list.get(0);
-		float scale = (float)max.speed / 70f;
+		float scale = max.speed / 70f;
 		$.each(list, (obj) -> obj.speed /= scale);
 	}
 	
@@ -104,6 +105,7 @@ public class Timer extends Group {
 			label.size(48,28).align(Align.center);
 		}
 
+		@Override
 		public int compareTo(TimerClass o) {
 			return o.speed - this.speed;
 		}

@@ -27,15 +27,18 @@ public class SaveView extends HoverView{
 	TextButtonStyle butstyle;
 	public int currentSelect=-1;
 	public TextButton autobut,savebutton;
+	@Override
 	public void init() {
 		stage.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"savebg.png").color(1,1,1,0).action(Actions.fadeIn(0.2f)));
 		ImageButton exit=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"file_exit.png"),Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"file_exit_active.png"));
 		exit.setPosition(945, 530);
 		exit.addAction(Actions.moveTo(945, 500,0.1f));
 		exit.addListener(new InputListener(){
+			@Override
 			public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
 				disposed=true;
 			}
+			@Override
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
 				return true;
 			}
@@ -110,7 +113,7 @@ public class SaveView extends HoverView{
 							RPG.putMessage("请选择要保存的位置", Color.YELLOW);
 							Music.playSE("err");
 						}
-						((HoverView) view).disposed = true;
+						view.disposed = true;
 					}
 				}));
 			}
@@ -143,7 +146,7 @@ public class SaveView extends HoverView{
 								RPG.putMessage("删除档案失败", Color.RED);
 						} else
 							RPG.putMessage("请选择要删除的档案", Color.YELLOW);
-						((HoverView) view).disposed = true;
+						view.disposed = true;
 					}
 				}));
 			}
@@ -156,9 +159,11 @@ public class SaveView extends HoverView{
 		for (Actor act : stage.getActors()) {
 			if(act instanceof TextButton && act.getUserObject()==null)
 				act.addListener(new InputListener(){
+					@Override
 					public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
 						Music.playSE("snd210.wav");
 					}
+					@Override
 					public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
 						return true;
 					}
@@ -242,10 +247,12 @@ public class SaveView extends HoverView{
         for (Actor act: stage.getActors()) {
             if(act instanceof TextButton && act.getUserObject()!=null)
                 act.addListener(new InputListener(){
-                    public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
+                    @Override
+					public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
                         Music.playSE("snd210.wav");
                     }
-                    public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+                    @Override
+					public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
                         return true;
                     }
                 });
@@ -253,6 +260,7 @@ public class SaveView extends HoverView{
 
     }
 	
+	@Override
 	public boolean keyDown(int keycode) {
 		if(keycode==Keys.ESCAPE)
 			disposed=true;
