@@ -110,10 +110,13 @@ public class LoadView extends HoverView{
 						if (currentSelect != -1) {
 							Object o = SL.load(currentSelect);
 							if (o != null) {
+//								Global global = (Global)o;
+//								System.out.println("global:"+global.currentHeros);
+//								$.each(global.currentHeros, (hero)->System.out.println(hero.mapx+","+hero.mapy));
 								RPG.putMessage("读取档案成功", Color.GREEN);
 								RPG.global = (Global) o;
-								Initialization.restartGame();
 								LoadView.this.disposed = true;
+								Initialization.restartGame();
 							} else
 								RPG.putMessage("读取档案失败", Color.RED);
 							LoadView.this.generateList();

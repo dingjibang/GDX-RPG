@@ -63,7 +63,7 @@ public class Move {
 				RPG.ctrl.thread.pool.clear();
 				RPG.global.npcs.clear();
 				Initialization.restartGame();
-				RPG.ctrl.hero.reinitByTeleport();
+				RPG.ctrl.hero.reinit(true);
 			}
 		});
 	}

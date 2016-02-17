@@ -1,5 +1,7 @@
 package com.rpsg.rpg.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
@@ -44,14 +46,7 @@ public class LoadView extends View {
 		bg.setColor(1,1,1,0);
 		hbx=new int[10];hby=new int[10];hbs=new int[10];hba=new int[10];hbr=new float[10];hbab=new boolean[10];hb=new Image[10];
 		for (int i = 0; i <hbx.length; i++) {
-			switch(new Random().nextInt(6) + 1){
-			case 1:hb[i] = new Image(new Texture(Gdx.files.internal(Setting.IMAGE_LOAD+"f1.png")));break;
-			case 2:hb[i] = new Image(new Texture(Gdx.files.internal(Setting.IMAGE_LOAD+"f2.png")));break;
-			case 3:hb[i] = new Image(new Texture(Gdx.files.internal(Setting.IMAGE_LOAD+"f3.png")));break;
-			case 4:hb[i] = new Image(new Texture(Gdx.files.internal(Setting.IMAGE_LOAD+"f4.png")));break;
-			case 5:hb[i] = new Image(new Texture(Gdx.files.internal(Setting.IMAGE_LOAD+"f5.png")));break;
-			case 6:hb[i] = new Image(new Texture(Gdx.files.internal(Setting.IMAGE_LOAD+"f6.png")));break;
-			}
+			hb[i] = new Image(new Texture(Gdx.files.internal(Setting.IMAGE_LOAD+"f"+(new Random().nextInt(6) + 1)+".png")));
 			hbx[i]=0;hby[i]=40;hbs[i]=0;hba[i]=0;hbab[i]=true;
 		}
 		f_load.setSize(200, 25);
@@ -66,6 +61,7 @@ public class LoadView extends View {
 	}
 	
 	public void draw() {
+		boolean flag = !status.isEmpty();
         if(!(!flag && bg.getColor().a==0)) {
             SpriteBatch batch = (SpriteBatch) stage.getBatch();
             if (bg.getActions().size == 0) {
@@ -152,15 +148,21 @@ public class LoadView extends View {
 		this.draw();
 	}
 	
-	boolean flag=false;
-	public void start() {
-		flag=true;
-		bg.clearActions();
+	
+	private List<String> status = new ArrayList<String>();
+	
+	public void start(String str) {
+		if(!status.contains(str)){
+			status.add(str);
+			bg.clearActions();
+		}
 	}
 
-	public void stop() {
-		flag=false;
-		bg.clearActions();
+	public void stop(String str) {
+		if(status.contains(str)){
+			status.remove(str);
+			bg.clearActions();
+		}
 	}
-
+	
 }

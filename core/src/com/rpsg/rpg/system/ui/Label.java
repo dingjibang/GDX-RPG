@@ -151,6 +151,11 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 		return this;
 	}
 	
+	public Label x(float x){
+		setX(x);
+		return this;
+	}
+	
 	public Label y(int i){
 		setY(i);
 		return this;
@@ -158,6 +163,11 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 
 	public Actor a(float f) {
 		setColor(getColor().r,getColor().g,getColor().b,f);
+		return this;
+	}
+
+	public Label size(int w, int h) {
+		setSize(w,h);
 		return this;
 	}
 

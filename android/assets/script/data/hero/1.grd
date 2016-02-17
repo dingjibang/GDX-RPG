@@ -21,6 +21,7 @@ setProp("exp", 3);
 setProp("mp", 100);
 setProp("maxmp", 100);
 setProp("maxsc",12);
+setProp("speed",5);
 
 addSpellcard(RPG.ctrl.item.get(5));
 addSpellcard(RPG.ctrl.item.get(5));

@@ -24,6 +24,8 @@ public class Setting {
 
 	public static final String IMAGE_MENU = BASE_PATH + IMAGE_BASE_PATH + "/menu/";
 	public static final String IMAGE_CG = BASE_PATH + IMAGE_BASE_PATH + "/cg/";
+	public static final String IMAGE_ENEMY = BASE_PATH + IMAGE_BASE_PATH + "/enemy/";
+	public static final String IMAGE_BATTLE = BASE_PATH + IMAGE_BASE_PATH + "/battle/";
 
 	// Menu images/menu/
 	public static final String IMAGE_MENU_GLOBAL = IMAGE_MENU + "nglobal/";
@@ -47,6 +49,7 @@ public class Setting {
 	public static final String SCRIPT_MAP = SCRIPT + "/map/";
 	public static final String SCRIPT_DATA = SCRIPT +"/data/";
 	public static final String SCRIPT_DATA_ITEM = SCRIPT_DATA + "/item/";
+	public static final String SCRIPT_DATA_ENEMY = SCRIPT_DATA + "/enemy/";
 	public static final String SCRIPT_DATA_ASSOCIATION = SCRIPT_DATA + "/association/";
 	public static final String SCRIPT_DATA_ASSOCIATION_SKILL = SCRIPT_DATA_ASSOCIATION + "skill/";
 	public static final String SCRIPT_DATA_HERO = SCRIPT_DATA + "/hero/";
@@ -70,15 +73,16 @@ public class Setting {
 	// UI
 	public static NinePatchDrawable UI_BUTTON;
 	public static NinePatchDrawable UI_TOAST;
-	public static String UI_BASE_IMG = Setting.IMAGE_MENU_GLOBAL + "white.jpg";
-	public static String UI_BASE_PRO = Setting.IMAGE_MENU_GLOBAL + "prograssbar.png";
+	public static String UI_BASE_IMG = IMAGE_MENU_GLOBAL + "white.jpg";
+	public static String UI_GRAY_IMG = IMAGE_MENU_GLOBAL + "drawable_gray_opacity.png";
+	public static String UI_BASE_PRO = IMAGE_MENU_GLOBAL + "progressbar.png";
 
 	public static void init() {
-		UI_BUTTON = new NinePatchDrawable(GameUtil.processNinePatchFile(Setting.IMAGE_MENU_GLOBAL + "button_p.png"));
-		UI_TOAST = new NinePatchDrawable(GameUtil.processNinePatchFile(Setting.IMAGE_MENU_GLOBAL + "toast_box.png",2,2,1,1,5,5,5,5));
+		UI_BUTTON = new NinePatchDrawable(GameUtil.processNinePatchFile(IMAGE_MENU_GLOBAL + "button_p.png"));
+		UI_TOAST = new NinePatchDrawable(GameUtil.processNinePatchFile(IMAGE_MENU_GLOBAL + "toast_box.png",2,2,1,1,5,5,5,5));
 	}
 
-	public static final String RPGOBJECT_SHADOW = Setting.WALK + "walk_shadow.png";
+	public static final String RPGOBJECT_SHADOW = WALK + "walk_shadow.png";
 	
 	//RPSG服务器
 	public static final String NET_LOGIN_URL = "http://rpsgvote.sinaapp.com/lyric.php";

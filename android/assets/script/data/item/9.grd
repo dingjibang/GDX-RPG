@@ -1,0 +1,14 @@
+{
+	type:"Spellcard",
+	name:"普通攻击",
+	description:"造成100%的攻击伤害",
+	description2:"",
+	range:"one",
+	forward:"hero",
+	occasion:"all",
+	cost:0,
+	packable:false,
+	effect:{
+		prop:{}
+	}
+}

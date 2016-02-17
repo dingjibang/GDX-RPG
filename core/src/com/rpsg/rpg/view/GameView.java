@@ -3,7 +3,6 @@ package com.rpsg.rpg.view;
 import box2dLight.RayHandler;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.AssetLoaderParameters;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -59,7 +58,7 @@ public class GameView extends View{
 		if(PostUtil.first)
 			PostUtil.init();
 		parameter = new TmxMapLoader.Parameters();
-		parameter.loadedCallback= (AssetManager assetManager, String fileName, Class type)->{
+		parameter.loadedCallback= (assetManager, fileName, type)->{
 			RPG.maps.map = ma.get(Setting.MAP + global.map);
 			if(render == null)
 				render=new OrthoCachedTiledMapRenderer(RPG.maps.map);
@@ -81,10 +80,9 @@ public class GameView extends View{
 	@Override
 	public void dispose() {
 		RPG.maps.loader.dispose();
-		
 		if(!Setting.persistence.cacheResource){
-			ma.unload(filename);
-//			ma.clear(); FIXME 可能导致其他纹理也被卸载。。。
+			ma.unload(filename);//TODO 传送时会变换filename？
+//			ma.clear(); //FIXME 可能导致其他纹理也被卸载。。。
 		}
 		
 		if(null!=stackView){
@@ -92,6 +90,7 @@ public class GameView extends View{
 			stackView=null;
 			InputController.currentIOMode=IOMode.MapInput.normal;
 		}
+		
 		GameViewRes.ray.removeAll();
 		
 		parameter.loadedCallback=null;

@@ -27,11 +27,15 @@ public class LazyBitmapFontConctoller {
 	}
 	
 	public LazyBitmapFont get(int fontSize){
+		boolean hd = Setting.persistence.hdFont;
+		if(hd) fontSize += fontSize;
 		LazyBitmapFont font = map.get(fontSize);
 		if(font==null){
 			font = new LazyBitmapFont(fontSize);
 			map.put(fontSize, font);
 		}
+		if(hd) font.getData().setScale(.5f);
+		
 		return font;
 	}
 	

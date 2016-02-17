@@ -65,12 +65,8 @@ public class EquipView extends IMenuView{
 		
 		$.add(throwButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(throwImg)).appendTo(stage).setSize(297,49).setPosition(698, 12).getCell().prefSize(297,49);
 		
-		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).onClick(new Runnable() {public void run() {
-			next();
-		}}).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
-		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).setScale(.8f).setScaleX(-.8f).appendTo(stage).setPosition(196, 483).onClick(new Runnable() {public void run() {
-			prev();
-		}}).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
+		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).onClick(()->next()).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
+		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).setScale(.8f).setScaleX(-.8f).appendTo(stage).setPosition(196, 483).onClick(()->prev()).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
 		
 		inner = (Group) $.add(new Group()).appendTo(stage).getItem();
 		description = (Group) $.add(new Group()).appendTo(stage).getItem();
@@ -135,27 +131,23 @@ public class EquipView extends IMenuView{
 				
 				String append = "";
 				if(!t.enable){
-					takeButton.setFg(take.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
+					takeButton.setFg(take.a(.3f)).fgSelfColor(true).onClick(()->{});
 					append += "当前角色无法使用此装备。";
 				}else{
 					if(t.current)
-						takeButton.setFg(off.a(1)).onClick(new Runnable(){public void run() {
+						takeButton.setFg(off.a(1)).onClick(()->{
 							RPG.ctrl.item.takeOff(parent.current, currentFilter);
 							generate();
-						}});
+						});
 					else
-						takeButton.setFg(take.a(1)).fgSelfColor(true).onClick(new Runnable(){public void run() {
-							useEquip();
-						}});
+						takeButton.setFg(take.a(1)).fgSelfColor(true).onClick(()->useEquip());
 				}
 				
 				if(!t.item.throwable || t.current){
-					throwButton.setFg(throwImg.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
+					throwButton.setFg(throwImg.a(.3f)).fgSelfColor(true).onClick(()->{});
 					append += "无法丢弃本装备。";
 				}else{
-					throwButton.setFg(throwImg.a(1)).fgSelfColor(true).onClick(new Runnable(){public void run() {
-						removeEquip();
-					}});
+					throwButton.setFg(throwImg.a(1)).fgSelfColor(true).onClick(()->removeEquip());
 				}
 				
 				if(append.length()!=0)
@@ -231,7 +223,7 @@ public class EquipView extends IMenuView{
 	private void useEquip(){
 		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().item!=null)
 			if(!RPG.ctrl.item.use(ilist.getCurrent().item.setUser(parent.current)))
-				RPG.putMessage("程序异常，装备失败。", Color.RED);
+				RPG.putMessage("装备失败。", Color.RED);
 		generate();
 	}
 	

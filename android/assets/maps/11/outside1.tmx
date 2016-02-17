@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="80" tilewidth="48" tileheight="48" nextobjectid="17">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="80" tilewidth="48" tileheight="48" nextobjectid="25">
  <properties>
   <property name="distant" value="bgnd2.jpg"/>
   <property name="name" value="测试地图"/>
@@ -261,6 +261,7 @@
     <property name="IMAGE" value="walk_yuki"/>
    </properties>
   </object>
+  <object id="18" name="ENEMY" type="NPC" gid="892" x="720" y="2544" width="48" height="64"/>
  </objectgroup>
  <layer name="t2" width="50" height="80">
   <data encoding="base64" compression="gzip">

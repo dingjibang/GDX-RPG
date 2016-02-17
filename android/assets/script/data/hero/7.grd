@@ -18,3 +18,4 @@ setProp("maxhp", 100);
 setProp("mp", 100);
 setProp("maxmp", 100);
 setProp("level",1);
+setProp("speed",4);

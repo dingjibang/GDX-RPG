@@ -43,9 +43,6 @@ public class Association implements Serializable {
 		for(JsonValue value:object.get("skill"))
 			ass.skills.add(readSkill(value.asInt()));
 		
-		System.out.println();
-		System.out.println(ass.name);
-		System.out.println(ass.skills);
 		return ass;
 	}
 	

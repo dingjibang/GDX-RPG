@@ -3,7 +3,7 @@ PostUtil.showMenu=false;
 
 var black = $(Res.getSync(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
 black.loaded = function(){
-	black.addAction(Actions.sequence(Actions.run(function(){setRenderAble(true)}),Actions.fadeOut(0.5),Actions.run(function(){CG.disposeAll()})));	
+	black.addAction(Actions.sequence(Actions.run(function(){setRenderAble(true)}),Actions.fadeOut(0.5),Actions.run(function(){CG.dispose(black)})));	
 };
 CG.push(black);
 

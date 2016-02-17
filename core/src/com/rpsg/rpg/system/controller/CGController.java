@@ -1,49 +1,59 @@
 package com.rpsg.rpg.system.controller;
 
-import java.util.ArrayList;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.rpsg.rpg.object.script.BaseScriptExecutor;
-import com.rpsg.rpg.object.script.Script;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.system.ui.Image;
 
 public class CGController {
-	ArrayList<Image> cgs = new ArrayList<Image>();
+	private ConcurrentLinkedQueue<Image> cgs = new ConcurrentLinkedQueue<Image>();
 
 	public synchronized void draw(SpriteBatch sb) {
 		if(cgs.size()==0)
 			return;
-		try{
-			synchronized (cgs) {
-				for(Image cg:cgs){
-					cg.draw(sb);
-					cg.act(Gdx.graphics.getDeltaTime());
-				}
+		try {
+			for(Image cg:cgs){
+				cg.act(Gdx.graphics.getDeltaTime());
+				cg.draw(sb);
 			}
-			
-		}catch(Exception e){
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
 	public synchronized Image push(Image i) {
-		if(cgs.contains(i)){
-			Image re=new Image(i);
-			cgs.add(re);
-			return re;
-		}else{
-			cgs.add(i);
-			return i;
+		synchronized (cgs) {
+			if(cgs.contains(i)){
+				Image re=new Image(i);
+				cgs.add(re);
+				return re;
+			}else{
+				cgs.add(i);
+				return i;
+			}
 		}
-			
-	}
-
-	public synchronized void dispose(Image i) {
-		cgs.remove(i);
 	}
 	
-	public void disposeAll(){
+	public synchronized Iterable<Image> pushAll(Iterable<Image> c){
+		$.each(c,(obj)->push(obj));
+		return c;
+	}
+
+	public synchronized CGController dispose(Image i) {
+		cgs.remove(i);
+		return this;
+	}
+	
+	public synchronized CGController dispose(Iterable<Image> c){
+		$.each(c,(obj)->dispose(obj));
+		return this;
+	}
+	
+	public CGController disposeAll(){
 		cgs.clear();
+		return this;
 	}
 
 }

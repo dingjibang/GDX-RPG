@@ -27,9 +27,8 @@ public class FrameLabel extends Label {
 	}
 	
 	public FrameLabel frame(){
-		if(frame==null)
-			return this;
-		frame.run(this);
+		if(frame!=null)
+			frame.run(this);
 		return this;
 	}
 	

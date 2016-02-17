@@ -1,9 +1,12 @@
 package com.rpsg.rpg.object.base.items;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Buff {
+public class Buff implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	public int id;
 	public String name;

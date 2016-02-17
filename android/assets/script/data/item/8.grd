@@ -4,7 +4,7 @@
 	description:"与连携者对敌人的菊花进行致命一击！",
 	description2:"",
 	range:"one",
-	forward:"friend",
+	forward:"hero",
 	occasion:"all",
 	cost:0,
 	packable:false,

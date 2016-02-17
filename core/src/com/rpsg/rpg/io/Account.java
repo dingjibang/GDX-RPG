@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.view.GameViews;
 
 public class Account implements Serializable {
 	
@@ -34,9 +35,12 @@ public class Account implements Serializable {
 		
 		request.setContent(String.format("{\"UserName\":\"%s\",\"Password\":\"%s\"}", name,pass));
 		request.setHeader("content-type", "application/json");
+		String command = "sendHttpRequest";
+		
 		HttpResponseListener listener = new HttpResponseListener() {
 			public void handleHttpResponse(HttpResponse response) {
 				RPG.toast.add(response.getResultAsString(), Color.GREEN,13);
+				GameViews.loadview.stop(command);
 			}
 			
 			public void failed(Throwable t) {
@@ -49,6 +53,7 @@ public class Account implements Serializable {
 		};
 
 		Gdx.net.sendHttpRequest(request, listener);
+		GameViews.loadview.start(command);
 	}
 	
 	public void logout(){

@@ -1,6 +1,5 @@
 package com.rpsg.gdxQuery;
 
-import java.util.Collection;
 import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
@@ -46,10 +45,6 @@ public class $ {
 		return new GdxFrame().add(query, runnable);
 	}
 	
-	public static <T> void removeIfIf(boolean flag,Iterable<T> c,RemoveTest<T> test){
-		if(flag)
-			removeIf(c,test);
-	}
 	
 	public static <T> void removeIf(Iterable<T> c,RemoveTest<T> test){
 		Iterator<T> it=c.iterator();
@@ -60,10 +55,38 @@ public class $ {
 		}
 	}
 	
-	public static <T> void each(Collection<T> c,CustomRunnable<T> run){
+	public static <T> void removeIf(Iterable<T> c,RemoveTest<T> test,CustomRunnable<T> get){
+		Iterator<T> it=c.iterator();
+		while(it.hasNext()){
+			T obj=it.next();
+			if(test.test(obj)){
+				it.remove();
+				get.run(obj);
+			}
+		}
+	}
+	
+	public static <T> void each(Iterable<T> c,CustomRunnable<T> test){
 		Iterator<T> it=c.iterator();
 		while(it.hasNext())
-			run.run(it.next());
+			test.run(it.next());
 	}
+	
+	public static <T> void getIf(Iterable<T> c,RemoveTest<T> test,CustomRunnable<T> callback){
+		Iterator<T> it=c.iterator();
+		while(it.hasNext()){
+			T t = it.next();
+			if(test.test(t))
+				callback.run(t);
+		}
+	}
+	
+	public static <T> void each(Iterable<T> c,Each<T> test){
+		Iterator<T> it=c.iterator();
+		int i=0;
+		while(it.hasNext())
+			test.run(i++,it.next());
+	}
+	
 	
 }

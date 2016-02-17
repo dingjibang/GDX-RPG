@@ -1,8 +1,8 @@
 package com.rpsg.rpg.object.rpg;
 
-import java.awt.Point;
 import java.util.List;
 
+import com.badlogic.gdx.math.Vector2;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.base.BattleParam;
 
@@ -18,7 +18,7 @@ public class EnemyNPC extends RandomWalkNPC {
 		this.drawShadow = true;
 		maxLength = 1;
 		battleParam = new BattleParam();
-		battleParam.enemy = 1;
+		battleParam.enemy = 2;
 	}
 
 	public int defaultWalkSpeed = 2;
@@ -27,35 +27,43 @@ public class EnemyNPC extends RandomWalkNPC {
 	public int accelerate1Length = 5;
 	public int accelerate2Length = 3;
 	public BattleParam battleParam;
+	public boolean isBattled = false;
 	
 	@Override
 	public void act(float f){
-		if(walked){
+		if(walked && !isBattled){
 			List<Hero> heros = RPG.ctrl.hero.currentHeros;
 			int npcDistance = 0;
 			int mode = 0;
-			Boolean isBattled = false;
 			for(int i = 0;i<heros.size();i++){
-				Hero _Hero = heros.get(i);
+				Hero hero = heros.get(i);
 				
 				int HeroX,HeroY;
 				
-				HeroX = _Hero.mapx;
-				HeroY = _Hero.mapy;
+				HeroX = hero.mapx;
+				HeroY = hero.mapy;
 				
 				int dx = Math.abs(mapx-HeroX);
 				int dy = Math.abs(mapy-HeroY);
 				npcDistance = Math.max(dx,dy);
 				
 				if(((npcDistance ==1 && dx != dy) && // near checked
-				(currentImageNo==1 || currentImageNo==4 || currentImageNo==7 || currentImageNo ==10) && // static Image NO. checked
+				(currentImageNo==FACE_D || currentImageNo==FACE_U || currentImageNo==FACE_L || currentImageNo == FACE_R) && // static Image NO. checked
 				getCurrentFace() == getFaceByPoint(HeroX,HeroY)) //Check if the face is to Hero 
 					|| npcDistance == 0){
 							
-//					RPG.ctrl.battle.start(battleParam);
-//					remove();
-//					this.StopRandomWalking();
-//					isBattled = true;
+					if(!hero.fade() && RPG.ctrl.battle.start(battleParam)){
+						isBattled = true;
+						super.stopRandomWalking();
+						
+						battleParam.startCallback = ()->{
+							this.scripts.clear();
+							remove();
+						};
+					}
+					
+					return;
+					
 				}
 			}
 
@@ -69,12 +77,12 @@ public class EnemyNPC extends RandomWalkNPC {
 				switch(mode){
 					case 1:
 						walkSpeed = accelerate1WalkSpeed;
-						point = new Point(-1,-1);
+						point = new Vector2(-1,-1);
 						speed = 10;
 						break;
 					case 2:
 						walkSpeed = accelerate2WalkSpeed;
-						point = new Point(-1,-1);
+						point = new Vector2(-1,-1);
 						speed = 0;
 						if(npcDistance == 0){
 							step = 0;

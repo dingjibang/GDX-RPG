@@ -15,7 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
-import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.HoverView;
@@ -44,12 +43,7 @@ public abstract class SidebarView extends HoverView{
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
 		this.param = initParam;
 		
-		stage.addActor(mask = new Image(Setting.UI_BASE_IMG).color(1, 1, 1, 0).action(Actions.alpha(.2f,.2f)).size(GameUtil.screen_width, GameUtil.screen_height).position(0, 0).onClick(new Runnable() {
-			@Override
-			public void run() {
-				SidebarView.this.keyDown(Keys.ESCAPE);
-			}
-		}));
+		stage.addActor(mask = new Image(Setting.UI_BASE_IMG).color(1, 1, 1, 0).action(Actions.alpha(.2f,.2f)).size(GameUtil.screen_width, GameUtil.screen_height).position(0, 0).onClick(()->SidebarView.this.keyDown(Keys.ESCAPE)));
 		stage.addActor(group);
 		group.pack();
 		
@@ -77,13 +71,11 @@ public abstract class SidebarView extends HoverView{
 		
 		init();
 		
-		$.add(group).children().not(base).add(title,closeButton).each(new CustomRunnable<Actor>() {
-			public void run(Actor t) {
-				int ran = (int) (-120 - width - ++count * 70);
-				float a = t.getColor().a;
-				t.addAction(Actions.sequence(Actions.moveBy(-ran, 0,0f),Actions.moveBy(ran, 0,0.85f,Interpolation.pow4Out)));
-				t.addAction(Actions.sequence(Actions.fadeOut(0f),Actions.alpha(a,0.4f,Interpolation.pow4)));
-			}
+		$.add(group).children().not(base).add(title,closeButton).each((Actor t)->{
+			int ran = (int) (-120 - width - ++count * 70);
+			float a = t.getColor().a;
+			t.addAction(Actions.sequence(Actions.moveBy(-ran, 0,0f),Actions.moveBy(ran, 0,0.85f,Interpolation.pow4Out)));
+			t.addAction(Actions.sequence(Actions.fadeOut(0f),Actions.alpha(a,0.4f,Interpolation.pow4)));
 		});
 		
 		return this;

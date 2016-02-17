@@ -60,6 +60,8 @@ public class Persistence implements Serializable{
 	public boolean pathFind = true;
 	
 	public String errorMessage="";
+	/**高清文字*/
+	public boolean hdFont = false;
 	
 	public static String PersistenceFileName = Setting.PERSISTENCE+"persistence.es";
 	

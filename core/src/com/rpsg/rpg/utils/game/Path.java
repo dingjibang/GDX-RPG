@@ -267,12 +267,10 @@ public class Path {
 		
 		final Image end = Res.get(Setting.IMAGE_GLOBAL + "path.png").color(color);
 		end.setUserObject(0);
-		$.add(end).setPosition(goalX * 48, goalY * 48).addAction(Actions.forever(Actions.sequence(Actions.color(new Color(color.r, color.g, color.b, 0.5f), 0.2f), Actions.fadeOut(0.2f), Actions.run(new Runnable() {
-			public void run() {
-				end.setUserObject(((Integer) end.getUserObject()) + 1);
-				if (((Integer) end.getUserObject()) == 3)
-					end.clearActions();
-			}
+		$.add(end).setPosition(goalX * 48, goalY * 48).addAction(Actions.forever(Actions.sequence(Actions.color(new Color(color.r, color.g, color.b, 0.5f), 0.2f), Actions.fadeOut(0.2f), Actions.run(()->{
+			end.setUserObject(((Integer) end.getUserObject()) + 1);
+			if (((Integer) end.getUserObject()) == 3)
+				end.clearActions();
 		}))));
 
 		RPG.maps.loader.putPath(end);

@@ -1,6 +1,7 @@
 package com.rpsg.rpg.system.controller;
 
 import com.badlogic.gdx.Input.Keys;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.base.IOMode.MapInput;
@@ -8,6 +9,7 @@ import com.rpsg.rpg.utils.display.PostUtil;
 import com.rpsg.rpg.utils.game.Path;
 import com.rpsg.rpg.view.GameView;
 import com.rpsg.rpg.view.GameViews;
+import com.rpsg.rpg.view.hover.LoadView;
 
 
 
@@ -30,6 +32,9 @@ public class InputController{
 	public static boolean keyDown(int keycode,GameView gv) {
 		switch(currentIOMode){
 		case normal:{
+			if(keycode == Keys.R) {
+				RPG.popup.add(LoadView.class);
+			}
 			if(keycode==Keys.ESCAPE || keycode==Keys.X){
 				MenuController.createMenu();
 				currentIOMode=IOMode.MapInput.menu;

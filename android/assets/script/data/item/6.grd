@@ -2,7 +2,7 @@
 	type:"Item",
 	name:"续命露",
 	description:"最强王者，起死回生。",
-	forward:"friend",
+	forward:"hero",
 	range:"one",
 	deadable:"yes",
 	effect:{
