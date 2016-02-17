@@ -14,29 +14,29 @@ namespace RPSGJsonWCFService
     {
 
         [OperationContract]///{UserName}/{Password}
-       [WebInvoke(Method = "POST",RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "Register")]
+        [WebGet( RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "Register/{UserName}/{Password}")]
 
         int Register(string UserName, string Password);
 
        [OperationContract]
-       [WebInvoke(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "login")]
+       [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "login/{UserName}/{Password}")]
       int login(string UserName,string Password);
 
         // TODO: Add your service operations here
        [OperationContract]
-       [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "{UserName}/GetSaveFiles")]
-       string[] GetSaveFiles(string UserName);
+       [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "{UserName}/{Password}/GetSaveFiles")]
+       string[] GetSaveFiles(string UserName, string Password);
        [OperationContract]
-       [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "{UserName}/RemoveSaveFile/{File}")]
-       int RemoveSaveFile(string UserName,string File);
+       [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "{UserName}/{Password}/RemoveSaveFile/{File}")]
+       int RemoveSaveFile(string UserName, string Password, string File);
 
        [OperationContract]
-       [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "{UserName}/GetSaveFile/{File}")]
-       string GetSaveFile(string UserName, string File);
+       [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "{UserName}/{Password}/GetSaveFile/{File}")]
+       string GetSaveFile(string UserName, string Password, string File);
 
        [OperationContract]
-       [WebInvoke(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "{UserName}/AddSaveFile/{FileName}")]
-       int AddSaveFile(string UserName, string FileName,string Data);
+       [WebInvoke(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "{UserName}/{Password}/AddSaveFile/{FileName}")]
+       int AddSaveFile(string UserName, string Password, string FileName, string Data);
     }
 
 

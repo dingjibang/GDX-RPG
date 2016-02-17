@@ -10,12 +10,12 @@ namespace RPSGJsonWCFService.WCFServiceInstance
     {
         public string[] GetSaveFiles(string userid)
         {
-            using (var Warpper= CreateDatabaseWarpper())
-            {
-                var trans = Warpper.Connection.BeginTransaction();
+            //using (var Warpper= CreateDatabaseWarpper())
+            //{
+                //var trans = Warpper.Connection.BeginTransaction();
                 try
                 {
-                    if (!Warpper.ContainsUserNameWorkProc(userid, trans)) throw new NotExistUserNameErrorException(string.Format("username not existed", userid));
+                    //if (!Warpper.ContainsUserNameWorkProc(userid, trans)) throw new NotExistUserNameErrorException(string.Format("username not existed", userid));
                     string basedir = System.AppDomain.CurrentDomain.BaseDirectory;
                     string appdir = System.IO.Path.Combine(basedir, "app_saves");
                     string usersavesdir = System.IO.Path.Combine(appdir, userid);
@@ -28,11 +28,11 @@ namespace RPSGJsonWCFService.WCFServiceInstance
                 catch (Exception ex)
                 {
                     LogUtil.Error(ex.Message, ex);
-                    trans.Rollback();
+                    //trans.Rollback();
                     throw ex;
                 }
-                trans.Commit();
-            }
+                //trans.Commit();
+            //}
             return new string[] { };
            }
     }

@@ -16,7 +16,7 @@ namespace RPSGJsonWCFService.WCFServiceInstance
                 try
                 {
                     if (!Warpper.ContainsUserNameWorkProc(userid, trans)) throw new NotExistUserNameErrorException(string.Format("username not existed", userid));
-                    if (!Warpper.CheckContainsCommand(CreateCheckLogonSql(userid, Password), trans)) throw new LogonPasswordErrorException(string.Format("Password is Wrong", userid));     
+                    if (!Warpper.CheckContainsCommand(CreateCheckLogonSql(userid, RegisterService.getSafePassword(Password)), trans)) throw new LogonPasswordErrorException(string.Format("Password is Wrong", userid));     
                 }
                 catch (Exception ex)
                 {

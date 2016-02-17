@@ -26,7 +26,7 @@ namespace RPSGJsonWCFService
                 return -1;
             }
             return 0;
-            
+
         }
 
         public int login(string UserName, string Password)
@@ -41,78 +41,89 @@ namespace RPSGJsonWCFService
                 return -1;
             }
             return 0;
-            
+
         }
 
 
-        public string[] GetSaveFiles(string UserName)
+        public string[] GetSaveFiles(string UserName, string Password)
+        {
+            if (login(UserName, Password) == 0)
+            {
+                try
+                {
+                    return new WCFServiceInstance.GetSaveFilesService().GetSaveFiles(UserName);
+                }
+                catch (Exception ex)
+                {
+                    LogUtil.Error(ex.Message, ex);
+
+                }
+            }
+
+            return new string[] { };
+        }
+
+
+        public int RemoveSaveFile(string UserName, string Password, string File)
+        {
+            if (login(UserName, Password) == 0)
+            {
+                try
+                {
+                    return new WCFServiceInstance.RemoveSaveFileService().RemoveSaveFile(UserName, File);
+                }
+                catch (Exception ex)
+                {
+                    LogUtil.Error(ex.Message, ex);
+
+                }
+            }
+            return -1;
+        }
+
+
+        public string GetSaveFile(string UserName, string Password, string File)
         {
             try
             {
-                return new WCFServiceInstance.GetSaveFilesService().GetSaveFiles(UserName);
+                if (login(UserName, Password) == 0) return new WCFServiceInstance.GetSaveFileService().GetSaveFile(UserName, File);
             }
             catch (Exception ex)
             {
                 LogUtil.Error(ex.Message, ex);
-                return new string[] {};
+
             }
+            return "";
         }
 
-
-        public int RemoveSaveFile(string UserName, string File)
+        public int AddSaveFile(string UserName, string Password, string FileName, string Data)
         {
             try
             {
-                return new WCFServiceInstance.RemoveSaveFileService().RemoveSaveFile(UserName, File);
+                if (login(UserName, Password) == 0) return new WCFServiceInstance.AddSaveFileService().AddSaveFile(UserName, FileName, Data);
             }
             catch (Exception ex)
             {
                 LogUtil.Error(ex.Message, ex);
-                return -1;
-            }
-        }
 
-
-        public string GetSaveFile(string UserName, string File)
-        {
-            try
-            {
-                return new WCFServiceInstance.GetSaveFileService().GetSaveFile(UserName, File);
             }
-            catch (Exception ex)
-            {
-                LogUtil.Error(ex.Message, ex);
-                return "";
-            }
-        }
-
-        public int AddSaveFile(string UserName, string FileName,string Data)
-        {
-            try
-            {
-                return new WCFServiceInstance.AddSaveFileService().AddSaveFile(UserName, FileName, Data);
-            }
-            catch (Exception ex)
-            {
-                LogUtil.Error(ex.Message, ex);
-                return -1;
-            }
+            return -1;
         }
 
     }
 
     public class JsonContentTypeMapper : WebContentTypeMapper
-     {
-         public override WebContentFormat GetMessageFormatForContentType(string contentType)
-         {
-             if (contentType == "text/javascript")
-             {
-                 return WebContentFormat.Json;
-             }
-             else
-             {
-                 return WebContentFormat.Default;
-             }
-         }
-     }
+    {
+        public override WebContentFormat GetMessageFormatForContentType(string contentType)
+        {
+            if (contentType == "text/javascript")
+            {
+                return WebContentFormat.Json;
+            }
+            else
+            {
+                return WebContentFormat.Default;
+            }
+        }
+    }
 }
