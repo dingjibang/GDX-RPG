@@ -8,6 +8,7 @@ import com.badlogic.gdx.Net.HttpRequest;
 import com.badlogic.gdx.Net.HttpResponse;
 import com.badlogic.gdx.Net.HttpResponseListener;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
@@ -18,11 +19,21 @@ public class Account implements Serializable {
 	
 	public User user;
 	
+	/**
+	 * @param name
+	 * @param pass
+	 * @param hold
+	 * @param callback
+	 */
 	public void login(String name, String pass, boolean hold, CustomRunnable<State> callback){
 		HttpRequest request = new HttpRequest();
-		request.setUrl(Setting.NET_LOGIN_URL+"?name=小苹果！");
-		request.setMethod(HttpMethods.GET);
+		//request.setUrl(Setting.NET_LOGIN_URL+"?name=小苹果！");
+		request.setUrl(String.format( "http://localhost/RPSGWeb/RPSGJsonWCFService.svc/login"));
+		//request.setUrl("http://localhost:16274/RPSGJsonWCFService.svc/login");
+		request.setMethod(HttpMethods.POST);
 		
+		request.setContent(String.format("{\"UserName\":\"%s\",\"Password\":\"%s\"}", name,pass));
+		request.setHeader("content-type", "application/json");
 		HttpResponseListener listener = new HttpResponseListener() {
 			public void handleHttpResponse(HttpResponse response) {
 				RPG.toast.add(response.getResultAsString(), Color.GREEN,13);
