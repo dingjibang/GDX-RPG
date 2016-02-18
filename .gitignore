@@ -62,3 +62,9 @@ build/
 
 ## OS Specific
 .DS_Store
+
+## nutget
+packages/
+
+## Visual Studio
+obj/

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPSGJsonWCFService", "RPSGJsonWCFService\RPSGJsonWCFService.csproj", "{09CFBF50-C751-41FF-946B-D55AC89F0294}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPSGJsonWCFService.Test", "RPSGJsonWCFService.Test\RPSGJsonWCFService.Test.csproj", "{65F2E844-927E-4F56-8757-3D405370C399}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09CFBF50-C751-41FF-946B-D55AC89F0294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09CFBF50-C751-41FF-946B-D55AC89F0294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09CFBF50-C751-41FF-946B-D55AC89F0294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09CFBF50-C751-41FF-946B-D55AC89F0294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65F2E844-927E-4F56-8757-3D405370C399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65F2E844-927E-4F56-8757-3D405370C399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65F2E844-927E-4F56-8757-3D405370C399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65F2E844-927E-4F56-8757-3D405370C399}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

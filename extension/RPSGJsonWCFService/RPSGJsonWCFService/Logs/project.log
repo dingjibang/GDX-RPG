@@ -1,0 +1,96 @@
+2016-02-12 22:18:22,428 [20] ERROR 错误信息：指定的转换无效。 - [j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\logUtil.cs:60]
+System.InvalidCastException: 指定的转换无效。
+   在 RPSGJsonWCFService.Database.Base.BaseDatabaseWarpper.CheckContainsCommand(String sqlTEXT, DbTransaction trans) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\Database\Base\BaseDatabaseWarpper.cs:行号 350
+   在 RPSGJsonWCFService.Database.Base.BaseDatabaseWarpper.ContainsUserNameWorkProc(String userName, DbTransaction trans) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\Database\Base\BaseDatabaseWarpper.cs:行号 205
+   在 RPSGJsonWCFService.WCFServiceInstance.RegisterService.Register(String UserName, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\WCFServiceInstance\RegisterService.cs:行号 29
+2016-02-12 22:18:22,470 [20] ERROR 错误信息：指定的转换无效。 - [j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\logUtil.cs:60]
+System.InvalidCastException: 指定的转换无效。
+   在 RPSGJsonWCFService.WCFServiceInstance.RegisterService.Register(String UserName, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\WCFServiceInstance\RegisterService.cs:行号 46
+   在 RPSGJsonWCFService.RPSGJsonWCFService.Register(String UserName, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\RPSGJsonWCFService.svc.cs:行号 20
+2016-02-12 22:19:22,901 [20] ERROR 错误信息：指定的转换无效。 - [j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\logUtil.cs:60]
+System.InvalidCastException: 指定的转换无效。
+   在 RPSGJsonWCFService.Database.Base.BaseDatabaseWarpper.CheckContainsCommand(String sqlTEXT, DbTransaction trans) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\Database\Base\BaseDatabaseWarpper.cs:行号 350
+   在 RPSGJsonWCFService.Database.Base.BaseDatabaseWarpper.ContainsUserNameWorkProc(String userName, DbTransaction trans) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\Database\Base\BaseDatabaseWarpper.cs:行号 205
+   在 RPSGJsonWCFService.WCFServiceInstance.RegisterService.Register(String UserName, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\WCFServiceInstance\RegisterService.cs:行号 29
+2016-02-12 22:19:22,933 [20] ERROR 错误信息：指定的转换无效。 - [j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\logUtil.cs:60]
+System.InvalidCastException: 指定的转换无效。
+   在 RPSGJsonWCFService.WCFServiceInstance.RegisterService.Register(String UserName, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\WCFServiceInstance\RegisterService.cs:行号 46
+   在 RPSGJsonWCFService.RPSGJsonWCFService.Register(String UserName, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\RPSGJsonWCFService.svc.cs:行号 20
+2016-02-12 22:22:38,449 [9] ERROR 错误信息：ERRORSQL:INSERT INTO USER_TABLE ([USERID],[PASSWORD]) VALUES ('SOLA','SOLA')
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[USERID],[PASSWORD]) VALUES ('SOLA','SOLA')' at line 1 - [j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\logUtil.cs:60]
+System.Exception: ERRORSQL:INSERT INTO USER_TABLE ([USERID],[PASSWORD]) VALUES ('SOLA','SOLA')
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[USERID],[PASSWORD]) VALUES ('SOLA','SOLA')' at line 1 ---> MySql.Data.MySqlClient.MySqlException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[USERID],[PASSWORD]) VALUES ('SOLA','SOLA')' at line 1
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 RPSGJsonWCFService.Database.Base.BaseDatabaseWarpper.ExcuteCommand(String CMM, DbTransaction trans) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\Database\Base\BaseDatabaseWarpper.cs:行号 366
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 RPSGJsonWCFService.Database.Base.BaseDatabaseWarpper.ExcuteCommand(String CMM, DbTransaction trans) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\Database\Base\BaseDatabaseWarpper.cs:行号 372
+   在 RPSGJsonWCFService.WCFServiceInstance.RegisterService.Register(String UserName, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\WCFServiceInstance\RegisterService.cs:行号 34
+2016-02-12 22:22:38,488 [9] ERROR 错误信息：ERRORSQL:INSERT INTO USER_TABLE ([USERID],[PASSWORD]) VALUES ('SOLA','SOLA')
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[USERID],[PASSWORD]) VALUES ('SOLA','SOLA')' at line 1 - [j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\logUtil.cs:60]
+System.Exception: ERRORSQL:INSERT INTO USER_TABLE ([USERID],[PASSWORD]) VALUES ('SOLA','SOLA')
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[USERID],[PASSWORD]) VALUES ('SOLA','SOLA')' at line 1 ---> MySql.Data.MySqlClient.MySqlException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[USERID],[PASSWORD]) VALUES ('SOLA','SOLA')' at line 1
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 RPSGJsonWCFService.Database.Base.BaseDatabaseWarpper.ExcuteCommand(String CMM, DbTransaction trans) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\Database\Base\BaseDatabaseWarpper.cs:行号 366
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 RPSGJsonWCFService.WCFServiceInstance.RegisterService.Register(String UserName, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\WCFServiceInstance\RegisterService.cs:行号 46
+   在 RPSGJsonWCFService.RPSGJsonWCFService.Register(String UserName, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\RPSGJsonWCFService.svc.cs:行号 20
+2016-02-12 22:22:40,874 [15] ERROR 错误信息：ERRORSQL:INSERT INTO USER_TABLE ([USERID],[PASSWORD]) VALUES ('SOLA','SOLA')
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[USERID],[PASSWORD]) VALUES ('SOLA','SOLA')' at line 1 - [j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\logUtil.cs:60]
+System.Exception: ERRORSQL:INSERT INTO USER_TABLE ([USERID],[PASSWORD]) VALUES ('SOLA','SOLA')
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[USERID],[PASSWORD]) VALUES ('SOLA','SOLA')' at line 1 ---> MySql.Data.MySqlClient.MySqlException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[USERID],[PASSWORD]) VALUES ('SOLA','SOLA')' at line 1
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 RPSGJsonWCFService.Database.Base.BaseDatabaseWarpper.ExcuteCommand(String CMM, DbTransaction trans) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\Database\Base\BaseDatabaseWarpper.cs:行号 366
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 RPSGJsonWCFService.Database.Base.BaseDatabaseWarpper.ExcuteCommand(String CMM, DbTransaction trans) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\Database\Base\BaseDatabaseWarpper.cs:行号 372
+   在 RPSGJsonWCFService.WCFServiceInstance.RegisterService.Register(String UserName, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\WCFServiceInstance\RegisterService.cs:行号 34
+2016-02-12 22:22:40,896 [15] ERROR 错误信息：ERRORSQL:INSERT INTO USER_TABLE ([USERID],[PASSWORD]) VALUES ('SOLA','SOLA')
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[USERID],[PASSWORD]) VALUES ('SOLA','SOLA')' at line 1 - [j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\logUtil.cs:60]
+System.Exception: ERRORSQL:INSERT INTO USER_TABLE ([USERID],[PASSWORD]) VALUES ('SOLA','SOLA')
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[USERID],[PASSWORD]) VALUES ('SOLA','SOLA')' at line 1 ---> MySql.Data.MySqlClient.MySqlException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[USERID],[PASSWORD]) VALUES ('SOLA','SOLA')' at line 1
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 RPSGJsonWCFService.Database.Base.BaseDatabaseWarpper.ExcuteCommand(String CMM, DbTransaction trans) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\Database\Base\BaseDatabaseWarpper.cs:行号 366
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 RPSGJsonWCFService.WCFServiceInstance.RegisterService.Register(String UserName, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\WCFServiceInstance\RegisterService.cs:行号 46
+   在 RPSGJsonWCFService.RPSGJsonWCFService.Register(String UserName, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\RPSGJsonWCFService.svc.cs:行号 20
+2016-02-12 22:24:35,952 [9] ERROR 错误信息：username not existed - [j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\logUtil.cs:60]
+RPSGJsonWCFService.Database.Base.NotExistUserNameErrorException: username not existed
+   在 RPSGJsonWCFService.WCFServiceInstance.LoginService.Login(String userid, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\WCFServiceInstance\LoginService.cs:行号 18
+2016-02-12 22:24:36,012 [9] ERROR 错误信息：username not existed - [j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\logUtil.cs:60]
+RPSGJsonWCFService.Database.Base.NotExistUserNameErrorException: username not existed
+   在 RPSGJsonWCFService.WCFServiceInstance.LoginService.Login(String userid, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\WCFServiceInstance\LoginService.cs:行号 25
+   在 RPSGJsonWCFService.RPSGJsonWCFService.login(String UserName, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\RPSGJsonWCFService.svc.cs:行号 35
+2016-02-12 22:25:14,165 [9] ERROR 错误信息：username not existed - [j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\logUtil.cs:60]
+RPSGJsonWCFService.Database.Base.NotExistUserNameErrorException: username not existed
+   在 RPSGJsonWCFService.WCFServiceInstance.LoginService.Login(String userid, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\WCFServiceInstance\LoginService.cs:行号 18
+2016-02-12 22:25:14,189 [9] ERROR 错误信息：username not existed - [j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\logUtil.cs:60]
+RPSGJsonWCFService.Database.Base.NotExistUserNameErrorException: username not existed
+   在 RPSGJsonWCFService.WCFServiceInstance.LoginService.Login(String userid, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\WCFServiceInstance\LoginService.cs:行号 25
+   在 RPSGJsonWCFService.RPSGJsonWCFService.login(String UserName, String Password) 位置 j:\Projects\RPSGJsonWCFService\RPSGJsonWCFService\RPSGJsonWCFService.svc.cs:行号 35

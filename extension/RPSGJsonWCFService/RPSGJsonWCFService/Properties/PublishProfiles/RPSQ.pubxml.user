@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>J:\RPSGWeb</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>02/12/2016 19:39:24</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>02/12/2016 19:39:24</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>02/12/2016 20:18:30</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>02/12/2016 19:38:50</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.Entity.EF6.dll">
+      <publishTime>02/12/2016 19:39:26</publishTime>
+    </File>
+    <File Include="bin/RPSGJsonWCFService.dll">
+      <publishTime>02/13/2016 20:57:07</publishTime>
+    </File>
+    <File Include="log4net.xml">
+      <publishTime>02/12/2016 20:18:36</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>02/12/2016 20:18:36</publishTime>
+    </File>
+    <File Include="RPSGJsonWCFService.svc">
+      <publishTime>02/12/2016 19:36:04</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>02/13/2016 00:50:41</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
