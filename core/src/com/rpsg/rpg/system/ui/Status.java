@@ -49,7 +49,7 @@ public class Status extends Group {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		$.removeIf(tasks, (task)->task.time-- <= 0, (task)->task.callback.run());
+		$.removeIf(tasks, task-> task.time-- <= 0, task -> task.callback.run());
 	}
 	
 	public Status add(String str){

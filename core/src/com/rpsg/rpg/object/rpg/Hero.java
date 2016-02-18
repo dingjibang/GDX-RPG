@@ -166,16 +166,17 @@ public class Hero extends RPGObject implements Time{
 		return this.sc.add(sc);
 	}
 
-	public void addProp(String name, String p, boolean post) {
-		if(p.indexOf("%")<0){
+	public void addProp(String name, String p, boolean post,boolean overflow) {
+		if(!p.contains("%")){
 			Integer val = getProp(name);
-			prop.put(name,(val==null?0:val) + Integer.parseInt(p));
+			Integer i = Integer.parseInt(p);
+			prop.put(name,overflow ? i : (val == null ? 0 : val) + i);
 		}else{
 			float f = Float.parseFloat(p.split("%")[0]);
-			prop.put(name, getProp(name) * (int)(f / 100));
+			prop.put(name, getProp(name) * (int)(f / 100));//TODO ?overflow模式下。。
 		}
 		
-		if(name.equalsIgnoreCase("dead")){
+		if(name.equals("dead")){
 			prop.put(name, Integer.parseInt(p));
 		}
 		
@@ -184,11 +185,11 @@ public class Hero extends RPGObject implements Time{
 	}
 	
 	public void addProp(String name, String p) {
-		addProp(name, p,true);
+		addProp(name, p,true,false);
 	}
 	
 	public void setProp(String name,Integer d){
-		addProp(name, d+"",false);
+		addProp(name, d+"",false,true);
 	}
 	
 	public void addProps(Map<String,String> map){

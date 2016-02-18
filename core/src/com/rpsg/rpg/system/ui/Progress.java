@@ -21,9 +21,12 @@ public class Progress extends Actor {
 		this.max = max;
 		this.min = min;
 		current = value = 0;
+		setSize(bg.getWidth(), bg.getHeight());
 	}
 	
 	public Progress value(int value){
+		if(this.value == value) return this;
+		
 		int offset = this.value - value;// + (int)(proxy.getWidth() / per());
 		this.value = value;
 		if(offset < 0) offset = 0;
@@ -45,7 +48,7 @@ public class Progress extends Actor {
 		bg.position(getX(), getY()).size(getWidth(),getHeight()).draw(batch);
 		fg.position(getX(), getY()).size(getWidth() * per(), getHeight()).getRegion().setRegion(0, 0, (int)fg.getWidth(), (int)getHeight());
 		fg.draw(batch,parentAlpha);
-		cache.position(getX()+fg.getWidth(), getY()).size(proxy.getWidth(), getHeight()).getRegion().setRegion((int)fg.getWidth(),0,(int)proxy.getWidth(),(int)cache.getHeight());
+		cache.position(getX()+fg.getWidth()*fg.getScaleX(), getY()).size(proxy.getWidth(), getHeight()).getRegion().setRegion((int)fg.getWidth(),0,(int)proxy.getWidth(),(int)cache.getHeight());
 		cache.draw(batch,parentAlpha);
 	}
 	

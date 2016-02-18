@@ -1,0 +1,10 @@
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.Form1.resources
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.Properties.Resources.resources
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.csproj.GenerateResource.Cache
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\bin\Debug\ScriptEditor.exe.config
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.csprojResolveAssemblyReference.cache
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\bin\Debug\ScriptEditor.exe
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\bin\Debug\ScriptEditor.pdb
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\bin\Debug\Noesis.Javascript.dll
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.exe
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.pdb

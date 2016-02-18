@@ -114,12 +114,6 @@ public class BattleView extends DefaultIView{
 		
 		status.setZIndex(999999);
 		
-		p = new Progress(Res.getNP(Setting.IMAGE_BATTLE+"progressbar_bg.png"), Res.getNP(Setting.IMAGE_BATTLE+"progressbar_full.png"), Res.getNP(Setting.IMAGE_BATTLE+"progressbar_cache.png"), 0, 100);
-		p.setSize(380,20);
-		p.setPosition(450, 170);
-		p.value(100);
-		stage.addActor(p);
-		
 		return this;
 	}
 
@@ -140,7 +134,12 @@ public class BattleView extends DefaultIView{
 		if(keyCode == Keys.S) status.add("随便说一句话："+Math.random());
 		if(keyCode == Keys.D) status.append(" & "+Math.random());
 		if(keyCode == Keys.F) status.append("[#ffaabb]彩色测试[]");
-		if(keyCode == Keys.P) p.value(MathUtils.random(0,100));
+		if(keyCode == Keys.P) {
+			RPG.ctrl.hero.currentHeros.get(0).setProp("hp", MathUtils.random(0,100));
+			RPG.ctrl.hero.currentHeros.get(0).setProp("mp", MathUtils.random(0,100));
+			RPG.ctrl.hero.currentHeros.get(1).setProp("hp", MathUtils.random(0,100));
+			RPG.ctrl.hero.currentHeros.get(1).setProp("mp", MathUtils.random(0,100));
+		}
 		super.onkeyDown(keyCode);
 	}
 	
