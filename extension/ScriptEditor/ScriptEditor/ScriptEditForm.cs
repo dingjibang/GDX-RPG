@@ -18,14 +18,20 @@ namespace ScriptEditor {
         }
 
         Script script;
-        public void init(Script script) {
+        public ScriptEditForm init(Script script) {
             this.script = script;
             this.textBox2.Text = script.getScript();
+            this.StartPosition = FormStartPosition.CenterParent;
+            return this;
         }
 
         private void button1_Click(object sender, EventArgs e) {
             script.setScript(textBox2.Text);
             Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e) {
+              Close();
         }
     }
 }

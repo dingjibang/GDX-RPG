@@ -81,8 +81,7 @@ namespace ScriptEditor {
         private void 编辑源文件ToolStripMenuItem_Click(object sender, EventArgs e) {
             Script script = currentSelectScript();
             if (script == null) return;
-            var form = new ScriptEditForm();
-            form.init(script);
+            var form = new ScriptEditForm().init(script);
             form.ShowDialog();
         }
 

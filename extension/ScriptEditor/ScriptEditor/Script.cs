@@ -30,21 +30,24 @@ namespace ScriptEditor {
 
         public void setScript(string script) {
             this.script = script;
-            translate = null;
+            getScript = translate = null;
+            onClick = null;
             try {
                 Form1.m_reader.execute(this, script);
             } catch (Exception) {
                 //throw 个激霸
             }
-            if (translate == null) {
+
+            //set default opaction
+            if (getScript == null)
                 getScript = () => script;
+            if (translate == null)
                 translate = () => getScript();
+            if(onClick == null)
                 onClick = () => {
-                    var form = new ScriptEditForm();
-                    form.init(this);
+                    var form = new ScriptEditForm().init(this);
                     form.ShowDialog();
                 };
-            }
             modify = true;
         }
 

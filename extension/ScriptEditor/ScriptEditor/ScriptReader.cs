@@ -50,8 +50,7 @@ namespace ScriptEditor {
             s.param["content"] = str;
             s.translate = () => "[#Red]" + (s.param["title"] as string == "" ? "自言自语" : s.param["title"]) + "[]说：[#Blue]" + s.param["content"] + "[]";
             s.onClick = () => {
-                var form2 = new SayForm();
-                form2.init(s);
+                var form2 = new SayForm().init(s);
                 form2.ShowDialog();
             };
             s.getScript = () => "say(\"" + s.param["content"]+"\",\""+s.param["title"]+"\");";

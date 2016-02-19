@@ -21,14 +21,20 @@ namespace ScriptEditor {
         }
 
         Script script;
-        public void init(Script script) {
+        public SayForm init(Script script) {
             this.script = script;
             this.textBox1.Text = script.param["title"] as string;
             this.textBox2.Text = script.param["content"] as string;
+            this.StartPosition = FormStartPosition.CenterParent;
+            return this;
         }
 
         private void SayForm_Load(object sender, EventArgs e) {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e) {
+            Close();
         }
     }
 }
