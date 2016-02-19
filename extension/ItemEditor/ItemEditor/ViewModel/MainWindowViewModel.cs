@@ -20,7 +20,7 @@ namespace ItemEditor
             {
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Add:
                     {
-                        foreach (ItemViewModel item in e.NewItems)
+                        foreach (ItemBaseViewModel item in e.NewItems)
                         {
                             item.RootPath = RootPath;
                         }
@@ -30,7 +30,7 @@ namespace ItemEditor
                     break;
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Remove:
                     {
-                        foreach (ItemViewModel item in e.OldItems)
+                        foreach (ItemBaseViewModel item in e.OldItems)
                         {
                             this.m_deleteitems.Add(item);
                         }
@@ -45,17 +45,17 @@ namespace ItemEditor
             }
         }
 
-        private List<ItemViewModel> m_deleteitems = new List<ItemViewModel>();
+        private List<ItemBaseViewModel> m_deleteitems = new List<ItemBaseViewModel>();
 
-        public List<ItemViewModel> Deleteitems
+        public List<ItemBaseViewModel> Deleteitems
         {
             get { return m_deleteitems; }
             set { m_deleteitems = value; }
         }
 
-        private ObservableCollection<ItemViewModel> m_Items = new ObservableCollection<ItemViewModel>();
+        private ObservableCollection<ItemBaseViewModel> m_Items = new ObservableCollection<ItemBaseViewModel>();
 
-        public ObservableCollection<ItemViewModel> Items
+        public ObservableCollection<ItemBaseViewModel> Items
         {
             get { return m_Items; }
             set
@@ -67,9 +67,9 @@ namespace ItemEditor
             }
         }
 
-        private ItemViewModel m_CurrentItem;
+        private ItemBaseViewModel m_CurrentItem;
 
-        public ItemViewModel CurrentItem
+        public ItemBaseViewModel CurrentItem
         {
             get { return m_CurrentItem; }
             set
@@ -105,11 +105,19 @@ namespace ItemEditor
                 String[] files = System.IO.Directory.GetFiles(DataPath);
                 foreach (String file in files)
                 {
-                    Item item = new Item();
-                    item.Read(file);
-                    ItemViewModel itemvm = new ItemViewModel();
-                    itemvm.Item = item;
-                    m_Items.Add(itemvm);
+                    ItemBase item = new ItemBase();
+                    try
+                    {
+                        item.Read(file);
+                        ItemBaseViewModel itemvm = new ItemBaseViewModel();
+                        itemvm.Item = item;
+                        m_Items.Add(itemvm);
+                    }
+                    catch (Exception)
+                    {
+                        
+                    }
+
                 }
             }
         }
@@ -118,7 +126,7 @@ namespace ItemEditor
         public string DataPath
         {
             get {
-                return RootPath + "\\script\\data";
+                return RootPath + "\\script\\data\\item";
             }
         }
     }
