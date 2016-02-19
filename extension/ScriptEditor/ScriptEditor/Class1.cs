@@ -7,13 +7,20 @@ namespace ScriptEditor {
      public class Script {
         public String script;
 
+        public Func<string> translate { get; set; }
+
         override public String ToString() {
+            if (translate == null)
+            {
+                return "";
+            }
             return translate();
         }
 
-        public delegate string translateHandler();
-        public event translateHandler translate;
+        //public delegate string translateHandler();
+        //public event translateHandler translate;
 
+          
         public Boolean empty() {
             return translate == null;
         }
