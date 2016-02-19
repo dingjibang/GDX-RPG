@@ -10,10 +10,12 @@
 	packable:false,
 	effect:{
 		prop:{}
-		buff:{
-			turn:1,
-			type:"add",
-			buff:12450
-		}
+		buff:[
+			{
+				turn:1,
+				type:"add",
+				buff:1
+			}
+		]
 	}
 }
