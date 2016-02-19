@@ -35,12 +35,16 @@
             // 
             // listBox
             // 
+            this.listBox.BackColor = System.Drawing.SystemColors.Window;
+            this.listBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.listBox.FormattingEnabled = true;
             this.listBox.ItemHeight = 12;
             this.listBox.Location = new System.Drawing.Point(12, 28);
             this.listBox.Name = "listBox";
             this.listBox.Size = new System.Drawing.Size(1103, 556);
             this.listBox.TabIndex = 0;
+            this.listBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
             // 
             // menuStrip1
             // 
@@ -66,27 +70,27 @@
             // 打开ToolStripMenuItem
             // 
             this.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem";
-            this.打开ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.打开ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.打开ToolStripMenuItem.Text = "打开";
             this.打开ToolStripMenuItem.Click += new System.EventHandler(this.打开ToolStripMenuItem_Click);
             // 
             // 保存ToolStripMenuItem
             // 
             this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.保存ToolStripMenuItem.Text = "保存";
             // 
             // 另存为ToolStripMenuItem
             // 
             this.另存为ToolStripMenuItem.Name = "另存为ToolStripMenuItem";
-            this.另存为ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.另存为ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.另存为ToolStripMenuItem.Text = "另存为";
             this.另存为ToolStripMenuItem.Click += new System.EventHandler(this.另存为ToolStripMenuItem_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.退出ToolStripMenuItem.Text = "退出";
             // 
             // Form1
