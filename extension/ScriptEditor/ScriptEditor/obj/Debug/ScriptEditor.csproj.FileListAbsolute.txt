@@ -11,12 +11,11 @@ E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\Sc
 H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\bin\Debug\ScriptEditor.exe.config
 H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\bin\Debug\ScriptEditor.exe
 H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\bin\Debug\ScriptEditor.pdb
-H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\bin\Debug\Noesis.Javascript.dll
+H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\bin\Debug\ClearScript.dll
 H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.Form1.resources
+H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.SayForm.resources
 H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.Properties.Resources.resources
+H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.ScriptEditForm.resources
 H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.csproj.GenerateResource.Cache
 H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.exe
 H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.pdb
-H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.csprojResolveAssemblyReference.cache
-H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.SayForm.resources
-H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.ScriptEditForm.resources

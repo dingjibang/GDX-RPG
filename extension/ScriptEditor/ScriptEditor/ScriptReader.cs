@@ -1,4 +1,4 @@
-﻿using Noesis.Javascript;
+﻿using Microsoft.ClearScript.V8;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,18 +6,18 @@ using System.Linq;
 using System.Text;
 
 namespace ScriptEditor {
-    public class ScriptReader {
-        public JavascriptContext context = new JavascriptContext();
+    public class ScriptReader { 
+        public V8ScriptEngine engine = new V8ScriptEngine();
         public Script current;
         public CGClass CG = new CGClass();
 
         public ScriptReader() {
-            context.SetParameter("prototype__________", this);
-            context.SetParameter("MsgType", typeof(MsgType));
-            context.SetParameter("RPGObject", typeof(RPGObject));
-            context.SetParameter("BalloonType", typeof(BalloonType));
-            context.SetParameter("CG", CG);
-            context.Run("this.__proto__ = prototype__________");
+            engine.AddHostObject("prototype__________", this);
+            engine.AddHostType("MsgType", typeof(MsgType));
+            engine.AddHostType("RPGObject", typeof(RPGObject));
+            engine.AddHostType("BalloonType", typeof(BalloonType));
+            engine.AddHostObject("CG", CG);
+            engine.Execute("this.__proto__ = prototype__________");
         }
 
 
@@ -41,7 +41,7 @@ namespace ScriptEditor {
 
         public void execute(Script self ,String js) {
             current = self;
-            context.Run(js);
+            engine.Execute(js);
         }
 
         public void say(String str, String title) {
@@ -103,7 +103,7 @@ namespace ScriptEditor {
         }
 
         public void showMSG(MsgType type) {
-            current.translate = () => "[#DarkViolet]显示[][#Green]" + type.ToString() + "[]对话框";
+            current.translate = () => "[#DarkViolet]显示[][#Green]" + type + "[]对话框";
         }
 
         public void setBalloon(BalloonType type) {
