@@ -9,8 +9,10 @@ namespace ScriptEditor {
         private string script;
         public bool modify = false;
         private List<RenderString> renderList = new List<RenderString>();
+        public Dictionary<String, Object> param = new Dictionary<string, object>();
 
         public Func<string> translate;
+        public Action onClick;
 
         public Script() {
             translate = getScript;
@@ -24,12 +26,28 @@ namespace ScriptEditor {
             return translate == null;
         }
 
-        public string getScript() {
-            return script;
-        }
+        public Func<string> getScript;
 
         public void setScript(string script) {
             this.script = script;
+            getScript = translate = null;
+            onClick = null;
+            try {
+                Form1.m_reader.execute(this, script);
+            } catch (Exception) {
+                //throw 个激霸
+            }
+
+            //set default opaction
+            if (getScript == null)
+                getScript = () => script;
+            if (translate == null)
+                translate = () => getScript();
+            if(onClick == null)
+                onClick = () => {
+                    var form = new ScriptEditForm().init(this);
+                    form.ShowDialog();
+                };
             modify = true;
         }
 

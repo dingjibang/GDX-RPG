@@ -8,4 +8,17 @@ namespace ScriptEditor {
     public enum MsgType { 莲子, 梅莉 };
     public enum BalloonType { 沉默, 惊讶, 灵感, 汗 };
 
+    public class CGClass : JSObject {
+        public void disposeAll() {
+            reader.current.translate = () => "销毁所有CG";
+        }
+
+        public void dispose(Object obj) {
+            reader.current.translate = () => "销毁CG";
+        }
+    }
+
+    public abstract class JSObject {
+        public static ScriptReader reader;
+    }
 }

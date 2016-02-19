@@ -12,10 +12,12 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.base.items.Buff;
+import com.rpsg.rpg.object.base.items.Buff.BuffType;
 import com.rpsg.rpg.object.base.items.Effect;
+import com.rpsg.rpg.object.base.items.Effect.EffectBuff;
+import com.rpsg.rpg.object.base.items.Effect.EffectBuffType;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
-import com.rpsg.rpg.object.base.items.Buff.BuffType;
 import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
@@ -127,6 +129,17 @@ public class ItemController {
 		if(json.has("prop"))
 			e.prop = getProp(json.get("prop"));
 		e.use = json.has("use")?json.getString("use"):"";
+		
+		List<EffectBuff> buffs = new ArrayList<EffectBuff>();
+		if(json.has("buff")) for(JsonValue value : json.get("buff")){
+			EffectBuff eb = new EffectBuff();
+			eb.type = EffectBuffType.valueOf(value.getString("type"));
+			eb.buff = getBuff(value.getInt("buff"));
+			eb.turn = value.getInt("turn");
+			buffs.add(eb);
+		}
+		
+		e.buff = buffs;
 		return e;
 	}
 	
