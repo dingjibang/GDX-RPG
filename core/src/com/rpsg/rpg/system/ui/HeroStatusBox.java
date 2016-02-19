@@ -46,8 +46,8 @@ public class HeroStatusBox extends Group {
 	public void act(float delta) {
 		hpbar.value(hero.getProp("hp"));
 		mpbar.value(hero.getProp("mp"));
-		hp.setText("HP:  "+hero.getProp("hp") + " / " + hero.getProp("maxhp"));
-		mp.setText("MP:  "+hero.getProp("mp") + " / " + hero.getProp("maxmp"));
+		hp.setText("HP:  "+hero.getProp("hp") + "/" + hero.getProp("maxhp"));
+		mp.setText("MP:  "+hero.getProp("mp") + "/" + hero.getProp("maxmp"));
 		super.act(delta);
 	}
 }
