@@ -38,6 +38,9 @@
             this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.另存为ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.编辑ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.启动GDXRPG引擎ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -114,7 +117,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.文件ToolStripMenuItem});
+            this.文件ToolStripMenuItem,
+            this.编辑ToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1298, 25);
@@ -127,6 +131,7 @@
             this.打开ToolStripMenuItem,
             this.保存ToolStripMenuItem,
             this.另存为ToolStripMenuItem,
+            this.toolStripSeparator1,
             this.退出ToolStripMenuItem});
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
             this.文件ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
@@ -157,6 +162,26 @@
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
             this.退出ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.退出ToolStripMenuItem.Text = "退出";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // 编辑ToolStripMenuItem1
+            // 
+            this.编辑ToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.启动GDXRPG引擎ToolStripMenuItem});
+            this.编辑ToolStripMenuItem1.Name = "编辑ToolStripMenuItem1";
+            this.编辑ToolStripMenuItem1.Size = new System.Drawing.Size(44, 21);
+            this.编辑ToolStripMenuItem1.Text = "运行";
+            this.编辑ToolStripMenuItem1.Click += new System.EventHandler(this.编辑ToolStripMenuItem1_Click);
+            // 
+            // 启动GDXRPG引擎ToolStripMenuItem
+            // 
+            this.启动GDXRPG引擎ToolStripMenuItem.Name = "启动GDXRPG引擎ToolStripMenuItem";
+            this.启动GDXRPG引擎ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.启动GDXRPG引擎ToolStripMenuItem.Text = "启动 GDX-RPG引擎";
             // 
             // Form1
             // 
@@ -193,6 +218,9 @@
         private System.Windows.Forms.ToolStripMenuItem 上移ctrlupToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem 下移一行ctrldownToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem 编辑ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 启动GDXRPG引擎ToolStripMenuItem;
     }
 }
 

@@ -102,6 +102,9 @@ namespace ScriptEditor {
             }
         }
 
+        private void 编辑ToolStripMenuItem1_Click(object sender, EventArgs e) {
+
+        }
     }
 
 }
