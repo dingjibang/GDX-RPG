@@ -23,6 +23,26 @@ namespace ItemEditor
         public MainWindow()
         {
             InitializeComponent();
+
+//            Type type = typeof(ItemBase);
+//            List<string> list = new List<string>();
+//            foreach (var item in type.GetProperties())
+//            {
+//                list.Add(string.Format(@"
+//        private {2} m_{1};
+//        public {2} {1}
+//        {3}
+//            get {3} return m_{1}; {4}
+//            set
+//            {3}
+//                if (m_{1} == value) return;
+//                var OrgValue = m_{1};
+//                m_{1} = value;
+//                OnPropertyChanged({0}{1}{0}, OrgValue, value);
+//            {4}
+//        {4}", '"', item.Name, item.PropertyType.Name, '{', '}'));
+//            }
+//            System.IO.File.WriteAllLines("J:\\1.txt",list.ToArray());
         }
 
         private void CommandBinding_Save(object sender, ExecutedRoutedEventArgs e)
@@ -33,11 +53,11 @@ namespace ItemEditor
                 System.Windows.Forms.MessageBox.Show("存在重复id");
                 return;
             }
-            foreach (ItemViewModel item in m_mainVM.Items)
+            foreach (ItemBaseViewModel item in m_mainVM.Items)
             {
                 item.Save();
             }
-            foreach (ItemViewModel item in m_mainVM.Deleteitems)
+            foreach (ItemBaseViewModel item in m_mainVM.Deleteitems)
             {
                 if (m_mainVM.Items.Any(x => x.id == item.id))
                 {
@@ -95,20 +115,25 @@ namespace ItemEditor
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Item item = new Item();
+            ItemBase item = new ItemBase();
             item.id = m_mainVM.Items.Max(x => x.id) + 1;
-            ItemViewModel vm = new ItemViewModel();
+            ItemBaseViewModel vm = new ItemBaseViewModel();
             vm.Item = item;
             m_mainVM.Items.Add(vm);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            var lst = lstItems.SelectedItems.Cast<ItemViewModel>().ToList();
-            foreach (ItemViewModel item in lst)
+            var lst = lstItems.SelectedItems.Cast<ItemBaseViewModel>().ToList();
+            foreach (ItemBaseViewModel item in lst)
 	        {
 		        m_mainVM.Items.Remove(item);
 	        }
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            //TODO:Effect
         }
     }
 }

@@ -64,17 +64,28 @@
     <Compile Include="Convertor\Convertor.cs" />
     <Compile Include="Enum\equipType.cs" />
     <Compile Include="Enum\ItemType.cs" />
+    <Compile Include="EquipmentEditor.xaml.cs">
+      <DependentUpon>EquipmentEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Effect.cs" />
+    <Compile Include="Model\Equipment.cs" />
+    <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\SPELLCARD.cs" />
     <Compile Include="UndoRedo\PropertiesRedoUndoCommand.cs" />
     <Compile Include="UndoRedo\PropertyRedoUndoCommand.cs" />
     <Compile Include="UndoRedo\RedoUndoClass.cs" />
     <Compile Include="UndoRedo\RedoUndoCommandBase.cs" />
     <Compile Include="ViewModel\EquipmentPropViewModel.cs" />
-    <Compile Include="ViewModel\ItemViewModel.cs" />
+    <Compile Include="ViewModel\ItemBaseViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Page Include="Common\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EquipmentEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -84,7 +95,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\ItemBase.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

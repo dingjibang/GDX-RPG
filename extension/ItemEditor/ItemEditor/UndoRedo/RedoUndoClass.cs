@@ -122,8 +122,8 @@ namespace ItemEditor
 	}
 	public class ItemADDRedoUndoCommand : RedoUndoCommandBase
 	{
-        private ItemViewModel m_Target;
-        public ItemViewModel Target
+        private ItemBaseViewModel m_Target;
+        public ItemBaseViewModel Target
         {
             get { return m_Target; }
             set { m_Target = value; }
@@ -143,8 +143,8 @@ namespace ItemEditor
 
 	public class ItemDeleteRedoUndoCommand : RedoUndoCommandBase
 	{
-		private ItemViewModel m_Target;
-		public ItemViewModel Target
+		private ItemBaseViewModel m_Target;
+		public ItemBaseViewModel Target
 		{
 			get { return m_Target; }
 			set { m_Target = value; }
