@@ -1,7 +1,7 @@
 eval(""+load('global.js'));
 eval(""+load('var.js'));
 
-var renko = getNPC("renko");
+renko = getNPC("renko");
 var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
 CG.push(black);
 PostUtil.showMenu=false;

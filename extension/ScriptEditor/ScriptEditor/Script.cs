@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ScriptEditor {
     public class Script {
-        private string script;
+        public string script;
         public bool modify = false;
         private List<RenderString> renderList = new List<RenderString>();
         public Dictionary<String, Object> param = new Dictionary<string, object>();
@@ -113,14 +113,21 @@ namespace ScriptEditor {
     }
 
     public class NPC {
+        public static List<NPC> list = new List<NPC>();
+        public static NPC current = null;
         public String name;
+        public String varName;
+        public Script script;
 
-        public NPC(String name) {
+        public NPC(String name,String varName,Script script) {
             this.name = name;
+            this.varName = varName;
+            this.script = script;
+            list.Add(this);
         }
 
         public override string ToString() {
-            return name;
+            return varName;
         }
     }
 

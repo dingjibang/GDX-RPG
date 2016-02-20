@@ -48,7 +48,16 @@ namespace ScriptEditor {
             float difH = (e.Bounds.Height - e.Font.Height) / 2;
             Rectangle rec = new Rectangle(e.Bounds.X,e.Bounds.Y + (int)difH,e.Bounds.Width,e.Font.Height);
 
+
+            Rectangle lineRec = new Rectangle(rec.X, rec.Y-5, 40, rec.Height+10);
+            e.Graphics.FillRectangle(Brushes.Gray, lineRec);
+
+            int width = (int)e.Graphics.MeasureString(e.Index+"", e.Font).Width;
+            Rectangle textRec = new Rectangle(40-width, rec.Y, 40, rec.Height);
+            e.Graphics.DrawString(e.Index+"", e.Font, Brushes.White, textRec);
+
             List<RenderString> list = script.render();
+            rec.X += 45;
             foreach (var rs in list) {
                 e.Graphics.DrawString(rs.str, e.Font, rs.brush, rec);
                 rec.X += (int)e.Graphics.MeasureString(rs.str, e.Font).Width;
@@ -102,6 +111,14 @@ namespace ScriptEditor {
         }
 
         private void 编辑ToolStripMenuItem1_Click(object sender, EventArgs e) {
+
+        }
+
+        private void listBox_SelectedIndexChanged_1(object sender, EventArgs e) {
+
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e) {
 
         }
     }

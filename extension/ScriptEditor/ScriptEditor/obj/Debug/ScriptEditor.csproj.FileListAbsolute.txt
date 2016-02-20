@@ -19,3 +19,10 @@ H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEdi
 H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.csproj.GenerateResource.Cache
 H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.exe
 H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.pdb
+H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.csprojResolveAssemblyReference.cache
+H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.form.PauseForm.resources
+H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.SetKeyLockerForm.resources
+H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.RenderAbleForm.resources
+H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.form.PlaySEForm.resources
+H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.form.NPCListForm.resources
+H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.form.FaceToForm.resources
