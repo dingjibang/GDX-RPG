@@ -2,11 +2,12 @@ package com.rpsg.rpg.system.ui;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Align;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
+import com.rpsg.rpg.system.controller.LazyBitmapFontConctoller;
 
 public class HeroStatusBox extends Group {
 
@@ -32,8 +33,8 @@ public class HeroStatusBox extends Group {
 		mpbar.setPosition(102, 29);
 		
 		Color shit = new Color(.33f,.16f,.07f,1);
-		addActor(hp = Res.get("", 15).position(119, 85).align(Align.left).color(shit));
-		addActor(mp = Res.get("", 15).position(119, 50).align(Align.left).color(shit));
+		addActor(hp = Res.font.getLabel("", 20,LazyBitmapFontConctoller.ENGLISH_GENERATOR).position(119, 85).align(Align.left).color(shit));
+		addActor(mp = Res.font.getLabel("", 20,LazyBitmapFontConctoller.ENGLISH_GENERATOR).position(119, 50).align(Align.left).color(shit));
 		
 	}
 	

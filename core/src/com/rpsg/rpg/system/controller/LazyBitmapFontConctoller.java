@@ -20,23 +20,29 @@ import com.rpsg.rpg.system.ui.Label;
  */
 public class LazyBitmapFontConctoller {
 	
-	private Map<Integer, LazyBitmapFont> map = new TreeMap<>();
+	private Map<Param, LazyBitmapFont> map = new TreeMap<>();
+	public static FreeTypeFontGenerator NORMAL_GENERATOR = new FreeTypeFontGenerator(Gdx.files.internal(Setting.BASE_PATH+"font/xyj.ttf"));
+	public static FreeTypeFontGenerator ENGLISH_GENERATOR = new FreeTypeFontGenerator(Gdx.files.internal(Setting.BASE_PATH+"font/Coold.ttf"));
 	
 	public LazyBitmapFontConctoller() {
-		LazyBitmapFont.setGlobalGenerator(new FreeTypeFontGenerator(Gdx.files.internal(Setting.BASE_PATH+"font/xyj.ttf")));
+		LazyBitmapFont.setGlobalGenerator(NORMAL_GENERATOR);
 	}
 	
-	public LazyBitmapFont get(int fontSize){
+	public LazyBitmapFont get(int fontSize,FreeTypeFontGenerator gen){
 		boolean hd = Setting.persistence.hdFont;
 		if(hd) fontSize += fontSize;
-		LazyBitmapFont font = map.get(fontSize);
+		LazyBitmapFont font = map.get(new Param(fontSize,gen));
 		if(font==null){
-			font = new LazyBitmapFont(fontSize);
-			map.put(fontSize, font);
+			font = gen == null ? new LazyBitmapFont(fontSize) : new LazyBitmapFont(gen,fontSize);
+			map.put(new Param(fontSize,gen), font);
 		}
 		if(hd) font.getData().setScale(.5f);
 		
 		return font;
+	}
+	
+	public LazyBitmapFont get(int fontSize){
+		return get(fontSize,null);
 	}
 	
 	public Label getLabel(int fontSize){
@@ -44,8 +50,12 @@ public class LazyBitmapFontConctoller {
 	}
 	
 	public Label getLabel(Object text,int fontSize){
+		return getLabel(text,fontSize,null);
+	}
+	
+	public Label getLabel(Object text,int fontSize,FreeTypeFontGenerator gen){
 		LabelStyle ls = new LabelStyle();
-		ls.font = get(fontSize);
+		ls.font = gen == null ? get(fontSize) : get(fontSize,gen);
 		
 		return new Label(text.toString(),ls);
 	}
@@ -59,5 +69,19 @@ public class LazyBitmapFontConctoller {
 		GlyphLayout layout = Pools.obtain(GlyphLayout.class);
 		layout.setText(font, str);
 		return (int) layout.width;
+	}
+	
+	private static class Param implements Comparable<Param>{
+		public int size;
+		public FreeTypeFontGenerator gen;
+		public Param(int size, FreeTypeFontGenerator gen) {
+			this.size = size;
+			this.gen = gen;
+		}
+		
+		public int compareTo(Param o) {
+			return (((Param)o).size == size && ((Param)o).gen == gen) ? 0 : -1;
+		}
+		
 	}
 }

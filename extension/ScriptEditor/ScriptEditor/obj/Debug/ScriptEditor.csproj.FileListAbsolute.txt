@@ -26,3 +26,12 @@ H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEdi
 H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.form.PlaySEForm.resources
 H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.form.NPCListForm.resources
 H:\Jenkins\workspace\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.form.FaceToForm.resources
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\bin\Debug\ClearScript.dll
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.form.NPCListForm.resources
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.form.FaceToForm.resources
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.form.PlaySEForm.resources
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.RenderAbleForm.resources
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.SetKeyLockerForm.resources
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.form.PauseForm.resources
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.SayForm.resources
+E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.ScriptEditForm.resources
