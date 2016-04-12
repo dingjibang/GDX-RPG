@@ -16,5 +16,9 @@ public class Buff implements Serializable{
 	
 	public static enum BuffType{
 		buff,debuff
-	} 
+	}
+	
+	public String getProp(String key){
+		return prop.get(key) == null ? "0" : prop.get(key);
+ 	}
 }

@@ -85,7 +85,6 @@ public abstract class BaseItem implements Serializable {
 	 * @return
 	 */
 	public boolean use(){
-		//TODO
 		return false;
 	}
 	

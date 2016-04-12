@@ -1,6 +1,0 @@
-[13:26:58] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
-[13:26:58] [main/INFO]: Using primary tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
-[13:26:58] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLServerTweaker
-[13:26:58] [main/INFO]: Forge Mod Loader version 7.10.25.1206 for Minecraft 1.7.10 loading
-[13:26:58] [main/INFO]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.7.0_67, running on Windows 8.1:amd64:6.3, installed at C:\Program Files\Java\jdk1.7.0_67\jre
-[13:26:58] [main/ERROR]: The coremod ruby.bamboo.asm.CorePlugin is requesting minecraft version 1.7.2 and minecraft is 1.7.10. It will be ignored.

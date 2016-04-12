@@ -100,7 +100,7 @@ public class HeroSelectBox extends Group implements Disposable{
 			addActor(new Label(hero.getProp("hp")+"/"+hero.getProp("maxhp"),14).width(130).align(x+67, y+30).color(Color.LIGHT_GRAY));
 			addActor(new Label(hero.getProp("mp")+"/"+hero.getProp("maxmp"),14).width(130).align(x+67, y+10).color(Color.LIGHT_GRAY));
 			
-			if((deadable == ItemDeadable.yes && !hero.isDead()) || (deadable == ItemDeadable.no && hero.isDead())){
+			if((deadable == ItemDeadable.yes && !hero.target.isDead()) || (deadable == ItemDeadable.no && hero.target.isDead())){
 				addActor(Res.get(Setting.UI_BASE_IMG).size(w,h).color(Color.BLACK).a(.85f).position(x, y));
 				addActor(new Label("无法使用",22).position(x+63, y+30));
 			}

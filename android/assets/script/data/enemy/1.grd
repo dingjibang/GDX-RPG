@@ -11,7 +11,8 @@
 		defense:"10",
 		magicDefense:"0",
 		speed:"3",
-		hit:"6"
+		hit:"6",
+		evasion:0
 	},
 	aiLevel:1,
 	action:[

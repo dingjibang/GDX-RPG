@@ -88,16 +88,17 @@ public class ItemController {
 			}else if(type.equalsIgnoreCase(Spellcard.class.getSimpleName())){
 				Spellcard e =(Spellcard)(baseItem=new Spellcard());
 				e.description2 = result.has("description2")?result.getString("description2"):"";
-				e.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.hero;
+				e.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
 				e.range = result.has("range")?ItemRange.valueOf(result.getString("range")):ItemRange.one;
 				e.animation = result.has("animation")?result.getInt("animation"):0;
 				e.success = result.has("success")?result.getInt("success"):0;
 				e.cost = result.has("cost")?result.getInt("cost"):0;
 				e.occasion = result.has("occasion")?ItemOccasion.valueOf(result.getString("occasion")):ItemOccasion.all;
 				e.deadable = result.has("deadable")?ItemDeadable.valueOf(result.getString("deadable")):ItemDeadable.no;
+				e.physical = result.has("physical")?result.getBoolean("deadable"):false;
 			}else{
 				Item e = (Item)(baseItem = new Item());
-				e.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.hero;
+				e.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
 				e.range = result.has("range")?ItemRange.valueOf(result.getString("range")):ItemRange.one;
 				e.occasion = result.has("occasion")?ItemOccasion.valueOf(result.getString("occasion")):ItemOccasion.all;
 				e.animation = result.has("animation")?result.getInt("animation"):0;
@@ -147,6 +148,14 @@ public class ItemController {
 		Map<String,String> replace = new HashMap<>();
 		for(int i=0;i<json.size;i++){
 			replace.put(json.get(i).name,json.getString(json.get(i).name));
+		}
+		return replace; 
+	}
+	
+	public static Map<String,Integer> getIntProp(JsonValue json){
+		Map<String,Integer> replace = new HashMap<>();
+		for(int i=0;i<json.size;i++){
+			replace.put(json.get(i).name,json.getInt(json.get(i).name));
 		}
 		return replace; 
 	}

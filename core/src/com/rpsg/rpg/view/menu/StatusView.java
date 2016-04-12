@@ -111,8 +111,8 @@ public class StatusView extends IMenuView {
 		Group group5=(Group) $.add(new Group()).setX(70).addAction(Actions.parallel(Actions.moveTo(70,y(1442),1f,Interpolation.pow4Out),Actions.fadeIn(0.4f))).setColor(1, 1, 1,0).appendTo(inner).getItem();
 		$.add(Res.get(Setting.IMAGE_MENU_STATUS+"p.png")).appendTo(group5);
 		int count=-1;
-		for(String key:parent.current.resistance.keySet())
-			$.add(Res.get(Setting.IMAGE_MENU_STATUS+parent.current.resistance.get(key).name()+".png")).appendTo(group5).setPosition(38+(174*(++count%3)), 247-(count>=3 && count <6?115:count>=6?228:0));
+		for(String key:parent.current.target.resistance.keySet())
+			$.add(Res.get(Setting.IMAGE_MENU_STATUS+parent.current.target.resistance.get(key).type.name()+".png")).appendTo(group5).setPosition(38+(174*(++count%3)), 247-(count>=3 && count <6?115:count>=6?228:0));
 		CheckBoxStyle cstyle=new CheckBoxStyle();
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_STATUS+"help.png");
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_STATUS+"help_p.png");// help button press

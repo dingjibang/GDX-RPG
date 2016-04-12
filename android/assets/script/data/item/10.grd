@@ -1,0 +1,16 @@
+{
+	type:"Spellcard",
+	name:"_防御",
+	description:"",
+	description2:"",
+	range:"one",
+	forward:"friend",
+	occasion:"battle",
+	cost:0,
+	packable:false,
+	effect:{
+		prop:{
+			defense : "30%"
+		}
+	}
+}

@@ -1,7 +1,6 @@
 package com.rpsg.rpg.object.rpg;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +12,8 @@ import com.rpsg.rpg.object.base.Association;
 import com.rpsg.rpg.object.base.AssociationSkill;
 import com.rpsg.rpg.object.base.EmptyAssociation;
 import com.rpsg.rpg.object.base.Global;
-import com.rpsg.rpg.object.base.Resistance;
 import com.rpsg.rpg.object.base.items.Buff;
+import com.rpsg.rpg.object.base.items.Effect;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Spellcard;
 
@@ -24,9 +23,6 @@ public class Hero extends RPGObject implements Time{
 	public static final int HERO_WIDTH = 48;
 	public static final int HERO_HEIGHT = 64;
 
-	public static final int TRUE = 1;
-	public static final int FALSE = 0;
-
 	public static final String RES_PATH = Setting.WALK + "heros/";
 	
 	public int id = -1;
@@ -35,52 +31,23 @@ public class Hero extends RPGObject implements Time{
 	public String jname;
 	public String fgname;
 	public String tag = "";
-	public Buff support;
+	
 	public Association association = new EmptyAssociation();
 	public Hero linkTo;
 	public ArrayList<AssociationSkill> linkSkills = new ArrayList<AssociationSkill>();
 	public String color = "000000cc";
 	public float[][] face;
 	public float[][] head;
-	private Map<String, Integer> prop = new HashMap<String, Integer>();
-	{
-		//等级
-		prop.put("level", 0);
-		//经验
-		prop.put("exp", 0);
-		//最大经验值至下一次升级
-		prop.put("maxexp", 0);
-		//生命值
-		prop.put("hp", 0);
-		//最大生命值
-		prop.put("maxhp", 0);
-		//魔法量
-		prop.put("mp", 0);
-		//魔法量
-		prop.put("maxmp", 0);
-		//攻击
-		prop.put("attack", 0);
-		//魔法攻击
-		prop.put("magicAttack", 0);
-		//防御
-		prop.put("defense", 0);
-		//魔法防御
-		prop.put("magicDefense", 0);
-		//速度
-		prop.put("speed", 0);
-		//准确率
-		prop.put("hit", 0);
-		//最大可携带副卡量
-		prop.put("maxsc", 0);
-		//是否是死亡状态的
-		prop.put("dead", FALSE);
-	}
-
-	public boolean lead = false;
 	
+	public List<Effect> effectList = new ArrayList<>();
+	
+	public Buff support;
+	
+	public Target target = new Target();
+
 	public Integer getProp(String propName){
 		//获取基本数值
-		Integer prop = this.prop.get(propName);
+		Integer prop = this.target.prop.get(propName),base = this.target.prop.get(propName);
 		
 		//支援buff叠加
 		for(Hero hero : RPG.global.support){
@@ -89,41 +56,39 @@ public class Hero extends RPGObject implements Time{
 			String result = support.prop.get(propName);
 			if(result == null) continue;
 			
-			prop = calcProp(prop, result);
-			
+			prop += calcProp(base, result);
 		}
+		
+		//TODO buff可能有百分比的数据，百分比根据当前prop还是根据原始prop呢
+//		for(Effect effect : effectList)
+//			for(EffectBuff buff : effect.buff)
+//				prop += calcProp(base, buff.getProp(propName));
+		
 		return prop;
 	}
+	
+	public boolean lead = false;
+	
 	
 	//计算数值（百分比或绝对值）
 	private Integer calcProp(int value,String prop){
 		try {
 			if(prop.endsWith("%")){
-				return value + value * Integer.valueOf(prop.substring(0, prop.length() - 1)) / 100;
+				return Integer.valueOf(prop.substring(0, prop.length() - 1)) / 100;
 			}else{
-				return value + Integer.valueOf(prop);
+				return Integer.valueOf(prop);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return 0;
 		}
 	}
-
-	public LinkedHashMap<String, Resistance> resistance = new LinkedHashMap<String, Resistance>();
-	{
-		resistance.put("sun", Resistance.normal);
-		resistance.put("moon", Resistance.normal);
-		resistance.put("star", Resistance.normal);
-		resistance.put("metal", Resistance.normal);
-		resistance.put("water", Resistance.normal);
-		resistance.put("earth", Resistance.normal);
-		resistance.put("fire", Resistance.normal);
-		resistance.put("wood", Resistance.normal);
-		resistance.put("physical", Resistance.normal);
-	}
-
+	
+	
+	/**持有的符卡*/
 	public List<Spellcard> sc = new ArrayList<Spellcard>();
 
+	/**持有的装备*/
 	public LinkedHashMap<String, Equipment> equips = new LinkedHashMap<String, Equipment>();
 	{
 		equips.put(Equipment.EQUIP_SHOES, null);
@@ -149,9 +114,6 @@ public class Hero extends RPGObject implements Time{
 		this.drawShadow = true;
 	}
 	
-	public boolean isDead(){
-		return getProp("dead")==TRUE;
-	}
 
 	public String toString() {
 		return name;
@@ -170,14 +132,14 @@ public class Hero extends RPGObject implements Time{
 		if(!p.contains("%")){
 			Integer val = getProp(name);
 			Integer i = Integer.parseInt(p);
-			prop.put(name,overflow ? i : (val == null ? 0 : val) + i);
+			target.prop.put(name,overflow ? i : (val == null ? 0 : val) + i);
 		}else{
 			float f = Float.parseFloat(p.split("%")[0]);
-			prop.put(name, getProp(name) * (int)(f / 100));//TODO ?overflow模式下。。
+			target.prop.put(name, getProp(name) * (int)(f / 100));//TODO ?overflow模式下。。
 		}
 		
 		if(name.equals("dead")){
-			prop.put(name, Integer.parseInt(p));
+			target.prop.put(name, Integer.parseInt(p));
 		}
 		
 		if(post)
@@ -198,16 +160,16 @@ public class Hero extends RPGObject implements Time{
 	}
 	
 	public void postOverflow(){
-		for(String name:prop.keySet()){
+		for(String name:target.prop.keySet()){
 			if(getProp(name)<0)
-				prop.put(name, 0);
+				target.prop.put(name, 0);
 		}
 		
 		if (getProp("hp") > getProp("maxhp"))
-			prop.put("hp", getProp("maxhp"));
+			target.prop.put("hp", getProp("maxhp"));
 
 		if (getProp("mp") > getProp("maxmp"))
-			prop.put("mp", getProp("maxmp"));
+			target.prop.put("mp", getProp("maxmp"));
 
 	}
 	
@@ -283,4 +245,5 @@ public class Hero extends RPGObject implements Time{
 	public Object getThis() {
 		return this;
 	}
+
 }

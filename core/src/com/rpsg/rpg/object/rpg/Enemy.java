@@ -2,7 +2,6 @@ package com.rpsg.rpg.object.rpg;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -23,16 +22,18 @@ public class Enemy implements Time {
 	public int id;
 	public String imgPath;
 	public String name;
-	public Map<String, String> prop;
 	public Integer aiLevel;
 	public List<EnemyAction> actions;
 	public Color color;
 	private int no = 0;
 	
+	public Target target = new Target();
+	
 	public Enemy() {
 		color = new Color(MathUtils.random(.4f,.8f),MathUtils.random(.4f,.8f),MathUtils.random(.4f,.8f),1);
 	}
-
+	
+	
 	static JsonReader reader = new JsonReader();
 
 	public static List<Enemy> get(int id) {
@@ -71,10 +72,10 @@ public class Enemy implements Time {
 		return list;
 	}
 
-	public  static Enemy getEnemy(int id,JsonValue value) {
+	public static Enemy getEnemy(int id,JsonValue value) {
 		Enemy enemy = new Enemy();
 		enemy.name = value.getString("name");
-		enemy.prop = ItemController.getProp(value.get("prop"));
+		enemy.target.prop = ItemController.getIntProp(value.get("prop"));
 		enemy.aiLevel = value.has("aiLevel") ? value.getInt("aiLevel") : 1;
 		enemy.id = id;
 		enemy.imgPath = Setting.IMAGE_ENEMY + id + ".png";
@@ -89,7 +90,7 @@ public class Enemy implements Time {
 			action.buff = actionValue.has("buff") ? actionValue.get("buff").asIntArray() : null;
 			action.special = actionValue.has("special") ? actionValue.getString("special") : null;
 			action.remove = actionValue.has("remove") ? RemoveType.valueOf(actionValue.getString("remove")) : RemoveType.no;
-			action.forawrd = actionValue.has("forward") ? ItemForward.valueOf(actionValue.getString("forward")) : ItemForward.hero;
+			action.forawrd = actionValue.has("forward") ? ItemForward.valueOf(actionValue.getString("forward")) : ItemForward.friend;
 			action.range =  actionValue.has("range") ? ItemRange.valueOf(actionValue.getString("range")) : ItemRange.one;
 			List<EnemyActionProp> propList =  new ArrayList<>();
 			if(actionValue.has("prop")){
@@ -113,7 +114,7 @@ public class Enemy implements Time {
 	}
 	
 	public int getSpeed(){
-		return Integer.valueOf(prop.get("speed"));
+		return Integer.valueOf(target.prop.get("speed"));
 	}
 	
 	@Override

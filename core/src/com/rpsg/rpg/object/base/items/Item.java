@@ -9,7 +9,7 @@ public class Item extends BaseItem{
 	private static final long serialVersionUID = 1L;
 	
 	/**道具指向*/
-	public ItemForward forward = ItemForward.hero;
+	public ItemForward forward = ItemForward.friend;
 	
 	/**道具使用范围*/
 	public ItemRange range = ItemRange.one;
@@ -31,7 +31,7 @@ public class Item extends BaseItem{
 	 * @author dingjibang
 	 */
 	public static enum ItemForward{
-		hero,//我方
+		friend,//我方
 		enemy,//敌人
 		all,//全部
 		link//对与自己连携的对象使用的。

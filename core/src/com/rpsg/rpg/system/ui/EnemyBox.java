@@ -17,10 +17,11 @@ public class EnemyBox extends Group {
 	public Enemy enemy;
 	Label name,hp;
 	Image hpbox;
+	Image selectBox = new Image(Setting.UI_BUTTON);
 
 	public EnemyBox(Enemy enemy) {
 		this.enemy = enemy;
-		int _hp = Integer.valueOf(enemy.prop.get("hp")),_maxhp = Integer.valueOf(enemy.prop.get("maxhp"));
+		int _hp = Integer.valueOf(enemy.target.prop.get("hp")),_maxhp = Integer.valueOf(enemy.target.prop.get("maxhp"));
 		
 		Group fg = new Group();
 		fg.addActor(image = Res.getNP(enemy.imgPath));
@@ -33,14 +34,8 @@ public class EnemyBox extends Group {
 		
 		$.add(fg).addAction(Actions.forever(Actions.sequence(Actions.moveBy(0,10,3f,Interpolation.pow2),Actions.moveBy(0, -10,3)))).appendTo(this);
 		
-//		
-//		addActor(timer = Res.get(Setting.UI_BASE_IMG).size(3, 103).position(10, 7));
-//		
-//		
-//		addActor(Res.get(Setting.UI_BASE_IMG).size(218, 10).position(25, 13));
-//		addActor(mpbox = Res.get(Setting.UI_BASE_IMG).size(218, 10).position(25, 13).color(Color.valueOf("396da8")));
-//		
-//		addActor(mp = Res.get(_mp + " / " + maxmp, 18).position(169, 23).align(Align.right));
+		$.add(selectBox).appendTo(fg).setVisible(false);
+		
 	}
 	
 	public EnemyBox position(float x,float y){
@@ -56,6 +51,17 @@ public class EnemyBox extends Group {
 	@Override
 	public float getHeight() {
 		return image.getHeight();
+	}
+	
+	public void select(CustomRunnable<EnemyBox> callback){
+		$.add(selectBox).show().onClick(()->{
+			callback.run(EnemyBox.this);
+		});
+	}
+	
+	public void stopSelect(){
+		$.add(selectBox).hide();
+		selectBox.clearListeners();
 	}
 	
 	
