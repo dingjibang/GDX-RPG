@@ -12,7 +12,8 @@ public class Effect implements Serializable{
 	public List<EffectBuff> buff = new ArrayList<EffectBuff>();
 	public String use = "";
 	
-	public static class EffectBuff{
+	public static class EffectBuff implements Serializable{
+		private static final long serialVersionUID = 1L;
 		public Buff buff;
 		public EffectBuffType type = EffectBuffType.add;
 		public int turn = 1;

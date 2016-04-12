@@ -59,18 +59,16 @@ public class SpellCardView extends IMenuView{
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info.png");
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info_p.png");// help button press
 		cstyle.font = Res.font.get(20);
-		$.add(new CheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
-			data.addAction(self.isChecked()?Actions.fadeIn(.3f):Actions.fadeOut(.3f));
-		}});}});
+		$.add(new CheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(self->self.onClick(()->data.addAction(self.isChecked()?Actions.fadeIn(.3f):Actions.fadeOut(.3f))));
 		
-		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).onClick(new Runnable() {public void run() {
+		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).onClick(()->{
 			if(parent.next())
 				generate();
-		}}).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
-		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).setScale(.8f).setScaleX(-.8f).appendTo(stage).setPosition(196, 483).onClick(new Runnable() {public void run() {
+		}).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
+		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).setScale(.8f).setScaleX(-.8f).appendTo(stage).setPosition(196, 483).onClick(()->{
 			if(parent.prev())
 				generate();
-		}}).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
+		}).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
 		
 		$.add(new HeroImage(hero,0)).appendTo(stage).setPosition(285, 480);
 		$.add(new Label(hero.name,30)).setPosition(420, 495).appendTo(stage);

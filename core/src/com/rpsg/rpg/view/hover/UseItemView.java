@@ -61,38 +61,37 @@ public class UseItemView extends SidebarView {
 		
 		final TextButton button = new TextButton("使用",tstyle);
 		
-		$.add(button.onClick(new Runnable() {
-			public void run() {
-				if(box.get()!=null || (item instanceof Item && ((Item)item).range == ItemRange.all) || (item instanceof Spellcard && ((Spellcard)item).range == ItemRange.all)){
-					current = box.get();
-					item.user = current;
-					if(sc)
-						((Spellcard)item).user2 = (Hero)param.get("user2");
-					boolean success = RPG.ctrl.item.use(item);
-					int _count = item.count;
-					if(!sc)
-						count.setText("持有 "+_count+" 个");
-					box.generate();
-					box.set(current);
-					if(success){
-						box.animate();
-					}else{
-						RPG.putMessage("使用失败", Color.RED);
-						Music.playSE("err");
-					}
-					if(_count<=0){
-						button.setText("关闭");
-						button.onClick(() -> {
-                            UseItemView.this.disposed = true;
-                            ((Runnable)param.get("callback")).run();
-                        });
-					}
+		$.add(button.onClick(()->{
+			if(box.get()!=null || (item instanceof Item && ((Item)item).range == ItemRange.all) || (item instanceof Spellcard && ((Spellcard)item).range == ItemRange.all)){
+				current = box.get();
+				item.user = current;
+				if(sc)
+					((Spellcard)item).user2 = (Hero)param.get("user2");
+				boolean success = RPG.ctrl.item.use(item);
+				int _count = item.count;
+				if(!sc)
+					count.setText("持有 "+_count+" 个");
+				box.generate();
+				box.set(current);
+				if(success){
+					box.animate();
 				}else{
-					RPG.putMessage("请先选择使用者", Color.RED);
+					RPG.putMessage("使用失败", Color.RED);
 					Music.playSE("err");
 				}
+				if(_count<=0){
+					button.setText("关闭");
+					button.onClick(() -> {
+                        UseItemView.this.disposed = true;
+                        ((Runnable)param.get("callback")).run();
+                    });
+				}
+			}else{
+				RPG.putMessage("请先选择使用者", Color.RED);
+				Music.playSE("err");
+				}
 			}
-	})).appendTo(group).setSize(454,55).setPosition(435,40).getCell().prefSize(454,55);
+	)).appendTo(group).setSize(454,55).setPosition(435,40).getCell().prefSize(454,55);
 		
 		itemInfoGroup.setY(60);
 		
