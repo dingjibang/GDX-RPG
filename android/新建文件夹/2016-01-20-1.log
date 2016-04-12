@@ -1,0 +1,778 @@
+[00:00:29] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[00:00:30] [Server thread/INFO]: dingjibang left the game.
+[00:00:38] [Server thread/INFO]: anli lost connection: Disconnected
+[00:00:38] [Server thread/INFO]: anli left the game.
+[00:00:43] [User Authenticator #31/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[00:00:43] [Netty IO #3/INFO]: Client protocol version 2
+[00:00:43] [Netty IO #3/INFO]: Client attempting to join with 14 mods : uniskinmod@1.2-dev3,craftguide@1.6.8.2,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,Kradxns Minimap@2.0,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[00:00:43] [Netty IO #3/INFO]: Attempting connection with missing mods [] at CLIENT
+[00:00:43] [Server thread/INFO]: [Server thread] Server side modded connection established
+[00:00:43] [Server thread/INFO]: dingjibang[/127.0.0.1:49200] logged in with entity id 469223 at ([skarn] 9.657425137076164, 118.7470006028005, 161.68489172924208)
+[00:00:43] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[00:00:43] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[00:00:43] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[00:00:43] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[00:00:43] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[00:00:43] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[00:00:43] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[00:00:43] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[00:00:43] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[00:00:43] [Server thread/WARN]: 	at sun.reflect.GeneratedMethodAccessor117.invoke(Unknown Source)
+[00:00:43] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[00:00:43] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[00:00:43] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[00:00:43] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[00:00:43] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[00:00:43] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[00:00:43] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[00:00:43] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[00:00:43] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[00:00:43] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[00:00:43] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[00:00:43] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[00:00:43] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[00:00:43] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[00:00:43] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[00:00:43] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[00:00:43] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[00:00:43] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[00:00:43] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[00:00:43] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[00:00:43] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[00:00:43] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[00:00:43] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[00:00:43] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[00:00:43] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[00:00:43] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[00:00:43] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[00:00:43] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[00:00:43] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[00:00:43] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[00:00:48] [Server thread/INFO]: dingjibang issued server command: /login djb269134
+[00:00:48] [Server thread/INFO]: [AuthMe] dingjibang logged in!
+[00:03:12] [User Authenticator #32/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[00:03:12] [Netty IO #2/INFO]: Client protocol version 2
+[00:03:12] [Netty IO #2/INFO]: Client attempting to join with 12 mods : uniskinmod@1.2-dev3,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[00:03:12] [Netty IO #2/INFO]: Attempting connection with missing mods [] at CLIENT
+[00:03:13] [Server thread/INFO]: [Server thread] Server side modded connection established
+[00:03:13] [Server thread/INFO]: anli[/127.0.0.1:49338] logged in with entity id 470067 at ([skarn] -2.744953291238959, 73.0, 151.28412014314904)
+[00:03:13] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[00:03:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[00:03:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[00:03:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[00:03:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[00:03:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[00:03:13] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[00:03:13] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[00:03:13] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[00:03:13] [Server thread/WARN]: 	at sun.reflect.GeneratedMethodAccessor117.invoke(Unknown Source)
+[00:03:13] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[00:03:13] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[00:03:13] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[00:03:13] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[00:03:13] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[00:03:13] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[00:03:13] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[00:03:13] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[00:03:13] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[00:03:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[00:03:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[00:03:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[00:03:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[00:03:13] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[00:03:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[00:03:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[00:03:13] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[00:03:13] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[00:03:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[00:03:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[00:03:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[00:03:13] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[00:03:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[00:03:13] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[00:03:13] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[00:03:13] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[00:03:13] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[00:03:13] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[00:03:13] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[00:03:13] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[00:03:38] [Server thread/INFO]: anli issued server command: /login anli123
+[00:03:38] [Server thread/INFO]: [AuthMe] anli logged in!
+[00:03:41] [Server thread/INFO]: anli lost connection: Disconnected
+[00:03:41] [Server thread/INFO]: anli left the game.
+[09:10:50] [Server thread/INFO]: dingjibang lost connection: Internal Exception: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+[09:10:50] [Server thread/INFO]: dingjibang left the game.
+[12:16:12] [User Authenticator #33/INFO]: UUID of player TY_ZhanQiao is 5b2825c0-2ad8-3588-936e-c89cc03933c8
+[12:16:12] [Netty IO #0/INFO]: Client protocol version 2
+[12:16:12] [Netty IO #0/INFO]: Client attempting to join with 12 mods : uniskinmod@1.2-dev3,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[12:16:12] [Netty IO #0/INFO]: Attempting connection with missing mods [] at CLIENT
+[12:16:13] [Server thread/INFO]: [Server thread] Server side modded connection established
+[12:16:13] [Server thread/INFO]: TY_ZhanQiao[/127.0.0.1:64209] logged in with entity id 560159 at ([skarn] 0.48161549498039147, 74.0, 93.64523485684107)
+[12:16:13] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[12:16:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[12:16:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[12:16:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[12:16:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[12:16:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[12:16:13] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[12:16:13] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[12:16:13] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[12:16:13] [Server thread/WARN]: 	at sun.reflect.GeneratedMethodAccessor117.invoke(Unknown Source)
+[12:16:13] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[12:16:13] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[12:16:13] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[12:16:13] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[12:16:13] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[12:16:13] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[12:16:13] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[12:16:13] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[12:16:13] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[12:16:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[12:16:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[12:16:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[12:16:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[12:16:13] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[12:16:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[12:16:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[12:16:13] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[12:16:13] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[12:16:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[12:16:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[12:16:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[12:16:13] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[12:16:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[12:16:13] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[12:16:13] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[12:16:13] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[12:16:13] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[12:16:13] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[12:16:13] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[12:16:13] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[12:16:25] [Server thread/INFO]: TY_ZhanQiao issued server command: /L 22868500
+[12:16:25] [Server thread/INFO]: [AuthMe] TY_ZhanQiao logged in!
+[12:17:08] [Server thread/INFO]: TY_ZhanQiao lost connection: Disconnected
+[12:17:08] [Server thread/INFO]: TY_ZhanQiao left the game.
+[16:08:27] [User Authenticator #34/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[16:08:28] [Netty IO #3/INFO]: Client protocol version 2
+[16:08:28] [Netty IO #3/INFO]: Client attempting to join with 12 mods : uniskinmod@1.2-dev3,mcp@9.05,FML@7.10.99.99,BambooMod@Minecraft1.7.2 var2.6.6.13,NotEnoughItems@1.0.3.74,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[16:08:28] [Netty IO #3/INFO]: Attempting connection with missing mods [] at CLIENT
+[16:08:28] [Server thread/INFO]: [Server thread] Server side modded connection established
+[16:08:28] [Server thread/INFO]: dingjibang[/127.0.0.1:57394] logged in with entity id 560443 at ([skarn] -3.720256188700717, 81.0, 157.84099958354517)
+[16:08:28] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[16:08:28] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[16:08:28] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[16:08:28] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[16:08:28] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[16:08:28] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[16:08:28] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[16:08:28] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[16:08:28] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[16:08:28] [Server thread/WARN]: 	at sun.reflect.GeneratedMethodAccessor117.invoke(Unknown Source)
+[16:08:28] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[16:08:28] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[16:08:28] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[16:08:28] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[16:08:28] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[16:08:28] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[16:08:28] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[16:08:28] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[16:08:28] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[16:08:28] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[16:08:28] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[16:08:28] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[16:08:28] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[16:08:28] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[16:08:28] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[16:08:28] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[16:08:28] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[16:08:28] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[16:08:28] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[16:08:28] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[16:08:28] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[16:08:28] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[16:08:28] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[16:08:28] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[16:08:28] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[16:08:28] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[16:08:28] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[16:08:28] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[16:08:28] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[16:08:28] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[16:08:40] [Server thread/INFO]: dingjibang issued server command: /login djb269134
+[16:08:40] [Server thread/INFO]: [AuthMe] dingjibang logged in!
+[16:09:38] [Server thread/INFO]: [dingjibang: Given [Sign] * 1 to dingjibang]
+[16:12:32] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[16:12:32] [Server thread/INFO]: dingjibang left the game.
+[16:20:14] [User Authenticator #35/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[16:20:15] [Netty IO #0/INFO]: Client protocol version 2
+[16:20:15] [Netty IO #0/INFO]: Client attempting to join with 12 mods : uniskinmod@1.2-dev3,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[16:20:15] [Netty IO #0/INFO]: Attempting connection with missing mods [] at CLIENT
+[16:20:15] [Server thread/INFO]: [Server thread] Server side modded connection established
+[16:20:15] [Server thread/INFO]: anli[/127.0.0.1:57867] logged in with entity id 562409 at ([skarn] -2.744953291238959, 73.0, 151.28412014314904)
+[16:20:15] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[16:20:15] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[16:20:15] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[16:20:15] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[16:20:15] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[16:20:15] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[16:20:15] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[16:20:15] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[16:20:15] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[16:20:15] [Server thread/WARN]: 	at sun.reflect.GeneratedMethodAccessor117.invoke(Unknown Source)
+[16:20:15] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[16:20:15] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[16:20:15] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[16:20:15] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[16:20:15] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[16:20:15] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[16:20:15] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[16:20:15] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[16:20:15] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[16:20:15] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[16:20:15] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[16:20:15] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[16:20:15] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[16:20:15] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[16:20:15] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[16:20:15] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[16:20:15] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[16:20:15] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[16:20:15] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[16:20:15] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[16:20:15] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[16:20:15] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[16:20:15] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[16:20:15] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[16:20:15] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[16:20:15] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[16:20:15] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[16:20:15] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[16:20:15] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[16:20:15] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[16:20:31] [Server thread/INFO]: anli issued server command: /login anli123
+[16:20:31] [Server thread/INFO]: [AuthMe] anli logged in!
+[16:24:02] [Server thread/INFO]: anli issued server command: //cut
+[16:29:56] [Server thread/INFO]: anli issued server command: /
+[16:31:27] [Server thread/INFO]: anli lost connection: Internal Exception: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+[16:31:27] [Server thread/INFO]: anli left the game.
+[16:34:12] [User Authenticator #36/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[16:34:12] [Netty IO #3/INFO]: Client protocol version 2
+[16:34:12] [Netty IO #3/INFO]: Client attempting to join with 12 mods : uniskinmod@1.2-dev3,mcp@9.05,FML@7.10.99.99,BambooMod@Minecraft1.7.2 var2.6.6.13,NotEnoughItems@1.0.3.74,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[16:34:12] [Netty IO #3/INFO]: Attempting connection with missing mods [] at CLIENT
+[16:34:13] [Server thread/INFO]: [Server thread] Server side modded connection established
+[16:34:13] [Server thread/INFO]: dingjibang[/127.0.0.1:58450] logged in with entity id 568776 at ([skarn] -215.78995529471177, 75.0, 209.66242995333735)
+[16:34:13] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[16:34:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[16:34:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[16:34:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[16:34:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[16:34:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[16:34:13] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[16:34:13] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[16:34:13] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[16:34:13] [Server thread/WARN]: 	at sun.reflect.GeneratedMethodAccessor117.invoke(Unknown Source)
+[16:34:13] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[16:34:13] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[16:34:13] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[16:34:13] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[16:34:13] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[16:34:13] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[16:34:13] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[16:34:13] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[16:34:13] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[16:34:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[16:34:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[16:34:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[16:34:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[16:34:13] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[16:34:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[16:34:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[16:34:13] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[16:34:13] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[16:34:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[16:34:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[16:34:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[16:34:13] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[16:34:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[16:34:13] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[16:34:13] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[16:34:13] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[16:34:13] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[16:34:13] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[16:34:13] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[16:34:13] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[16:34:20] [Server thread/INFO]: dingjibang issued server command: /login djb269134
+[16:34:20] [Server thread/INFO]: [AuthMe] dingjibang logged in!
+[16:35:14] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[16:35:14] [Server thread/INFO]: dingjibang left the game.
+[16:45:54] [User Authenticator #37/INFO]: UUID of player Yamato is 5803c6c3-0a8b-3700-9c65-3f2bdd1ec587
+[16:45:55] [Netty IO #1/INFO]: Client protocol version 2
+[16:45:55] [Netty IO #1/INFO]: Client attempting to join with 10 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[16:45:55] [Netty IO #1/INFO]: Attempting connection with missing mods [uniskinmod, IC2] at CLIENT
+[16:45:55] [Netty IO #1/INFO]: Rejecting connection CLIENT: [FMLMod:IC2{2.2.810-experimental}]
+[16:45:55] [Server thread/INFO]: Yamato lost connection: Mod rejections [FMLMod:IC2{2.2.810-experimental}]
+[18:19:43] [User Authenticator #38/INFO]: UUID of player YiTian is 638f0f03-304e-37e8-83f0-fb501b7c19b7
+[18:19:44] [Netty IO #3/INFO]: Client protocol version 2
+[18:19:44] [Netty IO #3/INFO]: Client attempting to join with 12 mods : uniskinmod@1.2-dev3,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[18:19:44] [Netty IO #3/INFO]: Attempting connection with missing mods [] at CLIENT
+[18:19:44] [Server thread/INFO]: [Server thread] Server side modded connection established
+[18:19:44] [Server thread/INFO]: YiTian[/127.0.0.1:62596] logged in with entity id 568987 at ([skarn] 146.40922922977282, 66.0, 163.22502071556136)
+[18:19:44] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[18:19:44] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[18:19:44] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[18:19:44] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[18:19:44] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[18:19:44] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[18:19:44] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[18:19:44] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[18:19:44] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[18:19:44] [Server thread/WARN]: 	at sun.reflect.GeneratedMethodAccessor117.invoke(Unknown Source)
+[18:19:44] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[18:19:44] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[18:19:44] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[18:19:44] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[18:19:44] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[18:19:44] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[18:19:44] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[18:19:44] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[18:19:44] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[18:19:44] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[18:19:44] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[18:19:44] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[18:19:44] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[18:19:44] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[18:19:44] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[18:19:44] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[18:19:44] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[18:19:44] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[18:19:44] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[18:19:44] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[18:19:44] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[18:19:44] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[18:19:44] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[18:19:44] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[18:19:44] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[18:19:44] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[18:19:44] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[18:19:44] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[18:19:44] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[18:19:44] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[18:20:03] [Server thread/INFO]: YiTian issued server command: /login 88123456
+[18:20:03] [Server thread/INFO]: [AuthMe] YiTian logged in!
+[18:28:50] [Server thread/INFO]: YiTian issued server command: /home
+[18:28:53] [Server thread/INFO]: YiTian was blown up by Creeper
+[18:28:57] [Server thread/INFO]: YiTian issued server command: /back
+[18:29:39] [Server thread/INFO]: YiTian issued server command: /back
+[18:29:44] [Server thread/INFO]: YiTian issued server command: /home
+[18:32:11] [Server thread/INFO]: YiTian issued server command: /back
+[18:32:15] [Server thread/INFO]: YiTian issued server command: /home
+[18:40:47] [Server thread/INFO]: YiTian issued server command: /home
+[18:41:10] [Server thread/INFO]: YiTian issued server command: /abck
+[18:41:12] [Server thread/INFO]: YiTian issued server command: /back
+[18:49:22] [Server thread/INFO]: YiTian issued server command: /home
+[18:50:03] [Server thread/INFO]: YiTian issued server command: /back
+[18:52:20] [Server thread/INFO]: YiTian was shot by Skeleton
+[18:52:25] [Server thread/INFO]: YiTian issued server command: /back
+[18:52:37] [Server thread/INFO]: YiTian issued server command: /home
+[19:03:33] [Server thread/INFO]: YiTian was blown up by Creeper
+[19:03:37] [Server thread/INFO]: YiTian issued server command: /back
+[19:10:21] [Server thread/INFO]: YiTian issued server command: /home
+[19:13:12] [Server thread/INFO]: YiTian issued server command: /back
+[19:17:21] [Server thread/INFO]: YiTian issued server command: /home
+[19:17:59] [Server thread/INFO]: YiTian issued server command: /back
+[19:23:31] [Server thread/INFO]: YiTian issued server command: /home
+[19:30:45] [Server thread/INFO]: YiTian was killed by Witch using magic
+[19:30:50] [Server thread/INFO]: YiTian issued server command: /back
+[19:33:20] [Server thread/INFO]: YiTian was slain by Spider
+[19:33:24] [Server thread/INFO]: YiTian issued server command: /back
+[19:35:01] [Server thread/INFO]: YiTian was shot by Skeleton
+[19:35:06] [Server thread/INFO]: YiTian issued server command: /home
+[19:38:25] [Server thread/INFO]: YiTian lost connection: Disconnected
+[19:38:25] [Server thread/INFO]: YiTian left the game.
+[20:17:37] [User Authenticator #39/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[20:17:38] [Netty IO #2/INFO]: Client protocol version 2
+[20:17:38] [Netty IO #2/INFO]: Client attempting to join with 12 mods : uniskinmod@1.2-dev3,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[20:17:38] [Netty IO #2/INFO]: Attempting connection with missing mods [] at CLIENT
+[20:17:39] [Server thread/INFO]: [Server thread] Server side modded connection established
+[20:17:39] [Server thread/INFO]: anli[/127.0.0.1:52004] logged in with entity id 597178 at ([skarn] 31.94240833730933, 68.0, 121.05396359885913)
+[20:17:39] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[20:17:39] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[20:17:39] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[20:17:39] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[20:17:39] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[20:17:39] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[20:17:39] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[20:17:39] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[20:17:39] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[20:17:39] [Server thread/WARN]: 	at sun.reflect.GeneratedMethodAccessor117.invoke(Unknown Source)
+[20:17:39] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[20:17:39] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[20:17:39] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[20:17:39] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[20:17:39] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[20:17:39] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[20:17:39] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[20:17:39] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[20:17:39] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[20:17:39] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[20:17:39] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[20:17:39] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[20:17:39] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[20:17:39] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[20:17:39] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[20:17:39] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[20:17:39] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[20:17:39] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[20:17:39] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[20:17:39] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[20:17:39] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[20:17:39] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[20:17:39] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[20:17:39] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[20:17:39] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[20:17:39] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[20:17:39] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[20:17:39] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[20:17:39] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[20:17:39] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[20:17:52] [Server thread/INFO]: anli issued server command: /login anli123
+[20:17:52] [Server thread/INFO]: [AuthMe] anli logged in!
+[20:18:01] [Server thread/INFO]: anli issued server command: /login anli123
+[20:52:41] [User Authenticator #40/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[20:52:41] [Netty IO #2/INFO]: Client protocol version 2
+[20:52:41] [Netty IO #2/INFO]: Client attempting to join with 14 mods : uniskinmod@1.2-dev3,craftguide@1.6.8.2,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,Kradxns Minimap@2.0,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[20:52:41] [Netty IO #2/INFO]: Attempting connection with missing mods [] at CLIENT
+[20:52:42] [Server thread/INFO]: [Server thread] Server side modded connection established
+[20:52:42] [Server thread/INFO]: dingjibang[/127.0.0.1:53849] logged in with entity id 610858 at ([skarn] -213.24038980868977, 75.0, 208.9835304282205)
+[20:52:42] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[20:52:42] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[20:52:42] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[20:52:42] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[20:52:42] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[20:52:42] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[20:52:42] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[20:52:42] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[20:52:42] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[20:52:42] [Server thread/WARN]: 	at sun.reflect.GeneratedMethodAccessor117.invoke(Unknown Source)
+[20:52:42] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[20:52:42] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[20:52:42] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[20:52:42] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[20:52:42] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[20:52:42] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[20:52:42] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[20:52:42] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[20:52:42] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[20:52:42] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[20:52:42] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[20:52:42] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[20:52:42] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[20:52:42] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[20:52:42] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[20:52:42] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[20:52:42] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[20:52:42] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[20:52:42] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[20:52:42] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[20:52:42] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[20:52:42] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[20:52:42] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[20:52:42] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[20:52:42] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[20:52:42] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[20:52:42] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[20:52:42] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[20:52:42] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[20:52:42] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[20:52:49] [Server thread/INFO]: dingjibang issued server command: /login djb269134
+[20:52:49] [Server thread/INFO]: [AuthMe] dingjibang logged in!
+[20:53:14] [Server thread/INFO]: dingjibang issued server command: /tp anli
+[20:54:09] [Netty IO #2/INFO]: <dingjibang> 哎
+[20:54:20] [Netty IO #2/INFO]: <anli> 咋了
+[20:54:23] [Netty IO #2/INFO]: <dingjibang> 你U盘东西找回来了么？
+[20:54:31] [Netty IO #2/INFO]: <anli> 找回来了
+[20:54:37] [Netty IO #2/INFO]: <dingjibang> 那就好
+[20:54:45] [Netty IO #2/INFO]: <dingjibang> 我要压抑死了。
+[20:54:50] [Netty IO #2/INFO]: <anli> 怎么了
+[20:55:04] [Netty IO #2/INFO]: <dingjibang> =。=
+[20:55:25] [Netty IO #2/INFO]: <dingjibang> 烦死了！！
+[20:55:35] [Netty IO #2/INFO]: <anli> 找不到女票愁得23333
+[20:55:44] [Netty IO #2/INFO]: <dingjibang> 对
+[20:55:50] [Netty IO #2/INFO]: <dingjibang> =。=
+[20:56:17] [Netty IO #2/INFO]: <anli> 哎哟，还知道为找不到女票烦心了
+[20:56:22] [Netty IO #2/INFO]: <dingjibang> 我一直喜欢我一个高中同学。。
+[20:56:27] [Netty IO #2/INFO]: <dingjibang> 等我点根烟再说=。=
+[20:56:34] [Netty IO #2/INFO]: <anli> 噫
+[20:56:56] [Netty IO #2/INFO]: <anli> 然后你高中同学她结婚了还是订婚了233
+[20:56:57] [Netty IO #2/INFO]: <dingjibang> 反正就是各种喜欢 然后她还不接受=。=
+[20:57:24] [Netty IO #2/INFO]: <anli> 就像我喜欢宝宝老师一样
+[20:57:31] [Netty IO #2/INFO]: <dingjibang> 然后她竟然还把我当个【朋友】的样子 总跟我各种谈天说地的
+[20:57:51] [Netty IO #2/INFO]: <dingjibang> 今天还出来吃饭，在南关那边
+[20:57:56] [Netty IO #2/INFO]: <anli> 还能聊天很不错了
+[20:57:56] [Netty IO #2/INFO]: <dingjibang> 啧
+[20:58:01] [Netty IO #2/INFO]: <dingjibang> 我感觉特别压抑和尴尬
+[20:58:10] [Netty IO #2/INFO]: <anli> 还能见着
+[20:58:17] [Netty IO #2/INFO]: <dingjibang> 很复杂，反正简单来说就这样了
+[20:58:28] [Netty IO #2/INFO]: <dingjibang> 我俩有段时间都互相拉黑了=。=
+[20:58:38] [Netty IO #2/INFO]: <anli> 真幸福，宝宝老师QQ都弧我呢
+[20:58:50] [Netty IO #2/INFO]: <anli> 就因为你喜欢她？
+[20:58:55] [Netty IO #2/INFO]: <dingjibang> 后来我又把她加回来了 她还接受了 然后就跟特么没事似的
+[20:59:09] [Netty IO #2/INFO]: <dingjibang> 嗯=。= 她不接受
+[20:59:14] [Netty IO #2/INFO]: <dingjibang> 其实。。噫
+[20:59:21] [Netty IO #2/INFO]: <dingjibang> 不算是喜欢吧
+[20:59:42] [Netty IO #2/INFO]: <dingjibang> 高中时候她总跟我说话，也同桌过 都挺懂对方的感觉
+[20:59:46] [Netty IO #2/INFO]: <dingjibang> 本垃圾想多了
+[20:59:59] [Netty IO #2/INFO]: <anli> 有的女的就是这样，我不喜欢你，可我又拒绝你
+[21:00:04] [Netty IO #2/INFO]: <dingjibang> 你知道么，还能一起吃饭，我操，压抑的不行了，刚才
+[21:00:14] [Netty IO #2/INFO]: <dingjibang> 我自己当她面喝了两瓶
+[21:00:26] [Netty IO #2/INFO]: <dingjibang> 我觉得还是断绝关系吧
+[21:00:31] [Netty IO #2/INFO]: <dingjibang> 没救了
+[21:00:46] [Netty IO #2/INFO]: <anli> 摸摸头，不要太伤心
+[21:00:53] [Netty IO #2/INFO]: <dingjibang> =。=不是，我觉得她就是不接受而已
+[21:01:00] [Netty IO #2/INFO]: <anli> 看看你身旁的JJ怪
+[21:01:07] [Netty IO #2/INFO]: <dingjibang> 我挺贱的
+[21:01:20] [Netty IO #2/INFO]: <anli> 他辣么深情的注视着你，你可以考虑下榻
+[21:01:23] [Netty IO #2/INFO]: <dingjibang> 还加她QQ回来=。= 结果她给我说 又找个男朋友
+[21:01:26] [Netty IO #2/INFO]: <anli> 她
+[21:01:32] [Netty IO #2/INFO]: <dingjibang> 我着实有点傻逼
+[21:01:55] [Netty IO #2/INFO]: <dingjibang> 加她qq回来就在半个月前吧
+[21:02:45] [Netty IO #2/INFO]: <anli> 想开点
+[21:02:58] [Netty IO #2/INFO]: <anli> 你还有JJ怪
+[21:03:04] [Netty IO #2/INFO]: <dingjibang> 其实就是昨天我问她说咱们俩明天去吃的那个火锅叫啥来着=。= 然后她就说你请我啊 我一时傻逼就说行了 然后就有了刚才那么压抑的两个小时
+[21:03:32] [Netty IO #2/INFO]: <dingjibang> 我好贱皮子【
+[21:03:37] [Netty IO #2/INFO]: <dingjibang> 总觉得还有希望=。=
+[21:03:41] [Netty IO #2/INFO]: <dingjibang> 算了
+[21:03:42] [Netty IO #2/INFO]: <anli> woc.......啥鬼.....
+[21:04:18] [Netty IO #2/INFO]: <dingjibang> 没，我俩以前在那里吃过一次 印象挺深的2333 我就问了下。。
+[21:04:44] [Netty IO #2/INFO]: <anli> 今天我也超烦= =
+[21:04:49] [Server thread/INFO]: [dingjibang: Given [Giant's Sword] * 1 to dingjibang]
+[21:04:54] [Netty IO #2/INFO]: <dingjibang> 咋了
+[21:05:49] [Netty IO #2/INFO]: <anli> 把朋友的片子修完后他让我加另一个人给他传过去，我说好，然后
+[21:06:12] [Netty IO #2/INFO]: <anli> 加上那个人之后他就说我让他想起了大宝
+[21:06:25] [Netty IO #2/INFO]: <anli> 大宝就是一直追我的一个男的
+[21:06:42] [Netty IO #2/INFO]: <dingjibang> hhh
+[21:06:47] [Netty IO #2/INFO]: <anli> 我问为啥，他说大宝跟他讲我亲了他
+[21:06:58] [Netty IO #2/INFO]: <dingjibang> 。。
+[21:07:20] [Netty IO #2/INFO]: <anli> 我亲了大宝我知道，那是在元旦漫展那天
+[21:07:37] [Netty IO #2/INFO]: <anli> 其实那天我亲了好多人，男的女的都有
+[21:07:59] [Netty IO #2/INFO]: <dingjibang> 是不是从那时候开始就追你了233
+[21:07:59] [Netty IO #2/INFO]: <anli> 然而大宝就把我亲他的事告诉了所有人
+[21:08:16] [Netty IO #2/INFO]: <dingjibang> 肯定是觉得就亲了你=。= 对你有想法
+[21:08:24] [Netty IO #2/INFO]: <anli> 他追我都有1个多月了
+[21:08:51] [Netty IO #2/INFO]: <dingjibang> 肯定是这样的=。=
+[21:09:03] [Netty IO #2/INFO]: <anli> 我就呵呵了，那天我亲了好多人，别人都没当回事，就他
+[21:09:26] [Netty IO #2/INFO]: <anli> 到处说，认识他的人基本上都知道了
+[21:09:45] [Netty IO #2/INFO]: <anli> 他还是这个圈子的老人，超多人都认识他
+[21:09:51] [Netty IO #2/INFO]: <dingjibang> 换成我如果对你不了解 你亲了我我心里也会突然突突的(づ￣3￣)づ╭?～
+[21:10:09] [Netty IO #2/INFO]: <anli> 明天我也亲你小好了
+[21:10:15] [Netty IO #2/INFO]: <dingjibang> 那我不去了
+[21:10:20] [Netty IO #2/INFO]: <anli> 23333
+[21:10:24] [Netty IO #2/INFO]: <dingjibang> 那我也追你1个月
+[21:10:32] [Netty IO #2/INFO]: <dingjibang> 然后告诉全世界你亲了我
+[21:10:54] [Netty IO #2/INFO]: <anli> 噫，那天我还亲了个已婚人士呢
+[21:11:06] [Netty IO #2/INFO]: <dingjibang> 他老婆过来挠你了！
+[21:11:17] [Netty IO #2/INFO]: <anli> 没，她老婆不知道
+[21:11:37] [Netty IO #2/INFO]: <anli> 周日那天我俩还约吃了旋转小火锅
+[21:11:44] [Netty IO #2/INFO]: <dingjibang> 噫
+[21:12:07] [Netty IO #2/INFO]: <anli> 今天你看的那只仓鼠就是他家仓鼠生的
+[21:12:19] [Netty IO #2/INFO]: <dingjibang> 2333
+[21:13:02] [Server thread/INFO]: [dingjibang: Given [Torch] * 1 to dingjibang]
+[21:13:17] [Netty IO #2/INFO]: <anli> 你那个大剑咋弄得
+[21:13:34] [Server thread/INFO]: dingjibang issued server command: /tp anli
+[21:14:06] [Netty IO #2/INFO]: <anli> woc好棒
+[21:14:19] [Netty IO #2/INFO]: <dingjibang> =-m=
+[21:14:23] [Netty IO #2/INFO]: <dingjibang> =,=
+[21:14:31] [Netty IO #2/INFO]: <dingjibang> 我现在要烦死了QAQ
+[21:14:43] [Netty IO #2/INFO]: <anli> 摸摸头，我们都烦
+[21:14:45] [Netty IO #2/INFO]: <dingjibang> 我又买了两瓶酒=。=
+[21:14:57] [Netty IO #2/INFO]: <anli> 一个女人而已
+[21:15:15] [Netty IO #2/INFO]: <dingjibang> =。=
+[21:15:39] [Netty IO #2/INFO]: <dingjibang> 感觉只是接触的比较多而已 我自己想太多了=。=
+[21:15:55] [Netty IO #2/INFO]: <dingjibang> 也完全没有这方面经验！
+[21:16:03] [Netty IO #2/INFO]: <anli> 卧槽没初恋
+[21:16:03] [Netty IO #2/INFO]: <dingjibang> 不说了=。= 好羞耻
+[21:17:01] [Netty IO #2/INFO]: <anli> 宝宝老师当初跟我说你毕业我就考虑你，可当他走的那天就跟我说他喜欢成熟稳重有内涵的
+[21:17:23] [Netty IO #2/INFO]: <anli> 说话超级冷漠
+[21:17:39] [Netty IO #2/INFO]: <anli> 真是超级伤心，可我现在不也好好的
+[21:17:40] [Netty IO #2/INFO]: <dingjibang> 说明当时只是随便说说而已
+[21:17:54] [Netty IO #2/INFO]: <dingjibang> 你单方面觉得伤心而已
+[21:18:31] [Netty IO #2/INFO]: <dingjibang> 就像我喜欢的女生 可能只是多跟我说几句话我就有感觉了
+[21:18:53] [Netty IO #2/INFO]: <dingjibang> 现在想想没什么，性格 兴趣 都不是一样的
+[21:19:08] [Netty IO #2/INFO]: <anli> 那那个高中同学呢
+[21:19:25] [Netty IO #2/INFO]: <dingjibang> 就是她
+[21:24:01] [Netty IO #2/INFO]: <anli> 摸摸头
+[21:24:36] [Netty IO #2/INFO]: <dingjibang> w
+[21:24:51] [Netty IO #2/INFO]: <dingjibang> 我觉得我几年内是看不到妹子了
+[21:25:08] [Netty IO #2/INFO]: <dingjibang> 等过一两年我打算去北京了
+[21:25:08] [Netty IO #2/INFO]: <anli> 为啥
+[21:25:22] [Netty IO #2/INFO]: <dingjibang> 不为啥，没什么遇见的机会
+[21:25:29] [Netty IO #2/INFO]: <anli> 去北京打拼？
+[21:25:39] [Netty IO #2/INFO]: <dingjibang> 碰到你还是那时候无聊吹头发看到的=。=
+[21:25:42] [Netty IO #2/INFO]: <dingjibang> 对啊
+[21:25:49] [Netty IO #2/INFO]: <dingjibang> 做一个压抑的普通青年了=。=
+[21:26:40] [Netty IO #2/INFO]: <anli> 别这样，要往好了想，不然更难受
+[21:26:53] [Netty IO #2/INFO]: <dingjibang> 没事=。=
+[21:26:58] [Netty IO #2/INFO]: <dingjibang> 我已经每天都很压抑了
+[21:27:03] [Netty IO #2/INFO]: <dingjibang> 习惯了
+[21:27:20] [Netty IO #2/INFO]: <anli> 心里堵得慌？
+[21:27:29] [Netty IO #2/INFO]: <dingjibang> 嗯=。= 无时无刻都这样
+[21:27:47] [Netty IO #2/INFO]: <anli> 跟我初中的时候一样
+[21:28:28] [Netty IO #2/INFO]: <dingjibang> 你是一个有故事的人
+[21:28:58] [Netty IO #2/INFO]: <anli> 没有故事
+[21:29:09] [Netty IO #2/INFO]: <anli> 家庭原因导致的
+[21:29:20] [Netty IO #2/INFO]: <dingjibang> hhhhh
+[21:29:27] [Netty IO #2/INFO]: <dingjibang> 我上初中的时候 去的学校
+[21:29:33] [Netty IO #2/INFO]: <dingjibang> 92中 听过么
+[21:29:43] [Netty IO #2/INFO]: <dingjibang> 肯定没听过吧 因为已经黄了 变成48中了
+[21:29:51] [Netty IO #2/INFO]: <anli> 48大概知道
+[21:30:06] [Netty IO #2/INFO]: <dingjibang> 初中那段时间我家庭条件不好=。=
+[21:30:16] [Netty IO #2/INFO]: <dingjibang> 入学学费都交不起。。
+[21:30:23] [Netty IO #2/INFO]: <dingjibang> 我就去那个学校了
+[21:30:37] [Netty IO #2/INFO]: <dingjibang> 我初二时候 你知道么 初一整个学校招了多少人？
+[21:30:44] [Netty IO #2/INFO]: <dingjibang> 16人wwwww
+[21:30:47] [Netty IO #2/INFO]: <anli> 几千？
+[21:30:52] [Netty IO #2/INFO]: <dingjibang> 眼看要黄了
+[21:30:52] [Netty IO #2/INFO]: <anli> woc.....
+[21:31:04] [Netty IO #2/INFO]: <dingjibang> 初二还招了100多人 初一就16个了
+[21:31:22] [Netty IO #2/INFO]: <dingjibang> 我初三时候学校就黄了 把我们合并到70中学了
+[21:31:26] [Netty IO #2/INFO]: <dingjibang> 东安屯那个
+[21:31:42] [Netty IO #2/INFO]: <anli> 没听过。。。。
+[21:31:42] [Netty IO #2/INFO]: <dingjibang> 毕竟就是个没名的小学校=。=
+[21:31:54] [Netty IO #2/INFO]: <dingjibang> 反正那个 学校 基本没有学习的
+[21:31:59] [Netty IO #2/INFO]: <dingjibang> 都是混子
+[21:32:04] [Netty IO #2/INFO]: <dingjibang> 说起来还挺有意思的
+[21:32:24] [Netty IO #2/INFO]: <dingjibang> 我表哥 没去迪拜之前就成天在长春混啊混 不务正业
+[21:32:49] [Netty IO #2/INFO]: <anli> 你也跟着混2333
+[21:32:52] [Netty IO #2/INFO]: <dingjibang> 我初中惹事了 那个逼说找人要揍我 结果把我表哥和我表哥朋友找来了 我俩把他揍一顿
+[21:33:08] [Netty IO #2/INFO]: <dingjibang> 现在想想还interesting
+[21:33:31] [Netty IO #2/INFO]: <dingjibang> 反正初中没人学习=。= 我还稍微学了一点 每次考试都全校前三=。=
+[21:33:38] [Netty IO #2/INFO]: <dingjibang> 但是呢 我家里人还是不满意。。
+[21:33:58] [Netty IO #2/INFO]: <dingjibang> 说我中考如果考不上好高中 父母就分手
+[21:33:58] [Netty IO #2/INFO]: <anli> 稍微学究前三
+[21:34:30] [Netty IO #2/INFO]: <dingjibang> 反正那时候我家里家庭矛盾很大的 父母不分手绝大原因就是因为我。。。 我爸以前就和我妈分手了
+[21:34:33] [Netty IO #2/INFO]: <anli> 你TM也是吊
+[21:34:47] [Netty IO #2/INFO]: <dingjibang> 然后去南方混 混到最后连回家车钱也都没有
+[21:35:13] [Netty IO #2/INFO]: <dingjibang> 我妈又收留了他=。= 然后家里本来就听困难的 反正就是听闹挺的
+[21:35:49] [Netty IO #2/INFO]: <anli> 现在呢
+[21:36:23] [Netty IO #2/INFO]: <dingjibang> 我爸看我疯狂打字进来看看我在干嘛2333
+[21:36:26] [Netty IO #2/INFO]: <dingjibang> 继续
+[21:36:43] [Netty IO #2/INFO]: <dingjibang> 反正那时候，我虽然学习不错 但是我打心底想玩 别看我前三 我跟学校那帮混子玩的可他妈开心了
+[21:37:07] [Netty IO #2/INFO]: <dingjibang> 你看我博客那篇大概也懂 抽烟也是他们教的=。=
+[21:37:15] [Netty IO #2/INFO]: <dingjibang> 然后就初三了
+[21:37:18] [Netty IO #2/INFO]: <anli> 肯定的啊
+[21:37:22] [Netty IO #2/INFO]: <dingjibang> 到了新的学校
+[21:37:34] [Netty IO #2/INFO]: <dingjibang> 有好好学习的，我压力很大。。。
+[21:37:41] [Netty IO #2/INFO]: <dingjibang> 加上这边父母的压力
+[21:37:49] [Netty IO #2/INFO]: <dingjibang> 我真不知道我初三到底怎么过来的。。。
+[21:38:01] [Netty IO #2/INFO]: <dingjibang> 我们92中的老师也跟着我们去70中了
+[21:38:17] [Netty IO #2/INFO]: <dingjibang> 那些老师教初二初一 初三的老师是70中自己的。。
+[21:38:24] [Netty IO #2/INFO]: <dingjibang> 现在想想都有点泪目
+[21:38:35] [Netty IO #2/INFO]: <dingjibang> 那些92的老师特别看好我
+[21:38:45] [Netty IO #2/INFO]: <dingjibang> 每天都给我开小灶。。。
+[21:39:02] [Netty IO #2/INFO]: <anli> 毕竟不是一个学校饿
+[21:39:05] [Netty IO #2/INFO]: <dingjibang> 带我复习带我学
+[21:39:19] [Netty IO #2/INFO]: <dingjibang> 哎
+[21:39:26] [Netty IO #2/INFO]: <dingjibang> 不过成绩也一般
+[21:39:37] [Netty IO #2/INFO]: <dingjibang> 550分 不算高
+[21:39:50] [Netty IO #2/INFO]: <dingjibang> 本来打算去8中了 后来希望各种让我去 我就去了
+[21:40:13] [Netty IO #2/INFO]: <dingjibang> 上了高一之后 整个人就跟放了气的气球一样 因为初三的那些压力
+[21:40:18] [Netty IO #2/INFO]: <dingjibang> 彻底不好好学习了=、=
+[21:40:52] [Netty IO #2/INFO]: <dingjibang> 高二时候我上课玩手机 被班主任在后门窗户看到了2333
+[21:41:24] [Netty IO #2/INFO]: <dingjibang> 他说手机给我 我没给 就把我带到小黑屋了，小黑屋是我们学校特色，叫什么询问室还是什么玩意的
+[21:41:39] [Netty IO #2/INFO]: <anli> 23333
+[21:41:41] [Netty IO #2/INFO]: <dingjibang> 反正那个屋里门三个锁=。= 墙壁特别厚
+[21:41:43] [Netty IO #2/INFO]: <dingjibang> 你懂的
+[21:41:54] [Netty IO #2/INFO]: <dingjibang> 进去他就照我肚子来一拳
+[21:42:03] [Netty IO #2/INFO]: <dingjibang> 我小爆脾气当然不能忍
+[21:42:07] [Netty IO #2/INFO]: <anli> 卧槽
+[21:42:09] [Netty IO #2/INFO]: <dingjibang> 我俩就干的天昏地暗
+[21:42:23] [Netty IO #2/INFO]: <dingjibang> 我把他眼镜都打碎了2333
+[21:42:33] [Netty IO #2/INFO]: <dingjibang> 后来我俩打完了 都坐地上喘粗气
+[21:42:49] [Netty IO #2/INFO]: <dingjibang> 他摸摸兜发现烟都特么让我打折了
+[21:42:55] [Netty IO #2/INFO]: <dingjibang> 还管我要根烟抽233333
+[21:43:05] [Netty IO #2/INFO]: <dingjibang> 跟我说 这件事咱俩知道就行
+[21:43:20] [Netty IO #2/INFO]: <anli> 8
+[21:43:23] [Netty IO #2/INFO]: <dingjibang> 毕竟老师打人 而且我还打老师 谁说出去都不再理
+[21:43:43] [Netty IO #2/INFO]: <dingjibang> 他说你以后老老实实的 就不管我学习啥的了
+[21:43:46] [Netty IO #2/INFO]: <dingjibang> 我以为这事情就完了
+[21:43:51] [Netty IO #2/INFO]: <dingjibang> 然而这逼勾心斗角
+[21:43:57] [Netty IO #2/INFO]: <dingjibang> 最后还是把我弄走了
+[21:44:12] [Netty IO #2/INFO]: <dingjibang> 因为学生的毕业跟他的奖金啥的应该有关系吧=。=
+[21:46:43] [User Authenticator #41/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[21:46:43] [Server thread/INFO]: Disconnecting com.mojang.authlib.GameProfile@76f3ed6f[id=08f61cfa-b026-3ff0-953f-3c65ef0047a0,name=anli,properties={},legacy=false] (/127.0.0.1:56888): §fSame nick is already playing
+[21:46:43] [Server thread/INFO]: com.mojang.authlib.GameProfile@76f3ed6f[id=08f61cfa-b026-3ff0-953f-3c65ef0047a0,name=anli,properties={},legacy=false] (/127.0.0.1:56888) lost connection: §fSame nick is already playing
+[21:46:46] [User Authenticator #42/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[21:46:46] [Server thread/INFO]: Disconnecting com.mojang.authlib.GameProfile@2dae64b1[id=08f61cfa-b026-3ff0-953f-3c65ef0047a0,name=anli,properties={},legacy=false] (/127.0.0.1:56889): §fSame nick is already playing
+[21:46:46] [Server thread/INFO]: com.mojang.authlib.GameProfile@2dae64b1[id=08f61cfa-b026-3ff0-953f-3c65ef0047a0,name=anli,properties={},legacy=false] (/127.0.0.1:56889) lost connection: §fSame nick is already playing
+[21:46:48] [User Authenticator #43/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[21:46:48] [Server thread/INFO]: Disconnecting com.mojang.authlib.GameProfile@5ad984fb[id=08f61cfa-b026-3ff0-953f-3c65ef0047a0,name=anli,properties={},legacy=false] (/127.0.0.1:56892): §fSame nick is already playing
+[21:46:48] [Server thread/INFO]: com.mojang.authlib.GameProfile@5ad984fb[id=08f61cfa-b026-3ff0-953f-3c65ef0047a0,name=anli,properties={},legacy=false] (/127.0.0.1:56892) lost connection: §fSame nick is already playing
+[21:46:54] [User Authenticator #44/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[21:46:54] [Server thread/INFO]: Disconnecting com.mojang.authlib.GameProfile@89ea844[id=08f61cfa-b026-3ff0-953f-3c65ef0047a0,name=anli,properties={},legacy=false] (/127.0.0.1:56903): §fSame nick is already playing
+[21:46:54] [Server thread/INFO]: com.mojang.authlib.GameProfile@89ea844[id=08f61cfa-b026-3ff0-953f-3c65ef0047a0,name=anli,properties={},legacy=false] (/127.0.0.1:56903) lost connection: §fSame nick is already playing
+[21:50:33] [User Authenticator #45/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[21:50:33] [Server thread/INFO]: Disconnecting com.mojang.authlib.GameProfile@653f35ab[id=08f61cfa-b026-3ff0-953f-3c65ef0047a0,name=anli,properties={},legacy=false] (/127.0.0.1:57087): §fSame nick is already playing
+[21:50:33] [Server thread/INFO]: com.mojang.authlib.GameProfile@653f35ab[id=08f61cfa-b026-3ff0-953f-3c65ef0047a0,name=anli,properties={},legacy=false] (/127.0.0.1:57087) lost connection: §fSame nick is already playing
+[21:50:40] [User Authenticator #46/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[21:50:40] [Server thread/INFO]: Disconnecting com.mojang.authlib.GameProfile@28145fc8[id=08f61cfa-b026-3ff0-953f-3c65ef0047a0,name=anli,properties={},legacy=false] (/127.0.0.1:57088): §fSame nick is already playing
+[21:50:40] [Server thread/INFO]: com.mojang.authlib.GameProfile@28145fc8[id=08f61cfa-b026-3ff0-953f-3c65ef0047a0,name=anli,properties={},legacy=false] (/127.0.0.1:57088) lost connection: §fSame nick is already playing
+[21:50:53] [User Authenticator #47/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[21:50:53] [Server thread/INFO]: Disconnecting com.mojang.authlib.GameProfile@5dc539ef[id=08f61cfa-b026-3ff0-953f-3c65ef0047a0,name=anli,properties={},legacy=false] (/127.0.0.1:57101): §fSame nick is already playing
+[21:50:53] [Server thread/INFO]: com.mojang.authlib.GameProfile@5dc539ef[id=08f61cfa-b026-3ff0-953f-3c65ef0047a0,name=anli,properties={},legacy=false] (/127.0.0.1:57101) lost connection: §fSame nick is already playing
+[22:06:14] [User Authenticator #48/INFO]: UUID of player t486976 is 54e3208a-dccf-384f-8ecf-d0aef0c85e30
+[22:06:14] [Netty IO #2/INFO]: Client protocol version 2
+[22:06:14] [Netty IO #2/INFO]: Client attempting to join with 13 mods : uniskinmod@1.2-dev3,craftguide@1.6.8.2,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[22:06:14] [Netty IO #2/INFO]: Attempting connection with missing mods [] at CLIENT
+[22:06:15] [Server thread/INFO]: [Server thread] Server side modded connection established
+[22:06:15] [Server thread/INFO]: t486976[/127.0.0.1:58231] logged in with entity id 647452 at ([skarn] 264.7038832329619, 104.0, 35.8445626802857)
+[22:06:15] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[22:06:15] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[22:06:15] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[22:06:15] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[22:06:15] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[22:06:15] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[22:06:15] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[22:06:15] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[22:06:15] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[22:06:15] [Server thread/WARN]: 	at sun.reflect.GeneratedMethodAccessor117.invoke(Unknown Source)
+[22:06:15] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[22:06:15] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[22:06:15] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[22:06:15] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[22:06:15] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[22:06:15] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[22:06:15] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[22:06:15] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[22:06:15] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[22:06:15] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[22:06:15] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[22:06:15] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[22:06:15] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[22:06:15] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[22:06:15] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[22:06:15] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[22:06:15] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[22:06:15] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[22:06:15] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[22:06:15] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[22:06:15] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[22:06:15] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[22:06:15] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[22:06:15] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[22:06:15] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[22:06:15] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[22:06:15] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[22:06:15] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[22:06:15] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[22:06:15] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[22:06:30] [Server thread/INFO]: t486976 issued server command: /login 123456
+[22:06:30] [Server thread/INFO]: [AuthMe] t486976 logged in!
+[22:08:08] [Server thread/INFO]: t486976 issued server command: /home
+[22:13:57] [Server thread/INFO]: t486976 was slain by Minoshroom
+[22:18:38] [Netty IO #2/INFO]: <t486976> 都在干啥。。。
+[22:31:16] [Server thread/INFO]: t486976 fell from a high place
+[22:31:21] [Server thread/INFO]: t486976 issued server command: /back
+[22:33:34] [Server thread/INFO]: t486976 lost connection: Disconnected
+[22:33:34] [Server thread/INFO]: t486976 left the game.
+[23:13:15] [Server thread/INFO]: anli lost connection: Disconnected
+[23:13:15] [Server thread/INFO]: anli left the game.

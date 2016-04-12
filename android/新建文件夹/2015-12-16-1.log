@@ -1,0 +1,44 @@
+[17:27:36] [User Authenticator #17/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[17:27:36] [Netty IO #1/INFO]: Client protocol version 1
+[17:27:36] [Netty IO #1/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[17:27:36] [Netty IO #1/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[17:27:37] [Server thread/INFO]: [Server thread] Server side modded connection established
+[17:27:37] [Server thread/INFO]: anli[/127.0.0.1:64580] logged in with entity id 69806 at ([skarn] -222.41513818712286, 64.0, 289.15868933390595)
+[17:34:20] [Server thread/INFO]: anli lost connection: Disconnected
+[17:34:20] [Server thread/INFO]: anli left the game.
+[17:34:22] [User Authenticator #18/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[17:34:23] [Netty IO #2/INFO]: Client protocol version 1
+[17:34:23] [Netty IO #2/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[17:34:23] [Netty IO #2/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[17:34:23] [Server thread/INFO]: [Server thread] Server side modded connection established
+[17:34:23] [Server thread/INFO]: anli[/127.0.0.1:64799] logged in with entity id 72103 at ([skarn] -219.0559393829493, 74.3921750837178, 265.3490189655835)
+[17:42:11] [Server thread/INFO]: anli lost connection: Timed out
+[17:42:11] [Server thread/INFO]: anli left the game.
+[17:42:43] [User Authenticator #19/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[17:42:44] [Netty IO #2/INFO]: Client protocol version 1
+[17:42:44] [Netty IO #2/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[17:42:44] [Netty IO #2/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[17:42:44] [Server thread/INFO]: [Server thread] Server side modded connection established
+[17:42:44] [Server thread/INFO]: anli[/127.0.0.1:65059] logged in with entity id 75789 at ([skarn] -231.25344956360402, 64.0, 281.101094804698)
+[17:51:16] [Server thread/INFO]: anli has just earned the achievement [Twilight Portal]
+[17:51:16] [Server thread/INFO]: anli has just earned the achievement [Twilight Arrival]
+[17:51:16] [Server thread/INFO]: Player touched the portal block.  Sending the player to dimension 7
+[17:53:44] [Server thread/INFO]: anli issued server command: /home
+[17:54:01] [Server thread/INFO]: anli issued server command: /home
+[17:54:42] [Server thread/INFO]: Player touched the portal block.  Sending the player to dimension 7
+[17:55:18] [Server thread/INFO]: [TwilightForest] Lowering Dark Tower max height by 5 to be within world bounds
+[18:01:39] [Server thread/INFO]: anli lost connection: Disconnected
+[18:01:39] [Server thread/INFO]: anli left the game.
+[18:01:46] [User Authenticator #20/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[18:01:46] [Netty IO #3/INFO]: Client protocol version 1
+[18:01:46] [Netty IO #3/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[18:01:46] [Netty IO #3/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[18:01:47] [Server thread/INFO]: [Server thread] Server side modded connection established
+[18:01:47] [Server thread/INFO]: anli[/127.0.0.1:49383] logged in with entity id 84830 at ([DIM7] -491.96294887489836, 43.0, 473.9611334365327)
+[18:13:45] [Server thread/INFO]: anli has just earned the achievement [Twilight Hunter]
+[18:14:23] [Server thread/INFO]: Drawing entrance
+[18:14:23] [Server thread/INFO]: Drawing entrance at -983, 30, 766
+[18:18:44] [Server thread/INFO]: anli issued server command: /home
+[18:21:55] [Server thread/INFO]: Unloading dimension 7
+[18:47:41] [Server thread/INFO]: anli lost connection: Disconnected
+[18:47:41] [Server thread/INFO]: anli left the game.

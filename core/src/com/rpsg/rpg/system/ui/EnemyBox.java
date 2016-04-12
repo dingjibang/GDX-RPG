@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Align;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.system.base.Res;
@@ -56,4 +57,6 @@ public class EnemyBox extends Group {
 	public float getHeight() {
 		return image.getHeight();
 	}
+	
+	
 }

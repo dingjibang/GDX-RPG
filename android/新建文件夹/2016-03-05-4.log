@@ -1,0 +1,686 @@
+[17:43:25] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[17:43:25] [main/INFO]: Using primary tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[17:43:25] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLServerTweaker
+[17:43:25] [main/INFO]: Forge Mod Loader version 7.99.4.1614 for Minecraft 1.7.10 loading
+[17:43:26] [main/INFO]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.7.0_67, running on Windows 8.1:amd64:6.3, installed at C:\Program Files\Java\jdk1.7.0_67\jre
+[17:43:26] [main/INFO]: [pw.prok.imagine.ImagineLoadingPlugin:<clinit>:26]: Loading plugin initialized!
+[17:43:28] [main/ERROR]: The coremod ruby.bamboo.asm.CorePlugin is requesting minecraft version 1.7.2 and minecraft is 1.7.10. It will be ignored.
+[17:43:28] [main/WARN]: The following coremods do not have a @MCVersion annotation. They may cause problems if this is not the correct version of Minecraft for them.
+[17:43:28] [main/WARN]: Missing @MCVersion: codechicken.core.launch.CodeChickenCorePlugin  lain.mods.inputfix.InputFix  codechicken.nei.asm.NEICorePlugin  ic2.core.coremod.IC2core  invtweaks.forge.asm.FMLPlugin  thaumcraft.codechicken.core.launch.DepLoader  
+[17:43:28] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[17:43:28] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[17:43:28] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[17:43:28] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[17:43:28] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[17:43:29] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[17:43:29] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[17:43:29] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[17:43:30] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[17:43:30] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[17:43:30] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[17:43:30] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[17:43:30] [main/INFO]: Loaded library EJML-core-0.26.jar.
+[17:43:30] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[17:43:30] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[17:43:30] [main/INFO]: Injecting Data ...
+[17:43:30] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[17:43:30] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[17:43:30] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.TerminalTweaker
+[17:43:30] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.TerminalTweaker
+[17:43:31] [main/INFO]: Launching wrapped minecraft {net.minecraft.server.MinecraftServer}
+[17:43:33] [Server thread/INFO]: Starting minecraft server version 1.7.10
+[17:43:33] [Server thread/INFO]: Attempting early MinecraftForge initialization
+[17:43:33] [Server thread/INFO]: MinecraftForge v10.13.4.1614 Initialized
+[17:43:33] [Server thread/INFO]: Replaced 183 ore recipies
+[17:43:33] [Server thread/INFO]: Completed early MinecraftForge initialization
+[17:43:34] [Server thread/INFO]: Found 0 mods from the command line. Injecting into mod discoverer
+[17:43:34] [Server thread/INFO]: Searching I:\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods for mods
+[17:43:34] [Server thread/INFO]: Also searching I:\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods\1.7.10 for mods
+[17:43:34] [Server thread/INFO]: Forge Mod Loader has identified 20 mods to load
+[17:43:35] [Server thread/INFO]: FML has found a non-mod file CodeChickenLib-1.7.10-1.1.1.99-universal.jar in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible.
+[17:43:35] [Server thread/INFO]: Attempting connection with missing mods [mcp, FML, Forge, kimagine, CodeChickenCore, InputFix, NotEnoughItems, uniskinmod, gregapi, gregtech, craftguide, cfm, IC2, inventorytweaks, IronChest, Thaumcraft, BambooMod, InfernalMobs, twintails, Baubles] at CLIENT
+[17:43:35] [Server thread/INFO]: Attempting connection with missing mods [mcp, FML, Forge, kimagine, CodeChickenCore, InputFix, NotEnoughItems, uniskinmod, gregapi, gregtech, craftguide, cfm, IC2, inventorytweaks, IronChest, Thaumcraft, BambooMod, InfernalMobs, twintails, Baubles] at SERVER
+[17:43:35] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.Container
+[17:43:36] [Server thread/INFO]: Processing ObjectHolder annotations
+[17:43:36] [Server thread/INFO]: Found 341 ObjectHolder annotations
+[17:43:36] [Server thread/INFO]: Identifying ItemStackHolder annotations
+[17:43:36] [Server thread/INFO]: Found 0 ItemStackHolder annotations
+[17:43:36] [Server thread/INFO]: Configured a dormant chunk cache size of 0
+[17:43:40] [Server thread/WARN]: java.net.UnknownHostException: dl.dropboxusercontent.com
+[17:43:40] [Server thread/WARN]: 	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:178)
+[17:43:40] [Server thread/WARN]: 	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+[17:43:40] [Server thread/WARN]: 	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+[17:43:40] [Server thread/WARN]: 	at java.net.Socket.connect(Socket.java:579)
+[17:43:40] [Server thread/WARN]: 	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:618)
+[17:43:40] [Server thread/WARN]: 	at sun.security.ssl.BaseSSLSocketImpl.connect(BaseSSLSocketImpl.java:160)
+[17:43:40] [Server thread/WARN]: 	at sun.net.NetworkClient.doConnect(NetworkClient.java:180)
+[17:43:40] [Server thread/WARN]: 	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432)
+[17:43:40] [Server thread/WARN]: 	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527)
+[17:43:40] [Server thread/WARN]: 	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:275)
+[17:43:40] [Server thread/WARN]: 	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:371)
+[17:43:40] [Server thread/WARN]: 	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191)
+[17:43:40] [Server thread/WARN]: 	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:932)
+[17:43:40] [Server thread/WARN]: 	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177)
+[17:43:40] [Server thread/WARN]: 	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1300)
+[17:43:40] [Server thread/WARN]: 	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:254)
+[17:43:40] [Server thread/WARN]: 	at java.net.URL.openStream(URL.java:1037)
+[17:43:40] [Server thread/WARN]: 	at ruby.bamboo.UpdateNotify.run(UpdateNotify.java:43)
+[17:43:40] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[17:43:40] [Server thread/WARN]: 	at ruby.bamboo.BambooCore.preLoad(BambooCore.java:58)
+[17:43:40] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[17:43:40] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[17:43:40] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[17:43:40] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[17:43:40] [Server thread/WARN]: 	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532)
+[17:43:40] [Server thread/WARN]: 	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+[17:43:40] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[17:43:40] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[17:43:40] [Server thread/WARN]: 	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)
+[17:43:40] [Server thread/WARN]: 	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)
+[17:43:40] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)
+[17:43:40] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)
+[17:43:40] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.post(EventBus.java:275)
+[17:43:40] [Server thread/WARN]: 	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212)
+[17:43:40] [Server thread/WARN]: 	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190)
+[17:43:40] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[17:43:40] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[17:43:40] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[17:43:40] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[17:43:40] [Server thread/WARN]: 	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)
+[17:43:40] [Server thread/WARN]: 	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)
+[17:43:40] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)
+[17:43:40] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)
+[17:43:40] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.post(EventBus.java:275)
+[17:43:40] [Server thread/WARN]: 	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119)
+[17:43:40] [Server thread/WARN]: 	at cpw.mods.fml.common.Loader.preinitializeMods(Loader.java:556)
+[17:43:40] [Server thread/WARN]: 	at cpw.mods.fml.server.FMLServerHandler.beginServerLoading(FMLServerHandler.java:88)
+[17:43:40] [Server thread/WARN]: 	at cpw.mods.fml.common.FMLCommonHandler.onServerStart(FMLCommonHandler.java:319)
+[17:43:40] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:176)
+[17:43:40] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:631)
+[17:43:40] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[17:43:40] [Server thread/INFO]: Applying holder lookups
+[17:43:40] [Server thread/INFO]: Holder lookups applied
+[17:43:40] [Server thread/INFO]: Injecting itemstacks
+[17:43:40] [Server thread/INFO]: Itemstack injection complete
+[17:43:40] [Server thread/INFO]: Loading properties
+[17:43:40] [Server thread/INFO]: Default game type: SURVIVAL
+[17:43:40] [Server thread/INFO]: This server is running KCauldron version 1.7.10-1614.175 (MC: 1.7.10) (Implementing API version 1.7.10-R0.1-SNAPSHOT)
+[17:43:40] [Server thread/INFO]: Using 8 threads for Netty based IO
+[17:43:40] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[17:43:40] [Server thread/INFO]: Generating keypair
+[17:43:40] [Server thread/INFO]: Starting Minecraft server on *:25563
+[17:43:40] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[17:43:40] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[17:43:40] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[17:43:40] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[17:43:40] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerEnchantment
+[17:44:03] [Server thread/INFO]: Successfully loaded 267 out of 267 recipes for shaped recipes
+[17:44:03] [Server thread/INFO]: Successfully loaded 76 out of 76 recipes for shapeless recipes
+[17:44:03] [Server thread/INFO]: Successfully loaded 5 out of 5 recipes for blast furnace recipes
+[17:44:03] [Server thread/INFO]: Successfully loaded 17 out of 17 recipes for block cutter recipes
+[17:44:03] [Server thread/INFO]: Successfully loaded 48 out of 48 recipes for compressor recipes
+[17:44:03] [Server thread/INFO]: Successfully loaded 12 out of 12 recipes for extractor recipes
+[17:44:03] [Server thread/WARN]: Failed to add recipe. Ignoring
+java.lang.RuntimeException: ambiguous recipe: [[1xtile.stone@0] -> [1xtile.stonebrick@0]]
+	at ic2.core.BasicMachineRecipeManager.displayError(BasicMachineRecipeManager.java:306) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.BasicMachineRecipeManager.addRecipe(BasicMachineRecipeManager.java:40) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipe(Rezepte.java:338) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipes(Rezepte.java:267) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadRecipes(Rezepte.java:79) [Rezepte.class:?]
+	at ic2.core.IC2.init(IC2.java:480) [IC2.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:1.7.10-1614.175]
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:1.7.10-1614.175]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:737) [Loader.class:1.7.10-1614.175]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:324) [FMLCommonHandler.class:1.7.10-1614.175]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:287) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:631) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[17:44:03] [Server thread/WARN]: Failed to add recipe. Ignoring
+java.lang.RuntimeException: ambiguous recipe: [[1xtile.gravel@0] -> [1xitem.flint@0]]
+	at ic2.core.BasicMachineRecipeManager.displayError(BasicMachineRecipeManager.java:306) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.BasicMachineRecipeManager.addRecipe(BasicMachineRecipeManager.java:40) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipe(Rezepte.java:338) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipes(Rezepte.java:267) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadRecipes(Rezepte.java:79) [Rezepte.class:?]
+	at ic2.core.IC2.init(IC2.java:480) [IC2.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:1.7.10-1614.175]
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:1.7.10-1614.175]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:737) [Loader.class:1.7.10-1614.175]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:324) [FMLCommonHandler.class:1.7.10-1614.175]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:287) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:631) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[17:44:03] [Server thread/WARN]: Failed to add recipe. Ignoring
+java.lang.RuntimeException: ambiguous recipe: [[8xitem.reeds@0] -> [1xic2.itemBiochaff@0]]
+	at ic2.core.BasicMachineRecipeManager.displayError(BasicMachineRecipeManager.java:306) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.BasicMachineRecipeManager.addRecipe(BasicMachineRecipeManager.java:40) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipe(Rezepte.java:338) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipes(Rezepte.java:267) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadRecipes(Rezepte.java:79) [Rezepte.class:?]
+	at ic2.core.IC2.init(IC2.java:480) [IC2.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:1.7.10-1614.175]
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:1.7.10-1614.175]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:737) [Loader.class:1.7.10-1614.175]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:324) [FMLCommonHandler.class:1.7.10-1614.175]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:287) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:631) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[17:44:03] [Server thread/WARN]: Failed to add recipe. Ignoring
+java.lang.RuntimeException: ambiguous recipe: [[8xtile.pumpkin@0] -> [1xic2.itemBiochaff@0]]
+	at ic2.core.BasicMachineRecipeManager.displayError(BasicMachineRecipeManager.java:306) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.BasicMachineRecipeManager.addRecipe(BasicMachineRecipeManager.java:40) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipe(Rezepte.java:338) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipes(Rezepte.java:267) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadRecipes(Rezepte.java:79) [Rezepte.class:?]
+	at ic2.core.IC2.init(IC2.java:480) [IC2.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:1.7.10-1614.175]
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:1.7.10-1614.175]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:737) [Loader.class:1.7.10-1614.175]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:324) [FMLCommonHandler.class:1.7.10-1614.175]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:287) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:631) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[17:44:03] [Server thread/WARN]: Failed to add recipe. Ignoring
+java.lang.RuntimeException: ambiguous recipe: [[8xitem.melon@0] -> [1xic2.itemBiochaff@0]]
+	at ic2.core.BasicMachineRecipeManager.displayError(BasicMachineRecipeManager.java:306) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.BasicMachineRecipeManager.addRecipe(BasicMachineRecipeManager.java:40) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipe(Rezepte.java:338) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipes(Rezepte.java:267) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadRecipes(Rezepte.java:79) [Rezepte.class:?]
+	at ic2.core.IC2.init(IC2.java:480) [IC2.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:1.7.10-1614.175]
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:1.7.10-1614.175]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:737) [Loader.class:1.7.10-1614.175]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:324) [FMLCommonHandler.class:1.7.10-1614.175]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:287) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:631) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[17:44:03] [Server thread/WARN]: Failed to add recipe. Ignoring
+java.lang.RuntimeException: ambiguous recipe: [[1xtile.cloth@0] -> [2xitem.string@0]]
+	at ic2.core.BasicMachineRecipeManager.displayError(BasicMachineRecipeManager.java:306) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.BasicMachineRecipeManager.addRecipe(BasicMachineRecipeManager.java:40) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipe(Rezepte.java:338) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipes(Rezepte.java:267) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadRecipes(Rezepte.java:79) [Rezepte.class:?]
+	at ic2.core.IC2.init(IC2.java:480) [IC2.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:1.7.10-1614.175]
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:1.7.10-1614.175]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:737) [Loader.class:1.7.10-1614.175]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:324) [FMLCommonHandler.class:1.7.10-1614.175]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:287) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:631) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[17:44:03] [Server thread/WARN]: Failed to add recipe. Ignoring
+java.lang.RuntimeException: ambiguous recipe: [[8xitem.wheat@0] -> [1xic2.itemBiochaff@0]]
+	at ic2.core.BasicMachineRecipeManager.displayError(BasicMachineRecipeManager.java:306) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.BasicMachineRecipeManager.addRecipe(BasicMachineRecipeManager.java:40) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipe(Rezepte.java:338) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipes(Rezepte.java:267) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadRecipes(Rezepte.java:79) [Rezepte.class:?]
+	at ic2.core.IC2.init(IC2.java:480) [IC2.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:1.7.10-1614.175]
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:1.7.10-1614.175]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:737) [Loader.class:1.7.10-1614.175]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:324) [FMLCommonHandler.class:1.7.10-1614.175]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:287) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:631) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[17:44:03] [Server thread/WARN]: Failed to add recipe. Ignoring
+java.lang.RuntimeException: ambiguous recipe: [[1xtile.stonebrick@0] -> [1xtile.sand@0]]
+	at ic2.core.BasicMachineRecipeManager.displayError(BasicMachineRecipeManager.java:306) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.BasicMachineRecipeManager.addRecipe(BasicMachineRecipeManager.java:40) ~[BasicMachineRecipeManager.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipe(Rezepte.java:338) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadMachineRecipes(Rezepte.java:267) [Rezepte.class:?]
+	at ic2.core.init.Rezepte.loadRecipes(Rezepte.java:79) [Rezepte.class:?]
+	at ic2.core.IC2.init(IC2.java:480) [IC2.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:1.7.10-1614.175]
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:1.7.10-1614.175]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:737) [Loader.class:1.7.10-1614.175]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:324) [FMLCommonHandler.class:1.7.10-1614.175]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:287) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:631) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[17:44:03] [Server thread/INFO]: Successfully loaded 56 out of 64 recipes for macerator recipes
+[17:44:03] [Server thread/INFO]: Successfully loaded 4 out of 4 recipes for metal former cutting recipes
+[17:44:03] [Server thread/INFO]: Successfully loaded 10 out of 10 recipes for metal former extruding recipes
+[17:44:03] [Server thread/INFO]: Successfully loaded 14 out of 14 recipes for metal former rolling recipes
+[17:44:03] [Server thread/INFO]: Successfully loaded 8 out of 8 recipes for ore washing recipes
+[17:44:03] [Server thread/INFO]: Successfully loaded 25 out of 25 recipes for thermal centrifuge recipes
+[17:44:03] [Server thread/WARN]: 
+java.lang.NoSuchMethodException: ic2.core.util.Config.getFloat(java.lang.String)
+	at java.lang.Class.getMethod(Class.java:1665) ~[?:1.7.0_67]
+	at uristqwerty.CraftGuide.recipes.IC2GeneratorFuel.getGeneratorMult(IC2GeneratorFuel.java:63) [IC2GeneratorFuel.class:?]
+	at uristqwerty.CraftGuide.recipes.IC2GeneratorFuel.<init>(IC2GeneratorFuel.java:18) [IC2GeneratorFuel.class:?]
+	at uristqwerty.CraftGuide.recipes.IC2ExperimentalRecipes.<init>(IC2ExperimentalRecipes.java:53) [IC2ExperimentalRecipes.class:?]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) [?:1.7.0_67]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57) [?:1.7.0_67]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) [?:1.7.0_67]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526) [?:1.7.0_67]
+	at java.lang.Class.newInstance(Class.java:374) [?:1.7.0_67]
+	at uristqwerty.CraftGuide.CraftGuide.loadModRecipes(CraftGuide.java:123) [CraftGuide.class:?]
+	at uristqwerty.CraftGuide.CraftGuide.addIC2Recipes(CraftGuide.java:109) [CraftGuide.class:?]
+	at uristqwerty.CraftGuide.CraftGuide.init(CraftGuide.java:96) [CraftGuide.class:?]
+	at uristqwerty.CraftGuide.CraftGuide_FML.init(CraftGuide_FML.java:55) [CraftGuide_FML.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532) [FMLModContainer.class:1.7.10-1614.175]
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190) [LoadController.class:1.7.10-1614.175]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.7.0_67]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[?:1.7.0_67]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.7.0_67]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[?:1.7.0_67]
+	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304) [server-1.7.10.jar:?]
+	at com.google.common.eventbus.EventBus.post(EventBus.java:275) [server-1.7.10.jar:?]
+	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119) [LoadController.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.Loader.initializeMods(Loader.java:737) [Loader.class:1.7.10-1614.175]
+	at cpw.mods.fml.server.FMLServerHandler.finishServerLoading(FMLServerHandler.java:97) [FMLServerHandler.class:1.7.10-1614.175]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStarted(FMLCommonHandler.java:324) [FMLCommonHandler.class:1.7.10-1614.175]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:287) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:631) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[17:44:03] [Server thread/INFO]: InfernalMobsCore load() completed! Modifiers ready: 25
+[17:44:05] [Server thread/INFO]: Injecting itemstacks
+[17:44:05] [Server thread/INFO]: Itemstack injection complete
+[17:44:08] [Server thread/INFO]: Loading predefined UU world scan values, run /ic2 uu-world-scan <small|medium|large> to calibrate them for your world.
+[17:44:08] [Server thread/WARN]: UU world-scan config: Can't find ItemStack for BuildCraft|Core:eternalSpring, ignoring the entry in line 88.
+[17:44:08] [Server thread/WARN]: UU world-scan config: Can't find ItemStack for BuildCraft|Core:eternalSpring@1, ignoring the entry in line 109.
+[17:44:08] [Server thread/INFO]: IC2 version 2.2.814-experimental loaded.
+[17:44:08] [Server thread/INFO]: Found potion array with a size of 32
+[17:44:08] [Server thread/INFO]: Extending Potion.potionTypes array to 40
+[17:44:08] [Server thread/INFO]: Initializing PotionFluxTaint with id 31
+[17:44:08] [Server thread/INFO]: Initializing PotionVisExhaust with id 32
+[17:44:08] [Server thread/INFO]: Initializing PotionInfectiousVisExhaust with id 33
+[17:44:08] [Server thread/INFO]: Initializing PotionUnnaturalHunger with id 34
+[17:44:08] [Server thread/INFO]: Initializing PotionWarpWard with id 35
+[17:44:08] [Server thread/INFO]: Initializing PotionDeathGaze with id 36
+[17:44:08] [Server thread/INFO]: Initializing PotionBlurredVision with id 37
+[17:44:08] [Server thread/INFO]: Initializing PotionSunScorned with id 38
+[17:44:08] [Server thread/INFO]: Initializing PotionThaumarhia with id 39
+[17:44:08] [Server thread/INFO]: Adding entities to MFR safari net blacklist.
+[17:44:10] [Server thread/WARN]: Whitelisting [Zombie] to spawn champion mobs at level [0]
+[17:44:10] [Server thread/WARN]: Whitelisting [Spider] to spawn champion mobs at level [0]
+[17:44:10] [Server thread/WARN]: Whitelisting [Blaze] to spawn champion mobs at level [0]
+[17:44:10] [Server thread/WARN]: Whitelisting [Enderman] to spawn champion mobs at level [0]
+[17:44:10] [Server thread/WARN]: Whitelisting [Skeleton] to spawn champion mobs at level [0]
+[17:44:10] [Server thread/WARN]: Whitelisting [Witch] to spawn champion mobs at level [1]
+[17:44:10] [Server thread/WARN]: Whitelisting [Thaumcraft.EldritchCrab] to spawn champion mobs at level [0]
+[17:44:10] [Server thread/WARN]: Whitelisting [Thaumcraft.Taintacle] to spawn champion mobs at level [2]
+[17:44:10] [Server thread/WARN]: Whitelisting [Thaumcraft.Wisp] to spawn champion mobs at level [1]
+[17:44:10] [Server thread/WARN]: Whitelisting [Thaumcraft.InhabitedZombie] to spawn champion mobs at level [3]
+[17:44:10] [TwinTails version check Thread/INFO]: Looking for the latest version
+[17:44:13] [TwinTails version check Thread/INFO]: Latest version is 1.0.3
+[17:44:15] [Server thread/INFO]: Forge Mod Loader has successfully loaded 20 mods
+[17:44:15] [Server thread/INFO]: Preparing level "skarn"
+[17:44:15] [Server thread/INFO]: Registered command debug with permission node vanilla.command.debug
+[17:44:15] [Server thread/INFO]: Registered command spreadplayers with permission node vanilla.command.spreadplayers
+[17:44:15] [Server thread/INFO]: Registered command playsound with permission node vanilla.command.playsound
+[17:44:15] [Server thread/INFO]: Registered command scoreboard with permission node vanilla.command.scoreboard
+[17:44:15] [Server thread/INFO]: Registered command achievement with permission node vanilla.command.achievement
+[17:44:15] [Server thread/INFO]: Registered command summon with permission node vanilla.command.summon
+[17:44:15] [Server thread/INFO]: Registered command setblock with permission node vanilla.command.setblock
+[17:44:15] [Server thread/INFO]: Registered command testforblock with permission node vanilla.command.testforblock
+[17:44:15] [Server thread/INFO]: Registered command tellraw with permission node vanilla.command.tellraw
+[17:44:15] [Server thread/INFO]: Registered command netstat with permission node vanilla.command.netstat
+[17:44:15] [Server thread/INFO]: Injecting existing block and item data into this server instance
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.red.slab.0
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.red.slab.2
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.red.slab.1
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.red.slab.4
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.red.slab.3
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.red.slab.5
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.basalt.slab.1
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.basalt.slab.2
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.basalt.slab.0
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.basalt.slab.5
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.basalt.slab.3
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.basalt.slab.4
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.black.slab.1
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.black.slab.2
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.black.slab.3
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.black.slab.4
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.black.slab.0
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.black.slab.5
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.marble.slab.4
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.marble.slab.3
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.marble.slab.5
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.marble.slab.0
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.marble.slab.2
+[17:44:15] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.marble.slab.1
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.black.slab.2
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.black.slab.3
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.black.slab.0
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.black.slab.1
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.black.slab.5
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.black.slab.4
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.red.slab.2
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.red.slab.3
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.red.slab.4
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.red.slab.5
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.red.slab.0
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.granite.red.slab.1
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.marble.slab.3
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.marble.slab.2
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.marble.slab.1
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.marble.slab.0
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.marble.slab.5
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.marble.slab.4
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.basalt.slab.1
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.basalt.slab.0
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.basalt.slab.3
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.basalt.slab.2
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.basalt.slab.5
+[17:44:16] [Server thread/INFO]: Found a missing id from the world gregtech:gt.stone.basalt.slab.4
+[17:44:16] [Server thread/ERROR]: There are unidentified mappings in this world - we are going to attempt to process anyway
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.granite.red.slab.0, id 450
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.granite.red.slab.2, id 452
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.granite.red.slab.1, id 451
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.granite.red.slab.4, id 454
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.granite.red.slab.3, id 453
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.granite.red.slab.5, id 455
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.basalt.slab.1, id 458
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.basalt.slab.2, id 459
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.basalt.slab.0, id 457
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.basalt.slab.5, id 462
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.basalt.slab.3, id 460
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.basalt.slab.4, id 461
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.granite.black.slab.1, id 444
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.granite.black.slab.2, id 445
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.granite.black.slab.3, id 446
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.granite.black.slab.4, id 447
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.granite.black.slab.0, id 443
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.granite.black.slab.5, id 448
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.marble.slab.4, id 468
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.marble.slab.3, id 467
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.marble.slab.5, id 469
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.marble.slab.0, id 464
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.marble.slab.2, id 466
+[17:44:16] [Server thread/ERROR]: Unidentified block: gregtech:gt.stone.marble.slab.1, id 465
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.granite.black.slab.2, id 445
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.granite.black.slab.3, id 446
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.granite.black.slab.0, id 443
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.granite.black.slab.1, id 444
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.granite.black.slab.5, id 448
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.granite.black.slab.4, id 447
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.granite.red.slab.2, id 452
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.granite.red.slab.3, id 453
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.granite.red.slab.4, id 454
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.granite.red.slab.5, id 455
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.granite.red.slab.0, id 450
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.granite.red.slab.1, id 451
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.marble.slab.3, id 467
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.marble.slab.2, id 466
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.marble.slab.1, id 465
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.marble.slab.0, id 464
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.marble.slab.5, id 469
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.marble.slab.4, id 468
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.basalt.slab.1, id 458
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.basalt.slab.0, id 457
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.basalt.slab.3, id 460
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.basalt.slab.2, id 459
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.basalt.slab.5, id 462
+[17:44:16] [Server thread/ERROR]: Unidentified item: gregtech:gt.stone.basalt.slab.4, id 461
+[17:44:16] [Server thread/WARN]: Forge Mod Loader detected missing blocks/items.
+
+There are 48 missing blocks and items in this save.
+If you continue the missing blocks/items will get removed.
+A world backup will be automatically created in your saves directory.
+
+Missing Blocks/Items:
+gregtech:gt.stone.granite.red.slab.0
+gregtech:gt.stone.granite.red.slab.2
+gregtech:gt.stone.granite.red.slab.1
+gregtech:gt.stone.granite.red.slab.4
+gregtech:gt.stone.granite.red.slab.3
+gregtech:gt.stone.granite.red.slab.5
+gregtech:gt.stone.basalt.slab.1
+gregtech:gt.stone.basalt.slab.2
+gregtech:gt.stone.basalt.slab.0
+gregtech:gt.stone.basalt.slab.5
+gregtech:gt.stone.basalt.slab.3
+gregtech:gt.stone.basalt.slab.4
+gregtech:gt.stone.granite.black.slab.1
+gregtech:gt.stone.granite.black.slab.2
+gregtech:gt.stone.granite.black.slab.3
+gregtech:gt.stone.granite.black.slab.4
+gregtech:gt.stone.granite.black.slab.0
+gregtech:gt.stone.granite.black.slab.5
+gregtech:gt.stone.marble.slab.4
+gregtech:gt.stone.marble.slab.3
+gregtech:gt.stone.marble.slab.5
+gregtech:gt.stone.marble.slab.0
+gregtech:gt.stone.marble.slab.2
+gregtech:gt.stone.marble.slab.1
+gregtech:gt.stone.granite.black.slab.2
+gregtech:gt.stone.granite.black.slab.3
+gregtech:gt.stone.granite.black.slab.0
+gregtech:gt.stone.granite.black.slab.1
+gregtech:gt.stone.granite.black.slab.5
+gregtech:gt.stone.granite.black.slab.4
+gregtech:gt.stone.granite.red.slab.2
+gregtech:gt.stone.granite.red.slab.3
+gregtech:gt.stone.granite.red.slab.4
+gregtech:gt.stone.granite.red.slab.5
+gregtech:gt.stone.granite.red.slab.0
+gregtech:gt.stone.granite.red.slab.1
+gregtech:gt.stone.marble.slab.3
+gregtech:gt.stone.marble.slab.2
+gregtech:gt.stone.marble.slab.1
+gregtech:gt.stone.marble.slab.0
+gregtech:gt.stone.marble.slab.5
+gregtech:gt.stone.marble.slab.4
+gregtech:gt.stone.basalt.slab.1
+gregtech:gt.stone.basalt.slab.0
+gregtech:gt.stone.basalt.slab.3
+gregtech:gt.stone.basalt.slab.2
+gregtech:gt.stone.basalt.slab.5
+gregtech:gt.stone.basalt.slab.4
+
+
+Run the command /fml confirm or or /fml cancel to proceed.
+Alternatively start the server with -Dfml.queryResult=confirm or -Dfml.queryResult=cancel to preselect the answer.

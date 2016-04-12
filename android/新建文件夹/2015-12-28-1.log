@@ -1,0 +1,277 @@
+[00:00:01] [Netty IO #3/INFO]: <dingjibang> niwanqiu
+[00:00:18] [Netty IO #0/INFO]: <sola> 一起超努吗
+[00:00:26] [Server thread/INFO]: sola lost connection: Disconnected
+[00:00:26] [Server thread/INFO]: sola left the game.
+[00:00:32] [Server thread/INFO]: dingjibang lost connection: Internal Exception: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+[00:00:32] [Server thread/INFO]: dingjibang left the game.
+[16:25:26] [User Authenticator #38/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[16:25:26] [Netty IO #2/INFO]: Client protocol version 2
+[16:25:26] [Netty IO #2/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[16:25:26] [Netty IO #2/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[16:25:27] [Server thread/INFO]: [Server thread] Server side modded connection established
+[16:25:27] [Server thread/INFO]: sola[/127.0.0.1:51200] logged in with entity id 456198 at ([skarn] -213.29459044561088, 70.0, 285.69999998807907)
+[16:32:39] [Server thread/INFO]: sola was slain by Zombie
+[16:33:56] [User Authenticator #39/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[16:33:56] [Netty IO #1/INFO]: Client protocol version 1
+[16:33:56] [Netty IO #1/INFO]: Client attempting to join with 9 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[16:33:56] [Netty IO #1/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[16:33:56] [Server thread/INFO]: [Server thread] Server side modded connection established
+[16:33:56] [Server thread/INFO]: dingjibang[/127.0.0.1:53062] logged in with entity id 458310 at ([skarn] -204.0, 66.0, 248.0)
+[16:34:05] [Server thread/INFO]: sola was slain by Spider
+[16:43:10] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[16:43:10] [Server thread/INFO]: dingjibang left the game.
+[16:43:12] [User Authenticator #40/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[16:43:12] [Netty IO #0/INFO]: Client protocol version 1
+[16:43:12] [Netty IO #0/INFO]: Client attempting to join with 9 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[16:43:12] [Netty IO #0/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[16:43:12] [Server thread/INFO]: [Server thread] Server side modded connection established
+[16:43:12] [Server thread/INFO]: dingjibang[/127.0.0.1:55170] logged in with entity id 462200 at ([skarn] -252.3814523224746, 64.0, 293.2741657588058)
+[16:44:21] [Server thread/INFO]: sola issued server command: /home
+[16:44:40] [Server thread/INFO]: sola issued server command: /back
+[16:44:53] [Server thread/INFO]: dingjibang was slain by Zombie
+[16:45:49] [Server thread/INFO]: sola issued server command: /home
+[16:46:10] [Server thread/INFO]: dingjibang was slain by Zombie
+[16:48:24] [Netty IO #2/INFO]: <sola> food
+[16:49:50] [Server thread/INFO]: sola issued server command: /back
+[16:50:56] [Netty IO #2/INFO]: <sola> 好卡
+[16:51:01] [Netty IO #0/INFO]: <dingjibang> deng xia
+[16:52:06] [Netty IO #0/INFO]: <dingjibang> 还卡么 我重启服务器？
+[16:52:13] [Netty IO #2/INFO]: <sola> chongqiba
+[16:52:34] [Server thread/INFO]: sola lost connection: Disconnected
+[16:52:34] [Server thread/INFO]: sola left the game.
+[16:54:14] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[16:54:14] [Server thread/INFO]: dingjibang left the game.
+[16:54:17] [User Authenticator #41/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[16:54:17] [Netty IO #1/INFO]: Client protocol version 1
+[16:54:17] [Netty IO #1/INFO]: Client attempting to join with 9 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[16:54:17] [Netty IO #1/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[16:54:18] [Server thread/INFO]: [Server thread] Server side modded connection established
+[16:54:18] [Server thread/INFO]: dingjibang[/127.0.0.1:57322] logged in with entity id 466089 at ([skarn] -243.22219146082134, 64.0, 289.1830727305341)
+[16:54:32] [User Authenticator #42/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[16:54:33] [Netty IO #2/INFO]: Client protocol version 2
+[16:54:33] [Netty IO #2/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[16:54:33] [Netty IO #2/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[16:54:33] [Server thread/INFO]: [Server thread] Server side modded connection established
+[16:54:33] [Server thread/INFO]: sola[/127.0.0.1:57363] logged in with entity id 466471 at ([DIM-1] -113.69999998807907, 51.0080170954095, -31.69999998807907)
+[16:56:04] [Server thread/INFO]: sola tried to swim in lava
+[16:56:11] [Server thread/INFO]: sola issued server command: /back
+[16:56:19] [Server thread/INFO]: sola issued server command: /back
+[16:56:35] [Netty IO #2/INFO]: <sola> .....
+[16:56:45] [Netty IO #2/INFO]: <sola> 是不是开死亡掉落了
+[16:56:53] [Netty IO #1/INFO]: <dingjibang> 没有啊
+[16:57:04] [Netty IO #1/INFO]: <dingjibang> 每个世界都需要重新开一下的。。
+[16:57:16] [Server thread/INFO]: dingjibang was slain by sola
+[16:57:29] [Netty IO #2/INFO]: <sola> 那怎么回事
+[16:57:31] [Netty IO #1/INFO]: <dingjibang> 没了？
+[16:57:41] [Netty IO #2/INFO]: <sola> 是啊
+[16:57:44] [Netty IO #1/INFO]: <dingjibang> 地狱我还没配置呢。。。死亡掉落
+[16:57:59] [Netty IO #2/INFO]: <sola> 能回档吗
+[16:58:04] [Netty IO #1/INFO]: <dingjibang> 每个世界都要配置 不能
+[16:58:18] [Netty IO #2/INFO]: <sola> 。。。。
+[16:58:26] [Server thread/INFO]: sola issued server command: /我的弓箭呢
+[16:58:36] [Netty IO #1/INFO]: <dingjibang> 自己调出来
+[16:58:37] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[16:58:37] [Server thread/INFO]: dingjibang left the game.
+[16:58:39] [User Authenticator #43/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[16:58:39] [Netty IO #1/INFO]: Client protocol version 1
+[16:58:39] [Netty IO #1/INFO]: Client attempting to join with 9 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[16:58:39] [Netty IO #1/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[16:58:39] [Server thread/INFO]: [Server thread] Server side modded connection established
+[16:58:39] [Server thread/INFO]: dingjibang[/127.0.0.1:58015] logged in with entity id 469591 at ([skarn] -267.32297238422177, 64.0, 275.8643449124718)
+[16:58:43] [Netty IO #2/INFO]: <sola> 我的弓箭不见了233
+[16:59:06] [Server thread/INFO]: sola issued server command: /gamemode 1
+[17:01:53] [Server thread/INFO]: sola issued server command: /gamemode 0
+[17:02:01] [Server thread/INFO]: sola issued server command: /gamemode 1
+[17:02:49] [Server thread/INFO]: sola issued server command: /gamemode 0
+[17:04:20] [Server thread/INFO]: sola issued server command: /xp up
+[17:04:23] [Server thread/INFO]: dingjibang issued server command: /gamerule keepInventory true
+[17:04:23] [Server thread/INFO]: dingjibang: Game rule keepInventory has been set to: true
+[17:04:24] [Server thread/INFO]: sola issued server command: /xp
+[17:04:32] [Server thread/INFO]: dingjibang tried to swim in lava
+[17:04:39] [Server thread/INFO]: sola issued server command: /xp
+[17:04:42] [Netty IO #1/INFO]: <dingjibang> hao le
+[17:05:49] [Server thread/INFO]: sola issued server command: /xp 10000 sola
+[17:06:54] [Server thread/INFO]: sola issued server command: /gamemode 1
+[17:09:37] [Server thread/INFO]: [sola: Given [Spruce Wood Planks] * 63 to sola]
+[17:10:49] [Server thread/INFO]: [sola: Given [Stone] * 63 to sola]
+[17:10:50] [Server thread/INFO]: [sola: Given [Stone] * 63 to sola]
+[17:10:51] [Server thread/INFO]: [sola: Given [Stone] * 63 to sola]
+[17:10:52] [Server thread/INFO]: [sola: Given [Stone] * 63 to sola]
+[17:11:03] [Server thread/INFO]: sola issued server command: /gamemode 0
+[17:12:05] [Server thread/INFO]: sola issued server command: /xp 1000
+[17:12:10] [Server thread/INFO]: sola issued server command: /xp 100
+[17:12:12] [Server thread/INFO]: sola issued server command: /xp
+[17:12:49] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[17:13:54] [Server thread/INFO]: sola issued server command: /gamemode 1
+[17:14:05] [Server thread/INFO]: [sola: Given [Bread] * 63 to sola]
+[17:14:13] [Server thread/INFO]: sola issued server command: /gamemode 0
+[17:15:09] [Server thread/INFO]: sola issued server command: /gamemode 1
+[17:15:19] [Server thread/INFO]: [sola: Given [Bread] * 63 to sola]
+[17:15:29] [Server thread/INFO]: sola issued server command: /gamemode 0
+[17:21:42] [Server thread/INFO]: sola lost connection: Disconnected
+[17:21:42] [Server thread/INFO]: sola left the game.
+[17:21:53] [User Authenticator #44/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[17:22:06] [Netty IO #2/INFO]: Client protocol version 2
+[17:22:06] [Netty IO #2/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[17:22:06] [Netty IO #2/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[17:22:21] [Server thread/INFO]: [Server thread] Server side modded connection established
+[17:22:21] [Server thread/INFO]: sola[/127.0.0.1:59178] logged in with entity id 476239 at ([DIM-1] -110.17620206472472, 32.0, -75.09854688244121)
+[17:25:08] [Server thread/INFO]: sola lost connection: Disconnected
+[17:25:08] [Server thread/INFO]: sola left the game.
+[17:25:40] [Server thread/INFO]: dingjibang issued server command: /hine
+[17:25:45] [Server thread/INFO]: dingjibang issued server command: /home
+[17:28:32] [Server thread/INFO]: dingjibang was slain by Zombie
+[17:29:18] [User Authenticator #45/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[17:29:18] [Netty IO #0/INFO]: Client protocol version 2
+[17:29:18] [Netty IO #0/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[17:29:18] [Netty IO #0/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[17:29:19] [Server thread/INFO]: [Server thread] Server side modded connection established
+[17:29:19] [Server thread/INFO]: sola[/127.0.0.1:60467] logged in with entity id 477542 at ([DIM-1] -110.17620206472472, 32.0, -75.09854688244121)
+[17:29:40] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[17:29:40] [Server thread/INFO]: dingjibang left the game.
+[17:29:52] [User Authenticator #46/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[17:29:52] [Netty IO #2/INFO]: Client protocol version 1
+[17:29:52] [Netty IO #2/INFO]: Client attempting to join with 9 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[17:29:52] [Netty IO #2/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[17:29:52] [Server thread/INFO]: [Server thread] Server side modded connection established
+[17:29:52] [Server thread/INFO]: dingjibang[/127.0.0.1:60568] logged in with entity id 477689 at ([skarn] -221.65903578823512, 64.0, 272.56375648153676)
+[17:30:29] [Server thread/INFO]: dingjibang was slain by Zombie
+[17:31:09] [Server thread/INFO]: dingjibang lost connection: Internal Exception: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+[17:31:09] [Server thread/INFO]: dingjibang left the game.
+[17:31:28] [User Authenticator #47/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[17:31:28] [Netty IO #0/INFO]: Client protocol version 1
+[17:31:28] [Netty IO #0/INFO]: Client attempting to join with 9 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[17:31:28] [Netty IO #0/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[17:31:29] [Server thread/INFO]: [Server thread] Server side modded connection established
+[17:31:29] [Server thread/INFO]: dingjibang[/127.0.0.1:60874] logged in with entity id 480827 at ([skarn] -230.02089013968407, 64.5, 267.284517022891)
+[17:39:06] [Server thread/INFO]: sola lost connection: Internal Exception: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+[17:39:06] [Server thread/INFO]: sola left the game.
+[17:41:15] [User Authenticator #48/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[17:41:25] [Netty IO #2/INFO]: Client protocol version 2
+[17:41:25] [Netty IO #2/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[17:41:25] [Netty IO #2/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[17:41:37] [Server thread/INFO]: [Server thread] Server side modded connection established
+[17:41:37] [Server thread/INFO]: sola[/127.0.0.1:62497] logged in with entity id 485772 at ([DIM-1] -111.47120026685297, 30.99632379300938, -115.50965766806442)
+[17:43:07] [Server thread/INFO]: sola issued server command: /home
+[17:43:20] [Server thread/INFO]: sola issued server command: /back
+[17:48:07] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[17:48:07] [Server thread/INFO]: dingjibang left the game.
+[17:58:41] [Server thread/INFO]: sola issued server command: /gamemode 1
+[18:04:00] [Server thread/INFO]: sola issued server command: /home
+[18:06:29] [Server thread/INFO]: sola issued server command: /home
+[18:06:33] [Server thread/INFO]: sola lost connection: Disconnected
+[18:06:33] [Server thread/INFO]: sola left the game.
+[21:48:13] [User Authenticator #49/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[21:48:13] [Netty IO #0/INFO]: Client protocol version 1
+[21:48:13] [Netty IO #0/INFO]: Client attempting to join with 9 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[21:48:13] [Netty IO #0/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[21:48:13] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:48:13] [Server thread/INFO]: dingjibang[/127.0.0.1:60754] logged in with entity id 491467 at ([skarn] -229.87893126431496, 64.0, 265.3030836886237)
+[21:48:19] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[21:48:19] [Server thread/INFO]: dingjibang left the game.
+[21:55:54] [User Authenticator #50/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[21:55:54] [Netty IO #2/INFO]: Client protocol version 1
+[21:55:54] [Netty IO #2/INFO]: Client attempting to join with 9 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[21:55:54] [Netty IO #2/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[21:55:54] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:55:54] [Server thread/INFO]: dingjibang[/127.0.0.1:62481] logged in with entity id 491781 at ([skarn] -229.87893126431496, 64.0, 265.3030836886237)
+[21:55:58] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[21:55:58] [Server thread/INFO]: dingjibang left the game.
+[21:56:17] [User Authenticator #51/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[21:56:18] [Netty IO #1/INFO]: Client protocol version 1
+[21:56:18] [Netty IO #1/INFO]: Client attempting to join with 9 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[21:56:18] [Netty IO #1/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[21:56:19] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:56:19] [Server thread/INFO]: dingjibang[/127.0.0.1:62550] logged in with entity id 492029 at ([skarn] -229.87893126431496, 64.0, 265.3030836886237)
+[21:57:07] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[21:57:07] [Server thread/INFO]: dingjibang left the game.
+[21:57:40] [User Authenticator #52/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[21:57:40] [Netty IO #2/INFO]: Client protocol version 1
+[21:57:40] [Netty IO #2/INFO]: Client attempting to join with 9 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[21:57:40] [Netty IO #2/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[21:57:42] [User Authenticator #53/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[21:57:43] [Netty IO #0/INFO]: Client protocol version 2
+[21:57:43] [Netty IO #0/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[21:57:43] [Netty IO #0/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[21:57:43] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:57:43] [Server thread/INFO]: dingjibang[/127.0.0.1:62778] logged in with entity id 492387 at ([skarn] -240.2960264525084, 63.0, 238.65003535884193)
+[21:57:44] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:57:44] [Server thread/INFO]: sola[/127.0.0.1:62791] logged in with entity id 492388 at ([skarn] -203.5, 65.0, 248.5)
+[21:57:55] [Server thread/INFO]: dingjibang lost connection: Internal Exception: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+[21:57:55] [Server thread/INFO]: dingjibang left the game.
+[21:57:55] [Server thread/INFO]: sola lost connection: Internal Exception: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+[21:57:55] [Server thread/INFO]: sola left the game.
+[21:57:59] [User Authenticator #54/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[21:57:59] [Netty IO #1/INFO]: Client protocol version 1
+[21:57:59] [Netty IO #1/INFO]: Client attempting to join with 9 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[21:57:59] [Netty IO #1/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[21:57:59] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:57:59] [Server thread/INFO]: dingjibang[/127.0.0.1:62854] logged in with entity id 492746 at ([skarn] -240.2960264525084, 63.0, 238.65003535884193)
+[21:58:09] [User Authenticator #55/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[21:58:10] [Netty IO #2/INFO]: Client protocol version 2
+[21:58:10] [Netty IO #2/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[21:58:10] [Netty IO #2/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[21:58:12] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:58:12] [Server thread/INFO]: sola[/127.0.0.1:62885] logged in with entity id 492997 at ([skarn] -203.5, 65.0, 248.5)
+[21:58:16] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[21:58:16] [Server thread/INFO]: dingjibang left the game.
+[21:58:22] [User Authenticator #56/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[21:58:22] [Netty IO #1/INFO]: Client protocol version 1
+[21:58:22] [Netty IO #1/INFO]: Client attempting to join with 9 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[21:58:22] [Netty IO #1/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[21:58:23] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:58:23] [Server thread/INFO]: dingjibang[/127.0.0.1:62927] logged in with entity id 493062 at ([skarn] -231.03861766271018, 63.0, 251.69999998807907)
+[21:58:36] [Server thread/INFO]: sola issued server command: /gamemode 0
+[21:59:30] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[21:59:30] [Server thread/INFO]: dingjibang left the game.
+[21:59:32] [User Authenticator #57/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[21:59:32] [Netty IO #0/INFO]: Client protocol version 1
+[21:59:32] [Netty IO #0/INFO]: Client attempting to join with 9 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[21:59:32] [Netty IO #0/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[21:59:32] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:59:32] [Server thread/INFO]: dingjibang[/127.0.0.1:63078] logged in with entity id 493260 at ([skarn] -219.69394675140109, 64.0, 278.5585395169228)
+[22:00:29] [Server thread/INFO]: sola lost connection: Disconnected
+[22:00:29] [Server thread/INFO]: sola left the game.
+[22:01:17] [User Authenticator #58/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[22:01:18] [Netty IO #3/INFO]: Client protocol version 2
+[22:01:18] [Netty IO #3/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[22:01:18] [Netty IO #3/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[22:01:21] [Server thread/INFO]: [Server thread] Server side modded connection established
+[22:01:21] [Server thread/INFO]: sola[/127.0.0.1:63177] logged in with entity id 493867 at ([skarn] -205.21421713155848, 65.00133597911214, 262.17156586229265)
+[22:01:47] [Server thread/INFO]: sola lost connection: Internal Exception: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+[22:01:47] [Server thread/INFO]: sola left the game.
+[22:01:55] [User Authenticator #59/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[22:01:56] [Netty IO #0/INFO]: Client protocol version 2
+[22:01:56] [Netty IO #0/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[22:01:56] [Netty IO #0/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[22:01:57] [Server thread/INFO]: [Server thread] Server side modded connection established
+[22:01:57] [Server thread/INFO]: sola[/127.0.0.1:63205] logged in with entity id 494117 at ([skarn] -201.26857522793006, 64.0, 258.61673050887055)
+[22:02:50] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[22:02:50] [Server thread/INFO]: dingjibang left the game.
+[22:03:06] [User Authenticator #60/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[22:03:06] [Netty IO #3/INFO]: Client protocol version 1
+[22:03:06] [Netty IO #3/INFO]: Client attempting to join with 9 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[22:03:06] [Netty IO #3/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[22:03:06] [Server thread/INFO]: [Server thread] Server side modded connection established
+[22:03:06] [Server thread/INFO]: dingjibang[/127.0.0.1:63274] logged in with entity id 494860 at ([skarn] -268.1310474203533, 65.0, 280.5927887261246)
+[22:03:35] [Server thread/INFO]: dingjibang was shot by sola
+[22:04:11] [Server thread/INFO]: sola lost connection: Timed out
+[22:04:11] [Server thread/INFO]: sola left the game.
+[22:04:15] [User Authenticator #61/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[22:04:17] [Netty IO #0/INFO]: Client protocol version 2
+[22:04:17] [Netty IO #0/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[22:04:17] [Netty IO #0/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[22:04:19] [Server thread/INFO]: [Server thread] Server side modded connection established
+[22:04:19] [Server thread/INFO]: sola[/127.0.0.1:63330] logged in with entity id 495697 at ([skarn] -267.9790096688978, 65.0, 285.8746931047987)
+[22:04:20] [Server thread/INFO]: dingjibang was shot by dingjibang
+[22:04:47] [Server thread/INFO]: sola lost connection: Disconnected
+[22:04:47] [Server thread/INFO]: sola left the game.
+[22:08:28] [Server thread/INFO]: dingjibang was slain by Zombie
+[22:16:59] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[22:16:59] [Server thread/INFO]: dingjibang left the game.
+[22:17:49] [User Authenticator #62/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[22:17:50] [Netty IO #3/INFO]: Client protocol version 2
+[22:17:50] [Netty IO #3/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[22:17:50] [Netty IO #3/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[22:17:52] [Server thread/INFO]: [Server thread] Server side modded connection established
+[22:17:52] [Server thread/INFO]: sola[/127.0.0.1:64074] logged in with entity id 504040 at ([skarn] -267.9790096688978, 65.0, 285.8746931047987)

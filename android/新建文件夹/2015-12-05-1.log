@@ -1,0 +1,273 @@
+[13:22:17] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[13:22:17] [main/INFO]: Using primary tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[13:22:17] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLServerTweaker
+[13:22:17] [main/INFO]: Forge Mod Loader version 7.10.25.1206 for Minecraft 1.7.10 loading
+[13:22:17] [main/INFO]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.7.0_67, running on Windows 8.1:amd64:6.3, installed at C:\Program Files\Java\jre7
+[13:22:20] [main/WARN]: The following coremods do not have a @MCVersion annotation. They may cause problems if this is not the correct version of Minecraft for them.
+[13:22:20] [main/WARN]: Missing @MCVersion: codechicken.core.launch.CodeChickenCorePlugin  lain.mods.inputfix.InputFix  codechicken.nei.asm.NEICorePlugin  
+[13:22:20] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[13:22:20] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[13:22:20] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[13:22:20] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[13:22:20] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:22:21] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:22:21] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:22:21] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:22:21] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:22:21] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:22:21] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[13:22:21] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.TerminalTweaker
+[13:22:21] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.TerminalTweaker
+[13:22:22] [main/INFO]: Launching wrapped minecraft {net.minecraft.server.MinecraftServer}
+[13:22:23] [Server thread/INFO]: Starting minecraft server version 1.7.10
+[13:22:23] [Server thread/INFO]: Attempting early MinecraftForge initialization
+[13:22:23] [Server thread/INFO]: MinecraftForge v10.13.0.1206 Initialized
+[13:22:23] [Server thread/INFO]: Replaced 182 ore recipies
+[13:22:23] [Server thread/INFO]: Completed early MinecraftForge initialization
+[13:22:23] [Server thread/INFO]: Searching C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods for mods
+[13:22:23] [Server thread/INFO]: Also searching C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods\1.7.10 for mods
+[13:22:23] [Server thread/INFO]: Forge Mod Loader has identified 7 mods to load
+[13:22:23] [Server thread/INFO]: FML has found a non-mod file Essentials.jar in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible.
+[13:22:23] [Server thread/INFO]: FML has found a non-mod file EssentialsAntiBuild.jar in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible.
+[13:22:23] [Server thread/INFO]: FML has found a non-mod file EssentialsChat.jar in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible.
+[13:22:23] [Server thread/INFO]: FML has found a non-mod file EssentialsProtect.jar in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible.
+[13:22:23] [Server thread/INFO]: FML has found a non-mod file EssentialsSpawn.jar in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible.
+[13:22:23] [Server thread/INFO]: FML has found a non-mod file CodeChickenLib-1.7.10-1.1.1.99-universal.jar in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible.
+[13:22:24] [Server thread/INFO]: Processing ObjectHolder annotations
+[13:22:24] [Server thread/INFO]: Found 341 ObjectHolder annotations
+[13:22:24] [Server thread/INFO]: Configured a dormant chunk cache size of 0
+[13:22:24] [Server thread/INFO]: Applying holder lookups
+[13:22:24] [Server thread/INFO]: Holder lookups applied
+[13:22:24] [Server thread/INFO]: Loading properties
+[13:22:24] [Server thread/INFO]: Default game type: SURVIVAL
+[13:22:24] [Server thread/INFO]: This server is running Cauldron-MCPC-Plus version git-Cauldron-MCPC-Plus-1.7.10-1.1206.01.170 (MC: 1.7.10) (Implementing API version 1.7.10-R0.1-SNAPSHOT)
+[13:22:25] [Server thread/INFO]: Using 4 threads for Netty based IO
+[13:22:25] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[13:22:25] [Server thread/WARN]: =============================================================
+[13:22:25] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[13:22:25] [Server thread/WARN]: Offendor: org/spigotmc/RestartCommand.restart()V
+[13:22:25] [Server thread/WARN]: =============================================================
+[13:22:25] [Server thread/INFO]: Generating keypair
+[13:22:25] [Server thread/INFO]: Starting Minecraft server on *:25563
+[13:22:25] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[13:22:25] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[13:22:25] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[13:22:25] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[13:22:25] [Server thread/INFO]: Forge Mod Loader has successfully loaded 7 mods
+[13:22:25] [Server thread/INFO]: Preparing level "skarn"
+[13:22:25] [Server thread/INFO]: Registered command debug with permission node vanilla.command.debug
+[13:22:25] [Server thread/INFO]: Registered command spreadplayers with permission node vanilla.command.spreadplayers
+[13:22:25] [Server thread/INFO]: Registered command playsound with permission node vanilla.command.playsound
+[13:22:25] [Server thread/INFO]: Registered command scoreboard with permission node vanilla.command.scoreboard
+[13:22:25] [Server thread/INFO]: Registered command achievement with permission node vanilla.command.achievement
+[13:22:25] [Server thread/INFO]: Registered command summon with permission node vanilla.command.summon
+[13:22:25] [Server thread/INFO]: Registered command setblock with permission node vanilla.command.setblock
+[13:22:25] [Server thread/INFO]: Registered command testforblock with permission node vanilla.command.testforblock
+[13:22:25] [Server thread/INFO]: Registered command tellraw with permission node vanilla.command.tellraw
+[13:22:25] [Server thread/INFO]: Registered command netstat with permission node vanilla.command.netstat
+[13:22:25] [Server thread/INFO]: Injecting existing block and item data into this server instance
+[13:22:25] [Server thread/INFO]: Applying holder lookups
+[13:22:25] [Server thread/INFO]: Holder lookups applied
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFLOG with ID 165.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFROOTS with ID 166.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFLEAVES with ID 167.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFFIREFLY with ID 168.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFCICADA with ID 169.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFPORTAL with ID 176.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAZESTONE with ID 177.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFHEDGE with ID 178.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFBOSSSPAWNER with ID 179.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFFIREFLYJAR with ID 180.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFPLANT with ID 181.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFUNCRAFTINGTABLE with ID 182.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFFIREJET with ID 183.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFNAGASTONE with ID 184.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFSAPLING with ID 185.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMOONWORM with ID 186.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAGICLOG with ID 187.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAGICLEAVES with ID 188.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAGICLOGSPECIAL with ID 189.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTOWERSTONE with ID 190.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTOWERDEVICE with ID 191.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTOWERTRANSLUCENT with ID 192.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTROPHY with ID 193.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFSHIELD with ID 194.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTROPHYPEDESTAL with ID 195.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFAURORABRICK with ID 196.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFUNDERBRICK with ID 197.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTHORNS with ID 198.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFBURNTTHORNS with ID 199.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTHORNROSE with ID 200.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFLEAVES3 with ID 201.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFDEADROCK with ID 202.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_DARKLEAVES with ID 203.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_AURORAPILLAR with ID 204.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_AURORASLAB with ID 205.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_AURORADOUBLESLAB with ID 206.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TROLLSTEINN with ID 207.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_WISPYCLOUD with ID 208.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_FLUFFYCLOUD with ID 209.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTCOBBLE with ID 210.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTLOG with ID 211.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTLEAVES with ID 212.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTOBSIDIAN with ID 213.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_UBEROUSSOIL with ID 214.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_HUGESTALK with ID 215.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_HUGEGLOOMBLOCK with ID 216.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TROLLVIDR with ID 217.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_UNRIPETROLLBER with ID 218.
+[13:22:25] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TROLLBER with ID 219.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_NAGASCALE with ID 4096.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PLATENAGA with ID 4097.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_LEGSNAGA with ID 4098.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SCEPTERTWILIGHT with ID 4099.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SCEPTERLIFEDRAIN with ID 4100.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SCEPTERZOMBIE with ID 4101.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_OREMETER with ID 4102.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAGICMAP with ID 4103.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEMAP with ID 4104.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_OREMAP with ID 4105.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TFFEATHER with ID 4106.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAGICMAPFOCUS with ID 4107.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEMAPFOCUS with ID 4108.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_LIVEROOT with ID 4109.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODRAW with ID 4110.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODINGOT with ID 4111.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODHELM with ID 4112.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODPLATE with ID 4113.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODLEGS with ID 4114.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODBOOTS with ID 4115.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODSWORD with ID 4116.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODSHOVEL with ID 4117.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODPICK with ID 4118.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODAXE with ID 4119.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODHOE with ID 4120.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TORCHBERRIES with ID 4121.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_VENISONRAW with ID 4122.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_VENISONCOOKED with ID 4123.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_HYDRACHOP with ID 4124.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYBLOOD with ID 4125.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TROPHY with ID 4126.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYINGOT with ID 4127.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYHELM with ID 4128.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYPLATE with ID 4129.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYLEGS with ID 4130.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYBOOTS with ID 4131.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYSWORD with ID 4132.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYPICK with ID 4133.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFINGOT with ID 4134.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFHELM with ID 4135.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFPLATE with ID 4136.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFLEGS with ID 4137.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFBOOTS with ID 4138.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFSWORD with ID 4139.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFSHOVEL with ID 4140.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFPICK with ID 4141.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFAXE with ID 4142.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFHOE with ID 4143.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MINOTAURAXE with ID 4144.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEBREAKERPICK with ID 4145.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TRANSFORMPOWDER with ID 4146.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MEEFRAW with ID 4147.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MEEFSTEAK with ID 4148.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MEEFSTROGANOFF with ID 4149.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEWAFER with ID 4150.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EMPTYMAGICMAP with ID 4151.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EMPTYMAZEMAP with ID 4152.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EMPTYOREMAP with ID 4153.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_OREMAGNET with ID 4154.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CRUMBLEHORN with ID 4155.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PEACOCKFAN with ID 4156.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MOONWORMQUEEN with ID 4157.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFLIFE1 with ID 4158.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFLIFE2 with ID 4159.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFKEEPING1 with ID 4160.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFKEEPING2 with ID 4161.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFKEEPING3 with ID 4162.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TOWERKEY with ID 4163.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_BORERESSENCE with ID 4164.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CARMINITE with ID 4165.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EXPERIMENT115 with ID 4166.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARMORSHARDS with ID 4167.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTMETAL with ID 4168.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SHARDCLUSTER with ID 4169.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYHELM with ID 4170.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYPLATE with ID 4171.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYLEGS with ID 4172.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYBOOTS with ID 4173.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYSWORD with ID 4174.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYPICK with ID 4175.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYAXE with ID 4176.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PHANTOMHELM with ID 4177.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PHANTOMPLATE with ID 4178.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_LAMPOFCINDERS with ID 4179.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYTEARS with ID 4180.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ALPHAFUR with ID 4181.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETIHELM with ID 4182.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETIPLATE with ID 4183.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETILEGS with ID 4184.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETIBOOTS with ID 4185.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ICEBOMB with ID 4186.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICFUR with ID 4187.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICHELM with ID 4188.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICPLATE with ID 4189.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICLEGS with ID 4190.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICBOOTS with ID 4191.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAGICBEANS with ID 4192.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_GIANTPICK with ID 4193.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_GIANTSWORD with ID 4194.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TRIPLEBOW with ID 4195.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SEEKERBOW with ID 4196.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ICEBOW with ID 4197.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ENDERBOW with ID 4198.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ICESWORD with ID 4199.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_GLASSSWORD with ID 4200.
+[13:22:25] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TFSPAWNEGG with ID 4201.
+[13:22:25] [Server thread/INFO]: Adding biome mapping 40 Twilight Lake at BiomeBase[40]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 41 Twilight Forest at BiomeBase[41]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 42 Dense Twilight Forest at BiomeBase[42]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 43 Highlands at BiomeBase[43]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 44 Mushroom Forest at BiomeBase[44]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 45 Twilight Swamp at BiomeBase[45]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 46 Twilight Stream at BiomeBase[46]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 47 Snowy Forest at BiomeBase[47]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 48 Twilight Glacier at BiomeBase[48]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 49 Twilight Clearing at BiomeBase[49]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 50 Oak Savanna at BiomeBase[50]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 51 Lighted Forest at BiomeBase[51]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 52 Deep Mushroom Forest at BiomeBase[52]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 53 Dark Forest Center at BiomeBase[53]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 54 Highlands Center at BiomeBase[54]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 55 Dark Forest at BiomeBase[55]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 56 Enchanted Forest at BiomeBase[56]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 57 Fire Swamp at BiomeBase[57]
+[13:22:25] [Server thread/INFO]: Adding biome mapping 58 Thornlands at BiomeBase[58]
+[13:22:25] [Server thread/INFO]: Loading dimension 0 (skarn) (net.minecraft.server.dedicated.DedicatedServer@2c194c91)
+[13:22:25] [Server thread/INFO]: Loading dimension 7 (DIM7) (net.minecraft.server.dedicated.DedicatedServer@2c194c91)
+[13:22:25] [Server thread/INFO]: Loading dimension 1 (DIM1) (net.minecraft.server.dedicated.DedicatedServer@2c194c91)
+[13:22:25] [Server thread/INFO]: Loading dimension -1 (DIM-1) (net.minecraft.server.dedicated.DedicatedServer@2c194c91)
+[13:22:25] [Server thread/INFO]: Preparing start region for level 0
+[13:22:26] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[13:22:26] [Server thread/INFO]: Done (1.055s)! For help, type "help" or "?"
+[13:22:26] [Server thread/INFO]: Registered command forge with permission node net.minecraftforge.server.command.ForgeCommand
+[13:22:26] [Server thread/INFO]: Registered command tffeature with permission node twilightforest.CommandTFFeature
+[13:22:45] [User Authenticator #1/INFO]: UUID of player skarnskarn is c75480ae-075d-3e7c-8a20-94b43d730982
+[13:22:46] [Netty IO #2/INFO]: Client protocol version 1
+[13:22:46] [Netty IO #2/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[13:22:46] [Netty IO #2/INFO]: Attempting connection with missing mods [] at CLIENT
+[13:22:47] [Server thread/INFO]: [Server thread] Server side modded connection established
+[13:22:47] [Server thread/INFO]: skarnskarn[/127.0.0.1:56732] logged in with entity id 295 at ([skarn] -204.96266989715002, 64.0, 251.76527605210435)
+[13:22:59] [Server thread/INFO]: skarnskarn issued server command: /back
+[13:23:02] [Server thread/INFO]: skarnskarn issued server command: /home
+[13:23:22] [Server thread/INFO]: skarnskarn lost connection: Disconnected
+[13:23:22] [Server thread/INFO]: skarnskarn left the game.
+[13:23:50] [User Authenticator #2/INFO]: UUID of player skarnskarn is c75480ae-075d-3e7c-8a20-94b43d730982
+[13:23:50] [Netty IO #0/INFO]: Client protocol version 1
+[13:23:50] [Netty IO #0/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[13:23:50] [Netty IO #0/INFO]: Attempting connection with missing mods [] at CLIENT
+[13:23:51] [Server thread/INFO]: [Server thread] Server side modded connection established
+[13:23:51] [Server thread/INFO]: skarnskarn[/127.0.0.1:56793] logged in with entity id 579 at ([skarn] -228.0605839695467, 64.0, 290.37563477529017)
+[13:23:57] [Server thread/INFO]: skarnskarn issued server command: /home
+[13:25:01] [Server thread/INFO]: skarnskarn was slain by Zombie
+[13:26:15] [Server thread/INFO]: skarnskarn was slain by Zombie
+[13:26:52] [Server thread/WARN]: skarnskarn moved too quickly! -14.699999988079071,0.0,-88.98699316043064 (14.699999988079071, 0.0784000015258789, 88.98699316043064)

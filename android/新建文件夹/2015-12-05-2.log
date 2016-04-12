@@ -1,0 +1,69 @@
+[13:31:24] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[13:31:24] [main/INFO]: Using primary tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[13:31:24] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLServerTweaker
+[13:31:24] [main/INFO]: Forge Mod Loader version 7.10.25.1206 for Minecraft 1.7.10 loading
+[13:31:24] [main/INFO]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.7.0_67, running on Windows 8.1:amd64:6.3, installed at C:\Program Files\Java\jre7
+[13:31:26] [main/INFO]: Loading tweaker com.forgeessentials.core.preloader.FELaunchHandler from forgeessentials-1.7.10-1.4.3.1044-server.jar
+[13:31:26] [main/WARN]: The following coremods do not have a @MCVersion annotation. They may cause problems if this is not the correct version of Minecraft for them.
+[13:31:26] [main/WARN]: Missing @MCVersion: codechicken.core.launch.CodeChickenCorePlugin  lain.mods.inputfix.InputFix  codechicken.nei.asm.NEICorePlugin  
+[13:31:26] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[13:31:26] [main/INFO]: Loading tweak class name com.forgeessentials.core.preloader.FELaunchHandler
+[13:31:26] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[13:31:26] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[13:31:26] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[13:31:26] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:31:27] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:31:27] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:31:27] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:31:27] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:31:27] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:31:27] [main/INFO]: Calling tweak class com.forgeessentials.core.preloader.FELaunchHandler
+[13:31:27] [main/INFO]: Extracting libraries
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\antlr-2.7.7.jar to classpath
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\dom4j-1.6.1.jar to classpath
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\h2-1.3.175.jar to classpath
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\hibernate-commons-annotations-4.0.5.Final.jar to classpath
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\hibernate-core-4.3.7.Final.jar to classpath
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\hibernate-entitymanager-4.3.7.Final.jar to classpath
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\hibernate-jpa-2.1-api-1.0.0.Final.jar to classpath
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\jandex-1.1.0.Final.jar to classpath
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\javassist-3.18.1-GA.jar to classpath
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\jboss-logging-3.1.3.GA.jar to classpath
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\jboss-logging-annotations-1.2.0.Beta1.jar to classpath
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\jboss-transaction-api_1.2_spec-1.0.0.Final.jar to classpath
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\mysql-connector-java-5.1.22.jar to classpath
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\pircbotx-2.0.1.jar to classpath
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\slf4j-api-1.7.5.jar to classpath
+[13:31:28] [main/INFO]: Added library C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\ForgeEssentials\lib\xml-apis-1.0.b2.jar to classpath
+[13:31:28] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[13:31:28] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.TerminalTweaker
+[13:31:28] [main/INFO]: Loading tweak class name org.spongepowered.asm.launch.MixinTweaker
+[13:31:28] [main/INFO]: SpongePowered MIXIN Subsystem Version=0.4.5 Source=file:/C:/Users/Administrator/Desktop/Minecraft%201.7.10%20with%20Forge10.13.0.1206纯净版（附Cauldron开服器）/（开服器）Cauldron服务端/mods/forgeessentials-1.7.10-1.4.3.1044-server.jar Env=SERVER
+[13:31:28] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.TerminalTweaker
+[13:31:28] [main/INFO]: Calling tweak class org.spongepowered.asm.launch.MixinTweaker
+[13:31:28] [main/INFO]: Loading tweak class name org.spongepowered.asm.mixin.MixinEnvironment$EnvironmentStateTweaker
+[13:31:28] [main/INFO]: Calling tweak class org.spongepowered.asm.mixin.MixinEnvironment$EnvironmentStateTweaker
+[13:31:29] [main/INFO]: Launching wrapped minecraft {net.minecraft.server.MinecraftServer}
+[13:31:30] [Server thread/INFO]: Starting minecraft server version 1.7.10
+[13:31:30] [Server thread/INFO]: Attempting early MinecraftForge initialization
+[13:31:30] [Server thread/INFO]: MinecraftForge v10.13.0.1206 Initialized
+[13:31:30] [Server thread/INFO]: Replaced 182 ore recipies
+[13:31:30] [Server thread/INFO]: Completed early MinecraftForge initialization
+[13:31:30] [Server thread/INFO]: Searching C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods for mods
+[13:31:30] [Server thread/INFO]: Also searching C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods\1.7.10 for mods
+[13:31:31] [Server thread/INFO]: Forge Mod Loader has identified 9 mods to load
+[13:31:32] [Server thread/ERROR]: The mod ForgeEssentials (Forge Essentials) requires mod versions [Forge@[10.13.4.1448,)] to be available
+[13:31:32] [Server thread/ERROR]: Encountered an unexpected exception
+cpw.mods.fml.common.MissingModsException
+	at cpw.mods.fml.common.Loader.sortModList(Loader.java:244) ~[Loader.class:git-Cauldron-MCPC-Plus-1.7.10-1.1206.01.170]
+	at cpw.mods.fml.common.Loader.loadMods(Loader.java:472) ~[Loader.class:git-Cauldron-MCPC-Plus-1.7.10-1.1206.01.170]
+	at cpw.mods.fml.server.FMLServerHandler.beginServerLoading(FMLServerHandler.java:87) ~[FMLServerHandler.class:git-Cauldron-MCPC-Plus-1.7.10-1.1206.01.170]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStart(FMLCommonHandler.java:317) ~[FMLCommonHandler.class:git-Cauldron-MCPC-Plus-1.7.10-1.1206.01.170]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:169) ~[lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:624) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Unknown Source) [?:1.7.0_67]
+[13:31:32] [Server thread/ERROR]: This crash report has been saved to: C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\.\crash-reports\crash-2015-12-05_13.31.32-server.txt
+[13:31:32] [Server thread/WARN]: Can't revert to frozen GameData state without freezing first.
+[13:31:32] [Server thread/INFO]: Applying holder lookups
+[13:31:32] [Server thread/INFO]: Holder lookups applied
+[13:31:32] [Server thread/INFO]: The state engine was in incorrect state CONSTRUCTING and forced into state SERVER_STOPPED. Errors may have been discarded.

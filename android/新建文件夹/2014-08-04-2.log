@@ -1,0 +1,18 @@
+[00:24:42] [Server thread/INFO]: Starting minecraft server version 1.7.10
+[00:24:48] [Server thread/INFO]: Loading properties
+[00:24:48] [Server thread/INFO]: Default game type: SURVIVAL
+[00:24:48] [Server thread/INFO]: Generating keypair
+[00:24:48] [Server thread/INFO]: Starting Minecraft server on *:25565
+[00:24:48] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[00:24:48] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[00:24:48] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[00:24:48] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[00:24:52] [Server thread/INFO]: Preparing level "world"
+[00:24:52] [Server thread/INFO]: Preparing start region for level 0
+[00:24:53] [Server thread/INFO]: Preparing spawn area: 7%
+[00:24:54] [Server thread/INFO]: Preparing spawn area: 21%
+[00:24:55] [Server thread/INFO]: Preparing spawn area: 37%
+[00:24:56] [Server thread/INFO]: Preparing spawn area: 54%
+[00:24:57] [Server thread/INFO]: Preparing spawn area: 73%
+[00:24:58] [Server thread/INFO]: Preparing spawn area: 92%
+[00:24:59] [Server thread/INFO]: Done (6.939s)! For help, type "help" or "?"

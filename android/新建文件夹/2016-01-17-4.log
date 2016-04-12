@@ -1,0 +1,1820 @@
+[13:29:04] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[13:29:04] [main/INFO]: Using primary tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[13:29:04] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLServerTweaker
+[13:29:04] [main/INFO]: Forge Mod Loader version 7.10.25.1206 for Minecraft 1.7.10 loading
+[13:29:04] [main/INFO]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.7.0_67, running on Windows 8.1:amd64:6.3, installed at C:\Program Files\Java\jdk1.7.0_67\jre
+[13:29:04] [main/ERROR]: The coremod ruby.bamboo.asm.CorePlugin is requesting minecraft version 1.7.2 and minecraft is 1.7.10. It will be ignored.
+[13:29:06] [main/WARN]: The following coremods do not have a @MCVersion annotation. They may cause problems if this is not the correct version of Minecraft for them.
+[13:29:06] [main/WARN]: Missing @MCVersion: codechicken.core.launch.CodeChickenCorePlugin  ic2.core.coremod.IC2core  lain.mods.inputfix.InputFix  invtweaks.forge.asm.FMLPlugin  codechicken.nei.asm.NEICorePlugin  
+[13:29:06] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[13:29:06] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[13:29:06] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[13:29:06] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[13:29:06] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:29:07] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:29:07] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:29:07] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:29:07] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:29:07] [main/INFO]: Loaded library EJML-core-0.26.jar.
+[13:29:07] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:29:07] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:29:07] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:29:08] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[13:29:08] [main/INFO]: Injecting Data ...
+[13:29:08] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[13:29:08] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.TerminalTweaker
+[13:29:08] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.TerminalTweaker
+[13:29:08] [main/INFO]: Launching wrapped minecraft {net.minecraft.server.MinecraftServer}
+[13:29:10] [Server thread/INFO]: Starting minecraft server version 1.7.10
+[13:29:10] [Server thread/INFO]: Attempting early MinecraftForge initialization
+[13:29:10] [Server thread/INFO]: MinecraftForge v10.13.0.1206 Initialized
+[13:29:10] [Server thread/INFO]: Replaced 182 ore recipies
+[13:29:10] [Server thread/INFO]: Completed early MinecraftForge initialization
+[13:29:10] [Server thread/INFO]: Searching I:\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods for mods
+[13:29:10] [Server thread/INFO]: Also searching I:\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods\1.7.10 for mods
+[13:29:10] [Server thread/INFO]: Forge Mod Loader has identified 12 mods to load
+[13:29:11] [Server thread/INFO]: FML has found a non-mod file CodeChickenLib-1.7.10-1.1.1.99-universal.jar in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible.
+[13:29:11] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.Container
+[13:29:11] [Server thread/INFO]: Processing ObjectHolder annotations
+[13:29:11] [Server thread/INFO]: Found 341 ObjectHolder annotations
+[13:29:11] [Server thread/INFO]: Configured a dormant chunk cache size of 0
+[13:29:32] [Server thread/WARN]: java.net.ConnectException: Connection timed out: connect
+[13:29:32] [Server thread/WARN]: 	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+[13:29:32] [Server thread/WARN]: 	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+[13:29:32] [Server thread/WARN]: 	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+[13:29:32] [Server thread/WARN]: 	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+[13:29:32] [Server thread/WARN]: 	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+[13:29:32] [Server thread/WARN]: 	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+[13:29:32] [Server thread/WARN]: 	at java.net.Socket.connect(Socket.java:579)
+[13:29:32] [Server thread/WARN]: 	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:618)
+[13:29:32] [Server thread/WARN]: 	at sun.security.ssl.BaseSSLSocketImpl.connect(BaseSSLSocketImpl.java:160)
+[13:29:32] [Server thread/WARN]: 	at sun.net.NetworkClient.doConnect(NetworkClient.java:180)
+[13:29:32] [Server thread/WARN]: 	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432)
+[13:29:32] [Server thread/WARN]: 	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527)
+[13:29:32] [Server thread/WARN]: 	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:275)
+[13:29:32] [Server thread/WARN]: 	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:371)
+[13:29:32] [Server thread/WARN]: 	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191)
+[13:29:32] [Server thread/WARN]: 	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:932)
+[13:29:32] [Server thread/WARN]: 	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177)
+[13:29:32] [Server thread/WARN]: 	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1300)
+[13:29:32] [Server thread/WARN]: 	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:254)
+[13:29:32] [Server thread/WARN]: 	at java.net.URL.openStream(URL.java:1037)
+[13:29:32] [Server thread/WARN]: 	at ruby.bamboo.UpdateNotify.run(UpdateNotify.java:43)
+[13:29:32] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[13:29:32] [Server thread/WARN]: 	at ruby.bamboo.BambooCore.preLoad(BambooCore.java:58)
+[13:29:32] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[13:29:32] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[13:29:32] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[13:29:32] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[13:29:32] [Server thread/WARN]: 	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:513)
+[13:29:32] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[13:29:32] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[13:29:32] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[13:29:32] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[13:29:32] [Server thread/WARN]: 	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)
+[13:29:32] [Server thread/WARN]: 	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)
+[13:29:32] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)
+[13:29:32] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)
+[13:29:32] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.post(EventBus.java:275)
+[13:29:32] [Server thread/WARN]: 	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:208)
+[13:29:32] [Server thread/WARN]: 	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:187)
+[13:29:32] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[13:29:32] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[13:29:32] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[13:29:32] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[13:29:32] [Server thread/WARN]: 	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)
+[13:29:32] [Server thread/WARN]: 	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)
+[13:29:32] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)
+[13:29:32] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)
+[13:29:32] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.post(EventBus.java:275)
+[13:29:32] [Server thread/WARN]: 	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:118)
+[13:29:32] [Server thread/WARN]: 	at cpw.mods.fml.common.Loader.preinitializeMods(Loader.java:513)
+[13:29:32] [Server thread/WARN]: 	at cpw.mods.fml.server.FMLServerHandler.beginServerLoading(FMLServerHandler.java:88)
+[13:29:32] [Server thread/WARN]: 	at cpw.mods.fml.common.FMLCommonHandler.onServerStart(FMLCommonHandler.java:317)
+[13:29:32] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:169)
+[13:29:32] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:624)
+[13:29:32] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[13:29:34] [Server thread/INFO]: Applying holder lookups
+[13:29:34] [Server thread/INFO]: Holder lookups applied
+[13:29:34] [Server thread/INFO]: Loading properties
+[13:29:34] [Server thread/INFO]: Default game type: SURVIVAL
+[13:29:34] [Server thread/INFO]: This server is running Cauldron-MCPC-Plus version git-Cauldron-MCPC-Plus-1.7.10-1.1206.01.170 (MC: 1.7.10) (Implementing API version 1.7.10-R0.1-SNAPSHOT)
+[13:29:34] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[13:29:34] [Server thread/WARN]: =============================================================
+[13:29:34] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[13:29:34] [Server thread/WARN]: Offendor: org/spigotmc/RestartCommand.restart()V
+[13:29:34] [Server thread/WARN]: =============================================================
+[13:29:34] [Server thread/INFO]: Using 4 threads for Netty based IO
+[13:29:34] [Server thread/INFO]: Generating keypair
+[13:29:34] [Server thread/INFO]: Starting Minecraft server on *:25563
+[13:29:34] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[13:29:34] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[13:29:34] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[13:29:34] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[13:29:34] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerEnchantment
+[13:29:34] [Server thread/INFO]: Successfully loaded 267 out of 267 recipes for shaped recipes
+[13:29:34] [Server thread/INFO]: Successfully loaded 76 out of 76 recipes for shapeless recipes
+[13:29:34] [Server thread/INFO]: Successfully loaded 5 out of 5 recipes for blast furnace recipes
+[13:29:34] [Server thread/INFO]: Successfully loaded 17 out of 17 recipes for block cutter recipes
+[13:29:34] [Server thread/INFO]: Successfully loaded 48 out of 48 recipes for compressor recipes
+[13:29:34] [Server thread/INFO]: Successfully loaded 12 out of 12 recipes for extractor recipes
+[13:29:34] [Server thread/INFO]: Successfully loaded 64 out of 64 recipes for macerator recipes
+[13:29:34] [Server thread/INFO]: Successfully loaded 4 out of 4 recipes for metal former cutting recipes
+[13:29:34] [Server thread/INFO]: Successfully loaded 10 out of 10 recipes for metal former extruding recipes
+[13:29:34] [Server thread/INFO]: Successfully loaded 14 out of 14 recipes for metal former rolling recipes
+[13:29:34] [Server thread/INFO]: Successfully loaded 8 out of 8 recipes for ore washing recipes
+[13:29:34] [Server thread/INFO]: Successfully loaded 25 out of 25 recipes for thermal centrifuge recipes
+[13:29:34] [Server thread/INFO]: Loading predefined UU world scan values, run /ic2 uu-world-scan <small|medium|large> to calibrate them for your world.
+[13:29:34] [Server thread/WARN]: UU world-scan config: Can't find ItemStack for BuildCraft|Core:eternalSpring, ignoring the entry in line 88.
+[13:29:34] [Server thread/WARN]: UU world-scan config: Can't find ItemStack for BuildCraft|Core:eternalSpring@1, ignoring the entry in line 109.
+[13:29:34] [Server thread/INFO]: IC2 version 2.2.810-experimental loaded.
+[13:29:34] [Server thread/INFO]: Forge Mod Loader has successfully loaded 12 mods
+[13:29:34] [Server thread/INFO]: Preparing level "skarn"
+[13:29:34] [Server thread/INFO]: Registered command debug with permission node vanilla.command.debug
+[13:29:34] [Server thread/INFO]: Registered command spreadplayers with permission node vanilla.command.spreadplayers
+[13:29:34] [Server thread/INFO]: Registered command playsound with permission node vanilla.command.playsound
+[13:29:34] [Server thread/INFO]: Registered command scoreboard with permission node vanilla.command.scoreboard
+[13:29:34] [Server thread/INFO]: Registered command achievement with permission node vanilla.command.achievement
+[13:29:34] [Server thread/INFO]: Registered command summon with permission node vanilla.command.summon
+[13:29:34] [Server thread/INFO]: Registered command setblock with permission node vanilla.command.setblock
+[13:29:34] [Server thread/INFO]: Registered command testforblock with permission node vanilla.command.testforblock
+[13:29:34] [Server thread/INFO]: Registered command tellraw with permission node vanilla.command.tellraw
+[13:29:34] [Server thread/INFO]: Registered command netstat with permission node vanilla.command.netstat
+[13:29:34] [Server thread/INFO]: Injecting existing block and item data into this server instance
+[13:29:34] [Server thread/INFO]: Applying holder lookups
+[13:29:34] [Server thread/INFO]: Holder lookups applied
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOO with ID 165.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOSINGLE with ID 166.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOO2 with ID 167.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BLOCKBAMBOOSHOOT with ID 168.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SINGLETEXDECO with ID 169.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_KITUNEBI with ID 176.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_JPCHEST with ID 177.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DIRSQUARE with ID 178.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_HALFDIRSQUARE with ID 179.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_ANDON with ID 180.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOPANEL with ID 181.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SAKURALEAVES with ID 182.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SAKURASAPLING with ID 183.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_KAYABUKIROOF with ID 184.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SPAWATER with ID 185.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SPAUNIT with ID 186.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SAKURALOG with ID 187.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DELUDE_WIDTH with ID 188.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DELUDE_HEIGHT with ID 189.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DELUDE_STAIR with ID 190.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_CAMPFIRE with ID 191.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DECO with ID 192.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_HALFDECO with ID 193.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_TWODIRDECO with ID 194.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_HALFTWODIRDECO with ID 195.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_KAWARA_STAIR with ID 196.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_WARA_STAIR with ID 197.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DECOCARPET with ID 198.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THICKSAKURAPILLAR with ID 199.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THINSAKURAPILLAR with ID 200.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THICKORCPILLAR with ID 201.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THINORCPILLAR with ID 202.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THICKSPRUCEPILLAR with ID 203.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THINSPRUCEPILLAR with ID 204.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THICKBIRCHPILLAR with ID 205.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THINBIRCHPILLAR with ID 206.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DELUDE_PLATE with ID 207.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_RICEPLANT with ID 208.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOMILLSTONE with ID 209.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOMOSS with ID 210.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOMULTIPOT with ID 211.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BLOBKBROOM with ID 212.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOHUTON with ID 213.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOMULTIBLOCK with ID 214.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_ALPHAMULTIBLOCK with ID 215.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SAKURACARPET with ID 216.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DECOPLASTER with ID 217.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DECOCURVEPLASTER with ID 218.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DECODCURVEPLASTER with ID 219.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SEAWEED with ID 220.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BEANPLANT with ID 221.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_TOMATOPLANT with ID 222.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_VILLAGERBLOCK with ID 223.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_CROSSLAMP with ID 224.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGTHICK with ID 225.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVLOGTHICK with ID 226.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVLOG2THICK with ID 227.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVWOODTHICK with ID 228.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGTHIN with ID 229.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVLOGTHIN with ID 230.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVLOG2THIN with ID 231.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVWOODTHIN with ID 232.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_MANEKI with ID 233.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKORECOPPER with ID 234.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKORETIN with ID 235.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKOREURAN with ID 236.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKORELEAD with ID 237.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKRUBWOOD with ID 238.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKRUBLEAVES with ID 239.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKRUBSAPLING with ID 240.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKHARZ with ID 241.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKRUBBER with ID 242.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKFENCEIRON with ID 243.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKALLOY with ID 244.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKBASALT with ID 245.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKALLOYGLASS with ID 246.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKDOORALLOY with ID 247.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKREINFORCEDFOAM with ID 248.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKFOAM with ID 249.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKWALL with ID 250.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKSCAFFOLD with ID 251.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKIRONSCAFFOLD with ID 252.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKMETAL with ID 253.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKCABLE with ID 254.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKKINETICGENERATOR with ID 255.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKHEATGENERATOR with ID 409.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKGENERATOR with ID 410.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKREACTORCHAMBER with ID 411.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKREACTORFLUIDPORT with ID 412.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKREACTORACCESSHATCH with ID 413.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKREACTORREDSTONEPORT with ID 414.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKREACTORVESSEL with ID 415.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKELECTRIC with ID 416.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKCHARGEPAD with ID 423.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKMACHINE with ID 424.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKMACHINE2 with ID 425.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKMACHINE3 with ID 426.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKLUMINATORDARK with ID 427.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKLUMINATOR with ID 428.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKMININGPIPE with ID 429.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKMININGTIP with ID 430.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKPERSONAL with ID 431.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKITNT with ID 432.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKNUKE with ID 433.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKDYNAMITE with ID 434.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKDYNAMITEREMOTE with ID 435.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKCROP with ID 436.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_BLOCKBARREL with ID 437.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_FLUIDUUMATTER with ID 438.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_FLUIDCONSTRUCTIONFOAM with ID 439.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_FLUIDCOOLANT with ID 440.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_FLUIDHOTCOOLANT with ID 441.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_FLUIDPAHOEHOELAVA with ID 442.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_FLUIDBIOMASS with ID 443.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_FLUIDBIOGAS with ID 444.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_FLUIDDISTILLEDWATER with ID 445.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_FLUIDSUPERHEATEDSTEAM with ID 446.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_FLUIDSTEAM with ID 447.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IC2_FLUIDHOTWATER with ID 448.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material IRONCHEST_BLOCKIRONCHEST with ID 449.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFLOG with ID 450.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFROOTS with ID 451.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFLEAVES with ID 452.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFFIREFLY with ID 453.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFCICADA with ID 454.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFPORTAL with ID 455.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAZESTONE with ID 456.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFHEDGE with ID 457.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFBOSSSPAWNER with ID 458.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFFIREFLYJAR with ID 459.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFPLANT with ID 460.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFUNCRAFTINGTABLE with ID 461.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFFIREJET with ID 462.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFNAGASTONE with ID 463.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFSAPLING with ID 464.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMOONWORM with ID 465.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAGICLOG with ID 466.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAGICLEAVES with ID 467.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAGICLOGSPECIAL with ID 468.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTOWERSTONE with ID 469.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTOWERDEVICE with ID 470.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTOWERTRANSLUCENT with ID 471.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTROPHY with ID 472.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFSHIELD with ID 473.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTROPHYPEDESTAL with ID 474.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFAURORABRICK with ID 475.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFUNDERBRICK with ID 476.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTHORNS with ID 477.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFBURNTTHORNS with ID 478.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTHORNROSE with ID 479.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFLEAVES3 with ID 480.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFDEADROCK with ID 481.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_DARKLEAVES with ID 482.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_AURORAPILLAR with ID 483.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_AURORASLAB with ID 484.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_AURORADOUBLESLAB with ID 485.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TROLLSTEINN with ID 486.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_WISPYCLOUD with ID 487.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_FLUFFYCLOUD with ID 488.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTCOBBLE with ID 489.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTLOG with ID 490.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTLEAVES with ID 491.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTOBSIDIAN with ID 492.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_UBEROUSSOIL with ID 493.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_HUGESTALK with ID 494.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_HUGEGLOOMBLOCK with ID 495.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TROLLVIDR with ID 496.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_UNRIPETROLLBER with ID 497.
+[13:29:35] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TROLLBER with ID 498.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOBASKET with ID 4096.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_FIRECRACKER with ID 4097.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOFOOD with ID 4098.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOSPEAR with ID 4099.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_SLIDEDOOR with ID 4100.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_KAKEZIKU with ID 4101.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_HUTON with ID 4102.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BOILEDEGG with ID 4103.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_SHAVEDICE with ID 4104.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_WINDCHIME with ID 4105.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMSACK with ID 4106.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_SNOWBALL with ID 4107.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_FAN with ID 4108.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_KATANA with ID 4109.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOBOW with ID 4110.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_TUDURA with ID 4111.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_WINDMILL with ID 4112.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_WATERWHEEL with ID 4113.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMBAMBOO with ID 4114.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_KAGINAWA with ID 4115.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOSWORD with ID 4116.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_OBON with ID 4117.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_MAGATAMA with ID 4118.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_STRAW with ID 4119.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_SEEDRICE with ID 4120.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_RAWRICE with ID 4121.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ZABUTON with ID 4122.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMFIREFLYBOTTLE with ID 4123.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOODUSTCRAY with ID 4124.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOPICKAXE with ID 4125.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_SEEDSEAWEED with ID 4126.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMSEAWEED with ID 4127.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMBEAN with ID 4128.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_COOKINGRECIPE with ID 4129.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOFLOUR with ID 4130.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOODOUGH with ID 4131.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMTOMATO with ID 4132.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMHARZ with ID 4133.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMRUBBER with ID 4134.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMFLUIDCELL with ID 4135.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMUPGRADEKIT with ID 4136.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMRECIPEPART with ID 4137.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMCASING with ID 4138.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMCRUSHEDORE with ID 4139.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPURIFIEDCRUSHEDORE with ID 4140.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPLATES with ID 4141.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMDENSEPLATES with ID 4142.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTURNINGBLANKS with ID 4143.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTURNINGBLANKSWOOD with ID 4144.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMDUSTSMALL with ID 4145.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMDUST with ID 4146.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMDUST2 with ID 4147.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMINGOT with ID 4148.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORLITHIUMCELL with ID 4149.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTRITIUMCELL with ID 4150.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMURAN with ID 4151.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMMOX with ID 4152.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPLUTONIUM with ID 4153.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPLUTONIUMSMALL with ID 4154.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMURAN235 with ID 4155.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMURAN235SMALL with ID 4156.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMURAN238 with ID 4157.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMFUELROD with ID 4158.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMRTGPELLET with ID 4159.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPARTCIRCUIT with ID 4160.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPARTCIRCUITADV with ID 4161.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPARTALLOY with ID 4162.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPARTCARBONFIBRE with ID 4163.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPARTCARBONMESH with ID 4164.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPARTCARBONPLATE with ID 4165.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMOREIRIDIUM with ID 4166.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPARTIRIDIUM with ID 4167.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMSHARDIRIDIUM with ID 4168.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTREETAP with ID 4169.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLBRONZEPICKAXE with ID 4170.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLBRONZEAXE with ID 4171.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLBRONZESWORD with ID 4172.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLBRONZESPADE with ID 4173.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLBRONZEHOE with ID 4174.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLWRENCH with ID 4175.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLCUTTER with ID 4176.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMFOAMSPRAYER with ID 4177.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLBOX with ID 4178.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMCONTAINMENTBOX with ID 4179.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLFORGEHAMMER with ID 4180.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMLATHINGTOOL with ID 4181.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMCRYSTALMEMORY with ID 4182.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLDRILL with ID 4183.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLDDRILL with ID 4184.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLIRIDIUMDRILL with ID 4185.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLCHAINSAW with ID 4186.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLWRENCHELECTRIC with ID 4187.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTREETAPELECTRIC with ID 4188.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLMININGLASER with ID 4189.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLMETER with ID 4190.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMSCANNER with ID 4191.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMSCANNERADV with ID 4192.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_OBSCURATOR with ID 4193.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMFREQ with ID 4194.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMNANOSABER with ID 4195.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_PLASMALAUNCHER with ID 4196.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_WINDMETER with ID 4197.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORHAZMATHELMET with ID 4198.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORHAZMATCHESTPLATE with ID 4199.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORHAZMATLEGGINGS with ID 4200.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORRUBBOOTS with ID 4201.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORBRONZEHELMET with ID 4202.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORBRONZECHESTPLATE with ID 4203.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORBRONZELEGS with ID 4204.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORBRONZEBOOTS with ID 4205.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORALLOYCHESTPLATE with ID 4206.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORNANOHELMET with ID 4207.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORNANOCHESTPLATE with ID 4208.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORNANOLEGS with ID 4209.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORNANOBOOTS with ID 4210.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORQUANTUMHELMET with ID 4211.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORQUANTUMCHESTPLATE with ID 4212.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORQUANTUMLEGS with ID 4213.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORQUANTUMBOOTS with ID 4214.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORJETPACK with ID 4215.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORJETPACKELECTRIC with ID 4216.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORBATPACK with ID 4217.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORADVBATPACK with ID 4218.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORENERGYPACK with ID 4219.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMARMORCFPACK with ID 4220.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMSOLARHELMET with ID 4221.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMSTATICBOOTS with ID 4222.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMNIGHTVISIONGOGGLES with ID 4223.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMBATREDISCHARGED with ID 4224.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMBATRE with ID 4225.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMADVBAT with ID 4226.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMBATCRYSTAL with ID 4227.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMBATLAMACRYSTAL with ID 4228.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMBATSU with ID 4229.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMBATCHARGERE with ID 4230.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMBATCHARGEADV with ID 4231.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMBATCHARGECRYSTAL with ID 4232.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMBATCHARGELAMACRYSTAL with ID 4233.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMCABLE with ID 4234.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMCELLEMPTY with ID 4235.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTINCAN with ID 4236.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTINCANFILLED with ID 4237.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORMOXSIMPLE with ID 4238.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORMOXDUAL with ID 4239.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORMOXQUAD with ID 4240.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORURANIUMSIMPLE with ID 4241.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORURANIUMDUAL with ID 4242.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORURANIUMQUAD with ID 4243.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORMOXSIMPLEDEPLETED with ID 4244.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORMOXDUALDEPLETED with ID 4245.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORMOXQUADDEPLETED with ID 4246.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORURANIUMSIMPLEDEPLETED with ID 4247.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORURANIUMDUALDEPLETED with ID 4248.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORURANIUMQUADDEPLETED with ID 4249.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORCOOLANTSIMPLE with ID 4250.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORCOOLANTTRIPLE with ID 4251.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORCOOLANTSIX with ID 4252.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORPLATING with ID 4253.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORPLATINGHEAT with ID 4254.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORPLATINGEXPLOSIVE with ID 4255.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORHEATSWITCH with ID 4256.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORHEATSWITCHCORE with ID 4257.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORHEATSWITCHSPREAD with ID 4258.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORHEATSWITCHDIAMOND with ID 4259.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORVENT with ID 4260.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORVENTCORE with ID 4261.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORVENTGOLD with ID 4262.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORVENTSPREAD with ID 4263.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORVENTDIAMOND with ID 4264.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORREFLECTOR with ID 4265.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORREFLECTORTHICK with ID 4266.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORCONDENSATOR with ID 4267.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_REACTORCONDENSATORLAP with ID 4268.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTFBP with ID 4269.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTFBPCULTIVATION with ID 4270.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTFBPIRRIGATION with ID 4271.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTFBPCHILLING with ID 4272.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTFBPDESERTIFICATION with ID 4273.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTFBPFLATIFICATION with ID 4274.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTFBPMUSHROOM with ID 4275.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPARTCOALBALL with ID 4276.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPARTCOALBLOCK with ID 4277.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPARTCOALCHUNK with ID 4278.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPARTINDUSTRIALDIAMOND with ID 4279.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMSLAG with ID 4280.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMSCRAP with ID 4281.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMSCRAPBOX with ID 4282.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMFUELPLANTBALL with ID 4283.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMBIOCHAFF with ID 4284.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTER with ID 4285.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERBLACK with ID 4286.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERRED with ID 4287.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERGREEN with ID 4288.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERBROWN with ID 4289.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERBLUE with ID 4290.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERPURPLE with ID 4291.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERCYAN with ID 4292.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERLIGHTGREY with ID 4293.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERDARKGREY with ID 4294.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERPINK with ID 4295.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERLIME with ID 4296.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERYELLOW with ID 4297.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERCLOUD with ID 4298.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERMAGENTA with ID 4299.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERORANGE with ID 4300.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLPAINTERWHITE with ID 4301.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMDYNAMITE with ID 4302.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMDYNAMITESTICKY with ID 4303.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMREMOTE with ID 4304.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_UPGRADEMODULE with ID 4305.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMCOIN with ID 4306.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMDOORALLOY with ID 4307.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMPARTCFPOWDER with ID 4308.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMGRINPOWDER with ID 4309.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMDEBUG with ID 4310.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMBOAT with ID 4311.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMWEEDINGTROWEL with ID 4312.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMWEED with ID 4313.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMCROPSEED with ID 4314.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMCROPNALYZER with ID 4315.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMFERTILIZER with ID 4316.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMCELLHYDRANT with ID 4317.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTOOLHOE with ID 4318.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMTERRAWART with ID 4319.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMWEEDEX with ID 4320.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMMUGEMPTY with ID 4321.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMCOFEEBEANS with ID 4322.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMCOFEEPOWDER with ID 4323.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMMUGCOFFEE with ID 4324.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMHOPS with ID 4325.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMBARREL with ID 4326.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMMUGBOOZE with ID 4327.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMWOODROTOR with ID 4328.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMIRONROTOR with ID 4329.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMSTEELROTOR with ID 4330.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMWCARBONROTOR with ID 4331.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMSTEAMTURBINE with ID 4332.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMSTEAMTURBINEBLADE with ID 4333.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMIRONBLOCKCUTTINGBLADE with ID 4334.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMADVIRONBLOCKCUTTINGBLADE with ID 4335.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IC2_ITEMDIAMONDBLOCKCUTTINGBLADE with ID 4336.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IRONCHEST_IRONGOLDUPGRADE with ID 4337.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IRONCHEST_GOLDDIAMONDUPGRADE with ID 4338.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IRONCHEST_COPPERSILVERUPGRADE with ID 4339.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IRONCHEST_SILVERGOLDUPGRADE with ID 4340.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IRONCHEST_COPPERIRONUPGRADE with ID 4341.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IRONCHEST_DIAMONDCRYSTALUPGRADE with ID 4342.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IRONCHEST_WOODIRONUPGRADE with ID 4343.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IRONCHEST_WOODCOPPERUPGRADE with ID 4344.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material IRONCHEST_DIAMONDOBSIDIANUPGRADE with ID 4345.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_NAGASCALE with ID 4346.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PLATENAGA with ID 4347.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_LEGSNAGA with ID 4348.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SCEPTERTWILIGHT with ID 4349.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SCEPTERLIFEDRAIN with ID 4350.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SCEPTERZOMBIE with ID 4351.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_OREMETER with ID 4352.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAGICMAP with ID 4353.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEMAP with ID 4354.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_OREMAP with ID 4355.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TFFEATHER with ID 4356.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAGICMAPFOCUS with ID 4357.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEMAPFOCUS with ID 4358.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_LIVEROOT with ID 4359.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODRAW with ID 4360.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODINGOT with ID 4361.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODHELM with ID 4362.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODPLATE with ID 4363.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODLEGS with ID 4364.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODBOOTS with ID 4365.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODSWORD with ID 4366.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODSHOVEL with ID 4367.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODPICK with ID 4368.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODAXE with ID 4369.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODHOE with ID 4370.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TORCHBERRIES with ID 4371.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_VENISONRAW with ID 4372.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_VENISONCOOKED with ID 4373.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_HYDRACHOP with ID 4374.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYBLOOD with ID 4375.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TROPHY with ID 4376.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYINGOT with ID 4377.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYHELM with ID 4378.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYPLATE with ID 4379.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYLEGS with ID 4380.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYBOOTS with ID 4381.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYSWORD with ID 4382.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYPICK with ID 4383.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFINGOT with ID 4384.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFHELM with ID 4385.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFPLATE with ID 4386.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFLEGS with ID 4387.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFBOOTS with ID 4388.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFSWORD with ID 4389.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFSHOVEL with ID 4390.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFPICK with ID 4391.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFAXE with ID 4392.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFHOE with ID 4393.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MINOTAURAXE with ID 4394.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEBREAKERPICK with ID 4395.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TRANSFORMPOWDER with ID 4396.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MEEFRAW with ID 4397.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MEEFSTEAK with ID 4398.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MEEFSTROGANOFF with ID 4399.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEWAFER with ID 4400.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EMPTYMAGICMAP with ID 4401.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EMPTYMAZEMAP with ID 4402.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EMPTYOREMAP with ID 4403.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_OREMAGNET with ID 4404.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CRUMBLEHORN with ID 4405.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PEACOCKFAN with ID 4406.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MOONWORMQUEEN with ID 4407.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFLIFE1 with ID 4408.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFLIFE2 with ID 4409.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFKEEPING1 with ID 4410.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFKEEPING2 with ID 4411.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFKEEPING3 with ID 4412.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TOWERKEY with ID 4413.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_BORERESSENCE with ID 4414.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CARMINITE with ID 4415.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EXPERIMENT115 with ID 4416.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARMORSHARDS with ID 4417.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTMETAL with ID 4418.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SHARDCLUSTER with ID 4419.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYHELM with ID 4420.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYPLATE with ID 4421.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYLEGS with ID 4422.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYBOOTS with ID 4423.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYSWORD with ID 4424.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYPICK with ID 4425.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYAXE with ID 4426.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PHANTOMHELM with ID 4427.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PHANTOMPLATE with ID 4428.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_LAMPOFCINDERS with ID 4429.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYTEARS with ID 4430.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ALPHAFUR with ID 4431.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETIHELM with ID 4432.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETIPLATE with ID 4433.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETILEGS with ID 4434.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETIBOOTS with ID 4435.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ICEBOMB with ID 4436.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICFUR with ID 4437.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICHELM with ID 4438.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICPLATE with ID 4439.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICLEGS with ID 4440.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICBOOTS with ID 4441.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAGICBEANS with ID 4442.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_GIANTPICK with ID 4443.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_GIANTSWORD with ID 4444.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TRIPLEBOW with ID 4445.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SEEKERBOW with ID 4446.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ICEBOW with ID 4447.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ENDERBOW with ID 4448.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ICESWORD with ID 4449.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_GLASSSWORD with ID 4450.
+[13:29:35] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TFSPAWNEGG with ID 4451.
+[13:29:35] [Server thread/INFO]: Mapping loaded 11 packages, 7841 classes, 26711 fields, 53884 methods, flags 1ffa
+[13:29:35] [Server thread/INFO]: Loaded inheritance map of 895 classes
+[13:29:35] [Server thread/WARN]: =============================================================
+[13:29:35] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[13:29:35] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[13:29:35] [Server thread/WARN]: =============================================================
+[13:29:35] [Server thread/WARN]: =============================================================
+[13:29:35] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[13:29:35] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[13:29:35] [Server thread/WARN]: =============================================================
+[13:29:35] [Server thread/WARN]: =============================================================
+[13:29:35] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[13:29:35] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[13:29:35] [Server thread/WARN]: =============================================================
+[13:29:35] [Server thread/WARN]: =============================================================
+[13:29:35] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[13:29:35] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[13:29:35] [Server thread/WARN]: =============================================================
+[13:29:36] [Server thread/INFO]: [Lockette] Loading Lockette v1.7.10
+[13:29:36] [Server thread/INFO]: [WorldEdit] Loading WorldEdit v6.0;3342-78f975b9
+[13:29:36] [Server thread/INFO]: [Essentials] Loading Essentials v2.13.1
+[13:29:36] [Server thread/INFO]: [EssentialsChat] Loading EssentialsChat v2.13.1
+[13:29:36] [Server thread/INFO]: [EssentialsProtect] Loading EssentialsProtect v2.13.1
+[13:29:36] [Server thread/INFO]: [EssentialsSpawn] Loading EssentialsSpawn v2.13.1
+[13:29:36] [Server thread/INFO]: [EssentialsAntiBuild] Loading EssentialsAntiBuild v2.13.1
+[13:29:36] [Server thread/INFO]: [AuthMe] Loading AuthMe v3.5-SNAPSHOT
+[13:29:36] [Server thread/INFO]: Adding biome mapping 40 Twilight Lake at BiomeBase[40]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 41 Twilight Forest at BiomeBase[41]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 42 Dense Twilight Forest at BiomeBase[42]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 43 Highlands at BiomeBase[43]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 44 Mushroom Forest at BiomeBase[44]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 45 Twilight Swamp at BiomeBase[45]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 46 Twilight Stream at BiomeBase[46]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 47 Snowy Forest at BiomeBase[47]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 48 Twilight Glacier at BiomeBase[48]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 49 Twilight Clearing at BiomeBase[49]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 50 Oak Savanna at BiomeBase[50]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 51 Lighted Forest at BiomeBase[51]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 52 Deep Mushroom Forest at BiomeBase[52]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 53 Dark Forest Center at BiomeBase[53]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 54 Highlands Center at BiomeBase[54]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 55 Dark Forest at BiomeBase[55]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 56 Enchanted Forest at BiomeBase[56]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 57 Fire Swamp at BiomeBase[57]
+[13:29:36] [Server thread/INFO]: Adding biome mapping 58 Thornlands at BiomeBase[58]
+[13:29:36] [Server thread/INFO]: Loading dimension 0 (skarn) (net.minecraft.server.dedicated.DedicatedServer@52a7bbdc)
+[13:29:36] [Server thread/INFO]: Loading dimension 7 (DIM7) (net.minecraft.server.dedicated.DedicatedServer@52a7bbdc)
+[13:29:36] [Server thread/INFO]: Loading dimension 1 (DIM1) (net.minecraft.server.dedicated.DedicatedServer@52a7bbdc)
+[13:29:36] [Server thread/INFO]: Loading dimension -1 (DIM-1) (net.minecraft.server.dedicated.DedicatedServer@52a7bbdc)
+[13:29:36] [Server thread/INFO]: Preparing start region for level 0
+[13:29:37] [Server thread/INFO]: [Lockette] Enabling Lockette v1.7.10
+[13:29:37] [Server thread/INFO]: [Lockette] Version 1.7.10 is being enabled!  Yay!  (Core version 1.3.7)
+[13:29:37] [Server thread/WARN]: [Lockette] Craftbukkit build unrecognized, please be sure you have build [2502] or greater.
+[13:29:37] [Server thread/INFO]: [Lockette] Custom lockable block list: [116, 84, 57, 145]
+[13:29:37] [Server thread/INFO]: [Lockette] Ignoring linked plugins: [mcMMO]
+[13:29:37] [Server thread/INFO]: [Lockette] Loading strings file for English by Acru
+[13:29:37] [Server thread/INFO]: [Lockette] Using ops file for admin permissions.
+[13:29:37] [Server thread/INFO]: [Lockette] Ready to protect your containers.
+[13:29:37] [Server thread/INFO]: [WorldEdit] Enabling WorldEdit v6.0;3342-78f975b9
+[13:29:37] [Server thread/INFO]: WEPIF: Using the Bukkit Permissions API.
+[13:29:37] [Server thread/WARN]: [WorldEdit] 
+**********************************************
+** This WorldEdit version does not fully support your version of Bukkit.
+**
+** When working with blocks or undoing, chests will be empty, signs
+** will be blank, and so on. There will be no support for entity
+** and biome-related functions.
+**
+** Please see http://wiki.sk89q.com/wiki/WorldEdit/Bukkit_adapters
+**********************************************
+
+[13:29:37] [Server thread/INFO]: [Essentials] Enabling Essentials v2.13.1
+[13:29:37] [Server thread/INFO]: Bukkit版本已改变
+[13:29:37] [Server thread/INFO]: git-Cauldron-MCPC-Plus-1.7.10-1.1206.01.170 (MC: 1.7.10)
+[13:29:37] [Server thread/INFO]: 1.7.10-R0.1-SNAPSHOT
+[13:29:38] [Server thread/INFO]: Using locale zh
+[13:29:38] [Server thread/INFO]: Using locale zh
+[13:29:38] [Server thread/INFO]: Essentials: Using config file enhanced permissions.
+[13:29:38] [Server thread/INFO]: Permissions listed in as player-commands will be given to all users.
+[13:29:38] [Server thread/INFO]: [EssentialsChat] Enabling EssentialsChat v2.13.1
+[13:29:38] [Server thread/INFO]: [EssentialsProtect] Enabling EssentialsProtect v2.13.1
+[13:29:38] [Server thread/INFO]: [EssentialsSpawn] Enabling EssentialsSpawn v2.13.1
+[13:29:38] [Server thread/INFO]: [EssentialsAntiBuild] Enabling EssentialsAntiBuild v2.13.1
+[13:29:38] [Server thread/INFO]: [AuthMe] Enabling AuthMe v3.5-SNAPSHOT
+[13:29:38] [Server thread/INFO]: [AuthMe] Loading Configuration File...
+[13:29:38] [Server thread/INFO]: [AuthMe] Set Language: en
+[13:29:38] [Server thread/INFO]: [AuthMe] Hook with Essentials plugin
+[13:29:38] [Server thread/INFO]: [AuthMe] Hook with EssentialsSpawn plugin
+[13:29:38] [Server thread/INFO]: [AuthMe] [LICENSE] This product includes GeoLite data created by MaxMind, available from http://www.maxmind.com
+[13:29:38] [Server thread/INFO]: [AuthMe] [SPONSOR] AuthMe is sponsored and hook perfectly with server hosting VERYGAMES, rent your server for only 1.99$/months
+[13:29:38] [Server thread/INFO]: [AuthMe] [SPONSOR] Look Minecraft and other offers on www.verygames.net ! 
+[13:29:38] [Server thread/INFO]: [AuthMe] Authme 3.5-SNAPSHOT enabled
+[13:29:38] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[13:29:38] [Server thread/INFO]: Done (3.842s)! For help, type "help" or "?"
+[13:29:38] [Server thread/INFO]: Registered command forge with permission node net.minecraftforge.server.command.ForgeCommand
+[13:29:38] [Server thread/INFO]: Registered command ic2 with permission node ic2.core.command.CommandIc2
+[13:29:38] [Server thread/INFO]: Registered command tps with permission node ic2.core.command.CommandTps
+[13:29:38] [Server thread/INFO]: Registered command tffeature with permission node twilightforest.CommandTFFeature
+[13:29:40] [User Authenticator #1/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[13:29:40] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerPlayer
+[13:29:40] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerRepair
+[13:29:40] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerDispenser
+[13:29:40] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerBrewingStand
+[13:29:40] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerBeacon
+[13:29:40] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerChest
+[13:29:40] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerHopper
+[13:29:40] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerWorkbench
+[13:29:40] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerFurnace
+[13:29:40] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerMerchant
+[13:29:40] [Netty IO #0/INFO]: Client protocol version 2
+[13:29:40] [Netty IO #0/INFO]: Client attempting to join with 14 mods : uniskinmod@1.2-dev3,craftguide@1.6.8.2,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,Kradxns Minimap@2.0,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[13:29:40] [Netty IO #0/INFO]: Attempting connection with missing mods [] at CLIENT
+[13:29:40] [Server thread/INFO]: [Server thread] Server side modded connection established
+[13:29:40] [Server thread/INFO]: dingjibang[/127.0.0.1:51163] logged in with entity id 117 at ([skarn] -3.51156287619182, 73.0, 152.55582426608103)
+[13:29:40] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[13:29:40] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[13:29:40] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[13:29:40] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[13:29:40] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[13:29:40] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[13:29:40] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[13:29:40] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[13:29:40] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[13:29:40] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[13:29:40] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[13:29:40] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[13:29:40] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[13:29:40] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[13:29:40] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[13:29:40] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[13:29:40] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[13:29:40] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[13:29:40] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[13:29:40] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[13:29:40] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[13:29:40] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[13:29:40] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[13:29:40] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[13:29:40] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[13:29:40] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[13:29:40] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[13:29:40] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[13:29:40] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[13:29:40] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[13:29:40] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[13:29:40] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[13:29:40] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[13:29:40] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[13:29:40] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[13:29:40] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[13:29:40] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[13:29:40] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[13:29:40] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[13:29:40] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[13:29:40] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[13:29:47] [Server thread/INFO]: dingjibang issued server command: /login djb269134
+[13:29:47] [Server thread/INFO]: [AuthMe] dingjibang logged in!
+[13:29:56] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[13:29:56] [Server thread/INFO]: dingjibang left the game.
+[13:30:38] [Server thread/INFO]: CONSOLE: Opped anli
+[13:30:38] [Server thread/INFO]: Unknown command. Type "/help" for help.
+[13:30:45] [Server thread/INFO]: CONSOLE: Opped sumeer
+[13:30:49] [Server thread/INFO]: CONSOLE: De-opped sumeer
+[13:30:57] [Server thread/INFO]: CONSOLE: Opped Sumeer
+[13:31:04] [User Authenticator #2/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[13:31:04] [Netty IO #0/INFO]: Client protocol version 2
+[13:31:04] [Netty IO #0/INFO]: Client attempting to join with 14 mods : uniskinmod@1.2-dev3,craftguide@1.6.8.2,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,Kradxns Minimap@2.0,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[13:31:04] [Netty IO #0/INFO]: Attempting connection with missing mods [] at CLIENT
+[13:31:04] [Server thread/INFO]: [Server thread] Server side modded connection established
+[13:31:04] [Server thread/INFO]: dingjibang[/127.0.0.1:51291] logged in with entity id 465 at ([skarn] -12.536528498499827, 73.0, 143.43166699126135)
+[13:31:04] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[13:31:04] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[13:31:04] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[13:31:04] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[13:31:04] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[13:31:04] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[13:31:04] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[13:31:04] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[13:31:04] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[13:31:04] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[13:31:04] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[13:31:04] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[13:31:04] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[13:31:04] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[13:31:04] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[13:31:04] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[13:31:04] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[13:31:04] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[13:31:04] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[13:31:04] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[13:31:04] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[13:31:04] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[13:31:04] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[13:31:04] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[13:31:04] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[13:31:04] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[13:31:04] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[13:31:04] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[13:31:04] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[13:31:04] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[13:31:04] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[13:31:04] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[13:31:04] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[13:31:04] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[13:31:04] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[13:31:04] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[13:31:04] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[13:31:04] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[13:31:04] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[13:31:04] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[13:31:04] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[13:31:07] [Server thread/INFO]: dingjibang issued server command: /login djb269134
+[13:31:07] [Server thread/INFO]: [AuthMe] dingjibang logged in!
+[13:37:12] [User Authenticator #3/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[13:37:12] [Netty IO #1/INFO]: Client protocol version 2
+[13:37:12] [Netty IO #1/INFO]: Client attempting to join with 13 mods : uniskinmod@1.2-dev3,craftguide@1.6.8.2,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[13:37:12] [Netty IO #1/INFO]: Attempting connection with missing mods [] at CLIENT
+[13:37:13] [Server thread/INFO]: [Server thread] Server side modded connection established
+[13:37:13] [Server thread/INFO]: sola[/127.0.0.1:51604] logged in with entity id 2503 at ([skarn] 63.5516985134705, 70.0, 122.12715286745839)
+[13:37:13] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[13:37:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[13:37:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[13:37:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[13:37:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[13:37:13] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[13:37:13] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[13:37:13] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[13:37:13] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[13:37:13] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[13:37:13] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[13:37:13] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[13:37:13] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[13:37:13] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[13:37:13] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[13:37:13] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[13:37:13] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[13:37:13] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[13:37:13] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[13:37:13] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[13:37:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[13:37:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[13:37:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[13:37:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[13:37:13] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[13:37:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[13:37:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[13:37:13] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[13:37:13] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[13:37:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[13:37:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[13:37:13] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[13:37:13] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[13:37:13] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[13:37:13] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[13:37:13] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[13:37:13] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[13:37:13] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[13:37:13] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[13:37:13] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[13:37:13] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[13:37:19] [Server thread/INFO]: sola issued server command: /login 123456
+[13:37:19] [Server thread/INFO]: [AuthMe] sola logged in!
+[13:38:11] [Server thread/INFO]: sola was shot by dingjibang
+[13:38:57] [Server thread/INFO]: sola was shot by dingjibang
+[13:39:02] [Server thread/INFO]: sola issued server command: /back
+[13:39:09] [Server thread/INFO]: dingjibang was slain by sola
+[13:39:12] [Server thread/INFO]: dingjibang issued server command: /back
+[13:39:17] [Server thread/INFO]: dingjibang was slain by sola
+[13:40:13] [Server thread/INFO]: dingjibang issued server command: /home
+[13:41:09] [User Authenticator #4/INFO]: UUID of player YiTian is 638f0f03-304e-37e8-83f0-fb501b7c19b7
+[13:41:09] [Netty IO #2/INFO]: Client protocol version 2
+[13:41:09] [Netty IO #2/INFO]: Client attempting to join with 12 mods : uniskinmod@1.2-dev3,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[13:41:09] [Netty IO #2/INFO]: Attempting connection with missing mods [] at CLIENT
+[13:41:10] [Server thread/INFO]: [Server thread] Server side modded connection established
+[13:41:10] [Server thread/INFO]: YiTian[/127.0.0.1:51776] logged in with entity id 5281 at ([skarn] 135.77449377371693, 66.0, 150.69999998807907)
+[13:41:10] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[13:41:10] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[13:41:10] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[13:41:10] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[13:41:10] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[13:41:10] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[13:41:10] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[13:41:10] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[13:41:10] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[13:41:10] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[13:41:10] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[13:41:10] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[13:41:10] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[13:41:10] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[13:41:10] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[13:41:10] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[13:41:10] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[13:41:10] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[13:41:10] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[13:41:10] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[13:41:10] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[13:41:10] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[13:41:10] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[13:41:10] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[13:41:10] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[13:41:10] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[13:41:10] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[13:41:10] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[13:41:10] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[13:41:10] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[13:41:10] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[13:41:10] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[13:41:10] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[13:41:10] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[13:41:10] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[13:41:10] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[13:41:10] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[13:41:10] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[13:41:10] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[13:41:10] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[13:41:10] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[13:41:25] [Server thread/INFO]: YiTian issued server command: /login 88123456
+[13:41:25] [Server thread/INFO]: [AuthMe] YiTian logged in!
+[13:41:34] [Server thread/INFO]: YiTian issued server command: /back
+[13:41:58] [Netty IO #1/INFO]: <sola> duel
+[13:42:19] [Netty IO #1/INFO]: <sola> duel
+[13:44:28] [Server thread/INFO]: YiTian lost connection: Disconnected
+[13:44:28] [Server thread/INFO]: YiTian left the game.
+[13:45:24] [Netty IO #1/INFO]: <sola> 决斗
+[13:45:29] [Netty IO #0/INFO]: <dingjibang> 不！
+[13:45:49] [Server thread/INFO]: dingjibang issued server command: /home
+[13:45:56] [Server thread/INFO]: sola issued server command: /home
+[13:46:20] [Server thread/INFO]: CONSOLE: Opped dingjibang
+[13:46:38] [Server thread/INFO]: [dingjibang: Given [Electric Jetpack] * 1 to dingjibang]
+[13:46:42] [Server thread/INFO]: [dingjibang: Given [Electric Jetpack] * 1 to dingjibang]
+[13:46:46] [Server thread/INFO]: CONSOLE: De-opped dingjibang
+[13:46:55] [User Authenticator #5/INFO]: UUID of player Haku__ is dca11f96-f682-3fe5-adf9-62bf64bcc93b
+[13:46:56] [Netty IO #0/INFO]: Client protocol version 2
+[13:46:56] [Netty IO #0/INFO]: Client attempting to join with 14 mods : uniskinmod@1.2-dev3,Scenter@1.7.10-3.2.0,IronChest@6.0.62.742,inventorytweaks@1.59-dev-156-af3bc68,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,TwilightForest@2.3.2,mod_RadarBro@v1.9.9.9.9.9,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IC2@2.2.810-experimental,InputFix@1.7.x-v2
+[13:46:56] [Netty IO #0/INFO]: Attempting connection with missing mods [] at CLIENT
+[13:46:56] [Server thread/INFO]: [Server thread] Server side modded connection established
+[13:46:56] [Server thread/INFO]: Haku__[/127.0.0.1:51957] logged in with entity id 7688 at ([skarn] 111.69216603724328, 72.0, 1547.2034329700386)
+[13:46:56] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[13:46:56] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[13:46:56] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[13:46:56] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[13:46:56] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[13:46:56] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[13:46:56] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[13:46:56] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[13:46:56] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[13:46:56] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[13:46:56] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[13:46:56] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[13:46:56] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[13:46:56] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[13:46:56] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[13:46:56] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[13:46:56] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[13:46:56] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[13:46:56] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[13:46:56] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[13:46:56] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[13:46:56] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[13:46:56] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[13:46:56] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[13:46:56] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[13:46:56] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[13:46:56] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[13:46:56] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[13:46:56] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[13:46:56] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[13:46:56] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[13:46:56] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[13:46:56] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[13:46:56] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[13:46:56] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[13:46:56] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[13:46:56] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[13:46:56] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[13:46:56] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[13:46:56] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[13:46:56] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[13:47:03] [Server thread/INFO]: Haku__ issued server command: /login 54091026
+[13:47:03] [Server thread/INFO]: [AuthMe] Haku__ logged in!
+[13:53:50] [Server thread/INFO]: CONSOLE: Opped dingjibang
+[13:55:31] [Netty IO #1/INFO]: <sola> 爷爷求食物
+[13:56:02] [Server thread/INFO]: sola issued server command: /3q
+[13:56:23] [Server thread/INFO]: Haku__ lost connection: Disconnected
+[13:56:23] [Server thread/INFO]: Haku__ left the game.
+[13:56:31] [Netty IO #1/INFO]: <sola> 3q
+[13:56:34] [User Authenticator #6/INFO]: UUID of player Haku__ is dca11f96-f682-3fe5-adf9-62bf64bcc93b
+[13:56:35] [Netty IO #0/INFO]: Client protocol version 2
+[13:56:35] [Netty IO #0/INFO]: Client attempting to join with 14 mods : uniskinmod@1.2-dev3,Scenter@1.7.10-3.2.0,IronChest@6.0.62.742,inventorytweaks@1.59-dev-156-af3bc68,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,TwilightForest@2.3.2,mod_RadarBro@v1.9.9.9.9.9,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IC2@2.2.810-experimental,InputFix@1.7.x-v2
+[13:56:35] [Netty IO #0/INFO]: Attempting connection with missing mods [] at CLIENT
+[13:56:35] [Server thread/INFO]: [Server thread] Server side modded connection established
+[13:56:35] [Server thread/INFO]: Haku__[/127.0.0.1:52167] logged in with entity id 15407 at ([skarn] 119.42350381821329, 71.94999998807907, 1549.6465999830555)
+[13:56:35] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[13:56:35] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[13:56:35] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[13:56:35] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[13:56:35] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[13:56:35] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[13:56:35] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[13:56:35] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[13:56:35] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[13:56:35] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[13:56:35] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[13:56:35] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[13:56:35] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[13:56:35] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[13:56:35] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[13:56:35] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[13:56:35] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[13:56:35] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[13:56:35] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[13:56:35] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[13:56:35] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[13:56:35] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[13:56:35] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[13:56:35] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[13:56:35] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[13:56:35] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[13:56:35] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[13:56:35] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[13:56:35] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[13:56:35] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[13:56:35] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[13:56:35] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[13:56:35] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[13:56:35] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[13:56:35] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[13:56:35] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[13:56:35] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[13:56:35] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[13:56:35] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[13:56:35] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[13:56:35] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[13:56:41] [Server thread/INFO]: [dingjibang: Given [Black Stained Glass] * 1 to dingjibang]
+[13:56:43] [Server thread/INFO]: Haku__ issued server command: /login 54091026
+[13:56:43] [Server thread/INFO]: [AuthMe] Haku__ logged in!
+[13:57:30] [Server thread/INFO]: [dingjibang: Given [White Stained Glass] * 1 to dingjibang]
+[13:58:32] [Server thread/INFO]: sola was shot by Skeleton
+[13:58:35] [Server thread/INFO]: sola issued server command: /back
+[13:59:04] [Server thread/INFO]: sola was shot by Skeleton
+[13:59:13] [Server thread/INFO]: sola issued server command: /back
+[13:59:55] [Server thread/INFO]: [dingjibang: Given [White Stained Glass] * ∞ to dingjibang]
+[14:01:07] [Server thread/INFO]: sola was slain by Zombie
+[14:01:18] [Server thread/INFO]: [dingjibang: Given [Gray Stained Glass Pane] * 1 to dingjibang]
+[14:01:22] [User Authenticator #7/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[14:01:22] [Server thread/INFO]: Disconnecting com.mojang.authlib.GameProfile@2acc26f8[id=985289e3-bb73-31fb-88f6-067174ad50d3,name=sola,properties={},legacy=false] (/127.0.0.1:52325): §fSame nick is already playing
+[14:01:22] [Server thread/INFO]: com.mojang.authlib.GameProfile@2acc26f8[id=985289e3-bb73-31fb-88f6-067174ad50d3,name=sola,properties={},legacy=false] (/127.0.0.1:52325) lost connection: §fSame nick is already playing
+[14:01:27] [User Authenticator #8/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[14:01:27] [Server thread/INFO]: Disconnecting com.mojang.authlib.GameProfile@6820684e[id=985289e3-bb73-31fb-88f6-067174ad50d3,name=sola,properties={},legacy=false] (/127.0.0.1:52329): §fSame nick is already playing
+[14:01:27] [Server thread/INFO]: com.mojang.authlib.GameProfile@6820684e[id=985289e3-bb73-31fb-88f6-067174ad50d3,name=sola,properties={},legacy=false] (/127.0.0.1:52329) lost connection: §fSame nick is already playing
+[14:01:49] [Server thread/INFO]: sola lost connection: Timed out
+[14:01:49] [Server thread/INFO]: sola left the game.
+[14:01:59] [Server thread/INFO]: Haku__ lost connection: Timed out
+[14:01:59] [Server thread/INFO]: Haku__ left the game.
+[14:02:27] [User Authenticator #9/INFO]: UUID of player Haku__ is dca11f96-f682-3fe5-adf9-62bf64bcc93b
+[14:02:27] [Netty IO #2/INFO]: Client protocol version 2
+[14:02:27] [Netty IO #2/INFO]: Client attempting to join with 14 mods : uniskinmod@1.2-dev3,Scenter@1.7.10-3.2.0,IronChest@6.0.62.742,inventorytweaks@1.59-dev-156-af3bc68,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,TwilightForest@2.3.2,mod_RadarBro@v1.9.9.9.9.9,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IC2@2.2.810-experimental,InputFix@1.7.x-v2
+[14:02:27] [Netty IO #2/INFO]: Attempting connection with missing mods [] at CLIENT
+[14:02:27] [Server thread/INFO]: [Server thread] Server side modded connection established
+[14:02:27] [Server thread/INFO]: Haku__[/127.0.0.1:52381] logged in with entity id 21514 at ([skarn] 111.24794078041295, 73.0, 1549.3836326017279)
+[14:02:27] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[14:02:27] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[14:02:27] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[14:02:27] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[14:02:27] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[14:02:27] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[14:02:27] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[14:02:27] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[14:02:27] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[14:02:27] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[14:02:27] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[14:02:27] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[14:02:27] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[14:02:27] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[14:02:27] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[14:02:27] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[14:02:27] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[14:02:27] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[14:02:27] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[14:02:27] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[14:02:27] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[14:02:27] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[14:02:27] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[14:02:27] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[14:02:27] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[14:02:27] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[14:02:27] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[14:02:27] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[14:02:27] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[14:02:27] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[14:02:27] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[14:02:27] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[14:02:27] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[14:02:27] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[14:02:27] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[14:02:27] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[14:02:27] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[14:02:27] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[14:02:27] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[14:02:27] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[14:02:27] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[14:02:29] [User Authenticator #10/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[14:02:29] [Netty IO #3/INFO]: Client protocol version 2
+[14:02:29] [Netty IO #3/INFO]: Client attempting to join with 13 mods : uniskinmod@1.2-dev3,craftguide@1.6.8.2,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[14:02:29] [Netty IO #3/INFO]: Attempting connection with missing mods [] at CLIENT
+[14:02:30] [Server thread/INFO]: [Server thread] Server side modded connection established
+[14:02:30] [Server thread/INFO]: sola[/127.0.0.1:52385] logged in with entity id 21666 at ([skarn] 85.28655252181757, 69.0, 132.85146793077178)
+[14:02:30] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[14:02:30] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[14:02:30] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[14:02:30] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[14:02:30] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[14:02:30] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[14:02:30] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[14:02:30] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[14:02:30] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[14:02:30] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[14:02:30] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[14:02:30] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[14:02:30] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[14:02:30] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[14:02:30] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[14:02:30] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[14:02:30] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[14:02:30] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[14:02:30] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[14:02:30] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[14:02:30] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[14:02:30] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[14:02:30] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[14:02:30] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[14:02:30] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[14:02:30] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[14:02:30] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[14:02:30] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[14:02:30] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[14:02:30] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[14:02:30] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[14:02:30] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[14:02:30] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[14:02:30] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[14:02:30] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[14:02:30] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[14:02:30] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[14:02:30] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[14:02:30] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[14:02:30] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[14:02:30] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[14:02:36] [Server thread/INFO]: sola issued server command: /login 123456
+[14:02:36] [Server thread/INFO]: [AuthMe] sola logged in!
+[14:02:37] [Server thread/INFO]: Haku__ issued server command: /login 54091026
+[14:02:37] [Server thread/INFO]: [AuthMe] Haku__ logged in!
+[14:02:38] [Server thread/INFO]: sola issued server command: /back
+[14:03:09] [Server thread/INFO]: [dingjibang: Given [Black Stained Glass Pane] * 1 to dingjibang]
+[14:03:23] [Server thread/INFO]: Haku__ lost connection: Disconnected
+[14:03:23] [Server thread/INFO]: Haku__ left the game.
+[14:03:24] [Server thread/INFO]: sola lost connection: Disconnected
+[14:03:24] [Server thread/INFO]: sola left the game.
+[14:03:28] [User Authenticator #11/INFO]: UUID of player Haku__ is dca11f96-f682-3fe5-adf9-62bf64bcc93b
+[14:03:29] [Netty IO #1/INFO]: Client protocol version 2
+[14:03:29] [Netty IO #1/INFO]: Client attempting to join with 14 mods : uniskinmod@1.2-dev3,Scenter@1.7.10-3.2.0,IronChest@6.0.62.742,inventorytweaks@1.59-dev-156-af3bc68,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,TwilightForest@2.3.2,mod_RadarBro@v1.9.9.9.9.9,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IC2@2.2.810-experimental,InputFix@1.7.x-v2
+[14:03:29] [Netty IO #1/INFO]: Attempting connection with missing mods [] at CLIENT
+[14:03:29] [Server thread/INFO]: [Server thread] Server side modded connection established
+[14:03:29] [Server thread/INFO]: Haku__[/127.0.0.1:52405] logged in with entity id 22172 at ([skarn] 111.24183409933893, 73.0, 1550.0205209058872)
+[14:03:29] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[14:03:29] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[14:03:29] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[14:03:29] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[14:03:29] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[14:03:29] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[14:03:29] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[14:03:29] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[14:03:29] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[14:03:29] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[14:03:29] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[14:03:29] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[14:03:29] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[14:03:29] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[14:03:29] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[14:03:29] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[14:03:29] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[14:03:29] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[14:03:29] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[14:03:29] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[14:03:29] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[14:03:29] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[14:03:29] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[14:03:29] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[14:03:29] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[14:03:29] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[14:03:29] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[14:03:29] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[14:03:29] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[14:03:29] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[14:03:29] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[14:03:29] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[14:03:29] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[14:03:29] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[14:03:29] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[14:03:29] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[14:03:29] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[14:03:29] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[14:03:29] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[14:03:29] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[14:03:29] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[14:03:37] [Server thread/INFO]: Haku__ issued server command: /login 54091026
+[14:03:37] [Server thread/INFO]: [AuthMe] Haku__ logged in!
+[14:04:34] [Server thread/INFO]: [dingjibang: Given [Moss Patch] * 1 to dingjibang]
+[14:05:02] [Server thread/INFO]: [dingjibang: Given [Fiddlehead] * 1 to dingjibang]
+[14:05:32] [Server thread/INFO]: Haku__ has just earned the achievement [Lumberjack Assassin]
+[14:05:33] [Server thread/INFO]: [dingjibang: Given [Tatami(Tan)] * 1 to dingjibang]
+[14:05:50] [Server thread/INFO]: [dingjibang: Given [MossBlock] * 1 to dingjibang]
+[14:05:58] [Server thread/INFO]: [dingjibang: Given [Ramen] * 1 to dingjibang]
+[14:06:11] [Server thread/INFO]: [dingjibang: Given [ShavedIce(Pumpkin)] * 1 to dingjibang]
+[14:06:21] [Server thread/INFO]: [dingjibang: Given [Cake] * 1 to dingjibang]
+[14:06:25] [Server thread/INFO]: Player touched the portal block.  Sending the player to dimension 7
+[14:06:26] [Server thread/INFO]: [TwilightForest] Lowering Dark Tower max height by 20 to be within world bounds
+[14:06:41] [Server thread/INFO]: [dingjibang: Given [Check(birch)] * 1 to dingjibang]
+[14:07:27] [Server thread/INFO]: [dingjibang: Given [DecoPlaster(L)] * 1 to dingjibang]
+[14:08:22] [Server thread/INFO]: [dingjibang: Given [Item Frame] * 1 to dingjibang]
+[14:08:46] [Server thread/INFO]: [dingjibang: Given [Giant's Sword] * 1 to dingjibang]
+[14:09:51] [Server thread/INFO]: [dingjibang: Given [Water Bucket] * 1 to dingjibang]
+[14:10:18] [Server thread/INFO]: [dingjibang: Given [Bucket] * 1 to dingjibang]
+[14:11:29] [Server thread/INFO]: [dingjibang: Given [Windmill(cloth)] * 1 to dingjibang]
+[14:12:15] [Server thread/INFO]: Main tower failed to branch off at index 2
+[14:12:15] [Server thread/INFO]: Made bridge back to new main
+[14:12:15] [Server thread/INFO]: Main tower made a bridge to another tower
+[14:12:15] [Server thread/INFO]: Made bridge back to new main
+[14:12:15] [Server thread/INFO]: Main tower made a bridge to another tower
+[14:12:25] [User Authenticator #12/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[14:12:25] [Netty IO #0/INFO]: Client protocol version 2
+[14:12:25] [Netty IO #0/INFO]: Client attempting to join with 13 mods : uniskinmod@1.2-dev3,craftguide@1.6.8.2,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[14:12:25] [Netty IO #0/INFO]: Attempting connection with missing mods [] at CLIENT
+[14:12:26] [Server thread/INFO]: [Server thread] Server side modded connection established
+[14:12:26] [Server thread/INFO]: sola[/127.0.0.1:52631] logged in with entity id 28619 at ([skarn] 74.62268388697329, 47.0, 67.45700258263793)
+[14:12:26] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[14:12:26] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[14:12:26] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[14:12:26] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[14:12:26] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[14:12:26] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[14:12:26] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[14:12:26] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[14:12:26] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[14:12:26] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[14:12:26] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[14:12:26] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[14:12:26] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[14:12:26] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[14:12:26] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[14:12:26] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[14:12:26] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[14:12:26] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[14:12:26] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[14:12:26] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[14:12:26] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[14:12:26] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[14:12:26] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[14:12:26] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[14:12:26] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[14:12:26] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[14:12:26] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[14:12:26] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[14:12:26] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[14:12:26] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[14:12:26] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[14:12:26] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[14:12:26] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[14:12:26] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[14:12:26] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[14:12:26] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[14:12:26] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[14:12:26] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[14:12:26] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[14:12:26] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[14:12:26] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[14:12:34] [Server thread/INFO]: sola issued server command: /login 123456
+[14:12:34] [Server thread/INFO]: [AuthMe] sola logged in!
+[14:12:42] [Server thread/INFO]: [dingjibang: Given [Cushion] * 1 to dingjibang]
+[14:14:35] [Server thread/INFO]: sola lost connection: Disconnected
+[14:14:35] [Server thread/INFO]: sola left the game.
+[14:14:36] [Server thread/INFO]: Haku__ lost connection: Disconnected
+[14:14:36] [Server thread/INFO]: Haku__ left the game.
+[14:14:44] [Server thread/INFO]: Unloading dimension 7
+[14:15:19] [User Authenticator #13/INFO]: UUID of player Haku__ is dca11f96-f682-3fe5-adf9-62bf64bcc93b
+[14:15:19] [Server thread/INFO]: Haku__ lost connection: Disconnected
+[14:15:26] [User Authenticator #14/INFO]: UUID of player Haku__ is dca11f96-f682-3fe5-adf9-62bf64bcc93b
+[14:15:27] [Netty IO #2/INFO]: Client protocol version 2
+[14:15:27] [Netty IO #2/INFO]: Client attempting to join with 14 mods : uniskinmod@1.2-dev3,Scenter@1.7.10-3.2.0,IronChest@6.0.62.742,inventorytweaks@1.59-dev-156-af3bc68,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,TwilightForest@2.3.2,mod_RadarBro@v1.9.9.9.9.9,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IC2@2.2.810-experimental,InputFix@1.7.x-v2
+[14:15:27] [Netty IO #2/INFO]: Attempting connection with missing mods [] at CLIENT
+[14:15:27] [Server thread/INFO]: [Server thread] Server side modded connection established
+[14:15:27] [Server thread/INFO]: Loading dimension 7 (DIM7) (net.minecraft.server.dedicated.DedicatedServer@52a7bbdc)
+[14:15:27] [Server thread/INFO]: Haku__[/127.0.0.1:52706] logged in with entity id 32621 at ([DIM7] -852.9804543861474, 31.0, 2948.379694206477)
+[14:15:27] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[14:15:27] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[14:15:27] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[14:15:27] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[14:15:27] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[14:15:27] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[14:15:27] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[14:15:27] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[14:15:27] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[14:15:27] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[14:15:27] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[14:15:27] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[14:15:27] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[14:15:27] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[14:15:27] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[14:15:27] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[14:15:27] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[14:15:27] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[14:15:27] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[14:15:27] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[14:15:27] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[14:15:27] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[14:15:27] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[14:15:27] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[14:15:27] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[14:15:27] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[14:15:27] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[14:15:27] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[14:15:27] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[14:15:27] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[14:15:27] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[14:15:27] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[14:15:27] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[14:15:27] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[14:15:27] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[14:15:27] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[14:15:27] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[14:15:27] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[14:15:27] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[14:15:27] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[14:15:27] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[14:15:27] [Server thread/INFO]: Main tower failed to branch off at index 2
+[14:15:27] [Server thread/INFO]: Made bridge back to new main
+[14:15:27] [Server thread/INFO]: Main tower made a bridge to another tower
+[14:15:27] [Server thread/INFO]: Made bridge back to new main
+[14:15:27] [Server thread/INFO]: Main tower made a bridge to another tower
+[14:15:34] [Server thread/INFO]: Haku__ issued server command: /login 54091026
+[14:15:34] [Server thread/INFO]: [AuthMe] Haku__ logged in!
+[14:16:13] [User Authenticator #15/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[14:16:14] [Netty IO #2/INFO]: Client protocol version 2
+[14:16:14] [Netty IO #2/INFO]: Client attempting to join with 13 mods : uniskinmod@1.2-dev3,craftguide@1.6.8.2,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[14:16:14] [Netty IO #2/INFO]: Attempting connection with missing mods [] at CLIENT
+[14:16:14] [Server thread/INFO]: [Server thread] Server side modded connection established
+[14:16:14] [Server thread/INFO]: sola[/127.0.0.1:52725] logged in with entity id 33498 at ([skarn] 83.66358184745951, 47.0, 34.55834002502052)
+[14:16:14] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[14:16:14] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[14:16:14] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[14:16:14] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[14:16:14] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[14:16:14] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[14:16:14] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[14:16:14] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[14:16:14] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[14:16:14] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[14:16:14] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[14:16:14] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[14:16:14] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[14:16:14] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[14:16:14] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[14:16:14] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[14:16:14] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[14:16:14] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[14:16:14] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[14:16:14] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[14:16:14] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[14:16:14] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[14:16:14] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[14:16:14] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[14:16:14] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[14:16:14] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[14:16:14] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[14:16:14] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[14:16:14] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[14:16:14] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[14:16:14] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[14:16:14] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[14:16:14] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[14:16:14] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[14:16:14] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[14:16:14] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[14:16:14] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[14:16:14] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[14:16:14] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[14:16:14] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[14:16:14] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[14:16:17] [Server thread/INFO]: [dingjibang: Given [SakuraLeaves] * 1 to dingjibang]
+[14:16:21] [Server thread/INFO]: sola issued server command: /login 123456
+[14:16:21] [Server thread/INFO]: [AuthMe] sola logged in!
+[14:16:22] [Server thread/INFO]: [dingjibang: Given [SakuraLeaves] * 1 to dingjibang]
+[14:17:15] [Server thread/INFO]: [dingjibang: Given [Blue Stained Glass] * 1 to dingjibang]
+[14:17:28] [Server thread/INFO]: [dingjibang: Given [Light Blue Stained Glass] * 64 to dingjibang]
+[14:19:08] [Server thread/WARN]: Detected invalid armor damage application:
+java.lang.Throwable
+	at ic2.core.item.armor.ItemArmorElectric.setDamage(ItemArmorElectric.java:154) [ItemArmorElectric.class:?]
+	at net.minecraft.item.ItemStack.func_77964_b(ItemStack.java:345) [add.class:?]
+	at net.minecraft.item.ItemStack.isDamaged(ItemStack.java:413) [add.class:?]
+	at net.minecraft.item.ItemStack.func_96631_a(ItemStack.java:363) [add.class:?]
+	at net.minecraft.item.ItemStack.func_77972_a(ItemStack.java:424) [add.class:?]
+	at net.minecraft.entity.player.InventoryPlayer.func_70449_g(InventoryPlayer.java:717) [yx.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70675_k(EntityPlayer.java:1189) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.damageEntity_CB(EntityLivingBase.java:1375) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.damageEntity_CB(EntityPlayer.java:1228) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70097_a(EntityLivingBase.java:900) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70097_a(EntityPlayer.java:1144) [yz.class:?]
+	at net.minecraft.entity.player.EntityPlayerMP.func_70097_a(EntityPlayerMP.java:646) [mw.class:?]
+	at net.minecraft.entity.monster.EntityMob.func_70652_k(EntityMob.java:143) [yg.class:?]
+	at net.minecraft.entity.monster.EntityZombie.func_70652_k(EntityZombie.java:340) [yq.class:?]
+	at net.minecraft.entity.ai.EntityAIAttackOnCollide.func_75246_d(EntityAIAttackOnCollide.java:162) [uq.class:?]
+	at net.minecraft.entity.ai.EntityAITasks.func_75774_a(SourceFile:103) [uj.class:?]
+	at net.minecraft.entity.EntityLiving.func_70619_bc(EntityLiving.java:582) [sw.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70636_d(EntityLivingBase.java:2029) [sv.class:?]
+	at net.minecraft.entity.EntityLiving.func_70636_d(EntityLiving.java:388) [sw.class:?]
+	at net.minecraft.entity.monster.EntityMob.func_70636_d(EntityMob.java:36) [yg.class:?]
+	at net.minecraft.entity.monster.EntityZombie.func_70636_d(EntityZombie.java:244) [yq.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70071_h_(EntityLivingBase.java:1865) [sv.class:?]
+	at net.minecraft.entity.EntityLiving.func_70071_h_(EntityLiving.java:213) [sw.class:?]
+	at net.minecraft.entity.monster.EntityMob.func_70071_h_(EntityMob.java:41) [yg.class:?]
+	at net.minecraft.entity.monster.EntityZombie.func_70071_h_(EntityZombie.java:335) [yq.class:?]
+	at net.minecraft.world.World.func_72866_a(World.java:2635) [ahb.class:?]
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:834) [mt.class:?]
+	at net.minecraft.world.World.func_72870_g(World.java:2588) [ahb.class:?]
+	at net.minecraft.world.World.func_72939_s(World.java:2400) [ahb.class:?]
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:665) [mt.class:?]
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:937) [MinecraftServer.class:?]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803) [MinecraftServer.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[14:19:08] [Server thread/WARN]: Detected invalid armor damage application:
+java.lang.Throwable
+	at ic2.core.item.armor.ItemArmorElectric.setDamage(ItemArmorElectric.java:154) [ItemArmorElectric.class:?]
+	at net.minecraft.item.ItemStack.func_77964_b(ItemStack.java:345) [add.class:?]
+	at net.minecraft.item.ItemStack.isDamaged(ItemStack.java:413) [add.class:?]
+	at net.minecraft.item.ItemStack.func_96631_a(ItemStack.java:363) [add.class:?]
+	at net.minecraft.item.ItemStack.func_77972_a(ItemStack.java:424) [add.class:?]
+	at net.minecraft.entity.player.InventoryPlayer.func_70449_g(InventoryPlayer.java:717) [yx.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70675_k(EntityPlayer.java:1189) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.damageEntity_CB(EntityLivingBase.java:1375) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.damageEntity_CB(EntityPlayer.java:1228) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70097_a(EntityLivingBase.java:900) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70097_a(EntityPlayer.java:1144) [yz.class:?]
+	at net.minecraft.entity.player.EntityPlayerMP.func_70097_a(EntityPlayerMP.java:646) [mw.class:?]
+	at net.minecraft.entity.monster.EntityMob.func_70652_k(EntityMob.java:143) [yg.class:?]
+	at net.minecraft.entity.monster.EntityZombie.func_70652_k(EntityZombie.java:340) [yq.class:?]
+	at net.minecraft.entity.ai.EntityAIAttackOnCollide.func_75246_d(EntityAIAttackOnCollide.java:162) [uq.class:?]
+	at net.minecraft.entity.ai.EntityAITasks.func_75774_a(SourceFile:103) [uj.class:?]
+	at net.minecraft.entity.EntityLiving.func_70619_bc(EntityLiving.java:582) [sw.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70636_d(EntityLivingBase.java:2029) [sv.class:?]
+	at net.minecraft.entity.EntityLiving.func_70636_d(EntityLiving.java:388) [sw.class:?]
+	at net.minecraft.entity.monster.EntityMob.func_70636_d(EntityMob.java:36) [yg.class:?]
+	at net.minecraft.entity.monster.EntityZombie.func_70636_d(EntityZombie.java:244) [yq.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70071_h_(EntityLivingBase.java:1865) [sv.class:?]
+	at net.minecraft.entity.EntityLiving.func_70071_h_(EntityLiving.java:213) [sw.class:?]
+	at net.minecraft.entity.monster.EntityMob.func_70071_h_(EntityMob.java:41) [yg.class:?]
+	at net.minecraft.entity.monster.EntityZombie.func_70071_h_(EntityZombie.java:335) [yq.class:?]
+	at net.minecraft.world.World.func_72866_a(World.java:2635) [ahb.class:?]
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:834) [mt.class:?]
+	at net.minecraft.world.World.func_72870_g(World.java:2588) [ahb.class:?]
+	at net.minecraft.world.World.func_72939_s(World.java:2400) [ahb.class:?]
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:665) [mt.class:?]
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:937) [MinecraftServer.class:?]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803) [MinecraftServer.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[14:19:08] [Server thread/WARN]: Detected invalid armor damage application:
+java.lang.Throwable
+	at ic2.core.item.armor.ItemArmorElectric.setDamage(ItemArmorElectric.java:154) [ItemArmorElectric.class:?]
+	at net.minecraft.item.ItemStack.func_77964_b(ItemStack.java:345) [add.class:?]
+	at net.minecraft.item.ItemStack.isDamaged(ItemStack.java:413) [add.class:?]
+	at net.minecraft.item.ItemStack.func_96631_a(ItemStack.java:363) [add.class:?]
+	at net.minecraft.item.ItemStack.func_77972_a(ItemStack.java:424) [add.class:?]
+	at net.minecraft.entity.player.InventoryPlayer.func_70449_g(InventoryPlayer.java:717) [yx.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70675_k(EntityPlayer.java:1189) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.damageEntity_CB(EntityLivingBase.java:1375) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.damageEntity_CB(EntityPlayer.java:1228) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70097_a(EntityLivingBase.java:900) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70097_a(EntityPlayer.java:1144) [yz.class:?]
+	at net.minecraft.entity.player.EntityPlayerMP.func_70097_a(EntityPlayerMP.java:646) [mw.class:?]
+	at net.minecraft.entity.monster.EntityMob.func_70652_k(EntityMob.java:143) [yg.class:?]
+	at net.minecraft.entity.monster.EntityZombie.func_70652_k(EntityZombie.java:340) [yq.class:?]
+	at net.minecraft.entity.ai.EntityAIAttackOnCollide.func_75246_d(EntityAIAttackOnCollide.java:162) [uq.class:?]
+	at net.minecraft.entity.ai.EntityAITasks.func_75774_a(SourceFile:103) [uj.class:?]
+	at net.minecraft.entity.EntityLiving.func_70619_bc(EntityLiving.java:582) [sw.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70636_d(EntityLivingBase.java:2029) [sv.class:?]
+	at net.minecraft.entity.EntityLiving.func_70636_d(EntityLiving.java:388) [sw.class:?]
+	at net.minecraft.entity.monster.EntityMob.func_70636_d(EntityMob.java:36) [yg.class:?]
+	at net.minecraft.entity.monster.EntityZombie.func_70636_d(EntityZombie.java:244) [yq.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70071_h_(EntityLivingBase.java:1865) [sv.class:?]
+	at net.minecraft.entity.EntityLiving.func_70071_h_(EntityLiving.java:213) [sw.class:?]
+	at net.minecraft.entity.monster.EntityMob.func_70071_h_(EntityMob.java:41) [yg.class:?]
+	at net.minecraft.entity.monster.EntityZombie.func_70071_h_(EntityZombie.java:335) [yq.class:?]
+	at net.minecraft.world.World.func_72866_a(World.java:2635) [ahb.class:?]
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:834) [mt.class:?]
+	at net.minecraft.world.World.func_72870_g(World.java:2588) [ahb.class:?]
+	at net.minecraft.world.World.func_72939_s(World.java:2400) [ahb.class:?]
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:665) [mt.class:?]
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:937) [MinecraftServer.class:?]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803) [MinecraftServer.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[14:19:08] [Server thread/WARN]: Detected invalid armor damage application:
+java.lang.Throwable
+	at ic2.core.item.armor.ItemArmorElectric.setDamage(ItemArmorElectric.java:154) [ItemArmorElectric.class:?]
+	at net.minecraft.item.ItemStack.func_77964_b(ItemStack.java:345) [add.class:?]
+	at net.minecraft.item.ItemStack.isDamaged(ItemStack.java:413) [add.class:?]
+	at net.minecraft.item.ItemStack.func_96631_a(ItemStack.java:363) [add.class:?]
+	at net.minecraft.item.ItemStack.func_77972_a(ItemStack.java:424) [add.class:?]
+	at net.minecraft.entity.player.InventoryPlayer.func_70449_g(InventoryPlayer.java:717) [yx.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70675_k(EntityPlayer.java:1189) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.damageEntity_CB(EntityLivingBase.java:1375) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.damageEntity_CB(EntityPlayer.java:1228) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70097_a(EntityLivingBase.java:900) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70097_a(EntityPlayer.java:1144) [yz.class:?]
+	at net.minecraft.entity.player.EntityPlayerMP.func_70097_a(EntityPlayerMP.java:646) [mw.class:?]
+	at net.minecraft.entity.monster.EntityMob.func_70652_k(EntityMob.java:143) [yg.class:?]
+	at net.minecraft.entity.monster.EntityZombie.func_70652_k(EntityZombie.java:340) [yq.class:?]
+	at net.minecraft.entity.ai.EntityAIAttackOnCollide.func_75246_d(EntityAIAttackOnCollide.java:162) [uq.class:?]
+	at net.minecraft.entity.ai.EntityAITasks.func_75774_a(SourceFile:103) [uj.class:?]
+	at net.minecraft.entity.EntityLiving.func_70619_bc(EntityLiving.java:582) [sw.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70636_d(EntityLivingBase.java:2029) [sv.class:?]
+	at net.minecraft.entity.EntityLiving.func_70636_d(EntityLiving.java:388) [sw.class:?]
+	at net.minecraft.entity.monster.EntityMob.func_70636_d(EntityMob.java:36) [yg.class:?]
+	at net.minecraft.entity.monster.EntityZombie.func_70636_d(EntityZombie.java:244) [yq.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70071_h_(EntityLivingBase.java:1865) [sv.class:?]
+	at net.minecraft.entity.EntityLiving.func_70071_h_(EntityLiving.java:213) [sw.class:?]
+	at net.minecraft.entity.monster.EntityMob.func_70071_h_(EntityMob.java:41) [yg.class:?]
+	at net.minecraft.entity.monster.EntityZombie.func_70071_h_(EntityZombie.java:335) [yq.class:?]
+	at net.minecraft.world.World.func_72866_a(World.java:2635) [ahb.class:?]
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:834) [mt.class:?]
+	at net.minecraft.world.World.func_72870_g(World.java:2588) [ahb.class:?]
+	at net.minecraft.world.World.func_72939_s(World.java:2400) [ahb.class:?]
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:665) [mt.class:?]
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:937) [MinecraftServer.class:?]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803) [MinecraftServer.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[14:19:47] [Server thread/INFO]: Haku__ has just earned the achievement [Creeper Chainsaw Massacre]
+[14:20:28] [Server thread/INFO]: sola issued server command: /home
+[14:21:35] [Server thread/INFO]: sola issued server command: /back
+[14:23:33] [Server thread/INFO]: [dingjibang: Given [Fence] * 1 to dingjibang]
+[14:23:55] [Server thread/INFO]: sola was shot by Skeleton
+[14:23:59] [Server thread/INFO]: sola issued server command: /back
+[14:29:20] [Server thread/INFO]: sola was slain by Zombie
+[14:29:23] [Server thread/INFO]: sola issued server command: /back
+[14:30:45] [User Authenticator #16/INFO]: UUID of player MoLoong is 2c950b64-dcf0-3eed-b9b0-1795f565208e
+[14:30:46] [Netty IO #0/INFO]: Client protocol version 2
+[14:30:46] [Netty IO #0/INFO]: Client attempting to join with 12 mods : uniskinmod@1.2-dev3,mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,IC2@2.2.810-experimental,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[14:30:46] [Netty IO #0/INFO]: Attempting connection with missing mods [] at CLIENT
+[14:30:46] [Server thread/INFO]: [Server thread] Server side modded connection established
+[14:30:46] [Server thread/INFO]: MoLoong[/127.0.0.1:53107] logged in with entity id 43996 at ([DIM7] -246.74665577262803, 65.0, 2525.690691697942)
+[14:30:46] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[14:30:46] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[14:30:46] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[14:30:46] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[14:30:46] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[14:30:46] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[14:30:46] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[14:30:46] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[14:30:46] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[14:30:46] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[14:30:46] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[14:30:46] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[14:30:46] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[14:30:46] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:328)
+[14:30:46] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[14:30:46] [Server thread/WARN]: 	at org.bukkit.plugin.TimedRegisteredListener.callEvent(TimedRegisteredListener.java:30)
+[14:30:46] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502)
+[14:30:46] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487)
+[14:30:46] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:351)
+[14:30:46] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.a(ServerConfigurationManager.java:217)
+[14:30:46] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:173)
+[14:30:46] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:448)
+[14:30:46] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[14:30:46] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[14:30:46] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[14:30:46] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[14:30:46] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[14:30:46] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[14:30:46] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[14:30:46] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[14:30:46] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[14:30:46] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[14:30:46] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[14:30:46] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[14:30:46] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244)
+[14:30:46] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[14:30:46] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973)
+[14:30:46] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422)
+[14:30:46] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803)
+[14:30:46] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663)
+[14:30:46] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[14:30:58] [Server thread/INFO]: MoLoong issued server command: /login 137946825
+[14:30:58] [Server thread/INFO]: [AuthMe] MoLoong logged in!
+[14:31:33] [Server thread/INFO]: Haku__ issued server command: /home home
+[14:31:33] [Server thread/INFO]: MoLoong issued server command: /home
+[14:31:37] [Server thread/WARN]: Detected invalid armor damage application:
+java.lang.Throwable
+	at ic2.core.item.armor.ItemArmorElectric.setDamage(ItemArmorElectric.java:154) [ItemArmorElectric.class:?]
+	at net.minecraft.item.ItemStack.func_77964_b(ItemStack.java:345) [add.class:?]
+	at net.minecraft.item.ItemStack.isDamaged(ItemStack.java:413) [add.class:?]
+	at net.minecraft.item.ItemStack.func_96631_a(ItemStack.java:363) [add.class:?]
+	at net.minecraft.item.ItemStack.func_77972_a(ItemStack.java:424) [add.class:?]
+	at net.minecraft.entity.player.InventoryPlayer.func_70449_g(InventoryPlayer.java:717) [yx.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70675_k(EntityPlayer.java:1189) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.damageEntity_CB(EntityLivingBase.java:1375) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.damageEntity_CB(EntityPlayer.java:1228) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70097_a(EntityLivingBase.java:900) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70097_a(EntityPlayer.java:1144) [yz.class:?]
+	at net.minecraft.entity.player.EntityPlayerMP.func_70097_a(EntityPlayerMP.java:646) [mw.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_71059_n(EntityPlayer.java:1387) [yz.class:?]
+	at net.minecraft.network.NetHandlerPlayServer.func_147340_a(NetHandlerPlayServer.java:1586) [nh.class:?]
+	at net.minecraft.network.play.client.C02PacketUseEntity.func_148833_a(SourceFile:55) [ja.class:?]
+	at net.minecraft.network.play.client.C02PacketUseEntity.func_148833_a(SourceFile:10) [ja.class:?]
+	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244) [ej.class:?]
+	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173) [nc.class:?]
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973) [MinecraftServer.class:?]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803) [MinecraftServer.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[14:31:37] [Server thread/WARN]: Detected invalid armor damage application:
+java.lang.Throwable
+	at ic2.core.item.armor.ItemArmorElectric.setDamage(ItemArmorElectric.java:154) [ItemArmorElectric.class:?]
+	at net.minecraft.item.ItemStack.func_77964_b(ItemStack.java:345) [add.class:?]
+	at net.minecraft.item.ItemStack.isDamaged(ItemStack.java:413) [add.class:?]
+	at net.minecraft.item.ItemStack.func_96631_a(ItemStack.java:363) [add.class:?]
+	at net.minecraft.item.ItemStack.func_77972_a(ItemStack.java:424) [add.class:?]
+	at net.minecraft.entity.player.InventoryPlayer.func_70449_g(InventoryPlayer.java:717) [yx.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70675_k(EntityPlayer.java:1189) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.damageEntity_CB(EntityLivingBase.java:1375) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.damageEntity_CB(EntityPlayer.java:1228) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70097_a(EntityLivingBase.java:900) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70097_a(EntityPlayer.java:1144) [yz.class:?]
+	at net.minecraft.entity.player.EntityPlayerMP.func_70097_a(EntityPlayerMP.java:646) [mw.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_71059_n(EntityPlayer.java:1387) [yz.class:?]
+	at net.minecraft.network.NetHandlerPlayServer.func_147340_a(NetHandlerPlayServer.java:1586) [nh.class:?]
+	at net.minecraft.network.play.client.C02PacketUseEntity.func_148833_a(SourceFile:55) [ja.class:?]
+	at net.minecraft.network.play.client.C02PacketUseEntity.func_148833_a(SourceFile:10) [ja.class:?]
+	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244) [ej.class:?]
+	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173) [nc.class:?]
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973) [MinecraftServer.class:?]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803) [MinecraftServer.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[14:31:37] [Server thread/WARN]: Detected invalid armor damage application:
+java.lang.Throwable
+	at ic2.core.item.armor.ItemArmorElectric.setDamage(ItemArmorElectric.java:154) [ItemArmorElectric.class:?]
+	at net.minecraft.item.ItemStack.func_77964_b(ItemStack.java:345) [add.class:?]
+	at net.minecraft.item.ItemStack.isDamaged(ItemStack.java:413) [add.class:?]
+	at net.minecraft.item.ItemStack.func_96631_a(ItemStack.java:363) [add.class:?]
+	at net.minecraft.item.ItemStack.func_77972_a(ItemStack.java:424) [add.class:?]
+	at net.minecraft.entity.player.InventoryPlayer.func_70449_g(InventoryPlayer.java:717) [yx.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70675_k(EntityPlayer.java:1189) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.damageEntity_CB(EntityLivingBase.java:1375) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.damageEntity_CB(EntityPlayer.java:1228) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70097_a(EntityLivingBase.java:900) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70097_a(EntityPlayer.java:1144) [yz.class:?]
+	at net.minecraft.entity.player.EntityPlayerMP.func_70097_a(EntityPlayerMP.java:646) [mw.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_71059_n(EntityPlayer.java:1387) [yz.class:?]
+	at net.minecraft.network.NetHandlerPlayServer.func_147340_a(NetHandlerPlayServer.java:1586) [nh.class:?]
+	at net.minecraft.network.play.client.C02PacketUseEntity.func_148833_a(SourceFile:55) [ja.class:?]
+	at net.minecraft.network.play.client.C02PacketUseEntity.func_148833_a(SourceFile:10) [ja.class:?]
+	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244) [ej.class:?]
+	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173) [nc.class:?]
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973) [MinecraftServer.class:?]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803) [MinecraftServer.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[14:31:37] [Server thread/WARN]: Detected invalid armor damage application:
+java.lang.Throwable
+	at ic2.core.item.armor.ItemArmorElectric.setDamage(ItemArmorElectric.java:154) [ItemArmorElectric.class:?]
+	at net.minecraft.item.ItemStack.func_77964_b(ItemStack.java:345) [add.class:?]
+	at net.minecraft.item.ItemStack.isDamaged(ItemStack.java:413) [add.class:?]
+	at net.minecraft.item.ItemStack.func_96631_a(ItemStack.java:363) [add.class:?]
+	at net.minecraft.item.ItemStack.func_77972_a(ItemStack.java:424) [add.class:?]
+	at net.minecraft.entity.player.InventoryPlayer.func_70449_g(InventoryPlayer.java:717) [yx.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70675_k(EntityPlayer.java:1189) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.damageEntity_CB(EntityLivingBase.java:1375) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.damageEntity_CB(EntityPlayer.java:1228) [yz.class:?]
+	at net.minecraft.entity.EntityLivingBase.func_70097_a(EntityLivingBase.java:900) [sv.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_70097_a(EntityPlayer.java:1144) [yz.class:?]
+	at net.minecraft.entity.player.EntityPlayerMP.func_70097_a(EntityPlayerMP.java:646) [mw.class:?]
+	at net.minecraft.entity.player.EntityPlayer.func_71059_n(EntityPlayer.java:1387) [yz.class:?]
+	at net.minecraft.network.NetHandlerPlayServer.func_147340_a(NetHandlerPlayServer.java:1586) [nh.class:?]
+	at net.minecraft.network.play.client.C02PacketUseEntity.func_148833_a(SourceFile:55) [ja.class:?]
+	at net.minecraft.network.play.client.C02PacketUseEntity.func_148833_a(SourceFile:10) [ja.class:?]
+	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244) [ej.class:?]
+	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173) [nc.class:?]
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973) [MinecraftServer.class:?]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422) [lt.class:?]
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803) [MinecraftServer.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[14:33:29] [Server thread/INFO]: MoLoong issued server command: /back
+[14:33:32] [Server thread/ERROR]: Encountered an unexpected exception
+java.lang.NoSuchMethodError: net.minecraft.world.WorldProvider.func_76571_f()F
+	at twilightforest.item.ItemTFMagicBeans.func_77648_a(ItemTFMagicBeans.java:27) ~[ItemTFMagicBeans.class:?]
+	at net.minecraft.item.ItemStack.func_77943_a(ItemStack.java:170) ~[add.class:?]
+	at net.minecraft.server.management.ItemInWorldManager.func_73078_a(ItemInWorldManager.java:489) ~[mx.class:?]
+	at net.minecraft.network.NetHandlerPlayServer.func_147346_a(NetHandlerPlayServer.java:872) ~[nh.class:?]
+	at net.minecraft.network.play.client.C08PacketPlayerBlockPlacement.func_148833_a(SourceFile:60) ~[jo.class:?]
+	at net.minecraft.network.play.client.C08PacketPlayerBlockPlacement.func_148833_a(SourceFile:9) ~[jo.class:?]
+	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:244) ~[ej.class:?]
+	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173) ~[nc.class:?]
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:973) ~[MinecraftServer.class:?]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:422) ~[lt.class:?]
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:803) ~[MinecraftServer.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:663) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[14:33:32] [Server thread/ERROR]: This crash report has been saved to: I:\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\.\crash-reports\crash-2016-01-17_14.33.32-server.txt
+[14:33:32] [Server thread/INFO]: Stopping server
+[14:33:32] [Server thread/INFO]: [AuthMe] Disabling AuthMe v3.5-SNAPSHOT
+[14:33:32] [Server thread/INFO]: [EssentialsAntiBuild] Disabling EssentialsAntiBuild v2.13.1
+[14:33:32] [Server thread/INFO]: [EssentialsSpawn] Disabling EssentialsSpawn v2.13.1
+[14:33:32] [Server thread/INFO]: [EssentialsProtect] Disabling EssentialsProtect v2.13.1
+[14:33:32] [Server thread/INFO]: [EssentialsChat] Disabling EssentialsChat v2.13.1
+[14:33:32] [Server thread/INFO]: [Essentials] Disabling Essentials v2.13.1
+[14:33:32] [Server thread/INFO]: [WorldEdit] Disabling WorldEdit v6.0;3342-78f975b9
+[14:33:32] [Server thread/INFO]: [Lockette] Disabling Lockette v1.7.10
+[14:33:32] [Server thread/INFO]: Lockette is being disabled...  ;.;
+[14:33:32] [Server thread/INFO]: [Lockette] Closing all automatic doors.
+[14:33:32] [Server thread/INFO]: Saving players
+[14:33:32] [Server thread/INFO]: dingjibang lost connection: Server closed
+[14:33:32] [Server thread/INFO]: dingjibang left the game.
+[14:33:32] [Server thread/INFO]: sola lost connection: Server closed
+[14:33:32] [Server thread/INFO]: sola left the game.
+[14:33:32] [Server thread/INFO]: Haku__ lost connection: Server closed
+[14:33:32] [Server thread/INFO]: Haku__ left the game.
+[14:33:32] [Server thread/INFO]: MoLoong lost connection: Server closed
+[14:33:32] [Server thread/INFO]: MoLoong left the game.
+[14:33:32] [Server thread/INFO]: Saving worlds
+[14:33:32] [Server thread/INFO]: Saving chunks for level 'skarn'/Overworld
+[14:33:33] [Server thread/INFO]: Saving chunks for level 'DIM1'/The End
+[14:33:33] [Server thread/INFO]: Saving chunks for level 'DIM-1'/Nether
+[14:33:33] [Server thread/INFO]: Saving chunks for level 'DIM7'/Twilight Forest
+[14:33:33] [Server thread/INFO]: Unloading dimension 0
+[14:33:33] [Server thread/INFO]: Unloading dimension -1
+[14:33:33] [Server thread/INFO]: Unloading dimension 1
+[14:33:33] [Server thread/INFO]: Unloading dimension 7
+[14:33:33] [Server thread/INFO]: Applying holder lookups
+[14:33:33] [Server thread/INFO]: Holder lookups applied
+[14:33:33] [Server thread/INFO]: The state engine was in incorrect state SERVER_STOPPING and forced into state SERVER_STOPPED. Errors may have been discarded.

@@ -1,0 +1,417 @@
+[14:11:04] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[14:11:04] [main/INFO]: Using primary tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[14:11:04] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLServerTweaker
+[14:11:04] [main/INFO]: Forge Mod Loader version 7.10.25.1206 for Minecraft 1.7.10 loading
+[14:11:05] [main/INFO]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.7.0_67, running on Windows 8.1:amd64:6.3, installed at C:\Program Files\Java\jre7
+[14:11:07] [main/WARN]: The following coremods do not have a @MCVersion annotation. They may cause problems if this is not the correct version of Minecraft for them.
+[14:11:07] [main/WARN]: Missing @MCVersion: codechicken.core.launch.CodeChickenCorePlugin  lain.mods.inputfix.InputFix  codechicken.nei.asm.NEICorePlugin  
+[14:11:07] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[14:11:07] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[14:11:07] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[14:11:07] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[14:11:07] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[14:11:07] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[14:11:07] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[14:11:07] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[14:11:08] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[14:11:08] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[14:11:08] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[14:11:08] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.TerminalTweaker
+[14:11:08] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.TerminalTweaker
+[14:11:08] [main/INFO]: Launching wrapped minecraft {net.minecraft.server.MinecraftServer}
+[14:11:09] [Server thread/INFO]: Starting minecraft server version 1.7.10
+[14:11:10] [Server thread/INFO]: Attempting early MinecraftForge initialization
+[14:11:10] [Server thread/INFO]: MinecraftForge v10.13.0.1206 Initialized
+[14:11:10] [Server thread/INFO]: Replaced 182 ore recipies
+[14:11:10] [Server thread/INFO]: Completed early MinecraftForge initialization
+[14:11:10] [Server thread/INFO]: Searching C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods for mods
+[14:11:10] [Server thread/INFO]: Also searching C:\Users\Administrator\Desktop\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods\1.7.10 for mods
+[14:11:10] [Server thread/INFO]: Forge Mod Loader has identified 8 mods to load
+[14:11:10] [Server thread/INFO]: FML has found a non-mod file CodeChickenLib-1.7.10-1.1.1.99-universal.jar in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible.
+[14:11:10] [Server thread/INFO]: Processing ObjectHolder annotations
+[14:11:10] [Server thread/INFO]: Found 341 ObjectHolder annotations
+[14:11:10] [Server thread/INFO]: Configured a dormant chunk cache size of 0
+[14:11:11] [Server thread/INFO]: Applying holder lookups
+[14:11:11] [Server thread/INFO]: Holder lookups applied
+[14:11:11] [Server thread/INFO]: Loading properties
+[14:11:11] [Server thread/INFO]: Default game type: SURVIVAL
+[14:11:11] [Server thread/INFO]: This server is running Cauldron-MCPC-Plus version git-Cauldron-MCPC-Plus-1.7.10-1.1206.01.170 (MC: 1.7.10) (Implementing API version 1.7.10-R0.1-SNAPSHOT)
+[14:11:11] [Server thread/WARN]: =============================================================
+[14:11:11] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[14:11:11] [Server thread/WARN]: Offendor: org/spigotmc/RestartCommand.restart()V
+[14:11:11] [Server thread/WARN]: =============================================================
+[14:11:11] [Server thread/INFO]: Using 4 threads for Netty based IO
+[14:11:11] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[14:11:11] [Server thread/INFO]: Generating keypair
+[14:11:11] [Server thread/INFO]: Starting Minecraft server on *:25563
+[14:11:12] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[14:11:12] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[14:11:12] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[14:11:12] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[14:11:12] [Server thread/INFO]: WorldEdit for Forge (version 6.1.1-SNAPSHOT) is loaded
+[14:11:12] [Server thread/INFO]: Forge Mod Loader has successfully loaded 8 mods
+[14:11:12] [Server thread/INFO]: Preparing level "skarn"
+[14:11:12] [Server thread/INFO]: Registered command debug with permission node vanilla.command.debug
+[14:11:12] [Server thread/INFO]: Registered command spreadplayers with permission node vanilla.command.spreadplayers
+[14:11:12] [Server thread/INFO]: Registered command playsound with permission node vanilla.command.playsound
+[14:11:12] [Server thread/INFO]: Registered command scoreboard with permission node vanilla.command.scoreboard
+[14:11:12] [Server thread/INFO]: Registered command achievement with permission node vanilla.command.achievement
+[14:11:12] [Server thread/INFO]: Registered command summon with permission node vanilla.command.summon
+[14:11:12] [Server thread/INFO]: Registered command setblock with permission node vanilla.command.setblock
+[14:11:12] [Server thread/INFO]: Registered command testforblock with permission node vanilla.command.testforblock
+[14:11:12] [Server thread/INFO]: Registered command tellraw with permission node vanilla.command.tellraw
+[14:11:12] [Server thread/INFO]: Registered command netstat with permission node vanilla.command.netstat
+[14:11:12] [Server thread/INFO]: Injecting existing block and item data into this server instance
+[14:11:12] [Server thread/INFO]: Applying holder lookups
+[14:11:12] [Server thread/INFO]: Holder lookups applied
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFLOG with ID 165.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFROOTS with ID 166.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFLEAVES with ID 167.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFFIREFLY with ID 168.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFCICADA with ID 169.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFPORTAL with ID 176.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAZESTONE with ID 177.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFHEDGE with ID 178.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFBOSSSPAWNER with ID 179.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFFIREFLYJAR with ID 180.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFPLANT with ID 181.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFUNCRAFTINGTABLE with ID 182.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFFIREJET with ID 183.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFNAGASTONE with ID 184.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFSAPLING with ID 185.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMOONWORM with ID 186.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAGICLOG with ID 187.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAGICLEAVES with ID 188.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAGICLOGSPECIAL with ID 189.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTOWERSTONE with ID 190.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTOWERDEVICE with ID 191.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTOWERTRANSLUCENT with ID 192.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTROPHY with ID 193.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFSHIELD with ID 194.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTROPHYPEDESTAL with ID 195.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFAURORABRICK with ID 196.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFUNDERBRICK with ID 197.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTHORNS with ID 198.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFBURNTTHORNS with ID 199.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTHORNROSE with ID 200.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFLEAVES3 with ID 201.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFDEADROCK with ID 202.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_DARKLEAVES with ID 203.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_AURORAPILLAR with ID 204.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_AURORASLAB with ID 205.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_AURORADOUBLESLAB with ID 206.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TROLLSTEINN with ID 207.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_WISPYCLOUD with ID 208.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_FLUFFYCLOUD with ID 209.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTCOBBLE with ID 210.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTLOG with ID 211.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTLEAVES with ID 212.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTOBSIDIAN with ID 213.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_UBEROUSSOIL with ID 214.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_HUGESTALK with ID 215.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_HUGEGLOOMBLOCK with ID 216.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TROLLVIDR with ID 217.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_UNRIPETROLLBER with ID 218.
+[14:11:12] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TROLLBER with ID 219.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_NAGASCALE with ID 4096.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PLATENAGA with ID 4097.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_LEGSNAGA with ID 4098.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SCEPTERTWILIGHT with ID 4099.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SCEPTERLIFEDRAIN with ID 4100.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SCEPTERZOMBIE with ID 4101.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_OREMETER with ID 4102.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAGICMAP with ID 4103.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEMAP with ID 4104.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_OREMAP with ID 4105.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TFFEATHER with ID 4106.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAGICMAPFOCUS with ID 4107.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEMAPFOCUS with ID 4108.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_LIVEROOT with ID 4109.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODRAW with ID 4110.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODINGOT with ID 4111.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODHELM with ID 4112.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODPLATE with ID 4113.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODLEGS with ID 4114.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODBOOTS with ID 4115.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODSWORD with ID 4116.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODSHOVEL with ID 4117.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODPICK with ID 4118.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODAXE with ID 4119.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODHOE with ID 4120.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TORCHBERRIES with ID 4121.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_VENISONRAW with ID 4122.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_VENISONCOOKED with ID 4123.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_HYDRACHOP with ID 4124.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYBLOOD with ID 4125.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TROPHY with ID 4126.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYINGOT with ID 4127.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYHELM with ID 4128.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYPLATE with ID 4129.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYLEGS with ID 4130.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYBOOTS with ID 4131.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYSWORD with ID 4132.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYPICK with ID 4133.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFINGOT with ID 4134.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFHELM with ID 4135.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFPLATE with ID 4136.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFLEGS with ID 4137.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFBOOTS with ID 4138.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFSWORD with ID 4139.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFSHOVEL with ID 4140.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFPICK with ID 4141.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFAXE with ID 4142.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFHOE with ID 4143.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MINOTAURAXE with ID 4144.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEBREAKERPICK with ID 4145.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TRANSFORMPOWDER with ID 4146.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MEEFRAW with ID 4147.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MEEFSTEAK with ID 4148.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MEEFSTROGANOFF with ID 4149.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEWAFER with ID 4150.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EMPTYMAGICMAP with ID 4151.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EMPTYMAZEMAP with ID 4152.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EMPTYOREMAP with ID 4153.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_OREMAGNET with ID 4154.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CRUMBLEHORN with ID 4155.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PEACOCKFAN with ID 4156.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MOONWORMQUEEN with ID 4157.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFLIFE1 with ID 4158.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFLIFE2 with ID 4159.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFKEEPING1 with ID 4160.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFKEEPING2 with ID 4161.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFKEEPING3 with ID 4162.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TOWERKEY with ID 4163.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_BORERESSENCE with ID 4164.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CARMINITE with ID 4165.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EXPERIMENT115 with ID 4166.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARMORSHARDS with ID 4167.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTMETAL with ID 4168.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SHARDCLUSTER with ID 4169.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYHELM with ID 4170.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYPLATE with ID 4171.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYLEGS with ID 4172.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYBOOTS with ID 4173.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYSWORD with ID 4174.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYPICK with ID 4175.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYAXE with ID 4176.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PHANTOMHELM with ID 4177.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PHANTOMPLATE with ID 4178.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_LAMPOFCINDERS with ID 4179.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYTEARS with ID 4180.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ALPHAFUR with ID 4181.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETIHELM with ID 4182.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETIPLATE with ID 4183.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETILEGS with ID 4184.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETIBOOTS with ID 4185.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ICEBOMB with ID 4186.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICFUR with ID 4187.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICHELM with ID 4188.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICPLATE with ID 4189.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICLEGS with ID 4190.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICBOOTS with ID 4191.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAGICBEANS with ID 4192.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_GIANTPICK with ID 4193.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_GIANTSWORD with ID 4194.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TRIPLEBOW with ID 4195.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SEEKERBOW with ID 4196.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ICEBOW with ID 4197.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ENDERBOW with ID 4198.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ICESWORD with ID 4199.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_GLASSSWORD with ID 4200.
+[14:11:12] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TFSPAWNEGG with ID 4201.
+[14:11:12] [Server thread/INFO]: Mapping loaded 11 packages, 7841 classes, 26711 fields, 53884 methods, flags 1ffa
+[14:11:13] [Server thread/INFO]: Loaded inheritance map of 895 classes
+[14:11:13] [Server thread/WARN]: =============================================================
+[14:11:13] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[14:11:13] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[14:11:13] [Server thread/WARN]: =============================================================
+[14:11:13] [Server thread/WARN]: =============================================================
+[14:11:13] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[14:11:13] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[14:11:13] [Server thread/WARN]: =============================================================
+[14:11:13] [Server thread/WARN]: =============================================================
+[14:11:13] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[14:11:13] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[14:11:13] [Server thread/WARN]: =============================================================
+[14:11:13] [Server thread/WARN]: =============================================================
+[14:11:13] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[14:11:13] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[14:11:13] [Server thread/WARN]: =============================================================
+[14:11:13] [Server thread/INFO]: [Essentials] Loading Essentials v2.13.1
+[14:11:13] [Server thread/INFO]: [EssentialsChat] Loading EssentialsChat v2.13.1
+[14:11:13] [Server thread/INFO]: [EssentialsProtect] Loading EssentialsProtect v2.13.1
+[14:11:13] [Server thread/INFO]: [EssentialsSpawn] Loading EssentialsSpawn v2.13.1
+[14:11:13] [Server thread/INFO]: [EssentialsAntiBuild] Loading EssentialsAntiBuild v2.13.1
+[14:11:13] [Server thread/INFO]: Adding biome mapping 40 Twilight Lake at BiomeBase[40]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 41 Twilight Forest at BiomeBase[41]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 42 Dense Twilight Forest at BiomeBase[42]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 43 Highlands at BiomeBase[43]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 44 Mushroom Forest at BiomeBase[44]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 45 Twilight Swamp at BiomeBase[45]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 46 Twilight Stream at BiomeBase[46]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 47 Snowy Forest at BiomeBase[47]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 48 Twilight Glacier at BiomeBase[48]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 49 Twilight Clearing at BiomeBase[49]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 50 Oak Savanna at BiomeBase[50]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 51 Lighted Forest at BiomeBase[51]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 52 Deep Mushroom Forest at BiomeBase[52]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 53 Dark Forest Center at BiomeBase[53]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 54 Highlands Center at BiomeBase[54]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 55 Dark Forest at BiomeBase[55]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 56 Enchanted Forest at BiomeBase[56]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 57 Fire Swamp at BiomeBase[57]
+[14:11:13] [Server thread/INFO]: Adding biome mapping 58 Thornlands at BiomeBase[58]
+[14:11:13] [Server thread/INFO]: Loading dimension 0 (skarn) (net.minecraft.server.dedicated.DedicatedServer@8bd9640)
+[14:11:13] [Server thread/INFO]: Loading dimension 7 (DIM7) (net.minecraft.server.dedicated.DedicatedServer@8bd9640)
+[14:11:13] [Server thread/INFO]: Loading dimension 1 (DIM1) (net.minecraft.server.dedicated.DedicatedServer@8bd9640)
+[14:11:13] [Server thread/INFO]: Loading dimension -1 (DIM-1) (net.minecraft.server.dedicated.DedicatedServer@8bd9640)
+[14:11:13] [Server thread/INFO]: Preparing start region for level 0
+[14:11:14] [Server thread/INFO]: [Essentials] Enabling Essentials v2.13.1
+[14:11:14] [Server thread/INFO]: Bukkit版本已改变
+[14:11:14] [Server thread/INFO]: git-Cauldron-MCPC-Plus-1.7.10-1.1206.01.170 (MC: 1.7.10)
+[14:11:14] [Server thread/INFO]: 1.7.10-R0.1-SNAPSHOT
+[14:11:14] [Server thread/INFO]: Using locale zh
+[14:11:14] [Server thread/INFO]: Using locale zh
+[14:11:14] [Server thread/INFO]: Essentials: Using config file enhanced permissions.
+[14:11:14] [Server thread/INFO]: Permissions listed in as player-commands will be given to all users.
+[14:11:14] [Server thread/INFO]: [EssentialsChat] Enabling EssentialsChat v2.13.1
+[14:11:14] [Server thread/INFO]: [EssentialsProtect] Enabling EssentialsProtect v2.13.1
+[14:11:14] [Server thread/INFO]: [EssentialsSpawn] Enabling EssentialsSpawn v2.13.1
+[14:11:14] [Server thread/INFO]: [EssentialsAntiBuild] Enabling EssentialsAntiBuild v2.13.1
+[14:11:14] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[14:11:14] [Server thread/INFO]: Done (2.390s)! For help, type "help" or "?"
+[14:11:14] [Server thread/INFO]: Registered command forge with permission node net.minecraftforge.server.command.ForgeCommand
+[14:11:14] [Server thread/INFO]: Registered command tffeature with permission node twilightforest.CommandTFFeature
+[14:11:14] [Server thread/INFO]: Registered command tree with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command jumpto with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command schematic with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /outset with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command delchunks with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /shift with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /walls with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /hpyramid with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command superpickaxe with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command butcher with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command toggleeditwand with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /fixlava with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command tool with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command pumpkins with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /line with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /help with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command .s with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command snapshot with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /cyl with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /wand with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /pos1 with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command range with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command thru with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command clearclipboard with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /copy with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /fixwater with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command ceil with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /hcyl with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command / with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command info with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /toggleplace with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /hpos2 with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /replace with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command biomelist with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /clearhistory with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /gmask with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command restore with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /load with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /curve with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command remove with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /fillr with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command repl with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /faces with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command cs with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /paste with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command deltree with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /center with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /replacenear with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /redo with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /undo with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /hpos1 with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /hollow with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /hsphere with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /naturalize with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /overlay with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /ex with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /smooth with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /generate with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /snow with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command mask with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command unstuck with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /fast with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /removebelow with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /save with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command lrbuild with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command biomeinfo with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /move with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command listchunks with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command descend with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /fill with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command size with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /cut with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /count with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /rotate with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command ascend with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command floodfill with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /removeabove with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /generatebiome with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /regen with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /expand with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command none with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /size with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /removenear with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /flip with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /drain with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /setbiome with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /searchitem with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command brush with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /pos2 with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command farwand with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /distr with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /set with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /inset with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /sphere with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command up with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /stack with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command mat with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command forestgen with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /thaw with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /forest with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /pyramid with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /deform with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /limit with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command cycler with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /flora with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command worldedit with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /green with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /chunk with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command chunkinfo with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /calc with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /contract with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:14] [Server thread/INFO]: Registered command /sel with permission node com.sk89q.worldedit.forge.CommandWrapper
+[14:11:18] [User Authenticator #1/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[14:11:18] [Netty IO #3/INFO]: Client protocol version 1
+[14:11:18] [Netty IO #3/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[14:11:18] [Netty IO #3/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[14:11:18] [Server thread/INFO]: [Server thread] Server side modded connection established
+[14:11:18] [Server thread/INFO]: dingjibang[/127.0.0.1:49339] logged in with entity id 339 at ([skarn] -214.4454814732291, 62.05999999821186, 315.34161756084717)
+[14:11:28] [Server thread/INFO]: [dingjibang: Given [Ice Sword] * 1 to dingjibang]
+[14:12:20] [Server thread/INFO]: [dingjibang: Given [Yeti Horned Helm] * 1 to dingjibang]
+[14:12:34] [Server thread/INFO]: [dingjibang: Given [Carminite Reactor Debris] * 1 to dingjibang]
+[14:13:00] [Server thread/INFO]: [dingjibang: Given [Naga Spawner] * 1 to dingjibang]
+[14:14:19] [Server thread/INFO]: [dingjibang: Given [Tri-bow] * 1 to dingjibang]
+[14:14:49] [Server thread/INFO]: [dingjibang: Given [Arrow] * 64 to dingjibang]
+[14:16:00] [Server thread/INFO]: [dingjibang: Given [Knight Phantoms Spawner] * 64 to dingjibang]
+[14:19:22] [Server thread/INFO]: [dingjibang: Given [Fiery Sword] * 1 to dingjibang]
+[14:22:34] [Server thread/INFO]: [dingjibang: Given [Spawn] * 64 to dingjibang]
+[14:23:37] [Server thread/INFO]: dingjibang was slain by Giant Miner
+[14:27:09] [Server thread/INFO]: dingjibang was slain by Zombie
+[14:28:56] [Server thread/INFO]: dingjibang was shot by Skeleton
+[14:29:00] [Server thread/INFO]: dingjibang issued server command: /back
+[14:38:21] [Server thread/INFO]: dingjibang lost connection: Internal Exception: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+[14:38:21] [Server thread/INFO]: dingjibang left the game.

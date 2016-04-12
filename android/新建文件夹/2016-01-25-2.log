@@ -1,0 +1,1327 @@
+[21:12:48] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[21:12:48] [main/INFO]: Using primary tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[21:12:48] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLServerTweaker
+[21:12:48] [main/INFO]: Forge Mod Loader version 7.99.4.1614 for Minecraft 1.7.10 loading
+[21:12:48] [main/INFO]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.7.0_67, running on Windows 8.1:amd64:6.3, installed at C:\Program Files\Java\jdk1.7.0_67\jre
+[21:12:48] [main/INFO]: [pw.prok.imagine.ImagineLoadingPlugin:<clinit>:26]: Loading plugin initialized!
+[21:12:48] [main/ERROR]: The coremod ruby.bamboo.asm.CorePlugin is requesting minecraft version 1.7.2 and minecraft is 1.7.10. It will be ignored.
+[21:12:51] [main/WARN]: The following coremods do not have a @MCVersion annotation. They may cause problems if this is not the correct version of Minecraft for them.
+[21:12:51] [main/WARN]: Missing @MCVersion: codechicken.core.launch.CodeChickenCorePlugin  lain.mods.inputfix.InputFix  invtweaks.forge.asm.FMLPlugin  codechicken.nei.asm.NEICorePlugin  thaumcraft.codechicken.core.launch.DepLoader  
+[21:12:51] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[21:12:51] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[21:12:51] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[21:12:51] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[21:12:51] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[21:12:52] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[21:12:52] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[21:12:52] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[21:12:52] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[21:12:52] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[21:12:52] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[21:12:52] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[21:12:52] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[21:12:52] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[21:12:52] [main/INFO]: Injecting Data ...
+[21:12:52] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[21:12:53] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[21:12:53] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.TerminalTweaker
+[21:12:53] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.TerminalTweaker
+[21:12:53] [main/INFO]: Launching wrapped minecraft {net.minecraft.server.MinecraftServer}
+[21:12:56] [Server thread/INFO]: Starting minecraft server version 1.7.10
+[21:12:56] [Server thread/INFO]: Attempting early MinecraftForge initialization
+[21:12:56] [Server thread/INFO]: MinecraftForge v10.13.4.1614 Initialized
+[21:12:56] [Server thread/INFO]: Replaced 183 ore recipies
+[21:12:56] [Server thread/INFO]: Completed early MinecraftForge initialization
+[21:12:56] [Server thread/INFO]: Found 0 mods from the command line. Injecting into mod discoverer
+[21:12:56] [Server thread/INFO]: Searching I:\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods for mods
+[21:12:56] [Server thread/INFO]: Also searching I:\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods\1.7.10 for mods
+[21:12:57] [Server thread/INFO]: Forge Mod Loader has identified 21 mods to load
+[21:12:57] [Server thread/INFO]: FML has found a non-mod file CodeChickenLib-1.7.10-1.1.1.99-universal.jar in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible.
+[21:12:57] [Server thread/INFO]: Attempting connection with missing mods [mcp, FML, Forge, kimagine, CodeChickenCore, InputFix, NotEnoughItems, uniskinmod, mod_ThreadedLighting, aether, BambooMod, craftguide, IronChest, gilded-games-util, InfernalMobs, inventorytweaks, cfm, flammpfeil.slashblade, Thaumcraft, twintails, Baubles] at CLIENT
+[21:12:57] [Server thread/INFO]: Attempting connection with missing mods [mcp, FML, Forge, kimagine, CodeChickenCore, InputFix, NotEnoughItems, uniskinmod, mod_ThreadedLighting, aether, BambooMod, craftguide, IronChest, gilded-games-util, InfernalMobs, inventorytweaks, cfm, flammpfeil.slashblade, Thaumcraft, twintails, Baubles] at SERVER
+[21:12:58] [Server thread/INFO]: Processing ObjectHolder annotations
+[21:12:58] [Server thread/INFO]: Found 341 ObjectHolder annotations
+[21:12:58] [Server thread/INFO]: Identifying ItemStackHolder annotations
+[21:12:58] [Server thread/INFO]: Found 0 ItemStackHolder annotations
+[21:12:58] [Server thread/INFO]: Configured a dormant chunk cache size of 0
+[21:13:20] [Server thread/WARN]: java.net.ConnectException: Connection timed out: connect
+[21:13:20] [Server thread/WARN]: 	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+[21:13:20] [Server thread/WARN]: 	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+[21:13:20] [Server thread/WARN]: 	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+[21:13:20] [Server thread/WARN]: 	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+[21:13:20] [Server thread/WARN]: 	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+[21:13:20] [Server thread/WARN]: 	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+[21:13:20] [Server thread/WARN]: 	at java.net.Socket.connect(Socket.java:579)
+[21:13:20] [Server thread/WARN]: 	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:618)
+[21:13:20] [Server thread/WARN]: 	at sun.security.ssl.BaseSSLSocketImpl.connect(BaseSSLSocketImpl.java:160)
+[21:13:20] [Server thread/WARN]: 	at sun.net.NetworkClient.doConnect(NetworkClient.java:180)
+[21:13:20] [Server thread/WARN]: 	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432)
+[21:13:20] [Server thread/WARN]: 	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527)
+[21:13:20] [Server thread/WARN]: 	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:275)
+[21:13:20] [Server thread/WARN]: 	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:371)
+[21:13:20] [Server thread/WARN]: 	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191)
+[21:13:20] [Server thread/WARN]: 	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:932)
+[21:13:20] [Server thread/WARN]: 	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177)
+[21:13:20] [Server thread/WARN]: 	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1300)
+[21:13:20] [Server thread/WARN]: 	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:254)
+[21:13:20] [Server thread/WARN]: 	at java.net.URL.openStream(URL.java:1037)
+[21:13:20] [Server thread/WARN]: 	at ruby.bamboo.UpdateNotify.run(UpdateNotify.java:43)
+[21:13:20] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[21:13:20] [Server thread/WARN]: 	at ruby.bamboo.BambooCore.preLoad(BambooCore.java:58)
+[21:13:20] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[21:13:20] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[21:13:20] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[21:13:20] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[21:13:20] [Server thread/WARN]: 	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:532)
+[21:13:20] [Server thread/WARN]: 	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+[21:13:20] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[21:13:20] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[21:13:20] [Server thread/WARN]: 	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)
+[21:13:20] [Server thread/WARN]: 	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)
+[21:13:20] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)
+[21:13:20] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)
+[21:13:20] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.post(EventBus.java:275)
+[21:13:20] [Server thread/WARN]: 	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:212)
+[21:13:20] [Server thread/WARN]: 	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:190)
+[21:13:20] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[21:13:20] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[21:13:20] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[21:13:20] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[21:13:20] [Server thread/WARN]: 	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)
+[21:13:20] [Server thread/WARN]: 	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)
+[21:13:20] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)
+[21:13:20] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)
+[21:13:20] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.post(EventBus.java:275)
+[21:13:20] [Server thread/WARN]: 	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:119)
+[21:13:20] [Server thread/WARN]: 	at cpw.mods.fml.common.Loader.preinitializeMods(Loader.java:556)
+[21:13:20] [Server thread/WARN]: 	at cpw.mods.fml.server.FMLServerHandler.beginServerLoading(FMLServerHandler.java:88)
+[21:13:20] [Server thread/WARN]: 	at cpw.mods.fml.common.FMLCommonHandler.onServerStart(FMLCommonHandler.java:319)
+[21:13:20] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:176)
+[21:13:20] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:631)
+[21:13:20] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[21:13:21] [Server thread/INFO]: Applying holder lookups
+[21:13:21] [Server thread/INFO]: Holder lookups applied
+[21:13:21] [Server thread/INFO]: Injecting itemstacks
+[21:13:21] [Server thread/INFO]: Itemstack injection complete
+[21:13:21] [Server thread/INFO]: Loading properties
+[21:13:21] [Server thread/INFO]: Default game type: SURVIVAL
+[21:13:21] [Server thread/INFO]: This server is running KCauldron version 1.7.10-1614.175 (MC: 1.7.10) (Implementing API version 1.7.10-R0.1-SNAPSHOT)
+[21:13:22] [Server thread/INFO]: Using 8 threads for Netty based IO
+[21:13:22] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[21:13:22] [Server thread/INFO]: Generating keypair
+[21:13:22] [Server thread/INFO]: Starting Minecraft server on *:25563
+[21:13:22] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[21:13:22] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[21:13:22] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[21:13:22] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[21:13:22] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.Container
+[21:13:22] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerEnchantment
+[21:13:22] [Server thread/INFO]: InfernalMobsCore load() completed! Modifiers ready: 25
+[21:13:22] [Server thread/INFO]: Injecting itemstacks
+[21:13:22] [Server thread/INFO]: Itemstack injection complete
+[21:13:22] [Server thread/INFO]: Found potion array with a size of 32
+[21:13:22] [Server thread/INFO]: Extending Potion.potionTypes array to 40
+[21:13:22] [Server thread/INFO]: Initializing PotionFluxTaint with id 31
+[21:13:22] [Server thread/INFO]: Initializing PotionVisExhaust with id 32
+[21:13:22] [Server thread/INFO]: Initializing PotionInfectiousVisExhaust with id 33
+[21:13:22] [Server thread/INFO]: Initializing PotionUnnaturalHunger with id 34
+[21:13:22] [Server thread/INFO]: Initializing PotionWarpWard with id 35
+[21:13:22] [Server thread/INFO]: Initializing PotionDeathGaze with id 36
+[21:13:22] [Server thread/INFO]: Initializing PotionBlurredVision with id 37
+[21:13:22] [Server thread/INFO]: Initializing PotionSunScorned with id 38
+[21:13:22] [Server thread/INFO]: Initializing PotionThaumarhia with id 39
+[21:13:22] [Server thread/INFO]: Adding entities to MFR safari net blacklist.
+[21:13:23] [Server thread/WARN]: Whitelisting [Zombie] to spawn champion mobs at level [0]
+[21:13:23] [Server thread/WARN]: Whitelisting [Spider] to spawn champion mobs at level [0]
+[21:13:23] [Server thread/WARN]: Whitelisting [Blaze] to spawn champion mobs at level [0]
+[21:13:23] [Server thread/WARN]: Whitelisting [Enderman] to spawn champion mobs at level [0]
+[21:13:23] [Server thread/WARN]: Whitelisting [Skeleton] to spawn champion mobs at level [0]
+[21:13:23] [Server thread/WARN]: Whitelisting [Witch] to spawn champion mobs at level [1]
+[21:13:23] [Server thread/WARN]: Whitelisting [Thaumcraft.EldritchCrab] to spawn champion mobs at level [0]
+[21:13:23] [Server thread/WARN]: Whitelisting [Thaumcraft.Taintacle] to spawn champion mobs at level [2]
+[21:13:23] [Server thread/WARN]: Whitelisting [Thaumcraft.Wisp] to spawn champion mobs at level [1]
+[21:13:23] [Server thread/WARN]: Whitelisting [Thaumcraft.InhabitedZombie] to spawn champion mobs at level [3]
+[21:13:23] [TwinTails version check Thread/INFO]: Looking for the latest version
+[21:13:23] [Server thread/INFO]:   Unknown recipe class! mods.flammpfeil.slashblade.item.crafting.RecipeBladeSoulUpgrade Modder please refer to net.minecraftforge.oredict.RecipeSorter
+[21:13:23] [Server thread/INFO]:   Unknown recipe class! net.aetherteam.aether.recipes.VanillaShapedOreRecipe Modder please refer to net.minecraftforge.oredict.RecipeSorter
+[21:13:23] [Server thread/INFO]: Forge Mod Loader has successfully loaded 21 mods
+[21:13:23] [Server thread/INFO]: Preparing level "skarn"
+[21:13:23] [Server thread/INFO]: Registered command debug with permission node vanilla.command.debug
+[21:13:23] [Server thread/INFO]: Registered command spreadplayers with permission node vanilla.command.spreadplayers
+[21:13:23] [Server thread/INFO]: Registered command playsound with permission node vanilla.command.playsound
+[21:13:23] [Server thread/INFO]: Registered command scoreboard with permission node vanilla.command.scoreboard
+[21:13:23] [Server thread/INFO]: Registered command achievement with permission node vanilla.command.achievement
+[21:13:23] [Server thread/INFO]: Registered command summon with permission node vanilla.command.summon
+[21:13:23] [Server thread/INFO]: Registered command setblock with permission node vanilla.command.setblock
+[21:13:23] [Server thread/INFO]: Registered command testforblock with permission node vanilla.command.testforblock
+[21:13:23] [Server thread/INFO]: Registered command tellraw with permission node vanilla.command.tellraw
+[21:13:23] [Server thread/INFO]: Registered command netstat with permission node vanilla.command.netstat
+[21:13:23] [Server thread/INFO]: Injecting existing block and item data into this server instance
+[21:13:23] [Server thread/INFO]: Applying holder lookups
+[21:13:23] [Server thread/INFO]: Holder lookups applied
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_AETHERPORTAL with ID 165.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_HOLYSTONE with ID 166.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_AETHERDIRT with ID 167.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_AETHERGRASS with ID 168.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_ENCHANTEDGRASS with ID 169.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_ENCHANTEDAETHERGRASS with ID 176.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_QUICKSOIL with ID 177.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_ICESTONE with ID 178.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_AERCLOUD with ID 179.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_PURPLEAERCLOUD with ID 180.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_AEROGEL with ID 181.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_ALTAR with ID 182.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_INCUBATOR with ID 183.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_AETHERLOG with ID 184.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTPLANK with ID 185.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_GREENSKYROOTLEAVES with ID 186.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_GOLDENOAKLEAVES with ID 187.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_GREENSKYROOTSAPLING with ID 188.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_GOLDENOAKSAPLING with ID 189.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_AMBROSIUMORE with ID 190.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_AMBROSIUMTORCH with ID 191.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_ZANITEORE with ID 192.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_GRAVITITEORE with ID 193.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_ENCHANTEDGRAVITITE with ID 194.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TRAP with ID 195.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTCHESTMIMIC with ID 196.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_CARVEDSTONE with ID 197.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SENTRYSTONE with ID 198.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_DIVINECARVEDSTONE with ID 199.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_DIVINESENTRYSTONE with ID 200.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_WHITEGOLDPILLAR with ID 201.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_ZANITEBLOCK with ID 202.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_QUICKSOILGLASS with ID 203.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_WHITEROSE with ID 204.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_PURPLEFLOWER with ID 205.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_PRESENT with ID 206.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_BERRYBUSH with ID 207.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_BERRYBUSHSTEM with ID 208.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_HOLYSTONESTAIRS with ID 209.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_MOSSYHOLYSTONESTAIRS with ID 210.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_ICESTONESTAIRS with ID 211.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTSTAIRS with ID 212.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_CARVEDSTONESTAIRS with ID 213.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_HOLYSTONEWALL with ID 214.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_MOSSYHOLYSTONEWALL with ID 215.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_ICESTONEWALL with ID 216.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTFENCE with ID 217.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_CARVEDSTONEWALL with ID 218.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_HOLYSTONEBRICK with ID 219.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTLOGWALL with ID 220.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TALLAETHERGRASS with ID 221.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_DARKBLUESKYROOTLEAVES with ID 222.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_BLUESKYROOTLEAVES with ID 223.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_BLUESKYROOTSAPLING with ID 224.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTCHEST with ID 225.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SLIDERLABYRINTHDOOR with ID 226.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_PURPLECRYSTALLEAVES with ID 227.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_PURPLEFRUITLEAVES with ID 228.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_PURPLECRYSTALSAPLING with ID 229.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_ORANGETREE with ID 230.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_CONTINUUMORE with ID 231.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_DARKBLUESKYROOTSAPLING with ID 232.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTCRAFTINGTABLE with ID 233.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_BLOODMOSSHOLYSTONE with ID 234.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_DIVINECARVEDSTONEWALL with ID 235.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_DIVINECARVEDSTONESTAIRS with ID 236.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_COLDFIRE with ID 237.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SLIDERLABYRINTHTOTEM with ID 238.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTDOOR with ID 239.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTFENCEGATE with ID 240.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_AEROGELSTAIRS with ID 241.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SENTRYSTONESTAIRS with ID 242.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_HOLYSTONEBRICKSTAIRS with ID 243.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_DIVINESENTRYSTONESTAIRS with ID 244.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_AEROGELWALL with ID 245.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SENTRYSTONEWALL with ID 246.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_HOLYSTONEBRICKWALL with ID 247.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_DIVINESENTRYSTONEWALL with ID 248.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTWALL with ID 249.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTLADDER with ID 250.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTSIGN with ID 251.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTSIGNWALL with ID 252.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTBED with ID 253.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_PROTECTORBLOCK with ID 254.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTTRAPDOOR with ID 255.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_SKYROOTBOOKSHELF with ID 409.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_QUICKSOILGLASSPANE with ID 410.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_HOLYSTONEFURNACE with ID 411.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_HOLYSTONEFURNACEBURNING with ID 412.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_MOBSPAWNER with ID 413.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILESKYROOTSINGLESLAB with ID 414.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILESKYROOTDOUBLESLAB with ID 415.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILEHOLYSTONESINGLESLAB with ID 416.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILEHOLYSTONEDOUBLESLAB with ID 423.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILEMOSSYHOLYSTONESINGLESLAB with ID 424.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILEMOSSYHOLYSTONEDOUBLESLAB with ID 425.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILEICESTONESINGLESLAB with ID 426.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILEICESTONEDOUBLESLAB with ID 427.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILEHOLYSTONEBRICKSINGLESLAB with ID 428.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILEHOLYSTONEBRICKDOUBLESLAB with ID 429.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILECARVEDSTONESINGLESLAB with ID 430.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILECARVEDSTONEDOUBLESLAB with ID 431.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILESENTRYSTONESINGLESLAB with ID 432.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILESENTRYSTONEDOUBLESLAB with ID 433.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILEDIVINECARVEDSTONESINGLESLAB with ID 434.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILEDIVINECARVEDSTONEDOUBLESLAB with ID 435.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILEDIVINESENTRYSTONESINGLESLAB with ID 436.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILEDIVINESENTRYSTONEDOUBLESLAB with ID 437.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILEAEROGELSINGLESLAB with ID 438.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material AETHER_TILEAEROGELDOUBLESLAB with ID 439.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOO with ID 440.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOSINGLE with ID 441.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOO2 with ID 442.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BLOCKBAMBOOSHOOT with ID 443.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SINGLETEXDECO with ID 444.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_KITUNEBI with ID 445.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_JPCHEST with ID 446.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DIRSQUARE with ID 447.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_HALFDIRSQUARE with ID 448.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_ANDON with ID 449.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOPANEL with ID 450.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SAKURALEAVES with ID 451.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SAKURASAPLING with ID 452.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_KAYABUKIROOF with ID 453.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SPAWATER with ID 454.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SPAUNIT with ID 455.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SAKURALOG with ID 456.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DELUDE_WIDTH with ID 457.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DELUDE_HEIGHT with ID 458.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DELUDE_STAIR with ID 459.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_CAMPFIRE with ID 460.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DECO with ID 461.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_HALFDECO with ID 462.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_TWODIRDECO with ID 463.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_HALFTWODIRDECO with ID 464.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_KAWARA_STAIR with ID 465.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_WARA_STAIR with ID 466.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DECOCARPET with ID 467.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THICKSAKURAPILLAR with ID 468.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THINSAKURAPILLAR with ID 469.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THICKORCPILLAR with ID 470.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THINORCPILLAR with ID 471.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THICKSPRUCEPILLAR with ID 472.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THINSPRUCEPILLAR with ID 473.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THICKBIRCHPILLAR with ID 474.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THINBIRCHPILLAR with ID 475.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DELUDE_PLATE with ID 476.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_RICEPLANT with ID 477.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOMILLSTONE with ID 478.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOMOSS with ID 479.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOMULTIPOT with ID 480.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BLOBKBROOM with ID 481.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOHUTON with ID 482.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOMULTIBLOCK with ID 483.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_ALPHAMULTIBLOCK with ID 484.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SAKURACARPET with ID 485.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DECOPLASTER with ID 486.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DECOCURVEPLASTER with ID 487.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DECODCURVEPLASTER with ID 488.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SEAWEED with ID 489.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BEANPLANT with ID 490.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_TOMATOPLANT with ID 491.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_VILLAGERBLOCK with ID 492.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_CROSSLAMP with ID 493.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGTHICK with ID 494.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVLOGTHICK with ID 495.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVLOG2THICK with ID 496.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVWOODTHICK with ID 497.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGTHIN with ID 498.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVLOGTHIN with ID 499.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVLOG2THIN with ID 500.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVWOODTHIN with ID 501.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_MANEKI with ID 502.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material IRONCHEST_BLOCKIRONCHEST with ID 503.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_LAMPON with ID 504.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_LAMPOFF with ID 505.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_COFFETABLEWOOD with ID 506.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_COFFETABLESTONE with ID 507.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_TABLEWOOD with ID 508.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_TABLESTONE with ID 509.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_CHAIRWOOD with ID 510.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_CHAIRSTONE with ID 511.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_FREEZER with ID 512.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_FRIDGE with ID 513.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_CABINET with ID 514.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_COUCH with ID 515.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_BLINDON with ID 516.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_BLINDOFF with ID 517.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_CURTAINON with ID 518.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_CURTAINOFF with ID 519.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_BEDSIDECABINET with ID 520.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_OVEN with ID 521.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_OVENOVERHEAD with ID 522.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_HEDGE with ID 523.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_BIRDBATH with ID 524.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_STONEPATH with ID 525.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_WHITEFENCE with ID 526.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_TAP with ID 527.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_MAILBOX with ID 528.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_TV with ID 529.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_COMPUTER with ID 530.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_PRINTER with ID 531.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_ELECTRICFENCE with ID 532.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_DOORBELL with ID 533.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_FIREALARMOFF with ID 534.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_FIREALARMON with ID 535.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_CEILINGLIGHTOFF with ID 536.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_CEILINGLIGHTON with ID 537.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_STEREO with ID 538.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_TOILET with ID 539.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_BASIN with ID 540.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_WALLCABINET with ID 541.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_BATH1 with ID 542.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_BATH2 with ID 543.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_SHOWERBOTTOM with ID 544.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_SHOWERTOP with ID 545.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_SHOWERHEADOFF with ID 546.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_SHOWERHEADON with ID 547.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_BIN with ID 548.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_PRESENT with ID 549.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_TREE with ID 550.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_TOASTER with ID 551.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_MICROWAVE with ID 552.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_WASHINGMACHINE with ID 553.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_COOKIEJAR with ID 554.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_BLENDER with ID 555.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_PLATE with ID 556.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_CUP with ID 557.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_COUNTERDOORED with ID 558.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_COUNTERSINK with ID 559.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_DISHWASHER with ID 560.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_KITCHENCABINET with ID 561.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_CHOPPINGBOARD with ID 562.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_BARSTOOL with ID 563.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_HEY with ID 564.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_NYAN with ID 565.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_PATTERN with ID 566.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_YELLOWGLOW with ID 567.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material CFM_WHITEGLASS with ID 568.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKFLUXGOO with ID 569.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKFLUXGAS with ID 570.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKFLUIDPURE with ID 571.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKFLUIDDEATH with ID 572.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKCUSTOMORE with ID 573.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKMAGICALLOG with ID 574.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKMAGICALLEAVES with ID 575.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKCUSTOMPLANT with ID 576.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKTAINT with ID 577.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKTAINTFIBRES with ID 578.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKCOSMETICOPAQUE with ID 579.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKCOSMETICSOLID with ID 580.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKCRYSTAL with ID 581.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKTUBE with ID 582.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKMETALDEVICE with ID 583.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKWOODENDEVICE with ID 584.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKSTONEDEVICE with ID 585.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKMIRROR with ID 586.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKTABLE with ID 587.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKCHESTHUNGRY with ID 588.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKARCANEDOOR with ID 589.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKLIFTER with ID 590.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKMAGICBOX with ID 591.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKALCHEMYFURNACE with ID 592.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKJAR with ID 593.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKCANDLE with ID 594.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKELDRITCH with ID 595.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKAIRY with ID 596.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKMANAPOD with ID 597.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKARCANEFURNACE with ID 598.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKWARDED with ID 599.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKHOLE with ID 600.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKPORTALELDRITCH with ID 601.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKESSENTIARESERVOIR with ID 602.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKELDRITCHNOTHING with ID 603.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKSTAIRSARCANESTONE with ID 604.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKSTAIRSGREATWOOD with ID 605.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKSTAIRSSILVERWOOD with ID 606.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKSTAIRSELDRITCH with ID 607.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKCOSMETICSLABWOOD with ID 608.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKCOSMETICSLABSTONE with ID 609.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKCOSMETICDOUBLESLABWOOD with ID 610.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKCOSMETICDOUBLESLABSTONE with ID 611.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKLOOTURN with ID 612.
+[21:13:23] [Server thread/INFO]: Injected new Forge block material THAUMCRAFT_BLOCKLOOTCRATE with ID 613.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_MOAEGG with ID 4096.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_AETHERMUSICDISC with ID 4097.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_GOLDENAMBER with ID 4098.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_AECHORPETAL with ID 4099.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SKYROOTSTICK with ID 4100.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_DART with ID 4101.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_DARTSHOOTER with ID 4102.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_AMBROSIUMSHARD with ID 4103.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ZANITEGEMSTONE with ID 4104.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SKYROOTBUCKET with ID 4105.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SKYROOTPICKAXE with ID 4106.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_HOLYSTONEPICKAXE with ID 4107.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ZANITEPICKAXE with ID 4108.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_GRAVITITEPICKAXE with ID 4109.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SKYROOTSHOVEL with ID 4110.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_HOLYSTONESHOVEL with ID 4111.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ZANITESHOVEL with ID 4112.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_GRAVITITESHOVEL with ID 4113.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SKYROOTAXE with ID 4114.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_HOLYSTONEAXE with ID 4115.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ZANITEAXE with ID 4116.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_GRAVITITEAXE with ID 4117.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SKYROOTSWORD with ID 4118.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_HOLYSTONESWORD with ID 4119.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ZANITESWORD with ID 4120.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_GRAVITITESWORD with ID 4121.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_IRONBUBBLE with ID 4122.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_PIGSLAYER with ID 4123.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_VAMPIREBLADE with ID 4124.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_FLAMINGSWORD with ID 4125.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_HOLYSWORD with ID 4126.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_LIGHTNINGSWORD with ID 4127.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_LIGHTNINGKNIFE with ID 4128.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_GUMMYSWET with ID 4129.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_HAMMEROFNOTCH with ID 4130.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_CLOUDPARACHUTE with ID 4131.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SHARDOFLIFE with ID 4132.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ORBOFARKENZUS with ID 4133.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_VALKYRIELANCE with ID 4134.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_IRONRING with ID 4135.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_GOLDENRING with ID 4136.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ZANITERING with ID 4137.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_IRONPENDANT with ID 4138.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_GOLDENPENDANT with ID 4139.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ZANITEPENDANT with ID 4140.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_PINKBABYSWET with ID 4141.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_LEATHERGLOVES with ID 4142.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_IRONGLOVES with ID 4143.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_GOLDENGOLVES with ID 4144.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_DIAMONDGLOVES with ID 4145.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ZANITEGLOVES with ID 4146.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ZANITEHELMET with ID 4147.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ZANITECHESTPLATE with ID 4148.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ZANITELEGGINGS with ID 4149.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ZANITEBOOTS with ID 4150.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_GRAVITITEGLOVES with ID 4151.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_GRAVITITEHELMET with ID 4152.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_GRAVITITECHESTPLATE with ID 4153.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_GRAVITITELEGGINGS with ID 4154.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_GRAVITITEBOOTS with ID 4155.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_PHOENIXGLOVES with ID 4156.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_PHOENIXHELMET with ID 4157.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_PHOENIXCHESTPLATE with ID 4158.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_PHOENIXLEGGINGS with ID 4159.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_PHOENIXBOOTS with ID 4160.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_OBSIDIANGLOVES with ID 4161.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_OBSIDIANCHESTPLATE with ID 4162.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_OBSIDIANHELMET with ID 4163.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_OBSIDIANLEGGINGS with ID 4164.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_OBSIDIANBOOTS with ID 4165.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_NEPTUNEGLOVES with ID 4166.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_NEPTUNEHELMET with ID 4167.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_NEPTUNECHESTPLATE with ID 4168.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_NEPTUNELEGGINGS with ID 4169.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_NEPTUNEBOOTS with ID 4170.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_REGENERATIONSTONE with ID 4171.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ETHEREALSTONE with ID 4172.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_FLEETINGSTONE with ID 4173.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_FANGRINCAPSULE with ID 4174.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_DEATHSEAL with ID 4175.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_KRAISITHCAPSULE with ID 4176.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_VALKYRIEPICKAXE with ID 4177.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_VALKYRIEAXE with ID 4178.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_VALKYRIESHOVEL with ID 4179.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_HEALINGSTONE with ID 4180.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ICERING with ID 4181.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ICEPENDANT with ID 4182.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_BLUEBERRY with ID 4183.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_GINGERBREADMAN with ID 4184.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_CANDYCANE with ID 4185.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_CANDYCANESWORD with ID 4186.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_WHITEAPPLE with ID 4187.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SWETJELLY with ID 4188.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SENTRYBOOTS with ID 4189.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_VALKYRIEMUSICDISC with ID 4190.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_VALKYRIEHELMET with ID 4191.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_VALKYRIECHESTPLATE with ID 4192.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_VALKYRIELEGGINGS with ID 4193.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_VALKYRIEBOOTS with ID 4194.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_VALKYRIEGLOVES with ID 4195.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SOARINGSTONE with ID 4196.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_MOUSEEARCAP with ID 4197.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ENCHANTEDBERRY with ID 4198.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_RAINBOWSTRAWBERRY with ID 4199.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_CONTINUUMORB with ID 4200.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ORANGE with ID 4201.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_LABYRINTHMUSICDISC with ID 4202.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_MOAMUSICDISC with ID 4203.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_AERWHALEMUSICDISC with ID 4204.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_RYSTALBOTTLE with ID 4205.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_PIGGIEBANK with ID 4206.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_WYNDBERRY with ID 4207.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SKYROOTWATERBUCKET with ID 4208.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SKYROOTPOISONBUCKET with ID 4209.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SKYROOTMILKBUCKET with ID 4210.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SKYROOTDOORITEM with ID 4211.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SKYROOTSIGNITEM with ID 4212.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SKYROOTBEDITEM with ID 4213.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_CANDYCORN with ID 4214.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_STOMPERPOP with ID 4215.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_BLUEBERRYLOLLIPOP with ID 4216.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ORANGELOLLIPOP with ID 4217.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_JELLYPUMPKIN with ID 4218.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_ICESTONEPOPROCKS with ID 4219.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_COCOATRICE with ID 4220.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_WRAPPEDCHOCOLATES with ID 4221.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_RECORDING892 with ID 4222.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_SHOYROOTBOWL with ID 4223.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_CORNSTARCHBOWL with ID 4224.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material AETHER_CHAINGLOVES with ID 4225.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOBASKET with ID 4226.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_FIRECRACKER with ID 4227.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOFOOD with ID 4228.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOSPEAR with ID 4229.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_SLIDEDOOR with ID 4230.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_KAKEZIKU with ID 4231.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_HUTON with ID 4232.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BOILEDEGG with ID 4233.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_SHAVEDICE with ID 4234.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_WINDCHIME with ID 4235.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMSACK with ID 4236.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_SNOWBALL with ID 4237.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_FAN with ID 4238.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_KATANA with ID 4239.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOBOW with ID 4240.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_TUDURA with ID 4241.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_WINDMILL with ID 4242.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_WATERWHEEL with ID 4243.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMBAMBOO with ID 4244.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_KAGINAWA with ID 4245.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOSWORD with ID 4246.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_OBON with ID 4247.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_MAGATAMA with ID 4248.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_STRAW with ID 4249.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_SEEDRICE with ID 4250.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_RAWRICE with ID 4251.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ZABUTON with ID 4252.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMFIREFLYBOTTLE with ID 4253.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOODUSTCRAY with ID 4254.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOPICKAXE with ID 4255.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_SEEDSEAWEED with ID 4256.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMSEAWEED with ID 4257.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMBEAN with ID 4258.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_COOKINGRECIPE with ID 4259.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOFLOUR with ID 4260.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOODOUGH with ID 4261.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMTOMATO with ID 4262.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CRAFTGUIDE_CRAFTGUIDE_ITEM with ID 4263.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material IRONCHEST_IRONGOLDUPGRADE with ID 4264.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material IRONCHEST_GOLDDIAMONDUPGRADE with ID 4265.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material IRONCHEST_COPPERSILVERUPGRADE with ID 4266.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material IRONCHEST_SILVERGOLDUPGRADE with ID 4267.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material IRONCHEST_COPPERIRONUPGRADE with ID 4268.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material IRONCHEST_DIAMONDCRYSTALUPGRADE with ID 4269.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material IRONCHEST_WOODIRONUPGRADE with ID 4270.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material IRONCHEST_WOODCOPPERUPGRADE with ID 4271.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material IRONCHEST_DIAMONDOBSIDIANUPGRADE with ID 4272.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMTABLEWOOD with ID 4273.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMTABLESTONE with ID 4274.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCHAIRWOOD with ID 4275.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCHAIRSTONE with ID 4276.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCABINET with ID 4277.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMBESIDECABINET with ID 4278.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCOFFEETABLEWOOD with ID 4279.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCOFFEETABLESTONE with ID 4280.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMFRIDGE with ID 4281.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCOOLPACK with ID 4282.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCOUCH with ID 4283.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMBLINDS with ID 4284.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCURTAINS with ID 4285.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMOVEN with ID 4286.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMOVENRANGEHOOD with ID 4287.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMFLESH with ID 4288.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCOOKEDFLESH with ID 4289.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMHEDGEBASIC with ID 4290.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMHEDGESPRUCE with ID 4291.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMHEDGEBIRCH with ID 4292.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMHEDGEJUNGLE with ID 4293.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMBIRDBATH with ID 4294.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMSTONEPATH with ID 4295.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMWHITEFENCE with ID 4296.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMTAP with ID 4297.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMMAILBOX with ID 4298.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMHAMMER with ID 4299.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMENVELOPE with ID 4300.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMENVELOPESIGNED with ID 4301.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMPACKAGE with ID 4302.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMPACKAGESIGNED with ID 4303.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMTV with ID 4304.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCOMPUTER with ID 4305.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMPRINTER with ID 4306.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMINKCARTRIDGE with ID 4307.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMSTEREO with ID 4308.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMELECTRICFENCE with ID 4309.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCEILINGLIGHT with ID 4310.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMDOORBELL with ID 4311.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMFIREALARM with ID 4312.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMLAMP with ID 4313.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMTOILET with ID 4314.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMBASIN with ID 4315.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMWALLCABINET with ID 4316.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMBATH with ID 4317.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMSHOWER with ID 4318.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMSHOWERHEAD with ID 4319.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMBIN with ID 4320.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMPRESENTRED with ID 4321.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMPRESENTGREEN with ID 4322.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMTREE with ID 4323.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMTOASTER with ID 4324.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMMICROWAVE with ID 4325.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMWASHINGMACHINE with ID 4326.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCOOKIEJAR with ID 4327.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMBLENDER with ID 4328.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMPLATE with ID 4329.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCOUNTERDOORED with ID 4330.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCOUNTERSINK with ID 4331.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMDISHWASHER with ID 4332.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMKITCHENCABINET with ID 4333.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCHOPPINGBOARD with ID 4334.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMBARSTALL with ID 4335.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMBREADSLICE with ID 4336.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMTOAST with ID 4337.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMKNIFE with ID 4338.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCUP with ID 4339.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMDRINK with ID 4340.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMSOAP with ID 4341.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMSOAPYWATER with ID 4342.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMSUPERSOAPYWATER with ID 4343.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMRECIPEBOOK with ID 4344.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMCRAYFISH with ID 4345.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material CFM_ITEMDOLLAR with ID 4346.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material FLAMMPFEILSLASHBLADE_PROUDSOUL with ID 4347.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material FLAMMPFEILSLASHBLADE_SLASHBLADE with ID 4348.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material FLAMMPFEILSLASHBLADE_SLASHBLADEWOOD with ID 4349.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material FLAMMPFEILSLASHBLADE_SLASHBLADEBAMBOOLIGHT with ID 4350.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material FLAMMPFEILSLASHBLADE_SLASHBLADESILVERBAMBOOLIGHT with ID 4351.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material FLAMMPFEILSLASHBLADE_SLASHBLADEWHITE with ID 4352.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material FLAMMPFEILSLASHBLADE_SLASHBLADEWRAPPER with ID 4353.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material FLAMMPFEILSLASHBLADE_SLASHBLADENAMED with ID 4354.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material BAUBLES_RING with ID 4355.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_WANDCASTING with ID 4356.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_WANDCAP with ID 4357.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_WANDROD with ID 4358.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_FOCUSPOUCH with ID 4359.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_FOCUSFIRE with ID 4360.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_FOCUSSHOCK with ID 4361.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_FOCUSHELLBAT with ID 4362.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_FOCUSFROST with ID 4363.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_FOCUSTRADE with ID 4364.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_FOCUSEXCAVATION with ID 4365.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_FOCUSPORTABLEHOLE with ID 4366.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_FOCUSPECH with ID 4367.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_FOCUSWARDING with ID 4368.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_FOCUSPRIMAL with ID 4369.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMESSENCE with ID 4370.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMMANABEAN with ID 4371.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMWISPESSENCE with ID 4372.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMRESOURCE with ID 4373.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMSHARD with ID 4374.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMRESEARCHNOTES with ID 4375.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMINKWELL with ID 4376.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMTHAUMONOMICON with ID 4377.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMTHAUMOMETER with ID 4378.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMGOGGLES with ID 4379.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMHELMETTHAUMIUM with ID 4380.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATETHAUMIUM with ID 4381.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSTHAUMIUM with ID 4382.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMBOOTSTHAUMIUM with ID 4383.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMSHOVELTHAUMIUM with ID 4384.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMPICKTHAUMIUM with ID 4385.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMAXETHAUMIUM with ID 4386.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMSWORDTHAUMIUM with ID 4387.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMHOETHAUMIUM with ID 4388.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMARCANEDOOR with ID 4389.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMNUGGET with ID 4390.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_BOOTSTRAVELLER with ID 4391.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMNUGGETCHICKEN with ID 4392.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMNUGGETBEEF with ID 4393.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMNUGGETPORK with ID 4394.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMNUGGETFISH with ID 4395.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_TRIPLEMEATTREAT with ID 4396.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMSWORDELEMENTAL with ID 4397.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMSHOVELELEMENTAL with ID 4398.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMPICKAXEELEMENTAL with ID 4399.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMAXEELEMENTAL with ID 4400.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMHOEELEMENTAL with ID 4401.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATEROBE with ID 4402.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSROBE with ID 4403.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMBOOTSROBE with ID 4404.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ARCANEDOORKEY with ID 4405.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_HANDMIRROR with ID 4406.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_HOVERHARNESS with ID 4407.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_BLOCKJARFILLEDITEM with ID 4408.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_BLOCKJARNODEITEM with ID 4409.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_TRUNKSPAWNER with ID 4410.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMGOLEMPLACER with ID 4411.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMGOLEMCORE with ID 4412.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMGOLEMUPGRADE with ID 4413.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_GOLEMBELL with ID 4414.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMGOLEMDECORATION with ID 4415.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMBOWBONE with ID 4416.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_PRIMALARROW with ID 4417.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMRESONATOR with ID 4418.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMBAUBLEBLANKS with ID 4419.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMAMULETRUNIC with ID 4420.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMRINGRUNIC with ID 4421.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMGIRDLERUNIC with ID 4422.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMAMULETVIS with ID 4423.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMGIRDLEHOVER with ID 4424.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMSPAWNEREGG with ID 4425.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMZOMBIEBRAIN with ID 4426.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMBATHSALTS with ID 4427.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMCRYSTALESSENCE with ID 4428.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMBUCKETDEATH with ID 4429.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMBUCKETPURE with ID 4430.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMHELMETFORTRESS with ID 4431.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATEFORTRESS with ID 4432.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSFORTRESS with ID 4433.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMELDRITCHOBJECT with ID 4434.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMHELMETVOID with ID 4435.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATEVOID with ID 4436.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSVOID with ID 4437.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMBOOTSVOID with ID 4438.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMSHOVELVOID with ID 4439.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMPICKVOID with ID 4440.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMAXEVOID with ID 4441.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMSWORDVOID with ID 4442.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMHOEVOID with ID 4443.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMHELMETVOIDFORTRESS with ID 4444.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATEVOIDFORTRESS with ID 4445.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSVOIDFORTRESS with ID 4446.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMSANITYSOAP with ID 4447.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMSANITYCHECKER with ID 4448.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMBOTTLETAINT with ID 4449.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMHELMETCULTISTROBE with ID 4450.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATECULTISTROBE with ID 4451.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSCULTISTROBE with ID 4452.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMBOOTSCULTIST with ID 4453.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMHELMETCULTISTPLATE with ID 4454.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATECULTISTPLATE with ID 4455.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSCULTISTPLATE with ID 4456.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMHELMETCULTISTLEADERPLATE with ID 4457.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMCHESTPLATECULTISTLEADERPLATE with ID 4458.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMLEGGINGSCULTISTLEADERPLATE with ID 4459.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMSWORDCRIMSON with ID 4460.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMLOOTBAG with ID 4461.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMCOMPASSSTONE with ID 4462.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material THAUMCRAFT_ITEMPRIMALCRUSHER with ID 4463.
+[21:13:23] [Server thread/INFO]: Injected new Forge item material TWINTAILS_HAIRBAND with ID 4464.
+[21:13:23] [Server thread/INFO]: Mapping loaded 11 packages, 7841 classes, 26711 fields, 53884 methods, flags 1ffa
+[21:13:23] [Server thread/INFO]: Loaded inheritance map of 895 classes
+[21:13:23] [Server thread/WARN]: =============================================================
+[21:13:23] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FML!
+[21:13:23] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[21:13:23] [Server thread/WARN]: Use FMLCommonHandler.exitJava instead
+[21:13:23] [Server thread/WARN]: =============================================================
+[21:13:23] [Server thread/WARN]: =============================================================
+[21:13:23] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FML!
+[21:13:23] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[21:13:23] [Server thread/WARN]: Use FMLCommonHandler.exitJava instead
+[21:13:23] [Server thread/WARN]: =============================================================
+[21:13:23] [Server thread/WARN]: =============================================================
+[21:13:23] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FML!
+[21:13:23] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[21:13:23] [Server thread/WARN]: Use FMLCommonHandler.exitJava instead
+[21:13:23] [Server thread/WARN]: =============================================================
+[21:13:23] [Server thread/WARN]: =============================================================
+[21:13:23] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FML!
+[21:13:23] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[21:13:23] [Server thread/WARN]: Use FMLCommonHandler.exitJava instead
+[21:13:23] [Server thread/WARN]: =============================================================
+[21:13:24] [Server thread/INFO]: [Lockette] Loading Lockette v1.7.10
+[21:13:24] [Server thread/INFO]: [WorldEdit] Loading WorldEdit v6.0;3342-78f975b9
+[21:13:24] [Server thread/INFO]: [CoreProtect] Loading CoreProtect v2.10.0
+[21:13:24] [Server thread/INFO]: [Essentials] Loading Essentials v2.13.1
+[21:13:24] [Server thread/INFO]: [EssentialsChat] Loading EssentialsChat v2.13.1
+[21:13:24] [Server thread/INFO]: [EssentialsProtect] Loading EssentialsProtect v2.13.1
+[21:13:24] [Server thread/INFO]: [EssentialsSpawn] Loading EssentialsSpawn v2.13.1
+[21:13:24] [Server thread/INFO]: [EssentialsAntiBuild] Loading EssentialsAntiBuild v2.13.1
+[21:13:24] [Server thread/INFO]: [AuthMe] Loading AuthMe v3.5-SNAPSHOT
+[21:13:24] [Server thread/INFO]: Adding biome mapping 192 Tainted Land at BiomeBase[192]
+[21:13:24] [Server thread/INFO]: Adding biome mapping 193 Magical Forest at BiomeBase[193]
+[21:13:24] [Server thread/INFO]: Adding biome mapping 194 Eerie at BiomeBase[194]
+[21:13:24] [Server thread/INFO]: Adding biome mapping 195 Eldritch at BiomeBase[195]
+[21:13:24] [Server thread/INFO]: Adding biome mapping 237 Aether at BiomeBase[237]
+[21:13:24] [Server thread/INFO]: Loading dimension 0 (skarn) (net.minecraft.server.dedicated.DedicatedServer@702aa206)
+[21:13:24] [Server thread/INFO]: Loading dimension -42 (DIM-42) (net.minecraft.server.dedicated.DedicatedServer@702aa206)
+[21:13:24] [Server thread/INFO]: Loading dimension 4 (DIM4) (net.minecraft.server.dedicated.DedicatedServer@702aa206)
+[21:13:25] [Server thread/INFO]: Loading dimension 3 (DIM3) (net.minecraft.server.dedicated.DedicatedServer@702aa206)
+[21:13:25] [Server thread/INFO]: Loading dimension 1 (DIM1) (net.minecraft.server.dedicated.DedicatedServer@702aa206)
+[21:13:25] [Server thread/INFO]: Loading dimension -1 (DIM-1) (net.minecraft.server.dedicated.DedicatedServer@702aa206)
+[21:13:25] [Server thread/INFO]: Preparing start region for level 0
+[21:13:25] [TwinTails version check Thread/INFO]: Latest version is 1.0.3
+[21:13:26] [Server thread/INFO]: Preparing spawn area: 49%
+[21:13:26] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[21:13:26] [Server thread/INFO]: Ninja Webber Ender 
+[21:13:26] [Server thread/INFO]: ], now trying to set [
+[21:13:26] [Server thread/INFO]: Webber 
+[21:13:26] [Server thread/INFO]: ] 
+
+[21:13:26] [Server thread/INFO]: Adding biome mapping 200 Dungeons at BiomeBase[200]
+[21:13:26] [Server thread/INFO]: [Lockette] Enabling Lockette v1.7.10
+[21:13:26] [Server thread/INFO]: [Lockette] Version 1.7.10 is being enabled!  Yay!  (Core version 1.3.7)
+[21:13:26] [Server thread/WARN]: [Lockette] Craftbukkit build unrecognized, please be sure you have build [2502] or greater.
+[21:13:26] [Server thread/INFO]: [Lockette] Custom lockable block list: [116, 84, 57, 145]
+[21:13:26] [Server thread/INFO]: [Lockette] Ignoring linked plugins: [mcMMO]
+[21:13:26] [Server thread/INFO]: [Lockette] Loading strings file for English by Acru
+[21:13:26] [Server thread/INFO]: [Lockette] Using ops file for admin permissions.
+[21:13:26] [Server thread/INFO]: [Lockette] Ready to protect your containers.
+[21:13:26] [Server thread/INFO]: [WorldEdit] Enabling WorldEdit v6.0;3342-78f975b9
+[21:13:27] [Server thread/INFO]: WEPIF: Using the Bukkit Permissions API.
+[21:13:27] [Server thread/WARN]: [WorldEdit] 
+**********************************************
+** This WorldEdit version does not fully support your version of Bukkit.
+**
+** When working with blocks or undoing, chests will be empty, signs
+** will be blank, and so on. There will be no support for entity
+** and biome-related functions.
+**
+** Please see http://wiki.sk89q.com/wiki/WorldEdit/Bukkit_adapters
+**********************************************
+
+[21:13:27] [Server thread/INFO]: [CoreProtect] Enabling CoreProtect v2.10.0
+[21:13:27] [Server thread/INFO]: [CoreProtect] Invalid WorldEdit version found.
+[21:13:28] [Server thread/INFO]: CoreProtect 版本 2.10.0 已经加载了!
+[21:13:28] [Server thread/INFO]: [CoreProtect] Using SQLite for data storage.
+[21:13:28] [Server thread/INFO]: [Essentials] Enabling Essentials v2.13.1
+[21:13:28] [Server thread/INFO]: Bukkit版本已改变
+[21:13:28] [Server thread/INFO]: 1.7.10-1614.175 (MC: 1.7.10)
+[21:13:28] [Server thread/INFO]: 1.7.10-R0.1-SNAPSHOT
+[21:13:28] [Server thread/INFO]: Using locale zh
+[21:13:28] [Server thread/INFO]: Using locale zh
+[21:13:28] [Server thread/INFO]: Essentials: Using config file enhanced permissions.
+[21:13:28] [Server thread/INFO]: Permissions listed in as player-commands will be given to all users.
+[21:13:28] [Server thread/INFO]: [EssentialsChat] Enabling EssentialsChat v2.13.1
+[21:13:28] [Server thread/INFO]: [EssentialsProtect] Enabling EssentialsProtect v2.13.1
+[21:13:28] [Server thread/INFO]: [EssentialsSpawn] Enabling EssentialsSpawn v2.13.1
+[21:13:28] [Server thread/INFO]: [EssentialsAntiBuild] Enabling EssentialsAntiBuild v2.13.1
+[21:13:28] [Server thread/INFO]: [AuthMe] Enabling AuthMe v3.5-SNAPSHOT
+[21:13:28] [Server thread/INFO]: [AuthMe] Loading Configuration File...
+[21:13:28] [Server thread/INFO]: [AuthMe] Set Language: en
+[21:13:29] [Server thread/INFO]: [AuthMe] Hook with Essentials plugin
+[21:13:29] [Server thread/INFO]: [AuthMe] Hook with EssentialsSpawn plugin
+[21:13:29] [Server thread/INFO]: [AuthMe] [LICENSE] This product includes GeoLite data created by MaxMind, available from http://www.maxmind.com
+[21:13:29] [Server thread/INFO]: [AuthMe] [SPONSOR] AuthMe is sponsored and hook perfectly with server hosting VERYGAMES, rent your server for only 1.99$/months
+[21:13:29] [Server thread/INFO]: [AuthMe] [SPONSOR] Look Minecraft and other offers on www.verygames.net ! 
+[21:13:29] [Server thread/INFO]: [AuthMe] Authme 3.5-SNAPSHOT enabled
+[21:13:29] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[21:13:29] [Server thread/INFO]: Done (6.274s)! For help, type "help" or "?"
+[21:13:29] [Server thread/INFO]: Registered command forge with permission node net.minecraftforge.server.command.ForgeCommand
+[21:13:29] [Server thread/INFO]: Registered command dye with permission node net.aetherteam.aether.commands.CommandColorize
+[21:13:29] [Server thread/INFO]: Registered command feclass with permission node atomicstryker.infernalmobs.common.InfernalCommandFindEntityClass
+[21:13:29] [Server thread/INFO]: Registered command spawninfernal with permission node atomicstryker.infernalmobs.common.InfernalCommandSpawnInfernal
+[21:13:29] [Server thread/INFO]: Registered command thaumcraft with permission node thaumcraft.common.lib.events.CommandThaumcraft
+[21:13:30] [Server thread/INFO]: LMMを検知しませんでした
+[21:13:32] [KCauldron version retrievier/INFO]: New version of KCauldron avaiable: 1.7.10-1614.176
+[21:13:33] [User Authenticator #1/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[21:13:33] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerPlayer
+[21:13:33] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerChest
+[21:13:33] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerHopper
+[21:13:33] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerRepair
+[21:13:33] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerWorkbench
+[21:13:33] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerBeacon
+[21:13:33] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerFurnace
+[21:13:33] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerMerchant
+[21:13:33] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerBrewingStand
+[21:13:33] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerDispenser
+[21:13:33] [Server thread/WARN]: Invalid statistic in .\skarn\stats\dd171995-8808-3272-94cd-4a6a0c62e4cb.json: Don't know what achievement.cfm_moderntechnology is
+[21:13:34] [Netty IO #2/INFO]: Client protocol version 2
+[21:13:34] [Netty IO #2/INFO]: Client attempting to join with 20 mods : uniskinmod@1.2-dev3,aether@Alpha 1.7.10-1.1,mod_ThreadedLighting@1.7.10-1.0,IronChest@6.0.62.742,inventorytweaks@1.59-dev-156-af3bc68,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,twintails@1.0.3,craftguide@1.6.8.2,mcp@9.05,FML@7.10.99.99,BambooMod@Minecraft1.7.2 var2.6.6.13,NotEnoughItems@1.0.3.74,InfernalMobs@1.5.4,cfm@3.4.7,gilded-games-util@1.7.10-1.1,flammpfeil.slashblade@mc1.7.10-r45,Baubles@1.0.1.10,Thaumcraft@4.2.3.5,InputFix@1.7.x-v2
+[21:13:34] [Netty IO #2/INFO]: Attempting connection with missing mods [kimagine] at CLIENT
+[21:13:34] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:13:34] [Server thread/INFO]: dingjibang[/127.0.0.1:56376] logged in with entity id 439 at ([skarn] 2028.0937216851953, 82.98804574012391, 28.6879814237068)
+[21:13:34] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[21:13:34] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[21:13:34] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[21:13:34] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[21:13:34] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[21:13:34] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[21:13:34] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[21:13:34] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[21:13:34] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[21:13:34] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[21:13:34] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[21:13:34] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[21:13:34] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[21:13:34] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:334)
+[21:13:34] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[21:13:34] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:507)
+[21:13:34] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:492)
+[21:13:34] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:360)
+[21:13:34] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.initializeConnectionToPlayer(ServerConfigurationManager.java:216)
+[21:13:34] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:190)
+[21:13:34] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:465)
+[21:13:34] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[21:13:34] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[21:13:34] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[21:13:34] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[21:13:34] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[21:13:34] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[21:13:34] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[21:13:34] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[21:13:34] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[21:13:34] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[21:13:34] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[21:13:34] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[21:13:34] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:245)
+[21:13:34] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[21:13:34] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:991)
+[21:13:34] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:431)
+[21:13:34] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:809)
+[21:13:34] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:669)
+[21:13:34] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[21:13:43] [Server thread/INFO]: dingjibang issued server command: /login djb269134
+[21:13:43] [Server thread/INFO]: [AuthMe] dingjibang logged in!
+[21:14:05] [Server thread/INFO]: dingjibang issued server command: /home
+[21:14:05] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[21:14:05] [Server thread/INFO]: Ninja Webber Ender 
+[21:14:05] [Server thread/INFO]: ], now trying to set [
+[21:14:05] [Server thread/INFO]: Webber 
+[21:14:05] [Server thread/INFO]: ] 
+
+[21:16:07] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[21:16:07] [Server thread/INFO]: Ninja Webber Ender 
+[21:16:07] [Server thread/INFO]: ], now trying to set [
+[21:16:07] [Server thread/INFO]: Webber 
+[21:16:07] [Server thread/INFO]: ] 
+
+[21:16:49] [User Authenticator #2/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[21:16:49] [Netty IO #4/INFO]: Client protocol version 2
+[21:16:49] [Netty IO #4/INFO]: Client attempting to join with 20 mods : uniskinmod@1.2-dev3,aether@Alpha 1.7.10-1.1,mod_ThreadedLighting@1.7.10-1.0,IronChest@6.0.62.742,inventorytweaks@1.59-dev-156-af3bc68,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,twintails@1.0.3,craftguide@1.6.8.2,mcp@9.05,FML@7.10.99.99,BambooMod@Minecraft1.7.2 var2.6.6.13,NotEnoughItems@1.0.3.74,InfernalMobs@1.5.4,cfm@3.4.7,gilded-games-util@1.7.10-1.1,flammpfeil.slashblade@mc1.7.10-r45,Baubles@1.0.1.10,Thaumcraft@4.2.3.5,InputFix@1.7.x-v2
+[21:16:49] [Netty IO #4/INFO]: Attempting connection with missing mods [kimagine] at CLIENT
+[21:16:50] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:16:50] [Server thread/INFO]: anli[/127.0.0.1:56455] logged in with entity id 1260 at ([DIM-1] 120.0, 60.5, 10.0)
+[21:16:50] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[21:16:50] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[21:16:50] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[21:16:50] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[21:16:50] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[21:16:50] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[21:16:50] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[21:16:50] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[21:16:50] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[21:16:50] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[21:16:50] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[21:16:50] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[21:16:50] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[21:16:50] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:334)
+[21:16:50] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[21:16:50] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:507)
+[21:16:50] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:492)
+[21:16:50] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:360)
+[21:16:50] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.initializeConnectionToPlayer(ServerConfigurationManager.java:216)
+[21:16:50] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:190)
+[21:16:50] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:465)
+[21:16:50] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[21:16:50] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[21:16:50] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[21:16:50] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[21:16:50] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[21:16:50] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[21:16:50] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[21:16:50] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[21:16:50] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[21:16:50] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[21:16:50] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[21:16:50] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[21:16:50] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:245)
+[21:16:50] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[21:16:50] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:991)
+[21:16:50] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:431)
+[21:16:50] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:809)
+[21:16:50] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:669)
+[21:16:50] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[21:17:09] [Server thread/INFO]: anli issued server command: /login anli123
+[21:17:09] [Server thread/INFO]: [AuthMe] anli logged in!
+[21:17:29] [Server thread/INFO]: anli issued server command: /login anli123
+[21:19:40] [Server thread/INFO]: [dingjibang: Given [Essentia Resonator] * 1 to dingjibang]
+[21:20:41] [Server thread/INFO]: anli has just earned the achievement [Pretty]
+[21:20:57] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[21:20:57] [Server thread/INFO]: Ninja Webber Ender 
+[21:20:57] [Server thread/INFO]: ], now trying to set [
+[21:20:57] [Server thread/INFO]: Webber 
+[21:20:57] [Server thread/INFO]: ] 
+
+[21:24:12] [Server thread/INFO]: anli lost connection: Internal Exception: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+[21:24:12] [Server thread/INFO]: anli left the game.
+[21:27:55] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[21:27:55] [Server thread/INFO]: dingjibang left the game.
+[21:28:05] [User Authenticator #3/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[21:28:05] [Netty IO #3/INFO]: Client protocol version 2
+[21:28:05] [Netty IO #3/INFO]: Client attempting to join with 20 mods : uniskinmod@1.2-dev3,aether@Alpha 1.7.10-1.1,mod_ThreadedLighting@1.7.10-1.0,IronChest@6.0.62.742,inventorytweaks@1.59-dev-156-af3bc68,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,twintails@1.0.3,craftguide@1.6.8.2,mcp@9.05,FML@7.10.99.99,BambooMod@Minecraft1.7.2 var2.6.6.13,NotEnoughItems@1.0.3.74,InfernalMobs@1.5.4,cfm@3.4.7,gilded-games-util@1.7.10-1.1,flammpfeil.slashblade@mc1.7.10-r45,Baubles@1.0.1.10,Thaumcraft@4.2.3.5,InputFix@1.7.x-v2
+[21:28:05] [Netty IO #3/INFO]: Attempting connection with missing mods [kimagine] at CLIENT
+[21:28:05] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:28:05] [Server thread/INFO]: dingjibang[/127.0.0.1:56873] logged in with entity id 3082 at ([skarn] 1013.7398252262936, 72.52936759557846, 92.5199904136686)
+[21:28:05] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[21:28:05] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[21:28:05] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[21:28:05] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[21:28:05] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[21:28:05] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[21:28:05] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[21:28:05] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[21:28:05] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[21:28:05] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[21:28:05] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[21:28:05] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[21:28:05] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[21:28:05] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:334)
+[21:28:05] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[21:28:05] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:507)
+[21:28:05] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:492)
+[21:28:05] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:360)
+[21:28:05] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.initializeConnectionToPlayer(ServerConfigurationManager.java:216)
+[21:28:05] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:190)
+[21:28:05] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:465)
+[21:28:05] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[21:28:05] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[21:28:05] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[21:28:05] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[21:28:05] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[21:28:05] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[21:28:05] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[21:28:05] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[21:28:05] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[21:28:05] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[21:28:05] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[21:28:05] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[21:28:05] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:245)
+[21:28:05] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[21:28:05] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:991)
+[21:28:05] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:431)
+[21:28:05] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:809)
+[21:28:05] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:669)
+[21:28:05] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[21:28:16] [Server thread/INFO]: dingjibang issued server command: /login djb269134
+[21:28:16] [Server thread/INFO]: [AuthMe] dingjibang logged in!
+[21:29:44] [User Authenticator #4/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[21:29:54] [Netty IO #6/INFO]: Client protocol version 2
+[21:29:54] [Netty IO #6/INFO]: Client attempting to join with 20 mods : uniskinmod@1.2-dev3,aether@Alpha 1.7.10-1.1,mod_ThreadedLighting@1.7.10-1.0,IronChest@6.0.62.742,inventorytweaks@1.59-dev-156-af3bc68,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,twintails@1.0.3,craftguide@1.6.8.2,mcp@9.05,FML@7.10.99.99,BambooMod@Minecraft1.7.2 var2.6.6.13,NotEnoughItems@1.0.3.74,InfernalMobs@1.5.4,cfm@3.4.7,gilded-games-util@1.7.10-1.1,flammpfeil.slashblade@mc1.7.10-r45,Baubles@1.0.1.10,Thaumcraft@4.2.3.5,InputFix@1.7.x-v2
+[21:29:54] [Netty IO #6/INFO]: Attempting connection with missing mods [kimagine] at CLIENT
+[21:29:55] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:29:55] [Server thread/INFO]: anli[/127.0.0.1:56957] logged in with entity id 3487 at ([skarn] 1000.6003190750145, 70.0, 98.31627425269224)
+[21:29:55] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[21:29:55] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[21:29:55] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[21:29:55] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[21:29:55] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[21:29:55] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[21:29:55] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[21:29:55] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[21:29:55] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[21:29:55] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[21:29:55] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[21:29:55] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[21:29:55] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[21:29:55] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:334)
+[21:29:55] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[21:29:55] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:507)
+[21:29:55] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:492)
+[21:29:55] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:360)
+[21:29:55] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.initializeConnectionToPlayer(ServerConfigurationManager.java:216)
+[21:29:55] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:190)
+[21:29:55] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:465)
+[21:29:55] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[21:29:55] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[21:29:55] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[21:29:55] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[21:29:55] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[21:29:55] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[21:29:55] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[21:29:55] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[21:29:55] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[21:29:55] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[21:29:55] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[21:29:55] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[21:29:55] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:245)
+[21:29:55] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[21:29:55] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:991)
+[21:29:55] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:431)
+[21:29:55] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:809)
+[21:29:55] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:669)
+[21:29:55] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[21:30:05] [Server thread/INFO]: [dingjibang: Given [Filtered Essentia Tube] * 1 to dingjibang]
+[21:30:08] [Server thread/INFO]: anli issued server command: /login anli123
+[21:30:08] [Server thread/INFO]: [AuthMe] anli logged in!
+[21:31:23] [Server thread/INFO]: [dingjibang: Given [Void Jar] * 1 to dingjibang]
+[21:32:22] [Server thread/INFO]: [dingjibang: Given [Phial of Essentia] * 1 to dingjibang]
+[21:32:29] [Server thread/INFO]: anli issued server command: //set 2
+[21:33:36] [Server thread/INFO]: anli issued server command: //set 2
+[21:35:20] [Server thread/INFO]: anli issued server command: //cut
+[21:37:22] [Server thread/INFO]: [dingjibang: Given [Essentia Tube] * 1 to dingjibang]
+[21:40:14] [Server thread/INFO]: anli lost connection: Internal Exception: java.io.IOException: 你的主机中的软件中止了一个已建立的连接。
+[21:40:14] [Server thread/INFO]: anli left the game.
+[21:40:17] [User Authenticator #5/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[21:40:17] [Netty IO #7/INFO]: Client protocol version 2
+[21:40:17] [Netty IO #7/INFO]: Client attempting to join with 20 mods : uniskinmod@1.2-dev3,aether@Alpha 1.7.10-1.1,mod_ThreadedLighting@1.7.10-1.0,IronChest@6.0.62.742,inventorytweaks@1.59-dev-156-af3bc68,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,twintails@1.0.3,craftguide@1.6.8.2,mcp@9.05,FML@7.10.99.99,BambooMod@Minecraft1.7.2 var2.6.6.13,NotEnoughItems@1.0.3.74,InfernalMobs@1.5.4,cfm@3.4.7,gilded-games-util@1.7.10-1.1,flammpfeil.slashblade@mc1.7.10-r45,Baubles@1.0.1.10,Thaumcraft@4.2.3.5,InputFix@1.7.x-v2
+[21:40:17] [Netty IO #7/INFO]: Attempting connection with missing mods [kimagine] at CLIENT
+[21:40:19] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:40:19] [Server thread/INFO]: anli[/127.0.0.1:57416] logged in with entity id 5797 at ([skarn] 965.3308201456581, 97.98763290758038, 107.55427616240317)
+[21:40:19] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[21:40:19] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[21:40:19] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[21:40:19] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[21:40:19] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[21:40:19] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[21:40:19] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[21:40:19] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[21:40:19] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[21:40:19] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[21:40:19] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[21:40:19] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[21:40:19] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[21:40:19] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:334)
+[21:40:19] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[21:40:19] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:507)
+[21:40:19] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:492)
+[21:40:19] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:360)
+[21:40:19] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.initializeConnectionToPlayer(ServerConfigurationManager.java:216)
+[21:40:19] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:190)
+[21:40:19] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:465)
+[21:40:19] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[21:40:19] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[21:40:19] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[21:40:19] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[21:40:19] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[21:40:19] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[21:40:19] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[21:40:19] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[21:40:19] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[21:40:19] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[21:40:19] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[21:40:19] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[21:40:19] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:245)
+[21:40:19] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[21:40:19] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:991)
+[21:40:19] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:431)
+[21:40:19] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:809)
+[21:40:19] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:669)
+[21:40:19] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[21:40:28] [Server thread/INFO]: anli issued server command: /login anli123
+[21:40:28] [Server thread/INFO]: [AuthMe] anli logged in!
+[21:40:57] [Server thread/WARN]: anli moved too quickly! -6.375492352454671,27.987632907580377,-4.046065139645165 (6.375492352454671, 27.987632907580377, 4.046065139645165)
+[21:44:31] [Server thread/INFO]: anli issued server command: //set 155
+[21:46:46] [Server thread/INFO]: anli issued server command: //set 155
+[21:48:15] [Server thread/INFO]: [dingjibang: Given [Restricted Essentia Tube] * 1 to dingjibang]
+[21:49:18] [Server thread/INFO]: anli issued server command: //set 2
+[21:49:33] [Server thread/INFO]: [dingjibang: Given [Essentia Valve] * 1 to dingjibang]
+[21:50:42] [Server thread/INFO]: anli issued server command: //set 2
+[21:51:29] [Server thread/INFO]: anli issued server command: //set 155
+[21:56:42] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[21:56:42] [Server thread/INFO]: Ninja Webber Ender 
+[21:56:42] [Server thread/INFO]: ], now trying to set [
+[21:56:42] [Server thread/INFO]: Webber 
+[21:56:42] [Server thread/INFO]: ] 
+
+[21:58:33] [Server thread/INFO]: [dingjibang: Given [Vis Charge Relay] * 1 to dingjibang]
+[21:59:01] [Server thread/INFO]: [dingjibang: Given [Aura Node] * 1 to dingjibang]
+[21:59:42] [Server thread/INFO]: [dingjibang: Given [Vis Relay] * 1 to dingjibang]
+[22:00:18] [Server thread/INFO]: [dingjibang: Given [Node Stabilizer] * 1 to dingjibang]
+[22:01:47] [Server thread/INFO]: anli issued server command: //set 155
+[22:04:31] [Server thread/INFO]: anli issued server command: //cut
+[22:04:45] [Server thread/INFO]: anli issued server command: //copy
+[22:04:59] [Server thread/INFO]: anli issued server command: //paste
+[22:05:15] [Server thread/INFO]: [dingjibang: Given [Node Transducer] * 1 to dingjibang]
+[22:05:33] [Server thread/INFO]: [dingjibang: Given [Block of Redstone] * 1 to dingjibang]
+[22:07:50] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[22:07:50] [Server thread/INFO]: Ninja Webber Ender 
+[22:07:50] [Server thread/INFO]: ], now trying to set [
+[22:07:50] [Server thread/INFO]: Webber 
+[22:07:50] [Server thread/INFO]: ] 
+
+[22:09:02] [Server thread/INFO]: [dingjibang: Given [Bucket of Purifying Fluid] * 1 to dingjibang]
+[22:09:19] [Server thread/INFO]: [dingjibang: Given [Bucket] * 1 to dingjibang]
+[22:10:39] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[22:10:39] [Server thread/INFO]: Ninja Webber Ender 
+[22:10:39] [Server thread/INFO]: ], now trying to set [
+[22:10:39] [Server thread/INFO]: Webber 
+[22:10:39] [Server thread/INFO]: ] 
+
+[22:11:10] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[22:11:10] [Server thread/INFO]: Ninja Webber Ender 
+[22:11:10] [Server thread/INFO]: ], now trying to set [
+[22:11:10] [Server thread/INFO]: Webber 
+[22:11:10] [Server thread/INFO]: ] 
+
+[22:11:18] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[22:11:18] [Server thread/INFO]: Ninja Webber Ender 
+[22:11:18] [Server thread/INFO]: ], now trying to set [
+[22:11:18] [Server thread/INFO]: Webber 
+[22:11:18] [Server thread/INFO]: ] 
+
+[22:11:30] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[22:11:30] [Server thread/INFO]: Ninja Webber Ender 
+[22:11:30] [Server thread/INFO]: ], now trying to set [
+[22:11:30] [Server thread/INFO]: Webber 
+[22:11:30] [Server thread/INFO]: ] 
+
+[22:12:29] [Server thread/INFO]: dingjibang issued server command: /fly dingjibang
+[22:13:36] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[22:13:36] [Server thread/INFO]: Ninja Webber Ender 
+[22:13:36] [Server thread/INFO]: ], now trying to set [
+[22:13:36] [Server thread/INFO]: Webber 
+[22:13:36] [Server thread/INFO]: ] 
+
+[22:14:06] [Server thread/INFO]: [dingjibang: Given [Bucket] * 16 to dingjibang]
+[22:15:06] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[22:15:06] [Server thread/INFO]: Ninja Webber Ender 
+[22:15:06] [Server thread/INFO]: ], now trying to set [
+[22:15:06] [Server thread/INFO]: Webber 
+[22:15:06] [Server thread/INFO]: ] 
+
+[22:16:56] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[22:16:56] [Server thread/INFO]: Ninja Webber Ender 
+[22:16:56] [Server thread/INFO]: ], now trying to set [
+[22:16:56] [Server thread/INFO]: Webber 
+[22:16:56] [Server thread/INFO]: ] 
+
+[22:23:06] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[22:23:06] [Server thread/INFO]: Ninja Webber Ender 
+[22:23:06] [Server thread/INFO]: ], now trying to set [
+[22:23:06] [Server thread/INFO]: Webber 
+[22:23:06] [Server thread/INFO]: ] 
+
+[22:25:00] [Server thread/INFO]: [dingjibang: Given [魔剑「阎魔刀」] * 1 to dingjibang]
+[22:25:19] [Server thread/INFO]: dingjibang has just earned the achievement [achievement.flammpfeil.slashblade.soulEater]
+[22:25:21] [Server thread/INFO]: dingjibang has just earned the achievement [achievement.flammpfeil.slashblade.enchanted]
+[22:25:33] [Server thread/INFO]: dingjibang was blown up by Creeper
+[22:25:35] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[22:25:35] [Server thread/INFO]: Ninja Webber Ender 
+[22:25:35] [Server thread/INFO]: ], now trying to set [
+[22:25:35] [Server thread/INFO]: Webber 
+[22:25:35] [Server thread/INFO]: ] 
+
+[22:25:54] [Server thread/INFO]: dingjibang has just earned the achievement [achievement.flammpfeil.slashblade.enchantmentSoul]
+[22:26:41] [Server thread/INFO]: dingjibang issued server command: /fly dingjibang
+[22:36:59] [Server thread/INFO]: dingjibang has just earned the achievement [achievement.flammpfeil.slashblade.bewitched]
+[22:43:00] [Server thread/INFO]: dingjibang was blown up by Creeper
+[22:43:02] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[22:43:02] [Server thread/INFO]: Ninja Webber Ender 
+[22:43:02] [Server thread/INFO]: ], now trying to set [
+[22:43:02] [Server thread/INFO]: Webber 
+[22:43:02] [Server thread/INFO]: ] 
+
+[22:43:12] [Server thread/INFO]: dingjibang issued server command: /fly dingjibang
+[22:43:14] [Server thread/INFO]: dingjibang issued server command: /fly dingjibang
+[23:21:28] [Server thread/INFO]: anli issued server command: //set 95:15
+[23:28:35] [Server thread/INFO]: anli issued server command: //set 95:15
+[23:29:15] [Server thread/INFO]: anli issued server command: //set 95:15
+[23:30:00] [Server thread/INFO]: anli issued server command: //set 95:15
+[23:30:54] [Server thread/INFO]: anli issued server command: //set 155
+[23:44:07] [Server thread/INFO]: anli issued server command: //set 155
+[23:44:19] [Server thread/INFO]: anli issued server command: //set 155
+[23:44:32] [Server thread/INFO]: anli issued server command: //set 155
+[23:44:45] [Server thread/INFO]: anli issued server command: //set 155
+[23:44:58] [Server thread/INFO]: anli issued server command: //set 155
+[23:45:12] [Server thread/INFO]: anli issued server command: //set 155
+[23:45:23] [Server thread/INFO]: anli issued server command: //set 155
+[23:45:35] [Server thread/INFO]: anli issued server command: //set 155
+[23:47:22] [Server thread/INFO]: anli issued server command: //set 155
+[23:47:37] [Server thread/INFO]: anli issued server command: //set 155
+[23:59:44] [Server thread/INFO]: anli issued server command: //set 95:15

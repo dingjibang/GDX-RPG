@@ -32,6 +32,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.rpsg.rpg.object.rpg.Enemy;
 /**
  * GDX-Query 
  * more simplified way to enjoy LibGDX
@@ -518,6 +519,19 @@ public class GdxQuery {
 
 	public List<Actor> getItems() {
 		return values;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <T> List<T> eachAsList(CustomCallback<Actor,Object> each,Class<T> cls){
+		List<Object> list = new ArrayList<>();
+		for(Actor actor : getItems())
+			list.add(each.run(actor));
+		return (List<T>)list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <T> List<T> getItems(Class<T> t) {
+		return (List<T>)values;
 	}
 	
 	public GdxQuery appendTo(Object... object){

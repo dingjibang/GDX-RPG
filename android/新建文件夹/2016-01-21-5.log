@@ -1,0 +1,50 @@
+[23:30:20] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[23:30:20] [main/INFO]: Using primary tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[23:30:20] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLServerTweaker
+[23:30:20] [main/INFO]: Forge Mod Loader version 7.10.25.1206 for Minecraft 1.7.10 loading
+[23:30:20] [main/INFO]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.7.0_67, running on Windows 8.1:amd64:6.3, installed at C:\Program Files\Java\jdk1.7.0_67\jre
+[23:30:20] [main/ERROR]: The coremod ruby.bamboo.asm.CorePlugin is requesting minecraft version 1.7.2 and minecraft is 1.7.10. It will be ignored.
+[23:30:22] [main/WARN]: The following coremods do not have a @MCVersion annotation. They may cause problems if this is not the correct version of Minecraft for them.
+[23:30:22] [main/WARN]: Missing @MCVersion: codechicken.core.launch.CodeChickenCorePlugin  lain.mods.inputfix.InputFix  invtweaks.forge.asm.FMLPlugin  codechicken.nei.asm.NEICorePlugin  thaumcraft.codechicken.core.launch.DepLoader  
+[23:30:22] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[23:30:22] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[23:30:22] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[23:30:22] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[23:30:22] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[23:30:23] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[23:30:23] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[23:30:23] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[23:30:23] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[23:30:23] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[23:30:23] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[23:30:23] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[23:30:23] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[23:30:23] [main/INFO]: Injecting Data ...
+[23:30:23] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[23:30:23] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[23:30:23] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.TerminalTweaker
+[23:30:23] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.TerminalTweaker
+[23:30:24] [main/INFO]: Launching wrapped minecraft {net.minecraft.server.MinecraftServer}
+[23:30:25] [Server thread/INFO]: Starting minecraft server version 1.7.10
+[23:30:25] [Server thread/INFO]: Attempting early MinecraftForge initialization
+[23:30:25] [Server thread/INFO]: MinecraftForge v10.13.0.1206 Initialized
+[23:30:25] [Server thread/INFO]: Replaced 182 ore recipies
+[23:30:25] [Server thread/INFO]: Completed early MinecraftForge initialization
+[23:30:25] [Server thread/INFO]: Searching I:\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods for mods
+[23:30:25] [Server thread/INFO]: Also searching I:\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods\1.7.10 for mods
+[23:30:26] [Server thread/INFO]: Forge Mod Loader has identified 20 mods to load
+[23:30:26] [Server thread/ERROR]: The mod Thaumcraft (Thaumcraft) requires mod versions [Forge@[10.13.2,)] to be available
+[23:30:26] [Server thread/ERROR]: Encountered an unexpected exception
+cpw.mods.fml.common.MissingModsException
+	at cpw.mods.fml.common.Loader.sortModList(Loader.java:244) ~[Loader.class:git-Cauldron-MCPC-Plus-1.7.10-1.1206.01.170]
+	at cpw.mods.fml.common.Loader.loadMods(Loader.java:472) ~[Loader.class:git-Cauldron-MCPC-Plus-1.7.10-1.1206.01.170]
+	at cpw.mods.fml.server.FMLServerHandler.beginServerLoading(FMLServerHandler.java:87) ~[FMLServerHandler.class:git-Cauldron-MCPC-Plus-1.7.10-1.1206.01.170]
+	at cpw.mods.fml.common.FMLCommonHandler.onServerStart(FMLCommonHandler.java:317) ~[FMLCommonHandler.class:git-Cauldron-MCPC-Plus-1.7.10-1.1206.01.170]
+	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:169) ~[lt.class:?]
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:624) [MinecraftServer.class:?]
+	at java.lang.Thread.run(Thread.java:745) [?:1.7.0_67]
+[23:30:26] [Server thread/ERROR]: This crash report has been saved to: I:\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\.\crash-reports\crash-2016-01-21_23.30.26-server.txt
+[23:30:26] [Server thread/WARN]: Can't revert to frozen GameData state without freezing first.
+[23:30:26] [Server thread/INFO]: Applying holder lookups
+[23:30:26] [Server thread/INFO]: Holder lookups applied
+[23:30:26] [Server thread/INFO]: The state engine was in incorrect state CONSTRUCTING and forced into state SERVER_STOPPED. Errors may have been discarded.

@@ -1,0 +1,74 @@
+[10:09:59] [User Authenticator #42/INFO]: UUID of player MoLoong is 2c950b64-dcf0-3eed-b9b0-1795f565208e
+[10:10:00] [Netty IO #3/INFO]: Client protocol version 2
+[10:10:00] [Netty IO #3/INFO]: Client attempting to join with 20 mods : uniskinmod@1.2-dev3,aether@Alpha 1.7.10-1.1,mod_ThreadedLighting@1.7.10-1.0,IronChest@6.0.62.742,inventorytweaks@1.59-dev-156-af3bc68,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,twintails@1.0.3,craftguide@1.6.8.2,mcp@9.05,FML@7.10.99.99,BambooMod@Minecraft1.7.2 var2.6.6.13,NotEnoughItems@1.0.3.74,InfernalMobs@1.5.4,cfm@3.4.7,gilded-games-util@1.7.10-1.1,flammpfeil.slashblade@mc1.7.10-r45,Baubles@1.0.1.10,Thaumcraft@4.2.3.5,InputFix@1.7.x-v2
+[10:10:00] [Netty IO #3/INFO]: Attempting connection with missing mods [kimagine] at CLIENT
+[10:10:00] [Server thread/INFO]: [Server thread] Server side modded connection established
+[10:10:00] [Server thread/INFO]: MoLoong[/127.0.0.1:59866] logged in with entity id 104354 at ([skarn] 1015.5757602606618, 159.5600000000003, 122.22563271176925)
+[10:10:00] [Server thread/WARN]: java.lang.IllegalStateException: Unable to find method getTypeId ([]).
+[10:10:00] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:817)
+[10:10:00] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getMethod(NbtFactory.java:816)
+[10:10:00] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.<init>(NbtFactory.java:366)
+[10:10:00] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.get(NbtFactory.java:343)
+[10:10:00] [Server thread/WARN]: 	at com.comphenix.attribute.NbtFactory.getCraftItemStack(NbtFactory.java:603)
+[10:10:00] [Server thread/WARN]: 	at com.comphenix.attribute.Attributes.<init>(Attributes.java:244)
+[10:10:00] [Server thread/WARN]: 	at fr.xephi.authme.cache.backup.FileCache.createCache(FileCache.java:104)
+[10:10:00] [Server thread/WARN]: 	at fr.xephi.authme.listener.AuthMePlayerListener.onPlayerJoin(AuthMePlayerListener.java:675)
+[10:10:00] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[10:10:00] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+[10:10:00] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[10:10:00] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Method.java:606)
+[10:10:00] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:334)
+[10:10:00] [Server thread/WARN]: 	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[10:10:00] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:507)
+[10:10:00] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:492)
+[10:10:00] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.func_72377_c(ServerConfigurationManager.java:360)
+[10:10:00] [Server thread/WARN]: 	at net.minecraft.server.management.ServerConfigurationManager.initializeConnectionToPlayer(ServerConfigurationManager.java:216)
+[10:10:00] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:190)
+[10:10:00] [Server thread/WARN]: 	at cpw.mods.fml.common.network.handshake.NetworkDispatcher.completeHandshake(NetworkDispatcher.java:465)
+[10:10:00] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:21)
+[10:10:00] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.HandshakeCompletionHandler.channelRead0(HandshakeCompletionHandler.java:11)
+[10:10:00] [Server thread/WARN]: 	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:98)
+[10:10:00] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[10:10:00] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[10:10:00] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+[10:10:00] [Server thread/WARN]: 	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111)
+[10:10:00] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.invokeChannelRead(DefaultChannelHandlerContext.java:337)
+[10:10:00] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelHandlerContext.fireChannelRead(DefaultChannelHandlerContext.java:323)
+[10:10:00] [Server thread/WARN]: 	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:785)
+[10:10:00] [Server thread/WARN]: 	at io.netty.channel.embedded.EmbeddedChannel.writeInbound(EmbeddedChannel.java:169)
+[10:10:00] [Server thread/WARN]: 	at cpw.mods.fml.common.network.internal.FMLProxyPacket.func_148833_a(FMLProxyPacket.java:77)
+[10:10:00] [Server thread/WARN]: 	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:245)
+[10:10:00] [Server thread/WARN]: 	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:173)
+[10:10:00] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:991)
+[10:10:00] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:431)
+[10:10:00] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:809)
+[10:10:00] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:669)
+[10:10:00] [Server thread/WARN]: 	at java.lang.Thread.run(Thread.java:745)
+[10:10:25] [Server thread/INFO]: MoLoong issued server command: /login 137946825
+[10:10:25] [Server thread/INFO]: [AuthMe] MoLoong logged in!
+[10:11:39] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[10:11:39] [Server thread/INFO]: Ninja Webber Ender 
+[10:11:39] [Server thread/INFO]: ], now trying to set [
+[10:11:39] [Server thread/INFO]: Webber 
+[10:11:39] [Server thread/INFO]: ] 
+
+[10:14:47] [Server thread/INFO]: MoLoong issued server command: /home
+[10:16:16] [Server thread/INFO]: MoLoong has just earned the achievement [Cow Tipper]
+[10:23:32] [Server thread/INFO]: MoLoong issued server command: /home
+[10:24:03] [Server thread/INFO]: MoLoong has just earned the achievement [Acquire Hardware]
+[10:25:18] [Server thread/INFO]: MoLoong was blown up by Creeper
+[10:25:20] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[10:25:20] [Server thread/INFO]: Ninja Webber Ender 
+[10:25:20] [Server thread/INFO]: ], now trying to set [
+[10:25:20] [Server thread/INFO]: Webber 
+[10:25:20] [Server thread/INFO]: ] 
+
+[10:25:32] [Server thread/INFO]: Infernal Mobs tag mismatch!! Was [
+[10:25:32] [Server thread/INFO]: Ninja Webber Ender 
+[10:25:32] [Server thread/INFO]: ], now trying to set [
+[10:25:32] [Server thread/INFO]: Webber 
+[10:25:32] [Server thread/INFO]: ] 
+
+[10:25:55] [Server thread/INFO]: MoLoong issued server command: /home
+[10:40:35] [Server thread/INFO]: MoLoong lost connection: Disconnected
+[10:40:35] [Server thread/INFO]: MoLoong left the game.

@@ -1,0 +1,39 @@
+[16:44:56] [User Authenticator #2/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[16:44:56] [Netty IO #0/INFO]: Client protocol version 2
+[16:44:56] [Netty IO #0/INFO]: Client attempting to join with 10 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[16:44:56] [Netty IO #0/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[16:44:57] [Server thread/INFO]: [Server thread] Server side modded connection established
+[16:44:57] [Server thread/INFO]: sola[/127.0.0.1:58042] logged in with entity id 5137 at ([skarn] -203.87308005653105, 66.0, 249.04639101937894)
+[16:45:18] [Server thread/INFO]: sola lost connection: Disconnected
+[16:45:18] [Server thread/INFO]: sola left the game.
+[16:45:33] [User Authenticator #3/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[16:45:34] [Netty IO #1/INFO]: Client protocol version 2
+[16:45:34] [Netty IO #1/INFO]: Client attempting to join with 10 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[16:45:34] [Netty IO #1/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[16:45:34] [Server thread/INFO]: [Server thread] Server side modded connection established
+[16:45:34] [Server thread/INFO]: sola[/127.0.0.1:58124] logged in with entity id 6110 at ([skarn] -203.87308005653105, 66.0, 249.04639101937894)
+[16:48:22] [Server thread/INFO]: sola issued server command: /home
+[17:20:07] [Server thread/INFO]: sola was blown up by Creeper
+[17:20:12] [Server thread/INFO]: sola issued server command: /back
+[17:42:33] [Server thread/INFO]: sola issued server command: /gamemode 1
+[18:11:17] [Server thread/INFO]: LMMを検知しませんでした
+[18:12:18] [Server thread/INFO]: sola issued server command: /gamemode 0
+[18:12:32] [Server thread/INFO]: sola issued server command: /gamemode 1
+[18:41:44] [Server thread/INFO]: sola lost connection: Disconnected
+[18:41:44] [Server thread/INFO]: sola left the game.
+[21:53:54] [Server console handler/ERROR]: Exception handling console input
+java.io.IOException: 管道的另一端上无任何进程。
+	at java.io.FileInputStream.readBytes(Native Method) ~[?:1.7.0_67]
+	at java.io.FileInputStream.read(Unknown Source) ~[?:1.7.0_67]
+	at java.io.BufferedInputStream.fill(Unknown Source) ~[?:1.7.0_67]
+	at java.io.BufferedInputStream.read(Unknown Source) ~[?:1.7.0_67]
+	at java.io.FilterInputStream.read(Unknown Source) ~[?:1.7.0_67]
+	at jline.console.ConsoleReader$1.read(ConsoleReader.java:167) ~[ConsoleReader$1.class:?]
+	at jline.internal.InputStreamReader.read(InputStreamReader.java:267) ~[InputStreamReader.class:?]
+	at jline.internal.InputStreamReader.read(InputStreamReader.java:204) ~[InputStreamReader.class:?]
+	at jline.console.ConsoleReader.readCharacter(ConsoleReader.java:995) ~[ConsoleReader.class:?]
+	at jline.console.ConsoleReader.readLineSimple(ConsoleReader.java:1506) ~[ConsoleReader.class:?]
+	at jline.console.ConsoleReader.readLine(ConsoleReader.java:1153) ~[ConsoleReader.class:?]
+	at jline.console.ConsoleReader.readLine(ConsoleReader.java:1117) ~[ConsoleReader.class:?]
+	at jline.console.ConsoleReader.readLine(ConsoleReader.java:1105) ~[ConsoleReader.class:?]
+	at net.minecraft.server.dedicated.DedicatedServer$2.run(DedicatedServer.java:122) [lv.class:?]

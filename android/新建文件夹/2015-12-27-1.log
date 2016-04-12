@@ -1,0 +1,401 @@
+[21:34:48] [User Authenticator #36/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[21:34:49] [Netty IO #0/INFO]: Client protocol version 2
+[21:34:49] [Netty IO #0/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[21:34:49] [Netty IO #0/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[21:34:50] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:34:50] [Server thread/INFO]: Loading dimension 7 (DIM7) (net.minecraft.server.dedicated.DedicatedServer@c63fcb6)
+[21:34:50] [Server thread/INFO]: sola[/127.0.0.1:64971] logged in with entity id 398537 at ([DIM7] 19.372796316692504, 31.0, 223.6037839560349)
+[21:35:08] [User Authenticator #37/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[21:35:08] [Netty IO #3/INFO]: Client protocol version 1
+[21:35:08] [Netty IO #3/INFO]: Client attempting to join with 9 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[21:35:08] [Netty IO #3/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[21:35:08] [Server thread/INFO]: [Server thread] Server side modded connection established
+[21:35:08] [Server thread/INFO]: dingjibang[/127.0.0.1:65060] logged in with entity id 398916 at ([skarn] -218.74430712943627, 64.0, 272.71932978635095)
+[21:35:16] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[21:35:17] [Server thread/INFO]: Unloading dimension 7
+[21:36:31] [Netty IO #3/INFO]: <dingjibang> lai
+[21:36:45] [Netty IO #3/INFO]: <dingjibang> 把这个道具捡起来
+[21:37:21] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[21:37:30] [Server thread/INFO]: sola has just earned the achievement [Mighty Stroganoff]
+[21:37:49] [Netty IO #3/INFO]: <dingjibang> ok
+[21:37:52] [Netty IO #0/INFO]: <sola> 这个有什么用
+[21:38:04] [Netty IO #3/INFO]: <dingjibang> 放箱子里吧 没用 任务的 不然进不去下一个副本
+[21:38:16] [Netty IO #3/INFO]: <dingjibang> 走去草九头蛇
+[21:38:41] [Server thread/INFO]: Player touched the portal block.  Sending the player to dimension 7
+[21:38:41] [Server thread/INFO]: Loading dimension 7 (DIM7) (net.minecraft.server.dedicated.DedicatedServer@c63fcb6)
+[21:38:42] [Server thread/INFO]: [TwilightForest] Lowering Dark Tower max height by 5 to be within world bounds
+[21:38:48] [Server thread/INFO]: Player touched the portal block.  Sending the player to dimension 7
+[21:38:59] [Server thread/INFO]: Player touched the portal block.  Sending the player to dimension 7
+[21:39:09] [Server thread/WARN]: sola moved too quickly! -14.460227119933165,0.5,4.05464496181736 (14.460227119933165, 0.5, 4.05464496181736)
+[21:39:15] [Netty IO #3/INFO]: <dingjibang> yihui tp wo
+[21:39:19] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[21:39:40] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[21:40:09] [Server thread/INFO]: Drawing entrance
+[21:40:09] [Server thread/INFO]: Drawing entrance at 46, 82, -503
+[21:40:16] [Netty IO #3/INFO]: <dingjibang> tp
+[21:40:23] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[21:42:31] [Server thread/INFO]: sola went up in flames
+[21:42:36] [Server thread/INFO]: sola issued server command: /back
+[21:43:15] [Server thread/INFO]: dingjibang was slain by Hydra
+[21:43:16] [Server thread/INFO]: sola walked into fire whilst fighting dingjibang
+[21:43:21] [Server thread/INFO]: dingjibang issued server command: /back
+[21:43:21] [Server thread/INFO]: sola issued server command: /back
+[21:43:39] [Server thread/INFO]: sola was slain by Hydra
+[21:43:45] [Server thread/INFO]: sola issued server command: /back
+[21:43:45] [Server thread/INFO]: dingjibang was slain by Hydra
+[21:43:49] [Server thread/INFO]: dingjibang issued server command: /back
+[21:43:54] [Server thread/INFO]: dingjibang was slain by Hydra
+[21:43:57] [Server thread/INFO]: dingjibang issued server command: /back
+[21:44:29] [Server thread/INFO]: sola was slain by Hydra
+[21:44:34] [Server thread/INFO]: sola issued server command: /back
+[21:44:56] [Server thread/INFO]: sola went up in flames
+[21:45:01] [Server thread/INFO]: sola issued server command: /back
+[21:45:27] [Server thread/INFO]: dingjibang went up in flames
+[21:45:33] [Server thread/INFO]: dingjibang issued server command: /back
+[21:45:55] [Server thread/INFO]: dingjibang was shot by Skeleton
+[21:45:57] [Server thread/INFO]: sola went up in flames
+[21:45:59] [Server thread/INFO]: dingjibang issued server command: /back
+[21:46:04] [Server thread/INFO]: sola issued server command: /back
+[21:46:26] [Server thread/INFO]: dingjibang has just earned the achievement [Hydra Slayer]
+[21:46:32] [Server thread/INFO]: sola has just earned the achievement [Hydra Slayer]
+[21:46:34] [Server thread/INFO]: sola has just earned the achievement [Of One Blood]
+[21:46:42] [Server thread/INFO]: dingjibang has just earned the achievement [Of One Blood]
+[21:47:06] [Netty IO #3/INFO]: <dingjibang> yinggai keyi qu 暮色高塔了
+[21:47:09] [Server thread/INFO]: dingjibang issued server command: /home
+[21:47:24] [Server thread/INFO]: Player touched the portal block.  Sending the player to dimension 7
+[21:47:39] [Server thread/INFO]: sola issued server command: /tpdingjibang
+[21:47:44] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[21:47:53] [Server thread/INFO]: sola issued server command: /gamemode 1
+[21:48:08] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[21:48:33] [Netty IO #3/INFO]: <dingjibang> haishi buxing
+[21:48:42] [Server thread/INFO]: dingjibang issued server command: /home
+[21:49:10] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[21:49:26] [Server thread/INFO]: sola issued server command: /gamemode 0
+[21:50:12] [Netty IO #3/INFO]: <dingjibang> 头颅给我
+[21:51:06] [Netty IO #3/INFO]: <dingjibang> 头颅给我
+[21:51:36] [Server thread/INFO]: dingjibang issued server command: /back
+[21:51:48] [Netty IO #0/INFO]: <sola> 还有弓箭吗
+[21:51:55] [Netty IO #3/INFO]: <dingjibang> you gong mei you jian
+[21:52:11] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[21:52:38] [Netty IO #3/INFO]: <dingjibang> lai
+[21:52:45] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[21:52:56] [Netty IO #3/INFO]: <dingjibang> dengxia
+[21:52:58] [Server thread/INFO]: dingjibang issued server command: /home
+[21:53:42] [Server thread/INFO]: dingjibang issued server command: /back
+[21:53:59] [Netty IO #3/INFO]: <dingjibang> renne
+[21:54:22] [Netty IO #3/INFO]: <dingjibang> renne
+[21:57:15] [Netty IO #3/INFO]: <dingjibang> 找入口
+[21:57:48] [Netty IO #3/INFO]: <dingjibang> budui
+[21:58:08] [Netty IO #3/INFO]: <dingjibang> 我看看攻略
+[21:58:17] [Server thread/INFO]: sola issued server command: /home
+[21:58:57] [Server thread/INFO]: sola issued server command: /back
+[21:59:47] [Server thread/INFO]: sola issued server command: /home
+[22:00:16] [Server thread/INFO]: sola issued server command: /back
+[22:00:59] [Netty IO #3/INFO]: <dingjibang> 少个恶魂的头 然而攻略写着 要是打恶魂必须先打这个。。
+[22:04:16] [Server thread/INFO]: dingjibang burned to death
+[22:04:23] [Server thread/INFO]: dingjibang issued server command: /back
+[22:04:44] [Server thread/INFO]: sola issued server command: /gamemode 1
+[22:04:50] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[22:05:37] [Server thread/INFO]: sola issued server command: /gamemode 0
+[22:06:17] [Netty IO #3/INFO]: <dingjibang> niye jinbuqu ?
+[22:07:18] [Server thread/INFO]: [dingjibang: Given [Ur-ghast Trophy] * 64 to dingjibang]
+[22:08:00] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[22:08:47] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[22:08:58] [Server thread/INFO]: sola was blown up by Creeper
+[22:09:03] [Server thread/INFO]: sola issued server command: /back
+[22:14:19] [Server thread/INFO]: sola has just earned the achievement [Trophied Champion]
+[22:14:19] [Server thread/INFO]: dingjibang has just earned the achievement [Trophied Champion]
+[22:14:23] [Netty IO #3/INFO]: <dingjibang> ...
+[22:14:24] [Server thread/INFO]: sola was slain by Block and Chain Goblin
+[22:14:30] [Server thread/INFO]: sola issued server command: /back
+[22:14:31] [Netty IO #3/INFO]: <dingjibang> 你疯了。。。
+[22:14:33] [Server thread/WARN]: sola moved wrongly!
+[22:14:34] [Server thread/INFO]: sola was slain by Block and Chain Goblin
+[22:14:44] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[22:15:34] [Netty IO #3/INFO]: <dingjibang> 可以一起走么。。
+[22:17:04] [Netty IO #3/INFO]: <dingjibang> 这里有个弓 回头
+[22:20:04] [Server thread/INFO]: dingjibang issued server command: /home
+[22:20:21] [Server thread/INFO]: sola issued server command: /home
+[22:20:21] [Server thread/INFO]: dingjibang issued server command: /back
+[22:20:50] [Netty IO #3/INFO]: <dingjibang> 钢叶 = 钻石
+[22:21:04] [Netty IO #3/INFO]: <dingjibang> 东西满了可以回家放一下 我在原地等你
+[22:21:05] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[22:25:47] [Server thread/INFO]: sola was slain by Kobold
+[22:25:52] [Server thread/INFO]: sola issued server command: /back
+[22:25:59] [Server thread/INFO]: sola was slain by Block and Chain Goblin
+[22:26:08] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[22:26:43] [Netty IO #3/INFO]: <dingjibang> 好大
+[22:27:26] [Server thread/INFO]: sola issued server command: /home
+[22:27:54] [Server thread/INFO]: sola was slain by Zombie
+[22:29:11] [Server thread/INFO]: dingjibang issued server command: /tp sola
+[22:29:16] [Server thread/INFO]: dingjibang issued server command: /back
+[22:29:31] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[22:30:10] [Server thread/INFO]: sola issued server command: /here
+[22:30:13] [Netty IO #0/INFO]: <sola> here
+[22:30:23] [Server thread/INFO]: dingjibang issued server command: /tp sola
+[22:30:53] [Server thread/INFO]: sola was slain by Upper Goblin Knight
+[22:30:57] [Server thread/INFO]: sola issued server command: /back
+[22:31:31] [Server thread/INFO]: dingjibang was slain by Helmet Crab
+[22:31:34] [Server thread/INFO]: dingjibang issued server command: /back
+[22:31:40] [Server thread/INFO]: sola was pummeled by Slime Beetle
+[22:31:45] [Server thread/INFO]: sola issued server command: /back
+[22:34:20] [Netty IO #3/INFO]: <dingjibang> laiguole
+[22:34:22] [Netty IO #3/INFO]: <dingjibang> gg
+[22:36:05] [Netty IO #3/INFO]: <dingjibang> 咋整233
+[22:36:11] [Netty IO #0/INFO]: <sola> here
+[22:36:17] [Server thread/INFO]: dingjibang issued server command: /tp sola
+[22:38:51] [Server thread/INFO]: sola was slain by Upper Goblin Knight
+[22:38:56] [Server thread/INFO]: sola issued server command: /back
+[22:39:01] [Server thread/INFO]: sola was pummeled by Slime Beetle
+[22:39:10] [Server thread/INFO]: sola issued server command: /back
+[22:39:25] [Server thread/INFO]: sola was slain by Helmet Crab
+[22:39:31] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[22:39:46] [Server thread/INFO]: dingjibang was blown up by Creeper
+[22:39:50] [Server thread/INFO]: dingjibang issued server command: /back
+[22:40:42] [Server thread/INFO]: sola was pummeled by Knight Phantom
+[22:40:48] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[22:41:16] [Server thread/INFO]: sola was shot by dingjibang
+[22:41:22] [Server thread/INFO]: sola issued server command: /back
+[22:41:43] [Server thread/INFO]: sola has just earned the achievement [Carminite Acclimation]
+[22:43:17] [Netty IO #3/INFO]: <dingjibang> 高塔走起
+[22:43:25] [Netty IO #3/INFO]: <dingjibang> 回家整理去
+[22:43:30] [Server thread/INFO]: dingjibang issued server command: /home
+[22:43:41] [Netty IO #3/INFO]: <dingjibang> 高塔要比这个绕多了
+[22:46:31] [Netty IO #3/INFO]: <dingjibang> 准备好了嘛qwq
+[22:46:39] [Server thread/INFO]: sola issued server command: /home
+[22:46:51] [Server thread/INFO]: Player touched the portal block.  Sending the player to dimension 7
+[22:47:18] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[22:47:34] [Netty IO #3/INFO]: <dingjibang> 弄个裤子去 家里有
+[22:47:39] [Server thread/INFO]: sola issued server command: /home
+[22:47:44] [Netty IO #3/INFO]: <dingjibang> 钢叶的
+[22:49:04] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[22:49:33] [Netty IO #3/INFO]: <dingjibang> 跟着火把 我以前来过
+[22:51:22] [Netty IO #3/INFO]: <dingjibang> ..还特么进不去
+[22:51:34] [Server thread/INFO]: dingjibang has just earned the achievement [Carminite Acclimation]
+[22:54:24] [Netty IO #3/INFO]: <dingjibang> 233
+[22:54:27] [Netty IO #3/INFO]: <dingjibang> 困死了
+[22:55:24] [Server thread/INFO]: dingjibang issued server command: /tp
+[22:55:26] [Netty IO #3/INFO]: <dingjibang> tp
+[22:56:20] [Netty IO #3/INFO]: <dingjibang> 666
+[22:56:53] [Server thread/INFO]: dingjibang issued server command: /home
+[22:56:59] [Server thread/INFO]: dingjibang issued server command: /back
+[22:58:11] [Server thread/INFO]: sola was slain by Enderman
+[22:58:17] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:00:11] [Netty IO #3/INFO]: <dingjibang> 这个水里面 可能有箱子
+[23:03:21] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:03:42] [Netty IO #3/INFO]: <dingjibang> 回到第一个地方
+[23:04:03] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:05:59] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:06:36] [Netty IO #3/INFO]: <dingjibang> 1/16的地方走完了
+[23:06:57] [Server thread/INFO]: sola fell from a high place
+[23:06:58] [Netty IO #3/INFO]: <dingjibang> ...
+[23:07:06] [Netty IO #3/INFO]: <dingjibang> 我想打你一下让你回头来着。。。
+[23:07:09] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:07:18] [Netty IO #3/INFO]: <dingjibang> hahahawocuole
+[23:07:20] [Server thread/INFO]: dingjibang fell from a high place
+[23:07:24] [Server thread/INFO]: dingjibang issued server command: /tp sola
+[23:08:18] [Netty IO #3/INFO]: <dingjibang> 继续
+[23:09:53] [Netty IO #3/INFO]: <dingjibang> zoule
+[23:10:51] [Netty IO #3/INFO]: <dingjibang> 弄完2/4了
+[23:12:13] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:12:54] [Netty IO #3/INFO]: <dingjibang> 现在咱们在副塔 要进去主塔需要塔钥匙x4
+[23:13:02] [Netty IO #3/INFO]: <dingjibang> 弄了三个了
+[23:13:49] [Netty IO #3/INFO]: <dingjibang> 还差一个。。。
+[23:14:29] [Netty IO #3/INFO]: <dingjibang> 你去那边里找 找箱子和没去的地方 里面有个绿色的玩意就是钥匙 我在这里找
+[23:15:43] [Netty IO #3/INFO]: <dingjibang> wozhaodaole
+[23:15:49] [Netty IO #3/INFO]: <dingjibang> 去刚才地方集合
+[23:16:28] [Netty IO #3/INFO]: <dingjibang> bie..
+[23:17:44] [Server thread/INFO]: dingjibang was slain by Carminite Golem
+[23:17:46] [Server thread/INFO]: sola was slain by Carminite Golem
+[23:17:47] [Server thread/INFO]: dingjibang issued server command: /back
+[23:17:52] [Server thread/INFO]: dingjibang was slain by Carminite Golem
+[23:17:53] [Server thread/INFO]: sola issued server command: /back
+[23:17:58] [Server thread/INFO]: sola was slain by Carminite Golem
+[23:17:59] [Server thread/INFO]: dingjibang issued server command: /back
+[23:18:02] [Server thread/INFO]: sola issued server command: /back
+[23:20:05] [Server thread/INFO]: sola issued server command: /tpdingjibang
+[23:20:10] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:20:22] [Netty IO #3/INFO]: <dingjibang> zheteme 是云233
+[23:20:49] [Netty IO #3/INFO]: <dingjibang> xialai
+[23:21:02] [Server thread/INFO]: sola fell from a high place
+[23:21:06] [Netty IO #3/INFO]: <dingjibang> ...
+[23:21:08] [Server thread/INFO]: sola issued server command: /back
+[23:21:20] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:23:57] [Server thread/INFO]: dingjibang fell from a high place
+[23:24:04] [Server thread/INFO]: dingjibang issued server command: /tp sola
+[23:24:40] [Server thread/INFO]: sola fell from a high place
+[23:24:47] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:25:07] [Server thread/INFO]: dingjibang issued server command: /home
+[23:25:19] [Server thread/INFO]: dingjibang issued server command: /back
+[23:26:51] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:31:24] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:32:20] [Netty IO #3/INFO]: <dingjibang> 我按机关 他跟着你目光走的那个路
+[23:33:11] [Netty IO #3/INFO]: <dingjibang> jump
+[23:33:19] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:33:25] [Server thread/INFO]: sola fell from a high place
+[23:33:32] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:34:25] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:34:35] [Netty IO #3/INFO]: <dingjibang> 来玩这个
+[23:34:51] [Netty IO #3/INFO]: <dingjibang> 都打开会有钻石 要快点哇
+[23:35:22] [Netty IO #3/INFO]: <dingjibang> 2333
+[23:35:40] [Server thread/INFO]: [Urghast] Attack successful, 42.000000 damage until phase switch.
+[23:35:42] [Server thread/INFO]: [Urghast] Attack successful, 28.000000 damage until phase switch.
+[23:35:43] [Server thread/INFO]: [Urghast] Attack successful, 20.000000 damage until phase switch.
+[23:35:45] [Server thread/INFO]: [Urghast] Attack successful, 11.000000 damage until phase switch.
+[23:36:07] [Netty IO #3/INFO]: <dingjibang> 头上是boss
+[23:36:10] [Server thread/INFO]: [Urghast] Attack successful, -3.000000 damage until phase switch.
+[23:36:14] [Server thread/INFO]: [Urghast] Attack successful, 44.000000 damage until phase switch.
+[23:36:17] [Server thread/INFO]: [Urghast] Attack successful, 41.000000 damage until phase switch.
+[23:36:18] [Server thread/INFO]: [Urghast] Attack fail with arrow type attack for 1.750000 damage
+[23:36:20] [Server thread/INFO]: [Urghast] Attack successful, 37.250000 damage until phase switch.
+[23:36:22] [Server thread/INFO]: [Urghast] Attack successful, 35.250000 damage until phase switch.
+[23:36:27] [Server thread/INFO]: [Urghast] Attack successful, 32.000000 damage until phase switch.
+[23:36:32] [Server thread/INFO]: [Urghast] Attack successful, 29.000000 damage until phase switch.
+[23:37:09] [Server thread/INFO]: [Urghast] Attack successful, 27.750000 damage until phase switch.
+[23:37:10] [Server thread/INFO]: [Urghast] Attack successful, 26.000000 damage until phase switch.
+[23:37:11] [Netty IO #3/INFO]: <dingjibang> da xiao de
+[23:37:19] [Netty IO #3/INFO]: <dingjibang> 打小的
+[23:37:28] [Netty IO #3/INFO]: <dingjibang> 站在这台机器旁边打
+[23:37:50] [Server thread/INFO]: [Urghast] Attack successful, 22.750000 damage until phase switch.
+[23:37:52] [Server thread/INFO]: [Urghast] Attack successful, 20.000000 damage until phase switch.
+[23:37:54] [Server thread/INFO]: [Urghast] Attack successful, 18.250000 damage until phase switch.
+[23:37:58] [Server thread/INFO]: [Urghast] Attack successful, 15.500000 damage until phase switch.
+[23:38:07] [Server thread/INFO]: [Urghast] Attack successful, 13.250000 damage until phase switch.
+[23:38:09] [Server thread/INFO]: [Urghast] Attack successful, 11.000000 damage until phase switch.
+[23:38:12] [Server thread/INFO]: [Urghast] Attack successful, 9.500000 damage until phase switch.
+[23:38:15] [Server thread/INFO]: [Urghast] Attack successful, 7.750000 damage until phase switch.
+[23:38:17] [Server thread/INFO]: [Urghast] Attack successful, 5.250000 damage until phase switch.
+[23:38:19] [Server thread/INFO]: [Urghast] Attack successful, 3.000000 damage until phase switch.
+[23:38:24] [Server thread/INFO]: [Urghast] Attack successful, -0.250000 damage until phase switch.
+[23:38:26] [Server thread/INFO]: [Urghast] Attack successful, 40.000000 damage until phase switch.
+[23:38:28] [Server thread/INFO]: [Urghast] Attack successful, 34.000000 damage until phase switch.
+[23:38:30] [Server thread/INFO]: [Urghast] Attack successful, 25.000000 damage until phase switch.
+[23:38:32] [Server thread/INFO]: [Urghast] Attack successful, 19.000000 damage until phase switch.
+[23:38:34] [Server thread/INFO]: [Urghast] Attack successful, 10.000000 damage until phase switch.
+[23:38:36] [Server thread/INFO]: [Urghast] Attack successful, 1.000000 damage until phase switch.
+[23:38:38] [Server thread/INFO]: [Urghast] Attack successful, -7.000000 damage until phase switch.
+[23:38:42] [Server thread/INFO]: [Urghast] Attack successful, 46.500000 damage until phase switch.
+[23:38:44] [Server thread/INFO]: [Urghast] Attack successful, 44.500000 damage until phase switch.
+[23:38:48] [Server thread/INFO]: [Urghast] Attack successful, 42.250000 damage until phase switch.
+[23:38:51] [Server thread/INFO]: [Urghast] Attack successful, 39.750000 damage until phase switch.
+[23:38:53] [Server thread/INFO]: [Urghast] Attack successful, 37.000000 damage until phase switch.
+[23:38:55] [Server thread/INFO]: [Urghast] Attack successful, 35.250000 damage until phase switch.
+[23:38:58] [Server thread/INFO]: [Urghast] Attack successful, 32.500000 damage until phase switch.
+[23:39:00] [Server thread/INFO]: [Urghast] Attack successful, 30.500000 damage until phase switch.
+[23:39:02] [Server thread/INFO]: [Urghast] Attack successful, 28.500000 damage until phase switch.
+[23:39:04] [Server thread/INFO]: [Urghast] Attack successful, 26.500000 damage until phase switch.
+[23:39:04] [Server thread/INFO]: [Urghast] Attack successful, 24.250000 damage until phase switch.
+[23:39:06] [Server thread/INFO]: [Urghast] Attack successful, 22.000000 damage until phase switch.
+[23:39:09] [Server thread/INFO]: [Urghast] Attack successful, 20.250000 damage until phase switch.
+[23:39:12] [Server thread/INFO]: [Urghast] Attack successful, 18.250000 damage until phase switch.
+[23:39:14] [Server thread/INFO]: [Urghast] Attack successful, 16.500000 damage until phase switch.
+[23:39:16] [Server thread/INFO]: [Urghast] Attack successful, 15.250000 damage until phase switch.
+[23:39:24] [Server thread/INFO]: [Urghast] Attack successful, 12.750000 damage until phase switch.
+[23:39:27] [Server thread/INFO]: [Urghast] Attack successful, 10.000000 damage until phase switch.
+[23:39:28] [Server thread/INFO]: [Urghast] Attack successful, 7.750000 damage until phase switch.
+[23:39:37] [Server thread/INFO]: [Urghast] Attack successful, 6.000000 damage until phase switch.
+[23:39:38] [Server thread/INFO]: [Urghast] Attack successful, 2.250000 damage until phase switch.
+[23:39:40] [Server thread/INFO]: [Urghast] Attack successful, 1.000000 damage until phase switch.
+[23:39:41] [Server thread/INFO]: [Urghast] Attack successful, -2.000000 damage until phase switch.
+[23:39:44] [Server thread/INFO]: [Urghast] Attack successful, 35.000000 damage until phase switch.
+[23:40:03] [Server thread/INFO]: [Urghast] Attack successful, 45.000000 damage until phase switch.
+[23:40:04] [Server thread/INFO]: [Urghast] Attack successful, 45.000000 damage until phase switch.
+[23:40:04] [Server thread/INFO]: [Urghast] Attack fail with generic type attack for 3.000000 damage
+[23:40:04] [Server thread/INFO]: [Urghast] Attack fail with generic type attack for 3.000000 damage
+[23:40:05] [Server thread/INFO]: [Urghast] Attack successful, 45.000000 damage until phase switch.
+[23:40:06] [Netty IO #3/INFO]: <dingjibang> 让这个机器吸 吸满了
+[23:40:07] [Server thread/INFO]: [Urghast] Attack successful, 45.000000 damage until phase switch.
+[23:40:07] [Server thread/INFO]: [Urghast] Attack successful, 45.000000 damage until phase switch.
+[23:40:08] [Server thread/INFO]: [Urghast] Attack successful, 45.000000 damage until phase switch.
+[23:40:08] [Server thread/INFO]: [Urghast] Attack fail with generic type attack for 3.000000 damage
+[23:40:15] [Server thread/INFO]: [Urghast] Attack successful, 31.000000 damage until phase switch.
+[23:40:27] [Netty IO #3/INFO]: <dingjibang> 刚要说 吸满了能把boss吸过来用监看 然后希曼了
+[23:40:46] [Server thread/INFO]: [Urghast] Attack successful, 45.000000 damage until phase switch.
+[23:40:46] [Server thread/INFO]: [Urghast] Attack fail with generic type attack for 3.000000 damage
+[23:40:46] [Server thread/INFO]: [Urghast] Attack fail with generic type attack for 3.000000 damage
+[23:40:47] [Server thread/INFO]: [Urghast] Attack successful, 40.000000 damage until phase switch.
+[23:40:47] [Server thread/INFO]: [Urghast] Attack fail with player type attack for 8.000000 damage
+[23:40:47] [Server thread/INFO]: [Urghast] Attack fail with player type attack for 8.000000 damage
+[23:40:47] [Server thread/INFO]: [Urghast] Attack successful, 40.000000 damage until phase switch.
+[23:40:48] [Server thread/INFO]: [Urghast] Attack fail with player type attack for 8.000000 damage
+[23:40:48] [Server thread/INFO]: [Urghast] Attack fail with player type attack for 12.000000 damage
+[23:40:48] [Server thread/INFO]: [Urghast] Attack successful, 40.000000 damage until phase switch.
+[23:40:48] [Server thread/INFO]: [Urghast] Attack fail with player type attack for 8.000000 damage
+[23:41:05] [Server thread/INFO]: [Urghast] Attack successful, 30.000000 damage until phase switch.
+[23:41:07] [Server thread/INFO]: [Urghast] Attack successful, 22.000000 damage until phase switch.
+[23:41:08] [Server thread/INFO]: [Urghast] Attack successful, 21.250000 damage until phase switch.
+[23:41:35] [Server thread/INFO]: sola has just earned the achievement [Tears of Fire]
+[23:41:36] [Netty IO #3/INFO]: <dingjibang> ok
+[23:41:46] [Server thread/INFO]: dingjibang has just earned the achievement [Tears of Fire]
+[23:41:55] [Netty IO #3/INFO]: <dingjibang> 散了吧，
+[23:42:03] [Server thread/INFO]: dingjibang was slain by sola
+[23:42:05] [Server thread/INFO]: dingjibang issued server command: /back
+[23:42:10] [Server thread/INFO]: sola was slain by dingjibang
+[23:42:15] [Server thread/INFO]: sola issued server command: /back
+[23:42:24] [Server thread/INFO]: dingjibang was slain by sola
+[23:42:26] [Server thread/INFO]: dingjibang issued server command: /back
+[23:42:31] [Server thread/INFO]: sola was slain by dingjibang
+[23:42:38] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:42:50] [Server thread/INFO]: sola fell from a high place
+[23:42:59] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:43:06] [Server thread/INFO]: dingjibang was slain by sola
+[23:43:11] [Server thread/INFO]: dingjibang issued server command: /back
+[23:43:18] [Server thread/INFO]: dingjibang was slain by sola
+[23:43:21] [Server thread/INFO]: dingjibang issued server command: /back
+[23:43:27] [Server thread/INFO]: sola was shot by dingjibang
+[23:43:37] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:43:44] [Server thread/INFO]: dingjibang was slain by sola
+[23:43:46] [Server thread/INFO]: dingjibang issued server command: /back
+[23:43:56] [Server thread/INFO]: sola was shot by dingjibang
+[23:44:04] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:44:09] [Server thread/INFO]: dingjibang was slain by sola
+[23:44:13] [Server thread/INFO]: dingjibang issued server command: /back
+[23:44:15] [Netty IO #3/INFO]: <dingjibang> bie
+[23:45:42] [Netty IO #3/INFO]: <dingjibang> 我说的呢 刚才咱们开错门了 那是扶她的
+[23:45:51] [Netty IO #3/INFO]: <dingjibang> f副塔
+[23:45:57] [Server thread/INFO]: sola was shot by dingjibang
+[23:45:58] [Server thread/INFO]: dingjibang was burnt to a crisp whilst fighting sola
+[23:46:02] [Server thread/INFO]: sola issued server command: /back
+[23:46:08] [Server thread/INFO]: Player touched the portal block.  Sending the player to dimension 7
+[23:46:11] [Server thread/INFO]: dingjibang issued server command: /home
+[23:46:17] [Netty IO #3/INFO]: <dingjibang> 我回家了233
+[23:46:27] [Server thread/INFO]: sola issued server command: /home
+[23:46:54] [Netty IO #0/INFO]: <sola> 没弓箭了
+[23:47:53] [Netty IO #0/INFO]: <sola> 有无限了
+[23:48:08] [Netty IO #0/INFO]: <sola> 怎么舍不出来
+[23:48:17] [Server thread/INFO]: Unloading dimension 7
+[23:49:12] [Server thread/INFO]: sola was blown up by Creeper
+[23:49:16] [Server thread/INFO]: sola issued server command: /back
+[23:51:19] [Netty IO #3/INFO]: <dingjibang> tuhao
+[23:51:55] [Server thread/INFO]: dingjibang was slain by Zombie
+[23:51:58] [Server thread/INFO]: dingjibang issued server command: /back
+[23:52:09] [Netty IO #3/INFO]: <dingjibang> 老子的菜地啊！！！
+[23:52:48] [Netty IO #3/INFO]: <dingjibang> wocao 方圆八百里僵尸都来了
+[23:52:56] [Server thread/INFO]: sola was slain by Zombie
+[23:53:12] [Netty IO #3/INFO]: <dingjibang> 生化危机我擦
+[23:54:43] [Server thread/INFO]: sola was slain by dingjibang
+[23:55:28] [Server thread/INFO]: sola was shot by dingjibang
+[23:55:32] [Server thread/INFO]: sola issued server command: /back
+[23:55:51] [Server thread/INFO]: sola was shot by dingjibang
+[23:55:55] [Server thread/INFO]: sola issued server command: /back
+[23:55:56] [Netty IO #3/INFO]: <dingjibang> 233
+[23:56:11] [Server thread/INFO]: dingjibang was shot by sola
+[23:56:13] [Server thread/INFO]: dingjibang issued server command: /back
+[23:56:24] [Server thread/INFO]: sola was shot by dingjibang
+[23:56:28] [Server thread/INFO]: sola issued server command: /back
+[23:56:43] [Netty IO #3/INFO]: <dingjibang> 讲到里 你身上都是建
+[23:56:44] [Server thread/INFO]: dingjibang was shot by sola
+[23:57:18] [Server thread/INFO]: sola was slain by dingjibang
+[23:57:23] [Server thread/INFO]: sola issued server command: /back
+[23:57:30] [Server thread/INFO]: dingjibang was slain by sola
+[23:57:56] [Netty IO #3/INFO]: <dingjibang> 明天打雪怪
+[23:59:07] [Server thread/INFO]: sola was shot by dingjibang
+[23:59:12] [Server thread/INFO]: sola issued server command: /back
+[23:59:18] [Server thread/INFO]: sola was slain by dingjibang
+[23:59:22] [Server thread/INFO]: sola issued server command: /back
+[23:59:29] [Server thread/INFO]: sola was shot by dingjibang
+[23:59:33] [Server thread/INFO]: sola issued server command: /back
+[23:59:45] [Server thread/INFO]: sola was slain by dingjibang
+[23:59:50] [Server thread/INFO]: sola issued server command: /back
+[23:59:53] [Netty IO #3/INFO]: <dingjibang> 我要笑死了 超驽了
+[23:59:54] [Server thread/INFO]: dingjibang was slain by sola

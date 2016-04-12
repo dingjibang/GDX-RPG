@@ -1,0 +1,45 @@
+[00:00:02] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:01:00] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:01:15] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:01:37] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:01:52] [Server thread/INFO]: anli issued server command: //set 95"15
+[00:02:08] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:03:13] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:03:28] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:03:44] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:03:57] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:04:16] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:05:09] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:05:24] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:05:38] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:05:56] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:06:29] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:06:51] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:07:05] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:07:15] [Server thread/INFO]: anli issued server command: //set 95:15
+[00:28:06] [Server thread/INFO]: anli issued server command: //set 155
+[00:28:16] [Server thread/INFO]: anli issued server command: //set 155
+[00:28:32] [Server thread/INFO]: anli issued server command: //set 155
+[00:28:43] [Server thread/INFO]: anli issued server command: //set 155
+[00:28:55] [Server thread/INFO]: anli issued server command: //set 155
+[00:29:38] [Server thread/INFO]: anli issued server command: //set 155
+[00:29:58] [Server thread/INFO]: anli issued server command: //set 155
+[00:30:15] [Server thread/INFO]: anli issued server command: //set 155
+[00:30:53] [Server thread/INFO]: anli issued server command: //set 155
+[00:31:23] [Server thread/INFO]: anli issued server command: //set 155
+[00:50:42] [Server thread/INFO]: anli has just earned the achievement [To Infinity and Beyond!]
+[00:56:00] [Server thread/INFO]: anli issued server command: /home
+[01:04:39] [Server thread/INFO]: anli issued server command: //set 155
+[01:04:56] [Server thread/INFO]: anli issued server command: //set 155
+[01:05:12] [Server thread/INFO]: anli issued server command: //set 155
+[01:05:30] [Server thread/INFO]: anli issued server command: //set 155
+[01:06:30] [Server thread/INFO]: anli issued server command: //set 155
+[01:06:45] [Server thread/INFO]: anli issued server command: //set 155
+[01:07:14] [Server thread/INFO]: anli issued server command: //set 155
+[01:07:28] [Server thread/INFO]: anli issued server command: //set 155
+[01:07:47] [Server thread/INFO]: anli issued server command: //set 155
+[01:17:56] [Server thread/INFO]: anli issued server command: //set 95:15
+[01:22:28] [Server thread/INFO]: anli lost connection: Disconnected
+[01:22:28] [Server thread/INFO]: anli left the game.
+[16:05:06] [Server thread/INFO]: dingjibang lost connection: Internal Exception: java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+[16:05:06] [Server thread/INFO]: dingjibang left the game.

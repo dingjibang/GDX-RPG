@@ -1,0 +1,840 @@
+[22:19:07] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[22:19:07] [main/INFO]: Using primary tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[22:19:07] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLServerTweaker
+[22:19:07] [main/INFO]: Forge Mod Loader version 7.10.25.1206 for Minecraft 1.7.10 loading
+[22:19:08] [main/INFO]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.7.0_67, running on Windows 8.1:amd64:6.3, installed at C:\Program Files\Java\jre7
+[22:19:08] [main/ERROR]: The coremod ruby.bamboo.asm.CorePlugin is requesting minecraft version 1.7.2 and minecraft is 1.7.10. It will be ignored.
+[22:19:10] [main/WARN]: The following coremods do not have a @MCVersion annotation. They may cause problems if this is not the correct version of Minecraft for them.
+[22:19:10] [main/WARN]: Missing @MCVersion: codechicken.core.launch.CodeChickenCorePlugin  lain.mods.inputfix.InputFix  invtweaks.forge.asm.FMLPlugin  codechicken.nei.asm.NEICorePlugin  
+[22:19:10] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[22:19:10] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[22:19:10] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[22:19:10] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[22:19:10] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[22:19:11] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[22:19:11] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[22:19:11] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[22:19:11] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[22:19:11] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[22:19:11] [main/INFO]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[22:19:11] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[22:19:12] [main/INFO]: Loading tweak class name cpw.mods.fml.common.launcher.TerminalTweaker
+[22:19:12] [main/INFO]: Calling tweak class cpw.mods.fml.common.launcher.TerminalTweaker
+[22:19:12] [main/INFO]: Launching wrapped minecraft {net.minecraft.server.MinecraftServer}
+[22:19:14] [Server thread/INFO]: Starting minecraft server version 1.7.10
+[22:19:14] [Server thread/INFO]: Attempting early MinecraftForge initialization
+[22:19:14] [Server thread/INFO]: MinecraftForge v10.13.0.1206 Initialized
+[22:19:14] [Server thread/INFO]: Replaced 182 ore recipies
+[22:19:14] [Server thread/INFO]: Completed early MinecraftForge initialization
+[22:19:14] [Server thread/INFO]: Searching I:\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods for mods
+[22:19:14] [Server thread/INFO]: Also searching I:\Minecraft 1.7.10 with Forge10.13.0.1206纯净版（附Cauldron开服器）\（开服器）Cauldron服务端\mods\1.7.10 for mods
+[22:19:14] [Server thread/INFO]: Forge Mod Loader has identified 11 mods to load
+[22:19:14] [Server thread/INFO]: FML has found a non-mod file CodeChickenLib-1.7.10-1.1.1.99-universal.jar in your mods directory. It will now be injected into your classpath. This could severe stability issues, it should be removed if possible.
+[22:19:15] [Server thread/INFO]: Processing ObjectHolder annotations
+[22:19:15] [Server thread/INFO]: Found 341 ObjectHolder annotations
+[22:19:15] [Server thread/INFO]: Configured a dormant chunk cache size of 0
+[22:19:36] [Server thread/WARN]: java.net.ConnectException: Connection timed out: connect
+[22:19:36] [Server thread/WARN]: 	at java.net.TwoStacksPlainSocketImpl.socketConnect(Native Method)
+[22:19:36] [Server thread/WARN]: 	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at java.net.PlainSocketImpl.connect(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at java.net.SocksSocketImpl.connect(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at java.net.Socket.connect(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at sun.security.ssl.SSLSocketImpl.connect(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at sun.security.ssl.BaseSSLSocketImpl.connect(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at sun.net.NetworkClient.doConnect(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at sun.net.www.protocol.https.HttpsClient.<init>(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at sun.net.www.protocol.https.HttpsClient.New(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at java.net.URL.openStream(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at ruby.bamboo.UpdateNotify.run(UpdateNotify.java:43)
+[22:19:36] [Server thread/WARN]: 	at java.lang.Thread.run(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at ruby.bamboo.BambooCore.preLoad(BambooCore.java:58)
+[22:19:36] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[22:19:36] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at cpw.mods.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:513)
+[22:19:36] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[22:19:36] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)
+[22:19:36] [Server thread/WARN]: 	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)
+[22:19:36] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)
+[22:19:36] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)
+[22:19:36] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.post(EventBus.java:275)
+[22:19:36] [Server thread/WARN]: 	at cpw.mods.fml.common.LoadController.sendEventToModContainer(LoadController.java:208)
+[22:19:36] [Server thread/WARN]: 	at cpw.mods.fml.common.LoadController.propogateStateMessage(LoadController.java:187)
+[22:19:36] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[22:19:36] [Server thread/WARN]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at java.lang.reflect.Method.invoke(Unknown Source)
+[22:19:36] [Server thread/WARN]: 	at com.google.common.eventbus.EventSubscriber.handleEvent(EventSubscriber.java:74)
+[22:19:36] [Server thread/WARN]: 	at com.google.common.eventbus.SynchronizedEventSubscriber.handleEvent(SynchronizedEventSubscriber.java:47)
+[22:19:36] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatch(EventBus.java:322)
+[22:19:36] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.dispatchQueuedEvents(EventBus.java:304)
+[22:19:36] [Server thread/WARN]: 	at com.google.common.eventbus.EventBus.post(EventBus.java:275)
+[22:19:36] [Server thread/WARN]: 	at cpw.mods.fml.common.LoadController.distributeStateMessage(LoadController.java:118)
+[22:19:36] [Server thread/WARN]: 	at cpw.mods.fml.common.Loader.preinitializeMods(Loader.java:513)
+[22:19:36] [Server thread/WARN]: 	at cpw.mods.fml.server.FMLServerHandler.beginServerLoading(FMLServerHandler.java:88)
+[22:19:36] [Server thread/WARN]: 	at cpw.mods.fml.common.FMLCommonHandler.onServerStart(FMLCommonHandler.java:317)
+[22:19:36] [Server thread/WARN]: 	at net.minecraft.server.dedicated.DedicatedServer.func_71197_b(DedicatedServer.java:169)
+[22:19:36] [Server thread/WARN]: 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:624)
+[22:19:36] [Server thread/WARN]: 	at java.lang.Thread.run(Unknown Source)
+[22:19:37] [Server thread/INFO]: Applying holder lookups
+[22:19:37] [Server thread/INFO]: Holder lookups applied
+[22:19:37] [Server thread/INFO]: Loading properties
+[22:19:37] [Server thread/INFO]: Default game type: SURVIVAL
+[22:19:37] [Server thread/INFO]: This server is running Cauldron-MCPC-Plus version git-Cauldron-MCPC-Plus-1.7.10-1.1206.01.170 (MC: 1.7.10) (Implementing API version 1.7.10-R0.1-SNAPSHOT)
+[22:19:37] [Server thread/INFO]: Using 4 threads for Netty based IO
+[22:19:37] [Server thread/WARN]: =============================================================
+[22:19:37] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[22:19:37] [Server thread/WARN]: Offendor: org/spigotmc/RestartCommand.restart()V
+[22:19:37] [Server thread/WARN]: =============================================================
+[22:19:37] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[22:19:37] [Server thread/INFO]: Generating keypair
+[22:19:37] [Server thread/INFO]: Starting Minecraft server on *:25563
+[22:19:37] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[22:19:37] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[22:19:37] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[22:19:37] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[22:19:37] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.Container
+[22:19:37] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerEnchantment
+[22:19:38] [Server thread/INFO]: WorldEdit for Forge (version 6.1.1-SNAPSHOT) is loaded
+[22:19:38] [Server thread/INFO]: Forge Mod Loader has successfully loaded 11 mods
+[22:19:38] [Server thread/INFO]: Preparing level "skarn"
+[22:19:38] [Server thread/INFO]: Registered command debug with permission node vanilla.command.debug
+[22:19:38] [Server thread/INFO]: Registered command spreadplayers with permission node vanilla.command.spreadplayers
+[22:19:38] [Server thread/INFO]: Registered command playsound with permission node vanilla.command.playsound
+[22:19:38] [Server thread/INFO]: Registered command scoreboard with permission node vanilla.command.scoreboard
+[22:19:38] [Server thread/INFO]: Registered command achievement with permission node vanilla.command.achievement
+[22:19:38] [Server thread/INFO]: Registered command summon with permission node vanilla.command.summon
+[22:19:38] [Server thread/INFO]: Registered command setblock with permission node vanilla.command.setblock
+[22:19:38] [Server thread/INFO]: Registered command testforblock with permission node vanilla.command.testforblock
+[22:19:38] [Server thread/INFO]: Registered command tellraw with permission node vanilla.command.tellraw
+[22:19:38] [Server thread/INFO]: Registered command netstat with permission node vanilla.command.netstat
+[22:19:38] [Server thread/INFO]: Injecting existing block and item data into this server instance
+[22:19:38] [Server thread/INFO]: Injecting new block and item data into this server instance.
+[22:19:38] [Server thread/INFO]: Injected new block/item IronChest:BlockIronChest: 234 (init) -> 442 (map).
+[22:19:38] [Server thread/INFO]: Injected new block/item IronChest:woodIronUpgrade: 4139 (init) -> 4239 (map).
+[22:19:38] [Server thread/INFO]: Injected new block/item IronChest:diamondObsidianUpgrade: 4141 (init) -> 4240 (map).
+[22:19:38] [Server thread/INFO]: Injected new block/item IronChest:goldDiamondUpgrade: 4134 (init) -> 4241 (map).
+[22:19:38] [Server thread/INFO]: Injected new block/item IronChest:diamondCrystalUpgrade: 4138 (init) -> 4242 (map).
+[22:19:38] [Server thread/INFO]: Injected new block/item IronChest:copperSilverUpgrade: 4135 (init) -> 4243 (map).
+[22:19:38] [Server thread/INFO]: Injected new block/item IronChest:woodCopperUpgrade: 4140 (init) -> 4244 (map).
+[22:19:38] [Server thread/INFO]: Injected new block/item IronChest:BlockIronChest: 234 (init) -> 442 (map).
+[22:19:38] [Server thread/INFO]: Injected new block/item IronChest:copperIronUpgrade: 4137 (init) -> 4245 (map).
+[22:19:38] [Server thread/INFO]: Injected new block/item IronChest:ironGoldUpgrade: 4133 (init) -> 4246 (map).
+[22:19:38] [Server thread/INFO]: Injected new block/item IronChest:silverGoldUpgrade: 4136 (init) -> 4247 (map).
+[22:19:38] [Server thread/INFO]: Applying holder lookups
+[22:19:38] [Server thread/INFO]: Holder lookups applied
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFLOG with ID 165.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFROOTS with ID 166.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFLEAVES with ID 167.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFFIREFLY with ID 168.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFCICADA with ID 169.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFPORTAL with ID 176.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAZESTONE with ID 177.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFHEDGE with ID 178.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFBOSSSPAWNER with ID 179.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFFIREFLYJAR with ID 180.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFPLANT with ID 181.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFUNCRAFTINGTABLE with ID 182.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFFIREJET with ID 183.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFNAGASTONE with ID 184.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFSAPLING with ID 185.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMOONWORM with ID 186.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAGICLOG with ID 187.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAGICLEAVES with ID 188.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFMAGICLOGSPECIAL with ID 189.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTOWERSTONE with ID 190.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTOWERDEVICE with ID 191.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTOWERTRANSLUCENT with ID 192.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTROPHY with ID 193.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFSHIELD with ID 194.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTROPHYPEDESTAL with ID 195.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFAURORABRICK with ID 196.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFUNDERBRICK with ID 197.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTHORNS with ID 198.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFBURNTTHORNS with ID 199.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFTHORNROSE with ID 200.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFLEAVES3 with ID 201.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TFDEADROCK with ID 202.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_DARKLEAVES with ID 203.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_AURORAPILLAR with ID 204.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_AURORASLAB with ID 205.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_AURORADOUBLESLAB with ID 206.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TROLLSTEINN with ID 207.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_WISPYCLOUD with ID 208.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_FLUFFYCLOUD with ID 209.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTCOBBLE with ID 210.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTLOG with ID 211.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTLEAVES with ID 212.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_GIANTOBSIDIAN with ID 213.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_UBEROUSSOIL with ID 214.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_HUGESTALK with ID 215.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_HUGEGLOOMBLOCK with ID 216.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TROLLVIDR with ID 217.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_UNRIPETROLLBER with ID 218.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material TWILIGHTFOREST_TILE_TROLLBER with ID 219.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SAKURALEAVES with ID 220.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_CAMPFIRE with ID 221.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_KAYABUKIROOF with ID 222.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DIRSQUARE with ID 223.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SAKURASAPLING with ID 224.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGTHICK with ID 225.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_KITUNEBI with ID 226.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_WARA_STAIR with ID 227.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THINSAKURAPILLAR with ID 228.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOMULTIPOT with ID 229.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BLOCKBAMBOOSHOOT with ID 230.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SAKURACARPET with ID 231.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVLOGTHIN with ID 232.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THINSPRUCEPILLAR with ID 233.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOMOSS with ID 234.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SINGLETEXDECO with ID 235.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DELUDE_WIDTH with ID 236.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THICKSPRUCEPILLAR with ID 237.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOO with ID 238.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DELUDE_PLATE with ID 239.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_MANEKI with ID 240.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SPAWATER with ID 241.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DECO with ID 242.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGTHIN with ID 243.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_CROSSLAMP with ID 244.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVWOODTHICK with ID 245.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_HALFDECO with ID 246.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOMILLSTONE with ID 247.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BEANPLANT with ID 248.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_VILLAGERBLOCK with ID 249.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THICKSAKURAPILLAR with ID 250.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DECOPLASTER with ID 251.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOO2 with ID 252.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THINBIRCHPILLAR with ID 253.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_ANDON with ID 254.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_ALPHAMULTIBLOCK with ID 255.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_HALFTWODIRDECO with ID 409.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_JPCHEST with ID 410.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVWOODTHIN with ID 411.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DECOCARPET with ID 412.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SAKURALOG with ID 413.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DELUDE_HEIGHT with ID 414.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_KAWARA_STAIR with ID 415.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOPANEL with ID 416.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SEAWEED with ID 423.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_HALFDIRSQUARE with ID 424.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_TOMATOPLANT with ID 425.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DECODCURVEPLASTER with ID 426.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOHUTON with ID 427.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_TWODIRDECO with ID 428.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_RICEPLANT with ID 429.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DELUDE_STAIR with ID 430.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVLOG2THICK with ID 431.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOSINGLE with ID 432.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BLOBKBROOM with ID 433.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THICKBIRCHPILLAR with ID 434.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_DECOCURVEPLASTER with ID 435.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOMULTIBLOCK with ID 436.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_SPAUNIT with ID 437.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVLOGTHICK with ID 438.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THINORCPILLAR with ID 439.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_BAMBOOLIANGVLOG2THIN with ID 440.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material BAMBOOMOD_THICKORCPILLAR with ID 441.
+[22:19:38] [Server thread/INFO]: Injected new Forge block material IRONCHEST_BLOCKIRONCHEST with ID 442.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_NAGASCALE with ID 4096.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PLATENAGA with ID 4097.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_LEGSNAGA with ID 4098.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SCEPTERTWILIGHT with ID 4099.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SCEPTERLIFEDRAIN with ID 4100.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SCEPTERZOMBIE with ID 4101.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_OREMETER with ID 4102.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAGICMAP with ID 4103.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEMAP with ID 4104.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_OREMAP with ID 4105.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TFFEATHER with ID 4106.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAGICMAPFOCUS with ID 4107.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEMAPFOCUS with ID 4108.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_LIVEROOT with ID 4109.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODRAW with ID 4110.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODINGOT with ID 4111.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODHELM with ID 4112.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODPLATE with ID 4113.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODLEGS with ID 4114.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODBOOTS with ID 4115.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODSWORD with ID 4116.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODSHOVEL with ID 4117.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODPICK with ID 4118.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODAXE with ID 4119.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_IRONWOODHOE with ID 4120.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TORCHBERRIES with ID 4121.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_VENISONRAW with ID 4122.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_VENISONCOOKED with ID 4123.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_HYDRACHOP with ID 4124.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYBLOOD with ID 4125.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TROPHY with ID 4126.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYINGOT with ID 4127.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYHELM with ID 4128.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYPLATE with ID 4129.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYLEGS with ID 4130.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYBOOTS with ID 4131.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYSWORD with ID 4132.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYPICK with ID 4133.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFINGOT with ID 4134.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFHELM with ID 4135.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFPLATE with ID 4136.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFLEGS with ID 4137.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFBOOTS with ID 4138.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFSWORD with ID 4139.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFSHOVEL with ID 4140.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFPICK with ID 4141.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFAXE with ID 4142.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_STEELEAFHOE with ID 4143.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MINOTAURAXE with ID 4144.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEBREAKERPICK with ID 4145.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TRANSFORMPOWDER with ID 4146.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MEEFRAW with ID 4147.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MEEFSTEAK with ID 4148.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MEEFSTROGANOFF with ID 4149.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAZEWAFER with ID 4150.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EMPTYMAGICMAP with ID 4151.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EMPTYMAZEMAP with ID 4152.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EMPTYOREMAP with ID 4153.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_OREMAGNET with ID 4154.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CRUMBLEHORN with ID 4155.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PEACOCKFAN with ID 4156.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MOONWORMQUEEN with ID 4157.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFLIFE1 with ID 4158.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFLIFE2 with ID 4159.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFKEEPING1 with ID 4160.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFKEEPING2 with ID 4161.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CHARMOFKEEPING3 with ID 4162.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TOWERKEY with ID 4163.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_BORERESSENCE with ID 4164.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_CARMINITE with ID 4165.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_EXPERIMENT115 with ID 4166.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARMORSHARDS with ID 4167.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTMETAL with ID 4168.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SHARDCLUSTER with ID 4169.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYHELM with ID 4170.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYPLATE with ID 4171.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYLEGS with ID 4172.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYBOOTS with ID 4173.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYSWORD with ID 4174.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYPICK with ID 4175.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_KNIGHTLYAXE with ID 4176.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PHANTOMHELM with ID 4177.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_PHANTOMPLATE with ID 4178.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_LAMPOFCINDERS with ID 4179.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_FIERYTEARS with ID 4180.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ALPHAFUR with ID 4181.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETIHELM with ID 4182.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETIPLATE with ID 4183.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETILEGS with ID 4184.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_YETIBOOTS with ID 4185.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ICEBOMB with ID 4186.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICFUR with ID 4187.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICHELM with ID 4188.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICPLATE with ID 4189.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICLEGS with ID 4190.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ARCTICBOOTS with ID 4191.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_MAGICBEANS with ID 4192.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_GIANTPICK with ID 4193.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_GIANTSWORD with ID 4194.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TRIPLEBOW with ID 4195.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_SEEKERBOW with ID 4196.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ICEBOW with ID 4197.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ENDERBOW with ID 4198.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_ICESWORD with ID 4199.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_GLASSSWORD with ID 4200.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material TWILIGHTFOREST_ITEM_TFSPAWNEGG with ID 4201.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BOILEDEGG with ID 4202.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOBOW with ID 4203.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMTOMATO with ID 4204.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMBAMBOO with ID 4205.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_SLIDEDOOR with ID 4206.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_TUDURA with ID 4207.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_COOKINGRECIPE with ID 4208.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMSACK with ID 4209.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMFIREFLYBOTTLE with ID 4210.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMSEAWEED with ID 4211.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ZABUTON with ID 4212.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_OBON with ID 4213.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_FIRECRACKER with ID 4214.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_SEEDRICE with ID 4215.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOFLOUR with ID 4216.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOODUSTCRAY with ID 4217.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOPICKAXE with ID 4218.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOODOUGH with ID 4219.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_RAWRICE with ID 4220.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_STRAW with ID 4221.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_MAGATAMA with ID 4222.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_KAKEZIKU with ID 4223.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOFOOD with ID 4224.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_WINDCHIME with ID 4225.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_WINDMILL with ID 4226.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_FAN with ID 4227.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_WATERWHEEL with ID 4228.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_SNOWBALL with ID 4229.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_SEEDSEAWEED with ID 4230.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOBASKET with ID 4231.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOSWORD with ID 4232.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_KATANA with ID 4233.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_HUTON with ID 4234.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_SHAVEDICE with ID 4235.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_BAMBOOSPEAR with ID 4236.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_ITEMBEAN with ID 4237.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material BAMBOOMOD_KAGINAWA with ID 4238.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material IRONCHEST_WOODIRONUPGRADE with ID 4239.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material IRONCHEST_DIAMONDOBSIDIANUPGRADE with ID 4240.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material IRONCHEST_GOLDDIAMONDUPGRADE with ID 4241.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material IRONCHEST_DIAMONDCRYSTALUPGRADE with ID 4242.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material IRONCHEST_COPPERSILVERUPGRADE with ID 4243.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material IRONCHEST_WOODCOPPERUPGRADE with ID 4244.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material IRONCHEST_COPPERIRONUPGRADE with ID 4245.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material IRONCHEST_IRONGOLDUPGRADE with ID 4246.
+[22:19:38] [Server thread/INFO]: Injected new Forge item material IRONCHEST_SILVERGOLDUPGRADE with ID 4247.
+[22:19:39] [Server thread/INFO]: Mapping loaded 11 packages, 7841 classes, 26711 fields, 53884 methods, flags 1ffa
+[22:19:39] [Server thread/INFO]: Loaded inheritance map of 895 classes
+[22:19:39] [Server thread/WARN]: =============================================================
+[22:19:39] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[22:19:39] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[22:19:39] [Server thread/WARN]: =============================================================
+[22:19:39] [Server thread/WARN]: =============================================================
+[22:19:39] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[22:19:39] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[22:19:39] [Server thread/WARN]: =============================================================
+[22:19:39] [Server thread/WARN]: =============================================================
+[22:19:39] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[22:19:39] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[22:19:39] [Server thread/WARN]: =============================================================
+[22:19:39] [Server thread/WARN]: =============================================================
+[22:19:39] [Server thread/WARN]: MOD HAS DIRECT REFERENCE System.exit() THIS IS NOT ALLOWED REROUTING TO FMLCommonHandler!
+[22:19:39] [Server thread/WARN]: Offendor: net/md_5/specialsource/SpecialSource.main([Ljava/lang/String;)V
+[22:19:39] [Server thread/WARN]: =============================================================
+[22:19:39] [Server thread/INFO]: [Essentials] Loading Essentials v2.13.1
+[22:19:39] [Server thread/INFO]: [EssentialsChat] Loading EssentialsChat v2.13.1
+[22:19:39] [Server thread/INFO]: [EssentialsProtect] Loading EssentialsProtect v2.13.1
+[22:19:39] [Server thread/INFO]: [EssentialsSpawn] Loading EssentialsSpawn v2.13.1
+[22:19:39] [Server thread/INFO]: [EssentialsAntiBuild] Loading EssentialsAntiBuild v2.13.1
+[22:19:39] [Server thread/INFO]: Adding biome mapping 40 Twilight Lake at BiomeBase[40]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 41 Twilight Forest at BiomeBase[41]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 42 Dense Twilight Forest at BiomeBase[42]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 43 Highlands at BiomeBase[43]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 44 Mushroom Forest at BiomeBase[44]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 45 Twilight Swamp at BiomeBase[45]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 46 Twilight Stream at BiomeBase[46]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 47 Snowy Forest at BiomeBase[47]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 48 Twilight Glacier at BiomeBase[48]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 49 Twilight Clearing at BiomeBase[49]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 50 Oak Savanna at BiomeBase[50]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 51 Lighted Forest at BiomeBase[51]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 52 Deep Mushroom Forest at BiomeBase[52]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 53 Dark Forest Center at BiomeBase[53]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 54 Highlands Center at BiomeBase[54]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 55 Dark Forest at BiomeBase[55]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 56 Enchanted Forest at BiomeBase[56]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 57 Fire Swamp at BiomeBase[57]
+[22:19:39] [Server thread/INFO]: Adding biome mapping 58 Thornlands at BiomeBase[58]
+[22:19:39] [Server thread/INFO]: Loading dimension 0 (skarn) (net.minecraft.server.dedicated.DedicatedServer@5fe1ce48)
+[22:19:39] [Server thread/INFO]: Loading dimension 7 (DIM7) (net.minecraft.server.dedicated.DedicatedServer@5fe1ce48)
+[22:19:39] [Server thread/INFO]: Loading dimension 1 (DIM1) (net.minecraft.server.dedicated.DedicatedServer@5fe1ce48)
+[22:19:39] [Server thread/INFO]: Loading dimension -1 (DIM-1) (net.minecraft.server.dedicated.DedicatedServer@5fe1ce48)
+[22:19:39] [Server thread/INFO]: Preparing start region for level 0
+[22:19:40] [Server thread/INFO]: [Essentials] Enabling Essentials v2.13.1
+[22:19:40] [Server thread/INFO]: Bukkit版本已改变
+[22:19:40] [Server thread/INFO]: git-Cauldron-MCPC-Plus-1.7.10-1.1206.01.170 (MC: 1.7.10)
+[22:19:40] [Server thread/INFO]: 1.7.10-R0.1-SNAPSHOT
+[22:19:40] [Server thread/INFO]: Using locale zh
+[22:19:40] [Server thread/INFO]: Using locale zh
+[22:19:40] [Server thread/INFO]: Essentials: Using config file enhanced permissions.
+[22:19:40] [Server thread/INFO]: Permissions listed in as player-commands will be given to all users.
+[22:19:40] [Server thread/INFO]: [EssentialsChat] Enabling EssentialsChat v2.13.1
+[22:19:40] [Server thread/INFO]: [EssentialsProtect] Enabling EssentialsProtect v2.13.1
+[22:19:40] [Server thread/INFO]: [EssentialsSpawn] Enabling EssentialsSpawn v2.13.1
+[22:19:40] [Server thread/INFO]: [EssentialsAntiBuild] Enabling EssentialsAntiBuild v2.13.1
+[22:19:40] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[22:19:40] [Server thread/INFO]: Done (2.893s)! For help, type "help" or "?"
+[22:19:40] [Server thread/INFO]: Registered command forge with permission node net.minecraftforge.server.command.ForgeCommand
+[22:19:40] [Server thread/INFO]: Registered command tffeature with permission node twilightforest.CommandTFFeature
+[22:19:41] [Server thread/INFO]: Registered command /hcyl with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command tree with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /stack with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /sel with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /replace with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /regen with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command snapshot with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /green with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /flora with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /line with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /generatebiome with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command repl with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command ceil with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /set with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command range with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /load with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command jumpto with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /inset with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /removebelow with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /snow with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command brush with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command cs with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command biomeinfo with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command biomelist with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /clearhistory with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command lrbuild with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command none with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command chunkinfo with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /gmask with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /fillr with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /chunk with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /hsphere with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command info with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command deltree with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /expand with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /fill with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /fast with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command forestgen with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /rotate with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /pos2 with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /sphere with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /replacenear with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command unstuck with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command worldedit with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /copy with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /limit with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /contract with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command thru with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /calc with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command listchunks with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /cut with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /generate with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command .s with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command size with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command tool with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command superpickaxe with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command delchunks with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command pumpkins with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /fixlava with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /walls with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command clearclipboard with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command toggleeditwand with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /distr with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /move with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /smooth with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /setbiome with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /removenear with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /shift with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command floodfill with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /hpyramid with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /hpos2 with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /hollow with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /redo with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /center with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /pos1 with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /curve with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /toggleplace with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /naturalize with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command / with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /hpos1 with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /outset with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command descend with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /help with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command schematic with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command ascend with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /wand with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /flip with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /drain with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /removeabove with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command remove with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command mat with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command restore with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /save with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /undo with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /paste with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command farwand with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /size with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /ex with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /count with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /forest with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command butcher with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /fixwater with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /faces with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command cycler with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /deform with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /cyl with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command up with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /thaw with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /overlay with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /pyramid with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command mask with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:19:41] [Server thread/INFO]: Registered command /searchitem with permission node com.sk89q.worldedit.forge.CommandWrapper
+[22:20:20] [User Authenticator #1/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[22:20:20] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerPlayer
+[22:20:20] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerChest
+[22:20:20] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerHopper
+[22:20:20] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerRepair
+[22:20:20] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerMerchant
+[22:20:20] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerDispenser
+[22:20:20] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerFurnace
+[22:20:20] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerBrewingStand
+[22:20:20] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerWorkbench
+[22:20:20] [Server thread/INFO]: InvTweaks: net.minecraft.inventory.ContainerBeacon
+[22:20:21] [Netty IO #1/INFO]: Client protocol version 2
+[22:20:21] [Netty IO #1/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[22:20:21] [Netty IO #1/INFO]: Attempting connection with missing mods [inventorytweaks, IronChest, worldedit] at CLIENT
+[22:20:21] [Netty IO #1/INFO]: Rejecting connection CLIENT: [FMLMod:IronChest{6.0.62.742}]
+[22:20:21] [Server thread/INFO]: sola lost connection: Mod rejections [FMLMod:IronChest{6.0.62.742}]
+[22:20:59] [User Authenticator #2/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[22:21:01] [Netty IO #2/INFO]: Client protocol version 2
+[22:21:01] [Netty IO #2/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[22:21:01] [Netty IO #2/INFO]: Attempting connection with missing mods [inventorytweaks, IronChest, worldedit] at CLIENT
+[22:21:01] [Netty IO #2/INFO]: Rejecting connection CLIENT: [FMLMod:IronChest{6.0.62.742}]
+[22:21:01] [Server thread/INFO]: sola lost connection: Mod rejections [FMLMod:IronChest{6.0.62.742}]
+[22:23:32] [User Authenticator #3/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[22:23:33] [Netty IO #2/INFO]: Client protocol version 2
+[22:23:33] [Netty IO #2/INFO]: Client attempting to join with 10 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[22:23:33] [Netty IO #2/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[22:23:33] [Server thread/INFO]: [Server thread] Server side modded connection established
+[22:23:33] [Server thread/INFO]: dingjibang[/127.0.0.1:64859] logged in with entity id 305 at ([skarn] -213.89618041932604, 64.0, 272.11903139923834)
+[22:24:41] [Server thread/INFO]: [dingjibang: Given [Diamond to Obsidian Chest Upgrade] * 1 to dingjibang]
+[22:24:51] [Server thread/INFO]: [dingjibang: Given [Diamond to Obsidian Chest Upgrade] * 1 to dingjibang]
+[22:24:51] [Server thread/INFO]: [dingjibang: Given [Diamond to Obsidian Chest Upgrade] * 1 to dingjibang]
+[22:24:51] [Server thread/INFO]: [dingjibang: Given [Diamond to Obsidian Chest Upgrade] * 1 to dingjibang]
+[22:24:51] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[22:24:51] [Server thread/INFO]: dingjibang left the game.
+[22:25:31] [User Authenticator #4/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[22:25:31] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[22:26:50] [Server thread/INFO]: /127.0.0.1:65361 lost connection: Disconnected
+[22:26:51] [User Authenticator #5/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[22:26:51] [Server thread/INFO]: com.mojang.authlib.GameProfile@3d5eb6e4[id=dd171995-8808-3272-94cd-4a6a0c62e4cb,name=dingjibang,properties={},legacy=false] (/127.0.0.1:65366) lost connection: Disconnected
+[22:26:54] [User Authenticator #6/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[22:27:10] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[22:27:12] [User Authenticator #7/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[22:27:12] [Netty IO #3/INFO]: Client protocol version 2
+[22:27:12] [Netty IO #3/INFO]: Client attempting to join with 10 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[22:27:12] [Netty IO #3/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[22:27:12] [Server thread/INFO]: [Server thread] Server side modded connection established
+[22:27:12] [Server thread/INFO]: dingjibang[/127.0.0.1:65429] logged in with entity id 1141 at ([skarn] -215.83139005496523, 64.0, 272.13976366001316)
+[22:27:33] [User Authenticator #8/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[22:27:34] [Netty IO #0/INFO]: Client protocol version 2
+[22:27:34] [Netty IO #0/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,Forge@10.13.4.1558,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[22:27:34] [Netty IO #0/INFO]: Attempting connection with missing mods [inventorytweaks, IronChest, worldedit] at CLIENT
+[22:27:34] [Netty IO #0/INFO]: Rejecting connection CLIENT: [FMLMod:IronChest{6.0.62.742}]
+[22:27:34] [Server thread/INFO]: sola lost connection: Mod rejections [FMLMod:IronChest{6.0.62.742}]
+[22:27:42] [Server thread/INFO]: [dingjibang: Given [Silver to Gold Chest Upgrade] * 1 to dingjibang]
+[22:27:42] [Server thread/INFO]: [dingjibang: Given [Iron to Gold Chest Upgrade] * 1 to dingjibang]
+[22:27:43] [Server thread/INFO]: [dingjibang: Given [Copper to Iron Chest Upgrade] * 1 to dingjibang]
+[22:27:43] [Server thread/INFO]: [dingjibang: Given [Wood to Copper Chest Upgrade] * 1 to dingjibang]
+[22:27:43] [Server thread/INFO]: [dingjibang: Given [Copper to Silver Chest Upgrade] * 1 to dingjibang]
+[22:27:44] [Server thread/INFO]: [dingjibang: Given [Diamond to Crystal Chest Upgrade] * 1 to dingjibang]
+[22:27:45] [Server thread/INFO]: [dingjibang: Given [Gold to Diamond Chest Upgrade] * 1 to dingjibang]
+[22:27:45] [Server thread/INFO]: [dingjibang: Given [Diamond to Obsidian Chest Upgrade] * 1 to dingjibang]
+[22:27:45] [Server thread/INFO]: [dingjibang: Given [Wood to Iron Chest Upgrade] * 1 to dingjibang]
+[22:28:15] [Server thread/INFO]: [dingjibang: Given [Wood to Iron Chest Upgrade] * 1 to dingjibang]
+[22:28:18] [Server thread/INFO]: [dingjibang: Given [Wood to Copper Chest Upgrade] * 1 to dingjibang]
+[22:28:51] [Server thread/INFO]: [dingjibang: Given [Diamond to Crystal Chest Upgrade] * 1 to dingjibang]
+[22:29:01] [Server thread/INFO]: [dingjibang: Given [Gold to Diamond Chest Upgrade] * 1 to dingjibang]
+[22:29:31] [Server thread/INFO]: [dingjibang: Given [Obsidian Chest] * 1 to dingjibang]
+[22:29:51] [Server thread/INFO]: [dingjibang: Given [Obsidian Chest] * 1 to dingjibang]
+[22:34:32] [User Authenticator #9/INFO]: UUID of player sola is 985289e3-bb73-31fb-88f6-067174ad50d3
+[22:34:33] [Netty IO #3/INFO]: Client protocol version 2
+[22:34:33] [Netty IO #3/INFO]: Client attempting to join with 10 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[22:34:33] [Netty IO #3/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[22:34:34] [Server thread/INFO]: [Server thread] Server side modded connection established
+[22:34:34] [Server thread/INFO]: sola[/127.0.0.1:50136] logged in with entity id 3010 at ([skarn] -267.9790096688978, 65.0, 285.8746931047987)
+[22:35:03] [Server thread/INFO]: dingjibang has just earned the achievement [Into Fire]
+[22:39:11] [Netty IO #3/INFO]: <dingjibang> 箱子里东西让我弄没了QWQ
+[22:39:34] [Server thread/INFO]: dingjibang tried to swim in lava to escape sola
+[22:39:40] [Server thread/INFO]: dingjibang issued server command: /home
+[22:41:10] [Netty IO #3/INFO]: <sola> 跟我下地狱去、
+[22:41:26] [Netty IO #3/INFO]: <dingjibang> wo gong mei le
+[22:42:24] [Netty IO #3/INFO]: <dingjibang> 不要！！我要自己调一个出来
+[22:42:40] [Server thread/INFO]: [dingjibang: Given [BambooSpear] * 64 to dingjibang]
+[22:42:41] [Server thread/INFO]: LMMを検知しませんでした
+[22:43:08] [Server thread/INFO]: [dingjibang: Given [BambooSpear(Explode)] * 1 to dingjibang]
+[22:43:31] [Server thread/INFO]: [dingjibang: Given [Firecracker(L)] * 1 to dingjibang]
+[22:43:46] [Server thread/INFO]: [dingjibang: Given [Firecracker(S)] * 1 to dingjibang]
+[22:43:50] [Server thread/INFO]: [dingjibang: Given [Firecracker(L)] * 64 to dingjibang]
+[22:43:55] [Netty IO #3/INFO]: <dingjibang> wocao
+[22:44:05] [Netty IO #3/INFO]: <dingjibang> chuanghuo le
+[22:44:30] [Netty IO #3/INFO]: <dingjibang> 2333
+[22:44:49] [Server thread/INFO]: [dingjibang: Given [Stone] * ∞ to dingjibang]
+[22:48:11] [Server thread/INFO]: [dingjibang: Given [Bow] * 1 to dingjibang]
+[22:48:34] [Server thread/INFO]: dingjibang was slain by Zombie
+[22:48:41] [Server thread/INFO]: [dingjibang: Given [Bow] * 1 to dingjibang]
+[22:50:51] [Server thread/INFO]: sola issued server command: /gamemode 1
+[22:51:17] [Server thread/INFO]: sola issued server command: /gamemode 0
+[22:51:20] [Netty IO #3/INFO]: <dingjibang> 我去弄点吃的
+[22:53:38] [Netty IO #3/INFO]: <dingjibang> geiwo lai ge jian
+[22:53:52] [Netty IO #3/INFO]: <dingjibang> 1
+[22:54:02] [Server thread/INFO]: dingjibang was shot by sola
+[22:54:38] [Server thread/INFO]: sola was shot by dingjibang
+[22:54:41] [Server thread/INFO]: dingjibang was burnt to a crisp whilst fighting sola
+[22:54:50] [Server thread/INFO]: dingjibang was shot by sola
+[22:55:03] [Server thread/INFO]: dingjibang was shot by sola
+[22:55:13] [Server thread/INFO]: sola was shot by dingjibang
+[22:55:53] [Server thread/INFO]: sola was shot by dingjibang
+[22:56:52] [Server thread/INFO]: sola was shot by dingjibang
+[22:57:18] [Server thread/INFO]: dingjibang was shot by sola
+[22:57:30] [Netty IO #3/INFO]: <dingjibang> 你共比我好
+[22:57:36] [Server thread/INFO]: [dingjibang: Given [Bow] * 1 to dingjibang]
+[22:58:25] [Netty IO #3/INFO]: <sola> 低于
+[22:58:45] [Server thread/INFO]: dingjibang was shot by sola
+[22:58:48] [Server thread/INFO]: [dingjibang: Given [Bow] * 1 to dingjibang]
+[22:59:20] [Server thread/INFO]: dingjibang was shot by sola
+[22:59:49] [Netty IO #3/INFO]: <sola> 地狱
+[22:59:55] [Server thread/INFO]: [dingjibang: Given [Arrow] * 64 to dingjibang]
+[23:00:26] [Server thread/INFO]: sola was shot by dingjibang
+[23:00:33] [Server thread/INFO]: dingjibang was shot by sola
+[23:00:53] [Server thread/INFO]: sola was shot by dingjibang
+[23:01:06] [Server thread/INFO]: dingjibang was slain by sola
+[23:01:14] [Server thread/INFO]: [dingjibang: Given [Tri-bow] * 1 to dingjibang]
+[23:01:37] [Netty IO #3/INFO]: <sola> 地狱
+[23:02:03] [Server thread/INFO]: sola was shot by dingjibang
+[23:02:16] [Netty IO #3/INFO]: <sola> zuobi
+[23:02:23] [Server thread/INFO]: sola issued server command: /gamemode 1
+[23:02:31] [Server thread/INFO]: dingjibang was shot by sola
+[23:03:20] [Netty IO #3/INFO]: <sola> 来地狱
+[23:03:23] [Server thread/INFO]: dingjibang issued server command: /home
+[23:03:42] [Server thread/INFO]: sola issued server command: /home
+[23:03:44] [Server thread/INFO]: dingjibang issued server command: /home
+[23:03:52] [Server thread/INFO]: sola issued server command: /gamemode 0
+[23:04:06] [Server thread/INFO]: dingjibang issued server command: /back
+[23:04:32] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:05:02] [Netty IO #3/INFO]: <sola> 住不用打的
+[23:05:10] [Netty IO #3/INFO]: <dingjibang> 我当然知道
+[23:05:27] [Netty IO #3/INFO]: <dingjibang> 交给你了 我只负责跟你走
+[23:05:39] [Netty IO #3/INFO]: <dingjibang> 我去弄点吃的。。
+[23:07:10] [Netty IO #3/INFO]: <sola> 地狱迷宫一般怎么找
+[23:09:53] [Server thread/INFO]: dingjibang fell from a high place
+[23:09:56] [Server thread/INFO]: dingjibang issued server command: /back
+[23:10:54] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:11:37] [Netty IO #3/INFO]: <dingjibang> 没撸了
+[23:11:51] [Netty IO #3/INFO]: <sola> back
+[23:14:02] [Netty IO #3/INFO]: <dingjibang> 挖适应干吊
+[23:15:38] [Server thread/INFO]: sola burned to death
+[23:15:43] [Netty IO #3/INFO]: <dingjibang> ,.,
+[23:15:44] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:16:01] [Netty IO #3/INFO]: <dingjibang> 你头盔都烧没了233
+[23:18:15] [Server thread/INFO]: dingjibang issued server command: /tp sola
+[23:20:27] [Server thread/INFO]: dingjibang fell from a high place
+[23:20:31] [Server thread/INFO]: dingjibang issued server command: /back
+[23:20:40] [Netty IO #3/INFO]: <sola> 怎么走。。。
+[23:20:45] [Netty IO #3/INFO]: <dingjibang> 我哪知道
+[23:22:25] [Server thread/INFO]: sola burned to death
+[23:22:31] [Server thread/INFO]: sola issued server command: /back
+[23:25:54] [Netty IO #3/INFO]: <dingjibang> zhaodaole
+[23:26:00] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:26:18] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:28:42] [Netty IO #3/INFO]: <dingjibang> 留一个刷怪笼刷烈焰帮
+[23:28:56] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:30:11] [Server thread/INFO]: sola was shot by dingjibang
+[23:30:15] [Server thread/INFO]: dingjibang issued server command: /
+[23:30:16] [Server thread/INFO]: sola issued server command: /back
+[23:30:17] [Netty IO #3/INFO]: <dingjibang> ,..
+[23:30:36] [Netty IO #3/INFO]: <dingjibang> 我要杀他的 你突然跑我面前233
+[23:32:06] [Server thread/INFO]: dingjibang issued server command: /home
+[23:32:38] [Server thread/INFO]: dingjibang issued server command: /bacl\
+[23:32:41] [Server thread/INFO]: dingjibang issued server command: /back
+[23:33:25] [Server thread/INFO]: sola has just earned the achievement [Into Fire]
+[23:35:30] [Netty IO #3/INFO]: <dingjibang> 找到地狱疣就行了 挖点灵魂沙 打俩烈焰帮就毕业了
+[23:35:42] [Netty IO #3/INFO]: <dingjibang> 要打凋零么
+[23:35:53] [Netty IO #3/INFO]: <sola> 随意
+[23:37:18] [Server thread/INFO]: dingjibang issued server command: /tp sola
+[23:39:08] [Server thread/INFO]: sola was fireballed by Blaze
+[23:39:15] [Server thread/INFO]: sola issued server command: /back
+[23:40:45] [Server thread/INFO]: dingjibang was slain by Zombie Pigman
+[23:40:46] [Server thread/INFO]: sola was slain by Zombie Pigman
+[23:40:48] [Server thread/INFO]: dingjibang issued server command: /back
+[23:40:52] [Server thread/INFO]: sola issued server command: /bacl
+[23:40:56] [Server thread/INFO]: sola issued server command: /back
+[23:41:46] [Server thread/INFO]: sola was slain by Blaze
+[23:41:52] [Server thread/INFO]: sola issued server command: /back
+[23:42:37] [Server thread/INFO]: sola tried to swim in lava to escape Skeleton
+[23:42:41] [Server thread/INFO]: dingjibang was slain by Skeleton
+[23:42:46] [Server thread/INFO]: dingjibang issued server command: /back
+[23:42:54] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:45:05] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:45:16] [Server thread/INFO]: dingjibang fell from a high place
+[23:45:19] [Server thread/INFO]: dingjibang issued server command: /back
+[23:45:23] [Server thread/INFO]: dingjibang issued server command: /tp sola
+[23:45:27] [Server thread/INFO]: dingjibang issued server command: /tp sola
+[23:47:17] [Netty IO #3/INFO]: <dingjibang> 你快把我射死了！
+[23:47:21] [Server thread/INFO]: dingjibang was shot by sola
+[23:47:25] [Netty IO #3/INFO]: <dingjibang> cnm,
+[23:47:27] [Server thread/INFO]: dingjibang issued server command: /back
+[23:47:41] [Netty IO #3/INFO]: <sola> 帮你回血
+[23:47:44] [Netty IO #3/INFO]: <dingjibang> 233
+[23:48:08] [Server thread/INFO]: sola was fireballed by Blaze
+[23:48:12] [Server thread/INFO]: sola issued server command: /back
+[23:48:19] [Netty IO #3/INFO]: <sola> 超努？
+[23:48:20] [Netty IO #3/INFO]: <dingjibang> 困了
+[23:48:29] [Netty IO #3/INFO]: <dingjibang> 。。不玩了
+[23:48:33] [Netty IO #3/INFO]: <sola> 那决斗吧
+[23:50:02] [Server thread/INFO]: sola tried to swim in lava
+[23:50:08] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:50:25] [Server thread/INFO]: dingjibang was shot by sola
+[23:50:32] [Server thread/INFO]: dingjibang issued server command: /back
+[23:50:51] [Server thread/INFO]: sola was shot by dingjibang
+[23:50:55] [Server thread/INFO]: sola issued server command: /bacl
+[23:50:58] [Server thread/INFO]: sola issued server command: /back
+[23:51:03] [Server thread/INFO]: sola was shot by dingjibang
+[23:51:08] [Server thread/INFO]: sola issued server command: /back
+[23:51:14] [Server thread/INFO]: sola was shot by dingjibang
+[23:51:20] [Server thread/INFO]: sola issued server command: /back
+[23:51:32] [Server thread/INFO]: dingjibang tried to swim in lava to escape sola
+[23:51:40] [Server thread/INFO]: dingjibang issued server command: /tp sola
+[23:51:52] [Server thread/INFO]: sola was shot by dingjibang
+[23:51:57] [Server thread/INFO]: sola issued server command: /back
+[23:52:07] [Server thread/INFO]: sola was shot by dingjibang
+[23:52:13] [Server thread/INFO]: sola issued server command: /back
+[23:52:19] [Netty IO #3/INFO]: <dingjibang> deng hui
+[23:52:19] [Server thread/INFO]: dingjibang was shot by sola
+[23:52:22] [Server thread/INFO]: dingjibang issued server command: /back
+[23:52:27] [Netty IO #3/INFO]: <dingjibang> 地狱轰炸机
+[23:53:12] [Netty IO #3/INFO]: <sola> 我这弓拉的慢
+[23:53:24] [Server thread/INFO]: sola was shot by dingjibang
+[23:53:30] [Server thread/INFO]: sola issued server command: /back
+[23:53:36] [Server thread/INFO]: sola was shot by dingjibang
+[23:53:37] [Server thread/INFO]: dingjibang was slain by Skeleton
+[23:53:40] [Server thread/INFO]: sola issued server command: /back
+[23:53:57] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:54:07] [Netty IO #3/INFO]: <dingjibang> 真心睡觉了
+[23:54:17] [Server thread/INFO]: dingjibang was shot by sola
+[23:54:52] [Server thread/INFO]: dingjibang was shot by sola
+[23:54:55] [Server thread/INFO]: dingjibang issued server command: /back
+[23:55:06] [Netty IO #3/INFO]: <dingjibang> zhizhu mao hongguang
+[23:55:07] [Server thread/INFO]: sola was slain by Spider
+[23:55:36] [Netty IO #3/INFO]: <dingjibang> 那个蜘蛛
+[23:55:45] [Netty IO #3/INFO]: <dingjibang> 有红色的粒子效果。。
+[23:55:48] [Netty IO #3/INFO]: <dingjibang> 什么鬼
+[23:56:04] [Server thread/INFO]: sola was shot by dingjibang
+[23:56:15] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:56:20] [Server thread/INFO]: dingjibang was shot by sola
+[23:56:36] [Server thread/INFO]: sola fell from a high place
+[23:56:49] [Server thread/INFO]: sola was shot by dingjibang
+[23:56:59] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:57:07] [Server thread/INFO]: sola was shot by dingjibang
+[23:57:12] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:57:18] [Server thread/INFO]: sola was shot by dingjibang
+[23:57:24] [Server thread/INFO]: sola issued server command: /tp dingjibang
+[23:57:30] [Server thread/INFO]: sola was slain by dingjibang
+[23:57:36] [Server thread/INFO]: sola issued server command: /tp dingjiabng
+[23:57:49] [Server thread/INFO]: dingjibang was slain by sola
+[23:58:00] [Netty IO #3/INFO]: <dingjibang> 睡觉了爷爷
+[23:58:04] [Netty IO #3/INFO]: <dingjibang> 8
+[23:58:08] [Server thread/INFO]: dingjibang was shot by sola
+[23:58:13] [Netty IO #3/INFO]: <sola> 8
+[23:58:19] [Server thread/INFO]: sola was shot by dingjibang
+[23:58:20] [Server thread/INFO]: dingjibang lost connection: Disconnected
+[23:58:20] [Server thread/INFO]: dingjibang left the game.
+[23:58:25] [Server thread/INFO]: sola lost connection: Disconnected
+[23:58:25] [Server thread/INFO]: sola left the game.

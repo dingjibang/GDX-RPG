@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.BattleParam;
@@ -23,7 +24,7 @@ import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.DefaultIView;
-import com.rpsg.rpg.system.ui.EnemyBox;
+import com.rpsg.rpg.system.ui.EnemyGroup;
 import com.rpsg.rpg.system.ui.HeroStatusBox;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.Progress;
@@ -37,7 +38,7 @@ public class BattleView extends DefaultIView{
 	
 	BattleParam param;
 	List<HeroStatusBox> statusBox = new ArrayList<>();
-	List<EnemyBox> enemyBox = new ArrayList<>();
+	EnemyGroup enemyGroup;
 	Status status;
 	Timer timer;
 	Progress p;
@@ -51,7 +52,6 @@ public class BattleView extends DefaultIView{
 	public BattleView init() {
 		stage.clear();
 		statusBox.clear();
-		enemyBox.clear();
 		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(1024,576).color(.5f,.5f,.5f,1)).appendTo(stage);//TODO debug;
 		
@@ -63,20 +63,16 @@ public class BattleView extends DefaultIView{
 		for(int i = 0; i < heros.size(); i++)
 			statusBox.add($.add(new HeroStatusBox(heros.get(i)).position(i * 256, 28)).appendTo(stage).getItem(HeroStatusBox.class));
 		
-		List<Enemy> enemyList = Enemy.name(Enemy.get(param.enemy));
+		enemyGroup = new EnemyGroup(param.enemy);
 		
-		Table table = new Table();
-		$.each(enemyList, (int idx,Enemy enemy)->{
-			EnemyBox box = new EnemyBox(enemy);
-			table.add(box).padLeft(35).padRight(35);
-		});
-		$.add(table).appendTo(stage).setPosition(GameUtil.screen_width/2 - table.getWidth()/2, GameUtil.screen_height/2 - table.getHeight()/2 + 50).setAlign(Align.center);
+		
+		$.add(enemyGroup).appendTo(stage).setPosition(GameUtil.screen_width/2 - enemyGroup.getWidth()/2, GameUtil.screen_height/2 - enemyGroup.getHeight()/2 + 50).setAlign(Align.center);
 		
 		$.add(new TextButton("结束战斗！",BattleRes.textButtonStyle)).appendTo(stage).setPosition(100,170).onClick(()->{
 			RPG.ctrl.battle.stop();
 		});
 		
-		$.add(timer = new Timer(heros,enemyList,(obj)->{
+		$.add(timer = new Timer(heros,enemyGroup.list(),(obj)->{
 			timer.pause(true);
 			String name = obj instanceof Enemy ? ((Enemy)obj).name : ((Hero)obj).name;
 			status.add("[#ff7171]"+name+"[] 的战斗回合");
@@ -154,6 +150,10 @@ public class BattleView extends DefaultIView{
 	}
 	
 	private void define(Hero hero){
+		
+	}
+	
+	private void attack(CustomRunnable<Hero> onSelect,Runnable onCancel){
 		
 	}
 

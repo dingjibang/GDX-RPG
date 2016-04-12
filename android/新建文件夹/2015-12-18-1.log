@@ -1,0 +1,19 @@
+[19:42:11] [User Authenticator #21/INFO]: UUID of player anli is 08f61cfa-b026-3ff0-953f-3c65ef0047a0
+[19:42:11] [Netty IO #1/INFO]: Client protocol version 1
+[19:42:11] [Netty IO #1/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[19:42:11] [Netty IO #1/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[19:42:12] [Server thread/INFO]: [Server thread] Server side modded connection established
+[19:42:12] [Server thread/INFO]: anli[/127.0.0.1:53174] logged in with entity id 96067 at ([skarn] -118.7921499549812, 98.24108818957913, 1033.0322088986813)
+[20:51:51] [User Authenticator #22/INFO]: UUID of player dingjibang is dd171995-8808-3272-94cd-4a6a0c62e4cb
+[20:51:51] [Netty IO #0/INFO]: Client protocol version 1
+[20:51:51] [Netty IO #0/INFO]: Client attempting to join with 8 mods : mcp@9.05,FML@7.10.25.1206,NotEnoughItems@1.0.3.74,Forge@10.13.0.1206,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,voxelmap@1.7.10,TwilightForest@2.3.2
+[20:51:51] [Netty IO #0/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[20:51:51] [Server thread/INFO]: [Server thread] Server side modded connection established
+[20:51:51] [Server thread/INFO]: dingjibang[/127.0.0.1:56419] logged in with entity id 106233 at ([skarn] -221.60037421772017, 64.0, 272.55685886376006)
+[20:53:33] [Server thread/INFO]: dingjibang issued server command: /tp anli
+[20:55:01] [Server thread/INFO]: dingjibang issued server command: /home
+[20:55:48] [Server thread/INFO]: dingjibang issued server command: /back
+[20:58:42] [Server thread/INFO]: dingjibang issued server command: /home
+[21:05:39] [Server thread/INFO]: dingjibang was slain by Zombie
+[21:05:42] [Server thread/INFO]: dingjibang issued server command: /back
+[21:08:28] [Server thread/INFO]: dingjibang was slain by Zombie

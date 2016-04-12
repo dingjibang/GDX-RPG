@@ -1,0 +1,49 @@
+[19:28:56] [User Authenticator #20/INFO]: UUID of player Yamato is 5803c6c3-0a8b-3700-9c65-3f2bdd1ec587
+[19:28:56] [Netty IO #3/INFO]: Client protocol version 2
+[19:28:56] [Netty IO #3/INFO]: Client attempting to join with 10 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[19:28:56] [Netty IO #3/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[19:28:57] [Server thread/INFO]: [Server thread] Server side modded connection established
+[19:28:57] [Server thread/INFO]: Yamato[/127.0.0.1:50504] logged in with entity id 87256 at ([skarn] -216.15903522886958, 64.0, 272.97034603435867)
+[19:37:47] [Server thread/INFO]: Yamato lost connection: Disconnected
+[19:37:47] [Server thread/INFO]: Yamato left the game.
+[19:37:50] [User Authenticator #21/INFO]: UUID of player Yamato is 5803c6c3-0a8b-3700-9c65-3f2bdd1ec587
+[19:37:50] [Netty IO #2/INFO]: Client protocol version 2
+[19:37:50] [Netty IO #2/INFO]: Client attempting to join with 10 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[19:37:50] [Netty IO #2/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[19:37:51] [Server thread/INFO]: [Server thread] Server side modded connection established
+[19:37:51] [Server thread/INFO]: Yamato[/127.0.0.1:51007] logged in with entity id 92315 at ([skarn] -213.78108138154033, 64.0, 274.0942733104768)
+[19:38:06] [Server thread/INFO]: Yamato lost connection: Disconnected
+[19:38:06] [Server thread/INFO]: Yamato left the game.
+[19:38:09] [User Authenticator #22/INFO]: UUID of player Yamato is 5803c6c3-0a8b-3700-9c65-3f2bdd1ec587
+[19:38:10] [Netty IO #1/INFO]: Client protocol version 2
+[19:38:10] [Netty IO #1/INFO]: Client attempting to join with 10 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[19:38:10] [Netty IO #1/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[19:38:10] [Server thread/INFO]: [Server thread] Server side modded connection established
+[19:38:10] [Server thread/INFO]: Yamato[/127.0.0.1:51020] logged in with entity id 93370 at ([skarn] -213.78108138154033, 64.0, 274.0942733104768)
+[19:41:33] [Server thread/INFO]: Player touched the portal block.  Sending the player to dimension 7
+[19:41:33] [Server thread/INFO]: Loading dimension 7 (DIM7) (net.minecraft.server.dedicated.DedicatedServer@5fe1ce48)
+[19:41:34] [Server thread/INFO]: [TwilightForest] Lowering Dark Tower max height by 5 to be within world bounds
+[19:41:54] [Server thread/INFO]: Yamato has just earned the achievement [Twilight Hunter]
+[19:46:38] [Server thread/INFO]: Yamato issued server command: /home
+[19:48:59] [Server thread/INFO]: Yamato lost connection: Disconnected
+[19:48:59] [Server thread/INFO]: Yamato left the game.
+[19:49:03] [User Authenticator #23/INFO]: UUID of player Yamato is 5803c6c3-0a8b-3700-9c65-3f2bdd1ec587
+[19:49:03] [Netty IO #0/INFO]: Client protocol version 2
+[19:49:03] [Netty IO #0/INFO]: Client attempting to join with 10 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[19:49:03] [Netty IO #0/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[19:49:04] [Server thread/INFO]: [Server thread] Server side modded connection established
+[19:49:04] [Server thread/INFO]: Yamato[/127.0.0.1:51648] logged in with entity id 99497 at ([skarn] -207.6090052695367, 64.0, 281.20431025607144)
+[19:49:45] [Server thread/INFO]: Yamato issued server command: /back
+[19:49:51] [Server thread/INFO]: Yamato issued server command: /home
+[19:51:04] [Server thread/INFO]: Unloading dimension 7
+[19:51:57] [Server thread/INFO]: Yamato fell from a high place
+[19:54:07] [Server thread/INFO]: Yamato lost connection: Disconnected
+[19:54:07] [Server thread/INFO]: Yamato left the game.
+[20:04:51] [User Authenticator #24/INFO]: UUID of player Yamato is 5803c6c3-0a8b-3700-9c65-3f2bdd1ec587
+[20:04:51] [Netty IO #3/INFO]: Client protocol version 2
+[20:04:51] [Netty IO #3/INFO]: Client attempting to join with 10 mods : mcp@9.05,FML@7.10.99.99,NotEnoughItems@1.0.3.74,BambooMod@Minecraft1.7.2 var2.6.6.13,IronChest@6.0.62.742,Forge@10.13.4.1558,inventorytweaks@1.59-dev-156-af3bc68,CodeChickenCore@1.0.4.29,InputFix@1.7.x-v2,TwilightForest@2.3.2
+[20:04:51] [Netty IO #3/INFO]: Attempting connection with missing mods [worldedit] at CLIENT
+[20:04:52] [Server thread/INFO]: [Server thread] Server side modded connection established
+[20:04:52] [Server thread/INFO]: Yamato[/127.0.0.1:52312] logged in with entity id 103085 at ([skarn] -219.33079575013608, 64.0, 274.1522424761673)
+[20:15:30] [Server thread/INFO]: Yamato lost connection: Disconnected
+[20:15:30] [Server thread/INFO]: Yamato left the game.
