@@ -52,10 +52,16 @@ namespace ItemEditor
                     this.sell = value.sell;
                     this.effect = value.effect;
                     this.animation = value.animation;
-                    this.forward = value.forward;
-                    this.range = value.range;
+                    forwardType forwardType = forwardType.enemy;
+                    Enum.TryParse<forwardType>(value.forward, true, out forwardType);
+                    this.forward = forwardType;
+                    rangeType rangeType = rangeType.one;
+                    Enum.TryParse<rangeType>(value.range, true, out rangeType);
+                    this.range = rangeType;
                     this.removeable = value.removeable;
-                    this.deadable = value.deadable;
+                    deadableType deadableType = deadableType.no;
+                    Enum.TryParse<deadableType>(value.deadable, true, out deadableType);
+                    this.deadable = deadableType;
                     this.onlyFor = value.onlyFor;
                     this.description2 = value.description2;
                     ItemType type = ItemType.Item;
@@ -260,8 +266,8 @@ namespace ItemEditor
             }
         }
 
-        private String m_forward;
-        public String forward
+        private forwardType m_forward;
+        public forwardType forward
         {
             get { return m_forward; }
             set
@@ -273,8 +279,8 @@ namespace ItemEditor
             }
         }
 
-        private String m_range;
-        public String range
+        private rangeType m_range;
+        public rangeType range
         {
             get { return m_range; }
             set
@@ -299,8 +305,8 @@ namespace ItemEditor
             }
         }
 
-        private String m_deadable;
-        public String deadable
+        private deadableType m_deadable;
+        public deadableType deadable
         {
             get { return m_deadable; }
             set
@@ -420,10 +426,10 @@ namespace ItemEditor
                 m_Item.sell = this.sell;
                 m_Item.effect = this.effect;
                 m_Item.animation = this.animation;
-                m_Item.forward = this.forward;
-                m_Item.range = this.range;
+                m_Item.forward = this.forward.ToString();
+                m_Item.range = this.range.ToString();
                 m_Item.removeable = this.removeable;
-                m_Item.deadable = this.deadable;
+                m_Item.deadable = this.deadable.ToString();
                 m_Item.onlyFor = this.onlyFor;
                 m_Item.description2 = this.description2;
                 m_Item.cost = this.cost;
