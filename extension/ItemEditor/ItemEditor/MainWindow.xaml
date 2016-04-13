@@ -91,6 +91,8 @@
                 <TextBox Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Text="{Binding description}" TextWrapping="Wrap"></TextBox>
                 <Label Grid.Row="5">类型:</Label>
                 <i:EnumSelectorCombox Grid.Row="5"  Grid.Column="1" EditorSource="{Binding type}" Width="200" HorizontalAlignment="Left"></i:EnumSelectorCombox>
+                <Label Grid.Row="6">动画:</Label>
+                <TextBox Grid.Row="6" Grid.Column="1" Grid.RowSpan="1" Text="{Binding animation}"></TextBox>
                 <Grid Grid.Column="3" Grid.RowSpan="16" VerticalAlignment="Stretch" Margin="0">
                     <Grid.Style>
                         <Style TargetType="Grid">
@@ -117,6 +119,33 @@
                         </Style>
                     </Grid.Style>
                     <i:EquipmentEditor></i:EquipmentEditor>
+                </Grid>
+                <Grid Grid.Column="3" Grid.RowSpan="16" VerticalAlignment="Stretch" Margin="0">
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding type}" Value="Material">
+                                    <Setter  Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding type}" Value="Spellcard">
+                                    <Setter  Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding type}" Value="Equipment">
+                                    <Setter  Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding type}" Value="Task">
+                                    <Setter  Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding type, FallbackValue=Item}" Value="Item">
+                                    <Setter  Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding type}" Value="Cooking">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <i:ucItemEditor></i:ucItemEditor>
                 </Grid>
 
             </Grid>

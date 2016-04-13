@@ -62,8 +62,14 @@
     <Compile Include="Common\EnumDisplayName.cs" />
     <Compile Include="Common\EnumSelectorCombox.cs" />
     <Compile Include="Convertor\Convertor.cs" />
+    <Compile Include="Enum\deadableType.cs" />
     <Compile Include="Enum\equipType.cs" />
+    <Compile Include="Enum\forwardType.cs" />
     <Compile Include="Enum\ItemType.cs" />
+    <Compile Include="Enum\rangeType.cs" />
+    <Compile Include="ItemEditor.xaml.cs">
+      <DependentUpon>ItemEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EquipmentEditor.xaml.cs">
       <DependentUpon>EquipmentEditor.xaml</DependentUpon>
     </Compile>
@@ -80,6 +86,10 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Page Include="Common\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ItemEditor.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

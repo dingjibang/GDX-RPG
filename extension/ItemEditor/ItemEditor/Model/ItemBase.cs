@@ -113,7 +113,7 @@ namespace ItemEditor
                     deadable = json.GetSafeStringValue("deadable", "no");
                     if (0 == string.Compare(type, ItemType.Spellcard.ToString(), true))
                     {
-                        cost = json.GetSafeDoubleValue("trigger");
+                        cost = json.GetSafeDoubleValue("cost");
                         if (json.GetValue("trigger") != null)
                             trigger = bool.Parse(json.GetValue("trigger").ToString());
                         else
@@ -175,7 +175,7 @@ namespace ItemEditor
             json["packable"] = packable;
             json["buy"] = buy;
             json["sell"] = sell;
-            json["effect"] = effect.ToString();
+            json["effect"] = effect.getJobject();
             json["animation"] = animation;
 
             json["onlyFor"] = onlyFor;

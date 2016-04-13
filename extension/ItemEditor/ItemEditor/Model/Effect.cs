@@ -23,9 +23,18 @@ namespace ItemEditor.Model
             prop.ReadFromJson(orgProp);
         }
 
+        public JObject getJobject()
+        {
+            JObject jo = new JObject(orgObject);
+            jo["prop"] = new JObject(prop.ToJsonString());
+            return jo;
+        }
+
         public override string ToString()
         {
-            return base.ToString();
+            JObject jo = new JObject(orgObject);
+            jo["prop"] = new JObject(prop.ToJsonString());
+            return jo.ToString();
         }
     }
 

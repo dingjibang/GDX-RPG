@@ -1,0 +1,191 @@
+﻿<UserControl x:Class="ItemEditor.ucItemEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:i="clr-namespace:ItemEditor"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid VerticalAlignment="Stretch" Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="64"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.Style>
+            <Style TargetType="Grid">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding type}" Value="Material">
+                        <Setter  Property="Visibility" Value="Visible"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding type}" Value="Spellcard">
+                        <Setter  Property="Visibility" Value="Visible"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding type}" Value="Equipment">
+                        <Setter  Property="Visibility" Value="Collapsed"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding type}" Value="Task">
+                        <Setter  Property="Visibility" Value="Visible"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding type, FallbackValue=Item}" Value="Item">
+                        <Setter  Property="Visibility" Value="Visible"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding type}" Value="Cooking">
+                        <Setter Property="Visibility" Value="Visible"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>
+        <Label>角色限定:</Label>
+        <TextBox Grid.Column="1" Text="{Binding onlyFor}"></TextBox>
+        <Label Grid.Row="1">指向范围:</Label>
+        <i:EnumSelectorCombox Grid.Row="1"  Grid.Column="1" EditorSource="{Binding forward}" Width="200" HorizontalAlignment="Left"></i:EnumSelectorCombox>
+        <Label Grid.Row="2">使用范围:</Label>
+        <i:EnumSelectorCombox Grid.Row="2"  Grid.Column="2" EditorSource="{Binding range}" Width="200" HorizontalAlignment="Left"></i:EnumSelectorCombox>
+        <Label Grid.Row="3">详细描述:</Label>
+        <TextBox Grid.Row="3" Grid.Column="1" Grid.RowSpan="2" Text="{Binding description2}"></TextBox>
+        <Label Grid.Row="5">一次性:</Label>
+        <CheckBox Grid.Row="5" Grid.Column="1" Grid.RowSpan="1" IsChecked="{Binding removeable}"></CheckBox>
+        <Label Grid.Row="6">死亡使用:</Label>
+        <i:EnumSelectorCombox Grid.Row="6" Grid.Column="1" EditorSource="{Binding deadable}"></i:EnumSelectorCombox>
+
+        
+        <ScrollViewer Grid.Row="7"  Grid.RowSpan="10" Grid.ColumnSpan="2">
+            <ScrollViewer.Style>
+                <Style TargetType="ScrollViewer">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding type}" Value="Material">
+                            <Setter  Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding type}" Value="Spellcard">
+                            <Setter  Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding type}" Value="Equipment">
+                            <Setter  Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding type}" Value="Task">
+                            <Setter  Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding type, FallbackValue=Item}" Value="Item">
+                            <Setter  Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding type}" Value="Cooking">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ScrollViewer.Style>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="64"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0">符卡属性:</Label>
+                <Grid Grid.RowSpan="2"  Grid.Column="1" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="96">
+                            
+                        </RowDefinition>
+                        <RowDefinition>
+
+                        </RowDefinition>
+                    </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="64"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0">trigger:</Label>
+                        <CheckBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" IsChecked="{Binding trigger}"></CheckBox>
+                        <Label Grid.Row="1">成功率:</Label>
+                        <TextBox Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Text="{Binding success}"></TextBox>
+                        <Label Grid.Row="2">消耗:</Label>
+                        <TextBox Grid.Row="2" Grid.Column="1" Grid.RowSpan="1" Text="{Binding cost}"></TextBox>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="0" DataContext="{Binding EquipmentProp}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="84"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0">最大生命量:</Label>
+                        <TextBox Grid.Row="0" Grid.Column="1"  Text="{Binding maxhp}"></TextBox>
+                        <Label Grid.Row="1">最大魔法量:</Label>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding mapmp}"></TextBox>
+                        <Label Grid.Row="2">攻击:</Label>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding attack}"></TextBox>
+                        <Label Grid.Row="3">魔法攻击:</Label>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding magicAttack}"></TextBox>
+                        <Label Grid.Row="4">等级:</Label>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding level}"></TextBox>
+                        <Label Grid.Row="5">经验值:</Label>
+                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding exp}"></TextBox>
+                        <Label Grid.Row="6">最大符卡可携带数量:</Label>
+                        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding maxsc}"></TextBox>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1" DataContext="{Binding EquipmentProp}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="64"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0">防御:</Label>
+                        <TextBox Grid.Row="0" Grid.Column="1"  Text="{Binding defense}"></TextBox>
+                        <Label Grid.Row="1">魔法防御:</Label>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding magicDefense}"></TextBox>
+                        <Label Grid.Row="2">速度:</Label>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding speed}"></TextBox>
+                        <Label Grid.Row="3">命中率:</Label>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding hit}"></TextBox>
+                        <Label Grid.Row="4">生命值:</Label>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding hp}"></TextBox>
+                        <Label Grid.Row="5">魔法值:</Label>
+                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding mp}"></TextBox>
+                        <Label Grid.Row="6">是否死亡:</Label>
+                        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding dead}"></TextBox>
+                    </Grid>
+                </Grid>
+            </Grid>
+           
+        </ScrollViewer>
+    </Grid>
+</UserControl>
