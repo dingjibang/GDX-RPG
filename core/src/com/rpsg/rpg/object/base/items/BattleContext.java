@@ -10,12 +10,12 @@ public class BattleContext {
 	public List<Target> friend;
 	public List<Target> enemies;
 
-	public BattleContext(Target self, Target enemy, List<Target> friend, List<Target> enemies) {
+	public BattleContext(Object self, Object enemy, List<?> friend, List<?> enemies) {
 		super();
-		this.self = self;
-		this.enemy = enemy;
-		this.friend = friend;
-		this.enemies = enemies;
+		this.self = Target.parse(self);
+		this.enemy = Target.parse(enemy);
+		this.friend = Target.parse(friend);
+		this.enemies = Target.parse(enemies);
 		
 		//去重复
 		if(enemies.contains(enemy)) enemies.remove(enemy);

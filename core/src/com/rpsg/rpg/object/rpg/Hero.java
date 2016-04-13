@@ -13,7 +13,6 @@ import com.rpsg.rpg.object.base.AssociationSkill;
 import com.rpsg.rpg.object.base.EmptyAssociation;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.items.Buff;
-import com.rpsg.rpg.object.base.items.Effect;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Spellcard;
 
@@ -39,50 +38,30 @@ public class Hero extends RPGObject implements Time{
 	public float[][] face;
 	public float[][] head;
 	
-	public List<Effect> effectList = new ArrayList<>();
-	
 	public Buff support;
 	
-	public Target target = new Target();
+	public Target target = new Target(){
+		private static final long serialVersionUID = 1L;
 
-	public Integer getProp(String propName){
-		//获取基本数值
-		Integer prop = this.target.prop.get(propName),base = this.target.prop.get(propName);
-		
-		//支援buff叠加
-		for(Hero hero : RPG.global.support){
-			Buff support = hero.support;
-			if(support == null) continue;
-			String result = support.prop.get(propName);
-			if(result == null) continue;
+		public int getProp(String propName) {
+			int prop = super.getProp(propName);
+			int base = prop;
 			
-			prop += calcProp(base, result);
-		}
-		
-		//TODO buff可能有百分比的数据，百分比根据当前prop还是根据原始prop呢
-//		for(Effect effect : effectList)
-//			for(EffectBuff buff : effect.buff)
-//				prop += calcProp(base, buff.getProp(propName));
-		
-		return prop;
-	}
-	
-	public boolean lead = false;
-	
-	
-	//计算数值（百分比或绝对值）
-	private Integer calcProp(int value,String prop){
-		try {
-			if(prop.endsWith("%")){
-				return Integer.valueOf(prop.substring(0, prop.length() - 1)) / 100;
-			}else{
-				return Integer.valueOf(prop);
+			//支援buff叠加
+			for(Hero hero : RPG.global.support){
+				Buff support = hero.support;
+				if(support == null) continue;
+				String result = support.prop.get(propName);
+				if(result == null) continue;
+				
+				prop += calcProp(base, result);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return 0;
-		}
-	}
+			
+			return prop;
+		};
+	};
+
+	public boolean lead = false;
 	
 	
 	/**持有的符卡*/
@@ -120,7 +99,7 @@ public class Hero extends RPGObject implements Time{
 	}
 	
 	public boolean addSpellcard(Spellcard sc){
-		if(this.sc.size()>=getProp("maxsc"))
+		if(this.sc.size()>=target.getProp("maxsc"))
 			return false;
 		for(Spellcard _sc:this.sc)
 			if(_sc.id==sc.id)
@@ -130,12 +109,12 @@ public class Hero extends RPGObject implements Time{
 
 	public void addProp(String name, String p, boolean post,boolean overflow) {
 		if(!p.contains("%")){
-			Integer val = getProp(name);
+			Integer val = target.getProp(name);
 			Integer i = Integer.parseInt(p);
 			target.prop.put(name,overflow ? i : (val == null ? 0 : val) + i);
 		}else{
 			float f = Float.parseFloat(p.split("%")[0]);
-			target.prop.put(name, getProp(name) * (int)(f / 100));//TODO ?overflow模式下。。
+			target.prop.put(name, target.getProp(name) * (int)(f / 100));//TODO ?overflow模式下。。
 		}
 		
 		if(name.equals("dead")){
@@ -161,21 +140,21 @@ public class Hero extends RPGObject implements Time{
 	
 	public void postOverflow(){
 		for(String name:target.prop.keySet()){
-			if(getProp(name)<0)
+			if(target.getProp(name)<0)
 				target.prop.put(name, 0);
 		}
 		
-		if (getProp("hp") > getProp("maxhp"))
-			target.prop.put("hp", getProp("maxhp"));
+		if (target.getProp("hp") > target.getProp("maxhp"))
+			target.prop.put("hp", target.getProp("maxhp"));
 
-		if (getProp("mp") > getProp("maxmp"))
-			target.prop.put("mp", getProp("maxmp"));
+		if (target.getProp("mp") > target.getProp("maxmp"))
+			target.prop.put("mp", target.getProp("maxmp"));
 
 	}
 	
 	public boolean full(String name) {
 		if (name.equals("hp") || name.equals("mp"))
-			return getProp("max" + name).equals(getProp(name));
+			return target.getProp("max" + name) == (target.getProp(name));
 		return false;
 	}
 
@@ -228,7 +207,7 @@ public class Hero extends RPGObject implements Time{
 
 	@Override
 	public int getSpeed() {
-		return getProp("speed");
+		return target.getProp("speed");
 	}
 	
 	@Override

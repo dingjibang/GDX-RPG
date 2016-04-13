@@ -159,7 +159,7 @@ public class MenuView extends StackView{
 					Hero hero=((MenuHeroBox) self.getItem()).hero;
 					$.add(Res.get(Setting.IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(fgGroup).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(1200, 0).setColor(0,0,0,0).addAction(Actions.parallel(Actions.color(new Color(0,0,0,0.3f),1f),Actions.moveTo(1030, 0,0.75f,Interpolation.pow2Out)));
 					$.add(Res.get(Setting.IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(fgGroup).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(1200, 0).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(1000, 0,0.7f,Interpolation.pow2Out)));
-					if(hero.getProp("dead").equals(Target.TRUE)) $.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"dead.png")).appendTo(fgGroup).setOrigin(Align.bottomLeft).setPosition(1200, 5).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(650, 50,0.7f,Interpolation.pow2Out)));
+					if(hero.target.getProp("dead") == (Target.TRUE)) $.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"dead.png")).appendTo(fgGroup).setOrigin(Align.bottomLeft).setPosition(1200, 5).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(650, 50,0.7f,Interpolation.pow2Out)));
 					if(!status) $.add(Res.get(Setting.IMAGE_FG+hero.fgname+"/card.png")).appendTo(fgGroup).setOrigin(Align.bottomLeft).setPosition(1200, 80).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.6f),Actions.moveTo(520, 80,0.6f,Interpolation.pow2Out))).setUserObject("card");
 					
 					current=((MenuHeroBox)self.getItem()).hero;

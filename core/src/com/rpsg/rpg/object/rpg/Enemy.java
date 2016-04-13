@@ -75,7 +75,7 @@ public class Enemy implements Time {
 	public static Enemy getEnemy(int id,JsonValue value) {
 		Enemy enemy = new Enemy();
 		enemy.name = value.getString("name");
-		enemy.target.prop = ItemController.getIntProp(value.get("prop"));
+		enemy.target.prop.putAll(ItemController.getIntProp(value.get("prop")));;
 		enemy.aiLevel = value.has("aiLevel") ? value.getInt("aiLevel") : 1;
 		enemy.id = id;
 		enemy.imgPath = Setting.IMAGE_ENEMY + id + ".png";

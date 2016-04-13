@@ -53,7 +53,11 @@ public class BattleController {
 		
 		$.each(RPG.ctrl.hero.currentHeros,(hero)->hero.fade(true));
 		
-		TimeUtil.add(()->$.each(RPG.ctrl.hero.currentHeros,(hero)->hero.fade(false)), 2000);
+		TimeUtil.add(()->$.each(RPG.ctrl.hero.currentHeros,(hero)->{
+			hero.fade(false);
+			hero.target.clear();//移除buff TODO
+		}), 2000);
+		
 		
 		//TODO 需要dispose？？？
 //		GameViews.gameview.battleView = null;

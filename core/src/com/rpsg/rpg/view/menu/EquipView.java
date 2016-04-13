@@ -175,19 +175,19 @@ public class EquipView extends IMenuView{
 		$.add(new Label(parent.current.name,30)).setPosition(420, 495).appendTo(inner);
 		$.add(new Label(parent.current.jname,24)).setAlpha(.1f).setPosition(420, 483).appendTo(inner);
 		
-		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)parent.current.getProp("hp")/(float)parent.current.getProp("maxhp")*161,20).setPosition(851, 456).appendTo(data).setColor(Color.valueOf("c33737"));
-		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)parent.current.getProp("mp")/(float)parent.current.getProp("maxmp")*161,20).setPosition(851, 429).appendTo(data).setColor(Color.valueOf("3762c3"));
-		$.add(new Label(parent.current.getProp("hp")+"/"+parent.current.getProp("maxhp"),18).align(851, 455).width(161)).setColor(Color.WHITE).appendTo(data);
-		$.add(new Label(parent.current.getProp("mp")+"/"+parent.current.getProp("maxmp"),18).align(851, 428).width(161)).setColor(Color.WHITE).appendTo(data);
+		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)parent.current.target.getProp("hp")/(float)parent.current.target.getProp("maxhp")*161,20).setPosition(851, 456).appendTo(data).setColor(Color.valueOf("c33737"));
+		$.add(Res.get(Setting.UI_BASE_PRO)).setSize((float)parent.current.target.getProp("mp")/(float)parent.current.target.getProp("maxmp")*161,20).setPosition(851, 429).appendTo(data).setColor(Color.valueOf("3762c3"));
+		$.add(new Label(parent.current.target.getProp("hp")+"/"+parent.current.target.getProp("maxhp"),18).align(851, 455).width(161)).setColor(Color.WHITE).appendTo(data);
+		$.add(new Label(parent.current.target.getProp("mp")+"/"+parent.current.target.getProp("maxmp"),18).align(851, 428).width(161)).setColor(Color.WHITE).appendTo(data);
 		
 		int pad = 38,off = 421,x = 942;
-		$.add(new Label(parent.current.getProp("hit"),22).align(x, off-=pad).width(80)).appendTo(data);
-		$.add(new Label(parent.current.getProp("speed"),22).align(x, off-=pad).width(80)).appendTo(data);
-		$.add(new Label(parent.current.getProp("defense"),22).align(x, off-=pad).width(80)).appendTo(data);
-		$.add(new Label(parent.current.getProp("magicDefense"),22).align(x, off-=pad).width(80)).appendTo(data);
-		$.add(new Label(parent.current.getProp("attack"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.target.getProp("hit"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.target.getProp("speed"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.target.getProp("defense"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.target.getProp("magicDefense"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.target.getProp("attack"),22).align(x, off-=pad).width(80)).appendTo(data);
 		
-		$.add(new Label(parent.current.getProp("magicAttack"),22).align(x, off-=pad).width(80)).appendTo(data);
+		$.add(new Label(parent.current.target.getProp("magicAttack"),22).align(x, off-=pad).width(80)).appendTo(data);
 		$.add(data).children().setTouchable(Touchable.disabled);
 	}
 	

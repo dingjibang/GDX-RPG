@@ -135,7 +135,8 @@ public class ItemController {
 		if(json.has("buff")) for(JsonValue value : json.get("buff")){
 			EffectBuff eb = new EffectBuff();
 			eb.type = EffectBuffType.valueOf(value.getString("type"));
-			eb.buff = getBuff(value.getInt("buff"));
+			Integer buffId = value.has("buff") ? value.getInt("buff") : null;
+			if(buffId != null) eb.buff = getBuff(value.getInt("buff"));
 			eb.turn = value.getInt("turn");
 			buffs.add(eb);
 		}
@@ -294,7 +295,7 @@ public class ItemController {
 				return false;
 			
 			Hero from = sc.user2;
-			if(from.getProp("mp") < sc.cost)
+			if(from.target.getProp("mp") < sc.cost)
 				return false;
 			if(sc.user instanceof Hero || sc.user==null){
 				List<Hero> heros = new ArrayList<>();

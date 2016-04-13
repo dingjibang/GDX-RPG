@@ -19,6 +19,8 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.BattleParam;
 import com.rpsg.rpg.object.base.BattleRes;
+import com.rpsg.rpg.object.base.items.BattleContext;
+import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
@@ -79,26 +81,36 @@ public class BattleView extends DefaultIView{
 				Hero hero = (Hero)obj;
 				Image fg = $.add(Res.get(Setting.IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(stage).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(GameUtil.screen_width+500, 0).addAction(Actions.moveBy(-400, 0,1f,Interpolation.pow4Out)).setZIndex(1).getItem(Image.class);
 				Table menu = $.add(new Table()).appendTo(stage).setPosition(600, 220).getItem(Table.class);
+				
+				Runnable stopCallback = ()->{
+					fg.remove();
+					menu.remove();
+					timer.pause(false);
+				};
+				
 				menu.add(new TextButton("攻击",BattleRes.textButtonStyle).onClick(()->{
-					attack(hero);
+					attack(hero,stopCallback);
 				}));
 				
 				menu.add(new TextButton("防御",BattleRes.textButtonStyle).onClick(()->{
-					define(hero);
+					define(hero,stopCallback);
 				}));
 				
 				menu.add(new TextButton("符卡",BattleRes.textButtonStyle).onClick(()->{
 					RPG.ctrl.battle.stop();
+					stopCallback.run();
 				}));
 				
 				menu.add(new TextButton("物品",BattleRes.textButtonStyle).onClick(()->{
 					RPG.ctrl.battle.stop();
+					stopCallback.run();
 				}));
 				
 				menu.add(new TextButton("逃跑",BattleRes.textButtonStyle).onClick(()->{
 					escape(hero,()->{
 						menu.remove();
 						fg.remove();
+						stopCallback.run();
 						timer.pause(false);
 					});
 				}));
@@ -154,19 +166,20 @@ public class BattleView extends DefaultIView{
 		},700);
 	}
 	
-	private void define(Hero hero){
+	private void define(Hero hero,Runnable callback){
 		status.add(hero.name + "展开了防御的姿态");
-//		hero.
+		callback.run();
 	}
 	
-	private void attack(Hero hero){
+	private void attack(Hero hero,Runnable callback){
 		enemyGroup.select((enemy)->{
 			status.add(hero.name + " 攻击了 " + enemy.name);
-//			Spellcard. TODO
+			Spellcard.attack().use(new BattleContext(hero, enemy, RPG.ctrl.hero.currentHeros, enemyGroup.list()));
 			if(enemy.target.isDead()){
 				status.add(enemy.name + "已死亡");
 				enemyGroup.remove(enemy);
 			}
+			callback.run();
 		});
 	}
 

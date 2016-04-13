@@ -3,7 +3,10 @@ package com.rpsg.rpg.object.base.items;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
+import com.rpsg.rpg.object.base.items.Effect.EffectBuff;
+import com.rpsg.rpg.object.base.items.Effect.EffectBuffType;
 import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
@@ -75,6 +78,26 @@ public class Spellcard extends BaseItem {
 		for(Target t : targetList)
 			if((!t.isDead() && deadable == ItemDeadable.yes) || (t.isDead() && deadable == ItemDeadable.no))
 				return false;
+		
+		//判断mp是否足够
+		if(self.getProp("mp") < cost)
+			return false;
+		
+		//添加buff（如果有的话）
+		for(EffectBuff ebuff : effect.buff){
+			if(ebuff.type == EffectBuffType.add)
+				$.each(targetList, t -> t.addBuff(ebuff.buff));
+			if(ebuff.type == EffectBuffType.remove)
+				$.each(targetList, t -> t.removeBuff(ebuff.buff));
+		}
+		
+		//计算数值变化
+		$.each(targetList, t -> {
+			for(String key : effect.prop.keySet()){
+				String val = effect.prop.get(key);
+				
+			}
+		});
 		
 		return true;
 	}

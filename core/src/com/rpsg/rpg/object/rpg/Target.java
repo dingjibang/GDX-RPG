@@ -1,12 +1,17 @@
 package com.rpsg.rpg.object.rpg;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.badlogic.gdx.utils.GdxRuntimeException;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.object.base.Resistance;
 import com.rpsg.rpg.object.base.Resistance.ResistanceType;
+import com.rpsg.rpg.object.base.items.Buff;
 
 /**
  * GDX-RPG Hero/Enemy 数据模块
@@ -20,7 +25,35 @@ public class Target implements Serializable{
 	public static final int TRUE = 1;
 	public static final int FALSE = 0;
 	
+	public List<Buff> buffList = new ArrayList<>();
 	
+	public Target clear(){
+		buffList.clear();
+		return this;
+	}
+	
+	public Target addBuff(Buff buff){
+		if(buff == null) return this;
+		buffList.add(buff);
+		return this;
+	}
+	
+	public Target removeBuff(Buff buff){
+		if(buff == null)
+			return removeBuff();
+		
+		Buff target = null;
+		for(Buff b : buffList)
+			target = b.id == buff.id ? buff : target;
+		if(target != null)
+			buffList.remove(target);
+		return this;
+	}
+	
+	public Target removeBuff(){
+		buffList.clear();
+		return this;
+	}
 	
 	public Map<String, Integer> prop = new HashMap<String, Integer>();
 	{
@@ -81,5 +114,32 @@ public class Target implements Serializable{
 		return prop.get(string);
 	}
 	
+	//计算数值（百分比或绝对值）
+	public static Integer calcProp(int value,String prop){
+		try {
+			if(prop.endsWith("%")){
+				return Integer.valueOf(prop.substring(0, prop.length() - 1)) / 100;
+			}else{
+				return Integer.valueOf(prop);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
+	public static List<Target> parse(List<?> list){
+		List<Target> result = new ArrayList<>();
+		$.each(list, e -> result.add(parse(e)));
+		return result;
+	}
+	
+	public static Target parse(Object o){
+		if(o instanceof Hero)
+			return (((Hero)o).target);
+		if(o instanceof Enemy)
+			return (((Enemy)o).target);
+		throw new GdxRuntimeException("target must be hero or enemy.");
+	}
 	
 }

@@ -27,7 +27,7 @@
 			prop:[
 				{
 					type:"max",
-					forward:"hero",
+					forward:"friend",
 					prop:{
 						hp:">50"
 					}	
