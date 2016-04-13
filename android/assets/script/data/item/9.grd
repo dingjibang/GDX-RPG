@@ -10,7 +10,7 @@
 	packable:false,
 	effect:{
 		prop:{
-			attack : "#p#0#-100%"
+			attack : "hp#p#0#-100%"
 		}
 	}
 }

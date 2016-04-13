@@ -120,8 +120,7 @@ public class Spellcard extends BaseItem {
 				defense *= (100 - peneRate) / 100;
 				
 				//计算减少防御后的伤害
-				damage -= defense;
-				if(damage < 0) damage = 0;
+				damage += defense;
 				
 				//计算抗性
 				if(rtype != null){

@@ -1,6 +1,5 @@
 package com.rpsg.rpg.system.ui;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -16,7 +15,7 @@ public class EnemyBox extends Group {
 	Image image;
 	public Enemy enemy;
 	Label name,hp;
-	Image hpbox;
+	Progress hpbar;
 	Image selectBox = new Image(Setting.UI_BUTTON);
 
 	public EnemyBox(Enemy enemy) {
@@ -29,13 +28,22 @@ public class EnemyBox extends Group {
 		hp.position((int)(getWidth()/2 - hp.getWidth()/2), (int)getHeight()+40);
 		
 		fg.addActor(Res.get(Setting.UI_BASE_IMG).size(20, 20).position(getWidth()/2 - 130/2 - 10, getHeight()+15).color(enemy.color));
-		fg.addActor(Res.get(Setting.UI_BASE_IMG).size(130, 10).position(getWidth()/2 - 130/2 + 10, getHeight()+20));
-		fg.addActor(hpbox = Res.get(Setting.UI_BASE_IMG).size(130, 10).position(getWidth()/2 - 130/2 + 10, getHeight()+20).color(Color.valueOf("dc3c3c")));
+		fg.addActor(hpbar = new Progress(Res.getNP(Setting.IMAGE_BATTLE+"bg_00001_00001.png").scale(.5f), Res.getNP(Setting.IMAGE_BATTLE+"hp_00001_00001.png").scale(.5f), 
+				Res.getNP(Setting.IMAGE_BATTLE+"cache_00001_00001.png").scale(.5f), 0, _maxhp)); 
+		hpbar.setPosition(getWidth()/2 - 130/2 + 10, getHeight()+20);
 		
 		$.add(fg).addAction(Actions.forever(Actions.sequence(Actions.moveBy(0,10,3f,Interpolation.pow2),Actions.moveBy(0, -10,3)))).appendTo(this);
 		
 		$.add(selectBox).appendTo(fg).setVisible(false);
 		
+	}
+	
+	@Override
+	public void act(float delta) {
+		hpbar.value(enemy.target.getProp("hp")); 
+		int _hp = Integer.valueOf(enemy.target.prop.get("hp")),_maxhp = Integer.valueOf(enemy.target.prop.get("maxhp"));
+		hp.text(enemy.name+"\n"+_hp + " / " + _maxhp);
+		super.act(delta);
 	}
 	
 	public EnemyBox position(float x,float y){
