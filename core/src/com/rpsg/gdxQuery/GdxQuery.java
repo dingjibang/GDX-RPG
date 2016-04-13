@@ -534,11 +534,11 @@ public class GdxQuery {
 	
 	
 	@SuppressWarnings("unchecked")
-	public <T> List<T> eachAsList(CustomCallback<Actor,Object> each,Class<T> cls){
+	public <T> ArrayList<T> eachAsList(CustomCallback<Actor,Object> each,Class<T> cls){
 		List<Object> list = new ArrayList<>();
 		for(Actor actor : getItems())
 			list.add(each.run(actor));
-		return (List<T>)list;
+		return (ArrayList<T>)list;
 	}
 	
 	@SuppressWarnings("unchecked")

@@ -10,7 +10,7 @@
 	packable:false,
 	effect:{
 		prop:{
-			defense : "30%"
+			defense : "#p#0#30%"
 		}
 	}
 }

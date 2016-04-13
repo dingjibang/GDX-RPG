@@ -95,7 +95,6 @@ public class ItemController {
 				e.cost = result.has("cost")?result.getInt("cost"):0;
 				e.occasion = result.has("occasion")?ItemOccasion.valueOf(result.getString("occasion")):ItemOccasion.all;
 				e.deadable = result.has("deadable")?ItemDeadable.valueOf(result.getString("deadable")):ItemDeadable.no;
-				e.physical = result.has("physical")?result.getBoolean("deadable"):false;
 			}else{
 				Item e = (Item)(baseItem = new Item());
 				e.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;
@@ -137,7 +136,6 @@ public class ItemController {
 			eb.type = EffectBuffType.valueOf(value.getString("type"));
 			Integer buffId = value.has("buff") ? value.getInt("buff") : null;
 			if(buffId != null) eb.buff = getBuff(value.getInt("buff"));
-			eb.turn = value.getInt("turn");
 			buffs.add(eb);
 		}
 		
@@ -170,6 +168,7 @@ public class ItemController {
 		buff.type = value.has("type") ? BuffType.valueOf(value.getString("type")) : BuffType.buff;
 		buff.name = value.has("name") ? value.getString("name") : "(??)";
 		buff.prop = getProp(value.get("prop"));
+		buff.turn = value.has("turn") ? value.getInt("turn") : 1;
 		buff.description = value.has("description") ? value.getString("description") : "";
 		
 		return buff;
@@ -283,7 +282,7 @@ public class ItemController {
 					heros.add((Hero)baseItem.user);
 				
 				for(Hero hero:heros)
-					hero.addProps(item.effect.prop);
+					hero.target.addProps(item.effect.prop);
 				
 				if(item.removeable)
 					remove(item);
@@ -305,9 +304,9 @@ public class ItemController {
 					heros.add((Hero)baseItem.user);
 				
 				for(Hero hero:heros)
-					hero.addProps(sc.effect.prop);
+					hero.target.addProps(sc.effect.prop);
 				
-				from.addProp("mp", -sc.cost+"");
+				from.target.addProp("mp", -sc.cost+"");
 			}
 		}
 		
@@ -349,11 +348,11 @@ public class ItemController {
 		for(String key:prop.keySet()){
 			if(!add)
 				if(prop.get(key).indexOf("-")>0)
-					hero.addProp(key,prop.get(key));
+					hero.target.addProp(key,prop.get(key));
 				else
-					hero.addProp(key,"-"+prop.get(key));
+					hero.target.addProp(key,"-"+prop.get(key));
 			else
-				hero.addProp(key,prop.get(key));
+				hero.target.addProp(key,prop.get(key));
 		}
 	}
 	

@@ -7,11 +7,11 @@ name="雾雨魔理沙";
 jname="Kirisame Marisa";
 fgname="marisa";
 tag="魔法使";
-setProp("hp", 50);
-setProp("level",1);
-setProp("maxhp", 150);
-setProp("mp", 100);
-setProp("maxmp", 100);
+target.setProp("hp", 50);
+target.setProp("level",1);
+target.setProp("maxhp", 150);
+target.setProp("mp", 100);
+target.setProp("maxmp", 100);
 face = [[200,100],[830,1000],[0.27]];
 head = [[200,100],[830,1000],[0.27]];
 

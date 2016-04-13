@@ -13,12 +13,12 @@ head = [[285,100],[850,920],[0.25]];
 tag="人类";
 //association=Association.read(4);
 color="d93426cc";
-setProp("hp", 100);
-setProp("maxhp", 100);
-setProp("mp", 100);
-setProp("maxmp", 100);
-setProp("level",1);
-setProp("speed",4);
+target.setProp("hp", 100);
+target.setProp("maxhp", 100);
+target.setProp("mp", 100);
+target.setProp("maxmp", 100);
+target.setProp("level",1);
+target.setProp("speed",4);
 
 
 association=Association.read(1);

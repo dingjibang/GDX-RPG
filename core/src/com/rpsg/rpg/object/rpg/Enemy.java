@@ -1,7 +1,9 @@
 package com.rpsg.rpg.object.rpg;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -10,6 +12,8 @@ import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.Resistance;
+import com.rpsg.rpg.object.base.Resistance.ResistanceType;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
 import com.rpsg.rpg.object.base.items.Spellcard;
@@ -79,6 +83,12 @@ public class Enemy implements Time {
 		enemy.aiLevel = value.has("aiLevel") ? value.getInt("aiLevel") : 1;
 		enemy.id = id;
 		enemy.imgPath = Setting.IMAGE_ENEMY + id + ".png";
+		Map<String,Resistance> rmap = new HashMap<>();
+		
+		if(value.has("resistance")) for(JsonValue r : value.get("resistance"))
+			rmap.put(r.name(), new Resistance(ResistanceType.valueOf(r.asString()), 0));
+		
+		enemy.target.resistance.putAll(rmap);
 		
 		List<EnemyAction> actions = new ArrayList<>();
 		

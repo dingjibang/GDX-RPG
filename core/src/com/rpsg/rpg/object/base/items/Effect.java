@@ -16,7 +16,6 @@ public class Effect implements Serializable{
 		private static final long serialVersionUID = 1L;
 		public Buff buff;
 		public EffectBuffType type = EffectBuffType.add;
-		public int turn = 1;
 	}
 	
 	public static enum EffectBuffType{

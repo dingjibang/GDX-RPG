@@ -13,6 +13,7 @@ public class Buff implements Serializable{
 	public BuffType type = BuffType.buff;
 	public Map<String, String> prop = new HashMap<>();
 	public String description;
+	public int turn;
 	
 	public static enum BuffType{
 		buff,debuff

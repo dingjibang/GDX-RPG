@@ -3,7 +3,6 @@ package com.rpsg.rpg.object.rpg;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.badlogic.gdx.graphics.Color;
 import com.rpsg.rpg.core.RPG;
@@ -105,57 +104,6 @@ public class Hero extends RPGObject implements Time{
 			if(_sc.id==sc.id)
 				return false;
 		return this.sc.add(sc);
-	}
-
-	public void addProp(String name, String p, boolean post,boolean overflow) {
-		if(!p.contains("%")){
-			Integer val = target.getProp(name);
-			Integer i = Integer.parseInt(p);
-			target.prop.put(name,overflow ? i : (val == null ? 0 : val) + i);
-		}else{
-			float f = Float.parseFloat(p.split("%")[0]);
-			target.prop.put(name, target.getProp(name) * (int)(f / 100));//TODO ?overflow模式下。。
-		}
-		
-		if(name.equals("dead")){
-			target.prop.put(name, Integer.parseInt(p));
-		}
-		
-		if(post)
-			postOverflow();
-	}
-	
-	public void addProp(String name, String p) {
-		addProp(name, p,true,false);
-	}
-	
-	public void setProp(String name,Integer d){
-		addProp(name, d+"",false,true);
-	}
-	
-	public void addProps(Map<String,String> map){
-		for(String key:map.keySet())
-			addProp(key,map.get(key));
-	}
-	
-	public void postOverflow(){
-		for(String name:target.prop.keySet()){
-			if(target.getProp(name)<0)
-				target.prop.put(name, 0);
-		}
-		
-		if (target.getProp("hp") > target.getProp("maxhp"))
-			target.prop.put("hp", target.getProp("maxhp"));
-
-		if (target.getProp("mp") > target.getProp("maxmp"))
-			target.prop.put("mp", target.getProp("maxmp"));
-
-	}
-	
-	public boolean full(String name) {
-		if (name.equals("hp") || name.equals("mp"))
-			return target.getProp("max" + name) == (target.getProp(name));
-		return false;
 	}
 
 	@Override

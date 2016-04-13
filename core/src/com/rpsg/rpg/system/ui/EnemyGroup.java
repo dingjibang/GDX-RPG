@@ -1,6 +1,6 @@
 package com.rpsg.rpg.system.ui;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -28,7 +28,7 @@ public class EnemyGroup extends Table {
 		this.onSelect = onSelect; 
 	}
 	
-	public List<Enemy> list(){
+	public ArrayList<Enemy> list(){
 		return $.add(this).children().find(EnemyBox.class).eachAsList(e -> ((EnemyBox)e).enemy, Enemy.class);
 	}
 	

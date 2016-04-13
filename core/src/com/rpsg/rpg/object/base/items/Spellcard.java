@@ -3,8 +3,10 @@ package com.rpsg.rpg.object.base.items;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
+import com.rpsg.rpg.object.base.Resistance.ResistanceType;
 import com.rpsg.rpg.object.base.items.Effect.EffectBuff;
 import com.rpsg.rpg.object.base.items.Effect.EffectBuffType;
 import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
@@ -28,7 +30,6 @@ public class Spellcard extends BaseItem {
 	public Hero user2;
 	public int animation;
 	public String description2;
-	public boolean physical;
 	
 	private static int attackId = 9,defenseId = 10;//XXX 写死的QAQ
 	private static Spellcard attack,defense;
@@ -93,12 +94,60 @@ public class Spellcard extends BaseItem {
 		
 		//计算数值变化
 		$.each(targetList, t -> {
-			for(String key : effect.prop.keySet()){
-				String val = effect.prop.get(key);
+			for (String key : effect.prop.keySet()) {
+				String[] data = effect.prop.get(key).split("#");
+				if (data.length != 4) throw new GdxRuntimeException("wrong properties with" + key + ",spellcard:" + this.name);
 				
+				String val = data[3];
+				boolean add = Integer.valueOf(val.endsWith("%") ? val.split("%")[0] : val) > 0;
+				if(add){//如果是增加属性的状态，则跳过所有数值计算直接叠加
+					t.addProp(key, val);
+					continue;
+				}
+				
+				//获取攻击属性，攻击方式，穿防率
+				String rtype = data[0].length() == 0 ? null : data[0];
+				boolean isPhysical = data[1].equalsIgnoreCase("p");
+				int peneRate = Integer.valueOf(data[2]);
+				
+				//计算纯粹伤害
+				Integer damage = Target.calcProp(self.getProp(key), val);
+				
+				//根据攻击类型，获取敌人的物理或魔法防御
+				int defense = t.getProp(isPhysical ? "defense" : "magicDefense");
+				
+				//计算穿防
+				defense *= (100 - peneRate) / 100;
+				
+				//计算减少防御后的伤害
+				damage -= defense;
+				if(damage < 0) damage = 0;
+				
+				//计算抗性
+				if(rtype != null){
+					ResistanceType trtype = t.resistance.get(rtype).type;
+					int result = ResistanceType.invoke(trtype, damage);
+					
+					if(trtype != ResistanceType.reflect){
+						damage = result;
+					}else{
+						//如果对方反弹伤害，则把伤害加给自己
+						self.addProp(key, (-result) + "");
+					}
+				}
+				
+				//处理伤害
+				t.addProp(key, damage + "");
+				
+				//扣除消耗
+				self.addProp("mp", (-cost) + "");
+				
+				//更新死亡状态
+				self.refresh();
+				t.refresh();
 			}
 		});
-		
+
 		return true;
 	}
 	

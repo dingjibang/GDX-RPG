@@ -148,10 +148,10 @@ public class BattleView extends DefaultIView{
 		if(keyCode == Keys.D) status.append(" & "+Math.random());
 		if(keyCode == Keys.F) status.append("[#ffaabb]彩色测试[]");
 		if(keyCode == Keys.P) {
-			RPG.ctrl.hero.currentHeros.get(0).setProp("hp", MathUtils.random(0,100));
-			RPG.ctrl.hero.currentHeros.get(0).setProp("mp", MathUtils.random(0,100));
-			RPG.ctrl.hero.currentHeros.get(1).setProp("hp", MathUtils.random(0,100));
-			RPG.ctrl.hero.currentHeros.get(1).setProp("mp", MathUtils.random(0,100));
+			RPG.ctrl.hero.currentHeros.get(0).target.setProp("hp", MathUtils.random(0,100));
+			RPG.ctrl.hero.currentHeros.get(0).target.setProp("mp", MathUtils.random(0,100));
+			RPG.ctrl.hero.currentHeros.get(1).target.setProp("hp", MathUtils.random(0,100));
+			RPG.ctrl.hero.currentHeros.get(1).target.setProp("mp", MathUtils.random(0,100));
 		}
 		super.onkeyDown(keyCode);
 	}
@@ -174,7 +174,7 @@ public class BattleView extends DefaultIView{
 	private void attack(Hero hero,Runnable callback){
 		enemyGroup.select((enemy)->{
 			status.add(hero.name + " 攻击了 " + enemy.name);
-			Spellcard.attack().use(new BattleContext(hero, enemy, RPG.ctrl.hero.currentHeros, enemyGroup.list()));
+			Spellcard.attack().use(new BattleContext(hero, enemy,(List<?>) RPG.ctrl.hero.currentHeros.clone(), (List<?>) enemyGroup.list().clone()));
 			if(enemy.target.isDead()){
 				status.add(enemy.name + "已死亡");
 				enemyGroup.remove(enemy);

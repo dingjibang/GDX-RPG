@@ -13,9 +13,9 @@ head = [[275,110],[830,920],[0.25]];
 
 //association=Association.read(4);
 color="372569cc";
-setProp("hp", 100);
-setProp("maxhp", 100);
-setProp("mp", 100);
-setProp("maxmp", 100);
-setProp("level",1);
-setProp("speed",4);
+target.setProp("hp", 100);
+target.setProp("maxhp", 100);
+target.setProp("mp", 100);
+target.setProp("maxmp", 100);
+target.setProp("level",1);
+target.setProp("speed",4);

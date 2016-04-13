@@ -15,13 +15,14 @@ fgname="arisu";
 tag="主角";
 face = [[200,100],[830,1000],[0.2]];
 head = [[255,100],[830,975],[0.25]];
-setProp("hp", 150);
-setProp("maxhp", 150);
-setProp("exp", 3);
-setProp("mp", 100);
-setProp("maxmp", 100);
-setProp("maxsc",12);
-setProp("speed",5);
+target.setProp("hp", 150);
+target.setProp("maxhp", 150);
+target.setProp("exp", 3);
+target.setProp("mp", 100);
+target.setProp("maxmp", 100);
+target.setProp("maxsc",12);
+target.setProp("speed",5);
+target.setProp("attack",15);
 
 addSpellcard(RPG.ctrl.item.get(5));
 addSpellcard(RPG.ctrl.item.get(5));
@@ -42,12 +43,12 @@ addSpellcard(RPG.ctrl.item.get(5));
 target.resistance.put("earth", ResistanceType.reflect);
 target.resistance.put("metal", ResistanceType.invalid);
 target.resistance.put("sun", ResistanceType.weak);
-setProp("dead", target.FALSE);
+target.setProp("dead", target.FALSE);
 color="59669ecc";
 lead=true;
-setProp("level",1);
-setProp("courage", 100);			//勇气
-setProp("perseverance", 44);		//毅力
-setProp("express", 12);			//表达
-setProp("knowledge", 74);			//知识
-setProp("respect", 66);			//包容
+target.setProp("level",1);
+target.setProp("courage", 100);			//勇气
+target.setProp("perseverance", 44);		//毅力
+target.setProp("express", 12);			//表达
+target.setProp("knowledge", 74);		//知识
+target.setProp("respect", 66);			//包容
