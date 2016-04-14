@@ -3,6 +3,7 @@ package com.rpsg.rpg.object.base.items;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
@@ -13,8 +14,10 @@ import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
+import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.Target;
+import com.rpsg.rpg.view.GameViews;
 
 
 public class Spellcard extends BaseItem {
@@ -90,9 +93,8 @@ public class Spellcard extends BaseItem {
 			if(ebuff.type == EffectBuffType.remove)
 				$.each(targetList, t -> t.removeBuff(ebuff.buff));
 		}
-		
 		//计算数值变化
-		$.each(targetList, t -> {
+		for(Target t : targetList){
 			for (String key : effect.prop.keySet()) {
 				Prop prop = effect.prop.get(key);
 				
@@ -127,19 +129,36 @@ public class Spellcard extends BaseItem {
 					}
 				}
 				
-				System.out.println(damage);
+				//处理溢出
+				damage = damage < 0 ? damage : 0;
 				
-				//处理伤害
-				t.addProp(key, damage + "");
+				//计算闪避
+				int eva = (rtype != null ? t.resistance.get(key).evasion : 0);
+				int max = (self.getProp("hit") + t.getProp("evasion") + eva);
+				boolean miss = false;
+				if(max != 0)
+					miss = MathUtils.random(0,100) > ((self.getProp("hit") - t.getProp("evasion") - eva) / max);
 				
-				//扣除消耗
-				self.addProp("mp", (-cost) + "");
+				if(!miss){
+					//处理伤害
+					t.addProp(key, damage + "");
+					
+					//扣除消耗
+					self.addProp("mp", (-cost) + "");
+					
+					GameViews.gameview.battleView.status.append("...造成了 " + damage + " 点伤害");
+				}else{
+					GameViews.gameview.battleView.status.append("...但是没有命中");
+				}
+				
+				//更新上下文
+				self.lastAttackTarget = t;
 				
 				//更新死亡状态
 				self.refresh();
 				t.refresh();
 			}
-		});
+		};
 
 		return true;
 	}

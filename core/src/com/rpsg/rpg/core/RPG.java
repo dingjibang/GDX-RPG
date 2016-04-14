@@ -18,6 +18,8 @@ import com.rpsg.rpg.utils.display.TouchParticle;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.utils.game.TimeUtil;
+import com.rpsg.rpg.view.BattleView;
+import com.rpsg.rpg.view.GameViews;
 
 
 /**
@@ -115,6 +117,17 @@ public class RPG {
 	public static Object executeJS(String js){
 		return executeJS(js,null);
 	}
+	
+	/**
+	 * send a message to battle view.<br>
+	 * <br><b>发送一条消息到战斗控制器里。</b>
+	 * @param str message
+	 */
+	public static void battleMsg(String str){
+		if(!RPG.ctrl.battle.isBattle()) return;
+		GameViews.gameview.battleView.status.add(str);
+	}
+	
 
 	public static <T> T jsToJava(Class<T> cls, NativeObject param) {
 		try {

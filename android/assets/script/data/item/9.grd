@@ -10,8 +10,8 @@
 	packable:false,
 	effect:{
 		prop:{
-			attack : {
-				formula:"self.attack * 4 - enemy.defense * 2"
+			hp : {
+				formula:"- (self.attack * 4 - target.defense * 2)"
 			}
 		}
 	}

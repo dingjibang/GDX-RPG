@@ -36,7 +36,7 @@ public class EnemyGroup extends Table {
 	public void act(float delta) {
 		if(select && onSelect != null){
 			select = false;
-			$.add(this).children().each(e -> ((EnemyBox) e).select((select)->{
+			$.add(this).children().each(e -> ((EnemyBox) e).select(select ->{
 				$.add(this).children().each(enemyBox -> ((EnemyBox) enemyBox).stopSelect());
 				onSelect.run(select.enemy);
 			}));

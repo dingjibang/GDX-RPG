@@ -25,9 +25,40 @@ public class Target implements Serializable{
 	public static final int TRUE = 1;
 	public static final int FALSE = 0;
 	
+	public Hero parentHero;
+	public Enemy parentEnemy;
+	
+	public int rank = 0;
+	
 	public List<Buff> buffList = new ArrayList<>();
 	
+	public Target lastAttackTarget = null;
+	
+	/**回合数（从1开始）*/
+	private int turn = 1;
+	
+	public Target hero(Hero hero){
+		this.parentHero = hero;
+		return this;
+	}
+	
+	public Target enemy(Enemy enemy){
+		this.parentEnemy = enemy;
+		return this;
+	}
+	
+	public int getTurn(){
+		return turn;
+	}
+	
+	public void nextTurn(){
+		turn++;
+		$.removeIf(buffList, b -> --b.turn <= 0);
+	}
+	
 	public Target clear(){
+		turn = 0;
+		lastAttackTarget = null;
 		buffList.clear();
 		return this;
 	}
@@ -93,6 +124,7 @@ public class Target implements Serializable{
 	
 	/**抗性*/
 	public LinkedHashMap<String, Resistance> resistance = new LinkedHashMap<String, Resistance>();
+
 	{
 		resistance.put("sun", new Resistance(ResistanceType.normal,0));
 		resistance.put("moon", new Resistance(ResistanceType.normal,0));
@@ -112,6 +144,7 @@ public class Target implements Serializable{
 	}
 	
 	public static Target parse(Object o){
+		if(o == null) return null;
 		if(o instanceof Hero)
 			return (((Hero)o).target);
 		if(o instanceof Enemy)
@@ -217,6 +250,12 @@ public class Target implements Serializable{
 		if(getProp("hp") <= 0)
 			setProp("dead", TRUE);
 		return this;
+	}
+	
+	public static int avg(List<Target> list, String prop){
+		int avg = 0;
+		for(Target enemy : list) avg += enemy.getProp(prop);
+		return avg / list.size();
 	}
 
 	

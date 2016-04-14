@@ -1,6 +1,7 @@
 var Association = com.rpsg.rpg.object.base.Association;
 var RPG=com.rpsg.rpg.core.RPG;
 var Spellcard = com.rpsg.rpg.object.base.items.Spellcard;
+var Resistance = com.rpsg.rpg.object.base.Resistance;
 var ResistanceType = com.rpsg.rpg.object.base.Resistance.ResistanceType;
 var Hero = com.rpsg.rpg.object.rpg.Hero;
 
@@ -23,6 +24,8 @@ target.setProp("maxmp", 100);
 target.setProp("maxsc",12);
 target.setProp("speed",5);
 target.setProp("attack",15);
+target.setProp("defense",8);
+target.setProp("hit",20);
 
 addSpellcard(RPG.ctrl.item.get(5));
 addSpellcard(RPG.ctrl.item.get(5));
@@ -40,9 +43,9 @@ addSpellcard(RPG.ctrl.item.get(5));
 addSpellcard(RPG.ctrl.item.get(5));
 addSpellcard(RPG.ctrl.item.get(5));
 
-target.resistance.put("earth", ResistanceType.reflect);
-target.resistance.put("metal", ResistanceType.invalid);
-target.resistance.put("sun", ResistanceType.weak);
+target.resistance.put("earth", new Resistance(ResistanceType.reflect,0));
+target.resistance.put("metal", new Resistance(ResistanceType.invalid,0));
+target.resistance.put("sun", new Resistance(ResistanceType.weak,0));
 target.setProp("dead", target.FALSE);
 color="59669ecc";
 lead=true;

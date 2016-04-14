@@ -9,10 +9,9 @@ import com.rpsg.rpg.object.rpg.Target;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
 
-public class SpellcardContext{
-	public int level,exp,maxexp,hp,maxhp,mp,attack,magicAttack,defense,magicDefense,speed,evasion,hit,maxsc,dead;
+public class SpellcardContext extends BaseContext{
 	
-	public static Double eval(Target self, Target enemy, String formula) {
+	public static Double eval(Target self, Target target, String formula) {
 		try {
 			Context ctx = Context.enter();
 			if(!GameUtil.isDesktop)
@@ -21,7 +20,7 @@ public class SpellcardContext{
 			ScriptableObject scope = ctx.initStandardObjects();
 			
 			scope.put("self", scope, build(self));
-			scope.put("enemy", scope, build(enemy));
+			scope.put("target", scope, build(target));
 			
 			Object obj = ctx.evaluateString(scope, formula, null, 1, null);
 			
@@ -39,8 +38,8 @@ public class SpellcardContext{
 		SpellcardContext ctx = new SpellcardContext();
 		
 		try {
-			for(Field f : target.getClass().getFields()){
-				f.setInt(target, target.prop.get(f.getName()));
+			for(Field f : ctx.getClass().getFields()){
+				f.setInt(ctx, target.prop.get(f.getName()));
 			}
 		} catch (IllegalArgumentException | IllegalAccessException e) {
 			e.printStackTrace();

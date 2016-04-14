@@ -39,7 +39,7 @@ public class Hero extends RPGObject implements Time{
 	
 	public Buff support;
 	
-	public Target target = new Target(){
+	public Target target = (new Target(){
 		private static final long serialVersionUID = 1L;
 
 		public int getProp(String propName) {
@@ -58,7 +58,7 @@ public class Hero extends RPGObject implements Time{
 			
 			return prop;
 		};
-	};
+	}).hero(this);
 
 	public boolean lead = false;
 	

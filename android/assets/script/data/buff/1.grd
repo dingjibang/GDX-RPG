@@ -3,6 +3,8 @@
 	description:"所有人生命值上限增加20%",
 	type:"buff",
 	prop:{
-		"maxhp":"233"
+		"maxhp":{
+			formula:"233"
+		}
 	}
 }

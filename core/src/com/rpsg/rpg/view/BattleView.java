@@ -40,7 +40,7 @@ public class BattleView extends DefaultIView{
 	BattleParam param;
 	List<HeroStatusBox> statusBox = new ArrayList<>();
 	EnemyGroup enemyGroup;
-	Status status;
+	public Status status;
 	Timer timer;
 	Progress p;
 	
@@ -76,7 +76,11 @@ public class BattleView extends DefaultIView{
 		$.add(timer = new Timer(heros,enemyGroup.list(),(obj)->{
 			timer.pause(true);
 			String name = obj instanceof Enemy ? ((Enemy)obj).name : ((Hero)obj).name;
+			
+			(obj instanceof Enemy ? ((Enemy)obj).target : ((Hero)obj).target).nextTurn();
+			
 			status.add("[#ff7171]"+name+"[] 的战斗回合");
+			
 			if(obj instanceof Hero){
 				Hero hero = (Hero)obj;
 				Image fg = $.add(Res.get(Setting.IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(stage).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(GameUtil.screen_width+500, 0).addAction(Actions.moveBy(-400, 0,1f,Interpolation.pow4Out)).setZIndex(1).getItem(Image.class);
@@ -116,7 +120,12 @@ public class BattleView extends DefaultIView{
 				}));
 				
 				$.each(menu.getCells(),(cell) -> cell.size(150,30));
+			}else{
+				Enemy enemy = (Enemy)obj;
+				enemy.act(new BattleContext(enemy, null, (List<?>) enemyGroup.list().clone(), (List<?>) RPG.ctrl.hero.currentHeros.clone()));
 			}
+			
+			
 		})).appendTo(stage);
 		
 		status.add("fuck you");
@@ -173,7 +182,7 @@ public class BattleView extends DefaultIView{
 	
 	private void attack(Hero hero,Runnable callback){
 		enemyGroup.select((enemy)->{
-			status.add(hero.name + " 攻击了 " + enemy.name);
+			status.add("攻击了 " + enemy.name);
 			Spellcard.attack().use(new BattleContext(hero, enemy,(List<?>) RPG.ctrl.hero.currentHeros.clone(), (List<?>) enemyGroup.list().clone()));
 			if(enemy.target.isDead()){
 				status.add(enemy.name + "已死亡");

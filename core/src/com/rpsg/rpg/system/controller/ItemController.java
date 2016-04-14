@@ -156,6 +156,7 @@ public class ItemController {
 		Map<String,Prop> replace = new HashMap<>();
 		for(int i=0;i<json.size;i++){
 			JsonValue propValue = json.get(json.get(i).name);
+			
 			Prop prop = new Prop();
 			prop.formula = propValue.getString("formula");
 			prop.type = propValue.has("type") ? propValue.getString("type") : null;

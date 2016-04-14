@@ -21,5 +21,10 @@ public class BattleContext {
 		if(enemies.contains(enemy)) enemies.remove(enemy);
 		if(friend.contains(self)) friend.remove(self);
 	}
+
+	public BattleContext target(Target enemy2) {
+		this.enemy = enemy2;
+		return this;
+	}
 	
 }
