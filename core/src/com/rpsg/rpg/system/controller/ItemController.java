@@ -22,6 +22,7 @@ import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
+import com.rpsg.rpg.object.base.items.Prop;
 import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.utils.game.Logger;
@@ -127,7 +128,7 @@ public class ItemController {
 	public static Effect getEffect(JsonValue json){
 		Effect e = new Effect();
 		if(json.has("prop"))
-			e.prop = getProp(json.get("prop"));
+			e.prop = getPropObject(json.get("prop"));
 		e.use = json.has("use")?json.getString("use"):"";
 		
 		List<EffectBuff> buffs = new ArrayList<EffectBuff>();
@@ -151,6 +152,18 @@ public class ItemController {
 		return replace; 
 	}
 	
+	public static Map<String,Prop> getPropObject(JsonValue json){
+		Map<String,Prop> replace = new HashMap<>();
+		for(int i=0;i<json.size;i++){
+			JsonValue propValue = json.get(json.get(i).name);
+			Prop prop = new Prop();
+			prop.formula = propValue.getString("formula");
+			prop.type = propValue.has("type") ? propValue.getString("type") : null;
+			replace.put(json.get(i).name,prop);
+		}
+		return replace; 
+	}
+	
 	public static Map<String,Integer> getIntProp(JsonValue json){
 		Map<String,Integer> replace = new HashMap<>();
 		for(int i=0;i<json.size;i++){
@@ -167,7 +180,7 @@ public class ItemController {
 		buff.id = id;
 		buff.type = value.has("type") ? BuffType.valueOf(value.getString("type")) : BuffType.buff;
 		buff.name = value.has("name") ? value.getString("name") : "(??)";
-		buff.prop = getProp(value.get("prop"));
+		buff.prop = getPropObject(value.get("prop"));
 		buff.turn = value.has("turn") ? value.getInt("turn") : 1;
 		buff.description = value.has("description") ? value.getString("description") : "";
 		
@@ -282,7 +295,7 @@ public class ItemController {
 					heros.add((Hero)baseItem.user);
 				
 				for(Hero hero:heros)
-					hero.target.addProps(item.effect.prop);
+					hero.target.addProps(item.effect.asStringMap());
 				
 				if(item.removeable)
 					remove(item);
@@ -304,7 +317,7 @@ public class ItemController {
 					heros.add((Hero)baseItem.user);
 				
 				for(Hero hero:heros)
-					hero.target.addProps(sc.effect.prop);
+					hero.target.addProps(sc.effect.asStringMap());
 				
 				from.target.addProp("mp", -sc.cost+"");
 			}
@@ -344,7 +357,7 @@ public class ItemController {
 	}
 	
 	private static void replace(Hero hero,Equipment equip,boolean add){
-		Map<String,String> prop = equip.effect.prop;
+		Map<String,String> prop = equip.effect.asStringMap();
 		for(String key:prop.keySet()){
 			if(!add)
 				if(prop.get(key).indexOf("-")>0)

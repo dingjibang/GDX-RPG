@@ -7,7 +7,7 @@
 	deadable:"yes",
 	effect:{
 		prop:{
-			dead:0
+			dead:{formula:"0"}
 		}
 	},
 	use:""

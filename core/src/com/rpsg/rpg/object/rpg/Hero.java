@@ -50,7 +50,7 @@ public class Hero extends RPGObject implements Time{
 			for(Hero hero : RPG.global.support){
 				Buff support = hero.support;
 				if(support == null) continue;
-				String result = support.prop.get(propName);
+				String result = support.prop.get(propName).formula;
 				if(result == null) continue;
 				
 				prop += calcProp(base, result);

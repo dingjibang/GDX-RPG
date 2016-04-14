@@ -7,9 +7,9 @@
 	packable:false,
 	effect:{
 		prop:{
-			defense:"5",
-			magicDefense:"1",
-			maxhp:"50"
+			defense:{formula:"5"},
+			magicDefense:{formula:"1"},
+			maxhp:{formula:"50"}
 		}
 	}
 }

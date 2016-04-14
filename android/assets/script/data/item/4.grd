@@ -9,9 +9,9 @@
 	throwable:false,
 	effect:{
 		prop:{
-			attack:"5",
-			magicAttack:"1",
-			hit:"-1"
+			attack:{formula:"5"},
+			magicAttack:{formula:"1"},
+			hit:{formula:"-1"}
 		}
 	}
 }

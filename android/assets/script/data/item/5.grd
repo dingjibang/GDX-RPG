@@ -10,7 +10,7 @@
 	packable:false,
 	effect:{
 		prop:{
-			hp:"30"
+			hp:{formula:"30"}
 		}
 	}
 }

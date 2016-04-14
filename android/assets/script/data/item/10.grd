@@ -9,8 +9,10 @@
 	cost:0,
 	packable:false,
 	effect:{
-		prop:{
-			defense : "#p#0#30%"
+		buff:{
+			type:"add",
+			buff:2,
+			turn:1
 		}
 	}
 }

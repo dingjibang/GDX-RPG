@@ -88,22 +88,22 @@ public class RPG {
 	 * @param js javascript
 	 * @param self "this" object
 	 */
-	public static boolean executeJS(String js,Object self){
+	public static Object executeJS(String js,Object self){
 		try {
 			Context ctx = Context.enter();
 			if(!GameUtil.isDesktop)
 				ctx.setOptimizationLevel(-1);
 			
-			ScriptableObject scope =ctx.initStandardObjects();
+			ScriptableObject scope = ctx.initStandardObjects();
 			if(self!=null)
 				scope.setPrototype(((NativeJavaObject)Context.javaToJS(self, scope)));
-			ctx.evaluateString(scope, js, null, 1, null);
+			Object obj = ctx.evaluateString(scope, js, null, 1, null);
 			Context.exit();
-			return true;
+			return obj;
 		} catch (Exception e) {
 			Logger.error("无法执行脚本", e);
 			e.printStackTrace();
-			return false;
+			return null;
 		}
 	}
 	
@@ -112,7 +112,7 @@ public class RPG {
 	 * <br><b>执行一段JS脚本。</b>
 	 * @param js javascript
 	 */
-	public static boolean executeJS(String js){
+	public static Object executeJS(String js){
 		return executeJS(js,null);
 	}
 

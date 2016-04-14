@@ -7,8 +7,8 @@
 	packable:false,
 	effect:{
 		prop:{
-			attack:"12",
-			magicAttack:"3"
+			attack:{formula:"12"},
+			magicAttack:{formula:"3"}
 		}
 	}
 }

@@ -3,6 +3,8 @@
 	description:"一回合防御值提升30%",
 	type:"buff",
 	prop:{
-		"defense":"30%"
+		defense:{
+			formula:"30%"
+		}
 	}
 }

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Effect implements Serializable{
 	private static final long serialVersionUID = -5793312110086239037L;
-	public Map<String, String> prop = new HashMap<>();
+	public Map<String, Prop> prop = new HashMap<>();
 	public List<EffectBuff> buff = new ArrayList<EffectBuff>();
 	public String use = "";
 	
@@ -20,5 +20,12 @@ public class Effect implements Serializable{
 	
 	public static enum EffectBuffType{
 		add,remove
+	}
+	
+	public Map<String,String> asStringMap(){
+		Map<String,String> map = new HashMap<>();
+		for(String key : prop.keySet())
+			map.put(key, prop.get(key).formula);
+		return map;
 	}
 }

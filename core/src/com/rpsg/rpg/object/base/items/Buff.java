@@ -11,7 +11,7 @@ public class Buff implements Serializable{
 	public int id;
 	public String name;
 	public BuffType type = BuffType.buff;
-	public Map<String, String> prop = new HashMap<>();
+	public Map<String, Prop> prop = new HashMap<>();
 	public String description;
 	public int turn;
 	
@@ -19,7 +19,7 @@ public class Buff implements Serializable{
 		buff,debuff
 	}
 	
-	public String getProp(String key){
-		return prop.get(key) == null ? "0" : prop.get(key);
+	public Prop getProp(String key){
+		return prop.get(key);
  	}
 }

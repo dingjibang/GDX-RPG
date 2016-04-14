@@ -54,7 +54,6 @@ public class Spellcard extends BaseItem {
 		boolean battle = RPG.ctrl.battle.isBattle();
 		if(battle && occasion == ItemOccasion.map) return false;
 		if(!battle && occasion == ItemOccasion.battle) return false;
-		
 		//设置使用角色 self ==(spellcard)==> target
 		Target self = ctx.self;
 		List<Target> targetList = new ArrayList<>();
@@ -95,32 +94,25 @@ public class Spellcard extends BaseItem {
 		//计算数值变化
 		$.each(targetList, t -> {
 			for (String key : effect.prop.keySet()) {
-				String[] data = effect.prop.get(key).split("#");
-				if (data.length != 4) throw new GdxRuntimeException("wrong properties with" + key + ",spellcard:" + this.name);
+				Prop prop = effect.prop.get(key);
 				
-				String val = data[3];
-				boolean add = Integer.valueOf(val.endsWith("%") ? val.split("%")[0] : val) > 0;
-				if(add){//如果是增加属性的状态，则跳过所有数值计算直接叠加
-					t.addProp(key, val);
+				Double doubleVal = SpellcardContext.eval(self, t, prop.formula);
+				if(doubleVal == null)
+					throw new GdxRuntimeException("bad properties.");
+				
+				int val = doubleVal.intValue();
+				
+				if(val > 0){//如果是增加属性的状态，则跳过所有数值计算直接叠加
+					t.addProp(key, val + "");
 					continue;
 				}
 				
 				//获取攻击属性，攻击方式，穿防率
-				String rtype = data[0].length() == 0 ? null : data[0];
-				boolean isPhysical = data[1].equalsIgnoreCase("p");
-				int peneRate = Integer.valueOf(data[2]);
+				String rtype = prop.type;
 				
 				//计算纯粹伤害
-				Integer damage = Target.calcProp(self.getProp(key), val);
+				Integer damage = val;
 				
-				//根据攻击类型，获取敌人的物理或魔法防御
-				int defense = t.getProp(isPhysical ? "defense" : "magicDefense");
-				
-				//计算穿防
-				defense *= (100 - peneRate) / 100;
-				
-				//计算减少防御后的伤害
-				damage += defense;
 				
 				//计算抗性
 				if(rtype != null){
@@ -134,6 +126,8 @@ public class Spellcard extends BaseItem {
 						self.addProp(key, (-result) + "");
 					}
 				}
+				
+				System.out.println(damage);
 				
 				//处理伤害
 				t.addProp(key, damage + "");
