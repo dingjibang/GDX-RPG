@@ -87,12 +87,34 @@ namespace ItemEditor
                         Enum.TryParse<equipType>(sequipType, out tmpType);
                         this.equipType = tmpType;
                         this.EquipmentProp = this.effect.prop;
+                        m_buffs.Clear();
+                        value.effect.buffs.ForEach(buff => m_buffs.Add(buff.Clone()));
+                    }
+                    else if(type == ItemType.Spellcard)
+                    {
+                        this.EquipmentProp = this.effect.prop;
+                        m_buffs.Clear();
+                        value.effect.buffs.ForEach(buff => m_buffs.Add(buff.Clone()));
                     }
                 }
                 else
                 {
                 }
                 Editored = false;
+            }
+        }
+
+        public System.Collections.ObjectModel.ObservableCollection<EffectBuff> m_buffs = new System.Collections.ObjectModel.ObservableCollection<EffectBuff>();
+
+        public System.Collections.ObjectModel.ObservableCollection<EffectBuff> Buffs
+        {
+            get { return m_buffs; }
+            set
+            {
+                if (m_buffs == value) return;
+                var OrgValue = m_buffs;
+                m_buffs = value;
+                OnPropertyChanged("Buffs", OrgValue, value);
             }
         }
 
@@ -451,6 +473,12 @@ namespace ItemEditor
                 //m_Item.equipProp.SetValue( this.EquipmentProp);
                 m_Item.effect.prop = this.EquipmentProp;
                 m_Item.equipType = this.equipType.ToString();
+                    m_Item.effect.buffs = this.Buffs.Select(item => item.Clone()).ToList();
+                }
+                else if(this.type == ItemType.Spellcard)
+                {
+                    m_Item.effect.prop = this.EquipmentProp;
+                    m_Item.effect.buffs = this.Buffs.Select(item => item.Clone()).ToList();
                 }
             }
         }

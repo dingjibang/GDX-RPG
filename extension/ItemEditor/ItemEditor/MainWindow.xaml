@@ -28,8 +28,8 @@
     </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="18"/>
             <RowDefinition Height="24"/>
+            <RowDefinition Height="32"/>
             <RowDefinition Height="272*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -46,7 +46,7 @@
         </Menu>
         <ToolBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
             <Button Content="添加" VerticalAlignment="Stretch" Width="75" Click="Button_Click_1"/>
-            <Button Content="删除" Height="19" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
+            <Button Content="删除"  VerticalAlignment="Stretch" Width="75" Click="Button_Click_2"/>
         </ToolBar>
         <ListBox x:Name="lstItems" Grid.Row="2" ItemsSource="{Binding Items}" SelectedItem="{Binding CurrentItem}">
             <ListBox.ItemTemplate>

@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="ItemEditor.ucEffectEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ItemEditor"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid >
+        <TabControl>
+            <TabItem>
+                <TabItem.Header>
+                    属性
+                </TabItem.Header>
+                <Grid DataContext="{Binding EquipmentProp}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="234"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Grid Grid.Column="0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="84"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0">最大生命量:</Label>
+                        <local:ucPropItemEditor Grid.Row="0" Grid.Column="1"  DataContext="{Binding maxhp}"></local:ucPropItemEditor>
+                        <Label Grid.Row="1">最大魔法量:</Label>
+                        <local:ucPropItemEditor Grid.Row="1" Grid.Column="1" DataContext="{Binding mapmp}"></local:ucPropItemEditor>
+                        <Label Grid.Row="2">攻击:</Label>
+                        <local:ucPropItemEditor Grid.Row="2" Grid.Column="1" DataContext="{Binding attack}"></local:ucPropItemEditor>
+                        <Label Grid.Row="3">魔法攻击:</Label>
+                        <local:ucPropItemEditor Grid.Row="3" Grid.Column="1" DataContext="{Binding magicAttack}"></local:ucPropItemEditor>
+                        <Label Grid.Row="4">等级:</Label>
+                        <local:ucPropItemEditor Grid.Row="4" Grid.Column="1" DataContext="{Binding level}"></local:ucPropItemEditor>
+                        <Label Grid.Row="5">经验值:</Label>
+                        <local:ucPropItemEditor Grid.Row="5" Grid.Column="1" DataContext="{Binding exp}"></local:ucPropItemEditor>
+                        <Label Grid.Row="6">最大符卡可携带数量:</Label>
+                        <local:ucPropItemEditor Grid.Row="6" Grid.Column="1" DataContext="{Binding maxsc}"></local:ucPropItemEditor>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                            <RowDefinition Height="32"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="64"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0">防御:</Label>
+                        <local:ucPropItemEditor Grid.Row="0" Grid.Column="1"  DataContext="{Binding defense}"></local:ucPropItemEditor>
+                        <Label Grid.Row="1">魔法防御:</Label>
+                        <local:ucPropItemEditor Grid.Row="1" Grid.Column="1" DataContext="{Binding magicDefense}"></local:ucPropItemEditor>
+                        <Label Grid.Row="2">速度:</Label>
+                        <local:ucPropItemEditor Grid.Row="2" Grid.Column="1" DataContext="{Binding speed}"></local:ucPropItemEditor>
+                        <Label Grid.Row="3">命中率:</Label>
+                        <local:ucPropItemEditor Grid.Row="3" Grid.Column="1" DataContext="{Binding hit}"></local:ucPropItemEditor>
+                        <Label Grid.Row="4">生命值:</Label>
+                        <local:ucPropItemEditor Grid.Row="4" Grid.Column="1" DataContext="{Binding hp}"></local:ucPropItemEditor>
+                        <Label Grid.Row="5">魔法值:</Label>
+                        <local:ucPropItemEditor Grid.Row="5" Grid.Column="1" DataContext="{Binding mp}"></local:ucPropItemEditor>
+                        <Label Grid.Row="6">是否死亡:</Label>
+                        <local:ucPropItemEditor Grid.Row="6" Grid.Column="1" DataContext="{Binding dead}"></local:ucPropItemEditor>
+                    </Grid>
+
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    BUFF
+                </TabItem.Header>
+                <DataGrid ItemsSource="{Binding Buffs }">
+
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</UserControl>

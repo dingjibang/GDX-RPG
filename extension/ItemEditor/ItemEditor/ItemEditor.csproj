@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,14 +74,23 @@
     <Compile Include="EquipmentEditor.xaml.cs">
       <DependentUpon>EquipmentEditor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Buff.cs" />
     <Compile Include="Model\Effect.cs" />
+    <Compile Include="Model\EffectBuff.cs" />
     <Compile Include="Model\Equipment.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\SPELLCARD.cs" />
+    <Compile Include="ucEffectEditor.xaml.cs">
+      <DependentUpon>ucEffectEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ucPropItemEditor.xaml.cs">
+      <DependentUpon>ucPropItemEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UndoRedo\PropertiesRedoUndoCommand.cs" />
     <Compile Include="UndoRedo\PropertyRedoUndoCommand.cs" />
     <Compile Include="UndoRedo\RedoUndoClass.cs" />
     <Compile Include="UndoRedo\RedoUndoCommandBase.cs" />
+    <Compile Include="ViewModel\BuffViewModel.cs" />
     <Compile Include="ViewModel\EquipmentPropViewModel.cs" />
     <Compile Include="ViewModel\ItemBaseViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
@@ -110,6 +120,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ucEffectEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ucPropItemEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

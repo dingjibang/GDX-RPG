@@ -208,20 +208,20 @@ namespace ItemEditor
 
     public class EffectProp
     {
-        public string maxhp { get; set; }
-        public string mapmp { get; set; }
-        public string attack { get; set; }
-        public string magicAttack { get; set; }
-        public string defense { get; set; }
-        public string magicDefense { get; set; }
-        public string speed { get; set; }
-        public string hit { get; set; }
-        public string level { get; set; }
-        public string exp { get; set; }
-        public string hp { get; set; }
-        public string mp { get; set; }
-        public string maxsc { get; set; }
-        public string dead { get; set; }
+        public JObject maxhp { get; set; }
+        public JObject mapmp { get; set; }
+        public JObject attack { get; set; }
+        public JObject magicAttack { get; set; }
+        public JObject defense { get; set; }
+        public JObject magicDefense { get; set; }
+        public JObject speed { get; set; }
+        public JObject hit { get; set; }
+        public JObject level { get; set; }
+        public JObject exp { get; set; }
+        public JObject hp { get; set; }
+        public JObject mp { get; set; }
+        public JObject maxsc { get; set; }
+        public JObject dead { get; set; }
 
 
         public void ReadFromJson(string sjson)
@@ -239,11 +239,12 @@ namespace ItemEditor
             JObject json = JObject.Parse(sjson);
             foreach (var propInfo in type1.GetProperties())
             {
-                this.SetPropertyValue(propInfo.Name, json.GetSafeStringValue(propInfo.Name));
+                this.SetPropertyValue(propInfo.Name,  json.GetSafeJObjectValue(propInfo.Name));
             }
         }
 
-        public string ToJsonString()
+
+        public JObject GetJObejct()
         {
             JObject obj = new JObject();
             Type type1 = typeof(EffectProp);
@@ -258,9 +259,17 @@ namespace ItemEditor
                 {
                     obj[propInfo.Name] = (string)value;
                 }
-
+                else if (value is JObject)
+                {
+                    obj[propInfo.Name] = (JObject)value;
+                }
             }
-            return obj.ToString();
+            return obj;
+        }
+
+        public string ToJsonString()
+        {
+            return GetJObejct().ToString();
         }
 
         public EquipmentPropViewModel newEquipmentPropViewModel()
@@ -286,6 +295,45 @@ namespace ItemEditor
 
     public static class JObjectExtension
     {
+
+        public static T[] GetSafeArray<T>(this JObject obj, string propName,Func<JObject,T> func)
+        {
+            if (func == null)
+            {
+                return null;
+            }
+            var o = obj.GetValue(propName);
+            if (o == null)
+            {
+                return null;
+            }
+            
+            if (o is JArray)
+            {
+                JArray arr = (JArray)o;
+                List<T> ll = new List<T>(arr.Count);
+                for (int i = 0; i < arr.Count; i++)
+                {
+                    ll.Add(func((JObject)arr[i]));
+                }
+                return ll.ToArray();
+            }
+            return null;
+        }
+
+        public static JObject GetSafeJObjectValue(this JObject obj, string propName)
+        {
+            var o = obj.GetValue(propName);
+            if (o == null)
+            {
+                return null;
+            }
+            if (o is JObject)
+            {
+                return (JObject)o;
+            }
+            return null;
+        }
         public static string GetSafeStringValue(this JObject obj, string propName)
         {
             var o = obj.GetValue(propName);

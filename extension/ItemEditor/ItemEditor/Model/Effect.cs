@@ -15,11 +15,17 @@ namespace ItemEditor.Model
 
         public string orgProp { get; set; }
         public EffectProp prop { get; set; } 
+        public List<EffectBuff> buffs { get; set; }
+
         public void Read(string jsonStr)
         {
             orgObject = JObject.Parse(jsonStr);
             prop = new EffectProp();
             orgProp = orgObject.GetSafeStringValue("prop");
+            buffs = (orgObject.GetSafeArray<EffectBuff>("buff", item => 
+            new EffectBuff {
+                buff = (int)item.GetSafeDoubleValue("buff")
+                , type = item.GetSafeStringValue("type") })?? new EffectBuff[] { }).ToList();
             prop.ReadFromJson(orgProp);
         }
 
@@ -27,39 +33,40 @@ namespace ItemEditor.Model
         {
             JObject jo = new JObject(orgObject);
             jo["prop"] = new JObject(prop.ToJsonString());
+            JArray arr = new JArray();
+            buffs.ForEach(item => arr.Add(item.GetJObject()));
+            jo["buff"] = arr;
             return jo;
         }
 
         public override string ToString()
         {
-            JObject jo = new JObject(orgObject);
-            jo["prop"] = new JObject(prop.ToJsonString());
-            return jo.ToString();
+            return getJobject().ToString();
         }
     }
 
-    public class BuffItem
-    {
-        public string type{get;set;}
-        public double buff { get; set; }
-        public double turn { get; set; } 
-    }
+    //public class BuffItem
+    //{
+    //    public string type{get;set;}
+    //    public double buff { get; set; }
+    //    public double turn { get; set; } 
+    //}
 
-    public class Buff
-    {
-        public JObject orgObject { get; set; }
+    //public class Buff
+    //{
+    //    public JObject orgObject { get; set; }
 
-        public int id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public string type { get; set; }
-        public string orgProp { get; set; }
-        public EffectProp prop { get; set; }
+    //    public int id { get; set; }
+    //    public string name { get; set; }
+    //    public string description { get; set; }
+    //    public string type { get; set; }
+    //    public string orgProp { get; set; }
+    //    public EffectProp prop { get; set; }
 
-        public void Read(string jsonStr)
-        {
-            orgObject = JObject.Parse(jsonStr);
-        }
-    }
+    //    public void Read(string jsonStr)
+    //    {
+    //        orgObject = JObject.Parse(jsonStr);
+    //    }
+    //}
 
 }

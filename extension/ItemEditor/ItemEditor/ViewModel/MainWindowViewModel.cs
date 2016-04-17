@@ -113,7 +113,7 @@ namespace ItemEditor
                         itemvm.Item = item;
                         m_Items.Add(itemvm);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         
                     }
