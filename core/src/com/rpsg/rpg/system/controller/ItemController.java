@@ -160,6 +160,7 @@ public class ItemController {
 			Prop prop = new Prop();
 			prop.formula = propValue.getString("formula");
 			prop.type = propValue.has("type") ? propValue.getString("type") : null;
+			prop.floatRate = propValue.has("floatRate") ? propValue.getString("floatRate") : "0";
 			replace.put(json.get(i).name,prop);
 		}
 		return replace; 

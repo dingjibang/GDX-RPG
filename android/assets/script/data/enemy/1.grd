@@ -6,13 +6,13 @@
 		mp:"100",
 		maxhp:"200",
 		maxmp:"100",
-		attack:"10",
+		attack:"4",
 		magicAttack:"0",
 		defense:"10",
 		magicDefense:"0",
 		speed:"3",
 		hit:"6",
-		evasion:1
+		evasion:"1"
 	},
 	aiLevel:1,
 	action:[

@@ -5,7 +5,7 @@ import com.badlogic.gdx.utils.Array;
 import com.rpsg.rpg.system.ui.Animation;
 import com.rpsg.rpg.view.GameViews;
 
-public class Animations {
+public class MapAnimationsManager {
 	
 	public Animation add(int id){
 		Animation a = new Animation(id);
@@ -25,4 +25,5 @@ public class Animations {
 		
 		GameViews.gameview.stage.getActors().removeAll(removeList, true);
 	}
+	
 }

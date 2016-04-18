@@ -99,6 +99,10 @@ public class Animation extends NPC {
 		proxy.draw(batch, parentAlpha);
 	}
 	
+	public boolean finished(){
+		return animation.isAnimationFinished(time);
+	}
+	
 	private Drawable getDrawable(TextureRegion region) {
 		Drawable d = cache.get(region);
 		if(d == null)

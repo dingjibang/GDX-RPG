@@ -46,13 +46,21 @@ public class EnemyGroup extends Table {
 
 
 	public void remove(Enemy enemy) {
+		EnemyBox box = getBox(enemy);
+		if(box != null)
+			removeActor(box);
+	}
+	
+	/**
+	 *	get EnemyBox by enemy(maybe null~) 
+	 */
+	public EnemyBox getBox(Enemy enemy){
 		EnemyBox box = null;
 		
 		for(Actor a : $.add(this).children().getItems())
 			if(((EnemyBox)a).enemy == enemy)
 				box = ((EnemyBox)a);
 		
-		if(box != null)
-			removeActor(box);
+		return box;
 	}
 }

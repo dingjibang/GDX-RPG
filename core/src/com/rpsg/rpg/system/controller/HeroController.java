@@ -30,6 +30,14 @@ public class HeroController {
 	
 	boolean walk;
 	
+	/**
+	 * cloner of currentheros
+	 */
+	@SuppressWarnings("unchecked")
+	public ArrayList<Hero> currentHeros(){
+		return (ArrayList<Hero>)currentHeros.clone();
+	}
+	
 	public synchronized void act(){
 		for(Hero hero:currentHeros)
 			hero.act(0);

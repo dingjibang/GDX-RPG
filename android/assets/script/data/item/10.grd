@@ -10,9 +10,11 @@
 	packable:false,
 	effect:{
 		buff:{
-			type:"add",
-			buff:2,
-			turn:1
+			[
+				type:"add",
+				buff:2,
+				turn:1
+			]
 		}
 	}
 }

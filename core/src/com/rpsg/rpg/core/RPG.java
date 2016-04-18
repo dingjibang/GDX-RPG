@@ -18,7 +18,6 @@ import com.rpsg.rpg.utils.display.TouchParticle;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.Logger;
 import com.rpsg.rpg.utils.game.TimeUtil;
-import com.rpsg.rpg.view.BattleView;
 import com.rpsg.rpg.view.GameViews;
 
 

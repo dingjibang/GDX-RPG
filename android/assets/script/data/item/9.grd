@@ -11,7 +11,8 @@
 	effect:{
 		prop:{
 			hp : {
-				formula:"- (self.attack * 4 - target.defense * 2)"
+				formula:"- (self.attack * 4 - target.defense * 2)",
+				floatRate:"10%"
 			}
 		}
 	}

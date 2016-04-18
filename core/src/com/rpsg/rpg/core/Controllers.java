@@ -6,7 +6,7 @@ import com.rpsg.rpg.system.controller.CGController;
 import com.rpsg.rpg.system.controller.DrawController;
 import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.controller.ItemController;
-import com.rpsg.rpg.utils.display.Animations;
+import com.rpsg.rpg.utils.display.MapAnimationsManager;
 import com.rpsg.rpg.utils.display.FG;
 import com.rpsg.rpg.utils.display.Msg;
 import com.rpsg.rpg.utils.display.WeatherUtil;
@@ -25,6 +25,6 @@ public class Controllers {
 	public WeatherUtil weather = new WeatherUtil();
 	public ThreadPool thread = new ThreadPool();
 	public ItemController item = new ItemController();
-	public Animations animation = new Animations();
+	public MapAnimationsManager animation = new MapAnimationsManager();
 	public BattleController battle = new BattleController();
 }

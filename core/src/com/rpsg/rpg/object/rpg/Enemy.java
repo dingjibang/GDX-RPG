@@ -16,6 +16,7 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Resistance;
 import com.rpsg.rpg.object.base.Resistance.ResistanceType;
 import com.rpsg.rpg.object.base.items.BattleContext;
+import com.rpsg.rpg.object.base.items.BattleResult;
 import com.rpsg.rpg.object.base.items.EnemyContext;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
@@ -140,7 +141,7 @@ public class Enemy implements Time {
 	/**
 	 * 	AI核心算法
 	 */
-	public void act(BattleContext battleContext) {
+	public BattleResult act(BattleContext battleContext) {
 		//获取战斗上下文
 		List<Target> friend = battleContext.friend;
 		List<Target> enemies = battleContext.enemies;
@@ -172,7 +173,7 @@ public class Enemy implements Time {
 		//如果符卡指向队友，或符卡不是指向单人的，则不进行判定，直接使用符卡
 		if(action.act.range != ItemRange.one || action.act.forward == ItemForward.friend){
 			action.act.use(battleContext);
-			return;
+			return BattleResult.faild();
 		}
 		
 		//获取团队平均数值
@@ -226,8 +227,7 @@ public class Enemy implements Time {
 		}
 		
 		GameViews.gameview.battleView.status.add("攻击了" + enemy.parentHero.name + "");
-		action.act.use(battleContext.target(enemy));
-			
+		return action.act.use(battleContext.target(enemy));
 	}
 	
 	public boolean random(int val){

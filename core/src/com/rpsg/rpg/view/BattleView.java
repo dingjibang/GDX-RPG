@@ -20,13 +20,15 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.BattleParam;
 import com.rpsg.rpg.object.base.BattleRes;
 import com.rpsg.rpg.object.base.items.BattleContext;
+import com.rpsg.rpg.object.base.items.BattleResult;
 import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
+import com.rpsg.rpg.system.ui.Animations;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.EnemyGroup;
-import com.rpsg.rpg.system.ui.HeroStatusBox;
+import com.rpsg.rpg.system.ui.HeroStatusGroup;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.Progress;
 import com.rpsg.rpg.system.ui.Status;
@@ -38,9 +40,10 @@ import com.rpsg.rpg.utils.game.TimeUtil;
 public class BattleView extends DefaultIView{
 	
 	BattleParam param;
-	List<HeroStatusBox> statusBox = new ArrayList<>();
-	EnemyGroup enemyGroup;
+	public HeroStatusGroup heroGroup;
+	public EnemyGroup enemyGroup;
 	public Status status;
+	Animations animations = new Animations(this);
 	Timer timer;
 	Progress p;
 	
@@ -52,81 +55,23 @@ public class BattleView extends DefaultIView{
 	@Override
 	public BattleView init() {
 		stage.clear();
-		statusBox.clear();
 		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(1024,576).color(.5f,.5f,.5f,1)).appendTo(stage);//TODO debug;
 		
 		$.add(status = new Status()).setPosition(0, 0).appendTo(stage);
 		
-		List<Hero> heros = RPG.ctrl.hero.currentHeros;
+		ArrayList<Hero> heros = RPG.ctrl.hero.currentHeros();
 		
-		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.screen_width,115).color(0,0,0,.5f)).setPosition(0, 28).appendTo(stage);
-		for(int i = 0; i < heros.size(); i++)
-			statusBox.add($.add(new HeroStatusBox(heros.get(i)).position(i * 256, 28)).appendTo(stage).getItem(HeroStatusBox.class));
+		heroGroup = new HeroStatusGroup(heros);
+		$.add(heroGroup).appendTo(stage).setPosition(0, 0);
 		
 		enemyGroup = new EnemyGroup(param.enemy);
-		
-		
 		$.add(enemyGroup).appendTo(stage).setPosition(GameUtil.screen_width/2 - enemyGroup.getWidth()/2, GameUtil.screen_height/2 - enemyGroup.getHeight()/2 + 50).setAlign(Align.center);
 		
-		$.add(new TextButton("结束战斗！",BattleRes.textButtonStyle)).appendTo(stage).setPosition(100,170).onClick(()->{
-			RPG.ctrl.battle.stop();
-		});
 		
-		$.add(timer = new Timer(heros,enemyGroup.list(),(obj)->{
-			timer.pause(true);
-			String name = obj instanceof Enemy ? ((Enemy)obj).name : ((Hero)obj).name;
-			
-			(obj instanceof Enemy ? ((Enemy)obj).target : ((Hero)obj).target).nextTurn();
-			
-			status.add("[#ff7171]"+name+"[] 的战斗回合");
-			
-			if(obj instanceof Hero){
-				Hero hero = (Hero)obj;
-				Image fg = $.add(Res.get(Setting.IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(stage).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(GameUtil.screen_width+500, 0).addAction(Actions.moveBy(-400, 0,1f,Interpolation.pow4Out)).setZIndex(1).getItem(Image.class);
-				Table menu = $.add(new Table()).appendTo(stage).setPosition(600, 220).getItem(Table.class);
-				
-				Runnable stopCallback = ()->{
-					fg.remove();
-					menu.remove();
-					timer.pause(false);
-				};
-				
-				menu.add(new TextButton("攻击",BattleRes.textButtonStyle).onClick(()->{
-					attack(hero,stopCallback);
-				}));
-				
-				menu.add(new TextButton("防御",BattleRes.textButtonStyle).onClick(()->{
-					define(hero,stopCallback);
-				}));
-				
-				menu.add(new TextButton("符卡",BattleRes.textButtonStyle).onClick(()->{
-					RPG.ctrl.battle.stop();
-					stopCallback.run();
-				}));
-				
-				menu.add(new TextButton("物品",BattleRes.textButtonStyle).onClick(()->{
-					RPG.ctrl.battle.stop();
-					stopCallback.run();
-				}));
-				
-				menu.add(new TextButton("逃跑",BattleRes.textButtonStyle).onClick(()->{
-					escape(hero,()->{
-						menu.remove();
-						fg.remove();
-						stopCallback.run();
-						timer.pause(false);
-					});
-				}));
-				
-				$.each(menu.getCells(),(cell) -> cell.size(150,30));
-			}else{
-				Enemy enemy = (Enemy)obj;
-				enemy.act(new BattleContext(enemy, null, (List<?>) enemyGroup.list().clone(), (List<?>) RPG.ctrl.hero.currentHeros.clone()));
-			}
-			
-			
-		})).appendTo(stage);
+		$.add(new TextButton("结束战斗！",BattleRes.textButtonStyle)).appendTo(stage).setPosition(100,170).onClick(RPG.ctrl.battle::stop);
+		
+		$.add(timer = new Timer(heros,enemyGroup.list(),this::onTimerToggle)).appendTo(stage);
 		
 		status.add("fuck you");
 		stage.setDebugAll(!!false);
@@ -135,9 +80,63 @@ public class BattleView extends DefaultIView{
 		
 		status.setZIndex(999999);
 		
+		stage.addActor(animations);
+		
 		return this;
 	}
-
+	
+	public void onTimerToggle(Object obj){
+		timer.pause(true);
+		String name = obj instanceof Enemy ? ((Enemy)obj).name : ((Hero)obj).name;
+		
+		(obj instanceof Enemy ? ((Enemy)obj).target : ((Hero)obj).target).nextTurn();
+		
+		status.add("[#ff7171]"+name+"[] 的战斗回合");
+		
+		if(obj instanceof Hero){
+			Hero hero = (Hero)obj;
+			Image fg = $.add(Res.get(Setting.IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(stage).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(GameUtil.screen_width+500, 0).addAction(Actions.moveBy(-400, 0,1f,Interpolation.pow4Out)).setZIndex(1).getItem(Image.class);
+			Table menu = $.add(new Table()).appendTo(stage).setPosition(600, 220).getItem(Table.class);
+			
+			Runnable stopCallback = ()->{
+				fg.remove();
+				menu.remove();
+				timer.pause(false);
+			};
+			
+			menu.add(new TextButton("攻击",BattleRes.textButtonStyle).onClick(()->{
+				attack(hero,stopCallback);
+			}));
+			
+			menu.add(new TextButton("防御",BattleRes.textButtonStyle).onClick(()->{
+				define(hero,stopCallback);
+			}));
+			
+			menu.add(new TextButton("符卡",BattleRes.textButtonStyle).onClick(()->{
+				RPG.ctrl.battle.stop();
+				stopCallback.run();
+			}));
+			
+			menu.add(new TextButton("物品",BattleRes.textButtonStyle).onClick(()->{
+				RPG.ctrl.battle.stop();
+				stopCallback.run();
+			}));
+			
+			menu.add(new TextButton("逃跑",BattleRes.textButtonStyle).onClick(()->{
+				escape(hero,()->{
+					menu.remove();
+					stopCallback.run();
+				});
+			}));
+			
+			$.each(menu.getCells(), cell -> cell.size(150,30));
+		}else{
+			Enemy enemy = (Enemy)obj;
+			BattleResult result = enemy.act(new BattleContext(enemy, null, (List<?>) enemyGroup.list().clone(), (List<?>) RPG.ctrl.hero.currentHeros.clone()));
+			animations.play(result);
+			timer.pause(false);
+		}
+	}
 
 	@Override
 	public void draw(SpriteBatch batch) {
@@ -183,7 +182,8 @@ public class BattleView extends DefaultIView{
 	private void attack(Hero hero,Runnable callback){
 		enemyGroup.select((enemy)->{
 			status.add("攻击了 " + enemy.name);
-			Spellcard.attack().use(new BattleContext(hero, enemy,(List<?>) RPG.ctrl.hero.currentHeros.clone(), (List<?>) enemyGroup.list().clone()));
+			BattleResult result = Spellcard.attack().use(new BattleContext(hero, enemy,(List<?>) RPG.ctrl.hero.currentHeros.clone(), (List<?>) enemyGroup.list().clone()));
+			animations.play(result);
 			if(enemy.target.isDead()){
 				status.add(enemy.name + "已死亡");
 				enemyGroup.remove(enemy);
