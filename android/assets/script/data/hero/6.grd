@@ -19,9 +19,9 @@ target.setProp("mp", 100);
 target.setProp("maxmp", 100);
 target.setProp("level",1);
 target.setProp("speed",4);
-target.setProp("attack",10);
+target.setProp("attack",18);
 target.setProp("magicAttack",9);
-target.setProp("hit",15);
+target.setProp("hit",25);
 
 
 association=Association.read(1);

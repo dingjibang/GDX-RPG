@@ -18,8 +18,8 @@ public class Prop implements Serializable{
 		int min = 0,max = 0;
 		if(floatRate.endsWith("%")){
 			int rate = Integer.valueOf(floatRate.split("%")[0]);
-			min = val - (val * rate);
-			min = val + (val * rate);
+			min = val - (val * (rate / 100));
+			min = val + (val * (rate / 100));
 		}else{
 			min = val - Integer.valueOf(floatRate);
 			min = val + Integer.valueOf(floatRate); 
