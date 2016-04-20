@@ -28,8 +28,7 @@ public class Target implements Serializable{
 	public Hero parentHero;
 	public Enemy parentEnemy;
 	
-	public int rank = 0;
-	
+	public int rank;
 	public List<Buff> buffList = new ArrayList<>();
 	
 	public Target lastAttackTarget = null;
@@ -256,6 +255,10 @@ public class Target implements Serializable{
 		int avg = 0;
 		for(Target enemy : list) avg += enemy.getProp(prop);
 		return avg / list.size();
+	}
+
+	public boolean isDying() {
+		return ((float)getProp("hp") / (float)getProp("maxhp")) > .123f;
 	}
 
 	

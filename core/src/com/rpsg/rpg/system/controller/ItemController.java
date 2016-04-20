@@ -130,6 +130,8 @@ public class ItemController {
 		if(json.has("prop"))
 			e.prop = getPropObject(json.get("prop"));
 		e.use = json.has("use")?json.getString("use"):"";
+		e.wait = json.has("wait")?json.getBoolean("wait"):false;
+		e.turn = json.has("turn")?json.getInt("turn"):1;
 		
 		List<EffectBuff> buffs = new ArrayList<EffectBuff>();
 		if(json.has("buff")) for(JsonValue value : json.get("buff")){

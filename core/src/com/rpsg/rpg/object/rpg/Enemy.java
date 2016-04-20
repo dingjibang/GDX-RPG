@@ -141,14 +141,13 @@ public class Enemy implements Time {
 	/**
 	 * 	AI核心算法
 	 */
-	public BattleResult act(BattleContext battleContext) {
+	public BattleResult act(final BattleContext battleContext) {
 		//获取战斗上下文
 		List<Target> friend = battleContext.friend;
 		List<Target> enemies = battleContext.enemies;
 		
 		//遍历动作
 		List<EnemyAction> evalActionList = new ArrayList<>();
-		
 		
 		for(EnemyAction action : actions){
 			//根据符卡使用朝向，得到判定目标
@@ -161,25 +160,88 @@ public class Enemy implements Time {
 					evalActionList.add(action);
 		}
 		
-		EnemyAction action = null;
-		//如果有多个待选动作， 则随机选择一个动作
-		if(!evalActionList.isEmpty())
-			action = evalActionList.get(MathUtils.random(0,evalActionList.size()));
-		
 		//如果没有任何可选动作，则根据AI等级使用攻击/防御的动作
-		if(action == null)
-			action = random(getDefenseRate()) ? EnemyAction.defense() : EnemyAction.attack();
+		if(evalActionList.isEmpty())
+			evalActionList.add(random(getDefenseRate()) ? EnemyAction.defense() : EnemyAction.attack());
+		
+		
+		EnemyAction evalAction = null;
+		//遍历所有动作，取得最优动作
+		for(EnemyAction action : evalActionList){
+			if(action.act.forward == ItemForward.enemy)
+				action.rank = rankEnemy(action,enemies);
+			if(action.act.forward == ItemForward.self || action.act.forward == ItemForward.friend)
+				action.rank = rankFriend(action,friend);
+			if(action.act.forward == ItemForward.all)
+				action.rank = 0;
 			
-		//如果符卡指向队友，或符卡不是指向单人的，则不进行判定，直接使用符卡
-		if(action.act.range != ItemRange.one || action.act.forward == ItemForward.friend){
-			action.act.use(battleContext);
-			return BattleResult.faild();
+			//判断cost值是否足够
+			int cost = action.act.cost;
+			if(cost < target.getProp("mp"))
+				action.rank = Integer.MIN_VALUE;
+			
+			if(evalAction == null || action.rank > evalAction.rank)
+				evalAction = action;
 		}
 		
+		
+		//如果符卡指向多人则直接使用
+		if(evalAction.act.range == ItemRange.all){
+			return evalAction.act.use(battleContext);
+		}
+		
+		//如果指向队友
+		if(evalAction.act.forward == ItemForward.friend){
+			rankFriend(evalAction,friend);
+			Target target = getTarget(friend);
+			return evalAction.act.use(battleContext.target(target));
+		}else{//如果指向敌人
+			rankEnemy(evalAction,enemies);
+			Target target = getTarget(enemies);
+			GameViews.gameview.battleView.status.add("攻击了" + target.parentHero.name);
+			return evalAction.act.use(battleContext.target(target));
+		}
+	}
+	
+	private int rankFriend(EnemyAction action,List<Target> friend){
+		//获取团队平均数值
+		int avgHP = Target.avg(friend, "hp");
+		
+		int sum = 0;
+		
+		for(Target t : friend){
+			t.rank = 0;
+			
+			t.rank += avgHP - t.getProp("hp");
+			t.rank *= t.isDying() ? 1.3f : 0;
+		}
+		
+		return sum * 5;
+	}
+	
+	/**
+	 * 评分系统
+	 * //TODO
+	 * 评分系统改进：
+	 * aoe情况下秒奶妈
+	 * 自身血厚攻击dps
+	 * 攻击多回合施法 TODO 多回合施法
+	 * 直接死亡 加分
+	 * 自己没蓝了，减分（0分）
+	 * 根据速度闪避rank
+	 * 
+	 * js控制额外的评分
+	 * 
+	 * @return 分数总和
+	 */
+	private int rankEnemy(EnemyAction action,List<Target> enemies){
+
 		//获取团队平均数值
 		int avgHP = Target.avg(enemies, "hp");
 		int avgAtk = Target.avg(enemies, "attack");
 		int avgDef = Target.avg(enemies, "defence");
+		
+		int sum = 0;
 		
 		//对目标进行评分
 		for(Target t : enemies){
@@ -197,40 +259,45 @@ public class Enemy implements Time {
 				if(prop.type == null || prop.type.length() == 0)
 					continue;
 				switch(t.resistance.get(prop.type).type){
-					case normal : break;
-					case weak : t.rank *= 1.5f;
-					case tolerance : t.rank *= .8f;
-					case invalid : t.rank *= .3f;
-					case reflect : t.rank *= .95f;
-					case absorb : t.rank *= .4f;
+				case normal : break;
+				case weak : t.rank *= 1.5f;
+				case tolerance : t.rank *= .8f;
+				case invalid : t.rank *= .3f;
+				case reflect : t.rank *= .95f;
+				case absorb : t.rank *= .4f;
 				}
 			}
+			
+			sum += t.rank;
 		};
 		
-		Collections.sort(enemies, (t1,t2) -> t1.rank - t2.rank);
-		
-		Target enemy = null;
-		//根据AI等级和目标评分来计算攻击目标
-		switch(aiLevel){
-			case 0:{//傻逼 - 选择最难对付的对手
-				enemy = enemies.get(enemies.size() - 1);
-			}
-			case 1:{//正常 - 随机选择一个对手
-				enemy = enemies.get(MathUtils.random(0,enemies.size() - 1));
-			}
-			case 2:{//聪明 - 50%几率选择一个稍微比较好对付的对手
-				enemy = MathUtils.random(0,100) > 50 ? enemies.get(MathUtils.random(0,enemies.size() / 2)) : enemies.get(MathUtils.random(0,enemies.size() - 1));
-			}
-			case 3:{//挂比 - 80%几率选择最好对付的对手
-				enemy = MathUtils.random(0,100) > 80 ? enemies.get(0) : enemies.get(MathUtils.random(0,enemies.size() - 1));
-			}
-		}
-		
-		GameViews.gameview.battleView.status.add("攻击了" + enemy.parentHero.name + "");
-		return action.act.use(battleContext.target(enemy));
+		Collections.sort(enemies, (t1,t2) -> t2.rank - t1.rank);
+		return sum;
 	}
 	
-	public boolean random(int val){
+	/**
+	 * 根据AI等级和目标评分来计算攻击目标
+	 */
+	private Target getTarget(List<Target> targetList){
+		Target enemy = null;
+		switch(aiLevel){
+		case 0:{//傻逼 - 选择最难对付的对手
+			enemy = targetList.get(targetList.size() - 1);
+		}
+		case 1:{//正常 - 随机选择一个对手
+			enemy = targetList.get(MathUtils.random(0,targetList.size() - 1));
+		}
+		case 2:{//聪明 - 50%几率选择一个稍微比较好对付的对手
+			enemy = MathUtils.random(0,100) < 50 ? targetList.get(MathUtils.random(0,targetList.size() / 2)) : targetList.get(MathUtils.random(0,targetList.size() - 1));
+		}
+		case 3:{//挂比 - 80%几率选择最好对付的对手
+			enemy = MathUtils.random(0,100) < 80 ? targetList.get(0) : targetList.get(MathUtils.random(0,targetList.size() - 1));
+		}
+		}
+		return enemy;
+	}
+	
+	private boolean random(int val){
 		return MathUtils.random(0,100) <= val;
 	}
 	
@@ -238,7 +305,7 @@ public class Enemy implements Time {
 	 * 根据AI等级进行计算是否攻击/防御
 	 * @return
 	 */
-	public int getDefenseRate(){
+	private  int getDefenseRate(){
 		switch (aiLevel){
 			case 0:{//傻逼
 				return 0;//永远不会防御

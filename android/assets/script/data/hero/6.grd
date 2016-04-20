@@ -21,7 +21,8 @@ target.setProp("level",1);
 target.setProp("speed",4);
 target.setProp("attack",18);
 target.setProp("magicAttack",9);
-target.setProp("hit",25);
+target.setProp("defense",5);
+target.setProp("hit",45);
 
 
 association=Association.read(1);

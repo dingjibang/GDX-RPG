@@ -74,7 +74,7 @@ public class BattleView extends DefaultIView{
 		$.add(timer = new Timer(heros,enemyGroup.list(),this::onTimerToggle)).appendTo(stage);
 		
 		status.add("fuck you");
-		stage.setDebugAll(!!false);
+		stage.setDebugAll(!false);
 		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.screen_width,GameUtil.screen_height).color(0,0,0,1)).appendTo(stage).addAction(Actions.sequence(Actions.fadeOut(.3f,Interpolation.pow2In),Actions.removeActor()));
 		
@@ -133,8 +133,7 @@ public class BattleView extends DefaultIView{
 		}else{
 			Enemy enemy = (Enemy)obj;
 			BattleResult result = enemy.act(new BattleContext(enemy, null, (List<?>) enemyGroup.list().clone(), (List<?>) RPG.ctrl.hero.currentHeros.clone()));
-			animations.play(result);
-			timer.pause(false);
+			animations.play(result,() -> timer.pause(false));
 		}
 	}
 
@@ -176,19 +175,24 @@ public class BattleView extends DefaultIView{
 	
 	private void define(Hero hero,Runnable callback){
 		status.add(hero.name + "展开了防御的姿态");
-		callback.run();
+		BattleResult result = Spellcard.defense().use(new BattleContext(hero, null,(List<?>) RPG.ctrl.hero.currentHeros.clone(), (List<?>) enemyGroup.list().clone()));
+		animations.play(result, ()->{
+			callback.run();
+		});
 	}
 	
 	private void attack(Hero hero,Runnable callback){
 		enemyGroup.select((enemy)->{
 			status.add("攻击了 " + enemy.name);
 			BattleResult result = Spellcard.attack().use(new BattleContext(hero, enemy,(List<?>) RPG.ctrl.hero.currentHeros.clone(), (List<?>) enemyGroup.list().clone()));
-			animations.play(result);
+			animations.play(result,()->{
+				callback.run();
+			});
 			if(enemy.target.isDead()){
 				status.add(enemy.name + "已死亡");
 				enemyGroup.remove(enemy);
+				timer.remove(enemy);
 			}
-			callback.run();
 		});
 	}
 

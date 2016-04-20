@@ -10,6 +10,9 @@ public class Effect implements Serializable{
 	private static final long serialVersionUID = -5793312110086239037L;
 	public Map<String, Prop> prop = new HashMap<>();
 	public List<EffectBuff> buff = new ArrayList<EffectBuff>();
+	public boolean wait = false;
+	public int turn = 1;
+	
 	public String use = "";
 	
 	public static class EffectBuff implements Serializable{

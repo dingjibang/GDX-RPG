@@ -7,6 +7,8 @@ public class EnemyAction {
 	public Spellcard act;
 	public String formula;
 	public RemoveType remove;
+	
+	public int rank = 0;
 
 	public static enum RemoveType {
 		no, // 不删除

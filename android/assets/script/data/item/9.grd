@@ -8,6 +8,7 @@
 	occasion:"all",
 	cost:0,
 	packable:false,
+	animation:2,
 	effect:{
 		prop:{
 			hp : {

@@ -16,15 +16,18 @@ public class Prop implements Serializable{
 	
 	public int rate(int val){
 		int min = 0,max = 0;
+		
+		boolean negative = val < 0;
+		
 		if(floatRate.endsWith("%")){
-			int rate = Integer.valueOf(floatRate.split("%")[0]);
-			min = val - (val * (rate / 100));
-			min = val + (val * (rate / 100));
+			float rate = Float.valueOf(floatRate.split("%")[0]);
+			min = (int) (val - (val * (rate / 100)));
+			max = (int) (val + (val * (rate / 100)));
 		}else{
 			min = val - Integer.valueOf(floatRate);
-			min = val + Integer.valueOf(floatRate); 
+			max = val + Integer.valueOf(floatRate); 
 		}
-		return MathUtils.random(min,max);
+		return MathUtils.random(Math.abs(min),Math.abs(max)) * (negative ? -1 : 1);
 	}
 	
 }

@@ -3,6 +3,7 @@ package com.rpsg.rpg.system.ui;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.CustomRunnable;
@@ -47,8 +48,17 @@ public class EnemyGroup extends Table {
 
 	public void remove(Enemy enemy) {
 		EnemyBox box = getBox(enemy);
-		if(box != null)
-			removeActor(box);
+		if(box != null){
+			Cell<?> cell = null;
+			for(Cell<?> c : getCells())
+				if(c.getActor() == box)
+					cell = c;
+			if(cell != null){
+				removeActor(box);
+				getCells().removeValue(cell, true);
+			}
+		}
+		
 	}
 	
 	/**

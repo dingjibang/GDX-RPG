@@ -34,7 +34,8 @@ public class Item extends BaseItem{
 		friend,//我方
 		enemy,//敌人
 		all,//全部
-		link//对与自己连携的对象使用的。
+		link,//对与自己连携的对象使用的。
+		self//自己
 	}
 	
 	/**

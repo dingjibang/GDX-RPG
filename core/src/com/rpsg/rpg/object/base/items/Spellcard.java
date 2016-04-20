@@ -72,8 +72,13 @@ public class Spellcard extends BaseItem {
 		//如果符卡针对敌方所有人
 		if(forward == ItemForward.enemy && range == ItemRange.all)
 			targetList.addAll(ctx.enemies);
+		//如果指向自己
+		if(forward == ItemForward.self)
+			targetList.add(self);
 		//如果符卡针对我方敌方单人
-		if(range == ItemRange.one)
+		if(forward == ItemForward.enemy && range == ItemRange.one)
+			targetList.add(ctx.enemy);
+		if(forward == ItemForward.friend && range == ItemRange.one)
 			targetList.add(ctx.enemy);
 		
 		//判断使用条件是否正确
@@ -81,6 +86,7 @@ public class Spellcard extends BaseItem {
 			if((!t.isDead() && deadable == ItemDeadable.yes) || (t.isDead() && deadable == ItemDeadable.no))
 				return BattleResult.faild();
 		
+		//TODO self
 		//判断mp是否足够
 		if(self.getProp("mp") < cost)
 			return BattleResult.faild();
@@ -138,7 +144,7 @@ public class Spellcard extends BaseItem {
 				float eva = (rtype != null ? t.resistance.get(key).evasion : 0);
 				float max = (self.getProp("hit") + t.getProp("evasion") + eva);
 				boolean miss = false;
-				float rate = ((self.getProp("hit") - t.getProp("evasion") - eva) / max) * 100;
+				float rate = (self.getProp("hit") / max) * 100;
 				if(max != 0)
 					miss = MathUtils.random(0,100) > rate;
 					
@@ -150,8 +156,10 @@ public class Spellcard extends BaseItem {
 					//扣除消耗
 					self.addProp("mp", (-cost) + "");
 					
+					if(RPG.ctrl.battle.isBattle())
 					GameViews.gameview.battleView.status.append("...造成了 " + damage + " 点伤害");
 				}else{
+					if(RPG.ctrl.battle.isBattle())
 					GameViews.gameview.battleView.status.append("...但是没有命中");
 				}
 				

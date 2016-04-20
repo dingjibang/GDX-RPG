@@ -29,6 +29,8 @@ public class Animation extends NPC {
 	public int id;
 	public boolean remove = false;
 	
+	private Runnable played = null;
+	
 	float time;
 	
 	public boolean generated = false;
@@ -84,6 +86,11 @@ public class Animation extends NPC {
 		return this;
 	}
 	
+	public Animation played(Runnable callback){
+		this.played = callback;
+		return this;
+	}
+	
 	@Override
 	public synchronized void draw(Batch batch, float parentAlpha) {
 		//async generate the texture in main loop thread (OPENGL)
@@ -97,6 +104,9 @@ public class Animation extends NPC {
 		proxy.setOrigin(Align.center);
 		
 		proxy.draw(batch, parentAlpha);
+		
+		if(played != null && finished())
+			played.run();
 	}
 	
 	public boolean finished(){
@@ -123,6 +133,16 @@ public class Animation extends NPC {
 	@Override
 	public void toCollide(ScriptCollide sc) {
 		
+	}
+	
+	@Override
+	public float getWidth() {
+		return proxy.getWidth();
+	}
+	
+	@Override
+	public float getHeight() {
+		return proxy.getHeight();
 	}
 	
 }

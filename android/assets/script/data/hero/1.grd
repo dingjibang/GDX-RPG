@@ -24,8 +24,8 @@ target.setProp("maxmp", 100);
 target.setProp("maxsc",12);
 target.setProp("speed",5);
 target.setProp("attack",20);
-target.setProp("defense",4);
-target.setProp("hit",30);
+target.setProp("defense",2);
+target.setProp("hit",50);
 
 addSpellcard(RPG.ctrl.item.get(5));
 addSpellcard(RPG.ctrl.item.get(5));

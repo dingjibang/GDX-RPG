@@ -22,7 +22,7 @@ public class HeroStatusGroup extends Group {
 		HeroStatusBox box = null;
 		
 		for(Actor actor : $.add(this).children().getItems())
-			if(((HeroStatusBox)actor).hero == hero)
+			if(actor instanceof HeroStatusBox && ((HeroStatusBox)actor).hero == hero)
 				box = ((HeroStatusBox)actor);
 		
 		return box;
