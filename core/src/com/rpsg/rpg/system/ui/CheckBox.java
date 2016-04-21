@@ -62,11 +62,11 @@ public class CheckBox extends com.badlogic.gdx.scenes.scene2d.ui.CheckBox {
 	}
 	
 	public CheckBox onClick(Runnable run){
-		return query.onClick(run).getItem(getClass());
+		return query.click(run).getItem(getClass());
 	}
 	
 	public CheckBox onClick(final CustomRunnable<CheckBox> run){
-		return query.onClick(new Runnable() {
+		return query.click(new Runnable() {
 			public void run() {
 				run.run(CheckBox.this);
 			}

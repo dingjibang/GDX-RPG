@@ -14,7 +14,7 @@
 		hit:"6",
 		evasion:"1"
 	},
-	aiLevel:2,
+	aiLevel:1,
 	action:[
 		{
 			turn:1,

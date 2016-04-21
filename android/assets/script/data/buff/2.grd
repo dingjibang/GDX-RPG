@@ -4,7 +4,7 @@
 	type:"buff",
 	prop:{
 		defense:{
-			formula:"30%"
+			formula:"233333"
 		}
 	}
 }

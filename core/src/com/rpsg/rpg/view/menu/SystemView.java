@@ -290,7 +290,7 @@ public class SystemView extends IMenuView{
 				set.uiDebug = t.isChecked();
 			}}).check(set.uiDebug).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("上报的信息将不会收集您的任何私有资料。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
-			table.add($.add(new Label("点击我可以查看《隐私说明》",20).warp(true).color(Color.valueOf("8FBEE6"))).setTouchable(Touchable.enabled).onClick(new Runnable() {
+			table.add($.add(new Label("点击我可以查看《隐私说明》",20).warp(true).color(Color.valueOf("8FBEE6"))).setTouchable(Touchable.enabled).click(new Runnable() {
 				public void run() {
 					GameUtil.openURL("http://www.baidu.com");
 				}

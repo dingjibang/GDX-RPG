@@ -12,6 +12,7 @@ import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.object.base.Resistance;
 import com.rpsg.rpg.object.base.Resistance.ResistanceType;
 import com.rpsg.rpg.object.base.items.Buff;
+import com.rpsg.rpg.object.base.items.Prop;
 
 /**
  * GDX-RPG Hero/Enemy 数据模块
@@ -29,12 +30,28 @@ public class Target implements Serializable{
 	public Enemy parentEnemy;
 	
 	public int rank;
-	public List<Buff> buffList = new ArrayList<>();
+	private ArrayList<Buff> buffList = new ArrayList<>();
+	
 	
 	public Target lastAttackTarget = null;
 	
 	/**回合数（从1开始）*/
 	private int turn = 1;
+	
+	boolean modifiedBuff = false;
+	
+	public boolean modifiedBuff(){
+		return modifiedBuff;
+	}
+	
+	public void modifiedBuff(boolean flag){
+		modifiedBuff = flag;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Buff> getBuffList(){
+		return(List<Buff>)buffList.clone();
+	}
 	
 	public Target hero(Hero hero){
 		this.parentHero = hero;
@@ -52,19 +69,21 @@ public class Target implements Serializable{
 	
 	public void nextTurn(){
 		turn++;
-		$.removeIf(buffList, b -> --b.turn <= 0);
+		$.removeIf(buffList, b -> --b.turn <= 0 && (modifiedBuff = true));
 	}
 	
 	public Target clear(){
 		turn = 0;
 		lastAttackTarget = null;
 		buffList.clear();
+		modifiedBuff = true;
 		return this;
 	}
 	
 	public Target addBuff(Buff buff){
 		if(buff == null) return this;
 		buffList.add(buff);
+		modifiedBuff = true;
 		return this;
 	}
 	
@@ -77,15 +96,19 @@ public class Target implements Serializable{
 			target = b.id == buff.id ? buff : target;
 		if(target != null)
 			buffList.remove(target);
+		
+		modifiedBuff = true;
 		return this;
 	}
 	
 	public Target removeBuff(){
 		buffList.clear();
+		
+		modifiedBuff = true;
 		return this;
 	}
 	
-	public Map<String, Integer> prop = new HashMap<String, Integer>();
+	private Map<String, Integer> prop = new HashMap<String, Integer>();
 	{
 		//等级
 		prop.put("level", 0);
@@ -156,8 +179,20 @@ public class Target implements Serializable{
 	}
 
 
-	public int getProp(String string) {
-		return prop.get(string) == null ? 0 : prop.get(string);
+	public int getProp(String key) {
+		Integer val = this.prop.get(key);
+		if(val == null) val = 0;
+		
+		int result = val;
+		
+		for(Buff buff : buffList){
+			Prop prop = buff.prop.get(key);
+			if(prop == null) continue;
+			
+			result += calcProp(val, prop.formula);
+		}
+		
+		return result;
 	}
 	
 	//计算两个数值相加（百分比或绝对值）
@@ -219,6 +254,17 @@ public class Target implements Serializable{
 	 */
 	public void addProp(String name, String p) {
 		addProp(name, p,true,false);
+	}
+	
+	public boolean hasProp(String name){
+		return prop.containsKey(name);
+	}
+	
+	/**
+	 * 返回原始数据，谨慎使用
+	 */
+	public Map<String,Integer> getProp(){
+		return prop;
 	}
 	
 	/**

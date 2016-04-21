@@ -1,12 +1,18 @@
 package com.rpsg.rpg.system.ui;
 
+import java.util.HashMap;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
+import com.rpsg.gdxQuery.$;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.LazyBitmapFontConctoller;
+import com.rpsg.rpg.view.hover.ViewBuffView;
 
 public class HeroStatusBox extends Group {
 
@@ -14,6 +20,7 @@ public class HeroStatusBox extends Group {
 	Label hp, mp;
 	Hero hero;
 	public Progress hpbar,mpbar;
+	Group buffTable = new Table();
 
 	public HeroStatusBox(Hero hero) {
 		this.hero = hero;
@@ -34,6 +41,7 @@ public class HeroStatusBox extends Group {
 		Color shit = new Color(.33f,.16f,.07f,1);
 		addActor(hp = Res.font.getLabel("", 20,LazyBitmapFontConctoller.ENGLISH_GENERATOR).position(119, 85).align(Align.left).color(shit));
 		addActor(mp = Res.font.getLabel("", 20,LazyBitmapFontConctoller.ENGLISH_GENERATOR).position(119, 50).align(Align.left).color(shit));
+		addActor(buffTable);
 		
 	}
 	
@@ -48,6 +56,25 @@ public class HeroStatusBox extends Group {
 		mpbar.value(hero.target.getProp("mp"));
 		hp.setText("HP:  "+hero.target.getProp("hp") + "/" + hero.target.getProp("maxhp"));
 		mp.setText("MP:  "+hero.target.getProp("mp") + "/" + hero.target.getProp("maxmp"));
+		
+		if(hero.target.modifiedBuff()){
+			buffTable.clear();
+			$.each(hero.target.getBuffList(), (index,buff) -> {
+				$.add(buff.getIcon()).appendTo(buffTable).setX(index * 32 + 5).run(self -> {
+					self.click(()->{
+						RPG.popup.add(ViewBuffView.class,new HashMap<Object,Object>(){
+							private static final long serialVersionUID = 1L;
+							{
+								put("top",self.getX());
+								put("left",self.getX());
+								put("buff",buff);
+							}
+						});
+					});
+				}).getCell().prefSize(32, 32);
+			});
+		}
+		
 		super.act(delta);
 	}
 }

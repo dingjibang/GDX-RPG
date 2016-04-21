@@ -18,7 +18,7 @@ public class EnemyContext extends BaseContext{
 	
 	public boolean hasBuff(int id){
 		boolean include = false;
-		for(Buff buff : target.buffList)
+		for(Buff buff : target.getBuffList())
 			if(buff.id == id)
 				include = true;
 		return include;
@@ -72,8 +72,8 @@ public class EnemyContext extends BaseContext{
 		ctx.lastAttackTarget = target.lastAttackTarget;
 		try {
 			for(Field f : ctx.getClass().getFields()){
-				if(target.prop.containsKey(f.getName()))
-					f.setInt(ctx, target.prop.get(f.getName()));
+				if(target.hasProp(f.getName()))
+					f.setInt(ctx, target.getProp(f.getName()));
 			}
 		} catch (IllegalArgumentException | IllegalAccessException e) {
 			e.printStackTrace();

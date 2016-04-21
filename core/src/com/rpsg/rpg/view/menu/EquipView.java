@@ -52,7 +52,7 @@ public class EquipView extends IMenuView{
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info.png");
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info_p.png");// help button press
 		cstyle.font = Res.font.get(20);
-		$.add(new CheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.onClick(new Runnable() {public void run() {
+		$.add(new CheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.click(new Runnable() {public void run() {
 			data.addAction(self.isChecked()?Actions.fadeIn(.3f):Actions.fadeOut(.3f));
 		}});}});
 		
@@ -65,8 +65,8 @@ public class EquipView extends IMenuView{
 		
 		$.add(throwButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(throwImg)).appendTo(stage).setSize(297,49).setPosition(698, 12).getCell().prefSize(297,49);
 		
-		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).onClick(this::next).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
-		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).setScale(.8f).setScaleX(-.8f).appendTo(stage).setPosition(196, 483).onClick(this::prev).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
+		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).click(this::next).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
+		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).setScale(.8f).setScaleX(-.8f).appendTo(stage).setPosition(196, 483).click(this::prev).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
 		
 		inner = (Group) $.add(new Group()).appendTo(stage).getItem();
 		description = (Group) $.add(new Group()).appendTo(stage).getItem();

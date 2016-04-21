@@ -20,7 +20,7 @@ public class EnemyBox extends Group {
 
 	public EnemyBox(Enemy enemy) {
 		this.enemy = enemy;
-		int _hp = Integer.valueOf(enemy.target.prop.get("hp")),_maxhp = Integer.valueOf(enemy.target.prop.get("maxhp"));
+		int _hp = Integer.valueOf(enemy.target.getProp("hp")),_maxhp = Integer.valueOf(enemy.target.getProp("maxhp"));
 		
 		Group fg = new Group();
 		fg.addActor(image = Res.getNP(enemy.imgPath));
@@ -41,7 +41,7 @@ public class EnemyBox extends Group {
 	@Override
 	public void act(float delta) {
 		hpbar.value(enemy.target.getProp("hp")); 
-		int _hp = Integer.valueOf(enemy.target.prop.get("hp")),_maxhp = Integer.valueOf(enemy.target.prop.get("maxhp"));
+		int _hp = Integer.valueOf(enemy.target.getProp("hp")),_maxhp = Integer.valueOf(enemy.target.getProp("maxhp"));
 		hp.text(enemy.name+"\n"+_hp + " / " + _maxhp);
 		super.act(delta);
 	}
@@ -62,7 +62,7 @@ public class EnemyBox extends Group {
 	}
 	
 	public void select(CustomRunnable<EnemyBox> callback){
-		$.add(selectBox).show().onClick(()->{
+		$.add(selectBox).show().click(()->{
 			callback.run(EnemyBox.this);
 		});
 	}

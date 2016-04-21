@@ -103,42 +103,28 @@ public class Spellcard extends BaseItem {
 			for (String key : effect.prop.keySet()) {
 				Prop prop = effect.prop.get(key);
 				
-				Double doubleVal = SpellcardContext.eval(self, t, prop.formula);
-				if(doubleVal == null)
-					throw new GdxRuntimeException("bad properties.");
+				int damage = damage(self, t, key);
 				
-				int val = doubleVal.intValue();
-				
-				if(val > 0){//如果是增加属性的状态，则跳过所有数值计算直接叠加
-					t.addProp(key, val + "");
+				if(damage > 0){
+					t.addProp(key, damage + "");
 					continue;
 				}
 				
-				//获取攻击属性，攻击方式，穿防率
-				String rtype = prop.type;
-				
-				//计算纯粹伤害
-				Integer damage = val;
 				
 				
-				//计算抗性
-				if(rtype != null){
-					ResistanceType trtype = t.resistance.get(rtype).type;
-					int result = ResistanceType.invoke(trtype, damage);
-					
-					if(trtype != ResistanceType.reflect){
-						damage = result;
-					}else{
-						//如果对方反弹伤害，则把伤害加给自己
-						self.addProp(key, (-result) + "");
-					}
-				}
-				
-				//计算伤害浮动
+//				计算伤害浮动
 				damage = prop.rate(damage);
 				
 				//处理溢出
 				damage = damage < 0 ? damage : 0;
+				
+				String rtype = prop.type;
+				if(rtype != null){
+					ResistanceType trtype = t.resistance.get(rtype).type;
+					if(trtype == ResistanceType.reflect){	//如果抗性为反射，则把伤害给自己
+						self.addProp(key, (-damage) + "");
+					}
+				}
 				
 				//计算闪避
 				float eva = (rtype != null ? t.resistance.get(key).evasion : 0);
@@ -173,6 +159,40 @@ public class Spellcard extends BaseItem {
 		};
 
 		return BattleResult.success(this.animation,targetList);
+	}
+	
+	public int damage(Target self,Target target,String propName){
+		Prop prop = effect.prop.get(propName); 
+		if(prop == null)
+			return 0;
+		
+		Double doubleVal = SpellcardContext.eval(self, target, prop.formula);
+		
+		if(doubleVal == null)
+			throw new GdxRuntimeException("bad properties.");
+		
+		int val = doubleVal.intValue();
+		
+		if(val > 0){//如果是增加属性的状态，则跳过所有数值计算直接叠加
+			return val;
+		}
+		
+		//获取攻击属性，攻击方式，穿防率
+		String rtype = prop.type;
+		
+		//计算纯粹伤害
+		Integer damage = val;
+		
+		
+		//计算抗性
+		if(rtype != null){
+			ResistanceType trtype = target.resistance.get(rtype).type;
+			int result = ResistanceType.invoke(trtype, damage);
+			damage = result;
+		}
+		
+		return damage;
+		
 	}
 	
 }

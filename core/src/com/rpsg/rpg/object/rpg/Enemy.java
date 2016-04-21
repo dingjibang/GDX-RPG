@@ -84,7 +84,7 @@ public class Enemy implements Time {
 	public static Enemy getEnemy(int id,JsonValue value) {
 		Enemy enemy = new Enemy();
 		enemy.name = value.getString("name");
-		enemy.target.prop.putAll(ItemController.getIntProp(value.get("prop")));;
+		enemy.target.getProp().putAll(ItemController.getIntProp(value.get("prop")));;
 		enemy.aiLevel = value.has("aiLevel") ? value.getInt("aiLevel") : 1;
 		enemy.id = id;
 		enemy.imgPath = Setting.IMAGE_ENEMY + id + ".png";
@@ -113,7 +113,7 @@ public class Enemy implements Time {
 	}
 	
 	public int getSpeed(){
-		return Integer.valueOf(target.prop.get("speed"));
+		return Integer.valueOf(target.getProp("speed"));
 	}
 	
 	@Override
@@ -267,6 +267,9 @@ public class Enemy implements Time {
 				case absorb : t.rank *= .4f;
 				}
 			}
+			
+			//可以秒杀对方进行加分
+			t.rank *= action.act.damage(target, t, "hp") > 0 ? 1 : 2;
 			
 			sum += t.rank;
 		};

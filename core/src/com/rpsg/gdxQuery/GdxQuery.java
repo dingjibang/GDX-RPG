@@ -46,7 +46,7 @@ public class GdxQuery {
 
 	private ArrayList<Actor> values = new ArrayList<Actor>();
 	
-	private Runnable click,touchUp,touchDown;
+	private Runnable click,touchUp,touchDown,over,leave;
 	
 	private GdxQuery father;
 	
@@ -54,13 +54,21 @@ public class GdxQuery {
 		public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
 			if(b != Buttons.LEFT)
 				return;
-			if(click!=null && x>=0 && y>=0 && x <= event.getListenerActor().getWidth() && y <= event.getListenerActor().getHeight()) click.run();
+			if(click!=null && x>=0 && y>=0 && x <= event.getListenerActor().getWidth() && y <= event.getListenerActor().getHeight()) 
+				click.run();
 			if(touchUp!=null) touchUp.run();
 		}
 		public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
 			if(touchDown!=null) touchDown.run();
 			return true;
 		}
+		public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
+			if(over != null) over.run();
+		};
+		public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+			if(leave != null) leave.run();
+		};
+		
 	});
 
 	public GdxQuery(Object... a) {
@@ -644,7 +652,7 @@ public class GdxQuery {
 		return this;
 	}
 	
-	public GdxQuery onClick(Runnable run){
+	public GdxQuery click(Runnable run){
 		this.click=run;
 		return tryRegListener();
 	}
@@ -683,8 +691,13 @@ public class GdxQuery {
 	
 	public Cell<?> getCell(){
 		try {
-			if(getItem() instanceof Table)
+			if(getItem() instanceof Table){
 				return ((Table)getItem()).getCells().get(0);
+			}else{
+				Actor parent = getItem().getParent();
+				if(parent instanceof Table)
+					return ((Table) parent).getCell(getItem());
+			}
 		} catch (Exception e) {
 			return null;
 		}
@@ -722,4 +735,39 @@ public class GdxQuery {
 		return "GDX-Query:"+getItems();
 	}
 
+	public GdxQuery hover(Runnable over, Runnable leave) {
+		this.over = over;
+		this.leave = leave;
+		return this;
+	}
+	
+	public GdxQuery enter(Runnable over){
+		this.over = over;
+		return this;
+	}
+	
+	public GdxQuery over(Runnable over){
+		return enter(over);
+	}
+	
+	public GdxQuery exit(Runnable leave){
+		this.leave = leave;
+		return this;
+	}
+	
+	public GdxQuery leave(Runnable leave){
+		return exit(leave);
+	}
+	
+	public GdxQuery fillParent(boolean flag) {
+		for(Actor actor : getItems())
+			if(actor instanceof Widget)
+				((Widget) actor).setFillParent(flag);
+		return this;
+	}
+	
+	public GdxQuery fillParent(){
+		return fillParent(true);
+	}
+	
 }

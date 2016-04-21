@@ -57,13 +57,13 @@ public class SpellCardView extends IMenuView{
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info.png");
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info_p.png");// help button press
 		cstyle.font = Res.font.get(20);
-		$.add(new CheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(self->self.onClick(()->data.addAction(self.isChecked()?Actions.fadeIn(.3f):Actions.fadeOut(.3f))));
+		$.add(new CheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(self->self.click(()->data.addAction(self.isChecked()?Actions.fadeIn(.3f):Actions.fadeOut(.3f))));
 		
-		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).onClick(()->{
+		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).click(()->{
 			if(parent.next())
 				generate();
 		}).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);
-		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).setScale(.8f).setScaleX(-.8f).appendTo(stage).setPosition(196, 483).onClick(()->{
+		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).setScale(.8f).setScaleX(-.8f).appendTo(stage).setPosition(196, 483).click(()->{
 			if(parent.prev())
 				generate();
 		}).addAction(Actions.fadeIn(.2f)).setColor(1,1,1,0);

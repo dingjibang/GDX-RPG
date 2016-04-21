@@ -47,7 +47,7 @@ public class Status extends Group {
 		
 		addActor(pane);
 		
-		$.add(pane).onClick(this::toggle);
+		$.add(pane).click(this::toggle);
 		
 	}
 	

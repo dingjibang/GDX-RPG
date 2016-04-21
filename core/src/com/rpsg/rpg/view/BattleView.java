@@ -67,9 +67,7 @@ public class BattleView extends DefaultIView{
 		
 		enemyGroup = new EnemyGroup(param.enemy);
 		$.add(enemyGroup).appendTo(stage).setPosition(GameUtil.screen_width/2 - enemyGroup.getWidth()/2, GameUtil.screen_height/2 - enemyGroup.getHeight()/2 + 50).setAlign(Align.center);
-		
-		
-		$.add(new TextButton("结束战斗！",BattleRes.textButtonStyle)).appendTo(stage).setPosition(100,170).onClick(RPG.ctrl.battle::stop);
+		$.add(new TextButton("结束战斗！",BattleRes.textButtonStyle)).appendTo(stage).setPosition(100,170).click(RPG.ctrl.battle::stop);
 		
 		$.add(timer = new Timer(heros,enemyGroup.list(),this::onTimerToggle)).appendTo(stage);
 		
@@ -79,11 +77,13 @@ public class BattleView extends DefaultIView{
 		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.screen_width,GameUtil.screen_height).color(0,0,0,1)).appendTo(stage).addAction(Actions.sequence(Actions.fadeOut(.3f,Interpolation.pow2In),Actions.removeActor()));
 		
 		status.setZIndex(999999);
-		
+		this.
 		stage.addActor(animations);
 		
 		return this;
 	}
+	
+	 
 	
 	public void onTimerToggle(Object obj){
 		timer.pause(true);
@@ -187,12 +187,12 @@ public class BattleView extends DefaultIView{
 			BattleResult result = Spellcard.attack().use(new BattleContext(hero, enemy,(List<?>) RPG.ctrl.hero.currentHeros.clone(), (List<?>) enemyGroup.list().clone()));
 			animations.play(result,()->{
 				callback.run();
+				if(enemy.target.isDead()){
+					status.add(enemy.name + "已死亡");
+					enemyGroup.remove(enemy);
+					timer.remove(enemy);
+				}
 			});
-			if(enemy.target.isDead()){
-				status.add(enemy.name + "已死亡");
-				enemyGroup.remove(enemy);
-				timer.remove(enemy);
-			}
 		});
 	}
 

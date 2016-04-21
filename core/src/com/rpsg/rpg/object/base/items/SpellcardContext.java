@@ -39,7 +39,7 @@ public class SpellcardContext extends BaseContext{
 		
 		try {
 			for(Field f : ctx.getClass().getFields()){
-				f.setInt(ctx, target.prop.get(f.getName()));
+				f.setInt(ctx, target.getProp(f.getName()));
 			}
 		} catch (IllegalArgumentException | IllegalAccessException e) {
 			e.printStackTrace();

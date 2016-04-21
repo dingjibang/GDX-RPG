@@ -21,7 +21,7 @@ public class TextButton extends com.badlogic.gdx.scenes.scene2d.ui.TextButton {
 	}
 	
 	public TextButton onClick(Runnable run){
-		return query.onClick(run).getItem(getClass());
+		return query.click(run).getItem(getClass());
 	}
 	
 	public TextButton click(){

@@ -53,7 +53,7 @@ public class LoadView extends HoverView{
 		butstyle.font = Res.font.get(18);
 		
 		
-		stage.addActor($.add(new TextButton("<<", butstyle)).onClick(new Runnable() {
+		stage.addActor($.add(new TextButton("<<", butstyle)).click(new Runnable() {
 			@Override
 			public void run() {
 				if (currentPageStart - 5 > 1)
@@ -65,7 +65,7 @@ public class LoadView extends HoverView{
 		}).setSize(62,33).setPosition(44,422).getItem());
 		
 		
-		stage.addActor($.add(new TextButton("<", butstyle)).onClick(new Runnable() {
+		stage.addActor($.add(new TextButton("<", butstyle)).click(new Runnable() {
 			@Override
 			public void run() {
 				if (currentPageStart - 1 > 1)
@@ -77,7 +77,7 @@ public class LoadView extends HoverView{
 		}).setSize(62,33).setPosition(124,422).getItem());
 		
 		
-		stage.addActor($.add(new TextButton(">", butstyle)).onClick(new Runnable() {
+		stage.addActor($.add(new TextButton(">", butstyle)).click(new Runnable() {
 			@Override
 			public void run() {
 				if (currentPageStart + 5 < Setting.SAVE_FILE_MAX_PAGE)
@@ -89,7 +89,7 @@ public class LoadView extends HoverView{
 		}).setSize(62,33).setPosition(715,422).getItem());
 		
 
-		stage.addActor($.add(new TextButton(">>", butstyle)).onClick(new Runnable() {
+		stage.addActor($.add(new TextButton(">>", butstyle)).click(new Runnable() {
 			@Override
 			public void run() {
 				if (currentPageStart + 10 < Setting.SAVE_FILE_MAX_PAGE)
@@ -101,7 +101,7 @@ public class LoadView extends HoverView{
 		}).setSize(62,33).setPosition(795,422).getItem());
 		
 		
-		savebutton=$.add(new TextButton("读取游戏", butstyle)).onClick(new Runnable() {
+		savebutton=$.add(new TextButton("读取游戏", butstyle)).click(new Runnable() {
 			@Override
 			public void run() {
 				RPG.popup.add(ConfirmView.okCancel("确定要读取这个存档么？", new CustomRunnable<HoverView>() {
@@ -133,7 +133,7 @@ public class LoadView extends HoverView{
 		savebutton.setName("mask");
 		stage.addActor(savebutton);
 		
-		TextButton cancelbutton=$.add(new TextButton("取消", butstyle)).onClick(new Runnable() {
+		TextButton cancelbutton=$.add(new TextButton("取消", butstyle)).click(new Runnable() {
 			@Override
 			public void run() {
 				disposed = true;
@@ -144,7 +144,7 @@ public class LoadView extends HoverView{
 		cancelbutton.setPosition(792,28);
 		stage.addActor(cancelbutton);
 		
-		TextButton deletebutton=$.add(new TextButton("删除档案", butstyle)).onClick(new Runnable() {
+		TextButton deletebutton=$.add(new TextButton("删除档案", butstyle)).click(new Runnable() {
 			@Override
 			public void run() {
 				RPG.popup.add(ConfirmView.okCancel("确定要删除这个档案么？", new CustomRunnable<HoverView>() {
@@ -198,7 +198,7 @@ public class LoadView extends HoverView{
 //					continue;
 				final TextButton tmp=new TextButton(""+(currentPageStart+i), new TextButtonStyle(butstyle));
 				tmp.setUserObject(new Object());
-				$.add(tmp).onClick(new Runnable() {
+				$.add(tmp).click(new Runnable() {
 					@Override
 					public void run() {
 						currentPage = Integer.parseInt(tmp.getText().toString());
@@ -226,7 +226,7 @@ public class LoadView extends HoverView{
 			}
 		}
 		if(currentPage!=Setting.SAVE_FILE_MAX_PAGE-1){
-			autobut=$.add(new TextButton("Auto", butstyle)).onClick(new Runnable() {
+			autobut=$.add(new TextButton("Auto", butstyle)).click(new Runnable() {
 				@Override
 				public void run() {
 					currentPageStart = Setting.SAVE_FILE_MAX_PAGE - 5;
