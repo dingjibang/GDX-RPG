@@ -738,12 +738,12 @@ public class GdxQuery {
 	public GdxQuery hover(Runnable over, Runnable leave) {
 		this.over = over;
 		this.leave = leave;
-		return this;
+		return tryRegListener();
 	}
 	
 	public GdxQuery enter(Runnable over){
 		this.over = over;
-		return this;
+		return tryRegListener();
 	}
 	
 	public GdxQuery over(Runnable over){
@@ -752,7 +752,7 @@ public class GdxQuery {
 	
 	public GdxQuery exit(Runnable leave){
 		this.leave = leave;
-		return this;
+		return tryRegListener();
 	}
 	
 	public GdxQuery leave(Runnable leave){
