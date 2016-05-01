@@ -34,20 +34,17 @@ public class Spellcard extends BaseItem {
 	public String description2;
 	
 	private static int attackId = 9,defenseId = 10;//XXX 写死的QAQ
-	private static Spellcard attack,defense;
 	
 	public static Class<Spellcard> getClassEx(){
 		return Spellcard.class;
 	}
 	
 	public static Spellcard attack(){
-		if(attack == null) attack = (Spellcard) RPG.ctrl.item.get(attackId);
-		return attack;
+		return (Spellcard) RPG.ctrl.item.get(attackId);
 	}
 	
 	public static Spellcard defense(){
-		if(defense == null) defense = (Spellcard) RPG.ctrl.item.get(defenseId);
-		return defense;
+		return (Spellcard) RPG.ctrl.item.get(defenseId);
 	}
 	
 	//使用一个符卡=w=

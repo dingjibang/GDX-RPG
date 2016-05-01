@@ -36,6 +36,11 @@ public abstract class DefaultIView extends View{
 	}
 	
 	@Override
+	public void mouseMoved(int x, int y) {
+		stage.mouseMoved(x, y);
+	}
+	
+	@Override
 	public boolean scrolled(int amount) {
 		return stage.scrolled(amount);
 	}

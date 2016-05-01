@@ -5,6 +5,9 @@ import java.util.Iterator;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -70,6 +73,32 @@ public class $ {
 		Iterator<T> it=c.iterator();
 		while(it.hasNext())
 			test.run(it.next());
+	}
+	
+	public static float absoluteX(Actor actor){
+		float val = 0;
+		val += actor.getX();
+		Actor parent = actor;
+		while(true){
+			Actor _p = parent.getParent();
+			if(_p == null) break;
+			val += parent.localToParentCoordinates(new Vector2(0,0)).x;
+			parent = _p;
+		}
+		return val;
+	}
+	
+	public static float absoluteY(Actor actor){
+		float val = 0;
+		val += actor.getY();
+		Actor parent = actor;
+		while(true){
+			Actor _p = parent.getParent();
+			if(_p == null) break;
+			val += parent.localToParentCoordinates(new Vector2(parent.getX(),parent.getY())).y;
+			parent = parent.getParent();
+		}
+		return val;
 	}
 	
 	public static <T> void getIf(Iterable<T> c,RemoveTest<T> test,CustomRunnable<T> callback){

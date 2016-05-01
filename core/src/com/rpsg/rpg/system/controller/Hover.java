@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.system.ui.HoverView;
@@ -22,6 +23,19 @@ public class Hover{
 			com.rpsg.rpg.utils.game.Logger.error("无法创建HoverView:"+c.toString(),e);
 		}
 		return (T)view;
+	}
+	
+	public <T extends HoverView> T addNew(Class<? extends HoverView> c,Map<Object,Object> initParam){
+		boolean include = false;
+		
+		for(HoverView v : stack)
+			if(v.getClass().equals(c))
+				include = true;
+		
+		if(!include)
+			return add(c, initParam);
+		
+		return null;
 	}
 	
 	public <T extends HoverView> T add(Class<? extends HoverView> c){
@@ -96,5 +110,9 @@ public class Hover{
 	public boolean scrolled(int amount) {
 		if(stack.isEmpty()) return false;
 		return stack.get(stack.size()-1).scrolled(amount);
+	}
+
+	public void remove(HoverView view) {
+		$.getIf(stack, hv -> hv == view, hv -> hv.disposed = true);
 	}
 }

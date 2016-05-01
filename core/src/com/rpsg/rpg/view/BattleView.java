@@ -8,8 +8,11 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.AddListenerAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
@@ -55,7 +58,6 @@ public class BattleView extends DefaultIView{
 	@Override
 	public BattleView init() {
 		stage.clear();
-		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(1024,576).color(.5f,.5f,.5f,1)).appendTo(stage);//TODO debug;
 		
 		$.add(status = new Status()).setPosition(0, 0).appendTo(stage);
@@ -69,7 +71,7 @@ public class BattleView extends DefaultIView{
 		$.add(enemyGroup).appendTo(stage).setPosition(GameUtil.screen_width/2 - enemyGroup.getWidth()/2, GameUtil.screen_height/2 - enemyGroup.getHeight()/2 + 50).setAlign(Align.center);
 		$.add(new TextButton("结束战斗！",BattleRes.textButtonStyle)).appendTo(stage).setPosition(100,170).click(RPG.ctrl.battle::stop);
 		
-		$.add(timer = new Timer(heros,enemyGroup.list(),this::onTimerToggle)).appendTo(stage);
+		$.add(timer = new Timer(heros,enemyGroup.list(),this::onTimerToggle,this::onBattleStop)).appendTo(stage);
 		
 		status.add("fuck you");
 		stage.setDebugAll(!false);
@@ -83,7 +85,9 @@ public class BattleView extends DefaultIView{
 		return this;
 	}
 	
-	 
+	 public void onBattleStop(){
+		 System.out.println("stop");
+	 }
 	
 	public void onTimerToggle(Object obj){
 		timer.pause(true);

@@ -46,8 +46,9 @@ public class GdxQuery {
 
 	private ArrayList<Actor> values = new ArrayList<Actor>();
 	
-	private Runnable click,touchUp,touchDown,over,leave;
+	private Runnable click,touchUp,touchDown,over,leave,move;
 	
+	private boolean isOver = false;
 	private GdxQuery father;
 	
 	private InputListener clickListener=(new InputListener(){
@@ -63,10 +64,20 @@ public class GdxQuery {
 			return true;
 		}
 		public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-			if(over != null) over.run();
+			if(!isOver){
+				if(over != null) over.run();
+				isOver = true;
+			}
+			
 		};
 		public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
-			if(leave != null) leave.run();
+			if(isOver){
+				if(leave != null) leave.run();
+				isOver = false;
+			}
+		};
+		public boolean mouseMoved(InputEvent event, float x, float y) {
+			return super.mouseMoved(event, x, y);
 		};
 		
 	});
@@ -117,6 +128,13 @@ public class GdxQuery {
 		if(isEmpty())
 			return $.add();
 		return $.add(getItem().getParent());
+	}
+	
+	public GdxQuery transform(boolean flag){
+		for(Actor actor : getItems())
+			if(actor instanceof Group)
+				((Group) actor).setTransform(flag);
+		return this;
 	}
 	
 	public Stage getStage(){
@@ -763,6 +781,16 @@ public class GdxQuery {
 		for(Actor actor : getItems())
 			if(actor instanceof Widget)
 				((Widget) actor).setFillParent(flag);
+		return this;
+	}
+	
+	public GdxQuery mouseMoved(Runnable run){
+		this.move = run;
+		return tryRegListener();
+	}
+	
+	public GdxQuery mouseMoved(){
+		if(move != null) move.run();
 		return this;
 	}
 	

@@ -23,9 +23,11 @@ public class Timer extends Group {
 	private List<TimerClass> list = new ArrayList<>();
 	private CustomRunnable<Time> callback;
 	private static int total = 10000;
+	private Runnable stop;
 	
-	public Timer(List<Hero> heroList, List<Enemy> enemyList,CustomRunnable<Time> callback) {
+	public Timer(List<Hero> heroList, List<Enemy> enemyList,CustomRunnable<Time> callback,Runnable stop) {
 		this.callback = callback;
+		this.stop = stop;
 		
 		List<Time> objectList = new ArrayList<>();
 		objectList.addAll(heroList);
@@ -40,14 +42,25 @@ public class Timer extends Group {
 	}
 	
 	public void act(float delta) {
-		$.each(list,(obj)->{
-			if(!obj.globalPause && !obj.pause)
-			if((obj.current += obj.speed) > total){
+		int count = 0;
+		for(TimerClass obj : list){
+			if(obj.object instanceof Enemy)
+				count ++;
+		}
+		
+		if(count == 0 && stop != null){
+			stop.run();
+			return;
+		}
+		
+		for(TimerClass obj : list){
+			if(!obj.globalPause && !obj.pause && (obj.current += obj.speed) > total){
 				//callback and reset
 				callback.run(obj.object);
 				obj.current = -MathUtils.random(500,1000);
 			}
-		});
+		}
+		
 		super.act(delta);
 	}
 	

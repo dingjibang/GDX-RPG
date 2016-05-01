@@ -41,7 +41,7 @@ public class Target implements Serializable{
 	boolean modifiedBuff = false;
 	
 	public boolean modifiedBuff(){
-		return modifiedBuff;
+		return modifiedBuff ? !(modifiedBuff = false) : false;
 	}
 	
 	public void modifiedBuff(boolean flag){

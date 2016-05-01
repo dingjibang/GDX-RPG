@@ -1,29 +1,34 @@
 package com.rpsg.rpg.system.ui;
 
 import java.util.HashMap;
+import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Align;
-import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.items.Buff;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.LazyBitmapFontConctoller;
 import com.rpsg.rpg.view.hover.ViewBuffView;
 
-public class HeroStatusBox extends Group {
+public class HeroStatusBox extends WidgetGroup {
 
 	Image bg;
 	Label hp, mp;
 	Hero hero;
 	public Progress hpbar,mpbar;
-	Group buffTable = new Table();
+	Group buffTable = new Group();
 
 	public HeroStatusBox(Hero hero) {
 		this.hero = hero;
+		System.out.println(getY());
 		
 		addActor(bg = Res.get(Setting.IMAGE_BATTLE+"herobox.png"));
 		addActor(Res.get(Setting.IMAGE_FG+hero.fgname+"/bhead.png"));
@@ -59,20 +64,34 @@ public class HeroStatusBox extends Group {
 		
 		if(hero.target.modifiedBuff()){
 			buffTable.clear();
-			$.each(hero.target.getBuffList(), (index,buff) -> {
-				$.add(buff.getIcon()).appendTo(buffTable).setX(index * 32 + 5).run(self -> {
-					self.click(()->{
+			System.out.println("modify");
+			List<Buff> list = hero.target.getBuffList();
+			for (int i = 0; i < list.size(); i++) {
+				Buff buff = list.get(i);
+				Image icon = buff.getIcon();
+				buffTable.addActor(icon.x(i * 32 + 5).size(32,32));
+				icon.addListener(new InputListener(){
+					public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
+						super.enter(event, x, y, pointer, fromActor);
+					}
+					@Override
+					public boolean mouseMoved(InputEvent event, float x, float y) {
 						RPG.popup.add(ViewBuffView.class,new HashMap<Object,Object>(){
 							private static final long serialVersionUID = 1L;
 							{
-								put("top",self.getX());
-								put("left",self.getX());
+								put("top",event.getStageY());
+								put("left",event.getStageX());
 								put("buff",buff);
 							}
 						});
-					});
-				}).getCell().prefSize(32, 32);
-			});
+						return super.mouseMoved(event, x, y);
+					}
+					public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+						super.exit(event, x, y, pointer, toActor);
+					}
+				});
+			}
+			
 		}
 		
 		super.act(delta);
