@@ -51,8 +51,10 @@ public class Spellcard extends BaseItem {
 	public BattleResult use(BattleContext ctx){
 		//判断使用场景是否正确
 		boolean battle = RPG.ctrl.battle.isBattle();
-		if(battle && occasion == ItemOccasion.map) return BattleResult.faild();
-		if(!battle && occasion == ItemOccasion.battle) return BattleResult.faild();
+		if(battle && occasion == ItemOccasion.map) 
+			return BattleResult.faild();
+		if(!battle && occasion == ItemOccasion.battle)
+			return BattleResult.faild();
 		//设置使用角色 self ==(spellcard)==> target
 		Target self = ctx.self;
 		List<Target> targetList = new ArrayList<>();
@@ -112,8 +114,6 @@ public class Spellcard extends BaseItem {
 //				计算伤害浮动
 				damage = prop.rate(damage);
 				
-				//处理溢出
-				damage = damage < 0 ? damage : 0;
 				
 				String rtype = prop.type;
 				if(rtype != null){
@@ -133,6 +133,8 @@ public class Spellcard extends BaseItem {
 					
 				
 				if(!miss){
+					//处理溢出
+					damage = damage < 0 ? damage : 0;
 					//处理伤害
 					t.addProp(key, damage + "");
 					
