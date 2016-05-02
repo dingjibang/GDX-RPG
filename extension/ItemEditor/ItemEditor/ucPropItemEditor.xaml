@@ -9,10 +9,10 @@
              d:DesignHeight="36" d:DesignWidth="300">
     <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
+            <!--<ColumnDefinition Width="100"/>-->
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ComboBox Width="100" SelectedItem="{Binding type}">
+        <!--<ComboBox Width="100" SelectedItem="{Binding type}">
 
             <System:String>sun</System:String>
             <System:String>moon</System:String>
@@ -24,7 +24,7 @@
             <System:String>wood</System:String>
             <System:String>physical</System:String>
 
-        </ComboBox>
-        <TextBox Grid.Column="1" Text="{Binding formula}"  VerticalScrollBarVisibility="Auto" />
+        </ComboBox>-->
+        <TextBox Grid.Column="1" Text="{Binding formula ,Mode=TwoWay}"  VerticalScrollBarVisibility="Auto" />
     </Grid>
 </UserControl>

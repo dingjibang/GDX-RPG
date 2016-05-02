@@ -67,6 +67,7 @@ namespace ItemEditor
         public Boolean trigger { get; set; }
         public Double success { get; set; }
         #endregion
+
         public void Read(string file)
         {
             using (StreamReader reader = File.OpenText(file))
@@ -239,7 +240,7 @@ namespace ItemEditor
             JObject json = JObject.Parse(sjson);
             foreach (var propInfo in type1.GetProperties())
             {
-                this.SetPropertyValue(propInfo.Name,  json.GetSafeJObjectValue(propInfo.Name));
+                this.SetPropertyValue(propInfo.Name,  json.GetSafeJObjectValue(propInfo.Name, new JObject()));
             }
         }
 
@@ -261,7 +262,12 @@ namespace ItemEditor
                 }
                 else if (value is JObject)
                 {
-                    obj[propInfo.Name] = (JObject)value;
+                    JObject jv = (JObject)value;
+                    if (jv.HasValues)
+                    {
+                        obj[propInfo.Name] = jv;
+                    }
+                    
                 }
             }
             return obj;
@@ -321,12 +327,12 @@ namespace ItemEditor
             return null;
         }
 
-        public static JObject GetSafeJObjectValue(this JObject obj, string propName)
+        public static JObject GetSafeJObjectValue(this JObject obj, string propName,JObject defaultValue = null)
         {
             var o = obj.GetValue(propName);
             if (o == null)
             {
-                return null;
+                return defaultValue;
             }
             if (o is JObject)
             {

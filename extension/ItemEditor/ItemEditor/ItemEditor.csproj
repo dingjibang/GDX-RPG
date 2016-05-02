@@ -80,8 +80,14 @@
     <Compile Include="Model\Equipment.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\SPELLCARD.cs" />
+    <Compile Include="ucBuffEditor.xaml.cs">
+      <DependentUpon>ucBuffEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ucEffectEditor.xaml.cs">
       <DependentUpon>ucEffectEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ucPropEditorEX.xaml.cs">
+      <DependentUpon>ucPropEditorEX.xaml</DependentUpon>
     </Compile>
     <Compile Include="ucPropItemEditor.xaml.cs">
       <DependentUpon>ucPropItemEditor.xaml</DependentUpon>
@@ -120,7 +126,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ucBuffEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ucEffectEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ucPropEditorEX.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

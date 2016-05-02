@@ -12,6 +12,7 @@ namespace ItemEditor
         public MainWindowViewModel()
         {
             m_Items.CollectionChanged += m_Items_CollectionChanged;
+            m_Buffs.CollectionChanged += m_Buffs_CollectionChanged;
         }
 
         void m_Items_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -45,6 +46,46 @@ namespace ItemEditor
             }
         }
 
+
+        void m_Buffs_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Add:
+                    {
+                        foreach (Buff item in e.NewItems)
+                        {
+                            item.RootPath = RootPath;
+                        }
+                    }
+                    break;
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Move:
+                    break;
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Remove:
+                    {
+                        foreach (Buff item in e.OldItems)
+                        {
+                            this.m_deleteBuffs.Add(item);
+                        }
+                    }
+                    break;
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Replace:
+                    break;
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Reset:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private List<Buff> m_deleteBuffs = new List<Buff>();
+
+        public List<Buff> DeleteBuffs
+        {
+            get { return m_deleteBuffs; }
+            set { m_deleteBuffs = value; }
+        }
+
         private List<ItemBaseViewModel> m_deleteitems = new List<ItemBaseViewModel>();
 
         public List<ItemBaseViewModel> Deleteitems
@@ -67,6 +108,21 @@ namespace ItemEditor
             }
         }
 
+        private ObservableCollection<Buff> m_Buffs = new ObservableCollection<Buff>();
+
+        public ObservableCollection<Buff> Buffs
+        {
+            get { return m_Buffs; }
+            set
+            {
+                if (m_Buffs == value) return;
+                var OrgValue = m_Items;
+                m_Buffs = value;
+                OnPropertyChanged("Buffs", OrgValue, value);
+            }
+        }
+
+
         private ItemBaseViewModel m_CurrentItem;
 
         public ItemBaseViewModel CurrentItem
@@ -81,6 +137,20 @@ namespace ItemEditor
             }
         }
 
+
+        private Buff m_CurrentBuff;
+
+        public Buff CurrentBuff
+        {
+            get { return m_CurrentBuff; }
+            set
+            {
+                if (m_CurrentBuff == value) return;
+                var OrgValue = m_CurrentBuff;
+                m_CurrentBuff = value;
+                OnPropertyChanged("CurrentBuff", OrgValue, value);
+            }
+        }
 
         private string m_RootPath;
 
@@ -97,6 +167,8 @@ namespace ItemEditor
                 CurrentItem = null;
                 m_Items.Clear();
                 m_deleteitems.Clear();
+                m_Buffs.Clear();
+                m_deleteBuffs.Clear();
 
                 if (!System.IO.Directory.Exists(DataPath))
                 {
@@ -119,9 +191,33 @@ namespace ItemEditor
                     }
 
                 }
+
+                files = System.IO.Directory.GetFiles(BUFFSPath);
+                foreach (String file in files)
+                {
+                    
+                    try
+                    {
+                        Buff item = new Buff(file);
+                        m_Buffs.Add(item);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                }
             }
         }
 
+
+        public string BUFFSPath
+        {
+            get
+            {
+                return RootPath + "\\script\\data\\buff";
+            }
+        }
 
         public string DataPath
         {

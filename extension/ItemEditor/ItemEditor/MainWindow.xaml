@@ -29,13 +29,9 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="24"/>
-            <RowDefinition Height="32"/>
             <RowDefinition Height="272*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="145"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
+
         <Menu Grid.ColumnSpan="2">
             <MenuItem Header="文件" >
                 <MenuItem Header="打开" Command="ApplicationCommands.Open"/>
@@ -44,120 +40,162 @@
                 <MenuItem Header="关闭" Command="ApplicationCommands.Close"  />
             </MenuItem>
         </Menu>
-        <ToolBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
-            <Button Content="添加" VerticalAlignment="Stretch" Width="75" Click="Button_Click_1"/>
-            <Button Content="删除"  VerticalAlignment="Stretch" Width="75" Click="Button_Click_2"/>
-        </ToolBar>
-        <ListBox x:Name="lstItems" Grid.Row="2" ItemsSource="{Binding Items}" SelectedItem="{Binding CurrentItem}">
-            <ListBox.ItemTemplate>
-                <DataTemplate DataType="{x:Type i:ItemBaseViewModel}">
-                    <TextBlock><Run Text="{Binding name}"/><Run Text=" "/><Run Text="("/><Run Text=" "/><Run Text="{Binding id}"/><Run Text=" "/><Run Text=")"/></TextBlock>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <Grid Grid.Row="2" Grid.Column="1" DataContext="{Binding CurrentItem}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="220"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <Border Height="200" Width="200" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" BorderThickness="2">
-                <Border.BorderBrush>
-                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionColorKey}}"/>
-                </Border.BorderBrush>
-                <Image Stretch="Fill" Source="{Binding IconPath, Converter={StaticResource ImageConvertor}, Mode=OneWay}"/>
-            </Border>
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="32"></RowDefinition>
-                    <RowDefinition Height="32"></RowDefinition>
-                    <RowDefinition Height="32"></RowDefinition>
-                    <RowDefinition Height="32"></RowDefinition>
-                    <RowDefinition Height="32"></RowDefinition>
-                    <RowDefinition Height="32"></RowDefinition>
-                    <RowDefinition Height="32"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="64"></ColumnDefinition>
-                    <ColumnDefinition Width="200"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+        <TabControl Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2">
+            <TabItem Header="Item">
+                <Grid>
+                    <Grid.RowDefinitions>
 
-                <Label>物品序号:</Label>
-                <TextBox Grid.Column="1" Text="{Binding id}"></TextBox>
-                <Label Grid.Row="1">物品名称:</Label>
-                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding name}"></TextBox>
-                <Label Grid.Row="2">描述:</Label>
-                <TextBox Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Text="{Binding description}" TextWrapping="Wrap"></TextBox>
-                <Label Grid.Row="5">类型:</Label>
-                <i:EnumSelectorCombox Grid.Row="5"  Grid.Column="1" EditorSource="{Binding type}" Width="200" HorizontalAlignment="Left"></i:EnumSelectorCombox>
-                <Label Grid.Row="6">动画:</Label>
-                <TextBox Grid.Row="6" Grid.Column="1" Grid.RowSpan="1" Text="{Binding animation}"></TextBox>
-                <Grid Grid.Column="3" Grid.RowSpan="16" VerticalAlignment="Stretch" Margin="0">
-                    <Grid.Style>
-                        <Style TargetType="Grid">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding type}" Value="Material">
-                                    <Setter  Property="Visibility" Value="Collapsed"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding type}" Value="Spellcard">
-                                    <Setter  Property="Visibility" Value="Collapsed"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding type}" Value="Equipment">
-                                    <Setter  Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding type}" Value="Task">
-                                    <Setter  Property="Visibility" Value="Collapsed"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding type, FallbackValue=Item}" Value="Item">
-                                    <Setter  Property="Visibility" Value="Collapsed"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding type}" Value="Cooking">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Grid.Style>
-                    <i:EquipmentEditor></i:EquipmentEditor>
+                        <RowDefinition Height="32"/>
+                        <RowDefinition Height="272*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="145"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <ToolBar Grid.Column="0" Grid.ColumnSpan="2" >
+                        <Button Content="添加" VerticalAlignment="Stretch" Width="75" Click="Button_Click_1"/>
+                        <Button Content="删除"  VerticalAlignment="Stretch" Width="75" Click="Button_Click_2"/>
+                    </ToolBar>
+                    <ListBox Grid.Row="1"  x:Name="lstItems" ItemsSource="{Binding Items}" SelectedItem="{Binding CurrentItem}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="{x:Type i:ItemBaseViewModel}">
+                                <TextBlock><Run Text="{Binding name}"/><Run Text=" "/><Run Text="("/><Run Text=" "/><Run Text="{Binding id}"/><Run Text=" "/><Run Text=")"/></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Grid Grid.Row="1" Grid.Column="1" DataContext="{Binding CurrentItem}" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="220"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Border Height="200" Width="200" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" BorderThickness="2">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionColorKey}}"/>
+                            </Border.BorderBrush>
+                            <Image Stretch="Fill" Source="{Binding IconPath, Converter={StaticResource ImageConvertor}, Mode=OneWay}"/>
+                        </Border>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="32"/>
+                                <RowDefinition Height="32"/>
+                                <RowDefinition Height="32"/>
+                                <RowDefinition Height="32"/>
+                                <RowDefinition Height="32"/>
+                                <RowDefinition Height="32"/>
+                                <RowDefinition Height="32"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="64"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="物品序号:"/>
+                            <TextBox Grid.Column="1" Text="{Binding id}"/>
+                            <Label Grid.Row="1" Content="物品名称:"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding name}"/>
+                            <Label Grid.Row="2" Content="描述:"/>
+                            <TextBox Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Text="{Binding description}" TextWrapping="Wrap"/>
+                            <Label Grid.Row="5" Content="类型:"/>
+                            <i:EnumSelectorCombox Grid.Row="5"  Grid.Column="1" EditorSource="{Binding type}" Width="200" HorizontalAlignment="Left"/>
+                            <Label Grid.Row="6" Content="动画:"/>
+                            <TextBox Grid.Row="6" Grid.Column="1" Grid.RowSpan="1" Text="{Binding animation}"/>
+                            <Grid Grid.Column="3" Grid.RowSpan="16" VerticalAlignment="Stretch" Margin="0">
+                                <Grid.Style>
+                                    <Style TargetType="{x:Type Grid}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding type}" Value="Material">
+                                                <Setter  Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding type}" Value="Spellcard">
+                                                <Setter  Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding type}" Value="Equipment">
+                                                <Setter  Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding type}" Value="Task">
+                                                <Setter  Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding type, FallbackValue=Item}" Value="Item">
+                                                <Setter  Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding type}" Value="Cooking">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                                <i:EquipmentEditor/>
+                            </Grid>
+                            <Grid Grid.Column="3" Grid.RowSpan="16" VerticalAlignment="Stretch" Margin="0">
+                                <Grid.Style>
+                                    <Style TargetType="{x:Type Grid}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding type}" Value="Material">
+                                                <Setter  Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding type}" Value="Spellcard">
+                                                <Setter  Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding type}" Value="Equipment">
+                                                <Setter  Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding type}" Value="Task">
+                                                <Setter  Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding type, FallbackValue=Item}" Value="Item">
+                                                <Setter  Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding type}" Value="Cooking">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                                <i:ucItemEditor/>
+                            </Grid>
+
+                        </Grid>
+                        <Button Content="添加图片" HorizontalAlignment="Left" Margin="240,10,0,0" VerticalAlignment="Top" Width="153" Height="40" RenderTransformOrigin="0.307,0.475" Click="Button_Click"/>
+                        <Label Content="道具买入需要的金钱" HorizontalAlignment="Left" Margin="234,122,0,0" VerticalAlignment="Top" Width="130"/>
+                        <Label Content="道具卖出得到的金钱" HorizontalAlignment="Left" Margin="234,152,0,0" VerticalAlignment="Top" Width="130"/>
+                        <Button Content="编辑特效" HorizontalAlignment="Left" Margin="398,10,0,0" VerticalAlignment="Top" Width="153" Height="40" RenderTransformOrigin="0.307,0.475" Click="Button_Click_3"/>
+                        <CheckBox IsChecked="{Binding CurrentItem.disable}" Content="不可使用" HorizontalAlignment="Left" Margin="240,67,0,0" VerticalAlignment="Top"/>
+                        <CheckBox IsChecked="{Binding CurrentItem.throwable}" Content="可抛弃" HorizontalAlignment="Left" Margin="240,87,0,0" VerticalAlignment="Top"/>
+                        <CheckBox IsChecked="{Binding CurrentItem.packable}" Content="可叠加" HorizontalAlignment="Left" Margin="240,107,0,0" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding buy}" Margin="358,129,175,73" />
+                        <TextBox Text="{Binding sell}" Margin="358,159,175,43" />
+                    </Grid>
                 </Grid>
-                <Grid Grid.Column="3" Grid.RowSpan="16" VerticalAlignment="Stretch" Margin="0">
-                    <Grid.Style>
-                        <Style TargetType="Grid">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding type}" Value="Material">
-                                    <Setter  Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding type}" Value="Spellcard">
-                                    <Setter  Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding type}" Value="Equipment">
-                                    <Setter  Property="Visibility" Value="Collapsed"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding type}" Value="Task">
-                                    <Setter  Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding type, FallbackValue=Item}" Value="Item">
-                                    <Setter  Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding type}" Value="Cooking">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Grid.Style>
-                    <i:ucItemEditor></i:ucItemEditor>
+            </TabItem>
+            <TabItem Header="Buff">
+                <Grid>
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition Height="32"/>
+                        <RowDefinition Height="272*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="145"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <ToolBar Grid.Column="0" Grid.ColumnSpan="2" >
+                        <Button Content="添加" VerticalAlignment="Stretch" Width="75" />
+                        <Button Content="删除"  VerticalAlignment="Stretch" Width="75" />
+                    </ToolBar>
+                    <ListBox Grid.Row="1"  x:Name="lstBuffs" ItemsSource="{Binding Buffs}" SelectedItem="{Binding CurrentBuff}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="{x:Type i:Buff}">
+                                <TextBlock><Run Text="{Binding data.name}"/><Run Text=" "/><Run Text="("/><Run Text=" "/><Run Text="{Binding id}"/><Run Text=" "/><Run Text=")"/></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <i:ucBuffEditor Grid.Row="1" Grid.Column="1" DataContext="{Binding CurrentBuff}" ></i:ucBuffEditor>
                 </Grid>
 
-            </Grid>
-            <Button Content="添加图片" HorizontalAlignment="Left" Margin="240,10,0,0" VerticalAlignment="Top" Width="153" Height="40" RenderTransformOrigin="0.307,0.475" Click="Button_Click"/>
-            <Label Content="道具买入需要的金钱" HorizontalAlignment="Left" Margin="234,122,0,0" VerticalAlignment="Top" Width="130"/>
-            <Label Content="道具卖出得到的金钱" HorizontalAlignment="Left" Margin="234,152,0,0" VerticalAlignment="Top" Width="130"/>
-            <Button Content="编辑特效" HorizontalAlignment="Left" Margin="398,10,0,0" VerticalAlignment="Top" Width="153" Height="40" RenderTransformOrigin="0.307,0.475" Click="Button_Click_3"/>
-            <CheckBox IsChecked="{Binding CurrentItem.disable}" Content="不可使用" HorizontalAlignment="Left" Margin="240,67,0,0" VerticalAlignment="Top"/>
-            <CheckBox IsChecked="{Binding CurrentItem.throwable}" Content="可抛弃" HorizontalAlignment="Left" Margin="240,87,0,0" VerticalAlignment="Top"/>
-            <CheckBox IsChecked="{Binding CurrentItem.packable}" Content="可叠加" HorizontalAlignment="Left" Margin="240,107,0,0" VerticalAlignment="Top"/>
-            <TextBox Text="{Binding buy}" Margin="358,129,175,73" />
-            <TextBox Text="{Binding sell}" Margin="358,159,175,43" />
-        </Grid>
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Window>
