@@ -11,7 +11,6 @@ public class Effect implements Serializable{
 	public Map<String, Prop> prop = new HashMap<>();
 	public List<EffectBuff> buff = new ArrayList<EffectBuff>();
 	public boolean wait = false;
-	public int turn = 1;
 	
 	public String use = "";
 	
