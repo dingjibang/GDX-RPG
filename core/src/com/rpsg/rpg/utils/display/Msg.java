@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Input;
+import com.rpsg.rpg.io.InputProcessorEx;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.base.MsgType;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
@@ -21,7 +22,7 @@ import com.rpsg.rpg.utils.game.Logger;
 
 public class Msg {
 	public Image msgbox;
-	private BitmapFont font;
+	private BitmapFont font,titleFont;
 	
 	public Msg() {
 		msgbox=new Image(Setting.MESSAGE+MsgType.正常.path());
@@ -36,8 +37,8 @@ public class Msg {
 		currentTextPoint=0;
 		TEXT_DISPLAY_SPEED=30;
 		DISPLAY_OFFSET=0;
-		font = Res.font.get(22);
 		show=false;
+		titleFont = Res.font.get(22);
 		Logger.info("文本模块初始化完成。");
 	}
 	
@@ -48,41 +49,127 @@ public class Msg {
 	boolean show=false;
 	boolean firstZPress=false;
 	Color titleColor=Color.WHITE;
-	public BaseScriptExecutor say(final Script script,final String str,final String title,final int size){
-		firstZPress=false;
+
+	public BaseScriptExecutor say(final Script script, final String str, final String title, final int size) {
+		firstZPress = false;
+
 		return script.set(new ScriptExecutor(script) {
-			SpriteBatch batch= (SpriteBatch) RPG.ctrl.fg.stage.getBatch();
-			public void step() {
-				if(Input.isPress(Keys.CONTROL_LEFT)){
-					if(currentTextPoint<=currentText.length()-5)
-						currentTextPoint+=5;
-					else
-						currentTextPoint=currentText.length();
-				}else if((Gdx.input.isKeyJustPressed(Keys.Z) || Gdx.input.justTouched()) && currentTextPoint!=currentText.length()){
-					currentTextPoint=currentText.length()-2;
-				}else
-					TEXT_DISPLAY_SPEED=30;
-				DISPLAY_OFFSET-=TEXT_DISPLAY_SPEED;
-				if(DISPLAY_OFFSET<=0){
-					DISPLAY_OFFSET=100;
-					if(currentTextPoint>=currentText.length()){
-						if(!firstZPress && (Gdx.input.isKeyPressed(Keys.Z) || Input.isPress(Keys.CONTROL_LEFT) || Gdx.input.isTouched())){
-							dispose();
-						}
-					}else
-						++currentTextPoint;
+
+			SpriteBatch batch = (SpriteBatch) RPG.ctrl.fg.stage.getBatch();
+			String color = "ffffff";
+			int colorPoint = 0;
+			InputProcessorEx ex = null;
+			
+			
+			public void step(){
+				boolean isPressCtrl = Gdx.input.isKeyPressed(Keys.CONTROL_LEFT);
+				
+				if(!isPressCtrl){
+					TEXT_DISPLAY_SPEED = 30;
+				}else{
+					TEXT_DISPLAY_SPEED = 100;
 				}
+				
+				DISPLAY_OFFSET -= TEXT_DISPLAY_SPEED;
+				if (DISPLAY_OFFSET <= 0) {
+					DISPLAY_OFFSET = 100;
+					if (!isEnd()){
+						if(!isPressCtrl)
+							++currentTextPoint;
+						else if(isPressCtrl && currentTextPoint + 2 <= currentText.length())
+							next(4);
+						else if(isPressCtrl)
+							dispose();
+					}else if(isPressCtrl)
+						dispose();
+				}
+				
+				String txt = calc();
 				batch.begin();
-				font.draw(batch, currentText.substring(0, currentTextPoint), 50, 130,(msgbox.getWidth()-60),10,true);
-				font.setColor(titleColor);
-				font.draw(batch, title, getOrPosX(title, 22), 178, (int) (msgbox.getWidth()-60),10,false);
-				font.setColor(Color.WHITE);
+				font.draw(batch, txt, 50, 130, (msgbox.getWidth() - 60), 10, false);
+				titleFont.setColor(titleColor);
+				titleFont.draw(batch, title, getOrPosX(title, 22), 178, (int) (msgbox.getWidth() - 60), 10, false);
 				batch.end();
 			}
+
 			public void init() {
-				currentText=str;
-				currentTextPoint=0;
+				font = Res.font.get(size);
+				font.setColor(Color.WHITE);
+				font.getData().markupEnabled = true;
+				currentText = str;
+				currentTextPoint = 0;
+				
+				ex = RPG.input.addListener(new InputProcessorEx(){
+					public boolean keyTyped(char character) {
+						boolean isZ = (character == 'z' || character == 'Z'); 
+						if (isEnd() && !firstZPress && isZ)
+							dispose();
+						else if(!isEnd() && isZ)
+							next(currentText.length() - currentTextPoint);
+						return super.keyTyped(character);
+					}
+					
+					public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+						if(isEnd())
+							dispose();
+						else
+							next(currentText.length() - currentTextPoint);
+						return super.touchUp(screenX, screenY, pointer, button);
+					}
+				});
 			}
+			
+			public boolean isEnd(){
+				return currentTextPoint >= currentText.length();
+			}
+			
+			public String next(int count){
+				String calced = null;
+				for(int i=0;i<count;i++){
+					if(!isEnd())
+						currentTextPoint++;
+					calced = calc();
+				}
+				return calced;
+			}
+			
+			public String calc(){
+				String txt = currentText.substring(0, currentTextPoint);
+				
+				if(currentText.length() - txt.length() > 0){
+					if(txt.endsWith("[") && currentText.substring(0, currentTextPoint + 1).endsWith("#")){
+						color = currentText.substring(currentTextPoint + 1,currentTextPoint + 7);
+						currentTextPoint += 9;
+						colorPoint = currentTextPoint - 1;
+						txt = txt.substring(0, txt.length() - 2);
+					}
+					
+					if(txt.endsWith("[") && currentText.substring(0, currentTextPoint + 1).endsWith("]")){
+						color = "ffffff";
+						currentTextPoint += 1;
+						txt = txt.substring(0, txt.length() - 1);
+					}
+				}
+				
+				if(!color.equals("ffffff")) {
+					txt = currentText.substring(0,colorPoint) + "[#" + color + "]" + currentText.substring(colorPoint,currentTextPoint) + "[]"; 
+				}
+				
+				font.setColor(Color.WHITE);
+				
+				if(font.getCache().addText(txt, 0, 0).width > (msgbox.getWidth() - 60)){
+					currentText = currentText.substring(0,currentTextPoint - 1) + "\n" + currentText.substring(currentTextPoint - 1, currentText.length());
+					txt += "\n";
+				}
+				
+				return txt;
+			}
+			
+			public void dispose() {
+				RPG.input.removeListener(ex);
+				super.dispose();
+			}
+
 		});
 	}
 	

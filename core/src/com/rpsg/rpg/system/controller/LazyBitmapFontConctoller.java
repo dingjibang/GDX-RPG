@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.utils.Pools;
+import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.lazyFont.LazyBitmapFont;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.ui.Label;
@@ -51,6 +53,10 @@ public class LazyBitmapFontConctoller {
 	
 	public Label getLabel(Object text,int fontSize){
 		return getLabel(text,fontSize,null);
+	}
+	
+	public GdxQuery $(){
+		return $.add(this);
 	}
 	
 	public Label getLabel(Object text,int fontSize,FreeTypeFontGenerator gen){

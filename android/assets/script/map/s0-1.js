@@ -38,7 +38,7 @@ say("啊啊！真是的！为什么我们大学总是要在愚人节这天开学
 hideMSG();
 
 MoveController.offsetActor.addAction(Actions.scaleTo(0.85,0.85,1,Interpolation.pow4Out));
-setCameraPositionWithHero(-249, 0, true);
+setCameraPositionWithHero(-109, 0, true);
 			
 move(2);
 move(renko, 2);
@@ -47,7 +47,7 @@ pause(60);
 faceTo(RPGObject.FACE_D);
 pause(30);
 showMSG(MsgType.梅莉);
-say("一开学就这么没干劲可不好啊，莲子\n最后一年再马马虎虎的话，会毕不了业的","？？？");
+say("一开学就这么没干劲可不好啊，莲子\n最后一年再马马虎虎的话，会毕不了业的,","？？？");
 hideMSG();
 pause(30);
 faceTo(renko,RPGObject.FACE_U);
