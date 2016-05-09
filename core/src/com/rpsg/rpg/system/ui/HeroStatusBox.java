@@ -1,6 +1,5 @@
 package com.rpsg.rpg.system.ui;
 
-import java.util.HashMap;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
@@ -10,6 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Align;
+import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.Buff;
@@ -25,6 +26,7 @@ public class HeroStatusBox extends WidgetGroup {
 	Hero hero;
 	public Progress hpbar,mpbar;
 	Group buffTable = new Group();
+	Image selectBox = new Image(Setting.UI_BUTTON);
 
 	public HeroStatusBox(Hero hero) {
 		this.hero = hero;
@@ -76,14 +78,7 @@ public class HeroStatusBox extends WidgetGroup {
 					}
 					@Override
 					public boolean mouseMoved(InputEvent event, float x, float y) {
-						RPG.popup.add(ViewBuffView.class,new HashMap<Object,Object>(){
-							private static final long serialVersionUID = 1L;
-							{
-								put("top",event.getStageY());
-								put("left",event.getStageX());
-								put("buff",buff);
-							}
-						});
+						RPG.popup.add(ViewBuffView.class,$.omap("top",event.getStageY()).add("left",event.getStageX()).add("buff",buff));
 						return super.mouseMoved(event, x, y);
 					}
 					public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
@@ -96,4 +91,16 @@ public class HeroStatusBox extends WidgetGroup {
 		
 		super.act(delta);
 	}
+
+	public void select(CustomRunnable<HeroStatusBox> callback) {
+		$.add(selectBox).show().click(() -> {
+			callback.run(HeroStatusBox.this);
+		});
+	}
+	
+	public void stopSelect(){
+		$.add(selectBox).hide();
+		selectBox.clearListeners();
+	}
+	
 }

@@ -597,6 +597,10 @@ public class GdxQuery {
 		return this;
 	}
 	
+	public GdxQuery children(Class<?> _class){
+		return children().find(_class);
+	}
+	
 	public GdxQuery children(){
 		GdxQuery query=new GdxQuery();
 		for(Actor actor:getItems()){

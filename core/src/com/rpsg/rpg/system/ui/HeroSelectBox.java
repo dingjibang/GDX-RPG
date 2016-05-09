@@ -97,8 +97,8 @@ public class HeroSelectBox extends Group implements Disposable{
 			addActor(Res.get(Setting.UI_BASE_IMG).size(141, 42).position(x+65, y+8).disableTouch());
 			addActor(Res.get(Setting.UI_BASE_PRO).size((int)((float)hero.target.getProp("hp")/(float)hero.target.getProp("maxhp")*137), 18).position(x+67, y+30).color(Color.valueOf("c33737")).disableTouch());
 			addActor(Res.get(Setting.UI_BASE_PRO).size((int)((float)hero.target.getProp("mp")/(float)hero.target.getProp("maxmp")*137), 18).position(x+67, y+10).color(Color.valueOf("3762c3")).disableTouch());
-			addActor(new Label(hero.target.getProp("hp")+"/"+hero.target.getProp("maxhp"),14).width(130).align(x+67, y+30).color(Color.LIGHT_GRAY));
-			addActor(new Label(hero.target.getProp("mp")+"/"+hero.target.getProp("maxmp"),14).width(130).align(x+67, y+10).color(Color.LIGHT_GRAY));
+			addActor(new Label(hero.target.getProp("hp")+"/"+hero.target.getProp("maxhp"),14).width(130).align(x+67, y+32).color(Color.LIGHT_GRAY));
+			addActor(new Label(hero.target.getProp("mp")+"/"+hero.target.getProp("maxmp"),14).width(130).align(x+67, y+11).color(Color.LIGHT_GRAY));
 			
 			if((deadable == ItemDeadable.yes && !hero.target.isDead()) || (deadable == ItemDeadable.no && hero.target.isDead())){
 				addActor(Res.get(Setting.UI_BASE_IMG).size(w,h).color(Color.BLACK).a(.85f).position(x, y));

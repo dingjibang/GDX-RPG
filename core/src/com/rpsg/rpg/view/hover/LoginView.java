@@ -62,10 +62,7 @@ public class LoginView extends SidebarView {
 		
 		$.add(new TextButton("注册", tstyle).onClick(new Runnable() {
 			public void run() {
-				RPG.popup.add(LoginView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
-					put("title","注册");
-					put("width",100);
-				}});
+				RPG.popup.add(LoginView.class,$.omap("title", "注册").add("width",100));
 			}
 		})).appendTo(group).setSize(400,50).setPosition(480, 70);
 		

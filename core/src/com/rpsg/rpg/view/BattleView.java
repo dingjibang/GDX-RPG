@@ -8,16 +8,14 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.actions.AddListenerAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.BattleParam;
@@ -25,8 +23,11 @@ import com.rpsg.rpg.object.base.BattleRes;
 import com.rpsg.rpg.object.base.items.BattleContext;
 import com.rpsg.rpg.object.base.items.BattleResult;
 import com.rpsg.rpg.object.base.items.Spellcard;
+import com.rpsg.rpg.object.base.items.Item.ItemForward;
+import com.rpsg.rpg.object.base.items.Item.ItemRange;
 import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.Hero;
+import com.rpsg.rpg.object.rpg.Target;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Animations;
 import com.rpsg.rpg.system.ui.DefaultIView;
@@ -39,6 +40,7 @@ import com.rpsg.rpg.system.ui.TextButton;
 import com.rpsg.rpg.system.ui.Timer;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.TimeUtil;
+import com.rpsg.rpg.view.hover.SelectSpellcardView;
 
 public class BattleView extends DefaultIView{
 	
@@ -74,7 +76,7 @@ public class BattleView extends DefaultIView{
 		$.add(timer = new Timer(heros,enemyGroup.list(),this::onTimerToggle,this::onBattleStop)).appendTo(stage);
 		
 		status.add("fuck you");
-		stage.setDebugAll(!false);
+		stage.setDebugAll(!!false);
 		
 		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.screen_width,GameUtil.screen_height).color(0,0,0,1)).appendTo(stage).addAction(Actions.sequence(Actions.fadeOut(.3f,Interpolation.pow2In),Actions.removeActor()));
 		
@@ -103,6 +105,7 @@ public class BattleView extends DefaultIView{
 			Table menu = $.add(new Table()).appendTo(stage).setPosition(600, 220).getItem(Table.class);
 			
 			Runnable stopCallback = ()->{
+				checkDead();
 				fg.remove();
 				menu.remove();
 				timer.pause(false);
@@ -117,8 +120,7 @@ public class BattleView extends DefaultIView{
 			}));
 			
 			menu.add(new TextButton("符卡",BattleRes.textButtonStyle).onClick(()->{
-				RPG.ctrl.battle.stop();
-				stopCallback.run();
+				spellcard(hero,stopCallback);
 			}));
 			
 			menu.add(new TextButton("物品",BattleRes.textButtonStyle).onClick(()->{
@@ -179,25 +181,64 @@ public class BattleView extends DefaultIView{
 	
 	private void define(Hero hero,Runnable callback){
 		status.add(hero.name + "展开了防御的姿态");
-		BattleResult result = Spellcard.defense().use(new BattleContext(hero, null,(List<?>) RPG.ctrl.hero.currentHeros.clone(), (List<?>) enemyGroup.list().clone()));
-		animations.play(result, ()->{
-			callback.run();
-		});
+		BattleResult result = Spellcard.defense().use(new BattleContext(hero, null, RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
+		animations.play(result, callback);
 	}
 	
 	private void attack(Hero hero,Runnable callback){
-		enemyGroup.select((enemy)->{
+		enemyGroup.select(target -> {
+			Enemy enemy = target.parentEnemy;
 			status.add("攻击了 " + enemy.name);
-			BattleResult result = Spellcard.attack().use(new BattleContext(hero, enemy,(List<?>) RPG.ctrl.hero.currentHeros.clone(), (List<?>) enemyGroup.list().clone()));
-			animations.play(result,()->{
-				callback.run();
-				if(enemy.target.isDead()){
-					status.add(enemy.name + "已死亡");
-					enemyGroup.remove(enemy);
-					timer.remove(enemy);
-				}
-			});
+			BattleResult result = Spellcard.attack().use(new BattleContext(hero, enemy,RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
+			animations.play(result,callback);
 		});
+	}
+
+	private void spellcard(Hero hero, Runnable stopCallback) {
+		RPG.popup.add(SelectSpellcardView.class,$.omap("hero",hero).add("callback", (CustomRunnable<Spellcard>)sc -> {
+			CustomRunnable<Target> selected = target -> use(sc,hero,target,stopCallback);
+			if(sc.range == ItemRange.one){
+				if(sc.forward == ItemForward.enemy)
+					enemyGroup.select(selected);
+				else
+					heroGroup.select(selected);
+			}else{
+				
+			}
+		}));
+	}
+	
+//	private select(){
+//		
+//	}
+	
+	private void checkDead(){
+		$.getIf(enemyGroup.list(), e -> e.target.isDead(), e -> {
+			status.add(e.name + "已死亡");
+			enemyGroup.remove(e);
+			timer.remove(e);
+		});
+	}
+	
+	private void use(Spellcard sc,Object hero,Object target,Runnable callback){
+		use(null,sc,hero,target,callback);
+	}
+	
+	private void use(String _txt,Spellcard sc,Object hero,Object target,Runnable callback){
+		String text = _txt;
+		String tname = Target.name(target);
+		String hname = Target.name(hero);
+		if(text == null)
+			if(Spellcard.isAttack(sc)) 
+				text = hname + " 攻击了 " + tname;
+			else if(Spellcard.isDefense(sc)) 
+				text = hname + "展开了防御";
+			else 
+				text = hname + " 对 " + tname + " 使用符卡『 " + sc.name + "』"; 
+			
+		status.add(text);
+		BattleResult result = Spellcard.attack().use(new BattleContext(hero, target,RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
+		animations.play(result,callback);
 	}
 
 }

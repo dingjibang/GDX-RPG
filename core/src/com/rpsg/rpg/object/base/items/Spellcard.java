@@ -39,6 +39,14 @@ public class Spellcard extends BaseItem {
 		return Spellcard.class;
 	}
 	
+	public static boolean isAttack(Spellcard sc){
+		return sc.id == attackId;
+	}
+	
+	public static boolean isDefense(Spellcard sc){
+		return sc.id == defenseId;
+	}
+	
 	public static Spellcard attack(){
 		return (Spellcard) RPG.ctrl.item.get(attackId);
 	}

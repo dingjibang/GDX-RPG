@@ -7,7 +7,6 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -26,6 +25,22 @@ public class $ {
 	
 	public static GdxQuery image (String filePath){
 		return image(new Texture(Gdx.files.internal(filePath)));
+	}
+	
+	public static <T1,T2> MapQuery<T1,T2> map(T1 t1,T2 t2){
+		return new MapQuery<T1, T2>(t1,t2);
+	}
+	
+	public static <T1,T2> MapQuery<T1,T2> map(Class<T1> t1,Class<T2> t2){
+		return new MapQuery<T1, T2>();
+	}
+	
+	public static MapQuery<Object,Object> map(){
+		return new MapQuery<Object,Object>();
+	}
+	
+	public static MapQuery<Object,Object> omap(Object o1,Object o2){
+		return new MapQuery<Object,Object>(o1,o2);
 	}
 	
 	public static GdxQuery image (String filePath,AssetManager manager){
@@ -115,6 +130,14 @@ public class $ {
 		int i=0;
 		while(it.hasNext())
 			test.run(i++,it.next());
+	}
+	
+	public static String notNull(String... _str){
+		String result = null;
+		for(String str : _str)
+			if(str != null)
+				result = str;
+		return result;
 	}
 	
 	
