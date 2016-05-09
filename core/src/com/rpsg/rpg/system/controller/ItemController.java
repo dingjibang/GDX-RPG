@@ -107,7 +107,7 @@ public class ItemController {
 			}
 			
 			baseItem.id = id;
-			baseItem.disable = false;
+			baseItem.disable = result.has("disable") ? result.getBoolean("disable") : false;
 			baseItem.description = result.getString("description");
 			baseItem.throwable = result.has("throwable") ? result.getBoolean("throwable") : true;
 			baseItem.name = result.getString("name");

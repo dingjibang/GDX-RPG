@@ -26,7 +26,11 @@ public class SpellcardContext extends BaseContext{
 			
 			Context.exit();
 			
-			return (Double)obj;
+			try {
+				return (Double)obj;
+			} catch (Exception e) {
+				return Integer.valueOf(obj.toString()).doubleValue();
+			}
 		} catch (Exception e) {
 			Logger.error("无法执行脚本", e);
 			e.printStackTrace();

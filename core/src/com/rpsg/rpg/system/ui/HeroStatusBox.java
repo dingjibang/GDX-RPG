@@ -49,6 +49,7 @@ public class HeroStatusBox extends WidgetGroup {
 		addActor(hp = Res.font.getLabel("", 20,LazyBitmapFontConctoller.ENGLISH_GENERATOR).position(119, 85).align(Align.left).color(shit));
 		addActor(mp = Res.font.getLabel("", 20,LazyBitmapFontConctoller.ENGLISH_GENERATOR).position(119, 50).align(Align.left).color(shit));
 		addActor(buffTable);
+		addActor($.add(selectBox).hide().getItem());
 		
 	}
 	

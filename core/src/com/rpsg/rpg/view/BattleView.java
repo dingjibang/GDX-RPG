@@ -22,11 +22,12 @@ import com.rpsg.rpg.object.base.BattleParam;
 import com.rpsg.rpg.object.base.BattleRes;
 import com.rpsg.rpg.object.base.items.BattleContext;
 import com.rpsg.rpg.object.base.items.BattleResult;
-import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
+import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.Hero;
+import com.rpsg.rpg.object.rpg.Selectable;
 import com.rpsg.rpg.object.rpg.Target;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Animations;
@@ -142,32 +143,6 @@ public class BattleView extends DefaultIView{
 			animations.play(result,() -> timer.pause(false));
 		}
 	}
-
-	@Override
-	public void draw(SpriteBatch batch) {
-		logic();
-		stage.draw();
-	}
-
-	@Override
-	public void logic() {
-		stage.act();
-	}
-	
-	@Override
-	public void onkeyDown(int keyCode) {
-		if(keyCode == Keys.R) init();
-		if(keyCode == Keys.S) status.add("随便说一句话："+Math.random());
-		if(keyCode == Keys.D) status.append(" & "+Math.random());
-		if(keyCode == Keys.F) status.append("[#ffaabb]彩色测试[]");
-		if(keyCode == Keys.P) {
-			RPG.ctrl.hero.currentHeros.get(0).target.setProp("hp", MathUtils.random(0,100));
-			RPG.ctrl.hero.currentHeros.get(0).target.setProp("mp", MathUtils.random(0,100));
-			RPG.ctrl.hero.currentHeros.get(1).target.setProp("hp", MathUtils.random(0,100));
-			RPG.ctrl.hero.currentHeros.get(1).target.setProp("mp", MathUtils.random(0,100));
-		}
-		super.onkeyDown(keyCode);
-	}
 	
 	public void escape(Hero hero,Runnable callback){
 		double random = Math.random();
@@ -180,37 +155,22 @@ public class BattleView extends DefaultIView{
 	}
 	
 	private void define(Hero hero,Runnable callback){
-		status.add(hero.name + "展开了防御的姿态");
-		BattleResult result = Spellcard.defense().use(new BattleContext(hero, null, RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
-		animations.play(result, callback);
+		useSpellcard(Spellcard.defense(),hero,null,callback);
 	}
 	
 	private void attack(Hero hero,Runnable callback){
-		enemyGroup.select(target -> {
-			Enemy enemy = target.parentEnemy;
-			status.add("攻击了 " + enemy.name);
-			BattleResult result = Spellcard.attack().use(new BattleContext(hero, enemy,RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
-			animations.play(result,callback);
-		});
+		enemyGroup.select(target -> useSpellcard(Spellcard.attack(),hero,target,callback));
 	}
 
 	private void spellcard(Hero hero, Runnable stopCallback) {
 		RPG.popup.add(SelectSpellcardView.class,$.omap("hero",hero).add("callback", (CustomRunnable<Spellcard>)sc -> {
-			CustomRunnable<Target> selected = target -> use(sc,hero,target,stopCallback);
-			if(sc.range == ItemRange.one){
-				if(sc.forward == ItemForward.enemy)
-					enemyGroup.select(selected);
-				else
-					heroGroup.select(selected);
-			}else{
-				
-			}
+			if(sc.range == ItemRange.one)
+				getGroup(sc.forward).select(target -> useSpellcard(sc,hero,target,stopCallback));
+			else
+				useSpellcard(sc,hero,null,stopCallback);
 		}));
 	}
 	
-//	private select(){
-//		
-//	}
 	
 	private void checkDead(){
 		$.getIf(enemyGroup.list(), e -> e.target.isDead(), e -> {
@@ -220,7 +180,11 @@ public class BattleView extends DefaultIView{
 		});
 	}
 	
-	private void use(Spellcard sc,Object hero,Object target,Runnable callback){
+	private Selectable getGroup(ItemForward forward){
+		return forward == ItemForward.enemy ? enemyGroup : heroGroup;
+	}
+	
+	private void useSpellcard(Spellcard sc,Object hero,Object target,Runnable callback){
 		use(null,sc,hero,target,callback);
 	}
 	
@@ -237,8 +201,38 @@ public class BattleView extends DefaultIView{
 				text = hname + " 对 " + tname + " 使用符卡『 " + sc.name + "』"; 
 			
 		status.add(text);
-		BattleResult result = Spellcard.attack().use(new BattleContext(hero, target,RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
+		BattleResult result = sc.use(new BattleContext(hero, target,RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
 		animations.play(result,callback);
+	}
+	
+	@Override
+	public void draw(SpriteBatch batch) {
+		logic();
+		stage.draw();
+	}
+
+	@Override
+	public void logic() {
+		stage.act();
+	}
+	
+	@Override
+	public void onkeyDown(int keyCode) {
+		if(keyCode == Keys.R) init();
+		if(keyCode == Keys.S) {
+//			status.add("随便说一句话："+Math.random());
+			System.out.println("asd");
+			heroGroup.select(t->System.out.println(t.parentHero));
+		}
+		if(keyCode == Keys.D) status.append(" & "+Math.random());
+		if(keyCode == Keys.F) status.append("[#ffaabb]彩色测试[]");
+		if(keyCode == Keys.P) {
+			RPG.ctrl.hero.currentHeros.get(0).target.setProp("hp", MathUtils.random(0,100));
+			RPG.ctrl.hero.currentHeros.get(0).target.setProp("mp", MathUtils.random(0,100));
+			RPG.ctrl.hero.currentHeros.get(1).target.setProp("hp", MathUtils.random(0,100));
+			RPG.ctrl.hero.currentHeros.get(1).target.setProp("mp", MathUtils.random(0,100));
+		}
+		super.onkeyDown(keyCode);
 	}
 
 }

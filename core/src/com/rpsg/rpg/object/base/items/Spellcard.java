@@ -111,38 +111,34 @@ public class Spellcard extends BaseItem {
 				Prop prop = effect.prop.get(key);
 				
 				int damage = damage(self, t, key);
-				
-				if(damage > 0){
-					t.addProp(key, damage + "");
-					continue;
-				}
-				
-				
-				
-//				计算伤害浮动
-				damage = prop.rate(damage);
-				
-				
-				String rtype = prop.type;
-				if(rtype != null){
-					ResistanceType trtype = t.resistance.get(rtype).type;
-					if(trtype == ResistanceType.reflect){	//如果抗性为反射，则把伤害给自己
-						self.addProp(key, (-damage) + "");
-					}
-				}
-				
-				//计算闪避
-				float eva = (rtype != null ? t.resistance.get(key).evasion : 0);
-				float max = (self.getProp("hit") + t.getProp("evasion") + eva);
 				boolean miss = false;
-				float rate = (self.getProp("hit") / max) * 100;
-				if(max != 0)
-					miss = MathUtils.random(0,100) > rate;
-					
 				
-				if(!miss){
+				if(damage < 0){
+					//计算伤害浮动
+					damage = prop.rate(damage);
+					
+					String rtype = prop.type;
+					if(rtype != null){
+						ResistanceType trtype = t.resistance.get(rtype).type;
+						if(trtype == ResistanceType.reflect){	//如果抗性为反射，则把伤害给自己
+							self.addProp(key, (-damage) + "");
+						}
+					}
+					
+					//计算闪避
+					float eva = (rtype != null ? t.resistance.get(key).evasion : 0);
+					float max = (self.getProp("hit") + t.getProp("evasion") + eva);
+					float rate = (self.getProp("hit") / max) * 100;
+					if(max != 0)
+						miss = MathUtils.random(0,100) > rate;
+						
+					
 					//处理溢出
 					damage = damage < 0 ? damage : 0;
+				}
+				
+				
+				if(!miss){
 					//处理伤害
 					t.addProp(key, damage + "");
 					
@@ -150,7 +146,10 @@ public class Spellcard extends BaseItem {
 					self.addProp("mp", (-cost) + "");
 					
 					if(RPG.ctrl.battle.isBattle())
-					GameViews.gameview.battleView.status.append("...造成了 " + damage + " 点伤害");
+						if(damage < 0)
+							GameViews.gameview.battleView.status.append("...造成了 " + Math.abs(damage) + " 点伤害");
+						else
+							GameViews.gameview.battleView.status.append("...回复了" + damage + " 点" + BaseContext.getPropName(key));
 				}else{
 					if(RPG.ctrl.battle.isBattle())
 					GameViews.gameview.battleView.status.append("...但是没有命中");

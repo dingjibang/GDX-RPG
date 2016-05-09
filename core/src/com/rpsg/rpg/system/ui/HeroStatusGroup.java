@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.CustomRunnable;
+import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.Selectable;
@@ -43,8 +44,9 @@ public class HeroStatusGroup extends Group implements Selectable{
 	public void act(float delta) {
 		if(select && onSelect != null){
 			select = false;
-			$.add(this).children(HeroStatusBox.class).each(e -> ((HeroStatusBox) e).select(select ->{
-				$.add(this).children().each(enemyBox -> ((HeroStatusBox) enemyBox).stopSelect());
+			GdxQuery child = $.add(this).children(HeroStatusBox.class);
+			child.each(e -> ((HeroStatusBox) e).select(select ->{
+				child.each(enemyBox -> ((HeroStatusBox) enemyBox).stopSelect());
 				onSelect.run(select.hero.target);
 			}));
 		}
