@@ -97,6 +97,7 @@ public class MenuView extends StackView{
 		}).appendTo(leftBar);
 		final Label menuLabel=new Label("", 32);
 		$.add(new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.IMAGE_MENU_GLOBAL+"btn_more.png"))).click(new Runnable() {public void run() {
+			if(status) return;
 			status=true;
 			ld.addAction(Actions.parallel(Actions.moveTo(-500, 0,0.5f,Interpolation.exp5),Actions.fadeOut(0.2f)));
 			leftBar.addAction(Actions.moveTo(-230,0,0.5f,Interpolation.pow4));
