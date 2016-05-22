@@ -17,7 +17,6 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
-import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
@@ -102,13 +101,8 @@ public class SpellCardView extends IMenuView{
 		
 		final Table items = new Table().left().top();
 		for(Spellcard sc:hero.sc){
-			items.add(new SpellcardIcon(sc).onClick(new CustomRunnable<SpellcardIcon>() {
-				public void run(final SpellcardIcon t) {
-					$.add(items).children().each(new CustomRunnable<SpellcardIcon>() {
-						public void run(SpellcardIcon t) {
-							t.select(false);
-						}
-					});
+			items.add(new SpellcardIcon(sc).onClick(t -> {
+					$.add(items).children().each(si->((SpellcardIcon) si).select(false));
 					t.select(true);
 					group.clear();
 					$.add(new Label(t.sc.name,40)).appendTo(group).setPosition(600, 360);
@@ -118,19 +112,14 @@ public class SpellCardView extends IMenuView{
 					labels.add(new Label(t.sc.description,20).warp(true)).align(Align.topLeft).prefWidth(343).row();
 					labels.add(new Label(t.sc.description2,20).warp(true).color(Color.ORANGE)).align(Align.topLeft).prefWidth(343).padTop(20).row();
 					if(t.sc.occasion == ItemOccasion.all || t.sc.occasion == ItemOccasion.map){
-						apply.onClick(new Runnable(){
-							public void run() {
-								RPG.popup.add(UseItemView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
-									put("title","使用符卡");
-									put("width",100);
-									put("user2",hero);
-									put("item",new Icon().generateIcon(t.sc, true));
-									put("callback",new Runnable() {
-										public void run() {
-										}
-									});
-								}});
-							}
+						apply.onClick(()->{
+							RPG.popup.add(UseItemView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
+								put("title","使用符卡");
+								put("width",100);
+								put("user2",hero);
+								put("item",new Icon().generateIcon(t.sc, true));
+								put("callback",(Runnable)()->{});
+							}});
 						}).fg.a(1);
 					}else{
 						apply.onClick(null).fg.a(.3f);
@@ -144,7 +133,6 @@ public class SpellCardView extends IMenuView{
 					pane.setPosition(600,140);
 					pane.setFadeScrollBars(false);
 					group.addActor(pane);
-				}
 			})).align(Align.topLeft).size(303,70).row();
 		}
 		

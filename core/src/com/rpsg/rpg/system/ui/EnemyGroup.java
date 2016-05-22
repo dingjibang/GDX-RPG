@@ -8,11 +8,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.object.rpg.Enemy;
+import com.rpsg.rpg.object.rpg.Selectable;
+import com.rpsg.rpg.object.rpg.Target;
 
-public class EnemyGroup extends Table {
+public class EnemyGroup extends Table implements Selectable{
 
 	boolean select = false;
-	CustomRunnable<Enemy> onSelect = null;
+	CustomRunnable<Target> onSelect = null;
 
 	public EnemyGroup(int param) {
 		$.each(Enemy.name(Enemy.get(param)), e -> add(new EnemyBox(e)).padLeft(35).padRight(35));
@@ -24,7 +26,7 @@ public class EnemyGroup extends Table {
 		return this;
 	}
 	
-	public void select(CustomRunnable<Enemy> onSelect){
+	public void select(CustomRunnable<Target> onSelect){
 		select = true;
 		this.onSelect = onSelect; 
 	}
@@ -39,7 +41,7 @@ public class EnemyGroup extends Table {
 			select = false;
 			$.add(this).children().each(e -> ((EnemyBox) e).select(select ->{
 				$.add(this).children().each(enemyBox -> ((EnemyBox) enemyBox).stopSelect());
-				onSelect.run(select.enemy);
+				onSelect.run(select.enemy.target);
 			}));
 		}
 		super.act(delta);

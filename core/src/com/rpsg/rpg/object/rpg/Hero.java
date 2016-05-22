@@ -13,6 +13,7 @@ import com.rpsg.rpg.object.base.EmptyAssociation;
 import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.items.Buff;
 import com.rpsg.rpg.object.base.items.Equipment;
+import com.rpsg.rpg.object.base.items.Prop;
 import com.rpsg.rpg.object.base.items.Spellcard;
 
 public class Hero extends RPGObject implements Time{
@@ -50,7 +51,9 @@ public class Hero extends RPGObject implements Time{
 			for(Hero hero : RPG.global.support){
 				Buff support = hero.support;
 				if(support == null) continue;
-				String result = support.prop.get(propName).formula;
+				Prop _prop = support.prop.get(propName);
+				if(_prop == null) continue;
+				String result = _prop.formula;
 				if(result == null) continue;
 				
 				prop += calcProp(base, result);

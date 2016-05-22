@@ -38,7 +38,7 @@ public abstract class BaseItem implements Serializable {
 	/**道具描述信息*/
 	public String description = "";
 	
-	/**道具是否可用*/
+	/**道具是否不可用*/
 	public boolean disable = false;
 	
 	/**道具ID（需要唯一性/ID和物品的图标有关联）*/

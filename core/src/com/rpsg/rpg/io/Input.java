@@ -6,18 +6,24 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.Color;
+import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.RPG;
+import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.IOMode;
+import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.view.GameViews;
 
 public class Input implements InputProcessor {
 	public static IOMode.GameInput state = IOMode.GameInput.normal;
 	private static List<Integer> pressList = new ArrayList<>();
+	private List<InputProcessorEx> register = new ArrayList<>(),removeList = new ArrayList<>();
 
 	@Override
 	public boolean keyDown(int keycode) {
 		if(keycode == Keys.O){
-//			RPG.toast.add("获得道具\ntest", Color.SKY ,22,false,Res.getNP(Setting.IMAGE_ICONS+"i1.png"));
+			RPG.toast.add("获得道具\ntest", Color.SKY ,22,false,Res.getNP(Setting.IMAGE_ICONS+"i1.png"));
 //			RPG.ctrl.animation.removeAll();
 //			Animation a = RPG.ctrl.animation.add(2);
 //			a.setPosition(435,1700);
@@ -36,7 +42,21 @@ public class Input implements InputProcessor {
 			break;
 		}
 		}
+		each(register, r -> r.keyDown(keycode));
 		return false;
+	}
+	
+	public InputProcessorEx addListener(InputProcessorEx ex){
+		register.add(ex);
+		return ex;
+	}
+	
+	public void removeListener(InputProcessorEx ex){
+		removeList.add(ex);
+	}
+	
+	public void clearListener(){
+		register.clear();
 	}
 
 	@Override
@@ -49,6 +69,7 @@ public class Input implements InputProcessor {
 			break;
 		}
 		}
+		each(register, r -> r.keyUp(keycode));
 		return false;
 	}
 
@@ -66,6 +87,7 @@ public class Input implements InputProcessor {
 			break;
 		}
 		}
+		each(register, r -> r.keyTyped(character));
 		return false;
 	}
 
@@ -80,6 +102,7 @@ public class Input implements InputProcessor {
 			break;
 		}
 		}
+		each(register, r -> r.touchDown(screenX, screenY, pointer, button));
 		return false;
 	}
 
@@ -94,6 +117,7 @@ public class Input implements InputProcessor {
 			break;
 		}
 		}
+		each(register, r -> r.touchUp(screenX, screenY, pointer, button));
 		return false;
 	}
 
@@ -108,6 +132,7 @@ public class Input implements InputProcessor {
 			break;
 		}
 		}
+		each(register, r -> r.touchDragged(screenX, screenY, pointer));
 		return false;
 	}
 
@@ -121,6 +146,7 @@ public class Input implements InputProcessor {
 			break;
 		}
 		}
+		each(register, r -> r.mouseMoved(screenX, screenY));
 		return false;
 	}
 
@@ -134,14 +160,22 @@ public class Input implements InputProcessor {
 			break;
 		}
 		}
+		each(register, r -> r.scrolled(amount));
 		return false;
+	}
+	
+	private void each(List<InputProcessorEx> list,CustomRunnable<InputProcessorEx> test){
+		if(!removeList.isEmpty()){
+			list.removeAll(removeList);
+			removeList.clear();
+		}
+		$.each(list, test);
 	}
 
 	public static boolean isPress(int keyCode) {
 		for(Integer code:pressList)
 			if(code.equals(keyCode))
 				return true;
-		
 		return Gdx.input.isKeyPressed(keyCode);
 	}
 	

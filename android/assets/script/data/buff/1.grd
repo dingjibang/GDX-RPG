@@ -4,7 +4,7 @@
 	type:"buff",
 	prop:{
 		"maxhp":{
-			formula:"233"
+			formula:"20%"
 		}
 	}
 }

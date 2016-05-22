@@ -167,6 +167,8 @@ public class Target implements Serializable{
 	
 	public static Target parse(Object o){
 		if(o == null) return null;
+		if(o instanceof Target)
+			return (Target) o;
 		if(o instanceof Hero)
 			return (((Hero)o).target);
 		if(o instanceof Enemy)
@@ -305,6 +307,14 @@ public class Target implements Serializable{
 
 	public boolean isDying() {
 		return ((float)getProp("hp") / (float)getProp("maxhp")) > .123f;
+	}
+
+	public static String name(Object obj) {
+		if(obj == null) return null;
+		if(obj instanceof Hero) return ((Hero) obj).name;
+		if(obj instanceof Enemy) return ((Enemy) obj).name;
+		if(obj instanceof Target) return $.notNull(name(((Target) obj).parentEnemy),name(((Target) obj).parentHero)); 
+		return null;
 	}
 
 	
