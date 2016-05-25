@@ -56,7 +56,7 @@ public class Spellcard extends BaseItem {
 	}
 	
 	//使用一个符卡=w=
-	public BattleResult use(BattleContext ctx){
+	public BattleResult use(Item.Context ctx){
 		//判断使用场景是否正确
 		boolean battle = RPG.ctrl.battle.isBattle();
 		if(battle && occasion == ItemOccasion.map) 

@@ -186,7 +186,7 @@ public class Path {
 
 		float herox = RPG.ctrl.hero.getHeadHero().position.x + (RPG.ctrl.hero.getHeadHero().getWidth() / 2);
 		float heroy = RPG.ctrl.hero.getHeadHero().position.y + (RPG.ctrl.hero.getHeadHero().getHeight() / 2);
-		if (GameUtil.screen_width < twidth) {
+		if (GameUtil.stage_width < twidth) {
 			if (herox > 512 && herox < (twidth) - 512)
 				pos.x = herox;
 			else if (!(herox > 512))//
@@ -196,7 +196,7 @@ public class Path {
 		} else {
 			pos.x = twidth / 2;
 		}
-		if (GameUtil.screen_height < theight) {
+		if (GameUtil.stage_height < theight) {
 			if (heroy > 288 && heroy < (theight) - 288)
 				pos.y = heroy;
 			else if (!(heroy > 288))

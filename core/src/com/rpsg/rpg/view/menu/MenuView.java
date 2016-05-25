@@ -56,7 +56,7 @@ public class MenuView extends StackView{
 	@Override
 	public View init() {
 		final WidgetGroup leftBar;//左边栏
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()));
 		//左边栏相关
 		$.add(leftBar=new WidgetGroup()).appendTo(stage).setPosition(-500, 0).addAction(Actions.moveTo(0, 0,0.3f,Interpolation.pow2Out));
 		final Actor hr;//左边栏hr下方

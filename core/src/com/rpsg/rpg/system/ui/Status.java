@@ -33,17 +33,17 @@ public class Status extends Group {
 		table = new Table();
 		table.align(Align.bottom);
 		pane = new ScrollPane(table);
-		pane.setPosition(0, GameUtil.screen_height - 31);
+		pane.setPosition(0, GameUtil.stage_height - 31);
 		pane.setOverscroll(false, false);
 		pane.setHeight(31);
-		pane.setWidth(GameUtil.screen_width);
+		pane.setWidth(GameUtil.stage_width);
 		pane.setScrollingDisabled(true, false);
 		pane.getStyle().background = new NinePatchDrawable(GameUtil.processNinePatchFile(Setting.IMAGE_BATTLE+"infobox.png", 2,2,1,1,5,5,0,3));
 		pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbar.png");
 		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbarin.png");
 		pane.setFadeScrollBars(false);
 		
-		$.add(up,down).setPosition(GameUtil.screen_width / 2 - up.getWidth() / 2, GameUtil.screen_height - 37).appendTo(this);
+		$.add(up,down).setPosition(GameUtil.stage_width / 2 - up.getWidth() / 2, GameUtil.stage_height - 37).appendTo(this);
 		
 		addActor(pane);
 		
@@ -63,7 +63,7 @@ public class Status extends Group {
 	
 	public Status add(String str,long delay){
 		tasks.add(new DelayTask(delay,()->{
-			table.add(label = Res.get("["+ getTime() + "] " + str, 20).color(shit).align(getAlign()).markup(true)).padLeft(10).padRight(10).height(28).width(GameUtil.screen_width - 48).row();
+			table.add(label = Res.get("["+ getTime() + "] " + str, 20).color(shit).align(getAlign()).markup(true)).padLeft(10).padRight(10).height(28).width(GameUtil.stage_width - 48).row();
 			setPanelToScrollBattom();
 		}));
 		return this;
@@ -72,11 +72,11 @@ public class Status extends Group {
 	public void toggle(){
 		flag = !flag;
 		pane.clearActions();
-		pane.addAction(Actions.moveTo(0, GameUtil.screen_height - (flag ? 500 : 31),.4f,Interpolation.pow4Out));
-		up.addAction(Actions.moveTo(GameUtil.screen_width / 2 - up.getWidth() / 2, GameUtil.screen_height - (flag ? 506 : 37),.4f,Interpolation.pow4Out));
-		down.addAction(Actions.moveTo(GameUtil.screen_width / 2 - up.getWidth() / 2, GameUtil.screen_height - (flag ? 506 : 37),.4f,Interpolation.pow4Out));
+		pane.addAction(Actions.moveTo(0, GameUtil.stage_height - (flag ? 500 : 31),.4f,Interpolation.pow4Out));
+		up.addAction(Actions.moveTo(GameUtil.stage_width / 2 - up.getWidth() / 2, GameUtil.stage_height - (flag ? 506 : 37),.4f,Interpolation.pow4Out));
+		down.addAction(Actions.moveTo(GameUtil.stage_width / 2 - up.getWidth() / 2, GameUtil.stage_height - (flag ? 506 : 37),.4f,Interpolation.pow4Out));
 		if(flag) up.setZIndex(23333); else down.setZIndex(2333);
-		pane.addAction(Actions.sequence(Actions.sizeTo(GameUtil.screen_width, flag ? 500 : 31,.4f,Interpolation.pow4Out),Actions.run(()->{
+		pane.addAction(Actions.sequence(Actions.sizeTo(GameUtil.stage_width, flag ? 500 : 31,.4f,Interpolation.pow4Out),Actions.run(()->{
 			if(!flag) setPanelToScrollBattom();
 		})));
 		

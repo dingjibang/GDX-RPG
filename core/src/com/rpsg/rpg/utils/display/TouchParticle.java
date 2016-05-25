@@ -17,7 +17,7 @@ public class TouchParticle {
 
 	
 	public TouchParticle() {
-		stage = new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()), GameViews.batch);
+		stage = new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()), GameViews.batch);
 		
 		p = new ParticleEffect();
 		p.load(Gdx.files.internal(Setting.PARTICLE+"touch.p"), Gdx.files.internal(Setting.PARTICLE));
@@ -45,7 +45,7 @@ public class TouchParticle {
 	}
 	
 	public void setPosition(int x,int y){
-		p.setPosition(x,GameUtil.screen_height - y);
+		p.setPosition(x,GameUtil.stage_height - y);
 	}
 	
 	public TouchParticle start(){

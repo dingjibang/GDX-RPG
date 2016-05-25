@@ -3,7 +3,6 @@ package com.rpsg.rpg.view.hover;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -31,8 +30,8 @@ public class SelectSpellcardView extends HoverView{
 		@SuppressWarnings("unchecked") CustomRunnable<Spellcard> callback = (CustomRunnable<Spellcard>)param.get("callback");
 		
 		stage.addAction(Actions.parallel(Actions.alpha(0),Actions.alpha(1,0.3f,Interpolation.pow4Out)));
-		$.add(Res.get(Setting.UI_BASE_IMG)).setPosition(100, 20).setSize(815, 515).appendTo(stage).setColor(.25f,.25f,.25f,9f);
-		$.add(new Actor()).setSize(GameUtil.screen_width, GameUtil.screen_height).click(()->disposed = true).appendTo(stage);
+		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.stage_width, GameUtil.stage_height).click(()->disposed = true).appendTo(stage).setColor(.3f,.3f,.3f,.5f);
+		$.add(Res.get(Setting.UI_BASE_IMG)).setPosition(100, 20).setSize(815, 515).appendTo(stage).setColor(.25f,.25f,.25f,1f);
 		
 		ImageButton exit=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"file_exit.png"),Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"file_exit_active.png"));
 		exit.setPosition(845, 480);

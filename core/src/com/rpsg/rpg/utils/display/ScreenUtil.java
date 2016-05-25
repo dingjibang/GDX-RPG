@@ -42,8 +42,8 @@ public class ScreenUtil {
 	
 	public static Image getScreenshot(){
 		tmpStage.draw();
-        final Pixmap pixmap = getFrameBufferPixmap(0, 0, GameUtil.screen_width, GameUtil.screen_height);
-        Image i= new Image(new TextureRegion(new Texture(pixmap),0,GameUtil.screen_height,GameUtil.screen_width,-GameUtil.screen_height));
+        final Pixmap pixmap = getFrameBufferPixmap(0, 0, GameUtil.stage_width, GameUtil.stage_height);
+        Image i= new Image(new TextureRegion(new Texture(pixmap),0,GameUtil.stage_height,GameUtil.stage_width,-GameUtil.stage_height));
         pixmap.dispose();
         return i;
     }

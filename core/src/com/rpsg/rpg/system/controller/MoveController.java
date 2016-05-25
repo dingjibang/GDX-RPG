@@ -120,7 +120,7 @@ public class MoveController {
 		
 		Vector3 pos = Setting.persistence.softCamera?new Vector3():gv.camera.position;
 		
-		if(GameUtil.screen_width<twidth){
+		if(GameUtil.stage_width<twidth){
 			if (herox > MAP_MAX_OUT_X && herox < (twidth) - MAP_MAX_OUT_X)// 如果角色没有到达地图的x边界，那么相机的x中央点就设定为hero的x位置
 				pos.x = herox;
 			else if (!(herox > MAP_MAX_OUT_X))//
@@ -130,7 +130,7 @@ public class MoveController {
 		}else{
 			pos.x=twidth/2;
 		}
-		if(GameUtil.screen_height<theight){
+		if(GameUtil.stage_height<theight){
 			if (heroy > MAP_MAX_OUT_Y && heroy < (theight) - MAP_MAX_OUT_Y)// 同理，设定到y
 				pos.y = heroy;
 			else if (!(heroy > MAP_MAX_OUT_Y))

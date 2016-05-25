@@ -22,7 +22,7 @@ public class LogoView extends View{
 	int flag=0;
 	@Override
 	public View init() {
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()));
 		stage.addActor(new Image(Setting.UI_BASE_IMG).size(1024,576));
 		stage.addActor(new Image(Setting.IMAGE_LOGO+"bg.png").color(1,1,1,0).action(Actions.sequence(Actions.delay(0.2f),Actions.fadeIn(0.2f))));
 		stage.addActor(new Image(Setting.IMAGE_LOGO+"logo.png").color(1,1,1,0).position(351, 295).action(Actions.sequence(Actions.delay(1f),Actions.parallel(Actions.fadeIn(0.2f),Actions.moveBy(0, 45,0.3f)))));

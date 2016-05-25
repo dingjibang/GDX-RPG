@@ -3,7 +3,7 @@ Hero.setVisible(false);
 PostUtil.showMenu=false;
 setKeyLocker(true);
 
-var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
+var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.stage_width, GameUtil.stage_height).setColor(Color.BLACK).getItem();
 black.addAction(Actions.sequence(Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(black)})));	
 CG.push(black);
 
@@ -101,7 +101,7 @@ showMSG(MsgType.梅莉);
 say("付款啦……","梅莉");
 //TODO STOP MUSIC
 hideMSG();
-CG.push($(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(0,0,0,0).addAction(Actions.color(new Color(0,0,0,1),1)).getItem());
+CG.push($(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.stage_width, GameUtil.stage_height).setColor(0,0,0,0).addAction(Actions.color(new Color(0,0,0,1),1)).getItem());
 
 pause(70);
 

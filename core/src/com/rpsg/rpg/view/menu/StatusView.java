@@ -34,10 +34,10 @@ public class StatusView extends IMenuView {
 	Group group,inner;
 	ScrollPane pane;
 	public View init() {
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		group=(Group) $.add(new Group()).setHeight(1750).getItem();
 		inner=(Group) $.add(new Group()).setHeight(1750).appendTo(group).getItem();
-		pane=(ScrollPane) $.add(new ScrollPane(group)).setSize(GameUtil.screen_width-190, GameUtil.screen_height).setX(190).appendTo(stage).getItem();
+		pane=(ScrollPane) $.add(new ScrollPane(group)).setSize(GameUtil.stage_width-190, GameUtil.stage_height).setX(190).appendTo(stage).getItem();
 		generate();
 		return this;
 	}

@@ -15,9 +15,9 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Resistance;
 import com.rpsg.rpg.object.base.Resistance.ResistanceType;
-import com.rpsg.rpg.object.base.items.BattleContext;
 import com.rpsg.rpg.object.base.items.BattleResult;
 import com.rpsg.rpg.object.base.items.EnemyContext;
+import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
 import com.rpsg.rpg.object.base.items.Prop;
@@ -141,7 +141,7 @@ public class Enemy implements Time {
 	/**
 	 * 	AI核心算法
 	 */
-	public BattleResult act(final BattleContext battleContext) {
+	public BattleResult act(final Item.Context battleContext) {
 		//获取战斗上下文
 		List<Target> friend = battleContext.friend;
 		List<Target> enemies = battleContext.enemies;

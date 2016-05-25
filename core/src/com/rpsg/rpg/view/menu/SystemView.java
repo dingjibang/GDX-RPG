@@ -45,7 +45,7 @@ import com.rpsg.rpg.view.hover.SaveView;
 
 public class SystemView extends IMenuView{
 	public View init() {
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		stage.setDebugAll(Setting.persistence.uiDebug);
 		
 		generate();

@@ -1,5 +1,8 @@
 package com.rpsg.rpg.object.base.items;
 
+import java.util.List;
+
+import com.rpsg.rpg.object.rpg.Target;
 
 public class Item extends BaseItem{
 
@@ -67,5 +70,48 @@ public class Item extends BaseItem{
 		no,//仅能给活着的人使用。
 		all//可以给所有人使用。
 	}
+	
+	
+	public static class Context {
+		public static enum Type{battle,map} 
+		
+		public Type type;
+		public Target self;
+		public Target enemy;
+		public List<Target> friend;
+		public List<Target> enemies;
+
+		public Context(Object self, Object enemy, List<?> friend, List<?> enemies) {
+			super();
+			this.self = Target.parse(self);
+			this.enemy = Target.parse(enemy);
+			this.friend = Target.parse(friend);
+			this.enemies = Target.parse(enemies);
+			
+			//去重复
+			if(enemies.contains(enemy)) enemies.remove(enemy);
+			if(friend.contains(self)) friend.remove(self);
+		}
+
+		public Context target(Target enemy2) {
+			this.enemy = enemy2;
+			return this;
+		}
+		
+		Context setType(Type $type){
+			type = $type;
+			return this;
+		}
+		
+		public static Context battle(Object self, Object enemy, List<?> friend, List<?> enemies){
+			return new Context(self,enemy,friend,enemies).setType(Type.battle);
+		}
+		
+		public static Context map(Object self, Object enemy, List<?> friend, List<?> enemies){
+			return new Context(self,enemy,friend,enemies).setType(Type.map);
+		}
+		
+	}
+
 
 }

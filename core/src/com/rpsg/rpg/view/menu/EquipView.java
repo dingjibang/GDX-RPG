@@ -45,7 +45,7 @@ public class EquipView extends IMenuView{
 	ImageButton takeButton,throwButton;
 	Image take=Res.get(Setting.IMAGE_MENU_EQUIP+"but_take.png"),off=Res.get(Setting.IMAGE_MENU_EQUIP+"but_off.png").a(.3f),throwImg=Res.get(Setting.IMAGE_MENU_EQUIP+"but_remove.png").a(.3f);
 	public EquipView init() {
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(137,79).setColor(0,0,0,.52f).setPosition(240,470).appendTo(stage);
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(680,48).setColor(0,0,0,.85f).setPosition(377,486).appendTo(stage);
 		CheckBoxStyle cstyle=new CheckBoxStyle();

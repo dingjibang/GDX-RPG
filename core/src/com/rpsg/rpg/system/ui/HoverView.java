@@ -19,7 +19,7 @@ public abstract class HoverView{
 	}
 	
 	public HoverView superInit(Map<Object, Object> initParam){
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()));
 		this.param = initParam;
 		init();
 		return this;

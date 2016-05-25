@@ -31,7 +31,7 @@ public class ConfirmView extends HoverView{
 	}
 	public void init() {
 		int offset=0;
-		stage.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"savebl.png").size(GameUtil.screen_width, GameUtil.screen_height).color(0,0,0,0.85f));
+		stage.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"savebl.png").size(GameUtil.stage_width, GameUtil.stage_height).color(0,0,0,0.85f));
 		for(final Confirm con:confirms){
 			Actor but= $.add(new TextButton(con.name, style)).click(new Runnable() {
 				public void run() {

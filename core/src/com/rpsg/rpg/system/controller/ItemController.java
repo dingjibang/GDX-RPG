@@ -290,7 +290,7 @@ public class ItemController {
 			if(((item.range != ItemRange.all) && item.user==null) || item.disable || item.effect==null)
 				return false;
 			
-			if(baseItem.user instanceof Hero || baseItem.user == null){
+			if(baseItem.user == null || baseItem.user instanceof Hero){
 				List<Hero> heros = new ArrayList<>();
 				if(item.range == ItemRange.all)
 					heros = RPG.ctrl.hero.currentHeros;
@@ -304,7 +304,7 @@ public class ItemController {
 					remove(item);
 			}
 			
-		}else if(baseItem instanceof Spellcard){
+		}else if(baseItem instanceof Spellcard){//非战斗模式下的使用
 			Spellcard sc = (Spellcard)baseItem;
 			if(((sc.range != ItemRange.all) && sc.user==null) || sc.user2==null || sc.disable || sc.effect==null)
 				return false;

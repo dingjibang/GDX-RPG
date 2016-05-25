@@ -83,7 +83,7 @@ public class Toast extends Table {
 		// addActor(toastImage);
 		// addActor(label);
 
-		setPosition(GameUtil.screen_width / 2 - getWidth() / 2, 100);
+		setPosition(GameUtil.stage_width / 2 - getWidth() / 2, 100);
 
 		setColor(1, 1, 1, 0);
 

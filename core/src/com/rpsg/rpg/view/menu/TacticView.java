@@ -60,7 +60,7 @@ public class TacticView extends IMenuView {
 		linkbox1=Res.get(Setting.IMAGE_MENU_TACTIC+"linking_heroselbox2.png").disableTouch();
 		linkbox2=Res.get(Setting.IMAGE_MENU_TACTIC+"linking_heroselbox2.png").disableTouch();
 		
-		stage = new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
+		stage = new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		stage.setDebugAll(Setting.persistence.uiDebug);
 		
 		butstyle=new TextButtonStyle();
@@ -69,7 +69,7 @@ public class TacticView extends IMenuView {
 		butstyle.font=Res.font.get(18);
 		
 		group=new WidgetGroup();
-		group.setSize(GameUtil.screen_width*page,  GameUtil.screen_height);
+		group.setSize(GameUtil.stage_width*page,  GameUtil.stage_height);
 		stage.addActor(group);
 		
 		group.addActor(linkerc.color(1,1,1,0));
@@ -331,7 +331,7 @@ public class TacticView extends IMenuView {
 	}
 	
 	public void pageTo(final int page){
-		group.addAction(Actions.moveTo(-GameUtil.screen_width*(page-1), 0,0.6f,Interpolation.pow4));
+		group.addAction(Actions.moveTo(-GameUtil.stage_width*(page-1), 0,0.6f,Interpolation.pow4));
 		Iterator<Actor> i=stage.getActors().iterator();
 		while(i.hasNext()){
 			Object obj=i.next().getUserObject();

@@ -38,7 +38,7 @@ public class SpellCardView extends IMenuView{
 	
 	@Override
 	public View init() {
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		generate();
 		return this;
 	}

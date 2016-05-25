@@ -27,10 +27,10 @@ public class Msg {
 	public Msg() {
 		msgbox=new Image(Setting.MESSAGE+MsgType.正常.path());
 		float ss=msgbox.getWidth();
-		msgbox.setWidth(GameUtil.screen_width-40);
+		msgbox.setWidth(GameUtil.stage_width-40);
 		ss=ss/msgbox.getWidth();
 		msgbox.setHeight((float)msgbox.getHeight()/ss);
-		msgbox.setX(GameUtil.screen_width/2-msgbox.getWidth()/2);
+		msgbox.setX(GameUtil.stage_width/2-msgbox.getWidth()/2);
 		msgbox.setY(25);
 		msgbox.setColor(1,1,1,0);
 		currentText="";

@@ -2,7 +2,7 @@ eval(""+load('global.js'));
 eval(""+load('var.js'));
 
 var renko = getNPC("renko");
-var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
+var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.stage_width, GameUtil.stage_height).setColor(Color.BLACK).getItem();
 CG.push(black);
 PostUtil.showMenu=false;
 setKeyLocker(true);
@@ -18,7 +18,7 @@ pause(120);
 
 playSE("noise.wav");
 
-var flash=$(Res.get(Setting.IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
+var flash=$(Res.get(Setting.IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.stage_width,GameUtil.stage_height).setPosition(0,0).getItem();
 flash.setOrigin(Align.topRight);
 flash.addAction(Actions.sequence(Actions.fadeIn(0.05),Actions.parallel(Actions.scaleTo(2, 2,0.05),Actions.moveTo(-300,400,0.05)),Actions.color(Color.RED),Actions.moveTo(-100,200)));
 CG.push(flash);
@@ -195,7 +195,7 @@ Hero.walk(1).testWalk();
 move(3);
 faceTo(renko,RPGObject.FACE_U);
 pause(30);
-var y12a = $(Res.get(Setting.IMAGE_CG+"y12cga.jpg")).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(1,1,1,0).addAction(Actions.fadeIn(0.5)).getItem();
+var y12a = $(Res.get(Setting.IMAGE_CG+"y12cga.jpg")).setSize(GameUtil.stage_width, GameUtil.stage_height).setColor(1,1,1,0).addAction(Actions.fadeIn(0.5)).getItem();
 CG.push(y12a);
 
 pause(80);
@@ -211,7 +211,7 @@ say("事实上，她身份证上照片只要在她手中就会发生变化","莲
 say("来，有栖同学，你用一下你的能力","莲子");
 hideMSG();
 
-var y12a = $(Res.get(Setting.IMAGE_CG+"y12cgb.jpg")).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(1,1,1,0).addAction(Actions.fadeIn(0.5)).getItem();
+var y12a = $(Res.get(Setting.IMAGE_CG+"y12cgb.jpg")).setSize(GameUtil.stage_width, GameUtil.stage_height).setColor(1,1,1,0).addAction(Actions.fadeIn(0.5)).getItem();
 CG.push(y12a);
 pause(60);
 showMSG(MsgType.梅莉);
@@ -238,7 +238,7 @@ pause(30);
 showMSG(MsgType.莲子);
 say("好好好…我请就是了，走吧。","莲子");
 hideMSG();
-CG.push($(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(0,0,0,0).addAction(Actions.color(new Color(0,0,0,1),1)).getItem());
+CG.push($(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.stage_width, GameUtil.stage_height).setColor(0,0,0,0).addAction(Actions.color(new Color(0,0,0,1),1)).getItem());
 pause(80);
 CG.disposeAll();
 teleport("cafe",21,11,1);

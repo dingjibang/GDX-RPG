@@ -42,7 +42,7 @@ public class ItemView extends IMenuView{
 	ImageButton takeButton,throwButton;
 	Image take=Res.get(Setting.IMAGE_MENU_ITEM+"but_use.png"),off=Res.get(Setting.IMAGE_MENU_EQUIP+"but_off.png").a(.3f),throwImg=Res.get(Setting.IMAGE_MENU_EQUIP+"but_remove.png").a(.3f);
 	public ItemView init() {
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),MenuView.stage.getBatch());
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		
 		//topBar
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,60).setColor(Color.valueOf("3d3d3d")).setPosition(240,486).appendTo(stage);
@@ -86,11 +86,9 @@ public class ItemView extends IMenuView{
 				inner.addActor(new Image(Setting.IMAGE_MENU_ITEM+"i_"+type.name()+".png").position(98+offset, 500).a(0).action(Actions.fadeIn(animate?.1f:0)));
 				$.add(new Label(type.value(),26)).setPosition(143+offset, 500).setColor(1,1,1,0).appendTo(inner).setAlpha(0).addAction(Actions.fadeIn(animate?.1f:0));
 			}else{
-				inner.addActor(new Image(Setting.UI_BASE_IMG).size(90, 60).color(Color.valueOf("3d3d3d")).position(135+(offset+=pad), 486).onClick(new Runnable(){
-					public void run() {
-						currentFilter = type.name();
-						generate(true);
-					}
+				inner.addActor(new Image(Setting.UI_BASE_IMG).size(90, 60).color(Color.valueOf("3d3d3d")).position(135+(offset+=pad), 486).onClick(()->{
+					currentFilter = type.name();
+					generate(true);
 				}));
 				inner.addActor(new Image(Setting.IMAGE_MENU_ITEM+"i_"+type.name()+".png").position(140+offset+25, 500).disableTouch());
 			}
@@ -98,46 +96,38 @@ public class ItemView extends IMenuView{
 		
 		ilist=((ImageList) $.add(new ImageList(getItems(currentFilter))).setSize(735, 266).setPosition(248, 185).appendTo(inner).getItem());
 		
-		ilist.generate().onChange(new CustomRunnable<Icon>() {
-			public void run(Icon t) {
-				
-				description.clear();
-				
-				if(!t.enable || t.item instanceof Equipment){
-					takeButton.setFg(take.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
-				}else{
-					if(t.current)
-						takeButton.setFg(off.a(1)).onClick(new Runnable(){public void run() {
-							RPG.ctrl.item.takeOff(parent.current, currentFilter);
-							generate(false);
-						}});
-					else
-						takeButton.setFg(take.a(1)).fgSelfColor(true).onClick(new Runnable(){public void run() {
-							useEquip();
-						}});
-				}
-				
-				if(!t.item.throwable || t.current){
-					throwButton.setFg(throwImg.a(.3f)).fgSelfColor(true).onClick(new Runnable(){public void run() {}});
-				}else{
-					throwButton.setFg(throwImg.a(1)).fgSelfColor(true).onClick(new Runnable(){public void run() {
-						removeEquip();
-					}});
-				}
-				
-				Label name;
-				$.add(name = new Label(t.item.name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
-				$.add(new Label(("("+"拥有"+t.item.count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
-				ScrollPane pane = new ScrollPane(new Label(t.item.description,17).warp(true).markup(true));
-				pane.setupOverscroll(20, 200, 200);
-				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbar.png");
-				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbarin.png");
-				pane.setFadeScrollBars(false);
-				pane.layout();
-				$.add(pane).setSize(578, 60).setPosition(410, 68).appendTo(description);
-				$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
-				
+		ilist.generate().onChange(t->{
+			description.clear();
+			
+			if(!t.enable || t.item instanceof Equipment){
+				takeButton.setFg(take.a(.3f)).fgSelfColor(true).onClick(()->{});
+			}else{
+				if(t.current)
+					takeButton.setFg(off.a(1)).onClick(()->{
+						RPG.ctrl.item.takeOff(parent.current, currentFilter);
+						generate(false);	
+					});
+				else
+					takeButton.setFg(take.a(1)).fgSelfColor(true).onClick(this::useEquip);
 			}
+			
+			if(!t.item.throwable || t.current){
+				throwButton.setFg(throwImg.a(.3f)).fgSelfColor(true).onClick(()->{});
+			}else{
+				throwButton.setFg(throwImg.a(1)).fgSelfColor(true).onClick(this::removeEquip);
+			}
+			
+			Label name;
+			$.add(name = new Label(t.item.name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
+			$.add(new Label(("("+"拥有"+t.item.count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
+			ScrollPane pane = new ScrollPane(new Label(t.item.description,17).warp(true).markup(true));
+			pane.setupOverscroll(20, 200, 200);
+			pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbar.png");
+			pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbarin.png");
+			pane.setFadeScrollBars(false);
+			pane.layout();
+			$.add(pane).setSize(578, 60).setPosition(410, 68).appendTo(description);
+			$.add(new Image(t)).setPosition(246,18).setSize(143,143).appendTo(description);
 		});
 		
 		ilist.setScrollPercentY(oldTop!=oldTop?0:oldTop);
@@ -168,11 +158,7 @@ public class ItemView extends IMenuView{
 				put("title","使用物品");
 				put("width",100);
 				put("item",ilist.getCurrent());
-				put("callback",new Runnable() {
-					public void run() {
-						generate(false);
-					}
-				});
+				put("callback",(Runnable)()->generate(false));
 			}});
 	}
 	

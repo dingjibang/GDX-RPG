@@ -39,7 +39,7 @@ public class PostUtil {
 		first = false;
 		stage = new Stage(new ScalingViewport(Scaling.stretch, 1024, 576, new OrthographicCamera()), GameViews.gameview.stage.getBatch());
 
-		others = $.add($.add(new ImageButton(Res.getDrawable(Setting.IMAGE_GLOBAL + "menu.png"), Res.getDrawable(Setting.IMAGE_GLOBAL + "menu_active.png")).pos(GameUtil.screen_width - 65, 15).onClick(new Runnable() {
+		others = $.add($.add(new ImageButton(Res.getDrawable(Setting.IMAGE_GLOBAL + "menu.png"), Res.getDrawable(Setting.IMAGE_GLOBAL + "menu_active.png")).pos(GameUtil.stage_width - 65, 15).onClick(new Runnable() {
 			public void run() {
 				GameViews.gameview.onkeyDown(Keys.ESCAPE);
 			}
@@ -70,7 +70,7 @@ public class PostUtil {
 		}).setVisible(!GameUtil.isDesktop));
 		others.appendTo(stage);
 
-		mask = $.add(Res.get(Setting.UI_BASE_IMG).disableTouch()).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(1, 1, 1, .5f).appendTo(stage).getItem();
+		mask = $.add(Res.get(Setting.UI_BASE_IMG).disableTouch()).setSize(GameUtil.stage_width, GameUtil.stage_height).setColor(1, 1, 1, .5f).appendTo(stage).getItem();
 
 		Logger.info("Post特效创建成功。");
 	}

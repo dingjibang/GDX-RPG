@@ -20,8 +20,8 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.BattleParam;
 import com.rpsg.rpg.object.base.BattleRes;
-import com.rpsg.rpg.object.base.items.BattleContext;
 import com.rpsg.rpg.object.base.items.BattleResult;
+import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
 import com.rpsg.rpg.object.base.items.Spellcard;
@@ -41,6 +41,7 @@ import com.rpsg.rpg.system.ui.TextButton;
 import com.rpsg.rpg.system.ui.Timer;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.TimeUtil;
+import com.rpsg.rpg.view.hover.SelectItemView;
 import com.rpsg.rpg.view.hover.SelectSpellcardView;
 
 public class BattleView extends DefaultIView{
@@ -55,7 +56,7 @@ public class BattleView extends DefaultIView{
 	
 	public BattleView(BattleParam param) {
 		this.param = param;
-		stage = new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
+		stage = new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()));
 	}
 	
 	@Override
@@ -71,7 +72,7 @@ public class BattleView extends DefaultIView{
 		$.add(heroGroup).appendTo(stage).setPosition(0, 0);
 		
 		enemyGroup = new EnemyGroup(param.enemy);
-		$.add(enemyGroup).appendTo(stage).setPosition(GameUtil.screen_width/2 - enemyGroup.getWidth()/2, GameUtil.screen_height/2 - enemyGroup.getHeight()/2 + 50).setAlign(Align.center);
+		$.add(enemyGroup).appendTo(stage).setPosition(GameUtil.stage_width/2 - enemyGroup.getWidth()/2, GameUtil.stage_height/2 - enemyGroup.getHeight()/2 + 50).setAlign(Align.center);
 		$.add(new TextButton("结束战斗！",BattleRes.textButtonStyle)).appendTo(stage).setPosition(100,170).click(RPG.ctrl.battle::stop);
 		
 		$.add(timer = new Timer(heros,enemyGroup.list(),this::onTimerToggle,this::onBattleStop)).appendTo(stage);
@@ -79,7 +80,7 @@ public class BattleView extends DefaultIView{
 		status.add("fuck you");
 		stage.setDebugAll(!!false);
 		
-		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.screen_width,GameUtil.screen_height).color(0,0,0,1)).appendTo(stage).addAction(Actions.sequence(Actions.fadeOut(.3f,Interpolation.pow2In),Actions.removeActor()));
+		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.stage_width,GameUtil.stage_height).color(0,0,0,1)).appendTo(stage).addAction(Actions.sequence(Actions.fadeOut(.3f,Interpolation.pow2In),Actions.removeActor()));
 		
 		status.setZIndex(999999);
 		this.
@@ -102,7 +103,7 @@ public class BattleView extends DefaultIView{
 		
 		if(obj instanceof Hero){
 			Hero hero = (Hero)obj;
-			Image fg = $.add(Res.get(Setting.IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(stage).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(GameUtil.screen_width+500, 0).addAction(Actions.moveBy(-400, 0,1f,Interpolation.pow4Out)).setZIndex(1).getItem(Image.class);
+			Image fg = $.add(Res.get(Setting.IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(stage).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(GameUtil.stage_width+500, 0).addAction(Actions.moveBy(-400, 0,1f,Interpolation.pow4Out)).setZIndex(1).getItem(Image.class);
 			Table menu = $.add(new Table()).appendTo(stage).setPosition(600, 220).getItem(Table.class);
 			
 			Runnable stopCallback = ()->{
@@ -125,8 +126,7 @@ public class BattleView extends DefaultIView{
 			}));
 			
 			menu.add(new TextButton("物品",BattleRes.textButtonStyle).onClick(()->{
-				RPG.ctrl.battle.stop();
-				stopCallback.run();
+				item(hero,stopCallback);
 			}));
 			
 			menu.add(new TextButton("逃跑",BattleRes.textButtonStyle).onClick(()->{
@@ -139,7 +139,7 @@ public class BattleView extends DefaultIView{
 			$.each(menu.getCells(), cell -> cell.size(150,30));
 		}else{
 			Enemy enemy = (Enemy)obj;
-			BattleResult result = enemy.act(new BattleContext(enemy, null, (List<?>) enemyGroup.list().clone(), (List<?>) RPG.ctrl.hero.currentHeros.clone()));
+			BattleResult result = enemy.act(Item.Context.battle(enemy, null, (List<?>) enemyGroup.list().clone(), (List<?>) RPG.ctrl.hero.currentHeros.clone()));
 			animations.play(result,() -> timer.pause(false));
 		}
 	}
@@ -169,6 +169,19 @@ public class BattleView extends DefaultIView{
 			else
 				useSpellcard(sc,hero,null,stopCallback);
 		}));
+	}
+	
+	private void item(Hero hero,Runnable stopCallback){
+		RPG.popup.add(SelectItemView.class,$.omap("hero",hero).add("callback", (CustomRunnable<Item>)item -> {
+			if(item.range == ItemRange.one)
+				getGroup(item.forward).select(target -> useItem(item,hero,target,stopCallback));
+			else
+				useItem(item,hero,null,stopCallback);
+		}));
+	}
+	
+	private void useItem(Item item,Hero hero,Target target,Runnable callback){
+//		item.user
 	}
 	
 	
@@ -201,7 +214,7 @@ public class BattleView extends DefaultIView{
 				text = hname + " 对 " + tname + " 使用符卡『 " + sc.name + "』"; 
 			
 		status.add(text);
-		BattleResult result = sc.use(new BattleContext(hero, target,RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
+		BattleResult result = sc.use(Item.Context.battle(hero, target,RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
 		animations.play(result,callback);
 	}
 	

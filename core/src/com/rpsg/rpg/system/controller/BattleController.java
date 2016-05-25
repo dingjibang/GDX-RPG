@@ -80,8 +80,8 @@ public class BattleController {
 				boolean top = i % 2 == 0;
 				image.action(Actions.forever(Actions.run(()->{
 					if(image.x(image.getX()-2).getX()<-image.getWidth() * 2 + 34)
-						image.setX(GameUtil.screen_width);
-				}))).position(((i-i%2)/2)*image.getWidth(),top ? -155 * 2 : GameUtil.screen_height - image.getHeight() + 155 * 2 )
+						image.setX(GameUtil.stage_width);
+				}))).position(((i-i%2)/2)*image.getWidth(),top ? -155 * 2 : GameUtil.stage_height - image.getHeight() + 155 * 2 )
 				.action(Actions.moveBy(0, top ? 155 : -155, .5f,Interpolation.pow2Out));
 				
 				images.add(image);
@@ -90,7 +90,7 @@ public class BattleController {
 			RPG.ctrl.cg.pushAll(images);
 			
 			MoveController.offsetActor.addAction(Actions.sequence(Actions.delay(.3f),Actions.scaleTo(.75f,.75f,1.5f,Interpolation.pow2In),Actions.scaleTo(1f, 1f)));
-			black.size(GameUtil.screen_width, GameUtil.screen_height).color(0,0,0,0).action(Actions.sequence(Actions.delay(.8f),Actions.fadeIn(1f,Interpolation.pow4In),Actions.run(()->{
+			black.size(GameUtil.stage_width, GameUtil.stage_height).color(0,0,0,0).action(Actions.sequence(Actions.delay(.8f),Actions.fadeIn(1f,Interpolation.pow4In),Actions.run(()->{
 				
 				InputController.loadIOMode();
 				InputController.saveIOMode(IOMode.MapInput.battle);

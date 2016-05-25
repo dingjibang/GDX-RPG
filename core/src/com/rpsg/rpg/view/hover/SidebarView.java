@@ -40,21 +40,21 @@ public abstract class SidebarView extends HoverView{
 		
 		group.addActor(base);
 		
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()));
 		this.param = initParam;
 		
-		stage.addActor(mask = new Image(Setting.UI_BASE_IMG).color(1, 1, 1, 0).action(Actions.alpha(.2f,.2f)).size(GameUtil.screen_width, GameUtil.screen_height).position(0, 0).onClick(()->SidebarView.this.keyDown(Keys.ESCAPE)));
+		stage.addActor(mask = new Image(Setting.UI_BASE_IMG).color(1, 1, 1, 0).action(Actions.alpha(.2f,.2f)).size(GameUtil.stage_width, GameUtil.stage_height).position(0, 0).onClick(()->SidebarView.this.keyDown(Keys.ESCAPE)));
 		stage.addActor(group);
 		group.pack();
 		
-		group.setPosition(GameUtil.screen_width-200, 0);
+		group.setPosition(GameUtil.stage_width-200, 0);
 
 		if(initParam!=null && initParam.get("width")!=null)
 			width = (Integer)initParam.get("width");
 		group.addAction(Actions.moveTo(width, 0,0.4f,Interpolation.pow3));
 		
 		Image bg;
-		base.addActor(bg = Res.get(Setting.IMAGE_MENU_TACTIC + "sup_databox.png").size(784, GameUtil.screen_height).position(240, 0).a(.9f));
+		base.addActor(bg = Res.get(Setting.IMAGE_MENU_TACTIC + "sup_databox.png").size(784, GameUtil.stage_height).position(240, 0).a(.9f));
 		bg.addCaptureListener(new InputListener(){
 			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 				if(x<150)
@@ -91,7 +91,7 @@ public abstract class SidebarView extends HoverView{
 	
 	public void close(final Runnable callback){
 		group.clearActions();
-		group.addAction(Actions.sequence(Actions.moveTo(GameUtil.screen_width,0,0.2f,Interpolation.pow3),Actions.after(new Action() {
+		group.addAction(Actions.sequence(Actions.moveTo(GameUtil.stage_width,0,0.2f,Interpolation.pow3),Actions.after(new Action() {
 			public boolean act(float delta) {
 				disposed=true;
 				if(callback != null) callback.run();

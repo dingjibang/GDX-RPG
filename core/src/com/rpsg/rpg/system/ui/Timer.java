@@ -36,7 +36,7 @@ public class Timer extends Group {
 		//复制速度值
 		$.each(objectList, (obj) -> list.add(new TimerClass(obj.getSimpleName(),obj, obj.getSpeed(),obj.getObjectColor())));
 		
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width,28).setColor(.3f,.3f,.3f,.8f).appendTo(this);
+		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.stage_width,28).setColor(.3f,.3f,.3f,.8f).appendTo(this);
 		
 		avg();
 	}
@@ -129,7 +129,7 @@ public class Timer extends Group {
 		
 		@Override
 		public void act(float delta) {
-			setX(((float)current / (float)total) * GameUtil.screen_width);
+			setX(((float)current / (float)total) * GameUtil.stage_width);
 			super.act(delta);
 		}
 	}

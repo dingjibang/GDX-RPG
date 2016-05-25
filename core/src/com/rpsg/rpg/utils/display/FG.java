@@ -27,7 +27,7 @@ public class FG {
 	public Stage stage;
 	
 	public void init() {
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()),GameViews.gameview.stage.getBatch());
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()),GameViews.gameview.stage.getBatch());
 		currentImageL=currentImageR=null;
 		Logger.info("立绘控制器初始化完成。");
 	}
@@ -49,7 +49,7 @@ public class FG {
 					currentImageR = Res.get(imgPath);
 					currentImageR.setScale(0.35f);
 					currentImageR.setScaleX(-0.35f);
-					currentImageR.setX(GameUtil.screen_width);
+					currentImageR.setX(GameUtil.stage_width);
 					currentImageR.setOrigin(Align.bottomLeft);
 					if (nul)
 						currentImageR.setColor(1, 1, 1, 0f);

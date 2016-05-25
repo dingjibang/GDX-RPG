@@ -1,6 +1,6 @@
 eval(""+load('global.js'));
 
-var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
+var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.stage_width, GameUtil.stage_height).setColor(Color.BLACK).getItem();
 CG.push(black);
 PostUtil.showMenu=false;
 setRenderAble(true);
@@ -49,7 +49,7 @@ say("这句话，","八云紫");
 say("我想原封不动地还给你才最恰当呢。","八云紫");
 hideMSG();
 
-var cg = $(Res.get(Setting.UI_BASE_IMG)).setColor(1,0,0,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
+var cg = $(Res.get(Setting.UI_BASE_IMG)).setColor(1,0,0,0).setSize(GameUtil.stage_width,GameUtil.stage_height).setPosition(0,0).getItem();
 cg.addAction(Actions.sequence(Actions.color(new Color(1,0,0,1),0.02),Actions.fadeOut(0.15),Actions.run(function(){
 	CG.dispose(cg);
 })));
@@ -66,7 +66,7 @@ playSE("TornadoText3.mp3");
 setSEVolume(0, 0.13);
 pause(30);
 
-var y11=$(Res.get(Setting.IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
+var y11=$(Res.get(Setting.IMAGE_CG+"y11cg.jpg")).setColor(1,1,1,0).setSize(GameUtil.stage_width,GameUtil.stage_height).setPosition(0,0).getItem();
 y11.addAction(Actions.sequence(Actions.color(new Color(1,1,1,1),0.5,Interpolation.pow4In)));
 CG.push(y11);
 
@@ -106,7 +106,7 @@ y11.addAction(Actions.repeat(RepeatAction.FOREVER,Actions.addAction(new Action()
 	}
 })));
 y11.addAction(Actions.scaleTo(2,2,8,Interpolation.pow4In));
-var mask=$(Res.get(Setting.UI_BASE_IMG)).setColor(1,0,0,0).setSize(GameUtil.screen_width,GameUtil.screen_height).setPosition(0,0).getItem();
+var mask=$(Res.get(Setting.UI_BASE_IMG)).setColor(1,0,0,0).setSize(GameUtil.stage_width,GameUtil.stage_height).setPosition(0,0).getItem();
 mask.addAction(Actions.color(new Color(1,0,0,1),6,Interpolation.pow5In));
 CG.push(mask);
 setSEVolume(4.1, 1);

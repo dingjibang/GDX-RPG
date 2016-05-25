@@ -20,7 +20,7 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	renko.turn(RPGObject.FACE_U).walk(1).testWalk();
 	mari.turn(RPGObject.FACE_U).walk(1).testWalk();
 
-	var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
+	var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.stage_width, GameUtil.stage_height).setColor(Color.BLACK).getItem();
 	CG.push(black);
 	black.addAction(Actions.sequence(Actions.fadeOut(.5), Actions.run(function() {
 		CG.dispose(black);
@@ -183,7 +183,7 @@ if (RPG.getFlag("1-1-shrine") != null) {
 	var lightID = RPG.maps.loader.addLight(99,552,1794,0);
 	var light = RPG.maps.loader.getLight(lightID);
 	
-	var white = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(1,1,1,0).getItem();
+	var white = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.stage_width, GameUtil.stage_height).setColor(1,1,1,0).getItem();
 	
 	var proxy = $(Res.get(Setting.UI_BASE_IMG)).setColor(1,1,1,0).setSize(50,50).getItem();
 	

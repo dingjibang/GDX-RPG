@@ -23,11 +23,11 @@ public class Distant {
 			float width=(layer.getWidth()*layer.getTileWidth());
 			float height=(layer.getHeight()*layer.getTileHeight());
 			distant=Res.get(Setting.IMAGE_BACKGROUND+disName);
-			distant.setWidth(w=(width+GameUtil.screen_width));
-			distant.setHeight(h=height+GameUtil.screen_height);
+			distant.setWidth(w=(width+GameUtil.stage_width));
+			distant.setHeight(h=height+GameUtil.stage_height);
 			distant.setScale(bgScale);
-			distant.setX(-(GameUtil.screen_width/2));
-			distant.setY(-(GameUtil.screen_height/2));
+			distant.setX(-(GameUtil.stage_width/2));
+			distant.setY(-(GameUtil.stage_height/2));
 			sw=bgScale*w-w;
 			sh=bgScale*h-h;
 		}
@@ -42,8 +42,8 @@ public class Distant {
 			float height=(layer.getHeight()*layer.getTileHeight());
 			float x=camera.view.getTranslation(new Vector3()).x;
 			float y=camera.view.getTranslation(new Vector3()).y;
-			distant.setX(-(GameUtil.screen_width/2)+(x/width)*sw);
-			distant.setY(-(GameUtil.screen_height/2)+(y/height)*sh);
+			distant.setX(-(GameUtil.stage_width/2)+(x/width)*sw);
+			distant.setY(-(GameUtil.stage_height/2)+(y/height)*sh);
 			distant.draw(batch);
 			batch.flush();
 			batch.end();

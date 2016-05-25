@@ -27,8 +27,8 @@ public class GameUtil {
 	//注意，screen_width、screen_height和getScreenWidth、getScreenHeight完全不同，
 	//前者是常量（1024,576），他负责UI组件的拉抻完整，请勿修改！
 	//后者是变量，表明了游戏当前openGL窗口的物理尺寸
-	public static final int screen_width = 1024;
-	public static final int screen_height = 576;
+	public static final int stage_width = 1024;
+	public static final int stage_height = 576;
 	public static boolean isDesktop=false;
 	public static int fps=0;
 	private static BitmapFont font;
@@ -52,9 +52,9 @@ public class GameUtil {
 			fps=Gdx.graphics.getFramesPerSecond();
 			
 			font.setColor(Color.BLACK);
-			font.draw(batch,"FPS:"+fps,13,(int) (screen_height-13));
+			font.draw(batch,"FPS:"+fps,13,(int) (stage_height-13));
 			font.setColor(Color.WHITE);
-			font.draw(batch,"FPS:"+fps,12,(int) (screen_height-12));
+			font.draw(batch,"FPS:"+fps,12,(int) (stage_height-12));
 		}
 	}
 	
@@ -79,15 +79,15 @@ public class GameUtil {
 	}
 
 	public static float getScale(){
-		return (float)Gdx.graphics.getWidth()/(float)GameUtil.screen_width;
+		return (float)Gdx.graphics.getWidth()/(float)GameUtil.stage_width;
 	}
 	
 	public static float getScaleW(){
-		return (float)Gdx.graphics.getWidth()/(float)GameUtil.screen_width;
+		return (float)Gdx.graphics.getWidth()/(float)GameUtil.stage_width;
 	}
 	
 	public static float getScaleH(){
-		return (float)Gdx.graphics.getHeight()/(float)GameUtil.screen_height;
+		return (float)Gdx.graphics.getHeight()/(float)GameUtil.stage_height;
 	}
 	
 	public static NinePatch processNinePatchFile(String fname) {

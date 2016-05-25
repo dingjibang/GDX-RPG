@@ -4,7 +4,7 @@ if(RPG.getFlag("11inner")!=null){
 	Hero.setVisible(true);
 	
 	Hero.turn(RPGObject.FACE_U);
-	var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
+	var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.stage_width, GameUtil.stage_height).setColor(Color.BLACK).getItem();
 	black.addAction(Actions.sequence(Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(black);})));	
 	CG.push(black);
 	
@@ -23,14 +23,14 @@ if(RPG.getFlag("11inner")!=null){
 	var tip1=$(Res.get(Setting.IMAGE_GLOBAL+(GameUtil.isDesktop?"tip_pc1.png":"tip_mobile1.png")));
 	var tip2=$(Res.get(Setting.IMAGE_GLOBAL+(GameUtil.isDesktop?"tip_pc2.png":"tip_mobile2.png")));
 
-	tip1 = tip1.setColor(new Color(1,1,1,0)).setPosition((GameUtil.screen_width/2-793/2),(GameUtil.screen_height/2-500/2)).getItem().oranCenter();
+	tip1 = tip1.setColor(new Color(1,1,1,0)).setPosition((GameUtil.stage_width/2-793/2),(GameUtil.stage_height/2-500/2)).getItem().oranCenter();
 	tip1.addAction(Actions.color(new Color(1,1,1,1),0.3));
 	CG.push(tip1);
 	say("   ");
 	tip1.addAction(Actions.sequence(Actions.fadeOut(0.3),Actions.run(function(){CG.dispose(tip1);})));
 	pause(30);
 
-	tip2 = tip2.setColor(new Color(1,1,1,0)).setPosition((GameUtil.screen_width/2-793/2), (GameUtil.screen_height/2-500/2)).getItem().oranCenter();
+	tip2 = tip2.setColor(new Color(1,1,1,0)).setPosition((GameUtil.stage_width/2-793/2), (GameUtil.stage_height/2-500/2)).getItem().oranCenter();
 	tip2.addAction(Actions.color(new Color(1,1,1,1),0.3));
 	CG.push(tip2);
 	say("   ");

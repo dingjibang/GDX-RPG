@@ -41,9 +41,9 @@ public class SelectUtil implements InputProcessor {
 		style.over=hover.getDrawable();
 		style.down=click.getDrawable();
 		style.imageUp=but.getDrawable();
-		mask.setWidth(GameUtil.screen_width);
+		mask.setWidth(GameUtil.stage_width);
 		mask.setPosition(0, 0);
-		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.screen_width, GameUtil.screen_height, new OrthographicCamera()));
+		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()));
 	}
 	
 	public static String currentSelect="";
@@ -113,7 +113,7 @@ public class SelectUtil implements InputProcessor {
 						}
 					});
 					button.setColor(1,1,1,0);
-					button.setPosition(GameUtil.screen_width/2-button.getWidth()/2, (yoff+=70)-30);
+					button.setPosition(GameUtil.stage_width/2-button.getWidth()/2, (yoff+=70)-30);
 					button.addAction(Actions.parallel(Actions.fadeIn(0.1f),Actions.moveBy(0, +30,0.1f)));
 					stage.addActor(button);
 					

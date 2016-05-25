@@ -1,7 +1,7 @@
 eval(""+load('global.js'));
 PostUtil.showMenu=false;
 
-var black = $(Res.getSync(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).getItem();
+var black = $(Res.getSync(Setting.UI_BASE_IMG)).setSize(GameUtil.stage_width, GameUtil.stage_height).setColor(Color.BLACK).getItem();
 black.loaded = function(){
 	black.addAction(Actions.sequence(Actions.run(function(){setRenderAble(true)}),Actions.fadeOut(0.5),Actions.run(function(){CG.dispose(black)})));	
 };
@@ -80,7 +80,7 @@ if(RPG.getFlag("1-1-shrine-gen") == null){
 	say("有栖同学也是这么想的？那就在附近探索一下吧，沿途做好记号，顺便找找食物和水源","莲子");
 	hideMSG();
 	
-	var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.screen_width, GameUtil.screen_height).setColor(Color.BLACK).setAlpha(0).getItem();
+	var black = $(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.stage_width, GameUtil.stage_height).setColor(Color.BLACK).setAlpha(0).getItem();
 	CG.push(black);
 	black.addAction(Actions.fadeIn(.5));
 	pause(60);
