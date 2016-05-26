@@ -64,10 +64,7 @@ public class UseItemView extends SidebarView {
 		$.add(button.onClick(()->{
 			if(box.get()!=null || (item instanceof Item && ((Item)item).range == ItemRange.all) || (item instanceof Spellcard && ((Spellcard)item).range == ItemRange.all)){
 				current = box.get();
-				item.user = current;
-				if(sc)
-					((Spellcard)item).user2 = (Hero)param.get("user2");
-				boolean success = RPG.ctrl.item.use(item);
+				boolean success = item.use(BaseItem.Context.map((Hero)param.get("user2"), current, null, null)).success;
 				int _count = item.count;
 				if(!sc)
 					count.setText("持有 "+_count+" 个");

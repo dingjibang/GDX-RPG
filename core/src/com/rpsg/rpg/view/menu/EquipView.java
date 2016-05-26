@@ -24,6 +24,7 @@ import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.gdxQuery.GdxQueryRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.items.BaseItem.Context;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.CheckBox;
@@ -222,7 +223,7 @@ public class EquipView extends IMenuView{
 	
 	private void useEquip(){
 		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().item!=null)
-			if(!RPG.ctrl.item.use(ilist.getCurrent().item.setUser(parent.current)))
+			if(!ilist.getCurrent().item.use(Context.map(parent.current, null, null, null)).success)
 				RPG.putMessage("装备失败。", Color.RED);
 		generate();
 	}

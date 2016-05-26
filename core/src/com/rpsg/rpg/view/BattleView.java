@@ -20,7 +20,7 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.BattleParam;
 import com.rpsg.rpg.object.base.BattleRes;
-import com.rpsg.rpg.object.base.items.BattleResult;
+import com.rpsg.rpg.object.base.items.Result;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
@@ -139,7 +139,7 @@ public class BattleView extends DefaultIView{
 			$.each(menu.getCells(), cell -> cell.size(150,30));
 		}else{
 			Enemy enemy = (Enemy)obj;
-			BattleResult result = enemy.act(Item.Context.battle(enemy, null, (List<?>) enemyGroup.list().clone(), (List<?>) RPG.ctrl.hero.currentHeros.clone()));
+			Result result = enemy.act(Item.Context.battle(enemy, null, (List<?>) enemyGroup.list().clone(), (List<?>) RPG.ctrl.hero.currentHeros.clone()));
 			animations.play(result,() -> timer.pause(false));
 		}
 	}
@@ -214,7 +214,7 @@ public class BattleView extends DefaultIView{
 				text = hname + " 对 " + tname + " 使用符卡『 " + sc.name + "』"; 
 			
 		status.add(text);
-		BattleResult result = sc.use(Item.Context.battle(hero, target,RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
+		Result result = sc.use(Item.Context.battle(hero, target,RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
 		animations.play(result,callback);
 	}
 	

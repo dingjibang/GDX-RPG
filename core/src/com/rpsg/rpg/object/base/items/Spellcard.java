@@ -1,6 +1,5 @@
 package com.rpsg.rpg.object.base.items;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.math.MathUtils;
@@ -14,7 +13,6 @@ import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
-import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.Target;
 import com.rpsg.rpg.view.GameViews;
 
@@ -29,7 +27,6 @@ public class Spellcard extends BaseItem {
 	public ItemOccasion occasion = ItemOccasion.all;
 	public ItemDeadable deadable = ItemDeadable.no;
 	public int success;
-	public Hero user2;
 	public int animation;
 	public String description2;
 	
@@ -56,47 +53,28 @@ public class Spellcard extends BaseItem {
 	}
 	
 	//使用一个符卡=w=
-	public BattleResult use(Item.Context ctx){
+	public Result use(Context ctx){
 		//判断使用场景是否正确
 		boolean battle = RPG.ctrl.battle.isBattle();
-		if(battle && occasion == ItemOccasion.map) 
-			return BattleResult.faild();
-		if(!battle && occasion == ItemOccasion.battle)
-			return BattleResult.faild();
+		
+		if(!(battle && occasion != ItemOccasion.map && ctx.type == Context.Type.battle) && !(!battle && occasion != ItemOccasion.battle && ctx.type == Context.Type.map))
+			return Result.faild();
+		
 		//设置使用角色 self ==(spellcard)==> target
 		Target self = ctx.self;
-		List<Target> targetList = new ArrayList<>();
+		List<Target> targetList = Target.getTargetList(this, ctx);
 		
-		//如果符卡针对我方敌方所有人
-		if(forward == ItemForward.all && range == ItemRange.all){
-			targetList.addAll(ctx.friend);
-			targetList.addAll(ctx.enemies);
-			targetList.add(ctx.enemy);
-		}
-		//如果符卡针对我方所有人
-		if(forward == ItemForward.friend && range == ItemRange.all)
-			targetList.addAll(ctx.friend);
-		//如果符卡针对敌方所有人
-		if(forward == ItemForward.enemy && range == ItemRange.all)
-			targetList.addAll(ctx.enemies);
-		//如果指向自己
-		if(forward == ItemForward.self)
-			targetList.add(self);
-		//如果符卡针对我方敌方单人
-		if(forward == ItemForward.enemy && range == ItemRange.one)
-			targetList.add(ctx.enemy);
-		if(forward == ItemForward.friend && range == ItemRange.one)
-			targetList.add(ctx.enemy);
+		
 		
 		//判断使用条件是否正确
 		for(Target t : targetList)
 			if((!t.isDead() && deadable == ItemDeadable.yes) || (t.isDead() && deadable == ItemDeadable.no))
-				return BattleResult.faild();
+				return Result.faild();
 		
 		//TODO self
 		//判断mp是否足够
 		if(self.getProp("mp") < cost)
-			return BattleResult.faild();
+			return Result.faild();
 		
 		//添加buff（如果有的话）
 		for(EffectBuff ebuff : effect.buff){
@@ -110,7 +88,7 @@ public class Spellcard extends BaseItem {
 			for (String key : effect.prop.keySet()) {
 				Prop prop = effect.prop.get(key);
 				
-				int damage = damage(self, t, key);
+				int damage = damage(effect, self, t, key);
 				boolean miss = false;
 				
 				if(damage < 0){
@@ -156,18 +134,18 @@ public class Spellcard extends BaseItem {
 				}
 				
 				//更新上下文
-				self.lastAttackTarget = t;
+				if(self != null) self.lastAttackTarget = t;
 				
 				//更新死亡状态
-				self.refresh();
+				if(self != null) self.refresh();
 				t.refresh();
 			}
 		};
 
-		return BattleResult.success(this.animation,targetList);
+		return Result.success(this.animation,targetList);
 	}
 	
-	public int damage(Target self,Target target,String propName){
+	public static int damage(Effect effect,Target self,Target target,String propName){
 		Prop prop = effect.prop.get(propName); 
 		if(prop == null)
 			return 0;

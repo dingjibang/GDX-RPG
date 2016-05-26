@@ -253,92 +253,16 @@ public class ItemController {
 			reader = new JsonReader();
 	}
 	
-	/**
-	 * 使用一个道具
-	 * @param id 要使用道具的ID
-	 * @return 是否成功
-	 */
-	public boolean use(int id){
-		return use(search(id));
-	}
-	
-	/**
-	 * 使用一个道具
-	 * @param baseItem 要使用的道具
-	 * @return 是否成功
-	 */
-	public boolean use(BaseItem baseItem){
-		if(baseItem==null)
-			return false;
-		
-		
-		if(baseItem instanceof Equipment){
-			if(baseItem.user==null)
-				return false;
-			Equipment equip=(Equipment)baseItem;
-			
-			takeOff(equip);
-			if(baseItem.user instanceof Hero){
-				Hero hero = (Hero)baseItem.user;
-				hero.equips.put(equip.equipType, equip);
-				replace(hero, equip, true);//计算穿上装备后的Hero属性数值变化
-				remove(equip);
-			}
-			
-		}else if(baseItem instanceof Item){
-			Item item = (Item)baseItem;
-			if(((item.range != ItemRange.all) && item.user==null) || item.disable || item.effect==null)
-				return false;
-			
-			if(baseItem.user == null || baseItem.user instanceof Hero){
-				List<Hero> heros = new ArrayList<>();
-				if(item.range == ItemRange.all)
-					heros = RPG.ctrl.hero.currentHeros;
-				else
-					heros.add((Hero)baseItem.user);
-				
-				for(Hero hero:heros)
-					hero.target.addProps(item.effect.asStringMap());
-				
-				if(item.removeable)
-					remove(item);
-			}
-			
-		}else if(baseItem instanceof Spellcard){//非战斗模式下的使用
-			Spellcard sc = (Spellcard)baseItem;
-			if(((sc.range != ItemRange.all) && sc.user==null) || sc.user2==null || sc.disable || sc.effect==null)
-				return false;
-			
-			Hero from = sc.user2;
-			if(from.target.getProp("mp") < sc.cost)
-				return false;
-			if(sc.user instanceof Hero || sc.user==null){
-				List<Hero> heros = new ArrayList<>();
-				if(sc.range == ItemRange.all)
-					heros = RPG.ctrl.hero.currentHeros;
-				else
-					heros.add((Hero)baseItem.user);
-				
-				for(Hero hero:heros)
-					hero.target.addProps(sc.effect.asStringMap());
-				
-				from.target.addProp("mp", -sc.cost+"");
-			}
-		}
-		
-		baseItem.use();
-		return true;
-	}
 	
 	/**
 	 * 从某个角色上脱下某件装备
 	 * @param typeOfBaseItem 新装备对比（不是要脱下的装备）（看不懂的话就别用这个方法……用下面那个方法）
 	 * @return 是否成功脱下
 	 */
-	public boolean takeOff(BaseItem typeOfBaseItem){
+	public boolean takeOff(BaseItem typeOfBaseItem,Hero hero){
 		if(!(typeOfBaseItem instanceof Equipment))
 			return false;
-		return takeOff((Hero)typeOfBaseItem.user,((Equipment)typeOfBaseItem).equipType);
+		return takeOff(hero,((Equipment)typeOfBaseItem).equipType);
 	}
 	
 	/**

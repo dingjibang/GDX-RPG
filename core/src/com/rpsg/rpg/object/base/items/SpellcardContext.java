@@ -40,6 +40,7 @@ public class SpellcardContext extends BaseContext{
 	
 	public static SpellcardContext build(Target target){
 		SpellcardContext ctx = new SpellcardContext();
+		if(target == null) return ctx; 
 		
 		try {
 			for(Field f : ctx.getClass().getFields()){

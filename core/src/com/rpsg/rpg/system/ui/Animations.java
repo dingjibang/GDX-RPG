@@ -4,7 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Array;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.CustomRunnable;
-import com.rpsg.rpg.object.base.items.BattleResult;
+import com.rpsg.rpg.object.base.items.Result;
 import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.Target;
@@ -17,7 +17,7 @@ public class Animations extends Group{
 		this.battleView = battleView;
 	}
 	
-	public Animations play(BattleResult result,Runnable callback){
+	public Animations play(Result result,Runnable callback){
 		if(result.animateId <= 0) {
 			callback.run();
 			return this;

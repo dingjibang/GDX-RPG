@@ -1,11 +1,12 @@
 package com.rpsg.rpg.object.base.items;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.rpg.Hero;
+import com.rpsg.rpg.object.rpg.Target;
 
 /**
  * <i>GDX-RPG</i> 道具（ITEM）超类
@@ -53,9 +54,6 @@ public abstract class BaseItem implements Serializable {
 	/**卖出金钱**/
 	public int sell = 0;
 
-	/**注入到js的变量*/
-	public Object user;
-	
 	/**道具是否可叠加的*/
 	public boolean packable = true; 
 	
@@ -73,19 +71,14 @@ public abstract class BaseItem implements Serializable {
 		return Setting.IMAGE_ICONS+"i0.png";
 	}
 	
-	public BaseItem setUser(Hero user){
-		this.user=user;
-		return this;
-	}
-	
 	/**
 	 * 使用这个道具<br>
 	 * 原理：执行变量script里寄存的js语句。<br>
 	 * 注意：使用use()方法前，可能需要进行变量 <i>注入</i> （比如使用这个道具的人(user))
 	 * @return
 	 */
-	public boolean use(){
-		return false;
+	public Result use(Context ctx){
+		return Result.faild();
 	}
 	
 	public String toString() {
@@ -94,6 +87,47 @@ public abstract class BaseItem implements Serializable {
 	
 	public void remove(){
 		RPG.ctrl.item.remove(this);
+	}
+	
+	public static class Context {
+		public static enum Type{battle,map} 
+		
+		public Type type;
+		public Target self;
+		public Target enemy;
+		public List<Target> friend;
+		public List<Target> enemies;
+
+		public Context(Object self, Object enemy, List<?> friend, List<?> enemies) {
+			super();
+			this.self = Target.parse(self);
+			this.enemy = Target.parse(enemy);
+			this.friend = Target.parse(friend);
+			this.enemies = Target.parse(enemies);
+			
+			//去重复
+			if(this.enemies.contains(this.enemy)) this.enemies.remove(this.enemy);
+			if(this.friend.contains(this.self)) this.friend.remove(this.self);
+		}
+
+		public Context target(Target enemy2) {
+			this.enemy = enemy2;
+			return this;
+		}
+		
+		Context setType(Type $type){
+			type = $type;
+			return this;
+		}
+		
+		public static Context battle(Object self, Object enemy, List<?> friend, List<?> enemies){
+			return new Context(self,enemy,friend,enemies).setType(Type.battle);
+		}
+		
+		public static Context map(Object self, Object enemy, List<?> friend, List<?> enemies){
+			return new Context(self,enemy,friend,enemies).setType(Type.map);
+		}
+		
 	}
 	
 }

@@ -11,8 +11,14 @@ import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.object.base.Resistance;
 import com.rpsg.rpg.object.base.Resistance.ResistanceType;
+import com.rpsg.rpg.object.base.items.BaseItem;
+import com.rpsg.rpg.object.base.items.BaseItem.Context;
 import com.rpsg.rpg.object.base.items.Buff;
+import com.rpsg.rpg.object.base.items.Item;
+import com.rpsg.rpg.object.base.items.Item.ItemForward;
+import com.rpsg.rpg.object.base.items.Item.ItemRange;
 import com.rpsg.rpg.object.base.items.Prop;
+import com.rpsg.rpg.object.base.items.Spellcard;
 
 /**
  * GDX-RPG Hero/Enemy 数据模块
@@ -161,7 +167,15 @@ public class Target implements Serializable{
 	
 	public static List<Target> parse(List<?> list){
 		List<Target> result = new ArrayList<>();
-		$.each(list, e -> result.add(parse(e)));
+		
+		if(list == null || list.isEmpty())
+			return result;
+		
+		$.each(list, e -> {
+			Target t = parse(e);
+			if(t != null)
+				result.add(t);
+		});
 		return result;
 	}
 	
@@ -315,6 +329,38 @@ public class Target implements Serializable{
 		if(obj instanceof Enemy) return ((Enemy) obj).name;
 		if(obj instanceof Target) return $.notNull(name(((Target) obj).parentEnemy),name(((Target) obj).parentHero)); 
 		return null;
+	}
+	
+	public static List<Target> getTargetList(BaseItem item,Context ctx){
+		List<Target> targetList = new ArrayList<>();
+		
+		if(!(item instanceof Spellcard || item instanceof Item)) return targetList;
+		
+		ItemForward forward = item instanceof Spellcard ? ((Spellcard)item).forward : ((Item)item).forward;
+		ItemRange range = item instanceof Spellcard ? ((Spellcard)item).range : ((Item)item).range;
+		
+		//如果item针对我方敌方所有人
+		if(forward == ItemForward.all && range == ItemRange.all){
+			targetList.addAll(ctx.friend);
+			targetList.addAll(ctx.enemies);
+			targetList.add(ctx.enemy);
+		}
+		//如果item针对我方所有人
+		if(forward == ItemForward.friend && range == ItemRange.all)
+			targetList.addAll(ctx.friend);
+		//如果item针对敌方所有人
+		if(forward == ItemForward.enemy && range == ItemRange.all)
+			targetList.addAll(ctx.enemies);
+		//如果指向自己
+		if(forward == ItemForward.self)
+			targetList.add(ctx.self);
+		//如果item针对我方敌方单人
+		if(forward == ItemForward.enemy && range == ItemRange.one)
+			targetList.add(ctx.enemy);
+		if(forward == ItemForward.friend && range == ItemRange.one)
+			targetList.add(ctx.enemy);
+		
+		return targetList;
 	}
 
 	

@@ -2,7 +2,13 @@ package com.rpsg.rpg.object.base.items;
 
 import java.util.List;
 
+import com.rpsg.gdxQuery.$;
+import com.rpsg.rpg.core.RPG;
+import com.rpsg.rpg.object.base.Resistance.ResistanceType;
+import com.rpsg.rpg.object.base.items.Effect.EffectBuff;
+import com.rpsg.rpg.object.base.items.Effect.EffectBuffType;
 import com.rpsg.rpg.object.rpg.Target;
+import com.rpsg.rpg.view.GameViews;
 
 public class Item extends BaseItem{
 
@@ -71,47 +77,91 @@ public class Item extends BaseItem{
 		all//可以给所有人使用。
 	}
 	
-	
-	public static class Context {
-		public static enum Type{battle,map} 
+	/**
+	 * 使用一个物品
+	 */
+	@Override
+	public Result use(Context ctx) {
+		//判断使用场景是否正确
+		if((ctx.type == Context.Type.map || occasion == ItemOccasion.map) && RPG.ctrl.battle.isBattle())
+			return Result.faild();
+		if((ctx.type == Context.Type.battle || occasion == ItemOccasion.battle) && !RPG.ctrl.battle.isBattle())
+			return Result.faild();
 		
-		public Type type;
-		public Target self;
-		public Target enemy;
-		public List<Target> friend;
-		public List<Target> enemies;
+		//设置使用角色 self ==(item)==> target
+		Target self = ctx.self;
+		List<Target> targetList = Target.getTargetList(this, ctx);
+		
+		//判断使用条件是否正确
+		for(Target t : targetList)
+			if((!t.isDead() && deadable == ItemDeadable.yes) || (t.isDead() && deadable == ItemDeadable.no))
+				return Result.faild();
+		
+		//添加buff（如果有的话）
+		for(EffectBuff ebuff : effect.buff){
+			if(ebuff.type == EffectBuffType.add)
+				$.each(targetList, t -> t.addBuff(ebuff.buff));
+			if(ebuff.type == EffectBuffType.remove)
+				$.each(targetList, t -> t.removeBuff(ebuff.buff));
+		}
+		
+		//计算数值变化
+		for(Target t : targetList){
+			for (String key : effect.prop.keySet()) {
+				Prop prop = effect.prop.get(key);
+				
+				int damage = Spellcard.damage(effect, self, t, key);
+				boolean miss = false;
+				
+				if(damage < 0){
+//					//计算伤害浮动
+//					damage = prop.rate(damage);
+					
+					String rtype = prop.type;
+					if(rtype != null){
+						ResistanceType trtype = t.resistance.get(rtype).type;
+						if(trtype == ResistanceType.reflect){	//如果抗性为反射，则把伤害给自己
+							self.addProp(key, (-damage) + "");
+						}
+					}
+					
+					//处理溢出
+					damage = damage < 0 ? damage : 0;
+				}
+				
+				
+				if(!miss){
+					//处理伤害
+					t.addProp(key, damage + "");
+					
+					//扣除消耗
+					if(this.count > 1)
+						this.count --;
+					else
+						RPG.ctrl.item.remove(this);
+					
+					
+					if(RPG.ctrl.battle.isBattle())
+						if(damage < 0)
+							GameViews.gameview.battleView.status.append("...造成了 " + Math.abs(damage) + " 点伤害");
+						else
+							GameViews.gameview.battleView.status.append("...回复了" + damage + " 点" + BaseContext.getPropName(key));
+				}else{
+					if(RPG.ctrl.battle.isBattle())
+						GameViews.gameview.battleView.status.append("...但是没有命中");
+				}
+				
+				//更新上下文
+				if(self != null)
+					self.lastAttackTarget = t;
+				
+				//更新死亡状态
+				if(self != null)
+					self.refresh();
+				t.refresh();
+			}
+		};
 
-		public Context(Object self, Object enemy, List<?> friend, List<?> enemies) {
-			super();
-			this.self = Target.parse(self);
-			this.enemy = Target.parse(enemy);
-			this.friend = Target.parse(friend);
-			this.enemies = Target.parse(enemies);
-			
-			//去重复
-			if(enemies.contains(enemy)) enemies.remove(enemy);
-			if(friend.contains(self)) friend.remove(self);
-		}
-
-		public Context target(Target enemy2) {
-			this.enemy = enemy2;
-			return this;
-		}
-		
-		Context setType(Type $type){
-			type = $type;
-			return this;
-		}
-		
-		public static Context battle(Object self, Object enemy, List<?> friend, List<?> enemies){
-			return new Context(self,enemy,friend,enemies).setType(Type.battle);
-		}
-		
-		public static Context map(Object self, Object enemy, List<?> friend, List<?> enemies){
-			return new Context(self,enemy,friend,enemies).setType(Type.map);
-		}
-		
+		return Result.success(this.animation,targetList);
 	}
-
-
 }
