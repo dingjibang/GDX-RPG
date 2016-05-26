@@ -8,6 +8,7 @@ import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.Selectable;
 import com.rpsg.rpg.object.rpg.Target;
@@ -18,6 +19,7 @@ public class HeroStatusGroup extends Group implements Selectable{
 
 	boolean select = false;
 	CustomRunnable<Target> onSelect = null;
+	ItemDeadable deadable = ItemDeadable.all;
 	
 	public HeroStatusGroup(ArrayList<Hero> heros) {
 		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.stage_width,115).color(0,0,0,.5f)).setPosition(0, 28).appendTo(this);
@@ -35,9 +37,10 @@ public class HeroStatusGroup extends Group implements Selectable{
 		return box;
 	}
 
-	public void select(CustomRunnable<Target> onSelect){
+	public void select(CustomRunnable<Target> onSelect,ItemDeadable deadable){
 		select = true;
-		this.onSelect = onSelect; 
+		this.onSelect = onSelect;
+		this.deadable = deadable;
 	}
 	
 	@Override
@@ -48,7 +51,7 @@ public class HeroStatusGroup extends Group implements Selectable{
 			child.each(e -> ((HeroStatusBox) e).select(select ->{
 				child.each(enemyBox -> ((HeroStatusBox) enemyBox).stopSelect());
 				onSelect.run(select.hero.target);
-			}));
+			},deadable));
 		}
 		super.act(delta);
 	}

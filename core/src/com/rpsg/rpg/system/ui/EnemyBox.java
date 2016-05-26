@@ -1,5 +1,6 @@
 package com.rpsg.rpg.system.ui;
 
+import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -61,7 +62,9 @@ public class EnemyBox extends Group {
 		return image.getHeight();
 	}
 	
-	public void select(CustomRunnable<EnemyBox> callback){
+	public void select(CustomRunnable<EnemyBox> callback, ItemDeadable deadable){
+		boolean isDead = enemy.target.isDead();
+		if(deadable == ItemDeadable.all || (isDead && deadable == ItemDeadable.yes) || (!isDead && deadable == ItemDeadable.no))
 		$.add(selectBox).show().click(()->{
 			callback.run(EnemyBox.this);
 		});

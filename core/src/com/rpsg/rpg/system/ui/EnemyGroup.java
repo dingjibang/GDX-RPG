@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.CustomRunnable;
+import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.Selectable;
 import com.rpsg.rpg.object.rpg.Target;
@@ -14,6 +15,7 @@ import com.rpsg.rpg.object.rpg.Target;
 public class EnemyGroup extends Table implements Selectable{
 
 	boolean select = false;
+	ItemDeadable deadable = ItemDeadable.all;
 	CustomRunnable<Target> onSelect = null;
 
 	public EnemyGroup(int param) {
@@ -26,9 +28,10 @@ public class EnemyGroup extends Table implements Selectable{
 		return this;
 	}
 	
-	public void select(CustomRunnable<Target> onSelect){
+	public void select(CustomRunnable<Target> onSelect,ItemDeadable deadable){
 		select = true;
 		this.onSelect = onSelect; 
+		this.deadable = deadable;
 	}
 	
 	public ArrayList<Enemy> list(){
@@ -42,7 +45,7 @@ public class EnemyGroup extends Table implements Selectable{
 			$.add(this).children().each(e -> ((EnemyBox) e).select(select ->{
 				$.add(this).children().each(enemyBox -> ((EnemyBox) enemyBox).stopSelect());
 				onSelect.run(select.enemy.target);
-			}));
+			},deadable));
 		}
 		super.act(delta);
 	}
@@ -75,4 +78,6 @@ public class EnemyGroup extends Table implements Selectable{
 		
 		return box;
 	}
+
+
 }

@@ -35,7 +35,11 @@ public class TimeUtil {
 
 	public static void logic() {
 		Date now = new Date();
-		$.removeIf(list, (task) -> now.getTime() - task.date.getTime() > task.ms, (task) -> task.run.run());
+		try {
+			$.removeIf(list, (task) -> now.getTime() - task.date.getTime() > task.ms, (task) -> task.run.run());
+		} catch (Exception e) {
+//			e.printStackTrace();
+		}
 	}
 
 	public static void add(Runnable run, int ms) {

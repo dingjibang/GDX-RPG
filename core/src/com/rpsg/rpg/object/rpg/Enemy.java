@@ -281,23 +281,43 @@ public class Enemy implements Time {
 	/**
 	 * 根据AI等级和目标评分来计算攻击目标
 	 */
-	private Target getTarget(List<Target> targetList){
+	private Target getTarget(List<Target> sortedTargetList){
 		Target enemy = null;
 		switch(aiLevel){
 		case 0:{//傻逼 - 选择最难对付的对手
-			enemy = targetList.get(targetList.size() - 1);
+			enemy = getTargetByRate(sortedTargetList, 10);
+			break;
 		}
 		case 1:{//正常 - 随机选择一个对手
-			enemy = targetList.get(MathUtils.random(0,targetList.size() - 1));
+			enemy = getTargetByRate(sortedTargetList, 40);
+			break;
 		}
 		case 2:{//聪明 - 50%几率选择一个稍微比较好对付的对手
-			enemy = MathUtils.random(0,100) < 50 ? targetList.get(MathUtils.random(0,targetList.size() / 2)) : targetList.get(MathUtils.random(0,targetList.size() - 1));
+			enemy = getTargetByRate(sortedTargetList, 60);
+			break;
 		}
 		case 3:{//挂比 - 80%几率选择最好对付的对手
-			enemy = MathUtils.random(0,100) < 80 ? targetList.get(0) : targetList.get(MathUtils.random(0,targetList.size() - 1));
+			enemy = getTargetByRate(sortedTargetList, 80);
+			break;
 		}
 		}
 		return enemy;
+	}
+	
+	private Target getTargetByRate(List<Target> sortedTargetList, int rate){
+		Target target = null;
+		for(int i=0; i<sortedTargetList.size(); i++){
+			
+			if(MathUtils.random(0,100) < rate){
+				target = sortedTargetList.get(i); 
+				break;
+			}
+			
+			if(i == sortedTargetList.size() - 1)
+				target = sortedTargetList.get(i);
+		}
+		
+		return target;
 	}
 	
 	private boolean random(int val){
@@ -308,7 +328,7 @@ public class Enemy implements Time {
 	 * 根据AI等级进行计算是否攻击/防御
 	 * @return
 	 */
-	private  int getDefenseRate(){
+	private int getDefenseRate(){
 		switch (aiLevel){
 			case 0:{//傻逼
 				return 0;//永远不会防御

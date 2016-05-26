@@ -15,13 +15,16 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.Callback;
 import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.BattleParam;
 import com.rpsg.rpg.object.base.BattleRes;
 import com.rpsg.rpg.object.base.items.Result;
+import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.base.items.Item;
+import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
 import com.rpsg.rpg.object.base.items.Spellcard;
@@ -130,9 +133,9 @@ public class BattleView extends DefaultIView{
 			}));
 			
 			menu.add(new TextButton("逃跑",BattleRes.textButtonStyle).onClick(()->{
-				escape(hero,()->{
-					menu.remove();
+				escape(hero,flag -> { 
 					stopCallback.run();
+					if(flag) RPG.ctrl.battle.stop();
 				});
 			}));
 			
@@ -144,14 +147,11 @@ public class BattleView extends DefaultIView{
 		}
 	}
 	
-	public void escape(Hero hero,Runnable callback){
+	public void escape(Hero hero,CustomRunnable<Boolean> callback){
 		double random = Math.random();
 		boolean flag = random > .5;
-		status.add(hero.getName()+" 尝试逃跑").append(".",5).append(".",10).append(".",15);
-		TimeUtil.add(()->{
-			status.append(flag ? "成功了" : "但是失败了");
-			callback.run();
-		},700);
+		status.add(hero.getName()+" 尝试逃跑").append(".",5).append(".",10).append(".",15).append(flag ? "成功了" : "但是失败了",40);
+		TimeUtil.add(()->callback.run(flag),1000);
 	}
 	
 	private void define(Hero hero,Runnable callback){
@@ -159,13 +159,13 @@ public class BattleView extends DefaultIView{
 	}
 	
 	private void attack(Hero hero,Runnable callback){
-		enemyGroup.select(target -> useSpellcard(Spellcard.attack(),hero,target,callback));
+		enemyGroup.select(target -> useSpellcard(Spellcard.attack(),hero,target,callback),ItemDeadable.no);
 	}
 
 	private void spellcard(Hero hero, Runnable stopCallback) {
 		RPG.popup.add(SelectSpellcardView.class,$.omap("hero",hero).add("callback", (CustomRunnable<Spellcard>)sc -> {
 			if(sc.range == ItemRange.one)
-				getGroup(sc.forward).select(target -> useSpellcard(sc,hero,target,stopCallback));
+				getGroup(sc.forward).select(target -> useSpellcard(sc,hero,target,stopCallback),sc.deadable);
 			else
 				useSpellcard(sc,hero,null,stopCallback);
 		}));
@@ -174,14 +174,16 @@ public class BattleView extends DefaultIView{
 	private void item(Hero hero,Runnable stopCallback){
 		RPG.popup.add(SelectItemView.class,$.omap("hero",hero).add("callback", (CustomRunnable<Item>)item -> {
 			if(item.range == ItemRange.one)
-				getGroup(item.forward).select(target -> useItem(item,hero,target,stopCallback));
+				getGroup(item.forward).select(target -> useItem(item,hero,target,stopCallback),item.deadable);
 			else
 				useItem(item,hero,null,stopCallback);
 		}));
 	}
 	
 	private void useItem(Item item,Hero hero,Target target,Runnable callback){
-//		item.user
+		status.add(Target.name(target) + " 使用了道具『" + item.name + "』");
+		Result result = item.use(BaseItem.Context.battle(hero, target, RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
+		animations.play(result, callback);
 	}
 	
 	
@@ -233,9 +235,7 @@ public class BattleView extends DefaultIView{
 	public void onkeyDown(int keyCode) {
 		if(keyCode == Keys.R) init();
 		if(keyCode == Keys.S) {
-//			status.add("随便说一句话："+Math.random());
-			System.out.println("asd");
-			heroGroup.select(t->System.out.println(t.parentHero));
+			status.add("随便说一句话："+Math.random());
 		}
 		if(keyCode == Keys.D) status.append(" & "+Math.random());
 		if(keyCode == Keys.F) status.append("[#ffaabb]彩色测试[]");

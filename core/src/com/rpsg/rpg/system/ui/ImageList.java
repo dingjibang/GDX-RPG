@@ -75,7 +75,6 @@ public class ImageList extends Group{
 		int padding = 5;
 		int col = (int) (getWidth()/(70+padding*2));
 		int row = 0;
-//		System.out.println(items);
 		int currentCol = -1;
 		
 		inner.align(Align.topLeft);

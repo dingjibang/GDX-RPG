@@ -14,6 +14,7 @@ import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.Buff;
+import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.LazyBitmapFontConctoller;
@@ -30,7 +31,6 @@ public class HeroStatusBox extends WidgetGroup {
 
 	public HeroStatusBox(Hero hero) {
 		this.hero = hero;
-		System.out.println(getY());
 		
 		addActor(bg = Res.get(Setting.IMAGE_BATTLE+"herobox.png"));
 		addActor(Res.get(Setting.IMAGE_FG+hero.fgname+"/bhead.png"));
@@ -67,7 +67,6 @@ public class HeroStatusBox extends WidgetGroup {
 		
 		if(hero.target.modifiedBuff()){
 			buffTable.clear();
-			System.out.println("modify");
 			List<Buff> list = hero.target.getBuffList();
 			for (int i = 0; i < list.size(); i++) {
 				Buff buff = list.get(i);
@@ -93,7 +92,9 @@ public class HeroStatusBox extends WidgetGroup {
 		super.act(delta);
 	}
 
-	public void select(CustomRunnable<HeroStatusBox> callback) {
+	public void select(CustomRunnable<HeroStatusBox> callback, ItemDeadable deadable) {
+		boolean isDead = hero.target.isDead();
+		if(deadable == ItemDeadable.all || (isDead && deadable == ItemDeadable.yes) || (!isDead && deadable == ItemDeadable.no))
 		$.add(selectBox).show().click(() -> {
 			callback.run(HeroStatusBox.this);
 		});
