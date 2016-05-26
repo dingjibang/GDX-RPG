@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Resistance;
@@ -35,6 +36,8 @@ public class Enemy implements Time {
 	public Color color;
 	private int no = 0;
 	public int rank = 0;
+	public int exp;
+	
 	
 	public Target target = new Target().enemy(this);
 	
@@ -88,6 +91,7 @@ public class Enemy implements Time {
 		enemy.aiLevel = value.has("aiLevel") ? value.getInt("aiLevel") : 1;
 		enemy.id = id;
 		enemy.imgPath = Setting.IMAGE_ENEMY + id + ".png";
+		enemy.exp = value.has("exp") ? value.getInt("exp") : 0;
 		Map<String,Resistance> rmap = new HashMap<>();
 		
 		if(value.has("resistance")) for(JsonValue r : value.get("resistance"))
@@ -106,6 +110,12 @@ public class Enemy implements Time {
 		
 		enemy.actions = actions;
 		return enemy;
+	}
+	
+	public static int getExp(List<Enemy> list){
+		int exp = 0;
+		for(Enemy e : list) exp += e.exp;
+		return exp;
 	}
 	
 	private static JsonValue getJSON(int id){

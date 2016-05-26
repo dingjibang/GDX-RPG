@@ -585,7 +585,25 @@ public class GdxQuery {
 			else if(o instanceof Group || o instanceof WidgetGroup)
 				for(Actor a:getItems())
 					((Group)o).addActor(a);
-			
+			else if (o instanceof GdxQuery)
+				for(Actor a:getItems())
+					((GdxQuery)o).getItem(Group.class).addActor(a);
+		}
+		return this;
+	}
+	
+	public GdxQuery row(){
+		for(Actor a : getItems())
+			if(a instanceof Table)
+				((Table) a).row();
+		return this;
+	}
+	
+	public GdxQuery append(Object... object){
+		for(Object o : object){
+			for(Actor a : getItems())
+				if(a instanceof Table)
+					((Table) a).add((Actor)o);
 		}
 		return this;
 	}
@@ -724,6 +742,20 @@ public class GdxQuery {
 			return null;
 		}
 		return null;
+	}
+	
+	public List<Cell<? extends Actor>> getCells(){
+		List<Cell<? extends Actor>> list = new ArrayList<>();
+		if(getItem() instanceof Table)
+			for(Cell<?> cell : ((Table)getItem()).getCells())
+				list.add(cell);
+		return list;
+	}
+	
+	public GdxQuery eachCells(CustomRunnable<Cell<? extends Actor>> run){
+		for(Cell<? extends Actor> cell : getCells())
+			run.run(cell);
+		return this;
 	}
 
 	public GdxQuery setChecked(boolean b) {

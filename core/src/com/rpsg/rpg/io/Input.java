@@ -23,7 +23,7 @@ public class Input implements InputProcessor {
 	@Override
 	public boolean keyDown(int keycode) {
 		if(keycode == Keys.O){
-			RPG.toast.add("获得道具\ntest", Color.SKY ,22,false,Res.getNP(Setting.IMAGE_ICONS+"i1.png"));
+			RPG.toast.add("获得道具\ntest", Color.SKY ,22,true,Res.getNP(Setting.IMAGE_ICONS+"i1.png"));
 //			RPG.ctrl.animation.removeAll();
 //			Animation a = RPG.ctrl.animation.add(2);
 //			a.setPosition(435,1700);

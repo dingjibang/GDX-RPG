@@ -34,7 +34,7 @@ public class Timer extends Group {
 		objectList.addAll(enemyList);
 		
 		//复制速度值
-		$.each(objectList, (obj) -> list.add(new TimerClass(obj.getSimpleName(),obj, obj.getSpeed(),obj.getObjectColor())));
+		$.each(objectList, obj -> list.add(new TimerClass(obj.getSimpleName(),obj, obj.getSpeed(),obj.getObjectColor())));
 		
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.stage_width,28).setColor(.3f,.3f,.3f,.8f).appendTo(this);
 		
@@ -67,27 +67,27 @@ public class Timer extends Group {
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
 		super.draw(batch, parentAlpha);
-		$.each(list, (obj)->obj.actAndDraw(batch));
+		$.each(list, obj -> obj.actAndDraw(batch));
 	}
 	
 	public void remove(Time object){
-		$.removeIf(list, (obj)->obj.object == object);
+		$.getIf(list, obj -> obj.object == object,obj -> obj.remove = true);
 	}
 	
 	public void setSpeed(Time object,int value){
-		$.getIf(list, (obj) -> obj.object == object, (obj) -> obj.speed = value);
+		$.getIf(list, obj -> obj.object == object, obj -> obj.speed = value);
 	}
 	
 	public void addSpeed(Time object,int value){
-		$.getIf(list, (obj) -> obj.object == object, (obj) -> obj.speed += value);
+		$.getIf(list, obj -> obj.object == object, obj -> obj.speed += value);
 	}
 	
 	public void pause(boolean flag){
-		$.each(list, (obj) -> obj.globalPause = flag);
+		$.each(list, obj -> obj.globalPause = flag);
 	}
 	
 	public void pause(Time object,boolean flag){
-		$.getIf(list, (obj) -> obj.object == object, (obj) -> obj.pause = flag);
+		$.getIf(list, obj -> obj.object == object, obj -> obj.pause = flag);
 	}
 	
 	private void avg(){
@@ -95,7 +95,7 @@ public class Timer extends Group {
 		Collections.sort(list);
 		TimerClass max = list.get(0);
 		float scale = (float)max.speed / 70f;
-		$.each(list, (obj) -> obj.speed /= scale);
+		$.each(list, obj -> obj.speed /= scale);
 	}
 	
 	public class TimerClass extends Image implements Comparable<TimerClass> {
@@ -104,6 +104,7 @@ public class Timer extends Group {
 		public int current = 0;
 		public boolean pause = false,globalPause = false;
 		private Label label;
+		public boolean remove = false;
 		
 		public TimerClass(String name,Time object, int speed, Color color) {
 			this.object = object;

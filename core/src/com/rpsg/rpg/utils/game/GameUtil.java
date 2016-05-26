@@ -24,10 +24,9 @@ import com.rpsg.rpg.system.base.Res;
  *
  */
 public class GameUtil {
-	//注意，screen_width、screen_height和getScreenWidth、getScreenHeight完全不同，
-	//前者是常量（1024,576），他负责UI组件的拉抻完整，请勿修改！
-	//后者是变量，表明了游戏当前openGL窗口的物理尺寸
+	/**UI stage width*/
 	public static final int stage_width = 1024;
+	/**UI stage height*/
 	public static final int stage_height = 576;
 	public static boolean isDesktop=false;
 	public static int fps=0;
@@ -37,10 +36,12 @@ public class GameUtil {
 		font = Res.font.get(18);
 	}
 	
+	/**current screen width*/
 	public static int getScreenWidth(){
 		return Gdx.graphics.getWidth();
 	}
 	
+	/**current screen height*/
 	public static int getScreenHeight(){
 		return Gdx.graphics.getHeight();
 	}

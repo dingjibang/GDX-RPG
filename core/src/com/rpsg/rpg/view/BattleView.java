@@ -15,18 +15,17 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
-import com.rpsg.gdxQuery.Callback;
 import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.BattleParam;
 import com.rpsg.rpg.object.base.BattleRes;
-import com.rpsg.rpg.object.base.items.Result;
 import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
+import com.rpsg.rpg.object.base.items.Result;
 import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -44,6 +43,7 @@ import com.rpsg.rpg.system.ui.TextButton;
 import com.rpsg.rpg.system.ui.Timer;
 import com.rpsg.rpg.utils.game.GameUtil;
 import com.rpsg.rpg.utils.game.TimeUtil;
+import com.rpsg.rpg.view.hover.BattleStopView;
 import com.rpsg.rpg.view.hover.SelectItemView;
 import com.rpsg.rpg.view.hover.SelectSpellcardView;
 
@@ -56,6 +56,7 @@ public class BattleView extends DefaultIView{
 	Animations animations = new Animations(this);
 	Timer timer;
 	Progress p;
+	boolean createBattlStopView = false;
 	
 	public BattleView(BattleParam param) {
 		this.param = param;
@@ -65,6 +66,7 @@ public class BattleView extends DefaultIView{
 	@Override
 	public BattleView init() {
 		stage.clear();
+		createBattlStopView = false;
 		$.add(Res.get(Setting.UI_BASE_IMG).size(1024,576).color(.5f,.5f,.5f,1)).appendTo(stage);//TODO debug;
 		
 		$.add(status = new Status()).setPosition(0, 0).appendTo(stage);
@@ -93,7 +95,9 @@ public class BattleView extends DefaultIView{
 	}
 	
 	 public void onBattleStop(){
-		 System.out.println("stop");
+		 //if(createBattlStopView) return;
+		 createBattlStopView = !createBattlStopView;
+		 RPG.popup.add(BattleStopView.class,$.omap("view", this).add("callback", (Runnable)()->{}));//.add("callback", (Runnable)RPG.ctrl.battle::stop));
 	 }
 	
 	public void onTimerToggle(Object obj){
@@ -106,7 +110,7 @@ public class BattleView extends DefaultIView{
 		
 		if(obj instanceof Hero){
 			Hero hero = (Hero)obj;
-			Image fg = $.add(Res.get(Setting.IMAGE_FG+hero.fgname+"/Normal.png")).appendTo(stage).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(GameUtil.stage_width+500, 0).addAction(Actions.moveBy(-400, 0,1f,Interpolation.pow4Out)).setZIndex(1).getItem(Image.class);
+			Image fg = $.add(hero.defaultFG()).appendTo(stage).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(GameUtil.stage_width+500, 0).addAction(Actions.moveBy(-400, 0,1f,Interpolation.pow4Out)).setZIndex(1).getItem(Image.class);
 			Table menu = $.add(new Table()).appendTo(stage).setPosition(600, 220).getItem(Table.class);
 			
 			Runnable stopCallback = ()->{
@@ -235,7 +239,7 @@ public class BattleView extends DefaultIView{
 	public void onkeyDown(int keyCode) {
 		if(keyCode == Keys.R) init();
 		if(keyCode == Keys.S) {
-			status.add("随便说一句话："+Math.random());
+			onBattleStop();
 		}
 		if(keyCode == Keys.D) status.append(" & "+Math.random());
 		if(keyCode == Keys.F) status.append("[#ffaabb]彩色测试[]");

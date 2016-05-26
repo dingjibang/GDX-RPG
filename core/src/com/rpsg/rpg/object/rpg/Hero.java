@@ -15,6 +15,8 @@ import com.rpsg.rpg.object.base.items.Buff;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Prop;
 import com.rpsg.rpg.object.base.items.Spellcard;
+import com.rpsg.rpg.system.base.Res;
+import com.rpsg.rpg.system.ui.Image;
 
 public class Hero extends RPGObject implements Time{
 
@@ -151,7 +153,7 @@ public class Hero extends RPGObject implements Time{
 		
 		return list;
 	}
-
+	
 	public int getLinkSize(Hero hero) {
 		return generateLinkList(hero).size();
 	}
@@ -171,9 +173,12 @@ public class Hero extends RPGObject implements Time{
 		return name.substring(0, 1);
 	}
 	
-	@Override
 	public Object getThis() {
 		return this;
+	}
+	
+	public Image defaultFG(){
+		return Res.get(Setting.IMAGE_FG + fgname + "/Normal.png");
 	}
 
 }
