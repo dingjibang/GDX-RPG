@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.rpsg.gdxQuery.$;
-import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -21,7 +20,7 @@ import com.rpsg.rpg.utils.game.TimeUtil;
 
 public class BattleStopView extends HoverView{
 	
-	Table outer;
+	Table outer,data;
 	Runnable callback;
 	
 	@Override
@@ -43,12 +42,16 @@ public class BattleStopView extends HoverView{
 					$.add(hero.defaultFG()).appendTo(this).setScale(.3f).setOrigin(Align.bottomLeft).setPosition(-300,-50).setAlpha(0).addAction(Actions.fadeIn(.5f)).addAction(Actions.moveBy(300, 0,.5f,Interpolation.pow4Out));
 					$.add(Res.get(Setting.IMAGE_BATTLE + "battle_result_table.png")).appendTo(this).setAlpha(0).addAction(Actions.fadeIn(.5f)).setPosition(368, 30);
 					
-					$.add(new Table()).appendTo(this)
+					$.add(data = new Table()).appendTo(this)
 						.append(Res.get(hero.target.getProp("maxhp"),22),Res.get(hero.target.getProp("maxmp"),22)).row()
 						.append(Res.get(hero.target.getProp("attack"),22),Res.get(hero.target.getProp("magicAttack"),22)).row()
 						.append(Res.get(hero.target.getProp("defense"),22),Res.get(hero.target.getProp("magicDefense"),22)).row()
 						.append(Res.get(hero.target.getProp("speed"),22),Res.get(hero.target.getProp("hit"),22)).row()
 					.eachCells(c-> ((Label)c.padLeft(125).size(154,49).center().getActor()).center().width(154)).setPosition(648, 127);
+					
+					Label level,exp;
+					$.add(level = Res.get(hero.target.getProp("level"), 75)).appendTo(this).setPosition(375, 300).setWidth(100).setAlign(Align.center);
+					$.add(exp = Res.get("下一级所需经验 : " + hero.target.getProp("maxexp"), 22)).appendTo(this).setPosition(825, 250).setWidth(100).setAlign(Align.right);
 					
 				}
 				
@@ -70,12 +73,12 @@ public class BattleStopView extends HoverView{
 	@Override
 	public boolean keyDown(int keycode) {
 		if(keycode == Keys.ENTER || keycode == Keys.Z)
-			if(current().stop){
+			if(current() != null && current().stop){
 				if(!nextGroup()){
 					callback.run();
 					stage.addAction(Actions.sequence(Actions.fadeOut(.5f),Actions.run(() -> disposed = true)));
 				}
-			}else{
+			}else if(current() != null){
 				current().stop();
 			}
 		return super.keyDown(keycode);

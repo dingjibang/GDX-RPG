@@ -11,6 +11,7 @@ import com.rpsg.rpg.object.base.Association;
 import com.rpsg.rpg.object.base.AssociationSkill;
 import com.rpsg.rpg.object.base.EmptyAssociation;
 import com.rpsg.rpg.object.base.Global;
+import com.rpsg.rpg.object.base.Grow;
 import com.rpsg.rpg.object.base.items.Buff;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Prop;
@@ -39,6 +40,8 @@ public class Hero extends RPGObject implements Time{
 	public String color = "000000cc";
 	public float[][] face;
 	public float[][] head;
+	
+	public Grow grow = new Grow(this);
 	
 	public Buff support;
 	
