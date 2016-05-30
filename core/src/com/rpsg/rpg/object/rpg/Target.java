@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.rpsg.gdxQuery.$;
@@ -211,6 +212,10 @@ public class Target implements Serializable{
 		return result;
 	}
 	
+	public Set<String> keySet(){
+		return prop.keySet();
+	}
+	
 	//计算两个数值相加（百分比或绝对值）
 	public static Integer calcProp(int baseValue,String append){
 		try {
@@ -270,6 +275,10 @@ public class Target implements Serializable{
 	 */
 	public void addProp(String name, String p) {
 		addProp(name, p,true,false);
+	}
+	
+	public void addProp(String name, Integer p) {
+		addProp(name, p.toString(),true,false);
 	}
 	
 	public boolean hasProp(String name){

@@ -3,6 +3,7 @@ package com.rpsg.rpg.object.base;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.Target;
 
@@ -32,8 +33,13 @@ public class Grow {
 	
 	public void levelUp(int level){
 		while(level -- > 0){
-			int currentLevel = target.getProp("level");
+			for(String key : target.keySet())
+				if(!key.equals("dead") && !key.equals("exp") && !key.equals("maxexp") && !key.equals("level"))
+					target.setProp(key, target.getProp(key) + MathUtils.random(0,100));
 			
+			target.addProp("level", 1);
+			target.setProp("maxexp", 2333);
+			target.setProp("exp", 0);
 		}
 	}
 	
