@@ -519,12 +519,11 @@ public class TacticView extends IMenuView {
 		public SupImage generate(Hero hero,SupGroup parent){
 			this.parent=parent;
 			this.hero=hero;
-		//	int x = (int)((hero.face[1][0]-hero.face[0][0])*hero.face[2][0]);				
-		//	int y = (int)((hero.face[1][1]-hero.face[0][1])*hero.face[2][0]);
 			int x = (int)((hero.face[1][0])*hero.face[2][0]);				
 			int y = (int)((hero.face[1][1])*hero.face[2][0]);
 			sbox=Res.get(Setting.IMAGE_MENU_TACTIC+"sup_herobox_sel.png").disableTouch();
 			face=Res.get(Setting.IMAGE_FG+hero.fgname+"/Normal.png",hero.face).size(x, y);
+		//	face=Res.get(Setting.IMAGE_FG+hero.fgname+"/face.png");
 			name=new Label(hero.name,24).width(1000);
 			level=new Label(hero.support!=null?hero.support.name:"无支援技能",16).width(1000);
 			association=new Label(hero.association.name,32).color(1,1,1,.16f).width(1000);

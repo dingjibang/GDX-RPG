@@ -9,7 +9,7 @@ tag="恶魔";
 jname="Flandre Scarlet";
 
 fgname="flandre";
-face = [[320,200],[650,500],[0.15]];
+face = [[350,260],[700,380],[0.16]];
 head = [[200,100],[830,1000],[0.27]];
 association=Association.read(1);
 support = RPG.ctrl.item.getBuff(1);

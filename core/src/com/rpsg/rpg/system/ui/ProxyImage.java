@@ -4,6 +4,7 @@ import com.badlogic.gdx.assets.AssetLoaderParameters;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.TextureLoader.TextureParameter;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -58,7 +59,9 @@ public class ProxyImage extends Image {
 			if (ProxyImage.this.position == null || ProxyImage.this.position.length <= 0) {
 				ProxyImage.this.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) Res.ma2.get(texturePath))));
 			} else {
-				ProxyImage.this.setDrawable(new TextureRegionDrawable(new TextureRegion((Texture) Res.ma2.get(texturePath), (int) ProxyImage.this.position[0][0], (int) ProxyImage.this.position[0][1], (int) ProxyImage.this.position[1][0], (int) ProxyImage.this.position[1][1])));
+				Texture tx = Res.ma2.get(texturePath);
+				tx.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+				ProxyImage.this.setDrawable(new TextureRegionDrawable(new TextureRegion(tx, (int) ProxyImage.this.position[0][0], (int) ProxyImage.this.position[0][1], (int) ProxyImage.this.position[1][0], (int) ProxyImage.this.position[1][1])));
 			}
 			ProxyImage.this.reGenerateSize();
 			ProxyImage.this.isLoaded = true;
