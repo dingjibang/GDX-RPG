@@ -38,7 +38,7 @@ public class Grow {
 					target.setProp(key, target.getProp(key) + MathUtils.random(0,100));
 			
 			target.addProp("level", 1);
-			target.setProp("maxexp", 2333);
+			target.setProp("maxexp", 150);
 			target.setProp("exp", 0);
 		}
 	}

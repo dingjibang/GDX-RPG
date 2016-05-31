@@ -49,7 +49,7 @@ import com.rpsg.rpg.view.hover.SelectSpellcardView;
 
 public class BattleView extends DefaultIView{
 	
-	BattleParam param;
+	public BattleParam param;
 	public HeroStatusGroup heroGroup;
 	public EnemyGroup enemyGroup;
 	public Status status;

@@ -23,6 +23,6 @@ target.setProp("attack",18);
 target.setProp("magicAttack",9);
 target.setProp("defense",5);
 target.setProp("hit",45);
-
-
+target.setProp("exp", 188);
+target.setProp("maxexp", 300);
 association=Association.read(1);
