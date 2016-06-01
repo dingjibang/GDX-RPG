@@ -15,12 +15,14 @@ import com.rpsg.rpg.utils.game.GameUtil;
 
 
 public class PopupView extends HoverView{
-	
+	Table table;
+	Image bg;
 	public void init() {
-		Table table = (Table)param.get("table");
+		table = (Table)param.get("table");
 		stage.addActor(table);
 		
-		Image bg = $.add(Res.get(Setting.UI_BASE_IMG).color(0,0,0,.8f)).getItem(Image.class);
+		
+		bg = $.add(Res.get(Setting.UI_BASE_IMG).color(0,0,0,.8f)).getItem(Image.class);
 		table.layout();
 		table.validate();
 		
@@ -37,8 +39,15 @@ public class PopupView extends HoverView{
 		
 		table.setPosition(left, top);
 		
-		table.addActor(bg.size(w,h));
+		table.addActor(bg.size(w, h));
 		bg.setZIndex(0);
+	}
+	
+	@Override
+	public void draw() {
+//		float h = table.getMinHeight(),w = table.getMinWidth();
+//		bg.setSize(w, h);
+		super.draw();
 	}
 	
 	@Override
@@ -65,10 +74,6 @@ public class PopupView extends HoverView{
 	public boolean keyDown(int keycode) {
 		disposed = true;
 		
-		GameInput state = Input.state;
-		Input.state = GameInput.normal;
-		RPG.input.keyDown(keycode);
-		Input.state = state;
 		
 		return super.keyDown(keycode);
 	}

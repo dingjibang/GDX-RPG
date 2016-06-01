@@ -6,6 +6,7 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -194,8 +195,8 @@ public class BattleStopView extends HoverView{
 										if(each.item == null) return false;
 										Table table = new Table().left().bottom().padLeft(20).padRight(20).padTop(10).padBottom(10);
 										
-										table.add(Res.get(each.item.name,32)).left().top().row();
-										table.add(Res.get(each.item.description,18).warp(true)).maxWidth(300).left().top().padTop(10);
+										table.add(Res.get(each.item.name,32).color(Color.GREEN)).left().top().row();
+										table.add(Res.get(each.item.description,18).warp(true)).width(200).left().top().padTop(10);
 										
 										RPG.popup.add(PopupView.class,$.omap("top",event.getStageY()).add("left",event.getStageX()).add("table", table));
 										return super.mouseMoved(event, x, y);
