@@ -121,7 +121,7 @@ public class Enemy implements Time {
 	public List<EnemyDrop> getDrop(){
 		List<EnemyDrop> drop = new ArrayList<>();
 		for(EnemyDrop d : this.drop)
-			if(MathUtils.random(0,100) < d.rate * 100)
+			if(MathUtils.random(0,100) < d.rate)
 				drop.add(d);
 		
 		return drop;

@@ -7,7 +7,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -147,9 +150,11 @@ public class BattleStopView extends HoverView{
 		
 		outer.add(new AnimateGroup(){
 			Table cardTable = new Table();
+			boolean animate = false;
 			
 			public AnimateGroup create() {
 				cardTable.clear();
+				animate = false;
 				
 				List<EnemyDrop> dropList = new ArrayList<>();
 				for(Enemy e : enemies)
@@ -171,10 +176,38 @@ public class BattleStopView extends HoverView{
 				$.add(cardTable.left().top()).appendTo(this).setPosition(75, 430).setAlpha(0).addAction(Actions.fadeIn(1.5f,Interpolation.pow4Out)).addAction(Actions.moveBy(0, -20, 1f, Interpolation.pow4Out)).eachCells(c -> {
 					c.size(184,204).padLeft(28).left();
 					ItemCard card = (ItemCard)c.getActor();
-					
-					
-					$.add(cardTable).children().each(a -> ((ItemCard)a).animate());
-					card.onClick(card::select);
+					card.onClick(()->{
+						card.select();
+						$.add(cardTable).children().each(a -> ((ItemCard)a).animate(()->{
+							if(animate) return;
+							animate = true;
+							$.add(Res.get("获得",22)).fadeOut().appendTo(this).setPosition(100, 140).addAction(Actions.fadeIn(.3f));
+							$.add(Res.get(Setting.UI_BASE_IMG)).fadeOut().setSize(763, 3).setPosition(160, 150).appendTo(this).addAction(Actions.fadeIn(.3f));
+							$.add(cardTable).children().each(a2 ->{
+								ItemCard each = (ItemCard)a2;
+								each.addListener(new InputListener(){
+									public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
+										super.enter(event, x, y, pointer, fromActor);
+									}
+									@Override
+									public boolean mouseMoved(InputEvent event, float x, float y) {
+										if(each.item == null) return false;
+										Table table = new Table().left().bottom().padLeft(20).padRight(20).padTop(10).padBottom(10);
+										
+										table.add(Res.get(each.item.name,32)).left().top().row();
+										table.add(Res.get(each.item.description,18).warp(true)).maxWidth(300).left().top().padTop(10);
+										
+										RPG.popup.add(PopupView.class,$.omap("top",event.getStageY()).add("left",event.getStageX()).add("table", table));
+										return super.mouseMoved(event, x, y);
+									}
+									public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+										super.exit(event, x, y, pointer, toActor);
+									}
+								});
+							});
+							
+						}).onClick(null));
+					});
 					
 				});
 			

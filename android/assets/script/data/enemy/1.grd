@@ -39,15 +39,15 @@
 	drop:[
 		{
 			item:6,
-			rate:30
+			rate:15
 		},
 		{
 			item:4,
-			rate:20
+			rate:15
 		},
 		{
 			item:3,
-			rate:50
+			rate:20
 		},
 		{
 			item:2,
@@ -55,7 +55,7 @@
 		},
 		{
 			item:1,
-			rate:60
+			rate:10
 		}
 	]
 	

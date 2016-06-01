@@ -23,6 +23,7 @@ public class EnemyDrop {
 	}
 	
 	public BaseItem getItem(){
+		if(empty) return null;
 		return RPG.ctrl.item.get(item);
 	}
 }

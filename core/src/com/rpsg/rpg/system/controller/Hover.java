@@ -25,7 +25,7 @@ public class Hover{
 		return (T)view;
 	}
 	
-	public <T extends HoverView> T addNew(Class<? extends HoverView> c,Map<Object,Object> initParam){
+	public <T extends HoverView> T addOnly(Class<? extends HoverView> c,Map<Object,Object> initParam){
 		boolean include = false;
 		
 		for(HoverView v : stack)
@@ -44,6 +44,10 @@ public class Hover{
 	
 	public boolean isEmpty(){
 		return stack.isEmpty();
+	}
+	
+	public List<HoverView> list(){
+		return stack;
 	}
 	
 	public void add(HoverView hv){
@@ -106,6 +110,11 @@ public class Hover{
 		if(stack.isEmpty()) return false;
 		return stack.get(stack.size()-1).mouseMoved(screenX, screenY);
 	}
+	
+	public boolean mouseMoved(int screenX, int screenY, int index) {
+		return stack.get(index).mouseMoved(screenX, screenY);
+	}
+
 
 	public boolean scrolled(int amount) {
 		if(stack.isEmpty()) return false;
