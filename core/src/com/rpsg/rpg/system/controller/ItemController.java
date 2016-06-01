@@ -283,7 +283,7 @@ public class ItemController {
 		return false;
 	}
 	
-	private static void replace(Hero hero,Equipment equip,boolean add){
+	public static void replace(Hero hero,Equipment equip,boolean add){
 		Map<String,String> prop = equip.effect.asStringMap();
 		for(String key:prop.keySet()){
 			if(!add)

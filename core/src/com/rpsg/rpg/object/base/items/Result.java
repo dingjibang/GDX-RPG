@@ -23,4 +23,10 @@ public class Result {
 		r.success = false;
 		return r;
 	}
+
+	public static Result success() {
+		Result r = new Result();
+		r.success = true;
+		return r;
+	}
 }
