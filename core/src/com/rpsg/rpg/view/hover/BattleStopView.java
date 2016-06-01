@@ -1,10 +1,12 @@
 package com.rpsg.rpg.view.hover;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
@@ -14,10 +16,12 @@ import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.Enemy;
+import com.rpsg.rpg.object.rpg.EnemyDrop;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Image;
+import com.rpsg.rpg.system.ui.ItemCard;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.NumberLabel;
 import com.rpsg.rpg.utils.game.GameUtil;
@@ -34,7 +38,8 @@ public class BattleStopView extends HoverView{
 		BattleView bv = (BattleView)param.get("view");
 		callback = (Runnable)param.get("callback");
 		
-		int exp = Enemy.getExp(Enemy.get(bv.param.enemy));
+		List<Enemy> enemies = Enemy.get(bv.param.enemy);
+		int exp = Enemy.getExp(enemies);
 		
 		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.stage_width, GameUtil.stage_height).appendTo(stage).setColor(0,0,0,0).addAction(Actions.alpha(.9f,1f,Interpolation.pow4Out));
 		
@@ -87,6 +92,7 @@ public class BattleStopView extends HoverView{
 							lexp.toNumber(maxexp - (cexp + expcpy));
 							lvbar.addAction(Actions.sequence(Actions.sizeTo(((cexp + expcpy) / maxexp) * 402, 35, 1.5f,Interpolation.pow3),Actions.run(()->{
 								hero.target.setProp("exp", (int)cexp + expcpy);
+								stop = true;
 							})));
 						}else{
 							int aon = (int)(maxexp - cexp);
@@ -130,8 +136,57 @@ public class BattleStopView extends HoverView{
 					}
 				}
 				
+				@Override
+				public void stop() {
+					if(created) while(!stop)
+						act(Gdx.graphics.getDeltaTime());
+				}
+				
 			});
 		}
+		
+		outer.add(new AnimateGroup(){
+			Table cardTable = new Table();
+			
+			public AnimateGroup create() {
+				cardTable.clear();
+				
+				List<EnemyDrop> dropList = new ArrayList<>();
+				for(Enemy e : enemies)
+					dropList.addAll(e.getDrop());
+				
+				if(dropList.size() < 4)
+					for(int i = dropList.size();i < 4;i++)
+						dropList.add(new EnemyDrop());
+					
+				
+				dropList = GameUtil.randomSwap(dropList);
+				
+				if(dropList.size() > 4) 
+					dropList = dropList.subList(0, 4);
+				
+				for(EnemyDrop drop : dropList)
+					cardTable.add(new ItemCard(drop.getItem()));
+				
+				$.add(cardTable.left().top()).appendTo(this).setPosition(75, 430).setAlpha(0).addAction(Actions.fadeIn(1.5f,Interpolation.pow4Out)).addAction(Actions.moveBy(0, -20, 1f, Interpolation.pow4Out)).eachCells(c -> {
+					c.size(184,204).padLeft(28).left();
+					ItemCard card = (ItemCard)c.getActor();
+					
+					
+					$.add(cardTable).children().each(a -> ((ItemCard)a).animate());
+					card.onClick(card::select);
+					
+				});
+			
+				return this;
+			};
+			
+			public void act(float delta) {
+				stop = true;
+				super.act(delta);
+			};
+			
+		});
 		
 		$.each(outer.getCells(), c -> c.size(GameUtil.stage_width, 450));
 		
@@ -142,7 +197,7 @@ public class BattleStopView extends HoverView{
 	}
 	
 	@Override
-	public boolean keyDown(int keycode) {
+	public boolean keyUp(int keycode) {
 		if(keycode == Keys.ENTER || keycode == Keys.Z)
 			if(current() != null && current().stop){
 				if(!nextGroup()){
@@ -152,7 +207,11 @@ public class BattleStopView extends HoverView{
 			}else if(current() != null){
 				current().stop();
 			}
-		return super.keyDown(keycode);
+		if(keycode == Keys.R){//TODO DEBUG
+			current().clear();
+			current().create();
+		}
+		return super.keyUp(keycode);
 	}
 	
 	private AnimateGroup current(){
@@ -199,15 +258,7 @@ public class BattleStopView extends HoverView{
 		
 		public AnimateGroup create(){return this;};
 		
-		public void stop(){
-			while(!stop) act(Gdx.graphics.getDeltaTime());
-		}
-		
-		@Override
-		public void act(float delta) {
-			stop = true;
-			super.act(delta);
-		}
+		public void stop(){}
 	}
 	
 }

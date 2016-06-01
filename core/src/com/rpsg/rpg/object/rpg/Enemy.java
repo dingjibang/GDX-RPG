@@ -11,7 +11,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
-import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Resistance;
@@ -37,6 +36,7 @@ public class Enemy implements Time {
 	private int no = 0;
 	public int rank = 0;
 	public int exp;
+	public List<EnemyDrop> drop;
 	
 	
 	public Target target = new Target().enemy(this);
@@ -109,7 +109,22 @@ public class Enemy implements Time {
 		}
 		
 		enemy.actions = actions;
+		
+		enemy.drop = new ArrayList<>();
+		
+		if(value.has("drop")) for(JsonValue v : value.get("drop"))
+			enemy.drop.add(new EnemyDrop(v.getInt("item"), v.getInt("rate")));
+		
 		return enemy;
+	}
+	
+	public List<EnemyDrop> getDrop(){
+		List<EnemyDrop> drop = new ArrayList<>();
+		for(EnemyDrop d : this.drop)
+			if(MathUtils.random(0,100) < d.rate * 100)
+				drop.add(d);
+		
+		return drop;
 	}
 	
 	public static int getExp(List<Enemy> list){

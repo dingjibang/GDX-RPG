@@ -32,6 +32,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.utils.Array;
 /**
  * GDX-Query 
  * more simplified way to enjoy LibGDX
@@ -330,11 +331,11 @@ public class GdxQuery {
 	}
 	
 	public GdxQuery fadeOut(){
-		return fadeOut(0);
+		return setAlpha(0);
 	}
 	
 	public GdxQuery fadeIn(){
-		return fadeIn(0);
+		return setAlpha(1);
 	}
 	
 	public GdxQuery fadeIn(float time) {
@@ -505,6 +506,9 @@ public class GdxQuery {
 			else if(obj instanceof Collection)
 				for(Object col:(Collection<?>)obj)
 					add(col);
+			else if(obj instanceof Array)
+				for(Object col:(Array<?>)obj)
+					add(col);
 		return this;
 	}
 	
@@ -624,12 +628,11 @@ public class GdxQuery {
 		for(Actor actor:getItems()){
 			if(actor instanceof Group)
 				query.add((Object[])((Group)actor).getChildren().toArray());
-			if(actor instanceof com.badlogic.gdx.scenes.scene2d.ui.List<?>)
+			else if(actor instanceof com.badlogic.gdx.scenes.scene2d.ui.List<?>)
 				query.add(((com.badlogic.gdx.scenes.scene2d.ui.List<?>)actor).getItems());
-			if(actor instanceof SelectBox<?>)
+			else if(actor instanceof SelectBox<?>)
 				query.add(((SelectBox<?>)actor).getItems());
-			if(actor instanceof Table){
-				query.add(((Table)actor).getCells());
+			else if(actor instanceof Table){
 				query.add(((Table)actor).getChildren());
 			}
 		}
