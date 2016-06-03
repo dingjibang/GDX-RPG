@@ -234,6 +234,7 @@ public class MapLoader {
 	
 	/**
 	 * FIXME nmb，能把灯光销毁，但是gameview.ray里还存着这个灯光，然后就导致出现神绮的bug。<br>
+	 * 问题出在多线程和openGL上边，目前无解<br>
 	 * 目前解决办法只能是灯光和地图统一销毁，而这个removeLight方法就是假的，只是把灯光大小调到了0让他不显示。
 	 */
 	public void removeLight(int id){
