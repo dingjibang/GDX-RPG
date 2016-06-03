@@ -21,6 +21,7 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.BattleParam;
 import com.rpsg.rpg.object.base.BattleRes;
 import com.rpsg.rpg.object.base.items.BaseItem;
+import com.rpsg.rpg.object.base.items.CallbackBuff;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
@@ -35,7 +36,7 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Animations;
 import com.rpsg.rpg.system.ui.DefaultIView;
 import com.rpsg.rpg.system.ui.EnemyGroup;
-import com.rpsg.rpg.system.ui.HeroStatusGroup;
+import com.rpsg.rpg.system.ui.HeroGroup;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.Progress;
 import com.rpsg.rpg.system.ui.Status;
@@ -49,8 +50,8 @@ import com.rpsg.rpg.view.hover.SelectSpellcardView;
 
 public class BattleView extends DefaultIView{
 	
-	BattleParam param;
-	public HeroStatusGroup heroGroup;
+	public BattleParam param;
+	public HeroGroup heroGroup;
 	public EnemyGroup enemyGroup;
 	public Status status;
 	Animations animations = new Animations(this);
@@ -73,7 +74,7 @@ public class BattleView extends DefaultIView{
 		
 		ArrayList<Hero> heros = RPG.ctrl.hero.currentHeros();
 		
-		heroGroup = new HeroStatusGroup(heros);
+		heroGroup = new HeroGroup(heros);
 		$.add(heroGroup).appendTo(stage).setPosition(0, 0);
 		
 		enemyGroup = new EnemyGroup(param.enemy);
@@ -95,21 +96,51 @@ public class BattleView extends DefaultIView{
 	}
 	
 	 public void onBattleStop(){
-		 //if(createBattlStopView) return;
+		 if(createBattlStopView) return;
 		 createBattlStopView = !createBattlStopView;
-		 RPG.popup.add(BattleStopView.class,$.omap("view", this).add("callback", (Runnable)()->{}));//.add("callback", (Runnable)RPG.ctrl.battle::stop));
+		 RPG.popup.add(BattleStopView.class,$.omap("view", this).add("callback", (Runnable)RPG.ctrl.battle::stop));
 	 }
 	
 	public void onTimerToggle(Object obj){
 		timer.pause(true);
 		String name = obj instanceof Enemy ? ((Enemy)obj).name : ((Hero)obj).name;
+		Target target = Target.parse(obj);
 		
-		(obj instanceof Enemy ? ((Enemy)obj).target : ((Hero)obj).target).nextTurn();
+		target.nextTurn();
 		
 		status.add("[#ff7171]"+name+"[] 的战斗回合");
 		
+		List<CallbackBuff> buffList = CallbackBuff.nextTurn(target);
+		if(buffList.size() != 0){
+			new Runnable() {
+				public void run() {
+					
+					if(buffList.size() == 0){
+						timer.pause(false);
+						return;
+					}
+					
+					CallbackBuff buff = buffList.get(0);
+					buffList.remove(buff);
+					Result result = buff.callback().run();
+					animations.play(result, ()->{
+						checkDead();
+						this.run();
+					});
+				}
+			}.run();
+			return;
+		}
+		
+		if(CallbackBuff.hasLockedBuff(target)){
+			TimeUtil.add(()->timer.pause(false), 1000);
+			status.add(Target.name(target) + "在持续吟唱中……");
+			return;
+		}
+		
 		if(obj instanceof Hero){
 			Hero hero = (Hero)obj;
+			
 			Image fg = $.add(hero.defaultFG()).appendTo(stage).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(GameUtil.stage_width+500, 0).addAction(Actions.moveBy(-400, 0,1f,Interpolation.pow4Out)).setZIndex(1).getItem(Image.class);
 			Table menu = $.add(new Table()).appendTo(stage).setPosition(600, 220).getItem(Table.class);
 			
@@ -207,10 +238,10 @@ public class BattleView extends DefaultIView{
 		use(null,sc,hero,target,callback);
 	}
 	
-	private void use(String _txt,Spellcard sc,Object hero,Object target,Runnable callback){
+	private void use(String _txt,Spellcard sc,Object _hero,Object target,Runnable callback){
 		String text = _txt;
 		String tname = Target.name(target);
-		String hname = Target.name(hero);
+		String hname = Target.name(_hero);
 		if(text == null)
 			if(Spellcard.isAttack(sc)) 
 				text = hname + " 攻击了 " + tname;
@@ -220,7 +251,7 @@ public class BattleView extends DefaultIView{
 				text = hname + " 对 " + tname + " 使用符卡『 " + sc.name + "』"; 
 			
 		status.add(text);
-		Result result = sc.use(Item.Context.battle(hero, target,RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
+		Result result = sc.use(Item.Context.battle(_hero, target,RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
 		animations.play(result,callback);
 	}
 	
@@ -239,7 +270,7 @@ public class BattleView extends DefaultIView{
 	public void onkeyDown(int keyCode) {
 		if(keyCode == Keys.R) init();
 		if(keyCode == Keys.S) {
-			onBattleStop();
+//			onBattleStop();
 		}
 		if(keyCode == Keys.D) status.append(" & "+Math.random());
 		if(keyCode == Keys.F) status.append("[#ffaabb]彩色测试[]");

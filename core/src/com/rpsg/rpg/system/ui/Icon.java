@@ -5,10 +5,11 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.BaseItem;
+import com.rpsg.rpg.object.base.items.GetItemAble;
 import com.rpsg.rpg.system.base.Res;
 
-public class Icon extends Image implements Comparable<Icon>{
-	public BaseItem item = null;
+public class Icon extends Image implements Comparable<Icon>,GetItemAble{
+	private BaseItem item = null;
 	public boolean enable = true;
 	public boolean select = false;
 	private Image selectBox,hover,currentMask;
@@ -26,6 +27,11 @@ public class Icon extends Image implements Comparable<Icon>{
 		if(current)
 			currentMask=Res.get(Setting.IMAGE_MENU_EQUIP+"current.png");
 		return this;
+	}
+	
+	public Icon(BaseItem item){
+		this();
+		generateIcon(item, true);
 	}
 	
 	public Icon generateIcon(BaseItem baseItem,final boolean enable){
@@ -66,7 +72,11 @@ public class Icon extends Image implements Comparable<Icon>{
 		if(current)
 			currentMask.position(getX(), getY()).actAndDraw(batch);
 	}
+
+	@Override
+	public BaseItem getItem() {
+		return item;
+	}
 	
-//	public
 
 }

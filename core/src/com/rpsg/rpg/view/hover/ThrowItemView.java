@@ -21,9 +21,9 @@ public class ThrowItemView extends SidebarView{
 		Icon icon = (Icon) param.get("item");
 		group.addActor(Res.get(Setting.UI_BASE_IMG).size(545, 160).position(400, 280).a(.13f));
 		group.addActor(new Image(icon).x(435).y(300).scale(.6f));
-		group.addActor(Res.get(icon.item.name, 38).position(575, 365).width(330).overflow(true).color(Color.valueOf("ff6600")));
-		group.addActor(Res.get("持有 "+icon.item.count+" 个", 22).position(575, 330).width(330).overflow(true));
-		group.addActor(counter = new Counter(icon.item.count).position(435, 120));
+		group.addActor(Res.get(icon.getItem().name, 38).position(575, 365).width(330).overflow(true).color(Color.valueOf("ff6600")));
+		group.addActor(Res.get("持有 "+icon.getItem().count+" 个", 22).position(575, 330).width(330).overflow(true));
+		group.addActor(counter = new Counter(icon.getItem().count).position(435, 120));
 		
 		TextButtonStyle tstyle = new TextButtonStyle();
 		tstyle.down = Setting.UI_BUTTON;

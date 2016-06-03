@@ -1,14 +1,14 @@
 package com.rpsg.rpg.utils.display;
 
 
-import box2dLight.RayHandler;
-
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.utils.game.GameDate;
 import com.rpsg.rpg.utils.game.GameDate.Time;
 import com.rpsg.rpg.view.GameViews;
+
+import box2dLight.RayHandler;
 
 
 public class ColorUtil {

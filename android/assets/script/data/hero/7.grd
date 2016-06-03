@@ -19,3 +19,5 @@ target.setProp("mp", 100);
 target.setProp("maxmp", 100);
 target.setProp("level",1);
 target.setProp("speed",4);
+target.setProp("maxexp", 300);
+target.setProp("exp", 3);

@@ -35,7 +35,7 @@ public class EnemyGroup extends Table implements Selectable{
 	}
 	
 	public ArrayList<Enemy> list(){
-		return $.add(this).children().find(EnemyBox.class).eachAsList(e -> ((EnemyBox)e).enemy, Enemy.class);
+		return $.add(this).children(EnemyBox.class).eachAsList(e -> ((EnemyBox)e).enemy, Enemy.class);
 	}
 	
 	@Override

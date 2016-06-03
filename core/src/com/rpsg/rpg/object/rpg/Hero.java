@@ -41,8 +41,6 @@ public class Hero extends RPGObject implements Time{
 	public float[][] face;
 	public float[][] head;
 	
-	public Grow grow = new Grow(this);
-	
 	public Buff support;
 	
 	public Target target = (new Target(){
@@ -67,6 +65,8 @@ public class Hero extends RPGObject implements Time{
 			return prop;
 		};
 	}).hero(this);
+	
+	public Grow grow = new Grow(this);
 
 	public boolean lead = false;
 	

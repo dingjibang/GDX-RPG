@@ -1,7 +1,10 @@
 package com.rpsg.rpg.utils.game;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
@@ -12,6 +15,7 @@ import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapProperties;
+import com.badlogic.gdx.math.MathUtils;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.base.Res;
 
@@ -104,5 +108,18 @@ public class GameUtil {
 	
 	public static void openURL(String httpURL){
 		Gdx.net.openURI(httpURL);
+	}
+	
+	public static <T> List<T> randomSwap(List<T> list){
+		for(int i=0;i<2333;i++)
+			Collections.swap(list, MathUtils.random(0,list.size() - 1), MathUtils.random(0,list.size() - 1));
+		return list;
+	}
+	
+	public static void main(String[] args) {
+		List<String> list = new ArrayList<>();
+		list.add("asd");list.add("asd");
+		for(int i=list.size();i<4;i++) list.add("append");
+		System.out.println(list);
 	}
 }

@@ -8,10 +8,8 @@ import com.badlogic.gdx.Net.HttpRequest;
 import com.badlogic.gdx.Net.HttpResponse;
 import com.badlogic.gdx.Net.HttpResponseListener;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.RPG;
-import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.view.GameViews;
 
 public class Account implements Serializable {

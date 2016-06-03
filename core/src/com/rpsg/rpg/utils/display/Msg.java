@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.io.Input;
 import com.rpsg.rpg.io.InputProcessorEx;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.base.MsgType;

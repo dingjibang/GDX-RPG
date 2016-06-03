@@ -28,7 +28,7 @@ public class UseItemView extends SidebarView {
 	@Override
 	public void init() {
 		Icon icon = (Icon) param.get("item");
-		final BaseItem item = icon.item;
+		final BaseItem item = icon.getItem();
 		
 		boolean forAll = false;
 		

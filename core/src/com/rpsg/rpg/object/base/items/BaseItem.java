@@ -77,9 +77,7 @@ public abstract class BaseItem implements Serializable {
 	 * 注意：使用use()方法前，可能需要进行变量 <i>注入</i> （比如使用这个道具的人(user))
 	 * @return
 	 */
-	public Result use(Context ctx){
-		return Result.faild();
-	}
+	public abstract Result use(Context ctx);
 	
 	public String toString() {
 		return name;

@@ -35,5 +35,28 @@
 			]
 		}
 	],
-	exp:50
+	exp:50,
+	drop:[
+		{
+			item:6,
+			rate:15
+		},
+		{
+			item:4,
+			rate:15
+		},
+		{
+			item:3,
+			rate:20
+		},
+		{
+			item:2,
+			rate:20
+		},
+		{
+			item:1,
+			rate:10
+		}
+	]
+	
 }

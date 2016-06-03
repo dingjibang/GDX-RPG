@@ -133,11 +133,10 @@ public class $ {
 	}
 	
 	public static String notNull(String... _str){
-		String result = null;
 		for(String str : _str)
 			if(str != null)
-				result = str;
-		return result;
+				return str;
+		return null;
 	}
 	
 	

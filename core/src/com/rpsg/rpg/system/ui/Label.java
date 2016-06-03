@@ -3,16 +3,16 @@ package com.rpsg.rpg.system.ui;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Align;
 import com.rpsg.rpg.system.base.Res;
 
 public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 	
-	private boolean overflow = false;
+	private boolean overflow = false,warp = false;
 	private CharSequence oldText = "",overflowd = "";
 	private boolean enableMarkup = false;
+	private Integer maxWidth;
 	
 	public Label(Object text, LabelStyle style) {
 		super(text.toString(), style);
@@ -52,7 +52,11 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 	
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
-		
+		if(warp && maxWidth != null){
+			int width = Res.font.getTextWidth(getStyle().font,oldText.toString());
+			if(width > maxWidth)
+				setWidth(maxWidth);
+		}
 		if(overflow && !oldText.equals(getText().toString())){
 			oldText = getText().toString();//cpy
 			if(Res.font.getTextWidth(getStyle().font, oldText.toString())>getWidth())
@@ -95,9 +99,15 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 		return this;
 	}
 	
-	public Label warp(boolean w){
-		setWrap(w);
+	public Label warp(boolean warp){
+		setWrap(warp);
+		this.warp = warp;
 		return this;
+	}
+	
+	public void setWarp(boolean warp) {
+		this.warp = warp;
+		super.setWrap(warp);
 	}
 	
 	public Label overflow(boolean hidden){
@@ -161,13 +171,18 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 		return this;
 	}
 
-	public Actor a(float f) {
+	public Label a(float f) {
 		setColor(getColor().r,getColor().g,getColor().b,f);
 		return this;
 	}
 
 	public Label size(int w, int h) {
 		setSize(w,h);
+		return this;
+	}
+
+	public Label maxWidth(int i) {
+		maxWidth = i;
 		return this;
 	}
 

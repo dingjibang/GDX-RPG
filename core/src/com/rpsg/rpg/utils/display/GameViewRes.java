@@ -1,8 +1,6 @@
 package com.rpsg.rpg.utils.display;
 
 
-import box2dLight.RayHandler;
-
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -12,6 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.utils.game.GameUtil;
+
+import box2dLight.RayHandler;
 
 public class GameViewRes {
 	public static Stage stage = new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()));

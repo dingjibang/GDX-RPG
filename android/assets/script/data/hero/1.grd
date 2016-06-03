@@ -19,6 +19,7 @@ head = [[255,100],[830,975],[0.25]];
 target.setProp("hp", 150);
 target.setProp("maxhp", 150);
 target.setProp("exp", 3);
+target.setProp("maxexp", 300);
 target.setProp("mp", 100);
 target.setProp("maxmp", 100);
 target.setProp("maxsc",12);
@@ -42,6 +43,7 @@ addSpellcard(RPG.ctrl.item.get(5));
 addSpellcard(RPG.ctrl.item.get(5));
 addSpellcard(RPG.ctrl.item.get(5));
 addSpellcard(RPG.ctrl.item.get(5));
+addSpellcard(RPG.ctrl.item.get(11));
 
 target.resistance.put("earth", new Resistance(ResistanceType.reflect,0));
 target.resistance.put("metal", new Resistance(ResistanceType.invalid,0));
