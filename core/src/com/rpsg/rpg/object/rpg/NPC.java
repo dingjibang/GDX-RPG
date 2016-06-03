@@ -77,8 +77,6 @@ public abstract class NPC extends RPGObject{
 						script = Gdx.files.internal(Setting.SCRIPT_MAP+params.get(key)).readString("utf-8");
 					else if(key.endsWith("_EXECUTE"))
 						script = params.get(key).toString();
-					if(script.contains("////import globaljs"))
-						script.replace("////import globaljs", global);
 						scripts.put(c, script);
 				}
 			}
@@ -89,8 +87,6 @@ public abstract class NPC extends RPGObject{
 				if(key.contains(c.name().toUpperCase())){
 					if(key.endsWith("_SCRIPT_PARAM"))
 						script = params.get(key)+"\n"+scripts.get(c);
-					if(script.contains("////import globaljs"))
-						script.replace("////import globaljs", global);
 						scripts.put(c, script);
 				}
 			}
