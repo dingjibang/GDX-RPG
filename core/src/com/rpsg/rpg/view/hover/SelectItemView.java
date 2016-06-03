@@ -93,15 +93,15 @@ public class SelectItemView extends HoverView{
 			
 			if(true){
 				takeButton.onClick(()->{
-					callback.run((Item)t.item);
+					callback.run((Item)t.getItem());
 					disposed = true;
 				});
 			}
 			
 			Label name;
-			$.add(name = new Label(t.item.name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
-			$.add(new Label(("("+"拥有"+t.item.count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
-			ScrollPane pane = new ScrollPane(new Label(t.item.description,17).warp(true).markup(true));
+			$.add(name = new Label(t.getItem().name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
+			$.add(new Label(("("+"拥有"+t.getItem().count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
+			ScrollPane pane = new ScrollPane(new Label(t.getItem().description,17).warp(true).markup(true));
 			pane.setupOverscroll(20, 200, 200);
 			pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbar.png");
 			pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbarin.png");

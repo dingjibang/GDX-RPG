@@ -607,7 +607,7 @@ public class GdxQuery {
 		for(Object o : object){
 			for(Actor a : getItems())
 				if(a instanceof Table)
-					((Table) a).add((Actor)o);
+					((Table) a).add($.add(o).getItem());
 		}
 		return this;
 	}

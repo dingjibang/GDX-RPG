@@ -95,9 +95,9 @@ public class BattleView extends DefaultIView{
 	}
 	
 	 public void onBattleStop(){
-		 //if(createBattlStopView) return;
+		 if(createBattlStopView) return;
 		 createBattlStopView = !createBattlStopView;
-		 RPG.popup.add(BattleStopView.class,$.omap("view", this).add("callback", (Runnable)()->{}));//.add("callback", (Runnable)RPG.ctrl.battle::stop));
+		 RPG.popup.add(BattleStopView.class,$.omap("view", this).add("callback", (Runnable)RPG.ctrl.battle::stop));
 	 }
 	
 	public void onTimerToggle(Object obj){
@@ -239,7 +239,7 @@ public class BattleView extends DefaultIView{
 	public void onkeyDown(int keyCode) {
 		if(keyCode == Keys.R) init();
 		if(keyCode == Keys.S) {
-			onBattleStop();
+//			onBattleStop();
 		}
 		if(keyCode == Keys.D) status.append(" & "+Math.random());
 		if(keyCode == Keys.F) status.append("[#ffaabb]彩色测试[]");

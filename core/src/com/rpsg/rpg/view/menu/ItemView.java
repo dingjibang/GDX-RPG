@@ -99,7 +99,7 @@ public class ItemView extends IMenuView{
 		ilist.generate().onChange(t->{
 			description.clear();
 			
-			if(!t.enable || t.item instanceof Equipment){
+			if(!t.enable || t.getItem() instanceof Equipment){
 				takeButton.setFg(take.a(.3f)).fgSelfColor(true).onClick(()->{});
 			}else{
 				if(t.current)
@@ -111,16 +111,16 @@ public class ItemView extends IMenuView{
 					takeButton.setFg(take.a(1)).fgSelfColor(true).onClick(this::useEquip);
 			}
 			
-			if(!t.item.throwable || t.current){
+			if(!t.getItem().throwable || t.current){
 				throwButton.setFg(throwImg.a(.3f)).fgSelfColor(true).onClick(()->{});
 			}else{
 				throwButton.setFg(throwImg.a(1)).fgSelfColor(true).onClick(this::removeEquip);
 			}
 			
 			Label name;
-			$.add(name = new Label(t.item.name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
-			$.add(new Label(("("+"拥有"+t.item.count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
-			ScrollPane pane = new ScrollPane(new Label(t.item.description,17).warp(true).markup(true));
+			$.add(name = new Label(t.getItem().name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
+			$.add(new Label(("("+"拥有"+t.getItem().count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
+			ScrollPane pane = new ScrollPane(new Label(t.getItem().description,17).warp(true).markup(true));
 			pane.setupOverscroll(20, 200, 200);
 			pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbar.png");
 			pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbarin.png");
@@ -152,7 +152,7 @@ public class ItemView extends IMenuView{
 	private void useEquip(){
 		if(ilist.getCurrent()==null)
 			return;
-		BaseItem item = ilist.getCurrent().item;
+		BaseItem item = ilist.getCurrent().getItem();
 		if(item!=null )
 			RPG.popup.add(UseItemView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
 				put("title","使用物品");
@@ -164,7 +164,7 @@ public class ItemView extends IMenuView{
 	
 	@SuppressWarnings("serial")
 	private void removeEquip(){
-		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().item!=null)
+		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().getItem()!=null)
 			
 		RPG.popup.add(ThrowItemView.class,new HashMap<Object, Object>(){{
 			put("title","丢弃物品");
@@ -172,8 +172,8 @@ public class ItemView extends IMenuView{
 			put("item",ilist.getCurrent());
 			put("callback",new CustomRunnable<Integer>() {
 				public void run(Integer t) {
-					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().item.name+" "+t+" 个", Color.RED);
-					RPG.ctrl.item.remove(ilist.getCurrent().item, t);
+					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().getItem().name+" "+t+" 个", Color.RED);
+					RPG.ctrl.item.remove(ilist.getCurrent().getItem(), t);
 					generate(false);
 				}
 			});

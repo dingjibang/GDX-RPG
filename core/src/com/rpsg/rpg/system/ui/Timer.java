@@ -24,6 +24,7 @@ public class Timer extends Group {
 	private CustomRunnable<Time> callback;
 	private static int total = 10000;
 	private Runnable stop;
+	private boolean isStop = false;
 	
 	public Timer(List<Hero> heroList, List<Enemy> enemyList,CustomRunnable<Time> callback,Runnable stop) {
 		this.callback = callback;
@@ -42,19 +43,22 @@ public class Timer extends Group {
 	}
 	
 	public void act(float delta) {
+		if(isStop) return;
+		
 		int count = 0;
 		for(TimerClass obj : list){
-			if(obj.object instanceof Enemy)
+			if(obj.object instanceof Enemy && !obj.remove)
 				count ++;
 		}
 		
 		if(count == 0 && stop != null){
 			stop.run();
+			isStop = true;
 			return;
 		}
 		
 		for(TimerClass obj : list){
-			if(!obj.globalPause && !obj.pause && (obj.current += obj.speed) > total){
+			if(!obj.globalPause && !obj.pause && !obj.remove && (obj.current += obj.speed) > total){
 				//callback and reset
 				callback.run(obj.object);
 				obj.current = -MathUtils.random(500,1000);
@@ -112,7 +116,6 @@ public class Timer extends Group {
 			setDrawable(Res.getDrawable(Setting.UI_BASE_IMG));
 			setSize(48,28);
 			setColor(color);
-			a(.5f);
 			this.current = MathUtils.random(0,total/2);
 			label = Res.get(name, 20);
 			label.size(48,28).align(Align.center);
@@ -125,7 +128,8 @@ public class Timer extends Group {
 		@Override
 		public void draw(Batch batch, float parentAlpha) {
 			super.draw(batch, parentAlpha);
-			label.x(getX()).draw(batch,parentAlpha);
+			a(pause || remove ? .2f : .5f);
+			label.a(pause || remove ? .3f : 1).x(getX()).draw(batch,parentAlpha);
 		}
 		
 		@Override

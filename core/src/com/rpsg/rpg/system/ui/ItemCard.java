@@ -6,13 +6,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.BaseItem;
+import com.rpsg.rpg.object.base.items.GetItemAble;
 import com.rpsg.rpg.system.base.Res;
 
-public class ItemCard extends WidgetGroup {
+public class ItemCard extends WidgetGroup implements Cloneable,GetItemAble{
 	
 	Image bg,icon,outer,bg2;
 	Label name;
-	public BaseItem item;
+	BaseItem item;
 	
 	boolean select = false;
 
@@ -28,6 +29,10 @@ public class ItemCard extends WidgetGroup {
 		$.add(icon = Res.get(hasItem ? item.getIcon() : Setting.UI_BASE_IMG)).fadeOut().appendTo(this).setPosition(41, 68).setSize(100, 100).setTouchable(null);
 		$.add(name = Res.get(hasItem ? item.name : "无物品", 22).center()).fadeOut().appendTo(this).setWidth(180).setY(20).setTouchable(null);
 		
+	}
+	
+	public ItemCard clone(){
+		return new ItemCard(item);
 	}
 	
 	public ItemCard onClick(Runnable callback){
@@ -72,4 +77,10 @@ public class ItemCard extends WidgetGroup {
 	@Override
 	public void setSize(float width, float height) {
 	}
+
+	@Override
+	public BaseItem getItem() {
+		return item;
+	}
+
 }

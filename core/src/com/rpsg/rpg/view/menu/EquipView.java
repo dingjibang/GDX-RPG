@@ -144,7 +144,7 @@ public class EquipView extends IMenuView{
 						takeButton.setFg(take.a(1)).fgSelfColor(true).onClick(()->useEquip());
 				}
 				
-				if(!t.item.throwable || t.current){
+				if(!t.getItem().throwable || t.current){
 					throwButton.setFg(throwImg.a(.3f)).fgSelfColor(true).onClick(()->{});
 					append += "无法丢弃本装备。";
 				}else{
@@ -155,9 +155,9 @@ public class EquipView extends IMenuView{
 					append = "\n[#d38181]"+append+"[]";
 				
 				Label name;
-				$.add(name = new Label(t.item.name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
-				$.add(new Label(("("+(t.item==currentHeroEquip?"当前，":"")+"拥有"+t.item.count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
-				ScrollPane pane = new ScrollPane(new Label(t.item.description+append+"\n"+((Equipment)t.item).description2,17).warp(true).markup(true));
+				$.add(name = new Label(t.getItem().name,30)).setPosition(410, 130).setColor(Color.valueOf("ff6600")).appendTo(description);
+				$.add(new Label(("("+(t.getItem()==currentHeroEquip?"当前，":"")+"拥有"+t.getItem().count+"个")+")",16).position((int) (name.getX()+name.getWidth()+15), 130)).appendTo(description).setColor(Color.LIGHT_GRAY);
+				ScrollPane pane = new ScrollPane(new Label(t.getItem().description+append+"\n"+((Equipment)t.getItem()).description2,17).warp(true).markup(true));
 				pane.setupOverscroll(20, 200, 200);
 				pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbar.png");
 				pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbarin.png");
@@ -222,15 +222,15 @@ public class EquipView extends IMenuView{
 	}
 	
 	private void useEquip(){
-		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().item!=null)
-			if(!ilist.getCurrent().item.use(Context.map(parent.current, null, null, null)).success)
+		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().getItem()!=null)
+			if(!ilist.getCurrent().getItem().use(Context.map(parent.current, null, null, null)).success)
 				RPG.putMessage("装备失败。", Color.RED);
 		generate();
 	}
 	
 	@SuppressWarnings("serial")
 	private void removeEquip(){
-		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().item!=null)
+		if(ilist.getCurrent()!=null && !ilist.getCurrent().current && ilist.getCurrent().getItem()!=null)
 			
 		RPG.popup.add(ThrowItemView.class,new HashMap<Object, Object>(){{
 			put("title","丢弃物品");
@@ -238,8 +238,8 @@ public class EquipView extends IMenuView{
 			put("item",ilist.getCurrent());
 			put("callback",new CustomRunnable<Integer>() {
 				public void run(Integer t) {
-					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().item.name+" "+t+" 个", Color.RED);
-					RPG.ctrl.item.remove(ilist.getCurrent().item, t);
+					RPG.putMessage("成功丢弃道具 "+ilist.getCurrent().getItem().name+" "+t+" 个", Color.RED);
+					RPG.ctrl.item.remove(ilist.getCurrent().getItem(), t);
 					generate();
 				}
 			});

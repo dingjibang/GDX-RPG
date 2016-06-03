@@ -38,6 +38,8 @@ public class ItemController {
 	
 	/**
 	 * 给当前游戏存档放入一个道具
+	 * 
+	 * XXX 思考：如果某个道具有特殊属性，而这种克隆模式会导致属性消失
 	 * @param id 道具ID
 	 */
 	public void put(int id){

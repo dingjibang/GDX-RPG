@@ -60,7 +60,7 @@ public class ImageList extends Group{
 	
 	public ImageList setCurrent(BaseItem baseItem){
 		for(Icon icon:items)
-			if(icon.item==baseItem)
+			if(icon.getItem()==baseItem)
 				setCurrent(icon);
 		return this;
 	}
@@ -79,7 +79,7 @@ public class ImageList extends Group{
 		
 		inner.align(Align.topLeft);
 		
-		if(before!=null && before.item!=null)
+		if(before!=null && before.getItem()!=null)
 			items.add(0,before);
 		
 		for(final Icon i:items){

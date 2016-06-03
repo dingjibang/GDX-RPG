@@ -10,24 +10,28 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.items.BaseItem;
+import com.rpsg.rpg.object.base.items.GetItemAble;
 import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.EnemyDrop;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.HoverView;
+import com.rpsg.rpg.system.ui.Icon;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ItemCard;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.NumberLabel;
 import com.rpsg.rpg.utils.game.GameUtil;
+import com.rpsg.rpg.utils.game.TargetInputListener;
 import com.rpsg.rpg.utils.game.TimeUtil;
 import com.rpsg.rpg.view.BattleView;
 
@@ -176,37 +180,26 @@ public class BattleStopView extends HoverView{
 				$.add(cardTable.left().top()).appendTo(this).setPosition(75, 430).setAlpha(0).addAction(Actions.fadeIn(1.5f,Interpolation.pow4Out)).addAction(Actions.moveBy(0, -20, 1f, Interpolation.pow4Out)).eachCells(c -> {
 					c.size(184,204).padLeft(28).left();
 					ItemCard card = (ItemCard)c.getActor();
+					BaseItem item = card.getItem();
 					card.onClick(()->{
 						card.select();
-						$.add(cardTable).children().each(a -> ((ItemCard)a).animate(()->{
-							if(animate) return;
-							animate = true;
-							$.add(Res.get("获得",22)).fadeOut().appendTo(this).setPosition(100, 140).addAction(Actions.fadeIn(.3f));
-							$.add(Res.get(Setting.UI_BASE_IMG)).fadeOut().setSize(763, 3).setPosition(160, 150).appendTo(this).addAction(Actions.fadeIn(.3f));
-							$.add(cardTable).children().each(a2 ->{
-								ItemCard each = (ItemCard)a2;
-								each.addListener(new InputListener(){
-									public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-										super.enter(event, x, y, pointer, fromActor);
-									}
-									@Override
-									public boolean mouseMoved(InputEvent event, float x, float y) {
-										if(each.item == null) return false;
-										Table table = new Table().left().bottom().padLeft(20).padRight(20).padTop(10).padBottom(10);
-										
-										table.add(Res.get(each.item.name,32).color(Color.GREEN)).left().top().row();
-										table.add(Res.get(each.item.description,18).warp(true)).width(200).left().top().padTop(10);
-										
-										RPG.popup.add(PopupView.class,$.omap("top",event.getStageY()).add("left",event.getStageX()).add("table", table));
-										return super.mouseMoved(event, x, y);
-									}
-									public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
-										super.exit(event, x, y, pointer, toActor);
-									}
-								});
-							});
-							
-						}).onClick(null));
+						$.add(cardTable).children().each(a -> {
+							((ItemCard)a).addAction(Actions.delay(a == card ? 0 : 1,Actions.run(()->((ItemCard) a).animate(()->{
+								if(animate) return;
+								animate = true;
+								$.add(Res.get("获得",22)).fadeOut().appendTo(this).setPosition(100, 140).addAction(Actions.fadeIn(.3f));
+								$.add(Res.get(Setting.UI_BASE_IMG)).fadeOut().setSize(763, 3).setPosition(160, 150).appendTo(this).addAction(Actions.sequence(Actions.fadeIn(.3f),Actions.run(()->stop = true)));
+								
+								if(item != null) RPG.ctrl.item.put(item);
+								
+								GdxQuery itemTable = $.add(new Table()).appendTo(this).setPosition(138, 70);
+								if(item != null)
+									itemTable.append($.add(new Icon(item).a(0).action(Actions.delay(.3f,Actions.fadeIn(.5f))))).getCell().size(70,70).padRight(20);
+								
+								$.add(cardTable,itemTable).children().each(a2 ->((GetItemAble)a2).addListener(generateListener().setTarget((GetItemAble)a2)));
+								
+							}).onClick(null))));
+						});
 					});
 					
 				});
@@ -215,7 +208,6 @@ public class BattleStopView extends HoverView{
 			};
 			
 			public void act(float delta) {
-				stop = true;
 				super.act(delta);
 			};
 			
@@ -240,11 +232,17 @@ public class BattleStopView extends HoverView{
 			}else if(current() != null){
 				current().stop();
 			}
-		if(keycode == Keys.R){//TODO DEBUG
-			current().clear();
-			current().create();
-		}
+//		if(keycode == Keys.R){//TODO DEBUG
+//			current().clear();
+//			current().create();
+//		}
 		return super.keyUp(keycode);
+	}
+	
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		keyUp(Keys.Z);
+		return super.touchDown(screenX, screenY, pointer, button);
 	}
 	
 	private AnimateGroup current(){
@@ -292,6 +290,28 @@ public class BattleStopView extends HoverView{
 		public AnimateGroup create(){return this;};
 		
 		public void stop(){}
+	}
+	
+	private TargetInputListener generateListener(){
+		return new TargetInputListener(){
+			public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
+				super.enter(event, x, y, pointer, fromActor);
+			}
+			public boolean mouseMoved(InputEvent event, float x, float y) {
+				GetItemAble self = (GetItemAble) getTarget();
+				if(self.getItem() == null) return false;
+				Table table = new Table().left().bottom().padLeft(20).padRight(20).padTop(10).padBottom(10);
+				
+				table.add(Res.get(self.getItem().name,32).color(Color.GREEN)).left().top().row();
+				table.add(Res.get(self.getItem().description,18).warp(true)).width(200).left().top().padTop(10);
+				
+				RPG.popup.add(PopupView.class,$.omap("top",event.getStageY()).add("left",event.getStageX()).add("table", table));
+				return super.mouseMoved(event, x, y);
+			}
+			public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+				super.exit(event, x, y, pointer, toActor);
+			}
+		};
 	}
 	
 }
