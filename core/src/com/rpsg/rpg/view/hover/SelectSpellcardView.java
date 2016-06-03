@@ -71,7 +71,7 @@ public class SelectSpellcardView extends HoverView{
 					Table labels = new Table().align(Align.topLeft);
 					labels.add(new Label(t.sc.description,20).warp(true)).align(Align.topLeft).prefWidth(343).row();
 					labels.add(new Label(t.sc.description2,20).warp(true).color(Color.ORANGE)).align(Align.topLeft).prefWidth(343).padTop(20).row();
-					if(t.sc.cost < hero.target.getProp("mp")){
+					if(t.sc.cost <= hero.target.getProp("mp")){
 						if(t.sc.occasion == ItemOccasion.all || t.sc.occasion == ItemOccasion.battle){
 							apply.onClick(()->{
 								callback.run(sc);
