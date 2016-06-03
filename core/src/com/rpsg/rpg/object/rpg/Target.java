@@ -15,6 +15,7 @@ import com.rpsg.rpg.object.base.Resistance.ResistanceType;
 import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.base.items.BaseItem.Context;
 import com.rpsg.rpg.object.base.items.Buff;
+import com.rpsg.rpg.object.base.items.CallbackBuff;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
@@ -38,6 +39,7 @@ public class Target implements Serializable{
 	
 	public int rank;
 	private ArrayList<Buff> buffList = new ArrayList<>();
+	private ArrayList<CallbackBuff> callbackBuffList = new ArrayList<>();
 	
 	
 	public Target lastAttackTarget = null;
@@ -45,6 +47,7 @@ public class Target implements Serializable{
 	/**回合数（从1开始）*/
 	private int turn = 1;
 	
+	/**是否修改过buff了（节省UI重绘时间）*/
 	boolean modifiedBuff = false;
 	
 	public boolean modifiedBuff(){
@@ -76,7 +79,7 @@ public class Target implements Serializable{
 	
 	public void nextTurn(){
 		turn++;
-		$.removeIf(buffList, b -> --b.turn <= 0 && (modifiedBuff = true));
+		$.removeIf(buffList, b -> b.nextTurn() <= 0 && (modifiedBuff = true));
 	}
 	
 	public Target clear(){
@@ -84,6 +87,7 @@ public class Target implements Serializable{
 		lastAttackTarget = null;
 		buffList.clear();
 		modifiedBuff = true;
+		callbackBuffList.clear();
 		return this;
 	}
 	
@@ -370,6 +374,15 @@ public class Target implements Serializable{
 			targetList.add(ctx.enemy);
 		
 		return targetList;
+	}
+
+	public ArrayList<CallbackBuff> getCallbackBuffList() {
+		return callbackBuffList;
+	}
+
+	public void addCallbackBuff(CallbackBuff buff) {
+		modifiedBuff = true;
+		callbackBuffList.add(buff);
 	}
 
 	

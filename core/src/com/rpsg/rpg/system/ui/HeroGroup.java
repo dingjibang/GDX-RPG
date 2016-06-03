@@ -15,13 +15,13 @@ import com.rpsg.rpg.object.rpg.Target;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.utils.game.GameUtil;
 
-public class HeroStatusGroup extends Group implements Selectable{
+public class HeroGroup extends Group implements Selectable{
 
 	boolean select = false;
 	CustomRunnable<Target> onSelect = null;
 	ItemDeadable deadable = ItemDeadable.all;
 	
-	public HeroStatusGroup(ArrayList<Hero> heros) {
+	public HeroGroup(ArrayList<Hero> heros) {
 		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.stage_width,115).color(0,0,0,.5f)).setPosition(0, 28).appendTo(this);
 		for(int i = 0; i < heros.size(); i++)
 			addActor($.add(new HeroStatusBox(heros.get(i)).position(i * 256, 28)).transform(false).getItem());

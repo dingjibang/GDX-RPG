@@ -52,8 +52,22 @@ public class Spellcard extends BaseItem {
 		return (Spellcard) RPG.ctrl.item.get(defenseId);
 	}
 	
-	//使用一个符卡=w=
 	public Result use(Context ctx){
+		if(effect.getTurn() > 0){
+			if(check(ctx).success){
+				CallbackBuff buff = new CallbackBuff(ctx.self, this, ()-> $use(ctx,true), effect.wait);
+				used(ctx);
+				buff.turn = effect.getTurn();
+				ctx.self.addCallbackBuff(buff);
+				return Result.success();
+			}
+		}else{
+			return $use(ctx,false);
+		}
+		return Result.faild();
+	}
+	
+	private Result check(Context ctx){
 		//判断使用场景是否正确
 		boolean battle = RPG.ctrl.battle.isBattle();
 		
@@ -71,11 +85,26 @@ public class Spellcard extends BaseItem {
 			if((!t.isDead() && deadable == ItemDeadable.yes) || (t.isDead() && deadable == ItemDeadable.no))
 				return Result.faild();
 		
-		//TODO self
 		//判断mp是否足够
 		if(self.getProp("mp") < cost)
 			return Result.faild();
 		
+		return Result.success();
+	}
+	
+	private void used(Context ctx){
+		//扣除消耗
+		ctx.self.addProp("mp", (-cost) + "");
+	}
+	
+	//使用一个符卡=w=
+	private Result $use(Context ctx,boolean used){
+		if(!check(ctx).success) return Result.faild();
+		
+		//设置使用角色 self ==(spellcard)==> target
+		Target self = ctx.self;
+		List<Target> targetList = Target.getTargetList(this, ctx);
+				
 		//添加buff（如果有的话）
 		for(EffectBuff ebuff : effect.buff){
 			if(ebuff.type == EffectBuffType.add)
@@ -120,8 +149,7 @@ public class Spellcard extends BaseItem {
 					//处理伤害
 					t.addProp(key, damage + "");
 					
-					//扣除消耗
-					self.addProp("mp", (-cost) + "");
+					if(!used) used(ctx);
 					
 					if(RPG.ctrl.battle.isBattle())
 						if(damage < 0)

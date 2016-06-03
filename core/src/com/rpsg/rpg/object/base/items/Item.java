@@ -77,11 +77,7 @@ public class Item extends BaseItem{
 		all//可以给所有人使用。
 	}
 	
-	/**
-	 * 使用一个物品
-	 */
-	@Override
-	public Result use(Context ctx) {
+	private Result check(Context ctx){
 		//判断使用场景是否正确
 		if((ctx.type == Context.Type.map || occasion == ItemOccasion.map) && RPG.ctrl.battle.isBattle())
 			return Result.faild();
@@ -89,13 +85,51 @@ public class Item extends BaseItem{
 			return Result.faild();
 		
 		//设置使用角色 self ==(item)==> target
-		Target self = ctx.self;
 		List<Target> targetList = Target.getTargetList(this, ctx);
 		
 		//判断使用条件是否正确
 		for(Target t : targetList)
 			if((!t.isDead() && deadable == ItemDeadable.yes) || (t.isDead() && deadable == ItemDeadable.no))
 				return Result.faild();
+		
+		if(count <= 0)
+			return Result.faild();
+		
+		return Result.success();
+	}
+	
+	public Result use(Context ctx){
+		if(effect.getTurn() > 0){
+			if(check(ctx).success){
+				CallbackBuff buff = new CallbackBuff(ctx.self, this, ()-> $use(ctx,true), effect.wait);
+				used(ctx);
+				buff.turn = effect.getTurn();
+				ctx.self.addCallbackBuff(buff);
+				return Result.success();
+			}
+		}else{
+			return $use(ctx,false);
+		}
+		return Result.faild();
+	}
+	
+	private void used(Context ctx){
+		//扣除消耗
+		if(this.count > 1)
+			this.count --;
+		else
+			RPG.ctrl.item.remove(this);
+	}
+	
+	/**
+	 * 使用一个物品
+	 */
+	private Result $use(Context ctx,boolean used) {
+		if(!check(ctx).success) return Result.faild();
+		
+		//设置使用角色 self ==(item)==> target
+		Target self = ctx.self;
+		List<Target> targetList = Target.getTargetList(this, ctx);
 		
 		//添加buff（如果有的话）
 		for(EffectBuff ebuff : effect.buff){
@@ -104,6 +138,7 @@ public class Item extends BaseItem{
 			if(ebuff.type == EffectBuffType.remove)
 				$.each(targetList, t -> t.removeBuff(ebuff.buff));
 		}
+		
 		
 		//计算数值变化
 		for(Target t : targetList){
@@ -131,15 +166,9 @@ public class Item extends BaseItem{
 				
 				
 				if(!miss){
+					if(!used) used(ctx);
 					//处理伤害
 					t.addProp(key, damage + "");
-					
-					//扣除消耗
-					if(this.count > 1)
-						this.count --;
-					else
-						RPG.ctrl.item.remove(this);
-					
 					
 					if(RPG.ctrl.battle.isBattle())
 						if(damage < 0)

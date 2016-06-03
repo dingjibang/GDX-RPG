@@ -2,6 +2,7 @@ id=2;
 
 var Association = com.rpsg.rpg.object.base.Association;
 var RPG = com.rpsg.rpg.core.RPG;
+var Buff = com.rpsg.rpg.object.base.items.Buff;
 
 imgPath="/walk_flandre.png";
 name="芙兰朵露";
@@ -12,6 +13,6 @@ fgname="flandre";
 face = [[350,260],[700,380],[0.16]];
 head = [[200,100],[830,1000],[0.27]];
 association=Association.read(1);
-support = RPG.ctrl.item.getBuff(1);
+support = Buff.getById(1);
 color="d55d41cc";
 target.setProp("level",1);

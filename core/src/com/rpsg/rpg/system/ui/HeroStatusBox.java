@@ -68,10 +68,11 @@ public class HeroStatusBox extends WidgetGroup {
 		if(hero.target.modifiedBuff()){
 			buffTable.clear();
 			List<Buff> list = hero.target.getBuffList();
+			list.addAll(hero.target.getCallbackBuffList());
 			for (int i = 0; i < list.size(); i++) {
 				Buff buff = list.get(i);
 				Image icon = buff.getIcon();
-				buffTable.addActor(icon.x(i * 32 + 5).size(32,32));
+				buffTable.addActor(icon.x(i * 40).size(32,32));
 				icon.addListener(new InputListener(){
 					public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
 						super.enter(event, x, y, pointer, fromActor);

@@ -1,0 +1,22 @@
+{
+	type:"Spellcard",
+	name:"龟派气功",
+	description:"憋一回合！",
+	description2:"强，无敌！",
+	range:"one",
+	forward:"enemy",
+	occasion:"all",
+	cost:20,
+	packable:false,
+	animation:2,
+	effect:{
+		turn:2,
+		wait:false,
+		prop:{
+			hp : {
+				formula:"- (self.attack * 10 - target.defense * 2)",
+				floatRate:"10%"
+			}
+		}
+	}
+}

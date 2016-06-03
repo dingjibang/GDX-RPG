@@ -1,6 +1,5 @@
 package com.rpsg.rpg.system.ui;
 
-import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -8,6 +7,7 @@ import com.badlogic.gdx.utils.Align;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.system.base.Res;
 

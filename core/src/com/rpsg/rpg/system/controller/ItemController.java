@@ -2,7 +2,6 @@ package com.rpsg.rpg.system.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
@@ -11,11 +10,7 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.BaseItem;
-import com.rpsg.rpg.object.base.items.Buff;
-import com.rpsg.rpg.object.base.items.Buff.BuffType;
 import com.rpsg.rpg.object.base.items.Effect;
-import com.rpsg.rpg.object.base.items.Effect.EffectBuff;
-import com.rpsg.rpg.object.base.items.Effect.EffectBuffType;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
@@ -117,7 +112,7 @@ public class ItemController {
 			baseItem.packable = result.has("packable") ? result.getBoolean("packable") : true;
 			baseItem.buy = result.has("buy") ? result.getInt("buy") : 0;
 			baseItem.sell = result.has("sell") ? result.getInt("sell") : 0;
-			baseItem.effect = result.has("effect")?getEffect(result.get("effect")):new Effect();
+			baseItem.effect = result.has("effect")?Effect.fromJson(result.get("effect")):new Effect();
 			
 			return (T) baseItem;
 		} catch (Exception e) {
@@ -125,26 +120,6 @@ public class ItemController {
 			e.printStackTrace();
 			return null;
 		}
-	}
-	
-	public static Effect getEffect(JsonValue json){
-		Effect e = new Effect();
-		if(json.has("prop"))
-			e.prop = getPropObject(json.get("prop"));
-		e.use = json.has("use")?json.getString("use"):"";
-		e.wait = json.has("wait")?json.getBoolean("wait"):false;
-		
-		List<EffectBuff> buffs = new ArrayList<EffectBuff>();
-		if(json.has("buff")) for(JsonValue value : json.get("buff")){
-			EffectBuff eb = new EffectBuff();
-			eb.type = EffectBuffType.valueOf(value.getString("type"));
-			Integer buffId = value.has("buff") ? value.getInt("buff") : null;
-			if(buffId != null) eb.buff = getBuff(value.getInt("buff"));
-			buffs.add(eb);
-		}
-		
-		e.buff = buffs;
-		return e;
 	}
 	
 	public static Map<String,String> getProp(JsonValue json){
@@ -175,21 +150,6 @@ public class ItemController {
 			replace.put(json.get(i).name,json.getInt(json.get(i).name));
 		}
 		return replace; 
-	}
-	
-	public static Buff getBuff(int id){
-		Buff buff = new Buff();
-		
-		JsonValue value = reader.parse(Gdx.files.internal(Setting.SCRIPT_DATA_BUFF+id+".grd").readString());
-		
-		buff.id = id;
-		buff.type = value.has("type") ? BuffType.valueOf(value.getString("type")) : BuffType.buff;
-		buff.name = value.has("name") ? value.getString("name") : "(??)";
-		buff.prop = getPropObject(value.get("prop"));
-		buff.turn = value.has("turn") ? value.getInt("turn") : 1;
-		buff.description = value.has("description") ? value.getString("description") : "";
-		
-		return buff;
 	}
 	
 	/** 移除1个 <b><i>当前背包</i></b> 里的某个道具（根据ID）**/
@@ -300,6 +260,10 @@ public class ItemController {
 	
 	public Equipment getHeroEquip(Hero hero,String equipType){
 		return hero.equips.get(equipType);
+	}
+
+	public static JsonReader reader() {
+		return reader;
 	}
 	
 }

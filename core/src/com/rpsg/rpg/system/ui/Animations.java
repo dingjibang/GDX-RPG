@@ -17,9 +17,9 @@ public class Animations extends Group{
 		this.battleView = battleView;
 	}
 	
-	public Animations play(Result result,Runnable callback){
+	public Animations play(Result result,Runnable onPlayedCallback){
 		if(result.animateId <= 0) {
-			callback.run();
+			onPlayedCallback.run();
 			return this;
 		}
 		
@@ -30,7 +30,7 @@ public class Animations extends Group{
 				EnemyBox box = battleView.enemyGroup.getBox(enemy);
 				if(box != null){
 					Animation ani = null;
-					$.add(ani = new Animation(result.animateId).generate().played(callback)).appendTo(this);
+					$.add(ani = new Animation(result.animateId).generate().played(onPlayedCallback)).appendTo(this);
 					ani.setPosition(box.getParent().getX() + box.getX() - ani.getWidth() / 2 + box.getWidth() / 2 , box.getParent().getY() + box.getY() - ani.getHeight() / 2 + box.getHeight() /2);
 				}
 			}else if(target.parentHero != null){
@@ -38,7 +38,7 @@ public class Animations extends Group{
 				HeroStatusBox box = battleView.heroGroup.getBox(hero);
 				if(box != null){
 					Animation ani = null;
-					$.add(ani = new Animation(result.animateId).generate().played(callback)).appendTo(this);
+					$.add(ani = new Animation(result.animateId).generate().played(onPlayedCallback)).appendTo(this);
 					ani.setPosition(box.getX() - ani.getWidth() / 2 + 85, box.getY() - ani.getHeight() / 2 + 70);
 				}
 			}
