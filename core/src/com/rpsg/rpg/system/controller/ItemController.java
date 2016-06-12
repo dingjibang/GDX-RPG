@@ -2,6 +2,7 @@ package com.rpsg.rpg.system.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
@@ -21,6 +22,7 @@ import com.rpsg.rpg.object.base.items.Prop;
 import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.utils.game.Logger;
+import com.rpsg.rpg.utils.game.StringUtil;
 
 /**
  * GDX-RPG 道具核心管理器
@@ -131,15 +133,15 @@ public class ItemController {
 	}
 	
 	public static Map<String,Prop> getPropObject(JsonValue json){
+		return getPropObject(json, new ArrayList<>());
+	}
+	
+	public static Map<String,Prop> getPropObject(JsonValue json,List<String> without){
 		Map<String,Prop> replace = new HashMap<>();
 		for(int i=0;i<json.size;i++){
-			JsonValue propValue = json.get(json.get(i).name);
-			
-			Prop prop = new Prop();
-			prop.formula = propValue.getString("formula");
-			prop.type = propValue.has("type") ? propValue.getString("type") : null;
-			prop.floatRate = propValue.has("floatRate") ? propValue.getString("floatRate") : "0";
-			replace.put(json.get(i).name,prop);
+			String name = json.get(i).name;
+			if(StringUtil.has(name, without)) continue;
+			replace.put(name,Prop.fromJSON(json.get(name)));
 		}
 		return replace; 
 	}

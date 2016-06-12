@@ -46,4 +46,13 @@ public class StringUtil {
 		return result;
 	}
 	
+	public static boolean has(String str,List<?> without){
+		for(Object obj : without)
+			if(obj.toString().equals(str))
+				return true;
+		return false;
+	}
+	
+	
+	
 }

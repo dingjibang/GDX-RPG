@@ -7,7 +7,7 @@
 	deadable:"no",
 	effect:{
 		prop:{
-			hp:{formula:"10"}
+			hp:{formula:"10",formulaType:"positive"}
 		}
 	},
 	use:""

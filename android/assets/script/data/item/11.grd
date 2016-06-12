@@ -5,7 +5,7 @@
 	description2:"强，无敌！",
 	range:"one",
 	forward:"enemy",
-	occasion:"all",
+	occasion:"battle",
 	cost:20,
 	packable:false,
 	animation:2,
@@ -14,8 +14,9 @@
 		wait:false,
 		prop:{
 			hp : {
-				formula:"- (self.attack * 10 - target.defense * 2)",
-				floatRate:"10%"
+				formula:"self.attack * 10 - target.defense * 2",
+				floatRate:"10%",
+				formulaType:"negative"
 			}
 		}
 	}

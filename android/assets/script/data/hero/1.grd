@@ -44,6 +44,7 @@ addSpellcard(RPG.ctrl.item.get(5));
 addSpellcard(RPG.ctrl.item.get(5));
 addSpellcard(RPG.ctrl.item.get(5));
 addSpellcard(RPG.ctrl.item.get(11));
+addSpellcard(RPG.ctrl.item.get(12));
 
 target.resistance.put("earth", new Resistance(ResistanceType.reflect,0));
 target.resistance.put("metal", new Resistance(ResistanceType.invalid,0));

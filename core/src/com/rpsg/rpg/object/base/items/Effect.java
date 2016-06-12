@@ -12,7 +12,7 @@ import com.rpsg.rpg.system.controller.ItemController;
 public class Effect implements Serializable{
 	private static final long serialVersionUID = -5793312110086239037L;
 	public Map<String, Prop> prop = new HashMap<>();
-	public List<EffectBuff> buff = new ArrayList<EffectBuff>();
+	public List<EffectBuff> buff = new ArrayList<>();
 	public boolean wait = false;
 	private int turn = 0;
 	

@@ -153,6 +153,12 @@ public class Target implements Serializable{
 		prop.put("maxsc", 0);
 		//是否是死亡状态的
 		prop.put("dead", FALSE);
+		
+		/*战斗中*/
+		//仇恨值
+		prop.put("rank", 0);
+		//仇恨率(0-100)
+		prop.put("rankRate", 0);
 	};
 	
 	/**抗性*/
@@ -266,7 +272,7 @@ public class Target implements Serializable{
 			prop.put(name, getProp(name) * (int)(f / 100));//TODO ?overflow模式下。。
 		}
 		
-		if(name.equals("dead")){
+		if(name.equals("dead")){//对dead变量进行特殊的处理，不叠加值而是直接覆盖值
 			prop.put(name, Integer.parseInt(p));
 		}
 		

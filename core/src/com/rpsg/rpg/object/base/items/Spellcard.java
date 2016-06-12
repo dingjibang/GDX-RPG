@@ -13,6 +13,7 @@ import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
+import com.rpsg.rpg.object.base.items.Prop.FormulaType;
 import com.rpsg.rpg.object.rpg.Target;
 import com.rpsg.rpg.view.GameViews;
 
@@ -108,9 +109,9 @@ public class Spellcard extends BaseItem {
 		//添加buff（如果有的话）
 		for(EffectBuff ebuff : effect.buff){
 			if(ebuff.type == EffectBuffType.add)
-				$.each(targetList, t -> t.addBuff(ebuff.buff));
+				$.each(targetList, t -> t.addBuff(ebuff.buff.cpy()));
 			if(ebuff.type == EffectBuffType.remove)
-				$.each(targetList, t -> t.removeBuff(ebuff.buff));
+				$.each(targetList, t -> t.removeBuff(ebuff.buff.cpy()));
 		}
 		//计算数值变化
 		for(Target t : targetList){
@@ -120,7 +121,7 @@ public class Spellcard extends BaseItem {
 				int damage = damage(effect, self, t, key);
 				boolean miss = false;
 				
-				if(damage < 0){
+				if(prop.formulaType == FormulaType.negative){
 					//计算伤害浮动
 					damage = prop.rate(damage);
 					
@@ -128,7 +129,7 @@ public class Spellcard extends BaseItem {
 					if(rtype != null){
 						ResistanceType trtype = t.resistance.get(rtype).type;
 						if(trtype == ResistanceType.reflect){	//如果抗性为反射，则把伤害给自己
-							self.addProp(key, (-damage) + "");
+							self.addProp(key, damage);
 						}
 					}
 					
@@ -138,10 +139,6 @@ public class Spellcard extends BaseItem {
 					float rate = (self.getProp("hit") / max) * 100;
 					if(max != 0)
 						miss = MathUtils.random(0,100) > rate;
-						
-					
-					//处理溢出
-					damage = damage < 0 ? damage : 0;
 				}
 				
 				
@@ -152,7 +149,7 @@ public class Spellcard extends BaseItem {
 					if(!used) used(ctx);
 					
 					if(RPG.ctrl.battle.isBattle())
-						if(damage < 0)
+						if(prop.formulaType == FormulaType.negative)
 							GameViews.gameview.battleView.status.append("...造成了 " + Math.abs(damage) + " 点伤害");
 						else
 							GameViews.gameview.battleView.status.append("...回复了" + damage + " 点" + BaseContext.getPropName(key));
@@ -168,8 +165,8 @@ public class Spellcard extends BaseItem {
 				if(self != null) self.refresh();
 				t.refresh();
 			}
-		};
 
+		};
 		return Result.success(this.animation,targetList);
 	}
 	
@@ -185,9 +182,11 @@ public class Spellcard extends BaseItem {
 		
 		int val = doubleVal.intValue();
 		
-		if(val > 0){//如果是增加属性的状态，则跳过所有数值计算直接叠加
-			return val;
+		if(prop.formulaType == FormulaType.positive){//如果是增加属性的状态，则跳过所有数值计算直接叠加
+			return val < 0 ? 0 : val;//如果数值溢出，则返回0
 		}
+		
+		/**negative 模式*/
 		
 		//获取攻击属性，攻击方式，穿防率
 		String rtype = prop.type;
@@ -203,8 +202,7 @@ public class Spellcard extends BaseItem {
 			damage = result;
 		}
 		
-		return damage;
-		
+		return -damage > 0 ? 0 : -damage;//如果数值溢出，则返回0
 	}
 	
 }

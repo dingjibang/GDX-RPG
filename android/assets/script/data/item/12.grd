@@ -1,0 +1,19 @@
+{
+	type:"Spellcard",
+	name:"嘲讽",
+	description:"两回合内对方肯定攻击你！",
+	description2:"=，=",
+	range:"one",
+	forward:"self",
+	occasion:"battle",
+	cost:10,
+	packable:false,
+	effect:{
+		buff:[
+			{
+				type:"add",
+				buff:3
+			}
+		]
+	}
+}
