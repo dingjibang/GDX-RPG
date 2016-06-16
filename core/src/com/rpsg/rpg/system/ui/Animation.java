@@ -1,6 +1,9 @@
 package com.rpsg.rpg.system.ui;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
@@ -12,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.rpg.NPC;
 import com.rpsg.rpg.object.script.ScriptCollide;
@@ -47,10 +51,10 @@ public class Animation extends NPC {
 		if(!file.exists())
 			return null;
 		
-		FileHandle[] child = file.list();
+		FileHandle[] child = list(file);
 		int length = child.length;
 		if(length==0)
-			return null;
+			throw new GdxRuntimeException("has not images");
 		
 		boolean simple = length == 1;
 		
@@ -86,6 +90,18 @@ public class Animation extends NPC {
 		return this;
 	}
 	
+	/**
+	 * 因为jar包的结构，导致内部资源不支持list，我操你婊子妈的java，所以只能用土办法来list了，日了野狗
+	 * @see http://stackoverflow.com/questions/1429172/how-do-i-list-the-files-inside-a-jar-file
+	 */
+	private FileHandle[] list(FileHandle file) {
+		List<FileHandle> list = new ArrayList<>();
+		int count = -1;
+		while(file.child(++count + ".png").exists())
+			list.add(file.child(++count + ".png"));
+		return list.toArray(new FileHandle[list.size()]);
+	}
+
 	public Animation played(Runnable callback){
 		this.played = callback;
 		return this;

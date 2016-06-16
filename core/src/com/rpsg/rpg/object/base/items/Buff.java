@@ -61,7 +61,7 @@ public class Buff implements Serializable{
 		JsonReader reader = ItemController.reader();
 		Buff buff = new Buff();
 		
-		JsonValue value = reader.parse(Gdx.files.internal(Setting.SCRIPT_DATA_BUFF+id+".grd").readString());
+		JsonValue value = reader.parse(Gdx.files.internal(Setting.SCRIPT_DATA_BUFF+id+".grd"));
 		
 		buff.id = id;
 		buff.type = value.has("type") ? BuffType.valueOf(value.getString("type")) : BuffType.buff;

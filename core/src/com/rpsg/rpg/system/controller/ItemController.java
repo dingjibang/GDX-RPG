@@ -263,6 +263,7 @@ public class ItemController {
 	}
 
 	public static JsonReader reader() {
+		initReader();
 		return reader;
 	}
 	

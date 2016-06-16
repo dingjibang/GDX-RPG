@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.RPG;
@@ -47,10 +48,10 @@ public class Association implements Serializable {
 	}
 	
 	public static AssociationSkill readSkill(int id){
-		String skillStr = Gdx.files.internal(Setting.SCRIPT_DATA_ASSOCIATION_SKILL+id+".grd").readString();
+		FileHandle skillFile = Gdx.files.internal(Setting.SCRIPT_DATA_ASSOCIATION_SKILL+id+".grd");
 		AssociationSkill skill = new AssociationSkill();
 		
-		JsonValue value = new JsonReader().parse(skillStr);
+		JsonValue value = new JsonReader().parse(skillFile);
 		
 		skill.level = value.getInt("level");
 		skill.spellcard = (Spellcard)RPG.ctrl.item.get(value.getInt("spellcard"));
