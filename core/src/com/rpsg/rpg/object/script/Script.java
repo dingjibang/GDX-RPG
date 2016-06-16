@@ -64,7 +64,7 @@ public class Script extends Thread {
 				String s1 = s.substring(s.indexOf("t") + 1).replaceAll(" ", "");
 				if (!s1.contains("."))
 					s1 += ".js";
-				String sc = Gdx.files.internal(Setting.SCRIPT + s1).readString("utf-8");				
+				String sc = Gdx.files.internal(Setting.SCRIPT_MAP + s1).readString("utf-8");				
 				script.replace(s, sc);
 			}
 			ctx.evaluateString(scope, script, null, 1, null);

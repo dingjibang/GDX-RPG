@@ -200,7 +200,7 @@ public class BattleView extends DefaultIView{
 	private void spellcard(Hero hero, Runnable stopCallback) {
 		RPG.popup.add(SelectSpellcardView.class,$.omap("hero",hero).add("callback", (CustomRunnable<Spellcard>)sc -> {
 			if(sc.range == ItemRange.one)
-				getGroup(sc.forward).select(target -> useSpellcard(sc,hero,target,stopCallback),sc.deadable);
+				getGroup(sc.forward,hero).select(target -> useSpellcard(sc,hero,target,stopCallback),sc.deadable);
 			else
 				useSpellcard(sc,hero,null,stopCallback);
 		}));
@@ -209,7 +209,7 @@ public class BattleView extends DefaultIView{
 	private void item(Hero hero,Runnable stopCallback){
 		RPG.popup.add(SelectItemView.class,$.omap("hero",hero).add("callback", (CustomRunnable<Item>)item -> {
 			if(item.range == ItemRange.one)
-				getGroup(item.forward).select(target -> useItem(item,hero,target,stopCallback),item.deadable);
+				getGroup(item.forward,hero).select(target -> useItem(item,hero,target,stopCallback),item.deadable);
 			else
 				useItem(item,hero,null,stopCallback);
 		}));
@@ -230,8 +230,12 @@ public class BattleView extends DefaultIView{
 		});
 	}
 	
-	private Selectable getGroup(ItemForward forward){
-		return forward == ItemForward.enemy ? enemyGroup : heroGroup;
+	private Selectable getGroup(ItemForward forward, Hero hero){
+		if(forward == ItemForward.enemy)
+			return enemyGroup;
+		if(forward == ItemForward.self)
+			return (onSelect,deadable) -> onSelect.run(hero.target);
+		return heroGroup; 
 	}
 	
 	private void useSpellcard(Spellcard sc,Object hero,Object target,Runnable callback){

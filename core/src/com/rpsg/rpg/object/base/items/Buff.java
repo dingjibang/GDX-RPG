@@ -72,4 +72,8 @@ public class Buff implements Serializable{
 		
 		return buff;
 	}
+
+	public Buff cpy() {
+		return getById(id);
+	}
 }

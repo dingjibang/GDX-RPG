@@ -7,6 +7,7 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.base.Resistance.ResistanceType;
 import com.rpsg.rpg.object.base.items.Effect.EffectBuff;
 import com.rpsg.rpg.object.base.items.Effect.EffectBuffType;
+import com.rpsg.rpg.object.base.items.Prop.FormulaType;
 import com.rpsg.rpg.object.rpg.Target;
 import com.rpsg.rpg.view.GameViews;
 
@@ -134,9 +135,9 @@ public class Item extends BaseItem{
 		//添加buff（如果有的话）
 		for(EffectBuff ebuff : effect.buff){
 			if(ebuff.type == EffectBuffType.add)
-				$.each(targetList, t -> t.addBuff(ebuff.buff));
+				$.each(targetList, t -> t.addBuff(ebuff.buff.cpy()));
 			if(ebuff.type == EffectBuffType.remove)
-				$.each(targetList, t -> t.removeBuff(ebuff.buff));
+				$.each(targetList, t -> t.removeBuff(ebuff.buff.cpy()));
 		}
 		
 		
@@ -148,20 +149,14 @@ public class Item extends BaseItem{
 				int damage = Spellcard.damage(effect, self, t, key);
 				boolean miss = false;
 				
-				if(damage < 0){
-//					//计算伤害浮动
-//					damage = prop.rate(damage);
-					
+				if(prop.formulaType == FormulaType.negative){
 					String rtype = prop.type;
 					if(rtype != null){
 						ResistanceType trtype = t.resistance.get(rtype).type;
 						if(trtype == ResistanceType.reflect){	//如果抗性为反射，则把伤害给自己
-							self.addProp(key, (-damage) + "");
+							self.addProp(key, damage);
 						}
 					}
-					
-					//处理溢出
-					damage = damage < 0 ? damage : 0;
 				}
 				
 				
@@ -171,7 +166,7 @@ public class Item extends BaseItem{
 					t.addProp(key, damage + "");
 					
 					if(RPG.ctrl.battle.isBattle())
-						if(damage < 0)
+						if(prop.formulaType == FormulaType.negative)
 							GameViews.gameview.battleView.status.append("...造成了 " + Math.abs(damage) + " 点伤害");
 						else
 							GameViews.gameview.battleView.status.append("...回复了" + damage + " 点" + BaseContext.getPropName(key));

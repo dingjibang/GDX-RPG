@@ -296,8 +296,10 @@ public class Enemy implements Time {
 			//可以秒杀对方进行加分
 			t.rank *= Spellcard.damage(action.act.effect, target, t, "hp") > 0 ? 1 : 2;
 			
+			t.rank += t.getProp("rank");
+			
 			sum += t.rank;
-		};
+		}
 		
 		Collections.sort(enemies, (t1,t2) -> t2.rank - t1.rank);
 		return sum;
@@ -331,15 +333,17 @@ public class Enemy implements Time {
 	
 	private Target getTargetByRate(List<Target> sortedTargetList, int rate){
 		Target target = null;
+		
 		for(int i=0; i<sortedTargetList.size(); i++){
+			Target _t = sortedTargetList.get(i);
 			
-			if(MathUtils.random(0,100) < rate){
-				target = sortedTargetList.get(i); 
+			if(MathUtils.random(0,100) < rate + _t.getProp("rankRate")){
+				target = _t; 
 				break;
 			}
 			
 			if(i == sortedTargetList.size() - 1)
-				target = sortedTargetList.get(i);
+				target = _t;
 		}
 		
 		return target;
