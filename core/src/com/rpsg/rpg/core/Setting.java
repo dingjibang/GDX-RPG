@@ -1,3 +1,4 @@
+
 package com.rpsg.rpg.core;
 
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
@@ -54,9 +55,9 @@ public class Setting {
 	public static final String SCRIPT_DATA_ASSOCIATION_SKILL = SCRIPT_DATA_ASSOCIATION + "skill/";
 	public static final String SCRIPT_DATA_HERO = SCRIPT_DATA + "/hero/";
 	public static final String SCRIPT_DATA_BUFF = SCRIPT_DATA + "/buff/";
+	public static final String SCRIPT_SYSTEM = SCRIPT + "/system/";
 	public static final String SCRIPT_DATA_TASK = SCRIPT_DATA + "/task/";
 	public static final String SCRIPT_DATA_ACHIEVEMENT = SCRIPT_DATA + "/achievement/";
-	public static final String SCRIPT_SYSTEM = SCRIPT + "/system/";
 
 	// 存档最大页数
 	public static final int SAVE_FILE_MAX_PAGE = 20;

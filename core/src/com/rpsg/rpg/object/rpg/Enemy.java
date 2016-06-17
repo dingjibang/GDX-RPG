@@ -134,7 +134,7 @@ public class Enemy implements Time {
 	}
 	
 	private static JsonValue getJSON(int id){
-		return reader.parse(Gdx.files.internal(Setting.SCRIPT_DATA_ENEMY + id + ".grd").readString());
+		return reader.parse(Gdx.files.internal(Setting.SCRIPT_DATA_ENEMY + id + ".grd"));
 	}
 	
 	public int getSpeed(){
