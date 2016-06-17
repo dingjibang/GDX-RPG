@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="80" tilewidth="48" tileheight="48" nextobjectid="25">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="80" tilewidth="48" tileheight="48" nextobjectid="27">
  <properties>
   <property name="distant" value="bgnd2.jpg"/>
   <property name="name" value="测试地图"/>
   <property name="temp" value="function Vector(){var o=new Object();o.x=0;o.y=0;return o;};var _point=new Vector();_point.x=-1;_point.y=-1;"/>
  </properties>
- <tileset firstgid="1" name="Cliff_tileset_0" tilewidth="48" tileheight="48" tilecount="240">
+ <tileset firstgid="1" name="Cliff_tileset_0" tilewidth="48" tileheight="48" tilecount="240" columns="15">
   <image source="../test/Cliff_tileset_0.png" trans="000000" width="755" height="777"/>
  </tileset>
- <tileset firstgid="241" name="ground_tiles" tilewidth="48" tileheight="48" tilecount="441">
+ <tileset firstgid="241" name="ground_tiles" tilewidth="48" tileheight="48" tilecount="441" columns="21">
   <image source="../test/ground_tiles.png" trans="000000" width="1008" height="1052"/>
   <terraintypes>
    <terrain name="草地" tile="44"/>
@@ -67,7 +67,7 @@
   <tile id="303" terrain="2,0,2,2"/>
   <tile id="304" terrain="0,2,2,2"/>
  </tileset>
- <tileset firstgid="682" name="objects" tilewidth="48" tileheight="48" tilecount="84">
+ <tileset firstgid="682" name="objects" tilewidth="48" tileheight="48" tilecount="84" columns="14">
   <image source="../test/object- layer_1.png" trans="000000" width="716" height="329"/>
   <terraintypes>
    <terrain name="树（矮）" tile="18"/>
@@ -113,7 +113,7 @@
   <tile id="77" terrain="0,0,,"/>
   <tile id="78" terrain="0,,,"/>
  </tileset>
- <tileset firstgid="766" name="treesv6_0_0" tilewidth="48" tileheight="48" tilecount="126">
+ <tileset firstgid="766" name="treesv6_0_0" tilewidth="48" tileheight="48" tilecount="126" columns="21">
   <image source="../test/treesv6_0_0.png" trans="000000" width="1008" height="288"/>
   <tile id="21">
    <properties>
@@ -216,10 +216,10 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="892" name="glo" tilewidth="48" tileheight="48" tilecount="4">
+ <tileset firstgid="892" name="glo" tilewidth="48" tileheight="48" tilecount="4" columns="2">
   <image source="../test/glo.png" width="96" height="96"/>
  </tileset>
- <tileset firstgid="896" name="rpg_maker_vx___flowers_and_pots_by_ayene_chan-d7kq66n" tilewidth="48" tileheight="48" tilecount="117">
+ <tileset firstgid="896" name="rpg_maker_vx___flowers_and_pots_by_ayene_chan-d7kq66n" tilewidth="48" tileheight="48" tilecount="117" columns="13">
   <image source="../test/rpg_maker_vx___flowers_and_pots_by_ayene_chan-d7kq66n.png" width="624" height="432"/>
  </tileset>
  <layer name="块层 1" width="50" height="80">
@@ -262,6 +262,13 @@
    </properties>
   </object>
   <object id="18" name="ENEMY" type="NPC" gid="892" x="720" y="2544" width="48" height="64"/>
+  <object id="26" name="RandomWalkNPC" type="NPC" gid="892" x="528" y="3504" width="48" height="64">
+   <properties>
+    <property name="IMAGE" value="walk_marisa"/>
+    <property name="SHADOW" value="true"/>
+    <property name="Z_SCRIPT" value="mytest.js"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="t2" width="50" height="80">
   <data encoding="base64" compression="gzip">

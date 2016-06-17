@@ -53,6 +53,7 @@ public class RPG {
 	/** GDX-RPG touch-particle controller <br><b>GDX-RPG 触屏粒子效果管理器</b>*/
 	public static TouchParticle touch = new TouchParticle();
 	
+	
 	/**
 	 * put a message to GDX-RPG toast controller<br>
 	 * <br><b>压入一条字符串，在下一帧时将会以toast的形式显示到屏幕上</b>

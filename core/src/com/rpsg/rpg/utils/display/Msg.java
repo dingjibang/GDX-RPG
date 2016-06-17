@@ -182,7 +182,7 @@ public class Msg {
 	}
 	
 	private int getOrPosX(String txt,int size){
-		int o=190/2+(Res.font.getTextWidth(txt, size))/2;
+		int o=80;
 		return o;
 	}
 	
@@ -222,7 +222,7 @@ public class Msg {
 	}
 	
 	public Color getColor(String mt){
-		if(mt.equals(MsgType.紫.path()) || mt.equals(MsgType.梅莉.path()) || mt.equals(MsgType.正常.path()))
+		if(mt.equals(MsgType.紫.path()) || mt.equals(MsgType.梅莉.path()) || mt.equals(MsgType.魔理沙.path()) || mt.equals(MsgType.正常.path()))
 			return Color.BLACK;
 		else
 			return Color.WHITE;

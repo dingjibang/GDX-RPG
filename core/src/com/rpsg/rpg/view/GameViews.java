@@ -67,6 +67,7 @@ public class GameViews implements ApplicationListener {
 		GameUtil.init();
 		
 		Setting.init();//设置一些复用的UI组件
+		RPG.ctrl.task.init();//读取成就
 		//input
 		Gdx.input.setInputProcessor(RPG.input);//注册输入
 		//view
@@ -110,6 +111,7 @@ public class GameViews implements ApplicationListener {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		TimeUtil.logic();
+		RPG.ctrl.task.logic();
 		switch(state){//根据state来让不同的view画图。
 		case STATE_LOGO:{
 			logoview.logic();

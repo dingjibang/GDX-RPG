@@ -125,6 +125,14 @@ public class $ {
 		}
 	}
 	
+	public static <T> T getIf(Iterable<T> c,RemoveTest<T> test){
+		T result = null;
+		for(T t : c)
+			if(test.test(t))
+				result = t;
+		return result;
+	}
+	
 	public static <T> void each(Iterable<T> c,Each<T> test){
 		Iterator<T> it=c.iterator();
 		int i=0;
@@ -137,6 +145,12 @@ public class $ {
 			if(str != null)
 				return str;
 		return null;
+	}
+	
+	public static <T> boolean test(Iterable<T> list,CustomCallback<T,Boolean> test){
+		for(T t: list)
+			if(!test.run(t)) return false;
+		return true;
 	}
 	
 	

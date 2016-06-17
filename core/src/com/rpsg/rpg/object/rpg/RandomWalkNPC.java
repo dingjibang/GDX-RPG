@@ -23,7 +23,7 @@ public class RandomWalkNPC extends PublicNPC {
 //	private 
 	protected int step = -1;
 	
-	private boolean stop = false;
+	public boolean stop = false;
 
 	private static final long serialVersionUID = 1L;
 	
@@ -108,8 +108,7 @@ public class RandomWalkNPC extends PublicNPC {
 		super.act(f);
 	}
 
-	public void stopRandomWalking() {
+	void stopRandomWalking(){
 		stop = true;
 	}
-
 }

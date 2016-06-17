@@ -55,6 +55,10 @@ public class MenuView extends StackView{
 	boolean status=false;
 	@Override
 	public View init() {
+		
+		//TODO for debug
+		RPG.ctrl.task.forceStop(1);
+		
 		final WidgetGroup leftBar;//左边栏
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()));
 		//左边栏相关

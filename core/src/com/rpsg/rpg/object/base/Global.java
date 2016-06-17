@@ -31,9 +31,10 @@ public class Global implements Serializable {
 	public ArrayList<Hero> allHeros = new ArrayList<>();
 	
 	public ArrayList<Hero> support = new ArrayList<>();
-	public int x;
-	public int y;
-	public int z;
+	
+	public ArrayList<Task> currentTask = new ArrayList<>();
+	
+	public int x,y,z;
 	
 	
 	public static AssociationSkill baseLinkSpellCard = null;
@@ -55,7 +56,7 @@ public class Global implements Serializable {
 	public List<BaseItem> items = new ArrayList<>(); 
 
 	public void read(){
-		RPG.executeJS( Gdx.files.internal(Setting.SCRIPT_SYSTEM+"global.js").readString("utf-8"), this);
+		RPG.executeJS(Gdx.files.internal(Setting.SCRIPT_SYSTEM+"global.js").readString("utf-8"), this);
 	}
 	
 	public Global addSupport(){

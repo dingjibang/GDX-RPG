@@ -1,10 +1,11 @@
 package com.rpsg.rpg.object.rpg;
 
+import java.util.UUID;
 
 public class PublicNPC extends DefaultNPC {
 
 	private static final long serialVersionUID = 1L;
-	private String id = "";
+	private String id = UUID.randomUUID().toString();
 	
 	
 	public PublicNPC(String id,String path, Integer width, Integer height) {

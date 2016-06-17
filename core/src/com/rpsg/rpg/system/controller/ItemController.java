@@ -22,7 +22,6 @@ import com.rpsg.rpg.object.base.items.Prop;
 import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.utils.game.Logger;
-import com.rpsg.rpg.utils.game.StringUtil;
 
 /**
  * GDX-RPG 道具核心管理器
@@ -140,7 +139,7 @@ public class ItemController {
 		Map<String,Prop> replace = new HashMap<>();
 		for(int i=0;i<json.size;i++){
 			String name = json.get(i).name;
-			if(StringUtil.has(name, without)) continue;
+			if(without.contains(name)) continue;
 			replace.put(name,Prop.fromJSON(json.get(name)));
 		}
 		return replace; 

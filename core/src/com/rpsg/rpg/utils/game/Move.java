@@ -2,6 +2,8 @@ package com.rpsg.rpg.utils.game;
 
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.rpg.CollideType;
+import com.rpsg.rpg.object.rpg.MoveStack;
+import com.rpsg.rpg.object.rpg.RandomWalkNPC;
 import com.rpsg.rpg.object.script.BaseScriptExecutor;
 import com.rpsg.rpg.object.script.Script;
 import com.rpsg.rpg.object.script.ScriptExecutor;
@@ -71,6 +73,8 @@ public class Move {
 	public static BaseScriptExecutor lock(Script script, final boolean flag){
 		return script.set(new ScriptExecutor(script) {
 			public void init(){
+				if(script.npc instanceof RandomWalkNPC)
+					((RandomWalkNPC)script.npc).stop = flag;
 				if(flag){
 					for (Script sc : script.npc.threadPool) {
 						if(sc.callType.equals(CollideType.auto))
@@ -84,8 +88,13 @@ public class Move {
 			
 			public void step(){
 				try {
-					com.rpsg.rpg.object.rpg.MoveStack wk= script.npc.walkStack.get(0);
-					wk.step=0;
+					if(script.npc.walkStack.size() == 0){
+						dispose();
+						return;
+					}
+					
+					MoveStack wk = script.npc.walkStack.get(0);
+					wk.step = 0;
 					script.npc.walkStack.clear();
 					script.npc.walkStack.add(wk);
 					if(!script.npc.walked)

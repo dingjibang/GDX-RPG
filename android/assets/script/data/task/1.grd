@@ -1,0 +1,12 @@
+{
+	name:"打开菜单",
+	description:"打开菜单即可以触发",
+	trigger:"special",
+	start:{},
+	end:{
+		script:"false"
+	},
+	gain:{
+		gold:10
+	}
+}
