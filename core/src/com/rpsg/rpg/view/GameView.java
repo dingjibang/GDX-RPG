@@ -155,7 +155,6 @@ public class GameView extends View{
 		if(RPG.ctrl.battle.logic())
 			return;
 		if(null==stackView){
-			RPG.maps.loader.logic(this);
 			for(Actor i:stage.getActors())
 				if(!(i instanceof Hero))
 					i.act(Gdx.graphics.getDeltaTime());

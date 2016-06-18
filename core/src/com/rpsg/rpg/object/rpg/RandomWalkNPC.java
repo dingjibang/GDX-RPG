@@ -49,7 +49,8 @@ public class RandomWalkNPC extends PublicNPC {
 				bo2=new Vector2(0,0);
 
 			int face = 0;
-			Hero Hero = RPG.ctrl.hero.getHeadHero();
+			Hero hero = RPG.ctrl.hero.getHeadHero();
+			if(hero == null) return;
 
 			if(point==null){
 				face = (int)(Math.random()*4);
@@ -64,7 +65,7 @@ public class RandomWalkNPC extends PublicNPC {
 			}else if(point.x!= -1 && point.y!= -1){
 				face = getFaceByPoint((int)point.x, (int)point.y);
 			}else{
-				face = getFaceByPoint(Hero.mapx,Hero.mapy);
+				face = getFaceByPoint(hero.mapx,hero.mapy);
 			}
 
 			if(bo2!=null){

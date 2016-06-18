@@ -136,8 +136,6 @@ public class SystemView extends IMenuView{
 					RPG.popup.add(ConfirmView.okCancel("确定要回到主菜单么？如未存档当前档案将会消失", new CustomRunnable<HoverView>() {
 						public void run(HoverView view) {
 							GameViews.state = GameViews.STATE_LOGO;
-							GameViews.gameview.dispose();
-							GameViews.gameview = null;
 							((HoverView) view).disposed = true;
 						}
 					}));

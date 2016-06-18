@@ -50,6 +50,11 @@ public class ItemController {
 				RPG.global.items.add(get(id));
 	}
 	
+	public void put(int id, int count) {
+		for(int i = count; i<0;i--)
+			put(id);
+	}
+	
 	public void put(BaseItem baseItem){
 		put(baseItem.id);
 	}
@@ -267,5 +272,5 @@ public class ItemController {
 		initReader();
 		return reader;
 	}
-	
+
 }

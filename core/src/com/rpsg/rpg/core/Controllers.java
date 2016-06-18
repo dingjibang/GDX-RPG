@@ -18,7 +18,7 @@ import com.rpsg.rpg.utils.display.WeatherUtil;
  *
  */
 public class Controllers {
-	public HeroController hero = new HeroController();
+	public HeroController hero;
 	public DrawController draw = new DrawController();
 	public CGController cg = new CGController();
 	public FG fg = new FG();

@@ -63,6 +63,7 @@ public class MoveController {
 	
 
 	public static void logic(GameView gv) {
+		if(RPG.ctrl.hero.getHeadHero() == null) return;
 		synchronized (gv.stage.getActors()) {
 			for (int i = 0; i < gv.stage.getActors().size; i++) {
 				Actor a=gv.stage.getActors().get(i);

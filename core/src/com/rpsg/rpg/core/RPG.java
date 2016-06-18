@@ -30,7 +30,7 @@ import com.rpsg.rpg.view.GameViews;
  */
 public class RPG {
 	/** GDX-RPG game persistence data <br><b>GDX-RPG 当前游戏存档</b>**/
-	public static Global global = new Global();
+	public static Global global;
 	
 	/** GDX-RPG Controllers <br><b>GDX-RPG 各种控制器（游戏内）</b> **/
 	public static Controllers ctrl = new Controllers();
@@ -91,6 +91,7 @@ public class RPG {
 	 * @param self "this" object
 	 */
 	public static Object executeJS(String js,Object self){
+		if(js == null || js.length() == 0) return null;
 		try {
 			Context ctx = Context.enter();
 			if(!GameUtil.isDesktop)

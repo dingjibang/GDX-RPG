@@ -187,8 +187,7 @@ public class MapLoader {
 		
 	}
 	
-	public int[][] getMapData(int zIndex)
-	{
+	public int[][] getMapData(int zIndex){
 		
 		TiledMapTileLayer tileLayer = (TiledMapTileLayer)layer.get(zIndex);
 		return getMapData(tileLayer);
@@ -196,8 +195,7 @@ public class MapLoader {
 	
 	public int[][] getMapData(TiledMapTileLayer tileLayer)
 	{
-		if(m_MapDataCache.containsKey(tileLayer))
-		{
+		if(m_MapDataCache.containsKey(tileLayer)){
 			return	m_MapDataCache.get(tileLayer);
 		}
 		int height = tileLayer.getHeight();
@@ -307,10 +305,6 @@ public class MapLoader {
 	public void removePath(){
 		if(lastPoint!=null)
 			lastPoint.addAction(Actions.fadeOut(0.2f));
-	}
-	
-	
-	public void logic(GameView gv){
 	}
 	
 	public void dispose(){

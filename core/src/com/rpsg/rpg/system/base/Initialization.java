@@ -7,6 +7,8 @@ import com.rpsg.rpg.view.GameViews;
 
 public class Initialization {
 	public static void init(GameView gv){
+		RPG.ctrl.hero.initList();
+		RPG.ctrl.task.initTask();
 		RPG.ctrl.thread.init();
 		RPG.maps.loader.load(gv);
 		RPG.ctrl.fg.init();

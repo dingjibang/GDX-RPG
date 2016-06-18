@@ -19,7 +19,7 @@ import com.rpsg.rpg.object.base.TaskInfo;
 @SuppressWarnings("unchecked")
 public class TaskController {
 
-	ArrayList<Task> currentTask = RPG.global.currentTask;
+	ArrayList<Task> currentTask;
 	ArrayList<Achievement> currentAchievement = new ArrayList<>();
 	List<TaskInfo> history = new ArrayList<>();
 
@@ -35,6 +35,10 @@ public class TaskController {
 		Gdx.files.local(Setting.PERSISTENCE).mkdirs();
 		saveAchievement();
 	}
+	
+	public void initTask(){
+		currentTask = RPG.global.currentTask;
+	}
 
 	/** 保存成就目录到文件 */
 	public void saveAchievement() {
@@ -44,9 +48,11 @@ public class TaskController {
 	/** 遍历任务和成就，判断完成情况 */
 	public void logic(){
 		List<BaseTask> list = new ArrayList<>();
-		for(Task task : currentTask)
-			if(task.trigger == TriggerType.auto)
-				list.add(task);
+		if(currentTask != null){
+			for(Task task : currentTask)
+				if(task.trigger == TriggerType.auto)
+					list.add(task);
+		}
 		list.addAll(currentAchievement);
 		
 		$.removeIf(list, BaseTask::canEnd, this::end);
@@ -114,7 +120,9 @@ public class TaskController {
 			currentTask.remove(task);
 		else
 			currentAchievement.remove(task);
-
-		RPG.toast.add((isTask ? "完成任务" : "获得成就") + "\n\"" + task.name + "\"", Color.SKY, 22, true, task.getIcon());
+		
+		task.gain();
+		
+		RPG.toast.add((isTask ? "完成任务" : "获得成就") + "\n\"" + task.name + "\"\n" + task.description2, Color.SKY, 22, true, task.getIcon());
 	}
 }
