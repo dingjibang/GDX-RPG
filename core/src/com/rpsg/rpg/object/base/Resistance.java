@@ -1,12 +1,18 @@
 package com.rpsg.rpg.object.base;
 
+import java.io.Serializable;
+
 /**
  * GDX-RPG 抗性数据
  * @author dingjibang
  *
  */
-public class Resistance{
+public class Resistance implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**抗性*/
 	public ResistanceType type = ResistanceType.normal;
 	/**闪避率*/

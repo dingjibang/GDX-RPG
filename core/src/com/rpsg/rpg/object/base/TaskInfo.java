@@ -1,8 +1,16 @@
 package com.rpsg.rpg.object.base;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TaskInfo {
+import com.rpsg.rpg.core.Setting;
+
+public class TaskInfo implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static String fileName = Setting.PERSISTENCE+"history.es";
 	public String name,description;
 	public Integer icon;
 	public Date date;

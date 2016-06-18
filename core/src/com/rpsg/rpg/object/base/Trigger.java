@@ -1,5 +1,6 @@
 package com.rpsg.rpg.object.base;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,11 @@ import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.base.items.BaseItem;
 
-public class Trigger {
+public class Trigger implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	List<TriggerItem> item = new ArrayList<>();
 	int gold;
 	String script;

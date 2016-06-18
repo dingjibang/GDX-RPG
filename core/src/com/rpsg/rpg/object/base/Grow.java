@@ -1,5 +1,6 @@
 package com.rpsg.rpg.object.base;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,8 +13,13 @@ import com.rpsg.rpg.object.rpg.Target;
  * @author dingjibang
  *
  */
-public class Grow {
+public class Grow implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	class Prop{int begin,end;float grow;}
 	public Map<String, Prop> prop = new HashMap<>();
 	

@@ -72,6 +72,7 @@ public class Move {
 	
 	public static BaseScriptExecutor lock(Script script, final boolean flag){
 		return script.set(new ScriptExecutor(script) {
+			float speed = script.npc.walkSpeed;
 			public void init(){
 				if(script.npc instanceof RandomWalkNPC)
 					((RandomWalkNPC)script.npc).stop = flag;
@@ -80,14 +81,7 @@ public class Move {
 						if(sc.callType.equals(CollideType.auto))
 							sc.dispose();
 					}
-
-//				script.npc.threadPool.removeIf((Script sc)->sc.callType.equals(DefaultNPC.AUTO_SCRIPT));
-				}else if(script.npc.scripts.get(CollideType.auto)!=null)
-					script.npc.pushThreadAndTryRun(CollideType.auto);
-			}
-			
-			public void step(){
-				try {
+					
 					if(script.npc.walkStack.size() == 0){
 						dispose();
 						return;
@@ -97,10 +91,21 @@ public class Move {
 					wk.step = 0;
 					script.npc.walkStack.clear();
 					script.npc.walkStack.add(wk);
-					if(!script.npc.walked)
+					script.npc.setWalkSpeed(5);
+
+//				script.npc.threadPool.removeIf((Script sc)->sc.callType.equals(DefaultNPC.AUTO_SCRIPT));
+				}else if(script.npc.scripts.get(CollideType.auto)!=null)
+					script.npc.pushThreadAndTryRun(CollideType.auto);
+			}
+			
+			public void step(){
+				try {
+					if(!script.npc.walked){
 						script.npc.toWalk();
-					else
+					}else{
 						dispose();
+						script.npc.setWalkSpeed(speed);
+					}
 				} catch (Exception e) {
 					dispose();
 				}

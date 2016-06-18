@@ -1,17 +1,25 @@
 package com.rpsg.rpg.object.base;
 
+import java.io.Serializable;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.Task.TriggerType;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.ItemController;
 import com.rpsg.rpg.system.ui.Image;
 
-public abstract class BaseTask {
+public abstract class BaseTask implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public int id;
 	public String name,description,description2;
 	public Integer icon;
+	public TriggerType trigger;
 	
 	public Trigger end,gain;
 	
@@ -25,6 +33,7 @@ public abstract class BaseTask {
 		task.icon = value.has("icon") ? value.getInt("icon") : 0;
 		task.end = Trigger.fromJSON(value.get("end"));
 		task.gain = Trigger.fromJSON(value.get("gain"));
+		task.trigger = TriggerType.valueOf(value.getString("trigger"));
 		
 		return task;
 	}

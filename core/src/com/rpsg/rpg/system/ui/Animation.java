@@ -98,7 +98,7 @@ public class Animation extends NPC {
 		List<FileHandle> list = new ArrayList<>();
 		int count = -1;
 		while(file.child(++count + ".png").exists())
-			list.add(file.child(++count + ".png"));
+			list.add(file.child(count + ".png"));
 		return list.toArray(new FileHandle[list.size()]);
 	}
 
