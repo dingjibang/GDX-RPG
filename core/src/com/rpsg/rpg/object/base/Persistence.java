@@ -51,6 +51,8 @@ public class Persistence implements Serializable{
 	public boolean runmod = false;
 	/**触屏粒子*/
 	public boolean touchParticle = false;
+	/**帧数修复*/
+	public boolean fixMove = false;
 	
 	/**账户信息*/
 	public Account account;

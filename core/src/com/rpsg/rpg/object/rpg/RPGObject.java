@@ -134,19 +134,22 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 		
 		if (isStop() && lastlength++ > 5 && !markTime)
 			foot = 0;
-		//帧数补偿
-		//当游戏帧数小于60FPS时，将尝试加快IRPGObject的行走速度而达到补偿的目的
 		int fps= Gdx.graphics.getFramesPerSecond();
-		fixTime += 60-fps;
-		if (fixTime < 0){
-			fixTime = 0;
-		}else if(fixTime >= 60){
-			int fixCount= (int) (fixTime/60f);
-			for(int i=0;i<fixCount;i++){
-				toWalk();
+		//==帧数补偿 begin
+		//当游戏帧数小于60FPS时，将尝试加快IRPGObject的行走速度而达到补偿的目的
+		if(Setting.persistence.fixMove){
+			fixTime += 60-fps;
+			if (fixTime < 0){
+				fixTime = 0;
+			}else if(fixTime >= 60){
+				int fixCount= (int) (fixTime/60f);
+				for(int i=0;i<fixCount;i++){
+					toWalk();
+				}
+				fixTime-=fixCount*60;
 			}
-			fixTime-=fixCount*60;
 		}
+		//==帧数补偿 stop
 
 		toWalk();
 		

@@ -160,12 +160,12 @@ public class SystemView extends IMenuView{
 			table.add(new CheckBox("开启平滑纹理",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.scaleAliasing = t.isChecked();
 			}}).check(set.scaleAliasing).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(50).row();
-			table.add(new Label("对纹理进行双线性过滤操作，使纹理变得更加平滑，屏幕窗口拉抻时，纹理不会产生锯齿，适用于手机/平板。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
+			table.add(new Label("对纹理进行双线性过滤操作，使纹理变得更加平滑，屏幕窗口拉抻时，纹理不会产生锯齿，适用于手机/平板。（需要重启游戏）",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.add(new CheckBox("开启图形抗锯齿",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.antiAliasing = t.isChecked();
 			}}).check(set.antiAliasing).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
-			table.add(new Label("开启抗锯齿，你懂的。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
+			table.add(new Label("开启抗锯齿，你懂的。（需要重启游戏）",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.add(new CheckBox("高级画质",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.betterDisplay = t.isChecked();
@@ -175,7 +175,7 @@ public class SystemView extends IMenuView{
 			table.add(new CheckBox("更清晰的文字",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.hdFont = t.isChecked();
 			}}).check(set.hdFont).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
-			table.add(new Label("使用更清晰的文字贴图，将大幅度提高文字的清晰度，对于手机/平板效果最佳。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
+			table.add(new Label("使用更清晰的文字贴图，将大幅度提高文字的清晰度，对于手机/平板效果最佳。（需要重启游戏）",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.add(new CheckBox("显示天气效果",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.weather = t.isChecked();
@@ -217,7 +217,12 @@ public class SystemView extends IMenuView{
 			table.add(new CheckBox("平滑视角",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
 				set.softCamera = t.isChecked();
 			}}).check(set.softCamera).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
-			table.add(new Label("移动时，视角会变得平滑。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
+			table.add(new Label("开启后，移动时视角会变得平滑。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
+			
+			table.add(new CheckBox("启用帧数修复",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
+				set.fixMove = t.isChecked();
+			}}).check(set.fixMove).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
+			table.add(new Label("提高并固定游戏的非渲染（逻辑）帧数，在性能严重恶劣（掉帧）的情况下也会尝试保证游戏速度。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.layout();
 			parentTable.add(table).align(Align.topLeft).row();

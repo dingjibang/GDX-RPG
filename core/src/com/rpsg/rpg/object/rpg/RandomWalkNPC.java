@@ -108,7 +108,7 @@ public class RandomWalkNPC extends PublicNPC {
 		}
 		super.act(f);
 	}
-
+	
 	void stopRandomWalking(){
 		stop = true;
 	}
