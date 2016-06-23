@@ -21,7 +21,7 @@ public class Setting {
 
 	public static final String MUSIC_BGM = BASE_PATH + "sound/bgm/";
 	public static final String MUSIC_SE = BASE_PATH + "sound/se/";
-	public static final String MAP = BASE_PATH + "maps/";
+	public static final String MAP = "maps/";
 
 	public static final String IMAGE_MENU = BASE_PATH + IMAGE_BASE_PATH + "/menu/";
 	public static final String IMAGE_CG = BASE_PATH + IMAGE_BASE_PATH + "/cg/";
@@ -30,7 +30,7 @@ public class Setting {
 
 	// Menu images/menu/
 	public static final String IMAGE_MENU_GLOBAL = IMAGE_MENU + "nglobal/";
-	public static final String IMAGE_MENU_MAP = IMAGE_MENU + "map/";
+	public static final String IMAGE_MENU_MAP = "../map/";
 	public static final String IMAGE_MENU_EQUIP = IMAGE_MENU + "nequip/";
 	public static final String IMAGE_MENU_SC = IMAGE_MENU + "sc/";
 	public static final String IMAGE_MENU_ITEM = IMAGE_MENU + "nitem/";
