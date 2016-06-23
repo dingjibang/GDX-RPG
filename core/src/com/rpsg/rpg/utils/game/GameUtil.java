@@ -56,7 +56,7 @@ public class GameUtil {
 			batch.end();
 			batch.begin();
 			fps=Gdx.graphics.getFramesPerSecond();
-			
+			font.getData().markupEnabled = true;
 			font.setColor(Color.BLACK);
 			font.draw(batch,"FPS:"+fps+append,13,(int) (stage_height-13));
 			font.setColor(Color.WHITE);

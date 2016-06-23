@@ -28,6 +28,10 @@ public class Collide implements Serializable {
 	}
 
 	public void testCollide(int x, int y, TiledMapTileLayer layer, Array<Actor> list, RPGObject mine) {
+		if(!GameView.collide) {
+			left = right = top = bottom = true;
+			return;
+		};
 		int maph = layer.getHeight();
 		left = !(x <= 0 || getID(layer, x - 1, maph - y - 1) != 0);
 		right = !(x >= layer.getWidth() - 1 || getID(layer, x + 1, maph - y - 1) != 0);

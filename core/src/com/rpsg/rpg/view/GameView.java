@@ -1,13 +1,18 @@
 package com.rpsg.rpg.view;
 
+import java.util.Arrays;
+
 import box2dLight.RayHandler;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -20,6 +25,8 @@ import com.rpsg.rpg.object.base.Global;
 import com.rpsg.rpg.object.base.IOMode;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Initialization;
+import com.rpsg.rpg.system.base.Res;
+import com.rpsg.rpg.system.controller.HeroController;
 import com.rpsg.rpg.system.controller.InputController;
 import com.rpsg.rpg.system.controller.MoveController;
 import com.rpsg.rpg.system.ui.StackView;
@@ -53,10 +60,11 @@ public class GameView extends View{
 	public boolean renderable = true;
 	
 	
-	public static boolean showdebug = true,showplayer = true;
+	public static boolean showdebug = true,showplayer = true,collide = true;
 	public static Boolean[] 
 			renderlayer = new Boolean[]{true,true,true,true,true,true,true,true,true,true},
 			colorlayer = new Boolean[]{false,false,false,false,false,false,false,false,false,false};
+	public static float zoom = 0;
 	
 	@Override
 	public View init() {
@@ -69,7 +77,7 @@ public class GameView extends View{
 		parameter.loadedCallback= (assetManager, fileName, type)->{
 			RPG.maps.map = ma.get(Setting.MAP + global.map);
 			if(render == null)
-				render=new TileRenderer(RPG.maps.map);
+				render=new TileRenderer(RPG.maps.map,1,5000);
 			render.setBlending(true);
 			render.setView(camera);
 			ray.setWorld(world);
@@ -160,7 +168,7 @@ public class GameView extends View{
 	public void logic() {
 		if(!ma.update() || !inited)
 			return;
-		String append = "   detalTime: "+Gdx.graphics.getDeltaTime() + "\n[地图编辑器专用版] GDX-RPG Map Load Tester\n";
+		String append = "   detalTime: "+Gdx.graphics.getDeltaTime() + "\n[地图编辑器专用版] [#00ff44]GDX-RPG Map Load Tester[]\n";
 		
 		RPG.maps.loader.logic(this);
 		for(Actor i:stage.getActors())
@@ -169,20 +177,25 @@ public class GameView extends View{
 		RPG.ctrl.hero.act();
 		MoveController.logic(this);
 		Hero hero = RPG.ctrl.hero.getHeadHero();
-		append += "当前玩家坐标：[x:"+hero.mapx+", y:"+hero.mapy+", z:"+hero.layer+"] ("+(int)hero.position.x+","+(int)hero.position.y+")\n";
-		append += "[Q键]渲染/不渲染玩家\n";
+		append += "当前玩家坐标：[x:[#a030af]"+hero.mapx+"[], y:[#a030af]"+hero.mapy+"[], z:[#a030af]"+hero.layer+"[]] ("+(int)hero.position.x+","+(int)hero.position.y+")\n";
+		append += "[Q键]不渲染玩家"+(!showplayer?"-[#ff0000]已开启[]":"-已关闭")+"\n";
 		append += "[数字0-9键]渲染/不渲染某个特定图层\n";
 		append += "[ctrl + 数字0-9键]为某个图层上色\n";
 		append += "[H键]显示/不显示调试信息\n";
+		append += "[P键]高级画面渲染"+(Setting.persistence.betterDisplay?"-[#ff0000]已开启[]":"-已关闭")+"\n";
+		append += "[L键]抗锯齿"+(Setting.persistence.scaleAliasing?"-[#ff0000]已开启[]":"-已关闭")+"\n";
+		append += "[C键]穿墙"+(!collide?"-[#ff0000]已开启[]":"-已关闭")+"\n";
+		append += "[鼠标滚轮]缩放（当前倍率："+zoom+"）\n" ;
 		append += "当前没有渲染的图层：";
 		for(int i = 0;i<renderlayer.length;i++)
 			if(!renderlayer[i])
-				append+= "层"+i +"   ";
+				append+= "[#ff0000]层"+i +"[]   ";
 		append += "\n";
 		append += "当前上色的图层：";
 		for(int i = 0;i<colorlayer.length;i++)
 			if(colorlayer[i])
-				append+= "层"+i +"   "; 
+				append+= "[#ff0000]层"+i +"[]   ";
+		append += "\n";
 		stage.setDebugAll(false);
 		if(showdebug) 
 			GameUtil.append = append;
@@ -201,6 +214,26 @@ public class GameView extends View{
 			return;
 		if(keycode == Keys.H) showdebug = !showdebug;
 		if(keycode == Keys.Q) showplayer = !showplayer;
+		if(keycode == Keys.C) collide = !collide;
+		if(keycode == Keys.P) Setting.persistence.betterDisplay = !Setting.persistence.betterDisplay;
+		if(keycode == Keys.L) {
+			Setting.persistence.scaleAliasing = !Setting.persistence.scaleAliasing;
+			if(Setting.persistence.scaleAliasing){
+				for (TiledMapTileSet ms : RPG.maps.map.getTileSets()) {
+					for (TiledMapTile tile : ms) {
+						tile.getTextureRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+					}
+				}
+				RPG.ctrl.hero.currentHeros.forEach(h -> Arrays.asList(h.images).forEach(img -> img.getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear)));
+			}else{
+				for (TiledMapTileSet ms : RPG.maps.map.getTileSets()) {
+					for (TiledMapTile tile : ms) {
+						tile.getTextureRegion().getTexture().setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+					}
+				}
+				RPG.ctrl.hero.currentHeros.forEach(h -> Arrays.asList(h.images).forEach(img -> img.getTexture().setFilter(TextureFilter.Nearest, TextureFilter.Nearest)));
+			}
+		}
 		
 		int num = -1;
 		if(keycode >= Keys.NUM_0 && keycode <= Keys.NUM_9)
@@ -241,6 +274,10 @@ public class GameView extends View{
 
 	@Override
 	public boolean scrolled(int amount) {
+		zoom += (float)amount / 20f;
+		if(zoom > 1) zoom = 1;
+		if(zoom < -1) zoom = -0.99f;
+		camera.update();
 		InputController.scrolled(amount);
 		return false;
 	}

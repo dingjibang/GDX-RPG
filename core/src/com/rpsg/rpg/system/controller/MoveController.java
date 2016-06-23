@@ -154,7 +154,7 @@ public class MoveController {
 			pos.x += offsetActor.getX();
 			pos.y += offsetActor.getY();
 		}
-		gv.camera.zoom=offsetActor.getScaleX();
+		gv.camera.zoom=offsetActor.getScaleX() + GameView.zoom;
 		gv.camera.update();
 	}
 

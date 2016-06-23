@@ -33,7 +33,6 @@ public class InputController{
 		switch(currentIOMode){
 		case normal:{
 			if(keycode == Keys.R) {
-				RPG.popup.add(LoadView.class);
 			}
 			MoveController.keyDown(keycode, gv);
 			break;
