@@ -35,12 +35,7 @@ public class InputController{
 			if(keycode == Keys.R) {
 				RPG.popup.add(LoadView.class);
 			}
-			if(keycode==Keys.ESCAPE || keycode==Keys.X){
-				MenuController.createMenu();
-				currentIOMode=IOMode.MapInput.menu;
-			}else{
-					MoveController.keyDown(keycode, gv);
-			}
+			MoveController.keyDown(keycode, gv);
 			break;
 		}
 		case menu:{

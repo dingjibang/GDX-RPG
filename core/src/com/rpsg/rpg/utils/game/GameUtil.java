@@ -35,9 +35,10 @@ public class GameUtil {
 	public static boolean isDesktop=false;
 	public static int fps=0;
 	private static BitmapFont font;
+	public static String append = "";
 	
 	public static void init(){
-		font = Res.font.get(18);
+		font = Res.font.get(14);
 	}
 	
 	/**current screen width*/
@@ -57,9 +58,9 @@ public class GameUtil {
 			fps=Gdx.graphics.getFramesPerSecond();
 			
 			font.setColor(Color.BLACK);
-			font.draw(batch,"FPS:"+fps,13,(int) (stage_height-13));
+			font.draw(batch,"FPS:"+fps+append,13,(int) (stage_height-13));
 			font.setColor(Color.WHITE);
-			font.draw(batch,"FPS:"+fps,12,(int) (stage_height-12));
+			font.draw(batch,"FPS:"+fps+append,12,(int) (stage_height-12));
 		}
 	}
 	

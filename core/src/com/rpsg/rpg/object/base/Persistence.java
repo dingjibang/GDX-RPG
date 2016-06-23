@@ -30,7 +30,7 @@ public class Persistence implements Serializable{
 	/**文本卷动速度*/
 	public int textSpeed = 2;
 	/**显示"FPS"在屏幕左上角*/
-	public boolean showFPS = false;
+	public boolean showFPS = true;
 	/**全局音量*/
 	public boolean debugMod = false;
 	/**当程序异常时是否上报错误 TODO*/

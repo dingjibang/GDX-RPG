@@ -9,6 +9,8 @@ import java.util.Map;
 
 import box2dLight.PointLight;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapLayer;
@@ -267,7 +269,23 @@ public class MapLoader {
 			
 			drawlist.clear();
 			gv.render.setView(gv.camera);
-			gv.render.render(new int[]{i});
+			if(GameView.renderlayer[i]){
+				gv.render.setBlending(true);
+				if(GameView.colorlayer[i]){
+					gv.render.cache();
+					Color color = Color.RED;
+					if(i == 0) color = Color.ROYAL;
+					if(i == 2) color = Color.CHARTREUSE;
+					if(i == 3) color = Color.ORANGE;
+					if(i == 4) color = Color.FIREBRICK;
+					if(i == 5) color = Color.PINK;
+					gv.render.getSpriteCache().setColor(color);
+				}
+				gv.render.render(new int[]{i});
+				if(GameView.colorlayer[i]){
+					gv.render.getSpriteCache().setColor(Color.WHITE);
+				}
+			}
 			
 			Array<Actor> removeList1 = new Array<>();
 			
@@ -284,7 +302,7 @@ public class MapLoader {
 			}
 			
 			gv.stage.getActors().removeAll(removeList1, true);
-			
+			if(!GameView.showplayer) drawlist.clear();
 			Collections.sort(drawlist);
 			sb.begin();
 			for(RPGObject ir:drawlist){
