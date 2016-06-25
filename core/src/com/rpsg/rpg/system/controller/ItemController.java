@@ -267,5 +267,10 @@ public class ItemController {
 		initReader();
 		return reader;
 	}
+
+	public void put(int id, int count) {
+		for(int i = count; i<=0; i--)
+			put(id);
+	}
 	
 }

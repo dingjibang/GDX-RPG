@@ -1,19 +1,27 @@
 package com.rpsg.rpg.object.base;
 
+import java.io.Serializable;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.Task.TriggerType;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.ItemController;
 import com.rpsg.rpg.system.ui.Image;
 
-public abstract class BaseTask {
+public abstract class BaseTask implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public int id;
-	public String name,description;
+	public String name,description,description2;
 	public Integer icon;
 	
 	public Trigger end,gain;
+	public TriggerType trigger;
 	
 	public static <T extends BaseTask> T fromJSON(int id,T task){
 		JsonReader reader = ItemController.reader();
@@ -21,10 +29,11 @@ public abstract class BaseTask {
 		task.id = id;
 		task.name = value.getString("name");
 		task.description = value.getString("description");
+		task.description2 = value.has("description2") ? value.getString("description2") : "";
 		task.icon = value.has("icon") ? value.getInt("icon") : 0;
 		task.end = Trigger.fromJSON(value.get("end"));
 		task.gain = Trigger.fromJSON(value.get("gain"));
-		
+		task.trigger = value.has("trigger") ? TriggerType.valueOf(value.getString("trigger")) : TriggerType.special;
 		return task;
 	}
 	
@@ -45,6 +54,10 @@ public abstract class BaseTask {
 	
 	public boolean canEnd(){
 		return end.test();
+	}
+
+	public void gain() {
+		gain.gain();
 	}
 	
 }

@@ -19,8 +19,8 @@ import com.rpsg.rpg.view.GameViews;
  *
  */
 public class HeroController {
-	public ArrayList<Hero> allHeros = RPG.global.allHeros;
-	public ArrayList<Hero> currentHeros = RPG.global.currentHeros;
+	public ArrayList<Hero> allHeros;
+	public ArrayList<Hero> currentHeros;
 	
 	public boolean show = true;
 	
@@ -29,6 +29,11 @@ public class HeroController {
 	public boolean thisFrameGeneratedPosition=false;
 	
 	boolean walk;
+	
+	public void initList(){
+		allHeros = RPG.global.allHeros;
+		currentHeros = RPG.global.currentHeros;
+	}
 	
 	/**
 	 * cloner of currentheros
@@ -39,6 +44,10 @@ public class HeroController {
 	}
 	
 	public synchronized void act(){
+		if(currentHeros == null || currentHeros.size() == 0) {
+			initList();
+			return;
+		};
 		for(Hero hero:currentHeros)
 			hero.act(0);
 		
@@ -78,10 +87,12 @@ public class HeroController {
 	}
 	
 	public Hero getHeadHero(){
+		if(currentHeros == null || currentHeros.size() == 0) return null;
 		return currentHeros.get(0);
 	}
 	
 	public Hero getHero(int id){
+		if(allHeros == null) initList();
 		for(Hero hero:allHeros)
 			if(hero.id == id)
 				return hero;
@@ -97,6 +108,7 @@ public class HeroController {
 	}
 	
 	public void initHeros(Stage s){
+		initList();
 		for(Hero hero:currentHeros){
 			hero.init();
 			hero.enableCollide=false;
@@ -114,6 +126,7 @@ public class HeroController {
 	}
 	
 	public void reinit(boolean byTeleport){
+		initList();
 		for(int i=0;i<currentHeros.size();i++){
 			if(i!=0){
 				currentHeros.get(i).currentImageNo=currentHeros.get(0).currentImageNo;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
@@ -19,21 +20,44 @@ import com.rpsg.rpg.object.base.TaskInfo;
 @SuppressWarnings("unchecked")
 public class TaskController {
 
-	ArrayList<Task> currentTask = RPG.global.currentTask;
+	ArrayList<Task> currentTask;
 	ArrayList<Achievement> currentAchievement = new ArrayList<>();
 	List<TaskInfo> history = new ArrayList<>();
 
 	/** 读取成就目录 */
 	public void init() {
-		Object o = Files.load(Achievement.fileName);
+		Object ach = Files.load(Achievement.fileName);
+		Object info = Files.load(TaskInfo.fileName);
 
-		if (null != o) {
-			currentAchievement = (ArrayList<Achievement>) o;
-			return;
+		if (null != ach) {
+			currentAchievement = (ArrayList<Achievement>) ach;
+		}else{
+			/**没有成就文件时，新建成就文件并读取所有成就*/
+			for(int id : list(Gdx.files.internal(Setting.SCRIPT_DATA_ACHIEVEMENT)))
+				currentAchievement.add(Achievement.fromJSON(id));
+			saveAchievement();
 		}
+		
+		if (null != info) 
+			history = (ArrayList<TaskInfo>) info;
+		else
+			saveHistory();
+	}
+	
+	private List<Integer> list(FileHandle file) {
+		List<Integer> list = new ArrayList<>();
+		int count = 0;
+		while(file.child(++count + ".grd").exists())
+			list.add(count);
+		return list;
+	}
+	
+	private void saveHistory() {
+		Files.save(history, TaskInfo.fileName);
+	}
 
-		Gdx.files.local(Setting.PERSISTENCE).mkdirs();
-		saveAchievement();
+	public void initTask(){
+		currentTask = RPG.global.currentTask;
 	}
 
 	/** 保存成就目录到文件 */
@@ -44,10 +68,14 @@ public class TaskController {
 	/** 遍历任务和成就，判断完成情况 */
 	public void logic(){
 		List<BaseTask> list = new ArrayList<>();
-		for(Task task : currentTask)
-			if(task.trigger == TriggerType.auto)
-				list.add(task);
-		list.addAll(currentAchievement);
+		if(currentTask != null){
+			for(Task task : currentTask)
+				if(task.trigger == TriggerType.auto)
+					list.add(task);
+		}
+		for(Achievement ach : currentAchievement)
+			if(ach.trigger == TriggerType.auto)
+				list.add(ach);
 		
 		$.removeIf(list, BaseTask::canEnd, this::end);
 	}
@@ -65,6 +93,10 @@ public class TaskController {
 	
 	private Task getTask(int id){
 		return $.getIf(currentTask, t-> t.id == id);
+	}
+	
+	private Achievement getAchievement(int id){
+		return $.getIf(currentAchievement, t-> t.id == id);
 	}
 	
 	/** 查询是否正在进行任务*/
@@ -94,14 +126,21 @@ public class TaskController {
 	}
 	
 	/**完成一个任务（非成就）**/
-	public void end(int id){
+	public void endTask(int id){
 		end(getTask(id));
 	}
 	
-	public void forceStop(int id){
+	/**完成一个成就（非任务）**/
+	public void endAchievement(int id){
+		end(getAchievement(id));
+	}
+	
+	/**强制让一个任务状态变为已完成（但并不提交）*/
+	public TaskController forceStop(int id){
 		Task task = getTask(id);
-		if(task == null) return;
+		if(task == null) return this;
 		task.end.forceStop();
+		return this;
 	}
 	
 	/** 完成一个任务或成就 */
@@ -110,11 +149,15 @@ public class TaskController {
 		
 		history.add(TaskInfo.create(task));
 		boolean isTask = task instanceof Task;
-		if (isTask)
+		if (isTask){
 			currentTask.remove(task);
-		else
+		}else{
 			currentAchievement.remove(task);
-
-		RPG.toast.add((isTask ? "完成任务" : "获得成就") + "\n\"" + task.name + "\"", Color.SKY, 22, true, task.getIcon());
+			saveAchievement();
+		}
+		
+		task.gain();
+		
+		RPG.toast.add((isTask ? "完成任务" : "获得成就") + "\n\"" + task.name + "\"\n" + task.description2, Color.SKY, 22, true, task.getIcon());
 	}
 }

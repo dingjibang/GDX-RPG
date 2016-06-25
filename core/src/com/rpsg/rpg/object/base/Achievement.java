@@ -4,10 +4,14 @@ import com.rpsg.rpg.core.Setting;
 
 public class Achievement extends BaseTask{
 	
-	public static String fileName = Setting.PERSISTENCE + "achievement.es";
-
-	public static Achievement fromJSON(int value) {
-		return fromJSON(value, new Achievement());
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static String fileName = Setting.PERSISTENCE+"achievement.es";
+	
+	public static Achievement fromJSON(int id) {
+		return fromJSON(id, new Achievement());
 	}
 
 	public boolean canEnd() {

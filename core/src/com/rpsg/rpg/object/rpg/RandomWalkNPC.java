@@ -20,7 +20,6 @@ public class RandomWalkNPC extends PublicNPC {
 	protected Vector2 point;
 	private int currentFrame;
 	public int speed = 60;
-//	private 
 	protected int step = -1;
 	
 	public boolean stop = false;
@@ -42,14 +41,16 @@ public class RandomWalkNPC extends PublicNPC {
 			
 			int maxWalkLength=maxLength;
 			Vector2 bo2 = null;
-			if(step == -1)
+			if(step == -1) 
 			step = (int)(Math.random()*(maxWalkLength-minWalkLength)+minWalkLength);
 
 			if(bounds!=null)
 				bo2=new Vector2(0,0);
 
 			int face = 0;
-			Hero Hero = RPG.ctrl.hero.getHeadHero();
+			Hero hero = RPG.ctrl.hero.getHeadHero();
+			if(hero == null) return;
+			
 
 			if(point==null){
 				face = (int)(Math.random()*4);
@@ -64,7 +65,7 @@ public class RandomWalkNPC extends PublicNPC {
 			}else if(point.x!= -1 && point.y!= -1){
 				face = getFaceByPoint((int)point.x, (int)point.y);
 			}else{
-				face = getFaceByPoint(Hero.mapx,Hero.mapy);
+				face = getFaceByPoint(hero.mapx,hero.mapy);
 			}
 
 			if(bo2!=null){
@@ -107,7 +108,7 @@ public class RandomWalkNPC extends PublicNPC {
 		}
 		super.act(f);
 	}
-
+	
 	void stopRandomWalking(){
 		stop = true;
 	}

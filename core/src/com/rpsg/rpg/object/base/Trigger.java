@@ -47,4 +47,11 @@ public class Trigger {
 	public void forceStop(){
 		this.forceStop = true;
 	}
+	
+	public final void gain(){
+		RPG.global.gold += gold;
+		for(TriggerItem item : this.item)
+			RPG.ctrl.item.put(item.id,item.count);
+		RPG.executeJS(script);
+	}
 }

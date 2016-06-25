@@ -91,6 +91,7 @@ public class RPG {
 	 * @param self "this" object
 	 */
 	public static Object executeJS(String js,Object self){
+		if(js == null || js.length() == 0) return null;
 		try {
 			Context ctx = Context.enter();
 			if(!GameUtil.isDesktop)

@@ -63,6 +63,9 @@ public class MoveController {
 	
 
 	public static void logic(GameView gv) {
+		Hero head = RPG.ctrl.hero.getHeadHero();
+		if(head == null) return;
+		
 		synchronized (gv.stage.getActors()) {
 			for (int i = 0; i < gv.stage.getActors().size; i++) {
 				Actor a=gv.stage.getActors().get(i);
@@ -72,7 +75,7 @@ public class MoveController {
 				}
 			}
 		}
-		for (ScriptCollide sc : Collide.testNPCCollide(gv, RPG.ctrl.hero.getHeadHero(), gv.stage.getActors())) {
+		for (ScriptCollide sc : Collide.testNPCCollide(gv, head, gv.stage.getActors())) {
 			sc.toCollide();
 		}
 		
