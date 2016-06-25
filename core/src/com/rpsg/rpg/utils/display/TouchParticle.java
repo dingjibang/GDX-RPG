@@ -26,7 +26,8 @@ public class TouchParticle {
 	}
 	
 	public void draw(){
-		if(Setting.persistence.touchParticle){
+		logic();
+		if(Setting.persistence.touchParticle && flag){
 			logic();
 			stage.getBatch().end();
 			stage.draw();
@@ -36,12 +37,8 @@ public class TouchParticle {
 	}
 	
 	public void logic(){
-		if(p.isComplete() && flag){
-			p.reset();
-		}
-		
 		if(!flag)
-			p.allowCompletion();
+			p.getEmitters().get(0).reset();
 	}
 	
 	public void setPosition(int x,int y){
