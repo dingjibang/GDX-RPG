@@ -11,8 +11,8 @@ public abstract class DefaultNPC extends NPC {
 		super();
 	}
 
-	public DefaultNPC(String path, Integer width, Integer height) {
-		super(path, width, height);
+	public DefaultNPC(String path) {
+		super(path);
 	}
 
 	public void init() {

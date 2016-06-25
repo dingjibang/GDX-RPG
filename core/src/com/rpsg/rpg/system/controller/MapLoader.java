@@ -92,8 +92,6 @@ public class MapLoader {
 				for(MapObject obj:m.getObjects()){
 					if(obj.getProperties().get("type")!=null && obj.getProperties().get("type").equals("NPC") && obj instanceof TiledMapTileMapObject){
 						TiledMapTileMapObject tobj = (TiledMapTileMapObject)obj;
-						int w = tobj.getProperties().get("width",Float.class).intValue();
-						int h = tobj.getProperties().get("height",Float.class).intValue();
 						int x = tobj.getProperties().get("x",Float.class).intValue();
 						int y = tobj.getProperties().get("y",Float.class).intValue();
 						try {
@@ -101,22 +99,22 @@ public class MapLoader {
 							if(obj.getName().equals("PUBLIC")){
 								String imgPath=(String) obj.getProperties().get("IMAGE");
 								imgPath=imgPath==null?"empty":imgPath;
-								npc=new PublicNPC((String) obj.getProperties().get("ID"),imgPath+".png",w,h);
+								npc=new PublicNPC((String) obj.getProperties().get("ID"),imgPath+".png");
 							}
 							else if(obj.getName().equals("RandomWalkNPC")){
 								String imgPath=(String) obj.getProperties().get("IMAGE");
 								imgPath=imgPath==null?"empty":imgPath;
-								npc=new RandomWalkNPC((String) obj.getProperties().get("ID"),imgPath+".png",w,h);
+								npc=new RandomWalkNPC((String) obj.getProperties().get("ID"),imgPath+".png");
 							}
 							else if(obj.getName().equals("ENEMY")){
 								String imgPath=(String) obj.getProperties().get("IMAGE");
 								imgPath=imgPath==null?"enemy":imgPath;
-								npc=new EnemyNPC((String) obj.getProperties().get("ID"),imgPath+".png",w,h);
+								npc=new EnemyNPC((String) obj.getProperties().get("ID"),imgPath+".png");
 								npc.markTime = true;
 							}
 							else{
-								npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.getName()).getConstructor(String.class,Integer.class,Integer.class)
-										.newInstance(obj.getProperties().get("IMAGE")+".png",w,h);
+								npc=(NPC)Class.forName("com.rpsg.rpg.game.object."+obj.getName()).getConstructor(String.class)
+										.newInstance(obj.getProperties().get("IMAGE")+".png");
 
 							}
 							npc.params=GameUtil.parseMapProperties(obj.getProperties());

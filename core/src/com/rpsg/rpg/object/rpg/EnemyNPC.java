@@ -13,8 +13,8 @@ public class EnemyNPC extends RandomWalkNPC {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public EnemyNPC(String id, String path, Integer width, Integer height) {
-		super(id, path, width, height);
+	public EnemyNPC(String id, String path) {
+		super(id, path);
 		this.drawShadow = true;
 		maxLength = 1;
 		battleParam = new BattleParam();

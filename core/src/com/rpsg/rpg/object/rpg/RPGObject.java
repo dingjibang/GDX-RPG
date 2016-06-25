@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -120,11 +121,12 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 	 * @param width 宽度
 	 * @param height 高度
 	 */
-	public RPGObject(String path,int width,int height){
+	public RPGObject(String path){
 		imgPath=path;
-		bodyWidth=width;
-		bodyHeight=height;
-		images=RPGObject.generateImages(path, width, height);
+		Texture $tmp = Res.getTexture(path);
+		bodyWidth=$tmp.getWidth()/3;
+		bodyHeight=$tmp.getHeight()/4;
+		images=RPGObject.generateImages(path, bodyWidth, bodyHeight);
 	};
 	
 	/**计算行走*/
@@ -156,6 +158,7 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 			displayBalloon=false;
 		
 		if(markTime) actWalkAnimate();
+		
 	}
 	
 	/**计算动画*/
@@ -210,7 +213,7 @@ public abstract class RPGObject extends Actor implements Comparable<RPGObject>,S
 			}
 		}
 	}
-	/**生成绝对的位置（px而不是地图坐标）*/
+	/**生成绝对的位置（px而不是地图坐标） maybe会导致碰撞失效*/
 	public RPGObject generateAbsolutePosition(int x,int y,int layer){
 		try {
 			this.mapx=x/48;

@@ -60,8 +60,8 @@ public abstract class NPC extends RPGObject{
 		init();
 	}
 
-	public NPC(String path,Integer width,Integer height) {
-		super(RES_PATH+path, width, height);
+	public NPC(String path) {
+		super(RES_PATH+path);
 		this.waitWhenCollide=false;
 	}
 	
@@ -69,7 +69,6 @@ public abstract class NPC extends RPGObject{
 		if(params==null)
 			return;
 		String script = "";
-		String global = Gdx.files.internal(Setting.SCRIPT_MAP+"global.js").readString("utf-8");
 		for(String key:params.keySet()){
 			for(CollideType c:CollideType.values()){
 				if(key.contains(c.name().toUpperCase())){

@@ -7,8 +7,8 @@ import com.rpsg.rpg.core.RPG;
 
 public class RandomWalkNPC extends PublicNPC {
 
-	public RandomWalkNPC(String id, String path, Integer width, Integer height) {
-		super(id, path, width, height);
+	public RandomWalkNPC(String id, String path) {
+		super(id, path);
 		bounds = null;
 		maxLength = 3;
 		minWalkLength = 1;
