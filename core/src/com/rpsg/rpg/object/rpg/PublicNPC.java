@@ -8,8 +8,8 @@ public class PublicNPC extends DefaultNPC {
 	private String id = UUID.randomUUID().toString();
 	
 	
-	public PublicNPC(String id,String path, Integer width, Integer height) {
-		super(path, width, height);
+	public PublicNPC(String id,String path) {
+		super(path);
 		if(id!=null)
 			this.id=id;
 	}

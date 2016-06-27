@@ -26,7 +26,7 @@ if(currentSelect("接任务")){
 	if(task.has(taskId)){
 		say("我看看你的任务有没有做完……","魔理沙??");
 		if(task.canBeDone(taskId)){
-			task.end(taskId);
+			task.endTask(taskId);
 			say("任务完成www","魔理沙??");
 		}else{
 			say("还没有达成任务条件_(:3」∠)_","魔理沙??");

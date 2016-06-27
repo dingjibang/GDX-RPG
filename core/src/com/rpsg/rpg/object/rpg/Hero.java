@@ -95,7 +95,7 @@ public class Hero extends RPGObject implements Time{
 	}
 
 	public Hero(String path) {
-		super(RES_PATH + path, HERO_WIDTH, HERO_HEIGHT);
+		super(RES_PATH + path);
 		this.waitWhenCollide = false;
 		this.drawShadow = true;
 	}

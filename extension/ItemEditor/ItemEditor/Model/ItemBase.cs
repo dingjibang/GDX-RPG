@@ -223,7 +223,10 @@ namespace ItemEditor
         public JObject mp { get; set; }
         public JObject maxsc { get; set; }
         public JObject dead { get; set; }
+        public JObject rank { get; set; }
+        public JObject rankRate { get; set; }
 
+        public bool Editor;
 
         public void ReadFromJson(string sjson)
         {
@@ -233,14 +236,16 @@ namespace ItemEditor
                 
                 foreach (var propInfo in type1.GetProperties())
                 {
-                    this.SetPropertyValue(propInfo.Name, "");
+                    this.SetPropertyValue(propInfo.Name, new JObject());
                 }
                 return;
             }
             JObject json = JObject.Parse(sjson);
             foreach (var propInfo in type1.GetProperties())
             {
-                this.SetPropertyValue(propInfo.Name,  json.GetSafeJObjectValue(propInfo.Name, new JObject()));
+                JObject obj = json.GetSafeJObjectValue(propInfo.Name, new JObject());
+                obj.PropertyChanged += (sender,e) => Editor = true;
+                this.SetPropertyValue(propInfo.Name, obj  );
             }
         }
 

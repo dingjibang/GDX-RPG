@@ -6,14 +6,17 @@
              xmlns:local="clr-namespace:ItemEditor"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <ScrollViewer>
+        
+    
     <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition Height="234"/>
+            <!--<RowDefinition Height="234"/>-->
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <!--<ColumnDefinition></ColumnDefinition>-->
         </Grid.ColumnDefinitions>
 
 
@@ -26,7 +29,16 @@
                 <RowDefinition Height="32"></RowDefinition>
                 <RowDefinition Height="32"></RowDefinition>
                 <RowDefinition Height="32"></RowDefinition>
-            </Grid.RowDefinitions>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="84"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -45,36 +57,26 @@
             <local:ucPropItemEditor Grid.Row="5" Grid.Column="1" DataContext="{Binding exp}"></local:ucPropItemEditor>
             <Label Grid.Row="6">最大符卡可携带数量:</Label>
             <local:ucPropItemEditor Grid.Row="6" Grid.Column="1" DataContext="{Binding maxsc}"></local:ucPropItemEditor>
-        </Grid>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="32"></RowDefinition>
-                <RowDefinition Height="32"></RowDefinition>
-                <RowDefinition Height="32"></RowDefinition>
-                <RowDefinition Height="32"></RowDefinition>
-                <RowDefinition Height="32"></RowDefinition>
-                <RowDefinition Height="32"></RowDefinition>
-                <RowDefinition Height="32"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="64"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Label Grid.Row="0">防御:</Label>
-            <local:ucPropItemEditor Grid.Row="0" Grid.Column="1"  DataContext="{Binding defense}"></local:ucPropItemEditor>
-            <Label Grid.Row="1">魔法防御:</Label>
-            <local:ucPropItemEditor Grid.Row="1" Grid.Column="1" DataContext="{Binding magicDefense}"></local:ucPropItemEditor>
-            <Label Grid.Row="2">速度:</Label>
-            <local:ucPropItemEditor Grid.Row="2" Grid.Column="1" DataContext="{Binding speed}"></local:ucPropItemEditor>
-            <Label Grid.Row="3">命中率:</Label>
-            <local:ucPropItemEditor Grid.Row="3" Grid.Column="1" DataContext="{Binding hit}"></local:ucPropItemEditor>
-            <Label Grid.Row="4">生命值:</Label>
-            <local:ucPropItemEditor Grid.Row="4" Grid.Column="1" DataContext="{Binding hp}"></local:ucPropItemEditor>
-            <Label Grid.Row="5">魔法值:</Label>
-            <local:ucPropItemEditor Grid.Row="5" Grid.Column="1" DataContext="{Binding mp}"></local:ucPropItemEditor>
-            <Label Grid.Row="6">是否死亡:</Label>
-            <local:ucPropItemEditor Grid.Row="6" Grid.Column="1" DataContext="{Binding dead}"></local:ucPropItemEditor>
+            <Label Grid.Row="7">rank:</Label>
+            <local:ucPropItemEditor Grid.Row="7" Grid.Column="1" DataContext="{Binding rank}"></local:ucPropItemEditor>
+            <Label Grid.Row="8">防御:</Label>
+            <local:ucPropItemEditor Grid.Row="8" Grid.Column="1"  DataContext="{Binding defense}"></local:ucPropItemEditor>
+            <Label Grid.Row="9">魔法防御:</Label>
+            <local:ucPropItemEditor Grid.Row="9" Grid.Column="1" DataContext="{Binding magicDefense}"></local:ucPropItemEditor>
+            <Label Grid.Row="10">速度:</Label>
+            <local:ucPropItemEditor Grid.Row="10" Grid.Column="1" DataContext="{Binding speed}"></local:ucPropItemEditor>
+            <Label Grid.Row="11">命中率:</Label>
+            <local:ucPropItemEditor Grid.Row="11" Grid.Column="1" DataContext="{Binding hit}"></local:ucPropItemEditor>
+            <Label Grid.Row="12">生命值:</Label>
+            <local:ucPropItemEditor Grid.Row="12" Grid.Column="1" DataContext="{Binding hp}"></local:ucPropItemEditor>
+            <Label Grid.Row="13">魔法值:</Label>
+            <local:ucPropItemEditor Grid.Row="13" Grid.Column="1" DataContext="{Binding mp}"></local:ucPropItemEditor>
+            <Label Grid.Row="14">是否死亡:</Label>
+            <local:ucPropItemEditor Grid.Row="14" Grid.Column="1" DataContext="{Binding dead}"></local:ucPropItemEditor>
+            <Label Grid.Row="15">rankRate:</Label>
+            <local:ucPropItemEditor Grid.Row="15" Grid.Column="1" DataContext="{Binding rankRate}"></local:ucPropItemEditor>
         </Grid>
 
     </Grid>
+    </ScrollViewer>
 </UserControl>

@@ -20,6 +20,8 @@ public class Initialization {
 		GameViews.gameview.dispose();
 		GameViews.gameview=new GameView();
 		RPG.ctrl.hero = new HeroController();
+		RPG.ctrl.hero.initList();
+		RPG.ctrl.task.initTask();
 		GameViews.gameview.init();
 	}
 }

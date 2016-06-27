@@ -1,0 +1,78 @@
+.TH bcrypt 1 "10 September 2002" "version 1.1"
+.SH NAME
+bcrypt - blowfish file encryption
+.SH SYNOPSIS
+.BR bcrypt " ["-orc] "["-s "N]
+.I file ...
+.SH DESCRIPTION
+.B bcrypt
+encrypts and decrypts files using the
+.I blowfish 
+algorithm.
+.PP
+Encrypted files will be saved with an extension of
+.BR .bfe ".
+Any files ending in
+.B .bfe
+will be assumed to be encrypted with
+.BR bcrypt " and 
+will attempt to decrypt them. Any other input files will be encrypted.
+If more than one type of file is given,
+.B bcrypt
+will process all files which are the same as the first filetype given.
+.PP
+By default,
+.B bcrypt
+will compress input files before encryption, remove input files after
+they are processed (assuming they are processed successfully) and
+overwrite input files with random data to prevent data recovery.
+.PP
+Passphrases may be between 8 and 56 characters. Regardless of the
+passphrase size, the key is hashed internally to 448 bits - the
+largest keysize supported by the
+.IR blowfish " algorithm. However, it is still wise to use a strong
+passphrase. 
+.SH OPTIONS
+.TP
+.B -o
+print output to standard out. Implies -r.
+.TP
+.B -c
+DO NOT compress files before encryption.
+.TP
+.B -r
+DO NOT remove input files after processing
+.TP
+.BI -s "N
+How many times to overwrite input files with random data before deleting. 
+The default number of overwrites is 3. Use -s0 to disable this 
+feature. No effect if -r is supplied.
+.SH NOTES
+.BR ""The " -o ", "-r "  ,and " -c " options 
+each have the opposite effects
+if the appropriate settings are altered from the defaults in config.h. To
+determine what effect each of these have on your system, run
+.B bcrypt
+without any options.
+.PP
+Encrypted files should be compatible between most systems.
+Binary compatibility has been tested on all supported systems. There
+is a list of supported systems in the README file that was included
+with this software.
+.SH BUGS
+Probably.
+If you find that it will not compile and run on your system, or that 
+encrypted files are not compatible with other platforms, its probably 
+because I don't have access to the platform in question. Patches or 
+access to an unsupported machine are welcome.
+.SH AUTHOR
+.TP
+johnny shelley 
+<jshelley@cahaus.com>, 
+<jshelley@ictransnet.com>
+.SH DISTRIBUTION
+.B bcrypt
+includes Paul Kocher's implementation of the
+.IR blowfish " algorithm. The version distributed with
+.BR bcrypt " has been altered. Original sources are available from
+http://www.counterpane.com/bfsh-koc.zip

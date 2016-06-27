@@ -57,6 +57,10 @@ namespace ItemEditor
             {
                 item.Save();
             }
+            foreach (var item in m_mainVM.Buffs)
+            {
+                item.Save();
+            }
             foreach (ItemBaseViewModel item in m_mainVM.Deleteitems)
             {
                 if (m_mainVM.Items.Any(x => x.id == item.id))
@@ -64,6 +68,15 @@ namespace ItemEditor
                     continue;
                 }
                 item.Item.Remove(m_mainVM.RootPath);
+            }
+
+            foreach (var item in m_mainVM.DeleteBuffs)
+            {
+                if (m_mainVM.Buffs.Any(x => x.id == item.id))
+                {
+                    continue;
+                }
+                item.Remove(m_mainVM.RootPath);
             }
         }
 
@@ -134,6 +147,13 @@ namespace ItemEditor
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             //TODO:Effect
+        }
+
+        private void BUFFADD(object sender, RoutedEventArgs e)
+        {
+            Buff item = new Buff();
+            item.id = m_mainVM.Buffs.Max(x => x.id) + 1;
+            m_mainVM.Buffs.Add(item);
         }
     }
 }

@@ -9,6 +9,12 @@ namespace ItemEditor
 {
     public class Buff:ViewModelBase
     {
+        public Buff()
+        {
+            data = new JObject();
+            prop = new EffectProp();
+            Editored = true;
+        }
         public Buff(string filename )
         {
             this.filename = filename;
@@ -16,6 +22,7 @@ namespace ItemEditor
             data = JObject.Parse(System.IO.File.ReadAllText(filename));
             prop = new EffectProp();
             prop.ReadFromJson(data.GetSafeStringValue("prop"));
+            data.PropertyChanged += (sender, e) => Editored = true;
 
             id = Int32.Parse(System.IO.Path.GetFileNameWithoutExtension(filename));
         }
@@ -24,7 +31,7 @@ namespace ItemEditor
         public JObject data { get; set; }
         public EffectProp prop { get; set; }
 
-        public int id { get; private set; }
+        public int id { get; internal set; }
 
         private string m_TempIconPath;
         public string TempIconPath { get { return m_TempIconPath; } set { m_TempIconPath = value; RaisePropertyChanged("IconPath"); } }
@@ -49,9 +56,21 @@ namespace ItemEditor
 
         public void Save()
         {
-            data["prop"] = prop.GetJObejct();
+            if (Editored || prop.Editor)
+            { 
+                data["prop"] = prop.GetJObejct();
+                System.IO.File.WriteAllText(filename, data.ToString(Newtonsoft.Json.Formatting.Indented));
+            }
         }
-
+        public void Remove()
+        {
+            if (!string.IsNullOrEmpty(filename) && System.IO.File.Exists(filename))
+            {
+                System.IO.File.Delete(filename);
+                if (System.IO.File.Exists(RootPath + "\\images\\icons\\b" + id + ".png"))
+                    System.IO.File.Delete(RootPath + "\\images\\icons\\b" + id + ".png");
+            }
+        }
     }
 
     //public class Buff

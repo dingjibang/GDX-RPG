@@ -6,24 +6,9 @@
               xmlns:i="clr-namespace:ItemEditor"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid VerticalAlignment="Stretch" Margin="0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="64"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.Style>
-            <Style TargetType="Grid">
+    <TabControl>
+        <TabControl.Style>
+            <Style TargetType="TabControl">
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding type}" Value="Material">
                         <Setter  Property="Visibility" Value="Collapsed"/>
@@ -45,17 +30,39 @@
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
-        </Grid.Style>
-        <Label>角色限定:</Label>
-        <TextBox Grid.Column="1" Text="{Binding onlyFor}"></TextBox>
-        <Label Grid.Row="1">装备类型:</Label>
-        <i:EnumSelectorCombox Grid.Row="1"  Grid.Column="1" EditorSource="{Binding equipType}" Width="200" HorizontalAlignment="Left"></i:EnumSelectorCombox>
-        <Label Grid.Row="2">装备描述:</Label>
-        <TextBox Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Text="{Binding description2}"></TextBox>
-        <Label Grid.Row="4">装备属性:</Label>
-        <ScrollViewer Grid.Row="4" Grid.Column="1" Grid.RowSpan="10" >
-            <i:ucEffectEditor></i:ucEffectEditor>
-        </ScrollViewer>
+        </TabControl.Style>
+        <TabItem Header="基础" >
+            <Grid VerticalAlignment="Stretch" Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="64"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-    </Grid>
+                <Label>角色限定:</Label>
+                <TextBox Grid.Column="1" Text="{Binding onlyFor}"></TextBox>
+                <Label Grid.Row="1">装备类型:</Label>
+                <i:EnumSelectorCombox Grid.Row="1"  Grid.Column="1" EditorSource="{Binding equipType}" Width="200" HorizontalAlignment="Left"></i:EnumSelectorCombox>
+                <Label Grid.Row="2">装备描述:</Label>
+                <TextBox Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Text="{Binding description2}"></TextBox>
+
+            </Grid>
+        </TabItem>
+        <TabItem Header="属性" >
+            <ScrollViewer Grid.Row="4" Grid.Column="1" Grid.RowSpan="10" >
+                <i:ucEffectEditor></i:ucEffectEditor>
+            </ScrollViewer>
+        </TabItem>
+    </TabControl>
+
 </UserControl>

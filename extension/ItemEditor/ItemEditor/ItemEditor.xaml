@@ -6,24 +6,9 @@
               xmlns:i="clr-namespace:ItemEditor"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid VerticalAlignment="Stretch" Margin="0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="32"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="64"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.Style>
-            <Style TargetType="Grid">
+    <TabControl>
+        <TabControl.Style>
+            <Style TargetType="TabControl">
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding type}" Value="Material">
                         <Setter  Property="Visibility" Value="Visible"/>
@@ -45,24 +30,45 @@
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
-        </Grid.Style>
-        <Label>角色限定:</Label>
-        <TextBox Grid.Column="1" Text="{Binding onlyFor}"></TextBox>
-        <Label Grid.Row="1">指向范围:</Label>
-        <i:EnumSelectorCombox Grid.Row="1"  Grid.Column="1" EditorSource="{Binding forward}" Width="200" HorizontalAlignment="Left"></i:EnumSelectorCombox>
-        <Label Grid.Row="2">使用范围:</Label>
-        <i:EnumSelectorCombox Grid.Row="2"  Grid.Column="2" EditorSource="{Binding range}" Width="200" HorizontalAlignment="Left"></i:EnumSelectorCombox>
-        <Label Grid.Row="3">详细描述:</Label>
-        <TextBox Grid.Row="3" Grid.Column="1" Grid.RowSpan="2" Text="{Binding description2}"></TextBox>
-        <Label Grid.Row="5">一次性:</Label>
-        <CheckBox Grid.Row="5" Grid.Column="1" Grid.RowSpan="1" IsChecked="{Binding removeable}"></CheckBox>
-        <Label Grid.Row="6">死亡使用:</Label>
-        <i:EnumSelectorCombox Grid.Row="6" Grid.Column="1" EditorSource="{Binding deadable}"></i:EnumSelectorCombox>
+        </TabControl.Style>
+        <TabItem Header="基础">
+            <Grid VerticalAlignment="Stretch" Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="32"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="64"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-        
-        <ScrollViewer Grid.Row="7"  Grid.RowSpan="10" Grid.ColumnSpan="2">
-            <ScrollViewer.Style>
-                <Style TargetType="ScrollViewer">
+                <Label>角色限定:</Label>
+                <TextBox Grid.Column="1" Text="{Binding onlyFor}"></TextBox>
+                <Label Grid.Row="1">指向范围:</Label>
+                <i:EnumSelectorCombox Grid.Row="1"  Grid.Column="1" EditorSource="{Binding forward}" Width="200" HorizontalAlignment="Left"></i:EnumSelectorCombox>
+                <Label Grid.Row="2">使用范围:</Label>
+                <i:EnumSelectorCombox Grid.Row="2"  Grid.Column="2" EditorSource="{Binding range}" Width="200" HorizontalAlignment="Left"></i:EnumSelectorCombox>
+                <Label Grid.Row="3">详细描述:</Label>
+                <TextBox Grid.Row="3" Grid.Column="1" Grid.RowSpan="2" Text="{Binding description2}"></TextBox>
+                <Label Grid.Row="5">一次性:</Label>
+                <CheckBox Grid.Row="5" Grid.Column="1" Grid.RowSpan="1" IsChecked="{Binding removeable}"></CheckBox>
+                <Label Grid.Row="6">死亡使用:</Label>
+                <i:EnumSelectorCombox Grid.Row="6" Grid.Column="1" EditorSource="{Binding deadable}"></i:EnumSelectorCombox>
+
+
+
+            </Grid>
+        </TabItem>
+        <TabItem Header="符卡">
+            <TabItem.Style>
+                <Style TargetType="TabItem">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding type}" Value="Material">
                             <Setter  Property="Visibility" Value="Collapsed"/>
@@ -84,51 +90,83 @@
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </ScrollViewer.Style>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="32"></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="64"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Row="0">符卡属性:</Label>
-                <Grid Grid.RowSpan="2"  Grid.Column="1" >
+            </TabItem.Style>
+            <ScrollViewer Grid.Row="7"  Grid.RowSpan="10" Grid.ColumnSpan="2">
+                
+                <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="96">
-                            
-                        </RowDefinition>
-                        <RowDefinition>
-
-                        </RowDefinition>
+                        <RowDefinition Height="32"></RowDefinition>
+                        <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="64"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.ColumnSpan="2">
+                    <Label Grid.Row="0">符卡属性:</Label>
+                    <Grid Grid.RowSpan="2"  Grid.Column="1" >
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="96">
+
+                            </RowDefinition>
+                            <RowDefinition>
+
+                            </RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="64"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0">trigger:</Label>
-                        <CheckBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" IsChecked="{Binding trigger}"></CheckBox>
-                        <Label Grid.Row="1">成功率:</Label>
-                        <TextBox Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Text="{Binding success}"></TextBox>
-                        <Label Grid.Row="2">消耗:</Label>
-                        <TextBox Grid.Row="2" Grid.Column="1" Grid.RowSpan="1" Text="{Binding cost}"></TextBox>
+                        <Grid Grid.ColumnSpan="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="64"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0">trigger:</Label>
+                            <CheckBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" IsChecked="{Binding trigger}"></CheckBox>
+                            <Label Grid.Row="1">成功率:</Label>
+                            <TextBox Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Text="{Binding success}"></TextBox>
+                            <Label Grid.Row="2">消耗:</Label>
+                            <TextBox Grid.Row="2" Grid.Column="1" Grid.RowSpan="1" Text="{Binding cost}"></TextBox>
+                        </Grid>
+                        
                     </Grid>
-                    <i:ucEffectEditor Grid.Row="1" Grid.ColumnSpan="2"></i:ucEffectEditor>
                 </Grid>
-            </Grid>
-           
-        </ScrollViewer>
-    </Grid>
+
+            </ScrollViewer>
+        </TabItem>
+        <TabItem Header="符卡属性">
+            <TabItem.Style>
+                <Style TargetType="TabItem">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding type}" Value="Material">
+                            <Setter  Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding type}" Value="Spellcard">
+                            <Setter  Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding type}" Value="Equipment">
+                            <Setter  Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding type}" Value="Task">
+                            <Setter  Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding type, FallbackValue=Item}" Value="Item">
+                            <Setter  Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding type}" Value="Cooking">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TabItem.Style>
+            <i:ucEffectEditor Grid.Row="1" Grid.ColumnSpan="2"></i:ucEffectEditor>
+        </TabItem>
+    </TabControl>
+
+
 </UserControl>

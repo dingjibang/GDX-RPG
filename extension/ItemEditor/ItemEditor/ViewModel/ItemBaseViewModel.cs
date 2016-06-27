@@ -14,7 +14,7 @@ namespace ItemEditor
         private string m_TempIconPath;
         public string TempIconPath { get { return m_TempIconPath; } set { m_TempIconPath = value; RaisePropertyChanged("IconPath"); } }
 
-        public bool Editored { get; set; }
+
         public string IconPath
         {
             get
@@ -90,7 +90,7 @@ namespace ItemEditor
                         m_buffs.Clear();
                         value.effect.buffs.ForEach(buff => m_buffs.Add(buff.Clone()));
                     }
-                    else if(type == ItemType.Spellcard)
+                    else if (type == ItemType.Spellcard)
                     {
                         this.EquipmentProp = this.effect.prop;
                         m_buffs.Clear();
@@ -420,7 +420,7 @@ namespace ItemEditor
 
         public void Save()
         {
-            if (Editored)
+            if (Editored || EquipmentProp != null && EquipmentProp.Editor)
             {
                 RefreshToModel();
                 m_Item.Save(RootPath);
@@ -485,7 +485,7 @@ namespace ItemEditor
 
         protected override void OnPropertyChanged(string PropName, object Oldvalue, object NewValue)
         {
-            Editored = true;
+           
             base.OnPropertyChanged(PropName, Oldvalue, NewValue);
         }
     }

@@ -4,27 +4,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ItemEditor"
-             xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="ItemEditor.ucPropItemEditor"
+             xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:Convertor="clr-namespace:ItemEditor.Convertor" x:Class="ItemEditor.ucPropItemEditor"
              mc:Ignorable="d" 
              d:DesignHeight="36" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Convertor:DefaultStringConvertor x:Key="DefaultStringConvertor"/>
+    </UserControl.Resources>
     <Grid >
         <Grid.ColumnDefinitions>
-            <!--<ColumnDefinition Width="100"/>-->
+            <ColumnDefinition Width="100"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
-        <!--<ComboBox Width="100" SelectedItem="{Binding type}">
-
-            <System:String>sun</System:String>
-            <System:String>moon</System:String>
-            <System:String>star</System:String>
-            <System:String>metal</System:String>
-            <System:String>water</System:String>
-            <System:String>earth</System:String>
-            <System:String>fire</System:String>
-            <System:String>wood</System:String>
-            <System:String>physical</System:String>
-
-        </ComboBox>-->
-        <TextBox Grid.Column="1" Text="{Binding formula ,Mode=TwoWay}"  VerticalScrollBarVisibility="Auto" />
+        <ComboBox SelectedItem="{Binding formulaType, ConverterParameter=positive, Converter={StaticResource DefaultStringConvertor}, Mode=TwoWay}">
+            <System:String>positive</System:String>
+            <System:String>negative</System:String>
+        </ComboBox>
+        <TextBox Grid.Column="1" Text="{Binding formula, Mode=TwoWay}"  VerticalScrollBarVisibility="Auto" />
+        <Grid Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="36"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label>浮动:</Label>
+            <TextBox Grid.Column="1" Text="{Binding floatRate}"></TextBox>
+        </Grid>
     </Grid>
 </UserControl>

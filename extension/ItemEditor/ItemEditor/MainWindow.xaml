@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:i="clr-namespace:ItemEditor"
         xmlns:Convertor="clr-namespace:ItemEditor.Convertor" x:Class="ItemEditor.MainWindow"
-        Title="MainWindow" Height="600" Width="800" Loaded="Window_Loaded">
+        Title="MainWindow" Height="746" Width="1024" Loaded="Window_Loaded">
     <Window.Resources>
         <Convertor:ImageConvertor x:Key="ImageConvertor"/>
     </Window.Resources>
@@ -92,7 +92,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Label Content="物品序号:"/>
-                            <TextBox Grid.Column="1" Text="{Binding id}"/>
+                            <TextBox Grid.Column="1" Text="{Binding id}" IsReadOnly="True"/>
                             <Label Grid.Row="1" Content="物品名称:"/>
                             <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding name}"/>
                             <Label Grid.Row="2" Content="描述:"/>
@@ -181,7 +181,7 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <ToolBar Grid.Column="0" Grid.ColumnSpan="2" >
-                        <Button Content="添加" VerticalAlignment="Stretch" Width="75" />
+                        <Button Content="添加" VerticalAlignment="Top" Width="75" Height="27" Click="BUFFADD" />
                         <Button Content="删除"  VerticalAlignment="Stretch" Width="75" />
                     </ToolBar>
                     <ListBox Grid.Row="1"  x:Name="lstBuffs" ItemsSource="{Binding Buffs}" SelectedItem="{Binding CurrentBuff}">

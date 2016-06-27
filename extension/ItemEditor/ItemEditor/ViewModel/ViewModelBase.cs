@@ -47,8 +47,11 @@ namespace ItemEditor
 
         #endregion
 
+
         private bool m_isEditting;
         private Dictionary<string, PropertyRedoUndoCommand> m_EditCacheDic = new Dictionary<string, PropertyRedoUndoCommand>();
+
+        public bool Editored { get; set; }
 
         public void BeginEdit()
         {
@@ -69,6 +72,8 @@ namespace ItemEditor
             {
                 return;
             }
+
+            Editored = true;
 
             if (PropName != "IsSelected" && PropName != "Visible")
             {

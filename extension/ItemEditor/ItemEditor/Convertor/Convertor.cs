@@ -71,7 +71,31 @@ namespace ItemEditor.Convertor
             }
         }
 
+    public class DefaultStringConvertor : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is string || value== null && parameter is string)
+            {
+                string defaultValue = (string)parameter;
+                string orgValue = (string)value;
+                if (string.IsNullOrEmpty(orgValue))
+                {
+                    return defaultValue;
+                }
+            }
+            else if(value is Newtonsoft.Json.Linq.JValue)
+            {
+                return ((Newtonsoft.Json.Linq.JValue)value).Value;
+            }
+            return value;
+        }
 
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value;
+        }
+    }
 
 
 }
