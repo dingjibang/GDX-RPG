@@ -12,7 +12,7 @@ import com.rpsg.rpg.view.GameViews;
 
 public class TouchParticle {
 	ParticleEffect p;
-	boolean flag;
+	boolean flag,com;
 	private Stage stage;
 
 	
@@ -27,8 +27,7 @@ public class TouchParticle {
 	
 	public void draw(){
 		logic();
-		if(Setting.persistence.touchParticle && flag){
-			logic();
+		if(Setting.persistence.touchParticle){
 			stage.getBatch().end();
 			stage.draw();
 			stage.getBatch().begin();
@@ -37,8 +36,14 @@ public class TouchParticle {
 	}
 	
 	public void logic(){
-		if(!flag)
-			p.getEmitters().get(0).reset();
+		if(!flag){
+			p.allowCompletion();
+			com = true;
+		}
+		if(flag && com){
+			p.reset();
+			com = false;
+		}
 	}
 	
 	public void setPosition(int x,int y){
