@@ -30,8 +30,8 @@ public class SelectSpellcardView extends HoverView{
 		@SuppressWarnings("unchecked") CustomRunnable<Spellcard> callback = (CustomRunnable<Spellcard>)param.get("callback");
 		
 		stage.addAction(Actions.parallel(Actions.alpha(0),Actions.alpha(1,0.3f,Interpolation.pow4Out)));
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(GameUtil.stage_width, GameUtil.stage_height).click(()->disposed = true).appendTo(stage).setColor(.3f,.3f,.3f,.5f);
-		$.add(Res.get(Setting.UI_BASE_IMG)).setPosition(100, 20).setSize(815, 515).appendTo(stage).setColor(.25f,.25f,.25f,1f);
+		$.add(Res.base()).setSize(GameUtil.stage_width, GameUtil.stage_height).click(()->disposed = true).appendTo(stage).setColor(.3f,.3f,.3f,.5f);
+		$.add(Res.base()).setPosition(100, 20).setSize(815, 515).appendTo(stage).setColor(.25f,.25f,.25f,1f);
 		
 		ImageButton exit=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"file_exit.png"),Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"file_exit_active.png"));
 		exit.setPosition(845, 480);
@@ -50,9 +50,9 @@ public class SelectSpellcardView extends HoverView{
 		final Group group = new Group(),outer = $.add(new Group()).setPosition(-100, 10).appendTo(stage).getItem(Group.class);
 		
 		$.add(Res.get("选择符卡", 45)).appendTo(outer).setPosition(240,450);
-		$.add(Res.get(Setting.UI_BASE_IMG).size(303, 383).color(.05f,.05f,.05f,.8f).position(240,38)).appendTo(outer);
-		$.add(Res.get(Setting.UI_BASE_IMG).size(403, 293).color(.05f,.05f,.05f,.8f).position(575,129)).appendTo(outer);
-		$.add(Res.get(Setting.UI_BASE_IMG).size(303, 30).color(.85f,.85f,.85f,.3f).position(240,38)).appendTo(outer);
+		$.add(Res.base().size(303, 383).color(.05f,.05f,.05f,.8f).position(240,38)).appendTo(outer);
+		$.add(Res.base().size(403, 293).color(.05f,.05f,.05f,.8f).position(575,129)).appendTo(outer);
+		$.add(Res.base().size(303, 30).color(.85f,.85f,.85f,.3f).position(240,38)).appendTo(outer);
 		final ImageButton apply;
 		$.add(apply = new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(Res.get(Setting.IMAGE_MENU_ITEM+"but_use.png")).fgSelfColor(true)).appendTo(outer).setSize(405,58).setPosition(575, 39).getCell().prefSize(405,58);
 		
@@ -67,7 +67,7 @@ public class SelectSpellcardView extends HoverView{
 					group.clear();
 					$.add(new Label(t.sc.name,40)).appendTo(group).setPosition(600, 360);
 					$.add(new Label("消耗 "+t.sc.cost+" 点妖力",18).right().width(300).color(Color.ORANGE)).appendTo(group).setPosition(655, 360);
-					$.add(Res.get(Setting.UI_BASE_IMG)).appendTo(group).setPosition(600, 345).setSize(352,2);
+					$.add(Res.base()).appendTo(group).setPosition(600, 345).setSize(352,2);
 					Table labels = new Table().align(Align.topLeft);
 					labels.add(new Label(t.sc.description,20).warp(true)).align(Align.topLeft).prefWidth(343).row();
 					labels.add(new Label(t.sc.description2,20).warp(true).color(Color.ORANGE)).align(Align.topLeft).prefWidth(343).padTop(20).row();

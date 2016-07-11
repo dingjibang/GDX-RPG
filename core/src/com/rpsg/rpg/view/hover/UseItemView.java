@@ -48,7 +48,7 @@ public class UseItemView extends SidebarView {
 		group.addActor(box = new HeroSelectBox(460,200,forAll,deadable==null?ItemDeadable.no:deadable).position(430, 240-120));
 		
 		Group itemInfoGroup = new Group();
-		itemInfoGroup.addActor(Res.get(Setting.UI_BASE_IMG).size(460, 100).position(430, 280).a(.2f));
+		itemInfoGroup.addActor(Res.base().size(460, 100).position(430, 280).a(.2f));
 		itemInfoGroup.addActor(new Image(icon).x(455).y(290).scale(.4f));
 		itemInfoGroup.addActor(Res.get(item.name, 33).position(595, sc?313:328).width(325).overflow(true).color(Color.valueOf("ff6600")));
 		if(!sc)

@@ -22,7 +22,7 @@ public class PopupView extends HoverView{
 		stage.addActor(table);
 		
 		
-		bg = $.add(Res.get(Setting.UI_BASE_IMG).color(0,0,0,.8f)).getItem(Image.class);
+		bg = $.add(Res.base().color(0,0,0,.8f)).getItem(Image.class);
 		table.layout();
 		table.validate();
 		

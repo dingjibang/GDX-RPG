@@ -19,7 +19,7 @@ public class Icon extends Image implements Comparable<Icon>,GetItemAble{
 	public Icon() {
 		super();
 		selectBox = new Image(Setting.UI_BUTTON).size(74,74);
-		hover = Res.get(Setting.UI_BASE_IMG).size(74,74).action(Actions.forever(Actions.sequence(Actions.alpha(.3f,.5f),Actions.alpha(.5f,.5f))));
+		hover = Res.base().size(74,74).action(Actions.forever(Actions.sequence(Actions.alpha(.3f,.5f),Actions.alpha(.5f,.5f))));
 	}
 	
 	public Icon setCurrent(boolean c){

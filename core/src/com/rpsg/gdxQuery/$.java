@@ -1,6 +1,7 @@
 package com.rpsg.gdxQuery;
 
 import java.util.Iterator;
+import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
@@ -151,6 +152,13 @@ public class $ {
 		for(T t: list)
 			if(!test.run(t)) return false;
 		return true;
+	}
+
+	public static boolean has(List<?> list, Class<?> obj) {
+		for(Object o : list)
+			if(o.getClass().equals(obj))
+				return true;
+		return false;
 	}
 	
 	

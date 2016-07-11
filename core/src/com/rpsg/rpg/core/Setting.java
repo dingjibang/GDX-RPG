@@ -37,6 +37,7 @@ public class Setting {
 	public static final String IMAGE_MENU_STATUS = IMAGE_MENU + "nstatus/";
 	public static final String IMAGE_MENU_SYSTEM = IMAGE_MENU + "nsystem/";
 	public static final String IMAGE_MENU_TACTIC = IMAGE_MENU + "tactic/";
+	public static final String IMAGE_MENU_TASK = IMAGE_MENU + "task/";
 
 	public static final String MESSAGE = BASE_PATH + IMAGE_BASE_PATH + "/message/";
 	public static final String WALK = BASE_PATH + IMAGE_BASE_PATH + "/walk/";

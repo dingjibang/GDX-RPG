@@ -11,7 +11,7 @@ import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Account.State;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.ui.CheckBox;
+import com.rpsg.rpg.system.ui.MenuCheckBox;
 import com.rpsg.rpg.system.ui.TextButton;
 
 
@@ -38,8 +38,8 @@ public class LoginView extends SidebarView {
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_GLOBAL+"optb.png");
 		cstyle.font=Res.font.get(22);
 		
-		final CheckBox chk;
-		$.add(chk = new CheckBox("    记住密码",cstyle).onClick(new CustomRunnable<CheckBox>() {public void run(CheckBox t) {
+		final MenuCheckBox chk;
+		$.add(chk = new MenuCheckBox("    记住密码",cstyle).onClick(new CustomRunnable<MenuCheckBox>() {public void run(MenuCheckBox t) {
 			
 		}})).appendTo(group).setPosition(749, 255);
 		

@@ -23,7 +23,7 @@ import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
 import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.ui.CheckBox;
+import com.rpsg.rpg.system.ui.MenuCheckBox;
 import com.rpsg.rpg.system.ui.HeroImage;
 import com.rpsg.rpg.system.ui.IMenuView;
 import com.rpsg.rpg.system.ui.Icon;
@@ -50,13 +50,13 @@ public class SpellCardView extends IMenuView{
 		
 		final Group data = $.add(new Group()).setAlpha(0).getItem(Group.class);
 		
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(137,79).setColor(0,0,0,.52f).setPosition(240,470).appendTo(stage);
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(680,48).setColor(0,0,0,.85f).setPosition(377,486).appendTo(stage);
+		$.add(Res.base()).setSize(137,79).setColor(0,0,0,.52f).setPosition(240,470).appendTo(stage);
+		$.add(Res.base()).setSize(680,48).setColor(0,0,0,.85f).setPosition(377,486).appendTo(stage);
 		CheckBoxStyle cstyle=new CheckBoxStyle();
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info.png");
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info_p.png");// help button press
 		cstyle.font = Res.font.get(20);
-		$.add(new CheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(self->self.click(()->data.addAction(self.isChecked()?Actions.fadeIn(.3f):Actions.fadeOut(.3f))));
+		$.add(new MenuCheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(self->self.click(()->data.addAction(self.isChecked()?Actions.fadeIn(.3f):Actions.fadeOut(.3f))));
 		
 		$.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"m_right.png")).appendTo(stage).setScale(.8f).setPosition(367, 483).click(()->{
 			if(parent.next())
@@ -88,9 +88,9 @@ public class SpellCardView extends IMenuView{
 		$.add(new Label(hero.target.getProp("magicAttack"),22).align(x, off-=pad).width(80)).appendTo(data);
 		$.add(data).children().setTouchable(Touchable.disabled);
 		
-		$.add(Res.get(Setting.UI_BASE_IMG).size(303, 383).color(.05f,.05f,.05f,.8f).position(240,38)).appendTo(stage);
-		$.add(Res.get(Setting.UI_BASE_IMG).size(403, 293).color(.05f,.05f,.05f,.8f).position(575,129)).appendTo(stage);
-		$.add(Res.get(Setting.UI_BASE_IMG).size(303, 30).color(.85f,.85f,.85f,.3f).position(240,38)).appendTo(stage);
+		$.add(Res.base().size(303, 383).color(.05f,.05f,.05f,.8f).position(240,38)).appendTo(stage);
+		$.add(Res.base().size(403, 293).color(.05f,.05f,.05f,.8f).position(575,129)).appendTo(stage);
+		$.add(Res.base().size(303, 30).color(.85f,.85f,.85f,.3f).position(240,38)).appendTo(stage);
 		
 		final Group group = new Group();
 		final ImageButton apply;
@@ -107,7 +107,7 @@ public class SpellCardView extends IMenuView{
 					group.clear();
 					$.add(new Label(t.sc.name,40)).appendTo(group).setPosition(600, 360);
 					$.add(new Label("消耗 "+t.sc.cost+" 点妖力",18).right().width(300).color(Color.ORANGE)).appendTo(group).setPosition(655, 360);
-					$.add(Res.get(Setting.UI_BASE_IMG)).appendTo(group).setPosition(600, 345).setSize(352,2);
+					$.add(Res.base()).appendTo(group).setPosition(600, 345).setSize(352,2);
 					Table labels = new Table().align(Align.topLeft);
 					labels.add(new Label(t.sc.description,20).warp(true)).align(Align.topLeft).prefWidth(343).row();
 					labels.add(new Label(t.sc.description2,20).warp(true).color(Color.ORANGE)).align(Align.topLeft).prefWidth(343).padTop(20).row();

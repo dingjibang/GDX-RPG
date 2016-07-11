@@ -15,7 +15,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.CustomRunnable;
+import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.utils.game.Logger;
@@ -48,6 +50,10 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 				return true;
 			}
 		});
+	}
+	
+	public GdxQuery query(){
+		return $.add(this);
 	}
 	
 	public Image(String filename){

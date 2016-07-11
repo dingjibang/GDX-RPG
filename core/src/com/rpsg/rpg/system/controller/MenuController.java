@@ -19,6 +19,7 @@ import com.rpsg.rpg.view.menu.SpellCardView;
 import com.rpsg.rpg.view.menu.StatusView;
 import com.rpsg.rpg.view.menu.SystemView;
 import com.rpsg.rpg.view.menu.TacticView;
+import com.rpsg.rpg.view.menu.TaskView;
 
 public class MenuController {
 	public static Image bg;
@@ -93,7 +94,7 @@ public class MenuController {
 		menus.add(new Menu("item", ItemView.class, "物品"));
 		menus.add(new Menu("spellcard", SpellCardView.class, "符卡"));
 		menus.add(new Menu("tactic", TacticView.class, "战术"));
-		menus.add(new Menu("note", null, "记录"));
+		menus.add(new Menu("note", TaskView.class, "记录"));
 		menus.add(new Menu("system", SystemView.class, "系统"));
 	}
 	public static List<Menu> generate(){

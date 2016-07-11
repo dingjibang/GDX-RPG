@@ -43,8 +43,8 @@ public class SelectItemView extends HoverView{
 		hero = (Hero)param.get("hero");
 		callback = (CustomRunnable<Item>)param.get("callback");
 		
-		$.add(Res.get(Setting.UI_BASE_IMG)).appendTo(stage).setColor(.3f,.3f,.3f,.5f).setSize(GameUtil.stage_width, GameUtil.stage_height).click(()->disposed = true);
-		$.add(Res.get(Setting.UI_BASE_IMG)).appendTo(stage).setColor(.25f,.25f,.25f,1f).setPosition(100, 10).setSize(835,550);
+		$.add(Res.base()).appendTo(stage).setColor(.3f,.3f,.3f,.5f).setSize(GameUtil.stage_width, GameUtil.stage_height).click(()->disposed = true);
+		$.add(Res.base()).appendTo(stage).setColor(.25f,.25f,.25f,1f).setPosition(100, 10).setSize(835,550);
 		outer = $.add(new Group()).appendTo(stage).setX(-100).setY(20).getItem(Group.class);
 		
 		$.add(Res.get("使用物品", 45)).appendTo(outer).setPosition(240,477);
@@ -67,10 +67,10 @@ public class SelectItemView extends HoverView{
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info.png");
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info_p.png");// help button press
 		cstyle.font = Res.font.get(20);
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,282).setColor(0,0,0,.55f).setPosition(240,178).appendTo(outer);
+		$.add(Res.base()).setSize(755,282).setColor(0,0,0,.55f).setPosition(240,178).appendTo(outer);
 		
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(155,155).setColor(0,0,0,.55f).setPosition(240,12).appendTo(outer);
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(597,103).setColor(0,0,0,.55f).setPosition(398,64).appendTo(outer);
+		$.add(Res.base()).setSize(155,155).setColor(0,0,0,.55f).setPosition(240,12).appendTo(outer);
+		$.add(Res.base()).setSize(597,103).setColor(0,0,0,.55f).setPosition(398,64).appendTo(outer);
 		
 		$.add(takeButton = new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(take)).appendTo(outer).setSize(597,49).setPosition(398, 12).getCell().prefSize(597,49);
 		

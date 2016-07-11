@@ -25,7 +25,7 @@ public class SpellcardIcon extends Actor{
 		label = new Label(sc.name,22);
 		label.setText(sc.name);
 		label.setAlignment(Align.center);
-		bg = Res.get(Setting.UI_BASE_IMG);
+		bg = Res.base();
 		query = $.add(this);
 	}
 	

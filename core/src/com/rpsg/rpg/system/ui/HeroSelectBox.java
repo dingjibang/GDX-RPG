@@ -63,7 +63,7 @@ public class HeroSelectBox extends Group implements Disposable{
 	public HeroSelectBox generate(){
 		clear();
 		
-		addActor(Res.get(Setting.UI_BASE_IMG).size((int)getWidth(),(int)getHeight()).a(.15f));
+		addActor(Res.base().size((int)getWidth(),(int)getHeight()).a(.15f));
 		
 		int margin = 10;
 		int w = (int) ((getWidth()-margin*3)/2);
@@ -76,7 +76,7 @@ public class HeroSelectBox extends Group implements Disposable{
 		generateHeroBox(w+margin*2, margin, w, h,heros.size()>3?heros.get(3):null);
 		
 		if(forAllHeros){
-			addActor(Res.get(Setting.UI_BASE_IMG).size((int)getWidth(),(int)getHeight()).color(Color.valueOf("33333399")));
+			addActor(Res.base().size((int)getWidth(),(int)getHeight()).color(Color.valueOf("33333399")));
 			addActor(new Label("全体使用的",40).align(0, 0).width((int)getWidth()).height((int)getHeight()));
 		}
 		
@@ -85,7 +85,7 @@ public class HeroSelectBox extends Group implements Disposable{
 	
 	
 	private HeroSelectBox generateHeroBox(int x,int y,int w,int h,final Hero hero){
-		addActor(Res.get(Setting.UI_BASE_IMG).size(w,h).a(.15f).position(x, y).object(hero==null?"nullHero":hero).onClick(new Runnable() {
+		addActor(Res.base().size(w,h).a(.15f).position(x, y).object(hero==null?"nullHero":hero).onClick(new Runnable() {
 			public void run() {
 				set(hero);
 			}
@@ -94,14 +94,14 @@ public class HeroSelectBox extends Group implements Disposable{
 		if(hero!=null){
 			addActor(new HeroImage(hero,0).position(x+10, y+10));
 			addActor(new Label(hero.name,20).position(x+65, y+53));
-			addActor(Res.get(Setting.UI_BASE_IMG).size(141, 42).position(x+65, y+8).disableTouch());
+			addActor(Res.base().size(141, 42).position(x+65, y+8).disableTouch());
 			addActor(Res.get(Setting.UI_BASE_PRO).size((int)((float)hero.target.getProp("hp")/(float)hero.target.getProp("maxhp")*137), 18).position(x+67, y+30).color(Color.valueOf("c33737")).disableTouch());
 			addActor(Res.get(Setting.UI_BASE_PRO).size((int)((float)hero.target.getProp("mp")/(float)hero.target.getProp("maxmp")*137), 18).position(x+67, y+10).color(Color.valueOf("3762c3")).disableTouch());
 			addActor(new Label(hero.target.getProp("hp")+"/"+hero.target.getProp("maxhp"),14).width(130).align(x+67, y+32).color(Color.LIGHT_GRAY));
 			addActor(new Label(hero.target.getProp("mp")+"/"+hero.target.getProp("maxmp"),14).width(130).align(x+67, y+11).color(Color.LIGHT_GRAY));
 			
 			if((deadable == ItemDeadable.yes && !hero.target.isDead()) || (deadable == ItemDeadable.no && hero.target.isDead())){
-				addActor(Res.get(Setting.UI_BASE_IMG).size(w,h).color(Color.BLACK).a(.85f).position(x, y));
+				addActor(Res.base().size(w,h).color(Color.BLACK).a(.85f).position(x, y));
 				addActor(new Label("无法使用",22).position(x+63, y+30));
 			}
 		}

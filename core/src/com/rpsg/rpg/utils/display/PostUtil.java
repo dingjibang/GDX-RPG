@@ -70,7 +70,7 @@ public class PostUtil {
 		}).setVisible(!GameUtil.isDesktop));
 		others.appendTo(stage);
 
-		mask = $.add(Res.get(Setting.UI_BASE_IMG).disableTouch()).setSize(GameUtil.stage_width, GameUtil.stage_height).setColor(1, 1, 1, .5f).appendTo(stage).getItem();
+		mask = $.add(Res.base().disableTouch()).setSize(GameUtil.stage_width, GameUtil.stage_height).setColor(1, 1, 1, .5f).appendTo(stage).getItem();
 
 		Logger.info("Post特效创建成功。");
 	}

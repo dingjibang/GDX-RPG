@@ -17,9 +17,9 @@ public class Counter extends Group {
 	}
 
 	private void generateUI() {
-		addActor(Res.get(Setting.UI_BASE_IMG).size(166,133).a(.15f));
-		addActor(Res.get(Setting.UI_BASE_IMG).size(74,121).position(6,6).a(.1f));
-		addActor(Res.get(Setting.UI_BASE_IMG).size(74,121).position(86, 6).a(.1f));
+		addActor(Res.base().size(166,133).a(.15f));
+		addActor(Res.base().size(74,121).position(6,6).a(.1f));
+		addActor(Res.base().size(74,121).position(86, 6).a(.1f));
 		
 		TextButtonStyle tstyle = new TextButtonStyle();
 		tstyle.down = Setting.UI_BUTTON;

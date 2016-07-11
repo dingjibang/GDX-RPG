@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.controller.LazyBitmapFontConctoller;
 import com.rpsg.rpg.system.ui.Image;
@@ -27,6 +29,10 @@ public class Res {
 
 		generateTempTexture();
 		return new ProxyImage(resPath);
+	}
+	
+	public static Image base(){
+		return get(Setting.UI_BASE_IMG);
 	}
 	
 	public static Image getSync(String resPath){
@@ -97,6 +103,6 @@ public class Res {
 
 	public static void init() {
 		font = new LazyBitmapFontConctoller();
-		Res.get(Setting.UI_BASE_IMG);
+		Res.base();
 	}
 }

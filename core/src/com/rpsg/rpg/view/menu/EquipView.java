@@ -27,7 +27,7 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.BaseItem.Context;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.ui.CheckBox;
+import com.rpsg.rpg.system.ui.MenuCheckBox;
 import com.rpsg.rpg.system.ui.HeroImage;
 import com.rpsg.rpg.system.ui.IMenuView;
 import com.rpsg.rpg.system.ui.Icon;
@@ -47,20 +47,20 @@ public class EquipView extends IMenuView{
 	Image take=Res.get(Setting.IMAGE_MENU_EQUIP+"but_take.png"),off=Res.get(Setting.IMAGE_MENU_EQUIP+"but_off.png").a(.3f),throwImg=Res.get(Setting.IMAGE_MENU_EQUIP+"but_remove.png").a(.3f);
 	public EquipView init() {
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()),MenuView.stage.getBatch());
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(137,79).setColor(0,0,0,.52f).setPosition(240,470).appendTo(stage);
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(680,48).setColor(0,0,0,.85f).setPosition(377,486).appendTo(stage);
+		$.add(Res.base()).setSize(137,79).setColor(0,0,0,.52f).setPosition(240,470).appendTo(stage);
+		$.add(Res.base()).setSize(680,48).setColor(0,0,0,.85f).setPosition(377,486).appendTo(stage);
 		CheckBoxStyle cstyle=new CheckBoxStyle();
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info.png");
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info_p.png");// help button press
 		cstyle.font = Res.font.get(20);
-		$.add(new CheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.click(new Runnable() {public void run() {
+		$.add(new MenuCheckBox("", cstyle)).appendTo(stage).setPosition(880,486).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.click(new Runnable() {public void run() {
 			data.addAction(self.isChecked()?Actions.fadeIn(.3f):Actions.fadeOut(.3f));
 		}});}});
 		
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,282).setColor(.2f,.2f,.2f,.85f).setPosition(240,178).appendTo(stage);
+		$.add(Res.base()).setSize(755,282).setColor(.2f,.2f,.2f,.85f).setPosition(240,178).appendTo(stage);
 		
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(155,155).setColor(0,0,0,.55f).setPosition(240,12).appendTo(stage);
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(597,103).setColor(0,0,0,.55f).setPosition(398,64).appendTo(stage);
+		$.add(Res.base()).setSize(155,155).setColor(0,0,0,.55f).setPosition(240,12).appendTo(stage);
+		$.add(Res.base()).setSize(597,103).setColor(0,0,0,.55f).setPosition(398,64).appendTo(stage);
 		
 		$.add(takeButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(take)).appendTo(stage).setSize(297,49).setPosition(398, 12).getCell().prefSize(297,49);
 		
@@ -83,17 +83,17 @@ public class EquipView extends IMenuView{
 		cstyle2.font = Res.font.get(18);
 		
 		int offset = -1,padding = 54,_top = 400;
-		ButtonGroup<CheckBox> bg = new ButtonGroup<CheckBox>(
-			(CheckBox)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_WEAPON).setPosition(250, _top-(++offset * padding)).getItem()),
-			(CheckBox)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_CLOTHES).setPosition(250, _top-(++offset * padding)).getItem()),
-			(CheckBox)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_SHOES).setPosition(250, _top-(++offset * padding)).getItem()),
-			(CheckBox)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_ORNAMENT1).setPosition(250, _top-(++offset * padding)).getItem()),
-			(CheckBox)($.add(new CheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_ORNAMENT2).setPosition(250, _top-(++offset * padding)).getItem())
+		ButtonGroup<MenuCheckBox> bg = new ButtonGroup<MenuCheckBox>(
+			(MenuCheckBox)($.add(new MenuCheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_WEAPON).setPosition(250, _top-(++offset * padding)).getItem()),
+			(MenuCheckBox)($.add(new MenuCheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_CLOTHES).setPosition(250, _top-(++offset * padding)).getItem()),
+			(MenuCheckBox)($.add(new MenuCheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_SHOES).setPosition(250, _top-(++offset * padding)).getItem()),
+			(MenuCheckBox)($.add(new MenuCheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_ORNAMENT1).setPosition(250, _top-(++offset * padding)).getItem()),
+			(MenuCheckBox)($.add(new MenuCheckBox(cstyle2).hideText(true)).setUserObject(Equipment.EQUIP_ORNAMENT2).setPosition(250, _top-(++offset * padding)).getItem())
 		);
 		
-		for(final CheckBox box:bg.getButtons()){
+		for(final MenuCheckBox box:bg.getButtons()){
 			stage.addActor(box);
-			box.setForeground(Res.get(Setting.IMAGE_MENU_EQUIP+box.getUserObject().toString()+".png").size(40, 40)).setFgOff(0).onClick(new Runnable(){
+			box.foreground(Res.get(Setting.IMAGE_MENU_EQUIP+box.getUserObject().toString()+".png").size(40, 40)).setFgOff(0).onClick(new Runnable(){
 				public void run() {
 					currentFilter = box.getUserObject().toString();
 					generate();

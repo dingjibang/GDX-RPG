@@ -19,7 +19,7 @@ public class ThrowItemView extends SidebarView{
 	Counter counter;
 	public void init() {
 		Icon icon = (Icon) param.get("item");
-		group.addActor(Res.get(Setting.UI_BASE_IMG).size(545, 160).position(400, 280).a(.13f));
+		group.addActor(Res.base().size(545, 160).position(400, 280).a(.13f));
 		group.addActor(new Image(icon).x(435).y(300).scale(.6f));
 		group.addActor(Res.get(icon.getItem().name, 38).position(575, 365).width(330).overflow(true).color(Color.valueOf("ff6600")));
 		group.addActor(Res.get("持有 "+icon.getItem().count+" 个", 22).position(575, 330).width(330).overflow(true));

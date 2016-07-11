@@ -28,7 +28,7 @@ public class EnemyBox extends Group {
 		fg.addActor(hp = Res.get(enemy.name+"\n"+_hp + " / " + _maxhp, 18).align(Align.center));
 		hp.position((int)(getWidth()/2 - hp.getWidth()/2), (int)getHeight()+40);
 		
-		fg.addActor(Res.get(Setting.UI_BASE_IMG).size(20, 20).position(getWidth()/2 - 130/2 - 10, getHeight()+15).color(enemy.color));
+		fg.addActor(Res.base().size(20, 20).position(getWidth()/2 - 130/2 - 10, getHeight()+15).color(enemy.color));
 		fg.addActor(hpbar = new Progress(Res.getNP(Setting.IMAGE_BATTLE+"bg_00001_00001.png").scale(.5f), Res.getNP(Setting.IMAGE_BATTLE+"hp_00001_00001.png").scale(.5f), 
 				Res.getNP(Setting.IMAGE_BATTLE+"cache_00001_00001.png").scale(.5f), 0, _maxhp)); 
 		hpbar.setPosition(getWidth()/2 - 130/2 + 10, getHeight()+20);

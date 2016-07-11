@@ -53,7 +53,8 @@ public class Animations extends Group{
 		
 		Array<Animation> list = new Array<>();
 		
-		$.add(this).children().each((CustomRunnable<Animation>)a->{
+		$.add(this).children().each(actor -> {
+			Animation a = (Animation)actor;
 			if(a.finished())
 				list.add(a);
 		});

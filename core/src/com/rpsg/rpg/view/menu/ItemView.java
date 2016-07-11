@@ -45,16 +45,16 @@ public class ItemView extends IMenuView{
 		stage=new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()),MenuView.stage.getBatch());
 		
 		//topBar
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,60).setColor(Color.valueOf("3d3d3d")).setPosition(240,486).appendTo(stage);
+		$.add(Res.base()).setSize(755,60).setColor(Color.valueOf("3d3d3d")).setPosition(240,486).appendTo(stage);
 		
 		CheckBoxStyle cstyle=new CheckBoxStyle();
 		cstyle.checkboxOff=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info.png");
 		cstyle.checkboxOn=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"info_p.png");// help button press
 		cstyle.font = Res.font.get(20);
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(755,282).setColor(.2f,.2f,.2f,.85f).setPosition(240,178).appendTo(stage);
+		$.add(Res.base()).setSize(755,282).setColor(.2f,.2f,.2f,.85f).setPosition(240,178).appendTo(stage);
 		
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(155,155).setColor(0,0,0,.55f).setPosition(240,12).appendTo(stage);
-		$.add(Res.get(Setting.UI_BASE_IMG)).setSize(597,103).setColor(0,0,0,.55f).setPosition(398,64).appendTo(stage);
+		$.add(Res.base()).setSize(155,155).setColor(0,0,0,.55f).setPosition(240,12).appendTo(stage);
+		$.add(Res.base()).setSize(597,103).setColor(0,0,0,.55f).setPosition(398,64).appendTo(stage);
 		
 		$.add(takeButton=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_GLOBAL+"button.png"),Setting.UI_BUTTON).setFg(take)).appendTo(stage).setSize(297,49).setPosition(398, 12).getCell().prefSize(297,49);
 		

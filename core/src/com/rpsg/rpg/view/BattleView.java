@@ -68,7 +68,7 @@ public class BattleView extends DefaultIView{
 	public BattleView init() {
 		stage.clear();
 		createBattlStopView = false;
-		$.add(Res.get(Setting.UI_BASE_IMG).size(1024,576).color(.5f,.5f,.5f,1)).appendTo(stage);//TODO debug;
+		$.add(Res.base().size(1024,576).color(.5f,.5f,.5f,1)).appendTo(stage);//TODO debug;
 		
 		$.add(status = new Status()).setPosition(0, 0).appendTo(stage);
 		
@@ -86,7 +86,7 @@ public class BattleView extends DefaultIView{
 		status.add("fuck you");
 		stage.setDebugAll(!!false);
 		
-		$.add(Res.get(Setting.UI_BASE_IMG).size(GameUtil.stage_width,GameUtil.stage_height).color(0,0,0,1)).appendTo(stage).addAction(Actions.sequence(Actions.fadeOut(.3f,Interpolation.pow2In),Actions.removeActor()));
+		$.add(Res.base().size(GameUtil.stage_width,GameUtil.stage_height).color(0,0,0,1)).appendTo(stage).addAction(Actions.sequence(Actions.fadeOut(.3f,Interpolation.pow2In),Actions.removeActor()));
 		
 		status.setZIndex(999999);
 		this.

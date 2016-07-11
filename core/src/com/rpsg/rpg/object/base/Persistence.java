@@ -31,7 +31,7 @@ public class Persistence implements Serializable{
 	public int textSpeed = 2;
 	/**显示"FPS"在屏幕左上角*/
 	public boolean showFPS = false;
-	/**全局音量*/
+	/**是否为debug模式运行游戏*/
 	public boolean debugMod = false;
 	/**当程序异常时是否上报错误 TODO*/
 	public boolean onErrorSendMsg = true;
