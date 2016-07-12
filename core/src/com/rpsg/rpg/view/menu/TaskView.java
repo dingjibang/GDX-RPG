@@ -27,14 +27,14 @@ import com.rpsg.rpg.view.menu.task.TaskGroup;
 public class TaskView extends IMenuView {
 
 	List<Group> groupList = new ArrayList<>();
-	Group group = null; 
+	Group group = null;
 	
 	public TaskView init() {
 		stage = new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()), MenuView.stage.getBatch());
 		
 		GdxQuery tab = $.add(new Table().left().top()).appendTo(stage).setWidth(724).setPosition(222, 530)
 			.cell(UI.checkbox(Setting.IMAGE_MENU_TASK+"tab_task.png")).bind(TaskGroup.class)
-			.cell(UI.checkbox(Setting.IMAGE_MENU_TASK+"tab_ach.png")).bind(AchievementGroup.class).padLeft(103)
+			.cell(UI.checkbox(Setting.IMAGE_MENU_TASK+"tab_ach.png")).bind(AchievementGroup.class).padLeft(102)
 			.cell(UI.checkbox(Setting.IMAGE_MENU_TASK+"tab_idx.png")).bind(IndexGroup.class).padLeft(13)
 			.cell(UI.checkbox(Setting.IMAGE_MENU_TASK+"tab_note.png")).bind(NoteGroup.class).padLeft(13)
 		.end();
@@ -45,9 +45,10 @@ public class TaskView extends IMenuView {
 			setGroup((Class<Group>)c.getActor().getUserObject());
 		}).clickIf(GdxCellQuery.FIRST_CHILD));
 		
-		
 		return this;
 	}
+	
+	
 	
 	public void setGroup(Class<Group> group){
 		boolean has = $.has(this.groupList, group);
@@ -57,7 +58,11 @@ public class TaskView extends IMenuView {
 			} catch (InstantiationException | IllegalAccessException e) {
 				e.printStackTrace();
 			}
+		if(this.group != null) this.group.remove();
+		
 		this.group = $.getIf(this.groupList, g -> g.getClass().equals(group));
+		
+		stage.addActor(this.group);
 	}
 
 	public void draw(SpriteBatch batch) {

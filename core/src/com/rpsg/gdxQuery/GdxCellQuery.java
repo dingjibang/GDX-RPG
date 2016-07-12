@@ -1,5 +1,8 @@
 package com.rpsg.gdxQuery;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 /**
@@ -115,8 +118,27 @@ public class GdxCellQuery<T extends Actor>{
 		return padTop(i).padBottom(i);
 	}
 	
+	public GdxCellQuery<T> width(int i) {
+		cell.width(i);
+		return this;
+	}
+	
+	public GdxCellQuery<T> height(int i) {
+		cell.height(i);
+		return this;
+	}
+	
 	public GdxCellQuery<T> pad(int i) {
 		return padTB(i).padLR(i);
+	}
+	
+	public List<GdxCellQuery<?>> others(){
+		List<GdxCellQuery<?>> list = new ArrayList<>();
+		query.getFather().eachCells(c -> {
+			if(c.getActor() != cell.getActor())
+				list.add(c);
+		});
+		return list;
 	}
 
 	public GdxCellQuery<T> center() {

@@ -302,6 +302,11 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 			setOrigin(originAlignment);
 		setAnti();
 	}
+
+	public Image hide() {
+		setVisible(false);
+		return this;
+	}
 	
 	
 	
