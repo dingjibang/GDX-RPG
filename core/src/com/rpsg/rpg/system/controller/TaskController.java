@@ -160,4 +160,19 @@ public class TaskController {
 		
 		RPG.toast.add((isTask ? "完成任务" : "获得成就") + "\n\"" + task.name + "\"\n" + task.description2, Color.SKY, 22, true, task.getIcon());
 	}
+	
+	/**放弃一个任务*/
+	public void removeTask(int taskId) {
+		$.removeIf(currentTask, t -> t.id == taskId);
+	}
+	
+	public int taskIndexOf(int taskId){
+		int index = -1;
+		
+		for(int i = 0; i < currentTask.size(); i++)
+			if(currentTask.get(i).id == taskId)
+				return i;
+		
+		return index;
+	}
 }

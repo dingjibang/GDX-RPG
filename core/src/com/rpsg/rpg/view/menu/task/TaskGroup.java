@@ -2,84 +2,97 @@ package com.rpsg.rpg.view.menu.task;
 
 import java.util.List;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Align;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.GdxCellQuery;
 import com.rpsg.rpg.core.RPG;
+import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Task;
+import com.rpsg.rpg.object.base.Task.TaskType;
 import com.rpsg.rpg.system.base.Res;
+import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.ListItem;
 import com.rpsg.rpg.system.ui.UI;
+import com.rpsg.rpg.utils.game.Colors;
+import com.rpsg.rpg.view.hover.ConfirmView;
 
 public class TaskGroup extends Group{
 	
-	ScrollPane pane;
+	List<Task> list;
+	static Color doingColor = Colors.of("ec5c5c"), doneColor = Colors.of("7aec5c");
+	static Label doing = Res.get("[进行中]",14).color(doingColor), done = Res.get("[已完成]",14).color(doneColor);
+	static Label main = Res.get(" [主线]",14), secondly = Res.get(" [支线]",14);
+	Group info = new Group();
+	int lastIndex = -1;
 	
 	public TaskGroup() {
-		Res.base().query().setSize(768, 251).setColor(0,0,0,.75f).setPosition(222, 187).appendTo(this);
-		
 		generateList();
-		
 	}
 	
 	private void generateList(){
-		List<Task> list = RPG.ctrl.task.task();
-		if(pane != null) pane.remove();
+		clear();
+		info.clear();
 		
+		Res.base().query().setSize(768, 251).setColor(0,0,0,.75f).setPosition(222, 197).appendTo(this);
+		Res.base().color(0,0,0,.75f).query().setPosition(224, 25).setSize(768, 154).appendTo(this);
+		
+		list = RPG.ctrl.task.task();
 		Table table = new Table().left().top();
-		table.setDebug(true);
 		
-		ScrollPane pane;
-		$.add(pane = UI.scrollPane(table)).appendTo(this).setSize(768, 251).setPosition(222, 187);
+		$.add(UI.scrollPane(table)).appendTo(this).setSize(768, 251).setPosition(222, 197);
 		
-		table.add(label("your mother fucker1")).row();
-		table.add(label("your mother fucker2")).row();
-		table.add(label("your mother fucker3")).row();
-		table.add(label("your mother fucker4")).row();
-		table.add(label("your mother fucker5")).row();
-		table.add(label("your mother fucker6")).row();
-		table.add(label("your mother fucker7")).row();
-		table.add(label("your mother fucker8")).row();
-		table.add(label("your mother fucker9")).row();
-		table.add(label("your mother fucker10")).row();
-		table.add(label("your mother fucker11")).row();
-		table.add(label("your mother fucker12")).row();
-		table.add(label("your mother fucker13")).row();
-		table.add(label("your mother fucker14")).row();
-		table.add(label("your mother fucker15")).row();
-		table.add(label("your mother fucker16")).row();
-		table.add(label("your mother fucker17")).row();
-		table.add(label("your mother fucker18")).row();
-		table.add(label("your mother fucker19")).row();
-		table.add(label("your mother fucker20")).row();
-		table.add(label("your mother fucker21")).row();
-		table.add(label("your mother fucker22")).row();
-		table.add(label("your mother fucker23")).row();
-		table.add(label("your mother fucker24")).row();
-		table.add(label("your mother fucker25")).row();
-		table.add(label("your mother fucker26")).row();
-		table.add(label("your mother fucker27")).row();
-		table.add(label("your mother fucker28")).row();
+		for(Task task : list){
+			ListItem item = new ListItem();
+			item.insert(task.canEnd() ? done : doing);
+			item.insert(task.type == TaskType.main ? main : secondly);
+			item.addText(task.name, 19);
+			item.setUserObject(task);
+			table.add(item).row();
+		}
 		
-		table.addCaptureListener(new InputListener(){
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				System.out.println("your mother fucker2");
-				return true;
-			}
-		});
+		table.setTouchable(Touchable.enabled);
 		
-		$.add(table).eachCells(ListItem.class, c -> c.padLR(30).size(108,30).left().click(() -> {
+		$.add(table.padTop(5).padBottom(40)).eachCells(ListItem.class, c -> c.size(768,36).getActor(a -> a.size(708,30)).left().click(() -> {
 			c.getActor().select(true);
 			$.each(c.others(), c2 -> ((ListItem)c2.getActor()).select(false));
-		}));
+			set((Task)c.getActor().getUserObject());
+		}).clickIf(GdxCellQuery.INDEX(lastIndex - 1)));
 		
+		Res.base().disableTouch().query().setSize(752,27).setPosition(230, 197).setColor(.1f,.1f,.1f,.95f).appendTo(this);
+		Res.get("正在进行"+list.size()+"个任务",16).width(768).center().query().setPosition(222, 202).appendTo(this);
+		
+		info.remove();
+		addActor(info);
 	}
 	
-	private ListItem label(String text){
-		return new ListItem().addText(text, 20);
+	private void set(Task task){
+		info.clear();
+		
+		Res.base().size(768, 2).color(task.canEnd() ? doneColor : doingColor).position(224, 177).query().appendTo(info);
+		
+		Res.get("[" + (task.type == TaskType.main ? "主线" : "支线") + "]  " + task.name, 22).query().setPosition(250, 141).appendTo(info);
+		if(task.by != null && task.by.length() != 0)
+			Res.get("委托人：" + task.by, 16).width(200).right().query().setPosition(630, 144).appendTo(info);
+		if(task.giveup)
+			UI.imageButton().size(129, 31).setFg(Res.getNP(Setting.IMAGE_MENU_TASK + "remove_task.png")).query().setPosition(836, 137).appendTo(info).click(()->{
+				RPG.popup.add(ConfirmView.okCancel("确定要删除任务["+task.name+"]么？", v->{
+					v.disposed = true;
+					lastIndex = RPG.ctrl.task.taskIndexOf(task.id);
+					RPG.ctrl.task.removeTask(task.id);
+					generateList();
+				}));
+			});
+		
+		Res.base().query().setSize(715, 2).setPosition(250, 127).appendTo(info);
+		
+		$.add(UI.miniPane(
+			Res.get(task.description+"\n\n"+task.description2,18).warp(true).align(Align.topLeft)
+		)).setSize(715, 82).setPosition(250, 35).appendTo(info);
+		
+		
 	}
 }

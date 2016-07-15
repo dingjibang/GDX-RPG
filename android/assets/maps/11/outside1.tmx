@@ -252,7 +252,6 @@
    <properties>
     <property name="AUTO_SCRIPT" value="s0-8.js"/>
     <property name="IMAGE" value="renko_l"/>
-    <property name="LOCK" value="true"/>
    </properties>
   </object>
   <object id="16" name="PUBLIC" type="NPC" gid="892" x="288" y="2832" width="48" height="64">

@@ -1,5 +1,5 @@
 {
-	name:"打开菜单",
+	name:"yeshi",
 	description:"打开菜单即可以触发",
 	description2:"金币 + 10",
 	trigger:"special",
@@ -10,5 +10,7 @@
 	gain:{
 		gold:10
 	},
-	type:"main"
+	giveup:true,
+	type:"secondly",
+	by:"morisa"
 }

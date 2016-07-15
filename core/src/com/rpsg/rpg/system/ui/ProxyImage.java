@@ -19,6 +19,9 @@ import com.rpsg.rpg.system.base.Res;
 public class ProxyImage extends Image {
 	public float[][] position;
 	private boolean sync = false;
+	{
+		super.isLoaded = false;
+	}
 	
 	public ProxyImage sync(){
 		sync = true;

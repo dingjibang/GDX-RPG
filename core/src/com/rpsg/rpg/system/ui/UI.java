@@ -34,4 +34,11 @@ public class UI {
 		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"scrollbarin.png");
 		return pane;
 	}
+	
+	public static ScrollPane miniPane(Actor inner){
+		ScrollPane pane = new ScrollPane(inner);
+		pane.getStyle().vScroll=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbar.png");
+		pane.getStyle().vScrollKnob=Res.getDrawable(Setting.IMAGE_MENU_EQUIP+"mini_scrollbarin.png");
+		return pane;
+	}
 }

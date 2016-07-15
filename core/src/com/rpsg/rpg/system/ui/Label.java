@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Align;
+import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.system.base.Res;
 
 public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
@@ -184,6 +185,10 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 	public Label maxWidth(int i) {
 		maxWidth = i;
 		return this;
+	}
+
+	public GdxQuery query() {
+		return new GdxQuery(this);
 	}
 
 }

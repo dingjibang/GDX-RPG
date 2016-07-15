@@ -23,6 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.rpsg.gdxQuery.GdxQuery;
 
 /** A button with a child {@link Image} to display an image. This is useful when the button must be larger than the image and the
  * image centered on the button. If the image is the size of the button, a {@link Button} without any children can be used, where
@@ -136,7 +137,7 @@ public class ImageButton extends Button {
 		updateImage();
 		super.draw(batch, parentAlpha);
 		if(fg!=null){
-			fg.setX((int)(getX()+(getPrefWidth()/2-fg.getWidth()/2)));
+			fg.setX((int)(getX()+(getWidth()/2-fg.getWidth()/2)));
 			fg.setY((int)(getY()+(getHeight()/2-fg.getHeight()/2)));
 			fg.setColor(fgSelfColor?fg.getColor():getColor());
 			fg.draw(batch);
@@ -181,5 +182,15 @@ public class ImageButton extends Button {
 		public ImageButtonStyle (ButtonStyle style) {
 			super(style);
 		}
+	}
+
+	public GdxQuery query() {
+		return new GdxQuery(this);
+	}
+
+	public ImageButton size(int width, int height) {
+		setSize(width, height);
+		validate();
+		return this;
 	}
 }

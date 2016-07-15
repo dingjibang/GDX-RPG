@@ -34,7 +34,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	public boolean lazy=true;
 	public Runnable loaded= _loaded; 
 	
-	public boolean isLoaded = false;
+	public boolean isLoaded = true;
 	
 	Runnable run,drun;
 	private int delaydbClickTime=30;
