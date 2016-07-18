@@ -32,7 +32,7 @@ public abstract class BaseTask implements Serializable{
 		task.description2 = value.has("description2") ? value.getString("description2") : "";
 		task.icon = value.has("icon") ? value.getInt("icon") : 0;
 		task.end = Trigger.fromJSON(value.get("end"));
-		task.gain = Trigger.fromJSON(value.get("gain"));
+		task.gain = value.has("gain") ? Trigger.fromJSON(value.get("gain")) : null;
 		task.trigger = TriggerType.valueOf(value.getString("trigger"));
 		
 		return task;
@@ -58,7 +58,8 @@ public abstract class BaseTask implements Serializable{
 	}
 
 	public void gain() {
-		gain.gain();
+		if(gain != null)
+			gain.gain();
 	}
 	
 }
