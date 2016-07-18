@@ -5,26 +5,32 @@ import java.util.Date;
 
 import com.rpsg.rpg.core.Setting;
 
-public class TaskInfo implements Serializable{
-	/**
-	 * 
-	 */
+public class TaskInfo<T extends BaseTask> implements Serializable{
 	private static final long serialVersionUID = 1L;
-	public static String fileName = Setting.PERSISTENCE+"history.es";
-	public String name,description;
-	public Integer icon;
-	public Date date;
-	public int id;
-	public Class<? extends BaseTask> type;
 	
-	public static TaskInfo create(BaseTask task){
-		TaskInfo info = new TaskInfo();
+	public static String fileName = Setting.PERSISTENCE+"history.es";
+	
+	public Date date;
+	public T task;
+	public boolean gained = true;
+	
+	public static <T2 extends BaseTask> TaskInfo<T2> create(T2 task){
+		TaskInfo<T2> info = new TaskInfo<T2>();
 		info.date = new Date();
-		info.name = task.name;
-		info.description = task.description;
-		info.icon = task.icon;
-		info.id = task.id;
-		info.type = task.getClass();
+		info.task = task;
 		return info;
+	}
+	
+	public TaskInfo<T> gained(boolean flag){
+		this.gained = flag;
+		return this;
+	}
+	
+	public boolean gained(){
+		return gained;
+	}
+	
+	public T task(){
+		return task;
 	}
 }

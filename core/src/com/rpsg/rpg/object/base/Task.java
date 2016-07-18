@@ -48,7 +48,4 @@ public class Task extends BaseTask{
 		RPG.ctrl.task.end(this);
 	}
 	
-	public boolean hasGain(){
-		return gain != null;
-	}
 }

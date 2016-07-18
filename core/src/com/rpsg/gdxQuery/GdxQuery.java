@@ -875,5 +875,12 @@ public class GdxQuery {
 	public int indexOf(Actor actor) {
 		return getItems().indexOf(actor);
 	}
+
+	public GdxQuery setScrollY(float top) {
+		for(Actor actor : getItems())
+			if(actor instanceof ScrollPane)
+				((ScrollPane) actor).setScrollY(top);
+		return this;
+	}
 	
 }

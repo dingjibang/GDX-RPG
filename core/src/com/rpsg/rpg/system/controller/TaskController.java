@@ -22,7 +22,8 @@ public class TaskController {
 
 	ArrayList<Task> currentTask;
 	ArrayList<Achievement> currentAchievement = new ArrayList<>();
-	List<TaskInfo> history = new ArrayList<>();
+	List<TaskInfo<Achievement>> achHistory = new ArrayList<>();
+	List<TaskInfo<Task>> taskHistory = new ArrayList<>();
 
 	/** 读取成就目录 */
 	public void init() {
@@ -39,9 +40,7 @@ public class TaskController {
 		}
 		
 		if (null != info) 
-			history = (ArrayList<TaskInfo>) info;
-		else
-			saveHistory();
+			achHistory = (List<TaskInfo<Achievement>>) info;
 	}
 	
 	private List<Integer> list(FileHandle file) {
@@ -52,12 +51,13 @@ public class TaskController {
 		return list;
 	}
 	
-	private void saveHistory() {
-		Files.save(history, TaskInfo.fileName);
+	private void saveAchievementHistory() {
+		Files.save(taskHistory, TaskInfo.fileName);
 	}
 
 	public void initTask(){
 		currentTask = RPG.global.currentTask;
+		taskHistory = RPG.global.taskHistory;
 	}
 
 	/** 保存成就目录到文件 */
@@ -106,7 +106,7 @@ public class TaskController {
 	
 	/** 查询是否做过某个任务(不是成就)*/
 	public boolean hasDone(int id){
-		return $.test(history, t-> t.id == id && t.type.equals(Task.class));
+		return $.test(taskHistory, t-> t.task.id == id && t.task.getClass().equals(Task.class));
 	}
 	
 	
@@ -124,6 +124,14 @@ public class TaskController {
 	public List<Achievement> achievement(){
 		return (List<Achievement>) currentAchievement.clone();
 	}
+	
+	/** 获得全部成就（进行中以及已完成的）（副本）*/
+	public List<Achievement> allAchievement(){
+		List<Achievement> list = achievement();
+		list.addAll($.map(achHistory, TaskInfo::task));
+		return list;
+	}
+	
 	
 	/**完成一个任务（非成就）**/
 	public void endTask(int id){
@@ -147,13 +155,15 @@ public class TaskController {
 	public void end(BaseTask task) {
 		if(task == null) return;
 		
-		history.add(TaskInfo.create(task));
 		boolean isTask = task instanceof Task;
 		if (isTask){
 			currentTask.remove(task);
+			taskHistory.add(TaskInfo.create((Task)task));
 		}else{
 			currentAchievement.remove(task);
 			saveAchievement();
+			achHistory.add(TaskInfo.create((Achievement)task).gained(!task.hasGain()));
+			saveAchievementHistory();
 		}
 		
 		task.gain();

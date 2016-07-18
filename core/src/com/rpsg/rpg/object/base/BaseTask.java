@@ -61,5 +61,9 @@ public abstract class BaseTask implements Serializable{
 		if(gain != null)
 			gain.gain();
 	}
+
+	public boolean hasGain() {
+		return gain != null;
+	}
 	
 }

@@ -1,5 +1,6 @@
 package com.rpsg.gdxQuery;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -159,6 +160,13 @@ public class $ {
 			if(o.getClass().equals(obj))
 				return true;
 		return false;
+	}
+	
+	public static <T,R> List<R> map(List<T> list, Map<T,R> map){
+		List<R> result = new ArrayList<>();
+		for(T t : list)
+			result.add(map.run(t));
+		return result;
 	}
 	
 	

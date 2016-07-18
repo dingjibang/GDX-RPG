@@ -51,7 +51,14 @@ public class TaskView extends IMenuView {
 	
 	
 	public void setGroup(Class<Group> group){
+		
 		boolean has = $.has(this.groupList, group);
+		
+		//debug
+		if(has){
+			has = !has;
+			this.groupList.remove($.getIf(this.groupList, g -> g.getClass().equals(group)));
+		}
 		if(!has)
 			try {
 				this.groupList.add(group.newInstance());

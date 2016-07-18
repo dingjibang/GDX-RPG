@@ -10,7 +10,7 @@
 	gain:{
 		gold:10
 	},
-	giveup:false,
+	giveup:true,
 	type:"secondly",
 	by:"morisa"
 }

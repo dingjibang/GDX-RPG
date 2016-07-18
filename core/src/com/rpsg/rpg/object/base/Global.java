@@ -33,6 +33,7 @@ public class Global implements Serializable {
 	public ArrayList<Hero> support = new ArrayList<>();
 	
 	public ArrayList<Task> currentTask = new ArrayList<>();
+	public ArrayList<TaskInfo<Task>> taskHistory = new ArrayList<>();
 	
 	public int x,y,z;
 	
