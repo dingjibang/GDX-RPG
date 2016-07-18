@@ -56,7 +56,7 @@ public class TaskGroup extends Group{
 		
 		table.setTouchable(Touchable.enabled);
 		
-		$.add(table.padTop(5).padBottom(40)).eachCells(ListItem.class, c -> c.size(768,36).getActor(a -> a.size(708,30)).left().click(() -> {
+		$.add(table.padBottom(40)).eachCells(ListItem.class, c -> c.size(768,36).getActor(a -> a.size(708,30)).left().click(() -> {
 			c.getActor().select(true);
 			$.each(c.others(), c2 -> ((ListItem)c2.getActor()).select(false));
 			set((Task)c.getActor().getUserObject());
