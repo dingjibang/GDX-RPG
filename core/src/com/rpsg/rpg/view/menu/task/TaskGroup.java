@@ -87,7 +87,7 @@ public class TaskGroup extends Group{
 		if(task.by != null && task.by.length() != 0)
 			Res.get("委托人：" + task.by, 16).width(200).right().query().setPosition(task.giveup ?630 : 766, 144).appendTo(info);
 		if(task.giveup)
-			UI.imageButton().size(129, 31).setFg(Res.getNP(Setting.IMAGE_MENU_TASK + "remove_task.png")).query().setPosition(836, 137).appendTo(info).click(()->{
+			UI.imageButton().size(129, 31).style(UI::redButton).setFg(Res.getNP(Setting.IMAGE_MENU_TASK + "remove_task.png")).query().setPosition(836, 137).appendTo(info).click(()->{
 				RPG.popup.add(ConfirmView.okCancel("确定要删除任务["+task.name+"]么？", v->{
 					v.disposed = true;
 					RPG.ctrl.task.removeTask(task.id);

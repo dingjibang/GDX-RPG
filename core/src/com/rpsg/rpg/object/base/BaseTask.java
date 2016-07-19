@@ -5,6 +5,8 @@ import java.io.Serializable;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
+import com.rpsg.gdxQuery.$;
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Task.TriggerType;
 import com.rpsg.rpg.system.base.Res;
@@ -58,8 +60,11 @@ public abstract class BaseTask implements Serializable{
 	}
 
 	public void gain() {
-		if(gain != null)
+		if(gain != null){
 			gain.gain();
+			if(this instanceof Achievement)
+				$.getIf(RPG.ctrl.task.achievementHistory(), info -> info.task == this).gained(true);
+		}
 	}
 
 	public boolean hasGain() {

@@ -51,8 +51,8 @@ public class TaskController {
 		return list;
 	}
 	
-	private void saveAchievementHistory() {
-		Files.save(taskHistory, TaskInfo.fileName);
+	public void saveAchievementHistory() {
+		Files.save(achHistory, TaskInfo.fileName);
 	}
 
 	public void initTask(){
@@ -132,6 +132,10 @@ public class TaskController {
 		return list;
 	}
 	
+	public boolean isAchievementDoing(Achievement ach){
+		return currentAchievement.contains(getAchievement(ach.id));
+	}
+	
 	
 	/**完成一个任务（非成就）**/
 	public void endTask(int id){
@@ -159,6 +163,7 @@ public class TaskController {
 		if (isTask){
 			currentTask.remove(task);
 			taskHistory.add(TaskInfo.create((Task)task));
+			task.gain();
 		}else{
 			currentAchievement.remove(task);
 			saveAchievement();
@@ -166,7 +171,6 @@ public class TaskController {
 			saveAchievementHistory();
 		}
 		
-		task.gain();
 		
 		RPG.toast.add((isTask ? "完成任务" : "获得成就") + "\n\"" + task.name + "\"\n" + task.description2, Color.SKY, 22, true, task.getIcon());
 	}
@@ -184,5 +188,15 @@ public class TaskController {
 				return i;
 		
 		return index;
+	}
+
+	public List<TaskInfo<Achievement>> achievementHistory() {
+		return achHistory;
+	}
+
+	public boolean isAchievementGained(Achievement ach) {
+		TaskInfo<?> info = $.getIf(achHistory, i -> i.task == ach);
+		boolean gained = info != null ? info.gained() : false; 
+		return gained;
 	}
 }

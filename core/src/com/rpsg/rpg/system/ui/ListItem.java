@@ -11,10 +11,11 @@ import com.rpsg.rpg.system.base.Res;
 public class ListItem extends Table{
 	Label label = Res.get("", 22);
 	Image icon = Res.base().width(0).height(0).hide();
-	Table insert = new Table();
+	Table insert = new Table(),insertAfter = new Table();
 	Cell<Image> iconCell;
 	Cell<Label> labelCell;
 	Cell<Table> insertCell;
+	Cell<Table> insertAfterCell;
 	boolean selected = false;
 	Image bg;
 	
@@ -24,17 +25,28 @@ public class ListItem extends Table{
 		insertCell = add(insert).left().padLeft(25).padRight(15);
 		iconCell = add(icon).left();
 		labelCell = add(label.left()).left();
+		insertAfterCell = add(insertAfter).left().padLeft(15).padRight(15);
 		addActor(bg = Res.base().hide());
 	}
 	
 	public ListItem addText(String text,int fontSize){
-		this.label = Res.get(text, fontSize);
+		this.label = Res.get(text, fontSize).markup(true);
 		labelCell.setActor(label.left()).left();
 		return this;
 	}
 	
 	public ListItem insert(Actor a){
 		insert.add(a);
+		return this;
+	}
+	
+	public ListItem insertAfter(Actor a){
+		insertAfter.add(a);
+		return this;
+	}
+	
+	public <T extends Actor> ListItem insertAfter(T a,CustomRunnable<Cell<T>> callback){
+		callback.run(insertAfter.add(a).left());
 		return this;
 	}
 	
@@ -50,7 +62,7 @@ public class ListItem extends Table{
 	
 	public ListItem addIcon(Image icon){
 		this.icon = icon;
-		iconCell.setActor(icon).padRight(30);
+		iconCell.setActor(icon).padRight(30).prefSize(icon.getWidth(),icon.getHeight());
 		return this;
 	}
 	

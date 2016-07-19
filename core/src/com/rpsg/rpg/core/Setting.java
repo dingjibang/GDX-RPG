@@ -75,7 +75,7 @@ public class Setting {
 	public static final String MENU_SYSTEM_TEST_MESSAGE = "人类为何要互相伤害呢？";
 
 	// UI
-	public static NinePatchDrawable UI_BUTTON;
+	public static NinePatchDrawable UI_BUTTON,UI_BUTTON_RED;
 	public static NinePatchDrawable UI_TOAST;
 	public static String UI_BASE_IMG = IMAGE_MENU_GLOBAL + "white.jpg";
 	public static String UI_GRAY_IMG = IMAGE_MENU_GLOBAL + "drawable_gray_opacity.png";
@@ -83,6 +83,7 @@ public class Setting {
 
 	public static void init() {
 		UI_BUTTON = new NinePatchDrawable(GameUtil.processNinePatchFile(IMAGE_MENU_GLOBAL + "button_p.png"));
+		UI_BUTTON_RED = new NinePatchDrawable(GameUtil.processNinePatchFile(IMAGE_MENU_GLOBAL + "button_p_noborder.png"));
 		UI_TOAST = new NinePatchDrawable(GameUtil.processNinePatchFile(IMAGE_MENU_GLOBAL + "toast_box.png",2,2,1,1,5,5,5,5));
 	}
 

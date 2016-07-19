@@ -2,6 +2,7 @@ package com.rpsg.rpg.system.ui;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.gdxQuery.GdxQuery;
 
 /** A button with a child {@link Label} to display text.
@@ -26,6 +27,11 @@ public class TextButton extends com.badlogic.gdx.scenes.scene2d.ui.TextButton {
 	
 	public TextButton click(){
 		return query.click().getItem(getClass());
+	}
+
+	public TextButton style(CustomRunnable<ButtonStyle> call) {
+		call.run(this.getStyle());
+		return this;
 	}
 
 }
