@@ -22,6 +22,7 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.TextButton;
+import com.rpsg.rpg.system.ui.ZoomBox;
 
 public class SaveView extends HoverView{
 	TextButtonStyle butstyle;
@@ -29,6 +30,8 @@ public class SaveView extends HoverView{
 	public TextButton autobut,savebutton;
 	public void init() {
 		stage.addActor(Res.get(Setting.IMAGE_MENU_SYSTEM+"savebg.png").color(1,1,1,0).action(Actions.fadeIn(0.2f)));
+		
+		
 		ImageButton exit=new ImageButton(Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"file_exit.png"),Res.getDrawable(Setting.IMAGE_MENU_SYSTEM+"file_exit_active.png"));
 		exit.setPosition(945, 530);
 		exit.addAction(Actions.moveTo(945, 500,0.1f));
@@ -165,6 +168,12 @@ public class SaveView extends HoverView{
 				});
 		}
 		
+		Image box = new ZoomBox(Res.getDrawable(Setting.IMAGE_FG+"/arisu/Normal.png")).size(200, 300).position(400, 100);
+		box.debug();
+		stage.addActor(box);
+		stage.setScrollFocus(box);
+		
+		
 	}
 	
 	int currentPageStart=1,currentPage=1;
@@ -258,5 +267,6 @@ public class SaveView extends HoverView{
 			disposed=true;
 		return stage.keyDown(keycode);
 	}
+	
 	
 }
