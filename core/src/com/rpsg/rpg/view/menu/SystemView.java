@@ -88,13 +88,11 @@ public class SystemView extends IMenuView{
 			
 			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"login_tip.png")).padTop(40).row();
 			
-			table.add(new TextButton("登录", tstyle).onClick(new Runnable() {
-				public void run() {
-					RPG.popup.add(LoginView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
-						put("title","登录");
-						put("width",100);
-					}});
-				}
+			table.add(new TextButton("登录", tstyle).onClick(()->{
+				RPG.popup.add(LoginView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
+					put("title","登录");
+					put("width",100);
+				}});
 			})).height(60).padTop(30).align(Align.left).padLeft(25);
 			
 			table.layout();
@@ -175,7 +173,7 @@ public class SystemView extends IMenuView{
 			table.add(new MenuCheckBox("更清晰的文字",cstyle).onClick(new CustomRunnable<MenuCheckBox>() {public void run(MenuCheckBox t) {
 				set.hdFont = t.isChecked();
 			}}).check(set.hdFont).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
-			table.add(new Label("使用更清晰的文字贴图，将大幅度提高文字的清晰度，对于手机/平板效果最佳。（需要重启游戏）",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
+			table.add(new Label("使用更清晰的文字贴图，将大幅度提高文字的清晰度，对于手机/平板效果最佳，相对的需要消耗一些显存。（需要重启游戏）",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.add(new MenuCheckBox("显示天气效果",cstyle).onClick(new CustomRunnable<MenuCheckBox>() {public void run(MenuCheckBox t) {
 				set.weather = t.isChecked();

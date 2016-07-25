@@ -1,6 +1,8 @@
 package com.rpsg.gdxQuery;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -167,6 +169,11 @@ public class $ {
 		for(T t : list)
 			result.add(map.run(t));
 		return result;
+	}
+	
+	public static <T> List<T> sort(List<T> list,Comparator<T> c){
+		Collections.sort(list,c);
+		return list;
 	}
 	
 	

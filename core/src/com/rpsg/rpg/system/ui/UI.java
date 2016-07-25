@@ -60,4 +60,8 @@ public class UI {
 		style.down = Setting.UI_BUTTON;
 		return style;
 	}
+
+	public static Image hr(int width) {
+		return Res.base().width(width).height(2);
+	}
 }

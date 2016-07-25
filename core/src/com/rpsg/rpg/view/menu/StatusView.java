@@ -187,4 +187,8 @@ public class StatusView extends IMenuView {
 	public void dispose() {
 		stage.dispose();
 	}
+	
+	public void onResume() {
+		generate();
+	}
 }

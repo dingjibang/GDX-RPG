@@ -6,7 +6,6 @@ setKeyLocker(true);
 lock(true);
 faceToHero();
 
-
 showMSG(MsgType.魔理沙);
 say("咳咳咳，任务测试（","魔理沙??");
 hideMSG();

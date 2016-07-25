@@ -90,6 +90,10 @@ public class GdxCellQuery<T extends Actor>{
 		return this;
 	}
 	
+	public Object object(){
+		return cell.getActor().getUserObject();
+	}
+	
 	public <T2 extends Actor> GdxCellQuery<T2> cell(T2 a){
 		return end().cell(a);
 	}

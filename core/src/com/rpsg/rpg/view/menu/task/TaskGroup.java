@@ -47,6 +47,7 @@ public class TaskGroup extends Group{
 		
 		$.add(pane = UI.scrollPane(table)).appendTo(this).setSize(768, 251).setPosition(222, 197);
 		
+		
 		for(Task task : list){
 			ListItem item = new ListItem();
 			item.insert(task.canEnd() ? done : doing);

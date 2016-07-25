@@ -35,3 +35,6 @@ E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\Sc
 E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.form.PauseForm.resources
 E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.SayForm.resources
 E:\Workspaces\MyEclipse 8.5\rpg\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.ScriptEditForm.resources
+C:\Users\dingjibang\git\GDX-RPG\extension\ScriptEditor\ScriptEditor\bin\Debug\ScriptEditor.exe.config
+C:\Users\dingjibang\git\GDX-RPG\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.exe
+C:\Users\dingjibang\git\GDX-RPG\extension\ScriptEditor\ScriptEditor\obj\Debug\ScriptEditor.pdb

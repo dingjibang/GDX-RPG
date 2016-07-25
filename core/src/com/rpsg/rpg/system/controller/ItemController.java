@@ -18,6 +18,7 @@ import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
+import com.rpsg.rpg.object.base.items.Note;
 import com.rpsg.rpg.object.base.items.Prop;
 import com.rpsg.rpg.object.base.items.Spellcard;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -99,6 +100,10 @@ public class ItemController {
 				e.cost = result.has("cost")?result.getInt("cost"):0;
 				e.occasion = result.has("occasion")?ItemOccasion.valueOf(result.getString("occasion")):ItemOccasion.all;
 				e.deadable = result.has("deadable")?ItemDeadable.valueOf(result.getString("deadable")):ItemDeadable.no;
+			}else if(type.equalsIgnoreCase(Note.class.getSimpleName())){
+				Note e = (Note)(baseItem=new Note());
+				e.index = result.has("index")?result.getLong("index"):Long.MAX_VALUE;
+				e.spellcard = result.has("spellcard")?result.getInt("spellcard"):null;
 			}else{
 				Item e = (Item)(baseItem = new Item());
 				e.forward = result.has("forward")?ItemForward.valueOf(result.getString("forward")):ItemForward.friend;

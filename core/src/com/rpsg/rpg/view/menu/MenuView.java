@@ -122,7 +122,7 @@ public class MenuView extends StackView{
 				final boolean firstFlag=i==0;
 				final Menu currentMenu=MenuController.generate().get(i);
 				$.add(new MenuCheckBox("", cstyle).setFgOff(0).foreground(Res.getNP(Setting.IMAGE_MENU_GLOBAL+"m_"+currentMenu.fileName+".png"))).appendTo(table.getItem()).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {
-					self.click(new Runnable() {public void run() {
+					self.click(()->{
 						for(Actor box:table.children().getItems())
 							$.add(box).notUserObject(self.getItem()).setChecked(false).addAction(Actions.moveTo(21, box.getY(),0.1f,Interpolation.pow4)).setDisabled(false).run(new GdxQueryRunnable() {public void run(GdxQuery self2) {
 								if(self2.length()!=0) ((MenuCheckBox)self2.getItem()).setOther(null);
@@ -138,11 +138,11 @@ public class MenuView extends StackView{
 							else
 								fgGroup.addAction(Actions.parallel(Actions.moveTo(115,0,0.6f,Interpolation.pow4Out),Actions.fadeIn(0.5f)));
 						}
-					}});
+					});
 					((Table)table.getItem()).getCell(self.getItem()).padTop(5).padBottom(5).prefSize(179,76);
-					self.addAction(Actions.delay(0.4f,Actions.run(new Runnable() {public void run() {
+					self.addAction(Actions.delay(0.4f,Actions.run(()->{
 						if(firstFlag) self.click();
-					}})));
+					})));
 				}}).setSize(179, 76);
 			}
 		}}).appendTo(ld).setSize(370, 50).setPosition(-100, 20).addAction(Actions.moveTo(23, 20, .5f,Interpolation.pow2Out)).getCell().prefSize(370,50);
@@ -156,7 +156,7 @@ public class MenuView extends StackView{
 		boxs=new ArrayList<GdxQuery>();//角色框
 		
 		for(int i=0;i<RPG.ctrl.hero.currentHeros.size();i++)
-			boxs.add($.add(new MenuHeroBox(RPG.ctrl.hero.currentHeros.get(i))).appendTo(ld).setPosition(-i*100, 400).addAction(Actions.moveTo(i*100+25, 400,0.7f,Interpolation.pow2Out)).run(new GdxQueryRunnable() {public void run(final GdxQuery self) {self.click(new Runnable() {public void run() {
+			boxs.add($.add(new MenuHeroBox(RPG.ctrl.hero.currentHeros.get(i))).appendTo(ld).setPosition(-i*100, 400).addAction(Actions.moveTo(i*100+25, 400,0.7f,Interpolation.pow2Out)).run(self-> self.click(()->{
 				if(current==null || current!=((MenuHeroBox)self.getItem()).hero){
 					for(GdxQuery _box:boxs)
 						((MenuHeroBox) _box.getItem()).setSelect(false);
@@ -170,12 +170,10 @@ public class MenuView extends StackView{
 					
 					current=((MenuHeroBox)self.getItem()).hero;
 				}
-			}});}}));
+			})));
 		boxs.get(MathUtils.random(boxs.size()-1)).click();
 		//设置点击音效
-		$.add(ld).children().find(ImageButton.class,MenuHeroBox.class).click(new Runnable() {public void run() {
-			Music.playSE("snd210.wav");
-		}});
+		$.add(ld).children().find(ImageButton.class,MenuHeroBox.class).click(()->Music.playSE("snd210.wav"));
 		
 		
 		stage.setDebugAll(Setting.persistence.uiDebug);

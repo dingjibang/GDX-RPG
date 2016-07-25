@@ -9,4 +9,6 @@ public abstract class IMenuView extends DefaultIView{
 	public boolean allowEsc(){
 		return true;
 	};
+	
+	public void onResume(){};
 }
