@@ -14,8 +14,6 @@ import com.rpsg.rpg.utils.game.GameUtil;
  */
 public class ZoomBox extends Image{
 
-	private static final float rate = 0.03f;
-	
 	private float originX = 0,originY = 0;
 	
 	// 传入要缩放的图片，以及zoombox初始时的宽高
@@ -28,17 +26,10 @@ public class ZoomBox extends Image{
 		addListener(new ActorGestureListener(){
 			@Override
 			public void zoom(InputEvent event, float initialDistance, float distance) {
-				float f = 1 + distance / 100;
-				float x1 = getX();
-				float y1 = getY();
-				float ox = distance / 100 * rate * getWidth() / 2;
-				float oy = distance / 100 * rate * getHeight() / 2;
-				setX(x1 - ox);
-				setY(y1 - oy);
-				setWidth(getWidth() * f);
-				setHeight(getHeight() * f);
 				regAction();
+				addAction(Actions.scaleBy(-1*(distance - initialDistance)/100,-1*(distance - initialDistance)/100,.7f));
 			}
+			
 		});
 		
 		// 注册输入监听器
@@ -80,34 +71,28 @@ public class ZoomBox extends Image{
 	
 	private void regAction(){
 		clearActions();
-		if(getHeight() * getScaleY() > GameUtil.getScreenHeight())
-			addAction(Actions.moveBy(0, getOutY(), 1f, Interpolation.pow4Out));
-		else
-			addAction(Actions.moveBy(0, originY - getY(), 1f, Interpolation.pow4Out));
-		if(getWidth() * getScaleX() > GameUtil.getScreenWidth())
-			addAction(Actions.moveBy(getOutX(),0, 1f, Interpolation.pow4Out));
-		else
-			addAction(Actions.moveBy(originX - getX(),0, 1f, Interpolation.pow4Out));
 	}
 	
-	private float getOutX(){
-		float left = getX() - getWidth()/2 * getScaleX() + getWidth()/2;
-		float right = getX() + getWidth()/2 * getScaleX() + getWidth()/2;
-		if(left > 0)
-			return -left ;
-		if(right < GameUtil.getScreenWidth())
-			return GameUtil.getScreenWidth() - right;
+	/**获取绝对的x坐标（缩放后的）*/
+	private float getOutX(float left, float right){
+		if(left > 0) return -left;
+		if(right < GameUtil.stage_width) return GameUtil.stage_width - right;
 		return 0;
 	}
 	
-	private float getOutY(){
-		float bottom = getY() - getHeight()/2 * getScaleY() + getHeight()/2;
-		float top = getY() + getHeight()/2 * getScaleY() + getHeight()/2;
-		if(bottom > 0)
-			return -bottom ;
-		if(top < GameUtil.getScreenHeight())
-			return GameUtil.getScreenHeight() - top;
+	/**获取绝对的y坐标（缩放后的）*/
+	private float getOutY(float top,float bottom){
+		if(bottom > 0) return -bottom;
+		if(top < GameUtil.stage_height) return GameUtil.stage_height - top;
 		return 0;
+	}
+	
+	private float getAbsWidth(){
+		return getWidth() * getScaleX();
+	}
+	
+	private float getAbsHeight(){
+		return getHeight() * getScaleY();
 	}
 	
 	@Override
