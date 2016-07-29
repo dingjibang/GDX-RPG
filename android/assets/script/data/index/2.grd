@@ -1,0 +1,8 @@
+{
+	name:"结成有栖",
+	jname:"Yuki Arisu",
+	description:"已经不存在了的主角=-=",
+	type:"actor",
+	index:1,
+	path:"arisu",
+}

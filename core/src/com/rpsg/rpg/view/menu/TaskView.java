@@ -31,6 +31,7 @@ public class TaskView extends IMenuView {
 	
 	public TaskView init() {
 		stage = new Stage(new ScalingViewport(Scaling.stretch, GameUtil.stage_width, GameUtil.stage_height, new OrthographicCamera()), MenuView.stage.getBatch());
+		stage.setDebugAll(Setting.persistence.uiDebug);
 		
 		GdxQuery tab = $.add(new Table().left().top()).appendTo(stage).setWidth(724).setPosition(222, 530)
 			.cell(UI.checkbox(Setting.IMAGE_MENU_TASK+"tab_task.png")).bind(TaskGroup.class)

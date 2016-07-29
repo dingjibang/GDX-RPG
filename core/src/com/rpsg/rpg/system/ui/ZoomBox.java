@@ -27,7 +27,12 @@ public class ZoomBox extends Image{
 			@Override
 			public void zoom(InputEvent event, float initialDistance, float distance) {
 				regAction();
-				addAction(Actions.scaleBy(-1*(distance - initialDistance)/100,-1*(distance - initialDistance)/100,.7f));
+				setOrigin(Align.center);
+				scaleBy(1*(distance - initialDistance)/10000, 1*(distance - initialDistance)/10000);
+				if(getScaleX() < 1){
+					regAction();
+					addAction(Actions.scaleTo(1, 1,.7f,Interpolation.pow4Out));
+				}
 			}
 			
 		});
@@ -57,11 +62,13 @@ public class ZoomBox extends Image{
 			// 鼠标使用滚轮时触发
 			public boolean scrolled(InputEvent event, float x, float y, int amount) {
 				amount = -amount;
-				setScale(getScaleX() + amount/10f);
 				setOrigin(0);
-				regAction();
-				if(getScaleX() < 1)
+				addAction(Actions.scaleBy(amount/5f, amount/5f,.5f,Interpolation.pow4Out));
+				if(getScaleX() < 1){
+					regAction();
 					addAction(Actions.scaleTo(1, 1,.7f,Interpolation.pow4Out));
+				}
+					
 				return super.scrolled(event, x, y, amount);
 			}
 

@@ -393,6 +393,14 @@ public class GdxQuery {
 		return this;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public <T> GdxQuery each(Class<T> clz,CustomRunnable<T> run){
+		if(run!=null)
+			for(Actor actor:(List<? extends Actor>)getItems())
+				run.run((T)actor);
+		return this;
+	}
+	
 	public GdxQuery addAction(Action... action){
 //		FIXME this method is not work!
 		for(Actor actor:getItems())

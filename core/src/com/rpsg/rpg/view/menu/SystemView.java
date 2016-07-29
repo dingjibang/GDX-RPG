@@ -217,10 +217,10 @@ public class SystemView extends IMenuView{
 			}}).check(set.softCamera).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
 			table.add(new Label("开启后，移动时视角会变得平滑。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
-			table.add(new MenuCheckBox("启用帧数修复",cstyle).onClick(new CustomRunnable<MenuCheckBox>() {public void run(MenuCheckBox t) {
+			table.add(new MenuCheckBox("强制保持逻辑帧数",cstyle).onClick(new CustomRunnable<MenuCheckBox>() {public void run(MenuCheckBox t) {
 				set.fixMove = t.isChecked();
 			}}).check(set.fixMove).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
-			table.add(new Label("提高并固定游戏的非渲染（逻辑）帧数，在性能严重恶劣（掉帧）的情况下也会尝试保证游戏速度。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
+			table.add(new Label("正常设备请勿开启，否则会产生反效果。\n在配置极其恶劣的电脑上，会尝试强制稳定逻辑帧数，放弃稳定渲染帧数，这会让游戏速度强制保证正常，但会造成画面卡顿。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.layout();
 			parentTable.add(table).align(Align.topLeft).row();
@@ -269,27 +269,27 @@ public class SystemView extends IMenuView{
 			
 			table.add(new MenuCheckBox("缓存游戏资源",cstyle).onClick(new CustomRunnable<MenuCheckBox>() {public void run(MenuCheckBox t) {
 				set.cacheResource = t.isChecked();//
-			}}).check(set.cacheResource).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
+			}}).check(set.cacheResource).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(50).row();
 			table.add(new Label("游戏将尝试缓存已读取的资源，在下次进入菜单、地图时会加快读取，但会增加内存的消耗。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.add(new MenuCheckBox("在屏幕上显示帧数",cstyle).onClick(new CustomRunnable<MenuCheckBox>() {public void run(MenuCheckBox t) {
 				set.showFPS = t.isChecked();
-			}}).check(set.showFPS).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(50).row();
+			}}).check(set.showFPS).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(30).row();
 			table.add(new Label("你是强迫症么？",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.add(new MenuCheckBox("输出调试信息",cstyle).onClick(new CustomRunnable<MenuCheckBox>() {public void run(MenuCheckBox t) {
 				set.debugMod = t.isChecked();
-			}}).check(set.debugMod).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(50).row();
+			}}).check(set.debugMod).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(30).row();
 			table.add(new Label("输出游戏的调试信息到控制台（开发者）。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.add(new MenuCheckBox("调试布局",cstyle).onClick(new CustomRunnable<MenuCheckBox>() {public void run(MenuCheckBox t) {
 				set.uiDebug = t.isChecked();
-			}}).check(set.uiDebug).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
+			}}).check(set.uiDebug).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(30).row();
 			table.add(new Label("启用Stage Debug（开发者）。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			
 			table.add(new MenuCheckBox("当游戏发生异常时，尝试上报错误问题",cstyle).onClick(new CustomRunnable<MenuCheckBox>() {public void run(MenuCheckBox t) {
 				set.uiDebug = t.isChecked();
-			}}).check(set.uiDebug).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(20).row();
+			}}).check(set.uiDebug).getLabelCell().padLeft(30).getActor().getParent()).left().padTop(30).row();
 			table.add(new Label("上报的信息将不会收集您的任何私有资料。",20).warp(true).color(Color.valueOf("dddddd"))).width(660).padLeft(75).left().padTop(20).row();
 			table.add($.add(new Label("点击我可以查看《隐私说明》",20).warp(true).color(Color.valueOf("8FBEE6"))).setTouchable(Touchable.enabled).click(new Runnable() {
 				public void run() {

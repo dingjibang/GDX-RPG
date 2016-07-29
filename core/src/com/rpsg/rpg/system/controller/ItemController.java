@@ -42,13 +42,24 @@ public class ItemController {
 	public void put(int id){
 		BaseItem baseItem =search(id);
 		if(baseItem==null)
-			RPG.global.items.add(get(id));
+			_put(get(id));
 		else
 			//如果可叠加的，则数量+1，否则新建实例_(:3」∠)_
 			if(baseItem.packable)
 				baseItem.count++;
 			else
-				RPG.global.items.add(get(id));
+				_put(get(id));
+	}
+	
+	private void _put(BaseItem item){
+		RPG.global.items.add(item);
+		
+		//TODO 讨论
+//		//如果是笔记类型的道具，则添加符卡到仓库
+//		if(item instanceof Note && ((Note)item).spellcard != null){
+//			Spellcard sc = ((Note)item).getSpellcard();
+//			
+//		}
 	}
 	
 	public void put(int id, int count) {

@@ -59,6 +59,7 @@ public class Setting {
 	public static final String SCRIPT_SYSTEM = SCRIPT + "/system/";
 	public static final String SCRIPT_DATA_TASK = SCRIPT_DATA + "/task/";
 	public static final String SCRIPT_DATA_ACHIEVEMENT = SCRIPT_DATA + "/achievement/";
+	public static final String SCRIPT_DATA_INDEX = SCRIPT_DATA + "/index/";
 
 	// 存档最大页数
 	public static final int SAVE_FILE_MAX_PAGE = 20;

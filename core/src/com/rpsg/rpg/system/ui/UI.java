@@ -48,6 +48,7 @@ public class UI {
 		TextButtonStyle style = new TextButtonStyle();
 		style.up = Res.getDrawable(Setting.UI_GRAY_IMG);
 		style.down = Setting.UI_BUTTON;
+		style.checked = Setting.UI_BUTTON;
 		style.font = Res.font.get(fontSize);
 		
 		TextButton button = new TextButton(text, style);
@@ -58,6 +59,7 @@ public class UI {
 	public static ButtonStyle redButton(ButtonStyle style){
 		style.up = Setting.UI_BUTTON_RED;
 		style.down = Setting.UI_BUTTON;
+		style.checked = Setting.UI_BUTTON;
 		return style;
 	}
 

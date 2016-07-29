@@ -6,6 +6,7 @@ import com.rpsg.rpg.system.controller.BattleController;
 import com.rpsg.rpg.system.controller.CGController;
 import com.rpsg.rpg.system.controller.DrawController;
 import com.rpsg.rpg.system.controller.HeroController;
+import com.rpsg.rpg.system.controller.IndexController;
 import com.rpsg.rpg.system.controller.ItemController;
 import com.rpsg.rpg.utils.display.FG;
 import com.rpsg.rpg.utils.display.MapAnimationsManager;
@@ -29,4 +30,5 @@ public class Controllers {
 	public MapAnimationsManager animation = new MapAnimationsManager();
 	public BattleController battle = new BattleController();
 	public TaskController task = new TaskController();
+	public IndexController index = new IndexController();
 }

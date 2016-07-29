@@ -67,6 +67,7 @@ public class BattleView extends DefaultIView{
 	@Override
 	public BattleView init() {
 		stage.clear();
+		stage.setDebugAll(Setting.persistence.uiDebug);
 		createBattlStopView = false;
 		$.add(Res.base().size(1024,576).color(.5f,.5f,.5f,1)).appendTo(stage);//TODO debug;
 		
@@ -84,7 +85,6 @@ public class BattleView extends DefaultIView{
 		$.add(timer = new Timer(heros,enemyGroup.list(),this::onTimerToggle,this::onBattleStop)).appendTo(stage);
 		
 		status.add("fuck you");
-		stage.setDebugAll(!!false);
 		
 		$.add(Res.base().size(GameUtil.stage_width,GameUtil.stage_height).color(0,0,0,1)).appendTo(stage).addAction(Actions.sequence(Actions.fadeOut(.3f,Interpolation.pow2In),Actions.removeActor()));
 		
@@ -95,6 +95,7 @@ public class BattleView extends DefaultIView{
 		return this;
 	}
 	
+	//因为停止战斗消息是战斗结束后，持续每帧发送的，为了防止建多个view，所以使用布尔变量进行判断
 	 public void onBattleStop(){
 		 if(createBattlStopView) return;
 		 createBattlStopView = !createBattlStopView;

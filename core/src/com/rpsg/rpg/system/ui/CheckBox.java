@@ -65,4 +65,9 @@ public class CheckBox extends com.badlogic.gdx.scenes.scene2d.ui.CheckBox {
 		return this;
 	}
 
+	public CheckBox text(String string) {
+		setText(string);
+		return this;
+	}
+
 }

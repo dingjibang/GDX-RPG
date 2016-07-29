@@ -68,6 +68,7 @@ public class GameViews implements ApplicationListener {
 		
 		Setting.init();//设置一些复用的UI组件
 		RPG.ctrl.task.init();//读取成就
+		RPG.ctrl.index.init();//读取图鉴
 		//input
 		Gdx.input.setInputProcessor(RPG.input);//注册输入
 		//view

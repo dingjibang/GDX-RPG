@@ -176,5 +176,17 @@ public class $ {
 		return list;
 	}
 	
+	public static <T1> ListQuery<T1> list(T1 t1){
+		return new ListQuery<T1>(t1);
+	}
+	
+	public static <T> List<T> multi(List<T> list, int multiCount){
+		List<T> result = new ArrayList<>();
+		for(int i = 0; i < multiCount; i++)
+			result.addAll(list);
+		return result;
+	}
+	
+	
 	
 }

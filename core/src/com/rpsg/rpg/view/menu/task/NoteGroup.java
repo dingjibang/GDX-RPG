@@ -1,7 +1,5 @@
 package com.rpsg.rpg.view.menu.task;
 
-import java.util.List;
-
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -36,7 +34,7 @@ public class NoteGroup extends Group{
 		
 		for(Note note : $.sort(RPG.ctrl.item.search("note", Note.class), (a,b)->Long.compare(a.index, b.index))){
 			ListItem item = new ListItem();
-			item.insert(Res.get(note.name, 20)).left().setUserObject(note);
+			item.insert(Res.get("No." + note.index + " " +note.name, 20)).left().setUserObject(note);
 			table.add(item).row();
 		}
 		

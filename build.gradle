@@ -84,6 +84,7 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
 		compile "org.mozilla:rhino:1.7.7"
+		compile group: 'net.sourceforge.streamsupport', name: 'streamsupport', version: '1.5'
     }
 }
 
