@@ -7,8 +7,10 @@ lock(true);
 faceToHero();
 
 showMSG(MsgType.魔理沙);
+showFGRight(FGType.魔理沙, FGType.普通);
 say("咳咳咳，任务测试（","魔理沙??");
 hideMSG();
+hideFG();
 
 select("接任务","还任务");
 

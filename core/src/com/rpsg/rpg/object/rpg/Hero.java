@@ -181,7 +181,7 @@ public class Hero extends RPGObject implements Time{
 	}
 	
 	public Image defaultFG(){
-		return Res.get(Setting.IMAGE_FG + fgname + "/Normal.png");
+		return Res.getNP(Setting.IMAGE_FG + fgname + "/Normal.png");
 	}
 
 }

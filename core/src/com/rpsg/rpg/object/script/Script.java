@@ -449,7 +449,7 @@ public class Script extends Thread {
 	 * @return
 	 */
 	public BaseScriptExecutor showFGLeft(FGType people, FGType look) {
-		return RPG.ctrl.fg.show(this, Setting.IMAGE_FG + people.value() + look.value() + ".png", FG.LEFT);
+		return RPG.ctrl.fg.show(this, Setting.IMAGE_FG + people.value() + "/" + look.value() + ".png", FG.LEFT);
 	}
 
 	/**
@@ -461,8 +461,8 @@ public class Script extends Thread {
 	 * 			FGType} 立绘的类型
 	 * @return
 	 */
-	public BaseScriptExecutor showFGRight(String people, String look) {
-		return RPG.ctrl.fg.show(this, Setting.IMAGE_FG + people + look + ".png", FG.RIGHT);
+	public BaseScriptExecutor showFGRight(FGType people, FGType look) {
+		return RPG.ctrl.fg.show(this, Setting.IMAGE_FG + people.value() + "/" + look.value() + ".png", FG.RIGHT);
 	}
 
 	/**

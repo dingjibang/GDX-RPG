@@ -16,6 +16,7 @@ public enum FGType {
 	傲娇("Tsundere"),
 	
 	爱丽丝("alice/"),
+	魔理沙("marisa/"),
 	有栖("arisu/");
 	
 	private String value;

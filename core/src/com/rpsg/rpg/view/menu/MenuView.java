@@ -35,6 +35,7 @@ import com.rpsg.rpg.system.controller.MenuController;
 import com.rpsg.rpg.system.controller.MenuController.Menu;
 import com.rpsg.rpg.system.ui.MenuCheckBox;
 import com.rpsg.rpg.system.ui.IMenuView;
+import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.Label;
 import com.rpsg.rpg.system.ui.MenuHeroBox;
@@ -163,8 +164,9 @@ public class MenuView extends StackView{
 					((MenuHeroBox) self.getItem()).setSelect(true);
 					$.add(fgGroup).children().removeAll();
 					Hero hero=((MenuHeroBox) self.getItem()).hero;
-					$.add(hero.defaultFG()).appendTo(fgGroup).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(1200, 0).setColor(0,0,0,0).addAction(Actions.parallel(Actions.color(new Color(0,0,0,0.3f),1f),Actions.moveTo(1030, 0,0.75f,Interpolation.pow2Out)));
-					$.add(hero.defaultFG()).appendTo(fgGroup).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(1200, 0).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(1000, 0,0.7f,Interpolation.pow2Out)));
+					Image dfg = hero.defaultFG();
+					$.add(hero.defaultFG()).appendTo(fgGroup).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(1200, 0).setColor(0,0,0,0).addAction(Actions.parallel(Actions.color(new Color(0,0,0,0.3f),1f),Actions.moveTo(GameUtil.stage_width - 120 + (dfg.getWidth() / 10), 0,0.75f,Interpolation.pow2Out)));
+					$.add(hero.defaultFG()).appendTo(fgGroup).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(1200, 0).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(GameUtil.stage_width - 150 + (dfg.getWidth() / 10), 0,0.7f,Interpolation.pow2Out)));
 					if(hero.target.getProp("dead") == (Target.TRUE)) $.add(Res.get(Setting.IMAGE_MENU_GLOBAL+"dead.png")).appendTo(fgGroup).setOrigin(Align.bottomLeft).setPosition(1200, 5).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.5f),Actions.moveTo(650, 50,0.7f,Interpolation.pow2Out)));
 					if(!status) $.add(Res.get(Setting.IMAGE_FG+hero.fgname+"/card.png")).appendTo(fgGroup).setOrigin(Align.bottomLeft).setPosition(1200, 80).setColor(1,1,1,0).addAction(Actions.parallel(Actions.fadeIn(0.6f),Actions.moveTo(520, 80,0.6f,Interpolation.pow2Out))).setUserObject("card");
 					
