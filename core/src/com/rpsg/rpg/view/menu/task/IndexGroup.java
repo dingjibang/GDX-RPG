@@ -11,7 +11,6 @@ import com.rpsg.rpg.object.base.Index;
 import com.rpsg.rpg.object.base.Index.IndexType;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.UI;
-import com.rpsg.rpg.utils.game.Number;
 
 public class IndexGroup extends Group{
 	
@@ -39,24 +38,25 @@ public class IndexGroup extends Group{
 	}
 	
 	private void generate(){
+		System.out.println(start + "," + current);
 		group.clear();
 		
 		List<Index> list = RPG.ctrl.index.get(type);
 		
 		list = $.multi(list, 50);//TODO DEBUG
 		
-		this.max = MathUtils.ceil((float)list.size() / 10f);
+		this.max = MathUtils.ceil((float)list.size() / 10f) + 1;
 		
 		//generate page widget
 		Table pages = new Table().right();
 		
-		$.add(pages).cell(UI.textButton("<", 17)).click(this::prev);
+		$.add(pages).cell(UI.textButton("<<", 17)).click(() -> to(current - 5));
 		
-		for(Number<Integer> i = Number.of(start); i.get() <= (i.get() + 5 > max ? max : i.fin() + 4); i.set(n -> n + 1)){
-			$.add(pages).cell(UI.textButton(i.toString(), 17)).getActor(button -> button.onClick(() -> to(button.text())).setChecked(current == i.get()));
+		for(int i = start; i < start + 5; i++){
+			$.add(pages).cell(UI.textButton(i + "", 17)).getActor(button -> button.onClick(() -> to(button.text()))).getActor().setChecked(current == i);
 		}
 		
-		$.add(pages).cell(UI.textButton(">", 17)).click(this::next);
+		$.add(pages).cell(UI.textButton(">>", 17)).click(() -> to(current + 5));
 		
 		
 		$.add(pages).eachCells(c -> c.size(50, 41).padLeft(15)).setPosition(591, 35).setWidth(400).debug();
@@ -67,21 +67,35 @@ public class IndexGroup extends Group{
 	
 	//page prev 
 	private void prev(){
+		current--;
+		calcPage();
 		generate();
 	}
 	
 	//page next
 	private void next(){
-		if(start + 3 < max)
-			start++;
-		current++;
-		
-		
+		if(current < max)
+			current++;
+		calcPage();
 		generate();
 	}
 	
+	private void calcPage(){
+		current = current <= 1 ? 1 : current;
+		start = current - 2;
+		start = start <= 1 ? 1 : start;
+		
+		if(current + 2 >= max)
+			start = current - (4 - (max - current));
+		start = start <= 1 ? 1 : start;
+	}
+	
 	private void to(String _page){
-		int cpy = current, page = Integer.valueOf(_page);
+		to(Integer.valueOf(_page));
+	}
+	
+	private void to(int page){
+		int cpy = current;
 		for(int i = cpy; i != page; i = (page > cpy) ? i + 1 : i - 1){
 			if(page > cpy) 
 				next();
