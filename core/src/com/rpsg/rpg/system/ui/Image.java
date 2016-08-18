@@ -307,6 +307,11 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		setVisible(false);
 		return this;
 	}
+
+	public Image show() {
+		setVisible(true);
+		return this;
+	}
 	
 	
 	

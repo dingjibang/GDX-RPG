@@ -3,6 +3,6 @@
 	jname:"Yuki Arisu",
 	description:"已经不存在了的主角=-=",
 	type:"actor",
-	index:1,
+	index:0,
 	path:"arisu",
 }

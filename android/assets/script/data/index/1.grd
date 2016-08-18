@@ -3,6 +3,6 @@
 	jname:"doge",
 	description:"汪星人的复仇！",
 	type:"enemy",
-	index:1,
+	index:0,
 	path:"1",
 }

@@ -137,6 +137,11 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label {
 		return this;
 	}
 	
+	public Label disableTouch(){
+		super.setTouchable(null);
+		return this;
+	}
+	
 	public Label align(int align){
 		setAlignment(align);
 		return this;

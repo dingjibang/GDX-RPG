@@ -53,6 +53,10 @@ public class IndexController {
 		return get(type).subList(start, length);
 	}
 	
+	public Index get(IndexType type,int index){
+		return $.getIf(get(type), idx -> idx.index == index);
+	}
+	
 	public int count(IndexType type){
 		return get(type).size();
 	}

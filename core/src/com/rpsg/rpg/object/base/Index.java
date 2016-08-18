@@ -1,7 +1,6 @@
 package com.rpsg.rpg.object.base;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
@@ -13,9 +12,6 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.ItemController;
 import com.rpsg.rpg.system.ui.Image;
-
-import java8.util.stream.Collectors;
-import java8.util.stream.RefStreams;
 
 /** 图鉴模型 */
 public class Index implements Serializable{
@@ -49,7 +45,7 @@ public class Index implements Serializable{
 		index.description = value.has("description") ? value.getString("description") : "";
 		
 		if(index.type == IndexType.actor)
-			index.fgList = new ArrayList<>();
+			index.fgList = $.list("Normal").get();
 		
 		return index;
 	}
@@ -58,7 +54,11 @@ public class Index implements Serializable{
 		if(type == IndexType.enemy)
 			return $.list(Res.get(Setting.IMAGE_ENEMY + path)).get();
 		
-		return RefStreams.of(fgList).map(str -> path + "/" + str + ".png").map(Res::get).collect(Collectors.toList());
+		return $.map($.map(fgList, str -> Setting.IMAGE_FG + path + "/" + str + ".png"), Res::get);
+	}
+	
+	public Image image(){
+		return type == IndexType.enemy ? Res.getNP(Setting.IMAGE_ENEMY + path + ".png") : Res.getNP(Setting.IMAGE_FG + path + "/" + "index.png"); 
 	}
 	
 	public void addFG(String fgType){
