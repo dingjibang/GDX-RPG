@@ -101,12 +101,12 @@ public class TaskController {
 	
 	/** 查询是否正在进行任务*/
 	public boolean has(int id){
-		return currentTask.size() != 0 && $.test(currentTask, t-> t.id == id);
+		return currentTask.size() != 0 && $.anyMatch(currentTask, t-> t.id == id);
 	}
 	
 	/** 查询是否做过某个任务(不是成就)*/
 	public boolean hasDone(int id){
-		return $.test(taskHistory, t-> t.task.id == id && t.task.getClass().equals(Task.class));
+		return $.allMatch(taskHistory, t-> t.task.id == id && t.task.getClass().equals(Task.class));
 	}
 	
 	

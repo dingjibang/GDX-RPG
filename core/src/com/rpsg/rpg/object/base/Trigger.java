@@ -46,7 +46,7 @@ public class Trigger implements Serializable{
 	}
 
 	public boolean test() {
-		return forceStop || ($.test(item, TriggerItem::hasItem) && TriggerContext.test(script));
+		return forceStop || ($.allMatch(item, TriggerItem::hasItem) && TriggerContext.test(script));
 	}
 	
 	public void forceStop(){

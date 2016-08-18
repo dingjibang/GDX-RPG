@@ -151,11 +151,18 @@ public class $ {
 		return null;
 	}
 	
-	public static <T> boolean test(Iterable<T> list,CustomCallback<T,Boolean> test){
+	public static <T> boolean allMatch(Iterable<T> list,CustomCallback<T,Boolean> test){
 		for(T t: list)
 			if(!test.run(t)) return false;
 		return true;
 	}
+	
+	public static <T> boolean anyMatch(Iterable<T> list,CustomCallback<T,Boolean> test){
+		for(T t: list)
+			if(test.run(t)) return true;
+		return false;
+	}
+
 
 	public static boolean has(List<?> list, Class<?> obj) {
 		for(Object o : list)
