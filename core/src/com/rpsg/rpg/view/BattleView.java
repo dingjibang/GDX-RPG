@@ -55,7 +55,7 @@ public class BattleView extends DefaultIView{
 	public EnemyGroup enemyGroup;
 	public Status status;
 	Animations animations = new Animations(this);
-	Timer timer;
+	public Timer timer;
 	Progress p;
 	boolean createBattlStopView = false;
 	
@@ -157,7 +157,7 @@ public class BattleView extends DefaultIView{
 			}));
 			
 			menu.add(new TextButton("防御",BattleRes.textButtonStyle).onClick(()->{
-				define(hero,stopCallback);
+				defense(hero,stopCallback);
 			}));
 			
 			menu.add(new TextButton("符卡",BattleRes.textButtonStyle).onClick(()->{
@@ -172,6 +172,7 @@ public class BattleView extends DefaultIView{
 				escape(hero,flag -> { 
 					stopCallback.run();
 					if(flag) RPG.ctrl.battle.stop();
+					else timer.addDelay(hero, 10);
 				});
 			}));
 			
@@ -190,12 +191,18 @@ public class BattleView extends DefaultIView{
 		TimeUtil.add(()->callback.run(flag),1000);
 	}
 	
-	private void define(Hero hero,Runnable callback){
-		useSpellcard(Spellcard.defense(),hero,null,callback);
+	private void defense(Hero hero,Runnable callback){
+		useSpellcard(Spellcard.defense(),hero,null,()->{
+			timer.addDelay(hero, hero.target.getProp("defenseDelay"));
+			callback.run();
+		});
 	}
 	
 	private void attack(Hero hero,Runnable callback){
-		enemyGroup.select(target -> useSpellcard(Spellcard.attack(),hero,target,callback),ItemDeadable.no);
+		enemyGroup.select(target -> useSpellcard(Spellcard.attack(),hero,target,()->{
+			timer.addDelay(hero, hero.target.getProp("attackDelay"));
+			callback.run();
+		}),ItemDeadable.no);
 	}
 
 	private void spellcard(Hero hero, Runnable stopCallback) {
@@ -239,11 +246,11 @@ public class BattleView extends DefaultIView{
 		return heroGroup; 
 	}
 	
-	private void useSpellcard(Spellcard sc,Object hero,Object target,Runnable callback){
-		use(null,sc,hero,target,callback);
+	private void useSpellcard(Spellcard sc,Object hero,Object target,Runnable onUsed){
+		use(null,sc,hero,target,onUsed);
 	}
 	
-	private void use(String _txt,Spellcard sc,Object _hero,Object target,Runnable callback){
+	private void use(String _txt,Spellcard sc,Object _hero,Object target,Runnable  onUsed){
 		String text = _txt;
 		String tname = Target.name(target);
 		String hname = Target.name(_hero);
@@ -256,8 +263,8 @@ public class BattleView extends DefaultIView{
 				text = hname + " 对 " + tname + " 使用符卡『 " + sc.name + "』"; 
 			
 		status.add(text);
-		Result result = sc.use(Item.Context.battle(_hero, target,RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
-		animations.play(result,callback);
+		Result result = sc.use(Item.Context.battle(_hero, target, RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
+		animations.play(result, onUsed);
 	}
 	
 	@Override

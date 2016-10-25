@@ -36,6 +36,8 @@ public class Item extends BaseItem{
 	/**道具使用动画**/
 	public int animation = 0;
 	
+	public int delay = 0;
+	
 	/**
 	 * 道具指向
 	 * @author dingjibang
@@ -184,6 +186,10 @@ public class Item extends BaseItem{
 				if(self != null)
 					self.refresh();
 				t.refresh();
+				
+				//更新延迟值
+				if(RPG.ctrl.battle.isBattle())
+					GameViews.gameview.battleView.timer.addDelay(t.getTime(), delay);
 			}
 		};
 

@@ -56,14 +56,21 @@ public class Timer extends Group {
 			isStop = true;
 			return;
 		}
-		
+	
 		for(TimerClass obj : list){
-			if(!obj.globalPause && !obj.pause && !obj.remove && (obj.current += obj.speed) > total){
+			//DEBUG
+			obj.label.setText(obj.originName + obj.uiSpeed);
+			//END DEBUG
+			
+			if(!obj.globalPause && !obj.pause && !obj.remove && (obj.current += obj.uiSpeed) > total){
 				//callback and reset
 				callback.run(obj.object);
-				obj.current = -MathUtils.random(500,1000);
+				obj.current = -1000;
+				obj.delay = 0;
 			}
 		}
+		
+		avg();
 		
 		super.act(delta);
 	}
@@ -94,21 +101,30 @@ public class Timer extends Group {
 		$.getIf(list, obj -> obj.object == object, obj -> obj.pause = flag);
 	}
 	
+	public void addDelay(Time object, int value){
+		$.getIf(list, obj -> obj.object == object, obj -> obj.delay += value);
+	}
+	
 	private void avg(){
 		if(list.isEmpty()) return;
 		Collections.sort(list);
 		TimerClass max = list.get(0);
-		float scale = (float)max.speed / 70f;
-		$.each(list, obj -> obj.speed /= scale);
+		float scale = (float)(max.speed + max.delay) / 70f;
+		$.each(list, obj -> {
+			obj.uiSpeed = obj.speed + obj.delay;
+			obj.uiSpeed /= scale;
+		});
 	}
 	
 	public class TimerClass extends Image implements Comparable<TimerClass> {
 		public Time object;
-		public int speed;
+		public int speed, uiSpeed;
 		public int current = 0;
 		public boolean pause = false,globalPause = false;
 		private Label label;
 		public boolean remove = false;
+		public String originName;
+		public int delay = 0;
 		
 		public TimerClass(String name,Time object, int speed, Color color) {
 			this.object = object;
@@ -118,6 +134,7 @@ public class Timer extends Group {
 			setColor(color);
 			this.current = MathUtils.random(0,total/2);
 			label = Res.get(name, 20);
+			originName = name;
 			label.size(48,28).align(Align.center);
 		}
 

@@ -30,6 +30,7 @@ public class Spellcard extends BaseItem {
 	public int success;
 	public int animation;
 	public String description2;
+	public int delay = 0;
 	
 	private static int attackId = 9,defenseId = 10;//XXX 写死的QAQ
 	
@@ -165,6 +166,10 @@ public class Spellcard extends BaseItem {
 				//更新死亡状态
 				if(self != null) self.refresh();
 				t.refresh();
+				
+				//更新延迟值
+				if(RPG.ctrl.battle.isBattle())
+					GameViews.gameview.battleView.timer.addDelay(t.getTime(), delay);
 			}
 
 		};

@@ -16,7 +16,6 @@ public class Effect implements Serializable{
 	public boolean wait = false;
 	private int turn = 0;
 	
-	public String use = "";
 	
 	public static class EffectBuff implements Serializable{
 		private static final long serialVersionUID = 1L;
@@ -47,7 +46,6 @@ public class Effect implements Serializable{
 		Effect e = new Effect();
 		if(json.has("prop"))
 			e.prop = ItemController.getPropObject(json.get("prop"));
-		e.use = json.has("use")?json.getString("use"):"";
 		e.wait = json.has("wait")?json.getBoolean("wait"):false;
 		e.turn = json.has("turn")?json.getInt("turn"):0;
 		

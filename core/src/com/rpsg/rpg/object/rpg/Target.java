@@ -204,6 +204,10 @@ public class Target implements Serializable{
 	public boolean isDead(){
 		return getProp("dead")==TRUE;
 	}
+	
+	public Time getTime(){
+		return parentEnemy == null ? parentHero : parentEnemy;
+	}
 
 
 	public int getProp(String key) {
