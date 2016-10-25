@@ -33,7 +33,7 @@ public class Resistance implements Serializable{
 		reflect,	//反射
 		absorb;		//吸收
 		
-		public static int invoke(ResistanceType type,int val){
+		public static int invoke(ResistanceType type, int val){
 			switch (type){
 				case weak: return (int)((float)val * 1.3f);
 				case normal: return val;

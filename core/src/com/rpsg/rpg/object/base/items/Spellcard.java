@@ -148,11 +148,12 @@ public class Spellcard extends BaseItem {
 					
 					if(!used) used(ctx);
 					
-					if(RPG.ctrl.battle.isBattle())
+					if(RPG.ctrl.battle.isBattle()){
 						if(prop.formulaType == FormulaType.negative)
 							GameViews.gameview.battleView.status.append("...造成了 " + Math.abs(damage) + " 点伤害");
 						else
 							GameViews.gameview.battleView.status.append("...回复了" + damage + " 点" + BaseContext.getPropName(key));
+					}
 				}else{
 					if(RPG.ctrl.battle.isBattle())
 					GameViews.gameview.battleView.status.append("...但是没有命中");
