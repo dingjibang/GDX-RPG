@@ -13,8 +13,6 @@ import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
-import com.rpsg.rpg.object.base.Resistance;
-import com.rpsg.rpg.object.base.Resistance.ResistanceType;
 import com.rpsg.rpg.object.base.items.EnemyContext;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
@@ -84,7 +82,7 @@ public class Enemy implements Time {
 		return list;
 	}
 
-	public static Enemy getEnemy(int id,JsonValue value) {
+	public static Enemy getEnemy(int id, JsonValue value) {
 		Enemy enemy = new Enemy();
 		enemy.name = value.getString("name");
 		enemy.target.getProp().putAll(ItemController.getIntProp(value.get("prop")));;
@@ -92,10 +90,10 @@ public class Enemy implements Time {
 		enemy.id = id;
 		enemy.imgPath = Setting.IMAGE_ENEMY + id + ".png";
 		enemy.exp = value.has("exp") ? value.getInt("exp") : 0;
-		Map<String,Resistance> rmap = new HashMap<>();
+		Map<String, Float> rmap = new HashMap<>();
 		
 		if(value.has("resistance")) for(JsonValue r : value.get("resistance"))
-			rmap.put(r.name(), new Resistance(ResistanceType.valueOf(r.asString()), 0));
+			rmap.put(r.name(), r.asFloat());
 		
 		enemy.target.resistance.putAll(rmap);
 		
@@ -283,14 +281,7 @@ public class Enemy implements Time {
 				Prop prop = action.act.effect.prop.get(key);
 				if(prop.type == null || prop.type.length() == 0)
 					continue;
-				switch(t.resistance.get(prop.type).type){
-				case normal : break;
-				case weak : t.rank *= 1.5f;
-				case tolerance : t.rank *= .8f;
-				case invalid : t.rank *= .3f;
-				case reflect : t.rank *= .95f;
-				case absorb : t.rank *= .4f;
-				}
+				t.rank *= t.resistance.get(prop.type);
 			}
 			
 			//可以秒杀对方进行加分

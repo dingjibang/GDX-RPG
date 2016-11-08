@@ -6,7 +6,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
-import com.rpsg.rpg.object.base.Resistance.ResistanceType;
 import com.rpsg.rpg.object.base.items.Effect.EffectBuff;
 import com.rpsg.rpg.object.base.items.Effect.EffectBuffType;
 import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
@@ -126,17 +125,8 @@ public class Spellcard extends BaseItem {
 					//计算伤害浮动
 					damage = prop.rate(damage);
 					
-					String rtype = prop.type;
-					if(rtype != null){
-						ResistanceType trtype = t.resistance.get(rtype).type;
-						if(trtype == ResistanceType.reflect){	//如果抗性为反射，则把伤害给自己
-							self.addProp(key, damage);
-						}
-					}
-					
 					//计算闪避
-					float eva = (rtype != null ? t.resistance.get(key).evasion : 0);
-					float max = (self.getProp("hit") + t.getProp("evasion") + eva);
+					float max = (self.getProp("hit") + t.getProp("evasion"));
 					float rate = (self.getProp("hit") / max) * 100;
 					if(max != 0)
 						miss = MathUtils.random(0,100) > rate;
@@ -176,10 +166,12 @@ public class Spellcard extends BaseItem {
 		return Result.success(this.animation,targetList);
 	}
 	
-	public static int damage(Effect effect,Target self,Target target,String propName){
+	public static int damage(Effect effect, Target self, Target target, String propName) {
 		Prop prop = effect.prop.get(propName); 
 		if(prop == null)
 			return 0;
+		
+		/*** ON DAMAGE START ***/
 		
 		Double doubleVal = SpellcardContext.eval(self, target, prop.formula);
 		
@@ -201,12 +193,9 @@ public class Spellcard extends BaseItem {
 		Integer damage = val;
 		
 		
-		//计算抗性
-		if(rtype != null){
-			ResistanceType trtype = target.resistance.get(rtype).type;
-			int result = ResistanceType.invoke(trtype, damage);
-			damage = result;
-		}
+		//计算抗性所带来的 增/减 伤
+		if(rtype != null)
+			damage = (int) (damage * target.resistance.get(rtype));
 		
 		return -damage > 0 ? 0 : -damage;//如果数值溢出，则返回0
 	}

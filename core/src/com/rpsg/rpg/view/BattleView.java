@@ -98,7 +98,7 @@ public class BattleView extends DefaultIView{
 	//因为停止战斗消息是战斗结束后，持续每帧发送的，为了防止建多个view，所以使用布尔变量进行判断
 	 public void onBattleStop(){
 		 if(createBattlStopView) return;
-		 createBattlStopView = !createBattlStopView;
+		 createBattlStopView = false;
 		 RPG.popup.add(BattleStopView.class,$.omap("view", this).add("callback", (Runnable)RPG.ctrl.battle::stop));
 	 }
 	

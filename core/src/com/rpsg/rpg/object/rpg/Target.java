@@ -10,8 +10,6 @@ import java.util.Set;
 
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.rpsg.gdxQuery.$;
-import com.rpsg.rpg.object.base.Resistance;
-import com.rpsg.rpg.object.base.Resistance.ResistanceType;
 import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.base.items.BaseItem.Context;
 import com.rpsg.rpg.object.base.items.Buff;
@@ -162,18 +160,22 @@ public class Target implements Serializable{
 	};
 	
 	/**抗性*/
-	public LinkedHashMap<String, Resistance> resistance = new LinkedHashMap<String, Resistance>();
-
-	{
-		resistance.put("sun", new Resistance(ResistanceType.normal,0));
-		resistance.put("moon", new Resistance(ResistanceType.normal,0));
-		resistance.put("star", new Resistance(ResistanceType.normal,0));
-		resistance.put("metal", new Resistance(ResistanceType.normal,0));
-		resistance.put("water", new Resistance(ResistanceType.normal,0));
-		resistance.put("earth", new Resistance(ResistanceType.normal,0));
-		resistance.put("fire", new Resistance(ResistanceType.normal,0));
-		resistance.put("wood", new Resistance(ResistanceType.normal,0));
-		resistance.put("physical", new Resistance(ResistanceType.normal,0));
+	public LinkedHashMap<String, Float> resistance = new LinkedHashMap<String, Float>();
+	{	
+		//日
+		resistance.put("sun", 1f);
+		//月
+		resistance.put("moon", 1f);
+		//金
+		resistance.put("metal", 1f);
+		//水
+		resistance.put("water", 1f);
+		//土
+		resistance.put("earth", 1f);
+		//火
+		resistance.put("fire", 1f);
+		//木
+		resistance.put("wood", 1f);
 	}
 	
 	public static List<Target> parse(List<?> list){

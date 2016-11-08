@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
-import com.rpsg.rpg.object.base.Resistance.ResistanceType;
 import com.rpsg.rpg.object.base.items.Effect.EffectBuff;
 import com.rpsg.rpg.object.base.items.Effect.EffectBuffType;
 import com.rpsg.rpg.object.base.items.Prop.FormulaType;
@@ -150,17 +149,6 @@ public class Item extends BaseItem{
 				
 				int damage = Spellcard.damage(effect, self, t, key);
 				boolean miss = false;
-				
-				if(prop.formulaType == FormulaType.negative){
-					String rtype = prop.type;
-					if(rtype != null){
-						ResistanceType trtype = t.resistance.get(rtype).type;
-						if(trtype == ResistanceType.reflect){	//如果抗性为反射，则把伤害给自己
-							self.addProp(key, damage);
-						}
-					}
-				}
-				
 				
 				if(!miss){
 					if(!used) used(ctx);
