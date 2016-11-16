@@ -89,10 +89,7 @@ public class SystemView extends IMenuView{
 			table.add(Res.get(Setting.IMAGE_MENU_SYSTEM+"login_tip.png")).padTop(40).row();
 			
 			table.add(new TextButton("登录", tstyle).onClick(()->{
-				RPG.popup.add(LoginView.class,new HashMap<Object, Object>(){private static final long serialVersionUID = 1L;{
-					put("title","登录");
-					put("width",100);
-				}});
+				RPG.popup.add(LoginView.class, $.omap("title", "登录").add("width",100));
 			})).height(60).padTop(30).align(Align.left).padLeft(25);
 			
 			table.layout();
