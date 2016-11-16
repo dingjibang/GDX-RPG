@@ -7,13 +7,15 @@ import com.badlogic.gdx.utils.JsonValue;
 
 public class Prop implements Serializable {
 	
-	public static enum FormulaType{positive,negative}
+	public static enum FormulaType{positive, negative}
+	public static enum Style{physic, magic}
 	
 	private static final long serialVersionUID = 1L;
 
 	public String type;
 	public String formula;
 	public String floatRate;
+	public Style style;
 	public FormulaType formulaType = FormulaType.positive;
 	
 
@@ -44,6 +46,7 @@ public class Prop implements Serializable {
 		prop.type = propValue.has("type") ? propValue.getString("type") : null;
 		prop.floatRate = propValue.has("floatRate") ? propValue.getString("floatRate") : "0";
 		prop.formulaType = propValue.has("formulaType") ? FormulaType.valueOf(propValue.getString("formulaType")) : FormulaType.positive;
+		prop.style = propValue.has("style") ? Style.valueOf(propValue.getString("style")) : Style.physic;
 		return prop;
 	}
 }

@@ -20,6 +20,7 @@ public class ThreadPool {
 	public volatile List<List<Script>> pool =new LinkedList<List<Script>>();
 	 
 	private List<Script> removeList=new ArrayList<Script>();
+	
 	public synchronized void logic(){
 		removeList.clear();
 		try{
