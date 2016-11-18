@@ -27,8 +27,9 @@ target.setProp("speed",5);
 target.setProp("attack",20);
 target.setProp("defense",2);
 target.setProp("hit",50);
-target.setProp("attackDelay",50);
-target.setProp("denfenseDelay",50);
+target.setProp("attackDelay",10);
+target.setProp("denfenseDelay",10);
+target.setProp("criticalRate",90);
 
 addSpellcard(RPG.ctrl.item.get(5));
 addSpellcard(RPG.ctrl.item.get(5));

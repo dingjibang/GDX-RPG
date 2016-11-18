@@ -1,7 +1,5 @@
 package com.rpsg.rpg.view.menu;
 
-import java.util.HashMap;
-
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -26,12 +24,12 @@ import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.Persistence;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.MenuController;
-import com.rpsg.rpg.system.ui.MenuCheckBox;
 import com.rpsg.rpg.system.ui.FrameLabel;
 import com.rpsg.rpg.system.ui.HoverView;
 import com.rpsg.rpg.system.ui.IMenuView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.Label;
+import com.rpsg.rpg.system.ui.MenuCheckBox;
 import com.rpsg.rpg.system.ui.Slider;
 import com.rpsg.rpg.system.ui.Slider.SliderStyle;
 import com.rpsg.rpg.system.ui.TextButton;

@@ -134,14 +134,20 @@ public class Spellcard extends BaseItem {
 				
 				
 				if(!miss){
+					boolean critical = false;
+					//如果暴击的话
+					if(critical = self != null && MathUtils.randomBoolean(((float)self.getProp("criticalRate")) / 100f))
+						damage = (int)((float)(damage) * ((float)self.getProp("critical")) / 100f);
+					
 					//处理伤害
 					t.addProp(key, damage + "");
 					
 					if(!used) used(ctx);
 					
+					
 					if(RPG.ctrl.battle.isBattle()){
 						if(prop.formulaType == FormulaType.negative)
-							GameViews.gameview.battleView.status.append("...造成了 " + Math.abs(damage) + " 点伤害");
+							GameViews.gameview.battleView.status.append((critical ? "...暴击了！" : "") + "...造成了 " + Math.abs(damage) + " 点伤害");
 						else
 							GameViews.gameview.battleView.status.append("...回复了" + damage + " 点" + BaseContext.getPropName(key));
 					}
@@ -196,6 +202,7 @@ public class Spellcard extends BaseItem {
 		//计算抗性所带来的 增/减 伤
 		if(rtype != null)
 			damage = (int) (damage * target.resistance.get(rtype));
+		
 		
 		return -damage > 0 ? 0 : -damage;//如果数值溢出，则返回0
 	}

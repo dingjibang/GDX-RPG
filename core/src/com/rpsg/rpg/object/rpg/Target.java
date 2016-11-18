@@ -151,7 +151,10 @@ public class Target implements Serializable{
 		prop.put("maxsc", 0);
 		//是否是死亡状态的
 		prop.put("dead", FALSE);
-		
+		//暴击率
+		prop.put("criticalRate", 5);
+		//暴击伤害
+		prop.put("critical", 150);
 		/*战斗中*/
 		//仇恨值
 		prop.put("rank", 0);
