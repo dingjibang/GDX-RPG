@@ -99,7 +99,6 @@ public class Hero extends RPGObject implements Time{
 		this.waitWhenCollide = false;
 		this.drawShadow = true;
 	}
-	
 
 	public String toString() {
 		return name;

@@ -4,7 +4,6 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 import org.mozilla.javascript.Context;
-import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptableObject;
 
 import com.rpsg.rpg.object.rpg.EnemyAction;

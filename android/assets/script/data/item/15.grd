@@ -12,7 +12,7 @@
 	effect:{
 		prop:{
 			hp : {
-				formula:"self.attack - target.magicDefense",
+				formula:"self.magicAttack - target.magicDefense",
 				floatRate:"10%",
 				formulaType:"negative",
 				style:"magic"
