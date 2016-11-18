@@ -21,3 +21,4 @@ target.setProp("level",1);
 target.setProp("speed",4);
 target.setProp("maxexp", 300);
 target.setProp("exp", 3);
+target.setProp("attack",48);

@@ -1,7 +1,7 @@
 package com.rpsg.rpg.object.base.items;
 
 public abstract class BaseContext {
-	public int level,exp,maxexp,hp,maxhp,mp,maxmp,attack,magicAttack,defense,magicDefense,speed,evasion,hit,maxsc,dead;
+	public int level, exp, maxexp, hp, maxhp, mp, maxmp, attack, magicAttack, defense, magicDefense, speed, evasion, hit, maxsc, dead;
 	
 	public static String getPropName(String name){
 		switch(name){

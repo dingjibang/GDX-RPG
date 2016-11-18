@@ -106,10 +106,10 @@ public class Hero extends RPGObject implements Time{
 	}
 	
 	public boolean addSpellcard(Spellcard sc){
-		if(this.sc.size()>=target.getProp("maxsc"))
+		if (this.sc.size() >= target.getProp("maxsc"))
 			return false;
-		for(Spellcard _sc:this.sc)
-			if(_sc.id==sc.id)
+		for (Spellcard _sc : this.sc)
+			if (_sc.id == sc.id)
 				return false;
 		return this.sc.add(sc);
 	}
@@ -176,12 +176,13 @@ public class Hero extends RPGObject implements Time{
 		return name.substring(0, 1);
 	}
 	
-	public Object getThis() {
-		return this;
-	}
-	
 	public Image defaultFG(){
 		return Res.getNP(Setting.IMAGE_FG + fgname + "/Normal.png");
+	}
+
+	@Override
+	public Object getThis() {
+		return this;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 import org.mozilla.javascript.Context;
+import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptableObject;
 
 import com.rpsg.rpg.object.rpg.EnemyAction;
@@ -42,9 +43,22 @@ public class EnemyContext extends BaseContext{
 		return self <= max;
 	}
 	
+	public Target min(String prop){
+		Target target = this.target;
+		for(Target t : friend)
+			if(t.getProp(prop) < target.getProp(prop))
+				target = t;
+		return target;
+	}
+	
+	public Target self(){
+		return this.target;
+	}
+	
 	public static Boolean eval(Target self,Target target,List<Target> friend,List<Target> enemies,EnemyAction action){
 		try {
 			Context ctx = Context.enter();
+			ctx.getWrapFactory().setJavaPrimitiveWrap(false);
 			if(!GameUtil.isDesktop)
 				ctx.setOptimizationLevel(-1);
 			
@@ -53,11 +67,19 @@ public class EnemyContext extends BaseContext{
 			scope.put("self", scope, build(self,friend));
 			scope.put("target", scope, build(target,enemies));
 			scope.put("turn", scope, self.getTurn());
-			Object obj = ctx.evaluateString(scope, action.formula, null, 1, null);
+			
+			if(action.target != null && action.target.length() != 0)
+				action.calcedTarget = (Target) Context.jsToJava(ctx.evaluateString(scope, action.target, null, 1, null), Target.class);
+
+			Boolean result = null;
+			if(action.formula != null && action.formula.length() != 0)
+				result = (Boolean) ctx.evaluateString(scope, action.formula, null, 1, null);
+			else
+				result = true;
 			
 			Context.exit();
 			
-			return (Boolean)obj;
+			return result;
 		} catch (Exception e) {
 			Logger.error("无法执行脚本", e);
 			e.printStackTrace();

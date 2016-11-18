@@ -19,20 +19,13 @@
 		{
 			turn:1,
 			probability:100,
-			act:9
+			act:10
 		},{
 			turn:1,
 			probability:80,
-			act:9,
-			prop:[
-				{
-					type:"max",
-					forward:"friend",
-					prop:{
-						hp:">50"
-					}	
-				}
-			]
+			formula:"self.hp < 50",
+			act:5,
+			target:"self.self()"
 		}
 	],
 	exp:50,

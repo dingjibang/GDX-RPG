@@ -39,6 +39,7 @@ public class Target implements Serializable{
 	private ArrayList<Buff> buffList = new ArrayList<>();
 	private ArrayList<CallbackBuff> callbackBuffList = new ArrayList<>();
 	
+	public Spellcard attack = Spellcard.attack();
 	
 	public Target lastAttackTarget = null;
 	

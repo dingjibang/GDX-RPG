@@ -20,7 +20,7 @@ target.setProp("mp", 100);
 target.setProp("maxmp", 100);
 target.setProp("level",1);
 target.setProp("speed",4);
-target.setProp("attack",18);
+target.setProp("attack",48);
 target.setProp("magicAttack",9);
 target.setProp("defense",5);
 target.setProp("hit",45);

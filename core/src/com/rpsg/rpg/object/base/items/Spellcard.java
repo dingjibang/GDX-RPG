@@ -31,14 +31,10 @@ public class Spellcard extends BaseItem {
 	public String description2;
 	public int delay = 0;
 	
-	private static int attackId = 9,defenseId = 10;//XXX 写死的QAQ
-	
-	public static Class<Spellcard> getClassEx(){
-		return Spellcard.class;
-	}
+	private static int attackId = 9,defenseId = 10, magicAttackId = 15;//XXX 写死的QAQ
 	
 	public static boolean isAttack(Spellcard sc){
-		return sc.id == attackId;
+		return sc.id == attackId || sc.id == magicAttackId;
 	}
 	
 	public static boolean isDefense(Spellcard sc){
@@ -47,6 +43,10 @@ public class Spellcard extends BaseItem {
 	
 	public static Spellcard attack(){
 		return (Spellcard) RPG.ctrl.item.get(attackId);
+	}
+	
+	public static Spellcard magicAttack(){
+		return (Spellcard) RPG.ctrl.item.get(magicAttackId);
 	}
 	
 	public static Spellcard defense(){
@@ -122,8 +122,6 @@ public class Spellcard extends BaseItem {
 				boolean miss = false;
 				
 				if(prop.formulaType == FormulaType.negative){
-					//计算伤害浮动
-					damage = prop.rate(damage);
 					
 					//计算闪避
 					float max = (self.getProp("hit") + t.getProp("evasion"));
@@ -203,7 +201,16 @@ public class Spellcard extends BaseItem {
 		if(rtype != null)
 			damage = (int) (damage * target.resistance.get(rtype));
 		
+		//计算百分比的伤害浮动
+		damage = prop.rate(damage);
 		
+		//计算等级带来的伤害浮动
+		if(self != null){
+			int levelFloat = (int)((float)self.getProp("level") * 1.5f);
+			damage += MathUtils.random(-levelFloat, +levelFloat);
+		}
+		
+					
 		return -damage > 0 ? 0 : -damage;//如果数值溢出，则返回0
 	}
 	

@@ -11,7 +11,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
-import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.EnemyContext;
 import com.rpsg.rpg.object.base.items.Item;
@@ -20,7 +19,6 @@ import com.rpsg.rpg.object.base.items.Item.ItemRange;
 import com.rpsg.rpg.object.base.items.Prop;
 import com.rpsg.rpg.object.base.items.Result;
 import com.rpsg.rpg.object.base.items.Spellcard;
-import com.rpsg.rpg.object.rpg.EnemyAction.RemoveType;
 import com.rpsg.rpg.system.controller.ItemController;
 import com.rpsg.rpg.view.GameViews;
 
@@ -99,12 +97,8 @@ public class Enemy implements Time {
 		
 		List<EnemyAction> actions = new ArrayList<>();
 		
-		for(JsonValue actionValue : value.get("action")){
-			EnemyAction action = new EnemyAction();
-			action.propbabitly = actionValue.getInt("probability");
-			action.act = RPG.ctrl.item.get(actionValue.getInt("act"), Spellcard.class);
-			action.remove = actionValue.has("remove") ? RemoveType.valueOf(actionValue.getString("remove")) : RemoveType.no;
-		}
+		for(JsonValue actionValue : value.get("action"))
+			actions.add(EnemyAction.fromJSON(actionValue));
 		
 		enemy.actions = actions;
 		
@@ -172,7 +166,8 @@ public class Enemy implements Time {
 		//遍历动作
 		List<EnemyAction> evalActionList = new ArrayList<>();
 		
-		for(EnemyAction action : actions){
+		for(EnemyAction _action : actions){
+			EnemyAction action = _action.cpy();
 			//根据符卡使用朝向，得到判定目标
 			List<Target> targetList = new ArrayList<>();
 			if(action.act.forward == ItemForward.friend) targetList = friend;
@@ -215,11 +210,15 @@ public class Enemy implements Time {
 		
 		//如果指向队友
 		if(evalAction.act.forward == ItemForward.friend){
-			rankFriend(evalAction,friend);
+			rankFriend(evalAction, friend);
 			Target target = getTarget(friend);
+			
+			if(evalAction.calcedTarget != null)
+				target = evalAction.calcedTarget;
+			
 			return evalAction.act.use(battleContext.target(target));
 		}else{//如果指向敌人
-			rankEnemy(evalAction,enemies);
+			rankEnemy(evalAction, enemies);
 			Target target = getTarget(enemies);
 			GameViews.gameview.battleView.status.add("攻击了" + target.parentHero.name);
 			return evalAction.act.use(battleContext.target(target));
@@ -238,6 +237,8 @@ public class Enemy implements Time {
 			t.rank += avgHP - t.getProp("hp");
 			t.rank *= t.isDying() ? 1.3f : 0;
 		}
+		
+		Collections.sort(friend, (t1,t2) -> t2.rank - t1.rank);
 		
 		return sum * 5;
 	}

@@ -199,7 +199,7 @@ public class BattleView extends DefaultIView{
 	}
 	
 	private void attack(Hero hero,Runnable callback){
-		enemyGroup.select(target -> useSpellcard(Spellcard.attack(),hero,target,()->{
+		enemyGroup.select(target -> useSpellcard(hero.target.attack, hero, target, () -> {
 			timer.addDelay(hero, hero.target.getProp("attackDelay"));
 			callback.run();
 		}),ItemDeadable.no);
