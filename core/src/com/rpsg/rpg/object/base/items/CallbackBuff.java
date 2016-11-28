@@ -3,6 +3,7 @@ package com.rpsg.rpg.object.base.items;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.Callback;
 import com.rpsg.rpg.object.rpg.Target;
 import com.rpsg.rpg.system.ui.Image;
@@ -15,7 +16,7 @@ public class CallbackBuff extends Buff{
 	BaseItem item;
 	boolean wait;
 	
-	public CallbackBuff(Target target,BaseItem itemOrSpellcard,Callback<Result> callback,boolean wait) {
+	public CallbackBuff(Target target, BaseItem itemOrSpellcard, Callback<Result> callback, boolean wait) {
 		this.item = itemOrSpellcard;
 		this.callback = callback;
 		this.wait = wait;
@@ -58,8 +59,6 @@ public class CallbackBuff extends Buff{
 	}
 	
 	public static boolean hasLockedBuff(Target target){
-		for(CallbackBuff buff : target.getCallbackBuffList())
-			if(buff.wait) return true;
-		return false;
+		return $.anyMatch(target.getCallbackBuffList(), CallbackBuff::isWait);
 	}
 }

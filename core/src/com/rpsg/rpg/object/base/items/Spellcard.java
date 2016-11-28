@@ -124,10 +124,12 @@ public class Spellcard extends BaseItem {
 				if(prop.formulaType == FormulaType.negative){
 					
 					//计算闪避
-					float max = (self.getProp("hit") + t.getProp("evasion"));
-					float rate = (self.getProp("hit") / max) * 100;
-					if(max != 0)
-						miss = MathUtils.random(0,100) > rate;
+					
+					//敌方"实际回避"
+					float evasion = t.getProp("evasion") / (t.getProp("evasion") * 10 + 1);
+					//命中
+					float rate = (self.getProp("hit") - evasion) * self.getProp("hit");
+					miss = MathUtils.random(0, 100) > rate;
 				}
 				
 				
