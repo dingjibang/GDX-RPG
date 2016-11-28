@@ -128,8 +128,8 @@ public class Spellcard extends BaseItem {
 					//敌方"实际回避"
 					float evasion = t.getProp("evasion") / (t.getProp("evasion") * 10 + 1);
 					//命中
-					float rate = (self.getProp("hit") - evasion) * self.getProp("hit");
-					miss = MathUtils.random(0, 100) > rate;
+					float rate = (self.getProp("hit") - evasion) / self.getProp("hit");
+					miss = Math.random() > rate;
 				}
 				
 				
