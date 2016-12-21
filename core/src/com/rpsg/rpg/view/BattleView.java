@@ -187,7 +187,7 @@ public class BattleView extends DefaultIView{
 	public void escape(Hero hero,CustomRunnable<Boolean> callback){
 		double random = Math.random();
 		boolean flag = random > .5;
-		status.add(hero.getName()+" 尝试逃跑").append(".",5).append(".",10).append(".",15).append(flag ? "成功了" : "但是失败了",40);
+		status.add(hero.getName()+" 尝试逃跑").append(".",5).append(".",10).append(".",15).append(flag ? "成功了" : "但是失败了", 40);
 		TimeUtil.add(()->callback.run(flag),1000);
 	}
 	

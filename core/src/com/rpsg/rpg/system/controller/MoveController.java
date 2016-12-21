@@ -5,12 +5,10 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.rpsg.gdxQuery.$;
-import com.rpsg.gdxQuery.RemoveTest;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.io.Input;
@@ -160,11 +158,7 @@ public class MoveController {
 	}
 
 	public static void setCameraPosition(int x, int y) {
-		$.removeIf(offsetActor.getActions(), new RemoveTest<Action>() {
-			public boolean test(Action object) {
-				return object instanceof MoveToAction;
-			}
-		});
+		$.removeIf(offsetActor.getActions(), obj -> obj instanceof MoveToAction);
 		offsetActor.addAction(Actions.moveTo(x, y,0.8f,Interpolation.pow4Out));
 	}
 

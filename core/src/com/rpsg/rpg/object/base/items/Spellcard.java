@@ -13,6 +13,7 @@ import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
 import com.rpsg.rpg.object.base.items.Prop.FormulaType;
+import com.rpsg.rpg.object.base.items.Prop.Style;
 import com.rpsg.rpg.object.rpg.Target;
 import com.rpsg.rpg.view.GameViews;
 
@@ -113,6 +114,7 @@ public class Spellcard extends BaseItem {
 			if(ebuff.type == EffectBuffType.remove)
 				$.each(targetList, t -> t.removeBuff(ebuff.buff.cpy()));
 		}
+		
 		//计算数值变化
 		for(Target t : targetList){
 			for (String key : effect.prop.keySet()) {
@@ -195,8 +197,14 @@ public class Spellcard extends BaseItem {
 		//获取攻击属性，攻击方式，穿防率
 		String rtype = prop.type;
 		
-		//计算纯粹伤害
+		//生成纯粹伤害
 		Integer damage = val;
+		
+		//计算敌人防御后的伤害
+		if(prop.style == Style.physic)
+			damage = damage - target.getProp("defense");
+		if(prop.style == Style.magic)
+			damage = damage - target.getProp("magicDefense");
 		
 		
 		//计算抗性所带来的 增/减 伤
@@ -205,6 +213,7 @@ public class Spellcard extends BaseItem {
 		
 		//计算百分比的伤害浮动
 		damage = prop.rate(damage);
+		
 		
 		//计算等级带来的伤害浮动
 		if(self != null){
