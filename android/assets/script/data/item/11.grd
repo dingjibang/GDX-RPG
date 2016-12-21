@@ -10,7 +10,7 @@
 	packable:false,
 	animation:2,
 	effect:{
-		turn:2,
+		turn:1,
 		wait:false,
 		prop:{
 			hp : {

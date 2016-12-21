@@ -4,8 +4,7 @@ import java.util.List;
 
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
-import com.rpsg.rpg.object.base.items.Effect.EffectBuff;
-import com.rpsg.rpg.object.base.items.Effect.EffectBuffType;
+import com.rpsg.rpg.object.base.items.EffectBuff.EffectBuffType;
 import com.rpsg.rpg.object.base.items.Prop.FormulaType;
 import com.rpsg.rpg.object.rpg.Target;
 import com.rpsg.rpg.view.GameViews;
@@ -136,9 +135,9 @@ public class Item extends BaseItem{
 		//添加buff（如果有的话）
 		for(EffectBuff ebuff : effect.buff){
 			if(ebuff.type == EffectBuffType.add)
-				$.each(targetList, t -> t.addBuff(ebuff.buff.cpy()));
-			if(ebuff.type == EffectBuffType.remove)
-				$.each(targetList, t -> t.removeBuff(ebuff.buff.cpy()));
+				$.each(targetList, t -> t.addBuff(ebuff.cpy()));
+			if(ebuff.type == EffectBuffType.remove && ebuff.buff != null)
+				$.each(targetList, t -> t.removeBuff(ebuff.buff.id));
 		}
 		
 		

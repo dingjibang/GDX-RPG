@@ -12,8 +12,8 @@ import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.base.items.BaseItem.Context;
-import com.rpsg.rpg.object.base.items.Buff;
 import com.rpsg.rpg.object.base.items.CallbackBuff;
+import com.rpsg.rpg.object.base.items.EffectBuff;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemRange;
@@ -36,7 +36,7 @@ public class Target implements Serializable{
 	public Enemy parentEnemy;
 	
 	public int rank;
-	private ArrayList<Buff> buffList = new ArrayList<>();
+	private ArrayList<EffectBuff> buffList = new ArrayList<>();
 	private ArrayList<CallbackBuff> callbackBuffList = new ArrayList<>();
 	
 	public Spellcard attack = Spellcard.attack();
@@ -58,8 +58,8 @@ public class Target implements Serializable{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Buff> getBuffList(){
-		return(List<Buff>)buffList.clone();
+	public List<EffectBuff> getBuffList(){
+		return(List<EffectBuff>)buffList.clone();
 	}
 	
 	public Target hero(Hero hero){
@@ -78,7 +78,9 @@ public class Target implements Serializable{
 	
 	public void nextTurn(){
 		turn++;
-		$.removeIf(buffList, b -> b.nextTurn() <= 0 && (modifiedBuff = true));
+		$.removeIf(buffList, b -> b.turn() == 0);
+		$.each(buffList, EffectBuff::nextTurn);
+		modifiedBuff = true;
 	}
 	
 	public Target clear(){
@@ -90,20 +92,18 @@ public class Target implements Serializable{
 		return this;
 	}
 	
-	public Target addBuff(Buff buff){
+	public Target addBuff(EffectBuff buff){
 		if(buff == null) return this;
 		buffList.add(buff);
 		modifiedBuff = true;
 		return this;
 	}
 	
-	public Target removeBuff(Buff buff){
-		if(buff == null)
-			return removeBuff();
+	public Target removeBuff(int id){
 		
-		Buff target = null;
-		for(Buff b : buffList)
-			target = b.id == buff.id ? buff : target;
+		EffectBuff target = null;
+		for(EffectBuff b : buffList)
+			target = id == b.buff.id ? b : target;
 		if(target != null)
 			buffList.remove(target);
 		
@@ -164,7 +164,7 @@ public class Target implements Serializable{
 	};
 	
 	/**抗性*/
-	public LinkedHashMap<String, Float> resistance = new LinkedHashMap<String, Float>();
+	public LinkedHashMap<String, Float> resistance = new LinkedHashMap<String, Float>(); 
 	{	
 		//日
 		resistance.put("sun", 1f);
@@ -222,8 +222,8 @@ public class Target implements Serializable{
 		
 		int result = val;
 		
-		for(Buff buff : buffList){
-			Prop prop = buff.prop.get(key);
+		for(EffectBuff buff : buffList){
+			Prop prop = buff.buff.prop.get(key);
 			if(prop == null) continue;
 			
 			result += calcProp(val, prop.formula);

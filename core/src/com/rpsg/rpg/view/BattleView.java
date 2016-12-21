@@ -107,7 +107,10 @@ public class BattleView extends DefaultIView{
 		String name = obj instanceof Enemy ? ((Enemy)obj).name : ((Hero)obj).name;
 		Target target = Target.parse(obj);
 		
-		target.nextTurn();
+		Runnable end = () -> {
+			timer.pause(false);
+			target.nextTurn();
+		};
 		
 		status.add("[#ff7171]"+name+"[] 的战斗回合");
 		
@@ -117,7 +120,7 @@ public class BattleView extends DefaultIView{
 				public void run() {
 					
 					if(buffList.size() == 0){
-						timer.pause(false);
+						end.run();
 						return;
 					}
 					
@@ -134,7 +137,7 @@ public class BattleView extends DefaultIView{
 		}
 		
 		if(CallbackBuff.hasLockedBuff(target)){
-			TimeUtil.add(()->timer.pause(false), 1000);
+			TimeUtil.add(end, 1000);
 			status.add(Target.name(target) + "在持续吟唱中……");
 			return;
 		}
@@ -149,7 +152,7 @@ public class BattleView extends DefaultIView{
 				checkDead();
 				fg.remove();
 				menu.remove();
-				timer.pause(false);
+				end.run();
 			};
 			
 			menu.add(new TextButton("攻击",BattleRes.textButtonStyle).onClick(()->{
@@ -180,7 +183,7 @@ public class BattleView extends DefaultIView{
 		}else{
 			Enemy enemy = (Enemy)obj;
 			Result result = enemy.act(Item.Context.battle(enemy, null, (List<?>) enemyGroup.list().clone(), (List<?>) RPG.ctrl.hero.currentHeros.clone()));
-			animations.play(result,() -> timer.pause(false));
+			animations.play(result, end);
 		}
 	}
 	

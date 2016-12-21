@@ -18,8 +18,8 @@ public class EnemyContext extends BaseContext{
 	
 	public boolean hasBuff(int id){
 		boolean include = false;
-		for(Buff buff : target.getBuffList())
-			if(buff.id == id)
+		for(EffectBuff ebuff : target.getBuffList())
+			if(ebuff.buff.id == id)
 				include = true;
 		return include;
 	}

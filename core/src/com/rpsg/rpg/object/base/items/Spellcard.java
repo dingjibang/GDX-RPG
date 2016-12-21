@@ -6,8 +6,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.RPG;
-import com.rpsg.rpg.object.base.items.Effect.EffectBuff;
-import com.rpsg.rpg.object.base.items.Effect.EffectBuffType;
+import com.rpsg.rpg.object.base.items.EffectBuff.EffectBuffType;
 import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
 import com.rpsg.rpg.object.base.items.Item.ItemOccasion;
@@ -64,7 +63,7 @@ public class Spellcard extends BaseItem {
 				return Result.success();
 			}
 		}else{
-			return $use(ctx,false);
+			return $use(ctx, false);
 		}
 		return Result.faild();
 	}
@@ -110,9 +109,9 @@ public class Spellcard extends BaseItem {
 		//添加buff（如果有的话）
 		for(EffectBuff ebuff : effect.buff){
 			if(ebuff.type == EffectBuffType.add)
-				$.each(targetList, t -> t.addBuff(ebuff.buff.cpy()));
-			if(ebuff.type == EffectBuffType.remove)
-				$.each(targetList, t -> t.removeBuff(ebuff.buff.cpy()));
+				$.each(targetList, t -> t.addBuff(ebuff.cpy()));
+			if(ebuff.type == EffectBuffType.remove && ebuff.buff != null)
+				$.each(targetList, t -> t.removeBuff(ebuff.buff.id));
 		}
 		
 		//计算数值变化

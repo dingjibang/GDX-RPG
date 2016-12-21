@@ -14,18 +14,7 @@ public class Effect implements Serializable{
 	public Map<String, Prop> prop = new HashMap<>();
 	public List<EffectBuff> buff = new ArrayList<>();
 	public boolean wait = false;
-	private int turn = 0;
-	
-	
-	public static class EffectBuff implements Serializable{
-		private static final long serialVersionUID = 1L;
-		public Buff buff;
-		public EffectBuffType type = EffectBuffType.add;
-	}
-	
-	public static enum EffectBuffType{
-		add,remove
-	}
+	private int turn = 0;//effect的turn代表多少回合后触发这个effect
 	
 	public Map<String,String> asStringMap(){
 		Map<String,String> map = new HashMap<>();
@@ -49,14 +38,10 @@ public class Effect implements Serializable{
 		e.wait = json.has("wait")?json.getBoolean("wait"):false;
 		e.turn = json.has("turn")?json.getInt("turn"):0;
 		
+		//read buff
 		List<EffectBuff> buffs = new ArrayList<EffectBuff>();
-		if(json.has("buff")) for(JsonValue value : json.get("buff")){
-			EffectBuff eb = new EffectBuff();
-			eb.type = EffectBuffType.valueOf(value.getString("type"));
-			Integer buffId = value.has("buff") ? value.getInt("buff") : null;
-			if(buffId != null) eb.buff = Buff.getById(value.getInt("buff"));
-			buffs.add(eb);
-		}
+		if(json.has("buff")) for(JsonValue value : json.get("buff"))
+			buffs.add(EffectBuff.fromJson(value));
 		
 		e.buff = buffs;
 		return e;

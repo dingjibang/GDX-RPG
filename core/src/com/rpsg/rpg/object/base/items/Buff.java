@@ -21,24 +21,11 @@ public class Buff implements Serializable{
 	public BuffType type = BuffType.buff;
 	public Map<String, Prop> prop = new HashMap<>();
 	public String description;
-	public int turn;
 	
 	public static Image getDefaultIcon(){
 		return Res.get(Setting.IMAGE_ICONS + "b0.png");
 	}
 	
-	public int nextTurn(){
-		return --turn;
-	}
-	
-	public int turn(){
-		return turn;
-	}
-	
-	public Buff turn(int turn) {
-		this.turn = turn;
-		return this;
-	}
 	
 	public Image getIcon(){
 		return getIcon(id);
@@ -67,7 +54,6 @@ public class Buff implements Serializable{
 		buff.type = value.has("type") ? BuffType.valueOf(value.getString("type")) : BuffType.buff;
 		buff.name = value.has("name") ? value.getString("name") : "(??)";
 		buff.prop = ItemController.getPropObject(value.get("prop"));
-		buff.turn = value.has("turn") ? value.getInt("turn") : 0;
 		buff.description = value.has("description") ? value.getString("description") : "";
 		
 		return buff;

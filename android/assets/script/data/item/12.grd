@@ -12,7 +12,8 @@
 		buff:[
 			{
 				type:"add",
-				buff:3
+				buff:3,
+				turn:2
 			}
 		]
 	}

@@ -8,6 +8,11 @@ import com.rpsg.gdxQuery.Callback;
 import com.rpsg.rpg.object.rpg.Target;
 import com.rpsg.rpg.system.ui.Image;
 
+/**
+ * 借助buff模块来做的一个“回调”buff，也就是说玩家拥有一个不可见的、N回合后执行任意代码的buff
+ * @author dingjibang
+ *
+ */
 public class CallbackBuff extends Buff{
 	
 	private static final long serialVersionUID = 1L;
@@ -15,6 +20,7 @@ public class CallbackBuff extends Buff{
 	Callback<Result> callback;
 	BaseItem item;
 	boolean wait;
+	int turn;//多少回合后执行
 	
 	public CallbackBuff(Target target, BaseItem itemOrSpellcard, Callback<Result> callback, boolean wait) {
 		this.item = itemOrSpellcard;
@@ -45,6 +51,10 @@ public class CallbackBuff extends Buff{
 		return wait;
 	}
 	
+	private int nextTurn() {
+		return turn--;
+	}
+	
 	public static List<CallbackBuff> nextTurn(Target target){
 		List<CallbackBuff> list = new ArrayList<>();
 		for(CallbackBuff buff : target.getCallbackBuffList()){
@@ -57,6 +67,7 @@ public class CallbackBuff extends Buff{
 		target.getCallbackBuffList().removeAll(list);
 		return list;
 	}
+	
 	
 	public static boolean hasLockedBuff(Target target){
 		return $.anyMatch(target.getCallbackBuffList(), CallbackBuff::isWait);

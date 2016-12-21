@@ -14,11 +14,15 @@ import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.Buff;
+import com.rpsg.rpg.object.base.items.EffectBuff;
 import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.LazyBitmapFontConctoller;
+import com.rpsg.rpg.utils.game.Stream;
 import com.rpsg.rpg.view.hover.ViewBuffView;
+
+import java8.util.stream.Collectors;
 
 public class HeroStatusBox extends WidgetGroup {
 
@@ -67,10 +71,13 @@ public class HeroStatusBox extends WidgetGroup {
 		
 		if(hero.target.modifiedBuff()){
 			buffTable.clear();
-			List<Buff> list = hero.target.getBuffList();
-			list.addAll(hero.target.getCallbackBuffList());
+			List<EffectBuff> list = hero.target.getBuffList();
+			list.addAll(Stream.of(hero.target.getCallbackBuffList()).map(EffectBuff::fromCallbackBuff).collect(Collectors.toList()));
+			
 			for (int i = 0; i < list.size(); i++) {
-				Buff buff = list.get(i);
+				EffectBuff ebuff = list.get(i);
+				Buff buff = ebuff.buff;
+				
 				Image icon = buff.getIcon();
 				buffTable.addActor(icon.x(i * 40).size(32,32));
 				icon.addListener(new InputListener(){
@@ -79,7 +86,7 @@ public class HeroStatusBox extends WidgetGroup {
 					}
 					@Override
 					public boolean mouseMoved(InputEvent event, float x, float y) {
-						RPG.popup.add(ViewBuffView.class,$.omap("top",event.getStageY()).add("left",event.getStageX()).add("buff",buff));
+						RPG.popup.add(ViewBuffView.class, $.omap("top", event.getStageY()).add("left", event.getStageX()).add("buff", ebuff));
 						return super.mouseMoved(event, x, y);
 					}
 					public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
