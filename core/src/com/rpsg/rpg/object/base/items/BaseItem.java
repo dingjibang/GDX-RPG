@@ -14,9 +14,9 @@ import com.rpsg.rpg.object.rpg.Target;
  * Item是游戏中道具的数据结构。<br>
  * 在目前，Item拥有以下几种子类型：<br>
  * <br>
- * {@link Item}(道具) - 最普通的道具，和Item类本身相同。<br>
+ * {@link Item} (道具) - 最普通的道具，和Item类本身相同。<br>
  * {@link Equipment} (装备) - 装备类，继承Item。<br>
- * {@link Spellcard} (符卡) - 符卡类，继承Item（未完成）。<br>
+ * {@link Spellcard} (符卡) - 符卡类，继承Item。<br>
  * <br>
  * <i>GDX-RPG</i> 的所有道具数据，均存储于[/rpg/android/assets/script/data]这个位置。<br>
  * 存储的规范是，使用数字（即道具的唯一ID）进行命名，文件后缀为.grd(GDX RPG Data)。<br>

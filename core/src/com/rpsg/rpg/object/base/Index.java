@@ -54,7 +54,7 @@ public class Index implements Serializable{
 		if(type == IndexType.enemy)
 			return $.list(Res.get(Setting.IMAGE_ENEMY + path)).get();
 		
-		return $.map($.map(fgList, str -> Setting.IMAGE_FG + path + "/" + str + ".png"), Res::get);
+		return $.map(fgList, str -> Res.get(Setting.IMAGE_FG + path + "/" + str + ".png"));
 	}
 	
 	public Image image(){

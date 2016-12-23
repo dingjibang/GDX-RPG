@@ -56,7 +56,7 @@ public class Spellcard extends BaseItem {
 	public Result use(Context ctx){
 		if(effect.getTurn() > 0){
 			if(check(ctx).success){
-				CallbackBuff buff = new CallbackBuff(ctx.self, this, ()-> $use(ctx,true), effect.wait);
+				CallbackBuff buff = new CallbackBuff(ctx.self, this, ()-> $use(ctx, true), effect.wait);
 				used(ctx);
 				buff.turn = effect.getTurn();
 				ctx.self.addCallbackBuff(buff);

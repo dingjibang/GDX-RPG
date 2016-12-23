@@ -360,7 +360,8 @@ public class Target implements Serializable{
 		return null;
 	}
 	
-	public static List<Target> getTargetList(BaseItem item,Context ctx){
+	//根据所用物品（符卡、道具）以及上下文，来取得攻击目标
+	public static List<Target> getTargetList(BaseItem item, Context ctx){
 		List<Target> targetList = new ArrayList<>();
 		
 		if(!(item instanceof Spellcard || item instanceof Item)) return targetList;
