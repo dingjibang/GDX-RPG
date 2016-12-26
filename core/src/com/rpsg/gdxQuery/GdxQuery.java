@@ -586,7 +586,7 @@ public class GdxQuery {
 	
 	
 	@SuppressWarnings("unchecked")
-	public <T> ArrayList<T> eachAsList(CustomCallback<Actor,Object> each,Class<T> cls){
+	public <T> ArrayList<T> mapToList(CustomCallback<Actor,Object> each,Class<T> cls){
 		List<Object> list = new ArrayList<>();
 		for(Actor actor : getItems())
 			list.add(each.run(actor));

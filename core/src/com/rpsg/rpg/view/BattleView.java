@@ -82,11 +82,11 @@ public class BattleView extends DefaultIView{
 		$.add(enemyGroup).appendTo(stage).setPosition(GameUtil.stage_width/2 - enemyGroup.getWidth()/2, GameUtil.stage_height/2 - enemyGroup.getHeight()/2 + 50).setAlign(Align.center);
 		$.add(new TextButton("结束战斗！",BattleRes.textButtonStyle)).appendTo(stage).setPosition(100,170).click(RPG.ctrl.battle::stop);
 		
-		$.add(timer = new Timer(heros,enemyGroup.list(),this::onTimerToggle,this::onBattleStop)).appendTo(stage);
+		$.add(timer = new Timer(heros, enemyGroup.list(), this::onTimerToggle, this::onBattleStop)).appendTo(stage);
 		
 		status.add("fuck you");
 		
-		$.add(Res.base().size(GameUtil.stage_width,GameUtil.stage_height).color(0,0,0,1)).appendTo(stage).addAction(Actions.sequence(Actions.fadeOut(.3f,Interpolation.pow2In),Actions.removeActor()));
+		$.add(Res.base().size(GameUtil.stage_width, GameUtil.stage_height).color(0,0,0,1)).appendTo(stage).addAction(Actions.sequence(Actions.fadeOut(.3f,Interpolation.pow2In),Actions.removeActor()));
 		
 		status.setZIndex(999999);
 		this.
@@ -191,7 +191,7 @@ public class BattleView extends DefaultIView{
 		double random = Math.random();
 		boolean flag = random > .5;
 		status.add(hero.getName()+" 尝试逃跑").append(".",5).append(".",10).append(".",15).append(flag ? "成功了" : "但是失败了", 40);
-		TimeUtil.add(()->callback.run(flag),1000);
+		TimeUtil.add(()->callback.run(flag), 1000);
 	}
 	
 	private void defense(Hero hero,Runnable callback){

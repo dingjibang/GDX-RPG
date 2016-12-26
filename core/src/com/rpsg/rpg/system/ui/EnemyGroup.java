@@ -28,14 +28,14 @@ public class EnemyGroup extends Table implements Selectable{
 		return this;
 	}
 	
-	public void select(CustomRunnable<Target> onSelect,ItemDeadable deadable){
+	public void select(CustomRunnable<Target> onSelect, ItemDeadable deadable){
 		select = true;
 		this.onSelect = onSelect; 
 		this.deadable = deadable;
 	}
 	
 	public ArrayList<Enemy> list(){
-		return $.add(this).children(EnemyBox.class).eachAsList(e -> ((EnemyBox)e).enemy, Enemy.class);
+		return $.add(this).children(EnemyBox.class).mapToList(e -> ((EnemyBox)e).enemy, Enemy.class);
 	}
 	
 	@Override

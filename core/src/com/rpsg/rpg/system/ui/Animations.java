@@ -3,7 +3,6 @@ package com.rpsg.rpg.system.ui;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.Array;
 import com.rpsg.gdxQuery.$;
-import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.object.base.items.Result;
 import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.Hero;

@@ -58,7 +58,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public Image(String filename){
 		super(new Texture(Gdx.files.internal(filename)));
-		setAnti();
+		generateFilter();
 	}
 	
 	public Image onClick(Runnable r){
@@ -88,17 +88,17 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public Image(Texture txt){
 		super(txt);
-		setAnti();
+		generateFilter();
 	}
 	
 	public Image(TextureRegion txt){
 		super(txt);
-		setAnti();
+		generateFilter();
 	}
 	
 	public Image(Sprite txt){
 		super(txt);
-		setAnti();
+		generateFilter();
 	}
 	
 	public Image() {
@@ -138,7 +138,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		super.setStage(stage);
 	}
 	
-	private void setAnti(){
+	private void generateFilter(){
 		try{
 			if(Setting.persistence.scaleAliasing)
 				getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
@@ -300,7 +300,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 			setHeight(getDrawable().getMinHeight());
 		if(originAlignment!=-1)
 			setOrigin(originAlignment);
-		setAnti();
+		generateFilter();
 	}
 
 	public Image hide() {
