@@ -1,6 +1,7 @@
 # GDX-RPG 
 A ~~not work now~~ cross-platform RPG game engine ~~(tease you)~~
 
+[中文说明](https://github.com/dingjibang/GDX-RPG/blob/master/README_CN.md)
 made by [Libgdx](https://github.com/libgdx/libgdx).
 
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-LAZY-FONT/master/foobar.png)
