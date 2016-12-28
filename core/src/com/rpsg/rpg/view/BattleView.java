@@ -33,7 +33,6 @@ import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.Selectable;
 import com.rpsg.rpg.object.rpg.Target;
-import com.rpsg.rpg.system.base.BattleFilter;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Animations;
 import com.rpsg.rpg.system.ui.DefaultIView;

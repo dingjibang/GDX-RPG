@@ -8,6 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.Filter;
 import com.rpsg.rpg.object.base.Iconable;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.ItemController;
@@ -21,6 +22,7 @@ public class Buff implements Serializable, Iconable{
 	public BuffType type = BuffType.buff;
 	public Map<String, Prop> prop = new HashMap<>();
 	public String description;
+	public Filter filter;
 	
 	public static Image getDefaultIcon(){
 		return Res.get(Setting.IMAGE_ICONS + "b0.png");
@@ -54,6 +56,9 @@ public class Buff implements Serializable, Iconable{
 		buff.name = value.has("name") ? value.getString("name") : "(??)";
 		buff.prop = ItemController.getPropObject(value.get("prop"));
 		buff.description = value.has("description") ? value.getString("description") : "";
+		
+		if(value.has("filter"))
+			buff.filter = Filter.fromJSON(value.get("filter"));
 		
 		return buff;
 	}
