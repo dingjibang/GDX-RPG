@@ -6,10 +6,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.BaseItem;
-import com.rpsg.rpg.object.base.items.GetItemAble;
+import com.rpsg.rpg.object.base.items.GetItemable;
 import com.rpsg.rpg.system.base.Res;
 
-public class ItemCard extends WidgetGroup implements Cloneable,GetItemAble{
+public class ItemCard extends WidgetGroup implements Cloneable,GetItemable{
 	
 	Image bg,icon,outer,bg2;
 	Label name;
@@ -26,7 +26,7 @@ public class ItemCard extends WidgetGroup implements Cloneable,GetItemAble{
 		
 		$.add(bg2 = Res.get(Setting.IMAGE_BATTLE + "card2.png")).fadeOut().appendTo(this);
 		$.add(bg = Res.get(Setting.IMAGE_BATTLE + "card.png")).appendTo(this);
-		$.add(icon = Res.get(hasItem ? item.getIcon() : Setting.UI_BASE_IMG)).fadeOut().appendTo(this).setPosition(41, 68).setSize(100, 100).setTouchable(null);
+		$.add(icon = item.getIcon()).fadeOut().appendTo(this).setPosition(41, 68).setSize(100, 100).setTouchable(null);
 		$.add(name = Res.get(hasItem ? item.name : "无物品", 22).center()).fadeOut().appendTo(this).setWidth(180).setY(20).setTouchable(null);
 		
 	}

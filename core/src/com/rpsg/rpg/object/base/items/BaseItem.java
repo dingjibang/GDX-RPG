@@ -6,7 +6,10 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.Iconable;
 import com.rpsg.rpg.object.rpg.Target;
+import com.rpsg.rpg.system.base.Res;
+import com.rpsg.rpg.system.ui.Image;
 
 /**
  * <i>GDX-RPG</i> 道具（ITEM）超类
@@ -24,7 +27,7 @@ import com.rpsg.rpg.object.rpg.Target;
  * <br>
  * @author dingjibang
  */
-public abstract class BaseItem implements Serializable {
+public abstract class BaseItem implements Serializable, Iconable {
 	private static final long serialVersionUID = 1L;
 	
 	/**本道具是否可以丢弃*/
@@ -60,15 +63,15 @@ public abstract class BaseItem implements Serializable {
 	/**道具效果**/
 	public Effect effect;
 	
-	public String getIcon(){
+	public Image getIcon(){
 		String name = Setting.IMAGE_ICONS+"i"+id+".png";
 		if(Gdx.files.internal(name).exists())
-			return name;
+			return Res.get(name);
 		return getDefaultIcon();
 	}
 	
-	public static String getDefaultIcon(){
-		return Setting.IMAGE_ICONS+"i0.png";
+	public static Image getDefaultIcon(){
+		return Res.get(Setting.IMAGE_ICONS+"i0.png");
 	}
 	
 	/**

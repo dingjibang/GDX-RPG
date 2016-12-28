@@ -49,7 +49,7 @@ public class SpellcardIcon extends Actor{
 	}
 	
 	public SpellcardIcon generateIcon(BaseItem baseItem) {
-		icon=Res.get(baseItem.getIcon()).disableTouch();
+		icon = baseItem.getIcon().disableTouch();
 		return this;
 	}
 	

@@ -19,7 +19,7 @@ import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.BaseItem;
-import com.rpsg.rpg.object.base.items.GetItemAble;
+import com.rpsg.rpg.object.base.items.GetItemable;
 import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.EnemyDrop;
 import com.rpsg.rpg.object.rpg.Hero;
@@ -196,7 +196,7 @@ public class BattleStopView extends HoverView{
 								if(item != null)
 									itemTable.into($.add(new Icon(item).a(0).action(Actions.delay(.3f,Actions.fadeIn(.5f))))).getCell().size(70,70).padRight(20);
 								
-								$.add(cardTable,itemTable).children().each(a2 ->((GetItemAble)a2).addListener(generateListener().setTarget((GetItemAble)a2)));
+								$.add(cardTable,itemTable).children().each(a2 ->((GetItemable)a2).addListener(generateListener().setTarget((GetItemable)a2)));
 								
 							}).onClick(null))));
 						});
@@ -298,7 +298,7 @@ public class BattleStopView extends HoverView{
 				super.enter(event, x, y, pointer, fromActor);
 			}
 			public boolean mouseMoved(InputEvent event, float x, float y) {
-				GetItemAble self = (GetItemAble) getTarget();
+				GetItemable self = (GetItemable) getTarget();
 				if(self.getItem() == null) return false;
 				Table table = new Table().left().bottom().padLeft(20).padRight(20).padTop(10).padBottom(10);
 				

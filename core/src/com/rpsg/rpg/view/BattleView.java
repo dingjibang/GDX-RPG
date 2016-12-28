@@ -22,6 +22,7 @@ import com.rpsg.rpg.object.base.BattleParam;
 import com.rpsg.rpg.object.base.BattleRes;
 import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.base.items.CallbackBuff;
+import com.rpsg.rpg.object.base.items.EffectBuff;
 import com.rpsg.rpg.object.base.items.Item;
 import com.rpsg.rpg.object.base.items.Item.ItemDeadable;
 import com.rpsg.rpg.object.base.items.Item.ItemForward;
@@ -32,6 +33,7 @@ import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.Selectable;
 import com.rpsg.rpg.object.rpg.Target;
+import com.rpsg.rpg.system.base.BattleFilter;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Animations;
 import com.rpsg.rpg.system.ui.DefaultIView;
@@ -102,18 +104,28 @@ public class BattleView extends DefaultIView{
 		 RPG.popup.add(BattleStopView.class,$.omap("view", this).add("callback", (Runnable)RPG.ctrl.battle::stop));
 	 }
 	
+	 /**
+	  *	当触发某个角色的回合时，obj为{@link Hero}或{@link Enemy} 
+	  */
 	public void onTimerToggle(Object obj){
+		//暂停战斗
 		timer.pause(true);
+		//获取obj名称
 		String name = obj instanceof Enemy ? ((Enemy)obj).name : ((Hero)obj).name;
+		//获取obj的target
 		Target target = Target.parse(obj);
 		
+		
+		//生成战斗结束的后处理方法
 		Runnable end = () -> {
 			timer.pause(false);
 			target.nextTurn();
 		};
 		
+		//添加说明到玩家屏幕
 		status.add("[#ff7171]"+name+"[] 的战斗回合");
 		
+		//遍历触发对象的所有CallbackBuff
 		List<CallbackBuff> buffList = CallbackBuff.nextTurn(target);
 		if(buffList.size() != 0){
 			new Runnable() {
@@ -136,18 +148,31 @@ public class BattleView extends DefaultIView{
 			return;
 		}
 		
+		//-------		拦截器：onTurnBegin
+		for(EffectBuff buff : target.getBuffList()){
+			
+			//		BattleFilter.exec(js, context)
+		}
+		//-------END	拦截器：onTurnBegin
+		
+		
+		//如果有Lock状态的buff（也就是触发这个buff时候不能做别的事情），则结束战斗
 		if(CallbackBuff.hasLockedBuff(target)){
 			TimeUtil.add(end, 1000);
 			status.add(Target.name(target) + "在持续吟唱中……");
 			return;
 		}
 		
+		//如果触发对象为Hero
 		if(obj instanceof Hero){
 			Hero hero = (Hero)obj;
 			
+			//------画出UI start
 			Image fg = $.add(hero.defaultFG()).appendTo(stage).setScaleX(-0.33f).setScaleY(0.33f).setOrigin(Align.bottomLeft).setPosition(GameUtil.stage_width+500, 0).addAction(Actions.moveBy(-400, 0,1f,Interpolation.pow4Out)).setZIndex(1).getItem(Image.class);
 			Table menu = $.add(new Table()).appendTo(stage).setPosition(600, 220).getItem(Table.class);
+			//------画出UI end
 			
+			//生成战斗结束的后处理方法
 			Runnable stopCallback = ()->{
 				checkDead();
 				fg.remove();
@@ -155,52 +180,54 @@ public class BattleView extends DefaultIView{
 				end.run();
 			};
 			
-			menu.add(new TextButton("攻击",BattleRes.textButtonStyle).onClick(()->{
-				attack(hero,stopCallback);
-			}));
+			//画出菜单
+			menu.add(new TextButton("攻击",BattleRes.textButtonStyle).onClick(() -> attack(hero,stopCallback)));
 			
-			menu.add(new TextButton("防御",BattleRes.textButtonStyle).onClick(()->{
-				defense(hero,stopCallback);
-			}));
+			menu.add(new TextButton("防御",BattleRes.textButtonStyle).onClick(() -> defense(hero,stopCallback)));
 			
-			menu.add(new TextButton("符卡",BattleRes.textButtonStyle).onClick(()->{
-				spellcard(hero,stopCallback);
-			}));
+			menu.add(new TextButton("符卡",BattleRes.textButtonStyle).onClick(() -> spellcard(hero,stopCallback)));
 			
-			menu.add(new TextButton("物品",BattleRes.textButtonStyle).onClick(()->{
-				item(hero,stopCallback);
-			}));
+			menu.add(new TextButton("物品",BattleRes.textButtonStyle).onClick(() -> item(hero,stopCallback)));
 			
-			menu.add(new TextButton("逃跑",BattleRes.textButtonStyle).onClick(()->{
+			menu.add(new TextButton("逃跑",BattleRes.textButtonStyle).onClick(() ->
 				escape(hero,flag -> { 
 					stopCallback.run();
-					if(flag) RPG.ctrl.battle.stop();
-					else timer.addDelay(hero, 10);
-				});
-			}));
+					if(flag) 
+						RPG.ctrl.battle.stop();
+					else 
+						timer.addDelay(hero, 10);
+				})
+			));
 			
 			$.each(menu.getCells(), cell -> cell.size(150,30));
+			
+			//如果触发者为Enemy
 		}else{
 			Enemy enemy = (Enemy)obj;
+			//使Enemy根据自身AI进行行动
 			Result result = enemy.act(Item.Context.battle(enemy, null, (List<?>) enemyGroup.list().clone(), (List<?>) RPG.ctrl.hero.currentHeros.clone()));
+			//播放AI执行后的行动动画
 			animations.play(result, end);
 		}
 	}
 	
-	public void escape(Hero hero,CustomRunnable<Boolean> callback){
+	//执行逃跑，Hero为执行逃跑的角色，callback为逃跑（无论失败与否）执行完毕的回调
+	public void escape(Hero hero, CustomRunnable<Boolean> callback){
 		double random = Math.random();
 		boolean flag = random > .5;
 		status.add(hero.getName()+" 尝试逃跑").append(".",5).append(".",10).append(".",15).append(flag ? "成功了" : "但是失败了", 40);
 		TimeUtil.add(()->callback.run(flag), 1000);
 	}
 	
-	private void defense(Hero hero,Runnable callback){
+	//执行防御，Hero为执行防御的角色，callback为防御动画播放完毕后的回调
+	private void defense(Hero hero, Runnable callback){
 		useSpellcard(Spellcard.defense(),hero,null,()->{
 			timer.addDelay(hero, hero.target.getProp("defenseDelay"));
 			callback.run();
 		});
 	}
 	
+	//执行攻击，Hero为执行防御的角色，callback为攻击动画播放完毕后的回调
 	private void attack(Hero hero,Runnable callback){
 		enemyGroup.select(target -> useSpellcard(hero.target.attack, hero, target, () -> {
 			timer.addDelay(hero, hero.target.getProp("attackDelay"));
@@ -208,15 +235,20 @@ public class BattleView extends DefaultIView{
 		}),ItemDeadable.no);
 	}
 
+	//调出选择符卡菜单，Hero为执行者，stopCallback为使用符卡后的回调
 	private void spellcard(Hero hero, Runnable stopCallback) {
-		RPG.popup.add(SelectSpellcardView.class,$.omap("hero",hero).add("callback", (CustomRunnable<Spellcard>)sc -> {
+		//打开选择符卡菜单
+		RPG.popup.add(SelectSpellcardView.class,$.omap("hero",hero).add("callback", /*当选择符卡后的回调，其中传给回调者玩家所选择的符卡*/(CustomRunnable<Spellcard>)sc -> {
+			//如果符卡的范围为个体，则调出选择个体的界面
+			//TODO 需要制作当玩家取消选择时的回调
 			if(sc.range == ItemRange.one)
-				getGroup(sc.forward,hero).select(target -> useSpellcard(sc,hero,target,stopCallback),sc.deadable);
+				getGroup(sc.forward,hero).select(/*选择界面完成后，回调变量为target*/target -> useSpellcard(sc,hero,target,stopCallback),sc.deadable);
 			else
 				useSpellcard(sc,hero,null,stopCallback);
 		}));
 	}
 	
+	//同符卡
 	private void item(Hero hero,Runnable stopCallback){
 		RPG.popup.add(SelectItemView.class,$.omap("hero",hero).add("callback", (CustomRunnable<Item>)item -> {
 			if(item.range == ItemRange.one)
@@ -226,13 +258,22 @@ public class BattleView extends DefaultIView{
 		}));
 	}
 	
+	/**
+	 * 使用一个道具
+	 * @param item 道具
+	 * @param hero 使用者
+	 * @param target 被使用者
+	 * @param callback 使用完成后的回调
+	 */
 	private void useItem(Item item,Hero hero,Target target,Runnable callback){
 		status.add(Target.name(target) + " 使用了道具『" + item.name + "』");
 		Result result = item.use(BaseItem.Context.battle(hero, target, RPG.ctrl.hero.currentHeros(), enemyGroup.list()));
 		animations.play(result, callback);
 	}
 	
-	
+	/**
+	 * 检查是否有人死亡，以更新状态
+	 */
 	private void checkDead(){
 		$.getIf(enemyGroup.list(), e -> e.target.isDead(), e -> {
 			status.add(e.name + "已死亡");
@@ -241,6 +282,11 @@ public class BattleView extends DefaultIView{
 		});
 	}
 	
+	/**
+	 * 调出选择单位的UI，以选择单位
+	 * @param forward 选择朝向（我方还是敌方）
+	 * @param hero 选择者
+	 */
 	private Selectable getGroup(ItemForward forward, Hero hero){
 		if(forward == ItemForward.enemy)
 			return enemyGroup;
@@ -253,7 +299,15 @@ public class BattleView extends DefaultIView{
 		use(null,sc,hero,target,onUsed);
 	}
 	
-	private void use(String _txt,Spellcard sc,Object _hero,Object target,Runnable  onUsed){
+	/**
+	 * 使用一张附卡
+	 * @param _txt 打印在玩家屏幕上的说明
+	 * @param sc 符卡
+	 * @param _hero 使用者（也有可能是敌人）
+	 * @param target 被使用者
+	 * @param onUsed 当使用完成后的回调
+	 */
+	private void use(String _txt,Spellcard sc,Object _hero,Object target,Runnable onUsed){
 		String text = _txt;
 		String tname = Target.name(target);
 		String hname = Target.name(_hero);

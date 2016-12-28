@@ -5,10 +5,10 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.rpg.core.Setting;
 import com.rpsg.rpg.object.base.items.BaseItem;
-import com.rpsg.rpg.object.base.items.GetItemAble;
+import com.rpsg.rpg.object.base.items.GetItemable;
 import com.rpsg.rpg.system.base.Res;
 
-public class Icon extends Image implements Comparable<Icon>,GetItemAble{
+public class Icon extends Image implements Comparable<Icon>, GetItemable{
 	private BaseItem item = null;
 	public boolean enable = true;
 	public boolean select = false;
@@ -39,7 +39,7 @@ public class Icon extends Image implements Comparable<Icon>,GetItemAble{
 			return this;
 		
 		this.item=baseItem;
-		final ProxyImage i = (ProxyImage)(Res.exist(baseItem.getIcon())?Res.get(baseItem.getIcon()):Res.get(BaseItem.getDefaultIcon()));
+		final ProxyImage i = (ProxyImage) baseItem.getIcon();
 		i.loaded=new Runnable() {
 			public void run() {
 				Icon.this.setDrawable(i.getDrawable());

@@ -218,7 +218,7 @@ public class TacticView extends IMenuView {
 								for (int i = hero.linkSkills.size() - 1; i >= 0; i--) {
 									final int positionX = 100 * i + 214;
 									final AssociationSkill skill = hero.linkSkills.get(i);
-									group.addActor(tmp = Res.get(skill.spellcard.getIcon()).size(80,80).object(new HeroImgMask()).position(positionX, 60).onClick(new Runnable() {
+									group.addActor(tmp = skill.spellcard.getIcon().size(80,80).object(new HeroImgMask()).position(positionX, 60).onClick(new Runnable() {
 										@Override
 										public void run() {
 											Iterator<Actor> it2 = group.getChildren().iterator();

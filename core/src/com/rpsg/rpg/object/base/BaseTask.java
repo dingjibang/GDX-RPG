@@ -13,7 +13,7 @@ import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.ItemController;
 import com.rpsg.rpg.system.ui.Image;
 
-public abstract class BaseTask implements Serializable{
+public abstract class BaseTask implements Serializable, Iconable{
 	/**
 	 * 
 	 */

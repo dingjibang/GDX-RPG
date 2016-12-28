@@ -22,11 +22,11 @@ import com.rpsg.rpg.io.Music;
 import com.rpsg.rpg.object.base.items.BaseItem;
 import com.rpsg.rpg.object.base.items.Equipment;
 import com.rpsg.rpg.system.base.Res;
-import com.rpsg.rpg.system.ui.MenuCheckBox;
 import com.rpsg.rpg.system.ui.IMenuView;
 import com.rpsg.rpg.system.ui.Image;
 import com.rpsg.rpg.system.ui.ImageButton;
 import com.rpsg.rpg.system.ui.Label;
+import com.rpsg.rpg.system.ui.MenuCheckBox;
 import com.rpsg.rpg.system.ui.View;
 import com.rpsg.rpg.utils.game.GameUtil;
 
@@ -103,7 +103,7 @@ public class StatusView extends IMenuView {
 		for(String key:parent.current.equips.keySet()){
 			Equipment equip=parent.current.equips.get(key);
 			yoff+=89;
-			$.add(Res.get(equip==null?BaseItem.getDefaultIcon():equip.getIcon())).appendTo(group4).setPosition(12f, yoff-80).setSize(73,70);
+			$.add(equip==null ? BaseItem.getDefaultIcon() : equip.getIcon()).appendTo(group4).setPosition(12f, yoff-80).setSize(73,70);
 			$.add(new Label(equip==null?"":equip.description,16).position(110, yoff-70).overflow(true).width(385)).appendTo(group4);
 			$.add(new Label(equip==null?"无装备":equip.name,30).width(385).align(equip!=null?Align.left:Align.center).position(110, yoff-(equip==null?60:48))).appendTo(group4);
 		}

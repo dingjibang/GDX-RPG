@@ -8,14 +8,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.Setting;
+import com.rpsg.rpg.object.base.Iconable;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.controller.ItemController;
 import com.rpsg.rpg.system.ui.Image;
 
-public class Buff implements Serializable{
+public class Buff implements Serializable, Iconable{
 	
 	private static final long serialVersionUID = 1L;
-	
 	public int id;
 	public String name;
 	public BuffType type = BuffType.buff;
@@ -25,7 +25,6 @@ public class Buff implements Serializable{
 	public static Image getDefaultIcon(){
 		return Res.get(Setting.IMAGE_ICONS + "b0.png");
 	}
-	
 	
 	public Image getIcon(){
 		return getIcon(id);
