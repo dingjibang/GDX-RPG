@@ -7,5 +7,11 @@
 			formula:"30%",
 			formulaType:"positive"
 		}
+	},
+	filter:{
+		onTurnBegin:"
+			var result = {flag: false, msg: 'negative~'};
+			result;
+		"
 	}
 }

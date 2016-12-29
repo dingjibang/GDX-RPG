@@ -2,6 +2,7 @@ package com.rpsg.rpg.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -33,6 +34,7 @@ import com.rpsg.rpg.object.rpg.Enemy;
 import com.rpsg.rpg.object.rpg.Hero;
 import com.rpsg.rpg.object.rpg.Selectable;
 import com.rpsg.rpg.object.rpg.Target;
+import com.rpsg.rpg.system.base.BattleFilter;
 import com.rpsg.rpg.system.base.Res;
 import com.rpsg.rpg.system.ui.Animations;
 import com.rpsg.rpg.system.ui.DefaultIView;
@@ -148,8 +150,16 @@ public class BattleView extends DefaultIView{
 		}
 		
 		//-------		拦截器：onTurnBegin
-		for(EffectBuff buff : target.getBuffList()){
-			
+		for(EffectBuff ebuff : target.getBuffList()){
+			if(ebuff.buff.filter != null && ebuff.buff.filter.onTurnBegin != null){
+				List<?> friend = obj instanceof Hero ? RPG.ctrl.hero.currentHeros() : enemyGroup.list();
+				List<?> enemies = obj instanceof Hero ? enemyGroup.list() : RPG.ctrl.hero.currentHeros();
+				Map<String, Object> result = BattleFilter.exec(ebuff.buff.filter.onTurnBegin, Item.Context.battle(target, null, friend, enemies));
+				if(result.containsKey("flag") && !(Boolean.valueOf(result.get("flag").toString()))){
+					TimeUtil.add(end, 1000);
+					return;
+				}
+			}
 			//		BattleFilter.exec(js, context)
 		}
 		//-------END	拦截器：onTurnBegin

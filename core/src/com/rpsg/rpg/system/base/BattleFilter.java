@@ -1,11 +1,13 @@
 package com.rpsg.rpg.system.base;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.NativeObject;
 import org.mozilla.javascript.ScriptableObject;
 
+import com.rpsg.rpg.core.RPG;
 import com.rpsg.rpg.object.base.items.BaseItem.Context;
 
 /**
@@ -26,11 +28,19 @@ public class BattleFilter {
 
 		NativeObject result = (NativeObject)jsctx.evaluateString(scope, js, null, 1, null);
 		
-		System.out.println(result);
+		Map<String, Object> map = new HashMap<>();
+		
+		Object[] ids = result.getAllIds();
+		for(Object obj : ids)
+			map.put(obj.toString(), result.get(obj));
 		
 		org.mozilla.javascript.Context.exit();
 		
-		return null;
+		if(map.containsKey("msg"))
+			RPG.battleMsg(map.get("msg").toString());
+		
+		
+		return map;
 		
 	}
 }

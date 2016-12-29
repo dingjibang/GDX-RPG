@@ -2,6 +2,11 @@ package com.rpsg.rpg.object.base;
 
 import com.badlogic.gdx.utils.JsonValue;
 
+/**
+ * GDX-RPG 自定义战斗拦截器
+ * @author dingjibang
+ *
+ */
 public class Filter {
 	public String 
 		onTurnBegin,
