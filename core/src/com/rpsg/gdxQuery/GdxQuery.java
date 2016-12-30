@@ -890,5 +890,15 @@ public class GdxQuery {
 				((ScrollPane) actor).setScrollY(top);
 		return this;
 	}
+
+	public GdxQuery color(String string) {
+		for(Actor actor : list())
+			actor.setColor(Color.valueOf(string));
+		return this;
+	}
+
+	public GdxQuery colorTo(String string, float d) {
+		return colorTo(Color.valueOf(string), d);
+	}
 	
 }

@@ -31,6 +31,8 @@ public class Views implements ApplicationListener {
 		Res.init();
 		//初始化上下文
 		RPG.init();
+		//创建UI工具
+		UI.init();
 		//创建全局画笔
 		batch = new SpriteBatch();
 		
@@ -41,7 +43,8 @@ public class Views implements ApplicationListener {
 
 
 	public void render() {
-		
+		currentView.act();
+		currentView.draw();
 	}
 	
 	/**

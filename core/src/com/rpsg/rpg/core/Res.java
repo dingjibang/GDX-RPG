@@ -2,8 +2,8 @@ package com.rpsg.rpg.core;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.rpsg.rpg.ui.AsyncLoadImage;
+import com.rpsg.rpg.ui.Image;
 
 /**
  * GDX-RPG 资源/缓存类
@@ -21,7 +21,7 @@ public class Res {
 	/**
 	 * 获取一张图片，它是异步加载的，如果需要同步加载，请调用getSync()
 	 */
-	public static Image get(String path){
+	public static AsyncLoadImage get(String path){
 		return new AsyncLoadImage(path);
 	}
 	
@@ -36,6 +36,8 @@ public class Res {
 	 * 立即获取一张纹理
 	 */
 	public static Texture getTexture(String path){
+		am.load(path, Texture.class);
+		while(!am.update());
 		return am.get(path, Texture.class);
 	}
 	

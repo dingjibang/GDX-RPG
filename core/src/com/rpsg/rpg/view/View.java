@@ -9,10 +9,12 @@ import com.rpsg.rpg.core.Views;
 /**
  *	GDX-RPG 视窗
  *	
- *	<p>View为游戏中视窗，受{@link Views}调度，用来显示游戏的画面，每个View中拥有一个{@link Stage stage}变量，Gameviews每帧将对当前View进行 logic()、draw() 操作用以画图</p>
+ *	<p>View为游戏中视窗，受{@link Views}调度，用来显示游戏的画面，每个View中拥有一个{@link Stage stage}变量，Gameviews每帧将对当前View进行 act()、draw() 操作用以画图</p>
  */
 public abstract class View implements InputProcessor{
 	public Stage stage;
+	/***/
+	public Runnable onCreated;
 	
 	/**
 	 * 每个View被创建后，第一次将调用create() 方法<br>
@@ -23,8 +25,8 @@ public abstract class View implements InputProcessor{
 	/**每帧被调用draw()方法*/
 	public abstract void draw();
 	
-	/**每帧被调用logic()方法，他将在draw()方法之前调用*/
-	public abstract void logic();
+	/**每帧被调用act()方法，他将在draw()方法之前调用*/
+	public abstract void act();
 	
 	/**
 	 * 当接收到输入（鼠标、键盘）时，被调用
