@@ -1,6 +1,5 @@
 package com.rpsg.rpg.ui;
 
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.TextureLoader.TextureParameter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
@@ -14,7 +13,6 @@ import com.rpsg.rpg.core.Res;
  * GDX-RPG 异步加载纹理类<br>
  * 启用另一个OpenGL线程来达到异步加载纹理的效果，在加载的过程中，当前的图片是无法读取宽/高度的。
  */
-@SuppressWarnings("rawtypes")
 public class AsyncLoadImage extends Image{
 	
 	private boolean loaded = false, loading = false;
@@ -52,8 +50,8 @@ public class AsyncLoadImage extends Image{
 	TextureParameter parameter = new TextureParameter();
 	{
 		/**当纹理加载完成后的回调*/
-		parameter.loadedCallback = (AssetManager assetManager, String fileName, Class type) -> {
-			setDrawable(new TextureRegionDrawable(new TextureRegion(assetManager.get(fileName))));
+		parameter.loadedCallback = (assetManager, fileName, type) -> {
+			setDrawable(new TextureRegionDrawable(new TextureRegion(assetManager.get(fileName, Texture.class))));
 			loaded = true;
 			init();
 		};

@@ -32,6 +32,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 /**
  * GDX-Query 
@@ -137,6 +138,12 @@ public class GdxQuery {
 	public GdxQuery origin (int alignment){
 		for(Actor actor:list())
 			actor.setOrigin(alignment);
+		return this;
+	}
+	
+	public GdxQuery origin (int x, int y){
+		for(Actor actor:list())
+			actor.setOrigin(x, y);
 		return this;
 	}
 	
@@ -899,6 +906,34 @@ public class GdxQuery {
 
 	public GdxQuery colorTo(String string, float d) {
 		return colorTo(Color.valueOf(string), d);
+	}
+
+	public GdxQuery center() {
+		for(Actor actor : list()){
+			actor.setOrigin(Align.center);
+			if(actor instanceof Image)
+				((Image)actor).setAlign(Align.center);
+			
+			actor.setX(actor.getX() - actor.getWidth() / 2);
+			actor.setY(actor.getY() - actor.getHeight() / 2);
+		}
+		return this;
+	}
+
+	public GdxQuery sizeBy(int i, int j) {
+		for(Actor actor : list())
+			actor.sizeBy(i, j);
+		return this;
+	}
+	
+	public GdxQuery sizeBy(int i) {
+		for(Actor actor : list())
+			actor.sizeBy(i);
+		return this;
+	}
+
+	public float scale() {
+		return get().getScaleX();
 	}
 	
 }

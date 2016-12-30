@@ -19,7 +19,7 @@ public class Res {
 	}
 	
 	/**
-	 * 获取一张图片，它是异步加载的，如果需要同步加载，请调用getSync()
+	 * 获取一张图片，它是异步加载的，如果需要同步加载，请调用{@link #sync(String path) sync}方法
 	 */
 	public static AsyncLoadImage get(String path){
 		return new AsyncLoadImage(path);
@@ -28,8 +28,15 @@ public class Res {
 	/**
 	 * 立即获取一张图片
 	 */
-	public static Image getSync(String path){
+	public static Image sync(String path){
 		return new Image(getTexture(path));
+	}
+	
+	/**
+	 * 更新资源管理器
+	 */
+	public static void act(){
+		am.update();
 	}
 	
 	/**
@@ -41,8 +48,7 @@ public class Res {
 		return am.get(path, Texture.class);
 	}
 	
-	/**卸载全部纹理
-	 * @return */
+	/**卸载全部纹理*/
 	public static void dispose(){
 		am.dispose();
 	}

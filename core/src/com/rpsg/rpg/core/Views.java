@@ -3,11 +3,10 @@ package com.rpsg.rpg.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import java8.util.Optional;
-
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.rpsg.rpg.util.Stream;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.view.LogoView;
 import com.rpsg.rpg.view.View;
 
@@ -18,12 +17,12 @@ import com.rpsg.rpg.view.View;
  */
 public class Views implements ApplicationListener {
 	
+	/**画笔*/
 	public static SpriteBatch batch;
-	
-	/**缓存已创建的view*/
+	/**当前所显示的view*/
 	static List<View> views = new ArrayList<>();
-	/**当前所显示的view**/
-	static View currentView = null;
+	/**输入监听器*/
+	static Input input;
 	
 	/**当游戏被创建*/
 	public void create() {
@@ -35,38 +34,41 @@ public class Views implements ApplicationListener {
 		UI.init();
 		//创建全局画笔
 		batch = new SpriteBatch();
+		//创建输入监听器
+		Gdx.input.setInputProcessor(input = new Input(views));
 		
 		//创建LOGO界面
-		setView(LogoView.class);
+		addView(LogoView.class);
 		
 	}
 
 
 	public void render() {
-		currentView.act();
-		currentView.draw();
-	}
-	
-	/**
-	 * 切换到某个{@link View}下
-	 */
-	public static void setView(Class<? extends View> clz){
-		Optional<View> view = Stream.of(views).filter(v -> v.getClass().equals(clz)).findAny();
-		if(view.isPresent()){
-			currentView = view.get();
-		}else{
-			try {
-				currentView = clz.newInstance();
-				currentView.create();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		//更新资源
+		Res.act();
+		
+		//查找views里是否有需要被删除的元素
+		$.removeIf(views, View::removeable);
+		
+		//依次遍历view
+		for(View view : views){
+			view.act();
+			view.draw();
 		}
 	}
 	
-	/**获取当前显示的{@link View}*/
-	public static View getView(){
-		return currentView;
+	/**
+	 * 增加一个{@link View}到控制器里
+	 */
+	public static void addView(Class<? extends View> clz){
+		try {
+			View view = clz.newInstance();
+			view.create();
+			
+			views.add(view);
+		} catch (InstantiationException | IllegalAccessException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void resize(int width, int height) {}

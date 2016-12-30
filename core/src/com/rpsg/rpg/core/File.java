@@ -27,7 +27,7 @@ public class File {
 	}
 	
 	/**
-	 * 从路径中读取对象<i>可能为null</i>
+	 * 从路径中读取对象<i>(可能为null)</i>
 	 */
 	public static Object load(String fileName) {
 		try {
