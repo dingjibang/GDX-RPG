@@ -17,8 +17,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Cell;
  */
 public class GdxCellQuery<T extends Actor>{
 
-	public static final Test FIRST_CHILD = cq -> cq.query.first().getItem() == cq.getActor();
-	public static final Test LAST_CHILD = cq -> cq.query.last().getItem() == cq.getActor();
+	public static final Test FIRST_CHILD = cq -> cq.query.first().get() == cq.getActor();
+	public static final Test LAST_CHILD = cq -> cq.query.last().get() == cq.getActor();
 	public static Test INDEX(int i) {
 		return cell -> cell.query.indexOf(cell.getActor()) == i;
 	}
@@ -142,7 +142,7 @@ public class GdxCellQuery<T extends Actor>{
 	
 	public List<GdxCellQuery<?>> others(){
 		List<GdxCellQuery<?>> list = new ArrayList<>();
-		query.getFather().eachCells(c -> {
+		query.father().eachCells(c -> {
 			if(c.getActor() != cell.getActor())
 				list.add(c);
 		});
