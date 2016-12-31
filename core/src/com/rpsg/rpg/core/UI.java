@@ -7,13 +7,13 @@ import com.rpsg.rpg.ui.Image;
  * GDX-RPG UI工具类
  */
 public class UI {
-	public static Texture empty;
+	public static Texture base;
 	
-	public static Image empty(){
-		return new Image(empty);
+	public static Image base(){
+		return new Image(base);
 	}
 	
 	public static void init(){
-		empty = Res.getTexture(Path.IMAGE_GLOBAL + "white.jpg");
+		base = Res.getTexture(Path.IMAGE_GLOBAL + "white.jpg");
 	}
 }

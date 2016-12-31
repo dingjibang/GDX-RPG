@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -15,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Log;
@@ -41,13 +43,13 @@ public class LogoView extends View{
 		stage = new Stage(new ScalingViewport(Scaling.stretch, Game.STAGE_WIDTH, Game.STAGE_HEIGHT, new OrthographicCamera()), Views.batch);
 		stages.add(Actions.run(() -> {
 			//bg
-			UI.empty().query().size(Game.STAGE_WIDTH, Game.STAGE_HEIGHT).fadeOut().colorTo("6892b5", .3f).zIndex(0).appendTo(group);
+			UI.base().query().size(Game.STAGE_WIDTH, Game.STAGE_HEIGHT).fadeOut().colorTo("2c2c2c", .3f).zIndex(0).appendTo(group);
 			
 			group.addAction(Actions.delay(.7f, Actions.run(() -> {
 				GdxQuery point = Res.sync(Path.IMAGE_LOGO + "p_1.png").query().appendTo(group).zIndex(2).position(Game.STAGE_WIDTH / 2, Game.STAGE_HEIGHT / 2);
 				
-				int pointsCount = 30;
-				float minScale = .2f;
+				int pointsCount = 80;
+				float minScale = .15f;
 				
 				point.center().scale(0).action(Actions.sequence(
 					Actions.scaleTo(minScale, minScale, .4f, Interpolation.bounceOut),
@@ -58,16 +60,19 @@ public class LogoView extends View{
 									Actions.repeat(2, Actions.sequence(Actions.fadeIn(.3f), Actions.alpha(0f, .1f)))
 							)
 					)
-				));
+				)).action(Actions.delay(1f, Actions.repeat(5, Actions.parallel(
+						Actions.sequence(Actions.rotateTo(-15f, .04f), Actions.rotateTo(15f, .04f), Actions.rotateTo(0f, .04f))
+				))));
 				Music.se(Path.MUSIC_SE + "se_1.mp3");
 				
-				group.addAction(Actions.delay(1.3f, Actions.run(() -> {
+				group.addAction(Actions.delay(1.5f, Actions.run(() -> {
 					for(int i = 0; i < pointsCount; i ++){
 						boolean left = MathUtils.randomBoolean(), top = MathUtils.randomBoolean();
 						int leftOffset = MathUtils.random(50, 300), topOffset = MathUtils.random(50, 200), size = MathUtils.random(10, 40);
-						float animated = (float)MathUtils.random(1000, 2000) / 1000f;
+						float animated = (float)MathUtils.random(1800, 2800) / 1000f;
+						int tex = MathUtils.random(1, 5);
 						
-						Res.get(Path.IMAGE_LOGO + "p_1.png").query().appendTo(group).zIndex(1)
+						Res.sync(Path.IMAGE_LOGO + "p_"+tex+".png").query().filter(TextureFilter.Nearest).appendTo(group).zIndex(1)
 						.position(left ? -leftOffset : Game.STAGE_WIDTH + leftOffset, top ? -topOffset : Game.STAGE_HEIGHT + topOffset)
 						.size(size, size)
 						.alpha(MathUtils.random(.2f, .9f))
@@ -75,14 +80,52 @@ public class LogoView extends View{
 						.action(Actions.sequence(
 									Actions.moveTo(Game.STAGE_WIDTH / 2, Game.STAGE_HEIGHT / 2, animated, Interpolation.pow2In),
 									Actions.run(() -> {
-										Log.i(point.scale());
-										point.scale(point.scale() + ((.8f - minScale) / ((float)pointsCount - 1f)));
-										Music.se(Path.MUSIC_SE + "item00.wav", .3f);
+										point.scale(point.scale() + ((0.6f - minScale) / ((float)pointsCount - 1f)));
 									}),
 									Actions.removeActor()
 								))
 						.action(Actions.delay(animated - .1f, Actions.fadeOut(.1f)));
 					}
+				})));
+				
+				group.addAction(Actions.delay(2f, Actions.run(() -> {
+					Music.se(Path.MUSIC_SE + "logo.mp3");
+				})));
+				
+				group.addAction(Actions.delay(4.8f, Actions.run(() -> point.action(Actions.scaleTo(1, 1, .3f, Interpolation.bounceOut)))));
+				group.addAction(Actions.delay(5.4f, Actions.run(() -> {
+					point.action(Actions.sequence(Actions.moveBy(-77, 0, .5f, Interpolation.pow2Out), Actions.delay(.7f), Actions.fadeOut(.3f)));
+					
+					group.addAction(Actions.delay(.7f, Actions.run(() -> {
+						
+						GdxQuery r = Res.sync(Path.IMAGE_LOGO + "r.png").query().zIndex(0).filter(TextureFilter.Nearest).position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).fadeOut().center()
+							.action(Actions.moveBy(-120, 0, .6f, Interpolation.pow3Out)).fadeIn(.2f).appendTo(group);
+						GdxQuery p = Res.sync(Path.IMAGE_LOGO + "p.png").query().zIndex(0).filter(TextureFilter.Nearest).position(Game.STAGE_WIDTH / 2 - 60, Game.STAGE_HEIGHT / 2).fadeOut().center()
+						.fadeIn(.5f).appendTo(group);
+						GdxQuery s = Res.sync(Path.IMAGE_LOGO + "s.png").query().zIndex(0).filter(TextureFilter.Nearest).position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).fadeOut().center()
+						.action(Actions.moveBy(150, 0, .6f, Interpolation.pow3Out)).fadeIn(.2f).appendTo(group);
+						GdxQuery g = Res.sync(Path.IMAGE_LOGO + "g.png").query().zIndex(0).filter(TextureFilter.Nearest).position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).fadeOut().center()
+						.action(Actions.moveBy(285, 0, .6f, Interpolation.pow3Out)).fadeIn(.2f).appendTo(group);
+						
+						GdxQuery logo = $.add(r, p, s, g);
+						
+						group.addAction(Actions.delay(1.6f, Actions.run(() -> {
+							Res.sync(Path.IMAGE_LOGO + "bottom.png").query().filter(TextureFilter.Nearest).fadeOut().position(Game.STAGE_WIDTH / 2, -100).center().action(Actions.fadeIn(.5f)).action(Actions.moveBy(0, 150, .5f, Interpolation.pow2Out)).appendTo(group);
+						})));
+						
+						point.zIndex(23333);
+						
+						group.addAction(Actions.delay(.3f, Actions.run(() -> {
+							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("d9bc64").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center().scale(0).action(Actions.scaleTo(30, 30, .8f, Interpolation.pow4In)).appendTo(group).zIndex(1);
+							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("22ac38").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center().scale(0).action(Actions.delay(.45f, Actions.scaleTo(30, 30, .8f, Interpolation.pow4In))).appendTo(group).zIndex(2);
+							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("d67ca0").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center().scale(0).action(Actions.delay(.9f, Actions.scaleTo(30, 30, .8f, Interpolation.pow4In))).appendTo(group).zIndex(3);
+							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("5ca3cb").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center().scale(0).action(Actions.delay(1.3f, Actions.scaleTo(30, 30, .8f, Interpolation.pow4In))).appendTo(group).zIndex(4);
+							logo.zIndex(233);
+							point.zIndex(666);
+						})));
+					})));
+					
+					
 				})));
 				
 			})));
@@ -91,15 +134,16 @@ public class LogoView extends View{
 		}));
 		
 		stages.add(Actions.run(() -> {
-			
-			UI.empty().query().size(Game.STAGE_WIDTH, Game.STAGE_HEIGHT).fadeOut().colorTo("4994b9", .3f).appendTo(group);
+			Res.get(Path.IMAGE_LOGO + "bg2.png").query().size(Game.STAGE_WIDTH, Game.STAGE_HEIGHT).fadeOut().fadeIn(.5f).appendTo(group);
+			Res.get(Path.IMAGE_LOGO + "hv.png").query().position(400, 50).fadeOut().action(Actions.delay(.5f, Actions.fadeIn(.5f))).appendTo(group);
+			group.addAction(Actions.delay(5, Actions.run(this::skip)));
 		}));
 //		
 		
 		stage.addActor(group = new Group());
 		
 		group.addAction(stages.get(currentStage));
-//		group.addAction(Actions.delay(6, Actions.run(this::skip)));
+		group.addAction(Actions.delay(11, Actions.run(this::skip)));
 
 		//当接受到任意按键或触屏时，跳过当前场景
 		stage.addListener(new InputListener(){
@@ -122,7 +166,7 @@ public class LogoView extends View{
 		
 		skiping = true;
 		
-		Image mask = UI.empty();
+		Image mask = UI.base();
 		
 		mask.query().fillParent().color(Color.BLACK).fadeOut().action(Actions.sequence(Actions.fadeIn(.5f), Actions.run(() -> {
 			//所有stages已经播放完毕

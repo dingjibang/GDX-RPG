@@ -9,6 +9,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -32,6 +33,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.Widget;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 /**
@@ -934,6 +936,19 @@ public class GdxQuery {
 
 	public float scale() {
 		return get().getScaleX();
+	}
+
+	public GdxQuery filter(TextureFilter filter) {
+		for(Actor actor : list())
+			if(actor instanceof Image)
+				((TextureRegionDrawable)((Image) actor).getDrawable()).getRegion().getTexture().setFilter(filter, filter);
+		return this;
+	}
+
+	public GdxQuery rotate(float f) {
+		for(Actor actor : list())
+			actor.setRotation(f);
+		return this;
 	}
 	
 }
