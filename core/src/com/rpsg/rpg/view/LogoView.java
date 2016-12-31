@@ -81,6 +81,7 @@ public class LogoView extends View{
 									Actions.moveTo(Game.STAGE_WIDTH / 2, Game.STAGE_HEIGHT / 2, animated, Interpolation.pow2In),
 									Actions.run(() -> {
 										point.scale(point.scale() + ((0.6f - minScale) / ((float)pointsCount - 1f)));
+										Music.se(Path.MUSIC_SE + "item00.wav");
 									}),
 									Actions.removeActor()
 								))
@@ -99,13 +100,13 @@ public class LogoView extends View{
 					group.addAction(Actions.delay(.7f, Actions.run(() -> {
 						
 						GdxQuery r = Res.sync(Path.IMAGE_LOGO + "r.png").query().zIndex(0).filter(TextureFilter.Nearest).position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).fadeOut().center()
-							.action(Actions.moveBy(-120, 0, .6f, Interpolation.pow3Out)).fadeIn(.2f).appendTo(group);
+							.action(Actions.moveBy(-120, 0, .8f, Interpolation.pow3Out)).fadeIn(.2f).appendTo(group);
 						GdxQuery p = Res.sync(Path.IMAGE_LOGO + "p.png").query().zIndex(0).filter(TextureFilter.Nearest).position(Game.STAGE_WIDTH / 2 - 60, Game.STAGE_HEIGHT / 2).fadeOut().center()
 						.fadeIn(.5f).appendTo(group);
 						GdxQuery s = Res.sync(Path.IMAGE_LOGO + "s.png").query().zIndex(0).filter(TextureFilter.Nearest).position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).fadeOut().center()
-						.action(Actions.moveBy(150, 0, .6f, Interpolation.pow3Out)).fadeIn(.2f).appendTo(group);
+						.action(Actions.moveBy(150, 0, .8f, Interpolation.pow3Out)).fadeIn(.2f).appendTo(group);
 						GdxQuery g = Res.sync(Path.IMAGE_LOGO + "g.png").query().zIndex(0).filter(TextureFilter.Nearest).position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).fadeOut().center()
-						.action(Actions.moveBy(285, 0, .6f, Interpolation.pow3Out)).fadeIn(.2f).appendTo(group);
+						.action(Actions.moveBy(285, 0, .8f, Interpolation.pow3Out)).fadeIn(.2f).appendTo(group);
 						
 						GdxQuery logo = $.add(r, p, s, g);
 						
