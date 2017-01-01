@@ -60,9 +60,9 @@ public class LogoView extends View{
 									Actions.repeat(2, Actions.sequence(Actions.fadeIn(.3f), Actions.alpha(0f, .1f)))
 							)
 					)
-				)).action(Actions.delay(1f, Actions.repeat(5, Actions.parallel(
-						Actions.sequence(Actions.rotateTo(-15f, .04f), Actions.rotateTo(15f, .04f), Actions.rotateTo(0f, .04f))
-				))));
+				)).action(Actions.delay(1f, Actions.repeat(5, 
+						Actions.sequence(Actions.rotateTo(-15f, .02f), Actions.rotateTo(0f, .02f), Actions.rotateTo(15f, .02f), Actions.rotateTo(0f, .02f))
+				)));
 				Music.se(Path.MUSIC_SE + "se_1.mp3");
 				
 				group.addAction(Actions.delay(1.5f, Actions.run(() -> {

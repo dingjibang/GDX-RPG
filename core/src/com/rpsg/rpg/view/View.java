@@ -9,11 +9,10 @@ import com.rpsg.rpg.core.Views;
 /**
  *	GDX-RPG 视窗
  *	
- *	<p>View为游戏中视窗，受{@link Views}调度，用来显示游戏的画面，每个View中拥有一个{@link Stage stage}变量，Gameviews每帧将对当前View进行 {@link #act()}、{@link #draw()} 操作用以画图</p>
+ *	<p>View为游戏中视窗，受{@link Views}调度，用来显示游戏的画面，每个View中拥有一个{@link View#stage stage}变量，{@link Views}每帧将对当前View进行 {@link #act()}、{@link #draw()} 操作用以画图</p>
  */
 public abstract class View implements InputProcessor{
 	public Stage stage;
-	
 	/**
 	 * 每个View被创建后，第一次将调用create() 方法<br>
 	 * 要注意的是，stage变量仍然是空的(null)，需要手动来实例化这个变量

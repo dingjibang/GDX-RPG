@@ -2,6 +2,8 @@ package com.rpsg.rpg.core;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.rpsg.rpg.ui.AsyncLoadImage;
 import com.rpsg.rpg.ui.Image;
 
@@ -16,10 +18,12 @@ public class Res {
 	/**初始化*/
 	public static void init(){
 		am = new AssetManager();
+		/**增加一个TiledMap Loader给管理器*/
+		am.setLoader(TiledMap.class, new TmxMapLoader());
 	}
 	
 	/**
-	 * 获取一张图片，它是异步加载的，如果需要同步加载，请调用{@link #sync(String path) sync}方法
+	 * 获取一张图片，它是异步加载的，如果需要同步加载，请调用{@link #sync(String) sync}方法
 	 */
 	public static AsyncLoadImage get(String path){
 		return new AsyncLoadImage(path);
@@ -35,8 +39,8 @@ public class Res {
 	/**
 	 * 更新资源管理器
 	 */
-	public static void act(){
-		am.update();
+	public static boolean act(){
+		return am.update();
 	}
 	
 	/**
