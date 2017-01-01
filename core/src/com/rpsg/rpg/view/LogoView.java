@@ -48,7 +48,7 @@ public class LogoView extends View{
 			group.addAction(Actions.delay(.7f, Actions.run(() -> {
 				GdxQuery point = Res.sync(Path.IMAGE_LOGO + "p_1.png").query().appendTo(group).zIndex(2).position(Game.STAGE_WIDTH / 2, Game.STAGE_HEIGHT / 2);
 				
-				int pointsCount = 80;
+				int pointsCount = 60;
 				float minScale = .15f;
 				
 				point.center().scale(0).action(Actions.sequence(
@@ -75,13 +75,13 @@ public class LogoView extends View{
 						Res.sync(Path.IMAGE_LOGO + "p_"+tex+".png").query().filter(TextureFilter.Nearest).appendTo(group).zIndex(1)
 						.position(left ? -leftOffset : Game.STAGE_WIDTH + leftOffset, top ? -topOffset : Game.STAGE_HEIGHT + topOffset)
 						.size(size, size)
-						.alpha(MathUtils.random(.2f, .9f))
+						.alpha(MathUtils.random(.2f, .5f))
 						.center()
 						.action(Actions.sequence(
-									Actions.moveTo(Game.STAGE_WIDTH / 2, Game.STAGE_HEIGHT / 2, animated, Interpolation.pow2In),
+									Actions.moveTo(Game.STAGE_WIDTH / 2 - size / 2, Game.STAGE_HEIGHT / 2 - size / 2, animated, Interpolation.pow2In),
 									Actions.run(() -> {
 										point.scale(point.scale() + ((0.6f - minScale) / ((float)pointsCount - 1f)));
-										Music.se(Path.MUSIC_SE + "item00.wav");
+//										Music.se(Path.MUSIC_SE + "item00.wav");
 									}),
 									Actions.removeActor()
 								))
@@ -118,9 +118,9 @@ public class LogoView extends View{
 						
 						group.addAction(Actions.delay(.3f, Actions.run(() -> {
 							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("d9bc64").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center().scale(0).action(Actions.scaleTo(30, 30, .8f, Interpolation.pow4In)).appendTo(group).zIndex(1);
-							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("22ac38").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center().scale(0).action(Actions.delay(.45f, Actions.scaleTo(30, 30, .8f, Interpolation.pow4In))).appendTo(group).zIndex(2);
-							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("d67ca0").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center().scale(0).action(Actions.delay(.9f, Actions.scaleTo(30, 30, .8f, Interpolation.pow4In))).appendTo(group).zIndex(3);
-							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("5ca3cb").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center().scale(0).action(Actions.delay(1.3f, Actions.scaleTo(30, 30, .8f, Interpolation.pow4In))).appendTo(group).zIndex(4);
+							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("22ac38").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center().scale(0).action(Actions.delay(.4f, Actions.scaleTo(30, 30, .8f, Interpolation.pow4In))).appendTo(group).zIndex(2);
+							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("d67ca0").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center().scale(0).action(Actions.delay(.8f, Actions.scaleTo(30, 30, .8f, Interpolation.pow4In))).appendTo(group).zIndex(3);
+							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("5ca3cb").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center().scale(0).action(Actions.delay(1.2f, Actions.scaleTo(30, 30, .8f, Interpolation.pow4In))).appendTo(group).zIndex(4);
 							logo.zIndex(233);
 							point.zIndex(666);
 						})));
