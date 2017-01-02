@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.view.LoadView;
@@ -24,6 +25,9 @@ public class Views implements ApplicationListener {
 	public static Input input;
 	/**当前所显示的view*/
 	public static List<View> views = new ArrayList<>();
+	/**缓存的view，将在下一帧加入到{@link #views}里*/
+	private static List<View> insertViews = new ArrayList<>();
+	
 	/**载入视图，当有资源被载入时，该视图将被绘制*/
 	public static LoadView loadView;
 	
@@ -32,7 +36,7 @@ public class Views implements ApplicationListener {
 		//创建资源管理器
 		Res.init();
 		//初始化上下文
-		RPG.init();
+		Game.init();
 		//创建UI工具
 		UI.init();
 		//创建全局画笔
@@ -50,10 +54,22 @@ public class Views implements ApplicationListener {
 
 
 	public void render() {
+		//设置OpenGL清屏颜色
+		Gdx.gl.glClearColor(0,0,0,1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
 		//查找views里是否有需要被删除的元素
 		$.removeIf(views, View::removeable);
 		
+		//如果insertViews有内容，则加入到views里
+		if(!insertViews.isEmpty()){
+			for(View view : insertViews)
+				views.add(0, view);
+			insertViews.clear();
+		}
+		
 		//依次遍历view
+		//创建views的快照进行遍历
 		for(View view : views){
 			view.act();
 			view.draw();
@@ -71,7 +87,7 @@ public class Views implements ApplicationListener {
 			View view = clz.newInstance();
 			view.create();
 			
-			views.add(view);
+			insertViews.add(0, view);
 		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}

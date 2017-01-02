@@ -25,4 +25,9 @@ public class Log {
 	public static void e(Object obj){
 		elogger.error(obj == null ? "[null]" : obj.toString());
 	}
+	
+	/**添加一条 <b>错误</b> 等级的日志*/
+	public static void e(Object obj, Throwable error){
+		elogger.error(obj == null ? "[null]" : obj.toString(), error);
+	}
 }

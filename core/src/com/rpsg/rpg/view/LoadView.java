@@ -59,4 +59,8 @@ public class LoadView extends View{
 		idList.remove(id);
 	}
 	
+	public boolean updated() {
+		return updated;
+	}
+	
 }

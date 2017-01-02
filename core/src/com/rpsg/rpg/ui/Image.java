@@ -3,9 +3,10 @@ package com.rpsg.rpg.ui;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxQuery;
-import com.rpsg.rpg.core.RPG;
+import com.rpsg.rpg.core.Game;
 
 /**
  * GDX-RPG 图片类
@@ -17,8 +18,15 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public Image (Texture texture){
 		super(texture);
-		if(RPG.setting.filter)
+		if(Game.setting.filter)
 			texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+	}
+	
+	public void setDrawable(Drawable drawable) {
+		super.setDrawable(drawable);
+		
+		if(Game.setting.filter && drawable instanceof TextureRegionDrawable)
+			((TextureRegionDrawable)drawable).getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
 	}
 	
 	public Image (Drawable drawable){

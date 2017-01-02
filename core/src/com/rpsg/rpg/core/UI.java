@@ -7,7 +7,7 @@ import com.rpsg.rpg.ui.Image;
  * GDX-RPG UI工具类
  */
 public class UI {
-	public static Texture base;
+	private static Texture base;
 	
 	public static Image base(){
 		return new Image(base);

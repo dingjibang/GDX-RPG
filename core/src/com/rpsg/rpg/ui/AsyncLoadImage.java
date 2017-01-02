@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.rpsg.rpg.core.RPG;
+import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Res;
 
 /**
@@ -29,7 +29,7 @@ public class AsyncLoadImage extends Image{
 	 */
 	private void init(){
 		/**如果开启纹理过滤，则设置*/
-		if(RPG.setting.filter)
+		if(Game.setting.filter)
 			((TextureRegionDrawable)getDrawable()).getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		
 		/**重置自身大小*/
@@ -64,7 +64,7 @@ public class AsyncLoadImage extends Image{
 		
 		loading = true;
 		
-		Res.am.load(texturePath, Texture.class, parameter);
+		Res.assetManager.load(texturePath, Texture.class, parameter);
 	}
 	
 	/**是否加载完成*/

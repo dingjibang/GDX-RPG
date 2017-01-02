@@ -13,13 +13,13 @@ import com.rpsg.rpg.ui.Image;
 public class Res {
 	
 	/**资源管理线程*/
-	public static AssetManager am;
+	public static AssetManager assetManager;
 	
 	/**初始化*/
 	public static void init(){
-		am = new AssetManager();
+		assetManager = new AssetManager();
 		/**增加一个TiledMap Loader给管理器*/
-		am.setLoader(TiledMap.class, new TmxMapLoader());
+		assetManager.setLoader(TiledMap.class, new TmxMapLoader());
 	}
 	
 	/**
@@ -40,21 +40,21 @@ public class Res {
 	 * 更新资源管理器
 	 */
 	public static boolean act(){
-		return am.update();
+		return assetManager.update();
 	}
 	
 	/**
 	 * 立即获取一张纹理
 	 */
 	public static Texture getTexture(String path){
-		am.load(path, Texture.class);
-		while(!am.update());
-		return am.get(path, Texture.class);
+		assetManager.load(path, Texture.class);
+		while(!assetManager.update());
+		return assetManager.get(path, Texture.class);
 	}
 	
 	/**卸载全部纹理*/
 	public static void dispose(){
-		am.dispose();
+		assetManager.dispose();
 	}
 	
 }

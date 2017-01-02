@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
@@ -12,14 +11,10 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.utils.Scaling;
-import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Game;
-import com.rpsg.rpg.core.Log;
 import com.rpsg.rpg.core.Music;
 import com.rpsg.rpg.core.Path;
 import com.rpsg.rpg.core.Res;
@@ -40,10 +35,10 @@ public class LogoView extends View{
 	Group group;
 	
 	public void create() {
-		stage = new Stage(new ScalingViewport(Scaling.stretch, Game.STAGE_WIDTH, Game.STAGE_HEIGHT, new OrthographicCamera()), Views.batch);
+		stage = Game.stage();
 		stages.add(Actions.run(() -> {
 			//bg
-			UI.base().query().size(Game.STAGE_WIDTH, Game.STAGE_HEIGHT).fadeOut().colorTo("2c2c2c", .3f).zIndex(0).appendTo(group);
+			UI.base().query().size(Game.STAGE_WIDTH, Game.STAGE_HEIGHT).color("2c2c2c").zIndex(0).appendTo(group);
 			
 			group.addAction(Actions.delay(.7f, Actions.run(() -> {
 				GdxQuery point = Res.sync(Path.IMAGE_LOGO + "p_1.png").query().appendTo(group).zIndex(2).position(Game.STAGE_WIDTH / 2, Game.STAGE_HEIGHT / 2);
@@ -172,8 +167,8 @@ public class LogoView extends View{
 		mask.query().fillParent().color(Color.BLACK).fadeOut().action(Actions.sequence(Actions.fadeIn(.5f), Actions.run(() -> {
 			//所有stages已经播放完毕
 			if(currentStage + 1 == stages.size()){
-				//callback
-				Log.i("done");
+				Views.addView(TitleView.class);
+				remove();
 				return;
 			}
 			
