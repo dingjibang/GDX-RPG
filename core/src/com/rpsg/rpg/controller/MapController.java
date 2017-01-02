@@ -73,8 +73,8 @@ public class MapController {
 	/**
 	 * 画图<br>
 	 * 画图将从最下层画到最顶层，并且如果有精灵的话，则在画图中穿插相应图层的精灵，精灵是在当前层之上画出的<br>
-	 * 穿插的精灵来自{@link Stage}里的
-	 * 画图时，{@link　#render}将使用自己的画笔（{@link com.badlogic.gdx.graphics.g2d.SpriteCache SpriteCache}）进行画图，可能会导致画图异常（比如画不出其他的精灵）。 
+	 * 穿插的精灵来自{@link Stage}里的<br>
+	 * 画图时，{@link #render}将使用自己的画笔（{@link com.badlogic.gdx.graphics.g2d.SpriteCache SpriteCache}）进行画图，可能会导致画图异常（比如画不出其他的精灵）。 
 	 */
 	public void draw(Stage stage) {
 		OrthographicCamera camera = (OrthographicCamera) stage.getCamera();

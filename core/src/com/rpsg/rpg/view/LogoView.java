@@ -50,7 +50,7 @@ public class LogoView extends View{
 					Actions.scaleTo(minScale, minScale, .4f, Interpolation.bounceOut),
 					Actions.delay(.3f),
 					Actions.run(() -> 
-						Res.get(Path.IMAGE_LOGO + "t0.png").query().appendTo(group).zIndex(3)
+						Res.sync(Path.IMAGE_LOGO + "t0.png").query().appendTo(group).zIndex(3)
 							.position(Game.STAGE_WIDTH / 2 + 10, Game.STAGE_HEIGHT / 2 + 10).fadeOut().action(
 									Actions.repeat(2, Actions.sequence(Actions.fadeIn(.3f), Actions.alpha(0f, .1f)))
 							)
@@ -177,8 +177,6 @@ public class LogoView extends View{
 			group.clear();
 			
 			group.addAction(stages.get(++currentStage));
-			group.addAction(Actions.delay(6, Actions.run(this::onInput)));
-			
 			mask.addAction(Actions.sequence(Actions.fadeOut(.5f), Actions.removeActor()));
 			
 		}))).appendTo(stage);
