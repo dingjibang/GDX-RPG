@@ -42,7 +42,5 @@ public class ScriptController {
 		
 		//act当前所有脚本
 		$.each(scripts, Script::act);
-		
-		
 	}
 }

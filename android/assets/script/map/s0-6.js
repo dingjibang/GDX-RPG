@@ -1,9 +1,0 @@
-eval(""+load('global.js'));
-setKeyLocker(true);
-showMSG(MsgType.莲子);
-say("这上面写着“博丽”，不过以前似乎从来没听过有叫博丽的神社","莲子");
-showMSG(MsgType.梅莉);
-say("而且也不知道神社里到底供奉着什么，好可疑","梅莉");
-hideMSG();
-setKeyLocker(false);
-end();

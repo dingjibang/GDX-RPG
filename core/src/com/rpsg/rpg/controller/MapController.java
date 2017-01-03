@@ -14,10 +14,14 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.rpsg.rpg.core.File;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Path;
 import com.rpsg.rpg.core.Res;
+import com.rpsg.rpg.object.map.CollideType;
 import com.rpsg.rpg.object.map.MapSprite;
+import com.rpsg.rpg.object.map.NPC;
+import com.rpsg.rpg.util.Timer;
 
 /**
  * 游戏地图（{@link com.badlogic.gdx.maps.tiled.TiledMap TiledMap}）控制器
@@ -93,9 +97,13 @@ public class MapController {
 			//从存档中读取玩家坐标点 TODO
 			
 			
+			//创建脚本管理器
+			script = new ScriptController();
+			
 			//回调回调（←233）
 			if(loaded != null)
 				loaded.run();
+			
 		};
 		
 		//开始加载
@@ -106,7 +114,18 @@ public class MapController {
 	 * 从map里读取并加载精灵
 	 */
 	public List<MapSprite> loadSprites() {
-		return new ArrayList<>();
+		//测试用的代码
+		List<MapSprite> list = new ArrayList<>();
+		//创建一个NPC
+		NPC npc = new NPC();
+		//给这个NPC加上一条碰撞脚本
+		npc.scripts.put(CollideType.face, File.readString(Path.SCRIPT_MAP + "mytest.js"));
+		//3秒之后执行一个假碰撞
+		Timer.add(180, () -> script.add(npc, CollideType.face));
+		
+		
+		//end 测试用的代码
+		return list;
 	}
 
 	/**

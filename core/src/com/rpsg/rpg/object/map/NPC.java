@@ -1,5 +1,6 @@
 package com.rpsg.rpg.object.map;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -11,5 +12,5 @@ public class NPC extends MapSprite{
 	private static final long serialVersionUID = 1L;
 	
 	/**该NPC所挂载的脚本*/
-	public Map<CollideType, String> scripts;
+	public Map<CollideType, String> scripts = new HashMap<>();
 }

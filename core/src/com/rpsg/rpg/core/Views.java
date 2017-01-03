@@ -8,6 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.rpg.util.Timer;
 import com.rpsg.rpg.view.LoadView;
 import com.rpsg.rpg.view.LogoView;
 import com.rpsg.rpg.view.View;
@@ -67,6 +68,9 @@ public class Views implements ApplicationListener {
 				views.add(0, view);
 			insertViews.clear();
 		}
+		
+		//延时运行工具
+		Timer.act();
 		
 		//依次遍历view
 		//创建views的快照进行遍历
