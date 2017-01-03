@@ -40,6 +40,8 @@ public class GameView extends View{
 		if(inited && renderable){
 			//画地图
 			Game.map.draw(stage.getBatch());
+			//画UI
+			stage.draw();
 		}
 	}
 
@@ -49,6 +51,7 @@ public class GameView extends View{
 			inited = Views.loadView.updated();
 		}else{
 			stage.act();
+			Game.map.act();
 			//TODO
 		}
 	}

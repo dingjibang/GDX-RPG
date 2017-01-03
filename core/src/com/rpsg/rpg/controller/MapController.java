@@ -32,10 +32,18 @@ public class MapController {
 	OrthographicCamera camera;
 	
 	/**当执行{@link #load(String, Runnable)}之前，将先调用一次，以执行一些清理工作*/
-	Runnable beforeLoad, loaded;
+	Runnable beforeLoad;
+	/**当执行{@link #load(String, Runnable)}之后，调用*/
+	Runnable loaded;
 	
 	/**当前地图上所有的精灵*/
 	public List<MapSprite> mapSprites = new ArrayList<>();
+	
+	/**脚本管理器*/
+	public ScriptController script;
+	
+	
+	
 	
 	public void setBeforeLoad(Runnable beforeLoad) {
 		this.beforeLoad = beforeLoad;
@@ -44,7 +52,6 @@ public class MapController {
 	public void setLoaded(Runnable loaded) {
 		this.loaded = loaded;
 	}
-	
 	
 	/**
 	 * 从硬盘中加载一张{@link TiledMap}地图
@@ -164,5 +171,10 @@ public class MapController {
 	/**获取当前的地图*/
 	public TiledMap map() {
 		return map;
+	}
+	
+	/**每帧被执行*/
+	public void act() {
+		script.act();
 	}
 }

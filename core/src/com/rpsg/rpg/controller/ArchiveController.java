@@ -36,7 +36,7 @@ public class ArchiveController {
 		
 		ach = (Archive)obj;
 		
-		//没有游戏视图，创建一个
+		//没有游戏视图，创建一个（从游戏外菜单的读档界面进来的），否则让地图控制器重新读地图（从游戏内菜单的进来的）
 		if(Game.map == null)
 			Views.addView(GameView.class);
 		else

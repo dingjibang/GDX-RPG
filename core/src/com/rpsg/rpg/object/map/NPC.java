@@ -10,7 +10,6 @@ import java.util.Map;
 public class NPC extends MapSprite{
 	private static final long serialVersionUID = 1L;
 	
-	/**从{@link com.rpsg.rpg.controller.MapController#load(String, boolean, com.rpsg.gdxQuery.CustomRunnable) 地图}中读取到的脚本，
-	 * 或从{@link com.rpsg.rpg.object.game.Archive#mapSprites 存档}中读取的*/
+	/**该NPC所挂载的脚本*/
 	public Map<CollideType, String> scripts;
 }

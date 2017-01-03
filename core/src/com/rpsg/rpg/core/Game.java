@@ -48,6 +48,7 @@ public class Game {
 				scope.setPrototype(((NativeJavaObject)Context.javaToJS(prototype, scope)));
 			
 			Object obj = ctx.evaluateString(scope, js, null, 1, null);
+			
 			Context.exit();
 			return obj;
 			
