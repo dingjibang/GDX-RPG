@@ -1,5 +1,6 @@
 package com.rpsg.rpg.view;
 
+import com.rpsg.rpg.controller.MapController;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Views;
 
@@ -12,31 +13,33 @@ public class GameView extends View{
 	boolean renderable = true;
 	/**是否加载完成的，当资源加载完成后，将执行一个回调，该变量变为true*/
 	boolean inited = false;
-
+	
 	public void create() {
 		stage = Game.stage();
-		loadResource();
-	}
-	
-	/**
-	 * 加载游戏资源（如地图），和{@link #create()}不同，可以多次被调用
-	 */
-	public void loadResource() {
-		//恢复到什么也没加载的状态
-		inited = false;
-		renderable = true;
-		stage.clear();
 		
-		//加载地图资源
-		Game.map.load(Game.archive.get().mapName, true, map -> {
+		Game.map = new MapController();
+		
+		//当加载地图之前
+		Game.map.setBeforeLoad(() -> {
+			//恢复到什么也没加载的状态
+			inited = false;
+			renderable = true;
+			stage.clear();
+		});
+		
+		//当加载地图之后
+		Game.map.setLoaded(() -> {
 			inited = true;
 		});
+		
+		//载入地图
+		Game.map.load(Game.archive.get().mapName);
 	}
-
+	
 	public void draw() {
 		if(inited && renderable){
 			//画地图
-			Game.map.draw(stage);
+			Game.map.draw(stage.getBatch());
 		}
 	}
 
@@ -48,6 +51,13 @@ public class GameView extends View{
 			stage.act();
 			//TODO
 		}
+	}
+	
+	public void onRemove() {
+		//当视窗被移除时，代表已经不玩游戏了，将存档卸载
+		Game.archive.clear();
+		//将地图控制器卸载
+		Game.map = null;
 	}
 
 }

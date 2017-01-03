@@ -1,9 +1,12 @@
 package com.rpsg.rpg.controller;
 
+import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.rpsg.rpg.core.File;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Path;
+import com.rpsg.rpg.core.Views;
 import com.rpsg.rpg.object.game.Archive;
+import com.rpsg.rpg.view.GameView;
 
 /**
  * 游戏档案管理器
@@ -32,12 +35,31 @@ public class ArchiveController {
 			return;
 		
 		ach = (Archive)obj;
+		
+		//没有游戏视图，创建一个
+		if(Game.map == null)
+			Views.addView(GameView.class);
+		else
+			Game.map.load(ach.mapName);
 	}
 	
 	/**
 	 * 存档
 	 */
 	public void save(int id) {
+		if(Game.map == null)
+			throw new GdxRuntimeException("must in the game when save archive");
+		
+		ach.setMapSprites(Game.map.mapSprites);
+		
 		File.save(ach, Path.SAVE + id + ".sav");
 	}
+	
+	/**
+	 * 清空存档
+	 */
+	public void clear() {
+		ach = null;
+	}
+	
 }

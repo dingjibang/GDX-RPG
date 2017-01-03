@@ -14,10 +14,9 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.rpsg.gdxQuery.CustomRunnable;
+import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Path;
 import com.rpsg.rpg.core.Res;
-import com.rpsg.rpg.object.game.Archive;
 import com.rpsg.rpg.object.map.MapSprite;
 
 /**
@@ -29,14 +28,33 @@ public class MapController {
 	TiledMap map;
 	/**渲染器*/
 	OrthoCachedTiledMapRenderer render;
+	/**相机*/
+	OrthographicCamera camera;
+	
+	/**当执行{@link #load(String, Runnable)}之前，将先调用一次，以执行一些清理工作*/
+	Runnable beforeLoad, loaded;
+	
+	/**当前地图上所有的精灵*/
+	public List<MapSprite> mapSprites = new ArrayList<>();
+	
+	public void setBeforeLoad(Runnable beforeLoad) {
+		this.beforeLoad = beforeLoad;
+	}
+	
+	public void setLoaded(Runnable loaded) {
+		this.loaded = loaded;
+	}
+	
 	
 	/**
 	 * 从硬盘中加载一张{@link TiledMap}地图
 	 * @param path 地图路径
 	 * @param loadedCallback 完成后的回调
-	 * @param andLoadSprites 是否加载完成后，把地图里的精灵也读出来，在新存档/进入到下一个地图时候，精灵是被重新加载的，当读档时候，精灵是不读取的，而是直接从{@link Archive#mapSprites} 里读取
 	 */
-	public void load(String path, boolean andLoadSprites, CustomRunnable<TiledMap> loadedCallback) {
+	public void load(String path) {
+		if(beforeLoad != null)
+			beforeLoad.run();
+		
 		Parameters param = new Parameters();
 		
 		//使用Nearest过滤纹理，防止游戏窗口放大时，地图的每个小块中间出现缝隙
@@ -50,24 +68,38 @@ public class MapController {
 			if(render != null)
 				render.dispose();
 			
+			//创建地图画笔
 			render = new OrthoCachedTiledMapRenderer(map);
 			render.setBlending(true);
 			
+			//创建相机
+			camera = new OrthographicCamera(Game.STAGE_WIDTH, Game.STAGE_HEIGHT);
 			
-			if(andLoadSprites)
-				loadSprites();
+			//清空以前的地图精灵
+			this.mapSprites.clear();
+			
+			//如果archiveMapSprites是null的话，表示从地图里载入精灵，否则从存档里载入精灵
+			List<MapSprite> archiveMapSprites = Game.archive.get().getMapSprites();
+			//依次把精灵（们）加入到舞台
+			this.mapSprites.addAll(archiveMapSprites == null ? loadSprites() : archiveMapSprites);
+			
+			//从存档中读取玩家坐标点 TODO
+			
 			
 			//回调回调（←233）
-			loadedCallback.run(map);
+			if(loaded != null)
+				loaded.run();
 		};
+		
+		//开始加载
 		Res.assetManager.load(Path.MAP + path, TiledMap.class, param);
 	}
 	
 	/**
 	 * 从map里读取并加载精灵
 	 */
-	private void loadSprites() {
-		
+	public List<MapSprite> loadSprites() {
+		return new ArrayList<>();
 	}
 
 	/**
@@ -76,8 +108,7 @@ public class MapController {
 	 * 穿插的精灵来自{@link Stage}里的<br>
 	 * 画图时，{@link #render}将使用自己的画笔（{@link com.badlogic.gdx.graphics.g2d.SpriteCache SpriteCache}）进行画图，可能会导致画图异常（比如画不出其他的精灵）。 
 	 */
-	public void draw(Stage stage) {
-		OrthographicCamera camera = (OrthographicCamera) stage.getCamera();
+	public void draw(Batch batch) {
 		//缓存原相机坐标点
 		Vector3 originPosition = camera.position.cpy();
 		
@@ -91,8 +122,6 @@ public class MapController {
 	
 		//获取所有有效层
 		int layersCount = map.getLayers().getCount();
-		
-		Batch batch = stage.getBatch();
 		
 		int skip = 0;
 		//开始从最下层往上画
@@ -114,14 +143,14 @@ public class MapController {
 			
 			List<Actor> drawList = new ArrayList<>();
 			//遍历stage里所有的当前ZIndex的MapSprite并画出
-			for(Actor actor : stage.getRoot().getChildren())
-				if(actor.getZIndex() == i - skip && actor instanceof MapSprite)
-					drawList.add(actor);
+			for(MapSprite mapSprite : mapSprites)
+				if(mapSprite.getZIndex() == i - skip)
+					drawList.add(mapSprite);
 			
 			if(!drawList.isEmpty()){
 				batch.begin();
 				for(Actor sprite : drawList)
-					sprite.draw(batch, stage.getRoot().getColor().a);
+					sprite.draw(batch, 1);
 				batch.end();
 			}
 		}

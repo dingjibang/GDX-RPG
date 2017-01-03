@@ -4,8 +4,8 @@ import org.mozilla.javascript.Context;
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptableObject;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Application.ApplicationType;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
@@ -23,14 +23,13 @@ public class Game {
 	public static Setting setting;
 	/**存档*/
 	public static ArchiveController archive;
-	/**地图*/
+	/**地图，当GameView创建时该类被创建*/
 	public static MapController map;
 	
 	/**初始化*/
 	public static void init(){
 		setting = Setting.create();
 		archive = new ArchiveController();
-		map = new MapController();
 	}
 	
 	/**运行一段JS脚本, 可以传入一个变量来当做当前脚本的prototype*/
