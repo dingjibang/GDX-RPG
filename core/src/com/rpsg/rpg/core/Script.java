@@ -30,9 +30,9 @@ public class Script extends Thread{
 	
 	/**线程启动*/
 	public void run() {
-		setName("GDX-RPG Script[" + npc + " & " + collideType + " ]");
+		setName("============GDX-RPG Script[" + npc + " & " + collideType + "]============");
 		//执行JS脚本，将上下文（ScriptContext）作为该脚本的prototype
-		Game.executeJS(js, context = new ScriptContext(this));
+		Game.executeJS("(function(){"+js+"}())", context = new ScriptContext(this));
 		
 		//执行完毕了，可以被ScriptController移除了
 		executed = true;
