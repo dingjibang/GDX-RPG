@@ -1,5 +1,6 @@
 package com.rpsg.rpg.core;
 
+import com.rpsg.rpg.controller.ScriptController;
 import com.rpsg.rpg.object.game.ScriptContext;
 import com.rpsg.rpg.object.game.ScriptExecutor;
 import com.rpsg.rpg.object.map.CollideType;
@@ -54,10 +55,18 @@ public class Script extends Thread{
 	 *  在这期间，当前脚本线程将自我{@link Thread#sleep(long) 睡眠}以达到暂停脚本运行的效果，直到{@link ScriptExecutor#isExecuted()}返回true则代表执行完毕，然后线程取消睡眠，继续执行接下来的js脚本。
 	 * */
 	public void act() {
-		if(currentExecutor != null && currentExecutor.needsCreate())
+		//create 异步脚本
+		if(currentExecutor != null && currentExecutor.needsCreate()){
 			currentExecutor.superCreate();
-		else if(currentExecutor != null && !currentExecutor.isExecuted())
+		//act 异步脚本
+		}else if(currentExecutor != null && !currentExecutor.isExecuted()){
 			currentExecutor.act();
+		//销毁 异步脚本
+		}else if(currentExecutor != null && currentExecutor.isExecuted()){
+			synchronized (this) {
+				this.notifyAll();
+			}
+		}
 	}
 	
 	/**
@@ -67,13 +76,14 @@ public class Script extends Thread{
 		//设置当前执行器
 		currentExecutor = executor;
 		
-		//开始无限循环等待执行器执行结束
-		while(!currentExecutor.isExecuted())
-			try {
-				Thread.sleep(1);//睡1s， TODO 该数值可以改大一些来达到节省资源效果（真的会节省吗？
-			} catch (Exception e) {
-				e.printStackTrace();
+		try {
+			//冻结线程
+			synchronized (this) {
+				wait();
 			}
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		
 		//获取返回对象（如果有）
 		Object obj = currentExecutor.returnObject();

@@ -2,8 +2,8 @@
  * 测试用脚本
  */
 print("开始执行脚本=====")
-sleepTest(180);
-print("test");
+var result = sleepTest(180);
+print("test" + result);
 if(1 == 1)
 	return;
 
