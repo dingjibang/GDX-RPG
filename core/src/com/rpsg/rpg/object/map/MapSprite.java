@@ -17,13 +17,28 @@ public class MapSprite extends Actor implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	/**所在Z层*/
-	public int zIndex;
-	
+	private int zIndex;
+	private int speed;
+
 	public int getZIndex() {
 		return zIndex;
 	}
 	
 	public void setZIndex(int index) {
 		this.zIndex = index;
+	}
+	
+	public int getSpeed() {
+		return speed;
+	}
+
+	public MapSprite(int zIndex, int speed) {
+		super();
+		this.zIndex = zIndex;
+		this.speed = speed;
+	}
+
+	public void setSpeed(int speed) { // 只能是48的约数（1，2，3，4，6，8，12，16，24，48）
+		this.speed = speed;
 	}
 }
