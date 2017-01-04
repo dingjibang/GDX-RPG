@@ -12,7 +12,6 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader.Parameters;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.core.File;
 import com.rpsg.rpg.core.Game;
@@ -167,7 +166,7 @@ public class MapController {
 			 * 留给草刺猬爷爷：可能你第一个遇到的坑是各种坐标系问题=。= 研究一下以熟悉gdx吧
 			 */
 			
-			List<Actor> drawList = new ArrayList<>();
+			List<MapSprite> drawList = new ArrayList<>();
 			//遍历stage里所有的当前ZIndex的MapSprite并画出
 			for(MapSprite mapSprite : mapSprites)
 				if(mapSprite.getZIndex() == i - skip)
@@ -175,8 +174,8 @@ public class MapController {
 			
 			if(!drawList.isEmpty()){
 				batch.begin();
-				for(Actor sprite : drawList)
-					sprite.draw(batch, 1);
+				for(MapSprite sprite : drawList)
+					sprite.draw(batch);
 				batch.end();
 			}
 		}
