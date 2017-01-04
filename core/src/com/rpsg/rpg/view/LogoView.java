@@ -15,7 +15,8 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Game;
-import com.rpsg.rpg.core.Music;
+import com.rpsg.rpg.core.Sound;
+import com.rpsg.rpg.core.Sound.SEManager;
 import com.rpsg.rpg.core.Path;
 import com.rpsg.rpg.core.Res;
 import com.rpsg.rpg.core.UI;
@@ -34,8 +35,11 @@ public class LogoView extends View{
 	int currentStage = 0;
 	Group group;
 	
+	SEManager seManager = new SEManager();
+	
 	public void create() {
 		stage = Game.stage();
+		
 		stages.add(Actions.run(() -> {
 			//bg
 			UI.base().query().size(Game.STAGE_WIDTH, Game.STAGE_HEIGHT).color("2c2c2c").zIndex(0).appendTo(group);
@@ -58,7 +62,7 @@ public class LogoView extends View{
 				)).action(Actions.delay(1f, Actions.repeat(5, 
 						Actions.sequence(Actions.rotateTo(-15f, .02f), Actions.rotateTo(0f, .02f), Actions.rotateTo(15f, .02f), Actions.rotateTo(0f, .02f))
 				)));
-				Music.se(Path.MUSIC_SE + "se_1.mp3");
+				seManager.play(Path.MUSIC_SE + "se_1.mp3");
 				
 				group.addAction(Actions.delay(1.5f, Actions.run(() -> {
 					for(int i = 0; i < pointsCount; i ++){
@@ -76,7 +80,7 @@ public class LogoView extends View{
 									Actions.moveTo(Game.STAGE_WIDTH / 2 - size / 2, Game.STAGE_HEIGHT / 2 - size / 2, animated, Interpolation.pow2In),
 									Actions.run(() -> {
 										point.scale(point.scale() + ((0.6f - minScale) / ((float)pointsCount - 1f)));
-//										Music.se(Path.MUSIC_SE + "item00.wav");
+//										Sound.se(Path.MUSIC_SE + "item00.wav");
 									}),
 									Actions.removeActor()
 								))
@@ -85,7 +89,7 @@ public class LogoView extends View{
 				})));
 				
 				group.addAction(Actions.delay(2f, Actions.run(() -> {
-					Music.se(Path.MUSIC_SE + "logo.mp3");
+					seManager.play(Path.MUSIC_SE + "logo.mp3");
 				})));
 				
 				group.addAction(Actions.delay(4.8f, Actions.run(() -> point.action(Actions.scaleTo(1, 1, .3f, Interpolation.bounceOut)))));
@@ -161,6 +165,8 @@ public class LogoView extends View{
 			return;
 		
 		skiping = true;
+		
+		seManager.stop();
 		
 		Image mask = UI.base();
 		
