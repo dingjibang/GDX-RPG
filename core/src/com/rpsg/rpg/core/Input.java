@@ -3,7 +3,7 @@ package com.rpsg.rpg.core;
 import java.util.List;
 
 import com.badlogic.gdx.InputProcessor;
-import com.rpsg.rpg.view.View;
+import com.rpsg.rpg.ui.view.View;
 
 /**
  * GDX-RPG 输入管理器

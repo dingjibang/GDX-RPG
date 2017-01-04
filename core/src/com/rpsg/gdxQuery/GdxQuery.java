@@ -819,6 +819,12 @@ public class GdxQuery {
 		return this;
 	}
 	
+	public GdxQuery disableTouch() {
+		for(Actor actor:list())
+			actor.setTouchable(null);
+		return this;
+	}
+	
 	public boolean checked(){
 		if(get() instanceof Button)
 			return ((Button)get()).isChecked();

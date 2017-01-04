@@ -2,16 +2,18 @@ package com.rpsg.rpg.core;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.rpg.ui.view.ParameterizableView;
+import com.rpsg.rpg.ui.view.View;
 import com.rpsg.rpg.util.Timer;
 import com.rpsg.rpg.view.LoadView;
 import com.rpsg.rpg.view.LogoView;
-import com.rpsg.rpg.view.View;
 
 /**
  * GDX-RPG 游戏入口
@@ -83,18 +85,27 @@ public class Views implements ApplicationListener {
 		loadView.draw();
 	}
 	
-	/**
-	 * 增加一个{@link View}到控制器里
-	 */
-	public static void addView(Class<? extends View> clz){
+	public static <T extends View> T addView(Class<T> clz) {
+		return addView(clz, null);
+	}
+	/**增加一个{@link View}到控制器里*/
+	public static <T extends View> T addView(Class<T> clz, Map<String, Object> param){
 		try {
-			View view = clz.newInstance();
+			T view = null;
+			if(view instanceof ParameterizableView)
+				view = clz.getDeclaredConstructor(Map.class).newInstance(param);
+			else
+				view = clz.newInstance();
+			
 			view.create();
 			
 			insertViews.add(0, view);
-		} catch (InstantiationException | IllegalAccessException e) {
+			
+			return view;
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 	
 	public void resize(int width, int height) {}

@@ -11,7 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.controller.ArchiveController;
-import com.rpsg.rpg.controller.MapController;
+import com.rpsg.rpg.controller.GamePropertiesController;
+import com.rpsg.rpg.view.GameView;
 
 /**
  *	GDX-RPG 游戏上下文
@@ -19,12 +20,14 @@ import com.rpsg.rpg.controller.MapController;
 public class Game {
 	public static final int STAGE_WIDTH = 1280, STAGE_HEIGHT = 720;
 	
-	/**设置*/
+	/**游戏设置*/
 	public static Setting setting;
-	/**存档*/
+	/**存档管理器*/
 	public static ArchiveController archive;
-	/**地图，当GameView创建时该类被创建*/
-	public static MapController map;
+	/**当前游戏视窗，如果是null的话代表还没在游戏里*/
+	public static GameView view;
+	/**游戏配置管理器*/
+	public static GamePropertiesController prop;
 	
 	/**初始化*/
 	public static void init(){

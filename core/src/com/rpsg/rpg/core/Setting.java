@@ -20,6 +20,13 @@ public class Setting implements Serializable{
 	/**音乐音量*/
 	public float musicVolume = 1f;
 	
+	/**是否启用更清晰的字体<br>
+	 * see {@link Text#get(int, com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator) Text.get}
+	 * */
+	public boolean hdFont = false;
+	
+	/**是否允许缓存资源（如纹理、图片）以提高游戏速度*/
+	public boolean cache = true;
 	
 	/**
 	 * 创建系统设置，如果硬盘已存在则直接读取

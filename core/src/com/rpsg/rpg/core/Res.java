@@ -2,8 +2,6 @@ package com.rpsg.rpg.core;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.rpsg.rpg.ui.AsyncLoadImage;
 import com.rpsg.rpg.ui.Image;
 
@@ -14,12 +12,14 @@ public class Res {
 	
 	/**资源管理线程*/
 	public static AssetManager assetManager;
+	/**字体管理*/
+	public static Text text;
 	
 	/**初始化*/
 	public static void init(){
 		assetManager = new AssetManager();
-		/**增加一个TiledMap Loader给管理器*/
-		assetManager.setLoader(TiledMap.class, new TmxMapLoader());
+		/**添加字体管理器*/
+		text = new Text();
 	}
 	
 	/**

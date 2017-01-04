@@ -1,5 +1,7 @@
 package com.rpsg.rpg.object.game;
 
+import com.badlogic.gdx.utils.JsonValue;
+import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Script;
 
 /**
@@ -28,9 +30,12 @@ public class ScriptContext {
 		});
 	}
 	
-	public void print(Object object){
+	public void print(Object object) {
 		System.out.println(object);
 	}
 	
+	public void say(JsonValue messageConfig, String str) {
+//		Game.view.msg.say(_script, messageConfig, str);
+	}
 	
 }

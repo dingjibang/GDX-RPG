@@ -37,20 +37,20 @@ public class ArchiveController {
 		ach = (Archive)obj;
 		
 		//没有游戏视图，创建一个（从游戏外菜单的读档界面进来的），否则让地图控制器重新读地图（从游戏内菜单的进来的）
-		if(Game.map == null)
+		if(Game.view == null)
 			Views.addView(GameView.class);
 		else
-			Game.map.load(ach.mapName);
+			Game.view.map.load(ach.mapName);
 	}
 	
 	/**
 	 * 存档
 	 */
 	public void save(int id) {
-		if(Game.map == null)
+		if(Game.view == null)
 			throw new GdxRuntimeException("must in the game when save archive");
 		
-		ach.setMapSprites(Game.map.mapSprites);
+		ach.setMapSprites(Game.view.map.mapSprites);
 		
 		File.save(ach, Path.SAVE + id + ".sav");
 	}

@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Path;
 import com.rpsg.rpg.core.Res;
+import com.rpsg.rpg.ui.view.View;
 
 /**
  * 载入动画视图<br>

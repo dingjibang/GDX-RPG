@@ -1,6 +1,7 @@
 package com.rpsg.rpg.view;
 
 import com.rpsg.rpg.core.Views;
+import com.rpsg.rpg.ui.view.View;
 
 /**
  *	GDX-RPG 标题视图

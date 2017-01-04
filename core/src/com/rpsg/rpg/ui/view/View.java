@@ -1,4 +1,4 @@
-package com.rpsg.rpg.view;
+package com.rpsg.rpg.ui.view;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;

@@ -3,20 +3,23 @@ package com.rpsg.rpg.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader.Parameters;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.core.File;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Path;
-import com.rpsg.rpg.core.Res;
+import com.rpsg.rpg.core.Views;
 import com.rpsg.rpg.object.map.CollideType;
 import com.rpsg.rpg.object.map.MapSprite;
 import com.rpsg.rpg.object.map.NPC;
@@ -33,11 +36,11 @@ public class MapController {
 	OrthoCachedTiledMapRenderer render;
 	/**相机*/
 	OrthographicCamera camera;
+	/**地图资源*/
+	AssetManager assetManager;
 	
 	/**当执行{@link #load(String, Runnable)}之前，将先调用一次，以执行一些清理工作*/
 	Runnable beforeLoad;
-	/**当执行{@link #load(String, Runnable)}之后，调用*/
-	Runnable loaded;
 	
 	/**当前地图上所有的精灵*/
 	public List<MapSprite> mapSprites = new ArrayList<>();
@@ -45,15 +48,17 @@ public class MapController {
 	/**脚本管理器*/
 	public ScriptController script;
 	
+	boolean loaded = false; 
 	
 	
+	public MapController() {
+		assetManager = new AssetManager();
+		/**增加一个TiledMap Loader给管理器*/
+		assetManager.setLoader(TiledMap.class, new TmxMapLoader());
+	}
 	
 	public void setBeforeLoad(Runnable beforeLoad) {
 		this.beforeLoad = beforeLoad;
-	}
-	
-	public void setLoaded(Runnable loaded) {
-		this.loaded = loaded;
 	}
 	
 	/**
@@ -62,6 +67,13 @@ public class MapController {
 	 * @param loadedCallback 完成后的回调
 	 */
 	public void load(String path) {
+		loaded = false;
+		Views.loadView.start("load_tmx");
+		
+		//如果不允许缓存就清除以前的地图
+		if(!Game.setting.cache)
+			assetManager.clear();
+		
 		if(beforeLoad != null)
 			beforeLoad.run();
 		
@@ -99,14 +111,12 @@ public class MapController {
 			//创建脚本管理器
 			script = new ScriptController();
 			
-			//回调回调（←233）
-			if(loaded != null)
-				loaded.run();
-			
+			loaded = true;
+			Views.loadView.stop("load_tmx");
 		};
 		
 		//开始加载
-		Res.assetManager.load(Path.MAP + path, TiledMap.class, param);
+		assetManager.load(Path.MAP + path, TiledMap.class, param);
 	}
 	
 	/**
@@ -137,8 +147,12 @@ public class MapController {
 	 * 画图时，{@link #render}将使用自己的画笔（{@link com.badlogic.gdx.graphics.g2d.SpriteCache SpriteCache}）进行画图，可能会导致画图异常（比如画不出其他的精灵）。 
 	 */
 	public void draw(Batch batch) {
-		//缓存原相机坐标点
+		if(!loaded)
+			return;
+		
+		//缓存原相机状态
 		Vector3 originPosition = camera.position.cpy();
+		Matrix4 combined = camera.combined.cpy();
 		
 		//debug
 		camera.position.set(130, 130, 0);
@@ -147,6 +161,7 @@ public class MapController {
 		camera.update();
 		//更新渲染器坐标位置
 		render.setView(camera);
+		batch.setProjectionMatrix(camera.combined);
 	
 		//获取所有有效层
 		int layersCount = map.getLayers().getCount();
@@ -187,6 +202,7 @@ public class MapController {
 		
 		//还原相机坐标点
 		camera.position.set(originPosition);
+		camera.combined.set(combined);
 	}
 	
 	/**获取当前的地图*/
@@ -196,9 +212,19 @@ public class MapController {
 	
 	/**每帧被执行*/
 	public void act() {
+		assetManager.update();
+		
+		if(!loaded)
+			return;
+		
 		script.act();
 		for(MapSprite sprite : mapSprites) {
 			sprite.act();
 		}
+	}
+	
+	public void dispose() {
+		assetManager.dispose();
+		render.dispose();
 	}
 }
