@@ -116,11 +116,14 @@ public class MapController {
 		//测试用的代码
 		List<MapSprite> list = new ArrayList<>();
 		//创建一个NPC
-		NPC npc = new NPC();
+		NPC npc = new NPC(0,0,0);
+		mapSprites.add(npc);
 		//给这个NPC加上一条碰撞脚本
 		npc.scripts.put(CollideType.face, File.readString(Path.SCRIPT_MAP + "mytest.js"));
 		//3秒之后执行一个假碰撞
 		Timer.add(180, () -> script.add(npc, CollideType.face));
+		
+		Timer.add(240, () -> npc.move(1, 0));
 		
 		
 		//end 测试用的代码
@@ -194,5 +197,8 @@ public class MapController {
 	/**每帧被执行*/
 	public void act() {
 		script.act();
+		for(MapSprite sprite : mapSprites) {
+			sprite.act();
+		}
 	}
 }
