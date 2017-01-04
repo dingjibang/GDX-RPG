@@ -9,8 +9,8 @@ import java.util.Map;
  * 地图上的NPC，基于{@link MapSprite}
  */
 public class NPC extends MapSprite{
-	public NPC() {
-		super(0,4);
+	public NPC(int x,int y,int zIndex) {
+		super(x,y,zIndex,4);
 		// TODO Auto-generated constructor stub
 	}
 
