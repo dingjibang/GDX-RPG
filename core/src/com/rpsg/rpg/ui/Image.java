@@ -37,6 +37,7 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		super((Drawable)null);
 	}
 	
+	/**使用整数坐标，以免导致纹理失真*/
 	public void setWidth(float width) {
 		super.setWidth((int)width);
 	}
@@ -55,6 +56,10 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 	
 	public void setPosition(float x, float y) {
 		super.setPosition((int)x, (int)y);
+	}
+	
+	public boolean isTransparent() {
+		return getColor().a <= 0;
 	}
 
 }

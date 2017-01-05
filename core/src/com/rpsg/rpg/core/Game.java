@@ -33,10 +33,11 @@ public class Game {
 	public static void init(){
 		setting = Setting.create();
 		archive = new ArchiveController();
+		prop = new GamePropertiesController();
 	}
 	
 	/**运行一段JS脚本, 可以传入一个变量来当做当前脚本的prototype*/
-	public static Object executeJS(String js, Object prototype){
+	public static Object executeJS(String js, Object prototype, String jsName){
 		if(js == null || js.trim().length() == 0) return null;
 		
 		try {
@@ -50,7 +51,7 @@ public class Game {
 			if(prototype != null)
 				scope.setPrototype(((NativeJavaObject)Context.javaToJS(prototype, scope)));
 			
-			Object obj = ctx.evaluateString(scope, js, null, 1, null);
+			Object obj = ctx.evaluateString(scope, js, jsName, 1, null);
 			
 			Context.exit();
 			return obj;
@@ -60,6 +61,14 @@ public class Game {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public static Object executeJS(String js, Object prototype) {
+		return executeJS(js, prototype, null);
+	}
+	
+	public static Object executeJS(String js) {
+		return executeJS(js, null, null);
 	}
 	
 	public static int width(){

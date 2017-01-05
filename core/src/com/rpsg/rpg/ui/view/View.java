@@ -1,9 +1,13 @@
 package com.rpsg.rpg.ui.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Buttons;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Views;
 
 /**
@@ -12,7 +16,11 @@ import com.rpsg.rpg.core.Views;
  *	<p>View为游戏中视窗，受{@link Views}调度，用来显示游戏的画面，每个View中拥有一个{@link View#stage stage}变量，{@link Views}每帧将对当前View进行 {@link #act()}、{@link #draw()} 操作用以画图</p>
  */
 public abstract class View implements InputProcessor{
+	
 	public Stage stage;
+	
+	private List<InputProcessor> processors = new ArrayList<>(), removeList = new ArrayList<>();
+	
 	/**
 	 * 每个View被创建后，第一次将调用create() 方法<br>
 	 * 要注意的是，stage变量仍然是空的(null)，需要手动来实例化这个变量
@@ -70,7 +78,7 @@ public abstract class View implements InputProcessor{
 	 * @param keycode one of the constants in {@link Input.Keys}
 	 * @return whether the input was processed */
 	public boolean keyDown (int keycode){
-		return onInput() && stage.keyDown(keycode) && buuleable();
+		return $.allMatch(processors(), p -> p.keyDown(keycode)) && onInput() && stage.keyDown(keycode) && buuleable();
 	};
 
 	/** Called when a key was released
@@ -78,7 +86,7 @@ public abstract class View implements InputProcessor{
 	 * @param keycode one of the constants in {@link Input.Keys}
 	 * @return whether the input was processed */
 	public boolean keyUp (int keycode){
-		return onInput() && stage.keyUp(keycode) && buuleable();
+		return $.allMatch(processors(), p -> p.keyUp(keycode)) && onInput() && stage.keyUp(keycode) && buuleable();
 	};
 
 	/** Called when a key was typed
@@ -86,7 +94,7 @@ public abstract class View implements InputProcessor{
 	 * @param character The character
 	 * @return whether the input was processed */
 	public boolean keyTyped (char character){
-		return onInput() && stage.keyTyped(character) && buuleable();
+		return $.allMatch(processors(), p -> p.keyTyped(character)) && onInput() && stage.keyTyped(character) && buuleable();
 	};
 
 	/** Called when the screen was touched or a mouse button was pressed. The button parameter will be {@link Buttons#LEFT} on iOS.
@@ -96,7 +104,7 @@ public abstract class View implements InputProcessor{
 	 * @param button the button
 	 * @return whether the input was processed */
 	public boolean touchDown (int screenX, int screenY, int pointer, int button){
-		return onInput() && stage.touchDown(screenX, screenY, pointer, button) && buuleable();
+		return $.allMatch(processors(), p -> p.touchDown(screenX, screenY, pointer, button)) && onInput() && stage.touchDown(screenX, screenY, pointer, button) && buuleable();
 	};
 
 	/** Called when a finger was lifted or a mouse button was released. The button parameter will be {@link Buttons#LEFT} on iOS.
@@ -104,27 +112,41 @@ public abstract class View implements InputProcessor{
 	 * @param button the button
 	 * @return whether the input was processed */
 	public boolean touchUp (int screenX, int screenY, int pointer, int button){
-		return onInput() && stage.touchUp(screenX, screenY, pointer, button) && buuleable();
+		return $.allMatch(processors(), p -> p.touchUp(screenX, screenY, pointer, button)) && onInput() && stage.touchUp(screenX, screenY, pointer, button) && buuleable();
 	};
 
 	/** Called when a finger or the mouse was dragged.
 	 * @param pointer the pointer for the event.
 	 * @return whether the input was processed */
 	public boolean touchDragged (int screenX, int screenY, int pointer){
-		return onInput() && stage.touchDragged(screenX, screenY, pointer) && buuleable();
+		return $.allMatch(processors(), p -> p.touchDragged(screenX, screenY, pointer)) && onInput() && stage.touchDragged(screenX, screenY, pointer) && buuleable();
 	};
 
 	/** Called when the mouse was moved without any buttons being pressed. Will not be called on iOS.
 	 * @return whether the input was processed */
 	public boolean mouseMoved (int screenX, int screenY){
-		return onInput() && stage.mouseMoved(screenX, screenY) && buuleable();
+		return $.allMatch(processors(), p -> p.mouseMoved(screenX, screenY)) && onInput() && stage.mouseMoved(screenX, screenY) && buuleable();
 	};
 
 	/** Called when the mouse wheel was scrolled. Will not be called on iOS.
 	 * @param amount the scroll amount, -1 or 1 depending on the direction the wheel was scrolled.
 	 * @return whether the input was processed. */
 	public boolean scrolled (int amount){
-		return onInput() && stage.scrolled(amount) && buuleable();
+		return $.allMatch(processors(), p -> p.scrolled(amount)) && onInput() && stage.scrolled(amount) && buuleable();
 	};
+	
+	public InputProcessor addProcessor(InputProcessor p) {
+		processors.add(p);
+		return p;
+	}
+	
+	public boolean removeInputProcessor(InputProcessor p) {
+		return removeList.add(p);
+	}
+	
+	private List<InputProcessor> processors() {
+		processors.removeAll(removeList);
+		return processors;
+	}
 	
 }

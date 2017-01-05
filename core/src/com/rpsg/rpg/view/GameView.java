@@ -10,10 +10,9 @@ import com.rpsg.rpg.view.game.MessageBox;
  */
 public class GameView extends View{
 	
-	/**是否允许资源加载完成后就在屏幕画图，默认为true，他可以在JS脚本加载完毕后经由JS设置为false，这样可以在画图之前搞些事情*/
-	public boolean renderable = true;
+	
 	/**地图*/
-	public MapController map;
+	public MapController map = new MapController();
 	/**对话框*/
 	public MessageBox msg;
 	
@@ -23,29 +22,26 @@ public class GameView extends View{
 		Game.view = this;
 		
 		stage = Game.stage();
-		map = new MapController();
-		
-		//当加载地图之前
-		map.setBeforeLoad(() -> {
-			//恢复到什么也没加载的状态
-			renderable = true;
-		});
-		
 		
 		//载入地图
 		map.load(Game.archive.get().mapName);
+		
+		//添加输入处理
+		addProcessor(msg = new MessageBox());
 	}
 	
 	public void draw() {
-		if(renderable){
+		if(map.renderable){
 			map.draw(stage.getBatch());//画地图
 			stage.draw();//画UI
 		}
+		msg.draw(stage.getBatch());
 	}
 
 	public void act() {
-		stage.act();
 		map.act();
+		stage.act();
+		
 	}
 	
 	public void onRemove() {
@@ -56,5 +52,5 @@ public class GameView extends View{
 		
 		Game.view = null;
 	}
-
+	
 }

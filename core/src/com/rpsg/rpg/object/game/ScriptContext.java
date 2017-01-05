@@ -35,7 +35,23 @@ public class ScriptContext {
 	}
 	
 	public void say(JsonValue messageConfig, String str) {
-//		Game.view.msg.say(_script, messageConfig, str);
+		Game.view.msg.say(_script, messageConfig, null, str);
+	}
+	
+	public void say(String str) {
+		Game.view.msg.say(_script, null, null, str);
+	}
+	
+	public void say(String title, String str) {
+		Game.view.msg.say(_script, null, title, str);
+	}
+	
+	public void say(JsonValue messageConfig, String title, String str) {
+		Game.view.msg.say(_script, messageConfig, title, str);
+	}
+	
+	public void hideMSG() {
+		Game.view.msg.hide();
 	}
 	
 }

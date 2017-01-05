@@ -2,6 +2,9 @@ package com.rpsg.rpg.core;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.rpg.ui.AsyncLoadImage;
 import com.rpsg.rpg.ui.Image;
 
@@ -37,6 +40,13 @@ public class Res {
 	}
 	
 	/**
+	 * 立即获取一张drawable
+	 */
+	public static Drawable getDrawable(String path) {
+		return new TextureRegionDrawable(new TextureRegion(getTexture(path)));
+	}
+	
+	/**
 	 * 更新资源管理器
 	 */
 	public static boolean act(){
@@ -56,5 +66,5 @@ public class Res {
 	public static void dispose(){
 		assetManager.dispose();
 	}
-	
+
 }

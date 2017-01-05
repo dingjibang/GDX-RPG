@@ -16,9 +16,9 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.rpsg.rpg.core.File;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Path;
+import com.rpsg.rpg.core.Script;
 import com.rpsg.rpg.core.Views;
 import com.rpsg.rpg.object.map.CollideType;
 import com.rpsg.rpg.object.map.MapSprite;
@@ -39,9 +39,6 @@ public class MapController {
 	/**地图资源*/
 	AssetManager assetManager;
 	
-	/**当执行{@link #load(String, Runnable)}之前，将先调用一次，以执行一些清理工作*/
-	Runnable beforeLoad;
-	
 	/**当前地图上所有的精灵*/
 	public List<MapSprite> mapSprites = new ArrayList<>();
 	
@@ -49,16 +46,14 @@ public class MapController {
 	public ScriptController script;
 	
 	boolean loaded = false; 
+	/**是否允许资源加载完成后就在屏幕画图，默认为true，他可以在JS脚本加载完毕后经由JS设置为false，这样可以在画图之前搞些事情*/
+	public boolean renderable = true;
 	
 	
 	public MapController() {
 		assetManager = new AssetManager();
 		/**增加一个TiledMap Loader给管理器*/
 		assetManager.setLoader(TiledMap.class, new TmxMapLoader());
-	}
-	
-	public void setBeforeLoad(Runnable beforeLoad) {
-		this.beforeLoad = beforeLoad;
 	}
 	
 	/**
@@ -68,14 +63,12 @@ public class MapController {
 	 */
 	public void load(String path) {
 		loaded = false;
+		renderable = true;
 		Views.loadView.start("load_tmx");
 		
 		//如果不允许缓存就清除以前的地图
 		if(!Game.setting.cache)
 			assetManager.clear();
-		
-		if(beforeLoad != null)
-			beforeLoad.run();
 		
 		Parameters param = new Parameters();
 		
@@ -129,9 +122,9 @@ public class MapController {
 		NPC npc = new NPC(0,0,0);
 		mapSprites.add(npc);
 		//给这个NPC加上一条碰撞脚本
-		npc.scripts.put(CollideType.face, File.readString(Path.SCRIPT_MAP + "mytest.js"));
+		npc.scripts.put(CollideType.face, Script.of("mytest.js"));
 		//3秒之后执行一个假碰撞
-		Timer.add(180, () -> script.add(npc, CollideType.face));
+		Timer.add(10, () -> script.add(npc, CollideType.face));
 		
 		Timer.add(240, () -> npc.move(1, 0));
 		
@@ -168,6 +161,7 @@ public class MapController {
 		
 		int skip = 0;
 		//开始从最下层往上画
+		List<MapSprite> drawList = new ArrayList<>(10);
 		for(int i = 0; i < layersCount; i ++){
 			MapLayer layer = map.getLayers().get(i);
 			
@@ -184,7 +178,8 @@ public class MapController {
 			 * 留给草刺猬爷爷：可能你第一个遇到的坑是各种坐标系问题=。= 研究一下以熟悉gdx吧
 			 */
 			
-			List<MapSprite> drawList = new ArrayList<>();
+			drawList.clear();
+			
 			//遍历stage里所有的当前ZIndex的MapSprite并画出
 			for(MapSprite mapSprite : mapSprites)
 				if(mapSprite.getZIndex() == i - skip)

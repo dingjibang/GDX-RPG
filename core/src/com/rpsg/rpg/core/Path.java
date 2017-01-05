@@ -55,6 +55,7 @@ public class Path {
 	public static final String SCRIPT_DATA_ASSOCIATION_SKILL = SCRIPT_DATA_ASSOCIATION + "skill/";
 	public static final String SCRIPT_DATA_HERO = SCRIPT_DATA + "/hero/";
 	public static final String SCRIPT_DATA_BUFF = SCRIPT_DATA + "/buff/";
+	public static final String SCRIPT_DATA_PROP = SCRIPT_DATA + "/prop/";
 	public static final String SCRIPT_SYSTEM = SCRIPT + "/system/";
 	public static final String SCRIPT_DATA_TASK = SCRIPT_DATA + "/task/";
 	public static final String SCRIPT_DATA_ACHIEVEMENT = SCRIPT_DATA + "/achievement/";

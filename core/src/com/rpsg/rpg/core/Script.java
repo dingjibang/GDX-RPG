@@ -1,5 +1,8 @@
 package com.rpsg.rpg.core;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import com.rpsg.rpg.controller.ScriptController;
 import com.rpsg.rpg.object.game.ScriptContext;
 import com.rpsg.rpg.object.game.ScriptExecutor;
@@ -33,7 +36,7 @@ public class Script extends Thread{
 	public void run() {
 		setName("============GDX-RPG Script[" + npc + " & " + collideType + "]============");
 		//执行JS脚本，将上下文（ScriptContext）作为该脚本的prototype
-		Game.executeJS("(function(){"+js+"}())", context = new ScriptContext(this));
+		Game.executeJS("(function(){\n"+js+"\n}())", context = new ScriptContext(this), npc + " & " + collideType);
 		
 		//执行完毕了，可以被ScriptController移除了
 		executed = true;
@@ -98,5 +101,22 @@ public class Script extends Thread{
 	
 	public boolean equals(NPC npc, CollideType collideType) {
 		return npc == this.npc && collideType == this.collideType;
+	}
+	
+	/**从文件中读取js脚本，且预处理脚本，执行其中的include等命令*/
+	public static String of(String fileName) {
+		String js = File.readString(Path.SCRIPT_MAP + fileName);
+		
+		//为了节省开销，include不允许嵌套，也就是说一个js脚本A，include了脚本B，那么仅仅简单读取B，并不再include其他脚本。
+		Pattern p = Pattern.compile("\\/\\/#include\\s(.+?)\n");
+		Matcher m = p.matcher(js);
+		
+		while (m.find()) {
+	        String scriptName = m.group(1);
+	        if(scriptName != null) 
+	           js = js.replaceAll(m.group(), "\n" + File.readString(Path.SCRIPT_SYSTEM + scriptName) + "\n");
+	    }
+		
+		return js;
 	}
 }
