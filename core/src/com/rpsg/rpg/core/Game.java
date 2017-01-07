@@ -41,10 +41,7 @@ public class Game {
 		if(js == null || js.trim().length() == 0) return null;
 		
 		try {
-			Context ctx = Context.enter();
-			//如果是在手机运行的，则不预编译脚本，否则会出现异常
-			if(Game.isMobile())
-				ctx.setOptimizationLevel(-1);
+			Context ctx = getJSContext();
 			
 			ScriptableObject scope = ctx.initStandardObjects();
 			
@@ -61,6 +58,14 @@ public class Game {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public static Context getJSContext() {
+		Context ctx = Context.enter();
+		//如果是在手机运行的，则不预编译脚本，否则会出现异常
+		if(Game.isMobile())
+			ctx.setOptimizationLevel(-1);
+		return ctx;
 	}
 	
 	public static Object executeJS(String js, Object prototype) {

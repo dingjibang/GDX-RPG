@@ -18,8 +18,8 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Path;
-import com.rpsg.rpg.core.Script;
 import com.rpsg.rpg.core.Views;
+import com.rpsg.rpg.object.game.Scriptable;
 import com.rpsg.rpg.object.map.CollideType;
 import com.rpsg.rpg.object.map.MapSprite;
 import com.rpsg.rpg.object.map.NPC;
@@ -122,7 +122,7 @@ public class MapController {
 		NPC npc = new NPC(0,0,0);
 		mapSprites.add(npc);
 		//给这个NPC加上一条碰撞脚本
-		npc.scripts.put(CollideType.face, Script.of("mytest.js"));
+		npc.scripts.put(CollideType.face, new Scriptable("mytest.js"));
 		//3秒之后执行一个假碰撞
 		Timer.add(10, () -> script.add(npc, CollideType.face));
 		

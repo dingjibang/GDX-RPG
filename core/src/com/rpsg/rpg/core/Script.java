@@ -1,11 +1,13 @@
 package com.rpsg.rpg.core;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import org.mozilla.javascript.Context;
+import org.mozilla.javascript.NativeJavaObject;
+import org.mozilla.javascript.ScriptableObject;
 
 import com.rpsg.rpg.controller.ScriptController;
 import com.rpsg.rpg.object.game.ScriptContext;
 import com.rpsg.rpg.object.game.ScriptExecutor;
+import com.rpsg.rpg.object.game.Scriptable;
 import com.rpsg.rpg.object.map.CollideType;
 import com.rpsg.rpg.object.map.NPC;
 
@@ -19,14 +21,14 @@ import com.rpsg.rpg.object.map.NPC;
 public class Script extends Thread{
 	
 	NPC npc;
-	String js;
+	Scriptable js;
 	CollideType collideType;
 	ScriptContext context;
 	boolean executed = false;
 	//当前异步执行器，如果是null状态则表示没有什么异步执行器在执行，详见act方法说明
 	public ScriptExecutor currentExecutor = null; 
 	
-	public Script(NPC npc, CollideType collideType, String js) {
+	public Script(NPC npc, CollideType collideType, Scriptable js) {
 		this.npc = npc;
 		this.js = js;
 		this.collideType = collideType;
@@ -36,10 +38,28 @@ public class Script extends Thread{
 	public void run() {
 		setName("============GDX-RPG Script[" + npc + " & " + collideType + "]============");
 		//执行JS脚本，将上下文（ScriptContext）作为该脚本的prototype
-		Game.executeJS("(function(){\n"+js+"\n}())", context = new ScriptContext(this), npc + " & " + collideType);
+		try {
+			if(js.executable()) {
+				Context ctx = Game.getJSContext();
+				
+				ScriptableObject scope = ctx.initStandardObjects();
+				
+				//设置js prototype为ScriptContext
+				scope.setPrototype(((NativeJavaObject)Context.javaToJS(context = new ScriptContext(this), scope)));
+				
+				//执行js脚本
+				ctx.evaluateString(scope, js.get(ctx, scope), npc + " & " + collideType + " ", 1, null);
+				
+				Context.exit();
+			}
+		} catch (Exception e) {
+			Log.e("无法执行脚本", e);
+			e.printStackTrace();
+		}finally {
+			//执行完毕了，可以被ScriptController移除了
+			executed = true;
+		}
 		
-		//执行完毕了，可以被ScriptController移除了
-		executed = true;
 	}
 	
 	/**
@@ -103,20 +123,4 @@ public class Script extends Thread{
 		return npc == this.npc && collideType == this.collideType;
 	}
 	
-	/**从文件中读取js脚本，且预处理脚本，执行其中的include等命令*/
-	public static String of(String fileName) {
-		String js = File.readString(Path.SCRIPT_MAP + fileName);
-		
-		//为了节省开销，include不允许嵌套，也就是说一个js脚本A，include了脚本B，那么仅仅简单读取B，并不再include其他脚本。
-		Pattern p = Pattern.compile("\\/\\/#include\\s(.+?)\n");
-		Matcher m = p.matcher(js);
-		
-		while (m.find()) {
-	        String scriptName = m.group(1);
-	        if(scriptName != null) 
-	           js = js.replaceAll(m.group(), "\n" + File.readString(Path.SCRIPT_SYSTEM + scriptName) + "\n");
-	    }
-		
-		return js;
-	}
 }
