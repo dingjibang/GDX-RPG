@@ -13,3 +13,5 @@ function _parseToJS(jsonArray) {
 }
 
 var MSG = _parseToJS(Game.prop.get("msg"));
+
+var FG = com.rpsg.rpg.view.game.FG;
