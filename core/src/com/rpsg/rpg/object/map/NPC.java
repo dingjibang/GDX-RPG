@@ -11,8 +11,8 @@ import com.rpsg.rpg.object.game.Scriptable;
  * 地图上的NPC，基于{@link MapSprite}
  */
 public class NPC extends MapSprite{
-	public NPC(int x,int y,int zIndex) {
-		super(x,y,zIndex,4);
+	public NPC(int x, int y, int zIndex, String imageFileName) {
+		super(x, y, zIndex, 4, imageFileName);
 		// TODO Auto-generated constructor stub
 	}
 

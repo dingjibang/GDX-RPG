@@ -119,14 +119,40 @@ public class MapController {
 		//测试用的代码
 		List<MapSprite> list = new ArrayList<>();
 		//创建一个NPC
-		NPC npc = new NPC(0,0,0);
+		NPC npc = new NPC(0, 0, 0, "images/walk/heros/walk_wriggle.png");
 		mapSprites.add(npc);
 		//给这个NPC加上一条碰撞脚本
 		npc.scripts.put(CollideType.face, new Scriptable("mytest.js"));
 		//3秒之后执行一个假碰撞
 		Timer.add(10, () -> script.add(npc, CollideType.face));
 		
-		Timer.add(240, () -> npc.move(1, 0));
+		Timer.add(240, () -> npc.walk(MapSprite.Facing.RIGHT));
+		Timer.add(252, () -> npc.walk(MapSprite.Facing.RIGHT));
+		Timer.add(264, () -> npc.walk(MapSprite.Facing.RIGHT));
+		Timer.add(276, () -> npc.walk(MapSprite.Facing.UP));
+		Timer.add(288, () -> npc.walk(MapSprite.Facing.UP));
+		Timer.add(300, () -> npc.walk(MapSprite.Facing.UP));
+		Timer.add(312, () -> npc.walk(MapSprite.Facing.LEFT));
+		Timer.add(324, () -> npc.walk(MapSprite.Facing.LEFT));
+		Timer.add(336, () -> npc.walk(MapSprite.Facing.LEFT));
+		Timer.add(348, () -> npc.walk(MapSprite.Facing.DOWN));
+		Timer.add(360, () -> npc.walk(MapSprite.Facing.DOWN));
+		Timer.add(372, () -> npc.walk(MapSprite.Facing.DOWN));
+
+		Timer.add(400, () -> npc.setSpeed(1));
+		
+		Timer.add(400 + 48 * 0, () -> npc.walk(MapSprite.Facing.RIGHT));
+		Timer.add(400 + 48 * 1, () -> npc.walk(MapSprite.Facing.RIGHT));
+		Timer.add(400 + 48 * 2, () -> npc.walk(MapSprite.Facing.RIGHT));
+		Timer.add(400 + 48 * 3, () -> npc.walk(MapSprite.Facing.UP));
+		Timer.add(400 + 48 * 4, () -> npc.walk(MapSprite.Facing.UP));
+		Timer.add(400 + 48 * 5, () -> npc.walk(MapSprite.Facing.UP));
+		Timer.add(400 + 48 * 6, () -> npc.walk(MapSprite.Facing.LEFT));
+		Timer.add(400 + 48 * 7, () -> npc.walk(MapSprite.Facing.LEFT));
+		Timer.add(400 + 48 * 8, () -> npc.walk(MapSprite.Facing.LEFT));
+		Timer.add(400 + 48 * 9, () -> npc.walk(MapSprite.Facing.DOWN));
+		Timer.add(400 + 48 * 10, () -> npc.walk(MapSprite.Facing.DOWN));
+		Timer.add(400 + 48 * 11, () -> npc.walk(MapSprite.Facing.DOWN));
 		
 		
 		//end 测试用的代码
@@ -193,7 +219,7 @@ public class MapController {
 			}
 		}
 		
-		render.render();
+		//render.render();
 		
 		//还原相机坐标点
 		camera.position.set(originPosition);
