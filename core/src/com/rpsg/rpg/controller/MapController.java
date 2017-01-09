@@ -17,6 +17,7 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.rpg.core.Game;
+import com.rpsg.rpg.core.Log;
 import com.rpsg.rpg.core.Path;
 import com.rpsg.rpg.core.Views;
 import com.rpsg.rpg.object.game.Scriptable;
@@ -106,6 +107,7 @@ public class MapController {
 			
 			loaded = true;
 			Views.loadView.stop("load_tmx");
+			Log.i("A map loaded[" + fileName + "]");
 		};
 		
 		//开始加载
@@ -125,6 +127,7 @@ public class MapController {
 		npc.scripts.put(CollideType.face, new Scriptable("mytest.js"));
 		//3秒之后执行一个假碰撞
 		Timer.add(10, () -> script.add(npc, CollideType.face));
+		System.out.println(Game.item.get(1));
 		
 		Timer.add(240, () -> npc.walk(MapSprite.Facing.RIGHT));
 		Timer.add(252, () -> npc.walk(MapSprite.Facing.RIGHT));

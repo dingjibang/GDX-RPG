@@ -25,7 +25,7 @@ public class Spellcard extends BaseItem {
 	/**符卡的减速值*/
 	public int delay = 0;
 
-	public Spellcard(int id, JsonValue value) {
+	public Spellcard(Integer id, JsonValue value) {
 		super(id, value);
 		
 		description2 = value.has("description2") ? value.getString("description2") : "";

@@ -36,6 +36,17 @@ public class Views implements ApplicationListener {
 	
 	/**当游戏被创建*/
 	public void create() {
+		Log.i("=====================================================");
+		Log.i(" _____ _______   __     _____  _____   _____"); 
+		Log.i(" / ____|  __ \\ \\ / /    |  __ \\|  __ \\ / ____|");
+		Log.i("| |  __| |  | \\ V /_____| |__) | |__) | |  __ ");
+		Log.i("| | |_ | |  | |> <______|  _  /|  ___/| | |_ |");
+		Log.i("| |__| | |__| / . \\     | | \\ \\| |    | |__| |");
+		Log.i(" \\_____|_____/_/ \\_\\    |_|  \\_\\_|     \\_____| ");
+		Log.i("");
+		Log.i("=====================================================");
+		Log.i(">>> Initialization <<<");
+	        
 		//创建资源管理器
 		Res.init();
 		//初始化上下文
@@ -46,6 +57,11 @@ public class Views implements ApplicationListener {
 		batch = new SpriteBatch();
 		//创建输入监听器
 		Gdx.input.setInputProcessor(input = new Input(views));
+		
+		Log.i(">>> Completed <<<");
+		Log.i("=====================================================");
+		Log.i("");
+		
 		//创建载入动画
 		loadView = new LoadView();
 		loadView.create();
@@ -88,6 +104,7 @@ public class Views implements ApplicationListener {
 	public static <T extends View> T addView(Class<T> clz) {
 		return addView(clz, null);
 	}
+	
 	/**增加一个{@link View}到控制器里*/
 	public static <T extends View> T addView(Class<T> clz, Map<String, Object> param){
 		try {
@@ -100,6 +117,8 @@ public class Views implements ApplicationListener {
 			view.create();
 			
 			insertViews.add(0, view);
+			
+			Log.i("Views << " + clz.getSimpleName());
 			
 			return view;
 		} catch (Exception e) {

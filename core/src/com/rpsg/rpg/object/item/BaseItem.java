@@ -43,7 +43,7 @@ public class BaseItem implements Iconable, Serializable{
 	/**道具是否可叠加的*/
 	public boolean packable = true; 
 	
-	public BaseItem(int id, JsonValue value) {
+	public BaseItem(Integer id, JsonValue value) {
 		this.id = id;
 		this.disable = value.has("disable") ? value.getBoolean("disable") : false;
 		this.description = value.getString("description");

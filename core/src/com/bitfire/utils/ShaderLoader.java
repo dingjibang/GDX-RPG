@@ -35,7 +35,7 @@ public final class ShaderLoader {
 			log += " w/ (" + defines.replace( "\n", ", " ) + ")";
 		}
 		log += "...";
-		Log.i("载入shader - ["+log+"]");
+		Log.i("shader - ["+log+"][loaded]");
 
 		String vpSrc = Gdx.files.internal( BasePath + vertexFileName + ".vertex" ).readString();
 		String fpSrc = Gdx.files.internal( BasePath + fragmentFileName + ".fragment" ).readString();

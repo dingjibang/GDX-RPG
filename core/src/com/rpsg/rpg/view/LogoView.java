@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Game;
+import com.rpsg.rpg.core.Log;
 import com.rpsg.rpg.core.Path;
 import com.rpsg.rpg.core.Res;
 import com.rpsg.rpg.core.Sound.SEManager;
@@ -158,6 +159,7 @@ public class LogoView extends View{
 			}
 		});
 		
+		Log.i("Logo-view[created]");
 	}
 	
 	public void skip() {

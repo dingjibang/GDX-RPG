@@ -23,6 +23,7 @@ public class Res {
 		assetManager = new AssetManager();
 		/**添加字体管理器*/
 		text = new Text();
+		Log.i("Resource[created]");
 	}
 	
 	/**

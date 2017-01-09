@@ -38,6 +38,7 @@ public class Game {
 		archive = new ArchiveController();
 		prop = new GamePropertiesController();
 		item = new ItemController();
+		Log.i("Game context[created]");
 	}
 	
 	/**运行一段JS脚本, 可以传入一个变量来当做当前脚本的prototype*/

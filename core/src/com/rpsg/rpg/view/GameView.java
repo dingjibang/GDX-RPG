@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.rpsg.rpg.controller.MapController;
 import com.rpsg.rpg.controller.PostController;
 import com.rpsg.rpg.core.Game;
+import com.rpsg.rpg.core.Log;
 import com.rpsg.rpg.ui.view.View;
 import com.rpsg.rpg.view.game.FG;
 import com.rpsg.rpg.view.game.MessageBox;
@@ -38,6 +39,8 @@ public class GameView extends View{
 		addProcessor(msg = new MessageBox());
 		fg = new FG();
 		post = new PostController();
+		
+		Log.i("Game-view[created]");
 	}
 	
 	public void draw() {
@@ -58,7 +61,6 @@ public class GameView extends View{
 	public void act() {
 		map.act();
 		stage.act();
-		
 	}
 	
 	public void onRemove() {
@@ -70,6 +72,8 @@ public class GameView extends View{
 		post.dispose();
 		
 		Game.view = null;
+		
+		Log.i("Game-view[disposed]");
 	}
 	
 }

@@ -23,7 +23,7 @@ public class Equipment extends BaseItem{
 	/**装备在战斗中使用时，所播放的动画的ID*/
 	public int animation;
 	
-	public Equipment(int id, JsonValue value) {
+	public Equipment(Integer id, JsonValue value) {
 		super(id, value);
 		
 		packable = false;

@@ -14,7 +14,7 @@ public class Note extends BaseItem{
 	/**所携带的符卡的ID，如果为null则代表符卡已领取过/没有符卡*/
 	public Integer spellcard;
 
-	public Note(int id, JsonValue value) {
+	public Note(Integer id, JsonValue value) {
 		super(id, value);
 		
 		packable = false;

@@ -24,7 +24,7 @@ public class Item extends BaseItem{
 	/**道具延迟值*/
 	public int delay = 0;
 	
-	public Item(int id, JsonValue value) {
+	public Item(Integer id, JsonValue value) {
 		super(id, value);
 		
 		forward = value.has("forward") ? ItemForward.valueOf(value.getString("forward")) : ItemForward.friend;
