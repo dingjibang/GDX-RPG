@@ -20,6 +20,9 @@ public class Setting implements Serializable{
 	/**音乐音量*/
 	public float musicVolume = 1f;
 	
+	/**启用画面二次渲染*/
+	public boolean enablePost = true;
+	
 	/**是否启用更清晰的字体<br>
 	 * see {@link Text#get(int, com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator) Text.get}
 	 * */

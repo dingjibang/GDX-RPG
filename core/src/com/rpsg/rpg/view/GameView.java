@@ -2,6 +2,7 @@ package com.rpsg.rpg.view;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.rpsg.rpg.controller.MapController;
+import com.rpsg.rpg.controller.PostController;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.ui.view.View;
 import com.rpsg.rpg.view.game.FG;
@@ -14,11 +15,13 @@ public class GameView extends View{
 	
 	
 	/**地图*/
-	public MapController map = new MapController();
+	public MapController map;
 	/**对话框*/
 	public MessageBox msg;
 	/**立绘*/
 	public FG fg;
+	/**画面二次处理*/
+	static PostController post;
 	
 	
 	public void create() {
@@ -27,19 +30,24 @@ public class GameView extends View{
 		stage = Game.stage();
 		
 		//载入地图
+		map = new MapController();
 		map.load(Game.archive.get().mapName);
 		
 		//init
 		//添加输入处理
 		addProcessor(msg = new MessageBox());
 		fg = new FG();
+		post = new PostController();
 	}
 	
 	public void draw() {
 		Batch batch = stage.getBatch();
 		
 		if(map.renderable){
-			map.draw(batch);//画地图
+			post.begin();
+				map.draw(batch);//画地图
+			post.end();
+			
 			stage.draw();//画UI
 		}
 		
@@ -58,6 +66,8 @@ public class GameView extends View{
 		Game.archive.clear();
 		//将地图控制器卸载
 		map.dispose();
+		//卸载高级画质
+		post.dispose();
 		
 		Game.view = null;
 	}

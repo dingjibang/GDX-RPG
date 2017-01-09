@@ -1,10 +1,12 @@
 package com.rpsg.rpg.object.game;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.rpsg.rpg.object.item.BaseItem;
 import com.rpsg.rpg.object.map.MapSprite;
 
 /**
@@ -24,6 +26,9 @@ public class Archive implements Serializable{
 	 * 以此来判断当前档案是正在游玩中的，还是刚读档进来的（这样就可以根据判断选择当前精灵是从地图数据里载入，还是从存档里载入了）
 	 * */
 	private List<MapSprite> mapSprites = null;
+	
+	/**背包内的所有物品*/
+	public List<BaseItem> items = new ArrayList<>();
 	
 	/**自定义状态*/
 	Map<String, Boolean> flags = new HashMap<>();
