@@ -18,7 +18,7 @@ import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Path;
 import com.rpsg.rpg.core.Res;
 import com.rpsg.rpg.core.Script;
-import com.rpsg.rpg.core.Text;
+import com.rpsg.rpg.core.Text; 
 import com.rpsg.rpg.object.game.ScriptExecutor;
 import com.rpsg.rpg.ui.Image;
 import com.rpsg.rpg.util.InputProcessorEx;
