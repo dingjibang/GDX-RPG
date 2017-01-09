@@ -276,6 +276,13 @@ public class GdxQuery {
 			actor.setY(y);
 		return this;
 	}
+	
+	public boolean isTransparent() {
+		for(Actor actor : list())
+			if(actor.getColor().a != 0)
+				return false;
+		return true;
+	}
 
 	public GdxQuery x(float x){
 		for(Actor actor:list())
@@ -698,6 +705,12 @@ public class GdxQuery {
 		if(empty())
 			return new NullActor();
 		return values.get(0);
+	}
+	
+	public Actor get(Integer index) {
+		if(empty() || index == null)
+			return new NullActor();
+		return values.get(index);
 	}
 	
 	@SuppressWarnings("unchecked")

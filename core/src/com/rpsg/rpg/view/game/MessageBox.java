@@ -1,5 +1,8 @@
 package com.rpsg.rpg.view.game;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
@@ -43,6 +46,8 @@ public class MessageBox extends InputProcessorEx{
 
 	private JsonValue defaultCfg;
 	
+	private static final Pattern markupPattern = Pattern.compile("\\[#(.*?)\\]");
+	
 	public MessageBox() {
 		if((defaultCfg  = Game.prop.get("msg", "default")) == null)
 			throw new GdxRuntimeException("missing default property of MessageBox!");
@@ -67,9 +72,21 @@ public class MessageBox extends InputProcessorEx{
 			
 			font.setColor(Color.WHITE);
 			
-			font.getCache().getColor().a = titleFont.getCache().getColor().a = box.getColor().a;
+			float a = box.getColor().a;
+			font.getCache().setAlphas(a);
+			titleFont.getCache().setAlphas(a);
+			font.getCache().getColor().a = titleFont.getCache().getColor().a = a;
 			
-			font.draw(batch, currentText,  58, 143, (box.getWidth() - 60), 10, false);
+			//处理markup文字的alpha颜色
+			Matcher m = markupPattern.matcher(currentText);
+			String postText = currentText;
+			while (m.find()) {
+		        String color = m.group(1);
+		        if(color != null) 
+		        	postText = postText.replaceAll(color, color + Integer.toHexString((int)(a * 255f)));
+		    }
+			
+			font.draw(batch, postText,  58, 143, (box.getWidth() - 60), 10, false);
 			titleFont.draw(batch, title,  170 - Text.getTextWidth(titleFont, title) / 2, 211);
 			
 			batch.end();
@@ -176,8 +193,8 @@ public class MessageBox extends InputProcessorEx{
 				if(text.length() - originText.length() > 0) {
 					if(originText.endsWith("[") && text.substring(0, position + 1).endsWith("#")) {
 						textColor = text.substring(position + 1, position + 7);
-						position += 9;
 						colorPosition = position - 1;
+						position += 9;
 						originText = originText.substring(0, originText.length() - 2);
 					}
 					
@@ -189,11 +206,12 @@ public class MessageBox extends InputProcessorEx{
 				}
 				
 				if(!textColor.equals("ffffff")) {
-					originText = text.substring(0, colorPosition) + "[#" + textColor + "]" + text.substring(colorPosition, position) + "[]"; 
+					originText = text.substring(0, colorPosition) + text.substring(colorPosition, position) + "[]"; 
 				}
 				
 				font.setColor(Color.WHITE);
 				
+				//越界换行
 				if(Text.getTextWidth(font, originText) > (box.getWidth() - 60)){
 					text = text.substring(0, position - 1) + "\n" + text.substring(position - 1, text.length());
 					originText += "\n";

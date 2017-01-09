@@ -1,8 +1,10 @@
 package com.rpsg.rpg.view;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.rpsg.rpg.controller.MapController;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.ui.view.View;
+import com.rpsg.rpg.view.game.FG;
 import com.rpsg.rpg.view.game.MessageBox;
 
 /**
@@ -15,7 +17,8 @@ public class GameView extends View{
 	public MapController map = new MapController();
 	/**对话框*/
 	public MessageBox msg;
-	
+	/**立绘*/
+	public FG fg;
 	
 	
 	public void create() {
@@ -26,16 +29,22 @@ public class GameView extends View{
 		//载入地图
 		map.load(Game.archive.get().mapName);
 		
+		//init
 		//添加输入处理
 		addProcessor(msg = new MessageBox());
+		fg = new FG();
 	}
 	
 	public void draw() {
+		Batch batch = stage.getBatch();
+		
 		if(map.renderable){
-			map.draw(stage.getBatch());//画地图
+			map.draw(batch);//画地图
 			stage.draw();//画UI
 		}
-		msg.draw(stage.getBatch());
+		
+		fg.draw(batch);
+		msg.draw(batch);
 	}
 
 	public void act() {

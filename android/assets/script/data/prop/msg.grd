@@ -24,5 +24,11 @@
 		"title" : "梅丽",
 		"titleTextColor" : "222222",
 		"backgroundImage" : "mari.png"
+	},
+	{
+		"id" : "魔理沙",
+		"title" : "魔理沙",
+		"titleTextColor" : "222222",
+		"backgroundImage" : "marisa.png"
 	}
 ]
