@@ -1,11 +1,13 @@
 package com.rpsg.rpg.object.item;
 
 import com.badlogic.gdx.utils.JsonValue;
+import com.rpsg.rpg.object.game.Target;
 
 /**
- * GDX-RPG 装备
+ * GDX-RPG 装备<br>
+ * 装备是穿着在{@link Target}身上的。
  */
-public class Equipment extends BaseItem{
+public class Equipment extends EffectableItem{
 	
 	private static final long serialVersionUID = 1L;
 
@@ -14,7 +16,7 @@ public class Equipment extends BaseItem{
 		shoes, clothes, weapon, ornament1, ornament2
 	}
 	
-	/**装备仅限于某人穿（hero.name）*/
+	/**装备仅限于某人穿（hero.name），空的则可以让所有角色穿*/
 	public String onlyFor;
 	/**装备故事描述*/
 	public String description2;

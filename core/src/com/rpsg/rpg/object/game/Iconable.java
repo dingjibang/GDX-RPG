@@ -7,9 +7,4 @@ import com.rpsg.rpg.ui.Image;
  */
 public interface Iconable {
 	public Image getIcon();
-	
-	public static Image getDefaultIcon(){
-		return null;
-	}
-
 }

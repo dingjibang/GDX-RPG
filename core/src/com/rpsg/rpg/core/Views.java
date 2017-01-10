@@ -71,7 +71,7 @@ public class Views implements ApplicationListener {
 		
 	}
 
-
+	/**游戏主循环*/
 	public void render() {
 		//设置OpenGL清屏颜色
 		Gdx.gl.glClearColor(0,0,0,1);

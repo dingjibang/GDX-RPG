@@ -22,18 +22,18 @@ public class BaseItem implements Iconable, Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
+	/**道具ID（需要唯一性/ID和物品的图标有关联）*/
+	public int id;
 	/**本道具是否可以丢弃*/
 	public boolean throwable;
 	/**道具名称*/
-	public String name = "";
+	public String name;
 	/**道具数量*/
 	public int count = 1;
 	/**道具描述信息*/
 	public String description;
 	/**道具是否不可用*/
 	public boolean disable;
-	/**道具ID（需要唯一性/ID和物品的图标有关联）*/
-	public int id;
 	/**道具类型*/
 	public String type;
 	/**买入金钱**/
