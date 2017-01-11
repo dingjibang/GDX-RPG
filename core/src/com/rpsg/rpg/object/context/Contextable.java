@@ -1,6 +1,6 @@
 package com.rpsg.rpg.object.context;
 
-import com.rpsg.rpg.object.item.Prop;
+import com.rpsg.rpg.object.prop.Prop;
 
 /**
  * GDX-RPG JavaScript 上下文<br>

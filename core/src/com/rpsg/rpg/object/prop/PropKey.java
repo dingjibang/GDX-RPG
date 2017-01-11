@@ -1,4 +1,4 @@
-package com.rpsg.rpg.object.item;
+package com.rpsg.rpg.object.prop;
 
 /**
  *	GDX-RPG 基础数值类型 
@@ -24,6 +24,8 @@ public enum PropKey {
 	speed,
 	/**命中率*/
 	hit,
+	/**闪避率*/
+	evasion,
 	/**等级*/
 	level,
 	/**经验*/

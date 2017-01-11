@@ -1,8 +1,9 @@
-package com.rpsg.rpg.object.item;
+package com.rpsg.rpg.object.prop;
 
 import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.object.context.Contextable;
+import com.rpsg.rpg.object.item.FormulaType;
 
 /**
  * GDX-RPG 基础数值

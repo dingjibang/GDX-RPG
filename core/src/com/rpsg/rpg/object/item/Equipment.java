@@ -2,6 +2,7 @@ package com.rpsg.rpg.object.item;
 
 import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.object.game.Target;
+import com.rpsg.rpg.object.hero.Hero;
 
 /**
  * GDX-RPG 装备<br>
@@ -16,8 +17,8 @@ public class Equipment extends EffectableItem{
 		shoes, clothes, weapon, ornament1, ornament2
 	}
 	
-	/**装备仅限于某人穿（hero.name），空的则可以让所有角色穿*/
-	public String onlyFor;
+	/**装备仅限于某人穿（{@link Hero#id}），空的则可以让所有角色穿*/
+	public int[] onlyFor;
 	/**装备故事描述*/
 	public String description2;
 	/**装备部位类型*/
@@ -30,7 +31,9 @@ public class Equipment extends EffectableItem{
 		
 		packable = false;
 		
-		onlyFor = value.has("onlyFor") ? value.getString("onlyFor") : null;
+		if(value.has("onlyFor"))
+			onlyFor = value.get("onlyFor").asIntArray();
+				
 		description2 = value.has("description2") ? value.getString("description2") : "";
 		equipType = Parts.valueOf(value.getString("equipType"));
 		animation = value.has("animation") ? value.getInt("animation") : 0;

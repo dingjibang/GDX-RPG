@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.badlogic.gdx.utils.JsonValue;
+import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.object.context.EquipmentContext;
 import com.rpsg.rpg.object.item.Equipment;
-import com.rpsg.rpg.object.item.Prop;
-import com.rpsg.rpg.object.item.PropKey;
+import com.rpsg.rpg.object.prop.Prop;
+import com.rpsg.rpg.object.prop.PropKey;
 
 /**
  * GDX-RPG 数值信息类<br>
@@ -20,8 +22,9 @@ public class Target implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	
 	/**基础数值，存储了永久的基础属性（攻击，血量等）*/
-	private Map<PropKey, Integer> props = new HashMap<>();{
+	Map<PropKey, Integer> props = new HashMap<>();{
 		props.put(PropKey.dead, PropKey.FALSE);
 		props.put(PropKey.attackRate, 0);
 	}
@@ -33,6 +36,12 @@ public class Target implements Serializable{
 	public Map<PropKey, Integer> getProps() { return props; }
 	/**获取装备*/ 	
 	public Map<Equipment.Parts, Equipment> getEquipments() { return equipments; }
+	
+	
+	public Target(JsonValue props) {
+		for(JsonValue value : props)
+			this.props.put(PropKey.valueOf(value.name), value.asInt());
+	}
 	
 	/**
 	 * 获取该target的某项数值，要注意的是，该数值是经过计算的（基础数值+装备提供的数值）。<br>
@@ -58,7 +67,26 @@ public class Target implements Serializable{
 	 * */
 	
 	public void setEquipment(Equipment.Parts parts, Equipment equipment){
+		if(equipments.get(parts) != null)
+			removeEquipment(parts, equipment);
 		
+		equipments.put(parts, equipment);
+		
+		Game.item.remove(equipment);
 	}
+	
+	/***
+	 * 脱下一件装备，并将装备放入玩家背包中
+	 */
+	public void removeEquipment(Equipment.Parts parts, Equipment equipment){
+		Equipment equip = equipments.get(parts);
+		if(equip == null) return;
+		
+		equipments.put(parts, null);
+		
+		Game.item.put(equip);
+	}
+	
+	
 	
 }

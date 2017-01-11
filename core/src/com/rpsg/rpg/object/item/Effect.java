@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.utils.JsonValue;
+import com.rpsg.rpg.object.prop.Props;
 
 /**
  * 道具/符卡的效果<br>

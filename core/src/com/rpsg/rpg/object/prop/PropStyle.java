@@ -1,4 +1,4 @@
-package com.rpsg.rpg.object.item;
+package com.rpsg.rpg.object.prop;
 
 /**
  * 攻击所附加的属性

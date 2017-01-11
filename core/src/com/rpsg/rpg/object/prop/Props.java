@@ -1,4 +1,4 @@
-package com.rpsg.rpg.object.item;
+package com.rpsg.rpg.object.prop;
 
 import java.util.HashMap;
 import java.util.Map;

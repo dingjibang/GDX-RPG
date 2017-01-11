@@ -1,7 +1,7 @@
 package com.rpsg.rpg.object.context;
 
 import com.rpsg.rpg.object.game.Target;
-import com.rpsg.rpg.object.item.Prop;
+import com.rpsg.rpg.object.prop.Prop;
 
 /**
  * 装备运算的上下文

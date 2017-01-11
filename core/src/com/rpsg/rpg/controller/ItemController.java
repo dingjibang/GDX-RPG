@@ -33,26 +33,26 @@ public class ItemController {
 	public void put(int id) {
 		BaseItem baseItem = search(id);
 		if (baseItem == null)
-			_put(get(id));
+			put(get(id));
 		else
 		// 如果可叠加的，则数量+1，否则新建实例_(:3
 		if (baseItem.packable)
 			baseItem.count++;
 		else
-			_put(get(id));
+			put(get(id));
 	}
 
-	private void _put(BaseItem item) {
-		list().add(item);
-	}
 
 	public void put(int id, int count) {
 		for (int i = count; i < 0; i--)
 			put(id);
 	}
 
+	/***
+	 * 原始put，将保留装备属性，原汁原味=。=
+	 */
 	public void put(BaseItem baseItem) {
-		put(baseItem.id);
+		list().add(baseItem);
 	}
 
 	/**
@@ -102,6 +102,8 @@ public class ItemController {
 	public boolean remove(BaseItem baseItem, int count) {
 		if (baseItem == null)
 			return false;
+		if(!list().contains(baseItem))
+			return false;
 		if (baseItem.count - count < 0)
 			return false;
 
@@ -113,7 +115,7 @@ public class ItemController {
 
 	/** 移除1个 <b><i>当前背包</i></b> 里的某个道具（根据实体类） **/
 	public boolean remove(BaseItem baseItem) {
-		return remove(baseItem.id, 1);
+		return remove(baseItem, 1);
 	}
 
 	/** 移除数个 <b><i>当前背包</i></b> 里的某个道具（根据ID） **/

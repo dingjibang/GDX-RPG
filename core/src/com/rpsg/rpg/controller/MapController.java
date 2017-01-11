@@ -24,10 +24,11 @@ import com.rpsg.rpg.object.game.Scriptable;
 import com.rpsg.rpg.object.map.CollideType;
 import com.rpsg.rpg.object.map.MapSprite;
 import com.rpsg.rpg.object.map.NPC;
+import com.rpsg.rpg.object.map.PlayerQueue;
 import com.rpsg.rpg.util.Timer;
 
 /**
- * 游戏地图（{@link com.badlogic.gdx.maps.tiled.TiledMap TiledMap}）控制器
+ * 游戏地图（{@link com.badlogic.gdx.maps.tiled.TiledMap TiledMap}）控制器<br>
  */
 public class MapController {
 	
@@ -49,6 +50,9 @@ public class MapController {
 	boolean loaded = false; 
 	/**是否允许资源加载完成后就在屏幕画图，默认为true，他可以在JS脚本加载完毕后经由JS设置为false，这样可以在画图之前搞些事情*/
 	public boolean renderable = true;
+	
+	/**玩家队列*/
+	public PlayerQueue queue;
 	
 	
 	public MapController() {
@@ -100,10 +104,13 @@ public class MapController {
 			this.mapSprites.addAll(archiveMapSprites == null ? loadSprites() : archiveMapSprites);
 			
 			//从存档中读取玩家坐标点 TODO
+			queue = new PlayerQueue();
 			
 			
 			//创建脚本管理器
 			script = new ScriptController();
+			
+			Game.archive.get().mapName = path;
 			
 			loaded = true;
 			Views.loadView.stop("load_tmx");
@@ -127,7 +134,6 @@ public class MapController {
 		npc.scripts.put(CollideType.face, new Scriptable("mytest.js"));
 		//3秒之后执行一个假碰撞
 		Timer.add(10, () -> script.add(npc, CollideType.face));
-		System.out.println(Game.item.get(1));
 		
 		Timer.add(240, () -> npc.walk(MapSprite.Facing.RIGHT));
 		Timer.add(252, () -> npc.walk(MapSprite.Facing.RIGHT));
@@ -160,6 +166,17 @@ public class MapController {
 		
 		//end 测试用的代码
 		return list;
+	}
+	
+	/**瞬移到当前地图或某地图（取决mapName是否为空）*/
+	public void teleport(int x, int y, int z, String mapName) {
+		Game.archive.get().position.set(x, y, z);
+		
+		if(mapName == null){//重置queue坐标
+			queue.reload();
+		}else{//重载地图
+			load(mapName);
+		}
 	}
 
 	/**

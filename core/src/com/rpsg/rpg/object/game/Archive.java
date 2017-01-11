@@ -6,8 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.rpsg.rpg.controller.HeroController;
 import com.rpsg.rpg.object.item.BaseItem;
 import com.rpsg.rpg.object.map.MapSprite;
+import com.rpsg.rpg.util.Position;
 
 /**
  * GDX-RPG 游戏存档<br>
@@ -30,8 +32,16 @@ public class Archive implements Serializable{
 	/**背包内的所有物品*/
 	public List<BaseItem> items = new ArrayList<>();
 	
+	public HeroController heros = new HeroController();
+	
 	/**自定义状态*/
 	Map<String, Boolean> flags = new HashMap<>();
+
+	/**当前所在地图的相对坐标（1相对坐标 = 48像素）*/
+	public Position position = new Position();
+	
+	/**身上的金币*/
+	public long gold;
 	
 	/**添加一个状态*/
 	public void set(String id, boolean flag){
@@ -52,7 +62,5 @@ public class Archive implements Serializable{
 	public void setMapSprites(List<MapSprite> mapSprites) {
 		this.mapSprites = mapSprites;
 	}
-	
-	
 	
 }

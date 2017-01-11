@@ -22,8 +22,7 @@ public class GameView extends View{
 	/**立绘*/
 	public FG fg;
 	/**画面二次处理*/
-	static PostController post;
-	
+	private static PostController post;
 	
 	public void create() {
 		Game.view = this;
