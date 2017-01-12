@@ -20,8 +20,6 @@ import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Log;
 import com.rpsg.rpg.core.Path;
 import com.rpsg.rpg.core.Views;
-import com.rpsg.rpg.object.game.Scriptable;
-import com.rpsg.rpg.object.map.CollideType;
 import com.rpsg.rpg.object.map.MapSprite;
 import com.rpsg.rpg.object.map.NPC;
 import com.rpsg.rpg.object.map.PlayerQueue;
@@ -131,9 +129,9 @@ public class MapController {
 		NPC npc = new NPC(0, 0, 0, "images/walk/heros/walk_wriggle.png");
 		mapSprites.add(npc);
 		//给这个NPC加上一条碰撞脚本
-		npc.scripts.put(CollideType.face, new Scriptable("mytest.js"));
+//		npc.scripts.put(CollideType.face, new Scriptable("mytest.js"));
 		//3秒之后执行一个假碰撞
-		Timer.add(10, () -> script.add(npc, CollideType.face));
+//		Timer.add(10, () -> script.add(npc, CollideType.face));
 		
 		Timer.add(240, () -> npc.walk(MapSprite.Facing.RIGHT));
 		Timer.add(252, () -> npc.walk(MapSprite.Facing.RIGHT));

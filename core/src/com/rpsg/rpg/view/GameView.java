@@ -1,10 +1,14 @@
 package com.rpsg.rpg.view;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.controller.MapController;
 import com.rpsg.rpg.controller.PostController;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Log;
+import com.rpsg.rpg.core.Path;
+import com.rpsg.rpg.core.Res;
 import com.rpsg.rpg.ui.view.View;
 import com.rpsg.rpg.view.game.FG;
 import com.rpsg.rpg.view.game.MessageBox;
@@ -38,6 +42,10 @@ public class GameView extends View{
 		addProcessor(msg = new MessageBox());
 		fg = new FG();
 		post = new PostController();
+		
+		//创建stage菜单
+		$.add(new Button(Res.getDrawable(Path.IMAGE_MENU_GLOBAL + "btn_menu.png"), Res.getDrawable(Path.IMAGE_MENU_GLOBAL + "btn_menu_a.png")))
+			.size(60, 60).position(Game.STAGE_WIDTH - 90, 30).click(() -> System.out.println("asd")).appendTo(stage);
 		
 		Log.i("Game-view[created]");
 	}
