@@ -12,7 +12,9 @@ made by [Libgdx](https://github.com/libgdx/libgdx).
 
 官网 / website:  [http://shadow.rpsg-team.com](http://shadow.rpsg-team.com)
 
-Jenkins : [http://dev.rpsg-team.com/](http://dev.rpsg-team.com/)
+~~Jenkins: [http://dev.rpsg-team.com/](http://dev.rpsg-team.com/)~~
+
+UI Prototype: [https://modao.cc/app/GhibQOQlOKeugbsDhTPi0qnDaztNAcc](https://modao.cc/app/GhibQOQlOKeugbsDhTPi0qnDaztNAcc)
 
 "git clone" this project into your IDE, build, and enjoy it.
 

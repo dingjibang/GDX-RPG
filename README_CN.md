@@ -8,7 +8,9 @@
 
 官网:  [http://shadow.rpsg-team.com](http://shadow.rpsg-team.com)
 
-~~Jenkins : [http://dev.rpsg-team.com/](http://dev.rpsg-team.com/)~~
+~~Jenkins: [http://dev.rpsg-team.com/](http://dev.rpsg-team.com/)~~
+
+UI设计图: [https://modao.cc/app/GhibQOQlOKeugbsDhTPi0qnDaztNAcc](https://modao.cc/app/GhibQOQlOKeugbsDhTPi0qnDaztNAcc)
 
 使用git克隆这个项目即可运行，目前还没做完，所以没什么说明和文档，随便跑跑看看就好了_(:3
                                              
