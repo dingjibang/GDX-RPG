@@ -15,5 +15,6 @@ public class UI {
 	
 	public static void init(){
 		base = Res.getTexture(Path.IMAGE_GLOBAL + "white.jpg");
+		Log.i("UI[created]");
 	}
 }

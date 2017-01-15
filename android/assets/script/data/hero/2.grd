@@ -1,18 +1,55 @@
-id=2;
-
-var Association = com.rpsg.rpg.object.base.Association;
-var RPG = com.rpsg.rpg.core.RPG;
-var Buff = com.rpsg.rpg.object.base.items.Buff;
-
-imgPath="/walk_flandre.png";
-name="芙兰朵露";
-tag="恶魔";
-jname="Flandre Scarlet";
-
-fgname="flandre";
-face = [[350,260],[700,380],[0.16]];
-head = [[200,100],[830,1000],[0.27]];
-association=Association.read(1);
-support = Buff.getById(1);
-color="d55d41cc";
-target.setProp("level",1);
+{
+	"name": "玛艾露贝莉 赫恩",//名称
+	"jname": "Maribel Hearn",//日文名
+	"fg": "mari",//立绘所在文件夹
+	"spriteImage": "walk_mari.png",//行走图
+	"color": "372569cc",//颜色（UI用）
+	"prop": {//初始属性
+		"hp": 350,//血量
+		"maxhp": 350,//最大血量
+		"mp": 500,//蓝量
+		"maxmp": 500,//最大蓝量
+		"patk": 90,//物理攻击力
+		"pdef": 35,//物理防御力
+		"matk": 70,//魔法攻击力
+		"mdef": 49,//魔法防御力
+		"speed": 10,//速度
+		"hit": 5,//命中率
+		"evasion": 5,//闪避率
+		"level": 1,//等级
+		"exp": 0,//经验
+		"nextExp": 1000,//下一级所需经验
+		"criticalRate": 3,//暴击率，0～100
+		"critical": 150,//暴击伤害 默认为150%伤害
+		"dead": 0,//是否死亡，0否，1是
+		"rank": 0,//被敌人攻击的额外评分
+		"rankRate": 0,//被敌人攻击的额外几率
+		"attackRate": 0,//技能额外倍率
+		"sun": 100,//日属性有效率
+		"moon": 100,//月属性有效率
+		"metal": 100,//金属性有效率
+		"water": 100,//水属性有效率
+		"earth": 100,//土属性有效率
+		"fire": 100,//火属性有效率
+		"wood": 100,//木属性有效率
+	},
+	"grow": {//人物每次升级所成长的属性
+		"maxhp": 80,
+		"maxmp": 130,
+		"patk": 6,
+		"pdef": 3,
+		"matk": 14,
+		"mdef": 8,
+		"speed": 1,
+		"hit": 1,
+		"evasion": 1
+	},
+	"equip": {//初始装备
+		"shoes": 2,//鞋子
+		"clothes": null,//衣服
+		"weapon": null,//武器
+		"ornament1": null,//饰品1
+		"ornament2": null//饰品2
+	}
+	
+}

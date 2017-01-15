@@ -7,6 +7,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.backends.lwjgl.LwjglFiles;
 import com.badlogic.gdx.graphics.Color;
+import com.rpsg.rpg.core.Log;
 import com.rpsg.rpg.core.Views;
 
 /**
@@ -35,6 +36,7 @@ public class DesktopLauncher {
         
         //进入入口
 		new LwjglApplication(new Views(), config);//gameviews就是咱们游戏的核心了。
+		
         
 	}
 }

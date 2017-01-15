@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.rpsg.gdxQuery.CustomRunnable;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Res;
 
@@ -19,11 +20,19 @@ public class AsyncLoadImage extends Image{
 	private int originAlignment;
 	private String texturePath;
 	
+	private CustomRunnable<AsyncLoadImage> _onLoaded = null;
+	
+	public AsyncLoadImage() {}
+	
 	public AsyncLoadImage(String texturePath) {
 		this.texturePath = texturePath;
 	}
 	
-
+	private AsyncLoadImage(String texturePath, CustomRunnable<AsyncLoadImage> onLoaded) {
+		this(texturePath);
+		this._onLoaded = onLoaded;
+	}
+	
 	/**
 	 * 初始化
 	 */
@@ -54,12 +63,14 @@ public class AsyncLoadImage extends Image{
 			setDrawable(new TextureRegionDrawable(new TextureRegion(assetManager.get(fileName, Texture.class))));
 			loaded = true;
 			init();
+			if(_onLoaded != null)
+				_onLoaded.run(AsyncLoadImage.this);
 		};
 	}
 	
 	/**加载纹理**/
 	public void loadTexture(){
-		if(loading) 
+		if(texturePath == null || loading) 
 			return;
 		
 		loading = true;
@@ -75,4 +86,15 @@ public class AsyncLoadImage extends Image{
 	public void setOrigin(int alignment) {
 		super.setOrigin(originAlignment = alignment);
 	}
+	
+	/**
+	 * 异步加载一个drawable
+	 */
+	public void setDrawableAsync(String drawablePath) {
+		new AsyncLoadImage(drawablePath, that -> {
+			setDrawable(that.getDrawable());
+			init();
+		}).loadTexture();
+	}
+	
 }

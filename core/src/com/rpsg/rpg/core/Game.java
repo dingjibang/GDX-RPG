@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.controller.ArchiveController;
 import com.rpsg.rpg.controller.GamePropertiesController;
+import com.rpsg.rpg.controller.ItemController;
 import com.rpsg.rpg.view.GameView;
 
 /**
@@ -28,12 +29,16 @@ public class Game {
 	public static GameView view;
 	/**游戏配置管理器*/
 	public static GamePropertiesController prop;
+	/**道具管理器*/
+	public static ItemController item;
 	
 	/**初始化*/
 	public static void init(){
 		setting = Setting.create();
 		archive = new ArchiveController();
 		prop = new GamePropertiesController();
+		item = new ItemController();
+		Log.i("Game context[created]");
 	}
 	
 	/**运行一段JS脚本, 可以传入一个变量来当做当前脚本的prototype*/

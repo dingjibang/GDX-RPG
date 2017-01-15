@@ -16,6 +16,7 @@ public class Input implements InputProcessor{
 	
 	public Input(List<View> views) {
 		this.views = views;
+		Log.i("Input[created]");
 	}
 	
 	@Override

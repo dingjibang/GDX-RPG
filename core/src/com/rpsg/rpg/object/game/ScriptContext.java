@@ -16,7 +16,6 @@ public class ScriptContext {
 		this._script = script;
 	}
 	
-	//DEMO
 	public String sleep(int _frame) {
 		return (String)_script.set(new ScriptExecutor() {
 			int frame;
@@ -53,6 +52,23 @@ public class ScriptContext {
 	
 	public void hideMSG() {
 		Game.view.msg.hide();
+	}
+	
+	public void showFG(int position, String path) {
+		Game.view.fg.show(position, path, null);
+	}
+	
+	public void hideFG(int position) {
+		Game.view.fg.hide(position);
+	}
+	
+	public void hideFG() {
+		Game.view.fg.hide(null);
+	}
+	
+	public void hide() {
+		hideFG();
+		hideMSG();
 	}
 	
 }

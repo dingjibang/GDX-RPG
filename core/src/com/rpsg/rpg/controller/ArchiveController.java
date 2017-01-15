@@ -13,7 +13,7 @@ import com.rpsg.rpg.view.GameView;
  */
 public class ArchiveController {
 	
-	Archive ach;
+	private Archive ach;
 	
 	/**获取当前游戏正在使用的档案，如果没有则返回一个新的档案*/
 	public Archive get() {
@@ -50,6 +50,7 @@ public class ArchiveController {
 		if(Game.view == null)
 			throw new GdxRuntimeException("must in the game when save archive");
 		
+		//储存当前地图中的所有精灵
 		ach.setMapSprites(Game.view.map.mapSprites);
 		
 		File.save(ach, Path.SAVE + id + ".sav");

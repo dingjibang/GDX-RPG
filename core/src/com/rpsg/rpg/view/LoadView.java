@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.rpsg.rpg.core.Game;
+import com.rpsg.rpg.core.Log;
 import com.rpsg.rpg.core.Path;
 import com.rpsg.rpg.core.Res;
 import com.rpsg.rpg.ui.view.View;
@@ -26,6 +27,8 @@ public class LoadView extends View{
 		Res.get(Path.IMAGE_LOAD + "sprite.png").query().action(Actions.forever(Actions.rotateBy(360, .5f))).position(Game.STAGE_WIDTH - 70, 30).appendTo(stage);
 		
 		stage.getRoot().getColor().a = 0; 
+		
+		Log.i("Load-view[created]");
 	}
 
 	public void draw() {

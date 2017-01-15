@@ -55,37 +55,8 @@ public class GdxQuery {
 	private boolean isOver = false;
 	private GdxQuery father;
 	
-	private InputListener clickListener=(new InputListener(){
-		public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
-			if(b != Buttons.LEFT)
-				return;
-			if(click!=null && x>=0 && y>=0 && x <= event.getListenerActor().getWidth() && y <= event.getListenerActor().getHeight()) 
-				click.run(event.getListenerActor());
-			if(touchUp!=null) touchUp.run(event.getListenerActor());
-		}
-		public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
-			if(touchDown!=null) touchDown.run(event.getListenerActor());
-			return true;
-		}
-		public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-			if(!isOver){
-				if(over != null) over.run(event.getListenerActor());
-				isOver = true;
-			}
-			
-		};
-		public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
-			if(isOver){
-				if(leave != null) leave.run(event.getListenerActor());
-				isOver = false;
-			}
-		};
-		public boolean mouseMoved(InputEvent event, float x, float y) {
-			return super.mouseMoved(event, x, y);
-		};
-		
-	});
-
+	private InputListener _clickListener;
+	
 	public GdxQuery(Object... a) {
 		add(a);
 	}
@@ -275,6 +246,13 @@ public class GdxQuery {
 		for(Actor actor:list())
 			actor.setY(y);
 		return this;
+	}
+	
+	public boolean isTransparent() {
+		for(Actor actor : list())
+			if(actor.getColor().a != 0)
+				return false;
+		return true;
 	}
 
 	public GdxQuery x(float x){
@@ -700,6 +678,12 @@ public class GdxQuery {
 		return values.get(0);
 	}
 	
+	public Actor get(Integer index) {
+		if(empty() || index == null)
+			return new NullActor();
+		return values.get(index);
+	}
+	
 	@SuppressWarnings("unchecked")
 	public <T> T getItem(Class<T> c){
 		return (T)get();
@@ -721,9 +705,42 @@ public class GdxQuery {
 	
 	private GdxQuery _tryRegListener() {
 		for(Actor actor:list())
-			if(!actor.getListeners().contains(clickListener, true))
-				actor.addListener(clickListener);
+			if(!actor.getListeners().contains(clickListener(), true))
+				actor.addListener(clickListener());
 		return this;
+	}
+	
+	private InputListener clickListener() {
+		return _clickListener != null ? _clickListener : (_clickListener = new InputListener(){
+			public void touchUp (InputEvent event, float x, float y, int pointer, int b) {
+				if(b != Buttons.LEFT)
+					return;
+				if(click!=null && x>=0 && y>=0 && x <= event.getListenerActor().getWidth() && y <= event.getListenerActor().getHeight()) 
+					click.run(event.getListenerActor());
+				if(touchUp!=null) touchUp.run(event.getListenerActor());
+			}
+			public boolean touchDown (InputEvent event, float x, float y, int pointer, int b) {
+				if(touchDown!=null) touchDown.run(event.getListenerActor());
+				return true;
+			}
+			public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
+				if(!isOver){
+					if(over != null) over.run(event.getListenerActor());
+					isOver = true;
+				}
+				
+			};
+			public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+				if(isOver){
+					if(leave != null) leave.run(event.getListenerActor());
+					isOver = false;
+				}
+			};
+			public boolean mouseMoved(InputEvent event, float x, float y) {
+				return super.mouseMoved(event, x, y);
+			};
+			
+		});
 	}
 	
 	public GdxQuery click(Runnable run){

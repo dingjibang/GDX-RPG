@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rpsg.gdxQuery.$;
+import com.rpsg.rpg.core.Log;
 import com.rpsg.rpg.core.Script;
 import com.rpsg.rpg.object.map.CollideType;
 import com.rpsg.rpg.object.map.NPC;
@@ -30,7 +31,7 @@ public class ScriptController {
 		if(npc.scripts.containsKey(type)){
 			Script script = new Script(npc, type, npc.scripts.get(type));
 			scripts.add(script);
-			
+			Log.i("create collide["+npc + " with " + type +" collide]");
 			//启动线程
 			script.start();
 		}

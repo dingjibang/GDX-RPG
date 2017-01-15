@@ -1,65 +1,55 @@
-var Association = com.rpsg.rpg.object.base.Association;
-var RPG=com.rpsg.rpg.core.RPG;
-var Spellcard = com.rpsg.rpg.object.base.items.Spellcard;
-var Resistance = com.rpsg.rpg.object.base.Resistance;
-var ResistanceType = com.rpsg.rpg.object.base.Resistance.ResistanceType;
-var Hero = com.rpsg.rpg.object.rpg.Hero;
-
-
-id=1;
-
-
-imgPath="/walk_yuki.png";
-name="结城有栖";
-jname="Yuki Arisu";
-fgname="arisu";
-tag="主角";
-face = [[200,100],[830,1000],[0.2]];
-head = [[255,100],[830,975],[0.25]];
-target.setProp("hp", 150);
-target.attack = Spellcard.magicAttack();
-target.setProp("maxhp", 150);
-target.setProp("exp", 3);
-target.setProp("maxexp", 300);
-target.setProp("mp", 100);
-target.setProp("maxmp", 100);
-target.setProp("maxsc",12);
-target.setProp("speed",5);
-target.setProp("attack",50);
-target.setProp("magicAttack",100);
-target.setProp("defense",2);
-target.setProp("hit",50);
-target.setProp("attackDelay",10);
-target.setProp("denfenseDelay",10);
-target.setProp("criticalRate",90);
-
-addSpellcard(RPG.ctrl.item.get(5));
-addSpellcard(RPG.ctrl.item.get(5));
-addSpellcard(RPG.ctrl.item.get(5));
-addSpellcard(RPG.ctrl.item.get(5));
-addSpellcard(RPG.ctrl.item.get(5));
-addSpellcard(RPG.ctrl.item.get(5));
-addSpellcard(RPG.ctrl.item.get(5));
-addSpellcard(RPG.ctrl.item.get(5));
-addSpellcard(RPG.ctrl.item.get(5));
-addSpellcard(RPG.ctrl.item.get(5));
-addSpellcard(RPG.ctrl.item.get(5));
-addSpellcard(RPG.ctrl.item.get(5));
-addSpellcard(RPG.ctrl.item.get(5));
-addSpellcard(RPG.ctrl.item.get(5));
-addSpellcard(RPG.ctrl.item.get(5));
-addSpellcard(RPG.ctrl.item.get(11));
-addSpellcard(RPG.ctrl.item.get(12));
-
-target.resistance.put("earth", 1);
-target.resistance.put("metal", 1);
-target.resistance.put("sun", 1);
-target.setProp("dead", target.FALSE);
-color="59669ecc";
-lead=true;
-target.setProp("level",1);
-target.setProp("courage", 100);			//勇气
-target.setProp("perseverance", 44);		//毅力
-target.setProp("express", 12);			//表达
-target.setProp("knowledge", 74);		//知识
-target.setProp("respect", 66);			//包容
+{
+	"name": "宇佐见莲子",//名称
+	"jname": "Usami Renko",//日文名
+	"fg": "renko",//立绘所在文件夹
+	"spriteImage": "walk_renko.png",//行走图
+	"color": "d98027cc",//颜色（UI用）
+	"prop": {//初始属性
+		"hp": 500,//血量
+		"maxhp": 500,//最大血量
+		"mp": 250,//蓝量
+		"maxmp": 250,//最大蓝量
+		"patk": 115,//物理攻击力
+		"pdef": 55,//物理防御力
+		"matk": 55,//魔法攻击力
+		"mdef": 34,//魔法防御力
+		"speed": 10,//速度
+		"hit": 10,//命中率
+		"evasion": 10,//闪避率
+		"level": 1,//等级
+		"exp": 0,//经验
+		"nextExp": 1000,//下一级所需经验
+		"criticalRate": 3,//暴击率，0～100
+		"critical": 150,//暴击伤害 默认为150%伤害
+		"dead": 0,//是否死亡，0否，1是
+		"rank": 0,//被敌人攻击的额外评分
+		"rankRate": 0,//被敌人攻击的额外几率
+		"attackRate": 0,//技能额外倍率
+		"sun": 100,//日属性有效率
+		"moon": 100,//月属性有效率
+		"metal": 100,//金属性有效率
+		"water": 100,//水属性有效率
+		"earth": 100,//土属性有效率
+		"fire": 100,//火属性有效率
+		"wood": 100,//木属性有效率
+	},
+	"grow": {//人物每次升级所成长的属性
+		"maxhp": 95,
+		"maxmp": 50,
+		"patk": 12,
+		"pdef": 6,
+		"matk": 5,
+		"mdef": 3,
+		"speed": 9,
+		"hit": 5,
+		"evasion": 5
+	},
+	"equip": {//初始装备
+		"shoes": 2,//鞋子
+		"clothes": null,//衣服
+		"weapon": null,//武器
+		"ornament1": null,//饰品1
+		"ornament2": null//饰品2
+	}
+	
+}

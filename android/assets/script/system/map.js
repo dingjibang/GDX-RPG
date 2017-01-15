@@ -14,4 +14,13 @@ function _parseToJS(jsonArray) {
 
 var MSG = _parseToJS(Game.prop.get("msg"));
 
-var FG = com.rpsg.rpg.view.game.FG;
+var FG = _parseToJS(Game.prop.get("fg"));
+for(var i in FG) {
+	var prop = FG[i];
+	var path = prop.getString("path");
+	prop = (FG[i] = {});
+	prop.正常 = path + "/Normal.png";
+	prop.笑 = path + "/smile.png";
+}
+FG.left = 0;
+FG.right = 1;
