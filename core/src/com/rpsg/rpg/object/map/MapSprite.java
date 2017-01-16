@@ -113,8 +113,13 @@ public class MapSprite implements Serializable{
 		return false;
 	}
 	
+	public boolean isMoving()
+	{
+		return dx != 0 || dy != 0;
+	}
+	
 	public boolean move(int dx, int dy) { // dx和dy应为0、1或-1
-		if (this.dx != 0 || this.dy != 0)
+		if (isMoving())
 			return false;
 		this.dx = dx;
 		this.dy = dy;
@@ -133,7 +138,7 @@ public class MapSprite implements Serializable{
 	}
 	
 	public void act() {
-		if (dx != 0 || dy != 0)
+		if (isMoving())
 		{
 			x += dx * speed;
 			y += dy * speed;
