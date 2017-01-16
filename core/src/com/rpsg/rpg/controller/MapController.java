@@ -43,7 +43,7 @@ public class MapController {
 	public List<MapSprite> mapSprites = new ArrayList<>();
 	
 	/**脚本管理器*/
-	public ScriptController script;
+	public MapScriptController script;
 	
 	boolean loaded = false; 
 	/**是否允许资源加载完成后就在屏幕画图，默认为true，他可以在JS脚本加载完毕后经由JS设置为false，这样可以在画图之前搞些事情*/
@@ -106,7 +106,7 @@ public class MapController {
 			
 			
 			//创建脚本管理器
-			script = new ScriptController();
+			script = new MapScriptController();
 			
 			Game.archive.get().mapName = path;
 			
@@ -129,7 +129,7 @@ public class MapController {
 		NPC npc = new NPC(0, 0, 0, "images/walk/heros/walk_wriggle.png");
 		mapSprites.add(npc);
 		//给这个NPC加上一条碰撞脚本
-//		npc.scripts.put(CollideType.face, new Scriptable("mytest.js"));
+//		npc.scripts.put(CollideType.face, Game.script.map.create("mytest.js"));
 		//3秒之后执行一个假碰撞
 //		Timer.add(10, () -> script.add(npc, CollideType.face));
 		

@@ -1,24 +1,23 @@
-package com.rpsg.rpg.core;
+package com.rpsg.rpg.object.game;
 
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptableObject;
 
-import com.rpsg.rpg.controller.ScriptController;
-import com.rpsg.rpg.object.game.ScriptContext;
-import com.rpsg.rpg.object.game.ScriptExecutor;
-import com.rpsg.rpg.object.game.Scriptable;
+import com.rpsg.rpg.controller.MapScriptController;
+import com.rpsg.rpg.core.Game;
+import com.rpsg.rpg.core.Log;
 import com.rpsg.rpg.object.map.CollideType;
 import com.rpsg.rpg.object.map.NPC;
 
 /**
  * GDX-RPG 脚本<br>
  * 本脚本类仅为地图精灵使用，该类本身为一个线程，且内置了JS脚本，该线程将在地图精灵被碰撞而启动，脚本执行完毕后而结束。<br>
- * 所有线程都被{@link ScriptController}所创建、管理。<br>
+ * 所有线程都被{@link MapScriptController}所创建、管理。<br>
  * 该类的内容将根据游戏持续增加。
  * 
  */
-public class Script extends Thread{
+public class MapScript extends Thread{
 	
 	NPC npc;
 	Scriptable js;
@@ -28,7 +27,7 @@ public class Script extends Thread{
 	//当前异步执行器，如果是null状态则表示没有什么异步执行器在执行，详见act方法说明
 	public ScriptExecutor currentExecutor = null; 
 	
-	public Script(NPC npc, CollideType collideType, Scriptable js) {
+	public MapScript(NPC npc, CollideType collideType, Scriptable js) {
 		this.npc = npc;
 		this.js = js;
 		this.collideType = collideType;
@@ -36,7 +35,7 @@ public class Script extends Thread{
 	
 	/**线程启动*/
 	public void run() {
-		setName("============GDX-RPG Script[" + npc + " & " + collideType + "]============");
+		setName("============GDX-RPG MapScript[" + npc + " & " + collideType + "]============");
 		//执行JS脚本，将上下文（ScriptContext）作为该脚本的prototype
 		try {
 			if(js.executable()) {
@@ -48,7 +47,7 @@ public class Script extends Thread{
 				scope.setPrototype(((NativeJavaObject)Context.javaToJS(context = new ScriptContext(this), scope)));
 				
 				//执行js脚本
-				ctx.evaluateString(scope, js.get(ctx, scope), npc + " & " + collideType + " ", 1, null);
+				ctx.evaluateString(scope, "(function(){\n" + js.get(ctx, scope) + "\n}())", npc + " & " + collideType + " ", 1, null);
 				
 				Context.exit();
 			}
@@ -63,7 +62,7 @@ public class Script extends Thread{
 	}
 	
 	/**
-	 * 本方法无论何时，都是从游戏主线程中的{@link com.rpsg.rpg.controller.ScriptController#act() 调用}的。<br>
+	 * 本方法无论何时，都是从游戏主线程中的{@link com.rpsg.rpg.controller.MapScriptController#act() 调用}的。<br>
 	 * <br>
 	 * 在GDX-RPG地图脚本系统中，脚本首先分为两种类型：<br>
 	 * 第一种同步执行的脚本，他和任何正常的调用相同，即调用一个方法，等待方法执行完毕，然后继续执行JS。<br>

@@ -1,10 +1,8 @@
 package com.rpsg.rpg.object.game;
 
-import com.rpsg.rpg.core.Script;
-
 /**
  * GDX-RPG 异步脚本执行器
- * @see {@link Script#act()}
+ * @see {@link MapScript#act()}
  *
  */
 public abstract class ScriptExecutor {

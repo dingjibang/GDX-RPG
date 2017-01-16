@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.rpg.controller.ArchiveController;
 import com.rpsg.rpg.controller.GamePropertiesController;
 import com.rpsg.rpg.controller.ItemController;
+import com.rpsg.rpg.controller.ScriptableController;
 import com.rpsg.rpg.view.GameView;
 
 /**
@@ -31,6 +32,8 @@ public class Game {
 	public static GamePropertiesController prop;
 	/**道具管理器*/
 	public static ItemController item;
+	/**脚本（缓存）管理器*/
+	public static ScriptableController script;
 	
 	/**初始化*/
 	public static void init(){
@@ -38,6 +41,8 @@ public class Game {
 		archive = new ArchiveController();
 		prop = new GamePropertiesController();
 		item = new ItemController();
+		script = new ScriptableController();
+		
 		Log.i("Game context[created]");
 	}
 	

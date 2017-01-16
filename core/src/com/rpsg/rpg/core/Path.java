@@ -60,6 +60,9 @@ public class Path {
 	public static final String SCRIPT_DATA_TASK = SCRIPT_DATA + "/task/";
 	public static final String SCRIPT_DATA_ACHIEVEMENT = SCRIPT_DATA + "/achievement/";
 	public static final String SCRIPT_DATA_INDEX = SCRIPT_DATA + "/index/";
+	public static final String SCRIPT_UI = SCRIPT + "/ui/";
+	public static final String SCRIPT_UI_VIEW = SCRIPT_UI + "view/";
+	public static final String SCRIPT_UI_WIDGET = SCRIPT_UI + "widget/";
 
 	// 存档最大页数
 	public static final int SAVE_FILE_MAX_PAGE = 20;

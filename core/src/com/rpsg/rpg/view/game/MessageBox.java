@@ -17,8 +17,8 @@ import com.rpsg.lazyFont.LazyBitmapFont;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Path;
 import com.rpsg.rpg.core.Res;
-import com.rpsg.rpg.core.Script;
-import com.rpsg.rpg.core.Text; 
+import com.rpsg.rpg.core.Text;
+import com.rpsg.rpg.object.game.MapScript;
 import com.rpsg.rpg.object.game.ScriptExecutor;
 import com.rpsg.rpg.ui.Image;
 import com.rpsg.rpg.util.InputProcessorEx;
@@ -103,7 +103,7 @@ public class MessageBox extends InputProcessorEx{
 		box.addAction(Actions.fadeOut(.5f));
 	}
 	
-	public void say(Script _script, JsonValue _cfg, String title, String _text) {
+	public void say(MapScript _script, JsonValue _cfg, String title, String _text) {
 		_script.set(new ScriptExecutor() {
 			
 			/**输入控制*/
@@ -222,7 +222,7 @@ public class MessageBox extends InputProcessorEx{
 			
 			
 			public void executed() {
-				Game.view.removeInputProcessor(input);
+				Game.view.removeProcessor(input);
 				currentText = calc();
 				super.executed();
 			}

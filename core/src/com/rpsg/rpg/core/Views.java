@@ -92,7 +92,8 @@ public class Views implements ApplicationListener {
 		
 		//依次遍历view
 		//创建views的快照进行遍历
-		for(View view : views){
+		for(int i = views.size() - 1; i >= 0; i--){
+			View view = views.get(i);
 			view.act();
 			view.draw();
 		}
@@ -116,15 +117,18 @@ public class Views implements ApplicationListener {
 			
 			view.create();
 			
-			insertViews.add(0, view);
-			
-			Log.i("Views << " + clz.getSimpleName());
+			addView(view);
 			
 			return view;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static void addView(View view) {
+		insertViews.add(0, view);
+		Log.i("Views << " + view.getClass().getSimpleName());
 	}
 	
 	public void resize(int width, int height) {}

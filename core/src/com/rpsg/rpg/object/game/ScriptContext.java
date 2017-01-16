@@ -2,17 +2,16 @@ package com.rpsg.rpg.object.game;
 
 import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.Game;
-import com.rpsg.rpg.core.Script;
 
 /**
- * GDX-RPG {@link Script 脚本}上下文<br>
- * 其实把{@link Script}本身作为上下文也不是不可以，只是为了界面简洁就把上下文部分单独抽出来了=。=
+ * GDX-RPG {@link MapScript 脚本}上下文<br>
+ * 其实把{@link MapScript}本身作为上下文也不是不可以，只是为了界面简洁就把上下文部分单独抽出来了=。=
  */
 public class ScriptContext {
 	
-	public Script _script;
+	public MapScript _script;
 	
-	public ScriptContext(Script script) {
+	public ScriptContext(MapScript script) {
 		this._script = script;
 	}
 	

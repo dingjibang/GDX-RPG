@@ -15,7 +15,6 @@ public class TitleView extends View{
 	}
 
 	public void draw() {
-		
 	}
 
 	public void act() {

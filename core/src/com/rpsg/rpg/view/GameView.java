@@ -3,6 +3,7 @@ package com.rpsg.rpg.view;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.rpg.controller.GameMenuController;
 import com.rpsg.rpg.controller.MapController;
 import com.rpsg.rpg.controller.PostController;
 import com.rpsg.rpg.core.Game;
@@ -27,6 +28,9 @@ public class GameView extends View{
 	public FG fg;
 	/**画面二次处理*/
 	private static PostController post;
+	/**菜单*/
+	public GameMenuController menu;
+	
 	
 	public void create() {
 		Game.view = this;
@@ -42,10 +46,11 @@ public class GameView extends View{
 		addProcessor(msg = new MessageBox());
 		fg = new FG();
 		post = new PostController();
+		menu = new GameMenuController();
 		
 		//创建stage菜单
 		$.add(new Button(Res.getDrawable(Path.IMAGE_MENU_GLOBAL + "btn_menu.png"), Res.getDrawable(Path.IMAGE_MENU_GLOBAL + "btn_menu_a.png")))
-			.size(60, 60).position(Game.STAGE_WIDTH - 90, 30).click(() -> System.out.println("asd")).appendTo(stage);
+			.size(60, 60).position(Game.STAGE_WIDTH - 90, 30).click(menu::show).appendTo(stage);
 		
 		Log.i("Game-view[created]");
 	}
@@ -77,6 +82,8 @@ public class GameView extends View{
 		map.dispose();
 		//卸载高级画质
 		post.dispose();
+		//卸载游戏菜单
+		menu.dispose();
 		
 		Game.view = null;
 		

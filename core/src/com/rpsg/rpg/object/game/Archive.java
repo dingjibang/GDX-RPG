@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.rpsg.rpg.controller.HeroController;
 import com.rpsg.rpg.object.item.BaseItem;
 import com.rpsg.rpg.object.map.MapSprite;
 import com.rpsg.rpg.util.Position;
@@ -32,7 +31,7 @@ public class Archive implements Serializable{
 	/**背包内的所有物品*/
 	public List<BaseItem> items = new ArrayList<>();
 	
-	public HeroController heros = new HeroController();
+	public Party heros = new Party();
 	
 	/**自定义状态*/
 	Map<String, Boolean> flags = new HashMap<>();

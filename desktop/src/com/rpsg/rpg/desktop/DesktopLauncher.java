@@ -1,14 +1,13 @@
 package com.rpsg.rpg.desktop;
 
-import box2dLight.RayHandler;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.backends.lwjgl.LwjglFiles;
 import com.badlogic.gdx.graphics.Color;
-import com.rpsg.rpg.core.Log;
 import com.rpsg.rpg.core.Views;
+
+import box2dLight.RayHandler;
 
 /**
  * GDX-RPG PC版本启动器

@@ -1,4 +1,4 @@
-package com.rpsg.rpg.controller;
+package com.rpsg.rpg.object.game;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import com.rpsg.rpg.util.Stream;
  * {@link Hero} 控制器
  */
 @SuppressWarnings("unchecked")
-public class HeroController implements Serializable{
+public class Party implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	/**所有Hero，同时包含了{@link #current}，只是被加载过的*/

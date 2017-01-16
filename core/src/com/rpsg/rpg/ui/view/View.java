@@ -51,7 +51,7 @@ public abstract class View implements InputProcessor{
 	public void onRemove(){}
 	
 	
-	private boolean bubble = true;
+	private boolean bubble = false;
 	/**
 	 * 是否允许当前View的输入继续向下冒泡
 	 * <br>
@@ -70,7 +70,7 @@ public abstract class View implements InputProcessor{
 	 * @return 是否允许输入
 	 * */
 	public boolean onInput(){
-		return true;
+		return true && stage != null;
 	}
 	
 	/** Called when a key was pressed
@@ -78,7 +78,11 @@ public abstract class View implements InputProcessor{
 	 * @param keycode one of the constants in {@link Input.Keys}
 	 * @return whether the input was processed */
 	public boolean keyDown (int keycode){
-		return $.allMatch(processors(), p -> p.keyDown(keycode)) && onInput() && stage.keyDown(keycode) && buuleable();
+		if($.allMatch(processors(), p -> p.keyDown(keycode)) && onInput()){
+			stage.keyDown(keycode);
+			return bubble;
+		}
+		return false;
 	};
 
 	/** Called when a key was released
@@ -86,7 +90,11 @@ public abstract class View implements InputProcessor{
 	 * @param keycode one of the constants in {@link Input.Keys}
 	 * @return whether the input was processed */
 	public boolean keyUp (int keycode){
-		return $.allMatch(processors(), p -> p.keyUp(keycode)) && onInput() && stage.keyUp(keycode) && buuleable();
+		if($.allMatch(processors(), p -> p.keyUp(keycode)) && onInput()){
+			stage.keyUp(keycode);
+			return bubble;
+		}
+		return false;
 	};
 
 	/** Called when a key was typed
@@ -94,7 +102,11 @@ public abstract class View implements InputProcessor{
 	 * @param character The character
 	 * @return whether the input was processed */
 	public boolean keyTyped (char character){
-		return $.allMatch(processors(), p -> p.keyTyped(character)) && onInput() && stage.keyTyped(character) && buuleable();
+		if($.allMatch(processors(), p -> p.keyTyped(character)) && onInput()){
+			stage.keyTyped(character);
+			return bubble;
+		}
+		return false;
 	};
 
 	/** Called when the screen was touched or a mouse button was pressed. The button parameter will be {@link Buttons#LEFT} on iOS.
@@ -104,7 +116,11 @@ public abstract class View implements InputProcessor{
 	 * @param button the button
 	 * @return whether the input was processed */
 	public boolean touchDown (int screenX, int screenY, int pointer, int button){
-		return $.allMatch(processors(), p -> p.touchDown(screenX, screenY, pointer, button)) && onInput() && stage.touchDown(screenX, screenY, pointer, button) && buuleable();
+		if($.allMatch(processors(), p -> p.touchDown(screenX, screenY, pointer, button)) && onInput()){
+			stage.touchDown(screenX, screenY, pointer, button);
+			return bubble;
+		}
+		return false;
 	};
 
 	/** Called when a finger was lifted or a mouse button was released. The button parameter will be {@link Buttons#LEFT} on iOS.
@@ -112,27 +128,43 @@ public abstract class View implements InputProcessor{
 	 * @param button the button
 	 * @return whether the input was processed */
 	public boolean touchUp (int screenX, int screenY, int pointer, int button){
-		return $.allMatch(processors(), p -> p.touchUp(screenX, screenY, pointer, button)) && onInput() && stage.touchUp(screenX, screenY, pointer, button) && buuleable();
+		if($.allMatch(processors(), p -> p.touchUp(screenX, screenY, pointer, button)) && onInput()){
+			stage.touchUp(screenX, screenY, pointer, button);
+			return bubble;
+		}
+		return false;
 	};
 
 	/** Called when a finger or the mouse was dragged.
 	 * @param pointer the pointer for the event.
 	 * @return whether the input was processed */
 	public boolean touchDragged (int screenX, int screenY, int pointer){
-		return $.allMatch(processors(), p -> p.touchDragged(screenX, screenY, pointer)) && onInput() && stage.touchDragged(screenX, screenY, pointer) && buuleable();
+		if($.allMatch(processors(), p -> p.touchDragged(screenX, screenY, pointer)) && onInput()){
+			stage.touchDragged(screenX, screenY, pointer);
+			return bubble;
+		}
+		return false;
 	};
 
 	/** Called when the mouse was moved without any buttons being pressed. Will not be called on iOS.
 	 * @return whether the input was processed */
 	public boolean mouseMoved (int screenX, int screenY){
-		return $.allMatch(processors(), p -> p.mouseMoved(screenX, screenY)) && onInput() && stage.mouseMoved(screenX, screenY) && buuleable();
+		if($.allMatch(processors(), p -> p.mouseMoved(screenX, screenY)) && onInput()){
+			stage.mouseMoved(screenX, screenY);
+			return bubble;
+		}
+		return false;
 	};
 
 	/** Called when the mouse wheel was scrolled. Will not be called on iOS.
 	 * @param amount the scroll amount, -1 or 1 depending on the direction the wheel was scrolled.
 	 * @return whether the input was processed. */
 	public boolean scrolled (int amount){
-		return $.allMatch(processors(), p -> p.scrolled(amount)) && onInput() && stage.scrolled(amount) && buuleable();
+		if($.allMatch(processors(), p -> p.scrolled(amount)) && onInput()){
+			stage.scrolled(amount);
+			return bubble;
+		}
+		return false;
 	};
 	
 	public InputProcessor addProcessor(InputProcessor p) {
@@ -140,7 +172,7 @@ public abstract class View implements InputProcessor{
 		return p;
 	}
 	
-	public boolean removeInputProcessor(InputProcessor p) {
+	public boolean removeProcessor(InputProcessor p) {
 		return removeList.add(p);
 	}
 	
