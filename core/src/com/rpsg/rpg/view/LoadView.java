@@ -24,7 +24,7 @@ public class LoadView extends View{
 	public void create() {
 		stage = Game.stage();
 		
-		Res.get(Path.IMAGE_LOAD + "sprite.png").query().action(Actions.forever(Actions.rotateBy(360, .5f))).position(Game.STAGE_WIDTH - 70, 30).appendTo(stage);
+		Res.get(Path.IMAGE_LOAD + "sprite.png").query().action(Actions.forever(Actions.rotateBy(360, .5f))).position(Game.STAGE_WIDTH - 70, 30).to(stage);
 		
 		stage.getRoot().getColor().a = 0; 
 		

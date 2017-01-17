@@ -10,7 +10,9 @@ import com.rpsg.rpg.ui.view.View;
 /**
  * GDX-RPG javascript控制的视窗
  */
-public abstract class JSView extends View{
+public abstract class JSView extends View {
+	
+	String jsFilePath;
 	
 	public static JSView of(String jsFilePath) {
 		Context ctx = Context.enter();
@@ -20,13 +22,14 @@ public abstract class JSView extends View{
 		
 		js = "new JavaAdapter(" + JSView.class.getName() + ", (function(){\n"+js+"\nreturn this}.call({})))";
 		JSView view = (JSView) Context.jsToJava(ctx.evaluateString(scope, js, null, 1, null), JSView.class);
+		view.jsFilePath = jsFilePath;
 		Context.exit();
 		
 		return view;
 	}
 	
 	public String toString() {
-		return "JSView";
+		return "JSView [" + jsFilePath + "]";
 	}
 	
 }

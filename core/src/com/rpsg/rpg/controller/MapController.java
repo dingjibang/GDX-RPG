@@ -192,7 +192,7 @@ public class MapController {
 		Matrix4 combined = camera.combined.cpy();
 		
 		//debug
-		camera.position.set(130, 130, 0);
+		camera.position.set(730, 430, 0);
 		
 		//更新相机状态
 		camera.update();

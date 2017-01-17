@@ -128,7 +128,7 @@ public class Views implements ApplicationListener {
 	
 	public static void addView(View view) {
 		insertViews.add(0, view);
-		Log.i("Views << " + view.getClass().getSimpleName());
+		Log.i("Views << " + view.toString());
 	}
 	
 	public void resize(int width, int height) {}

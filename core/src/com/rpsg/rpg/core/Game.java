@@ -72,9 +72,12 @@ public class Game {
 	
 	public static Context getJSContext() {
 		Context ctx = Context.enter();
-		//如果是在手机运行的，则不预编译脚本，否则会出现异常
+		//如果是在手机运行的，则不预编译脚本，否则会出现异常，否则最大程度的预编译脚本，以提升性能
 		if(Game.isMobile())
 			ctx.setOptimizationLevel(-1);
+		else
+			ctx.setOptimizationLevel(9);
+		
 		return ctx;
 	}
 	
