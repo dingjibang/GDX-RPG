@@ -54,7 +54,8 @@ public class Target implements Serializable{
 		for(Equipment e : equipments.values()){
 			if(e == null || e.effect == null) continue;
 			Prop prop = e.effect.prop.get(propName);
-			value += prop.get(new EquipmentContext(originValue));
+			if(prop != null)
+				value += prop.get(new EquipmentContext(originValue));
 		}
 		
 		return value;

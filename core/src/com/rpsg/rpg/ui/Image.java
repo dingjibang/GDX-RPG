@@ -62,4 +62,10 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 		return getColor().a <= 0;
 	}
 
+	public Texture getTexture() {
+		if(getDrawable() instanceof  TextureRegionDrawable)
+			return ((TextureRegionDrawable) getDrawable()).getRegion().getTexture();
+
+		return null;
+	}
 }

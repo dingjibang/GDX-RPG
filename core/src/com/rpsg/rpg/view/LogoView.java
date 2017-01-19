@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -51,7 +50,7 @@ public class LogoView extends View{
 				int pointsCount = 60;
 				float minScale = .15f;
 				
-				point.center().scale(0).action(Actions.sequence(
+				point.center(true).scale(0).action(Actions.sequence(
 					Actions.scaleTo(minScale, minScale, .4f, Interpolation.bounceOut),
 					Actions.delay(.3f),
 					Actions.run(() -> 
@@ -64,7 +63,6 @@ public class LogoView extends View{
 						Actions.sequence(Actions.rotateTo(-15f, .02f), Actions.rotateTo(0f, .02f), Actions.rotateTo(15f, .02f), Actions.rotateTo(0f, .02f))
 				)));
 				seManager.play(Path.MUSIC_SE + "se_1.mp3");
-				
 				group.addAction(Actions.delay(1.5f, Actions.run(() -> {
 					for(int i = 0; i < pointsCount; i ++){
 						boolean left = MathUtils.randomBoolean(), top = MathUtils.randomBoolean();
@@ -72,11 +70,11 @@ public class LogoView extends View{
 						float animated = (float)MathUtils.random(1800, 2800) / 1000f;
 						int tex = MathUtils.random(1, 5);
 						
-						Res.sync(Path.IMAGE_LOGO + "p_"+tex+".png").query().filter(TextureFilter.Nearest).to(group).zIndex(1)
+						Res.sync(Path.IMAGE_LOGO + "p_"+tex+".png").query().nearest().to(group).zIndex(1)
 						.position(left ? -leftOffset : Game.STAGE_WIDTH + leftOffset, top ? -topOffset : Game.STAGE_HEIGHT + topOffset)
 						.size(size, size)
 						.alpha(MathUtils.random(.2f, .5f))
-						.center()
+						.center(true)
 						.action(Actions.sequence(
 									Actions.moveTo(Game.STAGE_WIDTH / 2 - size / 2, Game.STAGE_HEIGHT / 2 - size / 2, animated, Interpolation.pow2In),
 									Actions.run(() -> {
@@ -99,28 +97,28 @@ public class LogoView extends View{
 					
 					group.addAction(Actions.delay(.7f, Actions.run(() -> {
 						
-						GdxQuery r = Res.sync(Path.IMAGE_LOGO + "r.png").query().zIndex(0).filter(TextureFilter.Nearest).position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).fadeOut().center()
+						GdxQuery r = Res.sync(Path.IMAGE_LOGO + "r.png").query().zIndex(0).nearest().position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).fadeOut().center(true)
 							.action(Actions.moveBy(-120, 0, .8f, Interpolation.pow3Out)).fadeIn(.2f).to(group);
-						GdxQuery p = Res.sync(Path.IMAGE_LOGO + "p.png").query().zIndex(0).filter(TextureFilter.Nearest).position(Game.STAGE_WIDTH / 2 - 60, Game.STAGE_HEIGHT / 2).fadeOut().center()
+						GdxQuery p = Res.sync(Path.IMAGE_LOGO + "p.png").query().zIndex(0).nearest().position(Game.STAGE_WIDTH / 2 - 60, Game.STAGE_HEIGHT / 2).fadeOut().center(true)
 						.fadeIn(.5f).to(group);
-						GdxQuery s = Res.sync(Path.IMAGE_LOGO + "s.png").query().zIndex(0).filter(TextureFilter.Nearest).position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).fadeOut().center()
+						GdxQuery s = Res.sync(Path.IMAGE_LOGO + "s.png").query().zIndex(0).nearest().position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).fadeOut().center(true)
 						.action(Actions.moveBy(150, 0, .8f, Interpolation.pow3Out)).fadeIn(.2f).to(group);
-						GdxQuery g = Res.sync(Path.IMAGE_LOGO + "g.png").query().zIndex(0).filter(TextureFilter.Nearest).position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).fadeOut().center()
+						GdxQuery g = Res.sync(Path.IMAGE_LOGO + "g.png").query().zIndex(0).nearest().position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).fadeOut().center(true)
 						.action(Actions.moveBy(285, 0, .8f, Interpolation.pow3Out)).fadeIn(.2f).to(group);
 						
 						GdxQuery logo = $.add(r, p, s, g);
 						
 						group.addAction(Actions.delay(1.6f, Actions.run(() -> {
-							Res.sync(Path.IMAGE_LOGO + "bottom.png").query().filter(TextureFilter.Nearest).fadeOut().position(Game.STAGE_WIDTH / 2, -100).center().action(Actions.fadeIn(.5f)).action(Actions.moveBy(0, 150, .5f, Interpolation.pow2Out)).to(group);
+							Res.sync(Path.IMAGE_LOGO + "bottom.png").query().nearest().fadeOut().position(Game.STAGE_WIDTH / 2, -100).center(true).action(Actions.fadeIn(.5f)).action(Actions.moveBy(0, 150, .5f, Interpolation.pow2Out)).to(group);
 						})));
 						
 						point.zIndex(23333);
 						
 						group.addAction(Actions.delay(.3f, Actions.run(() -> {
-							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("d9bc64").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center().scale(0).action(Actions.scaleTo(30, 30, .8f, Interpolation.pow4In)).to(group).zIndex(1);
-							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("22ac38").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center().scale(0).action(Actions.delay(.4f, Actions.scaleTo(30, 30, .8f, Interpolation.pow4In))).to(group).zIndex(2);
-							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("d67ca0").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center().scale(0).action(Actions.delay(.8f, Actions.scaleTo(30, 30, .8f, Interpolation.pow4In))).to(group).zIndex(3);
-							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("5ca3cb").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center().scale(0).action(Actions.delay(1.2f, Actions.scaleTo(30, 30, .8f, Interpolation.pow4In))).to(group).zIndex(4);
+							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("d9bc64").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center(true).scale(0).action(Actions.scaleTo(30, 30, .8f, Interpolation.pow4In)).to(group).zIndex(1);
+							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("22ac38").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center(true).scale(0).action(Actions.delay(.4f, Actions.scaleTo(30, 30, .8f, Interpolation.pow4In))).to(group).zIndex(2);
+							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("d67ca0").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center(true).scale(0).action(Actions.delay(.8f, Actions.scaleTo(30, 30, .8f, Interpolation.pow4In))).to(group).zIndex(3);
+							Res.sync(Path.IMAGE_LOGO + "circle.png").query().color("5ca3cb").position(Game.STAGE_WIDTH / 2 - 77, Game.STAGE_HEIGHT / 2).center(true).scale(0).action(Actions.delay(1.2f, Actions.scaleTo(30, 30, .8f, Interpolation.pow4In))).to(group).zIndex(4);
 							logo.zIndex(233);
 							point.zIndex(666);
 						})));

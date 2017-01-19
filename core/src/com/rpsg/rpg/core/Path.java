@@ -41,6 +41,8 @@ public class Path {
 
 	public static final String MESSAGE = BASE_PATH + IMAGE_BASE_PATH + "/message/";
 	public static final String WALK = BASE_PATH + IMAGE_BASE_PATH + "/walk/";
+	public static final String WALK_HERO = BASE_PATH + IMAGE_BASE_PATH + "/walk/heros/";
+	public static final String WALK_NPC = BASE_PATH + IMAGE_BASE_PATH + "/walk/npcs/";
 	public static final String SHADER = BASE_PATH + "shader/";
 	public static final String IMAGE_ICONS = BASE_PATH + IMAGE_BASE_PATH + "/icons/";
 	public static final String PARTICLE = BASE_PATH + "particle/";

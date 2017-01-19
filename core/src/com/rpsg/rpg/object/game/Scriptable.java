@@ -16,16 +16,17 @@ public class Scriptable {
 	
 	String js;
 	List<String> include = new ArrayList<>();
-	
+
+	private static final Pattern p = Pattern.compile("@include\\s(.+?)\n");
+
 	ScriptableManager manager;
-	
+
 	protected Scriptable(String fileName, ScriptableManager manager) {
 		this.manager = manager;
-		
+
 		js = File.readString(fileName);
-		
+
 		//为了节省开销，include不允许嵌套，也就是说一个js脚本A，include了脚本B，那么仅仅简单读取B，并不再include其他脚本。
-		Pattern p = Pattern.compile("\\/\\/#include\\s(.+?)\n");
 		Matcher m = p.matcher(js);
 		
 		while (m.find()) {

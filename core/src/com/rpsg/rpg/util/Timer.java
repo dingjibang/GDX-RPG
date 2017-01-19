@@ -1,5 +1,8 @@
 package com.rpsg.rpg.util;
 
+import com.badlogic.gdx.Gdx;
+import com.rpsg.rpg.core.Game;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +13,7 @@ import java.util.List;
 public class Timer {
 	static List<Task> list = new ArrayList<>();
 	public static final int FOREVER = -1;
+	static boolean pause = false;
 	
 	public static Task add(int delayFrame, int repeat, Runnable run) {
 		Task task = new Task();
@@ -40,8 +44,20 @@ public class Timer {
 			list.removeAll(removeList);
 					
 		}
+
+		//更新当前存档进行时间
+		if(Game.archive.has() && !pause)
+			Game.archive.get().time += Gdx.graphics.getDeltaTime() * 1000;
 	}
-	
+
+	public static void pause() {
+		pause = true;
+	}
+
+	public static void resume() {
+		pause = false;
+	}
+
 	public static void remove(Task timer) {
 		list.remove(timer);
 	}

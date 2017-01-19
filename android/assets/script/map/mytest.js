@@ -1,4 +1,6 @@
-//#include map.js
+/**
+ * @include map.js
+ */
 
 print("test")
 showFG(FG.left, FG.魔理沙.正常)

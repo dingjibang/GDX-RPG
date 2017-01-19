@@ -1,5 +1,6 @@
 package com.rpsg.rpg.view;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.rpsg.rpg.controller.GameMenuController;
 import com.rpsg.rpg.controller.MapController;
@@ -78,8 +79,14 @@ public class GameView extends View{
 		menu.dispose();
 		
 		Game.view = null;
-		
 		Log.i("Game-view[disposed]");
 	}
-	
+
+	@Override
+	public boolean keyDown(int keycode) {
+		if (keycode == Input.Keys.ESCAPE)
+			menu.show();
+
+		return super.keyDown(keycode);
+	}
 }

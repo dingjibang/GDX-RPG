@@ -23,7 +23,7 @@ public class PlayerQueue {
 	/**重新加载player or 坐标，{@link Party 外部}也会调用这个方法（当队列发生变化时）*/
 	public void reload() {
 		players.clear();
-		for(Hero hero : Game.archive.get().heros.current())
+		for(Hero hero : Game.archive.get().party.current())
 			players.add(hero.sprite);
 		
 		//TODO position

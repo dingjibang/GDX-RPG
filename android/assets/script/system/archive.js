@@ -10,5 +10,5 @@ position.set(15, 58, 3);
 gold = 0;
 
 /**初始Hero*/
-heros.add(1);//mari
-heros.add(2);//renko
+party.add(1);//mari
+party.add(2);//renko

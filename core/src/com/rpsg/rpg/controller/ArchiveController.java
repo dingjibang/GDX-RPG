@@ -55,6 +55,13 @@ public class ArchiveController {
 		
 		File.save(ach, Path.SAVE + id + ".sav");
 	}
+
+	/**
+	 * 是否有存档
+	 */
+	public boolean has() {
+		return ach != null;
+	}
 	
 	/**
 	 * 清空存档

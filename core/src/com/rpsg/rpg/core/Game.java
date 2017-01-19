@@ -1,5 +1,6 @@
 package com.rpsg.rpg.core;
 
+import com.badlogic.gdx.scenes.scene2d.Group;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptableObject;
@@ -77,7 +78,7 @@ public class Game {
 			ctx.setOptimizationLevel(-1);
 		else
 			ctx.setOptimizationLevel(9);
-		
+
 		return ctx;
 	}
 	

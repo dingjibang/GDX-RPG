@@ -44,7 +44,7 @@ public class Hero implements Targetable, Serializable{
 		fg = json.getString("fg");
 		color = json.getString("color");
 		
-		sprite = new MapSprite(0, 0, 0, 4, Path.WALK + "heros/" + json.getString("spriteImage"));
+		sprite = new MapSprite(0, 0, 0, 4, Path.WALK_HERO + json.getString("spriteImage"));
 		
 		target = new GrowableTarget(json.get("prop"), json.get("grow"));
 		

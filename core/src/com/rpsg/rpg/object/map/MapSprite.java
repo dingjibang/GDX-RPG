@@ -2,6 +2,7 @@ package com.rpsg.rpg.object.map;
 
 import java.io.Serializable;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.rpg.core.Res;
@@ -18,8 +19,9 @@ import com.rpsg.rpg.ui.Image;
  */
 public class MapSprite implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
-	/**所在Z层*/
+
+	private String imgPath;
+
 	private int x;
 	private int y;
 	private int zIndex;
@@ -98,9 +100,12 @@ public class MapSprite implements Serializable{
 		this.facing = facing;
 	}
 
-	public void setTexture(String fileName)
-	{
+	public void setTexture(String fileName){
 		img = Res.sync(fileName);
+	}
+
+	public Texture getTexture() {
+		return img.getTexture();
 	}
 	
 	public boolean walk(Facing dir)
@@ -146,5 +151,9 @@ public class MapSprite implements Serializable{
 		}
 		if (x % 48 == 0 && y % 48 == 0)
 			dx = dy = 0;
+	}
+
+	public String imgPath() {
+		return imgPath;
 	}
 }

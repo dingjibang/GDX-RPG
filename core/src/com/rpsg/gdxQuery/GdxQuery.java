@@ -214,7 +214,7 @@ public class GdxQuery {
 	
 	public GdxQuery size(float width,float height){
 		for(Actor actor:list())
-			actor.setSize(width, height);
+			actor.setSize((int)width, (int)height);
 		return this;
 	}
 	
@@ -245,7 +245,7 @@ public class GdxQuery {
 
 	public GdxQuery y(float y){
 		for(Actor actor:list())
-			actor.setY(y);
+			actor.setY((int)y);
 		return this;
 	}
 	
@@ -258,7 +258,7 @@ public class GdxQuery {
 
 	public GdxQuery x(float x){
 		for(Actor actor:list())
-			actor.setX(x);
+			actor.setX((int)x);
 		return this;
 	}
 	
@@ -272,13 +272,13 @@ public class GdxQuery {
 	
 	public GdxQuery width(float width){
 		for(Actor actor:list())
-			actor.setWidth(width);
+			actor.setWidth((int)width);
 		return this;
 	}
 	
 	public GdxQuery height(float height){
 		for(Actor actor:list())
-			actor.setHeight(height);
+			actor.setHeight((int)height);
 		return this;
 	}
 	
@@ -296,7 +296,7 @@ public class GdxQuery {
 	
 	public GdxQuery position(float x, float y){
 		for(Actor actor:list())
-			actor.setPosition(x, y);
+			actor.setPosition((int)x, (int)y);
 		return this;
 	}
 	
@@ -579,8 +579,8 @@ public class GdxQuery {
 	public List<Actor> list() {
 		return values;
 	}
-	
-	
+
+
 	@SuppressWarnings("unchecked")
 	public <T> ArrayList<T> mapToList(CustomCallback<Actor,Object> each,Class<T> cls){
 		List<Object> list = new ArrayList<>();
@@ -588,12 +588,12 @@ public class GdxQuery {
 			list.add(each.run(actor));
 		return (ArrayList<T>)list;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public <T> List<T> list(Class<T> t) {
 		return (List<T>)values;
 	}
-	
+
 	public GdxQuery to(Object... object){
 		for(Object o:object){
 			if(o instanceof Stage)
@@ -942,16 +942,32 @@ public class GdxQuery {
 		return colorTo(Color.valueOf(string), d);
 	}
 
-	public GdxQuery center() {
+	public GdxQuery center(boolean setPosition) {
 		for(Actor actor : list()){
 			actor.setOrigin(Align.center);
 			if(actor instanceof Image)
 				((Image)actor).setAlign(Align.center);
-			
-			actor.setX(actor.getX() - actor.getWidth() / 2);
-			actor.setY(actor.getY() - actor.getHeight() / 2);
+			if(actor instanceof Label)
+				((Label) actor).setAlignment(Align.center);
+
+			if(setPosition){
+				actor.setX(actor.getX() - actor.getWidth() / 2);
+				actor.setY(actor.getY() - actor.getHeight() / 2);
+			}
 		}
 		return this;
+	}
+
+	public GdxQuery right() {
+		for(Actor actor : list()){
+			if(actor instanceof Label)
+				((Label)actor).setAlignment(Align.right);
+		}
+		return this;
+	}
+
+	public GdxQuery center(){
+		return center(false);
 	}
 
 	public GdxQuery sizeBy(int i, int j) {
@@ -975,6 +991,10 @@ public class GdxQuery {
 			if(actor instanceof Image)
 				((TextureRegionDrawable)((Image) actor).getDrawable()).getRegion().getTexture().setFilter(filter, filter);
 		return this;
+	}
+
+	public GdxQuery nearest() {
+		return filter(TextureFilter.Nearest);
 	}
 
 	public GdxQuery rotate(float f) {

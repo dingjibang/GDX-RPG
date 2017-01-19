@@ -1,6 +1,5 @@
 package com.rpsg.rpg.controller;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.controller.PostController.Status;
@@ -8,6 +7,8 @@ import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Path;
 import com.rpsg.rpg.core.Res;
 import com.rpsg.rpg.core.Views;
+import com.rpsg.rpg.ui.Button;
+import com.rpsg.rpg.util.Timer;
 import com.rpsg.rpg.view.JSView;
 
 /**
@@ -20,9 +21,8 @@ public class GameMenuController {
 	
 	public GameMenuController() {
 		//创建stage菜单
-		menuButton = $.add(new Button(Res.getDrawable(Path.IMAGE_MENU_GLOBAL + "btn_menu.png"), Res.getDrawable(Path.IMAGE_MENU_GLOBAL + "btn_menu_a.png")))
+		menuButton = $.add(new Button(Path.IMAGE_MENU_GLOBAL + "btn_menu.png"))
 			.size(60, 60).position(Game.STAGE_WIDTH - 90, 30).click(this::show).to(Game.view.stage);
-		
 	}
 	
 	/**显示菜单*/
@@ -35,7 +35,10 @@ public class GameMenuController {
 		Game.view.post.setStatus(Status.menu, false);
 		
 		Game.view.stage.unfocusAll();
-		menuButton.cleanActions().fadeOut(.2f);
+		menuButton.cleanActions().fadeOut(.15f);
+
+		//暂停游戏计时
+		Timer.pause();
 	}
 	
 	/**关闭菜单*/
@@ -44,11 +47,14 @@ public class GameMenuController {
 		menu = null;
 		
 		Game.view.post.setStatus(Status.normal, false);
-		menuButton.cleanActions().fadeIn(.2f);
+		menuButton.cleanActions().fadeIn(.15f);
+
+		//恢复游戏计时
+		Timer.resume();
 	}
 	
 	public boolean visible() {
-		return menu == null;
+		return menu != null;
 	}
 	
 	public void dispose() {

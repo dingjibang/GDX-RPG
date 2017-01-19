@@ -23,11 +23,17 @@ public class ScriptableManager {
 	}
 	
 	public Scriptable create(String jsName) {
+		if(!jsName.endsWith("js"))
+			jsName += ".js";
+
 		return new Scriptable(path + jsName, this);
 	}
 	
 	/**编译脚本(如果没有就添加到缓存)*/
 	protected Script get(Scriptable scriptable, Context ctx, String fileName) {
+		if(!fileName.endsWith("js"))
+			fileName += ".js";
+
 		synchronized(completedScripts) {
 			Script script = completedScripts.get(fileName);
 			

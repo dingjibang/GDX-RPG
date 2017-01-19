@@ -126,7 +126,7 @@ public class MapController {
 		//测试用的代码
 		List<MapSprite> list = new ArrayList<>();
 		//创建一个NPC
-		NPC npc = new NPC(0, 0, 0, "images/walk/heros/walk_wriggle.png");
+		NPC npc = new NPC(0, 0, 0, Path.WALK_HERO + "walk_wriggle.png");
 		mapSprites.add(npc);
 		//给这个NPC加上一条碰撞脚本
 //		npc.scripts.put(CollideType.face, Game.script.map.create("mytest.js"));

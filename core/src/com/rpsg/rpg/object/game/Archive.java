@@ -1,10 +1,8 @@
 package com.rpsg.rpg.object.game;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import com.rpsg.rpg.object.item.BaseItem;
 import com.rpsg.rpg.object.map.MapSprite;
@@ -30,8 +28,9 @@ public class Archive implements Serializable{
 	
 	/**背包内的所有物品*/
 	public List<BaseItem> items = new ArrayList<>();
-	
-	public Party heros = new Party();
+
+	/**当前游戏内所有英雄*/
+	public Party party = new Party();
 	
 	/**自定义状态*/
 	Map<String, Boolean> flags = new HashMap<>();
@@ -60,6 +59,17 @@ public class Archive implements Serializable{
 	
 	public void setMapSprites(List<MapSprite> mapSprites) {
 		this.mapSprites = mapSprites;
+	}
+
+	/**存档已进行时间(ms)**/
+	public long time;
+
+
+	private static final SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+	static{format.setTimeZone(TimeZone.getTimeZone("UTF-0"));}
+	public String time(){
+//		return null;
+		return format.format((Object)time);
 	}
 	
 }
