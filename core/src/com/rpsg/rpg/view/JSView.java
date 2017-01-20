@@ -16,6 +16,10 @@ public abstract class JSView extends View {
 	
 	String jsFilePath;
 
+	/**
+	 * 创建一个由JS生成的View<br>
+	 * JS组件的位置在[assets/script/ui/view]文件夹下
+	 */
 	public static JSView of(String jsFilePath) {
 		Context ctx = Game.getJSContext();
 		com.rpsg.rpg.object.game.Scriptable scriptable = Game.script.ui.create(jsFilePath);

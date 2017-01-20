@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.rpsg.rpg.ui.AsyncLoadImage;
-import com.rpsg.rpg.ui.Image;
+import com.rpsg.rpg.ui.widget.AsyncLoadImage;
+import com.rpsg.rpg.ui.widget.Image;
 
 /**
  * GDX-RPG 资源/缓存类

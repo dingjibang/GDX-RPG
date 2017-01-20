@@ -37,7 +37,7 @@ public class Views implements ApplicationListener {
 	/**当游戏被创建*/
 	public void create() {
 		Log.i("=====================================================");
-		Log.i(" _____ _______   __     _____  _____   _____"); 
+		Log.i("  _____ _______   __     _____  _____   _____");
 		Log.i(" / ____|  __ \\ \\ / /    |  __ \\|  __ \\ / ____|");
 		Log.i("| |  __| |  | \\ V /_____| |__) | |__) | |  __ ");
 		Log.i("| | |_ | |  | |> <______|  _  /|  ___/| | |_ |");
@@ -131,7 +131,12 @@ public class Views implements ApplicationListener {
 		Log.i("Views << " + view.toString());
 	}
 	
-	public void resize(int width, int height) {}
+	public void resize(int width, int height) {
+		synchronized (views){
+			for(View view : views)
+				view.resize();
+		}
+	}
 
 	public void pause() {}
 

@@ -23,16 +23,14 @@ public class ScriptableManager {
 	}
 	
 	public Scriptable create(String jsName) {
-		if(!jsName.endsWith("js"))
-			jsName += ".js";
+		jsName = getPath(jsName);
 
 		return new Scriptable(path + jsName, this);
 	}
 	
 	/**编译脚本(如果没有就添加到缓存)*/
 	protected Script get(Scriptable scriptable, Context ctx, String fileName) {
-		if(!fileName.endsWith("js"))
-			fileName += ".js";
+		fileName = getPath(fileName);
 
 		synchronized(completedScripts) {
 			Script script = completedScripts.get(fileName);
@@ -41,5 +39,15 @@ public class ScriptableManager {
 				completedScripts.put(fileName, script = ctx.compileString(File.readString(path + fileName), null, 1, null));
 			return script;
 		}
+	}
+
+	private static String getPath(String path){
+		if(!path.endsWith(".js"))
+			path += "@js";
+		else path = path.replaceAll("\\.js", "@js");
+
+		path = path.replaceAll("\\.", "/").replaceAll("@js", ".js");
+
+		return path;
 	}
 }

@@ -20,7 +20,7 @@ import com.rpsg.rpg.core.Res;
 import com.rpsg.rpg.core.Sound.SEManager;
 import com.rpsg.rpg.core.UI;
 import com.rpsg.rpg.core.Views;
-import com.rpsg.rpg.ui.Image;
+import com.rpsg.rpg.ui.widget.Image;
 import com.rpsg.rpg.ui.view.View;
 
 

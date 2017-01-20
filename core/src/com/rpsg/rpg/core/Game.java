@@ -1,6 +1,6 @@
 package com.rpsg.rpg.core;
 
-import com.badlogic.gdx.scenes.scene2d.Group;
+import com.rpsg.gdxQuery.Callback;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptableObject;
@@ -35,6 +35,8 @@ public class Game {
 	public static ItemController item;
 	/**脚本（缓存）管理器*/
 	public static ScriptableController script;
+	/**脚本上下文获取器*/
+	private static Callback<Context> ctxGetter = () -> Context.enter();
 	
 	/**初始化*/
 	public static void init(){
@@ -72,7 +74,7 @@ public class Game {
 	}
 	
 	public static Context getJSContext() {
-		Context ctx = Context.enter();
+		Context ctx = ctxGetter.run();
 		//如果是在手机运行的，则不预编译脚本，否则会出现异常，否则最大程度的预编译脚本，以提升性能
 		if(Game.isMobile())
 			ctx.setOptimizationLevel(-1);
@@ -109,5 +111,12 @@ public class Game {
 	 */
 	public static Stage stage(){
 		return new Stage(new ScalingViewport(Scaling.stretch, Game.STAGE_WIDTH, Game.STAGE_HEIGHT, new OrthographicCamera()), Views.batch);
+	}
+
+	/**
+	 * 设置Context
+	 */
+	public static void setContextGetter(Callback<Context> getter){
+		ctxGetter = getter;
 	}
 }

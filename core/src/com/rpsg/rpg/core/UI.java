@@ -1,7 +1,7 @@
 package com.rpsg.rpg.core;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.rpsg.rpg.ui.Image;
+import com.rpsg.rpg.ui.widget.Image;
 
 /**
  * GDX-RPG UI工具类

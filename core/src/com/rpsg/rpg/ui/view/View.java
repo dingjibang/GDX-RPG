@@ -8,6 +8,7 @@ import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.rpsg.gdxQuery.$;
+import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Views;
 
 /**
@@ -179,6 +180,11 @@ public abstract class View implements InputProcessor{
 	private List<InputProcessor> processors() {
 		processors.removeAll(removeList);
 		return processors;
+	}
+
+	public void resize() {
+		if(stage != null)
+			stage.getViewport().update(Game.width(), Game.height(), true);
 	}
 	
 }

@@ -16,6 +16,8 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Log;
 import com.rpsg.rpg.core.Path;
@@ -51,6 +53,9 @@ public class MapController {
 	
 	/**玩家队列*/
 	public PlayerQueue queue;
+
+	/**地图名称*/
+	private String name;
 	
 	
 	public MapController() {
@@ -62,7 +67,6 @@ public class MapController {
 	/**
 	 * 从硬盘中加载一张{@link TiledMap}地图
 	 * @param path 地图路径
-	 * @param loadedCallback 完成后的回调
 	 */
 	public void load(String path) {
 		loaded = false;
@@ -109,6 +113,9 @@ public class MapController {
 			script = new MapScriptController();
 			
 			Game.archive.get().mapName = path;
+
+			Object _name = map.getProperties().get("name");
+			name = $.isEmpty(_name) ? "未知地图" : _name.toString();
 			
 			loaded = true;
 			Views.loadView.stop("load_tmx");
@@ -261,9 +268,19 @@ public class MapController {
 			sprite.act();
 		}
 	}
-	
+
+	/**销毁地图控制器，将释放所有地图纹理等资源*/
 	public void dispose() {
 		assetManager.dispose();
 		render.dispose();
+	}
+
+	/**返回当前地图的名称，如果没有则返回“未知地图”*/
+	public String name() {
+		return name;
+	}
+
+	public boolean loaded() {
+		return loaded;
 	}
 }

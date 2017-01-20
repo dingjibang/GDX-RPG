@@ -9,7 +9,7 @@ import com.rpsg.rpg.core.Path;
 import com.rpsg.rpg.core.Res;
 import com.rpsg.rpg.object.game.Iconable;
 import com.rpsg.rpg.object.prop.Props;
-import com.rpsg.rpg.ui.Image;
+import com.rpsg.rpg.ui.widget.Image;
 
 /***
  * GDX-RPG Buff<br>

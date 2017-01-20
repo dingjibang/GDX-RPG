@@ -9,7 +9,11 @@ var walkImg = $("base").disableTouch();
 var outer = $("base").disableTouch().a(0).size(110, 132).position(-2, -2);
 var onclick = null;
 
-this.create = function(hero) {
+var hero = null;
+
+this.create = function(_hero) {
+	hero = _hero;
+
 	outer.to(this);
 
 	//bg
@@ -26,7 +30,7 @@ this.create = function(hero) {
 		region["setRegion(int,int,int,int)"](i * 48, 192, 48, 64);
 		walkTexture.push(new com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable(region));
 	}
-	walkImg.to(this).size(48, 64).scale(2).position(5, 1).get().setDrawable(walkTexture[0]);
+	walkImg.to(this).a(.95).size(48, 64).scale(2).position(5, 1).get().setDrawable(walkTexture[0]);
 	walkImg.nearest();
 
 
@@ -72,4 +76,10 @@ this.click = function(callback) {
 		onclick = callback;
 	else if(onclick)
 		onclick();
+
+	return this;
+}
+
+this.hero = function() {
+	return hero;
 }

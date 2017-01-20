@@ -1,4 +1,4 @@
-package com.rpsg.rpg.ui;
+package com.rpsg.rpg.ui.widget;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Touchable;

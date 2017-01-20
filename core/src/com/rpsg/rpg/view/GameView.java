@@ -51,7 +51,7 @@ public class GameView extends View{
 	public void draw() {
 		Batch batch = stage.getBatch();
 		
-		if(map.renderable){
+		if(map.renderable && map.loaded()){
 			post.begin();
 				map.draw(batch);//画地图
 			post.end();

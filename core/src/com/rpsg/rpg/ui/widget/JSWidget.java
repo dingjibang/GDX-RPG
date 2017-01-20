@@ -1,4 +1,4 @@
-package com.rpsg.rpg.ui;
+package com.rpsg.rpg.ui.widget;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -17,8 +17,16 @@ import java.util.regex.Pattern;
  */
 public abstract class JSWidget extends Actor{
 
+	/**
+	 * 自定义的注释注解，在JS文件里使用"@extends [superClassName]"来声明本组建继承的java类。
+	 */
 	private static final Pattern p = Pattern.compile("@extends\\s(.+?)\n");
 
+	/**
+	 * 创建一个由JS生成的UI组件<br>
+	 * JS组件的位置在[assets/script/ui/widget]文件夹下<br>
+	 * 所有JS组件必须拥有create(Object param)方法用以初始化，可以继承{@link com.badlogic.gdx.scenes.scene2d scene2d}里的组件，将使用Adapter来伪装生成相应继承类<br>
+	 */
 	public static Actor of(String jsFilePath){
 		Context ctx = Game.getJSContext();
 		com.rpsg.rpg.object.game.Scriptable scriptable = Game.script.ui.create(jsFilePath);
@@ -36,11 +44,12 @@ public abstract class JSWidget extends Actor{
 		if(extend == null)
 			extend = Actor.class.getName();
 
-		js = "new JavaAdapter(" + extend + ", (function(){\n"+js+"\nreturn this}.call({})))";
+		js = "new JavaAdapter(" + extend + ", (function(){\n"+js+"\nthis.toString = () => {return 'JSWidget [" + jsFilePath + "]'};return this}.call({})))";
 
 		Actor actor = null;
 		try {
-			actor = (Actor) Context.jsToJava(ctx.evaluateString(scope, js, jsFilePath, 1, null), Class.forName(extend));
+			Object result = ctx.evaluateString(scope, js, jsFilePath, 1, null);
+			actor = (Actor)Context.jsToJava(result, Class.forName(extend));
 
 		}catch (Exception e){
 			Log.e("无法创建组件", e);

@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.rpg.core.Res;
-import com.rpsg.rpg.ui.Image;
+import com.rpsg.rpg.ui.widget.Image;
 
 
 

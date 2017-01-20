@@ -12,9 +12,16 @@ var Interpolation = com.badlogic.gdx.math.Interpolation;
 
 var Path = com.rpsg.rpg.core.Path;
 
-var Button = com.rpsg.rpg.ui.Button;
+var Button = com.rpsg.rpg.ui.widget.Button;
 
 var print = obj => java.lang.System.out.println(obj);
+
+var MathUtils = com.badlogic.gdx.math.MathUtils;
+
+/**generate random number(int)*/
+var random = function(begin, end) {
+	return MathUtils["random(int,int)"](begin, end);
+}
 
 /**
  * fast util
@@ -22,25 +29,26 @@ var print = obj => java.lang.System.out.println(obj);
  * $("base") return a base texture and GDX-Query it.
  * $("imagePath") return a texture and GDX-Query it.
  * $(javaList, iterator) to each element.
- * $("JSViewName", initParam) return custom JS View and Gdx-Query it.
+ * $("JSWidgetName", initParam) return custom JS View and Gdx-Query it.
  * $(else) Gdx-Query it.
  */
 var $ = (obj, param2) => {
 	if(typeof obj == "function")
 		return new java.lang.Runnable({run: obj});
 
-	if(typeof obj == "string"){
+	if(typeof param2 == "number")
+		return Res.text.getLabel(obj, param2).query();
+
+	if(typeof obj == "string" || obj instanceof java.lang.String){
 		if(obj == "base")
 			return new com.rpsg.gdxQuery.GdxQuery(UI.base());
 
 		if(typeof param2 == "object"){
-			var widget = com.rpsg.rpg.ui.JSWidget.of("widget/" + obj);
+			var widget = com.rpsg.rpg.ui.widget.JSWidget.of("widget/" + obj);
 			widget.create(param2);
 			return new com.rpsg.gdxQuery.GdxQuery(widget);
 		}
 
-		if(typeof param2 == "number")
-			return Res.text.getLabel(obj, param2).query();
 
 		return new com.rpsg.gdxQuery.GdxQuery(Res.get(obj));
 	}

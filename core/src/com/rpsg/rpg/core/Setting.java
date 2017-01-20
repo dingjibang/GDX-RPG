@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * GDX-RPG 系统设置<br>
- * 从 {@link RPG#setting} 变量中访问
+ * 从 {@link Game#setting} 变量中访问
  */
 public class Setting implements Serializable{
 	private static final long serialVersionUID = -2067767488295945018L;

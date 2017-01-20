@@ -194,6 +194,15 @@ public class $ {
 		return result;
 	}
 	
-	
-	
+	public static String toNull(Object str){
+		return isEmpty(str) ? null : str.toString();
+	}
+
+	public static String toEmpty(Object str){
+		return isEmpty(str) ? "" : str.toString();
+	}
+
+	public static boolean isEmpty(Object str){
+		return str == null || str.toString().trim().length() == 0;
+	}
 }

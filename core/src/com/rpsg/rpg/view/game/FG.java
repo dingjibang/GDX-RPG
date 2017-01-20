@@ -7,7 +7,7 @@ import com.badlogic.gdx.utils.Align;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Path;
-import com.rpsg.rpg.ui.AsyncLoadImage;
+import com.rpsg.rpg.ui.widget.AsyncLoadImage;
 
 /**
  * GDX-RPG 立绘显示器

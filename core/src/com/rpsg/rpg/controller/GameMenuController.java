@@ -5,9 +5,8 @@ import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.rpg.controller.PostController.Status;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Path;
-import com.rpsg.rpg.core.Res;
 import com.rpsg.rpg.core.Views;
-import com.rpsg.rpg.ui.Button;
+import com.rpsg.rpg.ui.widget.Button;
 import com.rpsg.rpg.util.Timer;
 import com.rpsg.rpg.view.JSView;
 

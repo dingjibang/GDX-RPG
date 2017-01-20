@@ -1,4 +1,4 @@
-package com.rpsg.rpg.ui;
+package com.rpsg.rpg.ui.widget;
 
 import com.rpsg.rpg.core.Res;
 
