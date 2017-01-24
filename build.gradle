@@ -62,7 +62,6 @@ project(":android") {
 
     dependencies {
 	    compile "org.codehaus.groovy:groovy:2.4.8:grooid"
-        compile "com.faendir.rhino:rhino-android:1.4"
 	    compile(project(':core')) {
 		    exclude group: 'org.codehaus.groovy'
 	    }

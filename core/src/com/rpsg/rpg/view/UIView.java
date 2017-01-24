@@ -10,4 +10,12 @@ public abstract class UIView extends View{
 	public UIView() {
 		this.stage = Game.stage();
 	}
+
+	public void act() {
+		stage.act();
+	}
+
+	public void draw() {
+		stage.draw();
+	}
 }

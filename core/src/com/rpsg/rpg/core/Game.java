@@ -1,10 +1,5 @@
 package com.rpsg.rpg.core;
 
-import com.rpsg.gdxQuery.Callback;
-import org.mozilla.javascript.Context;
-import org.mozilla.javascript.NativeJavaObject;
-import org.mozilla.javascript.ScriptableObject;
-
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -16,6 +11,9 @@ import com.rpsg.rpg.controller.GamePropertiesController;
 import com.rpsg.rpg.controller.ItemController;
 import com.rpsg.rpg.controller.ScriptableController;
 import com.rpsg.rpg.view.GameView;
+import org.mozilla.javascript.Context;
+import org.mozilla.javascript.NativeJavaObject;
+import org.mozilla.javascript.ScriptableObject;
 
 /**
  *	GDX-RPG 游戏上下文
@@ -35,9 +33,7 @@ public class Game {
 	public static ItemController item;
 	/**脚本（缓存）管理器*/
 	public static ScriptableController script;
-	/**脚本上下文获取器*/
-	private static Callback<Context> ctxGetter = () -> Context.enter();
-	
+
 	/**初始化*/
 	public static void init(){
 		setting = Setting.create();
@@ -74,7 +70,7 @@ public class Game {
 	}
 	
 	public static Context getJSContext() {
-		Context ctx = ctxGetter.run();
+		Context ctx = Context.enter();
 		//如果是在手机运行的，则不预编译脚本，否则会出现异常，否则最大程度的预编译脚本，以提升性能
 		if(Game.isMobile())
 			ctx.setOptimizationLevel(-1);
@@ -111,12 +107,5 @@ public class Game {
 	 */
 	public static Stage stage(){
 		return new Stage(new ScalingViewport(Scaling.stretch, Game.STAGE_WIDTH, Game.STAGE_HEIGHT, new OrthographicCamera()), Views.batch);
-	}
-
-	/**
-	 * 设置Context
-	 */
-	public static void setContextGetter(Callback<Context> getter){
-		ctxGetter = getter;
 	}
 }
