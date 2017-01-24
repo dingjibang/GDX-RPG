@@ -801,14 +801,14 @@ public class GdxQuery {
 		return list;
 	}
 
-	public GdxQuery eachCells(CustomRunnable<GdxCellQuery<?>> run){
+	public GdxQuery eachCells(CustomRunnable<GdxCellQuery<?, ?>> run){
 		for(Cell<? extends Actor> cell : cells())
 			run.run(GdxCellQuery.build(this.children(), cell));
 		return this;
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T extends Actor> GdxQuery eachCells(Class<T> type,CustomRunnable<GdxCellQuery<T>> run){
+	public <T extends Actor> GdxQuery eachCells(Class<T> type,CustomRunnable<GdxCellQuery<T, GdxQuery>> run){
 		for(Cell<?> cell : cells())
 			run.run(GdxCellQuery.build(this.children(), (Cell<T>)cell));
 		return this;
@@ -897,7 +897,7 @@ public class GdxQuery {
 	}
 
 	/**maybe return null*/
-	public <T extends Actor> GdxCellQuery<T> cell(T append) {
+	public <T extends Actor> GdxCellQuery<T, GdxQuery> cell(T append) {
 		for(Actor actor : list())
 			if(actor instanceof Table)
 				return GdxCellQuery.build(this, ((Table)actor).add(append));

@@ -28,8 +28,10 @@ public class GameMenuController {
 	/**显示菜单*/
 	public void show() {
 		if(menu != null) return;
+		long time = System.currentTimeMillis();
 		menu = new MenuView();
 		menu.create();
+		System.out.println(System.currentTimeMillis() - time);
 		Views.addView(menu);
 		
 		Game.view.post.setStatus(Status.menu, false);
