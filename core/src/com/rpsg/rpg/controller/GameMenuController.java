@@ -6,16 +6,17 @@ import com.rpsg.rpg.controller.PostController.Status;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Path;
 import com.rpsg.rpg.core.Views;
+import com.rpsg.rpg.ui.view.View;
 import com.rpsg.rpg.ui.widget.Button;
 import com.rpsg.rpg.util.Timer;
-import com.rpsg.rpg.view.JSView;
+import script.ui.view.MenuView;
 
 /**
  * GDX-RPG 菜单管理器<br>
  * 负责统一的游戏菜单创建、销毁等工作
  */
 public class GameMenuController {
-	JSView menu;
+	View menu;
 	GdxQuery menuButton;
 	
 	public GameMenuController() {
@@ -27,7 +28,7 @@ public class GameMenuController {
 	/**显示菜单*/
 	public void show() {
 		if(menu != null) return;
-		menu = JSView.of("view/MenuView.js");
+		menu = new MenuView();
 		menu.create();
 		Views.addView(menu);
 		

@@ -6,6 +6,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.0'
         classpath 'me.tatarka:gradle-retrolambda:3.2.4'
+	    classpath 'org.codehaus.groovy:groovy-android-gradle-plugin:1.1.0'
     }
 }
 
@@ -36,14 +37,15 @@ allprojects {
 		maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         mavenCentral()
     }
+
 }
 
 project(":desktop") {
-    apply plugin: "java"
+    apply plugin: "groovy"
 
 
     dependencies {
-        compile project(":core")
+        compile project(path: ":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
@@ -53,12 +55,17 @@ project(":desktop") {
 
 project(":android") {
     apply plugin: "android"
+	apply plugin: 'groovyx.android'
 
     configurations { natives }
 
+
     dependencies {
+	    compile "org.codehaus.groovy:groovy:2.4.8:grooid"
         compile "com.faendir.rhino:rhino-android:1.4"
-        compile project(":core")
+	    compile(project(':core')) {
+		    exclude group: 'org.codehaus.groovy'
+	    }
         compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
@@ -76,10 +83,10 @@ project(":android") {
 }
 
 project(":core") {
-    apply plugin: "java"
-
+    apply plugin: "groovy"
 
     dependencies {
+	    compile 'org.codehaus.groovy:groovy:2.4.8'
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
@@ -91,4 +98,8 @@ project(":core") {
 
 tasks.eclipse.doLast {
     delete ".project"
+}
+
+eclipse.project {
+    name = appName + "-core"
 }
