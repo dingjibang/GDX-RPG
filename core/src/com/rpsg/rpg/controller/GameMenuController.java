@@ -23,15 +23,15 @@ public class GameMenuController {
 		//创建stage菜单
 		menuButton = $.add(new Button(Path.IMAGE_MENU_GLOBAL + "btn_menu.png"))
 			.size(60, 60).position(Game.STAGE_WIDTH - 90, 30).click(this::show).to(Game.view.stage);
+
+		new MenuView();
 	}
 	
 	/**显示菜单*/
 	public void show() {
 		if(menu != null) return;
-		long time = System.currentTimeMillis();
 		menu = new MenuView();
 		menu.create();
-		System.out.println(System.currentTimeMillis() - time);
 		Views.addView(menu);
 		
 		Game.view.post.setStatus(Status.menu, false);

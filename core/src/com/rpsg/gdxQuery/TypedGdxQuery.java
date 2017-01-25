@@ -323,6 +323,8 @@ public class TypedGdxQuery<T extends Actor> extends GdxQuery{
 				((Group)o).addActor(t);
 			else if (o instanceof TypedGdxQuery)
 				((TypedGdxQuery<Group>)o).get().addActor(t);
+			else if (o instanceof GdxQuery)
+				to(((GdxQuery)o).get());
 		}
 		return this;
 	}

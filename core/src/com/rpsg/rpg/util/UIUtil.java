@@ -38,4 +38,10 @@ public class UIUtil {
 		return new GdxFrame().add(query, runnable);
 	}
 
+	public static GdxQuery q(Object... a){
+		if(a[0].equals("base"))
+			return new GdxQuery(UI.base());
+		return new GdxQuery(a);
+	}
+
 }

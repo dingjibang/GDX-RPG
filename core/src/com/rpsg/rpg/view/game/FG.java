@@ -56,7 +56,7 @@ public class FG {
 	
 	public void hide(Integer position) {
 		if(position == null){
-			query.cleanActions().each(a -> a.addAction(Actions.fadeOut(.3f)));
+			query.cleanActions().each(a -> a.action(Actions.fadeOut(.3f)));
 		}else{
 			AsyncLoadImage img = get(position);
 			img.clearActions();

@@ -365,10 +365,10 @@ public class GdxQuery {
 	}
 
 
-	public GdxQuery each(CustomRunnable<Actor> run){
+	public GdxQuery each(CustomRunnable<GdxQuery> run){
 		if(run!=null)
-			for(Actor actor:(List<? extends Actor>)list())
-				run.run(actor);
+			for(Actor actor: list())
+				run.run(new GdxQuery(actor).father(this));
 		return this;
 	}
 
@@ -492,7 +492,9 @@ public class GdxQuery {
 
 	public GdxQuery add(Object... a) {
 		for (Object obj: a)
-			if(obj instanceof Actor)
+			if(obj instanceof TypedGdxQuery)
+				list().add(((TypedGdxQuery)obj).get());
+			else if(obj instanceof Actor)
 				list().add((Actor)obj);
 			else if(obj instanceof Cell<?>)
 				list().add(((Cell<?>)obj).getActor());
@@ -604,13 +606,26 @@ public class GdxQuery {
 		return this;
 	}
 
-	public GdxQuery into(Object... object){
-		for(Object o : object){
-			for(Actor a : list())
-				if(a instanceof Table)
-					((Table) a).add($.add(o).get());
+	public GdxQuery into(Object... into){
+		for(Object o : into){
+			for(Actor from : list()){
+				Actor to = o instanceof Actor ? (Actor)o : null;
+				if(o instanceof GdxQuery)
+					to = ((GdxQuery) o).get();
+				if(o instanceof TypedGdxQuery)
+					to = ((TypedGdxQuery) o).get();
+				if(to != null)
+					into(from, to);
+			}
 		}
 		return this;
+	}
+
+	private static void into(Actor from, Object to){
+		if(to instanceof Table)
+			((Table)to).add(from);
+		if(to instanceof Group)
+			((Group)to).addActor(from);
 	}
 
 	public GdxQuery background(Drawable draw){
