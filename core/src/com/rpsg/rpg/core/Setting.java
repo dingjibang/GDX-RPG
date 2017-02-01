@@ -2,6 +2,8 @@ package com.rpsg.rpg.core;
 
 import java.io.Serializable;
 
+import com.badlogic.gdx.utils.Scaling;
+
 /**
  * GDX-RPG 系统设置<br>
  * 从 {@link Game#setting} 变量中访问
@@ -30,6 +32,9 @@ public class Setting implements Serializable{
 	
 	/**是否允许缓存资源（如纹理、图片）以提高游戏速度*/
 	public boolean cache = true;
+	
+	/**窗口缩放模式，true为{@link Scaling#fit 适应缩放}，false为{@link Scaling#stretch 拉抻缩放}*/
+	public boolean fitScaling = true;
 	
 	/**
 	 * 创建系统设置，如果硬盘已存在则直接读取

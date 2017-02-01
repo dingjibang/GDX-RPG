@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -14,9 +15,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader.Parameters;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.math.Matrix4;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Log;
@@ -37,7 +36,7 @@ public class MapController {
 	/**渲染器*/
 	OrthoCachedTiledMapRenderer render;
 	/**相机*/
-	OrthographicCamera camera;
+	ScalingViewport viewport;
 	/**地图资源*/
 	AssetManager assetManager;
 	
@@ -56,12 +55,16 @@ public class MapController {
 
 	/**地图名称*/
 	private String name;
-	
+
+	/**post*/
+	public PostController post;
 	
 	public MapController() {
 		assetManager = new AssetManager();
 		/**增加一个TiledMap Loader给管理器*/
 		assetManager.setLoader(TiledMap.class, new TmxMapLoader());
+		
+		post = new PostController();
 	}
 	
 	/**
@@ -95,7 +98,7 @@ public class MapController {
 			render.setBlending(true);
 			
 			//创建相机
-			camera = new OrthographicCamera(Game.STAGE_WIDTH, Game.STAGE_HEIGHT);
+			viewport = Game.viewport();
 			
 			//清空以前的地图精灵
 			this.mapSprites.clear();
@@ -116,6 +119,8 @@ public class MapController {
 
 			Object _name = map.getProperties().get("name");
 			name = $.isEmpty(_name) ? "未知地图" : _name.toString();
+			
+			resize();
 			
 			loaded = true;
 			Views.loadView.stop("load_tmx");
@@ -187,24 +192,24 @@ public class MapController {
 	/**
 	 * 画图<br>
 	 * 画图将从最下层画到最顶层，并且如果有精灵的话，则在画图中穿插相应图层的精灵，精灵是在当前层之上画出的<br>
-	 * 穿插的精灵来自{@link Stage}里的<br>
+	 * 穿插的精灵来自{@link #mapSprites}里的<br>
 	 * 画图时，{@link #render}将使用自己的画笔（{@link com.badlogic.gdx.graphics.g2d.SpriteCache SpriteCache}）进行画图，可能会导致画图异常（比如画不出其他的精灵）。 
 	 */
 	public void draw(Batch batch) {
 		if(!loaded)
 			return;
 		
-		//缓存原相机状态
-		Vector3 originPosition = camera.position.cpy();
-		Matrix4 combined = camera.combined.cpy();
+		post.begin();
+		
+		
+		Camera camera = viewport.getCamera();
+		camera.update();
 		
 		//debug
 		camera.position.set(730, 430, 0);
 		
-		//更新相机状态
-		camera.update();
-		//更新渲染器坐标位置
-		render.setView(camera);
+		//更新渲染器坐标位置，缓存画笔projection状态
+		Matrix4 projectionCpy = batch.getProjectionMatrix().cpy();
 		batch.setProjectionMatrix(camera.combined);
 	
 		//获取所有有效层
@@ -244,11 +249,10 @@ public class MapController {
 			}
 		}
 		
-		//render.render();
+		//还原画笔projection状态
+		batch.setProjectionMatrix(projectionCpy);
 		
-		//还原相机坐标点
-		camera.position.set(originPosition);
-		camera.combined.set(combined);
+		post.end();
 	}
 	
 	/**获取当前的地图*/
@@ -273,6 +277,7 @@ public class MapController {
 	public void dispose() {
 		assetManager.dispose();
 		render.dispose();
+		post.dispose();
 	}
 
 	/**返回当前地图的名称，如果没有则返回“未知地图”*/
@@ -282,5 +287,15 @@ public class MapController {
 
 	public boolean loaded() {
 		return loaded;
+	}
+	
+	public void resize() {
+		if(viewport != null && render != null){
+			viewport.update(Game.width(), Game.height(), true);
+			render.setView((OrthographicCamera)viewport.getCamera());
+			
+			post.resize(viewport);
+		}
+		
 	}
 }

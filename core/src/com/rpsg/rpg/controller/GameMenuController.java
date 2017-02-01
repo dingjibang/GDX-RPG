@@ -34,7 +34,7 @@ public class GameMenuController {
 		menu.create();
 		Views.addView(menu);
 		
-		Game.view.post.setStatus(Status.menu, false);
+		Game.view.map.post.setStatus(Status.menu, false);
 		
 		Game.view.stage.unfocusAll();
 		menuButton.cleanActions().fadeOut(.15f);
@@ -48,7 +48,7 @@ public class GameMenuController {
 		menu.remove();
 		menu = null;
 		
-		Game.view.post.setStatus(Status.normal, false);
+		Game.view.map.post.setStatus(Status.normal, false);
 		menuButton.cleanActions().fadeIn(.15f);
 
 		//恢复游戏计时

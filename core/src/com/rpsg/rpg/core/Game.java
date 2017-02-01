@@ -106,6 +106,13 @@ public class Game {
 	 * 要注意的是，这个画笔的{@link com.badlogic.gdx.graphics.g2d.Batch#setTransformMatrix(com.badlogic.gdx.math.Matrix4) transform}被改变的话，将可能导致接下来绘制的东西坐标出现异常。
 	 */
 	public static Stage stage(){
-		return new Stage(new ScalingViewport(Scaling.stretch, Game.STAGE_WIDTH, Game.STAGE_HEIGHT, new OrthographicCamera()), Views.batch);
+		return new Stage(viewport(), Views.batch);
+	}
+	
+	/**
+	 * 获取一个默认的{@link ScalingViewport Viewport}，他将根据玩家设置，来选择缩放是“适应”还是“填充”模式。
+	 */
+	public static ScalingViewport viewport(){
+		return new ScalingViewport(Game.setting.fitScaling ? Scaling.fit : Scaling.stretch, Game.STAGE_WIDTH, Game.STAGE_HEIGHT, new OrthographicCamera());
 	}
 }

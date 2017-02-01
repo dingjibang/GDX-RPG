@@ -2,7 +2,9 @@ package com.rpsg.rpg.controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Disposable;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.bitfire.postprocessing.PostProcessor;
 import com.bitfire.postprocessing.effects.Bloom;
 import com.bitfire.postprocessing.effects.Vignette;
@@ -87,5 +89,9 @@ public class PostController implements Disposable{
 		this.status = status;
 	}
 	
+	public void resize(Viewport viewport){
+		post.setViewport(new Rectangle(viewport.getScreenX(), viewport.getScreenY(), viewport.getScreenWidth(), viewport.getScreenHeight()));
+	}
+
 	
 }
