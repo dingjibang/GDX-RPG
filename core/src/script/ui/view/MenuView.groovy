@@ -13,6 +13,7 @@ import com.rpsg.rpg.view.UIView
 import groovy.transform.CompileStatic
 import script.ui.widget.menu.HeroFGLabel
 import script.ui.widget.menu.HeroSelector
+import script.ui.widget.menu.MenuLeftBarButton
 
 import java.lang.reflect.Type
 
@@ -24,14 +25,16 @@ import static com.rpsg.rpg.util.UIUtil.*
 class MenuView extends UIView{
 
 	def archive = Game.archive.get()
-	def heroBox = [];
+	def heroBox = []
 	def currentHero = null
 	GdxQuery bar, group1
 	TypedGdxQuery<HeroFGLabel> fgLabel
 
 	TypedGdxQuery label, exit, hr
 
-	boolean menu = false;
+	def buttons = []
+
+	boolean menu = false
 
 	void create() {
 		$("base").size(1280, 720).color("333333").a(0).fadeTo(0.4f, 0.3f) to stage
@@ -43,16 +46,16 @@ class MenuView extends UIView{
 		exit = $(new Button(Path.IMAGE_MENU_GLOBAL + "btn_left.png")).position(23, 634).click({keyDown Input.Keys.ESCAPE}) to group1
 		label = $("菜单", 45).position(116, 621).size(91, 94).center() to group1
 		
-		$("游戏已进行 ${archive.time()}", 23).right().position(230, 617).size(284, 48)to group1
+		$("游戏已进行 ${archive.time()}", 23).right().position(230, 617).size(284, 48) to group1
 
-		hr = $("base").size(490, 4).position(24, 604)to group1
+		hr = $("base").size(490, 4).position(24, 604) to group1
 
 		def heros = archive.party.current()
 		fgLabel = $ new HeroFGLabel() to stage
 
 		heros.eachWithIndex {hero, idx ->
 			def box = $ new HeroSelector(hero)
-			heroBox += box.position(24 + idx * 128, 437)to group1
+			heroBox += box.position(24 + idx * 128, 437) to group1
 
 			box.get().click({
 				heroBox.each {it.get().unselect()}
@@ -64,14 +67,14 @@ class MenuView extends UIView{
 		}
 		heroBox[MathUtils.random(0, heroBox.size() - 1)].get().click()
 
-		$(Path.IMAGE_MENU_GLOBAL + "icon_position.png").position(48, 360)to group1
-		$("${Game.view.map.name()} [ ${archive.position.x}, ${archive.position.y} ]", 32).size(394, 48).position(120, 361)to group1
+		$(Path.IMAGE_MENU_GLOBAL + "icon_position.png").position(48, 360) to group1
+		$("${Game.view.map.name()} [ ${archive.position.x}, ${archive.position.y} ]", 32).size(394, 48).position(120, 361) to group1
 
-		$(Path.IMAGE_MENU_GLOBAL + "icon_gold.png").position(53, 298)to group1
-		$("${archive.gold} 金币", 32).size(394, 48).position(120, 298)to group1
+		$(Path.IMAGE_MENU_GLOBAL + "icon_gold.png").position(53, 298) to group1
+		$("${archive.gold} 金币", 32).size(394, 48).position(120, 298) to group1
 
-		$(Path.IMAGE_MENU_GLOBAL + "icon_flag.png").position(47, 233)to group1
-		$("当前无任务", 32).size(394, 48).position(120, 233)to group1//TODO
+		$(Path.IMAGE_MENU_GLOBAL + "icon_flag.png").position(47, 233) to group1
+		$("当前无任务", 32).size(394, 48).position(120, 233) to group1//TODO
 
 		//button1
 		def button1 = $(UI.button()).size(216, 100).position(32, 110).to(group1).get()
@@ -93,6 +96,7 @@ class MenuView extends UIView{
 			dom.addAction(Actions.moveBy(40 * idx, 0, 0.9f, Interpolation.pow4Out))
 		}
 
+		buttons << new MenuLeftBarButton(zh: "状态", en: "STATUS")
 	}
 
 	@CompileStatic

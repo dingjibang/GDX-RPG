@@ -1,7 +1,6 @@
 package com.rpsg.rpg.util;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.rpsg.gdxQuery.GdxFrame;
 import com.rpsg.gdxQuery.GdxQuery;
 import com.rpsg.gdxQuery.GdxQueryRunnable;
@@ -9,6 +8,7 @@ import com.rpsg.gdxQuery.TypedGdxQuery;
 import com.rpsg.rpg.core.Res;
 import com.rpsg.rpg.core.UI;
 import com.rpsg.rpg.ui.widget.Image;
+import com.rpsg.rpg.ui.widget.Label;
 
 public class UIUtil {
 
