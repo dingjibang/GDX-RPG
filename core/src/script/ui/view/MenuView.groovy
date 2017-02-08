@@ -5,17 +5,16 @@ import com.badlogic.gdx.math.Interpolation
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.scenes.scene2d.Group
 import com.badlogic.gdx.scenes.scene2d.actions.Actions
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane
+import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.rpsg.gdxQuery.GdxQuery
 import com.rpsg.gdxQuery.TypedGdxQuery
 import com.rpsg.rpg.core.*
 import com.rpsg.rpg.ui.widget.Button
 import com.rpsg.rpg.view.UIView
-import groovy.transform.CompileStatic
 import script.ui.widget.menu.HeroFGLabel
 import script.ui.widget.menu.HeroSelector
 import script.ui.widget.menu.MenuLeftBarButton
-
-import java.lang.reflect.Type
 
 import static com.rpsg.rpg.util.UIUtil.*
 
@@ -27,19 +26,24 @@ class MenuView extends UIView{
 	def archive = Game.archive.get()
 	def heroBox = []
 	def currentHero = null
-	GdxQuery bar, group1
+	GdxQuery bg, group1
 	TypedGdxQuery<HeroFGLabel> fgLabel
 
 	TypedGdxQuery label, exit, hr
 
-	def buttons = []
+	List<MenuLeftBarButton> buttons = []
+
+	MenuLeftBarButton current
 
 	boolean menu = false
 
 	void create() {
-		$("base").size(1280, 720).color("333333").a(0).fadeTo(0.4f, 0.3f) to stage
 
-		bar = q("base").size(540, 720).color("333333cc").x(-800).a(0.8f).action(Actions.moveTo(0, 0, 0.5f, Interpolation.pow4Out)) to stage
+//		stage.debugAll = true
+
+		$("base").size(Game.STAGE_WIDTH, Game.STAGE_HEIGHT).color("333333").a(0).fadeTo(0.4f, 0.3f) to stage
+
+		bg = q("base").size(540, 720).color("333333cc").x(-800).a(0.8f).action(Actions.moveTo(0, 0, 0.5f, Interpolation.pow4Out)) to stage
 
 		group1 = q(new Group()).x(-800).action(Actions.moveTo(0, 0, 0.5f, Interpolation.pow4Out)) to stage
 
@@ -57,13 +61,13 @@ class MenuView extends UIView{
 			def box = $ new HeroSelector(hero)
 			heroBox += box.position(24 + idx * 128, 437) to group1
 
-			box.get().click({
+			box.get().click {
 				heroBox.each {it.get().unselect()}
 				box.get().select()
 				currentHero = box
 
 				fgLabel.get().setHero(box.get().hero())
-			})
+			}
 		}
 		heroBox[MathUtils.random(0, heroBox.size() - 1)].get().click()
 
@@ -93,23 +97,45 @@ class MenuView extends UIView{
 
 		group1.children().list().eachWithIndex {dom, idx ->
 			dom.x = dom.x - idx * 40
-			dom.addAction(Actions.moveBy(40 * idx, 0, 0.9f, Interpolation.pow4Out))
+			dom.addAction Actions.moveBy(40 * idx, 0, 0.9f, Interpolation.pow4Out)
 		}
 
 		buttons << new MenuLeftBarButton(zh: "状态", en: "STATUS")
+		buttons << new MenuLeftBarButton(zh: "装备", en: "EQUIPMENT")
+		buttons << new MenuLeftBarButton(zh: "物品", en: "ITEM")
+		buttons << new MenuLeftBarButton(zh: "符卡", en: "SPELLCARD")
+		buttons << new MenuLeftBarButton(zh: "战术", en: "TACTICS")
+		buttons << new MenuLeftBarButton(zh: "记录", en: "NOTE")
+		buttons << new MenuLeftBarButton(zh: "系统", en: "SYSTEM")
 	}
 
-	@CompileStatic
 	void toMenu() {
 		if(menu) return
 		menu = true
 		fgLabel.get().toMenu()
-		group1.cleanActions().action(Actions.sequence(Actions.parallel(Actions.moveBy(-600, 0, 0.4f, Interpolation.pow4Out), Actions.fadeOut(0.1f)), Actions.removeActor()))
-		bar.cleanActions().action(Actions.moveBy(-310, 0, 0.4f, Interpolation.pow4Out))
+		group1.stopActions().action(Actions.sequence(Actions.parallel(Actions.moveTo(-600, 0, 0.4f, Interpolation.pow4Out), Actions.fadeOut(0.1f)), Actions.removeActor()))
+		bg.stopActions().action(Actions.moveTo(-310, 0, 0.4f, Interpolation.pow4Out))
 
 		def group2 = $ new Group() to stage
 		$(exit, label, hr) into group2
-		hr.action(Actions.sizeTo(183, 4, 0.3f, Interpolation.pow4Out))
+		hr.stopActions().action(Actions.after(Actions.sizeTo(183, 4, 0.3f, Interpolation.pow4Out)))
+
+		def table = $ new Table().center().left().padBottom(20)
+		buttons.each {
+			it.click {self ->
+				if(current == self) return
+
+				buttons.each {it.checked = false}
+				self.checked = true
+				current = self
+			}
+
+			table.cell(it).row()
+		}
+		table.eachCells{c -> c.padTB(5)}.layout()
+
+		$(new ScrollPane(table.get())).size(247, 578).position(-280, 0).a(0).fadeIn(0.2f).action(Actions.moveBy(300, 0, 0.35f, Interpolation.pow4Out)) to stage
+
 	}
 
 	boolean keyDown(int code) {

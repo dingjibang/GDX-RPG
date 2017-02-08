@@ -158,4 +158,9 @@ public class GdxCellQuery<T extends Actor, TQ extends GdxQuery>{
 		return this;
 	}
 
+	public GdxCellQuery<T, TQ> row() {
+		query.row();
+		return this;
+	}
+
 }

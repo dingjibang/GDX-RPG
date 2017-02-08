@@ -413,6 +413,13 @@ public class GdxQuery {
 		return this;
 	}
 
+	public GdxQuery stopActions(){
+		for(Actor t: list())
+			while(t.hasActions())
+				t.act(Gdx.graphics.getDeltaTime());
+		return this;
+	}
+
 	public GdxQuery listener(EventListener... listener){
 		for(Actor actor:list())
 			for(EventListener l:listener)

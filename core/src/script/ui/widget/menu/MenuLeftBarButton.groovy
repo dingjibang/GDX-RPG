@@ -8,7 +8,6 @@ import com.rpsg.rpg.core.Path
 import com.rpsg.rpg.ui.view.View
 import com.rpsg.rpg.ui.widget.Image
 import com.rpsg.rpg.ui.widget.Label
-import groovy.transform.CompileStatic
 
 import static com.rpsg.rpg.util.UIUtil.*
 
@@ -23,23 +22,26 @@ class MenuLeftBarButton extends Group{
 
 	def onclick
 
-	@CompileStatic
-	MenuLeftBarButton() {
-		icon = $(Path.IMAGE_MENU_GLOBAL + en.toLowerCase() + ".png")
-		bg = $("base").size(210, 100).color("242424").a(0.9f) to this
-		pbg = $(Path.IMAGE_MENU_GLOBAL + "btn_bar_checked.png").visible(false).disableTouch() to this
+	MenuLeftBarButton(Map param) {
+		param.each {this."${it.key}" = it.value}
 
-		enl = $(en, 20).color("636363").size(120, 49).center().position(95, 5) to this
-		zhl = $(zh, 34).size(70, 49).center().position(101, 40) to this
+		bg = $("base").click(this.&click).size(210, 100).color("242424").a(0.9f) to this
+		pbg = $(Path.IMAGE_MENU_GLOBAL + "btn_bar_checked.png").visible(false).disableTouch().y(-10) to this
+		icon = $(Path.IMAGE_MENU_GLOBAL + "icon_" + en.toLowerCase() + ".png").position(31, 25).disableTouch() to this
+
+		enl = $(en, 20).a(0.7f).size(120, 49).center().position(75, 5).disableTouch() to this
+		zhl = $(zh, 34).size(70, 49).center().position(101, 40).disableTouch() to this
+
+		setSize bg.width(), bg.height()
 	}
 
 	void setChecked(checked) {
+
+		pbg.visible checked
+
+		addAction Actions.after(Actions.moveBy(checked ? 10 : (this.checked ? -10 : 0), 0, 0.1f, Interpolation.pow4Out))
+
 		this.checked = checked
-
-		pbg.visible = checked
-
-		clearActions()
-		addAction Actions.moveTo(checked ? 30 : 0, 0, 0.3f, Interpolation.pow4Out)
 	}
 
 	MenuLeftBarButton click(callback){

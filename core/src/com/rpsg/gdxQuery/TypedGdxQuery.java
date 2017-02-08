@@ -78,6 +78,12 @@ public class TypedGdxQuery<T extends Actor> extends GdxQuery{
 		return this;
 	}
 
+	public TypedGdxQuery<T> layout(){
+		if(t instanceof Widget)
+			((Widget) t).layout();
+		return this;
+	}
+
 	public TypedGdxQuery<T> scale(float scaleXY){
 		t.setScale(scaleXY);
 		return this;
@@ -236,6 +242,12 @@ public class TypedGdxQuery<T extends Actor> extends GdxQuery{
 
 	public TypedGdxQuery<T> cleanActions(){
 		t.clearActions();
+		return this;
+	}
+
+	public TypedGdxQuery<T> stopActions(){
+		while(t.hasActions())
+			t.act(Gdx.graphics.getDeltaTime());
 		return this;
 	}
 
@@ -462,7 +474,6 @@ public class TypedGdxQuery<T extends Actor> extends GdxQuery{
 			run.run(GdxCellQuery.build(this, cell));
 		return this;
 	}
-
 
 	public TypedGdxQuery<T> checked(boolean b) {
 		if(t instanceof Button)

@@ -34,28 +34,28 @@ class HeroFGLabel extends Group {
 
 	void setHero(Hero hero){
 		//generate fg
-		fg.x(1500).cleanActions().action(Actions.moveBy(menu ? -620 : -750, 0,0.8f, Interpolation.pow4Out)).get().setDrawableAsync(Path.IMAGE_FG + hero.fg + "/Normal.png")
-		fgs.x(1530).cleanActions().action(Actions.moveBy(menu ? -620 : -750, 0,0.9f, Interpolation.pow4Out)).get().setDrawableAsync(Path.IMAGE_FG + hero.fg + "/Normal.png")
+		fg.x(1500).stopActions().action(Actions.moveBy(menu ? -620 : -750, 0,0.8f, Interpolation.pow4Out)).get().setDrawableAsync(Path.IMAGE_FG + hero.fg + "/Normal.png")
+		fgs.x(1530).stopActions().action(Actions.moveBy(menu ? -620 : -750, 0,0.9f, Interpolation.pow4Out)).get().setDrawableAsync(Path.IMAGE_FG + hero.fg + "/Normal.png")
 		if(!menu){
-			bg.x(1844).cleanActions().action(Actions.moveBy(-1100, 0, 1, Interpolation.pow4Out))
-			label.x(1844).cleanActions().action(Actions.moveBy(-1100, 0, 1.08f, Interpolation.pow4Out)).text(hero.name)
-			jlabel.x(1844).cleanActions().action(Actions.moveBy(-1100, 0, 1.13f, Interpolation.pow4Out)).text(hero.jname)
+			bg.x(1844).stopActions().action(Actions.moveBy(-1100, 0, 1, Interpolation.pow4Out))
+			label.x(1844).stopActions().action(Actions.moveBy(-1100, 0, 1.08f, Interpolation.pow4Out)).text(hero.name)
+			jlabel.x(1844).stopActions().action(Actions.moveBy(-1100, 0, 1.13f, Interpolation.pow4Out)).text(hero.jname)
 		}
 
-		$(this).a(0).cleanActions().action(Actions.fadeIn(0.5f))
+		$(this).a(0).stopActions().action(Actions.fadeIn(0.5f))
 	}
 
 	void toMenu() {
 		menu = true
-		$(label, bg, jlabel).cleanActions().list().each({
+		$(label, bg, jlabel).stopActions().list().each({
 			it.addAction(Actions.sequence(Actions.parallel(Actions.moveBy(500, 0, 0.4f, Interpolation.pow4Out), Actions.fadeOut(0.2f)), Actions.removeActor()))
 		})
 
-		$(fg, fgs).cleanActions().list().each({it.addAction(Actions.moveBy(130, 0, 0.4f, Interpolation.pow4Out))})
+		$(fg, fgs).stopActions().list().each({it.addAction(Actions.moveBy(130, 0, 0.4f, Interpolation.pow4Out))})
 	}
 
 	void hide() {
-		$(fg, fgs).cleanActions().list().each({it.addAction(Actions.moveBy(800, 0, 0.4f, Interpolation.pow4Out))})
+		$(fg, fgs).stopActions().list().each({it.addAction(Actions.moveBy(800, 0, 0.4f, Interpolation.pow4Out))})
 	}
 
 	void show() {
