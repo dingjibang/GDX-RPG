@@ -42,6 +42,10 @@ public abstract class View implements InputProcessor{
 		return removeable;
 	}
 	
+	public void removeable(boolean flag){
+		removeable = flag;
+	}
+	
 	/**在下一帧后删除自身*/
 	public void remove(){
 		removeable = true;

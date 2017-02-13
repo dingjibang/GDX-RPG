@@ -11,7 +11,7 @@ import com.rpsg.gdxQuery.GdxQuery
 import com.rpsg.gdxQuery.TypedGdxQuery
 import com.rpsg.rpg.core.*
 import com.rpsg.rpg.ui.widget.Button
-import com.rpsg.rpg.view.UIView
+
 import script.ui.widget.menu.HeroFGLabel
 import script.ui.widget.menu.HeroSelector
 import script.ui.widget.menu.MenuLeftBarButton
@@ -36,6 +36,8 @@ class MenuView extends UIView{
 	MenuLeftBarButton current
 
 	boolean menu = false
+	
+	List<MenuableView> viewlist = []
 
 	void create() {
 
@@ -127,7 +129,15 @@ class MenuView extends UIView{
 
 				buttons.each {it.checked = false}
 				self.checked = true
+				
+				//set view
+				def view = self.to
+				if(!view) return
+				if(current.to) to.remove()
 				current = self
+				
+				
+				
 			}
 
 			table.cell(it).row()

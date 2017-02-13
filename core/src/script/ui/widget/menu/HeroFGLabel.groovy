@@ -1,5 +1,7 @@
 package script.ui.widget.menu
 
+import static com.rpsg.rpg.util.UIUtil.*
+
 import com.badlogic.gdx.math.Interpolation
 import com.badlogic.gdx.scenes.scene2d.Group
 import com.badlogic.gdx.scenes.scene2d.actions.Actions
@@ -9,8 +11,6 @@ import com.rpsg.gdxQuery.TypedGdxQuery
 import com.rpsg.rpg.core.Path
 import com.rpsg.rpg.object.hero.Hero
 import com.rpsg.rpg.ui.widget.AsyncLoadImage
-
-import static com.rpsg.rpg.util.UIUtil.*
 
 class HeroFGLabel extends Group {
 	def fg,fgs

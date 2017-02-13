@@ -78,7 +78,7 @@ public class Views implements ApplicationListener {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		//查找views里是否有需要被删除的元素
-		$.removeIf(views, View::removeable);
+		$.removeIf(views, View::removeable, v -> v.removeable(false));
 		
 		//如果insertViews有内容，则加入到views里
 		if(!insertViews.isEmpty()){

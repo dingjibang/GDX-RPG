@@ -9,11 +9,13 @@ import com.rpsg.rpg.ui.view.View
 import com.rpsg.rpg.ui.widget.Image
 import com.rpsg.rpg.ui.widget.Label
 
+import script.ui.view.MenuableView
+
 import static com.rpsg.rpg.util.UIUtil.*
 
 class MenuLeftBarButton extends Group{
 
-	Class<View> to
+	Class<MenuableView> to
 
 	String en, zh
 	TypedGdxQuery<Image> icon, bg, pbg
