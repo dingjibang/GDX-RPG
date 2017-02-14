@@ -128,7 +128,14 @@ public class Views implements ApplicationListener {
 	
 	public static void addView(View view) {
 		insertViews.add(0, view);
+		view.removeable(false);
 		Log.i("Views << " + view.toString());
+	}
+	
+	public static View find(Class<? extends View> clz){
+		synchronized (views) {
+			return $.getIf(views, v -> v.getClass().getSuperclass().equals(clz));
+		}
 	}
 	
 	public void resize(int width, int height) {

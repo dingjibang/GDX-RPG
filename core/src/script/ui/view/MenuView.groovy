@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Interpolation
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.scenes.scene2d.Group
 import com.badlogic.gdx.scenes.scene2d.actions.Actions
+import com.badlogic.gdx.scenes.scene2d.actions.AddAction
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.rpsg.gdxQuery.GdxQuery
@@ -37,7 +38,7 @@ class MenuView extends UIView{
 
 	boolean menu = false
 	
-	List<MenuableView> viewlist = []
+	List<MenuableView> openedViewlist = []
 
 	void create() {
 
@@ -102,13 +103,13 @@ class MenuView extends UIView{
 			dom.addAction Actions.moveBy(40 * idx, 0, 0.9f, Interpolation.pow4Out)
 		}
 
-		buttons << new MenuLeftBarButton(zh: "状态", en: "STATUS")
-		buttons << new MenuLeftBarButton(zh: "装备", en: "EQUIPMENT")
-		buttons << new MenuLeftBarButton(zh: "物品", en: "ITEM")
-		buttons << new MenuLeftBarButton(zh: "符卡", en: "SPELLCARD")
-		buttons << new MenuLeftBarButton(zh: "战术", en: "TACTICS")
-		buttons << new MenuLeftBarButton(zh: "记录", en: "NOTE")
-		buttons << new MenuLeftBarButton(zh: "系统", en: "SYSTEM")
+		buttons << new MenuLeftBarButton(zh: "状态", en: "STATUS", to: StatusView.class)
+		buttons << new MenuLeftBarButton(zh: "装备", en: "EQUIPMENT", to: EquipmentView.class)
+		buttons << new MenuLeftBarButton(zh: "物品", en: "ITEM", to: null)
+		buttons << new MenuLeftBarButton(zh: "符卡", en: "SPELLCARD", to: null)
+		buttons << new MenuLeftBarButton(zh: "战术", en: "TACTICS", to: null)
+		buttons << new MenuLeftBarButton(zh: "记录", en: "NOTE", to: null)
+		buttons << new MenuLeftBarButton(zh: "系统", en: "SYSTEM", to: null)
 	}
 
 	void toMenu() {
@@ -123,6 +124,7 @@ class MenuView extends UIView{
 		hr.stopActions().action(Actions.after(Actions.sizeTo(183, 4, 0.3f, Interpolation.pow4Out)))
 
 		def table = $ new Table().center().left().padBottom(20)
+		
 		buttons.each {
 			it.click {self ->
 				if(current == self) return
@@ -131,43 +133,72 @@ class MenuView extends UIView{
 				self.checked = true
 				
 				//set view
-				def view = self.to
-				if(!view) return
-				if(current.to) to.remove()
+				def viewClass = self.to
+				if(!viewClass) return
 				current = self
 				
+				MenuableView view = null
+				openedViewlist.each {
+					if(it.class.equals(viewClass))
+						view = it
+				}
+				if(!view){
+					view = viewClass.newInstance()
+					openedViewlist += view
+					view.parent = thisObject
+					view.create()
+				}
 				
-				
+				Views.find(MenuableView.class)?.remove()	
+				Views.addView view
 			}
 
 			table.cell(it).row()
 		}
+		
+		stage.addAction Actions.delay(0.15f, Actions.run({buttons[0].click()}))
+		
 		table.eachCells{c -> c.padTB(5)}.layout()
 
 		$(new ScrollPane(table.get())).size(247, 578).position(-280, 0).a(0).fadeIn(0.2f).action(Actions.moveBy(300, 0, 0.35f, Interpolation.pow4Out)) to stage
 
+	}
+	
+	void draw() {
+		super.draw();
+	}
+	
+	void onRemove() {
+		Views.find(MenuableView.class)?.remove()
+		openedViewlist.clear()
+	}
+	
+	void prev() {
+		if(heroBox.indexOf(currentHero) == 0)
+			currentHero = heroBox[heroBox.size() - 1]
+		else
+			currentHero = heroBox[heroBox.indexOf(currentHero) - 1]
+
+		currentHero.get().click()
+	}
+	
+	void next() {
+		if(heroBox.indexOf(currentHero) == heroBox.size() - 1)
+			currentHero = heroBox[0]
+		else
+			currentHero = heroBox[heroBox.indexOf(currentHero) + 1]
+		currentHero.get().click()
 	}
 
 	boolean keyDown(int code) {
 		if(code == Input.Keys.ESCAPE)
 			Game.view.menu.hide()
 
-		if(code == Input.Keys.RIGHT || code == Input.Keys.DOWN){
-			if(heroBox.indexOf(currentHero) == heroBox.size() - 1)
-				currentHero = heroBox[0]
-			else
-				currentHero = heroBox[heroBox.indexOf(currentHero) + 1]
-			currentHero.get().click()
-		}
+		if(code == Input.Keys.RIGHT || code == Input.Keys.DOWN)
+			next()
 
-		if(code == Input.Keys.LEFT || code == Input.Keys.UP){
-			if(heroBox.indexOf(currentHero) == 0)
-				currentHero = heroBox[heroBox.size() - 1]
-			else
-				currentHero = heroBox[heroBox.indexOf(currentHero) - 1]
-
-			currentHero.get().click()
-		}
+		if(code == Input.Keys.LEFT || code == Input.Keys.UP)
+			prev()
 
 		return super.keyDown(code)
 	}
