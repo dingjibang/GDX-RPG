@@ -18,6 +18,10 @@ class HeroFGLabel extends Group {
 	TypedGdxQuery<Label> label, jlabel
 
 	def menu = false
+	
+	def _hero;
+	
+	boolean isHide = false;
 
 	HeroFGLabel(){
 		fgs = $(new AsyncLoadImage()).color(0.03f, 0.03f, 0.03f, 0.3f).position(1600, 0).size(573, 687).disableTouch().scaleX(-1) to this
@@ -33,6 +37,7 @@ class HeroFGLabel extends Group {
 	}
 
 	void setHero(Hero hero){
+		_hero = hero;
 		//generate fg
 		fg.stopActions().x(1500).action(Actions.moveBy(menu ? -620 : -750, 0,0.8f, Interpolation.pow4Out)).get().setDrawableAsync(Path.IMAGE_FG + hero.fg + "/Normal.png")
 		fgs.stopActions().x(1530).action(Actions.moveBy(menu ? -620 : -750, 0,0.9f, Interpolation.pow4Out)).get().setDrawableAsync(Path.IMAGE_FG + hero.fg + "/Normal.png")
@@ -43,6 +48,8 @@ class HeroFGLabel extends Group {
 		}
 
 		$(this).a(0).stopActions().action(Actions.fadeIn(0.5f))
+		
+		isHide = false
 	}
 
 	void toMenu() {
@@ -52,14 +59,18 @@ class HeroFGLabel extends Group {
 		})
 
 		$(fg, fgs).stopActions().list().each({it.addAction(Actions.moveBy(130, 0, 0.4f, Interpolation.pow4Out))})
+		
+		isHide = false
 	}
 
 	void hide() {
 		$(fg, fgs).stopActions().list().each({it.addAction(Actions.moveBy(800, 0, 0.4f, Interpolation.pow4Out))})
+		isHide = true
 	}
 
 	void show() {
-		setHero(hero);
+		if(isHide)
+			setHero(_hero);
 	}
 
 }

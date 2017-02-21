@@ -4,6 +4,7 @@
 	"fg": "renko",//立绘所在文件夹
 	"spriteImage": "walk_renko.png",//行走图
 	"color": "d98027cc",//颜色（UI用）
+	"label": "人类",
 	"prop": {//初始属性
 		"hp": 500,//血量
 		"maxhp": 500,//最大血量

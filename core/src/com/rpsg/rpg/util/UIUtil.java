@@ -23,6 +23,10 @@ public class UIUtil {
 	public static TypedGdxQuery<Label> $(String text, int size){
 		return new TypedGdxQuery<>(Res.text.getLabel(text, size));
 	}
+	
+	public static TypedGdxQuery<Label> $(int text, int size){
+		return new TypedGdxQuery<>(Res.text.getLabel(text + "", size));
+	}
 
 	public static TypedGdxQuery<Image> $ (String param){
 		if(param.equals("base"))

@@ -9,4 +9,7 @@ public abstract class MenuableView extends UIView {
 	public MenuableView() {
 		buuleable(true);
 	}
+	
+	/**当窗口被创建、被还原时调用一次，可以不用强制覆盖此方法*/
+	public void onResume(){}
 }

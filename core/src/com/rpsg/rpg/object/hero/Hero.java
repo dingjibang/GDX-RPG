@@ -28,6 +28,8 @@ public class Hero implements Targetable, Serializable{
 	public String name;
 	/**hero日文名*/
 	public String jname;
+	/**hero的类型解释（如“人类”、“妖怪”）*/
+	public String label;
 	/**hero的立绘文件夹路径*/
 	public String fg;
 	/**hero的颜色hex值(UI用)*/
@@ -43,6 +45,7 @@ public class Hero implements Targetable, Serializable{
 		jname = json.getString("jname");
 		fg = json.getString("fg");
 		color = json.getString("color");
+		label = json.getString("label");
 		
 		sprite = new MapSprite(0, 0, 0, 4, Path.WALK_HERO + json.getString("spriteImage"));
 		

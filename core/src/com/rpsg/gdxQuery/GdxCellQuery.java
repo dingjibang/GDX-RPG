@@ -92,6 +92,7 @@ public class GdxCellQuery<T extends Actor, TQ extends GdxQuery>{
 		return cell.getActor().getUserObject();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public <T2 extends Actor> GdxCellQuery<T2, TQ> cell(T2 a){
 		return (GdxCellQuery<T2, TQ>)end().cell(a);
 	}

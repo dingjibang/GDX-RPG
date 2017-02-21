@@ -7,7 +7,6 @@ import com.rpsg.rpg.controller.MapController;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.object.game.Party;
 import com.rpsg.rpg.object.hero.Hero;
-import com.rpsg.rpg.util.Position;
 
 /**
  * GDX-RPG 人物队列控制器<br>
@@ -27,8 +26,8 @@ public class PlayerQueue {
 			players.add(hero.sprite);
 		
 		//TODO position
-		Position position = Game.archive.get().position;
-		int foo = position.x;
+//		Position position = Game.archive.get().position;
+//		int foo = position.x;
 	}
 	
 }

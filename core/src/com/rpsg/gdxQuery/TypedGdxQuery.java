@@ -323,6 +323,7 @@ public class TypedGdxQuery<T extends Actor> extends GdxQuery{
 		return t.equals(a);
 	}
 
+	@SuppressWarnings("unchecked")
 	public TypedGdxQuery<T> to(Object... object){
 		for(Object o:object){
 			if(o instanceof Stage)

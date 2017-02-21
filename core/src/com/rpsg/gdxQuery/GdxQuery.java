@@ -497,6 +497,7 @@ public class GdxQuery {
 		return this;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public GdxQuery add(Object... a) {
 		for (Object obj: a)
 			if(obj instanceof TypedGdxQuery)
@@ -613,6 +614,7 @@ public class GdxQuery {
 		return this;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public GdxQuery into(Object... into){
 		for(Object o : into){
 			for(Actor from : list()){

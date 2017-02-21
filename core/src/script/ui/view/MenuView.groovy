@@ -151,6 +151,7 @@ class MenuView extends UIView{
 				
 				Views.find(MenuableView.class)?.remove()	
 				Views.addView view
+				view.onResume()
 			}
 
 			table.cell(it).row()
