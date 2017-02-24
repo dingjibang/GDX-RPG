@@ -4,7 +4,7 @@
 	"fg": "mari",//立绘所在文件夹
 	"spriteImage": "walk_mari.png",//行走图
 	"color": "372569cc",//颜色（UI用）
-	"label": "人类",
+	"tag": "人类",
 	"prop": {//初始属性
 		"hp": 350,//血量
 		"maxhp": 350,//最大血量
@@ -18,7 +18,7 @@
 		"hit": 5,//命中率
 		"evasion": 5,//闪避率
 		"level": 1,//等级
-		"exp": 0,//经验
+		"exp": 700,//经验
 		"nextExp": 1000,//下一级所需经验
 		"criticalRate": 3,//暴击率，0～100
 		"critical": 150,//暴击伤害 默认为150%伤害

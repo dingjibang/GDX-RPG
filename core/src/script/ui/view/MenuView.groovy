@@ -195,11 +195,13 @@ class MenuView extends UIView{
 		if(code == Input.Keys.ESCAPE)
 			Game.view.menu.hide()
 
-		if(code == Input.Keys.RIGHT || code == Input.Keys.DOWN)
-			next()
+		if(!menu){
+			if(code == Input.Keys.RIGHT || code == Input.Keys.DOWN)
+				next()
 
-		if(code == Input.Keys.LEFT || code == Input.Keys.UP)
-			prev()
+			if(code == Input.Keys.LEFT || code == Input.Keys.UP)
+				prev()
+		}
 
 		return super.keyDown(code)
 	}

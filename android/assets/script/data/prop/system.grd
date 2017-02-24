@@ -1,4 +1,5 @@
 {
-	"patkSpellcardId" : 9,
-	"matkSpellcardId" : 15
+	"patkSpellcardId": 9,
+	"matkSpellcardId": 15,
+	"maxLevel": 99
 }
