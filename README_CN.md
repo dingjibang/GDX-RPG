@@ -1,6 +1,8 @@
 # GDX-RPG 
 一个~~还未完成的~~跨平台RPG游戏引擎，由[Libgdx](https://github.com/libgdx/libgdx)制作
 
+#### 目前在重构代码中……所有东西都重来=。=
+
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-LAZY-FONT/master/foobar.png)
 
 

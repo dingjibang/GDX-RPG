@@ -5,6 +5,8 @@ A ~~not work now~~ cross-platform RPG game engine ~~(tease you)~~
 
 made by [Libgdx](https://github.com/libgdx/libgdx).
 
+#### now refactoring...
+
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-LAZY-FONT/master/foobar.png)
 
 
