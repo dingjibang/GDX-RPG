@@ -34,7 +34,7 @@ public class Path {
 	public static final String IMAGE_MENU_EQUIP = IMAGE_MENU + "nequip/";
 	public static final String IMAGE_MENU_SC = IMAGE_MENU + "sc/";
 	public static final String IMAGE_MENU_ITEM = IMAGE_MENU + "nitem/";
-	public static final String IMAGE_MENU_STATUS = IMAGE_MENU + "nstatus/";
+	public static final String IMAGE_MENU_STATUS = IMAGE_MENU + "status/";
 	public static final String IMAGE_MENU_SYSTEM = IMAGE_MENU + "nsystem/";
 	public static final String IMAGE_MENU_TACTIC = IMAGE_MENU + "tactic/";
 	public static final String IMAGE_MENU_TASK = IMAGE_MENU + "task/";

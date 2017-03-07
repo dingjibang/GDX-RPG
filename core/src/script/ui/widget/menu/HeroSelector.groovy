@@ -79,7 +79,7 @@ class HeroSelector extends Group {
 	}
 
 	Hero hero() {
-		return hero
+		hero
 	}
 
 }
