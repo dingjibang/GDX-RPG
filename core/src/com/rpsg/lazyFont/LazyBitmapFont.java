@@ -32,6 +32,8 @@ public class LazyBitmapFont extends BitmapFont {
 	private FreeTypeFontGenerator generator;
 	private FreeTypeBitmapFontData data;
 	private FreeTypeFontParameter parameter;
+	
+	public final int fontSize;
 
 	private static FreeTypeFontGenerator GLOBAL_GEN = null;
 	
@@ -40,10 +42,12 @@ public class LazyBitmapFont extends BitmapFont {
 	}
 	
 	public LazyBitmapFont(int fontSize){
-		this(GLOBAL_GEN,fontSize);
+		this(GLOBAL_GEN, fontSize);
 	}
 	
 	public LazyBitmapFont(FreeTypeFontGenerator generator, int fontSize) {
+		this.fontSize = fontSize;
+		
 		if(generator == null)
 			 throw new GdxRuntimeException("lazyBitmapFont global generator must be not null to use this constructor.");
 		this.generator = generator;

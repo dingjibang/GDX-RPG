@@ -68,6 +68,7 @@ public class Target implements Serializable{
 	 * */
 	
 	public void setEquipment(Equipment.Parts parts, Equipment equipment){
+		//已经有装备的话就先脱下来
 		if(equipments.get(parts) != null)
 			removeEquipment(parts, equipment);
 		

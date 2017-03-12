@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Align;
 import com.rpsg.gdxQuery.GdxQuery;
+import com.rpsg.lazyFont.LazyBitmapFont;
 import com.rpsg.rpg.core.Res;
 import com.rpsg.rpg.core.Text;
 
@@ -24,7 +25,7 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label{
 	private boolean enableMarkup = false;
 	
 	private Integer maxWidth;
-
+	
 	public Label(Object text, LabelStyle style) {
 		super(text.toString(), style);
 		setTouchable(Touchable.disabled);
@@ -131,5 +132,9 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label{
 
 	public GdxQuery query() {
 		return new GdxQuery(this);
+	}
+	
+	public int prefWidth() {
+		return Res.text.getTextWidth(getText().toString(), ((LazyBitmapFont)getStyle().font).fontSize);
 	}
 }

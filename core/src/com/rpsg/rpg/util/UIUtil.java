@@ -31,6 +31,9 @@ public class UIUtil {
 	public static TypedGdxQuery<Image> $ (String param){
 		if(param.equals("base"))
 			return $();
+		if(param.startsWith("base#"))
+			return $().color(param.replaceAll("base#", ""));
+		
 		return new TypedGdxQuery<>(Res.get(param));
 	}
 

@@ -68,4 +68,10 @@ public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
 
 		return null;
 	}
+	
+	public Image disableTouch(){
+		setTouchable(null);
+		return this;
+	}
+	
 }

@@ -21,9 +21,16 @@ class HeroStatusBox extends Table {
 	HeroStatusBox(Hero hero){
 		this.hero = hero
 		
+		refresh()
+		
+	}
+	
+	void refresh(){
+		clearChildren()
+		
 		top().left()
 		
-		setWidth 610
+		width = 610
 		
 		//hp
 		def group1 = $(new Group())
@@ -69,7 +76,6 @@ class HeroStatusBox extends Table {
 		add(new BackgroundableLabel("444444", 0.9f, "ffffff", 0.1f, "暴击伤害", 22)).size(140, 40).space(0).left()
 		add(new BackgroundableLabel("444444", 0.9f, hero.target.get(PropKey.critical), 22)).size(165, 40)
 		row()
-		
 	}
 	
 }
