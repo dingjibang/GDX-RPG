@@ -4,16 +4,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.rpsg.gdxQuery.$;
-import com.rpsg.gdxQuery.GdxQuery;
+import com.rpsg.gdxQuery.TypedGdxQuery;
 import com.rpsg.rpg.core.Game;
 
 /**
  * GDX-RPG 图片类
  */
 public class Image extends com.badlogic.gdx.scenes.scene2d.ui.Image{
-	public GdxQuery query(){
-		return $.add(this);
+	public TypedGdxQuery<Image> query(){
+		return new TypedGdxQuery<>(this);
 	}
 	
 	public Image (Texture texture){

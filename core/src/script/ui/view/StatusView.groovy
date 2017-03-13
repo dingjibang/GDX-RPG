@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Group
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.rpsg.rpg.core.Game
+import com.rpsg.rpg.core.Log;
 import com.rpsg.rpg.core.Path
 import com.rpsg.rpg.core.Res;
 import com.rpsg.rpg.object.hero.Hero
@@ -91,7 +92,23 @@ class StatusView extends MenuableView{
 			if(idx % 2 != 0) $("base").a(0.1f).size(610, 40) to group32
 			$("base").a(0.1f).size(177, 40) to group32
 			
-			$(Path.IMAGE_MENU_STATUS + val.name() + ".png").position(102, 3) to group32
+			
+			def icon = Res.sync(Path.IMAGE_MENU_STATUS + val.name() + ".png").query() to group32
+			def offsetx = 30 / 2 - icon.width() / 2, offsety = 40 / 2 - icon.height() / 2
+			icon.position(63 + (int)offsetx, (int)offsety)
+			
+			$(val.description(), 22).size(45, 40).x(96) to group32
+			
+			def v = hero.target.get(PropKey.valueOf(val.name()));
+			
+			
+			float r = v >= 100 ? 1 : (v < 0 ? 0 : v) / 100
+			float g = v <= 100 ? 1 : (200 - (v > 200 ? 200 : v)) / 100
+			float b = v >= 100 ? (200 - (v > 200 ? 200 : v)) / 100 : (v < 0 ? 0 : v) / 100
+			
+			Log.i "v:${v}, r:${r}, g:${g}, b:${b}"
+			
+			$(v + "%", 22).center().size(433, 40).x(176).color(r, g, b) to group32
 			
 			group3.add(group32).size(610, 40).row()
 		}
