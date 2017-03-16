@@ -7,8 +7,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.rpsg.rpg.core.Game
 import com.rpsg.rpg.core.Log;
 import com.rpsg.rpg.core.Path
-import com.rpsg.rpg.core.Res;
+import com.rpsg.rpg.core.Res
+import com.rpsg.rpg.core.UI;
 import com.rpsg.rpg.object.hero.Hero
+import com.rpsg.rpg.object.item.Equipment
 import com.rpsg.rpg.object.prop.PropKey
 import com.rpsg.rpg.object.prop.PropType;
 import com.rpsg.rpg.ui.widget.Button
@@ -117,7 +119,21 @@ class StatusView extends MenuableView{
 		table.add(group3).padBottom(50).padLeft(45).row()
 		//end 	有效率****************
 		
-		
+		//start equipment
+		def equiplist = hero.target.getEquipments()
+		Equipment.Parts.values() eachWithIndex {val, idx ->
+			def group4 = $(new Group()).size(611, 100).get()
+			$("base#333333").a(0.9f).size(611, 100) to group4
+			if(idx %2 == 0) $("base").a(0.1f).size(611, 100) to group4
+			def equip = equiplist.get(val)
+			$(equip ? equip.name : "无装备", 26).size(480, 40).position(117, 50) to group4
+			$(equip ? equip.description : "", 20).size(480, 40).position(117, 10).get().overflow(true).query() to group4
+			$(equip ? equip.getIcon() : UI.base().query().a(0)).size(100, 100) to group4
+			table.add(group4).padLeft(45).row()
+		}
+		//end   equipment
+
+		table.add().padBottom(50)
 		table.layout()
 		
 		$(new ScrollPane(table)).position(320, 0).size(960, 720) to stage
