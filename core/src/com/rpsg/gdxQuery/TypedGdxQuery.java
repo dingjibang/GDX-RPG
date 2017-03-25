@@ -41,7 +41,11 @@ public class TypedGdxQuery<T extends Actor> extends GdxQuery{
 	public TypedGdxQuery(T t) {
 		this.t = t;
 	}
-
+	
+	public TypedGdxQuery<T> toggle(){
+		return visible(!visible());
+	}
+	
 	public TypedGdxQuery<T> origin (int alignment){
 		t.setOrigin(alignment);
 		return this;
@@ -202,13 +206,15 @@ public class TypedGdxQuery<T extends Actor> extends GdxQuery{
 	}
 
 	public TypedGdxQuery<T> visible(boolean v){
-		
 		t.setVisible(v);
 		return this;
 	}
+	
+	public boolean visible(){
+		return t.isVisible();
+	}
 
 	public TypedGdxQuery<T> hide(){
-		
 		t.setVisible(false);
 		return this;
 	}

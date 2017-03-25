@@ -1,7 +1,9 @@
 package script.ui.view
 
 import com.badlogic.gdx.Input.Keys
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Group
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.rpsg.rpg.core.Game
@@ -78,14 +80,19 @@ class StatusView extends MenuableView{
 		$("base#c33737").size(610, 40).a(0.9f) to group31
 		$("属性有效率", 22).size(140, 40).center().x(227) to group31
 		
+		def help = $(new Group()).y(0).a(0);
+		$("base#000000").a(0.8f).size(610, 40 * PropType.values().length) to help
+				
 		$(new LabelImageCheckbox("帮助", 22, 
 			Res.sync(Path.IMAGE_MENU_STATUS + "triangle_d.png"), 
 			Res.sync(Path.IMAGE_MENU_STATUS + "triangle_u.png"), 
 			$("base#811c1c").get(), 
 			$("base#912424").get()
 		).click({
-			
+			def flag = !!help.userObject();
+			help.cleanActions().action(flag ? Actions.fadeOut(0.3f, Interpolation.pow4Out) : Actions.fadeIn(0.3f, Interpolation.pow4Out)).userObject(!flag);
 		})).size(133, 40).x(610 - 133) to group31
+	
 		group3.add(group31).size(610, 40).row()
 		
 		PropType.values() eachWithIndex {val, idx ->
@@ -114,7 +121,7 @@ class StatusView extends MenuableView{
 			
 			group3.add(group32).size(610, 40).row()
 		}
-		
+		group3.addActor help.get()
 		group3.layout()
 		table.add(group3).padBottom(50).padLeft(45).row()
 		//end 	有效率****************
