@@ -139,7 +139,7 @@ class MenuView extends UIView{
 				
 				MenuableView view = null
 				openedViewlist.each {
-					if(it.class.equals(viewClass))
+					if(it.class == viewClass)
 						view = it
 				}
 				if(!view){

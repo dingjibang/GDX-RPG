@@ -1,12 +1,12 @@
 package com.rpsg.rpg.object.game;
 
+import com.rpsg.rpg.object.hero.Hero;
+import com.rpsg.rpg.util.Stream;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import com.rpsg.rpg.object.hero.Hero;
-import com.rpsg.rpg.util.Stream;
 
 /**
  * {@link Hero} 控制器
@@ -57,7 +57,7 @@ public class Party implements Serializable{
 	
 	/**从队伍中删除一名{@link Hero}*/
 	
-	/**在{@link all}里加入一名{@link Hero}，如果已经存在则不加了=。=*/
+	/**在{@link #all}里加入一名{@link Hero}，如果已经存在则不加了=。=*/
 	public Hero create(int id) {
 		Hero hero = find(all, id);
 		

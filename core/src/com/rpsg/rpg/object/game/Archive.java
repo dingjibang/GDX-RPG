@@ -1,12 +1,12 @@
 package com.rpsg.rpg.object.game;
 
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.*;
-
 import com.rpsg.rpg.object.item.BaseItem;
 import com.rpsg.rpg.object.map.MapSprite;
 import com.rpsg.rpg.util.Position;
+
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * GDX-RPG 游戏存档<br>
@@ -23,6 +23,8 @@ public class Archive implements Serializable{
 	 * 这里用了些下三滥的方法<br>
 	 * 当游戏是读档的，本变量将会有数据，否则永远都是null的，当{@link #getMapSprites() 访问}这个变量一次后，该变量将重新变为null，直到下次存档时候再次写入<br>
 	 * 以此来判断当前档案是正在游玩中的，还是刚读档进来的（这样就可以根据判断选择当前精灵是从地图数据里载入，还是从存档里载入了）
+	 *
+	 * 总之别管了，要想访问地图里当前的精灵，请访问{@link com.rpsg.rpg.controller.MapController#mapSprites}
 	 * */
 	private List<MapSprite> mapSprites = null;
 	

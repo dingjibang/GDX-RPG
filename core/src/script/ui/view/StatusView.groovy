@@ -1,26 +1,24 @@
 package script.ui.view
 
 import com.badlogic.gdx.Input.Keys
-import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.math.Interpolation
+import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.Group
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane
 import com.badlogic.gdx.scenes.scene2d.ui.Table
-import com.rpsg.rpg.core.Game
-import com.rpsg.rpg.core.Log;
-import com.rpsg.rpg.core.Path
-import com.rpsg.rpg.core.Res
-import com.rpsg.rpg.core.UI;
+import com.rpsg.rpg.core.*
 import com.rpsg.rpg.object.hero.Hero
 import com.rpsg.rpg.object.item.Equipment
 import com.rpsg.rpg.object.prop.PropKey
-import com.rpsg.rpg.object.prop.PropType;
+import com.rpsg.rpg.object.prop.PropType
 import com.rpsg.rpg.ui.widget.Button
 import com.rpsg.rpg.ui.widget.LabelImageCheckbox
-
 import script.ui.widget.menu.HeroStatusBox
 import script.ui.widget.menu.ProgressBar
+
 import static com.rpsg.rpg.util.UIUtil.*
+
 /**
  * GDX-RPG 人物状态菜单
  */
@@ -140,8 +138,20 @@ class StatusView extends MenuableView{
 		}
 		//end   equipment
 
-		table.add().padBottom(50)
+		table.add(new Actor()).padBottom(50)
 		table.layout()
+
+//		table.getCells().items.each {cell ->
+//			if(cell && cell.actor){
+//				def outer = new Group(), actor = cell.actor
+//				outer.addActor(actor)
+//				outer.setSize(actor.width, actor.height)
+//				cell.actor = outer
+//				$(outer).y(500).action(Actions.moveBy(0, 500, 0.3f, Interpolation.pow4Out))
+//			}
+//		}
+
+
 		
 		$(new ScrollPane(table)).position(320, 0).size(960, 720) to stage
 	}

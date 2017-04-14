@@ -1,8 +1,8 @@
 package com.rpsg.rpg.core;
 
-import java.io.Serializable;
-
 import com.badlogic.gdx.utils.Scaling;
+
+import java.io.Serializable;
 
 /**
  * GDX-RPG 系统设置<br>
@@ -45,4 +45,6 @@ public class Setting implements Serializable{
 			return new Setting();
 		return (Setting)obj; 
 	}
+
+	private Setting(){}
 }
