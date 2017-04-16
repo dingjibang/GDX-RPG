@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>GDX-RPG 资源编辑器</title>
+	<script src="js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="css/index.css"/>
+</head>
+<body>
+	<div id="menu">
+        <div class="head">
+            文件
+            <div class="sub">
+                <div>设置资源路经...</div>
+                <hr>
+                <div>打开资源路经</div>
+                <hr>
+                <div>保存 <span>(Ctrl+S)</span></div>
+                <div>退出</div>
+            </div>
+        </div>
+
+        <div class="head">
+            编辑
+            <div class="sub">
+                <div>撤销 <span>(Ctrl+Z)</span></div>
+                <div>重做 <span>(Ctrl+Y)</span></div>
+                <hr>
+                <div>全选 <span>(Ctrl+A)</span></div>
+                <div>删除 <span>(Delete)</span></div>
+                <hr>
+                <div>剪切 <span>(Ctrl+X)</span></div>
+                <div>复制 <span>(Ctrl+C)</span></div>
+                <div>粘贴 <span>(Ctrl+V)</span></div>
+                <hr>
+                <div>格式化... <span>(Ctrl+F)</span></div>
+            </div>
+        </div>
+
+        <div class="head">
+            查看
+            <div class="sub">
+                <div>切换代码/编辑窗口 <span>(Ctrl+Tab)</span></div>
+            </div>
+        </div>
+
+        <div class="head">
+            工具
+            <div class="sub">
+                <div>运行GDX-RPG <span>(F11)</span></div>
+                <hr>
+                <div>首选项...</div>
+            </div>
+        </div>
+
+        <div class="head">
+            帮助
+            <div class="sub">
+                <div>关于GDX-RPG资源编辑器...</div>
+            </div>
+        </div>
+    </div>
+
+	<div id="files"></div>
+
+	<div id="editor">
+    </div>
+</body>
+<script src="js/menu.js"></script>
+<script src="js/index.js"></script>
+<script>
+import React from 'react';
+</script>
+</html>

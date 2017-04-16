@@ -1,0 +1,13 @@
+{
+  "name": "GDX-RPG-Resource-Editor",
+  "version": "1.0.0",
+  "description": "GDX-RPG 资源编辑器",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "RPSG-TEAM",
+  "devDependencies": {
+    "electron": "~1.6.2"
+  }
+}
