@@ -1,0 +1,33 @@
+*{
+	font-family: "Microsoft YaHei";
+}
+body,html{
+	margin: 0;
+	padding: 0;
+}
+.menubar .menuctx button {
+    height: 25px!important;
+    line-height: 23px!important;
+}
+.menubar .menuctx button span{
+	font-size:12px!important;
+}
+.menuctx[data-reactroot]{
+	top: 26px!important;
+}
+.menuctx[data-reactroot] div[role='menu']{
+	padding:0!important;
+}
+.menuctx[data-reactroot] div[role='menu'] span[role='menuitem']{
+	font-size:12px!important;
+	line-height:30px!important;
+	min-height:30px!important;
+}
+.menuctx[data-reactroot] div[role='menu'] hr{
+	margin:3px 0px 3px!important;
+}
+.menuctx[data-reactroot] div[role='menu'] span[role='menuitem'] svg{
+	margin: 5px!important;
+	height: 20px!important;
+	width: 20px!important;
+}

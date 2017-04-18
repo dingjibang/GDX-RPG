@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import MyAwesomeReactComponent from '../views/MyAwesomeReactComponent';
+import Menubar from '../views/Menubar';
+import injectTapEventPlugin from 'react-tap-event-plugin';
  
+injectTapEventPlugin();
+
 const App = () => (
   <MuiThemeProvider>
-    <MyAwesomeReactComponent />
+    <Menubar />
   </MuiThemeProvider>
 );
 
