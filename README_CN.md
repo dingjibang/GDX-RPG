@@ -18,7 +18,7 @@ UI设计图: [https://modao.cc/app/GhibQOQlOKeugbsDhTPi0qnDaztNAcc](https://moda
                                              
 # 经常出现的“为啥我编译不成功”!important( •́ .̫ •̀  )
 #### 首先，请看下你的环境变量（JAVA8_HOME, JAVA7_HOME）有吗！以下是一些常见问题
-####1.当编译gradle时候，显示"SDK location not found ..."
+#### 1.当编译gradle时候，显示"SDK location not found ..."
 首先这个项目需要安卓sdk才可以运行，因为跨平台，也有安卓的那部分你懂的，使用adt并且下载至少以下的模块，才可以继续编译成功：
 - Android SDK Build-tools (23.0.1)
 - Android 5.1.1 (API 22)
@@ -29,13 +29,13 @@ UI设计图: [https://modao.cc/app/GhibQOQlOKeugbsDhTPi0qnDaztNAcc](https://moda
 当然有时候设置了还是不好使，你可以尝试[建一个叫local.properties的文件在项目的根目录并且写入相关路径](http://stackoverflow.com/questions/23983221/importing-gradle-project-android-error)
 
 
-####2.第一次跑这个程序时候，显示 "Exception in thread "LWJGL Application" com.badlogic.gdx.utils.GdxRuntimeException: Couldn't load file: xxxxxxxxx"
+#### 2.第一次跑这个程序时候，显示 "Exception in thread "LWJGL Application" com.badlogic.gdx.utils.GdxRuntimeException: Couldn't load file: xxxxxxxxx"
 这个也很简单，[这是eclipse的解决办法](http://stackoverflow.com/questions/22822767/new-libgdx-setup-receive-file-not-found/22833470#22833470), [这是as的解决办法](http://stackoverflow.com/questions/24879812/libgdx-project-exception-in-thread-lwjgl-application-couldnt-load-file-erro)
 
-####3.项目还是有些红叉叉？
+#### 3.项目还是有些红叉叉？
 没关系，可能是我没写完就着急上传了QAQ
 
-####4.其他问题...
+#### 4.其他问题...
 你可以建一个issue来提问，或者发邮箱至dingjibang@qq.com来提交问题
 
 # 游戏部分截图(￣∀￣)
@@ -53,5 +53,5 @@ UI设计图: [https://modao.cc/app/GhibQOQlOKeugbsDhTPi0qnDaztNAcc](https://moda
 # 这项目开发到哪了？
 瞎〇巴开发，想到哪写哪hhh
 
-#其他问题(╭￣3￣)╭♡ 
+# 其他问题(╭￣3￣)╭♡ 
 本项目中所有图片都是拥有相关版权的，请千万一定不要拿到别的地方去用，其他的诸如代码都是可以随便搞的
