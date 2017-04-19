@@ -6,8 +6,8 @@ body,html{
 	padding: 0;
 }
 .menubar .menuctx button {
-    height: 25px!important;
-    line-height: 23px!important;
+	height: 25px!important;
+	line-height: 23px!important;
 }
 .menubar .menuctx button span{
 	font-size:12px!important;
@@ -30,4 +30,42 @@ body,html{
 	margin: 5px!important;
 	height: 20px!important;
 	width: 20px!important;
+}
+.container {
+	height: calc(100% - 25px);
+	position: absolute;
+	top: 25px;
+	width: 100%;
+	overflow: hidden;
+	display: table;
+}
+.container > div {
+	display: block;
+	height: 100%;
+}
+.file-list{
+	width:20%;
+	overflow-y: auto;
+}
+.editor-outer {
+	width: calc(100% - 20%);
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-color: #e4e4e4;
+	color: white;
+}
+.no-file svg{
+	width:100px!important;
+	height:100px!important;
+}
+.no-file {
+	display: table;
+	margin: 0 auto;
+	margin-top: 20%;
+	text-align: center;
+	font-size: 25px;
+}
+.file-list-toolbar{
+	margin: 0!Important;
 }

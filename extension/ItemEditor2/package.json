@@ -19,6 +19,6 @@
     "babel-plugin-transform-object-rest-spread": "^6.23.0"
   },
   "devDependencies": {
-    "electron": "^1.4.3"
+	  "electron": "^1.4.3"
   }
 }

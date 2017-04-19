@@ -12,6 +12,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import ReactDOM from 'react-dom';
 
 import About from './About'
+import PathSelector from "./PathSelector";
 
 const style = {
 	top: '100px'
@@ -23,8 +24,8 @@ export default class Menubar extends React.Component {
 		return(
 			<Paper zDepth={1} className="menubar">
 				<IconMenu className="menuctx" iconButtonElement={<FlatButton label="文件"/>} anchorOrigin={{horizontal: 'left', vertical: 'top'}} targetOrigin={{horizontal: 'left', vertical: 'top'}}>
-					<MenuItem primaryText="设定assets文件夹位置..." rightIcon={<Setting />} />
-					<MenuItem primaryText="打开assets文件夹" />
+					<MenuItem primaryText="设定assets文件夹位置..." rightIcon={<Setting />} onTouchTap={() => {ReactDOM.render(<PathSelector open={true}/>, document.getElementById("dialog"))}} />
+					<MenuItem primaryText="打开assets文件夹" onTouchTap={() => {const {shell} = require('electron'); shell.openItem(window.localStorage["path"]);}}/>
 					<Divider />
 					<MenuItem primaryText="保存当前文件" secondaryText="Ctrl+S"/>
 					<Divider />
