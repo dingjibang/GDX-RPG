@@ -1,47 +1,42 @@
 import React from 'react';
 import {List, ListItem} from 'material-ui/List';
-import AddIcon from 'material-ui/svg-icons/content/add';
-import SearchIcon from 'material-ui/svg-icons/action/subject';
-import IconButton from 'material-ui/IconButton';
-
 
 export default class FileListItem extends React.Component {
 
-	state = {
-		open: true, files: []
-	};
+	/**
+	 * props = {fileName: file name, key: dom index}
+	 */
+
+	state = {fileName: "", errorFormat: false, key: 0, fileText: "", label: "", prefix: null}
+
 
 	componentWillMount() {
-		this.props.item.fileChange = () => {
-			this.setState({files: this.props.item.files});
-		};
+		this.setState({fileName: this.props.fileName, key: this.props.key})
+		this.reader = require("../scripts/FileType/" + this.props.type).default;
 
-		setTimeout(() => this.props.item.init(), ~~(Math.random() * 300));
+		this.load(this.props.fileName);
+	}
+
+	load(fileName) {
+		fileName = fileName || this.state.fileName;
+
+		this.reader.read(fileName, file => {
+			this.setState({errorFormat: file.errorFormat, fileText: file.fileText, label: file.label, prefix: file.prefix});
+		});
 	}
 
 	render() {
-		var item = this.props.item, files = this.state.files;
-
-		const subItem = [<ListItem key={-1} primaryText="过滤条件..." leftIcon={<SearchIcon/>} onClick={item.toggleSearch}/>];
-
-		for(var j = 0; j < files.length; j++)
-			subItem.push(<ListItem key={j} primaryText={<div style={files[j].errorFormat ? {color: "red"} : {}}>{files[j].name}</div>}/>);
-
 		return (
 			<ListItem
-				primaryText={item.type}
-				initiallyOpen={true}
-				primaryTogglesNestedList={true}
-				leftIcon={
-					<div className="file-list-toolbar">
-						<IconButton onClick={e => e.stopPropagation()}><AddIcon/></IconButton>
+				key={this.state.key}
+				primaryText={
+					<div style={this.state.errorFormat ? {color: "red"} : {}}>
+						{this.state.prefix ? <span className={"list-item-prefix"} style={{color: this.state.prefix.color}}>[{this.state.prefix.text}]</span> : ""}
+						{this.state.label}
+						&nbsp;&nbsp;
+						<span style={{color: "lightgray"}}>{this.state.fileName}</span>
 					</div>
 				}
-				open={this.state.open}
-				onClick={() => this.setState({open: !this.state.open})}
-				key={1}
-				nestedItems={subItem}
-			/>
-		);
+			/>);
 	}
 }

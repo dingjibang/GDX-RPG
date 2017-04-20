@@ -1,5 +1,5 @@
 import React from 'react';
-import Archive from 'material-ui/svg-icons/Content/archive';
+import Archive from 'material-ui/svg-icons/content/archive';
 import {white} from 'material-ui/styles/colors';
 
 export default class NoFile extends React.Component {
