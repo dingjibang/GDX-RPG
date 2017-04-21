@@ -3,7 +3,7 @@ import {List, ListItem} from 'material-ui/List';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import SearchIcon from 'material-ui/svg-icons/action/subject';
 import IconButton from 'material-ui/IconButton';
-import FileListType from "./FileListType";
+import FileListItem from "./FileListItem";
 
 
 export default class FileList extends React.Component {
@@ -15,14 +15,14 @@ export default class FileList extends React.Component {
 	constructor(props){
 		super(props);
 
-		this.type = ["ItemFile"];
+		this.type = ["ItemFile", "AchievementFile", "BuffFile", "EnemyFile", "HeroFile", "IndexFile", "TaskFile", "PropFile"];
 	}
 
 	render() {
 		const items = [];
 
 		for(var i = 0; i < this.type.length; i ++)
-			items.push(<FileListType key={i} type={this.type[i]}/>);
+			items.push(<FileListItem key={i} type={this.type[i]}/>);
 
 		return (
 			<div>

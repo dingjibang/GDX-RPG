@@ -17,31 +17,35 @@ export default class ItemFile{
 
 	static list(callback) {
 		File.list(this.path(), files => {
-			this.files = files.map(e => {return {name: e, type: this.type, fileName: e, text: "", path: this.path() + e, errorFormat: false}});
 			callback(files);
 		});
 	}
 
 	static read(name, callback){
-		File.read(this.path() + name, e => {
-			let result = {errorFormat: false, fileText: e, label: "", prefix: null};
+		var absPath = this.path() + name;
+		File.read(absPath, e => {
+			let file = new ItemFile();
+
+			file.fileName = name;
+			file.path = absPath;
+			file.fileText = e;
 
 			try{
 				let obj = eval("(" + e + ")");
-				result.label = obj.name;
+				file.label = obj.name;
 
 				let type = this.findType(obj.type);
-				result.prefix = {
+				file.prefix = {
 					text: type.name,
 					color: type.color
 				};
 
 			}catch(e){
-				result.label = "<无法解析>";
-				result.errorFormat = true;
+				file.label = "<无法解析>";
+				file.errorFormat = true;
 			}
 
-			callback(result);
+			callback(file);
 		});
 	}
 
@@ -53,7 +57,11 @@ export default class ItemFile{
 			return {name: "", type: ""};
 	}
 
-	toggleSearch() {
-		console.log("?");
-	}
+	fileName = "";
+	path = "";
+	errorFormat = false;
+	fileText = "";
+	label = "";
+	prefix = null;
+	type = "item";
 }

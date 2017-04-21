@@ -6,16 +6,17 @@ body,html{
     padding: 0;
 }
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 9px;
+    height: 9px;
 }
 
 ::-webkit-scrollbar-track {
-    -webkit-border-radius: 3px;
+    -webkit-border-radius: 5px;
     background-color:rgba(0,0,0,0.05);
 }
 
 ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 3px;
+    -webkit-border-radius: 5px;
     background: rgba(0,0,0,0.3);
 }
 
@@ -60,6 +61,7 @@ body,html{
 .file-list{
     width:20%;
     overflow-y: auto;
+    -webkit-user-select: none;
 }
 .editor-outer {
     width: calc(100% - 20%);
@@ -79,6 +81,7 @@ body,html{
     margin-top: 20%;
     text-align: center;
     font-size: 25px;
+    -webkit-user-select: none;
 }
 .file-list>div>div,.file-list>div>div>div>div{
     padding:0!important;
@@ -112,7 +115,7 @@ body,html{
     margin-top: 13px!Important;
 }
 .filter-input{
-    width: 166px!important;
+    width: 90%!important;
     font-size: 14px!important;
 }
 .filter-input input{
@@ -134,4 +137,12 @@ body,html{
 .file-list span[tabindex].filter>div>div{
     padding-top: 0px!important;
     padding-bottom: 0px!important;
+}
+.list-type-head span{
+    background: #9ee261;
+    color: white;
+    font-size: 12px!Important;
+    padding: 0px 8px;
+    border-radius: 10px;
+    margin-left: 12px;
 }
