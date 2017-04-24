@@ -1,18 +1,13 @@
 import File from "../File";
+import SuperFile from "./SuperFile";
 
-export default class HeroFile{
+export default class HeroFile extends SuperFile{
 
 	static typeName = "角色";
 	static path = () => window.localStorage["path"] + "/script/data/hero/";
 
-	static list(callback) {
-		File.list(this.path(), files => {
-			callback(files);
-		});
-	}
-
 	static read(name, callback){
-		var absPath = this.path() + name;
+		let absPath = this.path() + name;
 		File.read(absPath, e => {
 			let file = new HeroFile();
 
@@ -36,11 +31,6 @@ export default class HeroFile{
 		});
 	}
 
-	fileName = "";
-	path = "";
-	errorFormat = false;
-	fileText = "";
-	label = "";
-	prefix = null;
 	type = "hero";
+	static type = "hero";
 }

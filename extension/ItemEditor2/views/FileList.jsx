@@ -16,6 +16,77 @@ export default class FileList extends React.Component {
 		super(props);
 
 		this.type = ["ItemFile", "AchievementFile", "BuffFile", "EnemyFile", "HeroFile", "IndexFile", "TaskFile", "PropFile"];
+
+		E.files = {
+			_files: [],
+			reload: (type) => {
+				for(let file of E.files._files)
+					if(type == undefined || type == file.type())
+						file.load();
+			},
+			find: (type, name) => {
+				if(name != undefined){ // find file dom(FileListItem)
+					let outer = E.files.find(type);
+
+					let open = outer.open();
+
+					if(!open)//要先展开列表才能render，所以这里投机取巧一下
+						outer.open(true);
+
+					let fileResult = null;
+					for(let fileDom of outer.list()){
+						let file = fileDom.get();
+						if(file.type == type && file.fileName == name)
+							fileResult = fileDom;
+					}
+
+					if(!open)
+						outer.open(false);
+
+					return fileResult;
+
+				}else{//find group dom(FileListItems)
+
+					for(let fileList of E.files._files){
+						if(fileList.type() == type)
+							return fileList;
+					}
+
+				}
+
+				return null;
+			},
+			select: (type, name) => {
+				if(type && name){
+					for(let fileDom of E.files.allDom())
+						fileDom.select(false);
+
+					let outer = E.files.find(type);
+					if(!outer.open())
+						outer.open(true);
+
+					let dom = E.files.find(type, name);
+					if(dom)
+						dom.select(true);
+
+				}else{
+
+					for(let fileDom of E.files.allDom())
+						if(fileDom.select())
+							return fileDom;
+
+					return null;
+				}
+			},
+			allDom: () => {
+				var result = [];
+				for (let fileList of E.files._files)
+					for (let fileDom of fileList.list())
+						result.push(fileDom)
+
+				return result;
+			}
+		}
 	}
 
 	render() {

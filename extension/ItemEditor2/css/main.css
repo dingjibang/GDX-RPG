@@ -151,3 +151,22 @@ body,html{
 span.searching{
     background: #e2d261;
 }
+.popmenu div{
+    font-size: 12px!important;
+}
+.popmenu span[role="menuitem"]>div>div {
+    padding: 0px 10px!important;
+    height: 36px!important;
+}
+
+.popmenu span[role="menuitem"] {
+    line-height: 36px!important;
+    min-height: 36px!important;
+}
+.file-list span.select{
+    background-color: #0799e2!important;
+    color: white!important;
+}
+.file-list span.select .list-item-prefix{
+    color: white!important;
+}

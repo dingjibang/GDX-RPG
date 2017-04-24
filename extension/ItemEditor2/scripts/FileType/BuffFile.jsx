@@ -1,18 +1,13 @@
 import File from "../File";
+import SuperFile from "./SuperFile";
 
-export default class BuffFile{
+export default class BuffFile extends SuperFile{
 
 	static typeName = "BUFF";
 	static path = () => window.localStorage["path"] + "/script/data/buff/";
 
-	static list(callback) {
-		File.list(this.path(), files => {
-			callback(files);
-		});
-	}
-
 	static read(name, callback){
-		var absPath = this.path() + name;
+		let absPath = this.path() + name;
 		File.read(absPath, e => {
 			let file = new BuffFile();
 
@@ -36,11 +31,6 @@ export default class BuffFile{
 		});
 	}
 
-	fileName = "";
-	path = "";
-	errorFormat = false;
-	fileText = "";
-	label = "";
-	prefix = null;
 	type = "buff";
+	static type = "buff";
 }

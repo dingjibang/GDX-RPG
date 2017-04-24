@@ -1,18 +1,13 @@
 import File from "../File";
+import SuperFile from "./SuperFile";
 
-export default class TaskFile{
+export default class TaskFile extends SuperFile{
 
 	static typeName = "游戏配置";
 	static path = () => window.localStorage["path"] + "/script/data/prop/";
 
-	static list(callback) {
-		File.list(this.path(), files => {
-			callback(files);
-		});
-	}
-
 	static read(name, callback){
-		var absPath = this.path() + name;
+		let absPath = this.path() + name;
 		File.read(absPath, e => {
 			let file = new TaskFile();
 
@@ -32,11 +27,6 @@ export default class TaskFile{
 		});
 	}
 
-	fileName = "";
-	path = "";
-	errorFormat = false;
-	fileText = "";
-	label = "";
-	prefix = null;
-	type = "task";
+	type = "prop";
+	static type = "prop";
 }

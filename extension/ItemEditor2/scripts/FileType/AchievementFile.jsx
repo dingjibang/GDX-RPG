@@ -1,18 +1,13 @@
 import File from "../File";
+import SuperFile from "./SuperFile";
 
-export default class AchievementFile{
+export default class AchievementFile extends SuperFile{
 
 	static typeName = "成就";
 	static path = () => window.localStorage["path"] + "/script/data/achievement/";
 
-	static list(callback) {
-		File.list(this.path(), files => {
-			callback(files);
-		});
-	}
-
 	static read(name, callback){
-		var absPath = this.path() + name;
+		let absPath = this.path() + name;
 		File.read(absPath, e => {
 			let file = new AchievementFile();
 
@@ -32,11 +27,6 @@ export default class AchievementFile{
 		});
 	}
 
-	fileName = "";
-	path = "";
-	errorFormat = false;
-	fileText = "";
-	label = "";
-	prefix = null;
 	type = "achievement";
+	static type = "achievement";
 }

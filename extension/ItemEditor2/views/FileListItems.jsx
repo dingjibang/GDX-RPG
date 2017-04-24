@@ -6,21 +6,50 @@ import IconButton from 'material-ui/IconButton';
 import FileListItem from './FileListItem';
 import TextField from 'material-ui/TextField';
 
-
 export default class FileListItems extends React.Component {
 
 	state = {open: false, files: [], searchValue: ""};
+
+	constructor(props) {
+		super(props);
+
+		E.files._files.push(this);
+	}
 
 	componentWillMount() {
 		this.reader = require("../scripts/FileType/" + this.props.type).default;
 		this.load();
 	}
 
-	search = value => {
+	list() {
+		let result = [];
+
+		for(let i = 0; i > -1; i++){
+			var id = "item" + i;
+			if(this.refs[id] != undefined)
+				result.push(this.refs[id])
+			else
+				break;
+		}
+
+		return result;
+	}
+
+	type() {
+		return this.reader.type;
+	}
+
+	open(flag){
+		if(flag == undefined)
+			return this.state.open;
+		this.setState({open: flag})
+	}
+
+	search(value){
 		this.setState({searchValue: value})
 	}
 
-	 load() {
+	load() {
 		this.reader.list(filesName => {
 
 			let files = [];
@@ -32,12 +61,13 @@ export default class FileListItems extends React.Component {
 						if(!file.post)
 							break;
 						file.post(files);
+						this.setState({files: files});
 					}
 				}else{
 					this.reader.read(filesName[currentRead], file => {
 						files.push(file);
 						this.setState({files: files});
-						setTimeout(read, ~~(Math.random() * 100));
+						read();
 					});
 				}
 			};
@@ -52,9 +82,19 @@ export default class FileListItems extends React.Component {
 		});
 	}
 
+	refresh() {
+		this.setState({files: this.state.files.filter(e => !e.deleted)})
+	}
+
+	add(file) {
+		this.setState({files: [...this.state.files, file]});
+	}
+
 	render() {
-		let files = this.state.files, filtedFiles = [];
+		let files = this.state.files;
+		let filtedFiles = [];
 		let searchValue = this.state.searchValue;
+
 		for(let file of files){
 			let text = (file.prefix ? ("[" + file.prefix.text + "]") : "") + file.label + "  " + file.fileName;
 			let include = searchValue.length == 0 || false;
@@ -72,7 +112,7 @@ export default class FileListItems extends React.Component {
 				filtedFiles.push(file);
 		}
 
-		filtedFiles = filtedFiles.map((file, index) => <FileListItem file={file} index={index} key={index}/>);
+		filtedFiles = filtedFiles.map((file, index) => <FileListItem ref={"item" + index} file={file} index={index} key={index}/>);
 
 		var searching = filtedFiles.length != files.length;
 		return (

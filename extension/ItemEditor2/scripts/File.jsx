@@ -16,4 +16,12 @@ export default class File{
 		});
 	}
 
+	static write(path, text, callback){
+		fs.writeFile(path, text, callback);
+	}
+
+	static delete(path, callback){
+		fs.unlink(path, callback);
+	}
+
 }

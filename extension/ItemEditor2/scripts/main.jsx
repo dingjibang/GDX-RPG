@@ -9,7 +9,11 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import {dialog} from 'electron';
 import FileList from "../views/FileList";
 import NoFile from "../views/NoFile";
+
+import GlobalSnack from "../views/GlobalSnack"
 injectTapEventPlugin();
+
+window.E = {};
 
 //路径不存在，主动选择
 if(!window.localStorage.getItem("path")){
@@ -18,7 +22,6 @@ if(!window.localStorage.getItem("path")){
 	load();
 }
 
-window.currentEditor = null;
 
 function load() {
 	const App = () => (
@@ -30,12 +33,20 @@ function load() {
 						<FileList/>
 					</div>
 					<div className="editor-outer">
-						{window.currentEditor == null ? <NoFile/> : ""}
+						{E.currentEditor == null ? <NoFile/> : ""}
 					</div>
 				</div>
+				<GlobalSnack/>
 			</div>
 		</MuiThemeProvider>
 	);
 
 	ReactDOM.render(<App />, document.getElementById('app'));
 }
+
+window.document.body.oncontextmenu = e => {
+	let event = document.createEvent('Events');
+	event.initEvent("click", true, false);
+
+	window.document.body.dispatchEvent(event)
+};

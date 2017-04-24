@@ -1,24 +1,77 @@
 import React from 'react';
 import {ListItem} from 'material-ui/List';
 import Popover from 'material-ui/Popover';
+import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider';
 
 
+export default class FileListItem extends React.Component {
 
-export default class FileListItems extends React.Component {
+	state = {open: false, anchorEl: null, select: false}
 
-	state = {open: false, anchorEl: null}
+	constructor(props){
+		super(props);
+	}
 
 	postItem(dom, file) {
 		if(!dom)
 			return;
 
-		dom.ondblclick = () => {
-			console.log("open")
+		dom.ondblclick = () => this.openFile();
+
+		dom.onclick = () => {
+			window.E.files.select(this.props.file.type, this.props.file.fileName);
 		};
 
-		dom.oncontextmenu = () => {
-			this.setState({open: true, anchorEl: dom})
+		dom.oncontextmenu = e => {
+			dom.onclick();
+			this.setState({open: true, anchorEl: dom, left: e.clientX, top: e.clientY})
 		};
+	}
+
+	select(flag) {
+		if(flag == undefined)
+			return this.state.select;
+
+		this.setState({select: flag});
+	}
+
+	get(){
+		return this.props.file;
+	}
+
+
+	get target() {
+		return {
+			getBoundingClientRect: () => ({
+				left: this.state.left - (window.innerWidth * 0.2),
+				top: this.state.top
+			}),
+			offsetWidth: 200,
+			offsetHeight: 0
+		}
+	}
+
+	openFile(){
+		this.setState({open: false})
+	}
+
+	deleteFile(){
+		this.props.file.delete(() => {
+			E.snack("删除文件成功", "撤销", this.undeleteFile, this.props.file);
+			E.files.find(this.props.file.type).refresh();
+		});
+
+	}
+
+	undeleteFile(file){
+		if(!file)
+			return;
+
+		file.save(() => {
+			E.files.find(file.type).add(file);
+		});
+
 	}
 
 	render() {
@@ -28,6 +81,7 @@ export default class FileListItems extends React.Component {
 		return (
 			<div ref={(ref) => this.postItem(ref, file)}>
 				<ListItem
+					className={this.state.select ? "select" : ""}
 					key={index}
 					primaryText={
 						<div style={file.errorFormat ? {color: "red"} : {}}>
@@ -39,15 +93,21 @@ export default class FileListItems extends React.Component {
 					}
 				/>
 				<Popover
+					className={"popmenu"}
 					useLayerForClickAway={false}
 					open={this.state.open}
-					anchorEl={this.state.anchorEl}
-					anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+					anchorEl={this.target}
+					anchorOrigin={{horizontal: 'right', vertical: 'top'}}
 					targetOrigin={{horizontal: 'left', vertical: 'top'}}
 					onRequestClose={() => this.setState({open: false})}
 				>
-					{"asdasd"}
+						<MenuItem primaryText="打开" onClick={() => this.openFile()}/>
+						<MenuItem primaryText="删除所选文件" onClick={() => this.deleteFile()}/>
+						<Divider />
+						<MenuItem primaryText="刷新" onClick={() => {this.setState({open: false}); E.files.reload(file.type);}}/>
+						<MenuItem primaryText="刷新全部" onClick={() => {this.setState({open: false}); E.files.reload();}}/>
 				</Popover>
+
 			</div>
 		)
 	}

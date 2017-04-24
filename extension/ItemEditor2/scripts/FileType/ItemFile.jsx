@@ -1,6 +1,7 @@
 import File from "../File";
+import SuperFile from "./SuperFile";
 
-export default class ItemFile{
+export default class ItemFile extends SuperFile{
 
 	static typeName = "物品";
 	static path = () => window.localStorage["path"] + "/script/data/item/";
@@ -15,14 +16,8 @@ export default class ItemFile{
 		{name: "笔记", type: "note", color: "#a07b7b"}
 	]
 
-	static list(callback) {
-		File.list(this.path(), files => {
-			callback(files);
-		});
-	}
-
 	static read(name, callback){
-		var absPath = this.path() + name;
+		let absPath = this.path() + name;
 		File.read(absPath, e => {
 			let file = new ItemFile();
 
@@ -57,11 +52,6 @@ export default class ItemFile{
 			return {name: "", type: ""};
 	}
 
-	fileName = "";
-	path = "";
-	errorFormat = false;
-	fileText = "";
-	label = "";
-	prefix = null;
 	type = "item";
+	static type = "item";
 }

@@ -1,18 +1,13 @@
 import File from "../File";
+import SuperFile from "./SuperFile";
 
-export default class EnemyFile{
+export default class EnemyFile extends SuperFile{
 
 	static typeName = "敌人";
 	static path = () => window.localStorage["path"] + "/script/data/enemy/";
 
-	static list(callback) {
-		File.list(this.path(), files => {
-			callback(files);
-		});
-	}
-
 	static read(name, callback){
-		var absPath = this.path() + name;
+		let absPath = this.path() + name;
 		File.read(absPath, e => {
 			let file = new EnemyFile();
 
@@ -46,7 +41,7 @@ export default class EnemyFile{
 	post(files){
 		try{
 			let label = [];
-			var group = eval("(" + this.fileText + ")")["group"];
+			let group = eval("(" + this.fileText + ")")["group"];
 			if(!group)
 				return;
 
@@ -64,11 +59,6 @@ export default class EnemyFile{
 	}
 
 
-	fileName = "";
-	path = "";
-	errorFormat = false;
-	fileText = "";
-	label = "";
-	prefix = null;
-	type = "achievement";
+	type = "enemy";
+	static type = "enemy";
 }
