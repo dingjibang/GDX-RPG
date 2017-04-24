@@ -3,7 +3,7 @@ import {List, ListItem} from 'material-ui/List';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import SearchIcon from 'material-ui/svg-icons/action/subject';
 import IconButton from 'material-ui/IconButton';
-import FileListItem from "./FileListItem";
+import FileListItems from "./FileListItems";
 
 
 export default class FileList extends React.Component {
@@ -22,7 +22,7 @@ export default class FileList extends React.Component {
 		const items = [];
 
 		for(var i = 0; i < this.type.length; i ++)
-			items.push(<FileListItem key={i} type={this.type[i]}/>);
+			items.push(<FileListItems key={i} type={this.type[i]}/>);
 
 		return (
 			<div>

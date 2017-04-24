@@ -1,14 +1,17 @@
-[
-	{
-		"id" : "莲子",
-		"path" : "renko"
-	},
-	{
-		"id" : "梅丽",
-		"path" : "mari"
-	},
-	{
-		"id" : "魔理沙",
-		"path" : "marisa"
-	}
-]
+{
+	name: "立绘配置",
+	prop: [
+		{
+			"id" : "莲子",
+			"path" : "renko"
+		},
+		{
+			"id" : "梅丽",
+			"path" : "mari"
+		},
+		{
+			"id" : "魔理沙",
+			"path" : "marisa"
+		}
+	]
+}

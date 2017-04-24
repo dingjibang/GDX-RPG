@@ -2,7 +2,7 @@ import File from "../File";
 
 export default class HeroFile{
 
-	static type = "角色";
+	static typeName = "角色";
 	static path = () => window.localStorage["path"] + "/script/data/hero/";
 
 	static list(callback) {

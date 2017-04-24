@@ -2,7 +2,7 @@ import File from "../File";
 
 export default class IndexFile{
 
-	static type = "图鉴";
+	static typeName = "图鉴";
 	static path = () => window.localStorage["path"] + "/script/data/index/";
 
 	static list(callback) {

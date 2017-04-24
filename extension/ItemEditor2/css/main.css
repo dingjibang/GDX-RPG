@@ -145,4 +145,9 @@ body,html{
     padding: 0px 8px;
     border-radius: 10px;
     margin-left: 12px;
+    transition-duration: 1s;
+    transition-property: background-color;
+}
+span.searching{
+    background: #e2d261;
 }

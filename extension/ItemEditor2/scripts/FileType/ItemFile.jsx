@@ -2,7 +2,7 @@ import File from "../File";
 
 export default class ItemFile{
 
-	static type = "物品";
+	static typeName = "物品";
 	static path = () => window.localStorage["path"] + "/script/data/item/";
 
 	static typeMap = [

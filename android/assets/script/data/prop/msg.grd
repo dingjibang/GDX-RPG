@@ -1,34 +1,37 @@
-[
-	{
-		"id" : "default",
-		"title" : "",
-		"titleTextColor" : "FFFFFF",
-		"backgroundImage" : "default.png",
-		"fontSize" : 23,
-		"titleFontSize" : 26
-	},
-	{
-		"id" : "npc",
-		"title" : "",
-		"titleTextColor" : "FFFFFF",
-		"backgroundImage" : "NPC.png"
-	},
-	{
-		"id" : "莲子",
-		"title" : "莲子",
-		"titleTextColor" : "FFFFFF",
-		"backgroundImage" : "renko.png"
-	},
-	{
-		"id" : "梅丽",
-		"title" : "梅丽",
-		"titleTextColor" : "222222",
-		"backgroundImage" : "mari.png"
-	},
-	{
-		"id" : "魔理沙",
-		"title" : "魔理沙",
-		"titleTextColor" : "222222",
-		"backgroundImage" : "marisa.png"
-	}
-]
+{
+	name: "对话框样式配置",
+	prop: [
+		{
+			"id" : "default",
+			"title" : "",
+			"titleTextColor" : "FFFFFF",
+			"backgroundImage" : "default.png",
+			"fontSize" : 23,
+			"titleFontSize" : 26
+		},
+		{
+			"id" : "npc",
+			"title" : "",
+			"titleTextColor" : "FFFFFF",
+			"backgroundImage" : "NPC.png"
+		},
+		{
+			"id" : "莲子",
+			"title" : "莲子",
+			"titleTextColor" : "FFFFFF",
+			"backgroundImage" : "renko.png"
+		},
+		{
+			"id" : "梅丽",
+			"title" : "梅丽",
+			"titleTextColor" : "222222",
+			"backgroundImage" : "mari.png"
+		},
+		{
+			"id" : "魔理沙",
+			"title" : "魔理沙",
+			"titleTextColor" : "222222",
+			"backgroundImage" : "marisa.png"
+		}
+	]
+}

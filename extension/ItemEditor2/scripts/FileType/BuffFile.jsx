@@ -2,7 +2,7 @@ import File from "../File";
 
 export default class BuffFile{
 
-	static type = "BUFF";
+	static typeName = "BUFF";
 	static path = () => window.localStorage["path"] + "/script/data/buff/";
 
 	static list(callback) {

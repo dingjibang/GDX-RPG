@@ -2,7 +2,7 @@ import File from "../File";
 
 export default class TaskFile{
 
-	static type = "任务";
+	static typeName = "任务";
 	static path = () => window.localStorage["path"] + "/script/data/task/";
 
 	static list(callback) {

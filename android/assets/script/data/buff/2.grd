@@ -9,9 +9,9 @@
 		}
 	},
 	filter:{
-		onTurnBegin:"
-			var result = {flag: false, msg: 'negative~'};
-			result;
+		onTurnBegin:"\
+			var result = {flag: false, msg: 'negative~'};\
+			result;\
 		"
 	}
 }

@@ -1,13 +1,13 @@
 package com.rpsg.rpg.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.rpsg.rpg.core.Path;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 游戏各种属性、配置管理器=。=<br>
@@ -21,7 +21,7 @@ public class GamePropertiesController {
 		reader = new JsonReader();
 		
 		for(FileHandle file : Gdx.files.internal(Path.SCRIPT_DATA_PROP).list())
-			props.put(file.name().replaceAll(".grd", ""), reader.parse(file));
+			props.put(file.name().replaceAll(".grd", ""), reader.parse(file).get("prop"));
 		
 	}
 	

@@ -1,5 +1,8 @@
 {
-	"patkSpellcardId": 9,
-	"matkSpellcardId": 15,
-	"maxLevel": 99
+	name: "全局配置",
+	prop: {
+		"patkSpellcardId": 9,
+		"matkSpellcardId": 15,
+		"maxLevel": 99
+	}
 }

@@ -2,7 +2,7 @@ import File from "../File";
 
 export default class AchievementFile{
 
-	static type = "成就";
+	static typeName = "成就";
 	static path = () => window.localStorage["path"] + "/script/data/achievement/";
 
 	static list(callback) {

@@ -2,7 +2,7 @@ import File from "../File";
 
 export default class TaskFile{
 
-	static type = "游戏配置";
+	static typeName = "游戏配置";
 	static path = () => window.localStorage["path"] + "/script/data/prop/";
 
 	static list(callback) {

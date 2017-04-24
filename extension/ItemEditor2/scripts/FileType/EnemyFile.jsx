@@ -2,7 +2,7 @@ import File from "../File";
 
 export default class EnemyFile{
 
-	static type = "敌人";
+	static typeName = "敌人";
 	static path = () => window.localStorage["path"] + "/script/data/enemy/";
 
 	static list(callback) {
