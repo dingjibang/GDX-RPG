@@ -112,6 +112,7 @@ export default class FileListItems extends React.Component {
 				filtedFiles.push(file);
 		}
 
+		filtedFiles = filtedFiles.sort((a, b) => +(a.fileName.split(".")[0]) - +(b.fileName.split(".")[0]))
 		filtedFiles = filtedFiles.map((file, index) => <FileListItem ref={"item" + index} file={file} index={index} key={index}/>);
 
 		var searching = filtedFiles.length != files.length;

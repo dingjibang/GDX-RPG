@@ -57,6 +57,7 @@ export default class FileListItem extends React.Component {
 	}
 
 	deleteFile(){
+		this.setState({open: false})
 		this.props.file.delete(() => {
 			E.snack("删除文件成功", "撤销", this.undeleteFile, this.props.file);
 			E.files.find(this.props.file.type).refresh();

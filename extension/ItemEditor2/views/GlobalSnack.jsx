@@ -25,10 +25,11 @@ export default class GlobalSnack extends React.Component {
 	render() {
 		return (
 			<Snackbar
+				className={"snack"}
 				open={this.state.open}
 				message={this.state.text}
 				action={this.state.actionName}
-				autoHideDuration={4000}
+				autoHideDuration={400000}
 				onActionTouchTap={() => this.callback()}
 				onRequestClose={() => this.closeSnack()}
 			/>

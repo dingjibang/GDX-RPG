@@ -170,3 +170,6 @@ span.searching{
 .file-list span.select .list-item-prefix{
     color: white!important;
 }
+.snack span {
+    font-size: 13px!important;
+}

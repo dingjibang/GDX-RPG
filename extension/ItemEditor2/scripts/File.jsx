@@ -12,7 +12,7 @@ export default class File{
 			for(let filePath of dir)
 				arr.push(filePath.toString())
 
-			callback(arr.sort((a, b) => +(a.split(".")[0]) - +(b.split(".")[0])));
+			callback(arr);
 		});
 	}
 
