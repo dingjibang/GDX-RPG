@@ -1,14 +1,7 @@
 import React from 'react';
-import { FlatButton } from 'material-ui';
-import { Paper } from 'material-ui';
-import { Menu } from 'material-ui';
-import { MenuItem } from 'material-ui';
+import {FlatButton, Paper, Menu, MenuItem, Divider} from 'material-ui';
 import IconMenu from './IconMenu';
-import IconButton from 'material-ui/IconButton';
-import Divider from 'material-ui/Divider';
 import Setting from 'material-ui/svg-icons/action/settings';
-import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import ReactDOM from 'react-dom';
 
 import About from './About'
@@ -36,12 +29,12 @@ export default class Menubar extends React.Component {
 		return(
 			<Paper zDepth={1} className="menubar">
 				<IconMenu className="menuctx" iconButtonElement={<FlatButton label="文件"/>} anchorOrigin={{horizontal: 'left', vertical: 'top'}} targetOrigin={{horizontal: 'left', vertical: 'top'}}>
-					<MenuItem primaryText="设定assets文件夹位置..." rightIcon={<Setting />} onTouchTap={() => {ReactDOM.render(<PathSelector open={true}/>, document.getElementById("dialog"))}} />
-					<MenuItem primaryText="打开assets文件夹" onTouchTap={() => {const {shell} = require('electron'); shell.openItem(window.localStorage["path"]);}}/>
+					<MenuItem primaryText="设定assets文件夹位置..." rightIcon={<Setting />} onClick={() => {ReactDOM.render(<PathSelector open={true}/>, document.getElementById("dialog"))}} />
+					<MenuItem primaryText="打开assets文件夹" onClick={() => {const {shell} = require('electron'); shell.openItem(window.localStorage["path"]);}}/>
 					<Divider />
 					<MenuItem primaryText="保存当前文件" secondaryText="Ctrl+S"/>
 					<Divider />
-					<MenuItem primaryText="刷新所有文件" secondaryText="F5" onTouchTap={() => this.press("F5")}/>
+					<MenuItem primaryText="刷新所有文件" secondaryText="F5" onClick={() => this.press("F5")}/>
 					<Divider />
 					<MenuItem primaryText="退出" />
 					</IconMenu>
@@ -69,7 +62,7 @@ export default class Menubar extends React.Component {
 					<MenuItem primaryText="首选项..."/>
 				</IconMenu>
 				<IconMenu className="menuctx" iconButtonElement={<FlatButton label="其他"/>} anchorOrigin={{horizontal: 'left', vertical: 'top'}} targetOrigin={{horizontal: 'left', vertical: 'top'}}>
-					<MenuItem primaryText="关于GDX-RPG资源编辑器..." onTouchTap={() => {ReactDOM.render(<About open={true}/>, document.getElementById("dialog"))}}/>
+					<MenuItem primaryText="关于GDX-RPG资源编辑器..." onClick={() => {ReactDOM.render(<About open={true}/>, document.getElementById("dialog"))}}/>
 				</IconMenu>
 			</Paper>
 		)

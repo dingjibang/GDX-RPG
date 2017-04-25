@@ -297,7 +297,7 @@ IconMenu.defaultProps = {
     vertical: 'top',
     horizontal: 'left'
   },
-  touchTapCloseDelay: 200,
+  touchTapCloseDelay: 100,
   useLayerForClickAway: false
 };
 IconMenu.contextTypes = {

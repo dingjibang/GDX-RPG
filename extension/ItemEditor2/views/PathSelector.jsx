@@ -1,9 +1,5 @@
 import React from 'react';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import TextField from 'material-ui/TextField';
+import {Dialog, FlatButton, MuiThemeProvider, TextField} from 'material-ui/Dialog';
 
 export default class About extends React.Component {
 	
@@ -44,14 +40,14 @@ export default class About extends React.Component {
 				label="确定"
 				primary={true}
 				keyboardFocused={true}
-				onTouchTap={()=>{this.save(); this.close();}}
+				onClick={()=>{this.save(); this.close();}}
 				disabled={this.state.buttonDisabled}
 			/>,
 			<FlatButton
 				label="取消"
 				primary={true}
 				keyboardFocused={true}
-				onTouchTap={this.close}
+				onClick={this.close}
 				style={{display: this.state.fromMenu ? "inline-block" : "none"}}
 			/>
 		];
@@ -68,7 +64,7 @@ export default class About extends React.Component {
 					本程序需要获得GDX-RPG的assets文件夹（资源文件夹）的路径位置
 					{(this.state.fromMenu) ? <p style={{color: "red"}}>将丢失所有正在编辑的文件</p> : ""}
 					<br/>
-					<TextField hintText="请选择Assets文件夹路径" style={{width: 400}} onTouchTap={this.selectFile} value={this.state.path}/>
+					<TextField hintText="请选择Assets文件夹路径" style={{width: 400}} onClick={this.selectFile} value={this.state.path}/>
 				</Dialog>
 			</MuiThemeProvider>
 		);

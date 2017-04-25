@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {MuiThemeProvider} from 'material-ui';
 import Menubar from '../views/Menubar';
 import PathSelector from '../views/PathSelector';
 import injectTapEventPlugin from 'react-tap-event-plugin';
- 
+
 import {dialog} from 'electron';
 import FileList from "../views/FileList";
 import NoFile from "../views/NoFile";

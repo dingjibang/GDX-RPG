@@ -1,8 +1,5 @@
 import React from 'react';
 import {List, ListItem} from 'material-ui/List';
-import AddIcon from 'material-ui/svg-icons/content/add';
-import SearchIcon from 'material-ui/svg-icons/action/subject';
-import IconButton from 'material-ui/IconButton';
 import FileListItems from "./FileListItems";
 
 
@@ -19,10 +16,10 @@ export default class FileList extends React.Component {
 
 		E.files = {
 			_files: [],
-			reload: (type) => {
+			reload: (type, soft = true) => {
 				for(let file of E.files._files)
 					if(type == undefined || type == file.type())
-						file.load();
+						file.load(soft);
 			},
 			find: (type, name) => {
 				if(name != undefined){ // find file dom(FileListItem)

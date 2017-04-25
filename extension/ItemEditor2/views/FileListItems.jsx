@@ -1,10 +1,8 @@
 import React from 'react';
-import {List, ListItem} from 'material-ui/List';
+import {List, ListItem, IconButton, TextField} from 'material-ui';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import SearchIcon from 'material-ui/svg-icons/action/subject';
-import IconButton from 'material-ui/IconButton';
 import FileListItem from './FileListItem';
-import TextField from 'material-ui/TextField';
 
 export default class FileListItems extends React.Component {
 
@@ -49,10 +47,24 @@ export default class FileListItems extends React.Component {
 		this.setState({searchValue: value})
 	}
 
-	load() {
+	load(softLoad = true) {
 		this.reader.list(filesName => {
-
+			let originList = this.state.files || [];
 			let files = [];
+
+			if(softLoad){
+				let filesNameExcude = [];
+				for(let fileName of filesName){
+					for(let file of originList){
+						if(file.fileName == fileName){
+							files.push(file);
+							filesNameExcude.push(fileName);
+						}
+					}
+				}
+				this.setFiles(files);
+				filesName = filesName.filter(name => filesNameExcude.indexOf(name) < 0);
+			}
 
 			let currentRead = -1;
 			let read = () => {
@@ -61,33 +73,32 @@ export default class FileListItems extends React.Component {
 						if(!file.post)
 							break;
 						file.post(files);
-						this.setState({files: files});
+						this.setFiles(files);
 					}
 				}else{
 					this.reader.read(filesName[currentRead], file => {
 						files.push(file);
-						this.setState({files: files});
+						this.setFiles(files);
 						read();
 					});
 				}
 			};
 			read();
 
-			const subItem = [];
-
-			for(let file of files)
-				subItem.push(<FileListItem key={j} fileName={file} type={this.props.type} search={() => this.state.searchValue}/>);
-
 			this.setState({searchValue: ""});
 		});
 	}
 
+	setFiles(files) {
+		this.setState({files: files})
+	}
+
 	refresh() {
-		this.setState({files: this.state.files.filter(e => !e.deleted)})
+		this.setFiles(this.state.files.filter(e => !e.deleted));
 	}
 
 	add(file) {
-		this.setState({files: [...this.state.files, file]});
+		this.setFiles([...this.state.files, file]);
 	}
 
 	render() {
@@ -112,7 +123,20 @@ export default class FileListItems extends React.Component {
 				filtedFiles.push(file);
 		}
 
-		filtedFiles = filtedFiles.sort((a, b) => +(a.fileName.split(".")[0]) - +(b.fileName.split(".")[0]))
+		filtedFiles = filtedFiles.sort((a, b) => {
+			a = a.fileName.split(".")[0];
+			b = b.fileName.split(".")[0]
+
+			if(isNaN(+a) && isNaN(+b))
+				return a < b ? -1 : 1;
+			if(isNaN(+a))
+				return 1;
+			if(isNaN(+b))
+				return -1;
+
+			return +(a) - +(b);
+		})
+		console.log(filtedFiles.map(f => f.fileName))
 		filtedFiles = filtedFiles.map((file, index) => <FileListItem ref={"item" + index} file={file} index={index} key={index}/>);
 
 		var searching = filtedFiles.length != files.length;

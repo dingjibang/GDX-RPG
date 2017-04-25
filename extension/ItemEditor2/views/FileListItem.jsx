@@ -1,8 +1,5 @@
 import React from 'react';
-import {ListItem} from 'material-ui/List';
-import Popover from 'material-ui/Popover';
-import MenuItem from 'material-ui/MenuItem';
-import Divider from 'material-ui/Divider';
+import {ListItem, Popover, MenuItem, Divider} from 'material-ui';
 
 
 export default class FileListItem extends React.Component {
@@ -72,7 +69,12 @@ export default class FileListItem extends React.Component {
 		file.save(() => {
 			E.files.find(file.type).add(file);
 		});
+	}
 
+	openDialog() {
+		this.setState({open: false})
+		const {shell} = require('electron');
+		shell.showItemInFolder(this.props.file.path)
 	}
 
 	render() {
@@ -107,6 +109,8 @@ export default class FileListItem extends React.Component {
 						<Divider />
 						<MenuItem primaryText="刷新" onClick={() => {this.setState({open: false}); E.files.reload(file.type);}}/>
 						<MenuItem primaryText="刷新全部" onClick={() => {this.setState({open: false}); E.files.reload();}}/>
+						<Divider />
+						<MenuItem primaryText="打开文件所在位置" onClick={() => this.openDialog()}/>
 				</Popover>
 
 			</div>

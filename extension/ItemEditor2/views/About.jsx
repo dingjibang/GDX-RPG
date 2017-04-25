@@ -1,8 +1,7 @@
 import React from 'react';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {Dialog} from 'material-ui';
+import {FlatButton} from 'material-ui';
+import {MuiThemeProvider} from 'material-ui';
 
 export default class About extends React.Component {
 	
@@ -23,7 +22,7 @@ export default class About extends React.Component {
 				label="确定"
 				primary={true}
 				keyboardFocused={true}
-				onTouchTap={this.close}
+				onClick={this.close}
 			/>,
 		];
 		

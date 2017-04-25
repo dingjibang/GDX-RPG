@@ -1,5 +1,5 @@
 import React from 'react';
-import Snackbar from 'material-ui/Snackbar';
+import {Snackbar} from 'material-ui';
 
 export default class GlobalSnack extends React.Component {
 	
