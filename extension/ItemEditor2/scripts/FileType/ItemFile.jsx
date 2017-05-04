@@ -52,6 +52,10 @@ export default class ItemFile extends SuperFile{
 			return {name: "", type: ""};
 	}
 
+	static create(id){
+		return super.create(id, this.path(), new ItemFile());
+	}
+
 	type = "item";
 	static type = "item";
 }

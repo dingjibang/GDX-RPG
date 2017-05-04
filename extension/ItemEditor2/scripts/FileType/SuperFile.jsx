@@ -34,4 +34,12 @@ export default class SuperFile{
 				callback();
 		});
 	}
+
+	static create(id, path, file){
+		file.label = "新建文件";
+		file.fileName = id + ".grd";
+		file.path = path + file.fileName;
+
+		return file;
+	}
 }

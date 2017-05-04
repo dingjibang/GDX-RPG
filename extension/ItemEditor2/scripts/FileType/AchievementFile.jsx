@@ -27,6 +27,10 @@ export default class AchievementFile extends SuperFile{
 		});
 	}
 
+	static create(id){
+		return super.create(id, this.path(), new AchievementFile());
+	}
+
 	type = "achievement";
 	static type = "achievement";
 }

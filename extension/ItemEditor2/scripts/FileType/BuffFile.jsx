@@ -31,6 +31,10 @@ export default class BuffFile extends SuperFile{
 		});
 	}
 
+	static create(id){
+		return super.create(id, this.path(), new BuffFile());
+	}
+
 	type = "buff";
 	static type = "buff";
 }

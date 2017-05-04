@@ -58,6 +58,10 @@ export default class EnemyFile extends SuperFile{
 
 	}
 
+	static create(id){
+		return super.create(id, this.path(), new EnemyFile());
+	}
+
 
 	type = "enemy";
 	static type = "enemy";

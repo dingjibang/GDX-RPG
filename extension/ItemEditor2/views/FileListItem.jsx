@@ -105,7 +105,7 @@ export default class FileListItem extends React.Component {
 					onRequestClose={() => this.setState({open: false})}
 				>
 						<MenuItem primaryText="打开" onClick={() => this.openFile()}/>
-						<MenuItem primaryText="删除所选文件" onClick={() => this.deleteFile()}/>
+						{this.props.reader.addable == undefined || this.props.reader.addable == true ? <MenuItem primaryText="删除所选文件" onClick={() => this.deleteFile()}/> : <MenuItem primaryText="删除所选文件" disabled/>}
 						<Divider />
 						<MenuItem primaryText="刷新" onClick={() => {this.setState({open: false}); E.files.reload(file.type);}}/>
 						<MenuItem primaryText="刷新全部" onClick={() => {this.setState({open: false}); E.files.reload();}}/>

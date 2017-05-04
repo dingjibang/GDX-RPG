@@ -15,9 +15,9 @@ injectTapEventPlugin();
 window.E = {};
 
 //路径不存在，主动选择
-if(!window.localStorage.getItem("path")){
-    ReactDOM.render(<PathSelector callback={load}/>, document.getElementById('dialog'));
-}else{
+if (!window.localStorage.getItem("path")) {
+	ReactDOM.render(<PathSelector callback={load}/>, document.getElementById('dialog'));
+} else {
 	load();
 }
 

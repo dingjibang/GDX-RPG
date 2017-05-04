@@ -101,6 +101,40 @@ export default class FileListItems extends React.Component {
 		this.setFiles([...this.state.files, file]);
 	}
 
+	create() {
+		this.open(true);
+		let id = this.nextID();
+		let file = this.reader.create(id);
+		file.save(() => {
+			this.add(file);
+			E.files.select(this.reader.type, id + ".grd", true);
+		});
+	}
+
+	nextID() {
+		let files = this.state.files.sort(this.sort);
+		for(let file of files){
+			let id = +(file.fileName.split(".")[0]) + 1;
+			if(files.filter(f => f.fileName.split(".")[0] == id).length == 0)
+				return id;
+		}
+		return 1;
+	}
+
+	sort = (a, b) => {
+		a = a.fileName.split(".")[0];
+		b = b.fileName.split(".")[0]
+
+		if(isNaN(+a) && isNaN(+b))
+			return a < b ? -1 : 1;
+		if(isNaN(+a))
+			return 1;
+		if(isNaN(+b))
+			return -1;
+
+		return +(a) - +(b);
+	};
+
 	render() {
 		let files = this.state.files;
 		let filtedFiles = [];
@@ -123,21 +157,9 @@ export default class FileListItems extends React.Component {
 				filtedFiles.push(file);
 		}
 
-		filtedFiles = filtedFiles.sort((a, b) => {
-			a = a.fileName.split(".")[0];
-			b = b.fileName.split(".")[0]
+		filtedFiles = filtedFiles.sort(this.sort)
 
-			if(isNaN(+a) && isNaN(+b))
-				return a < b ? -1 : 1;
-			if(isNaN(+a))
-				return 1;
-			if(isNaN(+b))
-				return -1;
-
-			return +(a) - +(b);
-		})
-		console.log(filtedFiles.map(f => f.fileName))
-		filtedFiles = filtedFiles.map((file, index) => <FileListItem ref={"item" + index} file={file} index={index} key={index}/>);
+		filtedFiles = filtedFiles.map((file, index) => <FileListItem ref={"item" + index} file={file} index={index} key={index} reader={this.reader}/>);
 
 		var searching = filtedFiles.length != files.length;
 		return (
@@ -156,7 +178,7 @@ export default class FileListItems extends React.Component {
 				primaryTogglesNestedList={true}
 				leftIcon={
 					<div className="file-list-toolbar">
-						<IconButton onClick={e => e.stopPropagation()}><AddIcon/></IconButton>
+						{this.reader.addable == undefined || this.reader.addable == true ? <IconButton onClick={e => {e.stopPropagation(); this.create();}}><AddIcon/></IconButton> : <IconButton disabled><AddIcon/></IconButton>}
 					</div>
 				}
 				open={this.state.open}

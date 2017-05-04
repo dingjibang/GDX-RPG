@@ -53,7 +53,7 @@ export default class FileList extends React.Component {
 
 				return null;
 			},
-			select: (type, name) => {
+			select: (type, name, pos = false) => {
 				if(type && name){
 					for(let fileDom of E.files.allDom())
 						fileDom.select(false);
@@ -65,6 +65,22 @@ export default class FileList extends React.Component {
 					let dom = E.files.find(type, name);
 					if(dom)
 						dom.select(true);
+
+					if(pos){
+						let dom = document.getElementsByClassName("file-list")[0];
+						let begin = document.getElementsByClassName("file-list")[0].scrollTop;
+						let end = document.getElementsByClassName("select")[0].offsetTop - 200;
+
+						let step = (end - begin) / 20;
+						let i = 0;
+
+						let id = setInterval(() => {
+							dom.scrollTop += step;
+							i++;
+							if(i >= 20)
+								clearInterval(id);
+						}, 10);
+					}
 
 				}else{
 

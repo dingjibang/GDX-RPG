@@ -27,6 +27,10 @@ export default class TaskFile extends SuperFile{
 		});
 	}
 
+	static create(id){
+		return super.create(id, this.path(), new TaskFile());
+	}
+
 	type = "task";
 	static type = "task";
 }

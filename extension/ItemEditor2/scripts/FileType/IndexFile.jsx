@@ -31,6 +31,11 @@ export default class IndexFile extends SuperFile{
 		});
 	}
 
+	static create(id){
+		return super.create(id, this.path(), new IndexFile());
+	}
+
+
 	type = "index";
 	static type = "index";
 }

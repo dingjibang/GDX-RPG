@@ -31,6 +31,10 @@ export default class HeroFile extends SuperFile{
 		});
 	}
 
+	static create(id){
+		return super.create(id, this.path(), new HeroFile());
+	}
+
 	type = "hero";
 	static type = "hero";
 }

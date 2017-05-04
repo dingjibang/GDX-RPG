@@ -1,7 +1,7 @@
 import File from "../File";
 import SuperFile from "./SuperFile";
 
-export default class TaskFile extends SuperFile{
+export default class PropFile extends SuperFile{
 
 	static typeName = "游戏配置";
 	static path = () => window.localStorage["path"] + "/script/data/prop/";
@@ -9,7 +9,7 @@ export default class TaskFile extends SuperFile{
 	static read(name, callback){
 		let absPath = this.path() + name;
 		File.read(absPath, e => {
-			let file = new TaskFile();
+			let file = new PropFile();
 
 			file.fileName = name;
 			file.path = absPath;
@@ -27,6 +27,11 @@ export default class TaskFile extends SuperFile{
 		});
 	}
 
+	static create(id){
+		return super.create(id, this.path(), new PropFile());
+	}
+
 	type = "prop";
 	static type = "prop";
+	static addable = false;
 }
