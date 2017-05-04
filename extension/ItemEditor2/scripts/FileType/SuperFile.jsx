@@ -17,6 +17,20 @@ export default class SuperFile{
 		});
 	}
 
+	static read(file, name, callback){
+		let absPath = this.path() + name;
+		File.read(absPath, e => {
+
+			file.fileName = name;
+			file.path = absPath;
+			file.fileText = e;
+
+			file.parse();
+
+			callback(file);
+		});
+	}
+
 	save(callback) {
 		File.write(this.path, this.fileText.toString(), () => {
 			this.deleted = false;
@@ -33,6 +47,10 @@ export default class SuperFile{
 			if(callback)
 				callback();
 		});
+	}
+
+	static equals(file1, file2){
+		return file1.fileName == file2.fileName && file1.$static.type == file2.$static.type;
 	}
 
 	static create(id, path, file){

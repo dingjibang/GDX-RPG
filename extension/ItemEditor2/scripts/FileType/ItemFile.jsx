@@ -1,5 +1,7 @@
 import File from "../File";
 import SuperFile from "./SuperFile";
+import React from "react";
+import ItemEditor from "../../views/editor/ItemEditor";
 
 export default class ItemFile extends SuperFile{
 
@@ -16,32 +18,21 @@ export default class ItemFile extends SuperFile{
 		{name: "笔记", type: "note", color: "#a07b7b"}
 	]
 
-	static read(name, callback){
-		let absPath = this.path() + name;
-		File.read(absPath, e => {
-			let file = new ItemFile();
+	parse() {
+		try{
+			let obj = eval("(" + this.fileText + ")");
+			this.label = obj.name;
 
-			file.fileName = name;
-			file.path = absPath;
-			file.fileText = e;
+			let type = ItemFile.findType(obj.type);
+			this.prefix = {
+				text: type.name,
+				color: type.color
+			};
 
-			try{
-				let obj = eval("(" + e + ")");
-				file.label = obj.name;
-
-				let type = this.findType(obj.type);
-				file.prefix = {
-					text: type.name,
-					color: type.color
-				};
-
-			}catch(e){
-				file.label = "<无法解析>";
-				file.errorFormat = true;
-			}
-
-			callback(file);
-		});
+		}catch(e){
+			this.label = "<无法解析>";
+			this.errorFormat = true;
+		}
 	}
 
 	static findType(str){
@@ -56,6 +47,11 @@ export default class ItemFile extends SuperFile{
 		return super.create(id, this.path(), new ItemFile());
 	}
 
-	type = "item";
+	$static = ItemFile;
+
+	editor(ref){
+		return <ItemEditor file={this} ref={ref}/>
+	}
+
 	static type = "item";
 }

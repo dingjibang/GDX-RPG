@@ -76,7 +76,7 @@ export default class FileListItems extends React.Component {
 						this.setFiles(files);
 					}
 				}else{
-					this.reader.read(filesName[currentRead], file => {
+					this.reader.read(new this.reader(), filesName[currentRead], file => {
 						files.push(file);
 						this.setFiles(files);
 						read();

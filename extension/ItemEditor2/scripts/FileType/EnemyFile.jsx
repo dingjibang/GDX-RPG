@@ -1,38 +1,29 @@
 import File from "../File";
 import SuperFile from "./SuperFile";
+import React from "react";
+import EnemyEditor from "../../views/editor/EnemyEditor";
 
 export default class EnemyFile extends SuperFile{
 
 	static typeName = "敌人";
 	static path = () => window.localStorage["path"] + "/script/data/enemy/";
 
-	static read(name, callback){
-		let absPath = this.path() + name;
-		File.read(absPath, e => {
-			let file = new EnemyFile();
-
-			file.fileName = name;
-			file.path = absPath;
-			file.fileText = e;
-
-			try{
-				let obj = eval("(" + e + ")");
-				if(obj.type == "simple"){
-					file.label = obj.name;
-				}else{
-					file.prefix = {
-						text: "组",
-						color: "#aaccdd"
-					}
-					file.label = "多个";
+	parse(){
+		try{
+			let obj = eval("(" + this.fileText + ")");
+			if(obj.type == "simple"){
+				this.label = obj.name;
+			}else{
+				this.prefix = {
+					text: "组",
+					color: "#aaccdd"
 				}
-			}catch(e){
-				file.label = "<无法解析>";
-				file.errorFormat = true;
+				this.label = "多个";
 			}
-
-			callback(file);
-		});
+		}catch(e){
+			this.label = "<无法解析>";
+			this.errorFormat = true;
+		}
 	}
 
 	/**
@@ -63,6 +54,11 @@ export default class EnemyFile extends SuperFile{
 	}
 
 
-	type = "enemy";
+	$static = EnemyFile;
+
+	editor(ref){
+		return <EnemyEditor file={this} ref={ref}/>
+	}
+
 	static type = "enemy";
 }

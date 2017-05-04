@@ -10,6 +10,7 @@ import FileList from "../views/FileList";
 import NoFile from "../views/NoFile";
 
 import GlobalSnack from "../views/GlobalSnack"
+import Editors from "../views/Editors";
 injectTapEventPlugin();
 
 window.E = {};
@@ -32,7 +33,7 @@ function load() {
 						<FileList/>
 					</div>
 					<div className="editor-outer">
-						{E.currentEditor == null ? <NoFile/> : ""}
+						<Editors/>
 					</div>
 				</div>
 				<GlobalSnack/>

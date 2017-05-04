@@ -17,7 +17,7 @@ export default class FileListItem extends React.Component {
 		dom.ondblclick = () => this.openFile();
 
 		dom.onclick = () => {
-			window.E.files.select(this.props.file.type, this.props.file.fileName);
+			window.E.files.select(this.props.file.$static.type, this.props.file.fileName);
 		};
 
 		dom.oncontextmenu = e => {
@@ -51,13 +51,15 @@ export default class FileListItem extends React.Component {
 
 	openFile(){
 		this.setState({open: false})
+
+		E.editors.add(this.props.file);
 	}
 
 	deleteFile(){
 		this.setState({open: false})
 		this.props.file.delete(() => {
 			E.snack("删除文件成功", "撤销", this.undeleteFile, this.props.file);
-			E.files.find(this.props.file.type).refresh();
+			E.files.find(this.props.file.$static.type).refresh();
 		});
 
 	}
@@ -67,7 +69,7 @@ export default class FileListItem extends React.Component {
 			return;
 
 		file.save(() => {
-			E.files.find(file.type).add(file);
+			E.files.find(file.$static.type).add(file);
 		});
 	}
 
@@ -107,7 +109,7 @@ export default class FileListItem extends React.Component {
 						<MenuItem primaryText="打开" onClick={() => this.openFile()}/>
 						{this.props.reader.addable == undefined || this.props.reader.addable == true ? <MenuItem primaryText="删除所选文件" onClick={() => this.deleteFile()}/> : <MenuItem primaryText="删除所选文件" disabled/>}
 						<Divider />
-						<MenuItem primaryText="刷新" onClick={() => {this.setState({open: false}); E.files.reload(file.type);}}/>
+						<MenuItem primaryText="刷新" onClick={() => {this.setState({open: false}); E.files.reload(file.$static.type);}}/>
 						<MenuItem primaryText="刷新全部" onClick={() => {this.setState({open: false}); E.files.reload();}}/>
 						<Divider />
 						<MenuItem primaryText="打开文件所在位置" onClick={() => this.openDialog()}/>

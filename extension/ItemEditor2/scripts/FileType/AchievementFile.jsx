@@ -1,36 +1,31 @@
 import File from "../File";
 import SuperFile from "./SuperFile";
+import React from "react";
+import ArchivementEditor from "../../views/editor/ArchivementEditor";
 
 export default class AchievementFile extends SuperFile{
 
 	static typeName = "成就";
 	static path = () => window.localStorage["path"] + "/script/data/achievement/";
 
-	static read(name, callback){
-		let absPath = this.path() + name;
-		File.read(absPath, e => {
-			let file = new AchievementFile();
-
-			file.fileName = name;
-			file.path = absPath;
-			file.fileText = e;
-
-			try{
-				let obj = eval("(" + e + ")");
-				file.label = obj.name;
-			}catch(e){
-				file.label = "<无法解析>";
-				file.errorFormat = true;
-			}
-
-			callback(file);
-		});
+	parse(){
+		try{
+			this.label = eval("(" + this.fileText + ")").name;
+		}catch(e){
+			this.label = "<无法解析>";
+			this.errorFormat = true;
+		}
 	}
 
 	static create(id){
 		return super.create(id, this.path(), new AchievementFile());
 	}
 
-	type = "achievement";
+	$static = AchievementFile;
+
+	editor(ref){
+		return <ArchivementEditor file={this} ref={ref}/>
+	}
+
 	static type = "achievement";
 }

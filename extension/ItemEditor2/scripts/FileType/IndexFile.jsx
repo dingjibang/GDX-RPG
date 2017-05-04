@@ -1,34 +1,25 @@
 import File from "../File";
 import SuperFile from "./SuperFile";
+import React from "react";
+import IndexEditor from "../../views/editor/IndexEditor";
 
 export default class IndexFile extends SuperFile{
 
 	static typeName = "图鉴";
 	static path = () => window.localStorage["path"] + "/script/data/index/";
 
-	static read(name, callback){
-		let absPath = this.path() + name;
-		File.read(absPath, e => {
-			let file = new IndexFile();
-
-			file.fileName = name;
-			file.path = absPath;
-			file.fileText = e;
-
-			try{
-				let obj = eval("(" + e + ")");
-				file.label = obj.name;
-				file.prefix = {
-					text: isNaN(+obj.path) ? "角色" : "敌人",
-					color: isNaN(+obj.path) ? "#7cc126" : "#c16226"
-				}
-			}catch(e){
-				file.label = "<无法解析>";
-				file.errorFormat = true;
+	parse(){
+		try{
+			let obj = eval("(" + this.fileText + ")");
+			this.label = obj.name;
+			this.prefix = {
+				text: isNaN(+obj.path) ? "角色" : "敌人",
+				color: isNaN(+obj.path) ? "#7cc126" : "#c16226"
 			}
-
-			callback(file);
-		});
+		}catch(e){
+			this.label = "<无法解析>";
+			this.errorFormat = true;
+		}
 	}
 
 	static create(id){
@@ -36,6 +27,11 @@ export default class IndexFile extends SuperFile{
 	}
 
 
-	type = "index";
+	$static = IndexFile;
+
+	editor(ref){
+		return <IndexEditor file={this} ref={ref}/>
+	}
+
 	static type = "index";
 }

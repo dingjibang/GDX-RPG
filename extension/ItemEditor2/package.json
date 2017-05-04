@@ -16,7 +16,9 @@
     "react-tap-event-plugin": "^2.0.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-exponentiation-operator": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0"
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+	"babel-preset-stage-3": "^6.24.1",
+	"material-ui": "0.18.0"
   },
   "devDependencies": {
 	  "electron": "^1.4.3"

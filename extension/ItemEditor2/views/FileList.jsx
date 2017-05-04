@@ -33,7 +33,7 @@ export default class FileList extends React.Component {
 					let fileResult = null;
 					for(let fileDom of outer.list()){
 						let file = fileDom.get();
-						if(file.type == type && file.fileName == name)
+						if(file.$static.type == type && file.fileName == name)
 							fileResult = fileDom;
 					}
 
@@ -53,7 +53,7 @@ export default class FileList extends React.Component {
 
 				return null;
 			},
-			select: (type, name, pos = false) => {
+			select: (type, name, pitch = false) => {
 				if(type && name){
 					for(let fileDom of E.files.allDom())
 						fileDom.select(false);
@@ -66,21 +66,8 @@ export default class FileList extends React.Component {
 					if(dom)
 						dom.select(true);
 
-					if(pos){
-						let dom = document.getElementsByClassName("file-list")[0];
-						let begin = document.getElementsByClassName("file-list")[0].scrollTop;
-						let end = document.getElementsByClassName("select")[0].offsetTop - 200;
-
-						let step = (end - begin) / 20;
-						let i = 0;
-
-						let id = setInterval(() => {
-							dom.scrollTop += step;
-							i++;
-							if(i >= 20)
-								clearInterval(id);
-						}, 10);
-					}
+					if(pitch)
+						E.files.pitch();
 
 				}else{
 
@@ -90,6 +77,25 @@ export default class FileList extends React.Component {
 
 					return null;
 				}
+			},
+			pitch: () => {
+				let _dom = document.getElementsByClassName("select");
+				if(!_dom || _dom.length == 0)
+					return;
+
+				let dom = document.getElementsByClassName("file-list")[0];
+				let begin = document.getElementsByClassName("file-list")[0].scrollTop;
+				let end = document.getElementsByClassName("select")[0].offsetTop - 200;
+
+				let step = (end - begin) / 20;
+				let i = 0;
+
+				let id = setInterval(() => {
+					dom.scrollTop += step;
+					i++;
+					if(i >= 20)
+						clearInterval(id);
+				}, 10);
 			},
 			allDom: () => {
 				var result = [];

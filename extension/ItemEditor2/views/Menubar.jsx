@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlatButton, Paper, Menu, MenuItem, Divider} from 'material-ui';
-import IconMenu from './IconMenu';
+import IconMenu from './overwrite-material-ui/IconMenu';
 import Setting from 'material-ui/svg-icons/action/settings';
 import ReactDOM from 'react-dom';
 
@@ -38,7 +38,7 @@ export default class Menubar extends React.Component {
 					<MenuItem primaryText="强制刷新所有文件" onClick={() => E.files.reload(false)}/>
 					<Divider />
 					<MenuItem primaryText="退出" />
-					</IconMenu>
+				</IconMenu>
 				<IconMenu className="menuctx" iconButtonElement={<FlatButton label="编辑"/>} anchorOrigin={{horizontal: 'left', vertical: 'top'}} targetOrigin={{horizontal: 'left', vertical: 'top'}}>
 					<MenuItem primaryText="撤销" secondaryText="Ctrl+Z"/>
 					<MenuItem primaryText="重做" secondaryText="Ctrl+Y"/>
@@ -55,7 +55,10 @@ export default class Menubar extends React.Component {
 				</IconMenu>
 				<IconMenu className="menuctx" iconButtonElement={<FlatButton label="视图"/>} anchorOrigin={{horizontal: 'left', vertical: 'top'}} targetOrigin={{horizontal: 'left', vertical: 'top'}}>
 					<MenuItem primaryText="切换代码/编辑窗口"/>
-					<MenuItem primaryText="定位当前文件"/>
+					<MenuItem primaryText="定位当前文件" onClick={() => {
+						if(E.files.select())
+							E.files.select().openDialog()
+					}}/>
 				</IconMenu>
 				<IconMenu className="menuctx" iconButtonElement={<FlatButton label="工具"/>} anchorOrigin={{horizontal: 'left', vertical: 'top'}} targetOrigin={{horizontal: 'left', vertical: 'top'}}>
 					<MenuItem primaryText="启动秘封异闻录(GDX-RPG)" secondaryText="F11"/>
