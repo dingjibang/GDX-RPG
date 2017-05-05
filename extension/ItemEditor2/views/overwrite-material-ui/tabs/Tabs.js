@@ -116,6 +116,9 @@ class Tabs extends Component {
 		}
 
 		this.setState(newState);
+
+		console.log("?")
+		this.scrollTo(this.state.left, newProps.children.length)
 	}
 
 	getTabs(props = this.props) {
@@ -185,14 +188,14 @@ class Tabs extends Component {
 		this.scrollBy(-300);
 	}
 
-	scrollTo(position) {
-		if(200 * this.getTabCount() <= window.innerWidth * 0.8)
+	scrollTo(position, count = this.getTabCount()) {
+		if(200 * count <= window.innerWidth * 0.8)
 			return this.setState({left: 0});
 
-		if(position > 0)
+		if(position >= 0)
 			position = 0;
-		else if(position < - (200 * this.getTabCount() - window.innerWidth * 0.8))
-			position = - (200 * this.getTabCount() - window.innerWidth * 0.8);
+		else if(position <= - (200 * count - window.innerWidth * 0.8))
+			position = - (200 * count - window.innerWidth * 0.8);
 
 		this.setState({left: position});
 	}
@@ -271,7 +274,8 @@ class Tabs extends Component {
 		const iconStyle = {
 			verticalAlign: "middle",
 			position: "absolute",
-			zIndex: "233"
+			zIndex: "233",
+			backgroundColor: "rgba(0, 0, 0, 0.1)"
 		}
 
 		const leftEnable = this.state.left != 0;

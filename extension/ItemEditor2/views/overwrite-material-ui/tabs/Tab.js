@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import EnhancedButton from 'material-ui/internal/EnhancedButton';
+import {IconButton} from "material-ui";
+import Close from "material-ui/svg-icons/content/clear"
+import {white} from "material-ui/styles/colors";
 
 function getStyles(props, context) {
 	const {tabs} = context.muiTheme;
@@ -60,6 +63,7 @@ class Tab extends Component {
 		 * This property is overriden by the Tabs component.
 		 */
 		onTouchTap: PropTypes.func,
+		onClose: PropTypes.func,
 		/**
 		 * @ignore
 		 * Defines if the current tab is selected or not.
@@ -92,6 +96,14 @@ class Tab extends Component {
 		}
 	};
 
+	closeTab(e) {
+		e.stopPropagation();
+		e.preventDefault();
+
+		if(this.props.onClose)
+			this.props.onClose();
+	}
+
 	render() {
 		const {
 			icon,
@@ -99,6 +111,7 @@ class Tab extends Component {
 			onActive, // eslint-disable-line no-unused-vars
 			onTouchTap, // eslint-disable-line no-unused-vars
 			selected, // eslint-disable-line no-unused-vars
+			onClose,
 			label,
 			buttonStyle,
 			style,
@@ -128,21 +141,38 @@ class Tab extends Component {
 		const rippleOpacity = 0.3;
 		const rippleColor = this.context.muiTheme.tabs.selectedTextColor;
 
+		const closeStyle = {
+			width: 24,
+			height: 24,
+			padding: 0,
+			position: "absolute",
+			right: 15,
+			opacity: 0.15,
+			top: 1,
+			zIndex: 99
+		};
+
+		if(this.props.selected)
+			closeStyle.opacity = 0.6;
+
 		return (
-			<EnhancedButton
-				{...other}
-				style={Object.assign(styles.root, style)}
-				focusRippleColor={rippleColor}
-				touchRippleColor={rippleColor}
-				focusRippleOpacity={rippleOpacity}
-				touchRippleOpacity={rippleOpacity}
-				onTouchTap={this.handleTouchTap}
-			>
-				<div style={Object.assign(styles.button, buttonStyle)} >
-					{iconElement}
-					{label}
-				</div>
-			</EnhancedButton>
+			<span style={{position: "relative"}}>
+				<EnhancedButton
+					{...other}
+					style={Object.assign(styles.root, style)}
+					focusRippleColor={rippleColor}
+					touchRippleColor={rippleColor}
+					focusRippleOpacity={rippleOpacity}
+					touchRippleOpacity={rippleOpacity}
+					onTouchTap={this.handleTouchTap}
+				>
+					<div style={Object.assign(styles.button, buttonStyle)} >
+						{iconElement}
+						{label}
+					</div>
+				</EnhancedButton>
+				<IconButton onClick={e => this.closeTab(e)} style={closeStyle}><Close color={white}/></IconButton>
+			</span>
 		);
 	}
 }

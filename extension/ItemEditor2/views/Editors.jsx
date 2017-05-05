@@ -26,14 +26,30 @@ export default class Editors extends React.Component {
 					this.refs.tabs.pitch(index);
 				}
 			}),
+			indexOf: file => this.state.files.indexOf(this.state.files.filter(file2 => SuperFile.equals(file, file2))[0]),
 			get: file => E.editors.list().filter(e => SuperFile.equals(e.props.file, file))[0],
 			close: file => {
 				let obj = E.editors.get(file);
-				if(obj.modified()){
-					//confirm
-				}else{
-					//close
+				const close = () => {
+					let current = this.state.current;
+					let index = E.editors.indexOf(file);
+					if(index == current)
+						current = current == current == 0 ? 0 : current - 1;
+					else
+						current = current < index ? current : current - 1;
+
+					this.setState({files: this.state.files.filter(file2 => !SuperFile.equals(file, file2)), current: current})
 				}
+
+				if(obj.modified()){
+					E.confirm("文件尚未保存，确定要关闭么？", flag => {
+						if(flag)
+							close()
+					});
+				}else{
+					close();
+				}
+
 			}
 		};
 	}
@@ -49,7 +65,7 @@ export default class Editors extends React.Component {
 			let dom = file.editor("editor" + i);
 
 			tabs.push(
-				<Tab label={file.label} key={i} value={i} onActive={() => this.setState({current: i})}>
+				<Tab label={file.label} key={i} value={i} onActive={() => this.setState({current: i})} onClose={() => E.editors.close(file)}>
 					<div>
 						{dom}
 					</div>
