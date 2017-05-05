@@ -18,7 +18,8 @@
     "babel-plugin-transform-exponentiation-operator": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
 	"babel-preset-stage-3": "^6.24.1",
-	"material-ui": "0.18.0"
+	"material-ui": "0.18.0",
+	"react-codemirror": "0.3.0"
   },
   "devDependencies": {
 	  "electron": "^1.4.3"

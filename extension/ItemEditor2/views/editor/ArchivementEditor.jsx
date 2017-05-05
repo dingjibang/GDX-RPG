@@ -7,6 +7,12 @@ export default class ArchivementEditor extends Editor {
 	}
 
 	render(){
-		return (<div>{this.props.file.fileText}</div>)
+		return super.renderContainer(
+			<div>
+				<pre>
+					{this.props.file.fileText}
+				</pre>
+			</div>
+		)
 	}
 }

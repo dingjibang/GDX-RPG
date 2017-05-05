@@ -35,7 +35,7 @@ export default class Menubar extends React.Component {
 					<MenuItem primaryText="保存当前文件" secondaryText="Ctrl+S"/>
 					<Divider />
 					<MenuItem primaryText="刷新所有文件" secondaryText="F5" onClick={() => this.press("F5")}/>
-					<MenuItem primaryText="强制刷新所有文件" onClick={() => E.files.reload(false)}/>
+					<MenuItem primaryText="强制刷新所有文件" onClick={() => E.files.reload(undefined, false)}/>
 					<Divider />
 					<MenuItem primaryText="退出" />
 				</IconMenu>

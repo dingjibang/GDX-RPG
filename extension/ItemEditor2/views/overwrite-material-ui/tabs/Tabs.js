@@ -21,7 +21,8 @@ function getStyles(props, context) {
 			transitionProperty: 'transform',
 			transitionDuration: '0.3s',
 			transitionTimingFunction: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-			backgroundColor: '#0799e2'
+			backgroundColor: '#0799e2',
+			zIndex: 11
 		},
 	};
 }
@@ -117,7 +118,6 @@ class Tabs extends Component {
 
 		this.setState(newState);
 
-		console.log("?")
 		this.scrollTo(this.state.left, newProps.children.length)
 	}
 
@@ -254,6 +254,7 @@ class Tabs extends Component {
 				selected: this.getSelected(tab, index),
 				width: `200px`,
 				onTouchTap: this.handleTabTouchTap,
+				className: "editor-tab-outer-button",
 				style: this.getSelected(tab, index) ? {backgroundColor: "rgba(255, 255, 255, 0.3)"} : {}
 			});
 		});
@@ -274,8 +275,11 @@ class Tabs extends Component {
 		const iconStyle = {
 			verticalAlign: "middle",
 			position: "absolute",
-			zIndex: "233",
-			backgroundColor: "rgba(0, 0, 0, 0.1)"
+			zIndex: 11,
+			backgroundColor: "rgba(0, 0, 0, 0.1)",
+			width: 35,
+			height: 35,
+			padding: 6
 		}
 
 		const leftEnable = this.state.left != 0;
@@ -289,7 +293,7 @@ class Tabs extends Component {
 
 				<div style={prepareStyles(Object.assign(styles.tabItemContainer, tabItemContainerStyle, {transform: 'translateX(' + +(this.state.left) + 'px)'}))}>
 					{tabs}
-					<div style={{width: inkBarContainerWidth}}>
+					<div style={{width: inkBarContainerWidth, height: 35}}>
 						{inkBar}
 					</div>
 				</div>

@@ -111,6 +111,7 @@ body,html{
 .filter, .filter svg{
     color: #3691bf!important;
     fill: rgb(179, 179, 179)!important;
+	z-index:0!important;
 }
 .filter svg{
     margin-top: 13px!Important;
@@ -174,4 +175,78 @@ span.searching{
 }
 .snack span {
     font-size: 13px!important;
+}
+.editor-tabs-outer{
+	height: 100%;
+	position: absolute;
+	width: 100%;
+	z-index:0;
+	overflow-y:auto;
+	background:#ececec;
+}
+.editor-tabs-outer>div{
+	height:100%;
+}
+.editor-tab-outer-button>div>div{
+	height:35px!important;
+}
+.editor-tab-outer-button{
+	font-size:13px!important;
+	-webkit-user-select: none;
+}
+.tab-close-button svg{
+	height: 14px!important;
+	width:14px!important;
+}
+.toolbar{
+	height:36px!important;
+	background-color:#4190b7!important;
+	-webkit-user-select: none;
+	cursor:default;
+}
+.toolbar span{
+	font-size:14px!important;
+	line-height: 35px!important;
+	color:white!important;
+}
+.toolbar span.gray{
+	color:rgba(255, 255, 255, 0.5)!important;
+}
+.toolbar button{
+	height:28px!important;
+}
+.toolbar button>div{
+	height:28px!important;
+}
+.toolbar button, .toolbar button>div>div{
+	border-radius: 0!important;
+}
+.toolbar button svg{
+	vertical-align: top!important;
+	top: 2px!important;
+	position:relative;
+}
+.toolbar button>div>span{
+	top: 0px!important;
+}
+.toolbar button span{
+	line-height: 28px!important;
+	font-size:13px!important;
+	vertical-align: top!important;
+}
+.toolbar>div>div{
+	margin:0!important;
+	margin-left: 25px!important;
+}
+.editor-inner{
+	height: calc(100% - 35px - 36px);
+	position:absolute;
+	width: 100%;
+	overflow: auto;
+}
+.ReactCodeMirror{
+	height:100%;
+}
+.CodeMirror{
+	height: 100%!important;
 }

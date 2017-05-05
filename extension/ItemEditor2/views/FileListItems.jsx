@@ -178,7 +178,7 @@ export default class FileListItems extends React.Component {
 				primaryTogglesNestedList={true}
 				leftIcon={
 					<div className="file-list-toolbar">
-						{this.reader.addable == undefined || this.reader.addable == true ? <IconButton onClick={e => {e.stopPropagation(); this.create();}}><AddIcon/></IconButton> : <IconButton disabled><AddIcon/></IconButton>}
+						{this.reader.addable == undefined || this.reader.addable == true ? <IconButton tooltip="新建文件" onClick={e => {e.stopPropagation(); this.create();}}><AddIcon/></IconButton> : <IconButton disabled><AddIcon/></IconButton>}
 					</div>
 				}
 				open={this.state.open}

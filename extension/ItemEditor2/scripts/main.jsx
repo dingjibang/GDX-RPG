@@ -17,7 +17,9 @@ window.E = {
 	/**Window.E.confirm("询问", "确定要删除么") or Window.E.confirm("确定要删除么")*/
 	confirm: (msg, callback) => {
 		ReactDOM.render(<Confirm msg={msg} callback={callback}/>, document.getElementById("dialog"));
-	}
+	},
+	__seq: 0,
+	seq: () => E.__seq++
 };
 
 //路径不存在，主动选择

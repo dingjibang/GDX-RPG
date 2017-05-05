@@ -148,8 +148,7 @@ class Tab extends Component {
 			position: "absolute",
 			right: 15,
 			opacity: 0.15,
-			top: 1,
-			zIndex: 99
+			top: 0
 		};
 
 		if(this.props.selected)
@@ -171,7 +170,7 @@ class Tab extends Component {
 						{label}
 					</div>
 				</EnhancedButton>
-				<IconButton onClick={e => this.closeTab(e)} style={closeStyle}><Close color={white}/></IconButton>
+				<IconButton className="tab-close-button" onClick={e => this.closeTab(e)} style={closeStyle}><Close color={white}/></IconButton>
 			</span>
 		);
 	}

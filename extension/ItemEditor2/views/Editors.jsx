@@ -74,7 +74,7 @@ export default class Editors extends React.Component {
 		}
 
 		return (
-			<Tabs value={this.state.current} ref="tabs">
+			<Tabs value={this.state.current} ref="tabs" contentContainerClassName="editor-tabs-outer">
 				{tabs}
 			</Tabs>
 		)
