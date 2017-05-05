@@ -34,7 +34,7 @@ export default class Editors extends React.Component {
 					let current = this.state.current;
 					let index = E.editors.indexOf(file);
 					if(index == current)
-						current = current == current == 0 ? 0 : current - 1;
+						current = current == 0 ? 0 : current - 1;
 					else
 						current = current < index ? current : current - 1;
 
