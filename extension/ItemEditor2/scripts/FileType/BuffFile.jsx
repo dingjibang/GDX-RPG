@@ -16,8 +16,9 @@ export default class BuffFile extends SuperFile{
 				text: obj.type == "buff" ? "Buff" : "Debf",
 				color: obj.type == "buff" ? "#67d490" : "#d46767"
 			}
+			this.errorFormat = false;
 		}catch(e){
-			this.label = "<无法解析>";
+			this.label = "(无法解析)";
 			this.errorFormat = true;
 		}
 	}

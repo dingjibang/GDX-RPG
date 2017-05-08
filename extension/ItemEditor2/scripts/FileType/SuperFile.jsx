@@ -11,6 +11,8 @@ export default class SuperFile{
 
 	deleted = false;
 
+	modified = false;
+
 	static list(callback) {
 		File.list(this.path(), files => {
 			callback(files);
@@ -47,6 +49,14 @@ export default class SuperFile{
 			if(callback)
 				callback();
 		});
+	}
+
+	object() {
+		try{
+			return eval("(" + this.fileText + ")")
+		}catch(){
+			return null;
+		}
 	}
 
 	static equals(file1, file2){

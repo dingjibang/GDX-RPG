@@ -25,11 +25,6 @@ export default class FileList extends React.Component {
 				if(name != undefined){ // find file dom(FileListItem)
 					let outer = E.files.find(type);
 
-					let open = outer.open();
-
-					if(!open)//要先展开列表才能render，所以这里投机取巧一下
-						outer.open(true);
-
 					let fileResult = null;
 					for(let fileDom of outer.list()){
 						let file = fileDom.get();
@@ -37,13 +32,9 @@ export default class FileList extends React.Component {
 							fileResult = fileDom;
 					}
 
-					if(!open)
-						outer.open(false);
-
 					return fileResult;
 
 				}else{//find group dom(FileListItems)
-
 					for(let fileList of E.files._files){
 						if(fileList.type() == type)
 							return fileList;
@@ -59,12 +50,13 @@ export default class FileList extends React.Component {
 						fileDom.select(false);
 
 					let outer = E.files.find(type);
-					if(!outer.open())
-						outer.open(true);
-
 					let dom = E.files.find(type, name);
+
+					outer.open(true);
+
 					if(dom)
 						dom.select(true);
+
 
 					if(pitch)
 						E.files.pitch();
@@ -78,25 +70,25 @@ export default class FileList extends React.Component {
 					return null;
 				}
 			},
-			pitch: () => {
+			pitch: () => setTimeout(() => {
 				let _dom = document.getElementsByClassName("select");
 				if(!_dom || _dom.length == 0)
 					return;
 
 				let dom = document.getElementsByClassName("file-list")[0];
-				let begin = document.getElementsByClassName("file-list")[0].scrollTop;
+				let begin = dom.scrollTop;
 				let end = document.getElementsByClassName("select")[0].offsetTop - 200;
 
-				let step = (end - begin) / 20;
+				let step = (end - begin) / 10;
 				let i = 0;
 
 				let id = setInterval(() => {
-					dom.scrollTop += step;
+					dom.scrollTop = step + dom.scrollTop;
 					i++;
-					if(i >= 20)
+					if(i >= 10)
 						clearInterval(id);
-				}, 10);
-			},
+				}, 13);
+			}, 100),
 			allDom: () => {
 				var result = [];
 				for (let fileList of E.files._files)

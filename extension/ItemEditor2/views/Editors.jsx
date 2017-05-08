@@ -13,6 +13,7 @@ export default class Editors extends React.Component {
 
 		const editors = [];
 		E.editors = {
+			editors: this,
 			list: () => this.state.files.map((_, index) => this.refs["editor" + index]),
 			add: file => {
 				if(!E.editors.get(file))
@@ -52,12 +53,17 @@ export default class Editors extends React.Component {
 
 			},
 			current: () => E.editors.list()[this.state.current],
+			codeMirror: () => E.editors.current() && E.editors.current().getCodeMirror(),
 			save: () => {
 				let current = E.editors.current()
 				if(current)
 					current.save()
 			}
 		};
+	}
+
+	refresh() {
+		this.setState(this.state);
 	}
 	
 	render() {
@@ -71,7 +77,7 @@ export default class Editors extends React.Component {
 			let dom = file.editor("editor" + i);
 
 			tabs.push(
-				<Tab label={file.label} key={i} value={i} onActive={() => this.setState({current: i})} onClose={() => E.editors.close(file)}>
+				<Tab label={file.label + (file.modified ? "*" : "")} key={i} value={i} onActive={() => this.setState({current: i})} onClose={() => E.editors.close(file)}>
 					<div>
 						{dom}
 					</div>

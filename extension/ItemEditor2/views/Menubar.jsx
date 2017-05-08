@@ -16,13 +16,17 @@ export default class Menubar extends React.Component {
 	constructor(props){
 		super(props);
 
-		window.addEventListener("keydown", e => this.press(e.code));
+		window.addEventListener("keydown", e => this.press(e));
 	}
 
-	press(code){
-		switch(code){
+	press(e){
+		switch(e.code){
 			case "F5": 	E.files.reload()
-			case "KeyS": E.editors.save()
+		}
+		if(e.ctrlKey){
+			switch(e.code){
+				case "KeyS": E.editors.save()
+			}
 		}
 	}
 	
@@ -38,17 +42,17 @@ export default class Menubar extends React.Component {
 					<MenuItem primaryText="刷新所有文件" secondaryText="F5" onClick={() => this.press("F5")}/>
 					<MenuItem primaryText="强制刷新所有文件" onClick={() => E.files.reload(undefined, false)}/>
 					<Divider />
-					<MenuItem primaryText="退出" />
+					<MenuItem primaryText="退出" onClick={() => window.close()}/>
 				</IconMenu>
 				<IconMenu className="menuctx" iconButtonElement={<FlatButton label="编辑"/>} anchorOrigin={{horizontal: 'left', vertical: 'top'}} targetOrigin={{horizontal: 'left', vertical: 'top'}}>
-					<MenuItem primaryText="撤销" secondaryText="Ctrl+Z"/>
-					<MenuItem primaryText="重做" secondaryText="Ctrl+Y"/>
+					<MenuItem primaryText="撤销" secondaryText="Ctrl+Z" onClick={() => E.editors.codeMirror() && E.editors.codeMirror().undo()}/>
+					<MenuItem primaryText="重做" secondaryText="Ctrl+Y" onClick={() => E.editors.codeMirror() && E.editors.codeMirror().redo()}/>
 					<Divider />
-					<MenuItem primaryText="全选" secondaryText="Ctrl+A"/>
-					<MenuItem primaryText="删除" secondaryText="Delete"/>
+					<MenuItem primaryText="全选" secondaryText="Ctrl+A" onClick={() => E.editors.codeMirror() && E.editors.codeMirror().execCommand("selectAll")}/>
+					<MenuItem primaryText="删除" secondaryText="Delete" onClick={() => E.editors.codeMirror() && E.editors.codeMirror().deleteH()}/>
 					<Divider />
-					<MenuItem primaryText="剪切" secondaryText="Ctrl+A"/>
-					<MenuItem primaryText="复制" secondaryText="Ctrl+A"/>
+					<MenuItem primaryText="剪切" secondaryText="Ctrl+X"/>
+					<MenuItem primaryText="复制" secondaryText="Ctrl+C"/>
 					<MenuItem primaryText="复制当前文件路径"/>
 					<MenuItem primaryText="粘贴" secondaryText="Ctrl+V"/>
 					<Divider />

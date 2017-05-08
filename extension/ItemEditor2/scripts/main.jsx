@@ -11,6 +11,7 @@ import FileList from "../views/FileList";
 import GlobalSnack from "../views/GlobalSnack"
 import Editors from "../views/Editors";
 import Confirm from "../views/overwrite-material-ui/Confirm";
+
 injectTapEventPlugin();
 
 window.E = {
@@ -19,7 +20,7 @@ window.E = {
 		ReactDOM.render(<Confirm msg={msg} callback={callback}/>, document.getElementById("dialog"));
 	},
 	__seq: 0,
-	seq: () => E.__seq++
+	seq: () => E.__seq++,
 };
 
 //路径不存在，主动选择

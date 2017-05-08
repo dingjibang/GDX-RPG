@@ -20,8 +20,9 @@ export default class EnemyFile extends SuperFile{
 				}
 				this.label = "多个";
 			}
+			this.errorFormat = false;
 		}catch(e){
-			this.label = "<无法解析>";
+			this.label = "(无法解析)";
 			this.errorFormat = true;
 		}
 	}
@@ -43,7 +44,7 @@ export default class EnemyFile extends SuperFile{
 
 			this.label = label.join("、");
 		}catch(e){
-			this.label = "<无法解析>";
+			this.label = "(无法解析)";
 			this.errorFormat = true;
 		}
 

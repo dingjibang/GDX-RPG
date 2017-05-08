@@ -12,8 +12,9 @@ export default class PropFile extends SuperFile{
 		try{
 			let obj = eval("(" + this.fileText + ")");
 			this.label = obj.name;
+			this.errorFormat = false;
 		}catch(e){
-			this.label = "<无法解析>";
+			this.label = "(无法解析)";
 			this.errorFormat = true;
 		}
 	}

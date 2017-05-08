@@ -7,6 +7,12 @@ export default class IndexEditor extends Editor {
 	}
 
 	render(){
-		return (<div>{this.props.file.fileText}</div>)
+		return super.renderContainer(
+			<div>
+				<pre>
+					{this.state.text}
+				</pre>
+			</div>
+		)
 	}
 }

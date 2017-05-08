@@ -11,8 +11,9 @@ export default class AchievementFile extends SuperFile{
 	parse(){
 		try{
 			this.label = eval("(" + this.fileText + ")").name;
+			this.errorFormat = false;
 		}catch(e){
-			this.label = "<无法解析>";
+			this.label = "(无法解析)";
 			this.errorFormat = true;
 		}
 	}

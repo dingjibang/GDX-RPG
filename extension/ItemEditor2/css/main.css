@@ -252,4 +252,14 @@ span.searching{
 	position:absolute!important;
 	width: auto;
 	min-width: 100%;
+	z-index:0;
+}
+.toolbar .pitch{
+	height: 28px!important;
+	margin-right: 10px!important;
+}
+.toolbar .pitch svg{
+	margin-top:4px!important;
+	width: 16px!important;
+	height: 16px!important;
 }

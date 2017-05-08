@@ -28,9 +28,9 @@ export default class ItemFile extends SuperFile{
 				text: type.name,
 				color: type.color
 			};
-
+			this.errorFormat = false;
 		}catch(e){
-			this.label = "<无法解析>";
+			this.label = "(无法解析)";
 			this.errorFormat = true;
 		}
 	}

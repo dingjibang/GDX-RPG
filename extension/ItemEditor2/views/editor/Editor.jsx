@@ -3,13 +3,15 @@ import {IconButton, RaisedButton, Toolbar, ToolbarGroup, ToolbarSeparator, Toolb
 import Code from "material-ui/svg-icons/action/code"
 import Save from "material-ui/svg-icons/content/save"
 import Create from "material-ui/svg-icons/content/create"
+import Pitch from "material-ui/svg-icons/maps/my-location"
 import CodeMirror from "../overwrite-codemirror/CodeMirror"
 
 export default class Editor extends React.Component {
 	state = {
 		modified: false,
 		coding: false,
-		text: null
+		text: null,
+		object: {}
 	}
 
 	constructor(props){
@@ -34,8 +36,14 @@ export default class Editor extends React.Component {
 
 	}
 
-	modified() {
-		return this.state.modified;
+	modified(flag) {
+		if(flag == undefined)
+			return this.state.modified;
+
+		this.setState({modified: flag});
+		this.props.file.modified = flag;
+		E.editors.editors.refresh();
+
 	}
 
 	toggleCoding() {
@@ -44,16 +52,35 @@ export default class Editor extends React.Component {
 
 	setValue(txt) {
 		this.state.text = txt;
-		this.setState({modified: this.state.text !== this.props.file.fileText});
+		this.modified(true)
 	}
+
 
 	save(){
 		if(!this.state.modified)
 			return;
 
-		this.props.file.fileText = this.state.text;
-		this.props.file.save(() => this.setState({modified: false}));
+		const file = this.props.file;
+
+		file.fileText = this.state.text;
+		file.save(() => {
+			file.parse();
+
+			let outer = E.files.find(file.$static.type);
+
+			if(file.post)
+				file.post(outer.listFiles())
+
+			outer.refresh()
+			this.modified(false)
+		});
+
 	}
+
+	getCodeMirror() {
+		return this.refs.cm && this.refs.cm.getCodeMirror()
+	}
+
 	renderContainer(dom) {
 		if(this.editor)
 			this.editor.refresh();
@@ -63,6 +90,7 @@ export default class Editor extends React.Component {
 			<div>
 				<Toolbar className="toolbar">
 					<ToolbarGroup>
+						<IconButton onClick={() => E.files.select(file.$static.type, file.fileName, true)} className="pitch" tooltip="定位文件位置" style={{width: 28, height: 28, padding: 0}}><Pitch color="white"/></IconButton>
 						<ToolbarTitle text={file.$static.typeName + " > " + file.label} />
 						<span className="gray">{file.fileName}</span>
 					</ToolbarGroup>
@@ -81,7 +109,7 @@ export default class Editor extends React.Component {
 				<div className="editor-inner">
 					<div style={{display: this.state.coding ? "none" : "block"}}>{dom}</div>
 					<div style={{display: this.state.coding ? "block" : "none"}}>
-						<CodeMirror value={this.state.text} onChange={txt => this.setValue(txt)} options={{
+						<CodeMirror ref="cm" value={this.state.text} onChange={txt => this.setValue(txt)} options={{
 							mode: "javascript",
 							lineNumbers: true,
 							gutters: ["CodeMirror-lint-markers"],

@@ -16,8 +16,9 @@ export default class IndexFile extends SuperFile{
 				text: isNaN(+obj.path) ? "角色" : "敌人",
 				color: isNaN(+obj.path) ? "#7cc126" : "#c16226"
 			}
+			this.errorFormat = false;
 		}catch(e){
-			this.label = "<无法解析>";
+			this.label = "(无法解析)";
 			this.errorFormat = true;
 		}
 	}

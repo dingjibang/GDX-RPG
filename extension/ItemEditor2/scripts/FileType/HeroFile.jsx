@@ -16,8 +16,9 @@ export default class HeroFile extends SuperFile{
 				text: obj.tag,
 				color: "#" + obj.color.substr(0, 6)
 			}
+			this.errorFormat = false;
 		}catch(e){
-			this.label = "<无法解析>";
+			this.label = "(无法解析)";
 			this.errorFormat = true;
 		}
 	}

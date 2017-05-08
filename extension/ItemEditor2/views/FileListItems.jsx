@@ -1,7 +1,8 @@
 import React from 'react';
-import {List, ListItem, IconButton, TextField} from 'material-ui';
+import {List, IconButton, TextField} from 'material-ui';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import SearchIcon from 'material-ui/svg-icons/action/subject';
+import ListItem from './overwrite-material-ui/ListItem'
 import FileListItem from './FileListItem';
 
 export default class FileListItems extends React.Component {
@@ -31,6 +32,10 @@ export default class FileListItems extends React.Component {
 		}
 
 		return result;
+	}
+
+	listFiles() {
+		return this.state.files;
 	}
 
 	type() {
@@ -170,9 +175,9 @@ export default class FileListItems extends React.Component {
 					<div className="list-type-head">
 						{this.reader.typeName}
 						<span className={searching ? "searching" : ""}>
-							{searching ? filtedFiles.length + " / " : ""}
+						{searching ? filtedFiles.length + " / " : ""}
 							{this.state.files.length}
-						</span>
+					</span>
 					</div>
 				}
 				primaryTogglesNestedList={true}
@@ -184,6 +189,7 @@ export default class FileListItems extends React.Component {
 				open={this.state.open}
 				onClick={() => this.setState({open: !this.state.open})}
 				key={1}
+				initiallyOpen={true}
 				nestedItems={[
 					<ListItem key={-1} primaryText={
 						<TextField hintText="输入名称以过滤..." className={"filter-input"} onChange={e => this.search(e.target.value)} value={this.state.searchValue}/>
