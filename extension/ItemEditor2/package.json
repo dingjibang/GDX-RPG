@@ -1,9 +1,7 @@
 {
-  "name": "electron-es6-react",
+  "name": "GDX-RPG_Item_Editor",
   "version": "0.1.0",
   "main": "main.js",
-  "license": "MIT",
-  "repository": "b52/electron-es6-react",
   "scripts": {
     "start": "electron -r babel-register ."
   },
@@ -19,7 +17,8 @@
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
 	"babel-preset-stage-3": "^6.24.1",
 	"material-ui": "0.18.0",
-	"react-codemirror": "0.3.0"
+	"codemirror": "5.25.2",
+	"jshint": "2.9.4"
   },
   "devDependencies": {
 	  "electron": "^1.4.3"

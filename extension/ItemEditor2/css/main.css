@@ -1,180 +1,180 @@
 *{
-    font-family: "Microsoft YaHei";
+	font-family: "Microsoft YaHei";
 }
 body,html{
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 ::-webkit-scrollbar {
-    width: 9px;
-    height: 9px;
+	width: 9px;
+	height: 9px;
 }
 
 ::-webkit-scrollbar-track {
-    -webkit-border-radius: 5px;
-    background-color:rgba(0,0,0,0.05);
+	-webkit-border-radius: 5px;
+	background-color:rgba(0,0,0,0.05);
 }
 
 ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 5px;
-    background: rgba(0,0,0,0.3);
+	-webkit-border-radius: 5px;
+	background: rgba(0,0,0,0.3);
 }
 
 .menubar .menuctx button {
-    height: 25px!important;
-    line-height: 23px!important;
+	height: 25px!important;
+	line-height: 23px!important;
 }
 .menubar .menuctx button span{
-    font-size:12px!important;
+	font-size:12px!important;
 }
 .menuctx[data-reactroot]{
-    top: 26px!important;
+	top: 26px!important;
 }
 .menuctx[data-reactroot] div[role='menu']{
-    padding:0!important;
+	padding:0!important;
 }
 .menuctx[data-reactroot] div[role='menu'] span[role='menuitem']{
-    font-size:12px!important;
-    line-height:30px!important;
-    min-height:30px!important;
+	font-size:12px!important;
+	line-height:30px!important;
+	min-height:30px!important;
 }
 .menuctx[data-reactroot] div[role='menu'] hr{
-    margin:3px 0px 3px!important;
+	margin:3px 0px 3px!important;
 }
 .menuctx[data-reactroot] div[role='menu'] span[role='menuitem'] svg{
-    margin: 5px!important;
-    height: 20px!important;
-    width: 20px!important;
+	margin: 5px!important;
+	height: 20px!important;
+	width: 20px!important;
 }
 .container {
-    height: calc(100% - 25px);
-    position: absolute;
-    top: 25px;
-    width: 100%;
-    overflow: hidden;
-    display: table;
+	height: calc(100% - 25px);
+	position: absolute;
+	top: 25px;
+	width: 100%;
+	overflow: hidden;
+	display: table;
 }
 .container > div {
-    display: block;
-    height: 100%;
+	display: block;
+	height: 100%;
 }
 .file-list{
-    width:20%;
-    overflow-y: auto;
-    -webkit-user-select: none;
+	width:20%;
+	overflow-y: auto;
+	-webkit-user-select: none;
 }
 .editor-outer {
-    width: calc(100% - 20%);
-    position: absolute;
-    right: 0;
-    top: 0;
-    background-color: #e4e4e4;
-    color: white;
+	width: calc(100% - 20%);
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-color: #e4e4e4;
+	color: white;
 	overflow:hidden;
 }
 .no-file svg{
-    width:100px!important;
-    height:100px!important;
+	width:100px!important;
+	height:100px!important;
 }
 .no-file {
-    display: table;
-    margin: 0 auto;
-    margin-top: 20%;
-    text-align: center;
-    font-size: 25px;
-    -webkit-user-select: none;
+	display: table;
+	margin: 0 auto;
+	margin-top: 20%;
+	text-align: center;
+	font-size: 25px;
+	-webkit-user-select: none;
 }
 .file-list>div>div,.file-list>div>div>div>div{
-    padding:0!important;
+	padding:0!important;
 }
 .file-list-toolbar{
-    margin: 0!Important;
+	margin: 0!Important;
 }
 .file-list span[tabindex]:not(.list-item-head){
-    font-size: 12px!important;
+	font-size: 12px!important;
 }
 .file-list span[tabindex]:not(.list-item-head)>div>div{
-    padding: 10px 6px 10px 50px!important;
-    margin-left: 6px!important;
+	padding: 10px 6px 10px 50px!important;
+	margin-left: 6px!important;
 }
 .file-list svg{
-    width: 24px!important;
-    height:24px!important;
-    margin: 7px!important;
+	width: 24px!important;
+	height:24px!important;
+	margin: 7px!important;
 }
 
 .file-list button{
-    padding:0!important;
-    width: 36px!important;
-    height: 36px!important;
+	padding:0!important;
+	width: 36px!important;
+	height: 36px!important;
 }
 .filter, .filter svg{
-    color: #3691bf!important;
-    fill: rgb(179, 179, 179)!important;
+	color: #3691bf!important;
+	fill: rgb(179, 179, 179)!important;
 	z-index:0!important;
 }
 .filter svg{
-    margin-top: 13px!Important;
+	margin-top: 13px!Important;
 }
 .filter-input{
-    width: 90%!important;
-    font-size: 14px!important;
+	width: 90%!important;
+	font-size: 14px!important;
 }
 .filter-input input{
-    line-height: 49px!Important;
+	line-height: 49px!Important;
 }
 .list-item-prefix{
-    padding-right:5px;
+	padding-right:5px;
 }
 .list-item-head{
-    font-size:14px!important;
+	font-size:14px!important;
 }
 .list-item-head svg{
-    margin:13px!important;
+	margin:13px!important;
 }
 .list-item-head button{
-    width: 48px!important;
-    height: 48px!important;
+	width: 48px!important;
+	height: 48px!important;
 }
 .file-list span[tabindex].filter>div>div{
-    padding-top: 0px!important;
-    padding-bottom: 0px!important;
+	padding-top: 0px!important;
+	padding-bottom: 0px!important;
 }
 .list-type-head span{
-    background: #9ee261;
-    color: white;
-    font-size: 12px!Important;
-    padding: 0px 8px;
-    border-radius: 10px;
-    margin-left: 12px;
-    transition-duration: 1s;
-    transition-property: background-color;
+	background: #9ee261;
+	color: white;
+	font-size: 12px!Important;
+	padding: 0px 8px;
+	border-radius: 10px;
+	margin-left: 12px;
+	transition-duration: 1s;
+	transition-property: background-color;
 }
 span.searching{
-    background: #e2d261;
+	background: #e2d261;
 }
 .popmenu div{
-    font-size: 12px!important;
+	font-size: 12px!important;
 }
 .popmenu span[role="menuitem"]>div>div {
-    padding: 0px 15px!important;
-    padding-right:30px!important;
-    height: 36px!important;
+	padding: 0px 15px!important;
+	padding-right:30px!important;
+	height: 36px!important;
 }
 
 .popmenu span[role="menuitem"] {
-    line-height: 36px!important;
-    min-height: 36px!important;
+	line-height: 36px!important;
+	min-height: 36px!important;
 }
 .file-list span.select{
-    background-color: #0799e2!important;
-    color: white!important;
+	background-color: #0799e2!important;
+	color: white!important;
 }
 .file-list span.select .list-item-prefix{
-    color: white!important;
+	color: white!important;
 }
 .snack span {
-    font-size: 13px!important;
+	font-size: 13px!important;
 }
 .editor-tabs-outer{
 	height: 100%;
@@ -249,4 +249,7 @@ span.searching{
 }
 .CodeMirror{
 	height: 100%!important;
+	position:absolute!important;
+	width: auto;
+	min-width: 100%;
 }

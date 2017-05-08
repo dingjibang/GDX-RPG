@@ -50,6 +50,12 @@ export default class Editors extends React.Component {
 					close();
 				}
 
+			},
+			current: () => E.editors.list()[this.state.current],
+			save: () => {
+				let current = E.editors.current()
+				if(current)
+					current.save()
 			}
 		};
 	}

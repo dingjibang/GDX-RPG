@@ -42,6 +42,18 @@ export default class Editor extends React.Component {
 		this.setState({coding: !this.state.coding})
 	}
 
+	setValue(txt) {
+		this.state.text = txt;
+		this.setState({modified: this.state.text !== this.props.file.fileText});
+	}
+
+	save(){
+		if(!this.state.modified)
+			return;
+
+		this.props.file.fileText = this.state.text;
+		this.props.file.save(() => this.setState({modified: false}));
+	}
 	renderContainer(dom) {
 		if(this.editor)
 			this.editor.refresh();
@@ -56,7 +68,7 @@ export default class Editor extends React.Component {
 					</ToolbarGroup>
 
 					<ToolbarGroup>
-						<RaisedButton backgroundColor={"#0799e2"} style={{height: 28}} label="保存" icon={<Save color="white"/>} disabled={!this.state.modified}/>
+						<RaisedButton backgroundColor={"#7fccba"} style={{height: 28}} label="保存" icon={<Save color="white"/>} disabled={!this.state.modified} onClick={() => this.save()}/>
 						{
 							this.state.coding ?
 								<RaisedButton backgroundColor={"#e29161"} style={{height: 28}} label="切换为编辑视图" icon={<Create color="white"/>} onClick={() => this.toggleCoding()}/>
@@ -67,15 +79,15 @@ export default class Editor extends React.Component {
 				</Toolbar>
 
 				<div className="editor-inner">
-					{
-						!this.state.coding ? dom :
-						<CodeMirror value={this.state.text} onChange={() => console.log("?")} options={{
+					<div style={{display: this.state.coding ? "none" : "block"}}>{dom}</div>
+					<div style={{display: this.state.coding ? "block" : "none"}}>
+						<CodeMirror value={this.state.text} onChange={txt => this.setValue(txt)} options={{
 							mode: "javascript",
 							lineNumbers: true,
 							gutters: ["CodeMirror-lint-markers"],
-							lint: true
+							tabSize: 8
 						}}/>
-					}
+					</div>
 				</div>
 			</div>
 		)

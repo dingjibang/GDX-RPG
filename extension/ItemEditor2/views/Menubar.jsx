@@ -22,6 +22,7 @@ export default class Menubar extends React.Component {
 	press(code){
 		switch(code){
 			case "F5": 	E.files.reload()
+			case "KeyS": E.editors.save()
 		}
 	}
 	

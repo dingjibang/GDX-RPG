@@ -1,5 +1,4 @@
 'use strict';
-import PropTypes from 'prop-types';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -8,25 +7,55 @@ const findDOMNode = ReactDOM.findDOMNode;
 import className from 'classnames';
 import debounce from 'lodash.debounce';
 
-require("codemirror/mode/javascript/javascript")
-require("codemirror/addon/hint/show-hint")
-require("codemirror/addon/hint/javascript-hint")
-
-require("codemirror/addon/lint/lint")
-require("codemirror/addon/lint/javascript-lint")
-
-
 
 function normalizeLineEndings(str) {
 	if (!str) return str;
 	return str.replace(/\r\n|\r/g, '\n');
 }
 
+function isEqual(thing1, thing2) {
+	if (thing1 === thing2) {
+		return true;
+	} else if (Number.isNaN(thing1) && Number.isNaN(thing2)) {
+		return true;
+	} else if (Array.isArray(thing1) && Array.isArray(thing2)) {
+		return arraysEqual(thing1, thing2);
+	} else if (typeof thing1 === 'object' && typeof thing2 === 'object') {
+		return objectsEqual(thing1, thing2);
+	} else {
+		return false;
+	}
+}
+
+function arraysEqual(array1, array2) {
+	if (array1.length !== array2.length) {
+		return false;
+	} else {
+		return array1.every(function (item, index) {
+			return isEqual(array1[index], array2[index]);
+		});
+	}
+}
+
+function objectsEqual(obj1, obj2) {
+	if (obj1.constructor !== obj2.constructor) {
+		return false;
+	}
+	var obj1Keys = Object.keys(obj1);
+	var obj2Keys = Object.keys(obj2);
+	if (!arraysEqual(obj1Keys.sort(), obj2Keys.sort())) {
+		return false;
+	}
+	return obj1Keys.every(function (key) {
+		return isEqual(obj1[key], obj2[key]);
+	});
+}
+
 export default class CodeMirror extends React.Component {
-	displayName = 'CodeMirror'
+	displayName = 'CodeMirror';
 
 	getCodeMirrorInstance() {
-		return this.props.codeMirrorInstance || require('codemirror');
+		return this.props.codeMirrorInstance || window.CodeMirror;
 	}
 
 	componentWillMount() {
@@ -38,10 +67,9 @@ export default class CodeMirror extends React.Component {
 		var codeMirrorInstance = this.getCodeMirrorInstance();
 		this.codeMirror = codeMirrorInstance.fromTextArea(textareaNode, this.props.options);
 		this.codeMirror.on('change', (a, b) => this.codemirrorValueChanged(a, b));
-		this.codeMirror.on('focus', () => this.focusChanged(true));
-		this.codeMirror.on('blur', () => this.focusChanged(false));
 		this.codeMirror.on('scroll', cm => this.scrollChanged(cm));
 		this.codeMirror.setValue(this.props.defaultValue || this.props.value || '');
+		this.codeMirror.setOption('lint', {options: {esversion: 6, asi: true}})
 		this.codeMirror.refresh()
 	}
 
@@ -65,24 +93,21 @@ export default class CodeMirror extends React.Component {
 		if (typeof nextProps.options === 'object') {
 			for (var optionName in nextProps.options) {
 				if (nextProps.options.hasOwnProperty(optionName)) {
-					this.codeMirror.setOption(optionName, nextProps.options[optionName]);
+					this.setOptionIfChanged(optionName, nextProps.options[optionName]);
 				}
 			}
 		}
 	}
 
-	getCodeMirror() {
-		return this.codeMirror;
-	}
-
-	focus() {
-		if (this.codeMirror) {
-			this.codeMirror.focus();
+	setOptionIfChanged(optionName, newValue) {
+		var oldValue = this.codeMirror.getOption(optionName);
+		if (!isEqual(oldValue, newValue)) {
+			this.codeMirror.setOption(optionName, newValue);
 		}
 	}
 
-	focusChanged(focused) {
-		this.props.onFocusChange && this.props.onFocusChange(focused);
+	getCodeMirror() {
+		return this.codeMirror;
 	}
 
 	scrollChanged(cm) {
@@ -96,11 +121,11 @@ export default class CodeMirror extends React.Component {
 	}
 
 	render() {
-		var editorClassName = className('ReactCodeMirror', 'ReactCodeMirror--focused', this.props.className);
+		const editorClassName = className('ReactCodeMirror--focused', this.props.className);
 		return React.createElement(
 			'div',
 			{ className: editorClassName },
-			React.createElement('textarea', {ref: 'textarea', name: this.props.path, defaultValue: this.props.value, autoComplete: 'off' })
+			React.createElement('textarea', { ref: 'textarea', name: this.props.path, defaultValue: this.props.value, autoComplete: 'off' })
 		);
 	}
-};
+}

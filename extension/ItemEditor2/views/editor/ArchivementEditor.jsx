@@ -10,7 +10,7 @@ export default class ArchivementEditor extends Editor {
 		return super.renderContainer(
 			<div>
 				<pre>
-					{this.props.file.fileText}
+					{this.state.text}
 				</pre>
 			</div>
 		)
