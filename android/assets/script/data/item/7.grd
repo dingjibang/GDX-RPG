@@ -9,7 +9,7 @@
 	cost:0,
 	packable:false,
 	effect:{
-		prop:{}
+		prop:{},
 		buff:[
 			{
 				turn:1,

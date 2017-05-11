@@ -17,6 +17,7 @@ export default class Editor extends React.Component {
 	constructor(props){
 		super(props)
 		this.state.text = props.file.fileText
+		this.state.object = this.props.file.object() || {};
 	}
 
 	domId = "codeMirror" + E.seq()

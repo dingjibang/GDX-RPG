@@ -54,7 +54,7 @@ export default class SuperFile{
 	object() {
 		try{
 			return eval("(" + this.fileText + ")")
-		}catch(){
+		}catch(e){
 			return null;
 		}
 	}
