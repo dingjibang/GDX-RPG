@@ -263,3 +263,7 @@ span.searching{
 	width: 16px!important;
 	height: 16px!important;
 }
+
+code{
+	font-family: Consolas, monospace!important;
+}

@@ -69,7 +69,10 @@ export default class CodeMirror extends React.Component {
 		this.codeMirror.on('change', (a, b) => this.codemirrorValueChanged(a, b));
 		this.codeMirror.on('scroll', cm => this.scrollChanged(cm));
 		this.codeMirror.setValue(this.props.defaultValue || this.props.value || '');
+
 		this.codeMirror.setOption('lint', {options: {esversion: 6, asi: true}})
+
+
 		this.codeMirror.refresh()
 	}
 

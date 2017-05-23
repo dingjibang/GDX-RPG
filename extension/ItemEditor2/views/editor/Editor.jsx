@@ -56,6 +56,11 @@ export default class Editor extends React.Component {
 		this.modified(true)
 	}
 
+	change(obj) {
+		this.setValue(JSON.stringify(obj))
+		console.log(obj)
+	}
+
 
 	save(){
 		if(!this.state.modified)
