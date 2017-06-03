@@ -7,15 +7,11 @@ export default class Input extends BaseWidget{
 		return "";
 	}
 
-	change(value){
-		this.state.obj = value;
-		this.setState(this.state);
-
-		this.props.change();
-	}
-
 	check(){
 		return !this.props.required || (this.state.obj && this.state.obj.length !== 0);
+	}
+
+	error(flag){
 	}
 
 	render(){

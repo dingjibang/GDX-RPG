@@ -10,7 +10,7 @@ export default class ArchivementEditor extends Editor {
 
 	render(){
 		return super.renderContainer(
-			<Bind change={obj => this.change(obj)} from={this.props.file.object() || {}} child={[
+			<Bind ref="root" change={obj => this.change(obj)} from={this.props.file.object() || {}} child={[
 				<Input from="name" desc="任务名称" required={true}/>,
 				<Input from="description" desc="任务描述" required={true}/>,
 				<Input from="description2" desc="任务奖励描述" required={true}/>,

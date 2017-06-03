@@ -48,7 +48,21 @@ export default class Editor extends React.Component {
 	}
 
 	toggleCoding() {
-		this.setState({coding: !this.state.coding})
+		if(this.state.coding){
+			try{
+				this.state.object = eval("(" + this.state.text + ")");
+
+				if(this.refs.root)
+					this.refs.root.set(this.state.object);
+
+			}catch(e){
+				console.error(e)
+			}
+		}
+
+		this.state.coding = !this.state.coding;
+
+		this.setState(this.state);
 	}
 
 	setValue(txt) {
@@ -57,8 +71,7 @@ export default class Editor extends React.Component {
 	}
 
 	change(obj) {
-		this.setValue(JSON.stringify(obj))
-		console.log(obj)
+		this.setValue(JSON.stringify(obj, null, "\t"))
 	}
 
 
