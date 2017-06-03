@@ -30,7 +30,7 @@ class BackgroundableLabel extends Label{
 	void draw(Batch batch, float parentAlpha) {
 		bg.setSize width, height
 		bg.setPosition x, y
-		bg.draw(batch, parentAlpha
+		bg.draw(batch, parentAlpha)
 		if(bg2){
 			bg2.setSize width, height
 			bg2.setPosition x, y
