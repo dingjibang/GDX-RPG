@@ -14,7 +14,7 @@ export default class ArchivementEditor extends Editor {
 				<Input from="name" desc="任务名称" required={true}/>,
 				<Input from="description" desc="任务描述" required={true}/>,
 				<Input from="description2" desc="任务奖励描述" required={true}/>,
-				//<Check from="giveup" desc="任务是否可以放弃"/>,
+				<Check from="giveup" desc="任务是否可以放弃"/>,
 				//<Select from="type" desc="任务类型" child={[
 				//	{"text": "主线任务", value: "main"},
 				//	{"text": "支线任务", value: "secondly"}
