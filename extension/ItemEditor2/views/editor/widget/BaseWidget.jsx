@@ -42,7 +42,7 @@ export default class BaseWidget extends React.Component{
 	set(value, props = this.props){
 		if(props.parent){
 			let parent = props.parent;
-			if(!value)
+			if(value === undefined)
 				this.state.obj = parent[props.from] === undefined ? this.defaultValue() : parent[props.from];
 			else
 				this.state.obj = value;
