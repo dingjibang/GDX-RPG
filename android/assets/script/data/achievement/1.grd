@@ -1,7 +1,10 @@
 {
-	"name": "打开菜单",
+	"name": "打开菜单1",
 	"description": "打开菜单即可以触发",
 	"description2": "金币 + 10",
-	"giveup": false,
-	"by": "12113"
+	"gain": {
+		"item": "",
+		"gold": 1555,
+		"js": ""
+	}
 }

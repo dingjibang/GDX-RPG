@@ -28,7 +28,8 @@ public class Equipment extends EffectableItem{
 	
 	public Equipment(Integer id, JsonValue value) {
 		super(id, value);
-		
+
+		//装备是不可以叠加的
 		packable = false;
 		
 		if(value.has("onlyFor"))

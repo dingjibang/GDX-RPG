@@ -1,7 +1,7 @@
 apply plugin: "groovy"
 
 sourceCompatibility = 1.8
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+[compileGroovy, compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 sourceSets {
 	main {
