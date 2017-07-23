@@ -1,16 +1,12 @@
 {
-	name:"yeshi",
-	description:"打开菜单即可以触发",
-	description2:"金币 + 10",
-	trigger:"special",
-	start:{},
-	end:{
-		script:"false"
-	},
-	gain:{
-		gold:10
-	},
-	giveup:true,
-	type:"secondly",
-	by:"marisa"
+	"name": "yeshi",
+	"description": "打开菜单即可以触发",
+	"description2": "金币 + 10",
+	"by": "marisa",
+	"giveup": true,
+	"gain": {
+		"item": null,
+		"gold": 10,
+		"js": ""
+	}
 }
