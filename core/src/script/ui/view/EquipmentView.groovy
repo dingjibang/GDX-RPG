@@ -23,7 +23,7 @@ import static com.rpsg.rpg.util.UIUtil.*
  */
 class EquipmentView extends MenuableView{
 	void create() {
-		println "？？？？？？？？？？equip"
+		
 	}
 	
 	void draw() {

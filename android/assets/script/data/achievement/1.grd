@@ -1,10 +1,11 @@
 {
-	"name": "打开菜单1",
-	"description": "打开菜单即可以触发",
-	"description2": "金币 + 10",
+	"name": "打开菜单",
+	"description": "打开菜单后即可触发",
+	"description2": "金钱+1",
+	"hide": false,
 	"gain": {
-		"item": "",
-		"gold": 1555,
+		"item": null,
+		"gold": "",
 		"js": ""
 	}
 }
