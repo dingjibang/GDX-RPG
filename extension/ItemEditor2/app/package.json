@@ -1,0 +1,12 @@
+{
+  "name": "GDX-RPG_Item_Editor",
+  "version": "0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "postinstall": "npm rebuild --runtime=electron --target=1.6.6 --disturl=https://atom.io/download/atom-shell --build-from-source"
+  },
+  "license": "MIT",
+  "dependencies": {
+	
+  }
+}

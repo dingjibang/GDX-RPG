@@ -1,0 +1,8 @@
+{
+	"name": "配置索引",
+	"prop": [
+		"fg.grd",
+		"msg.grd",
+		"system.grd"
+	]
+}

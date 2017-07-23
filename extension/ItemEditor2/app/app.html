@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello Electron React!</title>
+  </head>
+  <body>
+	<div id="app"></div>
+	<div id="dialog"></div>
+    <script>
+      {
+        const scripts = [];
+
+        // Dynamically insert the DLL script in development env in the
+        // renderer process
+        if (process.env.NODE_ENV === 'development') {
+          scripts.push('../dll/renderer.dev.dll.js');
+        }
+
+        // Dynamically insert the bundled app script in the renderer process
+        const port = process.env.PORT || 1212;
+        scripts.push(
+          (process.env.HOT)
+            ? 'http://localhost:' + port + '/dist/renderer.dev.js'
+            : './dist/renderer.prod.js'
+        );
+
+        document.write(
+          scripts
+            .map(script => '<script defer src="' + script + '"><\/script>')
+            .join('')
+        );
+      }
+    </script>
+	
+	<style>
+		@import "./node_modules/codemirror/lib/codemirror.css";
+		@import "./node_modules/codemirror/addon/hint/show-hint.css";
+		@import "./node_modules/codemirror/addon/lint/lint.css";
+		@import "app.css";
+	</style>
+	
+	<script src="node_modules/jshint/dist/jshint.js"></script>
+	<script src="node_modules/codemirror/lib/codemirror.js"></script>
+	<script src="node_modules/codemirror/addon/lint/lint.js"></script>
+	<script src="node_modules/codemirror/addon/lint/javascript-lint.js"></script>
+	<script src="node_modules/codemirror/mode/javascript/javascript.js"></script>
+  </body>
+</html>

@@ -1,0 +1,368 @@
+*{
+	font-family: "Microsoft YaHei";
+}
+body,html{
+	margin: 0;
+	padding: 0;
+}
+::-webkit-scrollbar {
+	width: 9px;
+	height: 9px;
+}
+
+::-webkit-scrollbar-track {
+	-webkit-border-radius: 5px;
+	background-color:rgba(0,0,0,0.05);
+}
+
+::-webkit-scrollbar-thumb {
+	-webkit-border-radius: 5px;
+	background: rgba(0,0,0,0.3);
+}
+
+.menubar .menuctx button {
+	height: 25px!important;
+	line-height: 23px!important;
+}
+.menubar .menuctx button span{
+	font-size:12px!important;
+}
+.menuctx[data-reactroot]{
+	top: 26px!important;
+}
+.menuctx[data-reactroot] div[role='menu']{
+	padding:0!important;
+}
+.menuctx[data-reactroot] div[role='menu'] span[role='menuitem']{
+	font-size:12px!important;
+	line-height:30px!important;
+	min-height:30px!important;
+}
+.menuctx[data-reactroot] div[role='menu'] hr{
+	margin:3px 0px 3px!important;
+}
+.menuctx[data-reactroot] div[role='menu'] span[role='menuitem'] svg{
+	margin: 5px!important;
+	height: 20px!important;
+	width: 20px!important;
+}
+.container {
+	height: calc(100% - 25px);
+	position: absolute;
+	top: 25px;
+	width: 100%;
+	overflow: hidden;
+	display: table;
+}
+.container > div {
+	display: block;
+	height: 100%;
+}
+.file-list{
+	width:20%;
+	overflow-y: auto;
+	-webkit-user-select: none;
+}
+.editor-outer {
+	width: calc(100% - 20%);
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-color: #e4e4e4;
+	color: white;
+	overflow:hidden;
+}
+.no-file svg{
+	width:100px!important;
+	height:100px!important;
+}
+.no-file {
+	display: table;
+	margin: 0 auto;
+	margin-top: 20%;
+	text-align: center;
+	font-size: 25px;
+	-webkit-user-select: none;
+}
+.file-list>div>div,.file-list>div>div>div>div{
+	padding:0!important;
+}
+.file-list-toolbar{
+	margin: 0!Important;
+}
+.file-list span[tabindex]:not(.list-item-head){
+	font-size: 12px!important;
+}
+.file-list span[tabindex]:not(.list-item-head)>div>div{
+	padding: 10px 6px 10px 50px!important;
+	margin-left: 6px!important;
+}
+.file-list svg{
+	width: 24px!important;
+	height:24px!important;
+	margin: 7px!important;
+}
+
+.file-list button{
+	padding:0!important;
+	width: 36px!important;
+	height: 36px!important;
+}
+.filter, .filter svg{
+	color: #3691bf!important;
+	fill: rgb(179, 179, 179)!important;
+	z-index:0!important;
+}
+.filter svg{
+	margin-top: 13px!Important;
+}
+.filter-input{
+	width: 90%!important;
+	font-size: 14px!important;
+}
+.filter-input input{
+	line-height: 49px!Important;
+}
+.list-item-prefix{
+	padding-right:5px;
+}
+.list-item-head{
+	font-size:14px!important;
+}
+.list-item-head svg{
+	margin:13px!important;
+}
+.list-item-head button{
+	width: 48px!important;
+	height: 48px!important;
+}
+.file-list span[tabindex].filter>div>div{
+	padding-top: 0px!important;
+	padding-bottom: 0px!important;
+}
+.list-type-head span{
+	background: #9ee261;
+	color: white;
+	font-size: 12px!Important;
+	padding: 0px 8px;
+	border-radius: 10px;
+	margin-left: 12px;
+	transition-duration: 1s;
+	transition-property: background-color;
+}
+span.searching{
+	background: #e2d261;
+}
+.popmenu div{
+	font-size: 12px!important;
+}
+.popmenu span[role="menuitem"]>div>div {
+	padding: 0px 15px!important;
+	padding-right:30px!important;
+	height: 36px!important;
+}
+
+.popmenu span[role="menuitem"] {
+	line-height: 36px!important;
+	min-height: 36px!important;
+}
+.file-list span.select{
+	background-color: #0799e2!important;
+	color: white!important;
+}
+.file-list span.select .list-item-prefix{
+	color: white!important;
+}
+.snack span {
+	font-size: 13px!important;
+}
+.editor-tabs-outer{
+	height: 100%;
+	position: absolute;
+	width: 100%;
+	z-index:0;
+	overflow-y:auto;
+	background:#ececec;
+}
+.editor-tabs-outer>div{
+	height:100%;
+}
+.editor-tab-outer-button>div>div{
+	height:35px!important;
+}
+.editor-tab-outer-button{
+	font-size:13px!important;
+	-webkit-user-select: none;
+}
+.tab-close-button svg{
+	height: 14px!important;
+	width:14px!important;
+}
+.toolbar{
+	height:36px!important;
+	background-color:#4190b7!important;
+	-webkit-user-select: none;
+	cursor:default;
+}
+.toolbar span{
+	font-size:14px!important;
+	line-height: 35px!important;
+	color:white!important;
+}
+.toolbar span.gray{
+	color:rgba(255, 255, 255, 0.5)!important;
+}
+.toolbar button{
+	height:28px!important;
+}
+.toolbar button>div{
+	height:28px!important;
+}
+.toolbar button, .toolbar button>div>div{
+	border-radius: 0!important;
+}
+.toolbar button svg{
+	vertical-align: top!important;
+	top: 2px!important;
+	position:relative;
+}
+.toolbar button>div>span{
+	top: 0px!important;
+}
+.toolbar button span{
+	line-height: 28px!important;
+	font-size:13px!important;
+	vertical-align: top!important;
+}
+.toolbar>div>div{
+	margin:0!important;
+	margin-left: 25px!important;
+}
+.editor-inner{
+	height: calc(100% - 35px - 36px);
+	position:absolute;
+	width: 100%;
+	overflow: auto;
+	background-color: white;
+}
+.ReactCodeMirror{
+	height:100%;
+}
+.CodeMirror{
+	height: 100%!important;
+	position:absolute!important;
+	width: auto;
+	min-width: 100%;
+	z-index:0;
+}
+.toolbar .pitch{
+	height: 28px!important;
+	margin-right: 10px!important;
+}
+.toolbar .pitch svg{
+	margin-top:4px!important;
+	width: 16px!important;
+	height: 16px!important;
+}
+
+code{
+	font-family: Consolas, monospace!important;
+}
+
+.v-edit .bind-object>div{
+	display: table;
+	width: 90%;
+	margin: 0 auto;
+	margin-bottom: 15px;
+	font-family: "Microsoft YaHei"!important;
+
+}
+
+.v-edit .bind-object>div input[type='text'], .v-edit .bind-object>div label{
+	font-family: "Microsoft YaHei"!important;
+}
+.v-edit .check-outer{
+	width: auto!important;
+	margin: 35px auto!important;
+	margin-left: 5%!important;
+	margin-bottom: 27px!important;
+}
+.v-edit .input-outer>div, .v-edit .number-outer>div{
+	min-width: 350px;
+	width: 350px;
+}
+
+.bind-desc{
+	color: #333;
+	margin-top: 20px!important;
+	width: 100%!important;
+}
+.bind-object.desc{
+	position:relative;
+}
+.bind-object.desc:before{
+	content: ' ';
+	display: block;
+	position: absolute;
+	background: #38cbdd;
+	width: 1px;
+	height: calc(100% - 41px);
+	top: 41px;
+	left: 18px;
+}
+
+.number-outer input::-webkit-outer-spin-button,
+.number-outer input::-webkit-inner-spin-button {
+	/* display: none; <- Crashes Chrome on hover */
+	-webkit-appearance: none;
+	margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+
+.file-selector-desc{
+	color: #333;
+	padding-top: 20px;
+	display: inline-block;
+	padding-right: 20px;
+}
+
+.file-selector-outer{
+	overflow-y: auto!important;
+	width: 95%;
+	margin: 0 auto;
+}
+
+.file-selector-outer .file {
+	font-size: 18px;
+	cursor: pointer;
+}
+.file-selector-outer .file>div>div{
+	padding: 10px!important;
+}
+.file.current {
+	background-color: rgb(7, 153, 226)!important;
+}
+.file.current>div>div{
+	color: white!important;
+}
+.file.current>div>div .current{
+	color: #ddd!important;
+}
+
+
+.selector-filter .filter-input {
+	vertical-align: top;
+	margin-left: 15px;
+}
+
+.selector-filter svg {
+	margin-left: 9px;
+}
+
+
+.selector-count{
+	padding-left: 20px;
+	font-size: 13px;
+	vertical-align: top;
+	color: gainsboro;
+}
