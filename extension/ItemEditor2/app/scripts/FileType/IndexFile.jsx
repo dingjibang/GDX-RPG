@@ -13,8 +13,8 @@ export default class IndexFile extends SuperFile{
 			let obj = eval("(" + this.fileText + ")");
 			this.label = obj.name;
 			this.prefix = {
-				text: isNaN(+obj.path) ? "角色" : "敌人",
-				color: isNaN(+obj.path) ? "#7cc126" : "#c16226"
+				text: obj.type === "actor" ? "角色" : "敌人",
+				color: obj.type === "actor" ? "#7cc126" : "#c16226"
 			}
 			this.errorFormat = false;
 		}catch(e){

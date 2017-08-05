@@ -10,10 +10,10 @@ export default class Bind extends BaseWidget{
 	error(flag){}
 	check(){return true}
 
-	render(){
+	draw(){
 		let child = this.props.child.map((e, i) => React.cloneElement(
 			e,
-			{...e.props, parent: this.state.obj, requireGet: () => this.requireGet(), ref: "ref" + i, _className: e.type.name.toLowerCase()}
+			{...e.props, parent: this.state.obj, message: msg => this.message(msg), ref: "ref" + i, _className: e.type.name.toLowerCase(), editor: this.props.editor}
 		));
 
 

@@ -6,6 +6,11 @@ import File from "../../../scripts/File";
 import cs from 'classnames';
 
 import SearchIcon from 'material-ui/svg-icons/action/subject';
+import Dir from "../../../scripts/Dir";
+
+
+import FileIcon from "material-ui/svg-icons/editor/insert-drive-file"
+import DirIcon from "material-ui/svg-icons/file/folder"
 
 export default class FileSelector extends BaseWidget{
 	constructor(props){
@@ -19,7 +24,7 @@ export default class FileSelector extends BaseWidget{
 	}
 
 	componentWillMount(){
-		File.list(window.localStorage.getItem("path") + "/" + this.props.path, filesName => this.setState({files: filesName}));
+		(this.props.type === "dir" ? Dir : File).list(window.localStorage.getItem("path") + "/" + this.props.path, filesName => this.setState({files: filesName}));
 	}
 
 	defaultValue(){
@@ -45,23 +50,28 @@ export default class FileSelector extends BaseWidget{
 		this.setState({searchValue: value})
 	}
 
-	render(){
+	draw(){
 
-		const fileName = this.state.obj || "选择文件";
+		const fileName = this.state.obj || (this.props.type === "dir" ? "选择文件夹" : "选择文件");
 
 
-		const actions = [
-			<FlatButton
-				label="取消"
-				primary={true}
-				onTouchTap={() => {this.change(this.state.origin); this.select();}}
-			/>,
+		const actions = [];
+		if(!this.props.required)
+			actions.push(
+				<FlatButton
+					label="清空"
+					primary={true}
+					onTouchTap={() => {this.change(this.defaultValue()); this.select();}}
+				/>
+			);
+
+		actions.push(
 			<FlatButton
 				label="选择"
 				primary={true}
 				onTouchTap={() => this.select()}
-			/>,
-		];
+			/>
+		);
 
 		let path = window.localStorage.getItem("path") + "/";
 		let files = [];
@@ -79,18 +89,19 @@ export default class FileSelector extends BaseWidget{
 						ref={"files" + i}
 						primaryText={file}
 						secondaryText={<div className={cs({"current": this.state.obj === file})}>{path + file}</div>}
+					    leftIcon={this.props.type === "dir" ? <DirIcon/> : <FileIcon/>}
 					/>
 				)
 		}
 
 		return (
 			<div className="file-selector">
-				<div className="file-selector-desc">{this.props.desc}</div>
-				<RaisedButton label={fileName} onTouchTap={() => {this.state.origin = this.state.obj; this.setState({open: true})}}/>
+				<div className="file-selector-desc"><span>{this.props.desc}{this.props.required ? <span className="required">*</span> : null}</span></div>
+				<RaisedButton label={fileName} onTouchTap={() => {this.setState({open: true})}}/>
 
 
 				<Dialog
-					title="选择文件"
+					title={this.props.type === "dir" ? "选择文件夹" : "选择文件"}
 					actions={actions}
 					open={this.state.open}
 					onRequestClose={() => this.select()}

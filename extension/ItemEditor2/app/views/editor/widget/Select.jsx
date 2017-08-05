@@ -19,13 +19,13 @@ export default class Select extends BaseWidget{
 		this.setState({errorText: flag ? "该值不能为空" : null});
 	}
 
-	render(){
+	draw(){
 
 		const list = this.props.values.map((v, i) => <MenuItem primaryText={v.label} value={v.value} key={i}/>);
 
 		return (
 			<SelectField
-				floatingLabelText={this.props.desc}
+				floatingLabelText={<span>{this.props.desc}{this.props.required ? <span className="required">*</span> : null}</span>}
 				value={this.state.obj}
 				onChange={(e, i, v) => this.change(v)}
 				errorText={this.state.errorText}

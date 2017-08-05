@@ -16,11 +16,11 @@ export default class Number extends BaseWidget{
 		this.setState({errorText: flag ? "该值不能为空" : null});
 	}
 
-	render(){
+	draw(){
 		return (
 			<TextField
 				type="number"
-				floatingLabelText={this.props.desc}
+				floatingLabelText={<span>{this.props.desc}{this.props.required ? <span className="required">*</span> : null}</span>}
 				value={this.state.obj}
 				onChange={(e, v) => this.change(parseInt(v))}
 				errorText={this.state.errorText}

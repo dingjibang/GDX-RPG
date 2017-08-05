@@ -11,7 +11,7 @@ export default class AchievementEditor extends Editor {
 
 	render(){
 		return super.renderContainer(
-			<Bind ref="root" change={obj => this.change(obj)} from={this.props.file.object() || {}} child={[
+			<Bind ref="root" editor={this} from={this.props.file.object() || {}} child={[
 				<Input from="name" desc="成就名称" required={true}/>,
 				<Input from="description" desc="成就描述" required={true}/>,
 				<Input from="description2" desc="成就奖励描述" required={true}/>,

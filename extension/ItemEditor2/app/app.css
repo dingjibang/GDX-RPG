@@ -273,9 +273,7 @@ code{
 	display: table;
 	width: 90%;
 	margin: 0 auto;
-	margin-bottom: 15px;
 	font-family: "Microsoft YaHei"!important;
-
 }
 
 .v-edit .bind-object>div input[type='text'], .v-edit .bind-object>div label{
@@ -337,7 +335,9 @@ code{
 	cursor: pointer;
 }
 .file-selector-outer .file>div>div{
-	padding: 10px!important;
+	padding-top: 10px!important;
+	padding-bottom: 10px!important;
+	padding-left: 48px!important;
 }
 .file.current {
 	background-color: rgb(7, 153, 226)!important;
@@ -365,4 +365,21 @@ code{
 	font-size: 13px;
 	vertical-align: top;
 	color: gainsboro;
+}
+
+.v-edit .bind-object>div>div:last-child {
+	margin-bottom: 15px;
+}
+
+*.required{
+	color: red!important;
+}
+
+.file-selector-outer .file>div>div>svg {
+	padding: 0px;
+	margin: 3px!important;
+	margin-left: 6px!Important;
+}
+.file-selector-outer .file.current>div>div>svg {
+	fill: white!important;
 }

@@ -118,7 +118,7 @@ export default class ItemSelector extends BaseWidget{
 	}
 
 
-	render(){
+	draw(){
 
 		let fileName = "选择项目";
 		if(this.state.obj && this.state.obj.length != 0){
@@ -137,13 +137,23 @@ export default class ItemSelector extends BaseWidget{
 
 
 
-		const actions = [
+		const actions = [];
+		if(!this.props.required)
+			actions.push(
+				<FlatButton
+					label="清空"
+					primary={true}
+					onTouchTap={() => {this.change(this.defaultValue()); this.select();}}
+				/>
+			);
+
+		actions.push(
 			<FlatButton
 				label="选择"
 				primary={true}
 				onTouchTap={() => this.select()}
-			/>,
-		];
+			/>
+		);
 
 		let path = window.localStorage.getItem("path") + "/";
 		let files = [];
@@ -178,7 +188,7 @@ export default class ItemSelector extends BaseWidget{
 
 		return (
 			<div className="file-selector">
-				<div className="file-selector-desc">{this.props.desc}</div>
+				<div className="file-selector-desc"><span>{this.props.desc}{this.props.required ? <span className="required">*</span> : null}</span></div>
 				<RaisedButton label={fileName} onTouchTap={() => this.setState({open: true})}/>
 
 

@@ -9,6 +9,7 @@ import CodeMirror from "../overwrite-codemirror/CodeMirror"
 export default class Editor extends React.Component {
 	state = {
 		modified: false,
+		saveable: true,
 		coding: false,
 		text: null,
 		object: {}
@@ -50,10 +51,12 @@ export default class Editor extends React.Component {
 	toggleCoding() {
 		if(this.state.coding){
 			try{
-				this.state.object = eval("(" + this.state.text + ")");
+				this.state.object = this.getObject();
 
-				if(this.refs.root)
+				if(this.refs.root){
+					this.refs.root.update();
 					this.refs.root.set(this.state.object);
+				}
 
 			}catch(e){
 				console.error(e)
@@ -65,14 +68,25 @@ export default class Editor extends React.Component {
 		this.setState(this.state);
 	}
 
+	error(hasError){
+		console.log(hasError)
+		this.setState({saveable: !hasError});
+	}
+
 	setValue(txt) {
 		this.state.text = txt;
 		this.modified(true)
+
+		this.refs.root.update();
 	}
 
 	change(obj) {
 		//console.log(obj)
 		this.setValue(JSON.stringify(obj, null, "\t"))
+	}
+
+	getObject() {
+		return eval("(" + this.state.text + ")");
 	}
 
 
@@ -116,7 +130,7 @@ export default class Editor extends React.Component {
 					</ToolbarGroup>
 
 					<ToolbarGroup>
-						<RaisedButton backgroundColor={"#7fccba"} style={{height: 28}} label="保存" icon={<Save color="white"/>} disabled={!this.state.modified} onClick={() => this.save()}/>
+						<RaisedButton backgroundColor={"#7fccba"} style={{height: 28}} label={this.state.saveable ? "保存" : "没有填写完整"} icon={<Save color="white"/>} disabled={!this.state.modified || !this.state.saveable} onClick={() => this.save()}/>
 						{
 							this.state.coding ?
 								<RaisedButton backgroundColor={"#e29161"} style={{height: 28}} label="切换为编辑视图" icon={<Create color="white"/>} onClick={() => this.toggleCoding()}/>

@@ -2,11 +2,12 @@ import React from 'react';
 
 export default class BaseWidget extends React.Component{
 
-	state = {obj: null}
+	state = {obj: null, enable: true}
 
 	constructor(props){
 		super(props);
 
+		this.update();
 		this.set(undefined, props);
 	}
 
@@ -17,11 +18,15 @@ export default class BaseWidget extends React.Component{
 		this.state.obj = value;
 		this.setState(this.state);
 
-		if(!this.check())
+		const check = this.check();
+
+		this.props.editor.error(!check);
+
+		if(!check)
 			return this.error(true);
 
 		this.error(false);
-		this.requireGet();
+		this.message("change");
 	}
 
 	/**
@@ -30,11 +35,11 @@ export default class BaseWidget extends React.Component{
 	get(parent, root = false){
 		if(this.props.child){
 			if(root){
-				this.child().forEach(c => parent[c.props.from] = c.get(parent));
+				this.child().filter(c => c.state.enable).forEach(c => parent[c.props.from] = c.get(parent));
 				return parent;
 			}else{
 				let obj = {};
-				this.child().forEach(c => obj[c.props.from] = c.get(obj));
+				this.child().filter(c => c.state.enable).forEach(c => obj[c.props.from] = c.get(obj));
 
 				return obj;
 			}
@@ -63,6 +68,28 @@ export default class BaseWidget extends React.Component{
 		}
 	}
 
+	/**
+	 * dom(change) => parent(change) => ... => root(change) => editor(change, update) => root(update) => ... parent(update) => dom(update)
+	 */
+	update(){
+		let enable = true;
+
+		if(this.props.toggle !== undefined){
+			const root = this.props.editor.getObject();
+
+			const __value = this.props.when;
+			let __exp = this.props.toggle;
+
+			enable = eval(__exp + " == __value");
+		}
+
+		//this.setState({enable: enable});
+		this.state.enable = enable;
+
+		if(this.props.child && enable)
+			this.child().forEach(c => c.update());
+	}
+
 	child(){
 		let child = [];
 		let i = 0;
@@ -76,15 +103,33 @@ export default class BaseWidget extends React.Component{
 		return child;
 	}
 
+	render(){
+		if(this.state.enable)
+			return this.draw();
+
+		return null;
+	}
+
+
 	/**
-	 * 向上查找root，找到后获取obj传给editor
+	 * 向root dom传递信息
 	 */
-	requireGet(){
+	message(msg){
+		//root
 		if(!this.props.parent){
-			let obj = this.get({}, true);
-			this.props.change(obj);
+
+			if(msg === "change"){
+				let obj = this.get({}, true);
+				this.props.editor.change(obj);
+				return;
+			}
+
+
+		//
 		}else{
-			this.props.requireGet();
+			return this.props.message(msg);
 		}
 	}
+
 }
+
