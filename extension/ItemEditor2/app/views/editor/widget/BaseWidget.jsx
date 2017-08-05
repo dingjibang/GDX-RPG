@@ -29,26 +29,21 @@ export default class BaseWidget extends React.Component{
 		this.message("change");
 	}
 
+	_child2obj(child, parent){
+		child.filter(c => c.state.enable).forEach(c => (c.props.to || c.props.from).split(" ").forEach(to => parent[to] = c.get(parent)));
+		return parent;
+	}
 	/**
 	 * 获取当前组件的值，可能是Object(bind)或者基本类型
 	 */
 	get(parent, root = false){
 		if(this.props.child){
-			if(root){
-				this.child().filter(c => c.state.enable).forEach(c => parent[c.props.from] = c.get(parent));
-				return parent;
-			}else{
-				let obj = {};
-				this.child().filter(c => c.state.enable).forEach(c => obj[c.props.from] = c.get(obj));
-
-				return obj;
-			}
-
+			return this._child2obj(this.child(), root ? parent : {});
 		}else{
 			if(this.check())
-				return this.state.obj;
+				return this.postValue(this.state.obj);
 
-			return this.defaultValue();
+			return this.postValue(this.props.defaultValue || this.defaultValue());
 		}
 	}
 
@@ -56,15 +51,15 @@ export default class BaseWidget extends React.Component{
 		if(props.parent){
 			let parent = props.parent;
 			if(value === undefined)
-				this.state.obj = parent[props.from] === undefined ? this.defaultValue() : parent[props.from];
+				this.state.obj = this.preValue(parent[props.from] === undefined ? (this.props.defaultValue || this.defaultValue()) : parent[props.from]);
 			else
-				this.state.obj = value;
+				this.state.obj = this.preValue(value);
 		}else{
-			this.state.obj = value || props.from;
+			this.state.obj = this.preValue(value || props.from);
 		}
 
 		if(props.child && value){
-			this.child().forEach(c => c.set(value[c.props.from] || c.defaultValue()));
+			this.child().forEach(c => c.set(value[c.props.from] || c.props.defaultValue || c.defaultValue()));
 		}
 	}
 
@@ -129,6 +124,16 @@ export default class BaseWidget extends React.Component{
 		}else{
 			return this.props.message(msg);
 		}
+	}
+
+	//editor(value) => preValue => dom
+	preValue(value){
+		return value;
+	}
+
+	//dom(value) => postValue => editor
+	postValue(value){
+		return value;
 	}
 
 }

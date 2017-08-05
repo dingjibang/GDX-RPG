@@ -123,7 +123,7 @@ export default class FileListItems extends React.Component {
 		let files = this.state.files.sort(this.sort);
 		for(let file of files){
 			let id = +(file.fileName.split(".")[0]) + 1;
-			if(files.filter(f => f.fileName.split(".")[0] === id).length === 0)
+			if(files.filter(f => f.fileName.split(".")[0] == id).length === 0)
 				return id;
 		}
 		return 1;

@@ -24,6 +24,7 @@ export default class Number extends BaseWidget{
 				value={this.state.obj}
 				onChange={(e, v) => this.change(parseInt(v))}
 				errorText={this.state.errorText}
+			    title={this.props.title || ""}
 			/>
 		)
 	}

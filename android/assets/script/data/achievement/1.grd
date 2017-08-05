@@ -1,11 +1,20 @@
 {
 	"name": "打开菜单",
-	"description": "打开菜单后即可触发",
-	"description2": "金钱+1",
+	"description": "打开菜单后即可触发a",
+	"description2": "金钱+111",
 	"hide": false,
 	"gain": {
-		"item": null,
-		"gold": "",
+		"item": [
+			{
+				"id": "6.grd",
+				"count": 1
+			},
+			{
+				"id": "8.grd",
+				"count": 1
+			}
+		],
+		"gold": 2,
 		"js": ""
 	}
 }

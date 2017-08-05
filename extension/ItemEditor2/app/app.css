@@ -285,7 +285,7 @@ code{
 	margin-left: 5%!important;
 	margin-bottom: 27px!important;
 }
-.v-edit .input-outer>div, .v-edit .number-outer>div{
+.v-edit .color-outer>div, .v-edit .color-outer>div>div, .v-edit .input-outer>div, .v-edit .number-outer>div{
 	min-width: 350px;
 	width: 350px;
 }
@@ -382,4 +382,19 @@ code{
 }
 .file-selector-outer .file.current>div>div>svg {
 	fill: white!important;
+}
+
+.v-edit .bind-object.props>div:not(:first-child) {
+	display: inline-block;
+	width: auto;
+	margin-left: 58px;
+}
+
+div.field-outer{
+	display: none!Important;
+}
+
+.v-edit .bind-object.props .color-outer>div, .v-edit .bind-object.props .color-outer>div>div, .v-edit .bind-object.props .input-outer>div, .v-edit .bind-object.props .number-outer>div{
+	width: 200px!Important;
+	min-width: 200px!Important;
 }

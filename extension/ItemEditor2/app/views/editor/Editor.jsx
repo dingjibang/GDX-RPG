@@ -69,7 +69,6 @@ export default class Editor extends React.Component {
 	}
 
 	error(hasError){
-		console.log(hasError)
 		this.setState({saveable: !hasError});
 	}
 

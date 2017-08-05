@@ -73,7 +73,7 @@ export default class FileSelector extends BaseWidget{
 			/>
 		);
 
-		let path = window.localStorage.getItem("path") + "/";
+		let path = window.localStorage.getItem("path") + require('path').sep;
 		let files = [];
 		const searchValue = this.state.searchValue;
 		for(let i = 0; i < this.state.files.length; i++){

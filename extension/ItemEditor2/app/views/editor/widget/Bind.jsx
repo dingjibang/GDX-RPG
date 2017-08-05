@@ -22,7 +22,7 @@ export default class Bind extends BaseWidget{
 			desc = <div className="bind-desc">{this.props.desc}</div>
 
 		return (
-			<div className={"bind-object" + (desc ? " desc" : "")}>
+			<div className={"bind-object" + (desc ? " desc" : "") + (this.props.className ? (" " + this.props.className) : "")}>
 				{desc}
 				{child.map((ele, idx) => <div key={idx} className={ele.props._className + "-outer"}>{ele}</div>)}
 			</div>
