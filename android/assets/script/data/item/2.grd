@@ -5,10 +5,6 @@
 	description2: "防御+5 魔防+1",
 	equipType: "shoes",
 	effect: {
-		prop: {
-			pdef: {formula: "5"},
-			mdef: {formula: "1"},
-			maxhp: {formula: "50"}
-		}
+		prop: [{"formula":"5","name":"pdef"},{"formula":"1","name":"mdef"},{"formula":"50","name":"maxhp"}]
 	}
 }

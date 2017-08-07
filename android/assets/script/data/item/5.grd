@@ -9,8 +9,8 @@
 	cost:5,
 	packable:false,
 	effect:{
-		prop:{
-			hp:{formula:"30",formulaType:"positive"}
-		}
+		prop:[
+			{name: "hp", formula:"30",formulaType:"positive"}
+		]
 	}
 }

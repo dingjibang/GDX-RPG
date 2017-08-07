@@ -6,9 +6,9 @@
 	equipType:"weapon",
 	packable:false,
 	effect:{
-		prop:{
-			attack:{formula:"12"},
-			magicAttack:{formula:"3"}
-		}
+		prop:[
+			{name:"attack", formula:"12"},
+			{name:"magicAttack", formula:"3"}
+		]
 	}
 }

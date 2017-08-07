@@ -1,11 +1,22 @@
 {
-	name:"嘲讽",
-	description:"100%几率被攻击，同时防御提高20%",
-	type:"buff",
-	prop:{
-		rank:{formula:"23333333",formulaType:"positive"},
-		rankRate:{formula:"23333333",formulaType:"positive"},
-		defense:{formula:"9000%",formulaType:"positive"}
-	},
-	turn:2
+	"name": "嘲讽",
+	"description": "100%几率被攻击，同时防御提高20%",
+	"type": "buff",
+	"prop": [
+		{
+			"formula": "23333333",
+			"formulaType": "positive",
+			"name": "rank"
+		},
+		{
+			"formula": "23333333",
+			"formulaType": "positive",
+			"name": "rankRate"
+		},
+		{
+			"formula": "9000%",
+			"formulaType": "positive",
+			"name": "pdef"
+		}
+	]
 }

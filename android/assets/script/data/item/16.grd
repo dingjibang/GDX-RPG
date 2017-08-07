@@ -6,9 +6,7 @@
 	range:"one",
 	deadable:"no",
 	effect:{
-		prop:{
-			hp:{formula:"10",formulaType:"positive"}
-		}
+		prop:[{"formula":"10","formulaType":"positive","name":"hp"}]
 	},
 	use:""
 }

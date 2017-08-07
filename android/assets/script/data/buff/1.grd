@@ -2,10 +2,5 @@
 	name:"血牛！",
 	description:"所有人生命值上限增加20%",
 	type:"buff",
-	prop:{
-		"maxhp":{
-			formula:"20%",
-			formulaType:"positive"
-		}
-	}
+	prop:[{"formula":"20%","formulaType":"positive","name":"maxhp"}]
 }

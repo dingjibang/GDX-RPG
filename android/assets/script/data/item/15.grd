@@ -10,13 +10,6 @@
 	packable:false,
 	animation:2,
 	effect:{
-		prop:{
-			hp : {
-				formula:"self.magicAttack",
-				floatRate:"10%",
-				formulaType:"negative",
-				style:"magic"
-			}
-		}
+		prop:[{"formula":"self.magicAttack","floatRate":"10%","formulaType":"negative","style":"magic","name":"hp"}]
 	}
 }

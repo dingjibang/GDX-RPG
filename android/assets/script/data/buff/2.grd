@@ -2,12 +2,7 @@
 	name:"防御",
 	description:"一回合防御值提升30%",
 	type:"buff",
-	prop:{
-		defense:{
-			formula:"30%",
-			formulaType:"positive"
-		}
-	},
+	prop:[{"formula":"30%","formulaType":"positive","name":"defense"}],
 	filter:{
 		onTurnBegin:"\
 			var result = {flag: false, msg: 'negative~'};\

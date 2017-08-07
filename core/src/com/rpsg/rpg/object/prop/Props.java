@@ -17,11 +17,12 @@ public class Props{
 	}
 	
 	public static Props fromJSON(JsonValue value) {
-		Props p = new Props();
+		Props props = new Props();
+
 		for(int i = 0; i < value.size; i ++){
-			JsonValue child = value.get(i);
-			p.props.put(PropKey.valueOf(child.name), Prop.fromJSON(child));
+			Prop prop = Prop.fromJSON(value.get(i));
+			props.props.put(prop.name, prop);
 		}
-		return p;
+		return props;
 	}
 }

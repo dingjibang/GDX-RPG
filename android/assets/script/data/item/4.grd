@@ -8,10 +8,10 @@
 	packable:false,
 	throwable:false,
 	effect:{
-		prop:{
-			attack:{formula:"5"},
-			magicAttack:{formula:"1"},
-			hit:{formula:"-1"}
-		}
+		prop:[
+			{name: "attack", formula:"5"},
+			{name: "magicAttack", formula:"1"},
+			{name: "hit", formula:"-1"}
+		]
 	}
 }

@@ -17,6 +17,8 @@ public class Prop {
 	String formula;
 	/**攻击类型*/
 	FormulaType formulaType;
+	/**类型*/
+	PropKey name;
 	
 	public static Prop fromJSON(JsonValue value) {
 		Prop p = new Prop();
@@ -24,6 +26,7 @@ public class Prop {
 		p.style = value.has("style") ? PropStyle.valueOf(value.getString("style")) : PropStyle.physic;
 		p.formula = value.getString("formula");
 		p.formulaType = value.has("formulaType") ? FormulaType.valueOf(value.getString("formulaType")) : FormulaType.negative;
+		p.name = PropKey.valueOf(value.getString("name"));
 		
 		return p; 
 	}

@@ -6,9 +6,7 @@
 	range:"one",
 	deadable:"yes",
 	effect:{
-		prop:{
-			dead:{formula:"0"}
-		}
+		prop:[{"formula":"0","name":"dead"}]
 	},
 	use:""
 }
