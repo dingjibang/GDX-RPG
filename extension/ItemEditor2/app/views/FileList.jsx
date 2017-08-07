@@ -23,6 +23,10 @@ export default class FileList extends React.Component {
 			},
 			find: (type, name) => {
 				if(name != undefined){ // find file dom(FileListItem)
+
+					if(!isNaN(name))
+						name += ".grd";
+
 					let outer = E.files.find(type);
 
 					let fileResult = null;

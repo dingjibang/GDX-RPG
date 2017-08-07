@@ -21,7 +21,20 @@ export default class ItemSelector extends BaseWidget{
 	}
 
 	componentWillMount(){
-		this.setState({files: E.files.find(this.props.type).list().map(dom => dom.get())});
+		let files = E.files.find(this.props.type).list().map(dom => dom.get());
+
+		if(this.props.filter){
+			let _files = [];
+			for(let file of files)
+				try{
+					if(this.props.filter(eval("(" + file.fileText + ")")))
+						_files.push(file);
+				}catch(e){}
+
+			files = _files;
+		}
+
+		this.setState({files: files});
 	}
 
 	defaultValue(){
@@ -39,6 +52,10 @@ export default class ItemSelector extends BaseWidget{
 		this.setState({open: false});
 	}
 
+	preFileName(filename){
+		return this.props.id ? +filename.split(".")[0] : filename;
+	}
+
 	selectFile(file){
 		let obj = this.has(file);
 
@@ -47,10 +64,10 @@ export default class ItemSelector extends BaseWidget{
 		let to = this.state.obj;
 
 		if(!obj && this.props.count)
-			obj = {id: file.fileName, count: 0};
+			obj = {id: this.preFileName(file.fileName), count: 0};
 
 		if(!obj && !this.props.count)
-			obj = file.fileName;
+			obj = this.preFileName(file.fileName);
 
 		if(!to && this.props.multi)
 			to = [];
@@ -111,10 +128,10 @@ export default class ItemSelector extends BaseWidget{
 		if(!via)
 			via = this.state.obj;
 
-		if(this.props.count && obj.fileName == via.id)
+		if(this.props.count && this.preFileName(obj.fileName) == via.id)
 			return via;
 
-		return obj.fileName == via ? via : null;
+		return this.preFileName(obj.fileName) == via ? via : null;
 	}
 
 

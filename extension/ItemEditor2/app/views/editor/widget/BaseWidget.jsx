@@ -11,6 +11,10 @@ export default class BaseWidget extends React.Component{
 		this.set(undefined, props);
 	}
 
+	defaultValue(){
+		return null;
+	}
+
 	/**
 	 * 当内容变更时，尝试向上调用#requireGet()
 	 */
@@ -30,7 +34,7 @@ export default class BaseWidget extends React.Component{
 	}
 
 	_child2obj(child, parent){
-		child.filter(c => c.state.enable).forEach(c => (c.props.to || c.props.from).split(" ").forEach(to => parent[to] = c.get(parent)));
+		child.filter(c => c.state.enable && (c.props.from || c.props.to)).forEach(c => (c.props.to || c.props.from).split(" ").forEach(to => parent[to] = c.get(parent)));
 		return parent;
 	}
 	/**
