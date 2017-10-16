@@ -67,7 +67,7 @@ public class Sound {
 		
 		public MusicManager() {
 			//添加task到主循环，让Timer托管
-			loopTask = Timer.add(0, () -> {
+			loopTask = Timer.add(Timer.TimeType.frame, 0, () -> {
 				Stream.of(manager.values()).forEach(MusicProxy::act);
 			});
 		}

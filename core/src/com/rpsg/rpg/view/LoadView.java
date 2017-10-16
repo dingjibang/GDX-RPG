@@ -3,12 +3,21 @@ package com.rpsg.rpg.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.*;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Log;
 import com.rpsg.rpg.core.Path;
 import com.rpsg.rpg.core.Res;
 import com.rpsg.rpg.ui.view.View;
+import com.rpsg.rpg.ui.widget.Image;
+import com.rpsg.rpg.ui.widget.Label;
 
 /**
  * 载入动画视图<br>
@@ -20,43 +29,51 @@ public class LoadView extends View{
 	private boolean updated = true;
 	/**id列表*/
 	private List<String> idList = new ArrayList<>();
-	
+
+	Label fps = new Label("1 ", 17), fpsShadow = new Label(" ", 17);
+	Group sprite;
+
 	public void create() {
 		stage = Game.stage();
 		
-		Res.get(Path.IMAGE_LOAD + "sprite.png").query().action(Actions.forever(Actions.rotateBy(360, .5f))).position(Game.STAGE_WIDTH - 70, 30).to(stage);
-		
-		stage.getRoot().getColor().a = 0; 
+		Image image = Res.get(Path.IMAGE_LOAD + "sprite.png");
+		image.query().action(Actions.forever(Actions.rotateBy(360, .5f))).position(Game.STAGE_WIDTH - 70, 30).to(stage);
+
+		$.add(sprite = new Group()).addActor(image).a(0).to(stage);
+
+		$.add(fpsShadow).position(4, Game.STAGE_HEIGHT - 24).color(Color.BLACK).a(0.5f).to(stage);
+		$.add(fps).position(3, Game.STAGE_HEIGHT - 23).color(Color.WHITE).a(0.5f).to(stage);
+
 		
 		Log.i("Load-view[created]");
 	}
 
 	public void draw() {
 		//如果Res正在处理资源，或有自定义资源正在处理，则画图
-		if(!updated || !idList.isEmpty() || stage.getRoot().getActions().size != 0){
-			stage.act();
-			stage.draw();
-		}
+		stage.act();
+		stage.draw();
 	}
 
 	public void act() {
 		//更新资源
 		updated = Res.act();
-		
-		if(stage.getRoot().getActions().size == 0){
-			if(updated && idList.isEmpty() && stage.getRoot().getColor().a == 1f)
-				stage.addAction(Actions.fadeOut(.3f));
+		if(sprite.getActions().size == 0){
+			if(updated && idList.isEmpty() && sprite.getColor().a == 1f)
+				sprite.addAction(Actions.fadeOut(.3f));
 			
-			if((!updated || !idList.isEmpty()) && stage.getRoot().getColor().a == 0)
-				stage.addAction(Actions.fadeIn(.3f));
+			if((!updated || !idList.isEmpty()) && sprite.getColor().a == 0)
+				sprite.addAction(Actions.fadeIn(.3f));
 		}
+
+		fps.text(Gdx.graphics.getFramesPerSecond() + "");
+		fpsShadow.text(Gdx.graphics.getFramesPerSecond() + "");
 	}
 	
 	public void start(String id) {
 		idList.add(id);
-		
-		stage.getRoot().clearActions();
-		stage.addAction(Actions.fadeIn(.3f));
+
+		sprite.clearActions();
+		sprite.addAction(Actions.fadeIn(.3f));
 	}
 	
 	public void stop(String id) {

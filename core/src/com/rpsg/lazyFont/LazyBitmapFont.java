@@ -21,35 +21,35 @@ import com.badlogic.gdx.utils.GdxRuntimeException;
 /**
  * GDX-LAZY-FONT for LibGDX 1.5.0+<br/>
  * <b>Auto generate & manage your bitmapfont without pre-generate.</b>
- * 
+ *
  * @version 2.1.5
  * @see see https://github.com/dingjibang/GDX-LAZY-FONT
  * @author dingjibang
  *
  */
 public class LazyBitmapFont extends BitmapFont {
-	
+
 	private FreeTypeFontGenerator generator;
 	private FreeTypeBitmapFontData data;
 	private FreeTypeFontParameter parameter;
-	
+
 	public final int fontSize;
 
 	private static FreeTypeFontGenerator GLOBAL_GEN = null;
-	
+
 	public static void setGlobalGenerator(FreeTypeFontGenerator generator){
 		GLOBAL_GEN = generator;
 	}
-	
+
 	public LazyBitmapFont(int fontSize){
 		this(GLOBAL_GEN, fontSize);
 	}
-	
+
 	public LazyBitmapFont(FreeTypeFontGenerator generator, int fontSize) {
 		this.fontSize = fontSize;
-		
+
 		if(generator == null)
-			 throw new GdxRuntimeException("lazyBitmapFont global generator must be not null to use this constructor.");
+			throw new GdxRuntimeException("lazyBitmapFont global generator must be not null to use this constructor.");
 		this.generator = generator;
 		FreeTypeFontParameter param = new FreeTypeFontParameter();
 		param.size = fontSize;
@@ -90,7 +90,7 @@ public class LazyBitmapFont extends BitmapFont {
 		}
 		if (spaceGlyph.width == 0)
 			spaceGlyph.width = (int) (spaceGlyph.xadvance + data.padRight);
-		
+
 		// set general font data
 		data.flipped = parameter.flip;
 		data.ascent = FreeType.toInt(fontMetrics.getAscender());
@@ -161,9 +161,9 @@ public class LazyBitmapFont extends BitmapFont {
 //			Pixmap map = gab.bitmap.getPixmap(Format.RGBA8888);
 			Pixmap map = gab.bitmap.getPixmap(Format.RGBA8888, Color.WHITE, 1);
 			TextureRegion rg = new TextureRegion(new Texture(map));
-			
+
 			rg.getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
-			
+
 			map.dispose();
 
 			font.getRegions().add(rg);

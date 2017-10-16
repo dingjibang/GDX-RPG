@@ -1,20 +1,20 @@
 {
-	"name": "132",
-	"description": "",
+	"name": "qwe",
+	"description": "desc",
 	"description2": "",
 	"hide": true,
 	"gain": {
 		"item": [
 			{
-				"id": "6.grd",
+				"id": "13.grd",
 				"count": 1
 			},
 			{
-				"id": "13.grd",
+				"id": "14.grd",
 				"count": 2
 			}
 		],
-		"gold": 33,
-		"js": "1.js"
+		"gold": "",
+		"js": ""
 	}
 }

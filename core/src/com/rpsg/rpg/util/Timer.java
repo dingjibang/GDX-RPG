@@ -15,39 +15,42 @@ public class Timer {
 	public static final int FOREVER = -1;
 	static boolean pause = false;
 	
-	public static Task add(int delayFrame, int repeat, Runnable run) {
+	public static Task add(TimeType type, int delay, int repeat, Runnable run) {
 		Task task = new Task();
 		task.run = run;
-		task.time = task.originTime = delayFrame;
+		task.time = task.originTime = delay;
 		task.repeat = repeat;
+		task.type = type;
 		list.add(task);
 		
 		return task;
 	}
 	
-	public static Task add(int delayFrame, Runnable run) {
-		return add(delayFrame, 1, run);
+	public static Task add(TimeType type, int delay, Runnable run) {
+		return add(type, delay, 1, run);
 	}
 	
 	public static void act() {
+		float delta = Gdx.graphics.getRawDeltaTime();
+
 		if(!list.isEmpty()){
 			List<Task> removeList = new ArrayList<>();
-			for(Task timer : list)
-				if(timer.time -- < 0){
+			for(Task timer : list){
+				if((timer.type == TimeType.frame && timer.time -- < 0) || (timer.type == TimeType.millisecond && (timer.time -= delta * 1000) < 0)){
 					timer.run.run();
 					if(timer.repeat != FOREVER &&  -- timer.repeat == 0)
-						removeList.add(timer);
+						removeList.add(timer.done());
 					else
 						timer.time = timer.originTime;
 				}
-			
+			}
+
 			list.removeAll(removeList);
-					
 		}
 
 		//更新当前存档进行时间
 		if(Game.archive.has() && !pause)
-			Game.archive.get().time += Gdx.graphics.getDeltaTime() * 1000;
+			Game.archive.get().time += delta * 1000;
 	}
 
 	public static void pause() {
@@ -66,6 +69,17 @@ public class Timer {
 		public int time, originTime;
 		public int repeat = 1;
 		public Runnable run;
-		
+		public TimeType type;
+
+		public boolean done = false;
+
+		public Task done(){
+			done = true;
+			return this;
+		}
+	}
+
+	public enum TimeType{
+		frame, millisecond
 	}
 }

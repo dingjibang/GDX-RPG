@@ -56,6 +56,10 @@ export default class Prop extends BaseWidget{
 
 	}
 
+	createPropDom(obj){
+		
+	}
+
 	draw(){
 		let dom = [];
 
@@ -68,39 +72,7 @@ export default class Prop extends BaseWidget{
 			obj.type = obj.formulaType === "negative" ? (obj.type || "none") : undefined;
 
 			dom.push(
-				<div key={key++}>
-					<SelectField value={obj.name} onChange={(e, i, v) => (obj.name = v) & this.change(this.state.obj)}>
-						{selectList}
-					</SelectField>
 
-					<SelectField value={obj.formulaType} onChange={(e, i, v) => (obj.formulaType = v) & this.change(this.state.obj)} style={{"width": "120px"}}>
-						<MenuItem primaryText="增加了" value="positive"/>
-						<MenuItem primaryText="减少了" value="negative"/>
-					</SelectField>
-
-					{obj.formulaType === "negative" &&
-					<SelectField value={obj.type} onChange={(e, i, v) => (obj.type = v) & this.change(this.state.obj)} style={{"width": "150px"}}>
-						<MenuItem primaryText="无属性的" value="none"/>
-						<MenuItem primaryText="日属性的" value="sun"/>
-						<MenuItem primaryText="月属性的" value="moon"/>
-						<MenuItem primaryText="金属性的" value="metal"/>
-						<MenuItem primaryText="木属性的" value="wood"/>
-						<MenuItem primaryText="水属性的" value="water"/>
-						<MenuItem primaryText="火属性的" value="fire"/>
-						<MenuItem primaryText="土属性的" value="earth"/>
-					</SelectField>
-					}
-
-					{obj.formulaType === "negative" &&
-						<SelectField value={obj.style} onChange={(e, i, v) => (obj.style = v) & this.change(this.state.obj)} style={{"width": "150px"}}>
-							<MenuItem primaryText="物理攻击" value="physic"/>
-							<MenuItem primaryText="魔法攻击" value="magic"/>
-						</SelectField>
-					}
-
-					<TextField value={obj.formula} onChange={(e, v) => (obj.formula = v) & this.change(this.state.obj)} style={{verticalAlign: "top", "width": "150px"}} id={key + ""}/>
-
-				</div>
 			);
 		};
 

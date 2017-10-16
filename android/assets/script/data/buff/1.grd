@@ -1,6 +1,7 @@
 {
-	name:"血牛！",
-	description:"所有人生命值上限增加20%",
+	name:"嘲讽",
+	description:"100%几率被攻击，同时防御提高20%",
 	type:"buff",
-	prop:[{"formula":"20%","formulaType":"positive","name":"maxhp"}]
+	prop:[{"formula":"23333333","formulaType":"positive","name":"rank"},{"formula":"23333333","formulaType":"positive","name":"rankRate"},{"formula":"9000%","formulaType":"positive","name":"defense"}],
+	turn:2
 }

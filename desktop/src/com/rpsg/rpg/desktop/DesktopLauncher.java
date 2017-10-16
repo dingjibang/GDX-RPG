@@ -23,7 +23,10 @@ public class DesktopLauncher {
 		
 		config.width = 1280;
 		config.height = 720;
-		
+
+		config.foregroundFPS = 0; // Setting to 0 disables foreground fps throttling
+		config.backgroundFPS = 0;
+
 		//程序未进入之前，先显示灰色的背景
         config.initialBackgroundColor= Color.valueOf("2c2c2c");
         
@@ -35,16 +38,7 @@ public class DesktopLauncher {
         
         //进入入口
 		new LwjglApplication(new Views(), config);//gameviews就是咱们游戏的核心了。
-		
-		System.out.println(toThumb("image/photos/asdasdasd.jpg"));
-        
+
 	}
 	
-	private static String toThumb(String str){
-    	String[] arr = str.split("/");
-    	String result = "";
-    	for(int i = 0; i < arr.length - 1; i ++)
-    		result += arr[i] + "/";
-    	return result + "thumb" + arr[arr.length - 1];
-    }
 }

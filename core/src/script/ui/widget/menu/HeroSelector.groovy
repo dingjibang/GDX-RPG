@@ -5,8 +5,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.scenes.scene2d.Group
 import com.badlogic.gdx.scenes.scene2d.actions.Actions
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
+import com.rpsg.rpg.core.RPG
 import com.rpsg.rpg.object.hero.Hero
 import com.rpsg.rpg.object.prop.PropKey
+import com.rpsg.rpg.util.Timer
 
 import static com.rpsg.rpg.util.UIUtil.*
 
@@ -50,13 +52,16 @@ class HeroSelector extends Group {
 		$("" + hero.target.get(PropKey.level), 16).size(106, 23).center().color("000000").y(10).disableTouch() to this
 	}
 
-	def timer = 27, currentWalk = 0;
+	Timer.Task timer
+
+	def currentWalk = 0;
 	void draw(Batch batch, float parentAlpha) {
-		if(timer-- < 0){
-			timer = 27
-			if(++currentWalk == 4) currentWalk = 0;
-			walkImg.get().setDrawable(walkTexture[currentWalk == 3 ? 1 : currentWalk])
-			walkImg.nearest()
+		if(!timer || timer.done){
+			timer = Timer.add(Timer.TimeType.millisecond, 300, {
+				if(++currentWalk == 4) currentWalk = 0
+				walkImg.get().setDrawable(walkTexture[currentWalk == 3 ? 1 : currentWalk])
+				walkImg.nearest()
+			})
 		}
 		super.draw(batch, parentAlpha)
 	}

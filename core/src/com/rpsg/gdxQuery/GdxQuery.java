@@ -306,6 +306,14 @@ public class GdxQuery {
 		return alpha(a);
 	}
 
+	public GdxQuery addActor(Actor... actors){
+		Actor one = get();
+		if(one instanceof Group)
+			for(Actor actor : actors)
+				((Group) one).addActor(actor);
+		return this;
+	}
+
 	public GdxQuery color(float r,float g,float b,float a){
 		for(Actor actor:list())
 			actor.setColor(r,g,b,a);
