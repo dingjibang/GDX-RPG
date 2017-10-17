@@ -35,6 +35,12 @@ public class Setting implements Serializable{
 	
 	/**窗口缩放模式，true为{@link Scaling#fit 适应缩放}，false为{@link Scaling#stretch 拉抻缩放}*/
 	public boolean fitScaling = true;
+
+	/**【仅用于调试】是否开启“错误后继续运行游戏”，开启后将忽视关键性错误继续运行游戏，但是会造成严重性能下降以及未知的情况。*/
+	public boolean onErrorResumeNext = true;
+
+	/**【仅用于调试】是否开启UI调试，开启后将显示UI边框。*/
+	public boolean uiDebug = false;
 	
 	/**
 	 * 创建系统设置，如果硬盘已存在则直接读取

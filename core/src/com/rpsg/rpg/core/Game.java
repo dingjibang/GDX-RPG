@@ -106,7 +106,12 @@ public class Game {
 	 * 要注意的是，这个画笔的{@link com.badlogic.gdx.graphics.g2d.Batch#setTransformMatrix(com.badlogic.gdx.math.Matrix4) transform}被改变的话，将可能导致接下来绘制的东西坐标出现异常。
 	 */
 	public static Stage stage(){
-		return new Stage(viewport(), Views.batch);
+		Stage stage = new Stage(viewport(), Views.batch);
+
+		if(Game.setting.uiDebug)
+			stage.setDebugAll(true);
+
+		return stage;
 	}
 	
 	/**

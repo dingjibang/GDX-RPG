@@ -92,12 +92,26 @@ public class Views implements ApplicationListener {
 		
 		//依次遍历view
 		//创建views的快照进行遍历
-		for(int i = views.size() - 1; i >= 0; i--){
-			View view = views.get(i);
-			view.act();
-			view.draw();
+
+		if(Game.setting.onErrorResumeNext){
+			for(int i = views.size() - 1; i >= 0; i--){
+				try{
+					View view = views.get(i);
+					view.act();
+					view.draw();
+				}catch(Exception e){
+					e.printStackTrace();//TODO toast exception
+				}
+			}
+
+		}else{
+			for(int i = views.size() - 1; i >= 0; i--){
+				View view = views.get(i);
+				view.act();
+				view.draw();
+			}
 		}
-		
+
 		loadView.act();
 		loadView.draw();
 	}

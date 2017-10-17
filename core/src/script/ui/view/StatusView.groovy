@@ -24,6 +24,7 @@ import static com.rpsg.rpg.util.UIUtil.*
  */
 class StatusView extends MenuableView{
 
+
 	void create() {
 		generate()
 	}
@@ -32,8 +33,6 @@ class StatusView extends MenuableView{
 		stage.clear()
 		
 		Hero hero = parent.currentHero.get().hero
-		
-		stage.debugAll = false
 		
 		def table = new Table().padTop(70).left().top()
 		
@@ -80,6 +79,7 @@ class StatusView extends MenuableView{
 		
 		def help = $(new Group()).y(0).a(0);
 		$("base#000000").a(0.8f).size(610, 40 * PropType.values().length) to help
+		$(Res.text.getLabel("魔理沙对你使用了「Master Spark」，造成100伤害！\n但你的光属性有效率为80%，所以最后只对你造成了80伤害。", 18).maxWidth(610).warp(true)).x(17).y(20).width(610) to help
 				
 		$(new LabelImageCheckbox("帮助", 22, 
 			Res.sync(Path.IMAGE_MENU_STATUS + "triangle_d.png"), 
@@ -139,21 +139,17 @@ class StatusView extends MenuableView{
 		//end   equipment
 
 		table.add(new Actor()).padBottom(50)
+
+		table.getCells().items.eachWithIndex {cell, idx ->
+			if(cell && cell.actor){
+				cell.actor.moveBy(0, -500 * idx)
+				$(cell.actor).a(0).action(Actions.fadeIn(0.2f))
+			}
+		}
 		table.layout()
 
-//		table.getCells().items.each {cell ->
-//			if(cell && cell.actor){
-//				def outer = new Group(), actor = cell.actor
-//				outer.addActor(actor)
-//				outer.setSize(actor.width, actor.height)
-//				cell.actor = outer
-//				$(outer).y(500).action(Actions.moveBy(0, 500, 0.3f, Interpolation.pow4Out))
-//			}
-//		}
-
-
-		
 		$(new ScrollPane(table)).position(320, 0).size(960, 720) to stage
+
 	}
 	
 	void draw() {
