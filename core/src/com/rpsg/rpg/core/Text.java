@@ -1,5 +1,6 @@
 package com.rpsg.rpg.core;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -17,7 +18,7 @@ import com.rpsg.rpg.ui.widget.Label;
  * 请在{@link Res#text}访问本类
  */
 public class Text {
-	private Map<Param, LazyBitmapFont> map = new TreeMap<>();
+	private Map<Param, LazyBitmapFont> map = new HashMap<>();
 
 	public FreeTypeFontGenerator NORMAL_GENERATOR = new FreeTypeFontGenerator(Gdx.files.internal(Path.BASE_PATH + "font/xyj.ttf"));
 	public FreeTypeFontGenerator ENGLISH_GENERATOR = new FreeTypeFontGenerator(Gdx.files.internal(Path.BASE_PATH + "font/Coold.ttf"));
@@ -32,11 +33,17 @@ public class Text {
 
 		if (hd)
 			fontSize += fontSize;
-		LazyBitmapFont font = map.get(new Param(fontSize, gen));
+
+		LazyBitmapFont font = null;
+		for(Param k : map.keySet())
+			if(k.size == fontSize && k.gen == gen)
+				font = map.get(k);
+
 		if (font == null) {
 			font = gen == null ? new LazyBitmapFont(fontSize) : new LazyBitmapFont(gen, fontSize);
 			map.put(new Param(fontSize, gen), font);
 		}
+
 		if (hd)
 			font.getData().setScale(.5f);
 
@@ -63,18 +70,16 @@ public class Text {
 	}
 
 
-	private static class Param implements Comparable<Param> {
+	private static class Param{
 		public int size;
 		public FreeTypeFontGenerator gen;
 
 		public Param(int size, FreeTypeFontGenerator gen) {
+			Log.i("_______________________________________________no font-size of generator[" + size);
 			this.size = size;
 			this.gen = gen;
 		}
 
-		public int compareTo(Param o) {
-			return (((Param) o).size == size && ((Param) o).gen == gen) ? 0 : -1;
-		}
 	}
 
 	public int getTextWidth(String str, int size) {

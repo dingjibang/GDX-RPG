@@ -1,12 +1,10 @@
 package com.rpsg.lazyFont;
 
-import java.lang.reflect.Field;
-
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeType;
@@ -17,15 +15,19 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeBitm
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.GlyphAndBitmap;
 import com.badlogic.gdx.utils.GdxRuntimeException;
+import com.rpsg.rpg.core.Log;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * GDX-LAZY-FONT for LibGDX 1.5.0+<br/>
  * <b>Auto generate & manage your bitmapfont without pre-generate.</b>
  *
- * @version 2.1.5
- * @see see https://github.com/dingjibang/GDX-LAZY-FONT
  * @author dingjibang
- *
+ * @version 2.1.5
+ * @see https://github.com/dingjibang/GDX-LAZY-FONT
  */
 public class LazyBitmapFont extends BitmapFont {
 
@@ -33,22 +35,22 @@ public class LazyBitmapFont extends BitmapFont {
 	private FreeTypeBitmapFontData data;
 	private FreeTypeFontParameter parameter;
 
-	public final int fontSize;
-
 	private static FreeTypeFontGenerator GLOBAL_GEN = null;
 
-	public static void setGlobalGenerator(FreeTypeFontGenerator generator){
+	public final int fontSize;
+
+	public static void setGlobalGenerator(FreeTypeFontGenerator generator) {
 		GLOBAL_GEN = generator;
 	}
 
-	public LazyBitmapFont(int fontSize){
+	public LazyBitmapFont(int fontSize) {
 		this(GLOBAL_GEN, fontSize);
 	}
 
 	public LazyBitmapFont(FreeTypeFontGenerator generator, int fontSize) {
 		this.fontSize = fontSize;
 
-		if(generator == null)
+		if (generator == null)
 			throw new GdxRuntimeException("lazyBitmapFont global generator must be not null to use this constructor.");
 		this.generator = generator;
 		FreeTypeFontParameter param = new FreeTypeFontParameter();
@@ -140,16 +142,23 @@ public class LazyBitmapFont extends BitmapFont {
 		private LazyBitmapFont font;
 		private int page = 1;
 
+		//modified by STH99 on 2017-8-8
+
+		LazyBitmapFontTexture lazyBitmapFontTexture = new LazyBitmapFontTexture();
+
 		public LazyBitmapFontData(FreeTypeFontGenerator generator, int fontSize, LazyBitmapFont lbf) {
 			this.generator = generator;
 			this.fontSize = fontSize;
 			this.font = lbf;
+
 		}
 
 		public Glyph getGlyph(char ch) {
 			Glyph glyph = super.getGlyph(ch);
-			if (glyph == null && ch != 0)
+			if (glyph == null && ch != 0){
+				Log.i("no glyph ["+ch+", "+fontSize+"], generate↓");
 				glyph = generateGlyph(ch);
+			}
 			return glyph;
 		}
 
@@ -158,11 +167,14 @@ public class LazyBitmapFont extends BitmapFont {
 			if (gab == null || gab.bitmap == null)
 				return null;
 
-//			Pixmap map = gab.bitmap.getPixmap(Format.RGBA8888);
-			Pixmap map = gab.bitmap.getPixmap(Format.RGBA8888, Color.WHITE, 1);
-			TextureRegion rg = new TextureRegion(new Texture(map));
+			//modified by STH99 on 2017-6-10
+			Pixmap map = gab.bitmap.getPixmap(Format.RGBA8888, Color.WHITE, 1.0f);
 
-			rg.getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+			TextureRegion rg = lazyBitmapFontTexture.draw(map);
+			if(rg == null){
+				Log.i("new texture!!!!!!!!!!!");
+				rg = (lazyBitmapFontTexture = new LazyBitmapFontTexture()).draw(map);
+			}
 
 			map.dispose();
 
@@ -173,6 +185,61 @@ public class LazyBitmapFont extends BitmapFont {
 			setGlyphRegion(gab.glyph, rg);
 
 			return gab.glyph;
+		}
+
+	}
+
+
+	private static class LazyBitmapFontTexture{
+
+		private static final int WIDTH = 0xff;
+		private static final int HEIGHT = 60;
+		//加入5像素间距，防止纹理放大后产生花边
+		private static final int PADDING = 5;
+
+		private Texture tex = new Texture(new Pixmap(WIDTH, HEIGHT, Format.RGBA8888));
+
+		private int currX = 0, currY = 0, lineHeight = 0;
+
+		LazyBitmapFontTexture(){
+			tex.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+		}
+
+		//modified by STH99 on 2017-8-8
+		//所有生成的分开的材质整合进一个大材质
+		//GL在绘制时不用再切换材质了，节省每个字符间切换材质花费的时间
+		//性能提升1倍多（改前30帧，现在60帧）
+		TextureRegion draw(Pixmap map){
+			int w = map.getWidth();
+			int h = map.getHeight();
+
+			Log.i(hashCode() + " w:" + w + ", h:" + h + ", x:" + currX + ", y:" + currY);
+
+
+			if (currX + w + PADDING >= WIDTH) {
+
+				currX = 0;
+				currY += lineHeight + PADDING;
+
+				lineHeight = 0;
+
+				if(currY + h + PADDING >= HEIGHT)
+					return null;
+			}
+
+			tex.draw(map, currX, currY);
+			TextureRegion reg = new TextureRegion(tex, currX, currY, w, h);
+
+			Log.i(hashCode() + " w:" + w + ", h:" + h + ", x:" + currX + ", y:" + currY);
+
+			{
+				currX += w + PADDING;
+				lineHeight = lineHeight > h ? lineHeight : h;
+			}
+
+			Log.i(hashCode() + " w:" + w + ", h:" + h + ", x:" + currX + ", y:" + currY);
+
+			return reg;
 		}
 
 	}
