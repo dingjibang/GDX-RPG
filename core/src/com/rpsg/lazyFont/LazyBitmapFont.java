@@ -156,7 +156,6 @@ public class LazyBitmapFont extends BitmapFont {
 		public Glyph getGlyph(char ch) {
 			Glyph glyph = super.getGlyph(ch);
 			if (glyph == null && ch != 0){
-				Log.i("no glyph ["+ch+", "+fontSize+"], generate↓");
 				glyph = generateGlyph(ch);
 			}
 			return glyph;
@@ -171,10 +170,8 @@ public class LazyBitmapFont extends BitmapFont {
 			Pixmap map = gab.bitmap.getPixmap(Format.RGBA8888, Color.WHITE, 1.0f);
 
 			TextureRegion rg = lazyBitmapFontTexture.draw(map);
-			if(rg == null){
-				Log.i("new texture!!!!!!!!!!!");
+			if(rg == null)
 				rg = (lazyBitmapFontTexture = new LazyBitmapFontTexture()).draw(map);
-			}
 
 			map.dispose();
 
@@ -213,7 +210,6 @@ public class LazyBitmapFont extends BitmapFont {
 			int w = map.getWidth();
 			int h = map.getHeight();
 
-			Log.i(hashCode() + " w:" + w + ", h:" + h + ", x:" + currX + ", y:" + currY);
 
 
 			if (currX + w + PADDING >= WIDTH) {
@@ -230,14 +226,10 @@ public class LazyBitmapFont extends BitmapFont {
 			tex.draw(map, currX, currY);
 			TextureRegion reg = new TextureRegion(tex, currX, currY, w, h);
 
-			Log.i(hashCode() + " w:" + w + ", h:" + h + ", x:" + currX + ", y:" + currY);
 
-			{
-				currX += w + PADDING;
-				lineHeight = lineHeight > h ? lineHeight : h;
-			}
+			currX += w + PADDING;
+			lineHeight = lineHeight > h ? lineHeight : h;
 
-			Log.i(hashCode() + " w:" + w + ", h:" + h + ", x:" + currX + ", y:" + currY);
 
 			return reg;
 		}

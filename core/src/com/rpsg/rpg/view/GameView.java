@@ -9,6 +9,7 @@ import com.rpsg.rpg.core.Log;
 import com.rpsg.rpg.ui.view.View;
 import com.rpsg.rpg.view.game.FG;
 import com.rpsg.rpg.view.game.MessageBox;
+import script.ui.view.MenuView;
 
 /**
  * GDX-RPG 游戏视窗<br>
@@ -43,6 +44,7 @@ public class GameView extends View{
 		menu = new GameMenuController();
 		
 		Log.i("Game-view[created]");
+
 	}
 	
 	public void draw() {

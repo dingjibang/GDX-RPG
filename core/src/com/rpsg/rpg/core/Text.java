@@ -75,7 +75,6 @@ public class Text {
 		public FreeTypeFontGenerator gen;
 
 		public Param(int size, FreeTypeFontGenerator gen) {
-			Log.i("_______________________________________________no font-size of generator[" + size);
 			this.size = size;
 			this.gen = gen;
 		}

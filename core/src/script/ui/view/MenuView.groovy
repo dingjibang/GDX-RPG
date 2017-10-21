@@ -1,6 +1,10 @@
 package script.ui.view
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
+import com.badlogic.gdx.graphics.GL20
+import com.badlogic.gdx.graphics.Pixmap
+import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.math.Interpolation
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.scenes.scene2d.Group
@@ -8,6 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions
 import com.badlogic.gdx.scenes.scene2d.actions.AddAction
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane
 import com.badlogic.gdx.scenes.scene2d.ui.Table
+import com.badlogic.gdx.utils.BufferUtils
+import com.badlogic.gdx.utils.ScreenUtils
 import com.rpsg.gdxQuery.GdxQuery
 import com.rpsg.gdxQuery.TypedGdxQuery
 import com.rpsg.rpg.core.*
@@ -40,9 +46,18 @@ class MenuView extends UIView{
 	
 	List<MenuableView> openedViewlist = []
 
+	Texture screenshot
+
 	void create() {
 
-//		stage.debugAll = true
+		//take a screenshot
+		int width = Gdx.graphics.getBackBufferWidth(), height = Gdx.graphics.getBackBufferHeight()
+		Gdx.gl.glEnable(GL20.GL_TEXTURE_2D)
+		Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0)
+		(screenshot = new Texture(width, height, Pixmap.Format.RGBA8888)).bind()
+		Gdx.gl.glCopyTexImage2D(GL20.GL_TEXTURE_2D, 0, GL20.GL_RGBA,0, 0, width, height, 0)
+		Gdx.gl.glDisable(GL20.GL_TEXTURE_2D)
+
 
 		$("base").size(Game.STAGE_WIDTH, Game.STAGE_HEIGHT).color("333333").a(0).fadeTo(0.4f, 0.3f) to stage
 
@@ -109,7 +124,7 @@ class MenuView extends UIView{
 		buttons << new MenuLeftBarButton(zh: "符卡", en: "SPELLCARD", to: null)
 		buttons << new MenuLeftBarButton(zh: "战术", en: "TACTICS", to: null)
 		buttons << new MenuLeftBarButton(zh: "记录", en: "NOTE", to: null)
-		buttons << new MenuLeftBarButton(zh: "系统", en: "SYSTEM", to: null)
+		buttons << new MenuLeftBarButton(zh: "系统", en: "SYSTEM", to: SystemView.class)
 	}
 
 	void toMenu() {
@@ -172,6 +187,8 @@ class MenuView extends UIView{
 	void onRemove() {
 		Views.find(MenuableView.class)?.remove()
 		openedViewlist.clear()
+
+		screenshot.dispose()
 	}
 	
 	void prev() {
