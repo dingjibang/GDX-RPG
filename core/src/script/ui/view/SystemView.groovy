@@ -25,7 +25,7 @@ class SystemView extends MenuableView{
 		/**游戏状态 start*/
 		def group1 = new Table().top().left()
 
-		group1.addActor(UI.base().query().size(875, 180).color(Color.BLACK).a(0.3f).y(-17).get())
+		group1.addActor(UI.base().query().size(870	, 180).color(Color.BLACK).a(0.3f).y(-17).get())
 		$("游戏档案", 60) to group1
 		group1.add($("Save & Load", 20).get()).padTop(-15).right().row()
 		group1.add(Res.sync(Path.IMAGE_MENU_SYSTEM + "split.png")).padTop(15).padBottom(40).row()
@@ -73,7 +73,13 @@ class SystemView extends MenuableView{
 
 
 		/**画面设置*/
+		def group2 = new Table().top().left().padTop(70)
 
+		$("画面设置", 60) to group2
+		group2.add($("Graphics", 20).get()).padTop(-15).right().row()
+		group2.add(Res.sync(Path.IMAGE_MENU_SYSTEM + "split.png")).padTop(15).padBottom(40).row()
+
+		table.add(group2).padBottom(50).row()
 		/**画面设置 end*/
 
 

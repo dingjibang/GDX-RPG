@@ -29,6 +29,9 @@ public class Setting implements Serializable{
 	 * see {@link Text#get(int, com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator) Text.get}
 	 * */
 	public boolean hdFont = false;
+
+	/**使用新的文字渲染模块，性能会些许提升但是内存占用较大*/
+	public boolean newTextRender = true;
 	
 	/**是否允许缓存资源（如纹理、图片）以提高游戏速度*/
 	public boolean cache = true;

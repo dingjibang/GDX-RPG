@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeBitm
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.GlyphAndBitmap;
 import com.badlogic.gdx.utils.GdxRuntimeException;
+import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Log;
 
 import java.lang.reflect.Field;
@@ -144,7 +145,7 @@ public class LazyBitmapFont extends BitmapFont {
 
 		//modified by STH99 on 2017-8-8
 
-		LazyBitmapFontTexture lazyBitmapFontTexture = new LazyBitmapFontTexture();
+		LazyBitmapFontTexture lazyBitmapFontTexture;
 
 		public LazyBitmapFontData(FreeTypeFontGenerator generator, int fontSize, LazyBitmapFont lbf) {
 			this.generator = generator;
@@ -169,19 +170,35 @@ public class LazyBitmapFont extends BitmapFont {
 			//modified by STH99 on 2017-6-10
 			Pixmap map = gab.bitmap.getPixmap(Format.RGBA8888, Color.WHITE, 1.0f);
 
-			TextureRegion rg = lazyBitmapFontTexture.draw(map);
-			if(rg == null)
-				rg = (lazyBitmapFontTexture = new LazyBitmapFontTexture()).draw(map);
+			TextureRegion rg = null;
+			if(Game.setting.newTextRender){
+				 if(lazyBitmapFontTexture == null)
+				 	lazyBitmapFontTexture = new LazyBitmapFontTexture();
 
-			map.dispose();
+				rg = lazyBitmapFontTexture.draw(map);
+				if(rg == null)
+					rg = (lazyBitmapFontTexture = new LazyBitmapFontTexture()).draw(map);
 
-			font.getRegions().add(rg);
+				map.dispose();
+
+				font.getRegions().add(rg);
+
+			}else{
+				rg = new TextureRegion(new Texture(map));
+
+				rg.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
+				map.dispose();
+
+				font.getRegions().add(rg);
+			}
 
 			gab.glyph.page = page++;
 			super.setGlyph(ch, gab.glyph);
 			setGlyphRegion(gab.glyph, rg);
 
 			return gab.glyph;
+
 		}
 
 	}
@@ -189,16 +206,17 @@ public class LazyBitmapFont extends BitmapFont {
 
 	private static class LazyBitmapFontTexture{
 
-		private static final int WIDTH = 0xff;
-		private static final int HEIGHT = 60;
+		private static final int WIDTH = 128;
+		private static final int HEIGHT = 128;
 		//加入5像素间距，防止纹理放大后产生花边
 		private static final int PADDING = 5;
 
-		private Texture tex = new Texture(new Pixmap(WIDTH, HEIGHT, Format.RGBA8888));
+		private Texture tex;
 
 		private int currX = 0, currY = 0, lineHeight = 0;
 
 		LazyBitmapFontTexture(){
+			tex = new Texture(new Pixmap(WIDTH, HEIGHT, Format.RGBA8888));
 			tex.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 		}
 
