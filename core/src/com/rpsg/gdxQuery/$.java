@@ -136,6 +136,16 @@ public class $ {
 				result = t;
 		return result;
 	}
+
+	public static <T> List<T> listIf(Iterable<T> c, RemoveTest<T> test){
+		List<T> result = new ArrayList<>();
+		for(T t : c){
+			if(test.test(t))
+				result.add(t);
+		}
+
+		return result;
+	}
 	
 	public static <T> void each(Iterable<T> c,Each<T> test){
 		Iterator<T> it=c.iterator();

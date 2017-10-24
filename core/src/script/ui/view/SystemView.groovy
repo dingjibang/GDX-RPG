@@ -5,11 +5,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.utils.Scaling
+import com.badlogic.gdx.utils.viewport.ScalingViewport
 import com.rpsg.rpg.core.Game
 import com.rpsg.rpg.core.Log
 import com.rpsg.rpg.core.Path
 import com.rpsg.rpg.core.Res
 import com.rpsg.rpg.core.UI
+import script.ui.widget.menu.CheckBox
 
 import static com.rpsg.rpg.util.UIUtil.$
 
@@ -75,11 +77,67 @@ class SystemView extends MenuableView{
 		/**画面设置*/
 		def group2 = new Table().top().left().padTop(70)
 
-		$("画面设置", 60) to group2
+		def gray = Color.valueOf("cccccc")
+
+		$("图形设置", 60) to group2
 		group2.add($("Graphics", 20).get()).padTop(-15).right().row()
 		group2.add(Res.sync(Path.IMAGE_MENU_SYSTEM + "split.png")).padTop(15).padBottom(40).row()
 
+		com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle cstyle = new com.badlogic.gdx.scenes.scene2d.ui.CheckBox.CheckBoxStyle();
+		cstyle.font = Res.text.get(24)
+		cstyle.checkboxOn = Res.getDrawable(Path.IMAGE_GLOBAL + "check_on.png")
+		cstyle.checkboxOff = Res.getDrawable(Path.IMAGE_GLOBAL + "check_off.png")
+
+		group2.add(new CheckBox("开启平滑纹理", cstyle).padText(20).checked(Game.setting.filter).click({_this -> Game.setting.filter = _this.checked})).left().padLeft(40).row()
+		group2.add($("使用线性纹理过滤，图片放大缩小将减少锯齿撕裂感\n重启游戏后生效", 20).color(gray).get()).padLeft(100).padTop(10).left().row()
+
+		group2.add(new CheckBox("开启高级画质", cstyle).padText(20).checked(Game.setting.enablePost).click({_this -> Game.setting.enablePost = _this.checked})).left().padLeft(40).padTop(25).row()
+		group2.add($("开启后，对画面将进行一系列后期处理，将稍微影响性能", 20).color(gray).get()).padLeft(100).padTop(10).left().row()
+
+		group2.add(new CheckBox("适配屏幕尺寸", cstyle).padText(20).checked(Game.setting.fitScaling).click({_this -> Game.setting.fitScaling = _this.checked})).left().padLeft(40).padTop(25).row()
+		group2.add($("无论如何都以16:9的游戏尺寸显示\n重启游戏后生效", 20).color(gray).get()).padLeft(100).padTop(10).left().row()
+
+		group2.add(new CheckBox("高清字体", cstyle).padText(20).checked(Game.setting.hdFont).click({_this -> Game.setting.hdFont = _this.checked})).left().padLeft(40).padTop(25).row()
+		group2.add($("使用更清晰的字体纹理，在高分辨率显示屏/手机上效果更好，但会消耗额外的内存\n重启游戏后生效", 20).color(gray).get()).padLeft(100).padTop(10).left().row()
+
 		table.add(group2).padBottom(50).row()
+		/**画面设置 end*/
+
+
+
+		/**性能设置*/
+		def group3 = new Table().top().left().padTop(70)
+
+
+		$("性能设置", 60) to group3
+		group3.add($("Performance", 20).get()).padTop(-15).right().row()
+		group3.add(Res.sync(Path.IMAGE_MENU_SYSTEM + "split.png")).padTop(15).padBottom(40).row()
+
+		group3.add(new CheckBox("使用实验性质的文字渲染引擎", cstyle).padText(20).checked(Game.setting.newTextRender).click({_this -> Game.setting.newTextRender = _this.checked})).left().padLeft(40).row()
+		group3.add($("新的文字渲染引擎理论可以提高游戏性能，但是会消耗额外的内存\n重启游戏后生效", 20).color(gray).get()).padLeft(100).padTop(10).left().row()
+
+		group3.add(new CheckBox("缓存游戏资源", cstyle).padText(20).checked(Game.setting.cache).click({_this -> Game.setting.cache = _this.checked})).left().padLeft(40).padTop(25).row()
+		group3.add($("缓存游戏中的资源，将提高加载速度，但会消耗额外的内存\n重启游戏后生效", 20).color(gray).get()).padLeft(100).padTop(10).left().row()
+
+		table.add(group3).padBottom(50).row()
+		/**画面设置 end*/
+
+
+		/**开发者选项*/
+		def group4 = new Table().top().left().padTop(70)
+
+
+		$("开发者选项", 60) to group4
+		group4.add($("Developer", 20).get()).padTop(-15).right().row()
+		group4.add(Res.sync(Path.IMAGE_MENU_SYSTEM + "split.png")).padTop(15).padBottom(40).row()
+
+		group4.add(new CheckBox("开启界面调试", cstyle).padText(20).checked(Game.setting.uiDebug).click({_this -> Game.setting.uiDebug = _this.checked})).left().padLeft(40).row()
+		group4.add($("Enable Stage Debug(uiDebug)", 20).color(gray).get()).padLeft(100).padTop(10).left().row()
+
+		group4.add(new CheckBox("遇到致命错误仍然继续游戏", cstyle).padText(20).checked(Game.setting.onErrorResumeNext).click({_this -> Game.setting.onErrorResumeNext = _this.checked})).left().padLeft(40).padTop(25).row()
+		group4.add($("仅供调试，开启后将忽略错误继续进行游戏，开启将极度降低游戏性能(onErrorResumeNext)", 20).color(gray).get()).padLeft(100).padTop(10).left().row()
+
+		table.add(group4).padBottom(50).row()
 		/**画面设置 end*/
 
 
@@ -91,4 +149,10 @@ class SystemView extends MenuableView{
 	void draw() {
 		super.draw();
 	}
+
+	void onRemove(){
+		Game.setting.save()
+	}
+
+
 }

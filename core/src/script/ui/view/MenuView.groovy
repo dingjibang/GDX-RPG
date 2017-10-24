@@ -48,6 +48,8 @@ class MenuView extends UIView{
 
 	Texture screenshot
 
+	GdxQuery mask
+
 	void create() {
 
 		//take a screenshot
@@ -59,7 +61,7 @@ class MenuView extends UIView{
 		Gdx.gl.glDisable(GL20.GL_TEXTURE_2D)
 
 
-		$("base").size(Game.STAGE_WIDTH, Game.STAGE_HEIGHT).color("333333").a(0).fadeTo(0.4f, 0.3f) to stage
+		mask = $("base").size(Game.STAGE_WIDTH, Game.STAGE_HEIGHT).color("333333").a(0).fadeTo(Game.setting.enablePost ? 0.4f : 0.75f, 0.3f) to stage
 
 		bg = q("base").size(540, 720).color("333333cc").x(-800).a(0.8f).action(Actions.moveTo(0, 0, 0.5f, Interpolation.pow4Out)) to stage
 
@@ -181,7 +183,9 @@ class MenuView extends UIView{
 	}
 	
 	void draw() {
-		super.draw();
+		if(mask.get().actions.size == 0)
+			mask.fadeTo(Game.setting.enablePost ? 0.4f : 0.75f, 0.1f)
+		super.draw()
 	}
 	
 	void onRemove() {

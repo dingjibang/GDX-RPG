@@ -6,14 +6,20 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.rpsg.rpg.controller.ArchiveController;
 import com.rpsg.rpg.controller.GamePropertiesController;
 import com.rpsg.rpg.controller.ItemController;
 import com.rpsg.rpg.controller.ScriptableController;
 import com.rpsg.rpg.view.GameView;
+import com.sun.prism.image.ViewPort;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptableObject;
+
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *	GDX-RPG 游戏上下文
