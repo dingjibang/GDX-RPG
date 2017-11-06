@@ -13,7 +13,6 @@ import com.rpsg.rpg.controller.ItemController;
 import com.rpsg.rpg.controller.ScriptableController;
 import com.rpsg.rpg.controller.ToastController;
 import com.rpsg.rpg.view.GameView;
-import com.sun.prism.image.ViewPort;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptableObject;

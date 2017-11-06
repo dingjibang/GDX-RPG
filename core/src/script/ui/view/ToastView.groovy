@@ -55,10 +55,15 @@ class ToastView extends UIView{
 		//grp.position(360, 36)
 		//grp.width(Game.STAGE_WIDTH)
 		//grp.center()
-		def label = $(text, fontsize) to grp
-		def w = label.width()
-		grp.color("333333")
-		grp.position(Math.max((float)(Game.STAGE_WIDTH/2f - w/2f),0f),bottommagin)
+		String[] lines = text.split("\n");
+	    float curbottommagin = bottommagin;
+		for(int i=lines.length;i>=0;i--){
+			def label = $(text, fontsize) to grp
+			def w = label.width()
+			label.position(Math.max((float)(Game.STAGE_WIDTH/2f - w/2f),0f),curbottommagin)
+			curbottommagin += label.length();
+		}
+		
 		def bg = q("base").size(Math.min((float)(label.width() + interlvalwidth),(float)Game.STAGE_WIDTH),
 			Math.min((float)( label.height() + interlvalheight),(float)Game.STAGE_HEIGHT)).
 		color(bgcolor).
