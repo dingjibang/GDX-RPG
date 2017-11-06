@@ -47,7 +47,7 @@ class SystemView extends MenuableView{
 		saveButton.addActor $("保存游戏", 22).width(170).y(14).center().get()
 		buttons.add(saveButton).height(50).prefSize(170, 50).left().padRight(16)
 		$(saveButton).click({
-			Game.toast.showToast("test123\n测试测试", 22);
+			Game.toast.showToast("test123测试测试", 20);
 		})
 
 		def loadButton = $(UI.button()).get()
@@ -133,6 +133,9 @@ class SystemView extends MenuableView{
 
 		group4.add(new CheckBox("遇到致命错误仍然继续游戏", cstyle).padText(20).checked(Game.setting.onErrorResumeNext).click({_this -> Game.setting.onErrorResumeNext = _this.checked})).left().padLeft(40).padTop(25).row()
 		group4.add($("开启后将忽略错误继续进行游戏，开启将极度降低游戏性能(onErrorResumeNext)", 20).color(gray).get()).padLeft(100).padTop(10).left().row()
+
+		group4.add(new CheckBox("启用控制台", cstyle).padText(20).checked(Game.setting.console).click({_this -> Game.setting.console = _this.checked})).left().padLeft(40).padTop(25).row()
+		group4.add($("使用控制台查看日志，或对游戏内容更改(Console)", 20).color(gray).get()).padLeft(100).padTop(10).left().row()
 
 		table.add(group4).padBottom(50).row()
 		/**画面设置 end*/

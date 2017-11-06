@@ -39,6 +39,7 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label{
 	/**是否启用多彩字体*/
 	public Label markup(boolean enable) {
 		this.enableMarkup = enable;
+		getStyle().font.getData().markupEnabled = enableMarkup;
 		return this;
 	}
 
@@ -69,8 +70,6 @@ public class Label extends com.badlogic.gdx.scenes.scene2d.ui.Label{
 			else
 				overflowd = oldText;
 		}
-
-		getStyle().font.getData().markupEnabled = enableMarkup;
 
 		if (overflow) {
 			setText(overflowd);

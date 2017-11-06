@@ -20,6 +20,10 @@ public class $ {
 	public static GdxQuery add (Object... a){
 		return new GdxQuery(a);
 	}
+
+	public static <T extends Actor> TypedGdxQuery<T> tadd (T a){
+		return new TypedGdxQuery<T>(a);
+	}
 	
 	public static Texture getTexture (Drawable d){
 		if(d instanceof TextureRegionDrawable)

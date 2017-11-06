@@ -12,6 +12,7 @@ import com.rpsg.gdxQuery.$;
 import com.rpsg.rpg.ui.view.ParameterizableView;
 import com.rpsg.rpg.ui.view.View;
 import com.rpsg.rpg.util.Timer;
+import com.rpsg.rpg.view.ConsoleView;
 import com.rpsg.rpg.view.LoadView;
 import com.rpsg.rpg.view.LogoView;
 
@@ -33,7 +34,7 @@ public class Views implements ApplicationListener {
 	
 	/**载入视图，当有资源被载入时，该视图将被绘制*/
 	public static LoadView loadView;
-	
+
 	/**当游戏被创建*/
 	public void create() {
 		Log.i("=====================================================");
@@ -46,7 +47,7 @@ public class Views implements ApplicationListener {
 		Log.i("");
 		Log.i("=====================================================");
 		Log.i(">>> Initialization <<<");
-	        
+
 		//创建资源管理器
 		Res.init();
 		//初始化上下文
@@ -65,14 +66,20 @@ public class Views implements ApplicationListener {
 		//创建载入动画
 		loadView = new LoadView();
 		loadView.create();
-		
+
 		//创建LOGO界面
 		addView(LogoView.class);
-		
+
+		//创建ConsoleView
+		Console.init();
+
 	}
 
 	/**游戏主循环*/
 	public void render() {
+		//处理日志
+		Console.post();
+
 		//设置OpenGL清屏颜色
 		Gdx.gl.glClearColor(0,0,0,1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -100,7 +107,7 @@ public class Views implements ApplicationListener {
 					view.act();
 					view.draw();
 				}catch(Exception e){
-					e.printStackTrace();//TODO toast exception
+					Log.e("got an exception while rending", e);
 				}
 			}
 
@@ -114,6 +121,7 @@ public class Views implements ApplicationListener {
 
 		loadView.act();
 		loadView.draw();
+
 	}
 	
 	public static <T extends View> T addView(Class<T> clz) {
@@ -135,7 +143,7 @@ public class Views implements ApplicationListener {
 			
 			return view;
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.e("got an exception while rending", e);
 		}
 		return null;
 	}

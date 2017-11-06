@@ -47,7 +47,10 @@ public class Setting implements Serializable{
 
 	/**是否显示fps*/
 	public boolean showFPS = true;
-	
+
+	/**是否启用控制台*/
+	public boolean console = true;
+
 	/**
 	 * 创建系统设置，如果硬盘已存在则直接读取
 	 */

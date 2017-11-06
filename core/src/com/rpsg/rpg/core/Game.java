@@ -6,20 +6,11 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import com.rpsg.rpg.controller.ArchiveController;
-import com.rpsg.rpg.controller.GamePropertiesController;
-import com.rpsg.rpg.controller.ItemController;
-import com.rpsg.rpg.controller.ScriptableController;
-import com.rpsg.rpg.controller.ToastController;
+import com.rpsg.rpg.controller.*;
 import com.rpsg.rpg.view.GameView;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.ScriptableObject;
-
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *	GDX-RPG 游戏上下文
@@ -39,7 +30,7 @@ public class Game {
 	public static ItemController item;
 	/**脚本（缓存）管理器*/
 	public static ScriptableController script;
-	
+	/**Toast消息框管理器*/
 	public static ToastController toast;
 
 	/**初始化*/
@@ -50,7 +41,7 @@ public class Game {
 		item = new ItemController();
 		script = new ScriptableController();
 		toast = new ToastController();
-		
+
 		Log.i("Game context[created]");
 	}
 	

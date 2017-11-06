@@ -4,7 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.rpg.ui.widget.Button;
 import com.rpsg.rpg.ui.widget.Image;
 
@@ -19,8 +21,24 @@ public class UI {
 		return new Image(base);
 	}
 
+	public static Drawable baseDrawable(){
+		return new TextureRegionDrawable(new TextureRegion(base));
+	}
+
 	public static Button button() {
 		return new Button(button, button_press);
+	}
+
+	public static <T extends com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle> T button(T style) {
+		style.up = button;
+		style.down = button_press;
+		return style;
+	}
+
+	public static <T extends com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle> T buttonNoBorder(T style) {
+		style.up = button;
+		style.down = button_press_noborder;
+		return style;
 	}
 
 	public static Button buttonNoBorder() {
