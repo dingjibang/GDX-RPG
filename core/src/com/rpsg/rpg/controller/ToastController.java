@@ -13,8 +13,7 @@ public class ToastController {
 
 	public static final int def_delaytime = 3000;
 	
-	public void showToast(String text,int fontsize)
-	{
+	public void showToast(String text,int fontsize)	{
 		showToast(text,fontsize,def_delaytime);
 	}
 	
