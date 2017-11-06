@@ -10,6 +10,7 @@ import com.rpsg.rpg.controller.ArchiveController;
 import com.rpsg.rpg.controller.GamePropertiesController;
 import com.rpsg.rpg.controller.ItemController;
 import com.rpsg.rpg.controller.ScriptableController;
+import com.rpsg.rpg.controller.ToastController;
 import com.rpsg.rpg.view.GameView;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.NativeJavaObject;
@@ -33,6 +34,8 @@ public class Game {
 	public static ItemController item;
 	/**脚本（缓存）管理器*/
 	public static ScriptableController script;
+	
+	public static ToastController toast;
 
 	/**初始化*/
 	public static void init(){
@@ -41,6 +44,7 @@ public class Game {
 		prop = new GamePropertiesController();
 		item = new ItemController();
 		script = new ScriptableController();
+		toast = new ToastController();
 		
 		Log.i("Game context[created]");
 	}

@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.scenes.scene2d.Group
 import com.badlogic.gdx.scenes.scene2d.actions.Actions
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
-import com.rpsg.rpg.core.RPG
+//import com.rpsg.rpg.core.RPG
 import com.rpsg.rpg.object.hero.Hero
 import com.rpsg.rpg.object.prop.PropKey
 import com.rpsg.rpg.util.Timer
