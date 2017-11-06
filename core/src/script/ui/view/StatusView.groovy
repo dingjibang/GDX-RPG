@@ -1,6 +1,7 @@
 package script.ui.view
 
 import com.badlogic.gdx.Input.Keys
+import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.math.Interpolation
 import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.Group
@@ -80,7 +81,14 @@ class StatusView extends MenuableView{
 		def help = $(new Group()).y(0).a(0);
 		$("base#000000").a(0.8f).size(610, 40 * PropType.values().length) to help
 		$(Res.text.getLabel("魔理沙对你使用了「Master Spark」，造成100伤害！\n但你的光属性有效率为80%，所以最后只对你造成了80伤害。", 18).maxWidth(610).warp(true)).x(17).y(20).width(610) to help
-				
+
+		def marisa = Res.sync(Path.IMAGE_MENU_SYSTEM + "marisa_tips.png")
+		marisa.height = marisa.height * (550 / marisa.width)
+		marisa.width = 550
+		marisa.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear)
+
+		marisa.query().disableTouch().position(35, 70) to help
+
 		$(new LabelImageCheckbox("帮助", 22, 
 			Res.sync(Path.IMAGE_MENU_STATUS + "triangle_d.png"), 
 			Res.sync(Path.IMAGE_MENU_STATUS + "triangle_u.png"), 

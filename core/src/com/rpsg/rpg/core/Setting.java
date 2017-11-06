@@ -43,7 +43,7 @@ public class Setting implements Serializable{
 	public boolean onErrorResumeNext = true;
 
 	/**【仅用于调试】是否开启UI调试，开启后将显示UI边框。*/
-	public boolean uiDebug = false;
+	public boolean uiDebug = true;
 	
 	/**
 	 * 创建系统设置，如果硬盘已存在则直接读取
@@ -53,6 +53,13 @@ public class Setting implements Serializable{
 		if(obj == null)
 			return new Setting();
 		return (Setting)obj; 
+	}
+
+	/**
+	 * save system setting
+	 */
+	public static void save(){
+		File.save(Game.setting, Path.SAVE + "/setting.sav");
 	}
 
 	private Setting(){}
