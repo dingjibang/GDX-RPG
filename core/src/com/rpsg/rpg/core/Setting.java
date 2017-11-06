@@ -44,6 +44,9 @@ public class Setting implements Serializable{
 
 	/**【仅用于调试】是否开启UI调试，开启后将显示UI边框。*/
 	public boolean uiDebug = true;
+
+	/**是否显示fps*/
+	public boolean showFPS = true;
 	
 	/**
 	 * 创建系统设置，如果硬盘已存在则直接读取

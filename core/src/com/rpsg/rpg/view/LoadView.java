@@ -65,8 +65,12 @@ public class LoadView extends View{
 				sprite.addAction(Actions.fadeIn(.3f));
 		}
 
-		fps.text(Gdx.graphics.getFramesPerSecond() + "");
-		fpsShadow.text(Gdx.graphics.getFramesPerSecond() + "");
+
+		String currentFPS = Gdx.graphics.getFramesPerSecond() + "";
+		boolean showFPS = Game.setting.showFPS;
+
+		fps.text(showFPS ? currentFPS : "");
+		fpsShadow.text(showFPS ? currentFPS : "");
 	}
 	
 	public void start(String id) {

@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Group
 import com.badlogic.gdx.scenes.scene2d.actions.Actions
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane
 import com.badlogic.gdx.scenes.scene2d.ui.Table
+import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable
 import com.rpsg.gdxQuery.GdxQuery
 import com.rpsg.gdxQuery.TypedGdxQuery
 import com.rpsg.rpg.core.*
@@ -40,6 +41,11 @@ class ToastView extends UIView{
 	public float bottommagin = def_bottommagin;
 	public String bgcolor = def_bgcolor;
 	public int fontsize = def_fontsize;
+
+	public static NinePatchDrawable UI_TOAST;
+	static{
+		UI_TOAST = new NinePatchDrawable(UI.get9(Path.IMAGE_GLOBAL + "toast_box.png",2,2,1,1,5,5,5,5));
+	}
 	
 	void create() {
 		def grp = q(new Group()) to stage //

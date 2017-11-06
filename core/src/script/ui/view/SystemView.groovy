@@ -4,13 +4,7 @@ import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane
 import com.badlogic.gdx.scenes.scene2d.ui.Table
-import com.badlogic.gdx.utils.Scaling
-import com.badlogic.gdx.utils.viewport.ScalingViewport
-import com.rpsg.rpg.core.Game
-import com.rpsg.rpg.core.Log
-import com.rpsg.rpg.core.Path
-import com.rpsg.rpg.core.Res
-import com.rpsg.rpg.core.UI
+import com.rpsg.rpg.core.*
 import script.ui.widget.menu.CheckBox
 
 import static com.rpsg.rpg.util.UIUtil.$
@@ -53,7 +47,7 @@ class SystemView extends MenuableView{
 		saveButton.addActor $("保存游戏", 22).width(170).y(14).center().get()
 		buttons.add(saveButton).height(50).prefSize(170, 50).left().padRight(16)
 		$(saveButton).click({
-			Log.i("clicked!!")
+			Game.toast.showToast("test123\n测试测试", 22);
 		})
 
 		def loadButton = $(UI.button()).get()
@@ -100,6 +94,9 @@ class SystemView extends MenuableView{
 		group2.add(new CheckBox("高清字体", cstyle).padText(20).checked(Game.setting.hdFont).click({_this -> Game.setting.hdFont = _this.checked})).left().padLeft(40).padTop(25).row()
 		group2.add($("使用更清晰的字体纹理，在高分辨率显示屏/手机上效果更好，但会消耗额外的内存\n重启游戏后生效", 20).color(gray).get()).padLeft(100).padTop(10).left().row()
 
+		group2.add(new CheckBox("显示FPS(游戏帧数)", cstyle).padText(20).checked(Game.setting.showFPS).click({_this -> Game.setting.showFPS = _this.checked})).left().padLeft(40).padTop(25).row()
+		group2.add($("你是强迫症么？", 20).color(gray).get()).padLeft(100).padTop(10).left().row()
+
 		table.add(group2).padBottom(50).row()
 		/**画面设置 end*/
 
@@ -135,7 +132,7 @@ class SystemView extends MenuableView{
 		group4.add($("Enable Stage Debug(uiDebug)", 20).color(gray).get()).padLeft(100).padTop(10).left().row()
 
 		group4.add(new CheckBox("遇到致命错误仍然继续游戏", cstyle).padText(20).checked(Game.setting.onErrorResumeNext).click({_this -> Game.setting.onErrorResumeNext = _this.checked})).left().padLeft(40).padTop(25).row()
-		group4.add($("仅供调试，开启后将忽略错误继续进行游戏，开启将极度降低游戏性能(onErrorResumeNext)", 20).color(gray).get()).padLeft(100).padTop(10).left().row()
+		group4.add($("开启后将忽略错误继续进行游戏，开启将极度降低游戏性能(onErrorResumeNext)", 20).color(gray).get()).padLeft(100).padTop(10).left().row()
 
 		table.add(group4).padBottom(50).row()
 		/**画面设置 end*/
