@@ -5,7 +5,7 @@ import com.badlogic.gdx.utils.JsonValue;
 /**
  * GDX-RPG 道具
  */
-public class Item extends UseableItem{
+public class Item extends UsableItem {
 
 	private static final long serialVersionUID = 1L;
 

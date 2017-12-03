@@ -6,7 +6,7 @@ import com.rpsg.rpg.core.Game;
 /**
  * GDX-RPG 符卡
  */
-public class Spellcard extends UseableItem {
+public class Spellcard extends UsableItem {
 
 	private static final long serialVersionUID = 1L;
 	

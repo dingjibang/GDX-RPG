@@ -6,7 +6,7 @@ import com.badlogic.gdx.utils.JsonValue;
  * GDX-RPG “可使用”的道具，他继承了{@link BaseItem}，而{@link Spellcard}和{@link Item}继承了他，相比普通的{@link BaseItem}物品，他具有“可被使用的”能力。<br>
  * 他存储了一些基本“可使用”的信息，如使用的{@link ItemForward 目标}、{@link ItemRange 范围}等信息，也拥有一个{@link Effect 效果变量}，用来存储道具被使用后的数值操作。
  * */
-public class UseableItem extends EffectableItem{
+public class UsableItem extends EffectableItem{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,7 +24,7 @@ public class UseableItem extends EffectableItem{
 	/**道具/符卡延迟值*/
 	public int delay = 0;
 
-	public UseableItem(Integer id, JsonValue value) {
+	public UsableItem(Integer id, JsonValue value) {
 		super(id, value);
 		
 		forward = value.has("forward") ? ItemForward.valueOf(value.getString("forward")) : ItemForward.friend;

@@ -142,6 +142,9 @@ public class ConsoleView extends UIView {
     }
 
     public void send(Console.ConsoleLog log){
+        if(log.text == null)
+            return;
+
         cursor = history.size();
 
         String command = "";

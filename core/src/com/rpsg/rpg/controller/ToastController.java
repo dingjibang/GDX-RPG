@@ -13,7 +13,7 @@ public class ToastController {
 		show(text, ToastView.FONT_SIZE);
 	}
 
-	public void show(String text,int fontSize){
+	public void show(String text, int fontSize){
 		ToastView vw = new ToastView();
 		vw.text = text;
 		vw.fontSize = fontSize;
