@@ -103,7 +103,7 @@ class StatusView extends MenuableView{
 		
 		PropType.values() eachWithIndex {val, idx ->
 			def group32 = new Group()
-			$("base#333333").a(0.9f).size(610, 40) to group32
+			$("base#333333").a(0.95f).size(610, 40) to group32
 			if(idx % 2 != 0) $("base").a(0.1f).size(610, 40) to group32
 			$("base").a(0.1f).size(177, 40) to group32
 			
