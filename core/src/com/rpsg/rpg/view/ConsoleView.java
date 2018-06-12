@@ -43,7 +43,7 @@ public class ConsoleView extends UIView {
         console = new Group();
         console.setVisible(false);
 
-        $.add(new Button(Res.getDrawable(Path.IMAGE_GLOBAL + "Console.png"), Res.getDrawable(Path.IMAGE_GLOBAL + "console_p.png")))
+        $.add(new Button(Res.getDrawable(Path.IMAGE_GLOBAL + "console.png"), Res.getDrawable(Path.IMAGE_GLOBAL + "console_p.png")))
                 .size(30, 30)
                 .position(Game.width() - 50, Game.height() - 50)
                 .to(stage)
