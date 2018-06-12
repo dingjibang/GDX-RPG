@@ -21,6 +21,10 @@ UI Prototype: [https://modao.cc/app/GhibQOQlOKeugbsDhTPi0qnDaztNAcc](https://mod
 "git clone" this project into your IDE, build, and enjoy it.
 
 # Common build faults!important( •́ .̫ •̀  )
+#### 0.Gradle Version
+[here are issue of gdx](https://github.com/libgdx/libgdx/issues/4855), you MUST USING gradle 3.3(or 2.4?), android buildToolsVersion 24. You can remove retrolambda if AndroidStudio build failed.
+
+
 #### We need [RetroLambda](https://github.com/orfjackal/retrolambda) to using java8-lambda on java7 or lower, please set the environment variable JAVA8_HOME and JAVA7_HOME with your jdk7 and jdk8 directory (so you need dual java :p).
 #### 1."SDK location not found ..." or other errors while gradle building .
 please download "android sdk" at first. you have to download those modules:

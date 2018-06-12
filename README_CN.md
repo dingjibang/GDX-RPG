@@ -18,6 +18,10 @@ UI设计图: [https://modao.cc/app/GhibQOQlOKeugbsDhTPi0qnDaztNAcc](https://moda
                                              
 # 经常出现的“为啥我编译不成功”!important( •́ .̫ •̀  )
 #### 首先，请看下你的环境变量（JAVA8_HOME, JAVA7_HOME）有吗！以下是一些常见问题
+
+#### 0.Gradle Version
+[似乎是LIBGDX那边的问题导致了](https://github.com/libgdx/libgdx/issues/4855), 你必须使用gradle 3.3(或者 2.4?)版本, 而且android buildToolsVersion必须是24. 如果你的AS构建失败并且提示让你删除retrolambda，你可以删除。
+
 #### 1.当编译gradle时候，显示"SDK location not found ..."
 首先这个项目需要安卓sdk才可以运行，因为跨平台，也有安卓的那部分你懂的，使用adt并且下载至少以下的模块，才可以继续编译成功：
 - Android SDK Build-tools (23.0.1)
