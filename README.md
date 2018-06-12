@@ -12,9 +12,9 @@ via [Libgdx](https://github.com/libgdx/libgdx).
 
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-RPG/master/extension/readme.jpg)
 
-官网 / website:  [http://shadow.rpsg-team.com](http://shadow.rpsg-team.com)
+官网 / website:  [http://shadow.rpsg.team](http://shadow.rpsg.team)
 
-~~Jenkins: [http://dev.rpsg-team.com/](http://dev.rpsg-team.com/)~~
+~~Jenkins: [http://dev.rpsg.team/](http://dev.rpsg.team/)~~
 
 UI Prototype: [https://modao.cc/app/GhibQOQlOKeugbsDhTPi0qnDaztNAcc](https://modao.cc/app/GhibQOQlOKeugbsDhTPi0qnDaztNAcc)
 
