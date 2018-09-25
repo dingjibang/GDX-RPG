@@ -7,7 +7,7 @@ import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.rpsg.rpg.core.Views;
 
 /**
- * GDX-RPG 安卓版本启动器
+ * GDX-RPG android launcher
  */
 public class AndroidLauncher extends AndroidApplication {
 	@Override

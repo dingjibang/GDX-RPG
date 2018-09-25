@@ -22,7 +22,12 @@ public class File {
 	 */
 	public static void save(Serializable o, String filePath){
 		try {
-			FileOutputStream fos = new FileOutputStream(Gdx.files.local(filePath).file());
+			Gdx.files.local(Path.SAVE).mkdirs();
+			java.io.File file = Gdx.files.local(filePath).file();
+			if(!file.exists()){
+				file.createNewFile();
+			}
+			FileOutputStream fos = new FileOutputStream(file);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(o);
 			oos.close();

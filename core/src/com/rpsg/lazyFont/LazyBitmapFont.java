@@ -237,16 +237,20 @@ public class LazyBitmapFont extends BitmapFont {
 
 				lineHeight = 0;
 
-				if(currY + h + PADDING >= HEIGHT)
+				if (currY + h + PADDING >= HEIGHT)
 					return null;
 			}
 
-			tex.draw(map, currX, currY);
-			TextureRegion reg = new TextureRegion(tex, currX, currY, w, h);
-
+			int x = currX, y = currY;
 
 			currX += w + PADDING;
 			lineHeight = lineHeight > h ? lineHeight : h;
+
+			if (currY + h + PADDING >= HEIGHT)
+				return null;
+
+			tex.draw(map, x, y);
+			TextureRegion reg = new TextureRegion(tex, x, y, w, h);
 
 
 			return reg;
