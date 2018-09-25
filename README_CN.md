@@ -52,7 +52,7 @@ UI设计图: [https://modao.cc/app/GhibQOQlOKeugbsDhTPi0qnDaztNAcc](https://moda
 
 # 这项目是啥╮（￣▽￣）╭
 这个是 ~~巨坑~~ RPG游戏，他的故事背景是根据“东方Project”改编的。<br/>
-更多信息你可以点击我们的官网来查看：[http://shadow.rpsg-team.com](http://shadow.rpsg-team.com) <br/>
+更多信息你可以点击我们的官网来查看：[http://shadow.rpsg.team](http://shadow.rpsg.team) <br/>
 
 # 这项目开发到哪了？
 瞎〇巴开发，想到哪写哪hhh

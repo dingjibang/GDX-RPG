@@ -54,7 +54,7 @@ you can create an issue, or mail to dingjibang@qq.com.
 
 # What's this╮（￣▽￣）╭
 It's a ~~big~~ RPG game use "Touhou Project(東方Project)" background story.<br/>
-You can visit [http://shadow.rpsg-team.com](http://shadow.rpsg-team.com) to see more info.<br/>
+You can visit [http://shadow.rpsg.team](http://shadow.rpsg.team) to see more info.<br/>
 (because my energy is limited, this game has only Chinese language can be chosen.)
 
 
