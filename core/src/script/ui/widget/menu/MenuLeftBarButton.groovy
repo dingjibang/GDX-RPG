@@ -36,6 +36,12 @@ class MenuLeftBarButton extends Group{
 		zhl = $(zh, 34).size(70, 49).center().position(101, 40).disableTouch() to this
 
 		setSize bg.width(), bg.height()
+
+		if(this.to){
+			def v = this.to.newInstance()
+			v.toPreinit()
+			v.remove()
+		}
 	}
 
 	void setChecked(checked) {

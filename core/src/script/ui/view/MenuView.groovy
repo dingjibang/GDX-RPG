@@ -69,7 +69,7 @@ class MenuView extends UIView{
 
 		exit = $(new Button(Path.IMAGE_MENU_GLOBAL + "btn_left.png")).position(23, 634).click({keyDown Input.Keys.ESCAPE}) to group1
 		label = $("菜单", 45).position(116, 621).size(91, 94).center() to group1
-		
+
 		$("游戏已进行 ${archive.time()}", 23).right().position(230, 617).size(284, 48) to group1
 
 		hr = $("base").size(490, 4).position(24, 604) to group1
@@ -181,7 +181,7 @@ class MenuView extends UIView{
 		$(new ScrollPane(table.get())).size(247, 578).position(-280, 0).a(0).fadeIn(0.2f).action(Actions.moveBy(300, 0, 0.35f, Interpolation.pow4Out)) to stage
 
 	}
-	
+
 	void draw() {
 		if(mask.get().actions.size == 0)
 			mask.fadeTo(Game.setting.enablePost ? 0.4f : 0.75f, 0.1f)

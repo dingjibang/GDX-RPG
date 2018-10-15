@@ -84,7 +84,7 @@ public class MapController {
 		
 		//使用Nearest过滤纹理，防止游戏窗口放大时，地图的每个小块中间出现缝隙
 		param.textureMinFilter = param.textureMagFilter = TextureFilter.Nearest;
-		
+
 		//加载完毕后的回调
 		param.loadedCallback = (am, fileName, type) -> {
 			map = am.get(fileName, TiledMap.class);

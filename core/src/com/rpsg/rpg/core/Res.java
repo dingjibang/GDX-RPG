@@ -8,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.rpsg.rpg.ui.widget.AsyncLoadImage;
 import com.rpsg.rpg.ui.widget.Image;
 
+import java.util.Arrays;
+
 /**
  * GDX-RPG 资源/缓存类
  */
@@ -61,6 +63,14 @@ public class Res {
 		assetManager.load(path, Texture.class);
 		while(!assetManager.update());
 		return assetManager.get(path, Texture.class);
+	}
+
+	/**
+	 * 预加载纹理
+	 */
+	public static void preInit(String[] paths){
+		for(String path : paths)
+			assetManager.load(path, Texture.class);
 	}
 	
 	/**卸载全部纹理*/

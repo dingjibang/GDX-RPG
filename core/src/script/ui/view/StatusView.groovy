@@ -25,11 +25,18 @@ import static com.rpsg.rpg.util.UIUtil.*
  */
 class StatusView extends MenuableView{
 
-
 	void create() {
 		generate()
 	}
-	
+
+	String[] preInit() {[
+		Path.IMAGE_MENU_GLOBAL + "triangle_l.png",
+		Path.IMAGE_MENU_GLOBAL + "triangle_r.png",
+		Path.IMAGE_MENU_SYSTEM + "marisa_tips.png",
+		Path.IMAGE_MENU_STATUS + "triangle_d.png",
+		Path.IMAGE_MENU_STATUS + "triangle_u.png",
+	]}
+
 	void generate() {
 		stage.clear()
 		
@@ -121,8 +128,6 @@ class StatusView extends MenuableView{
 			float g = v <= 100 ? 1 : (200 - (v > 200 ? 200 : v)) / 100
 			float b = v >= 100 ? (200 - (v > 200 ? 200 : v)) / 100 : (v < 0 ? 0 : v) / 100
 			
-			Log.i "v:${v}, r:${r}, g:${g}, b:${b}"
-			
 			$(v + "%", 22).center().size(433, 40).x(176).color(r, g, b) to group32
 			
 			group3.add(group32).size(610, 40).row()
@@ -165,11 +170,13 @@ class StatusView extends MenuableView{
 	}
 	
 	void onResume() {
-		parent.fgLabel.get().show()
+		if(parent)
+			parent.fgLabel.get().show()
 	}
 	
 	void onRemove() {
-		parent.fgLabel.get().hide()
+		if(parent)
+			parent.fgLabel.get().hide()
 	}
 
 	boolean keyDown(int code) {

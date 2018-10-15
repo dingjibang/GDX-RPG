@@ -24,7 +24,14 @@ public class GameMenuController {
 		menuButton = $.add(new Button(Path.IMAGE_MENU_GLOBAL + "btn_menu.png"))
 			.size(60, 60).position(Game.STAGE_WIDTH - 90, 30).click(this::show).to(Game.view.stage);
 
-		new MenuView();
+		Timer.then(this::init);
+
+	}
+
+	private void init(){
+		MenuView preInit = new MenuView();
+		preInit.create();
+		preInit.remove();
 	}
 	
 	/**显示菜单*/

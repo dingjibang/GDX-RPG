@@ -12,6 +12,8 @@ import java.util.List;
  */
 public class Timer {
 	static List<Task> list = new ArrayList<>();
+	static List<Task> addList = new ArrayList<>();
+
 	public static final int FOREVER = -1;
 	static boolean pause = false;
 	
@@ -21,7 +23,7 @@ public class Timer {
 		task.time = task.originTime = delay;
 		task.repeat = repeat;
 		task.type = type;
-		list.add(task);
+		addList.add(task);
 		
 		return task;
 	}
@@ -32,6 +34,11 @@ public class Timer {
 	
 	public static void act() {
 		float delta = Gdx.graphics.getRawDeltaTime();
+
+		if(!addList.isEmpty()){
+			list.addAll(addList);
+			addList.clear();
+		}
 
 		if(!list.isEmpty()){
 			List<Task> removeList = new ArrayList<>();
@@ -64,8 +71,12 @@ public class Timer {
 	public static void remove(Task timer) {
 		list.remove(timer);
 	}
-	
-	public static class Task{
+
+    public static void then(Runnable o) {
+		add(TimeType.frame, 0, o);
+    }
+
+    public static class Task{
 		public int time, originTime;
 		public int repeat = 1;
 		public Runnable run;

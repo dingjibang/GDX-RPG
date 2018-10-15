@@ -6,6 +6,7 @@ import com.rpsg.rpg.controller.GameMenuController;
 import com.rpsg.rpg.controller.MapController;
 import com.rpsg.rpg.core.Game;
 import com.rpsg.rpg.core.Log;
+import com.rpsg.rpg.core.Views;
 import com.rpsg.rpg.ui.view.View;
 import com.rpsg.rpg.view.game.FG;
 import com.rpsg.rpg.view.game.MessageBox;
@@ -28,6 +29,7 @@ public class GameView extends View{
 	
 	
 	public void create() {
+		Views.loadView.start("load_game");
 		Game.view = this;
 		
 		stage = Game.stage();
@@ -40,11 +42,12 @@ public class GameView extends View{
 		//添加输入处理
 		addProcessor(msg = new MessageBox());
 		fg = new FG();
-		
+
 		menu = new GameMenuController();
 		
 		Log.i("Game-view[created]");
 
+		Views.loadView.stop("load_game");
 	}
 	
 	public void draw() {
