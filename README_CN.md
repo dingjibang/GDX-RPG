@@ -1,6 +1,9 @@
 # GDX-RPG 
 一个~~还未完成的~~跨平台RPG游戏引擎，由[Libgdx](https://github.com/libgdx/libgdx)制作
 
+# 等下
+我现在的精力放在了[一个~~伟大~~的项目](https://github.com/dingjibang/GDX-HTML), 它最终目标是可以让你使用你最熟悉的那套HTML + CSS来构建LibGDX的UI，直接脱离甚至不用学习scene2d，~~UI开发速度提高10倍，远离垃圾UI代码。~~ 感兴趣可以看一看或者帮我忙~
+
 #### 目前在重构代码中……所有东西都重来=。=
 
 ![Image](https://raw.githubusercontent.com/dingjibang/GDX-LAZY-FONT/master/foobar.png)
