@@ -1,104 +1,104 @@
 buildscript {
-    repositories {
-        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0'
-        classpath 'me.tatarka:gradle-retrolambda:3.2.4'
-	    classpath 'org.codehaus.groovy:groovy-android-gradle-plugin:1.1.0'
-    }
+	repositories {
+		maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:2.2.0'
+		classpath 'me.tatarka:gradle-retrolambda:3.2.4'
+		classpath 'org.codehaus.groovy:groovy-android-gradle-plugin:1.1.0'
+	}
 }
 
 allprojects {
-    apply plugin: "eclipse"
-    apply plugin: "idea"
-    apply plugin: 'me.tatarka.retrolambda'
+	apply plugin: "eclipse"
+	apply plugin: "idea"
+	apply plugin: 'me.tatarka.retrolambda'
 
-    version = '1.0'
-    ext {
-        appName = "RPG"
-        gdxVersion = '1.9.1'
-        roboVMVersion = '1.8.0'
-        box2DLightsVersion = '1.4'
-        ashleyVersion = '1.6.0'
-        aiVersion = '1.6.0'
-    }
+	version = '1.0'
+	ext {
+		appName = "RPG"
+		gdxVersion = '1.9.1'
+		roboVMVersion = '1.8.0'
+		box2DLightsVersion = '1.4'
+		ashleyVersion = '1.6.0'
+		aiVersion = '1.6.0'
+	}
 
-    retrolambda {
-        jdk System.getenv("JAVA8_HOME")
-        oldJdk System.getenv("JAVA7_HOME")
-        javaVersion JavaVersion.VERSION_1_7
-    }
+	retrolambda {
+		jdk System.getenv("JAVA8_HOME")
+		oldJdk System.getenv("JAVA7_HOME")
+		javaVersion JavaVersion.VERSION_1_7
+	}
 
 
-    repositories {
+	repositories {
 		maven { url 'http://maven.aliyun.com/nexus/content/groups/public/'}
 		maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        mavenCentral()
-    }
+		mavenCentral()
+	}
 
 }
 
 project(":desktop") {
-    apply plugin: "groovy"
+	apply plugin: "groovy"
 
 
-    dependencies {
-        compile project(path: ":core")
-        compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
-        compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
-    }
+	dependencies {
+		compile project(path: ":core")
+		compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+		compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+		compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+		compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+	}
 }
 
 project(":android") {
-    apply plugin: "android"
+	apply plugin: "android"
 	apply plugin: 'groovyx.android'
 
-    configurations { natives }
+	configurations { natives }
 
 
-    dependencies {
-	    compile "org.codehaus.groovy:groovy:2.4.8:grooid"
-	    compile(project(':core')) {
-		    exclude group: 'org.codehaus.groovy'
-	    }
-        compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
-        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
-        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
-        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
-        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi"
-        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi-v7a"
-        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
-        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi"
-        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
-        natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
-        compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
-    }
+	dependencies {
+		compile "org.codehaus.groovy:groovy:2.4.8:grooid"
+		compile(project(':core')) {
+			exclude group: 'org.codehaus.groovy'
+		}
+		compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+		natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
+		natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
+		natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
+		compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+		natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi"
+		natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi-v7a"
+		natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
+		compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+		natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi"
+		natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
+		natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
+		compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
+	}
 }
 
 project(":core") {
-    apply plugin: "groovy"
+	apply plugin: "groovy"
 
-    dependencies {
-	    compile 'org.codehaus.groovy:groovy:2.4.8'
-        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-        compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
-		compile "org.mozilla:rhino:1.7.8-SNAPSHOT"
+	dependencies {
+		compile 'org.codehaus.groovy:groovy:2.4.8'
+		compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+		compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+		compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+		compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
+		compile "org.mozilla:rhino:1.7.13"
 		compile group: 'net.sourceforge.streamsupport', name: 'streamsupport', version: '1.5'
-    }
+	}
 }
 
 tasks.eclipse.doLast {
-    delete ".project"
+	delete ".project"
 }
 
 eclipse.project {
-    name = appName + "-core"
+	name = appName + "-core"
 }
