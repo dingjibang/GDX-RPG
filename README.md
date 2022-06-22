@@ -2,7 +2,9 @@
 A ~~not working~~ cross-platform RPG game engine ~~(tease you)~~
 
 # HEY!
-At present, my energy is mainly used in [GDX-HTML](https://github.com/dingjibang/GDX-HTML), the GOAL is to **build LibGDX ui using REAL-WORLD HTML + CSS!** [Please take a look at it](https://github.com/dingjibang/GDX-HTML)!
+**This project is no longer maintained**~~(The rest is up to you)~~. The current branch is the 2.0 engine (not yet developed). 1.0 engine is relatively complete except for the battle part UI & task system. You can click [here](https://github.com/dingjibang/GDX-RPG/commit/1af96d38592a9c686b65695340c449f7968e46a2) to view and build 1.0 engine.
+
+~~At present, my energy is mainly used in [GDX-HTML](https://github.com/dingjibang/GDX-HTML), the GOAL is to **build LibGDX ui using REAL-WORLD HTML + CSS!** [Please take a look at it](https://github.com/dingjibang/GDX-HTML)!~~
 
 [中文说明](https://github.com/dingjibang/GDX-RPG/blob/master/README_CN.md)
 
